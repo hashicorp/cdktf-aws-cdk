@@ -73,11 +73,11 @@ export class IamPolicyAttachment extends cdktf.TerraformResource {
   // ==========
 
   // groups - computed: false, optional: true, required: false
-  private _groups?: string[] | undefined; 
+  private _groups?: string[]; 
   public get groups() {
     return this.getListAttribute('groups');
   }
-  public set groups(value: string[] | undefined) {
+  public set groups(value: string[]) {
     this._groups = value;
   }
   public resetGroups() {
@@ -85,7 +85,7 @@ export class IamPolicyAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get groupsInput() {
-    return this._groups
+    return this._groups;
   }
 
   // id - computed: true, optional: true, required: false
@@ -103,7 +103,7 @@ export class IamPolicyAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // policy_arn - computed: false, optional: false, required: true
@@ -116,15 +116,15 @@ export class IamPolicyAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyArnInput() {
-    return this._policyArn
+    return this._policyArn;
   }
 
   // roles - computed: false, optional: true, required: false
-  private _roles?: string[] | undefined; 
+  private _roles?: string[]; 
   public get roles() {
     return this.getListAttribute('roles');
   }
-  public set roles(value: string[] | undefined) {
+  public set roles(value: string[]) {
     this._roles = value;
   }
   public resetRoles() {
@@ -132,15 +132,15 @@ export class IamPolicyAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rolesInput() {
-    return this._roles
+    return this._roles;
   }
 
   // users - computed: false, optional: true, required: false
-  private _users?: string[] | undefined; 
+  private _users?: string[]; 
   public get users() {
     return this.getListAttribute('users');
   }
-  public set users(value: string[] | undefined) {
+  public set users(value: string[]) {
     this._users = value;
   }
   public resetUsers() {
@@ -148,7 +148,7 @@ export class IamPolicyAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get usersInput() {
-    return this._users
+    return this._users;
   }
 
   // =========

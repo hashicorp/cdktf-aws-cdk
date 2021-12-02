@@ -80,6 +80,25 @@ export class CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfigContent
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfiles | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._items) {
+      hasAnyValues = true;
+      internalValueResult.items = this._items;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfiles | undefined) {
+    if (value === undefined) {
+      this._items = undefined;
+    }
+    else {
+      this._items = value.items;
+    }
+  }
+
   // items - computed: false, optional: false, required: true
   private _items?: CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItems[]; 
   public get items() {
@@ -91,7 +110,7 @@ export class CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfigContent
   }
   // Temporarily expose input value. Use with caution.
   public get itemsInput() {
-    return this._items
+    return this._items;
   }
 }
 export interface CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfig {
@@ -128,6 +147,31 @@ export class CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfigOutputR
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._forwardWhenContentTypeIsUnknown) {
+      hasAnyValues = true;
+      internalValueResult.forwardWhenContentTypeIsUnknown = this._forwardWhenContentTypeIsUnknown;
+    }
+    if (this._contentTypeProfiles) {
+      hasAnyValues = true;
+      internalValueResult.contentTypeProfiles = this._contentTypeProfiles?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfig | undefined) {
+    if (value === undefined) {
+      this._forwardWhenContentTypeIsUnknown = undefined;
+      this._contentTypeProfiles.internalValue = undefined;
+    }
+    else {
+      this._forwardWhenContentTypeIsUnknown = value.forwardWhenContentTypeIsUnknown;
+      this._contentTypeProfiles.internalValue = value.contentTypeProfiles;
+    }
+  }
+
   // forward_when_content_type_is_unknown - computed: false, optional: false, required: true
   private _forwardWhenContentTypeIsUnknown?: boolean | cdktf.IResolvable; 
   public get forwardWhenContentTypeIsUnknown() {
@@ -138,21 +182,20 @@ export class CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfigOutputR
   }
   // Temporarily expose input value. Use with caution.
   public get forwardWhenContentTypeIsUnknownInput() {
-    return this._forwardWhenContentTypeIsUnknown
+    return this._forwardWhenContentTypeIsUnknown;
   }
 
   // content_type_profiles - computed: false, optional: false, required: true
-  private _contentTypeProfiles?: CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfiles; 
-  private __contentTypeProfilesOutput = new CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesOutputReference(this as any, "content_type_profiles", true);
+  private _contentTypeProfiles = new CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesOutputReference(this as any, "content_type_profiles", true);
   public get contentTypeProfiles() {
-    return this.__contentTypeProfilesOutput;
+    return this._contentTypeProfiles;
   }
   public putContentTypeProfiles(value: CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfiles) {
-    this._contentTypeProfiles = value;
+    this._contentTypeProfiles.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get contentTypeProfilesInput() {
-    return this._contentTypeProfiles
+    return this._contentTypeProfiles.internalValue;
   }
 }
 export interface CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItems {
@@ -206,13 +249,32 @@ export class CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgPr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._items) {
+      hasAnyValues = true;
+      internalValueResult.items = this._items;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles | undefined) {
+    if (value === undefined) {
+      this._items = undefined;
+    }
+    else {
+      this._items = value.items;
+    }
+  }
+
   // items - computed: false, optional: true, required: false
-  private _items?: CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItems[] | undefined; 
+  private _items?: CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItems[]; 
   public get items() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('items') as any;
   }
-  public set items(value: CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItems[] | undefined) {
+  public set items(value: CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItems[]) {
     this._items = value;
   }
   public resetItems() {
@@ -220,7 +282,7 @@ export class CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgPr
   }
   // Temporarily expose input value. Use with caution.
   public get itemsInput() {
-    return this._items
+    return this._items;
   }
 }
 export interface CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfig {
@@ -257,6 +319,31 @@ export class CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigOutputRefe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._forwardWhenQueryArgProfileIsUnknown) {
+      hasAnyValues = true;
+      internalValueResult.forwardWhenQueryArgProfileIsUnknown = this._forwardWhenQueryArgProfileIsUnknown;
+    }
+    if (this._queryArgProfiles) {
+      hasAnyValues = true;
+      internalValueResult.queryArgProfiles = this._queryArgProfiles?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfig | undefined) {
+    if (value === undefined) {
+      this._forwardWhenQueryArgProfileIsUnknown = undefined;
+      this._queryArgProfiles.internalValue = undefined;
+    }
+    else {
+      this._forwardWhenQueryArgProfileIsUnknown = value.forwardWhenQueryArgProfileIsUnknown;
+      this._queryArgProfiles.internalValue = value.queryArgProfiles;
+    }
+  }
+
   // forward_when_query_arg_profile_is_unknown - computed: false, optional: false, required: true
   private _forwardWhenQueryArgProfileIsUnknown?: boolean | cdktf.IResolvable; 
   public get forwardWhenQueryArgProfileIsUnknown() {
@@ -267,24 +354,23 @@ export class CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get forwardWhenQueryArgProfileIsUnknownInput() {
-    return this._forwardWhenQueryArgProfileIsUnknown
+    return this._forwardWhenQueryArgProfileIsUnknown;
   }
 
   // query_arg_profiles - computed: false, optional: true, required: false
-  private _queryArgProfiles?: CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles | undefined; 
-  private __queryArgProfilesOutput = new CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesOutputReference(this as any, "query_arg_profiles", true);
+  private _queryArgProfiles = new CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesOutputReference(this as any, "query_arg_profiles", true);
   public get queryArgProfiles() {
-    return this.__queryArgProfilesOutput;
+    return this._queryArgProfiles;
   }
-  public putQueryArgProfiles(value: CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles | undefined) {
-    this._queryArgProfiles = value;
+  public putQueryArgProfiles(value: CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles) {
+    this._queryArgProfiles.internalValue = value;
   }
   public resetQueryArgProfiles() {
-    this._queryArgProfiles = undefined;
+    this._queryArgProfiles.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryArgProfilesInput() {
-    return this._queryArgProfiles
+    return this._queryArgProfiles.internalValue;
   }
 }
 
@@ -321,8 +407,8 @@ export class CloudfrontFieldLevelEncryptionConfig extends cdktf.TerraformResourc
       lifecycle: config.lifecycle
     });
     this._comment = config.comment;
-    this._contentTypeProfileConfig = config.contentTypeProfileConfig;
-    this._queryArgProfileConfig = config.queryArgProfileConfig;
+    this._contentTypeProfileConfig.internalValue = config.contentTypeProfileConfig;
+    this._queryArgProfileConfig.internalValue = config.queryArgProfileConfig;
   }
 
   // ==========
@@ -335,11 +421,11 @@ export class CloudfrontFieldLevelEncryptionConfig extends cdktf.TerraformResourc
   }
 
   // comment - computed: false, optional: true, required: false
-  private _comment?: string | undefined; 
+  private _comment?: string; 
   public get comment() {
     return this.getStringAttribute('comment');
   }
-  public set comment(value: string | undefined) {
+  public set comment(value: string) {
     this._comment = value;
   }
   public resetComment() {
@@ -347,7 +433,7 @@ export class CloudfrontFieldLevelEncryptionConfig extends cdktf.TerraformResourc
   }
   // Temporarily expose input value. Use with caution.
   public get commentInput() {
-    return this._comment
+    return this._comment;
   }
 
   // etag - computed: true, optional: false, required: false
@@ -361,31 +447,29 @@ export class CloudfrontFieldLevelEncryptionConfig extends cdktf.TerraformResourc
   }
 
   // content_type_profile_config - computed: false, optional: false, required: true
-  private _contentTypeProfileConfig?: CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfig; 
-  private __contentTypeProfileConfigOutput = new CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfigOutputReference(this as any, "content_type_profile_config", true);
+  private _contentTypeProfileConfig = new CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfigOutputReference(this as any, "content_type_profile_config", true);
   public get contentTypeProfileConfig() {
-    return this.__contentTypeProfileConfigOutput;
+    return this._contentTypeProfileConfig;
   }
   public putContentTypeProfileConfig(value: CloudfrontFieldLevelEncryptionConfigContentTypeProfileConfig) {
-    this._contentTypeProfileConfig = value;
+    this._contentTypeProfileConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get contentTypeProfileConfigInput() {
-    return this._contentTypeProfileConfig
+    return this._contentTypeProfileConfig.internalValue;
   }
 
   // query_arg_profile_config - computed: false, optional: false, required: true
-  private _queryArgProfileConfig?: CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfig; 
-  private __queryArgProfileConfigOutput = new CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigOutputReference(this as any, "query_arg_profile_config", true);
+  private _queryArgProfileConfig = new CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigOutputReference(this as any, "query_arg_profile_config", true);
   public get queryArgProfileConfig() {
-    return this.__queryArgProfileConfigOutput;
+    return this._queryArgProfileConfig;
   }
   public putQueryArgProfileConfig(value: CloudfrontFieldLevelEncryptionConfigQueryArgProfileConfig) {
-    this._queryArgProfileConfig = value;
+    this._queryArgProfileConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get queryArgProfileConfigInput() {
-    return this._queryArgProfileConfig
+    return this._queryArgProfileConfig.internalValue;
   }
 
   // =========
@@ -395,8 +479,8 @@ export class CloudfrontFieldLevelEncryptionConfig extends cdktf.TerraformResourc
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       comment: cdktf.stringToTerraform(this._comment),
-      content_type_profile_config: cloudfrontFieldLevelEncryptionConfigContentTypeProfileConfigToTerraform(this._contentTypeProfileConfig),
-      query_arg_profile_config: cloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigToTerraform(this._queryArgProfileConfig),
+      content_type_profile_config: cloudfrontFieldLevelEncryptionConfigContentTypeProfileConfigToTerraform(this._contentTypeProfileConfig.internalValue),
+      query_arg_profile_config: cloudfrontFieldLevelEncryptionConfigQueryArgProfileConfigToTerraform(this._queryArgProfileConfig.internalValue),
     };
   }
 }

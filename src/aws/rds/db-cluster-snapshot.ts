@@ -57,12 +57,31 @@ export class DbClusterSnapshotTimeoutsOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DbClusterSnapshotTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DbClusterSnapshotTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+    }
+    else {
+      this._create = value.create;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -70,7 +89,7 @@ export class DbClusterSnapshotTimeoutsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 }
 
@@ -110,7 +129,7 @@ export class DbClusterSnapshot extends cdktf.TerraformResource {
     this._dbClusterSnapshotIdentifier = config.dbClusterSnapshotIdentifier;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -137,7 +156,7 @@ export class DbClusterSnapshot extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dbClusterIdentifierInput() {
-    return this._dbClusterIdentifier
+    return this._dbClusterIdentifier;
   }
 
   // db_cluster_snapshot_arn - computed: true, optional: false, required: false
@@ -155,7 +174,7 @@ export class DbClusterSnapshot extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dbClusterSnapshotIdentifierInput() {
-    return this._dbClusterSnapshotIdentifier
+    return this._dbClusterSnapshotIdentifier;
   }
 
   // engine - computed: true, optional: false, required: false
@@ -209,12 +228,12 @@ export class DbClusterSnapshot extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -222,16 +241,16 @@ export class DbClusterSnapshot extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -239,7 +258,7 @@ export class DbClusterSnapshot extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // vpc_id - computed: true, optional: false, required: false
@@ -248,20 +267,19 @@ export class DbClusterSnapshot extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DbClusterSnapshotTimeouts | undefined; 
-  private __timeoutsOutput = new DbClusterSnapshotTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DbClusterSnapshotTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DbClusterSnapshotTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DbClusterSnapshotTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -274,7 +292,7 @@ export class DbClusterSnapshot extends cdktf.TerraformResource {
       db_cluster_snapshot_identifier: cdktf.stringToTerraform(this._dbClusterSnapshotIdentifier),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      timeouts: dbClusterSnapshotTimeoutsToTerraform(this._timeouts),
+      timeouts: dbClusterSnapshotTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

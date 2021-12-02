@@ -72,7 +72,7 @@ export class Apigatewayv2Deployment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiIdInput() {
-    return this._apiId
+    return this._apiId;
   }
 
   // auto_deployed - computed: true, optional: false, required: false
@@ -81,11 +81,11 @@ export class Apigatewayv2Deployment extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -93,7 +93,7 @@ export class Apigatewayv2Deployment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -102,12 +102,12 @@ export class Apigatewayv2Deployment extends cdktf.TerraformResource {
   }
 
   // triggers - computed: false, optional: true, required: false
-  private _triggers?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _triggers?: { [key: string]: string } | cdktf.IResolvable; 
   public get triggers() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('triggers') as any;
   }
-  public set triggers(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set triggers(value: { [key: string]: string } | cdktf.IResolvable) {
     this._triggers = value;
   }
   public resetTriggers() {
@@ -115,7 +115,7 @@ export class Apigatewayv2Deployment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get triggersInput() {
-    return this._triggers
+    return this._triggers;
   }
 
   // =========

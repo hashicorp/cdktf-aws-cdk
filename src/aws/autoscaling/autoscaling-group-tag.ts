@@ -55,6 +55,37 @@ export class AutoscalingGroupTagTagOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AutoscalingGroupTagTag | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._propagateAtLaunch) {
+      hasAnyValues = true;
+      internalValueResult.propagateAtLaunch = this._propagateAtLaunch;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AutoscalingGroupTagTag | undefined) {
+    if (value === undefined) {
+      this._key = undefined;
+      this._propagateAtLaunch = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._key = value.key;
+      this._propagateAtLaunch = value.propagateAtLaunch;
+      this._value = value.value;
+    }
+  }
+
   // key - computed: false, optional: false, required: true
   private _key?: string; 
   public get key() {
@@ -65,7 +96,7 @@ export class AutoscalingGroupTagTagOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // propagate_at_launch - computed: false, optional: false, required: true
@@ -78,7 +109,7 @@ export class AutoscalingGroupTagTagOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get propagateAtLaunchInput() {
-    return this._propagateAtLaunch
+    return this._propagateAtLaunch;
   }
 
   // value - computed: false, optional: false, required: true
@@ -91,7 +122,7 @@ export class AutoscalingGroupTagTagOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 
@@ -128,7 +159,7 @@ export class AutoscalingGroupTagA extends cdktf.TerraformResource {
       lifecycle: config.lifecycle
     });
     this._autoscalingGroupName = config.autoscalingGroupName;
-    this._tag = config.tag;
+    this._tag.internalValue = config.tag;
   }
 
   // ==========
@@ -145,7 +176,7 @@ export class AutoscalingGroupTagA extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoscalingGroupNameInput() {
-    return this._autoscalingGroupName
+    return this._autoscalingGroupName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -154,17 +185,16 @@ export class AutoscalingGroupTagA extends cdktf.TerraformResource {
   }
 
   // tag - computed: false, optional: false, required: true
-  private _tag?: AutoscalingGroupTagTag; 
-  private __tagOutput = new AutoscalingGroupTagTagOutputReference(this as any, "tag", true);
+  private _tag = new AutoscalingGroupTagTagOutputReference(this as any, "tag", true);
   public get tag() {
-    return this.__tagOutput;
+    return this._tag;
   }
   public putTag(value: AutoscalingGroupTagTag) {
-    this._tag = value;
+    this._tag.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get tagInput() {
-    return this._tag
+    return this._tag.internalValue;
   }
 
   // =========
@@ -174,7 +204,7 @@ export class AutoscalingGroupTagA extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       autoscaling_group_name: cdktf.stringToTerraform(this._autoscalingGroupName),
-      tag: autoscalingGroupTagTagToTerraform(this._tag),
+      tag: autoscalingGroupTagTagToTerraform(this._tag.internalValue),
     };
   }
 }

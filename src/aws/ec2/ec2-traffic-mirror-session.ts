@@ -98,11 +98,11 @@ export class Ec2TrafficMirrorSession extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -110,7 +110,7 @@ export class Ec2TrafficMirrorSession extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -128,7 +128,7 @@ export class Ec2TrafficMirrorSession extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get networkInterfaceIdInput() {
-    return this._networkInterfaceId
+    return this._networkInterfaceId;
   }
 
   // owner_id - computed: true, optional: false, required: false
@@ -137,11 +137,11 @@ export class Ec2TrafficMirrorSession extends cdktf.TerraformResource {
   }
 
   // packet_length - computed: false, optional: true, required: false
-  private _packetLength?: number | undefined; 
+  private _packetLength?: number; 
   public get packetLength() {
     return this.getNumberAttribute('packet_length');
   }
-  public set packetLength(value: number | undefined) {
+  public set packetLength(value: number) {
     this._packetLength = value;
   }
   public resetPacketLength() {
@@ -149,7 +149,7 @@ export class Ec2TrafficMirrorSession extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get packetLengthInput() {
-    return this._packetLength
+    return this._packetLength;
   }
 
   // session_number - computed: false, optional: false, required: true
@@ -162,16 +162,16 @@ export class Ec2TrafficMirrorSession extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sessionNumberInput() {
-    return this._sessionNumber
+    return this._sessionNumber;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -179,16 +179,16 @@ export class Ec2TrafficMirrorSession extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -196,7 +196,7 @@ export class Ec2TrafficMirrorSession extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // traffic_mirror_filter_id - computed: false, optional: false, required: true
@@ -209,7 +209,7 @@ export class Ec2TrafficMirrorSession extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get trafficMirrorFilterIdInput() {
-    return this._trafficMirrorFilterId
+    return this._trafficMirrorFilterId;
   }
 
   // traffic_mirror_target_id - computed: false, optional: false, required: true
@@ -222,15 +222,15 @@ export class Ec2TrafficMirrorSession extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get trafficMirrorTargetIdInput() {
-    return this._trafficMirrorTargetId
+    return this._trafficMirrorTargetId;
   }
 
   // virtual_network_id - computed: true, optional: true, required: false
-  private _virtualNetworkId?: number | undefined; 
+  private _virtualNetworkId?: number; 
   public get virtualNetworkId() {
     return this.getNumberAttribute('virtual_network_id');
   }
-  public set virtualNetworkId(value: number | undefined) {
+  public set virtualNetworkId(value: number) {
     this._virtualNetworkId = value;
   }
   public resetVirtualNetworkId() {
@@ -238,7 +238,7 @@ export class Ec2TrafficMirrorSession extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get virtualNetworkIdInput() {
-    return this._virtualNetworkId
+    return this._virtualNetworkId;
   }
 
   // =========

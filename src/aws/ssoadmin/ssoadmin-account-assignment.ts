@@ -92,7 +92,7 @@ export class SsoadminAccountAssignment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceArnInput() {
-    return this._instanceArn
+    return this._instanceArn;
   }
 
   // permission_set_arn - computed: false, optional: false, required: true
@@ -105,7 +105,7 @@ export class SsoadminAccountAssignment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get permissionSetArnInput() {
-    return this._permissionSetArn
+    return this._permissionSetArn;
   }
 
   // principal_id - computed: false, optional: false, required: true
@@ -118,7 +118,7 @@ export class SsoadminAccountAssignment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get principalIdInput() {
-    return this._principalId
+    return this._principalId;
   }
 
   // principal_type - computed: false, optional: false, required: true
@@ -131,7 +131,7 @@ export class SsoadminAccountAssignment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get principalTypeInput() {
-    return this._principalType
+    return this._principalType;
   }
 
   // target_id - computed: false, optional: false, required: true
@@ -144,15 +144,15 @@ export class SsoadminAccountAssignment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetIdInput() {
-    return this._targetId
+    return this._targetId;
   }
 
   // target_type - computed: false, optional: true, required: false
-  private _targetType?: string | undefined; 
+  private _targetType?: string; 
   public get targetType() {
     return this.getStringAttribute('target_type');
   }
-  public set targetType(value: string | undefined) {
+  public set targetType(value: string) {
     this._targetType = value;
   }
   public resetTargetType() {
@@ -160,7 +160,7 @@ export class SsoadminAccountAssignment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetTypeInput() {
-    return this._targetType
+    return this._targetType;
   }
 
   // =========

@@ -89,12 +89,43 @@ export class AppsyncDatasourceDynamodbConfigOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppsyncDatasourceDynamodbConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._region) {
+      hasAnyValues = true;
+      internalValueResult.region = this._region;
+    }
+    if (this._tableName) {
+      hasAnyValues = true;
+      internalValueResult.tableName = this._tableName;
+    }
+    if (this._useCallerCredentials) {
+      hasAnyValues = true;
+      internalValueResult.useCallerCredentials = this._useCallerCredentials;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppsyncDatasourceDynamodbConfig | undefined) {
+    if (value === undefined) {
+      this._region = undefined;
+      this._tableName = undefined;
+      this._useCallerCredentials = undefined;
+    }
+    else {
+      this._region = value.region;
+      this._tableName = value.tableName;
+      this._useCallerCredentials = value.useCallerCredentials;
+    }
+  }
+
   // region - computed: true, optional: true, required: false
-  private _region?: string | undefined; 
+  private _region?: string; 
   public get region() {
     return this.getStringAttribute('region');
   }
-  public set region(value: string | undefined) {
+  public set region(value: string) {
     this._region = value;
   }
   public resetRegion() {
@@ -102,7 +133,7 @@ export class AppsyncDatasourceDynamodbConfigOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get regionInput() {
-    return this._region
+    return this._region;
   }
 
   // table_name - computed: false, optional: false, required: true
@@ -115,15 +146,15 @@ export class AppsyncDatasourceDynamodbConfigOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get tableNameInput() {
-    return this._tableName
+    return this._tableName;
   }
 
   // use_caller_credentials - computed: false, optional: true, required: false
-  private _useCallerCredentials?: boolean | cdktf.IResolvable | undefined; 
+  private _useCallerCredentials?: boolean | cdktf.IResolvable; 
   public get useCallerCredentials() {
     return this.getBooleanAttribute('use_caller_credentials') as any;
   }
-  public set useCallerCredentials(value: boolean | cdktf.IResolvable | undefined) {
+  public set useCallerCredentials(value: boolean | cdktf.IResolvable) {
     this._useCallerCredentials = value;
   }
   public resetUseCallerCredentials() {
@@ -131,7 +162,7 @@ export class AppsyncDatasourceDynamodbConfigOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get useCallerCredentialsInput() {
-    return this._useCallerCredentials
+    return this._useCallerCredentials;
   }
 }
 export interface AppsyncDatasourceElasticsearchConfig {
@@ -166,6 +197,31 @@ export class AppsyncDatasourceElasticsearchConfigOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppsyncDatasourceElasticsearchConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._endpoint) {
+      hasAnyValues = true;
+      internalValueResult.endpoint = this._endpoint;
+    }
+    if (this._region) {
+      hasAnyValues = true;
+      internalValueResult.region = this._region;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppsyncDatasourceElasticsearchConfig | undefined) {
+    if (value === undefined) {
+      this._endpoint = undefined;
+      this._region = undefined;
+    }
+    else {
+      this._endpoint = value.endpoint;
+      this._region = value.region;
+    }
+  }
+
   // endpoint - computed: false, optional: false, required: true
   private _endpoint?: string; 
   public get endpoint() {
@@ -176,15 +232,15 @@ export class AppsyncDatasourceElasticsearchConfigOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get endpointInput() {
-    return this._endpoint
+    return this._endpoint;
   }
 
   // region - computed: true, optional: true, required: false
-  private _region?: string | undefined; 
+  private _region?: string; 
   public get region() {
     return this.getStringAttribute('region');
   }
-  public set region(value: string | undefined) {
+  public set region(value: string) {
     this._region = value;
   }
   public resetRegion() {
@@ -192,7 +248,7 @@ export class AppsyncDatasourceElasticsearchConfigOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get regionInput() {
-    return this._region
+    return this._region;
   }
 }
 export interface AppsyncDatasourceHttpConfig {
@@ -222,6 +278,25 @@ export class AppsyncDatasourceHttpConfigOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppsyncDatasourceHttpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._endpoint) {
+      hasAnyValues = true;
+      internalValueResult.endpoint = this._endpoint;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppsyncDatasourceHttpConfig | undefined) {
+    if (value === undefined) {
+      this._endpoint = undefined;
+    }
+    else {
+      this._endpoint = value.endpoint;
+    }
+  }
+
   // endpoint - computed: false, optional: false, required: true
   private _endpoint?: string; 
   public get endpoint() {
@@ -232,7 +307,7 @@ export class AppsyncDatasourceHttpConfigOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get endpointInput() {
-    return this._endpoint
+    return this._endpoint;
   }
 }
 export interface AppsyncDatasourceLambdaConfig {
@@ -262,6 +337,25 @@ export class AppsyncDatasourceLambdaConfigOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppsyncDatasourceLambdaConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._functionArn) {
+      hasAnyValues = true;
+      internalValueResult.functionArn = this._functionArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppsyncDatasourceLambdaConfig | undefined) {
+    if (value === undefined) {
+      this._functionArn = undefined;
+    }
+    else {
+      this._functionArn = value.functionArn;
+    }
+  }
+
   // function_arn - computed: false, optional: false, required: true
   private _functionArn?: string; 
   public get functionArn() {
@@ -272,7 +366,7 @@ export class AppsyncDatasourceLambdaConfigOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get functionArnInput() {
-    return this._functionArn
+    return this._functionArn;
   }
 }
 
@@ -313,10 +407,10 @@ export class AppsyncDatasource extends cdktf.TerraformResource {
     this._name = config.name;
     this._serviceRoleArn = config.serviceRoleArn;
     this._type = config.type;
-    this._dynamodbConfig = config.dynamodbConfig;
-    this._elasticsearchConfig = config.elasticsearchConfig;
-    this._httpConfig = config.httpConfig;
-    this._lambdaConfig = config.lambdaConfig;
+    this._dynamodbConfig.internalValue = config.dynamodbConfig;
+    this._elasticsearchConfig.internalValue = config.elasticsearchConfig;
+    this._httpConfig.internalValue = config.httpConfig;
+    this._lambdaConfig.internalValue = config.lambdaConfig;
   }
 
   // ==========
@@ -333,7 +427,7 @@ export class AppsyncDatasource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiIdInput() {
-    return this._apiId
+    return this._apiId;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -342,11 +436,11 @@ export class AppsyncDatasource extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -354,7 +448,7 @@ export class AppsyncDatasource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -372,15 +466,15 @@ export class AppsyncDatasource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // service_role_arn - computed: false, optional: true, required: false
-  private _serviceRoleArn?: string | undefined; 
+  private _serviceRoleArn?: string; 
   public get serviceRoleArn() {
     return this.getStringAttribute('service_role_arn');
   }
-  public set serviceRoleArn(value: string | undefined) {
+  public set serviceRoleArn(value: string) {
     this._serviceRoleArn = value;
   }
   public resetServiceRoleArn() {
@@ -388,7 +482,7 @@ export class AppsyncDatasource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceRoleArnInput() {
-    return this._serviceRoleArn
+    return this._serviceRoleArn;
   }
 
   // type - computed: false, optional: false, required: true
@@ -401,75 +495,71 @@ export class AppsyncDatasource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // dynamodb_config - computed: false, optional: true, required: false
-  private _dynamodbConfig?: AppsyncDatasourceDynamodbConfig | undefined; 
-  private __dynamodbConfigOutput = new AppsyncDatasourceDynamodbConfigOutputReference(this as any, "dynamodb_config", true);
+  private _dynamodbConfig = new AppsyncDatasourceDynamodbConfigOutputReference(this as any, "dynamodb_config", true);
   public get dynamodbConfig() {
-    return this.__dynamodbConfigOutput;
+    return this._dynamodbConfig;
   }
-  public putDynamodbConfig(value: AppsyncDatasourceDynamodbConfig | undefined) {
-    this._dynamodbConfig = value;
+  public putDynamodbConfig(value: AppsyncDatasourceDynamodbConfig) {
+    this._dynamodbConfig.internalValue = value;
   }
   public resetDynamodbConfig() {
-    this._dynamodbConfig = undefined;
+    this._dynamodbConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get dynamodbConfigInput() {
-    return this._dynamodbConfig
+    return this._dynamodbConfig.internalValue;
   }
 
   // elasticsearch_config - computed: false, optional: true, required: false
-  private _elasticsearchConfig?: AppsyncDatasourceElasticsearchConfig | undefined; 
-  private __elasticsearchConfigOutput = new AppsyncDatasourceElasticsearchConfigOutputReference(this as any, "elasticsearch_config", true);
+  private _elasticsearchConfig = new AppsyncDatasourceElasticsearchConfigOutputReference(this as any, "elasticsearch_config", true);
   public get elasticsearchConfig() {
-    return this.__elasticsearchConfigOutput;
+    return this._elasticsearchConfig;
   }
-  public putElasticsearchConfig(value: AppsyncDatasourceElasticsearchConfig | undefined) {
-    this._elasticsearchConfig = value;
+  public putElasticsearchConfig(value: AppsyncDatasourceElasticsearchConfig) {
+    this._elasticsearchConfig.internalValue = value;
   }
   public resetElasticsearchConfig() {
-    this._elasticsearchConfig = undefined;
+    this._elasticsearchConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get elasticsearchConfigInput() {
-    return this._elasticsearchConfig
+    return this._elasticsearchConfig.internalValue;
   }
 
   // http_config - computed: false, optional: true, required: false
-  private _httpConfig?: AppsyncDatasourceHttpConfig | undefined; 
-  private __httpConfigOutput = new AppsyncDatasourceHttpConfigOutputReference(this as any, "http_config", true);
+  private _httpConfig = new AppsyncDatasourceHttpConfigOutputReference(this as any, "http_config", true);
   public get httpConfig() {
-    return this.__httpConfigOutput;
+    return this._httpConfig;
   }
-  public putHttpConfig(value: AppsyncDatasourceHttpConfig | undefined) {
-    this._httpConfig = value;
+  public putHttpConfig(value: AppsyncDatasourceHttpConfig) {
+    this._httpConfig.internalValue = value;
   }
   public resetHttpConfig() {
-    this._httpConfig = undefined;
+    this._httpConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get httpConfigInput() {
-    return this._httpConfig
+    return this._httpConfig.internalValue;
   }
 
   // lambda_config - computed: false, optional: true, required: false
-  private _lambdaConfig?: AppsyncDatasourceLambdaConfig | undefined; 
-  private __lambdaConfigOutput = new AppsyncDatasourceLambdaConfigOutputReference(this as any, "lambda_config", true);
+  private _lambdaConfig = new AppsyncDatasourceLambdaConfigOutputReference(this as any, "lambda_config", true);
   public get lambdaConfig() {
-    return this.__lambdaConfigOutput;
+    return this._lambdaConfig;
   }
-  public putLambdaConfig(value: AppsyncDatasourceLambdaConfig | undefined) {
-    this._lambdaConfig = value;
+  public putLambdaConfig(value: AppsyncDatasourceLambdaConfig) {
+    this._lambdaConfig.internalValue = value;
   }
   public resetLambdaConfig() {
-    this._lambdaConfig = undefined;
+    this._lambdaConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get lambdaConfigInput() {
-    return this._lambdaConfig
+    return this._lambdaConfig.internalValue;
   }
 
   // =========
@@ -483,10 +573,10 @@ export class AppsyncDatasource extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       service_role_arn: cdktf.stringToTerraform(this._serviceRoleArn),
       type: cdktf.stringToTerraform(this._type),
-      dynamodb_config: appsyncDatasourceDynamodbConfigToTerraform(this._dynamodbConfig),
-      elasticsearch_config: appsyncDatasourceElasticsearchConfigToTerraform(this._elasticsearchConfig),
-      http_config: appsyncDatasourceHttpConfigToTerraform(this._httpConfig),
-      lambda_config: appsyncDatasourceLambdaConfigToTerraform(this._lambdaConfig),
+      dynamodb_config: appsyncDatasourceDynamodbConfigToTerraform(this._dynamodbConfig.internalValue),
+      elasticsearch_config: appsyncDatasourceElasticsearchConfigToTerraform(this._elasticsearchConfig.internalValue),
+      http_config: appsyncDatasourceHttpConfigToTerraform(this._httpConfig.internalValue),
+      lambda_config: appsyncDatasourceLambdaConfigToTerraform(this._lambdaConfig.internalValue),
     };
   }
 }

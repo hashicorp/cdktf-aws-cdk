@@ -92,7 +92,7 @@ export class AppautoscalingTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxCapacityInput() {
-    return this._maxCapacity
+    return this._maxCapacity;
   }
 
   // min_capacity - computed: false, optional: false, required: true
@@ -105,7 +105,7 @@ export class AppautoscalingTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get minCapacityInput() {
-    return this._minCapacity
+    return this._minCapacity;
   }
 
   // resource_id - computed: false, optional: false, required: true
@@ -118,15 +118,15 @@ export class AppautoscalingTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceIdInput() {
-    return this._resourceId
+    return this._resourceId;
   }
 
   // role_arn - computed: true, optional: true, required: false
-  private _roleArn?: string | undefined; 
+  private _roleArn?: string; 
   public get roleArn() {
     return this.getStringAttribute('role_arn');
   }
-  public set roleArn(value: string | undefined) {
+  public set roleArn(value: string) {
     this._roleArn = value;
   }
   public resetRoleArn() {
@@ -134,7 +134,7 @@ export class AppautoscalingTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // scalable_dimension - computed: false, optional: false, required: true
@@ -147,7 +147,7 @@ export class AppautoscalingTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scalableDimensionInput() {
-    return this._scalableDimension
+    return this._scalableDimension;
   }
 
   // service_namespace - computed: false, optional: false, required: true
@@ -160,7 +160,7 @@ export class AppautoscalingTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceNamespaceInput() {
-    return this._serviceNamespace
+    return this._serviceNamespace;
   }
 
   // =========

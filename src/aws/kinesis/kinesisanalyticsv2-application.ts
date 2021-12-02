@@ -89,6 +89,37 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCod
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucketArn) {
+      hasAnyValues = true;
+      internalValueResult.bucketArn = this._bucketArn;
+    }
+    if (this._fileKey) {
+      hasAnyValues = true;
+      internalValueResult.fileKey = this._fileKey;
+    }
+    if (this._objectVersion) {
+      hasAnyValues = true;
+      internalValueResult.objectVersion = this._objectVersion;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation | undefined) {
+    if (value === undefined) {
+      this._bucketArn = undefined;
+      this._fileKey = undefined;
+      this._objectVersion = undefined;
+    }
+    else {
+      this._bucketArn = value.bucketArn;
+      this._fileKey = value.fileKey;
+      this._objectVersion = value.objectVersion;
+    }
+  }
+
   // bucket_arn - computed: false, optional: false, required: true
   private _bucketArn?: string; 
   public get bucketArn() {
@@ -99,7 +130,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCod
   }
   // Temporarily expose input value. Use with caution.
   public get bucketArnInput() {
-    return this._bucketArn
+    return this._bucketArn;
   }
 
   // file_key - computed: false, optional: false, required: true
@@ -112,15 +143,15 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCod
   }
   // Temporarily expose input value. Use with caution.
   public get fileKeyInput() {
-    return this._fileKey
+    return this._fileKey;
   }
 
   // object_version - computed: false, optional: true, required: false
-  private _objectVersion?: string | undefined; 
+  private _objectVersion?: string; 
   public get objectVersion() {
     return this.getStringAttribute('object_version');
   }
-  public set objectVersion(value: string | undefined) {
+  public set objectVersion(value: string) {
     this._objectVersion = value;
   }
   public resetObjectVersion() {
@@ -128,7 +159,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCod
   }
   // Temporarily expose input value. Use with caution.
   public get objectVersionInput() {
-    return this._objectVersion
+    return this._objectVersion;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent {
@@ -165,12 +196,37 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCod
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._textContent) {
+      hasAnyValues = true;
+      internalValueResult.textContent = this._textContent;
+    }
+    if (this._s3ContentLocation) {
+      hasAnyValues = true;
+      internalValueResult.s3ContentLocation = this._s3ContentLocation?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent | undefined) {
+    if (value === undefined) {
+      this._textContent = undefined;
+      this._s3ContentLocation.internalValue = undefined;
+    }
+    else {
+      this._textContent = value.textContent;
+      this._s3ContentLocation.internalValue = value.s3ContentLocation;
+    }
+  }
+
   // text_content - computed: false, optional: true, required: false
-  private _textContent?: string | undefined; 
+  private _textContent?: string; 
   public get textContent() {
     return this.getStringAttribute('text_content');
   }
-  public set textContent(value: string | undefined) {
+  public set textContent(value: string) {
     this._textContent = value;
   }
   public resetTextContent() {
@@ -178,24 +234,23 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCod
   }
   // Temporarily expose input value. Use with caution.
   public get textContentInput() {
-    return this._textContent
+    return this._textContent;
   }
 
   // s3_content_location - computed: false, optional: true, required: false
-  private _s3ContentLocation?: Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation | undefined; 
-  private __s3ContentLocationOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocationOutputReference(this as any, "s3_content_location", true);
+  private _s3ContentLocation = new Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocationOutputReference(this as any, "s3_content_location", true);
   public get s3ContentLocation() {
-    return this.__s3ContentLocationOutput;
+    return this._s3ContentLocation;
   }
-  public putS3ContentLocation(value: Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation | undefined) {
-    this._s3ContentLocation = value;
+  public putS3ContentLocation(value: Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation) {
+    this._s3ContentLocation.internalValue = value;
   }
   public resetS3ContentLocation() {
-    this._s3ContentLocation = undefined;
+    this._s3ContentLocation.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get s3ContentLocationInput() {
-    return this._s3ContentLocation
+    return this._s3ContentLocation.internalValue;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfiguration {
@@ -232,6 +287,31 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCod
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._codeContentType) {
+      hasAnyValues = true;
+      internalValueResult.codeContentType = this._codeContentType;
+    }
+    if (this._codeContent) {
+      hasAnyValues = true;
+      internalValueResult.codeContent = this._codeContent?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfiguration | undefined) {
+    if (value === undefined) {
+      this._codeContentType = undefined;
+      this._codeContent.internalValue = undefined;
+    }
+    else {
+      this._codeContentType = value.codeContentType;
+      this._codeContent.internalValue = value.codeContent;
+    }
+  }
+
   // code_content_type - computed: false, optional: false, required: true
   private _codeContentType?: string; 
   public get codeContentType() {
@@ -242,24 +322,23 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCod
   }
   // Temporarily expose input value. Use with caution.
   public get codeContentTypeInput() {
-    return this._codeContentType
+    return this._codeContentType;
   }
 
   // code_content - computed: false, optional: true, required: false
-  private _codeContent?: Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent | undefined; 
-  private __codeContentOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentOutputReference(this as any, "code_content", true);
+  private _codeContent = new Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentOutputReference(this as any, "code_content", true);
   public get codeContent() {
-    return this.__codeContentOutput;
+    return this._codeContent;
   }
-  public putCodeContent(value: Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent | undefined) {
-    this._codeContent = value;
+  public putCodeContent(value: Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent) {
+    this._codeContent.internalValue = value;
   }
   public resetCodeContent() {
-    this._codeContent = undefined;
+    this._codeContent.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get codeContentInput() {
-    return this._codeContent
+    return this._codeContent.internalValue;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationSnapshotConfiguration {
@@ -289,6 +368,25 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationSna
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationSnapshotConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._snapshotsEnabled) {
+      hasAnyValues = true;
+      internalValueResult.snapshotsEnabled = this._snapshotsEnabled;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationSnapshotConfiguration | undefined) {
+    if (value === undefined) {
+      this._snapshotsEnabled = undefined;
+    }
+    else {
+      this._snapshotsEnabled = value.snapshotsEnabled;
+    }
+  }
+
   // snapshots_enabled - computed: false, optional: false, required: true
   private _snapshotsEnabled?: boolean | cdktf.IResolvable; 
   public get snapshotsEnabled() {
@@ -299,7 +397,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationSna
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotsEnabledInput() {
-    return this._snapshotsEnabled
+    return this._snapshotsEnabled;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup {
@@ -353,6 +451,25 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationEnvironmentPro
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationEnvironmentProperties | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._propertyGroup) {
+      hasAnyValues = true;
+      internalValueResult.propertyGroup = this._propertyGroup;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationEnvironmentProperties | undefined) {
+    if (value === undefined) {
+      this._propertyGroup = undefined;
+    }
+    else {
+      this._propertyGroup = value.propertyGroup;
+    }
+  }
+
   // property_group - computed: false, optional: false, required: true
   private _propertyGroup?: Kinesisanalyticsv2ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup[]; 
   public get propertyGroup() {
@@ -364,7 +481,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationEnvironmentPro
   }
   // Temporarily expose input value. Use with caution.
   public get propertyGroupInput() {
-    return this._propertyGroup
+    return this._propertyGroup;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration {
@@ -409,12 +526,49 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicati
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._checkpointInterval) {
+      hasAnyValues = true;
+      internalValueResult.checkpointInterval = this._checkpointInterval;
+    }
+    if (this._checkpointingEnabled) {
+      hasAnyValues = true;
+      internalValueResult.checkpointingEnabled = this._checkpointingEnabled;
+    }
+    if (this._configurationType) {
+      hasAnyValues = true;
+      internalValueResult.configurationType = this._configurationType;
+    }
+    if (this._minPauseBetweenCheckpoints) {
+      hasAnyValues = true;
+      internalValueResult.minPauseBetweenCheckpoints = this._minPauseBetweenCheckpoints;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration | undefined) {
+    if (value === undefined) {
+      this._checkpointInterval = undefined;
+      this._checkpointingEnabled = undefined;
+      this._configurationType = undefined;
+      this._minPauseBetweenCheckpoints = undefined;
+    }
+    else {
+      this._checkpointInterval = value.checkpointInterval;
+      this._checkpointingEnabled = value.checkpointingEnabled;
+      this._configurationType = value.configurationType;
+      this._minPauseBetweenCheckpoints = value.minPauseBetweenCheckpoints;
+    }
+  }
+
   // checkpoint_interval - computed: true, optional: true, required: false
-  private _checkpointInterval?: number | undefined; 
+  private _checkpointInterval?: number; 
   public get checkpointInterval() {
     return this.getNumberAttribute('checkpoint_interval');
   }
-  public set checkpointInterval(value: number | undefined) {
+  public set checkpointInterval(value: number) {
     this._checkpointInterval = value;
   }
   public resetCheckpointInterval() {
@@ -422,15 +576,15 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicati
   }
   // Temporarily expose input value. Use with caution.
   public get checkpointIntervalInput() {
-    return this._checkpointInterval
+    return this._checkpointInterval;
   }
 
   // checkpointing_enabled - computed: true, optional: true, required: false
-  private _checkpointingEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _checkpointingEnabled?: boolean | cdktf.IResolvable; 
   public get checkpointingEnabled() {
     return this.getBooleanAttribute('checkpointing_enabled') as any;
   }
-  public set checkpointingEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set checkpointingEnabled(value: boolean | cdktf.IResolvable) {
     this._checkpointingEnabled = value;
   }
   public resetCheckpointingEnabled() {
@@ -438,7 +592,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicati
   }
   // Temporarily expose input value. Use with caution.
   public get checkpointingEnabledInput() {
-    return this._checkpointingEnabled
+    return this._checkpointingEnabled;
   }
 
   // configuration_type - computed: false, optional: false, required: true
@@ -451,15 +605,15 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicati
   }
   // Temporarily expose input value. Use with caution.
   public get configurationTypeInput() {
-    return this._configurationType
+    return this._configurationType;
   }
 
   // min_pause_between_checkpoints - computed: true, optional: true, required: false
-  private _minPauseBetweenCheckpoints?: number | undefined; 
+  private _minPauseBetweenCheckpoints?: number; 
   public get minPauseBetweenCheckpoints() {
     return this.getNumberAttribute('min_pause_between_checkpoints');
   }
-  public set minPauseBetweenCheckpoints(value: number | undefined) {
+  public set minPauseBetweenCheckpoints(value: number) {
     this._minPauseBetweenCheckpoints = value;
   }
   public resetMinPauseBetweenCheckpoints() {
@@ -467,7 +621,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicati
   }
   // Temporarily expose input value. Use with caution.
   public get minPauseBetweenCheckpointsInput() {
-    return this._minPauseBetweenCheckpoints
+    return this._minPauseBetweenCheckpoints;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration {
@@ -507,6 +661,37 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicati
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._configurationType) {
+      hasAnyValues = true;
+      internalValueResult.configurationType = this._configurationType;
+    }
+    if (this._logLevel) {
+      hasAnyValues = true;
+      internalValueResult.logLevel = this._logLevel;
+    }
+    if (this._metricsLevel) {
+      hasAnyValues = true;
+      internalValueResult.metricsLevel = this._metricsLevel;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration | undefined) {
+    if (value === undefined) {
+      this._configurationType = undefined;
+      this._logLevel = undefined;
+      this._metricsLevel = undefined;
+    }
+    else {
+      this._configurationType = value.configurationType;
+      this._logLevel = value.logLevel;
+      this._metricsLevel = value.metricsLevel;
+    }
+  }
+
   // configuration_type - computed: false, optional: false, required: true
   private _configurationType?: string; 
   public get configurationType() {
@@ -517,15 +702,15 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicati
   }
   // Temporarily expose input value. Use with caution.
   public get configurationTypeInput() {
-    return this._configurationType
+    return this._configurationType;
   }
 
   // log_level - computed: true, optional: true, required: false
-  private _logLevel?: string | undefined; 
+  private _logLevel?: string; 
   public get logLevel() {
     return this.getStringAttribute('log_level');
   }
-  public set logLevel(value: string | undefined) {
+  public set logLevel(value: string) {
     this._logLevel = value;
   }
   public resetLogLevel() {
@@ -533,15 +718,15 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicati
   }
   // Temporarily expose input value. Use with caution.
   public get logLevelInput() {
-    return this._logLevel
+    return this._logLevel;
   }
 
   // metrics_level - computed: true, optional: true, required: false
-  private _metricsLevel?: string | undefined; 
+  private _metricsLevel?: string; 
   public get metricsLevel() {
     return this.getStringAttribute('metrics_level');
   }
-  public set metricsLevel(value: string | undefined) {
+  public set metricsLevel(value: string) {
     this._metricsLevel = value;
   }
   public resetMetricsLevel() {
@@ -549,7 +734,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicati
   }
   // Temporarily expose input value. Use with caution.
   public get metricsLevelInput() {
-    return this._metricsLevel
+    return this._metricsLevel;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration {
@@ -594,12 +779,49 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicati
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._autoScalingEnabled) {
+      hasAnyValues = true;
+      internalValueResult.autoScalingEnabled = this._autoScalingEnabled;
+    }
+    if (this._configurationType) {
+      hasAnyValues = true;
+      internalValueResult.configurationType = this._configurationType;
+    }
+    if (this._parallelism) {
+      hasAnyValues = true;
+      internalValueResult.parallelism = this._parallelism;
+    }
+    if (this._parallelismPerKpu) {
+      hasAnyValues = true;
+      internalValueResult.parallelismPerKpu = this._parallelismPerKpu;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration | undefined) {
+    if (value === undefined) {
+      this._autoScalingEnabled = undefined;
+      this._configurationType = undefined;
+      this._parallelism = undefined;
+      this._parallelismPerKpu = undefined;
+    }
+    else {
+      this._autoScalingEnabled = value.autoScalingEnabled;
+      this._configurationType = value.configurationType;
+      this._parallelism = value.parallelism;
+      this._parallelismPerKpu = value.parallelismPerKpu;
+    }
+  }
+
   // auto_scaling_enabled - computed: true, optional: true, required: false
-  private _autoScalingEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _autoScalingEnabled?: boolean | cdktf.IResolvable; 
   public get autoScalingEnabled() {
     return this.getBooleanAttribute('auto_scaling_enabled') as any;
   }
-  public set autoScalingEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set autoScalingEnabled(value: boolean | cdktf.IResolvable) {
     this._autoScalingEnabled = value;
   }
   public resetAutoScalingEnabled() {
@@ -607,7 +829,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicati
   }
   // Temporarily expose input value. Use with caution.
   public get autoScalingEnabledInput() {
-    return this._autoScalingEnabled
+    return this._autoScalingEnabled;
   }
 
   // configuration_type - computed: false, optional: false, required: true
@@ -620,15 +842,15 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicati
   }
   // Temporarily expose input value. Use with caution.
   public get configurationTypeInput() {
-    return this._configurationType
+    return this._configurationType;
   }
 
   // parallelism - computed: true, optional: true, required: false
-  private _parallelism?: number | undefined; 
+  private _parallelism?: number; 
   public get parallelism() {
     return this.getNumberAttribute('parallelism');
   }
-  public set parallelism(value: number | undefined) {
+  public set parallelism(value: number) {
     this._parallelism = value;
   }
   public resetParallelism() {
@@ -636,15 +858,15 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicati
   }
   // Temporarily expose input value. Use with caution.
   public get parallelismInput() {
-    return this._parallelism
+    return this._parallelism;
   }
 
   // parallelism_per_kpu - computed: true, optional: true, required: false
-  private _parallelismPerKpu?: number | undefined; 
+  private _parallelismPerKpu?: number; 
   public get parallelismPerKpu() {
     return this.getNumberAttribute('parallelism_per_kpu');
   }
-  public set parallelismPerKpu(value: number | undefined) {
+  public set parallelismPerKpu(value: number) {
     this._parallelismPerKpu = value;
   }
   public resetParallelismPerKpu() {
@@ -652,7 +874,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicati
   }
   // Temporarily expose input value. Use with caution.
   public get parallelismPerKpuInput() {
-    return this._parallelismPerKpu
+    return this._parallelismPerKpu;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfiguration {
@@ -698,55 +920,83 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicati
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // checkpoint_configuration - computed: false, optional: true, required: false
-  private _checkpointConfiguration?: Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration | undefined; 
-  private __checkpointConfigurationOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfigurationOutputReference(this as any, "checkpoint_configuration", true);
-  public get checkpointConfiguration() {
-    return this.__checkpointConfigurationOutput;
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._checkpointConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.checkpointConfiguration = this._checkpointConfiguration?.internalValue;
+    }
+    if (this._monitoringConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.monitoringConfiguration = this._monitoringConfiguration?.internalValue;
+    }
+    if (this._parallelismConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.parallelismConfiguration = this._parallelismConfiguration?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putCheckpointConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration | undefined) {
-    this._checkpointConfiguration = value;
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfiguration | undefined) {
+    if (value === undefined) {
+      this._checkpointConfiguration.internalValue = undefined;
+      this._monitoringConfiguration.internalValue = undefined;
+      this._parallelismConfiguration.internalValue = undefined;
+    }
+    else {
+      this._checkpointConfiguration.internalValue = value.checkpointConfiguration;
+      this._monitoringConfiguration.internalValue = value.monitoringConfiguration;
+      this._parallelismConfiguration.internalValue = value.parallelismConfiguration;
+    }
+  }
+
+  // checkpoint_configuration - computed: false, optional: true, required: false
+  private _checkpointConfiguration = new Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfigurationOutputReference(this as any, "checkpoint_configuration", true);
+  public get checkpointConfiguration() {
+    return this._checkpointConfiguration;
+  }
+  public putCheckpointConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration) {
+    this._checkpointConfiguration.internalValue = value;
   }
   public resetCheckpointConfiguration() {
-    this._checkpointConfiguration = undefined;
+    this._checkpointConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get checkpointConfigurationInput() {
-    return this._checkpointConfiguration
+    return this._checkpointConfiguration.internalValue;
   }
 
   // monitoring_configuration - computed: false, optional: true, required: false
-  private _monitoringConfiguration?: Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration | undefined; 
-  private __monitoringConfigurationOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfigurationOutputReference(this as any, "monitoring_configuration", true);
+  private _monitoringConfiguration = new Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfigurationOutputReference(this as any, "monitoring_configuration", true);
   public get monitoringConfiguration() {
-    return this.__monitoringConfigurationOutput;
+    return this._monitoringConfiguration;
   }
-  public putMonitoringConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration | undefined) {
-    this._monitoringConfiguration = value;
+  public putMonitoringConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration) {
+    this._monitoringConfiguration.internalValue = value;
   }
   public resetMonitoringConfiguration() {
-    this._monitoringConfiguration = undefined;
+    this._monitoringConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get monitoringConfigurationInput() {
-    return this._monitoringConfiguration
+    return this._monitoringConfiguration.internalValue;
   }
 
   // parallelism_configuration - computed: false, optional: true, required: false
-  private _parallelismConfiguration?: Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration | undefined; 
-  private __parallelismConfigurationOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfigurationOutputReference(this as any, "parallelism_configuration", true);
+  private _parallelismConfiguration = new Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfigurationOutputReference(this as any, "parallelism_configuration", true);
   public get parallelismConfiguration() {
-    return this.__parallelismConfigurationOutput;
+    return this._parallelismConfiguration;
   }
-  public putParallelismConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration | undefined) {
-    this._parallelismConfiguration = value;
+  public putParallelismConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration) {
+    this._parallelismConfiguration.internalValue = value;
   }
   public resetParallelismConfiguration() {
-    this._parallelismConfiguration = undefined;
+    this._parallelismConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get parallelismConfigurationInput() {
-    return this._parallelismConfiguration
+    return this._parallelismConfiguration.internalValue;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration {
@@ -781,12 +1031,37 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurati
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._applicationRestoreType) {
+      hasAnyValues = true;
+      internalValueResult.applicationRestoreType = this._applicationRestoreType;
+    }
+    if (this._snapshotName) {
+      hasAnyValues = true;
+      internalValueResult.snapshotName = this._snapshotName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration | undefined) {
+    if (value === undefined) {
+      this._applicationRestoreType = undefined;
+      this._snapshotName = undefined;
+    }
+    else {
+      this._applicationRestoreType = value.applicationRestoreType;
+      this._snapshotName = value.snapshotName;
+    }
+  }
+
   // application_restore_type - computed: true, optional: true, required: false
-  private _applicationRestoreType?: string | undefined; 
+  private _applicationRestoreType?: string; 
   public get applicationRestoreType() {
     return this.getStringAttribute('application_restore_type');
   }
-  public set applicationRestoreType(value: string | undefined) {
+  public set applicationRestoreType(value: string) {
     this._applicationRestoreType = value;
   }
   public resetApplicationRestoreType() {
@@ -794,15 +1069,15 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurati
   }
   // Temporarily expose input value. Use with caution.
   public get applicationRestoreTypeInput() {
-    return this._applicationRestoreType
+    return this._applicationRestoreType;
   }
 
   // snapshot_name - computed: false, optional: true, required: false
-  private _snapshotName?: string | undefined; 
+  private _snapshotName?: string; 
   public get snapshotName() {
     return this.getStringAttribute('snapshot_name');
   }
-  public set snapshotName(value: string | undefined) {
+  public set snapshotName(value: string) {
     this._snapshotName = value;
   }
   public resetSnapshotName() {
@@ -810,7 +1085,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurati
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotNameInput() {
-    return this._snapshotName
+    return this._snapshotName;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration {
@@ -840,12 +1115,31 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurati
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allowNonRestoredState) {
+      hasAnyValues = true;
+      internalValueResult.allowNonRestoredState = this._allowNonRestoredState;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration | undefined) {
+    if (value === undefined) {
+      this._allowNonRestoredState = undefined;
+    }
+    else {
+      this._allowNonRestoredState = value.allowNonRestoredState;
+    }
+  }
+
   // allow_non_restored_state - computed: true, optional: true, required: false
-  private _allowNonRestoredState?: boolean | cdktf.IResolvable | undefined; 
+  private _allowNonRestoredState?: boolean | cdktf.IResolvable; 
   public get allowNonRestoredState() {
     return this.getBooleanAttribute('allow_non_restored_state') as any;
   }
-  public set allowNonRestoredState(value: boolean | cdktf.IResolvable | undefined) {
+  public set allowNonRestoredState(value: boolean | cdktf.IResolvable) {
     this._allowNonRestoredState = value;
   }
   public resetAllowNonRestoredState() {
@@ -853,7 +1147,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurati
   }
   // Temporarily expose input value. Use with caution.
   public get allowNonRestoredStateInput() {
-    return this._allowNonRestoredState
+    return this._allowNonRestoredState;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfiguration {
@@ -892,38 +1186,61 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurati
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // application_restore_configuration - computed: false, optional: true, required: false
-  private _applicationRestoreConfiguration?: Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration | undefined; 
-  private __applicationRestoreConfigurationOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfigurationOutputReference(this as any, "application_restore_configuration", true);
-  public get applicationRestoreConfiguration() {
-    return this.__applicationRestoreConfigurationOutput;
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._applicationRestoreConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.applicationRestoreConfiguration = this._applicationRestoreConfiguration?.internalValue;
+    }
+    if (this._flinkRunConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.flinkRunConfiguration = this._flinkRunConfiguration?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putApplicationRestoreConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration | undefined) {
-    this._applicationRestoreConfiguration = value;
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfiguration | undefined) {
+    if (value === undefined) {
+      this._applicationRestoreConfiguration.internalValue = undefined;
+      this._flinkRunConfiguration.internalValue = undefined;
+    }
+    else {
+      this._applicationRestoreConfiguration.internalValue = value.applicationRestoreConfiguration;
+      this._flinkRunConfiguration.internalValue = value.flinkRunConfiguration;
+    }
+  }
+
+  // application_restore_configuration - computed: false, optional: true, required: false
+  private _applicationRestoreConfiguration = new Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfigurationOutputReference(this as any, "application_restore_configuration", true);
+  public get applicationRestoreConfiguration() {
+    return this._applicationRestoreConfiguration;
+  }
+  public putApplicationRestoreConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration) {
+    this._applicationRestoreConfiguration.internalValue = value;
   }
   public resetApplicationRestoreConfiguration() {
-    this._applicationRestoreConfiguration = undefined;
+    this._applicationRestoreConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get applicationRestoreConfigurationInput() {
-    return this._applicationRestoreConfiguration
+    return this._applicationRestoreConfiguration.internalValue;
   }
 
   // flink_run_configuration - computed: false, optional: true, required: false
-  private _flinkRunConfiguration?: Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration | undefined; 
-  private __flinkRunConfigurationOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationFlinkRunConfigurationOutputReference(this as any, "flink_run_configuration", true);
+  private _flinkRunConfiguration = new Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationFlinkRunConfigurationOutputReference(this as any, "flink_run_configuration", true);
   public get flinkRunConfiguration() {
-    return this.__flinkRunConfigurationOutput;
+    return this._flinkRunConfiguration;
   }
-  public putFlinkRunConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration | undefined) {
-    this._flinkRunConfiguration = value;
+  public putFlinkRunConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration) {
+    this._flinkRunConfiguration.internalValue = value;
   }
   public resetFlinkRunConfiguration() {
-    this._flinkRunConfiguration = undefined;
+    this._flinkRunConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get flinkRunConfigurationInput() {
-    return this._flinkRunConfiguration
+    return this._flinkRunConfiguration.internalValue;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism {
@@ -953,12 +1270,31 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._count) {
+      hasAnyValues = true;
+      internalValueResult.count = this._count;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism | undefined) {
+    if (value === undefined) {
+      this._count = undefined;
+    }
+    else {
+      this._count = value.count;
+    }
+  }
+
   // count - computed: true, optional: true, required: false
-  private _count?: number | undefined; 
+  private _count?: number; 
   public get count() {
     return this.getNumberAttribute('count');
   }
-  public set count(value: number | undefined) {
+  public set count(value: number) {
     this._count = value;
   }
   public resetCount() {
@@ -966,7 +1302,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get countInput() {
-    return this._count
+    return this._count;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor {
@@ -996,6 +1332,25 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._resourceArn) {
+      hasAnyValues = true;
+      internalValueResult.resourceArn = this._resourceArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor | undefined) {
+    if (value === undefined) {
+      this._resourceArn = undefined;
+    }
+    else {
+      this._resourceArn = value.resourceArn;
+    }
+  }
+
   // resource_arn - computed: false, optional: false, required: true
   private _resourceArn?: string; 
   public get resourceArn() {
@@ -1006,7 +1361,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get resourceArnInput() {
-    return this._resourceArn
+    return this._resourceArn;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration {
@@ -1038,18 +1393,36 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._inputLambdaProcessor) {
+      hasAnyValues = true;
+      internalValueResult.inputLambdaProcessor = this._inputLambdaProcessor?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration | undefined) {
+    if (value === undefined) {
+      this._inputLambdaProcessor.internalValue = undefined;
+    }
+    else {
+      this._inputLambdaProcessor.internalValue = value.inputLambdaProcessor;
+    }
+  }
+
   // input_lambda_processor - computed: false, optional: false, required: true
-  private _inputLambdaProcessor?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor; 
-  private __inputLambdaProcessorOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessorOutputReference(this as any, "input_lambda_processor", true);
+  private _inputLambdaProcessor = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessorOutputReference(this as any, "input_lambda_processor", true);
   public get inputLambdaProcessor() {
-    return this.__inputLambdaProcessorOutput;
+    return this._inputLambdaProcessor;
   }
   public putInputLambdaProcessor(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor) {
-    this._inputLambdaProcessor = value;
+    this._inputLambdaProcessor.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get inputLambdaProcessorInput() {
-    return this._inputLambdaProcessor
+    return this._inputLambdaProcessor.internalValue;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumn {
@@ -1111,6 +1484,31 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParameters | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._recordColumnDelimiter) {
+      hasAnyValues = true;
+      internalValueResult.recordColumnDelimiter = this._recordColumnDelimiter;
+    }
+    if (this._recordRowDelimiter) {
+      hasAnyValues = true;
+      internalValueResult.recordRowDelimiter = this._recordRowDelimiter;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParameters | undefined) {
+    if (value === undefined) {
+      this._recordColumnDelimiter = undefined;
+      this._recordRowDelimiter = undefined;
+    }
+    else {
+      this._recordColumnDelimiter = value.recordColumnDelimiter;
+      this._recordRowDelimiter = value.recordRowDelimiter;
+    }
+  }
+
   // record_column_delimiter - computed: false, optional: false, required: true
   private _recordColumnDelimiter?: string; 
   public get recordColumnDelimiter() {
@@ -1121,7 +1519,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get recordColumnDelimiterInput() {
-    return this._recordColumnDelimiter
+    return this._recordColumnDelimiter;
   }
 
   // record_row_delimiter - computed: false, optional: false, required: true
@@ -1134,7 +1532,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get recordRowDelimiterInput() {
-    return this._recordRowDelimiter
+    return this._recordRowDelimiter;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters {
@@ -1164,6 +1562,25 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._recordRowPath) {
+      hasAnyValues = true;
+      internalValueResult.recordRowPath = this._recordRowPath;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters | undefined) {
+    if (value === undefined) {
+      this._recordRowPath = undefined;
+    }
+    else {
+      this._recordRowPath = value.recordRowPath;
+    }
+  }
+
   // record_row_path - computed: false, optional: false, required: true
   private _recordRowPath?: string; 
   public get recordRowPath() {
@@ -1174,7 +1591,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get recordRowPathInput() {
-    return this._recordRowPath
+    return this._recordRowPath;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters {
@@ -1213,38 +1630,61 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // csv_mapping_parameters - computed: false, optional: true, required: false
-  private _csvMappingParameters?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParameters | undefined; 
-  private __csvMappingParametersOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParametersOutputReference(this as any, "csv_mapping_parameters", true);
-  public get csvMappingParameters() {
-    return this.__csvMappingParametersOutput;
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._csvMappingParameters) {
+      hasAnyValues = true;
+      internalValueResult.csvMappingParameters = this._csvMappingParameters?.internalValue;
+    }
+    if (this._jsonMappingParameters) {
+      hasAnyValues = true;
+      internalValueResult.jsonMappingParameters = this._jsonMappingParameters?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putCsvMappingParameters(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParameters | undefined) {
-    this._csvMappingParameters = value;
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters | undefined) {
+    if (value === undefined) {
+      this._csvMappingParameters.internalValue = undefined;
+      this._jsonMappingParameters.internalValue = undefined;
+    }
+    else {
+      this._csvMappingParameters.internalValue = value.csvMappingParameters;
+      this._jsonMappingParameters.internalValue = value.jsonMappingParameters;
+    }
+  }
+
+  // csv_mapping_parameters - computed: false, optional: true, required: false
+  private _csvMappingParameters = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParametersOutputReference(this as any, "csv_mapping_parameters", true);
+  public get csvMappingParameters() {
+    return this._csvMappingParameters;
+  }
+  public putCsvMappingParameters(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParameters) {
+    this._csvMappingParameters.internalValue = value;
   }
   public resetCsvMappingParameters() {
-    this._csvMappingParameters = undefined;
+    this._csvMappingParameters.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get csvMappingParametersInput() {
-    return this._csvMappingParameters
+    return this._csvMappingParameters.internalValue;
   }
 
   // json_mapping_parameters - computed: false, optional: true, required: false
-  private _jsonMappingParameters?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters | undefined; 
-  private __jsonMappingParametersOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParametersOutputReference(this as any, "json_mapping_parameters", true);
+  private _jsonMappingParameters = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParametersOutputReference(this as any, "json_mapping_parameters", true);
   public get jsonMappingParameters() {
-    return this.__jsonMappingParametersOutput;
+    return this._jsonMappingParameters;
   }
-  public putJsonMappingParameters(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters | undefined) {
-    this._jsonMappingParameters = value;
+  public putJsonMappingParameters(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters) {
+    this._jsonMappingParameters.internalValue = value;
   }
   public resetJsonMappingParameters() {
-    this._jsonMappingParameters = undefined;
+    this._jsonMappingParameters.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get jsonMappingParametersInput() {
-    return this._jsonMappingParameters
+    return this._jsonMappingParameters.internalValue;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat {
@@ -1281,6 +1721,31 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._recordFormatType) {
+      hasAnyValues = true;
+      internalValueResult.recordFormatType = this._recordFormatType;
+    }
+    if (this._mappingParameters) {
+      hasAnyValues = true;
+      internalValueResult.mappingParameters = this._mappingParameters?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat | undefined) {
+    if (value === undefined) {
+      this._recordFormatType = undefined;
+      this._mappingParameters.internalValue = undefined;
+    }
+    else {
+      this._recordFormatType = value.recordFormatType;
+      this._mappingParameters.internalValue = value.mappingParameters;
+    }
+  }
+
   // record_format_type - computed: false, optional: false, required: true
   private _recordFormatType?: string; 
   public get recordFormatType() {
@@ -1291,21 +1756,20 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get recordFormatTypeInput() {
-    return this._recordFormatType
+    return this._recordFormatType;
   }
 
   // mapping_parameters - computed: false, optional: false, required: true
-  private _mappingParameters?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters; 
-  private __mappingParametersOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersOutputReference(this as any, "mapping_parameters", true);
+  private _mappingParameters = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersOutputReference(this as any, "mapping_parameters", true);
   public get mappingParameters() {
-    return this.__mappingParametersOutput;
+    return this._mappingParameters;
   }
   public putMappingParameters(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters) {
-    this._mappingParameters = value;
+    this._mappingParameters.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get mappingParametersInput() {
-    return this._mappingParameters
+    return this._mappingParameters.internalValue;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema {
@@ -1349,12 +1813,43 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._recordEncoding) {
+      hasAnyValues = true;
+      internalValueResult.recordEncoding = this._recordEncoding;
+    }
+    if (this._recordColumn) {
+      hasAnyValues = true;
+      internalValueResult.recordColumn = this._recordColumn;
+    }
+    if (this._recordFormat) {
+      hasAnyValues = true;
+      internalValueResult.recordFormat = this._recordFormat?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema | undefined) {
+    if (value === undefined) {
+      this._recordEncoding = undefined;
+      this._recordColumn = undefined;
+      this._recordFormat.internalValue = undefined;
+    }
+    else {
+      this._recordEncoding = value.recordEncoding;
+      this._recordColumn = value.recordColumn;
+      this._recordFormat.internalValue = value.recordFormat;
+    }
+  }
+
   // record_encoding - computed: false, optional: true, required: false
-  private _recordEncoding?: string | undefined; 
+  private _recordEncoding?: string; 
   public get recordEncoding() {
     return this.getStringAttribute('record_encoding');
   }
-  public set recordEncoding(value: string | undefined) {
+  public set recordEncoding(value: string) {
     this._recordEncoding = value;
   }
   public resetRecordEncoding() {
@@ -1362,7 +1857,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get recordEncodingInput() {
-    return this._recordEncoding
+    return this._recordEncoding;
   }
 
   // record_column - computed: false, optional: false, required: true
@@ -1376,21 +1871,20 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get recordColumnInput() {
-    return this._recordColumn
+    return this._recordColumn;
   }
 
   // record_format - computed: false, optional: false, required: true
-  private _recordFormat?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat; 
-  private __recordFormatOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatOutputReference(this as any, "record_format", true);
+  private _recordFormat = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatOutputReference(this as any, "record_format", true);
   public get recordFormat() {
-    return this.__recordFormatOutput;
+    return this._recordFormat;
   }
   public putRecordFormat(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat) {
-    this._recordFormat = value;
+    this._recordFormat.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get recordFormatInput() {
-    return this._recordFormat
+    return this._recordFormat.internalValue;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration {
@@ -1437,6 +1931,25 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInput | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._resourceArn) {
+      hasAnyValues = true;
+      internalValueResult.resourceArn = this._resourceArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInput | undefined) {
+    if (value === undefined) {
+      this._resourceArn = undefined;
+    }
+    else {
+      this._resourceArn = value.resourceArn;
+    }
+  }
+
   // resource_arn - computed: false, optional: false, required: true
   private _resourceArn?: string; 
   public get resourceArn() {
@@ -1447,7 +1960,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get resourceArnInput() {
-    return this._resourceArn
+    return this._resourceArn;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput {
@@ -1477,6 +1990,25 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._resourceArn) {
+      hasAnyValues = true;
+      internalValueResult.resourceArn = this._resourceArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput | undefined) {
+    if (value === undefined) {
+      this._resourceArn = undefined;
+    }
+    else {
+      this._resourceArn = value.resourceArn;
+    }
+  }
+
   // resource_arn - computed: false, optional: false, required: true
   private _resourceArn?: string; 
   public get resourceArn() {
@@ -1487,7 +2019,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get resourceArnInput() {
-    return this._resourceArn
+    return this._resourceArn;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInput {
@@ -1559,6 +2091,61 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInput | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._namePrefix) {
+      hasAnyValues = true;
+      internalValueResult.namePrefix = this._namePrefix;
+    }
+    if (this._inputParallelism) {
+      hasAnyValues = true;
+      internalValueResult.inputParallelism = this._inputParallelism?.internalValue;
+    }
+    if (this._inputProcessingConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.inputProcessingConfiguration = this._inputProcessingConfiguration?.internalValue;
+    }
+    if (this._inputSchema) {
+      hasAnyValues = true;
+      internalValueResult.inputSchema = this._inputSchema?.internalValue;
+    }
+    if (this._inputStartingPositionConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.inputStartingPositionConfiguration = this._inputStartingPositionConfiguration;
+    }
+    if (this._kinesisFirehoseInput) {
+      hasAnyValues = true;
+      internalValueResult.kinesisFirehoseInput = this._kinesisFirehoseInput?.internalValue;
+    }
+    if (this._kinesisStreamsInput) {
+      hasAnyValues = true;
+      internalValueResult.kinesisStreamsInput = this._kinesisStreamsInput?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInput | undefined) {
+    if (value === undefined) {
+      this._namePrefix = undefined;
+      this._inputParallelism.internalValue = undefined;
+      this._inputProcessingConfiguration.internalValue = undefined;
+      this._inputSchema.internalValue = undefined;
+      this._inputStartingPositionConfiguration = undefined;
+      this._kinesisFirehoseInput.internalValue = undefined;
+      this._kinesisStreamsInput.internalValue = undefined;
+    }
+    else {
+      this._namePrefix = value.namePrefix;
+      this._inputParallelism.internalValue = value.inputParallelism;
+      this._inputProcessingConfiguration.internalValue = value.inputProcessingConfiguration;
+      this._inputSchema.internalValue = value.inputSchema;
+      this._inputStartingPositionConfiguration = value.inputStartingPositionConfiguration;
+      this._kinesisFirehoseInput.internalValue = value.kinesisFirehoseInput;
+      this._kinesisStreamsInput.internalValue = value.kinesisStreamsInput;
+    }
+  }
+
   // name_prefix - computed: false, optional: false, required: true
   private _namePrefix?: string; 
   public get namePrefix() {
@@ -1569,64 +2156,61 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // input_parallelism - computed: false, optional: true, required: false
-  private _inputParallelism?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism | undefined; 
-  private __inputParallelismOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelismOutputReference(this as any, "input_parallelism", true);
+  private _inputParallelism = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelismOutputReference(this as any, "input_parallelism", true);
   public get inputParallelism() {
-    return this.__inputParallelismOutput;
+    return this._inputParallelism;
   }
-  public putInputParallelism(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism | undefined) {
-    this._inputParallelism = value;
+  public putInputParallelism(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism) {
+    this._inputParallelism.internalValue = value;
   }
   public resetInputParallelism() {
-    this._inputParallelism = undefined;
+    this._inputParallelism.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get inputParallelismInput() {
-    return this._inputParallelism
+    return this._inputParallelism.internalValue;
   }
 
   // input_processing_configuration - computed: false, optional: true, required: false
-  private _inputProcessingConfiguration?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration | undefined; 
-  private __inputProcessingConfigurationOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationOutputReference(this as any, "input_processing_configuration", true);
+  private _inputProcessingConfiguration = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationOutputReference(this as any, "input_processing_configuration", true);
   public get inputProcessingConfiguration() {
-    return this.__inputProcessingConfigurationOutput;
+    return this._inputProcessingConfiguration;
   }
-  public putInputProcessingConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration | undefined) {
-    this._inputProcessingConfiguration = value;
+  public putInputProcessingConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration) {
+    this._inputProcessingConfiguration.internalValue = value;
   }
   public resetInputProcessingConfiguration() {
-    this._inputProcessingConfiguration = undefined;
+    this._inputProcessingConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get inputProcessingConfigurationInput() {
-    return this._inputProcessingConfiguration
+    return this._inputProcessingConfiguration.internalValue;
   }
 
   // input_schema - computed: false, optional: false, required: true
-  private _inputSchema?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema; 
-  private __inputSchemaOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaOutputReference(this as any, "input_schema", true);
+  private _inputSchema = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaOutputReference(this as any, "input_schema", true);
   public get inputSchema() {
-    return this.__inputSchemaOutput;
+    return this._inputSchema;
   }
   public putInputSchema(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema) {
-    this._inputSchema = value;
+    this._inputSchema.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get inputSchemaInput() {
-    return this._inputSchema
+    return this._inputSchema.internalValue;
   }
 
   // input_starting_position_configuration - computed: false, optional: true, required: false
-  private _inputStartingPositionConfiguration?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration[] | undefined; 
+  private _inputStartingPositionConfiguration?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration[]; 
   public get inputStartingPositionConfiguration() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('input_starting_position_configuration') as any;
   }
-  public set inputStartingPositionConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration[] | undefined) {
+  public set inputStartingPositionConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration[]) {
     this._inputStartingPositionConfiguration = value;
   }
   public resetInputStartingPositionConfiguration() {
@@ -1634,41 +2218,39 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get inputStartingPositionConfigurationInput() {
-    return this._inputStartingPositionConfiguration
+    return this._inputStartingPositionConfiguration;
   }
 
   // kinesis_firehose_input - computed: false, optional: true, required: false
-  private _kinesisFirehoseInput?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInput | undefined; 
-  private __kinesisFirehoseInputOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInputOutputReference(this as any, "kinesis_firehose_input", true);
+  private _kinesisFirehoseInput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInputOutputReference(this as any, "kinesis_firehose_input", true);
   public get kinesisFirehoseInput() {
-    return this.__kinesisFirehoseInputOutput;
+    return this._kinesisFirehoseInput;
   }
-  public putKinesisFirehoseInput(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInput | undefined) {
-    this._kinesisFirehoseInput = value;
+  public putKinesisFirehoseInput(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInput) {
+    this._kinesisFirehoseInput.internalValue = value;
   }
   public resetKinesisFirehoseInput() {
-    this._kinesisFirehoseInput = undefined;
+    this._kinesisFirehoseInput.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get kinesisFirehoseInputInput() {
-    return this._kinesisFirehoseInput
+    return this._kinesisFirehoseInput.internalValue;
   }
 
   // kinesis_streams_input - computed: false, optional: true, required: false
-  private _kinesisStreamsInput?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput | undefined; 
-  private __kinesisStreamsInputOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInputOutputReference(this as any, "kinesis_streams_input", true);
+  private _kinesisStreamsInput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInputOutputReference(this as any, "kinesis_streams_input", true);
   public get kinesisStreamsInput() {
-    return this.__kinesisStreamsInputOutput;
+    return this._kinesisStreamsInput;
   }
-  public putKinesisStreamsInput(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput | undefined) {
-    this._kinesisStreamsInput = value;
+  public putKinesisStreamsInput(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput) {
+    this._kinesisStreamsInput.internalValue = value;
   }
   public resetKinesisStreamsInput() {
-    this._kinesisStreamsInput = undefined;
+    this._kinesisStreamsInput.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get kinesisStreamsInputInput() {
-    return this._kinesisStreamsInput
+    return this._kinesisStreamsInput.internalValue;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema {
@@ -1698,6 +2280,25 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._recordFormatType) {
+      hasAnyValues = true;
+      internalValueResult.recordFormatType = this._recordFormatType;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema | undefined) {
+    if (value === undefined) {
+      this._recordFormatType = undefined;
+    }
+    else {
+      this._recordFormatType = value.recordFormatType;
+    }
+  }
+
   // record_format_type - computed: false, optional: false, required: true
   private _recordFormatType?: string; 
   public get recordFormatType() {
@@ -1708,7 +2309,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get recordFormatTypeInput() {
-    return this._recordFormatType
+    return this._recordFormatType;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput {
@@ -1738,6 +2339,25 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._resourceArn) {
+      hasAnyValues = true;
+      internalValueResult.resourceArn = this._resourceArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput | undefined) {
+    if (value === undefined) {
+      this._resourceArn = undefined;
+    }
+    else {
+      this._resourceArn = value.resourceArn;
+    }
+  }
+
   // resource_arn - computed: false, optional: false, required: true
   private _resourceArn?: string; 
   public get resourceArn() {
@@ -1748,7 +2368,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get resourceArnInput() {
-    return this._resourceArn
+    return this._resourceArn;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput {
@@ -1778,6 +2398,25 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._resourceArn) {
+      hasAnyValues = true;
+      internalValueResult.resourceArn = this._resourceArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput | undefined) {
+    if (value === undefined) {
+      this._resourceArn = undefined;
+    }
+    else {
+      this._resourceArn = value.resourceArn;
+    }
+  }
+
   // resource_arn - computed: false, optional: false, required: true
   private _resourceArn?: string; 
   public get resourceArn() {
@@ -1788,7 +2427,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get resourceArnInput() {
-    return this._resourceArn
+    return this._resourceArn;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput {
@@ -1818,6 +2457,25 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._resourceArn) {
+      hasAnyValues = true;
+      internalValueResult.resourceArn = this._resourceArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput | undefined) {
+    if (value === undefined) {
+      this._resourceArn = undefined;
+    }
+    else {
+      this._resourceArn = value.resourceArn;
+    }
+  }
+
   // resource_arn - computed: false, optional: false, required: true
   private _resourceArn?: string; 
   public get resourceArn() {
@@ -1828,7 +2486,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get resourceArnInput() {
-    return this._resourceArn
+    return this._resourceArn;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutput {
@@ -1935,6 +2593,31 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._recordColumnDelimiter) {
+      hasAnyValues = true;
+      internalValueResult.recordColumnDelimiter = this._recordColumnDelimiter;
+    }
+    if (this._recordRowDelimiter) {
+      hasAnyValues = true;
+      internalValueResult.recordRowDelimiter = this._recordRowDelimiter;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters | undefined) {
+    if (value === undefined) {
+      this._recordColumnDelimiter = undefined;
+      this._recordRowDelimiter = undefined;
+    }
+    else {
+      this._recordColumnDelimiter = value.recordColumnDelimiter;
+      this._recordRowDelimiter = value.recordRowDelimiter;
+    }
+  }
+
   // record_column_delimiter - computed: false, optional: false, required: true
   private _recordColumnDelimiter?: string; 
   public get recordColumnDelimiter() {
@@ -1945,7 +2628,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get recordColumnDelimiterInput() {
-    return this._recordColumnDelimiter
+    return this._recordColumnDelimiter;
   }
 
   // record_row_delimiter - computed: false, optional: false, required: true
@@ -1958,7 +2641,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get recordRowDelimiterInput() {
-    return this._recordRowDelimiter
+    return this._recordRowDelimiter;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters {
@@ -1988,6 +2671,25 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._recordRowPath) {
+      hasAnyValues = true;
+      internalValueResult.recordRowPath = this._recordRowPath;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters | undefined) {
+    if (value === undefined) {
+      this._recordRowPath = undefined;
+    }
+    else {
+      this._recordRowPath = value.recordRowPath;
+    }
+  }
+
   // record_row_path - computed: false, optional: false, required: true
   private _recordRowPath?: string; 
   public get recordRowPath() {
@@ -1998,7 +2700,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get recordRowPathInput() {
-    return this._recordRowPath
+    return this._recordRowPath;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters {
@@ -2037,38 +2739,61 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // csv_mapping_parameters - computed: false, optional: true, required: false
-  private _csvMappingParameters?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters | undefined; 
-  private __csvMappingParametersOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParametersOutputReference(this as any, "csv_mapping_parameters", true);
-  public get csvMappingParameters() {
-    return this.__csvMappingParametersOutput;
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._csvMappingParameters) {
+      hasAnyValues = true;
+      internalValueResult.csvMappingParameters = this._csvMappingParameters?.internalValue;
+    }
+    if (this._jsonMappingParameters) {
+      hasAnyValues = true;
+      internalValueResult.jsonMappingParameters = this._jsonMappingParameters?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putCsvMappingParameters(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters | undefined) {
-    this._csvMappingParameters = value;
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters | undefined) {
+    if (value === undefined) {
+      this._csvMappingParameters.internalValue = undefined;
+      this._jsonMappingParameters.internalValue = undefined;
+    }
+    else {
+      this._csvMappingParameters.internalValue = value.csvMappingParameters;
+      this._jsonMappingParameters.internalValue = value.jsonMappingParameters;
+    }
+  }
+
+  // csv_mapping_parameters - computed: false, optional: true, required: false
+  private _csvMappingParameters = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParametersOutputReference(this as any, "csv_mapping_parameters", true);
+  public get csvMappingParameters() {
+    return this._csvMappingParameters;
+  }
+  public putCsvMappingParameters(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters) {
+    this._csvMappingParameters.internalValue = value;
   }
   public resetCsvMappingParameters() {
-    this._csvMappingParameters = undefined;
+    this._csvMappingParameters.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get csvMappingParametersInput() {
-    return this._csvMappingParameters
+    return this._csvMappingParameters.internalValue;
   }
 
   // json_mapping_parameters - computed: false, optional: true, required: false
-  private _jsonMappingParameters?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters | undefined; 
-  private __jsonMappingParametersOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParametersOutputReference(this as any, "json_mapping_parameters", true);
+  private _jsonMappingParameters = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParametersOutputReference(this as any, "json_mapping_parameters", true);
   public get jsonMappingParameters() {
-    return this.__jsonMappingParametersOutput;
+    return this._jsonMappingParameters;
   }
-  public putJsonMappingParameters(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters | undefined) {
-    this._jsonMappingParameters = value;
+  public putJsonMappingParameters(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters) {
+    this._jsonMappingParameters.internalValue = value;
   }
   public resetJsonMappingParameters() {
-    this._jsonMappingParameters = undefined;
+    this._jsonMappingParameters.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get jsonMappingParametersInput() {
-    return this._jsonMappingParameters
+    return this._jsonMappingParameters.internalValue;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat {
@@ -2105,6 +2830,31 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._recordFormatType) {
+      hasAnyValues = true;
+      internalValueResult.recordFormatType = this._recordFormatType;
+    }
+    if (this._mappingParameters) {
+      hasAnyValues = true;
+      internalValueResult.mappingParameters = this._mappingParameters?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat | undefined) {
+    if (value === undefined) {
+      this._recordFormatType = undefined;
+      this._mappingParameters.internalValue = undefined;
+    }
+    else {
+      this._recordFormatType = value.recordFormatType;
+      this._mappingParameters.internalValue = value.mappingParameters;
+    }
+  }
+
   // record_format_type - computed: false, optional: false, required: true
   private _recordFormatType?: string; 
   public get recordFormatType() {
@@ -2115,21 +2865,20 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get recordFormatTypeInput() {
-    return this._recordFormatType
+    return this._recordFormatType;
   }
 
   // mapping_parameters - computed: false, optional: false, required: true
-  private _mappingParameters?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters; 
-  private __mappingParametersOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersOutputReference(this as any, "mapping_parameters", true);
+  private _mappingParameters = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersOutputReference(this as any, "mapping_parameters", true);
   public get mappingParameters() {
-    return this.__mappingParametersOutput;
+    return this._mappingParameters;
   }
   public putMappingParameters(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters) {
-    this._mappingParameters = value;
+    this._mappingParameters.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get mappingParametersInput() {
-    return this._mappingParameters
+    return this._mappingParameters.internalValue;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema {
@@ -2173,12 +2922,43 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._recordEncoding) {
+      hasAnyValues = true;
+      internalValueResult.recordEncoding = this._recordEncoding;
+    }
+    if (this._recordColumn) {
+      hasAnyValues = true;
+      internalValueResult.recordColumn = this._recordColumn;
+    }
+    if (this._recordFormat) {
+      hasAnyValues = true;
+      internalValueResult.recordFormat = this._recordFormat?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema | undefined) {
+    if (value === undefined) {
+      this._recordEncoding = undefined;
+      this._recordColumn = undefined;
+      this._recordFormat.internalValue = undefined;
+    }
+    else {
+      this._recordEncoding = value.recordEncoding;
+      this._recordColumn = value.recordColumn;
+      this._recordFormat.internalValue = value.recordFormat;
+    }
+  }
+
   // record_encoding - computed: false, optional: true, required: false
-  private _recordEncoding?: string | undefined; 
+  private _recordEncoding?: string; 
   public get recordEncoding() {
     return this.getStringAttribute('record_encoding');
   }
-  public set recordEncoding(value: string | undefined) {
+  public set recordEncoding(value: string) {
     this._recordEncoding = value;
   }
   public resetRecordEncoding() {
@@ -2186,7 +2966,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get recordEncodingInput() {
-    return this._recordEncoding
+    return this._recordEncoding;
   }
 
   // record_column - computed: false, optional: false, required: true
@@ -2200,21 +2980,20 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get recordColumnInput() {
-    return this._recordColumn
+    return this._recordColumn;
   }
 
   // record_format - computed: false, optional: false, required: true
-  private _recordFormat?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat; 
-  private __recordFormatOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatOutputReference(this as any, "record_format", true);
+  private _recordFormat = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatOutputReference(this as any, "record_format", true);
   public get recordFormat() {
-    return this.__recordFormatOutput;
+    return this._recordFormat;
   }
   public putRecordFormat(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat) {
-    this._recordFormat = value;
+    this._recordFormat.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get recordFormatInput() {
-    return this._recordFormat
+    return this._recordFormat.internalValue;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource {
@@ -2249,6 +3028,31 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucketArn) {
+      hasAnyValues = true;
+      internalValueResult.bucketArn = this._bucketArn;
+    }
+    if (this._fileKey) {
+      hasAnyValues = true;
+      internalValueResult.fileKey = this._fileKey;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource | undefined) {
+    if (value === undefined) {
+      this._bucketArn = undefined;
+      this._fileKey = undefined;
+    }
+    else {
+      this._bucketArn = value.bucketArn;
+      this._fileKey = value.fileKey;
+    }
+  }
+
   // bucket_arn - computed: false, optional: false, required: true
   private _bucketArn?: string; 
   public get bucketArn() {
@@ -2259,7 +3063,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get bucketArnInput() {
-    return this._bucketArn
+    return this._bucketArn;
   }
 
   // file_key - computed: false, optional: false, required: true
@@ -2272,7 +3076,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get fileKeyInput() {
-    return this._fileKey
+    return this._fileKey;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource {
@@ -2316,6 +3120,37 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._tableName) {
+      hasAnyValues = true;
+      internalValueResult.tableName = this._tableName;
+    }
+    if (this._referenceSchema) {
+      hasAnyValues = true;
+      internalValueResult.referenceSchema = this._referenceSchema?.internalValue;
+    }
+    if (this._s3ReferenceDataSource) {
+      hasAnyValues = true;
+      internalValueResult.s3ReferenceDataSource = this._s3ReferenceDataSource?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource | undefined) {
+    if (value === undefined) {
+      this._tableName = undefined;
+      this._referenceSchema.internalValue = undefined;
+      this._s3ReferenceDataSource.internalValue = undefined;
+    }
+    else {
+      this._tableName = value.tableName;
+      this._referenceSchema.internalValue = value.referenceSchema;
+      this._s3ReferenceDataSource.internalValue = value.s3ReferenceDataSource;
+    }
+  }
+
   // table_name - computed: false, optional: false, required: true
   private _tableName?: string; 
   public get tableName() {
@@ -2326,35 +3161,33 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get tableNameInput() {
-    return this._tableName
+    return this._tableName;
   }
 
   // reference_schema - computed: false, optional: false, required: true
-  private _referenceSchema?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema; 
-  private __referenceSchemaOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaOutputReference(this as any, "reference_schema", true);
+  private _referenceSchema = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaOutputReference(this as any, "reference_schema", true);
   public get referenceSchema() {
-    return this.__referenceSchemaOutput;
+    return this._referenceSchema;
   }
   public putReferenceSchema(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema) {
-    this._referenceSchema = value;
+    this._referenceSchema.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get referenceSchemaInput() {
-    return this._referenceSchema
+    return this._referenceSchema.internalValue;
   }
 
   // s3_reference_data_source - computed: false, optional: false, required: true
-  private _s3ReferenceDataSource?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource; 
-  private __s3ReferenceDataSourceOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSourceOutputReference(this as any, "s3_reference_data_source", true);
+  private _s3ReferenceDataSource = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSourceOutputReference(this as any, "s3_reference_data_source", true);
   public get s3ReferenceDataSource() {
-    return this.__s3ReferenceDataSourceOutput;
+    return this._s3ReferenceDataSource;
   }
   public putS3ReferenceDataSource(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource) {
-    this._s3ReferenceDataSource = value;
+    this._s3ReferenceDataSource.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get s3ReferenceDataSourceInput() {
-    return this._s3ReferenceDataSource
+    return this._s3ReferenceDataSource.internalValue;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfiguration {
@@ -2400,30 +3233,60 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // input - computed: false, optional: true, required: false
-  private _input?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInput | undefined; 
-  private __inputOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputOutputReference(this as any, "input", true);
-  public get input() {
-    return this.__inputOutput;
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._input) {
+      hasAnyValues = true;
+      internalValueResult.input = this._input?.internalValue;
+    }
+    if (this._output) {
+      hasAnyValues = true;
+      internalValueResult.output = this._output;
+    }
+    if (this._referenceDataSource) {
+      hasAnyValues = true;
+      internalValueResult.referenceDataSource = this._referenceDataSource?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putInput(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInput | undefined) {
-    this._input = value;
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfiguration | undefined) {
+    if (value === undefined) {
+      this._input.internalValue = undefined;
+      this._output = undefined;
+      this._referenceDataSource.internalValue = undefined;
+    }
+    else {
+      this._input.internalValue = value.input;
+      this._output = value.output;
+      this._referenceDataSource.internalValue = value.referenceDataSource;
+    }
+  }
+
+  // input - computed: false, optional: true, required: false
+  private _input = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInputOutputReference(this as any, "input", true);
+  public get input() {
+    return this._input;
+  }
+  public putInput(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationInput) {
+    this._input.internalValue = value;
   }
   public resetInput() {
-    this._input = undefined;
+    this._input.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get inputInput() {
-    return this._input
+    return this._input.internalValue;
   }
 
   // output - computed: false, optional: true, required: false
-  private _output?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutput[] | undefined; 
+  private _output?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutput[]; 
   public get output() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('output') as any;
   }
-  public set output(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutput[] | undefined) {
+  public set output(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutput[]) {
     this._output = value;
   }
   public resetOutput() {
@@ -2431,24 +3294,23 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplication
   }
   // Temporarily expose input value. Use with caution.
   public get outputInput() {
-    return this._output
+    return this._output;
   }
 
   // reference_data_source - computed: false, optional: true, required: false
-  private _referenceDataSource?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource | undefined; 
-  private __referenceDataSourceOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceOutputReference(this as any, "reference_data_source", true);
+  private _referenceDataSource = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceOutputReference(this as any, "reference_data_source", true);
   public get referenceDataSource() {
-    return this.__referenceDataSourceOutput;
+    return this._referenceDataSource;
   }
-  public putReferenceDataSource(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource | undefined) {
-    this._referenceDataSource = value;
+  public putReferenceDataSource(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource) {
+    this._referenceDataSource.internalValue = value;
   }
   public resetReferenceDataSource() {
-    this._referenceDataSource = undefined;
+    this._referenceDataSource.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get referenceDataSourceInput() {
-    return this._referenceDataSource
+    return this._referenceDataSource.internalValue;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationVpcConfiguration {
@@ -2483,6 +3345,31 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationVpcConfigurati
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfigurationVpcConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._securityGroupIds) {
+      hasAnyValues = true;
+      internalValueResult.securityGroupIds = this._securityGroupIds;
+    }
+    if (this._subnetIds) {
+      hasAnyValues = true;
+      internalValueResult.subnetIds = this._subnetIds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfigurationVpcConfiguration | undefined) {
+    if (value === undefined) {
+      this._securityGroupIds = undefined;
+      this._subnetIds = undefined;
+    }
+    else {
+      this._securityGroupIds = value.securityGroupIds;
+      this._subnetIds = value.subnetIds;
+    }
+  }
+
   // security_group_ids - computed: false, optional: false, required: true
   private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
@@ -2493,7 +3380,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationVpcConfigurati
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // subnet_ids - computed: false, optional: false, required: true
@@ -2506,7 +3393,7 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationVpcConfigurati
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfiguration {
@@ -2580,120 +3467,168 @@ export class Kinesisanalyticsv2ApplicationApplicationConfigurationOutputReferenc
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationApplicationConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._applicationCodeConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.applicationCodeConfiguration = this._applicationCodeConfiguration?.internalValue;
+    }
+    if (this._applicationSnapshotConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.applicationSnapshotConfiguration = this._applicationSnapshotConfiguration?.internalValue;
+    }
+    if (this._environmentProperties) {
+      hasAnyValues = true;
+      internalValueResult.environmentProperties = this._environmentProperties?.internalValue;
+    }
+    if (this._flinkApplicationConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.flinkApplicationConfiguration = this._flinkApplicationConfiguration?.internalValue;
+    }
+    if (this._runConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.runConfiguration = this._runConfiguration?.internalValue;
+    }
+    if (this._sqlApplicationConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.sqlApplicationConfiguration = this._sqlApplicationConfiguration?.internalValue;
+    }
+    if (this._vpcConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.vpcConfiguration = this._vpcConfiguration?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationApplicationConfiguration | undefined) {
+    if (value === undefined) {
+      this._applicationCodeConfiguration.internalValue = undefined;
+      this._applicationSnapshotConfiguration.internalValue = undefined;
+      this._environmentProperties.internalValue = undefined;
+      this._flinkApplicationConfiguration.internalValue = undefined;
+      this._runConfiguration.internalValue = undefined;
+      this._sqlApplicationConfiguration.internalValue = undefined;
+      this._vpcConfiguration.internalValue = undefined;
+    }
+    else {
+      this._applicationCodeConfiguration.internalValue = value.applicationCodeConfiguration;
+      this._applicationSnapshotConfiguration.internalValue = value.applicationSnapshotConfiguration;
+      this._environmentProperties.internalValue = value.environmentProperties;
+      this._flinkApplicationConfiguration.internalValue = value.flinkApplicationConfiguration;
+      this._runConfiguration.internalValue = value.runConfiguration;
+      this._sqlApplicationConfiguration.internalValue = value.sqlApplicationConfiguration;
+      this._vpcConfiguration.internalValue = value.vpcConfiguration;
+    }
+  }
+
   // application_code_configuration - computed: false, optional: false, required: true
-  private _applicationCodeConfiguration?: Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfiguration; 
-  private __applicationCodeConfigurationOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationOutputReference(this as any, "application_code_configuration", true);
+  private _applicationCodeConfiguration = new Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationOutputReference(this as any, "application_code_configuration", true);
   public get applicationCodeConfiguration() {
-    return this.__applicationCodeConfigurationOutput;
+    return this._applicationCodeConfiguration;
   }
   public putApplicationCodeConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfiguration) {
-    this._applicationCodeConfiguration = value;
+    this._applicationCodeConfiguration.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get applicationCodeConfigurationInput() {
-    return this._applicationCodeConfiguration
+    return this._applicationCodeConfiguration.internalValue;
   }
 
   // application_snapshot_configuration - computed: false, optional: true, required: false
-  private _applicationSnapshotConfiguration?: Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationSnapshotConfiguration | undefined; 
-  private __applicationSnapshotConfigurationOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationSnapshotConfigurationOutputReference(this as any, "application_snapshot_configuration", true);
+  private _applicationSnapshotConfiguration = new Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationSnapshotConfigurationOutputReference(this as any, "application_snapshot_configuration", true);
   public get applicationSnapshotConfiguration() {
-    return this.__applicationSnapshotConfigurationOutput;
+    return this._applicationSnapshotConfiguration;
   }
-  public putApplicationSnapshotConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationSnapshotConfiguration | undefined) {
-    this._applicationSnapshotConfiguration = value;
+  public putApplicationSnapshotConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationSnapshotConfiguration) {
+    this._applicationSnapshotConfiguration.internalValue = value;
   }
   public resetApplicationSnapshotConfiguration() {
-    this._applicationSnapshotConfiguration = undefined;
+    this._applicationSnapshotConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get applicationSnapshotConfigurationInput() {
-    return this._applicationSnapshotConfiguration
+    return this._applicationSnapshotConfiguration.internalValue;
   }
 
   // environment_properties - computed: false, optional: true, required: false
-  private _environmentProperties?: Kinesisanalyticsv2ApplicationApplicationConfigurationEnvironmentProperties | undefined; 
-  private __environmentPropertiesOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationEnvironmentPropertiesOutputReference(this as any, "environment_properties", true);
+  private _environmentProperties = new Kinesisanalyticsv2ApplicationApplicationConfigurationEnvironmentPropertiesOutputReference(this as any, "environment_properties", true);
   public get environmentProperties() {
-    return this.__environmentPropertiesOutput;
+    return this._environmentProperties;
   }
-  public putEnvironmentProperties(value: Kinesisanalyticsv2ApplicationApplicationConfigurationEnvironmentProperties | undefined) {
-    this._environmentProperties = value;
+  public putEnvironmentProperties(value: Kinesisanalyticsv2ApplicationApplicationConfigurationEnvironmentProperties) {
+    this._environmentProperties.internalValue = value;
   }
   public resetEnvironmentProperties() {
-    this._environmentProperties = undefined;
+    this._environmentProperties.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get environmentPropertiesInput() {
-    return this._environmentProperties
+    return this._environmentProperties.internalValue;
   }
 
   // flink_application_configuration - computed: false, optional: true, required: false
-  private _flinkApplicationConfiguration?: Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfiguration | undefined; 
-  private __flinkApplicationConfigurationOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationOutputReference(this as any, "flink_application_configuration", true);
+  private _flinkApplicationConfiguration = new Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfigurationOutputReference(this as any, "flink_application_configuration", true);
   public get flinkApplicationConfiguration() {
-    return this.__flinkApplicationConfigurationOutput;
+    return this._flinkApplicationConfiguration;
   }
-  public putFlinkApplicationConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfiguration | undefined) {
-    this._flinkApplicationConfiguration = value;
+  public putFlinkApplicationConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationFlinkApplicationConfiguration) {
+    this._flinkApplicationConfiguration.internalValue = value;
   }
   public resetFlinkApplicationConfiguration() {
-    this._flinkApplicationConfiguration = undefined;
+    this._flinkApplicationConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get flinkApplicationConfigurationInput() {
-    return this._flinkApplicationConfiguration
+    return this._flinkApplicationConfiguration.internalValue;
   }
 
   // run_configuration - computed: false, optional: true, required: false
-  private _runConfiguration?: Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfiguration | undefined; 
-  private __runConfigurationOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationOutputReference(this as any, "run_configuration", true);
+  private _runConfiguration = new Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfigurationOutputReference(this as any, "run_configuration", true);
   public get runConfiguration() {
-    return this.__runConfigurationOutput;
+    return this._runConfiguration;
   }
-  public putRunConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfiguration | undefined) {
-    this._runConfiguration = value;
+  public putRunConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationRunConfiguration) {
+    this._runConfiguration.internalValue = value;
   }
   public resetRunConfiguration() {
-    this._runConfiguration = undefined;
+    this._runConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get runConfigurationInput() {
-    return this._runConfiguration
+    return this._runConfiguration.internalValue;
   }
 
   // sql_application_configuration - computed: false, optional: true, required: false
-  private _sqlApplicationConfiguration?: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfiguration | undefined; 
-  private __sqlApplicationConfigurationOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutputReference(this as any, "sql_application_configuration", true);
+  private _sqlApplicationConfiguration = new Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfigurationOutputReference(this as any, "sql_application_configuration", true);
   public get sqlApplicationConfiguration() {
-    return this.__sqlApplicationConfigurationOutput;
+    return this._sqlApplicationConfiguration;
   }
-  public putSqlApplicationConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfiguration | undefined) {
-    this._sqlApplicationConfiguration = value;
+  public putSqlApplicationConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationSqlApplicationConfiguration) {
+    this._sqlApplicationConfiguration.internalValue = value;
   }
   public resetSqlApplicationConfiguration() {
-    this._sqlApplicationConfiguration = undefined;
+    this._sqlApplicationConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get sqlApplicationConfigurationInput() {
-    return this._sqlApplicationConfiguration
+    return this._sqlApplicationConfiguration.internalValue;
   }
 
   // vpc_configuration - computed: false, optional: true, required: false
-  private _vpcConfiguration?: Kinesisanalyticsv2ApplicationApplicationConfigurationVpcConfiguration | undefined; 
-  private __vpcConfigurationOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationVpcConfigurationOutputReference(this as any, "vpc_configuration", true);
+  private _vpcConfiguration = new Kinesisanalyticsv2ApplicationApplicationConfigurationVpcConfigurationOutputReference(this as any, "vpc_configuration", true);
   public get vpcConfiguration() {
-    return this.__vpcConfigurationOutput;
+    return this._vpcConfiguration;
   }
-  public putVpcConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationVpcConfiguration | undefined) {
-    this._vpcConfiguration = value;
+  public putVpcConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfigurationVpcConfiguration) {
+    this._vpcConfiguration.internalValue = value;
   }
   public resetVpcConfiguration() {
-    this._vpcConfiguration = undefined;
+    this._vpcConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get vpcConfigurationInput() {
-    return this._vpcConfiguration
+    return this._vpcConfiguration.internalValue;
   }
 }
 export interface Kinesisanalyticsv2ApplicationCloudwatchLoggingOptions {
@@ -2723,6 +3658,25 @@ export class Kinesisanalyticsv2ApplicationCloudwatchLoggingOptionsOutputReferenc
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Kinesisanalyticsv2ApplicationCloudwatchLoggingOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._logStreamArn) {
+      hasAnyValues = true;
+      internalValueResult.logStreamArn = this._logStreamArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationCloudwatchLoggingOptions | undefined) {
+    if (value === undefined) {
+      this._logStreamArn = undefined;
+    }
+    else {
+      this._logStreamArn = value.logStreamArn;
+    }
+  }
+
   // log_stream_arn - computed: false, optional: false, required: true
   private _logStreamArn?: string; 
   public get logStreamArn() {
@@ -2733,7 +3687,7 @@ export class Kinesisanalyticsv2ApplicationCloudwatchLoggingOptionsOutputReferenc
   }
   // Temporarily expose input value. Use with caution.
   public get logStreamArnInput() {
-    return this._logStreamArn
+    return this._logStreamArn;
   }
 }
 
@@ -2777,8 +3731,8 @@ export class Kinesisanalyticsv2Application extends cdktf.TerraformResource {
     this._startApplication = config.startApplication;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._applicationConfiguration = config.applicationConfiguration;
-    this._cloudwatchLoggingOptions = config.cloudwatchLoggingOptions;
+    this._applicationConfiguration.internalValue = config.applicationConfiguration;
+    this._cloudwatchLoggingOptions.internalValue = config.cloudwatchLoggingOptions;
   }
 
   // ==========
@@ -2796,11 +3750,11 @@ export class Kinesisanalyticsv2Application extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -2808,15 +3762,15 @@ export class Kinesisanalyticsv2Application extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // force_stop - computed: false, optional: true, required: false
-  private _forceStop?: boolean | cdktf.IResolvable | undefined; 
+  private _forceStop?: boolean | cdktf.IResolvable; 
   public get forceStop() {
     return this.getBooleanAttribute('force_stop') as any;
   }
-  public set forceStop(value: boolean | cdktf.IResolvable | undefined) {
+  public set forceStop(value: boolean | cdktf.IResolvable) {
     this._forceStop = value;
   }
   public resetForceStop() {
@@ -2824,7 +3778,7 @@ export class Kinesisanalyticsv2Application extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get forceStopInput() {
-    return this._forceStop
+    return this._forceStop;
   }
 
   // id - computed: true, optional: true, required: false
@@ -2847,7 +3801,7 @@ export class Kinesisanalyticsv2Application extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // runtime_environment - computed: false, optional: false, required: true
@@ -2860,7 +3814,7 @@ export class Kinesisanalyticsv2Application extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get runtimeEnvironmentInput() {
-    return this._runtimeEnvironment
+    return this._runtimeEnvironment;
   }
 
   // service_execution_role - computed: false, optional: false, required: true
@@ -2873,15 +3827,15 @@ export class Kinesisanalyticsv2Application extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceExecutionRoleInput() {
-    return this._serviceExecutionRole
+    return this._serviceExecutionRole;
   }
 
   // start_application - computed: false, optional: true, required: false
-  private _startApplication?: boolean | cdktf.IResolvable | undefined; 
+  private _startApplication?: boolean | cdktf.IResolvable; 
   public get startApplication() {
     return this.getBooleanAttribute('start_application') as any;
   }
-  public set startApplication(value: boolean | cdktf.IResolvable | undefined) {
+  public set startApplication(value: boolean | cdktf.IResolvable) {
     this._startApplication = value;
   }
   public resetStartApplication() {
@@ -2889,7 +3843,7 @@ export class Kinesisanalyticsv2Application extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get startApplicationInput() {
-    return this._startApplication
+    return this._startApplication;
   }
 
   // status - computed: true, optional: false, required: false
@@ -2898,12 +3852,12 @@ export class Kinesisanalyticsv2Application extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -2911,16 +3865,16 @@ export class Kinesisanalyticsv2Application extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -2928,7 +3882,7 @@ export class Kinesisanalyticsv2Application extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // version_id - computed: true, optional: false, required: false
@@ -2937,37 +3891,35 @@ export class Kinesisanalyticsv2Application extends cdktf.TerraformResource {
   }
 
   // application_configuration - computed: false, optional: true, required: false
-  private _applicationConfiguration?: Kinesisanalyticsv2ApplicationApplicationConfiguration | undefined; 
-  private __applicationConfigurationOutput = new Kinesisanalyticsv2ApplicationApplicationConfigurationOutputReference(this as any, "application_configuration", true);
+  private _applicationConfiguration = new Kinesisanalyticsv2ApplicationApplicationConfigurationOutputReference(this as any, "application_configuration", true);
   public get applicationConfiguration() {
-    return this.__applicationConfigurationOutput;
+    return this._applicationConfiguration;
   }
-  public putApplicationConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfiguration | undefined) {
-    this._applicationConfiguration = value;
+  public putApplicationConfiguration(value: Kinesisanalyticsv2ApplicationApplicationConfiguration) {
+    this._applicationConfiguration.internalValue = value;
   }
   public resetApplicationConfiguration() {
-    this._applicationConfiguration = undefined;
+    this._applicationConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get applicationConfigurationInput() {
-    return this._applicationConfiguration
+    return this._applicationConfiguration.internalValue;
   }
 
   // cloudwatch_logging_options - computed: false, optional: true, required: false
-  private _cloudwatchLoggingOptions?: Kinesisanalyticsv2ApplicationCloudwatchLoggingOptions | undefined; 
-  private __cloudwatchLoggingOptionsOutput = new Kinesisanalyticsv2ApplicationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
+  private _cloudwatchLoggingOptions = new Kinesisanalyticsv2ApplicationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
   public get cloudwatchLoggingOptions() {
-    return this.__cloudwatchLoggingOptionsOutput;
+    return this._cloudwatchLoggingOptions;
   }
-  public putCloudwatchLoggingOptions(value: Kinesisanalyticsv2ApplicationCloudwatchLoggingOptions | undefined) {
-    this._cloudwatchLoggingOptions = value;
+  public putCloudwatchLoggingOptions(value: Kinesisanalyticsv2ApplicationCloudwatchLoggingOptions) {
+    this._cloudwatchLoggingOptions.internalValue = value;
   }
   public resetCloudwatchLoggingOptions() {
-    this._cloudwatchLoggingOptions = undefined;
+    this._cloudwatchLoggingOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchLoggingOptionsInput() {
-    return this._cloudwatchLoggingOptions
+    return this._cloudwatchLoggingOptions.internalValue;
   }
 
   // =========
@@ -2984,8 +3936,8 @@ export class Kinesisanalyticsv2Application extends cdktf.TerraformResource {
       start_application: cdktf.booleanToTerraform(this._startApplication),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      application_configuration: kinesisanalyticsv2ApplicationApplicationConfigurationToTerraform(this._applicationConfiguration),
-      cloudwatch_logging_options: kinesisanalyticsv2ApplicationCloudwatchLoggingOptionsToTerraform(this._cloudwatchLoggingOptions),
+      application_configuration: kinesisanalyticsv2ApplicationApplicationConfigurationToTerraform(this._applicationConfiguration.internalValue),
+      cloudwatch_logging_options: kinesisanalyticsv2ApplicationCloudwatchLoggingOptionsToTerraform(this._cloudwatchLoggingOptions.internalValue),
     };
   }
 }

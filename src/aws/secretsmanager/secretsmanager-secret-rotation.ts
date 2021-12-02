@@ -53,6 +53,25 @@ export class SecretsmanagerSecretRotationRotationRulesOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SecretsmanagerSecretRotationRotationRules | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._automaticallyAfterDays) {
+      hasAnyValues = true;
+      internalValueResult.automaticallyAfterDays = this._automaticallyAfterDays;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SecretsmanagerSecretRotationRotationRules | undefined) {
+    if (value === undefined) {
+      this._automaticallyAfterDays = undefined;
+    }
+    else {
+      this._automaticallyAfterDays = value.automaticallyAfterDays;
+    }
+  }
+
   // automatically_after_days - computed: false, optional: false, required: true
   private _automaticallyAfterDays?: number; 
   public get automaticallyAfterDays() {
@@ -63,7 +82,7 @@ export class SecretsmanagerSecretRotationRotationRulesOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get automaticallyAfterDaysInput() {
-    return this._automaticallyAfterDays
+    return this._automaticallyAfterDays;
   }
 }
 
@@ -102,7 +121,7 @@ export class SecretsmanagerSecretRotation extends cdktf.TerraformResource {
     this._rotationLambdaArn = config.rotationLambdaArn;
     this._secretId = config.secretId;
     this._tags = config.tags;
-    this._rotationRules = config.rotationRules;
+    this._rotationRules.internalValue = config.rotationRules;
   }
 
   // ==========
@@ -129,7 +148,7 @@ export class SecretsmanagerSecretRotation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rotationLambdaArnInput() {
-    return this._rotationLambdaArn
+    return this._rotationLambdaArn;
   }
 
   // secret_id - computed: false, optional: false, required: true
@@ -142,16 +161,16 @@ export class SecretsmanagerSecretRotation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get secretIdInput() {
-    return this._secretId
+    return this._secretId;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -159,21 +178,20 @@ export class SecretsmanagerSecretRotation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // rotation_rules - computed: false, optional: false, required: true
-  private _rotationRules?: SecretsmanagerSecretRotationRotationRules; 
-  private __rotationRulesOutput = new SecretsmanagerSecretRotationRotationRulesOutputReference(this as any, "rotation_rules", true);
+  private _rotationRules = new SecretsmanagerSecretRotationRotationRulesOutputReference(this as any, "rotation_rules", true);
   public get rotationRules() {
-    return this.__rotationRulesOutput;
+    return this._rotationRules;
   }
   public putRotationRules(value: SecretsmanagerSecretRotationRotationRules) {
-    this._rotationRules = value;
+    this._rotationRules.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get rotationRulesInput() {
-    return this._rotationRules
+    return this._rotationRules.internalValue;
   }
 
   // =========
@@ -185,7 +203,7 @@ export class SecretsmanagerSecretRotation extends cdktf.TerraformResource {
       rotation_lambda_arn: cdktf.stringToTerraform(this._rotationLambdaArn),
       secret_id: cdktf.stringToTerraform(this._secretId),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      rotation_rules: secretsmanagerSecretRotationRotationRulesToTerraform(this._rotationRules),
+      rotation_rules: secretsmanagerSecretRotationRotationRulesToTerraform(this._rotationRules.internalValue),
     };
   }
 }

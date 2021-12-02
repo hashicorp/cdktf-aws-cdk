@@ -92,11 +92,11 @@ export class DataAwsEc2InstanceTypeOfferings extends cdktf.TerraformDataSource {
   }
 
   // location_type - computed: false, optional: true, required: false
-  private _locationType?: string | undefined; 
+  private _locationType?: string; 
   public get locationType() {
     return this.getStringAttribute('location_type');
   }
-  public set locationType(value: string | undefined) {
+  public set locationType(value: string) {
     this._locationType = value;
   }
   public resetLocationType() {
@@ -104,7 +104,7 @@ export class DataAwsEc2InstanceTypeOfferings extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get locationTypeInput() {
-    return this._locationType
+    return this._locationType;
   }
 
   // location_types - computed: true, optional: false, required: false
@@ -118,12 +118,12 @@ export class DataAwsEc2InstanceTypeOfferings extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsEc2InstanceTypeOfferingsFilter[] | undefined; 
+  private _filter?: DataAwsEc2InstanceTypeOfferingsFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsEc2InstanceTypeOfferingsFilter[] | undefined) {
+  public set filter(value: DataAwsEc2InstanceTypeOfferingsFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -131,7 +131,7 @@ export class DataAwsEc2InstanceTypeOfferings extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

@@ -53,11 +53,11 @@ export class PrometheusWorkspace extends cdktf.TerraformResource {
   // ==========
 
   // alias - computed: false, optional: true, required: false
-  private _alias?: string | undefined; 
+  private _alias?: string; 
   public get alias() {
     return this.getStringAttribute('alias');
   }
-  public set alias(value: string | undefined) {
+  public set alias(value: string) {
     this._alias = value;
   }
   public resetAlias() {
@@ -65,7 +65,7 @@ export class PrometheusWorkspace extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get aliasInput() {
-    return this._alias
+    return this._alias;
   }
 
   // arn - computed: true, optional: false, required: false

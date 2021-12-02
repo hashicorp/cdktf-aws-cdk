@@ -58,6 +58,31 @@ export class CloudwatchEventConnectionAuthParametersApiKeyOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventConnectionAuthParametersApiKey | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventConnectionAuthParametersApiKey | undefined) {
+    if (value === undefined) {
+      this._key = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._key = value.key;
+      this._value = value.value;
+    }
+  }
+
   // key - computed: false, optional: false, required: true
   private _key?: string; 
   public get key() {
@@ -68,7 +93,7 @@ export class CloudwatchEventConnectionAuthParametersApiKeyOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // value - computed: false, optional: false, required: true
@@ -81,7 +106,7 @@ export class CloudwatchEventConnectionAuthParametersApiKeyOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface CloudwatchEventConnectionAuthParametersBasic {
@@ -116,6 +141,31 @@ export class CloudwatchEventConnectionAuthParametersBasicOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventConnectionAuthParametersBasic | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._password) {
+      hasAnyValues = true;
+      internalValueResult.password = this._password;
+    }
+    if (this._username) {
+      hasAnyValues = true;
+      internalValueResult.username = this._username;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventConnectionAuthParametersBasic | undefined) {
+    if (value === undefined) {
+      this._password = undefined;
+      this._username = undefined;
+    }
+    else {
+      this._password = value.password;
+      this._username = value.username;
+    }
+  }
+
   // password - computed: false, optional: false, required: true
   private _password?: string; 
   public get password() {
@@ -126,7 +176,7 @@ export class CloudwatchEventConnectionAuthParametersBasicOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get passwordInput() {
-    return this._password
+    return this._password;
   }
 
   // username - computed: false, optional: false, required: true
@@ -139,7 +189,7 @@ export class CloudwatchEventConnectionAuthParametersBasicOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get usernameInput() {
-    return this._username
+    return this._username;
   }
 }
 export interface CloudwatchEventConnectionAuthParametersInvocationHttpParametersBody {
@@ -266,13 +316,44 @@ export class CloudwatchEventConnectionAuthParametersInvocationHttpParametersOutp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventConnectionAuthParametersInvocationHttpParameters | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body;
+    }
+    if (this._header) {
+      hasAnyValues = true;
+      internalValueResult.header = this._header;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventConnectionAuthParametersInvocationHttpParameters | undefined) {
+    if (value === undefined) {
+      this._body = undefined;
+      this._header = undefined;
+      this._queryString = undefined;
+    }
+    else {
+      this._body = value.body;
+      this._header = value.header;
+      this._queryString = value.queryString;
+    }
+  }
+
   // body - computed: false, optional: true, required: false
-  private _body?: CloudwatchEventConnectionAuthParametersInvocationHttpParametersBody[] | undefined; 
+  private _body?: CloudwatchEventConnectionAuthParametersInvocationHttpParametersBody[]; 
   public get body() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('body') as any;
   }
-  public set body(value: CloudwatchEventConnectionAuthParametersInvocationHttpParametersBody[] | undefined) {
+  public set body(value: CloudwatchEventConnectionAuthParametersInvocationHttpParametersBody[]) {
     this._body = value;
   }
   public resetBody() {
@@ -280,16 +361,16 @@ export class CloudwatchEventConnectionAuthParametersInvocationHttpParametersOutp
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body;
   }
 
   // header - computed: false, optional: true, required: false
-  private _header?: CloudwatchEventConnectionAuthParametersInvocationHttpParametersHeader[] | undefined; 
+  private _header?: CloudwatchEventConnectionAuthParametersInvocationHttpParametersHeader[]; 
   public get header() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('header') as any;
   }
-  public set header(value: CloudwatchEventConnectionAuthParametersInvocationHttpParametersHeader[] | undefined) {
+  public set header(value: CloudwatchEventConnectionAuthParametersInvocationHttpParametersHeader[]) {
     this._header = value;
   }
   public resetHeader() {
@@ -297,16 +378,16 @@ export class CloudwatchEventConnectionAuthParametersInvocationHttpParametersOutp
   }
   // Temporarily expose input value. Use with caution.
   public get headerInput() {
-    return this._header
+    return this._header;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: CloudwatchEventConnectionAuthParametersInvocationHttpParametersQueryString[] | undefined; 
+  private _queryString?: CloudwatchEventConnectionAuthParametersInvocationHttpParametersQueryString[]; 
   public get queryString() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('query_string') as any;
   }
-  public set queryString(value: CloudwatchEventConnectionAuthParametersInvocationHttpParametersQueryString[] | undefined) {
+  public set queryString(value: CloudwatchEventConnectionAuthParametersInvocationHttpParametersQueryString[]) {
     this._queryString = value;
   }
   public resetQueryString() {
@@ -314,7 +395,7 @@ export class CloudwatchEventConnectionAuthParametersInvocationHttpParametersOutp
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString;
   }
 }
 export interface CloudwatchEventConnectionAuthParametersOauthClientParameters {
@@ -349,6 +430,31 @@ export class CloudwatchEventConnectionAuthParametersOauthClientParametersOutputR
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventConnectionAuthParametersOauthClientParameters | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._clientId) {
+      hasAnyValues = true;
+      internalValueResult.clientId = this._clientId;
+    }
+    if (this._clientSecret) {
+      hasAnyValues = true;
+      internalValueResult.clientSecret = this._clientSecret;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventConnectionAuthParametersOauthClientParameters | undefined) {
+    if (value === undefined) {
+      this._clientId = undefined;
+      this._clientSecret = undefined;
+    }
+    else {
+      this._clientId = value.clientId;
+      this._clientSecret = value.clientSecret;
+    }
+  }
+
   // client_id - computed: false, optional: false, required: true
   private _clientId?: string; 
   public get clientId() {
@@ -359,7 +465,7 @@ export class CloudwatchEventConnectionAuthParametersOauthClientParametersOutputR
   }
   // Temporarily expose input value. Use with caution.
   public get clientIdInput() {
-    return this._clientId
+    return this._clientId;
   }
 
   // client_secret - computed: false, optional: false, required: true
@@ -372,7 +478,7 @@ export class CloudwatchEventConnectionAuthParametersOauthClientParametersOutputR
   }
   // Temporarily expose input value. Use with caution.
   public get clientSecretInput() {
-    return this._clientSecret
+    return this._clientSecret;
   }
 }
 export interface CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersBody {
@@ -499,13 +605,44 @@ export class CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersOutp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventConnectionAuthParametersOauthOauthHttpParameters | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body;
+    }
+    if (this._header) {
+      hasAnyValues = true;
+      internalValueResult.header = this._header;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventConnectionAuthParametersOauthOauthHttpParameters | undefined) {
+    if (value === undefined) {
+      this._body = undefined;
+      this._header = undefined;
+      this._queryString = undefined;
+    }
+    else {
+      this._body = value.body;
+      this._header = value.header;
+      this._queryString = value.queryString;
+    }
+  }
+
   // body - computed: false, optional: true, required: false
-  private _body?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersBody[] | undefined; 
+  private _body?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersBody[]; 
   public get body() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('body') as any;
   }
-  public set body(value: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersBody[] | undefined) {
+  public set body(value: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersBody[]) {
     this._body = value;
   }
   public resetBody() {
@@ -513,16 +650,16 @@ export class CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersOutp
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body;
   }
 
   // header - computed: false, optional: true, required: false
-  private _header?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersHeader[] | undefined; 
+  private _header?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersHeader[]; 
   public get header() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('header') as any;
   }
-  public set header(value: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersHeader[] | undefined) {
+  public set header(value: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersHeader[]) {
     this._header = value;
   }
   public resetHeader() {
@@ -530,16 +667,16 @@ export class CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersOutp
   }
   // Temporarily expose input value. Use with caution.
   public get headerInput() {
-    return this._header
+    return this._header;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersQueryString[] | undefined; 
+  private _queryString?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersQueryString[]; 
   public get queryString() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('query_string') as any;
   }
-  public set queryString(value: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersQueryString[] | undefined) {
+  public set queryString(value: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersQueryString[]) {
     this._queryString = value;
   }
   public resetQueryString() {
@@ -547,7 +684,7 @@ export class CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersOutp
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString;
   }
 }
 export interface CloudwatchEventConnectionAuthParametersOauth {
@@ -596,6 +733,43 @@ export class CloudwatchEventConnectionAuthParametersOauthOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventConnectionAuthParametersOauth | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._authorizationEndpoint) {
+      hasAnyValues = true;
+      internalValueResult.authorizationEndpoint = this._authorizationEndpoint;
+    }
+    if (this._httpMethod) {
+      hasAnyValues = true;
+      internalValueResult.httpMethod = this._httpMethod;
+    }
+    if (this._clientParameters) {
+      hasAnyValues = true;
+      internalValueResult.clientParameters = this._clientParameters?.internalValue;
+    }
+    if (this._oauthHttpParameters) {
+      hasAnyValues = true;
+      internalValueResult.oauthHttpParameters = this._oauthHttpParameters?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventConnectionAuthParametersOauth | undefined) {
+    if (value === undefined) {
+      this._authorizationEndpoint = undefined;
+      this._httpMethod = undefined;
+      this._clientParameters.internalValue = undefined;
+      this._oauthHttpParameters.internalValue = undefined;
+    }
+    else {
+      this._authorizationEndpoint = value.authorizationEndpoint;
+      this._httpMethod = value.httpMethod;
+      this._clientParameters.internalValue = value.clientParameters;
+      this._oauthHttpParameters.internalValue = value.oauthHttpParameters;
+    }
+  }
+
   // authorization_endpoint - computed: false, optional: false, required: true
   private _authorizationEndpoint?: string; 
   public get authorizationEndpoint() {
@@ -606,7 +780,7 @@ export class CloudwatchEventConnectionAuthParametersOauthOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get authorizationEndpointInput() {
-    return this._authorizationEndpoint
+    return this._authorizationEndpoint;
   }
 
   // http_method - computed: false, optional: false, required: true
@@ -619,38 +793,36 @@ export class CloudwatchEventConnectionAuthParametersOauthOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get httpMethodInput() {
-    return this._httpMethod
+    return this._httpMethod;
   }
 
   // client_parameters - computed: false, optional: true, required: false
-  private _clientParameters?: CloudwatchEventConnectionAuthParametersOauthClientParameters | undefined; 
-  private __clientParametersOutput = new CloudwatchEventConnectionAuthParametersOauthClientParametersOutputReference(this as any, "client_parameters", true);
+  private _clientParameters = new CloudwatchEventConnectionAuthParametersOauthClientParametersOutputReference(this as any, "client_parameters", true);
   public get clientParameters() {
-    return this.__clientParametersOutput;
+    return this._clientParameters;
   }
-  public putClientParameters(value: CloudwatchEventConnectionAuthParametersOauthClientParameters | undefined) {
-    this._clientParameters = value;
+  public putClientParameters(value: CloudwatchEventConnectionAuthParametersOauthClientParameters) {
+    this._clientParameters.internalValue = value;
   }
   public resetClientParameters() {
-    this._clientParameters = undefined;
+    this._clientParameters.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get clientParametersInput() {
-    return this._clientParameters
+    return this._clientParameters.internalValue;
   }
 
   // oauth_http_parameters - computed: false, optional: false, required: true
-  private _oauthHttpParameters?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParameters; 
-  private __oauthHttpParametersOutput = new CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersOutputReference(this as any, "oauth_http_parameters", true);
+  private _oauthHttpParameters = new CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersOutputReference(this as any, "oauth_http_parameters", true);
   public get oauthHttpParameters() {
-    return this.__oauthHttpParametersOutput;
+    return this._oauthHttpParameters;
   }
   public putOauthHttpParameters(value: CloudwatchEventConnectionAuthParametersOauthOauthHttpParameters) {
-    this._oauthHttpParameters = value;
+    this._oauthHttpParameters.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get oauthHttpParametersInput() {
-    return this._oauthHttpParameters
+    return this._oauthHttpParameters.internalValue;
   }
 }
 export interface CloudwatchEventConnectionAuthParameters {
@@ -703,72 +875,105 @@ export class CloudwatchEventConnectionAuthParametersOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // api_key - computed: false, optional: true, required: false
-  private _apiKey?: CloudwatchEventConnectionAuthParametersApiKey | undefined; 
-  private __apiKeyOutput = new CloudwatchEventConnectionAuthParametersApiKeyOutputReference(this as any, "api_key", true);
-  public get apiKey() {
-    return this.__apiKeyOutput;
+  public get internalValue(): CloudwatchEventConnectionAuthParameters | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._apiKey) {
+      hasAnyValues = true;
+      internalValueResult.apiKey = this._apiKey?.internalValue;
+    }
+    if (this._basic) {
+      hasAnyValues = true;
+      internalValueResult.basic = this._basic?.internalValue;
+    }
+    if (this._invocationHttpParameters) {
+      hasAnyValues = true;
+      internalValueResult.invocationHttpParameters = this._invocationHttpParameters?.internalValue;
+    }
+    if (this._oauth) {
+      hasAnyValues = true;
+      internalValueResult.oauth = this._oauth?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putApiKey(value: CloudwatchEventConnectionAuthParametersApiKey | undefined) {
-    this._apiKey = value;
+
+  public set internalValue(value: CloudwatchEventConnectionAuthParameters | undefined) {
+    if (value === undefined) {
+      this._apiKey.internalValue = undefined;
+      this._basic.internalValue = undefined;
+      this._invocationHttpParameters.internalValue = undefined;
+      this._oauth.internalValue = undefined;
+    }
+    else {
+      this._apiKey.internalValue = value.apiKey;
+      this._basic.internalValue = value.basic;
+      this._invocationHttpParameters.internalValue = value.invocationHttpParameters;
+      this._oauth.internalValue = value.oauth;
+    }
+  }
+
+  // api_key - computed: false, optional: true, required: false
+  private _apiKey = new CloudwatchEventConnectionAuthParametersApiKeyOutputReference(this as any, "api_key", true);
+  public get apiKey() {
+    return this._apiKey;
+  }
+  public putApiKey(value: CloudwatchEventConnectionAuthParametersApiKey) {
+    this._apiKey.internalValue = value;
   }
   public resetApiKey() {
-    this._apiKey = undefined;
+    this._apiKey.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get apiKeyInput() {
-    return this._apiKey
+    return this._apiKey.internalValue;
   }
 
   // basic - computed: false, optional: true, required: false
-  private _basic?: CloudwatchEventConnectionAuthParametersBasic | undefined; 
-  private __basicOutput = new CloudwatchEventConnectionAuthParametersBasicOutputReference(this as any, "basic", true);
+  private _basic = new CloudwatchEventConnectionAuthParametersBasicOutputReference(this as any, "basic", true);
   public get basic() {
-    return this.__basicOutput;
+    return this._basic;
   }
-  public putBasic(value: CloudwatchEventConnectionAuthParametersBasic | undefined) {
-    this._basic = value;
+  public putBasic(value: CloudwatchEventConnectionAuthParametersBasic) {
+    this._basic.internalValue = value;
   }
   public resetBasic() {
-    this._basic = undefined;
+    this._basic.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get basicInput() {
-    return this._basic
+    return this._basic.internalValue;
   }
 
   // invocation_http_parameters - computed: false, optional: true, required: false
-  private _invocationHttpParameters?: CloudwatchEventConnectionAuthParametersInvocationHttpParameters | undefined; 
-  private __invocationHttpParametersOutput = new CloudwatchEventConnectionAuthParametersInvocationHttpParametersOutputReference(this as any, "invocation_http_parameters", true);
+  private _invocationHttpParameters = new CloudwatchEventConnectionAuthParametersInvocationHttpParametersOutputReference(this as any, "invocation_http_parameters", true);
   public get invocationHttpParameters() {
-    return this.__invocationHttpParametersOutput;
+    return this._invocationHttpParameters;
   }
-  public putInvocationHttpParameters(value: CloudwatchEventConnectionAuthParametersInvocationHttpParameters | undefined) {
-    this._invocationHttpParameters = value;
+  public putInvocationHttpParameters(value: CloudwatchEventConnectionAuthParametersInvocationHttpParameters) {
+    this._invocationHttpParameters.internalValue = value;
   }
   public resetInvocationHttpParameters() {
-    this._invocationHttpParameters = undefined;
+    this._invocationHttpParameters.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get invocationHttpParametersInput() {
-    return this._invocationHttpParameters
+    return this._invocationHttpParameters.internalValue;
   }
 
   // oauth - computed: false, optional: true, required: false
-  private _oauth?: CloudwatchEventConnectionAuthParametersOauth | undefined; 
-  private __oauthOutput = new CloudwatchEventConnectionAuthParametersOauthOutputReference(this as any, "oauth", true);
+  private _oauth = new CloudwatchEventConnectionAuthParametersOauthOutputReference(this as any, "oauth", true);
   public get oauth() {
-    return this.__oauthOutput;
+    return this._oauth;
   }
-  public putOauth(value: CloudwatchEventConnectionAuthParametersOauth | undefined) {
-    this._oauth = value;
+  public putOauth(value: CloudwatchEventConnectionAuthParametersOauth) {
+    this._oauth.internalValue = value;
   }
   public resetOauth() {
-    this._oauth = undefined;
+    this._oauth.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get oauthInput() {
-    return this._oauth
+    return this._oauth.internalValue;
   }
 }
 
@@ -807,7 +1012,7 @@ export class CloudwatchEventConnection extends cdktf.TerraformResource {
     this._authorizationType = config.authorizationType;
     this._description = config.description;
     this._name = config.name;
-    this._authParameters = config.authParameters;
+    this._authParameters.internalValue = config.authParameters;
   }
 
   // ==========
@@ -829,15 +1034,15 @@ export class CloudwatchEventConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizationTypeInput() {
-    return this._authorizationType
+    return this._authorizationType;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -845,7 +1050,7 @@ export class CloudwatchEventConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -863,7 +1068,7 @@ export class CloudwatchEventConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // secret_arn - computed: true, optional: false, required: false
@@ -872,17 +1077,16 @@ export class CloudwatchEventConnection extends cdktf.TerraformResource {
   }
 
   // auth_parameters - computed: false, optional: false, required: true
-  private _authParameters?: CloudwatchEventConnectionAuthParameters; 
-  private __authParametersOutput = new CloudwatchEventConnectionAuthParametersOutputReference(this as any, "auth_parameters", true);
+  private _authParameters = new CloudwatchEventConnectionAuthParametersOutputReference(this as any, "auth_parameters", true);
   public get authParameters() {
-    return this.__authParametersOutput;
+    return this._authParameters;
   }
   public putAuthParameters(value: CloudwatchEventConnectionAuthParameters) {
-    this._authParameters = value;
+    this._authParameters.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get authParametersInput() {
-    return this._authParameters
+    return this._authParameters.internalValue;
   }
 
   // =========
@@ -894,7 +1098,7 @@ export class CloudwatchEventConnection extends cdktf.TerraformResource {
       authorization_type: cdktf.stringToTerraform(this._authorizationType),
       description: cdktf.stringToTerraform(this._description),
       name: cdktf.stringToTerraform(this._name),
-      auth_parameters: cloudwatchEventConnectionAuthParametersToTerraform(this._authParameters),
+      auth_parameters: cloudwatchEventConnectionAuthParametersToTerraform(this._authParameters.internalValue),
     };
   }
 }

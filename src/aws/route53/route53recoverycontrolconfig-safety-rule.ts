@@ -75,6 +75,37 @@ export class Route53RecoverycontrolconfigSafetyRuleRuleConfigOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Route53RecoverycontrolconfigSafetyRuleRuleConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._inverted) {
+      hasAnyValues = true;
+      internalValueResult.inverted = this._inverted;
+    }
+    if (this._threshold) {
+      hasAnyValues = true;
+      internalValueResult.threshold = this._threshold;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Route53RecoverycontrolconfigSafetyRuleRuleConfig | undefined) {
+    if (value === undefined) {
+      this._inverted = undefined;
+      this._threshold = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._inverted = value.inverted;
+      this._threshold = value.threshold;
+      this._type = value.type;
+    }
+  }
+
   // inverted - computed: false, optional: false, required: true
   private _inverted?: boolean | cdktf.IResolvable; 
   public get inverted() {
@@ -85,7 +116,7 @@ export class Route53RecoverycontrolconfigSafetyRuleRuleConfigOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get invertedInput() {
-    return this._inverted
+    return this._inverted;
   }
 
   // threshold - computed: false, optional: false, required: true
@@ -98,7 +129,7 @@ export class Route53RecoverycontrolconfigSafetyRuleRuleConfigOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get thresholdInput() {
-    return this._threshold
+    return this._threshold;
   }
 
   // type - computed: false, optional: false, required: true
@@ -111,7 +142,7 @@ export class Route53RecoverycontrolconfigSafetyRuleRuleConfigOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 
@@ -153,7 +184,7 @@ export class Route53RecoverycontrolconfigSafetyRule extends cdktf.TerraformResou
     this._name = config.name;
     this._targetControls = config.targetControls;
     this._waitPeriodMs = config.waitPeriodMs;
-    this._ruleConfig = config.ruleConfig;
+    this._ruleConfig.internalValue = config.ruleConfig;
   }
 
   // ==========
@@ -166,11 +197,11 @@ export class Route53RecoverycontrolconfigSafetyRule extends cdktf.TerraformResou
   }
 
   // asserted_controls - computed: false, optional: true, required: false
-  private _assertedControls?: string[] | undefined; 
+  private _assertedControls?: string[]; 
   public get assertedControls() {
     return this.getListAttribute('asserted_controls');
   }
-  public set assertedControls(value: string[] | undefined) {
+  public set assertedControls(value: string[]) {
     this._assertedControls = value;
   }
   public resetAssertedControls() {
@@ -178,7 +209,7 @@ export class Route53RecoverycontrolconfigSafetyRule extends cdktf.TerraformResou
   }
   // Temporarily expose input value. Use with caution.
   public get assertedControlsInput() {
-    return this._assertedControls
+    return this._assertedControls;
   }
 
   // control_panel_arn - computed: false, optional: false, required: true
@@ -191,15 +222,15 @@ export class Route53RecoverycontrolconfigSafetyRule extends cdktf.TerraformResou
   }
   // Temporarily expose input value. Use with caution.
   public get controlPanelArnInput() {
-    return this._controlPanelArn
+    return this._controlPanelArn;
   }
 
   // gating_controls - computed: false, optional: true, required: false
-  private _gatingControls?: string[] | undefined; 
+  private _gatingControls?: string[]; 
   public get gatingControls() {
     return this.getListAttribute('gating_controls');
   }
-  public set gatingControls(value: string[] | undefined) {
+  public set gatingControls(value: string[]) {
     this._gatingControls = value;
   }
   public resetGatingControls() {
@@ -207,7 +238,7 @@ export class Route53RecoverycontrolconfigSafetyRule extends cdktf.TerraformResou
   }
   // Temporarily expose input value. Use with caution.
   public get gatingControlsInput() {
-    return this._gatingControls
+    return this._gatingControls;
   }
 
   // id - computed: true, optional: true, required: false
@@ -225,7 +256,7 @@ export class Route53RecoverycontrolconfigSafetyRule extends cdktf.TerraformResou
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // status - computed: true, optional: false, required: false
@@ -234,11 +265,11 @@ export class Route53RecoverycontrolconfigSafetyRule extends cdktf.TerraformResou
   }
 
   // target_controls - computed: false, optional: true, required: false
-  private _targetControls?: string[] | undefined; 
+  private _targetControls?: string[]; 
   public get targetControls() {
     return this.getListAttribute('target_controls');
   }
-  public set targetControls(value: string[] | undefined) {
+  public set targetControls(value: string[]) {
     this._targetControls = value;
   }
   public resetTargetControls() {
@@ -246,7 +277,7 @@ export class Route53RecoverycontrolconfigSafetyRule extends cdktf.TerraformResou
   }
   // Temporarily expose input value. Use with caution.
   public get targetControlsInput() {
-    return this._targetControls
+    return this._targetControls;
   }
 
   // wait_period_ms - computed: false, optional: false, required: true
@@ -259,21 +290,20 @@ export class Route53RecoverycontrolconfigSafetyRule extends cdktf.TerraformResou
   }
   // Temporarily expose input value. Use with caution.
   public get waitPeriodMsInput() {
-    return this._waitPeriodMs
+    return this._waitPeriodMs;
   }
 
   // rule_config - computed: false, optional: false, required: true
-  private _ruleConfig?: Route53RecoverycontrolconfigSafetyRuleRuleConfig; 
-  private __ruleConfigOutput = new Route53RecoverycontrolconfigSafetyRuleRuleConfigOutputReference(this as any, "rule_config", true);
+  private _ruleConfig = new Route53RecoverycontrolconfigSafetyRuleRuleConfigOutputReference(this as any, "rule_config", true);
   public get ruleConfig() {
-    return this.__ruleConfigOutput;
+    return this._ruleConfig;
   }
   public putRuleConfig(value: Route53RecoverycontrolconfigSafetyRuleRuleConfig) {
-    this._ruleConfig = value;
+    this._ruleConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get ruleConfigInput() {
-    return this._ruleConfig
+    return this._ruleConfig.internalValue;
   }
 
   // =========
@@ -288,7 +318,7 @@ export class Route53RecoverycontrolconfigSafetyRule extends cdktf.TerraformResou
       name: cdktf.stringToTerraform(this._name),
       target_controls: cdktf.listMapper(cdktf.stringToTerraform)(this._targetControls),
       wait_period_ms: cdktf.numberToTerraform(this._waitPeriodMs),
-      rule_config: route53RecoverycontrolconfigSafetyRuleRuleConfigToTerraform(this._ruleConfig),
+      rule_config: route53RecoverycontrolconfigSafetyRuleRuleConfigToTerraform(this._ruleConfig.internalValue),
     };
   }
 }

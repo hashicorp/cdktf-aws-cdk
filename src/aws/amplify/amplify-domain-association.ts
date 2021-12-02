@@ -101,7 +101,7 @@ export class AmplifyDomainAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get appIdInput() {
-    return this._appId
+    return this._appId;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -124,7 +124,7 @@ export class AmplifyDomainAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainNameInput() {
-    return this._domainName
+    return this._domainName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -133,11 +133,11 @@ export class AmplifyDomainAssociation extends cdktf.TerraformResource {
   }
 
   // wait_for_verification - computed: false, optional: true, required: false
-  private _waitForVerification?: boolean | cdktf.IResolvable | undefined; 
+  private _waitForVerification?: boolean | cdktf.IResolvable; 
   public get waitForVerification() {
     return this.getBooleanAttribute('wait_for_verification') as any;
   }
-  public set waitForVerification(value: boolean | cdktf.IResolvable | undefined) {
+  public set waitForVerification(value: boolean | cdktf.IResolvable) {
     this._waitForVerification = value;
   }
   public resetWaitForVerification() {
@@ -145,7 +145,7 @@ export class AmplifyDomainAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get waitForVerificationInput() {
-    return this._waitForVerification
+    return this._waitForVerification;
   }
 
   // sub_domain - computed: false, optional: false, required: true
@@ -159,7 +159,7 @@ export class AmplifyDomainAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subDomainInput() {
-    return this._subDomain
+    return this._subDomain;
   }
 
   // =========

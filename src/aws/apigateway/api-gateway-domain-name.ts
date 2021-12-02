@@ -91,6 +91,25 @@ export class ApiGatewayDomainNameEndpointConfigurationOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApiGatewayDomainNameEndpointConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._types) {
+      hasAnyValues = true;
+      internalValueResult.types = this._types;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApiGatewayDomainNameEndpointConfiguration | undefined) {
+    if (value === undefined) {
+      this._types = undefined;
+    }
+    else {
+      this._types = value.types;
+    }
+  }
+
   // types - computed: false, optional: false, required: true
   private _types?: string[]; 
   public get types() {
@@ -101,7 +120,7 @@ export class ApiGatewayDomainNameEndpointConfigurationOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get typesInput() {
-    return this._types
+    return this._types;
   }
 }
 export interface ApiGatewayDomainNameMutualTlsAuthentication {
@@ -136,6 +155,31 @@ export class ApiGatewayDomainNameMutualTlsAuthenticationOutputReference extends 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApiGatewayDomainNameMutualTlsAuthentication | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._truststoreUri) {
+      hasAnyValues = true;
+      internalValueResult.truststoreUri = this._truststoreUri;
+    }
+    if (this._truststoreVersion) {
+      hasAnyValues = true;
+      internalValueResult.truststoreVersion = this._truststoreVersion;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApiGatewayDomainNameMutualTlsAuthentication | undefined) {
+    if (value === undefined) {
+      this._truststoreUri = undefined;
+      this._truststoreVersion = undefined;
+    }
+    else {
+      this._truststoreUri = value.truststoreUri;
+      this._truststoreVersion = value.truststoreVersion;
+    }
+  }
+
   // truststore_uri - computed: false, optional: false, required: true
   private _truststoreUri?: string; 
   public get truststoreUri() {
@@ -146,15 +190,15 @@ export class ApiGatewayDomainNameMutualTlsAuthenticationOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get truststoreUriInput() {
-    return this._truststoreUri
+    return this._truststoreUri;
   }
 
   // truststore_version - computed: false, optional: true, required: false
-  private _truststoreVersion?: string | undefined; 
+  private _truststoreVersion?: string; 
   public get truststoreVersion() {
     return this.getStringAttribute('truststore_version');
   }
-  public set truststoreVersion(value: string | undefined) {
+  public set truststoreVersion(value: string) {
     this._truststoreVersion = value;
   }
   public resetTruststoreVersion() {
@@ -162,7 +206,7 @@ export class ApiGatewayDomainNameMutualTlsAuthenticationOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get truststoreVersionInput() {
-    return this._truststoreVersion
+    return this._truststoreVersion;
   }
 }
 
@@ -209,8 +253,8 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
     this._securityPolicy = config.securityPolicy;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._endpointConfiguration = config.endpointConfiguration;
-    this._mutualTlsAuthentication = config.mutualTlsAuthentication;
+    this._endpointConfiguration.internalValue = config.endpointConfiguration;
+    this._mutualTlsAuthentication.internalValue = config.mutualTlsAuthentication;
   }
 
   // ==========
@@ -223,11 +267,11 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   }
 
   // certificate_arn - computed: false, optional: true, required: false
-  private _certificateArn?: string | undefined; 
+  private _certificateArn?: string; 
   public get certificateArn() {
     return this.getStringAttribute('certificate_arn');
   }
-  public set certificateArn(value: string | undefined) {
+  public set certificateArn(value: string) {
     this._certificateArn = value;
   }
   public resetCertificateArn() {
@@ -235,15 +279,15 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificateArnInput() {
-    return this._certificateArn
+    return this._certificateArn;
   }
 
   // certificate_body - computed: false, optional: true, required: false
-  private _certificateBody?: string | undefined; 
+  private _certificateBody?: string; 
   public get certificateBody() {
     return this.getStringAttribute('certificate_body');
   }
-  public set certificateBody(value: string | undefined) {
+  public set certificateBody(value: string) {
     this._certificateBody = value;
   }
   public resetCertificateBody() {
@@ -251,15 +295,15 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificateBodyInput() {
-    return this._certificateBody
+    return this._certificateBody;
   }
 
   // certificate_chain - computed: false, optional: true, required: false
-  private _certificateChain?: string | undefined; 
+  private _certificateChain?: string; 
   public get certificateChain() {
     return this.getStringAttribute('certificate_chain');
   }
-  public set certificateChain(value: string | undefined) {
+  public set certificateChain(value: string) {
     this._certificateChain = value;
   }
   public resetCertificateChain() {
@@ -267,15 +311,15 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificateChainInput() {
-    return this._certificateChain
+    return this._certificateChain;
   }
 
   // certificate_name - computed: false, optional: true, required: false
-  private _certificateName?: string | undefined; 
+  private _certificateName?: string; 
   public get certificateName() {
     return this.getStringAttribute('certificate_name');
   }
-  public set certificateName(value: string | undefined) {
+  public set certificateName(value: string) {
     this._certificateName = value;
   }
   public resetCertificateName() {
@@ -283,15 +327,15 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificateNameInput() {
-    return this._certificateName
+    return this._certificateName;
   }
 
   // certificate_private_key - computed: false, optional: true, required: false
-  private _certificatePrivateKey?: string | undefined; 
+  private _certificatePrivateKey?: string; 
   public get certificatePrivateKey() {
     return this.getStringAttribute('certificate_private_key');
   }
-  public set certificatePrivateKey(value: string | undefined) {
+  public set certificatePrivateKey(value: string) {
     this._certificatePrivateKey = value;
   }
   public resetCertificatePrivateKey() {
@@ -299,7 +343,7 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificatePrivateKeyInput() {
-    return this._certificatePrivateKey
+    return this._certificatePrivateKey;
   }
 
   // certificate_upload_date - computed: true, optional: false, required: false
@@ -327,7 +371,7 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainNameInput() {
-    return this._domainName
+    return this._domainName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -336,11 +380,11 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   }
 
   // regional_certificate_arn - computed: false, optional: true, required: false
-  private _regionalCertificateArn?: string | undefined; 
+  private _regionalCertificateArn?: string; 
   public get regionalCertificateArn() {
     return this.getStringAttribute('regional_certificate_arn');
   }
-  public set regionalCertificateArn(value: string | undefined) {
+  public set regionalCertificateArn(value: string) {
     this._regionalCertificateArn = value;
   }
   public resetRegionalCertificateArn() {
@@ -348,15 +392,15 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get regionalCertificateArnInput() {
-    return this._regionalCertificateArn
+    return this._regionalCertificateArn;
   }
 
   // regional_certificate_name - computed: false, optional: true, required: false
-  private _regionalCertificateName?: string | undefined; 
+  private _regionalCertificateName?: string; 
   public get regionalCertificateName() {
     return this.getStringAttribute('regional_certificate_name');
   }
-  public set regionalCertificateName(value: string | undefined) {
+  public set regionalCertificateName(value: string) {
     this._regionalCertificateName = value;
   }
   public resetRegionalCertificateName() {
@@ -364,7 +408,7 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get regionalCertificateNameInput() {
-    return this._regionalCertificateName
+    return this._regionalCertificateName;
   }
 
   // regional_domain_name - computed: true, optional: false, required: false
@@ -378,11 +422,11 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   }
 
   // security_policy - computed: true, optional: true, required: false
-  private _securityPolicy?: string | undefined; 
+  private _securityPolicy?: string; 
   public get securityPolicy() {
     return this.getStringAttribute('security_policy');
   }
-  public set securityPolicy(value: string | undefined) {
+  public set securityPolicy(value: string) {
     this._securityPolicy = value;
   }
   public resetSecurityPolicy() {
@@ -390,16 +434,16 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityPolicyInput() {
-    return this._securityPolicy
+    return this._securityPolicy;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -407,16 +451,16 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -424,41 +468,39 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // endpoint_configuration - computed: false, optional: true, required: false
-  private _endpointConfiguration?: ApiGatewayDomainNameEndpointConfiguration | undefined; 
-  private __endpointConfigurationOutput = new ApiGatewayDomainNameEndpointConfigurationOutputReference(this as any, "endpoint_configuration", true);
+  private _endpointConfiguration = new ApiGatewayDomainNameEndpointConfigurationOutputReference(this as any, "endpoint_configuration", true);
   public get endpointConfiguration() {
-    return this.__endpointConfigurationOutput;
+    return this._endpointConfiguration;
   }
-  public putEndpointConfiguration(value: ApiGatewayDomainNameEndpointConfiguration | undefined) {
-    this._endpointConfiguration = value;
+  public putEndpointConfiguration(value: ApiGatewayDomainNameEndpointConfiguration) {
+    this._endpointConfiguration.internalValue = value;
   }
   public resetEndpointConfiguration() {
-    this._endpointConfiguration = undefined;
+    this._endpointConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get endpointConfigurationInput() {
-    return this._endpointConfiguration
+    return this._endpointConfiguration.internalValue;
   }
 
   // mutual_tls_authentication - computed: false, optional: true, required: false
-  private _mutualTlsAuthentication?: ApiGatewayDomainNameMutualTlsAuthentication | undefined; 
-  private __mutualTlsAuthenticationOutput = new ApiGatewayDomainNameMutualTlsAuthenticationOutputReference(this as any, "mutual_tls_authentication", true);
+  private _mutualTlsAuthentication = new ApiGatewayDomainNameMutualTlsAuthenticationOutputReference(this as any, "mutual_tls_authentication", true);
   public get mutualTlsAuthentication() {
-    return this.__mutualTlsAuthenticationOutput;
+    return this._mutualTlsAuthentication;
   }
-  public putMutualTlsAuthentication(value: ApiGatewayDomainNameMutualTlsAuthentication | undefined) {
-    this._mutualTlsAuthentication = value;
+  public putMutualTlsAuthentication(value: ApiGatewayDomainNameMutualTlsAuthentication) {
+    this._mutualTlsAuthentication.internalValue = value;
   }
   public resetMutualTlsAuthentication() {
-    this._mutualTlsAuthentication = undefined;
+    this._mutualTlsAuthentication.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get mutualTlsAuthenticationInput() {
-    return this._mutualTlsAuthentication
+    return this._mutualTlsAuthentication.internalValue;
   }
 
   // =========
@@ -478,8 +520,8 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
       security_policy: cdktf.stringToTerraform(this._securityPolicy),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      endpoint_configuration: apiGatewayDomainNameEndpointConfigurationToTerraform(this._endpointConfiguration),
-      mutual_tls_authentication: apiGatewayDomainNameMutualTlsAuthenticationToTerraform(this._mutualTlsAuthentication),
+      endpoint_configuration: apiGatewayDomainNameEndpointConfigurationToTerraform(this._endpointConfiguration.internalValue),
+      mutual_tls_authentication: apiGatewayDomainNameMutualTlsAuthenticationToTerraform(this._mutualTlsAuthentication.internalValue),
     };
   }
 }

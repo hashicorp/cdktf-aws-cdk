@@ -224,6 +224,25 @@ export class DynamodbTablePointInTimeRecoveryOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DynamodbTablePointInTimeRecovery | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DynamodbTablePointInTimeRecovery | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+    }
+  }
+
   // enabled - computed: false, optional: false, required: true
   private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
@@ -234,7 +253,7 @@ export class DynamodbTablePointInTimeRecoveryOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 }
 export interface DynamodbTableReplica {
@@ -291,6 +310,31 @@ export class DynamodbTableServerSideEncryptionOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DynamodbTableServerSideEncryption | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._kmsKeyArn) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyArn = this._kmsKeyArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DynamodbTableServerSideEncryption | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._kmsKeyArn = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._kmsKeyArn = value.kmsKeyArn;
+    }
+  }
+
   // enabled - computed: false, optional: false, required: true
   private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
@@ -301,15 +345,15 @@ export class DynamodbTableServerSideEncryptionOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // kms_key_arn - computed: true, optional: true, required: false
-  private _kmsKeyArn?: string | undefined; 
+  private _kmsKeyArn?: string; 
   public get kmsKeyArn() {
     return this.getStringAttribute('kms_key_arn');
   }
-  public set kmsKeyArn(value: string | undefined) {
+  public set kmsKeyArn(value: string) {
     this._kmsKeyArn = value;
   }
   public resetKmsKeyArn() {
@@ -317,7 +361,7 @@ export class DynamodbTableServerSideEncryptionOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyArnInput() {
-    return this._kmsKeyArn
+    return this._kmsKeyArn;
   }
 }
 export interface DynamodbTableTimeouts {
@@ -357,12 +401,43 @@ export class DynamodbTableTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DynamodbTableTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DynamodbTableTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -370,15 +445,15 @@ export class DynamodbTableTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -386,15 +461,15 @@ export class DynamodbTableTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -402,7 +477,7 @@ export class DynamodbTableTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 export interface DynamodbTableTtl {
@@ -442,6 +517,37 @@ export class DynamodbTableTtlOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DynamodbTableTtl | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._attributeName) {
+      hasAnyValues = true;
+      internalValueResult.attributeName = this._attributeName;
+    }
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._kmsKeyArn) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyArn = this._kmsKeyArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DynamodbTableTtl | undefined) {
+    if (value === undefined) {
+      this._attributeName = undefined;
+      this._enabled = undefined;
+      this._kmsKeyArn = undefined;
+    }
+    else {
+      this._attributeName = value.attributeName;
+      this._enabled = value.enabled;
+      this._kmsKeyArn = value.kmsKeyArn;
+    }
+  }
+
   // attribute_name - computed: false, optional: false, required: true
   private _attributeName?: string; 
   public get attributeName() {
@@ -452,15 +558,15 @@ export class DynamodbTableTtlOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get attributeNameInput() {
-    return this._attributeName
+    return this._attributeName;
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -468,15 +574,15 @@ export class DynamodbTableTtlOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // kms_key_arn - computed: true, optional: true, required: false
-  private _kmsKeyArn?: string | undefined; 
+  private _kmsKeyArn?: string; 
   public get kmsKeyArn() {
     return this.getStringAttribute('kms_key_arn');
   }
-  public set kmsKeyArn(value: string | undefined) {
+  public set kmsKeyArn(value: string) {
     this._kmsKeyArn = value;
   }
   public resetKmsKeyArn() {
@@ -484,7 +590,7 @@ export class DynamodbTableTtlOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyArnInput() {
-    return this._kmsKeyArn
+    return this._kmsKeyArn;
   }
 }
 
@@ -533,11 +639,11 @@ export class DynamodbTable extends cdktf.TerraformResource {
     this._attribute = config.attribute;
     this._globalSecondaryIndex = config.globalSecondaryIndex;
     this._localSecondaryIndex = config.localSecondaryIndex;
-    this._pointInTimeRecovery = config.pointInTimeRecovery;
+    this._pointInTimeRecovery.internalValue = config.pointInTimeRecovery;
     this._replica = config.replica;
-    this._serverSideEncryption = config.serverSideEncryption;
-    this._timeouts = config.timeouts;
-    this._ttl = config.ttl;
+    this._serverSideEncryption.internalValue = config.serverSideEncryption;
+    this._timeouts.internalValue = config.timeouts;
+    this._ttl.internalValue = config.ttl;
   }
 
   // ==========
@@ -550,11 +656,11 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
 
   // billing_mode - computed: false, optional: true, required: false
-  private _billingMode?: string | undefined; 
+  private _billingMode?: string; 
   public get billingMode() {
     return this.getStringAttribute('billing_mode');
   }
-  public set billingMode(value: string | undefined) {
+  public set billingMode(value: string) {
     this._billingMode = value;
   }
   public resetBillingMode() {
@@ -562,7 +668,7 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get billingModeInput() {
-    return this._billingMode
+    return this._billingMode;
   }
 
   // hash_key - computed: false, optional: false, required: true
@@ -575,7 +681,7 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get hashKeyInput() {
-    return this._hashKey
+    return this._hashKey;
   }
 
   // id - computed: true, optional: true, required: false
@@ -593,15 +699,15 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // range_key - computed: false, optional: true, required: false
-  private _rangeKey?: string | undefined; 
+  private _rangeKey?: string; 
   public get rangeKey() {
     return this.getStringAttribute('range_key');
   }
-  public set rangeKey(value: string | undefined) {
+  public set rangeKey(value: string) {
     this._rangeKey = value;
   }
   public resetRangeKey() {
@@ -609,15 +715,15 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rangeKeyInput() {
-    return this._rangeKey
+    return this._rangeKey;
   }
 
   // read_capacity - computed: false, optional: true, required: false
-  private _readCapacity?: number | undefined; 
+  private _readCapacity?: number; 
   public get readCapacity() {
     return this.getNumberAttribute('read_capacity');
   }
-  public set readCapacity(value: number | undefined) {
+  public set readCapacity(value: number) {
     this._readCapacity = value;
   }
   public resetReadCapacity() {
@@ -625,7 +731,7 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get readCapacityInput() {
-    return this._readCapacity
+    return this._readCapacity;
   }
 
   // stream_arn - computed: true, optional: false, required: false
@@ -634,11 +740,11 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
 
   // stream_enabled - computed: false, optional: true, required: false
-  private _streamEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _streamEnabled?: boolean | cdktf.IResolvable; 
   public get streamEnabled() {
     return this.getBooleanAttribute('stream_enabled') as any;
   }
-  public set streamEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set streamEnabled(value: boolean | cdktf.IResolvable) {
     this._streamEnabled = value;
   }
   public resetStreamEnabled() {
@@ -646,7 +752,7 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get streamEnabledInput() {
-    return this._streamEnabled
+    return this._streamEnabled;
   }
 
   // stream_label - computed: true, optional: false, required: false
@@ -655,11 +761,11 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
 
   // stream_view_type - computed: true, optional: true, required: false
-  private _streamViewType?: string | undefined; 
+  private _streamViewType?: string; 
   public get streamViewType() {
     return this.getStringAttribute('stream_view_type');
   }
-  public set streamViewType(value: string | undefined) {
+  public set streamViewType(value: string) {
     this._streamViewType = value;
   }
   public resetStreamViewType() {
@@ -667,16 +773,16 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get streamViewTypeInput() {
-    return this._streamViewType
+    return this._streamViewType;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -684,16 +790,16 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -701,15 +807,15 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // write_capacity - computed: false, optional: true, required: false
-  private _writeCapacity?: number | undefined; 
+  private _writeCapacity?: number; 
   public get writeCapacity() {
     return this.getNumberAttribute('write_capacity');
   }
-  public set writeCapacity(value: number | undefined) {
+  public set writeCapacity(value: number) {
     this._writeCapacity = value;
   }
   public resetWriteCapacity() {
@@ -717,7 +823,7 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get writeCapacityInput() {
-    return this._writeCapacity
+    return this._writeCapacity;
   }
 
   // attribute - computed: false, optional: false, required: true
@@ -731,16 +837,16 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get attributeInput() {
-    return this._attribute
+    return this._attribute;
   }
 
   // global_secondary_index - computed: false, optional: true, required: false
-  private _globalSecondaryIndex?: DynamodbTableGlobalSecondaryIndex[] | undefined; 
+  private _globalSecondaryIndex?: DynamodbTableGlobalSecondaryIndex[]; 
   public get globalSecondaryIndex() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('global_secondary_index') as any;
   }
-  public set globalSecondaryIndex(value: DynamodbTableGlobalSecondaryIndex[] | undefined) {
+  public set globalSecondaryIndex(value: DynamodbTableGlobalSecondaryIndex[]) {
     this._globalSecondaryIndex = value;
   }
   public resetGlobalSecondaryIndex() {
@@ -748,16 +854,16 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get globalSecondaryIndexInput() {
-    return this._globalSecondaryIndex
+    return this._globalSecondaryIndex;
   }
 
   // local_secondary_index - computed: false, optional: true, required: false
-  private _localSecondaryIndex?: DynamodbTableLocalSecondaryIndex[] | undefined; 
+  private _localSecondaryIndex?: DynamodbTableLocalSecondaryIndex[]; 
   public get localSecondaryIndex() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('local_secondary_index') as any;
   }
-  public set localSecondaryIndex(value: DynamodbTableLocalSecondaryIndex[] | undefined) {
+  public set localSecondaryIndex(value: DynamodbTableLocalSecondaryIndex[]) {
     this._localSecondaryIndex = value;
   }
   public resetLocalSecondaryIndex() {
@@ -765,33 +871,32 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get localSecondaryIndexInput() {
-    return this._localSecondaryIndex
+    return this._localSecondaryIndex;
   }
 
   // point_in_time_recovery - computed: false, optional: true, required: false
-  private _pointInTimeRecovery?: DynamodbTablePointInTimeRecovery | undefined; 
-  private __pointInTimeRecoveryOutput = new DynamodbTablePointInTimeRecoveryOutputReference(this as any, "point_in_time_recovery", true);
+  private _pointInTimeRecovery = new DynamodbTablePointInTimeRecoveryOutputReference(this as any, "point_in_time_recovery", true);
   public get pointInTimeRecovery() {
-    return this.__pointInTimeRecoveryOutput;
+    return this._pointInTimeRecovery;
   }
-  public putPointInTimeRecovery(value: DynamodbTablePointInTimeRecovery | undefined) {
-    this._pointInTimeRecovery = value;
+  public putPointInTimeRecovery(value: DynamodbTablePointInTimeRecovery) {
+    this._pointInTimeRecovery.internalValue = value;
   }
   public resetPointInTimeRecovery() {
-    this._pointInTimeRecovery = undefined;
+    this._pointInTimeRecovery.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get pointInTimeRecoveryInput() {
-    return this._pointInTimeRecovery
+    return this._pointInTimeRecovery.internalValue;
   }
 
   // replica - computed: false, optional: true, required: false
-  private _replica?: DynamodbTableReplica[] | undefined; 
+  private _replica?: DynamodbTableReplica[]; 
   public get replica() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('replica') as any;
   }
-  public set replica(value: DynamodbTableReplica[] | undefined) {
+  public set replica(value: DynamodbTableReplica[]) {
     this._replica = value;
   }
   public resetReplica() {
@@ -799,58 +904,55 @@ export class DynamodbTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get replicaInput() {
-    return this._replica
+    return this._replica;
   }
 
   // server_side_encryption - computed: false, optional: true, required: false
-  private _serverSideEncryption?: DynamodbTableServerSideEncryption | undefined; 
-  private __serverSideEncryptionOutput = new DynamodbTableServerSideEncryptionOutputReference(this as any, "server_side_encryption", true);
+  private _serverSideEncryption = new DynamodbTableServerSideEncryptionOutputReference(this as any, "server_side_encryption", true);
   public get serverSideEncryption() {
-    return this.__serverSideEncryptionOutput;
+    return this._serverSideEncryption;
   }
-  public putServerSideEncryption(value: DynamodbTableServerSideEncryption | undefined) {
-    this._serverSideEncryption = value;
+  public putServerSideEncryption(value: DynamodbTableServerSideEncryption) {
+    this._serverSideEncryption.internalValue = value;
   }
   public resetServerSideEncryption() {
-    this._serverSideEncryption = undefined;
+    this._serverSideEncryption.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get serverSideEncryptionInput() {
-    return this._serverSideEncryption
+    return this._serverSideEncryption.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DynamodbTableTimeouts | undefined; 
-  private __timeoutsOutput = new DynamodbTableTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DynamodbTableTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DynamodbTableTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DynamodbTableTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // ttl - computed: false, optional: true, required: false
-  private _ttl?: DynamodbTableTtl | undefined; 
-  private __ttlOutput = new DynamodbTableTtlOutputReference(this as any, "ttl", true);
+  private _ttl = new DynamodbTableTtlOutputReference(this as any, "ttl", true);
   public get ttl() {
-    return this.__ttlOutput;
+    return this._ttl;
   }
-  public putTtl(value: DynamodbTableTtl | undefined) {
-    this._ttl = value;
+  public putTtl(value: DynamodbTableTtl) {
+    this._ttl.internalValue = value;
   }
   public resetTtl() {
-    this._ttl = undefined;
+    this._ttl.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ttlInput() {
-    return this._ttl
+    return this._ttl.internalValue;
   }
 
   // =========
@@ -872,11 +974,11 @@ export class DynamodbTable extends cdktf.TerraformResource {
       attribute: cdktf.listMapper(dynamodbTableAttributeToTerraform)(this._attribute),
       global_secondary_index: cdktf.listMapper(dynamodbTableGlobalSecondaryIndexToTerraform)(this._globalSecondaryIndex),
       local_secondary_index: cdktf.listMapper(dynamodbTableLocalSecondaryIndexToTerraform)(this._localSecondaryIndex),
-      point_in_time_recovery: dynamodbTablePointInTimeRecoveryToTerraform(this._pointInTimeRecovery),
+      point_in_time_recovery: dynamodbTablePointInTimeRecoveryToTerraform(this._pointInTimeRecovery.internalValue),
       replica: cdktf.listMapper(dynamodbTableReplicaToTerraform)(this._replica),
-      server_side_encryption: dynamodbTableServerSideEncryptionToTerraform(this._serverSideEncryption),
-      timeouts: dynamodbTableTimeoutsToTerraform(this._timeouts),
-      ttl: dynamodbTableTtlToTerraform(this._ttl),
+      server_side_encryption: dynamodbTableServerSideEncryptionToTerraform(this._serverSideEncryption.internalValue),
+      timeouts: dynamodbTableTimeoutsToTerraform(this._timeouts.internalValue),
+      ttl: dynamodbTableTtlToTerraform(this._ttl.internalValue),
     };
   }
 }

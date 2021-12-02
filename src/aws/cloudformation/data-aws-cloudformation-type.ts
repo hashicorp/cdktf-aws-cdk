@@ -135,11 +135,11 @@ export class DataAwsCloudformationType extends cdktf.TerraformDataSource {
   }
 
   // type - computed: true, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -147,7 +147,7 @@ export class DataAwsCloudformationType extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // type_arn - computed: true, optional: false, required: false
@@ -156,11 +156,11 @@ export class DataAwsCloudformationType extends cdktf.TerraformDataSource {
   }
 
   // type_name - computed: true, optional: true, required: false
-  private _typeName?: string | undefined; 
+  private _typeName?: string; 
   public get typeName() {
     return this.getStringAttribute('type_name');
   }
-  public set typeName(value: string | undefined) {
+  public set typeName(value: string) {
     this._typeName = value;
   }
   public resetTypeName() {
@@ -168,15 +168,15 @@ export class DataAwsCloudformationType extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeNameInput() {
-    return this._typeName
+    return this._typeName;
   }
 
   // version_id - computed: false, optional: true, required: false
-  private _versionId?: string | undefined; 
+  private _versionId?: string; 
   public get versionId() {
     return this.getStringAttribute('version_id');
   }
-  public set versionId(value: string | undefined) {
+  public set versionId(value: string) {
     this._versionId = value;
   }
   public resetVersionId() {
@@ -184,7 +184,7 @@ export class DataAwsCloudformationType extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionIdInput() {
-    return this._versionId
+    return this._versionId;
   }
 
   // visibility - computed: true, optional: false, required: false

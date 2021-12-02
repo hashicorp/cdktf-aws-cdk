@@ -77,7 +77,7 @@ export class ApiGatewayResource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parentIdInput() {
-    return this._parentId
+    return this._parentId;
   }
 
   // path - computed: true, optional: false, required: false
@@ -95,7 +95,7 @@ export class ApiGatewayResource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get pathPartInput() {
-    return this._pathPart
+    return this._pathPart;
   }
 
   // rest_api_id - computed: false, optional: false, required: true
@@ -108,7 +108,7 @@ export class ApiGatewayResource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get restApiIdInput() {
-    return this._restApiId
+    return this._restApiId;
   }
 
   // =========

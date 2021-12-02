@@ -144,12 +144,43 @@ export class GlobalacceleratorEndpointGroupTimeoutsOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlobalacceleratorEndpointGroupTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlobalacceleratorEndpointGroupTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -157,15 +188,15 @@ export class GlobalacceleratorEndpointGroupTimeoutsOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -173,15 +204,15 @@ export class GlobalacceleratorEndpointGroupTimeoutsOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -189,7 +220,7 @@ export class GlobalacceleratorEndpointGroupTimeoutsOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -235,7 +266,7 @@ export class GlobalacceleratorEndpointGroup extends cdktf.TerraformResource {
     this._trafficDialPercentage = config.trafficDialPercentage;
     this._endpointConfiguration = config.endpointConfiguration;
     this._portOverride = config.portOverride;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -248,11 +279,11 @@ export class GlobalacceleratorEndpointGroup extends cdktf.TerraformResource {
   }
 
   // endpoint_group_region - computed: true, optional: true, required: false
-  private _endpointGroupRegion?: string | undefined; 
+  private _endpointGroupRegion?: string; 
   public get endpointGroupRegion() {
     return this.getStringAttribute('endpoint_group_region');
   }
-  public set endpointGroupRegion(value: string | undefined) {
+  public set endpointGroupRegion(value: string) {
     this._endpointGroupRegion = value;
   }
   public resetEndpointGroupRegion() {
@@ -260,15 +291,15 @@ export class GlobalacceleratorEndpointGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endpointGroupRegionInput() {
-    return this._endpointGroupRegion
+    return this._endpointGroupRegion;
   }
 
   // health_check_interval_seconds - computed: false, optional: true, required: false
-  private _healthCheckIntervalSeconds?: number | undefined; 
+  private _healthCheckIntervalSeconds?: number; 
   public get healthCheckIntervalSeconds() {
     return this.getNumberAttribute('health_check_interval_seconds');
   }
-  public set healthCheckIntervalSeconds(value: number | undefined) {
+  public set healthCheckIntervalSeconds(value: number) {
     this._healthCheckIntervalSeconds = value;
   }
   public resetHealthCheckIntervalSeconds() {
@@ -276,15 +307,15 @@ export class GlobalacceleratorEndpointGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get healthCheckIntervalSecondsInput() {
-    return this._healthCheckIntervalSeconds
+    return this._healthCheckIntervalSeconds;
   }
 
   // health_check_path - computed: true, optional: true, required: false
-  private _healthCheckPath?: string | undefined; 
+  private _healthCheckPath?: string; 
   public get healthCheckPath() {
     return this.getStringAttribute('health_check_path');
   }
-  public set healthCheckPath(value: string | undefined) {
+  public set healthCheckPath(value: string) {
     this._healthCheckPath = value;
   }
   public resetHealthCheckPath() {
@@ -292,15 +323,15 @@ export class GlobalacceleratorEndpointGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get healthCheckPathInput() {
-    return this._healthCheckPath
+    return this._healthCheckPath;
   }
 
   // health_check_port - computed: true, optional: true, required: false
-  private _healthCheckPort?: number | undefined; 
+  private _healthCheckPort?: number; 
   public get healthCheckPort() {
     return this.getNumberAttribute('health_check_port');
   }
-  public set healthCheckPort(value: number | undefined) {
+  public set healthCheckPort(value: number) {
     this._healthCheckPort = value;
   }
   public resetHealthCheckPort() {
@@ -308,15 +339,15 @@ export class GlobalacceleratorEndpointGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get healthCheckPortInput() {
-    return this._healthCheckPort
+    return this._healthCheckPort;
   }
 
   // health_check_protocol - computed: false, optional: true, required: false
-  private _healthCheckProtocol?: string | undefined; 
+  private _healthCheckProtocol?: string; 
   public get healthCheckProtocol() {
     return this.getStringAttribute('health_check_protocol');
   }
-  public set healthCheckProtocol(value: string | undefined) {
+  public set healthCheckProtocol(value: string) {
     this._healthCheckProtocol = value;
   }
   public resetHealthCheckProtocol() {
@@ -324,7 +355,7 @@ export class GlobalacceleratorEndpointGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get healthCheckProtocolInput() {
-    return this._healthCheckProtocol
+    return this._healthCheckProtocol;
   }
 
   // id - computed: true, optional: true, required: false
@@ -342,15 +373,15 @@ export class GlobalacceleratorEndpointGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get listenerArnInput() {
-    return this._listenerArn
+    return this._listenerArn;
   }
 
   // threshold_count - computed: false, optional: true, required: false
-  private _thresholdCount?: number | undefined; 
+  private _thresholdCount?: number; 
   public get thresholdCount() {
     return this.getNumberAttribute('threshold_count');
   }
-  public set thresholdCount(value: number | undefined) {
+  public set thresholdCount(value: number) {
     this._thresholdCount = value;
   }
   public resetThresholdCount() {
@@ -358,15 +389,15 @@ export class GlobalacceleratorEndpointGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get thresholdCountInput() {
-    return this._thresholdCount
+    return this._thresholdCount;
   }
 
   // traffic_dial_percentage - computed: false, optional: true, required: false
-  private _trafficDialPercentage?: number | undefined; 
+  private _trafficDialPercentage?: number; 
   public get trafficDialPercentage() {
     return this.getNumberAttribute('traffic_dial_percentage');
   }
-  public set trafficDialPercentage(value: number | undefined) {
+  public set trafficDialPercentage(value: number) {
     this._trafficDialPercentage = value;
   }
   public resetTrafficDialPercentage() {
@@ -374,16 +405,16 @@ export class GlobalacceleratorEndpointGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get trafficDialPercentageInput() {
-    return this._trafficDialPercentage
+    return this._trafficDialPercentage;
   }
 
   // endpoint_configuration - computed: false, optional: true, required: false
-  private _endpointConfiguration?: GlobalacceleratorEndpointGroupEndpointConfiguration[] | undefined; 
+  private _endpointConfiguration?: GlobalacceleratorEndpointGroupEndpointConfiguration[]; 
   public get endpointConfiguration() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('endpoint_configuration') as any;
   }
-  public set endpointConfiguration(value: GlobalacceleratorEndpointGroupEndpointConfiguration[] | undefined) {
+  public set endpointConfiguration(value: GlobalacceleratorEndpointGroupEndpointConfiguration[]) {
     this._endpointConfiguration = value;
   }
   public resetEndpointConfiguration() {
@@ -391,16 +422,16 @@ export class GlobalacceleratorEndpointGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endpointConfigurationInput() {
-    return this._endpointConfiguration
+    return this._endpointConfiguration;
   }
 
   // port_override - computed: false, optional: true, required: false
-  private _portOverride?: GlobalacceleratorEndpointGroupPortOverride[] | undefined; 
+  private _portOverride?: GlobalacceleratorEndpointGroupPortOverride[]; 
   public get portOverride() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('port_override') as any;
   }
-  public set portOverride(value: GlobalacceleratorEndpointGroupPortOverride[] | undefined) {
+  public set portOverride(value: GlobalacceleratorEndpointGroupPortOverride[]) {
     this._portOverride = value;
   }
   public resetPortOverride() {
@@ -408,24 +439,23 @@ export class GlobalacceleratorEndpointGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get portOverrideInput() {
-    return this._portOverride
+    return this._portOverride;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: GlobalacceleratorEndpointGroupTimeouts | undefined; 
-  private __timeoutsOutput = new GlobalacceleratorEndpointGroupTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new GlobalacceleratorEndpointGroupTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: GlobalacceleratorEndpointGroupTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: GlobalacceleratorEndpointGroupTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -444,7 +474,7 @@ export class GlobalacceleratorEndpointGroup extends cdktf.TerraformResource {
       traffic_dial_percentage: cdktf.numberToTerraform(this._trafficDialPercentage),
       endpoint_configuration: cdktf.listMapper(globalacceleratorEndpointGroupEndpointConfigurationToTerraform)(this._endpointConfiguration),
       port_override: cdktf.listMapper(globalacceleratorEndpointGroupPortOverrideToTerraform)(this._portOverride),
-      timeouts: globalacceleratorEndpointGroupTimeoutsToTerraform(this._timeouts),
+      timeouts: globalacceleratorEndpointGroupTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

@@ -113,6 +113,25 @@ export class LambdaEventSourceMappingDestinationConfigOnFailureOutputReference e
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LambdaEventSourceMappingDestinationConfigOnFailure | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._destinationArn) {
+      hasAnyValues = true;
+      internalValueResult.destinationArn = this._destinationArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LambdaEventSourceMappingDestinationConfigOnFailure | undefined) {
+    if (value === undefined) {
+      this._destinationArn = undefined;
+    }
+    else {
+      this._destinationArn = value.destinationArn;
+    }
+  }
+
   // destination_arn - computed: false, optional: false, required: true
   private _destinationArn?: string; 
   public get destinationArn() {
@@ -123,7 +142,7 @@ export class LambdaEventSourceMappingDestinationConfigOnFailureOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get destinationArnInput() {
-    return this._destinationArn
+    return this._destinationArn;
   }
 }
 export interface LambdaEventSourceMappingDestinationConfig {
@@ -155,21 +174,39 @@ export class LambdaEventSourceMappingDestinationConfigOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // on_failure - computed: false, optional: true, required: false
-  private _onFailure?: LambdaEventSourceMappingDestinationConfigOnFailure | undefined; 
-  private __onFailureOutput = new LambdaEventSourceMappingDestinationConfigOnFailureOutputReference(this as any, "on_failure", true);
-  public get onFailure() {
-    return this.__onFailureOutput;
+  public get internalValue(): LambdaEventSourceMappingDestinationConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._onFailure) {
+      hasAnyValues = true;
+      internalValueResult.onFailure = this._onFailure?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putOnFailure(value: LambdaEventSourceMappingDestinationConfigOnFailure | undefined) {
-    this._onFailure = value;
+
+  public set internalValue(value: LambdaEventSourceMappingDestinationConfig | undefined) {
+    if (value === undefined) {
+      this._onFailure.internalValue = undefined;
+    }
+    else {
+      this._onFailure.internalValue = value.onFailure;
+    }
+  }
+
+  // on_failure - computed: false, optional: true, required: false
+  private _onFailure = new LambdaEventSourceMappingDestinationConfigOnFailureOutputReference(this as any, "on_failure", true);
+  public get onFailure() {
+    return this._onFailure;
+  }
+  public putOnFailure(value: LambdaEventSourceMappingDestinationConfigOnFailure) {
+    this._onFailure.internalValue = value;
   }
   public resetOnFailure() {
-    this._onFailure = undefined;
+    this._onFailure.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get onFailureInput() {
-    return this._onFailure
+    return this._onFailure.internalValue;
   }
 }
 export interface LambdaEventSourceMappingSelfManagedEventSource {
@@ -199,6 +236,25 @@ export class LambdaEventSourceMappingSelfManagedEventSourceOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LambdaEventSourceMappingSelfManagedEventSource | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._endpoints) {
+      hasAnyValues = true;
+      internalValueResult.endpoints = this._endpoints;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LambdaEventSourceMappingSelfManagedEventSource | undefined) {
+    if (value === undefined) {
+      this._endpoints = undefined;
+    }
+    else {
+      this._endpoints = value.endpoints;
+    }
+  }
+
   // endpoints - computed: false, optional: false, required: true
   private _endpoints?: { [key: string]: string } | cdktf.IResolvable; 
   public get endpoints() {
@@ -210,7 +266,7 @@ export class LambdaEventSourceMappingSelfManagedEventSourceOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get endpointsInput() {
-    return this._endpoints
+    return this._endpoints;
   }
 }
 export interface LambdaEventSourceMappingSourceAccessConfiguration {
@@ -283,8 +339,8 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
     this._startingPositionTimestamp = config.startingPositionTimestamp;
     this._topics = config.topics;
     this._tumblingWindowInSeconds = config.tumblingWindowInSeconds;
-    this._destinationConfig = config.destinationConfig;
-    this._selfManagedEventSource = config.selfManagedEventSource;
+    this._destinationConfig.internalValue = config.destinationConfig;
+    this._selfManagedEventSource.internalValue = config.selfManagedEventSource;
     this._sourceAccessConfiguration = config.sourceAccessConfiguration;
   }
 
@@ -293,11 +349,11 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   // ==========
 
   // batch_size - computed: false, optional: true, required: false
-  private _batchSize?: number | undefined; 
+  private _batchSize?: number; 
   public get batchSize() {
     return this.getNumberAttribute('batch_size');
   }
-  public set batchSize(value: number | undefined) {
+  public set batchSize(value: number) {
     this._batchSize = value;
   }
   public resetBatchSize() {
@@ -305,15 +361,15 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get batchSizeInput() {
-    return this._batchSize
+    return this._batchSize;
   }
 
   // bisect_batch_on_function_error - computed: false, optional: true, required: false
-  private _bisectBatchOnFunctionError?: boolean | cdktf.IResolvable | undefined; 
+  private _bisectBatchOnFunctionError?: boolean | cdktf.IResolvable; 
   public get bisectBatchOnFunctionError() {
     return this.getBooleanAttribute('bisect_batch_on_function_error') as any;
   }
-  public set bisectBatchOnFunctionError(value: boolean | cdktf.IResolvable | undefined) {
+  public set bisectBatchOnFunctionError(value: boolean | cdktf.IResolvable) {
     this._bisectBatchOnFunctionError = value;
   }
   public resetBisectBatchOnFunctionError() {
@@ -321,15 +377,15 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bisectBatchOnFunctionErrorInput() {
-    return this._bisectBatchOnFunctionError
+    return this._bisectBatchOnFunctionError;
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -337,15 +393,15 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // event_source_arn - computed: false, optional: true, required: false
-  private _eventSourceArn?: string | undefined; 
+  private _eventSourceArn?: string; 
   public get eventSourceArn() {
     return this.getStringAttribute('event_source_arn');
   }
-  public set eventSourceArn(value: string | undefined) {
+  public set eventSourceArn(value: string) {
     this._eventSourceArn = value;
   }
   public resetEventSourceArn() {
@@ -353,7 +409,7 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get eventSourceArnInput() {
-    return this._eventSourceArn
+    return this._eventSourceArn;
   }
 
   // function_arn - computed: true, optional: false, required: false
@@ -371,15 +427,15 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get functionNameInput() {
-    return this._functionName
+    return this._functionName;
   }
 
   // function_response_types - computed: false, optional: true, required: false
-  private _functionResponseTypes?: string[] | undefined; 
+  private _functionResponseTypes?: string[]; 
   public get functionResponseTypes() {
     return this.getListAttribute('function_response_types');
   }
-  public set functionResponseTypes(value: string[] | undefined) {
+  public set functionResponseTypes(value: string[]) {
     this._functionResponseTypes = value;
   }
   public resetFunctionResponseTypes() {
@@ -387,7 +443,7 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get functionResponseTypesInput() {
-    return this._functionResponseTypes
+    return this._functionResponseTypes;
   }
 
   // id - computed: true, optional: true, required: false
@@ -406,11 +462,11 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
 
   // maximum_batching_window_in_seconds - computed: false, optional: true, required: false
-  private _maximumBatchingWindowInSeconds?: number | undefined; 
+  private _maximumBatchingWindowInSeconds?: number; 
   public get maximumBatchingWindowInSeconds() {
     return this.getNumberAttribute('maximum_batching_window_in_seconds');
   }
-  public set maximumBatchingWindowInSeconds(value: number | undefined) {
+  public set maximumBatchingWindowInSeconds(value: number) {
     this._maximumBatchingWindowInSeconds = value;
   }
   public resetMaximumBatchingWindowInSeconds() {
@@ -418,15 +474,15 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maximumBatchingWindowInSecondsInput() {
-    return this._maximumBatchingWindowInSeconds
+    return this._maximumBatchingWindowInSeconds;
   }
 
   // maximum_record_age_in_seconds - computed: true, optional: true, required: false
-  private _maximumRecordAgeInSeconds?: number | undefined; 
+  private _maximumRecordAgeInSeconds?: number; 
   public get maximumRecordAgeInSeconds() {
     return this.getNumberAttribute('maximum_record_age_in_seconds');
   }
-  public set maximumRecordAgeInSeconds(value: number | undefined) {
+  public set maximumRecordAgeInSeconds(value: number) {
     this._maximumRecordAgeInSeconds = value;
   }
   public resetMaximumRecordAgeInSeconds() {
@@ -434,15 +490,15 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maximumRecordAgeInSecondsInput() {
-    return this._maximumRecordAgeInSeconds
+    return this._maximumRecordAgeInSeconds;
   }
 
   // maximum_retry_attempts - computed: true, optional: true, required: false
-  private _maximumRetryAttempts?: number | undefined; 
+  private _maximumRetryAttempts?: number; 
   public get maximumRetryAttempts() {
     return this.getNumberAttribute('maximum_retry_attempts');
   }
-  public set maximumRetryAttempts(value: number | undefined) {
+  public set maximumRetryAttempts(value: number) {
     this._maximumRetryAttempts = value;
   }
   public resetMaximumRetryAttempts() {
@@ -450,15 +506,15 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maximumRetryAttemptsInput() {
-    return this._maximumRetryAttempts
+    return this._maximumRetryAttempts;
   }
 
   // parallelization_factor - computed: true, optional: true, required: false
-  private _parallelizationFactor?: number | undefined; 
+  private _parallelizationFactor?: number; 
   public get parallelizationFactor() {
     return this.getNumberAttribute('parallelization_factor');
   }
-  public set parallelizationFactor(value: number | undefined) {
+  public set parallelizationFactor(value: number) {
     this._parallelizationFactor = value;
   }
   public resetParallelizationFactor() {
@@ -466,15 +522,15 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parallelizationFactorInput() {
-    return this._parallelizationFactor
+    return this._parallelizationFactor;
   }
 
   // queues - computed: false, optional: true, required: false
-  private _queues?: string[] | undefined; 
+  private _queues?: string[]; 
   public get queues() {
     return this.getListAttribute('queues');
   }
-  public set queues(value: string[] | undefined) {
+  public set queues(value: string[]) {
     this._queues = value;
   }
   public resetQueues() {
@@ -482,15 +538,15 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get queuesInput() {
-    return this._queues
+    return this._queues;
   }
 
   // starting_position - computed: false, optional: true, required: false
-  private _startingPosition?: string | undefined; 
+  private _startingPosition?: string; 
   public get startingPosition() {
     return this.getStringAttribute('starting_position');
   }
-  public set startingPosition(value: string | undefined) {
+  public set startingPosition(value: string) {
     this._startingPosition = value;
   }
   public resetStartingPosition() {
@@ -498,15 +554,15 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get startingPositionInput() {
-    return this._startingPosition
+    return this._startingPosition;
   }
 
   // starting_position_timestamp - computed: false, optional: true, required: false
-  private _startingPositionTimestamp?: string | undefined; 
+  private _startingPositionTimestamp?: string; 
   public get startingPositionTimestamp() {
     return this.getStringAttribute('starting_position_timestamp');
   }
-  public set startingPositionTimestamp(value: string | undefined) {
+  public set startingPositionTimestamp(value: string) {
     this._startingPositionTimestamp = value;
   }
   public resetStartingPositionTimestamp() {
@@ -514,7 +570,7 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get startingPositionTimestampInput() {
-    return this._startingPositionTimestamp
+    return this._startingPositionTimestamp;
   }
 
   // state - computed: true, optional: false, required: false
@@ -528,11 +584,11 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
 
   // topics - computed: false, optional: true, required: false
-  private _topics?: string[] | undefined; 
+  private _topics?: string[]; 
   public get topics() {
     return this.getListAttribute('topics');
   }
-  public set topics(value: string[] | undefined) {
+  public set topics(value: string[]) {
     this._topics = value;
   }
   public resetTopics() {
@@ -540,15 +596,15 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get topicsInput() {
-    return this._topics
+    return this._topics;
   }
 
   // tumbling_window_in_seconds - computed: false, optional: true, required: false
-  private _tumblingWindowInSeconds?: number | undefined; 
+  private _tumblingWindowInSeconds?: number; 
   public get tumblingWindowInSeconds() {
     return this.getNumberAttribute('tumbling_window_in_seconds');
   }
-  public set tumblingWindowInSeconds(value: number | undefined) {
+  public set tumblingWindowInSeconds(value: number) {
     this._tumblingWindowInSeconds = value;
   }
   public resetTumblingWindowInSeconds() {
@@ -556,7 +612,7 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tumblingWindowInSecondsInput() {
-    return this._tumblingWindowInSeconds
+    return this._tumblingWindowInSeconds;
   }
 
   // uuid - computed: true, optional: false, required: false
@@ -565,46 +621,44 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
 
   // destination_config - computed: false, optional: true, required: false
-  private _destinationConfig?: LambdaEventSourceMappingDestinationConfig | undefined; 
-  private __destinationConfigOutput = new LambdaEventSourceMappingDestinationConfigOutputReference(this as any, "destination_config", true);
+  private _destinationConfig = new LambdaEventSourceMappingDestinationConfigOutputReference(this as any, "destination_config", true);
   public get destinationConfig() {
-    return this.__destinationConfigOutput;
+    return this._destinationConfig;
   }
-  public putDestinationConfig(value: LambdaEventSourceMappingDestinationConfig | undefined) {
-    this._destinationConfig = value;
+  public putDestinationConfig(value: LambdaEventSourceMappingDestinationConfig) {
+    this._destinationConfig.internalValue = value;
   }
   public resetDestinationConfig() {
-    this._destinationConfig = undefined;
+    this._destinationConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get destinationConfigInput() {
-    return this._destinationConfig
+    return this._destinationConfig.internalValue;
   }
 
   // self_managed_event_source - computed: false, optional: true, required: false
-  private _selfManagedEventSource?: LambdaEventSourceMappingSelfManagedEventSource | undefined; 
-  private __selfManagedEventSourceOutput = new LambdaEventSourceMappingSelfManagedEventSourceOutputReference(this as any, "self_managed_event_source", true);
+  private _selfManagedEventSource = new LambdaEventSourceMappingSelfManagedEventSourceOutputReference(this as any, "self_managed_event_source", true);
   public get selfManagedEventSource() {
-    return this.__selfManagedEventSourceOutput;
+    return this._selfManagedEventSource;
   }
-  public putSelfManagedEventSource(value: LambdaEventSourceMappingSelfManagedEventSource | undefined) {
-    this._selfManagedEventSource = value;
+  public putSelfManagedEventSource(value: LambdaEventSourceMappingSelfManagedEventSource) {
+    this._selfManagedEventSource.internalValue = value;
   }
   public resetSelfManagedEventSource() {
-    this._selfManagedEventSource = undefined;
+    this._selfManagedEventSource.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get selfManagedEventSourceInput() {
-    return this._selfManagedEventSource
+    return this._selfManagedEventSource.internalValue;
   }
 
   // source_access_configuration - computed: false, optional: true, required: false
-  private _sourceAccessConfiguration?: LambdaEventSourceMappingSourceAccessConfiguration[] | undefined; 
+  private _sourceAccessConfiguration?: LambdaEventSourceMappingSourceAccessConfiguration[]; 
   public get sourceAccessConfiguration() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('source_access_configuration') as any;
   }
-  public set sourceAccessConfiguration(value: LambdaEventSourceMappingSourceAccessConfiguration[] | undefined) {
+  public set sourceAccessConfiguration(value: LambdaEventSourceMappingSourceAccessConfiguration[]) {
     this._sourceAccessConfiguration = value;
   }
   public resetSourceAccessConfiguration() {
@@ -612,7 +666,7 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceAccessConfigurationInput() {
-    return this._sourceAccessConfiguration
+    return this._sourceAccessConfiguration;
   }
 
   // =========
@@ -636,8 +690,8 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
       starting_position_timestamp: cdktf.stringToTerraform(this._startingPositionTimestamp),
       topics: cdktf.listMapper(cdktf.stringToTerraform)(this._topics),
       tumbling_window_in_seconds: cdktf.numberToTerraform(this._tumblingWindowInSeconds),
-      destination_config: lambdaEventSourceMappingDestinationConfigToTerraform(this._destinationConfig),
-      self_managed_event_source: lambdaEventSourceMappingSelfManagedEventSourceToTerraform(this._selfManagedEventSource),
+      destination_config: lambdaEventSourceMappingDestinationConfigToTerraform(this._destinationConfig.internalValue),
+      self_managed_event_source: lambdaEventSourceMappingSelfManagedEventSourceToTerraform(this._selfManagedEventSource.internalValue),
       source_access_configuration: cdktf.listMapper(lambdaEventSourceMappingSourceAccessConfigurationToTerraform)(this._sourceAccessConfiguration),
     };
   }

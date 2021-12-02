@@ -67,7 +67,7 @@ export class CloudwatchLogDestinationPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accessPolicyInput() {
-    return this._accessPolicy
+    return this._accessPolicy;
   }
 
   // destination_name - computed: false, optional: false, required: true
@@ -80,7 +80,7 @@ export class CloudwatchLogDestinationPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get destinationNameInput() {
-    return this._destinationName
+    return this._destinationName;
   }
 
   // id - computed: true, optional: true, required: false

@@ -63,12 +63,31 @@ export class Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTarget
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResource | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResource | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+    }
+    else {
+      this._arn = value.arn;
+    }
+  }
+
   // arn - computed: false, optional: true, required: false
-  private _arn?: string | undefined; 
+  private _arn?: string; 
   public get arn() {
     return this.getStringAttribute('arn');
   }
-  public set arn(value: string | undefined) {
+  public set arn(value: string) {
     this._arn = value;
   }
   public resetArn() {
@@ -76,7 +95,7 @@ export class Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTarget
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 }
 export interface Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53Resource {
@@ -111,12 +130,37 @@ export class Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTarget
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53Resource | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._domainName) {
+      hasAnyValues = true;
+      internalValueResult.domainName = this._domainName;
+    }
+    if (this._recordSetId) {
+      hasAnyValues = true;
+      internalValueResult.recordSetId = this._recordSetId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53Resource | undefined) {
+    if (value === undefined) {
+      this._domainName = undefined;
+      this._recordSetId = undefined;
+    }
+    else {
+      this._domainName = value.domainName;
+      this._recordSetId = value.recordSetId;
+    }
+  }
+
   // domain_name - computed: false, optional: true, required: false
-  private _domainName?: string | undefined; 
+  private _domainName?: string; 
   public get domainName() {
     return this.getStringAttribute('domain_name');
   }
-  public set domainName(value: string | undefined) {
+  public set domainName(value: string) {
     this._domainName = value;
   }
   public resetDomainName() {
@@ -124,15 +168,15 @@ export class Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTarget
   }
   // Temporarily expose input value. Use with caution.
   public get domainNameInput() {
-    return this._domainName
+    return this._domainName;
   }
 
   // record_set_id - computed: false, optional: true, required: false
-  private _recordSetId?: string | undefined; 
+  private _recordSetId?: string; 
   public get recordSetId() {
     return this.getStringAttribute('record_set_id');
   }
-  public set recordSetId(value: string | undefined) {
+  public set recordSetId(value: string) {
     this._recordSetId = value;
   }
   public resetRecordSetId() {
@@ -140,7 +184,7 @@ export class Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTarget
   }
   // Temporarily expose input value. Use with caution.
   public get recordSetIdInput() {
-    return this._recordSetId
+    return this._recordSetId;
   }
 }
 export interface Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResource {
@@ -179,38 +223,61 @@ export class Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTarget
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // nlb_resource - computed: false, optional: true, required: false
-  private _nlbResource?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResource | undefined; 
-  private __nlbResourceOutput = new Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResourceOutputReference(this as any, "nlb_resource", true);
-  public get nlbResource() {
-    return this.__nlbResourceOutput;
+  public get internalValue(): Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResource | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._nlbResource) {
+      hasAnyValues = true;
+      internalValueResult.nlbResource = this._nlbResource?.internalValue;
+    }
+    if (this._r53Resource) {
+      hasAnyValues = true;
+      internalValueResult.r53Resource = this._r53Resource?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putNlbResource(value: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResource | undefined) {
-    this._nlbResource = value;
+
+  public set internalValue(value: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResource | undefined) {
+    if (value === undefined) {
+      this._nlbResource.internalValue = undefined;
+      this._r53Resource.internalValue = undefined;
+    }
+    else {
+      this._nlbResource.internalValue = value.nlbResource;
+      this._r53Resource.internalValue = value.r53Resource;
+    }
+  }
+
+  // nlb_resource - computed: false, optional: true, required: false
+  private _nlbResource = new Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResourceOutputReference(this as any, "nlb_resource", true);
+  public get nlbResource() {
+    return this._nlbResource;
+  }
+  public putNlbResource(value: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResource) {
+    this._nlbResource.internalValue = value;
   }
   public resetNlbResource() {
-    this._nlbResource = undefined;
+    this._nlbResource.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get nlbResourceInput() {
-    return this._nlbResource
+    return this._nlbResource.internalValue;
   }
 
   // r53_resource - computed: false, optional: true, required: false
-  private _r53Resource?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53Resource | undefined; 
-  private __r53ResourceOutput = new Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53ResourceOutputReference(this as any, "r53_resource", true);
+  private _r53Resource = new Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53ResourceOutputReference(this as any, "r53_resource", true);
   public get r53Resource() {
-    return this.__r53ResourceOutput;
+    return this._r53Resource;
   }
-  public putR53Resource(value: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53Resource | undefined) {
-    this._r53Resource = value;
+  public putR53Resource(value: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53Resource) {
+    this._r53Resource.internalValue = value;
   }
   public resetR53Resource() {
-    this._r53Resource = undefined;
+    this._r53Resource.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get r53ResourceInput() {
-    return this._r53Resource
+    return this._r53Resource.internalValue;
   }
 }
 export interface Route53RecoveryreadinessResourceSetResourcesDnsTargetResource {
@@ -262,6 +329,49 @@ export class Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceOutput
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Route53RecoveryreadinessResourceSetResourcesDnsTargetResource | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._domainName) {
+      hasAnyValues = true;
+      internalValueResult.domainName = this._domainName;
+    }
+    if (this._hostedZoneArn) {
+      hasAnyValues = true;
+      internalValueResult.hostedZoneArn = this._hostedZoneArn;
+    }
+    if (this._recordSetId) {
+      hasAnyValues = true;
+      internalValueResult.recordSetId = this._recordSetId;
+    }
+    if (this._recordType) {
+      hasAnyValues = true;
+      internalValueResult.recordType = this._recordType;
+    }
+    if (this._targetResource) {
+      hasAnyValues = true;
+      internalValueResult.targetResource = this._targetResource?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Route53RecoveryreadinessResourceSetResourcesDnsTargetResource | undefined) {
+    if (value === undefined) {
+      this._domainName = undefined;
+      this._hostedZoneArn = undefined;
+      this._recordSetId = undefined;
+      this._recordType = undefined;
+      this._targetResource.internalValue = undefined;
+    }
+    else {
+      this._domainName = value.domainName;
+      this._hostedZoneArn = value.hostedZoneArn;
+      this._recordSetId = value.recordSetId;
+      this._recordType = value.recordType;
+      this._targetResource.internalValue = value.targetResource;
+    }
+  }
+
   // domain_name - computed: false, optional: false, required: true
   private _domainName?: string; 
   public get domainName() {
@@ -272,15 +382,15 @@ export class Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceOutput
   }
   // Temporarily expose input value. Use with caution.
   public get domainNameInput() {
-    return this._domainName
+    return this._domainName;
   }
 
   // hosted_zone_arn - computed: false, optional: true, required: false
-  private _hostedZoneArn?: string | undefined; 
+  private _hostedZoneArn?: string; 
   public get hostedZoneArn() {
     return this.getStringAttribute('hosted_zone_arn');
   }
-  public set hostedZoneArn(value: string | undefined) {
+  public set hostedZoneArn(value: string) {
     this._hostedZoneArn = value;
   }
   public resetHostedZoneArn() {
@@ -288,15 +398,15 @@ export class Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceOutput
   }
   // Temporarily expose input value. Use with caution.
   public get hostedZoneArnInput() {
-    return this._hostedZoneArn
+    return this._hostedZoneArn;
   }
 
   // record_set_id - computed: false, optional: true, required: false
-  private _recordSetId?: string | undefined; 
+  private _recordSetId?: string; 
   public get recordSetId() {
     return this.getStringAttribute('record_set_id');
   }
-  public set recordSetId(value: string | undefined) {
+  public set recordSetId(value: string) {
     this._recordSetId = value;
   }
   public resetRecordSetId() {
@@ -304,15 +414,15 @@ export class Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceOutput
   }
   // Temporarily expose input value. Use with caution.
   public get recordSetIdInput() {
-    return this._recordSetId
+    return this._recordSetId;
   }
 
   // record_type - computed: false, optional: true, required: false
-  private _recordType?: string | undefined; 
+  private _recordType?: string; 
   public get recordType() {
     return this.getStringAttribute('record_type');
   }
-  public set recordType(value: string | undefined) {
+  public set recordType(value: string) {
     this._recordType = value;
   }
   public resetRecordType() {
@@ -320,24 +430,23 @@ export class Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceOutput
   }
   // Temporarily expose input value. Use with caution.
   public get recordTypeInput() {
-    return this._recordType
+    return this._recordType;
   }
 
   // target_resource - computed: false, optional: true, required: false
-  private _targetResource?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResource | undefined; 
-  private __targetResourceOutput = new Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceOutputReference(this as any, "target_resource", true);
+  private _targetResource = new Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceOutputReference(this as any, "target_resource", true);
   public get targetResource() {
-    return this.__targetResourceOutput;
+    return this._targetResource;
   }
-  public putTargetResource(value: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResource | undefined) {
-    this._targetResource = value;
+  public putTargetResource(value: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResource) {
+    this._targetResource.internalValue = value;
   }
   public resetTargetResource() {
-    this._targetResource = undefined;
+    this._targetResource.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get targetResourceInput() {
-    return this._targetResource
+    return this._targetResource.internalValue;
   }
 }
 export interface Route53RecoveryreadinessResourceSetResources {
@@ -396,12 +505,31 @@ export class Route53RecoveryreadinessResourceSetTimeoutsOutputReference extends 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Route53RecoveryreadinessResourceSetTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Route53RecoveryreadinessResourceSetTimeouts | undefined) {
+    if (value === undefined) {
+      this._delete = undefined;
+    }
+    else {
+      this._delete = value.delete;
+    }
+  }
+
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -409,7 +537,7 @@ export class Route53RecoveryreadinessResourceSetTimeoutsOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -450,7 +578,7 @@ export class Route53RecoveryreadinessResourceSet extends cdktf.TerraformResource
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._resources = config.resources;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -477,7 +605,7 @@ export class Route53RecoveryreadinessResourceSet extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get resourceSetNameInput() {
-    return this._resourceSetName
+    return this._resourceSetName;
   }
 
   // resource_set_type - computed: false, optional: false, required: true
@@ -490,16 +618,16 @@ export class Route53RecoveryreadinessResourceSet extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get resourceSetTypeInput() {
-    return this._resourceSetType
+    return this._resourceSetType;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -507,16 +635,16 @@ export class Route53RecoveryreadinessResourceSet extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -524,7 +652,7 @@ export class Route53RecoveryreadinessResourceSet extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // resources - computed: false, optional: false, required: true
@@ -538,24 +666,23 @@ export class Route53RecoveryreadinessResourceSet extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get resourcesInput() {
-    return this._resources
+    return this._resources;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: Route53RecoveryreadinessResourceSetTimeouts | undefined; 
-  private __timeoutsOutput = new Route53RecoveryreadinessResourceSetTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new Route53RecoveryreadinessResourceSetTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: Route53RecoveryreadinessResourceSetTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: Route53RecoveryreadinessResourceSetTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -569,7 +696,7 @@ export class Route53RecoveryreadinessResourceSet extends cdktf.TerraformResource
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       resources: cdktf.listMapper(route53RecoveryreadinessResourceSetResourcesToTerraform)(this._resources),
-      timeouts: route53RecoveryreadinessResourceSetTimeoutsToTerraform(this._timeouts),
+      timeouts: route53RecoveryreadinessResourceSetTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

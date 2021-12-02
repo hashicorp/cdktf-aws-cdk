@@ -73,6 +73,25 @@ export class S3BucketInventoryDestinationBucketEncryptionSseKmsOutputReference e
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketInventoryDestinationBucketEncryptionSseKms | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._keyId) {
+      hasAnyValues = true;
+      internalValueResult.keyId = this._keyId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketInventoryDestinationBucketEncryptionSseKms | undefined) {
+    if (value === undefined) {
+      this._keyId = undefined;
+    }
+    else {
+      this._keyId = value.keyId;
+    }
+  }
+
   // key_id - computed: false, optional: false, required: true
   private _keyId?: string; 
   public get keyId() {
@@ -83,7 +102,7 @@ export class S3BucketInventoryDestinationBucketEncryptionSseKmsOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get keyIdInput() {
-    return this._keyId
+    return this._keyId;
   }
 }
 export interface S3BucketInventoryDestinationBucketEncryptionSseS3 {
@@ -106,6 +125,19 @@ export class S3BucketInventoryDestinationBucketEncryptionSseS3OutputReference ex
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): S3BucketInventoryDestinationBucketEncryptionSseS3 | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketInventoryDestinationBucketEncryptionSseS3 | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface S3BucketInventoryDestinationBucketEncryption {
@@ -144,38 +176,61 @@ export class S3BucketInventoryDestinationBucketEncryptionOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // sse_kms - computed: false, optional: true, required: false
-  private _sseKms?: S3BucketInventoryDestinationBucketEncryptionSseKms | undefined; 
-  private __sseKmsOutput = new S3BucketInventoryDestinationBucketEncryptionSseKmsOutputReference(this as any, "sse_kms", true);
-  public get sseKms() {
-    return this.__sseKmsOutput;
+  public get internalValue(): S3BucketInventoryDestinationBucketEncryption | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._sseKms) {
+      hasAnyValues = true;
+      internalValueResult.sseKms = this._sseKms?.internalValue;
+    }
+    if (this._sseS3) {
+      hasAnyValues = true;
+      internalValueResult.sseS3 = this._sseS3?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putSseKms(value: S3BucketInventoryDestinationBucketEncryptionSseKms | undefined) {
-    this._sseKms = value;
+
+  public set internalValue(value: S3BucketInventoryDestinationBucketEncryption | undefined) {
+    if (value === undefined) {
+      this._sseKms.internalValue = undefined;
+      this._sseS3.internalValue = undefined;
+    }
+    else {
+      this._sseKms.internalValue = value.sseKms;
+      this._sseS3.internalValue = value.sseS3;
+    }
+  }
+
+  // sse_kms - computed: false, optional: true, required: false
+  private _sseKms = new S3BucketInventoryDestinationBucketEncryptionSseKmsOutputReference(this as any, "sse_kms", true);
+  public get sseKms() {
+    return this._sseKms;
+  }
+  public putSseKms(value: S3BucketInventoryDestinationBucketEncryptionSseKms) {
+    this._sseKms.internalValue = value;
   }
   public resetSseKms() {
-    this._sseKms = undefined;
+    this._sseKms.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get sseKmsInput() {
-    return this._sseKms
+    return this._sseKms.internalValue;
   }
 
   // sse_s3 - computed: false, optional: true, required: false
-  private _sseS3?: S3BucketInventoryDestinationBucketEncryptionSseS3 | undefined; 
-  private __sseS3Output = new S3BucketInventoryDestinationBucketEncryptionSseS3OutputReference(this as any, "sse_s3", true);
+  private _sseS3 = new S3BucketInventoryDestinationBucketEncryptionSseS3OutputReference(this as any, "sse_s3", true);
   public get sseS3() {
-    return this.__sseS3Output;
+    return this._sseS3;
   }
-  public putSseS3(value: S3BucketInventoryDestinationBucketEncryptionSseS3 | undefined) {
-    this._sseS3 = value;
+  public putSseS3(value: S3BucketInventoryDestinationBucketEncryptionSseS3) {
+    this._sseS3.internalValue = value;
   }
   public resetSseS3() {
-    this._sseS3 = undefined;
+    this._sseS3.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get sseS3Input() {
-    return this._sseS3
+    return this._sseS3.internalValue;
   }
 }
 export interface S3BucketInventoryDestinationBucket {
@@ -227,12 +282,55 @@ export class S3BucketInventoryDestinationBucketOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketInventoryDestinationBucket | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._accountId) {
+      hasAnyValues = true;
+      internalValueResult.accountId = this._accountId;
+    }
+    if (this._bucketArn) {
+      hasAnyValues = true;
+      internalValueResult.bucketArn = this._bucketArn;
+    }
+    if (this._format) {
+      hasAnyValues = true;
+      internalValueResult.format = this._format;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._encryption) {
+      hasAnyValues = true;
+      internalValueResult.encryption = this._encryption?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketInventoryDestinationBucket | undefined) {
+    if (value === undefined) {
+      this._accountId = undefined;
+      this._bucketArn = undefined;
+      this._format = undefined;
+      this._prefix = undefined;
+      this._encryption.internalValue = undefined;
+    }
+    else {
+      this._accountId = value.accountId;
+      this._bucketArn = value.bucketArn;
+      this._format = value.format;
+      this._prefix = value.prefix;
+      this._encryption.internalValue = value.encryption;
+    }
+  }
+
   // account_id - computed: false, optional: true, required: false
-  private _accountId?: string | undefined; 
+  private _accountId?: string; 
   public get accountId() {
     return this.getStringAttribute('account_id');
   }
-  public set accountId(value: string | undefined) {
+  public set accountId(value: string) {
     this._accountId = value;
   }
   public resetAccountId() {
@@ -240,7 +338,7 @@ export class S3BucketInventoryDestinationBucketOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdInput() {
-    return this._accountId
+    return this._accountId;
   }
 
   // bucket_arn - computed: false, optional: false, required: true
@@ -253,7 +351,7 @@ export class S3BucketInventoryDestinationBucketOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get bucketArnInput() {
-    return this._bucketArn
+    return this._bucketArn;
   }
 
   // format - computed: false, optional: false, required: true
@@ -266,15 +364,15 @@ export class S3BucketInventoryDestinationBucketOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get formatInput() {
-    return this._format
+    return this._format;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -282,24 +380,23 @@ export class S3BucketInventoryDestinationBucketOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // encryption - computed: false, optional: true, required: false
-  private _encryption?: S3BucketInventoryDestinationBucketEncryption | undefined; 
-  private __encryptionOutput = new S3BucketInventoryDestinationBucketEncryptionOutputReference(this as any, "encryption", true);
+  private _encryption = new S3BucketInventoryDestinationBucketEncryptionOutputReference(this as any, "encryption", true);
   public get encryption() {
-    return this.__encryptionOutput;
+    return this._encryption;
   }
-  public putEncryption(value: S3BucketInventoryDestinationBucketEncryption | undefined) {
-    this._encryption = value;
+  public putEncryption(value: S3BucketInventoryDestinationBucketEncryption) {
+    this._encryption.internalValue = value;
   }
   public resetEncryption() {
-    this._encryption = undefined;
+    this._encryption.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionInput() {
-    return this._encryption
+    return this._encryption.internalValue;
   }
 }
 export interface S3BucketInventoryDestination {
@@ -331,18 +428,36 @@ export class S3BucketInventoryDestinationOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketInventoryDestination | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucket) {
+      hasAnyValues = true;
+      internalValueResult.bucket = this._bucket?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketInventoryDestination | undefined) {
+    if (value === undefined) {
+      this._bucket.internalValue = undefined;
+    }
+    else {
+      this._bucket.internalValue = value.bucket;
+    }
+  }
+
   // bucket - computed: false, optional: false, required: true
-  private _bucket?: S3BucketInventoryDestinationBucket; 
-  private __bucketOutput = new S3BucketInventoryDestinationBucketOutputReference(this as any, "bucket", true);
+  private _bucket = new S3BucketInventoryDestinationBucketOutputReference(this as any, "bucket", true);
   public get bucket() {
-    return this.__bucketOutput;
+    return this._bucket;
   }
   public putBucket(value: S3BucketInventoryDestinationBucket) {
-    this._bucket = value;
+    this._bucket.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket.internalValue;
   }
 }
 export interface S3BucketInventoryFilter {
@@ -372,12 +487,31 @@ export class S3BucketInventoryFilterOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketInventoryFilter | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketInventoryFilter | undefined) {
+    if (value === undefined) {
+      this._prefix = undefined;
+    }
+    else {
+      this._prefix = value.prefix;
+    }
+  }
+
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -385,7 +519,7 @@ export class S3BucketInventoryFilterOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 }
 export interface S3BucketInventorySchedule {
@@ -415,6 +549,25 @@ export class S3BucketInventoryScheduleOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketInventorySchedule | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._frequency) {
+      hasAnyValues = true;
+      internalValueResult.frequency = this._frequency;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketInventorySchedule | undefined) {
+    if (value === undefined) {
+      this._frequency = undefined;
+    }
+    else {
+      this._frequency = value.frequency;
+    }
+  }
+
   // frequency - computed: false, optional: false, required: true
   private _frequency?: string; 
   public get frequency() {
@@ -425,7 +578,7 @@ export class S3BucketInventoryScheduleOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get frequencyInput() {
-    return this._frequency
+    return this._frequency;
   }
 }
 
@@ -466,9 +619,9 @@ export class S3BucketInventory extends cdktf.TerraformResource {
     this._includedObjectVersions = config.includedObjectVersions;
     this._name = config.name;
     this._optionalFields = config.optionalFields;
-    this._destination = config.destination;
-    this._filter = config.filter;
-    this._schedule = config.schedule;
+    this._destination.internalValue = config.destination;
+    this._filter.internalValue = config.filter;
+    this._schedule.internalValue = config.schedule;
   }
 
   // ==========
@@ -485,15 +638,15 @@ export class S3BucketInventory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -501,7 +654,7 @@ export class S3BucketInventory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // id - computed: true, optional: true, required: false
@@ -519,7 +672,7 @@ export class S3BucketInventory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get includedObjectVersionsInput() {
-    return this._includedObjectVersions
+    return this._includedObjectVersions;
   }
 
   // name - computed: false, optional: false, required: true
@@ -532,15 +685,15 @@ export class S3BucketInventory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // optional_fields - computed: false, optional: true, required: false
-  private _optionalFields?: string[] | undefined; 
+  private _optionalFields?: string[]; 
   public get optionalFields() {
     return this.getListAttribute('optional_fields');
   }
-  public set optionalFields(value: string[] | undefined) {
+  public set optionalFields(value: string[]) {
     this._optionalFields = value;
   }
   public resetOptionalFields() {
@@ -548,52 +701,49 @@ export class S3BucketInventory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get optionalFieldsInput() {
-    return this._optionalFields
+    return this._optionalFields;
   }
 
   // destination - computed: false, optional: false, required: true
-  private _destination?: S3BucketInventoryDestination; 
-  private __destinationOutput = new S3BucketInventoryDestinationOutputReference(this as any, "destination", true);
+  private _destination = new S3BucketInventoryDestinationOutputReference(this as any, "destination", true);
   public get destination() {
-    return this.__destinationOutput;
+    return this._destination;
   }
   public putDestination(value: S3BucketInventoryDestination) {
-    this._destination = value;
+    this._destination.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get destinationInput() {
-    return this._destination
+    return this._destination.internalValue;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: S3BucketInventoryFilter | undefined; 
-  private __filterOutput = new S3BucketInventoryFilterOutputReference(this as any, "filter", true);
+  private _filter = new S3BucketInventoryFilterOutputReference(this as any, "filter", true);
   public get filter() {
-    return this.__filterOutput;
+    return this._filter;
   }
-  public putFilter(value: S3BucketInventoryFilter | undefined) {
-    this._filter = value;
+  public putFilter(value: S3BucketInventoryFilter) {
+    this._filter.internalValue = value;
   }
   public resetFilter() {
-    this._filter = undefined;
+    this._filter.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter.internalValue;
   }
 
   // schedule - computed: false, optional: false, required: true
-  private _schedule?: S3BucketInventorySchedule; 
-  private __scheduleOutput = new S3BucketInventoryScheduleOutputReference(this as any, "schedule", true);
+  private _schedule = new S3BucketInventoryScheduleOutputReference(this as any, "schedule", true);
   public get schedule() {
-    return this.__scheduleOutput;
+    return this._schedule;
   }
   public putSchedule(value: S3BucketInventorySchedule) {
-    this._schedule = value;
+    this._schedule.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleInput() {
-    return this._schedule
+    return this._schedule.internalValue;
   }
 
   // =========
@@ -607,9 +757,9 @@ export class S3BucketInventory extends cdktf.TerraformResource {
       included_object_versions: cdktf.stringToTerraform(this._includedObjectVersions),
       name: cdktf.stringToTerraform(this._name),
       optional_fields: cdktf.listMapper(cdktf.stringToTerraform)(this._optionalFields),
-      destination: s3BucketInventoryDestinationToTerraform(this._destination),
-      filter: s3BucketInventoryFilterToTerraform(this._filter),
-      schedule: s3BucketInventoryScheduleToTerraform(this._schedule),
+      destination: s3BucketInventoryDestinationToTerraform(this._destination.internalValue),
+      filter: s3BucketInventoryFilterToTerraform(this._filter.internalValue),
+      schedule: s3BucketInventoryScheduleToTerraform(this._schedule.internalValue),
     };
   }
 }

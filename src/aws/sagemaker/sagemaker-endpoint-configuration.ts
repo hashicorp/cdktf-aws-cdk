@@ -69,12 +69,31 @@ export class SagemakerEndpointConfigurationAsyncInferenceConfigClientConfigOutpu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerEndpointConfigurationAsyncInferenceConfigClientConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._maxConcurrentInvocationsPerInstance) {
+      hasAnyValues = true;
+      internalValueResult.maxConcurrentInvocationsPerInstance = this._maxConcurrentInvocationsPerInstance;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerEndpointConfigurationAsyncInferenceConfigClientConfig | undefined) {
+    if (value === undefined) {
+      this._maxConcurrentInvocationsPerInstance = undefined;
+    }
+    else {
+      this._maxConcurrentInvocationsPerInstance = value.maxConcurrentInvocationsPerInstance;
+    }
+  }
+
   // max_concurrent_invocations_per_instance - computed: false, optional: true, required: false
-  private _maxConcurrentInvocationsPerInstance?: number | undefined; 
+  private _maxConcurrentInvocationsPerInstance?: number; 
   public get maxConcurrentInvocationsPerInstance() {
     return this.getNumberAttribute('max_concurrent_invocations_per_instance');
   }
-  public set maxConcurrentInvocationsPerInstance(value: number | undefined) {
+  public set maxConcurrentInvocationsPerInstance(value: number) {
     this._maxConcurrentInvocationsPerInstance = value;
   }
   public resetMaxConcurrentInvocationsPerInstance() {
@@ -82,7 +101,7 @@ export class SagemakerEndpointConfigurationAsyncInferenceConfigClientConfigOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get maxConcurrentInvocationsPerInstanceInput() {
-    return this._maxConcurrentInvocationsPerInstance
+    return this._maxConcurrentInvocationsPerInstance;
   }
 }
 export interface SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig {
@@ -117,12 +136,37 @@ export class SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfigNotif
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._errorTopic) {
+      hasAnyValues = true;
+      internalValueResult.errorTopic = this._errorTopic;
+    }
+    if (this._successTopic) {
+      hasAnyValues = true;
+      internalValueResult.successTopic = this._successTopic;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig | undefined) {
+    if (value === undefined) {
+      this._errorTopic = undefined;
+      this._successTopic = undefined;
+    }
+    else {
+      this._errorTopic = value.errorTopic;
+      this._successTopic = value.successTopic;
+    }
+  }
+
   // error_topic - computed: false, optional: true, required: false
-  private _errorTopic?: string | undefined; 
+  private _errorTopic?: string; 
   public get errorTopic() {
     return this.getStringAttribute('error_topic');
   }
-  public set errorTopic(value: string | undefined) {
+  public set errorTopic(value: string) {
     this._errorTopic = value;
   }
   public resetErrorTopic() {
@@ -130,15 +174,15 @@ export class SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfigNotif
   }
   // Temporarily expose input value. Use with caution.
   public get errorTopicInput() {
-    return this._errorTopic
+    return this._errorTopic;
   }
 
   // success_topic - computed: false, optional: true, required: false
-  private _successTopic?: string | undefined; 
+  private _successTopic?: string; 
   public get successTopic() {
     return this.getStringAttribute('success_topic');
   }
-  public set successTopic(value: string | undefined) {
+  public set successTopic(value: string) {
     this._successTopic = value;
   }
   public resetSuccessTopic() {
@@ -146,7 +190,7 @@ export class SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfigNotif
   }
   // Temporarily expose input value. Use with caution.
   public get successTopicInput() {
-    return this._successTopic
+    return this._successTopic;
   }
 }
 export interface SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfig {
@@ -188,12 +232,43 @@ export class SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfigOutpu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._kmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyId = this._kmsKeyId;
+    }
+    if (this._s3OutputPath) {
+      hasAnyValues = true;
+      internalValueResult.s3OutputPath = this._s3OutputPath;
+    }
+    if (this._notificationConfig) {
+      hasAnyValues = true;
+      internalValueResult.notificationConfig = this._notificationConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfig | undefined) {
+    if (value === undefined) {
+      this._kmsKeyId = undefined;
+      this._s3OutputPath = undefined;
+      this._notificationConfig.internalValue = undefined;
+    }
+    else {
+      this._kmsKeyId = value.kmsKeyId;
+      this._s3OutputPath = value.s3OutputPath;
+      this._notificationConfig.internalValue = value.notificationConfig;
+    }
+  }
+
   // kms_key_id - computed: false, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -201,7 +276,7 @@ export class SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfigOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // s3_output_path - computed: false, optional: false, required: true
@@ -214,24 +289,23 @@ export class SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfigOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get s3OutputPathInput() {
-    return this._s3OutputPath
+    return this._s3OutputPath;
   }
 
   // notification_config - computed: false, optional: true, required: false
-  private _notificationConfig?: SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig | undefined; 
-  private __notificationConfigOutput = new SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfigOutputReference(this as any, "notification_config", true);
+  private _notificationConfig = new SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfigOutputReference(this as any, "notification_config", true);
   public get notificationConfig() {
-    return this.__notificationConfigOutput;
+    return this._notificationConfig;
   }
-  public putNotificationConfig(value: SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig | undefined) {
-    this._notificationConfig = value;
+  public putNotificationConfig(value: SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig) {
+    this._notificationConfig.internalValue = value;
   }
   public resetNotificationConfig() {
-    this._notificationConfig = undefined;
+    this._notificationConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get notificationConfigInput() {
-    return this._notificationConfig
+    return this._notificationConfig.internalValue;
   }
 }
 export interface SagemakerEndpointConfigurationAsyncInferenceConfig {
@@ -270,35 +344,58 @@ export class SagemakerEndpointConfigurationAsyncInferenceConfigOutputReference e
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // client_config - computed: false, optional: true, required: false
-  private _clientConfig?: SagemakerEndpointConfigurationAsyncInferenceConfigClientConfig | undefined; 
-  private __clientConfigOutput = new SagemakerEndpointConfigurationAsyncInferenceConfigClientConfigOutputReference(this as any, "client_config", true);
-  public get clientConfig() {
-    return this.__clientConfigOutput;
+  public get internalValue(): SagemakerEndpointConfigurationAsyncInferenceConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._clientConfig) {
+      hasAnyValues = true;
+      internalValueResult.clientConfig = this._clientConfig?.internalValue;
+    }
+    if (this._outputConfig) {
+      hasAnyValues = true;
+      internalValueResult.outputConfig = this._outputConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putClientConfig(value: SagemakerEndpointConfigurationAsyncInferenceConfigClientConfig | undefined) {
-    this._clientConfig = value;
+
+  public set internalValue(value: SagemakerEndpointConfigurationAsyncInferenceConfig | undefined) {
+    if (value === undefined) {
+      this._clientConfig.internalValue = undefined;
+      this._outputConfig.internalValue = undefined;
+    }
+    else {
+      this._clientConfig.internalValue = value.clientConfig;
+      this._outputConfig.internalValue = value.outputConfig;
+    }
+  }
+
+  // client_config - computed: false, optional: true, required: false
+  private _clientConfig = new SagemakerEndpointConfigurationAsyncInferenceConfigClientConfigOutputReference(this as any, "client_config", true);
+  public get clientConfig() {
+    return this._clientConfig;
+  }
+  public putClientConfig(value: SagemakerEndpointConfigurationAsyncInferenceConfigClientConfig) {
+    this._clientConfig.internalValue = value;
   }
   public resetClientConfig() {
-    this._clientConfig = undefined;
+    this._clientConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get clientConfigInput() {
-    return this._clientConfig
+    return this._clientConfig.internalValue;
   }
 
   // output_config - computed: false, optional: false, required: true
-  private _outputConfig?: SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfig; 
-  private __outputConfigOutput = new SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfigOutputReference(this as any, "output_config", true);
+  private _outputConfig = new SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfigOutputReference(this as any, "output_config", true);
   public get outputConfig() {
-    return this.__outputConfigOutput;
+    return this._outputConfig;
   }
   public putOutputConfig(value: SagemakerEndpointConfigurationAsyncInferenceConfigOutputConfig) {
-    this._outputConfig = value;
+    this._outputConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get outputConfigInput() {
-    return this._outputConfig
+    return this._outputConfig.internalValue;
   }
 }
 export interface SagemakerEndpointConfigurationDataCaptureConfigCaptureContentTypeHeader {
@@ -333,12 +430,37 @@ export class SagemakerEndpointConfigurationDataCaptureConfigCaptureContentTypeHe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerEndpointConfigurationDataCaptureConfigCaptureContentTypeHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._csvContentTypes) {
+      hasAnyValues = true;
+      internalValueResult.csvContentTypes = this._csvContentTypes;
+    }
+    if (this._jsonContentTypes) {
+      hasAnyValues = true;
+      internalValueResult.jsonContentTypes = this._jsonContentTypes;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerEndpointConfigurationDataCaptureConfigCaptureContentTypeHeader | undefined) {
+    if (value === undefined) {
+      this._csvContentTypes = undefined;
+      this._jsonContentTypes = undefined;
+    }
+    else {
+      this._csvContentTypes = value.csvContentTypes;
+      this._jsonContentTypes = value.jsonContentTypes;
+    }
+  }
+
   // csv_content_types - computed: false, optional: true, required: false
-  private _csvContentTypes?: string[] | undefined; 
+  private _csvContentTypes?: string[]; 
   public get csvContentTypes() {
     return this.getListAttribute('csv_content_types');
   }
-  public set csvContentTypes(value: string[] | undefined) {
+  public set csvContentTypes(value: string[]) {
     this._csvContentTypes = value;
   }
   public resetCsvContentTypes() {
@@ -346,15 +468,15 @@ export class SagemakerEndpointConfigurationDataCaptureConfigCaptureContentTypeHe
   }
   // Temporarily expose input value. Use with caution.
   public get csvContentTypesInput() {
-    return this._csvContentTypes
+    return this._csvContentTypes;
   }
 
   // json_content_types - computed: false, optional: true, required: false
-  private _jsonContentTypes?: string[] | undefined; 
+  private _jsonContentTypes?: string[]; 
   public get jsonContentTypes() {
     return this.getListAttribute('json_content_types');
   }
-  public set jsonContentTypes(value: string[] | undefined) {
+  public set jsonContentTypes(value: string[]) {
     this._jsonContentTypes = value;
   }
   public resetJsonContentTypes() {
@@ -362,7 +484,7 @@ export class SagemakerEndpointConfigurationDataCaptureConfigCaptureContentTypeHe
   }
   // Temporarily expose input value. Use with caution.
   public get jsonContentTypesInput() {
-    return this._jsonContentTypes
+    return this._jsonContentTypes;
   }
 }
 export interface SagemakerEndpointConfigurationDataCaptureConfigCaptureOptions {
@@ -438,6 +560,55 @@ export class SagemakerEndpointConfigurationDataCaptureConfigOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerEndpointConfigurationDataCaptureConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._destinationS3Uri) {
+      hasAnyValues = true;
+      internalValueResult.destinationS3Uri = this._destinationS3Uri;
+    }
+    if (this._enableCapture) {
+      hasAnyValues = true;
+      internalValueResult.enableCapture = this._enableCapture;
+    }
+    if (this._initialSamplingPercentage) {
+      hasAnyValues = true;
+      internalValueResult.initialSamplingPercentage = this._initialSamplingPercentage;
+    }
+    if (this._kmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyId = this._kmsKeyId;
+    }
+    if (this._captureContentTypeHeader) {
+      hasAnyValues = true;
+      internalValueResult.captureContentTypeHeader = this._captureContentTypeHeader?.internalValue;
+    }
+    if (this._captureOptions) {
+      hasAnyValues = true;
+      internalValueResult.captureOptions = this._captureOptions;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerEndpointConfigurationDataCaptureConfig | undefined) {
+    if (value === undefined) {
+      this._destinationS3Uri = undefined;
+      this._enableCapture = undefined;
+      this._initialSamplingPercentage = undefined;
+      this._kmsKeyId = undefined;
+      this._captureContentTypeHeader.internalValue = undefined;
+      this._captureOptions = undefined;
+    }
+    else {
+      this._destinationS3Uri = value.destinationS3Uri;
+      this._enableCapture = value.enableCapture;
+      this._initialSamplingPercentage = value.initialSamplingPercentage;
+      this._kmsKeyId = value.kmsKeyId;
+      this._captureContentTypeHeader.internalValue = value.captureContentTypeHeader;
+      this._captureOptions = value.captureOptions;
+    }
+  }
+
   // destination_s3_uri - computed: false, optional: false, required: true
   private _destinationS3Uri?: string; 
   public get destinationS3Uri() {
@@ -448,15 +619,15 @@ export class SagemakerEndpointConfigurationDataCaptureConfigOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get destinationS3UriInput() {
-    return this._destinationS3Uri
+    return this._destinationS3Uri;
   }
 
   // enable_capture - computed: false, optional: true, required: false
-  private _enableCapture?: boolean | cdktf.IResolvable | undefined; 
+  private _enableCapture?: boolean | cdktf.IResolvable; 
   public get enableCapture() {
     return this.getBooleanAttribute('enable_capture') as any;
   }
-  public set enableCapture(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableCapture(value: boolean | cdktf.IResolvable) {
     this._enableCapture = value;
   }
   public resetEnableCapture() {
@@ -464,7 +635,7 @@ export class SagemakerEndpointConfigurationDataCaptureConfigOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get enableCaptureInput() {
-    return this._enableCapture
+    return this._enableCapture;
   }
 
   // initial_sampling_percentage - computed: false, optional: false, required: true
@@ -477,15 +648,15 @@ export class SagemakerEndpointConfigurationDataCaptureConfigOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get initialSamplingPercentageInput() {
-    return this._initialSamplingPercentage
+    return this._initialSamplingPercentage;
   }
 
   // kms_key_id - computed: false, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -493,24 +664,23 @@ export class SagemakerEndpointConfigurationDataCaptureConfigOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // capture_content_type_header - computed: false, optional: true, required: false
-  private _captureContentTypeHeader?: SagemakerEndpointConfigurationDataCaptureConfigCaptureContentTypeHeader | undefined; 
-  private __captureContentTypeHeaderOutput = new SagemakerEndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderOutputReference(this as any, "capture_content_type_header", true);
+  private _captureContentTypeHeader = new SagemakerEndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderOutputReference(this as any, "capture_content_type_header", true);
   public get captureContentTypeHeader() {
-    return this.__captureContentTypeHeaderOutput;
+    return this._captureContentTypeHeader;
   }
-  public putCaptureContentTypeHeader(value: SagemakerEndpointConfigurationDataCaptureConfigCaptureContentTypeHeader | undefined) {
-    this._captureContentTypeHeader = value;
+  public putCaptureContentTypeHeader(value: SagemakerEndpointConfigurationDataCaptureConfigCaptureContentTypeHeader) {
+    this._captureContentTypeHeader.internalValue = value;
   }
   public resetCaptureContentTypeHeader() {
-    this._captureContentTypeHeader = undefined;
+    this._captureContentTypeHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get captureContentTypeHeaderInput() {
-    return this._captureContentTypeHeader
+    return this._captureContentTypeHeader.internalValue;
   }
 
   // capture_options - computed: false, optional: false, required: true
@@ -524,7 +694,7 @@ export class SagemakerEndpointConfigurationDataCaptureConfigOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get captureOptionsInput() {
-    return this._captureOptions
+    return this._captureOptions;
   }
 }
 export interface SagemakerEndpointConfigurationProductionVariants {
@@ -606,8 +776,8 @@ export class SagemakerEndpointConfiguration extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._asyncInferenceConfig = config.asyncInferenceConfig;
-    this._dataCaptureConfig = config.dataCaptureConfig;
+    this._asyncInferenceConfig.internalValue = config.asyncInferenceConfig;
+    this._dataCaptureConfig.internalValue = config.dataCaptureConfig;
     this._productionVariants = config.productionVariants;
   }
 
@@ -626,11 +796,11 @@ export class SagemakerEndpointConfiguration extends cdktf.TerraformResource {
   }
 
   // kms_key_arn - computed: false, optional: true, required: false
-  private _kmsKeyArn?: string | undefined; 
+  private _kmsKeyArn?: string; 
   public get kmsKeyArn() {
     return this.getStringAttribute('kms_key_arn');
   }
-  public set kmsKeyArn(value: string | undefined) {
+  public set kmsKeyArn(value: string) {
     this._kmsKeyArn = value;
   }
   public resetKmsKeyArn() {
@@ -638,15 +808,15 @@ export class SagemakerEndpointConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyArnInput() {
-    return this._kmsKeyArn
+    return this._kmsKeyArn;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -654,16 +824,16 @@ export class SagemakerEndpointConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -671,16 +841,16 @@ export class SagemakerEndpointConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -688,41 +858,39 @@ export class SagemakerEndpointConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // async_inference_config - computed: false, optional: true, required: false
-  private _asyncInferenceConfig?: SagemakerEndpointConfigurationAsyncInferenceConfig | undefined; 
-  private __asyncInferenceConfigOutput = new SagemakerEndpointConfigurationAsyncInferenceConfigOutputReference(this as any, "async_inference_config", true);
+  private _asyncInferenceConfig = new SagemakerEndpointConfigurationAsyncInferenceConfigOutputReference(this as any, "async_inference_config", true);
   public get asyncInferenceConfig() {
-    return this.__asyncInferenceConfigOutput;
+    return this._asyncInferenceConfig;
   }
-  public putAsyncInferenceConfig(value: SagemakerEndpointConfigurationAsyncInferenceConfig | undefined) {
-    this._asyncInferenceConfig = value;
+  public putAsyncInferenceConfig(value: SagemakerEndpointConfigurationAsyncInferenceConfig) {
+    this._asyncInferenceConfig.internalValue = value;
   }
   public resetAsyncInferenceConfig() {
-    this._asyncInferenceConfig = undefined;
+    this._asyncInferenceConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get asyncInferenceConfigInput() {
-    return this._asyncInferenceConfig
+    return this._asyncInferenceConfig.internalValue;
   }
 
   // data_capture_config - computed: false, optional: true, required: false
-  private _dataCaptureConfig?: SagemakerEndpointConfigurationDataCaptureConfig | undefined; 
-  private __dataCaptureConfigOutput = new SagemakerEndpointConfigurationDataCaptureConfigOutputReference(this as any, "data_capture_config", true);
+  private _dataCaptureConfig = new SagemakerEndpointConfigurationDataCaptureConfigOutputReference(this as any, "data_capture_config", true);
   public get dataCaptureConfig() {
-    return this.__dataCaptureConfigOutput;
+    return this._dataCaptureConfig;
   }
-  public putDataCaptureConfig(value: SagemakerEndpointConfigurationDataCaptureConfig | undefined) {
-    this._dataCaptureConfig = value;
+  public putDataCaptureConfig(value: SagemakerEndpointConfigurationDataCaptureConfig) {
+    this._dataCaptureConfig.internalValue = value;
   }
   public resetDataCaptureConfig() {
-    this._dataCaptureConfig = undefined;
+    this._dataCaptureConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get dataCaptureConfigInput() {
-    return this._dataCaptureConfig
+    return this._dataCaptureConfig.internalValue;
   }
 
   // production_variants - computed: false, optional: false, required: true
@@ -736,7 +904,7 @@ export class SagemakerEndpointConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get productionVariantsInput() {
-    return this._productionVariants
+    return this._productionVariants;
   }
 
   // =========
@@ -749,8 +917,8 @@ export class SagemakerEndpointConfiguration extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      async_inference_config: sagemakerEndpointConfigurationAsyncInferenceConfigToTerraform(this._asyncInferenceConfig),
-      data_capture_config: sagemakerEndpointConfigurationDataCaptureConfigToTerraform(this._dataCaptureConfig),
+      async_inference_config: sagemakerEndpointConfigurationAsyncInferenceConfigToTerraform(this._asyncInferenceConfig.internalValue),
+      data_capture_config: sagemakerEndpointConfigurationDataCaptureConfigToTerraform(this._dataCaptureConfig.internalValue),
       production_variants: cdktf.listMapper(sagemakerEndpointConfigurationProductionVariantsToTerraform)(this._productionVariants),
     };
   }

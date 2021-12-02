@@ -49,12 +49,31 @@ export class GuarddutyInviteAccepterTimeoutsOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GuarddutyInviteAccepterTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GuarddutyInviteAccepterTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+    }
+    else {
+      this._create = value.create;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -62,7 +81,7 @@ export class GuarddutyInviteAccepterTimeoutsOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 }
 
@@ -100,7 +119,7 @@ export class GuarddutyInviteAccepter extends cdktf.TerraformResource {
     });
     this._detectorId = config.detectorId;
     this._masterAccountId = config.masterAccountId;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -117,7 +136,7 @@ export class GuarddutyInviteAccepter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get detectorIdInput() {
-    return this._detectorId
+    return this._detectorId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -135,24 +154,23 @@ export class GuarddutyInviteAccepter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get masterAccountIdInput() {
-    return this._masterAccountId
+    return this._masterAccountId;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: GuarddutyInviteAccepterTimeouts | undefined; 
-  private __timeoutsOutput = new GuarddutyInviteAccepterTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new GuarddutyInviteAccepterTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: GuarddutyInviteAccepterTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: GuarddutyInviteAccepterTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -163,7 +181,7 @@ export class GuarddutyInviteAccepter extends cdktf.TerraformResource {
     return {
       detector_id: cdktf.stringToTerraform(this._detectorId),
       master_account_id: cdktf.stringToTerraform(this._masterAccountId),
-      timeouts: guarddutyInviteAccepterTimeoutsToTerraform(this._timeouts),
+      timeouts: guarddutyInviteAccepterTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

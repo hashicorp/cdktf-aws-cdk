@@ -62,6 +62,31 @@ export class AcmpcaCertificateValidityOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AcmpcaCertificateValidity | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AcmpcaCertificateValidity | undefined) {
+    if (value === undefined) {
+      this._type = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._type = value.type;
+      this._value = value.value;
+    }
+  }
+
   // type - computed: false, optional: false, required: true
   private _type?: string; 
   public get type() {
@@ -72,7 +97,7 @@ export class AcmpcaCertificateValidityOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // value - computed: false, optional: false, required: true
@@ -85,7 +110,7 @@ export class AcmpcaCertificateValidityOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 
@@ -125,7 +150,7 @@ export class AcmpcaCertificate extends cdktf.TerraformResource {
     this._certificateSigningRequest = config.certificateSigningRequest;
     this._signingAlgorithm = config.signingAlgorithm;
     this._templateArn = config.templateArn;
-    this._validity = config.validity;
+    this._validity.internalValue = config.validity;
   }
 
   // ==========
@@ -152,7 +177,7 @@ export class AcmpcaCertificate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificateAuthorityArnInput() {
-    return this._certificateAuthorityArn
+    return this._certificateAuthorityArn;
   }
 
   // certificate_chain - computed: true, optional: false, required: false
@@ -170,7 +195,7 @@ export class AcmpcaCertificate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificateSigningRequestInput() {
-    return this._certificateSigningRequest
+    return this._certificateSigningRequest;
   }
 
   // id - computed: true, optional: true, required: false
@@ -188,15 +213,15 @@ export class AcmpcaCertificate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get signingAlgorithmInput() {
-    return this._signingAlgorithm
+    return this._signingAlgorithm;
   }
 
   // template_arn - computed: false, optional: true, required: false
-  private _templateArn?: string | undefined; 
+  private _templateArn?: string; 
   public get templateArn() {
     return this.getStringAttribute('template_arn');
   }
-  public set templateArn(value: string | undefined) {
+  public set templateArn(value: string) {
     this._templateArn = value;
   }
   public resetTemplateArn() {
@@ -204,21 +229,20 @@ export class AcmpcaCertificate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get templateArnInput() {
-    return this._templateArn
+    return this._templateArn;
   }
 
   // validity - computed: false, optional: false, required: true
-  private _validity?: AcmpcaCertificateValidity; 
-  private __validityOutput = new AcmpcaCertificateValidityOutputReference(this as any, "validity", true);
+  private _validity = new AcmpcaCertificateValidityOutputReference(this as any, "validity", true);
   public get validity() {
-    return this.__validityOutput;
+    return this._validity;
   }
   public putValidity(value: AcmpcaCertificateValidity) {
-    this._validity = value;
+    this._validity.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get validityInput() {
-    return this._validity
+    return this._validity.internalValue;
   }
 
   // =========
@@ -231,7 +255,7 @@ export class AcmpcaCertificate extends cdktf.TerraformResource {
       certificate_signing_request: cdktf.stringToTerraform(this._certificateSigningRequest),
       signing_algorithm: cdktf.stringToTerraform(this._signingAlgorithm),
       template_arn: cdktf.stringToTerraform(this._templateArn),
-      validity: acmpcaCertificateValidityToTerraform(this._validity),
+      validity: acmpcaCertificateValidityToTerraform(this._validity.internalValue),
     };
   }
 }

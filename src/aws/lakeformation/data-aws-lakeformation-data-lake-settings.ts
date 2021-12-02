@@ -82,11 +82,11 @@ export class DataAwsLakeformationDataLakeSettings extends cdktf.TerraformDataSou
   }
 
   // catalog_id - computed: false, optional: true, required: false
-  private _catalogId?: string | undefined; 
+  private _catalogId?: string; 
   public get catalogId() {
     return this.getStringAttribute('catalog_id');
   }
-  public set catalogId(value: string | undefined) {
+  public set catalogId(value: string) {
     this._catalogId = value;
   }
   public resetCatalogId() {
@@ -94,7 +94,7 @@ export class DataAwsLakeformationDataLakeSettings extends cdktf.TerraformDataSou
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // create_database_default_permissions - computed: true, optional: false, required: false

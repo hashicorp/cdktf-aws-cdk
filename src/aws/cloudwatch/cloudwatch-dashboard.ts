@@ -72,7 +72,7 @@ export class CloudwatchDashboard extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dashboardBodyInput() {
-    return this._dashboardBody
+    return this._dashboardBody;
   }
 
   // dashboard_name - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class CloudwatchDashboard extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dashboardNameInput() {
-    return this._dashboardName
+    return this._dashboardName;
   }
 
   // id - computed: true, optional: true, required: false

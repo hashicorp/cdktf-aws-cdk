@@ -78,11 +78,11 @@ export class ServicecatalogConstraint extends cdktf.TerraformResource {
   // ==========
 
   // accept_language - computed: false, optional: true, required: false
-  private _acceptLanguage?: string | undefined; 
+  private _acceptLanguage?: string; 
   public get acceptLanguage() {
     return this.getStringAttribute('accept_language');
   }
-  public set acceptLanguage(value: string | undefined) {
+  public set acceptLanguage(value: string) {
     this._acceptLanguage = value;
   }
   public resetAcceptLanguage() {
@@ -90,15 +90,15 @@ export class ServicecatalogConstraint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get acceptLanguageInput() {
-    return this._acceptLanguage
+    return this._acceptLanguage;
   }
 
   // description - computed: true, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -106,7 +106,7 @@ export class ServicecatalogConstraint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -129,7 +129,7 @@ export class ServicecatalogConstraint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInput() {
-    return this._parameters
+    return this._parameters;
   }
 
   // portfolio_id - computed: false, optional: false, required: true
@@ -142,7 +142,7 @@ export class ServicecatalogConstraint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get portfolioIdInput() {
-    return this._portfolioId
+    return this._portfolioId;
   }
 
   // product_id - computed: false, optional: false, required: true
@@ -155,7 +155,7 @@ export class ServicecatalogConstraint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get productIdInput() {
-    return this._productId
+    return this._productId;
   }
 
   // status - computed: true, optional: false, required: false
@@ -173,7 +173,7 @@ export class ServicecatalogConstraint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // =========

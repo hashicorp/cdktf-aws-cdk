@@ -79,12 +79,43 @@ export class PinpointAppCampaignHookOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): PinpointAppCampaignHook | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._lambdaFunctionName) {
+      hasAnyValues = true;
+      internalValueResult.lambdaFunctionName = this._lambdaFunctionName;
+    }
+    if (this._mode) {
+      hasAnyValues = true;
+      internalValueResult.mode = this._mode;
+    }
+    if (this._webUrl) {
+      hasAnyValues = true;
+      internalValueResult.webUrl = this._webUrl;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: PinpointAppCampaignHook | undefined) {
+    if (value === undefined) {
+      this._lambdaFunctionName = undefined;
+      this._mode = undefined;
+      this._webUrl = undefined;
+    }
+    else {
+      this._lambdaFunctionName = value.lambdaFunctionName;
+      this._mode = value.mode;
+      this._webUrl = value.webUrl;
+    }
+  }
+
   // lambda_function_name - computed: false, optional: true, required: false
-  private _lambdaFunctionName?: string | undefined; 
+  private _lambdaFunctionName?: string; 
   public get lambdaFunctionName() {
     return this.getStringAttribute('lambda_function_name');
   }
-  public set lambdaFunctionName(value: string | undefined) {
+  public set lambdaFunctionName(value: string) {
     this._lambdaFunctionName = value;
   }
   public resetLambdaFunctionName() {
@@ -92,15 +123,15 @@ export class PinpointAppCampaignHookOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get lambdaFunctionNameInput() {
-    return this._lambdaFunctionName
+    return this._lambdaFunctionName;
   }
 
   // mode - computed: false, optional: true, required: false
-  private _mode?: string | undefined; 
+  private _mode?: string; 
   public get mode() {
     return this.getStringAttribute('mode');
   }
-  public set mode(value: string | undefined) {
+  public set mode(value: string) {
     this._mode = value;
   }
   public resetMode() {
@@ -108,15 +139,15 @@ export class PinpointAppCampaignHookOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get modeInput() {
-    return this._mode
+    return this._mode;
   }
 
   // web_url - computed: false, optional: true, required: false
-  private _webUrl?: string | undefined; 
+  private _webUrl?: string; 
   public get webUrl() {
     return this.getStringAttribute('web_url');
   }
-  public set webUrl(value: string | undefined) {
+  public set webUrl(value: string) {
     this._webUrl = value;
   }
   public resetWebUrl() {
@@ -124,7 +155,7 @@ export class PinpointAppCampaignHookOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get webUrlInput() {
-    return this._webUrl
+    return this._webUrl;
   }
 }
 export interface PinpointAppLimits {
@@ -169,12 +200,49 @@ export class PinpointAppLimitsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): PinpointAppLimits | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._daily) {
+      hasAnyValues = true;
+      internalValueResult.daily = this._daily;
+    }
+    if (this._maximumDuration) {
+      hasAnyValues = true;
+      internalValueResult.maximumDuration = this._maximumDuration;
+    }
+    if (this._messagesPerSecond) {
+      hasAnyValues = true;
+      internalValueResult.messagesPerSecond = this._messagesPerSecond;
+    }
+    if (this._total) {
+      hasAnyValues = true;
+      internalValueResult.total = this._total;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: PinpointAppLimits | undefined) {
+    if (value === undefined) {
+      this._daily = undefined;
+      this._maximumDuration = undefined;
+      this._messagesPerSecond = undefined;
+      this._total = undefined;
+    }
+    else {
+      this._daily = value.daily;
+      this._maximumDuration = value.maximumDuration;
+      this._messagesPerSecond = value.messagesPerSecond;
+      this._total = value.total;
+    }
+  }
+
   // daily - computed: false, optional: true, required: false
-  private _daily?: number | undefined; 
+  private _daily?: number; 
   public get daily() {
     return this.getNumberAttribute('daily');
   }
-  public set daily(value: number | undefined) {
+  public set daily(value: number) {
     this._daily = value;
   }
   public resetDaily() {
@@ -182,15 +250,15 @@ export class PinpointAppLimitsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get dailyInput() {
-    return this._daily
+    return this._daily;
   }
 
   // maximum_duration - computed: false, optional: true, required: false
-  private _maximumDuration?: number | undefined; 
+  private _maximumDuration?: number; 
   public get maximumDuration() {
     return this.getNumberAttribute('maximum_duration');
   }
-  public set maximumDuration(value: number | undefined) {
+  public set maximumDuration(value: number) {
     this._maximumDuration = value;
   }
   public resetMaximumDuration() {
@@ -198,15 +266,15 @@ export class PinpointAppLimitsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get maximumDurationInput() {
-    return this._maximumDuration
+    return this._maximumDuration;
   }
 
   // messages_per_second - computed: false, optional: true, required: false
-  private _messagesPerSecond?: number | undefined; 
+  private _messagesPerSecond?: number; 
   public get messagesPerSecond() {
     return this.getNumberAttribute('messages_per_second');
   }
-  public set messagesPerSecond(value: number | undefined) {
+  public set messagesPerSecond(value: number) {
     this._messagesPerSecond = value;
   }
   public resetMessagesPerSecond() {
@@ -214,15 +282,15 @@ export class PinpointAppLimitsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get messagesPerSecondInput() {
-    return this._messagesPerSecond
+    return this._messagesPerSecond;
   }
 
   // total - computed: false, optional: true, required: false
-  private _total?: number | undefined; 
+  private _total?: number; 
   public get total() {
     return this.getNumberAttribute('total');
   }
-  public set total(value: number | undefined) {
+  public set total(value: number) {
     this._total = value;
   }
   public resetTotal() {
@@ -230,7 +298,7 @@ export class PinpointAppLimitsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get totalInput() {
-    return this._total
+    return this._total;
   }
 }
 export interface PinpointAppQuietTime {
@@ -265,12 +333,37 @@ export class PinpointAppQuietTimeOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): PinpointAppQuietTime | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._end) {
+      hasAnyValues = true;
+      internalValueResult.end = this._end;
+    }
+    if (this._start) {
+      hasAnyValues = true;
+      internalValueResult.start = this._start;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: PinpointAppQuietTime | undefined) {
+    if (value === undefined) {
+      this._end = undefined;
+      this._start = undefined;
+    }
+    else {
+      this._end = value.end;
+      this._start = value.start;
+    }
+  }
+
   // end - computed: false, optional: true, required: false
-  private _end?: string | undefined; 
+  private _end?: string; 
   public get end() {
     return this.getStringAttribute('end');
   }
-  public set end(value: string | undefined) {
+  public set end(value: string) {
     this._end = value;
   }
   public resetEnd() {
@@ -278,15 +371,15 @@ export class PinpointAppQuietTimeOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get endInput() {
-    return this._end
+    return this._end;
   }
 
   // start - computed: false, optional: true, required: false
-  private _start?: string | undefined; 
+  private _start?: string; 
   public get start() {
     return this.getStringAttribute('start');
   }
-  public set start(value: string | undefined) {
+  public set start(value: string) {
     this._start = value;
   }
   public resetStart() {
@@ -294,7 +387,7 @@ export class PinpointAppQuietTimeOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get startInput() {
-    return this._start
+    return this._start;
   }
 }
 
@@ -334,9 +427,9 @@ export class PinpointApp extends cdktf.TerraformResource {
     this._namePrefix = config.namePrefix;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._campaignHook = config.campaignHook;
-    this._limits = config.limits;
-    this._quietTime = config.quietTime;
+    this._campaignHook.internalValue = config.campaignHook;
+    this._limits.internalValue = config.limits;
+    this._quietTime.internalValue = config.quietTime;
   }
 
   // ==========
@@ -359,11 +452,11 @@ export class PinpointApp extends cdktf.TerraformResource {
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -371,15 +464,15 @@ export class PinpointApp extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_prefix - computed: false, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -387,16 +480,16 @@ export class PinpointApp extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -404,16 +497,16 @@ export class PinpointApp extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -421,58 +514,55 @@ export class PinpointApp extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // campaign_hook - computed: false, optional: true, required: false
-  private _campaignHook?: PinpointAppCampaignHook | undefined; 
-  private __campaignHookOutput = new PinpointAppCampaignHookOutputReference(this as any, "campaign_hook", true);
+  private _campaignHook = new PinpointAppCampaignHookOutputReference(this as any, "campaign_hook", true);
   public get campaignHook() {
-    return this.__campaignHookOutput;
+    return this._campaignHook;
   }
-  public putCampaignHook(value: PinpointAppCampaignHook | undefined) {
-    this._campaignHook = value;
+  public putCampaignHook(value: PinpointAppCampaignHook) {
+    this._campaignHook.internalValue = value;
   }
   public resetCampaignHook() {
-    this._campaignHook = undefined;
+    this._campaignHook.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get campaignHookInput() {
-    return this._campaignHook
+    return this._campaignHook.internalValue;
   }
 
   // limits - computed: false, optional: true, required: false
-  private _limits?: PinpointAppLimits | undefined; 
-  private __limitsOutput = new PinpointAppLimitsOutputReference(this as any, "limits", true);
+  private _limits = new PinpointAppLimitsOutputReference(this as any, "limits", true);
   public get limits() {
-    return this.__limitsOutput;
+    return this._limits;
   }
-  public putLimits(value: PinpointAppLimits | undefined) {
-    this._limits = value;
+  public putLimits(value: PinpointAppLimits) {
+    this._limits.internalValue = value;
   }
   public resetLimits() {
-    this._limits = undefined;
+    this._limits.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get limitsInput() {
-    return this._limits
+    return this._limits.internalValue;
   }
 
   // quiet_time - computed: false, optional: true, required: false
-  private _quietTime?: PinpointAppQuietTime | undefined; 
-  private __quietTimeOutput = new PinpointAppQuietTimeOutputReference(this as any, "quiet_time", true);
+  private _quietTime = new PinpointAppQuietTimeOutputReference(this as any, "quiet_time", true);
   public get quietTime() {
-    return this.__quietTimeOutput;
+    return this._quietTime;
   }
-  public putQuietTime(value: PinpointAppQuietTime | undefined) {
-    this._quietTime = value;
+  public putQuietTime(value: PinpointAppQuietTime) {
+    this._quietTime.internalValue = value;
   }
   public resetQuietTime() {
-    this._quietTime = undefined;
+    this._quietTime.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get quietTimeInput() {
-    return this._quietTime
+    return this._quietTime.internalValue;
   }
 
   // =========
@@ -485,9 +575,9 @@ export class PinpointApp extends cdktf.TerraformResource {
       name_prefix: cdktf.stringToTerraform(this._namePrefix),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      campaign_hook: pinpointAppCampaignHookToTerraform(this._campaignHook),
-      limits: pinpointAppLimitsToTerraform(this._limits),
-      quiet_time: pinpointAppQuietTimeToTerraform(this._quietTime),
+      campaign_hook: pinpointAppCampaignHookToTerraform(this._campaignHook.internalValue),
+      limits: pinpointAppLimitsToTerraform(this._limits.internalValue),
+      quiet_time: pinpointAppQuietTimeToTerraform(this._quietTime.internalValue),
     };
   }
 }

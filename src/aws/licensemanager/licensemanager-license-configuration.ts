@@ -93,11 +93,11 @@ export class LicensemanagerLicenseConfiguration extends cdktf.TerraformResource 
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -105,7 +105,7 @@ export class LicensemanagerLicenseConfiguration extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -114,11 +114,11 @@ export class LicensemanagerLicenseConfiguration extends cdktf.TerraformResource 
   }
 
   // license_count - computed: false, optional: true, required: false
-  private _licenseCount?: number | undefined; 
+  private _licenseCount?: number; 
   public get licenseCount() {
     return this.getNumberAttribute('license_count');
   }
-  public set licenseCount(value: number | undefined) {
+  public set licenseCount(value: number) {
     this._licenseCount = value;
   }
   public resetLicenseCount() {
@@ -126,15 +126,15 @@ export class LicensemanagerLicenseConfiguration extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get licenseCountInput() {
-    return this._licenseCount
+    return this._licenseCount;
   }
 
   // license_count_hard_limit - computed: false, optional: true, required: false
-  private _licenseCountHardLimit?: boolean | cdktf.IResolvable | undefined; 
+  private _licenseCountHardLimit?: boolean | cdktf.IResolvable; 
   public get licenseCountHardLimit() {
     return this.getBooleanAttribute('license_count_hard_limit') as any;
   }
-  public set licenseCountHardLimit(value: boolean | cdktf.IResolvable | undefined) {
+  public set licenseCountHardLimit(value: boolean | cdktf.IResolvable) {
     this._licenseCountHardLimit = value;
   }
   public resetLicenseCountHardLimit() {
@@ -142,7 +142,7 @@ export class LicensemanagerLicenseConfiguration extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get licenseCountHardLimitInput() {
-    return this._licenseCountHardLimit
+    return this._licenseCountHardLimit;
   }
 
   // license_counting_type - computed: false, optional: false, required: true
@@ -155,15 +155,15 @@ export class LicensemanagerLicenseConfiguration extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get licenseCountingTypeInput() {
-    return this._licenseCountingType
+    return this._licenseCountingType;
   }
 
   // license_rules - computed: false, optional: true, required: false
-  private _licenseRules?: string[] | undefined; 
+  private _licenseRules?: string[]; 
   public get licenseRules() {
     return this.getListAttribute('license_rules');
   }
-  public set licenseRules(value: string[] | undefined) {
+  public set licenseRules(value: string[]) {
     this._licenseRules = value;
   }
   public resetLicenseRules() {
@@ -171,7 +171,7 @@ export class LicensemanagerLicenseConfiguration extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get licenseRulesInput() {
-    return this._licenseRules
+    return this._licenseRules;
   }
 
   // name - computed: false, optional: false, required: true
@@ -184,7 +184,7 @@ export class LicensemanagerLicenseConfiguration extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // owner_account_id - computed: true, optional: false, required: false
@@ -193,12 +193,12 @@ export class LicensemanagerLicenseConfiguration extends cdktf.TerraformResource 
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -206,16 +206,16 @@ export class LicensemanagerLicenseConfiguration extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -223,7 +223,7 @@ export class LicensemanagerLicenseConfiguration extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

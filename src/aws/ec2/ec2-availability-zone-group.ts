@@ -67,7 +67,7 @@ export class Ec2AvailabilityZoneGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get groupNameInput() {
-    return this._groupName
+    return this._groupName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class Ec2AvailabilityZoneGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get optInStatusInput() {
-    return this._optInStatus
+    return this._optInStatus;
   }
 
   // =========

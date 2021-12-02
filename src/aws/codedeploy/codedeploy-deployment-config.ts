@@ -60,12 +60,37 @@ export class CodedeployDeploymentConfigMinimumHealthyHostsOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodedeployDeploymentConfigMinimumHealthyHosts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodedeployDeploymentConfigMinimumHealthyHosts | undefined) {
+    if (value === undefined) {
+      this._type = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._type = value.type;
+      this._value = value.value;
+    }
+  }
+
   // type - computed: false, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -73,15 +98,15 @@ export class CodedeployDeploymentConfigMinimumHealthyHostsOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // value - computed: false, optional: true, required: false
-  private _value?: number | undefined; 
+  private _value?: number; 
   public get value() {
     return this.getNumberAttribute('value');
   }
-  public set value(value: number | undefined) {
+  public set value(value: number) {
     this._value = value;
   }
   public resetValue() {
@@ -89,7 +114,7 @@ export class CodedeployDeploymentConfigMinimumHealthyHostsOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedCanary {
@@ -124,12 +149,37 @@ export class CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedCanaryOutput
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedCanary | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._interval) {
+      hasAnyValues = true;
+      internalValueResult.interval = this._interval;
+    }
+    if (this._percentage) {
+      hasAnyValues = true;
+      internalValueResult.percentage = this._percentage;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedCanary | undefined) {
+    if (value === undefined) {
+      this._interval = undefined;
+      this._percentage = undefined;
+    }
+    else {
+      this._interval = value.interval;
+      this._percentage = value.percentage;
+    }
+  }
+
   // interval - computed: false, optional: true, required: false
-  private _interval?: number | undefined; 
+  private _interval?: number; 
   public get interval() {
     return this.getNumberAttribute('interval');
   }
-  public set interval(value: number | undefined) {
+  public set interval(value: number) {
     this._interval = value;
   }
   public resetInterval() {
@@ -137,15 +187,15 @@ export class CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedCanaryOutput
   }
   // Temporarily expose input value. Use with caution.
   public get intervalInput() {
-    return this._interval
+    return this._interval;
   }
 
   // percentage - computed: false, optional: true, required: false
-  private _percentage?: number | undefined; 
+  private _percentage?: number; 
   public get percentage() {
     return this.getNumberAttribute('percentage');
   }
-  public set percentage(value: number | undefined) {
+  public set percentage(value: number) {
     this._percentage = value;
   }
   public resetPercentage() {
@@ -153,7 +203,7 @@ export class CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedCanaryOutput
   }
   // Temporarily expose input value. Use with caution.
   public get percentageInput() {
-    return this._percentage
+    return this._percentage;
   }
 }
 export interface CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedLinear {
@@ -188,12 +238,37 @@ export class CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedLinearOutput
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedLinear | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._interval) {
+      hasAnyValues = true;
+      internalValueResult.interval = this._interval;
+    }
+    if (this._percentage) {
+      hasAnyValues = true;
+      internalValueResult.percentage = this._percentage;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedLinear | undefined) {
+    if (value === undefined) {
+      this._interval = undefined;
+      this._percentage = undefined;
+    }
+    else {
+      this._interval = value.interval;
+      this._percentage = value.percentage;
+    }
+  }
+
   // interval - computed: false, optional: true, required: false
-  private _interval?: number | undefined; 
+  private _interval?: number; 
   public get interval() {
     return this.getNumberAttribute('interval');
   }
-  public set interval(value: number | undefined) {
+  public set interval(value: number) {
     this._interval = value;
   }
   public resetInterval() {
@@ -201,15 +276,15 @@ export class CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedLinearOutput
   }
   // Temporarily expose input value. Use with caution.
   public get intervalInput() {
-    return this._interval
+    return this._interval;
   }
 
   // percentage - computed: false, optional: true, required: false
-  private _percentage?: number | undefined; 
+  private _percentage?: number; 
   public get percentage() {
     return this.getNumberAttribute('percentage');
   }
-  public set percentage(value: number | undefined) {
+  public set percentage(value: number) {
     this._percentage = value;
   }
   public resetPercentage() {
@@ -217,7 +292,7 @@ export class CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedLinearOutput
   }
   // Temporarily expose input value. Use with caution.
   public get percentageInput() {
-    return this._percentage
+    return this._percentage;
   }
 }
 export interface CodedeployDeploymentConfigTrafficRoutingConfig {
@@ -261,12 +336,43 @@ export class CodedeployDeploymentConfigTrafficRoutingConfigOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodedeployDeploymentConfigTrafficRoutingConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    if (this._timeBasedCanary) {
+      hasAnyValues = true;
+      internalValueResult.timeBasedCanary = this._timeBasedCanary?.internalValue;
+    }
+    if (this._timeBasedLinear) {
+      hasAnyValues = true;
+      internalValueResult.timeBasedLinear = this._timeBasedLinear?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodedeployDeploymentConfigTrafficRoutingConfig | undefined) {
+    if (value === undefined) {
+      this._type = undefined;
+      this._timeBasedCanary.internalValue = undefined;
+      this._timeBasedLinear.internalValue = undefined;
+    }
+    else {
+      this._type = value.type;
+      this._timeBasedCanary.internalValue = value.timeBasedCanary;
+      this._timeBasedLinear.internalValue = value.timeBasedLinear;
+    }
+  }
+
   // type - computed: false, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -274,41 +380,39 @@ export class CodedeployDeploymentConfigTrafficRoutingConfigOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // time_based_canary - computed: false, optional: true, required: false
-  private _timeBasedCanary?: CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedCanary | undefined; 
-  private __timeBasedCanaryOutput = new CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedCanaryOutputReference(this as any, "time_based_canary", true);
+  private _timeBasedCanary = new CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedCanaryOutputReference(this as any, "time_based_canary", true);
   public get timeBasedCanary() {
-    return this.__timeBasedCanaryOutput;
+    return this._timeBasedCanary;
   }
-  public putTimeBasedCanary(value: CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedCanary | undefined) {
-    this._timeBasedCanary = value;
+  public putTimeBasedCanary(value: CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedCanary) {
+    this._timeBasedCanary.internalValue = value;
   }
   public resetTimeBasedCanary() {
-    this._timeBasedCanary = undefined;
+    this._timeBasedCanary.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeBasedCanaryInput() {
-    return this._timeBasedCanary
+    return this._timeBasedCanary.internalValue;
   }
 
   // time_based_linear - computed: false, optional: true, required: false
-  private _timeBasedLinear?: CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedLinear | undefined; 
-  private __timeBasedLinearOutput = new CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedLinearOutputReference(this as any, "time_based_linear", true);
+  private _timeBasedLinear = new CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedLinearOutputReference(this as any, "time_based_linear", true);
   public get timeBasedLinear() {
-    return this.__timeBasedLinearOutput;
+    return this._timeBasedLinear;
   }
-  public putTimeBasedLinear(value: CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedLinear | undefined) {
-    this._timeBasedLinear = value;
+  public putTimeBasedLinear(value: CodedeployDeploymentConfigTrafficRoutingConfigTimeBasedLinear) {
+    this._timeBasedLinear.internalValue = value;
   }
   public resetTimeBasedLinear() {
-    this._timeBasedLinear = undefined;
+    this._timeBasedLinear.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeBasedLinearInput() {
-    return this._timeBasedLinear
+    return this._timeBasedLinear.internalValue;
   }
 }
 
@@ -346,8 +450,8 @@ export class CodedeployDeploymentConfig extends cdktf.TerraformResource {
     });
     this._computePlatform = config.computePlatform;
     this._deploymentConfigName = config.deploymentConfigName;
-    this._minimumHealthyHosts = config.minimumHealthyHosts;
-    this._trafficRoutingConfig = config.trafficRoutingConfig;
+    this._minimumHealthyHosts.internalValue = config.minimumHealthyHosts;
+    this._trafficRoutingConfig.internalValue = config.trafficRoutingConfig;
   }
 
   // ==========
@@ -355,11 +459,11 @@ export class CodedeployDeploymentConfig extends cdktf.TerraformResource {
   // ==========
 
   // compute_platform - computed: false, optional: true, required: false
-  private _computePlatform?: string | undefined; 
+  private _computePlatform?: string; 
   public get computePlatform() {
     return this.getStringAttribute('compute_platform');
   }
-  public set computePlatform(value: string | undefined) {
+  public set computePlatform(value: string) {
     this._computePlatform = value;
   }
   public resetComputePlatform() {
@@ -367,7 +471,7 @@ export class CodedeployDeploymentConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get computePlatformInput() {
-    return this._computePlatform
+    return this._computePlatform;
   }
 
   // deployment_config_id - computed: true, optional: false, required: false
@@ -385,7 +489,7 @@ export class CodedeployDeploymentConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentConfigNameInput() {
-    return this._deploymentConfigName
+    return this._deploymentConfigName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -394,37 +498,35 @@ export class CodedeployDeploymentConfig extends cdktf.TerraformResource {
   }
 
   // minimum_healthy_hosts - computed: false, optional: true, required: false
-  private _minimumHealthyHosts?: CodedeployDeploymentConfigMinimumHealthyHosts | undefined; 
-  private __minimumHealthyHostsOutput = new CodedeployDeploymentConfigMinimumHealthyHostsOutputReference(this as any, "minimum_healthy_hosts", true);
+  private _minimumHealthyHosts = new CodedeployDeploymentConfigMinimumHealthyHostsOutputReference(this as any, "minimum_healthy_hosts", true);
   public get minimumHealthyHosts() {
-    return this.__minimumHealthyHostsOutput;
+    return this._minimumHealthyHosts;
   }
-  public putMinimumHealthyHosts(value: CodedeployDeploymentConfigMinimumHealthyHosts | undefined) {
-    this._minimumHealthyHosts = value;
+  public putMinimumHealthyHosts(value: CodedeployDeploymentConfigMinimumHealthyHosts) {
+    this._minimumHealthyHosts.internalValue = value;
   }
   public resetMinimumHealthyHosts() {
-    this._minimumHealthyHosts = undefined;
+    this._minimumHealthyHosts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get minimumHealthyHostsInput() {
-    return this._minimumHealthyHosts
+    return this._minimumHealthyHosts.internalValue;
   }
 
   // traffic_routing_config - computed: false, optional: true, required: false
-  private _trafficRoutingConfig?: CodedeployDeploymentConfigTrafficRoutingConfig | undefined; 
-  private __trafficRoutingConfigOutput = new CodedeployDeploymentConfigTrafficRoutingConfigOutputReference(this as any, "traffic_routing_config", true);
+  private _trafficRoutingConfig = new CodedeployDeploymentConfigTrafficRoutingConfigOutputReference(this as any, "traffic_routing_config", true);
   public get trafficRoutingConfig() {
-    return this.__trafficRoutingConfigOutput;
+    return this._trafficRoutingConfig;
   }
-  public putTrafficRoutingConfig(value: CodedeployDeploymentConfigTrafficRoutingConfig | undefined) {
-    this._trafficRoutingConfig = value;
+  public putTrafficRoutingConfig(value: CodedeployDeploymentConfigTrafficRoutingConfig) {
+    this._trafficRoutingConfig.internalValue = value;
   }
   public resetTrafficRoutingConfig() {
-    this._trafficRoutingConfig = undefined;
+    this._trafficRoutingConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get trafficRoutingConfigInput() {
-    return this._trafficRoutingConfig
+    return this._trafficRoutingConfig.internalValue;
   }
 
   // =========
@@ -435,8 +537,8 @@ export class CodedeployDeploymentConfig extends cdktf.TerraformResource {
     return {
       compute_platform: cdktf.stringToTerraform(this._computePlatform),
       deployment_config_name: cdktf.stringToTerraform(this._deploymentConfigName),
-      minimum_healthy_hosts: codedeployDeploymentConfigMinimumHealthyHostsToTerraform(this._minimumHealthyHosts),
-      traffic_routing_config: codedeployDeploymentConfigTrafficRoutingConfigToTerraform(this._trafficRoutingConfig),
+      minimum_healthy_hosts: codedeployDeploymentConfigMinimumHealthyHostsToTerraform(this._minimumHealthyHosts.internalValue),
+      traffic_routing_config: codedeployDeploymentConfigTrafficRoutingConfigToTerraform(this._trafficRoutingConfig.internalValue),
     };
   }
 }

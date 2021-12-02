@@ -73,11 +73,11 @@ export class MskConfiguration extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -85,7 +85,7 @@ export class MskConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -94,11 +94,11 @@ export class MskConfiguration extends cdktf.TerraformResource {
   }
 
   // kafka_versions - computed: false, optional: true, required: false
-  private _kafkaVersions?: string[] | undefined; 
+  private _kafkaVersions?: string[]; 
   public get kafkaVersions() {
     return this.getListAttribute('kafka_versions');
   }
-  public set kafkaVersions(value: string[] | undefined) {
+  public set kafkaVersions(value: string[]) {
     this._kafkaVersions = value;
   }
   public resetKafkaVersions() {
@@ -106,7 +106,7 @@ export class MskConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kafkaVersionsInput() {
-    return this._kafkaVersions
+    return this._kafkaVersions;
   }
 
   // latest_revision - computed: true, optional: false, required: false
@@ -124,7 +124,7 @@ export class MskConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // server_properties - computed: false, optional: false, required: true
@@ -137,7 +137,7 @@ export class MskConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serverPropertiesInput() {
-    return this._serverProperties
+    return this._serverProperties;
   }
 
   // =========

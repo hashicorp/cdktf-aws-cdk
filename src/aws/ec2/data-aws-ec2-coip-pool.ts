@@ -102,11 +102,11 @@ export class DataAwsEc2CoipPool extends cdktf.TerraformDataSource {
   }
 
   // local_gateway_route_table_id - computed: true, optional: true, required: false
-  private _localGatewayRouteTableId?: string | undefined; 
+  private _localGatewayRouteTableId?: string; 
   public get localGatewayRouteTableId() {
     return this.getStringAttribute('local_gateway_route_table_id');
   }
-  public set localGatewayRouteTableId(value: string | undefined) {
+  public set localGatewayRouteTableId(value: string) {
     this._localGatewayRouteTableId = value;
   }
   public resetLocalGatewayRouteTableId() {
@@ -114,7 +114,7 @@ export class DataAwsEc2CoipPool extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get localGatewayRouteTableIdInput() {
-    return this._localGatewayRouteTableId
+    return this._localGatewayRouteTableId;
   }
 
   // pool_cidrs - computed: true, optional: false, required: false
@@ -123,11 +123,11 @@ export class DataAwsEc2CoipPool extends cdktf.TerraformDataSource {
   }
 
   // pool_id - computed: true, optional: true, required: false
-  private _poolId?: string | undefined; 
+  private _poolId?: string; 
   public get poolId() {
     return this.getStringAttribute('pool_id');
   }
-  public set poolId(value: string | undefined) {
+  public set poolId(value: string) {
     this._poolId = value;
   }
   public resetPoolId() {
@@ -135,16 +135,16 @@ export class DataAwsEc2CoipPool extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get poolIdInput() {
-    return this._poolId
+    return this._poolId;
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -152,16 +152,16 @@ export class DataAwsEc2CoipPool extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsEc2CoipPoolFilter[] | undefined; 
+  private _filter?: DataAwsEc2CoipPoolFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsEc2CoipPoolFilter[] | undefined) {
+  public set filter(value: DataAwsEc2CoipPoolFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -169,7 +169,7 @@ export class DataAwsEc2CoipPool extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

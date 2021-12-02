@@ -107,7 +107,7 @@ export class Route53KeySigningKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get hostedZoneIdInput() {
-    return this._hostedZoneId
+    return this._hostedZoneId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -125,7 +125,7 @@ export class Route53KeySigningKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyManagementServiceArnInput() {
-    return this._keyManagementServiceArn
+    return this._keyManagementServiceArn;
   }
 
   // key_tag - computed: true, optional: false, required: false
@@ -143,7 +143,7 @@ export class Route53KeySigningKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // public_key - computed: true, optional: false, required: false
@@ -162,11 +162,11 @@ export class Route53KeySigningKey extends cdktf.TerraformResource {
   }
 
   // status - computed: false, optional: true, required: false
-  private _status?: string | undefined; 
+  private _status?: string; 
   public get status() {
     return this.getStringAttribute('status');
   }
-  public set status(value: string | undefined) {
+  public set status(value: string) {
     this._status = value;
   }
   public resetStatus() {
@@ -174,7 +174,7 @@ export class Route53KeySigningKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 
   // =========

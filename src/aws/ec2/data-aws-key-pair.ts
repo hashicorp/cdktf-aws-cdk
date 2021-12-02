@@ -107,11 +107,11 @@ export class DataAwsKeyPair extends cdktf.TerraformDataSource {
   }
 
   // key_name - computed: false, optional: true, required: false
-  private _keyName?: string | undefined; 
+  private _keyName?: string; 
   public get keyName() {
     return this.getStringAttribute('key_name');
   }
-  public set keyName(value: string | undefined) {
+  public set keyName(value: string) {
     this._keyName = value;
   }
   public resetKeyName() {
@@ -119,15 +119,15 @@ export class DataAwsKeyPair extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyNameInput() {
-    return this._keyName
+    return this._keyName;
   }
 
   // key_pair_id - computed: false, optional: true, required: false
-  private _keyPairId?: string | undefined; 
+  private _keyPairId?: string; 
   public get keyPairId() {
     return this.getStringAttribute('key_pair_id');
   }
-  public set keyPairId(value: string | undefined) {
+  public set keyPairId(value: string) {
     this._keyPairId = value;
   }
   public resetKeyPairId() {
@@ -135,16 +135,16 @@ export class DataAwsKeyPair extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyPairIdInput() {
-    return this._keyPairId
+    return this._keyPairId;
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -152,16 +152,16 @@ export class DataAwsKeyPair extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsKeyPairFilter[] | undefined; 
+  private _filter?: DataAwsKeyPairFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsKeyPairFilter[] | undefined) {
+  public set filter(value: DataAwsKeyPairFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -169,7 +169,7 @@ export class DataAwsKeyPair extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

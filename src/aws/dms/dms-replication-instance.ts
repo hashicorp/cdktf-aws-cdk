@@ -115,12 +115,43 @@ export class DmsReplicationInstanceTimeoutsOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DmsReplicationInstanceTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DmsReplicationInstanceTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -128,15 +159,15 @@ export class DmsReplicationInstanceTimeoutsOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -144,15 +175,15 @@ export class DmsReplicationInstanceTimeoutsOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -160,7 +191,7 @@ export class DmsReplicationInstanceTimeoutsOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -212,7 +243,7 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._vpcSecurityGroupIds = config.vpcSecurityGroupIds;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -220,11 +251,11 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   // ==========
 
   // allocated_storage - computed: true, optional: true, required: false
-  private _allocatedStorage?: number | undefined; 
+  private _allocatedStorage?: number; 
   public get allocatedStorage() {
     return this.getNumberAttribute('allocated_storage');
   }
-  public set allocatedStorage(value: number | undefined) {
+  public set allocatedStorage(value: number) {
     this._allocatedStorage = value;
   }
   public resetAllocatedStorage() {
@@ -232,15 +263,15 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allocatedStorageInput() {
-    return this._allocatedStorage
+    return this._allocatedStorage;
   }
 
   // allow_major_version_upgrade - computed: false, optional: true, required: false
-  private _allowMajorVersionUpgrade?: boolean | cdktf.IResolvable | undefined; 
+  private _allowMajorVersionUpgrade?: boolean | cdktf.IResolvable; 
   public get allowMajorVersionUpgrade() {
     return this.getBooleanAttribute('allow_major_version_upgrade') as any;
   }
-  public set allowMajorVersionUpgrade(value: boolean | cdktf.IResolvable | undefined) {
+  public set allowMajorVersionUpgrade(value: boolean | cdktf.IResolvable) {
     this._allowMajorVersionUpgrade = value;
   }
   public resetAllowMajorVersionUpgrade() {
@@ -248,15 +279,15 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allowMajorVersionUpgradeInput() {
-    return this._allowMajorVersionUpgrade
+    return this._allowMajorVersionUpgrade;
   }
 
   // apply_immediately - computed: false, optional: true, required: false
-  private _applyImmediately?: boolean | cdktf.IResolvable | undefined; 
+  private _applyImmediately?: boolean | cdktf.IResolvable; 
   public get applyImmediately() {
     return this.getBooleanAttribute('apply_immediately') as any;
   }
-  public set applyImmediately(value: boolean | cdktf.IResolvable | undefined) {
+  public set applyImmediately(value: boolean | cdktf.IResolvable) {
     this._applyImmediately = value;
   }
   public resetApplyImmediately() {
@@ -264,15 +295,15 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get applyImmediatelyInput() {
-    return this._applyImmediately
+    return this._applyImmediately;
   }
 
   // auto_minor_version_upgrade - computed: true, optional: true, required: false
-  private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable | undefined; 
+  private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable; 
   public get autoMinorVersionUpgrade() {
     return this.getBooleanAttribute('auto_minor_version_upgrade') as any;
   }
-  public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable | undefined) {
+  public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable) {
     this._autoMinorVersionUpgrade = value;
   }
   public resetAutoMinorVersionUpgrade() {
@@ -280,15 +311,15 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoMinorVersionUpgradeInput() {
-    return this._autoMinorVersionUpgrade
+    return this._autoMinorVersionUpgrade;
   }
 
   // availability_zone - computed: true, optional: true, required: false
-  private _availabilityZone?: string | undefined; 
+  private _availabilityZone?: string; 
   public get availabilityZone() {
     return this.getStringAttribute('availability_zone');
   }
-  public set availabilityZone(value: string | undefined) {
+  public set availabilityZone(value: string) {
     this._availabilityZone = value;
   }
   public resetAvailabilityZone() {
@@ -296,15 +327,15 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneInput() {
-    return this._availabilityZone
+    return this._availabilityZone;
   }
 
   // engine_version - computed: true, optional: true, required: false
-  private _engineVersion?: string | undefined; 
+  private _engineVersion?: string; 
   public get engineVersion() {
     return this.getStringAttribute('engine_version');
   }
-  public set engineVersion(value: string | undefined) {
+  public set engineVersion(value: string) {
     this._engineVersion = value;
   }
   public resetEngineVersion() {
@@ -312,7 +343,7 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineVersionInput() {
-    return this._engineVersion
+    return this._engineVersion;
   }
 
   // id - computed: true, optional: true, required: false
@@ -321,11 +352,11 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
 
   // kms_key_arn - computed: true, optional: true, required: false
-  private _kmsKeyArn?: string | undefined; 
+  private _kmsKeyArn?: string; 
   public get kmsKeyArn() {
     return this.getStringAttribute('kms_key_arn');
   }
-  public set kmsKeyArn(value: string | undefined) {
+  public set kmsKeyArn(value: string) {
     this._kmsKeyArn = value;
   }
   public resetKmsKeyArn() {
@@ -333,15 +364,15 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyArnInput() {
-    return this._kmsKeyArn
+    return this._kmsKeyArn;
   }
 
   // multi_az - computed: true, optional: true, required: false
-  private _multiAz?: boolean | cdktf.IResolvable | undefined; 
+  private _multiAz?: boolean | cdktf.IResolvable; 
   public get multiAz() {
     return this.getBooleanAttribute('multi_az') as any;
   }
-  public set multiAz(value: boolean | cdktf.IResolvable | undefined) {
+  public set multiAz(value: boolean | cdktf.IResolvable) {
     this._multiAz = value;
   }
   public resetMultiAz() {
@@ -349,15 +380,15 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get multiAzInput() {
-    return this._multiAz
+    return this._multiAz;
   }
 
   // preferred_maintenance_window - computed: true, optional: true, required: false
-  private _preferredMaintenanceWindow?: string | undefined; 
+  private _preferredMaintenanceWindow?: string; 
   public get preferredMaintenanceWindow() {
     return this.getStringAttribute('preferred_maintenance_window');
   }
-  public set preferredMaintenanceWindow(value: string | undefined) {
+  public set preferredMaintenanceWindow(value: string) {
     this._preferredMaintenanceWindow = value;
   }
   public resetPreferredMaintenanceWindow() {
@@ -365,15 +396,15 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get preferredMaintenanceWindowInput() {
-    return this._preferredMaintenanceWindow
+    return this._preferredMaintenanceWindow;
   }
 
   // publicly_accessible - computed: true, optional: true, required: false
-  private _publiclyAccessible?: boolean | cdktf.IResolvable | undefined; 
+  private _publiclyAccessible?: boolean | cdktf.IResolvable; 
   public get publiclyAccessible() {
     return this.getBooleanAttribute('publicly_accessible') as any;
   }
-  public set publiclyAccessible(value: boolean | cdktf.IResolvable | undefined) {
+  public set publiclyAccessible(value: boolean | cdktf.IResolvable) {
     this._publiclyAccessible = value;
   }
   public resetPubliclyAccessible() {
@@ -381,7 +412,7 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get publiclyAccessibleInput() {
-    return this._publiclyAccessible
+    return this._publiclyAccessible;
   }
 
   // replication_instance_arn - computed: true, optional: false, required: false
@@ -399,7 +430,7 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get replicationInstanceClassInput() {
-    return this._replicationInstanceClass
+    return this._replicationInstanceClass;
   }
 
   // replication_instance_id - computed: false, optional: false, required: true
@@ -412,7 +443,7 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get replicationInstanceIdInput() {
-    return this._replicationInstanceId
+    return this._replicationInstanceId;
   }
 
   // replication_instance_private_ips - computed: true, optional: false, required: false
@@ -426,11 +457,11 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
 
   // replication_subnet_group_id - computed: true, optional: true, required: false
-  private _replicationSubnetGroupId?: string | undefined; 
+  private _replicationSubnetGroupId?: string; 
   public get replicationSubnetGroupId() {
     return this.getStringAttribute('replication_subnet_group_id');
   }
-  public set replicationSubnetGroupId(value: string | undefined) {
+  public set replicationSubnetGroupId(value: string) {
     this._replicationSubnetGroupId = value;
   }
   public resetReplicationSubnetGroupId() {
@@ -438,16 +469,16 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get replicationSubnetGroupIdInput() {
-    return this._replicationSubnetGroupId
+    return this._replicationSubnetGroupId;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -455,16 +486,16 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -472,15 +503,15 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // vpc_security_group_ids - computed: true, optional: true, required: false
-  private _vpcSecurityGroupIds?: string[] | undefined; 
+  private _vpcSecurityGroupIds?: string[]; 
   public get vpcSecurityGroupIds() {
     return this.getListAttribute('vpc_security_group_ids');
   }
-  public set vpcSecurityGroupIds(value: string[] | undefined) {
+  public set vpcSecurityGroupIds(value: string[]) {
     this._vpcSecurityGroupIds = value;
   }
   public resetVpcSecurityGroupIds() {
@@ -488,24 +519,23 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcSecurityGroupIdsInput() {
-    return this._vpcSecurityGroupIds
+    return this._vpcSecurityGroupIds;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DmsReplicationInstanceTimeouts | undefined; 
-  private __timeoutsOutput = new DmsReplicationInstanceTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DmsReplicationInstanceTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DmsReplicationInstanceTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DmsReplicationInstanceTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -530,7 +560,7 @@ export class DmsReplicationInstance extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       vpc_security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._vpcSecurityGroupIds),
-      timeouts: dmsReplicationInstanceTimeoutsToTerraform(this._timeouts),
+      timeouts: dmsReplicationInstanceTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

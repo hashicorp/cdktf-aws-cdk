@@ -50,12 +50,37 @@ export class WafregionalSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchOu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): WafregionalSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._data) {
+      hasAnyValues = true;
+      internalValueResult.data = this._data;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: WafregionalSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._data = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._data = value.data;
+      this._type = value.type;
+    }
+  }
+
   // data - computed: false, optional: true, required: false
-  private _data?: string | undefined; 
+  private _data?: string; 
   public get data() {
     return this.getStringAttribute('data');
   }
-  public set data(value: string | undefined) {
+  public set data(value: string) {
     this._data = value;
   }
   public resetData() {
@@ -63,7 +88,7 @@ export class WafregionalSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchOu
   }
   // Temporarily expose input value. Use with caution.
   public get dataInput() {
-    return this._data
+    return this._data;
   }
 
   // type - computed: false, optional: false, required: true
@@ -76,7 +101,7 @@ export class WafregionalSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchOu
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 export interface WafregionalSqlInjectionMatchSetSqlInjectionMatchTuple {
@@ -159,16 +184,16 @@ export class WafregionalSqlInjectionMatchSet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // sql_injection_match_tuple - computed: false, optional: true, required: false
-  private _sqlInjectionMatchTuple?: WafregionalSqlInjectionMatchSetSqlInjectionMatchTuple[] | undefined; 
+  private _sqlInjectionMatchTuple?: WafregionalSqlInjectionMatchSetSqlInjectionMatchTuple[]; 
   public get sqlInjectionMatchTuple() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('sql_injection_match_tuple') as any;
   }
-  public set sqlInjectionMatchTuple(value: WafregionalSqlInjectionMatchSetSqlInjectionMatchTuple[] | undefined) {
+  public set sqlInjectionMatchTuple(value: WafregionalSqlInjectionMatchSetSqlInjectionMatchTuple[]) {
     this._sqlInjectionMatchTuple = value;
   }
   public resetSqlInjectionMatchTuple() {
@@ -176,7 +201,7 @@ export class WafregionalSqlInjectionMatchSet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sqlInjectionMatchTupleInput() {
-    return this._sqlInjectionMatchTuple
+    return this._sqlInjectionMatchTuple;
   }
 
   // =========

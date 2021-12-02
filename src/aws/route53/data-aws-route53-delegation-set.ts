@@ -72,7 +72,7 @@ export class DataAwsRoute53DelegationSet extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get idInput() {
-    return this._id
+    return this._id;
   }
 
   // name_servers - computed: true, optional: false, required: false

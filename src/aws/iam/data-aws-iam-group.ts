@@ -94,7 +94,7 @@ export class DataAwsIamGroup extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get groupNameInput() {
-    return this._groupName
+    return this._groupName;
   }
 
   // id - computed: true, optional: true, required: false

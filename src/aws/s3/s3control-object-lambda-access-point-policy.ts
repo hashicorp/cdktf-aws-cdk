@@ -63,11 +63,11 @@ export class S3ControlObjectLambdaAccessPointPolicy extends cdktf.TerraformResou
   // ==========
 
   // account_id - computed: true, optional: true, required: false
-  private _accountId?: string | undefined; 
+  private _accountId?: string; 
   public get accountId() {
     return this.getStringAttribute('account_id');
   }
-  public set accountId(value: string | undefined) {
+  public set accountId(value: string) {
     this._accountId = value;
   }
   public resetAccountId() {
@@ -75,7 +75,7 @@ export class S3ControlObjectLambdaAccessPointPolicy extends cdktf.TerraformResou
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdInput() {
-    return this._accountId
+    return this._accountId;
   }
 
   // has_public_access_policy - computed: true, optional: false, required: false
@@ -98,7 +98,7 @@ export class S3ControlObjectLambdaAccessPointPolicy extends cdktf.TerraformResou
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // policy - computed: false, optional: false, required: true
@@ -111,7 +111,7 @@ export class S3ControlObjectLambdaAccessPointPolicy extends cdktf.TerraformResou
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // =========

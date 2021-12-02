@@ -70,12 +70,37 @@ export class SagemakerUserProfileUserSettingsJupyterServerAppSettingsDefaultReso
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerUserProfileUserSettingsJupyterServerAppSettingsDefaultResourceSpec | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._instanceType) {
+      hasAnyValues = true;
+      internalValueResult.instanceType = this._instanceType;
+    }
+    if (this._sagemakerImageArn) {
+      hasAnyValues = true;
+      internalValueResult.sagemakerImageArn = this._sagemakerImageArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerUserProfileUserSettingsJupyterServerAppSettingsDefaultResourceSpec | undefined) {
+    if (value === undefined) {
+      this._instanceType = undefined;
+      this._sagemakerImageArn = undefined;
+    }
+    else {
+      this._instanceType = value.instanceType;
+      this._sagemakerImageArn = value.sagemakerImageArn;
+    }
+  }
+
   // instance_type - computed: false, optional: true, required: false
-  private _instanceType?: string | undefined; 
+  private _instanceType?: string; 
   public get instanceType() {
     return this.getStringAttribute('instance_type');
   }
-  public set instanceType(value: string | undefined) {
+  public set instanceType(value: string) {
     this._instanceType = value;
   }
   public resetInstanceType() {
@@ -83,15 +108,15 @@ export class SagemakerUserProfileUserSettingsJupyterServerAppSettingsDefaultReso
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // sagemaker_image_arn - computed: false, optional: true, required: false
-  private _sagemakerImageArn?: string | undefined; 
+  private _sagemakerImageArn?: string; 
   public get sagemakerImageArn() {
     return this.getStringAttribute('sagemaker_image_arn');
   }
-  public set sagemakerImageArn(value: string | undefined) {
+  public set sagemakerImageArn(value: string) {
     this._sagemakerImageArn = value;
   }
   public resetSagemakerImageArn() {
@@ -99,7 +124,7 @@ export class SagemakerUserProfileUserSettingsJupyterServerAppSettingsDefaultReso
   }
   // Temporarily expose input value. Use with caution.
   public get sagemakerImageArnInput() {
-    return this._sagemakerImageArn
+    return this._sagemakerImageArn;
   }
 }
 export interface SagemakerUserProfileUserSettingsJupyterServerAppSettings {
@@ -136,12 +161,37 @@ export class SagemakerUserProfileUserSettingsJupyterServerAppSettingsOutputRefer
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerUserProfileUserSettingsJupyterServerAppSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._lifecycleConfigArns) {
+      hasAnyValues = true;
+      internalValueResult.lifecycleConfigArns = this._lifecycleConfigArns;
+    }
+    if (this._defaultResourceSpec) {
+      hasAnyValues = true;
+      internalValueResult.defaultResourceSpec = this._defaultResourceSpec?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerUserProfileUserSettingsJupyterServerAppSettings | undefined) {
+    if (value === undefined) {
+      this._lifecycleConfigArns = undefined;
+      this._defaultResourceSpec.internalValue = undefined;
+    }
+    else {
+      this._lifecycleConfigArns = value.lifecycleConfigArns;
+      this._defaultResourceSpec.internalValue = value.defaultResourceSpec;
+    }
+  }
+
   // lifecycle_config_arns - computed: false, optional: true, required: false
-  private _lifecycleConfigArns?: string[] | undefined; 
+  private _lifecycleConfigArns?: string[]; 
   public get lifecycleConfigArns() {
     return this.getListAttribute('lifecycle_config_arns');
   }
-  public set lifecycleConfigArns(value: string[] | undefined) {
+  public set lifecycleConfigArns(value: string[]) {
     this._lifecycleConfigArns = value;
   }
   public resetLifecycleConfigArns() {
@@ -149,21 +199,20 @@ export class SagemakerUserProfileUserSettingsJupyterServerAppSettingsOutputRefer
   }
   // Temporarily expose input value. Use with caution.
   public get lifecycleConfigArnsInput() {
-    return this._lifecycleConfigArns
+    return this._lifecycleConfigArns;
   }
 
   // default_resource_spec - computed: false, optional: false, required: true
-  private _defaultResourceSpec?: SagemakerUserProfileUserSettingsJupyterServerAppSettingsDefaultResourceSpec; 
-  private __defaultResourceSpecOutput = new SagemakerUserProfileUserSettingsJupyterServerAppSettingsDefaultResourceSpecOutputReference(this as any, "default_resource_spec", true);
+  private _defaultResourceSpec = new SagemakerUserProfileUserSettingsJupyterServerAppSettingsDefaultResourceSpecOutputReference(this as any, "default_resource_spec", true);
   public get defaultResourceSpec() {
-    return this.__defaultResourceSpecOutput;
+    return this._defaultResourceSpec;
   }
   public putDefaultResourceSpec(value: SagemakerUserProfileUserSettingsJupyterServerAppSettingsDefaultResourceSpec) {
-    this._defaultResourceSpec = value;
+    this._defaultResourceSpec.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get defaultResourceSpecInput() {
-    return this._defaultResourceSpec
+    return this._defaultResourceSpec.internalValue;
   }
 }
 export interface SagemakerUserProfileUserSettingsKernelGatewayAppSettingsCustomImage {
@@ -225,12 +274,37 @@ export class SagemakerUserProfileUserSettingsKernelGatewayAppSettingsDefaultReso
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerUserProfileUserSettingsKernelGatewayAppSettingsDefaultResourceSpec | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._instanceType) {
+      hasAnyValues = true;
+      internalValueResult.instanceType = this._instanceType;
+    }
+    if (this._sagemakerImageArn) {
+      hasAnyValues = true;
+      internalValueResult.sagemakerImageArn = this._sagemakerImageArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerUserProfileUserSettingsKernelGatewayAppSettingsDefaultResourceSpec | undefined) {
+    if (value === undefined) {
+      this._instanceType = undefined;
+      this._sagemakerImageArn = undefined;
+    }
+    else {
+      this._instanceType = value.instanceType;
+      this._sagemakerImageArn = value.sagemakerImageArn;
+    }
+  }
+
   // instance_type - computed: false, optional: true, required: false
-  private _instanceType?: string | undefined; 
+  private _instanceType?: string; 
   public get instanceType() {
     return this.getStringAttribute('instance_type');
   }
-  public set instanceType(value: string | undefined) {
+  public set instanceType(value: string) {
     this._instanceType = value;
   }
   public resetInstanceType() {
@@ -238,15 +312,15 @@ export class SagemakerUserProfileUserSettingsKernelGatewayAppSettingsDefaultReso
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // sagemaker_image_arn - computed: false, optional: true, required: false
-  private _sagemakerImageArn?: string | undefined; 
+  private _sagemakerImageArn?: string; 
   public get sagemakerImageArn() {
     return this.getStringAttribute('sagemaker_image_arn');
   }
-  public set sagemakerImageArn(value: string | undefined) {
+  public set sagemakerImageArn(value: string) {
     this._sagemakerImageArn = value;
   }
   public resetSagemakerImageArn() {
@@ -254,7 +328,7 @@ export class SagemakerUserProfileUserSettingsKernelGatewayAppSettingsDefaultReso
   }
   // Temporarily expose input value. Use with caution.
   public get sagemakerImageArnInput() {
-    return this._sagemakerImageArn
+    return this._sagemakerImageArn;
   }
 }
 export interface SagemakerUserProfileUserSettingsKernelGatewayAppSettings {
@@ -298,12 +372,43 @@ export class SagemakerUserProfileUserSettingsKernelGatewayAppSettingsOutputRefer
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerUserProfileUserSettingsKernelGatewayAppSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._lifecycleConfigArns) {
+      hasAnyValues = true;
+      internalValueResult.lifecycleConfigArns = this._lifecycleConfigArns;
+    }
+    if (this._customImage) {
+      hasAnyValues = true;
+      internalValueResult.customImage = this._customImage;
+    }
+    if (this._defaultResourceSpec) {
+      hasAnyValues = true;
+      internalValueResult.defaultResourceSpec = this._defaultResourceSpec?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerUserProfileUserSettingsKernelGatewayAppSettings | undefined) {
+    if (value === undefined) {
+      this._lifecycleConfigArns = undefined;
+      this._customImage = undefined;
+      this._defaultResourceSpec.internalValue = undefined;
+    }
+    else {
+      this._lifecycleConfigArns = value.lifecycleConfigArns;
+      this._customImage = value.customImage;
+      this._defaultResourceSpec.internalValue = value.defaultResourceSpec;
+    }
+  }
+
   // lifecycle_config_arns - computed: false, optional: true, required: false
-  private _lifecycleConfigArns?: string[] | undefined; 
+  private _lifecycleConfigArns?: string[]; 
   public get lifecycleConfigArns() {
     return this.getListAttribute('lifecycle_config_arns');
   }
-  public set lifecycleConfigArns(value: string[] | undefined) {
+  public set lifecycleConfigArns(value: string[]) {
     this._lifecycleConfigArns = value;
   }
   public resetLifecycleConfigArns() {
@@ -311,16 +416,16 @@ export class SagemakerUserProfileUserSettingsKernelGatewayAppSettingsOutputRefer
   }
   // Temporarily expose input value. Use with caution.
   public get lifecycleConfigArnsInput() {
-    return this._lifecycleConfigArns
+    return this._lifecycleConfigArns;
   }
 
   // custom_image - computed: false, optional: true, required: false
-  private _customImage?: SagemakerUserProfileUserSettingsKernelGatewayAppSettingsCustomImage[] | undefined; 
+  private _customImage?: SagemakerUserProfileUserSettingsKernelGatewayAppSettingsCustomImage[]; 
   public get customImage() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('custom_image') as any;
   }
-  public set customImage(value: SagemakerUserProfileUserSettingsKernelGatewayAppSettingsCustomImage[] | undefined) {
+  public set customImage(value: SagemakerUserProfileUserSettingsKernelGatewayAppSettingsCustomImage[]) {
     this._customImage = value;
   }
   public resetCustomImage() {
@@ -328,21 +433,20 @@ export class SagemakerUserProfileUserSettingsKernelGatewayAppSettingsOutputRefer
   }
   // Temporarily expose input value. Use with caution.
   public get customImageInput() {
-    return this._customImage
+    return this._customImage;
   }
 
   // default_resource_spec - computed: false, optional: false, required: true
-  private _defaultResourceSpec?: SagemakerUserProfileUserSettingsKernelGatewayAppSettingsDefaultResourceSpec; 
-  private __defaultResourceSpecOutput = new SagemakerUserProfileUserSettingsKernelGatewayAppSettingsDefaultResourceSpecOutputReference(this as any, "default_resource_spec", true);
+  private _defaultResourceSpec = new SagemakerUserProfileUserSettingsKernelGatewayAppSettingsDefaultResourceSpecOutputReference(this as any, "default_resource_spec", true);
   public get defaultResourceSpec() {
-    return this.__defaultResourceSpecOutput;
+    return this._defaultResourceSpec;
   }
   public putDefaultResourceSpec(value: SagemakerUserProfileUserSettingsKernelGatewayAppSettingsDefaultResourceSpec) {
-    this._defaultResourceSpec = value;
+    this._defaultResourceSpec.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get defaultResourceSpecInput() {
-    return this._defaultResourceSpec
+    return this._defaultResourceSpec.internalValue;
   }
 }
 export interface SagemakerUserProfileUserSettingsSharingSettings {
@@ -382,12 +486,43 @@ export class SagemakerUserProfileUserSettingsSharingSettingsOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerUserProfileUserSettingsSharingSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._notebookOutputOption) {
+      hasAnyValues = true;
+      internalValueResult.notebookOutputOption = this._notebookOutputOption;
+    }
+    if (this._s3KmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.s3KmsKeyId = this._s3KmsKeyId;
+    }
+    if (this._s3OutputPath) {
+      hasAnyValues = true;
+      internalValueResult.s3OutputPath = this._s3OutputPath;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerUserProfileUserSettingsSharingSettings | undefined) {
+    if (value === undefined) {
+      this._notebookOutputOption = undefined;
+      this._s3KmsKeyId = undefined;
+      this._s3OutputPath = undefined;
+    }
+    else {
+      this._notebookOutputOption = value.notebookOutputOption;
+      this._s3KmsKeyId = value.s3KmsKeyId;
+      this._s3OutputPath = value.s3OutputPath;
+    }
+  }
+
   // notebook_output_option - computed: false, optional: true, required: false
-  private _notebookOutputOption?: string | undefined; 
+  private _notebookOutputOption?: string; 
   public get notebookOutputOption() {
     return this.getStringAttribute('notebook_output_option');
   }
-  public set notebookOutputOption(value: string | undefined) {
+  public set notebookOutputOption(value: string) {
     this._notebookOutputOption = value;
   }
   public resetNotebookOutputOption() {
@@ -395,15 +530,15 @@ export class SagemakerUserProfileUserSettingsSharingSettingsOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get notebookOutputOptionInput() {
-    return this._notebookOutputOption
+    return this._notebookOutputOption;
   }
 
   // s3_kms_key_id - computed: false, optional: true, required: false
-  private _s3KmsKeyId?: string | undefined; 
+  private _s3KmsKeyId?: string; 
   public get s3KmsKeyId() {
     return this.getStringAttribute('s3_kms_key_id');
   }
-  public set s3KmsKeyId(value: string | undefined) {
+  public set s3KmsKeyId(value: string) {
     this._s3KmsKeyId = value;
   }
   public resetS3KmsKeyId() {
@@ -411,15 +546,15 @@ export class SagemakerUserProfileUserSettingsSharingSettingsOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get s3KmsKeyIdInput() {
-    return this._s3KmsKeyId
+    return this._s3KmsKeyId;
   }
 
   // s3_output_path - computed: false, optional: true, required: false
-  private _s3OutputPath?: string | undefined; 
+  private _s3OutputPath?: string; 
   public get s3OutputPath() {
     return this.getStringAttribute('s3_output_path');
   }
-  public set s3OutputPath(value: string | undefined) {
+  public set s3OutputPath(value: string) {
     this._s3OutputPath = value;
   }
   public resetS3OutputPath() {
@@ -427,7 +562,7 @@ export class SagemakerUserProfileUserSettingsSharingSettingsOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get s3OutputPathInput() {
-    return this._s3OutputPath
+    return this._s3OutputPath;
   }
 }
 export interface SagemakerUserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpec {
@@ -462,12 +597,37 @@ export class SagemakerUserProfileUserSettingsTensorBoardAppSettingsDefaultResour
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerUserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpec | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._instanceType) {
+      hasAnyValues = true;
+      internalValueResult.instanceType = this._instanceType;
+    }
+    if (this._sagemakerImageArn) {
+      hasAnyValues = true;
+      internalValueResult.sagemakerImageArn = this._sagemakerImageArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerUserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpec | undefined) {
+    if (value === undefined) {
+      this._instanceType = undefined;
+      this._sagemakerImageArn = undefined;
+    }
+    else {
+      this._instanceType = value.instanceType;
+      this._sagemakerImageArn = value.sagemakerImageArn;
+    }
+  }
+
   // instance_type - computed: false, optional: true, required: false
-  private _instanceType?: string | undefined; 
+  private _instanceType?: string; 
   public get instanceType() {
     return this.getStringAttribute('instance_type');
   }
-  public set instanceType(value: string | undefined) {
+  public set instanceType(value: string) {
     this._instanceType = value;
   }
   public resetInstanceType() {
@@ -475,15 +635,15 @@ export class SagemakerUserProfileUserSettingsTensorBoardAppSettingsDefaultResour
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // sagemaker_image_arn - computed: false, optional: true, required: false
-  private _sagemakerImageArn?: string | undefined; 
+  private _sagemakerImageArn?: string; 
   public get sagemakerImageArn() {
     return this.getStringAttribute('sagemaker_image_arn');
   }
-  public set sagemakerImageArn(value: string | undefined) {
+  public set sagemakerImageArn(value: string) {
     this._sagemakerImageArn = value;
   }
   public resetSagemakerImageArn() {
@@ -491,7 +651,7 @@ export class SagemakerUserProfileUserSettingsTensorBoardAppSettingsDefaultResour
   }
   // Temporarily expose input value. Use with caution.
   public get sagemakerImageArnInput() {
-    return this._sagemakerImageArn
+    return this._sagemakerImageArn;
   }
 }
 export interface SagemakerUserProfileUserSettingsTensorBoardAppSettings {
@@ -523,18 +683,36 @@ export class SagemakerUserProfileUserSettingsTensorBoardAppSettingsOutputReferen
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerUserProfileUserSettingsTensorBoardAppSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._defaultResourceSpec) {
+      hasAnyValues = true;
+      internalValueResult.defaultResourceSpec = this._defaultResourceSpec?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerUserProfileUserSettingsTensorBoardAppSettings | undefined) {
+    if (value === undefined) {
+      this._defaultResourceSpec.internalValue = undefined;
+    }
+    else {
+      this._defaultResourceSpec.internalValue = value.defaultResourceSpec;
+    }
+  }
+
   // default_resource_spec - computed: false, optional: false, required: true
-  private _defaultResourceSpec?: SagemakerUserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpec; 
-  private __defaultResourceSpecOutput = new SagemakerUserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpecOutputReference(this as any, "default_resource_spec", true);
+  private _defaultResourceSpec = new SagemakerUserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpecOutputReference(this as any, "default_resource_spec", true);
   public get defaultResourceSpec() {
-    return this.__defaultResourceSpecOutput;
+    return this._defaultResourceSpec;
   }
   public putDefaultResourceSpec(value: SagemakerUserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpec) {
-    this._defaultResourceSpec = value;
+    this._defaultResourceSpec.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get defaultResourceSpecInput() {
-    return this._defaultResourceSpec
+    return this._defaultResourceSpec.internalValue;
   }
 }
 export interface SagemakerUserProfileUserSettings {
@@ -597,6 +775,55 @@ export class SagemakerUserProfileUserSettingsOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerUserProfileUserSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._executionRole) {
+      hasAnyValues = true;
+      internalValueResult.executionRole = this._executionRole;
+    }
+    if (this._securityGroups) {
+      hasAnyValues = true;
+      internalValueResult.securityGroups = this._securityGroups;
+    }
+    if (this._jupyterServerAppSettings) {
+      hasAnyValues = true;
+      internalValueResult.jupyterServerAppSettings = this._jupyterServerAppSettings?.internalValue;
+    }
+    if (this._kernelGatewayAppSettings) {
+      hasAnyValues = true;
+      internalValueResult.kernelGatewayAppSettings = this._kernelGatewayAppSettings?.internalValue;
+    }
+    if (this._sharingSettings) {
+      hasAnyValues = true;
+      internalValueResult.sharingSettings = this._sharingSettings?.internalValue;
+    }
+    if (this._tensorBoardAppSettings) {
+      hasAnyValues = true;
+      internalValueResult.tensorBoardAppSettings = this._tensorBoardAppSettings?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerUserProfileUserSettings | undefined) {
+    if (value === undefined) {
+      this._executionRole = undefined;
+      this._securityGroups = undefined;
+      this._jupyterServerAppSettings.internalValue = undefined;
+      this._kernelGatewayAppSettings.internalValue = undefined;
+      this._sharingSettings.internalValue = undefined;
+      this._tensorBoardAppSettings.internalValue = undefined;
+    }
+    else {
+      this._executionRole = value.executionRole;
+      this._securityGroups = value.securityGroups;
+      this._jupyterServerAppSettings.internalValue = value.jupyterServerAppSettings;
+      this._kernelGatewayAppSettings.internalValue = value.kernelGatewayAppSettings;
+      this._sharingSettings.internalValue = value.sharingSettings;
+      this._tensorBoardAppSettings.internalValue = value.tensorBoardAppSettings;
+    }
+  }
+
   // execution_role - computed: false, optional: false, required: true
   private _executionRole?: string; 
   public get executionRole() {
@@ -607,15 +834,15 @@ export class SagemakerUserProfileUserSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get executionRoleInput() {
-    return this._executionRole
+    return this._executionRole;
   }
 
   // security_groups - computed: false, optional: true, required: false
-  private _securityGroups?: string[] | undefined; 
+  private _securityGroups?: string[]; 
   public get securityGroups() {
     return this.getListAttribute('security_groups');
   }
-  public set securityGroups(value: string[] | undefined) {
+  public set securityGroups(value: string[]) {
     this._securityGroups = value;
   }
   public resetSecurityGroups() {
@@ -623,75 +850,71 @@ export class SagemakerUserProfileUserSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupsInput() {
-    return this._securityGroups
+    return this._securityGroups;
   }
 
   // jupyter_server_app_settings - computed: false, optional: true, required: false
-  private _jupyterServerAppSettings?: SagemakerUserProfileUserSettingsJupyterServerAppSettings | undefined; 
-  private __jupyterServerAppSettingsOutput = new SagemakerUserProfileUserSettingsJupyterServerAppSettingsOutputReference(this as any, "jupyter_server_app_settings", true);
+  private _jupyterServerAppSettings = new SagemakerUserProfileUserSettingsJupyterServerAppSettingsOutputReference(this as any, "jupyter_server_app_settings", true);
   public get jupyterServerAppSettings() {
-    return this.__jupyterServerAppSettingsOutput;
+    return this._jupyterServerAppSettings;
   }
-  public putJupyterServerAppSettings(value: SagemakerUserProfileUserSettingsJupyterServerAppSettings | undefined) {
-    this._jupyterServerAppSettings = value;
+  public putJupyterServerAppSettings(value: SagemakerUserProfileUserSettingsJupyterServerAppSettings) {
+    this._jupyterServerAppSettings.internalValue = value;
   }
   public resetJupyterServerAppSettings() {
-    this._jupyterServerAppSettings = undefined;
+    this._jupyterServerAppSettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get jupyterServerAppSettingsInput() {
-    return this._jupyterServerAppSettings
+    return this._jupyterServerAppSettings.internalValue;
   }
 
   // kernel_gateway_app_settings - computed: false, optional: true, required: false
-  private _kernelGatewayAppSettings?: SagemakerUserProfileUserSettingsKernelGatewayAppSettings | undefined; 
-  private __kernelGatewayAppSettingsOutput = new SagemakerUserProfileUserSettingsKernelGatewayAppSettingsOutputReference(this as any, "kernel_gateway_app_settings", true);
+  private _kernelGatewayAppSettings = new SagemakerUserProfileUserSettingsKernelGatewayAppSettingsOutputReference(this as any, "kernel_gateway_app_settings", true);
   public get kernelGatewayAppSettings() {
-    return this.__kernelGatewayAppSettingsOutput;
+    return this._kernelGatewayAppSettings;
   }
-  public putKernelGatewayAppSettings(value: SagemakerUserProfileUserSettingsKernelGatewayAppSettings | undefined) {
-    this._kernelGatewayAppSettings = value;
+  public putKernelGatewayAppSettings(value: SagemakerUserProfileUserSettingsKernelGatewayAppSettings) {
+    this._kernelGatewayAppSettings.internalValue = value;
   }
   public resetKernelGatewayAppSettings() {
-    this._kernelGatewayAppSettings = undefined;
+    this._kernelGatewayAppSettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get kernelGatewayAppSettingsInput() {
-    return this._kernelGatewayAppSettings
+    return this._kernelGatewayAppSettings.internalValue;
   }
 
   // sharing_settings - computed: false, optional: true, required: false
-  private _sharingSettings?: SagemakerUserProfileUserSettingsSharingSettings | undefined; 
-  private __sharingSettingsOutput = new SagemakerUserProfileUserSettingsSharingSettingsOutputReference(this as any, "sharing_settings", true);
+  private _sharingSettings = new SagemakerUserProfileUserSettingsSharingSettingsOutputReference(this as any, "sharing_settings", true);
   public get sharingSettings() {
-    return this.__sharingSettingsOutput;
+    return this._sharingSettings;
   }
-  public putSharingSettings(value: SagemakerUserProfileUserSettingsSharingSettings | undefined) {
-    this._sharingSettings = value;
+  public putSharingSettings(value: SagemakerUserProfileUserSettingsSharingSettings) {
+    this._sharingSettings.internalValue = value;
   }
   public resetSharingSettings() {
-    this._sharingSettings = undefined;
+    this._sharingSettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get sharingSettingsInput() {
-    return this._sharingSettings
+    return this._sharingSettings.internalValue;
   }
 
   // tensor_board_app_settings - computed: false, optional: true, required: false
-  private _tensorBoardAppSettings?: SagemakerUserProfileUserSettingsTensorBoardAppSettings | undefined; 
-  private __tensorBoardAppSettingsOutput = new SagemakerUserProfileUserSettingsTensorBoardAppSettingsOutputReference(this as any, "tensor_board_app_settings", true);
+  private _tensorBoardAppSettings = new SagemakerUserProfileUserSettingsTensorBoardAppSettingsOutputReference(this as any, "tensor_board_app_settings", true);
   public get tensorBoardAppSettings() {
-    return this.__tensorBoardAppSettingsOutput;
+    return this._tensorBoardAppSettings;
   }
-  public putTensorBoardAppSettings(value: SagemakerUserProfileUserSettingsTensorBoardAppSettings | undefined) {
-    this._tensorBoardAppSettings = value;
+  public putTensorBoardAppSettings(value: SagemakerUserProfileUserSettingsTensorBoardAppSettings) {
+    this._tensorBoardAppSettings.internalValue = value;
   }
   public resetTensorBoardAppSettings() {
-    this._tensorBoardAppSettings = undefined;
+    this._tensorBoardAppSettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get tensorBoardAppSettingsInput() {
-    return this._tensorBoardAppSettings
+    return this._tensorBoardAppSettings.internalValue;
   }
 }
 
@@ -733,7 +956,7 @@ export class SagemakerUserProfile extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._userProfileName = config.userProfileName;
-    this._userSettings = config.userSettings;
+    this._userSettings.internalValue = config.userSettings;
   }
 
   // ==========
@@ -755,7 +978,7 @@ export class SagemakerUserProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainIdInput() {
-    return this._domainId
+    return this._domainId;
   }
 
   // home_efs_file_system_uid - computed: true, optional: false, required: false
@@ -769,11 +992,11 @@ export class SagemakerUserProfile extends cdktf.TerraformResource {
   }
 
   // single_sign_on_user_identifier - computed: false, optional: true, required: false
-  private _singleSignOnUserIdentifier?: string | undefined; 
+  private _singleSignOnUserIdentifier?: string; 
   public get singleSignOnUserIdentifier() {
     return this.getStringAttribute('single_sign_on_user_identifier');
   }
-  public set singleSignOnUserIdentifier(value: string | undefined) {
+  public set singleSignOnUserIdentifier(value: string) {
     this._singleSignOnUserIdentifier = value;
   }
   public resetSingleSignOnUserIdentifier() {
@@ -781,15 +1004,15 @@ export class SagemakerUserProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get singleSignOnUserIdentifierInput() {
-    return this._singleSignOnUserIdentifier
+    return this._singleSignOnUserIdentifier;
   }
 
   // single_sign_on_user_value - computed: false, optional: true, required: false
-  private _singleSignOnUserValue?: string | undefined; 
+  private _singleSignOnUserValue?: string; 
   public get singleSignOnUserValue() {
     return this.getStringAttribute('single_sign_on_user_value');
   }
-  public set singleSignOnUserValue(value: string | undefined) {
+  public set singleSignOnUserValue(value: string) {
     this._singleSignOnUserValue = value;
   }
   public resetSingleSignOnUserValue() {
@@ -797,16 +1020,16 @@ export class SagemakerUserProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get singleSignOnUserValueInput() {
-    return this._singleSignOnUserValue
+    return this._singleSignOnUserValue;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -814,16 +1037,16 @@ export class SagemakerUserProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -831,7 +1054,7 @@ export class SagemakerUserProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // user_profile_name - computed: false, optional: false, required: true
@@ -844,24 +1067,23 @@ export class SagemakerUserProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userProfileNameInput() {
-    return this._userProfileName
+    return this._userProfileName;
   }
 
   // user_settings - computed: false, optional: true, required: false
-  private _userSettings?: SagemakerUserProfileUserSettings | undefined; 
-  private __userSettingsOutput = new SagemakerUserProfileUserSettingsOutputReference(this as any, "user_settings", true);
+  private _userSettings = new SagemakerUserProfileUserSettingsOutputReference(this as any, "user_settings", true);
   public get userSettings() {
-    return this.__userSettingsOutput;
+    return this._userSettings;
   }
-  public putUserSettings(value: SagemakerUserProfileUserSettings | undefined) {
-    this._userSettings = value;
+  public putUserSettings(value: SagemakerUserProfileUserSettings) {
+    this._userSettings.internalValue = value;
   }
   public resetUserSettings() {
-    this._userSettings = undefined;
+    this._userSettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get userSettingsInput() {
-    return this._userSettings
+    return this._userSettings.internalValue;
   }
 
   // =========
@@ -876,7 +1098,7 @@ export class SagemakerUserProfile extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       user_profile_name: cdktf.stringToTerraform(this._userProfileName),
-      user_settings: sagemakerUserProfileUserSettingsToTerraform(this._userSettings),
+      user_settings: sagemakerUserProfileUserSettingsToTerraform(this._userSettings.internalValue),
     };
   }
 }

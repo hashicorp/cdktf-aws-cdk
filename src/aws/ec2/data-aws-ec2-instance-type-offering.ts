@@ -97,11 +97,11 @@ export class DataAwsEc2InstanceTypeOffering extends cdktf.TerraformDataSource {
   }
 
   // location_type - computed: false, optional: true, required: false
-  private _locationType?: string | undefined; 
+  private _locationType?: string; 
   public get locationType() {
     return this.getStringAttribute('location_type');
   }
-  public set locationType(value: string | undefined) {
+  public set locationType(value: string) {
     this._locationType = value;
   }
   public resetLocationType() {
@@ -109,15 +109,15 @@ export class DataAwsEc2InstanceTypeOffering extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get locationTypeInput() {
-    return this._locationType
+    return this._locationType;
   }
 
   // preferred_instance_types - computed: false, optional: true, required: false
-  private _preferredInstanceTypes?: string[] | undefined; 
+  private _preferredInstanceTypes?: string[]; 
   public get preferredInstanceTypes() {
     return this.getListAttribute('preferred_instance_types');
   }
-  public set preferredInstanceTypes(value: string[] | undefined) {
+  public set preferredInstanceTypes(value: string[]) {
     this._preferredInstanceTypes = value;
   }
   public resetPreferredInstanceTypes() {
@@ -125,16 +125,16 @@ export class DataAwsEc2InstanceTypeOffering extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get preferredInstanceTypesInput() {
-    return this._preferredInstanceTypes
+    return this._preferredInstanceTypes;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsEc2InstanceTypeOfferingFilter[] | undefined; 
+  private _filter?: DataAwsEc2InstanceTypeOfferingFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsEc2InstanceTypeOfferingFilter[] | undefined) {
+  public set filter(value: DataAwsEc2InstanceTypeOfferingFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -142,7 +142,7 @@ export class DataAwsEc2InstanceTypeOffering extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

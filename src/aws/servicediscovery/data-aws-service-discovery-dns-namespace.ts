@@ -87,7 +87,7 @@ export class DataAwsServiceDiscoveryDnsNamespace extends cdktf.TerraformDataSour
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // type - computed: false, optional: false, required: true
@@ -100,7 +100,7 @@ export class DataAwsServiceDiscoveryDnsNamespace extends cdktf.TerraformDataSour
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // =========

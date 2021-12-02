@@ -72,15 +72,15 @@ export class WorklinkWebsiteCertificateAuthorityAssociation extends cdktf.Terraf
   }
   // Temporarily expose input value. Use with caution.
   public get certificateInput() {
-    return this._certificate
+    return this._certificate;
   }
 
   // display_name - computed: false, optional: true, required: false
-  private _displayName?: string | undefined; 
+  private _displayName?: string; 
   public get displayName() {
     return this.getStringAttribute('display_name');
   }
-  public set displayName(value: string | undefined) {
+  public set displayName(value: string) {
     this._displayName = value;
   }
   public resetDisplayName() {
@@ -88,7 +88,7 @@ export class WorklinkWebsiteCertificateAuthorityAssociation extends cdktf.Terraf
   }
   // Temporarily expose input value. Use with caution.
   public get displayNameInput() {
-    return this._displayName
+    return this._displayName;
   }
 
   // fleet_arn - computed: false, optional: false, required: true
@@ -101,7 +101,7 @@ export class WorklinkWebsiteCertificateAuthorityAssociation extends cdktf.Terraf
   }
   // Temporarily expose input value. Use with caution.
   public get fleetArnInput() {
-    return this._fleetArn
+    return this._fleetArn;
   }
 
   // id - computed: true, optional: true, required: false

@@ -98,12 +98,37 @@ export class EksFargateProfileTimeoutsOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EksFargateProfileTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EksFargateProfileTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -111,15 +136,15 @@ export class EksFargateProfileTimeoutsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -127,7 +152,7 @@ export class EksFargateProfileTimeoutsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -170,7 +195,7 @@ export class EksFargateProfile extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._selector = config.selector;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -192,7 +217,7 @@ export class EksFargateProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterNameInput() {
-    return this._clusterName
+    return this._clusterName;
   }
 
   // fargate_profile_name - computed: false, optional: false, required: true
@@ -205,7 +230,7 @@ export class EksFargateProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fargateProfileNameInput() {
-    return this._fargateProfileName
+    return this._fargateProfileName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -223,7 +248,7 @@ export class EksFargateProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get podExecutionRoleArnInput() {
-    return this._podExecutionRoleArn
+    return this._podExecutionRoleArn;
   }
 
   // status - computed: true, optional: false, required: false
@@ -232,11 +257,11 @@ export class EksFargateProfile extends cdktf.TerraformResource {
   }
 
   // subnet_ids - computed: false, optional: true, required: false
-  private _subnetIds?: string[] | undefined; 
+  private _subnetIds?: string[]; 
   public get subnetIds() {
     return this.getListAttribute('subnet_ids');
   }
-  public set subnetIds(value: string[] | undefined) {
+  public set subnetIds(value: string[]) {
     this._subnetIds = value;
   }
   public resetSubnetIds() {
@@ -244,16 +269,16 @@ export class EksFargateProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -261,16 +286,16 @@ export class EksFargateProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -278,7 +303,7 @@ export class EksFargateProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // selector - computed: false, optional: false, required: true
@@ -292,24 +317,23 @@ export class EksFargateProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get selectorInput() {
-    return this._selector
+    return this._selector;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: EksFargateProfileTimeouts | undefined; 
-  private __timeoutsOutput = new EksFargateProfileTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new EksFargateProfileTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: EksFargateProfileTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: EksFargateProfileTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -325,7 +349,7 @@ export class EksFargateProfile extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       selector: cdktf.listMapper(eksFargateProfileSelectorToTerraform)(this._selector),
-      timeouts: eksFargateProfileTimeoutsToTerraform(this._timeouts),
+      timeouts: eksFargateProfileTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

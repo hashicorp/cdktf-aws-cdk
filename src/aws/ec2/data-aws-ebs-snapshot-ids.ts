@@ -97,11 +97,11 @@ export class DataAwsEbsSnapshotIds extends cdktf.TerraformDataSource {
   }
 
   // owners - computed: false, optional: true, required: false
-  private _owners?: string[] | undefined; 
+  private _owners?: string[]; 
   public get owners() {
     return this.getListAttribute('owners');
   }
-  public set owners(value: string[] | undefined) {
+  public set owners(value: string[]) {
     this._owners = value;
   }
   public resetOwners() {
@@ -109,15 +109,15 @@ export class DataAwsEbsSnapshotIds extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownersInput() {
-    return this._owners
+    return this._owners;
   }
 
   // restorable_by_user_ids - computed: false, optional: true, required: false
-  private _restorableByUserIds?: string[] | undefined; 
+  private _restorableByUserIds?: string[]; 
   public get restorableByUserIds() {
     return this.getListAttribute('restorable_by_user_ids');
   }
-  public set restorableByUserIds(value: string[] | undefined) {
+  public set restorableByUserIds(value: string[]) {
     this._restorableByUserIds = value;
   }
   public resetRestorableByUserIds() {
@@ -125,16 +125,16 @@ export class DataAwsEbsSnapshotIds extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get restorableByUserIdsInput() {
-    return this._restorableByUserIds
+    return this._restorableByUserIds;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsEbsSnapshotIdsFilter[] | undefined; 
+  private _filter?: DataAwsEbsSnapshotIdsFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsEbsSnapshotIdsFilter[] | undefined) {
+  public set filter(value: DataAwsEbsSnapshotIdsFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -142,7 +142,7 @@ export class DataAwsEbsSnapshotIds extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

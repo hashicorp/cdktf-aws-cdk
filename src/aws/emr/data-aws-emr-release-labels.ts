@@ -46,12 +46,37 @@ export class DataAwsEmrReleaseLabelsFiltersOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DataAwsEmrReleaseLabelsFilters | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._application) {
+      hasAnyValues = true;
+      internalValueResult.application = this._application;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DataAwsEmrReleaseLabelsFilters | undefined) {
+    if (value === undefined) {
+      this._application = undefined;
+      this._prefix = undefined;
+    }
+    else {
+      this._application = value.application;
+      this._prefix = value.prefix;
+    }
+  }
+
   // application - computed: false, optional: true, required: false
-  private _application?: string | undefined; 
+  private _application?: string; 
   public get application() {
     return this.getStringAttribute('application');
   }
-  public set application(value: string | undefined) {
+  public set application(value: string) {
     this._application = value;
   }
   public resetApplication() {
@@ -59,15 +84,15 @@ export class DataAwsEmrReleaseLabelsFiltersOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get applicationInput() {
-    return this._application
+    return this._application;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -75,7 +100,7 @@ export class DataAwsEmrReleaseLabelsFiltersOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 }
 
@@ -111,7 +136,7 @@ export class DataAwsEmrReleaseLabels extends cdktf.TerraformDataSource {
       count: config.count,
       lifecycle: config.lifecycle
     });
-    this._filters = config.filters;
+    this._filters.internalValue = config.filters;
   }
 
   // ==========
@@ -129,20 +154,19 @@ export class DataAwsEmrReleaseLabels extends cdktf.TerraformDataSource {
   }
 
   // filters - computed: false, optional: true, required: false
-  private _filters?: DataAwsEmrReleaseLabelsFilters | undefined; 
-  private __filtersOutput = new DataAwsEmrReleaseLabelsFiltersOutputReference(this as any, "filters", true);
+  private _filters = new DataAwsEmrReleaseLabelsFiltersOutputReference(this as any, "filters", true);
   public get filters() {
-    return this.__filtersOutput;
+    return this._filters;
   }
-  public putFilters(value: DataAwsEmrReleaseLabelsFilters | undefined) {
-    this._filters = value;
+  public putFilters(value: DataAwsEmrReleaseLabelsFilters) {
+    this._filters.internalValue = value;
   }
   public resetFilters() {
-    this._filters = undefined;
+    this._filters.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get filtersInput() {
-    return this._filters
+    return this._filters.internalValue;
   }
 
   // =========
@@ -151,7 +175,7 @@ export class DataAwsEmrReleaseLabels extends cdktf.TerraformDataSource {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
-      filters: dataAwsEmrReleaseLabelsFiltersToTerraform(this._filters),
+      filters: dataAwsEmrReleaseLabelsFiltersToTerraform(this._filters.internalValue),
     };
   }
 }

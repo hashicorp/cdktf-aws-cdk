@@ -77,7 +77,7 @@ export class SecurityhubActionTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -95,7 +95,7 @@ export class SecurityhubActionTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get identifierInput() {
-    return this._identifier
+    return this._identifier;
   }
 
   // name - computed: false, optional: false, required: true
@@ -108,7 +108,7 @@ export class SecurityhubActionTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // =========

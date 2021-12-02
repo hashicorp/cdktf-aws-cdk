@@ -70,12 +70,37 @@ export class SagemakerDeviceFleetOutputConfigOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerDeviceFleetOutputConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._kmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyId = this._kmsKeyId;
+    }
+    if (this._s3OutputLocation) {
+      hasAnyValues = true;
+      internalValueResult.s3OutputLocation = this._s3OutputLocation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerDeviceFleetOutputConfig | undefined) {
+    if (value === undefined) {
+      this._kmsKeyId = undefined;
+      this._s3OutputLocation = undefined;
+    }
+    else {
+      this._kmsKeyId = value.kmsKeyId;
+      this._s3OutputLocation = value.s3OutputLocation;
+    }
+  }
+
   // kms_key_id - computed: false, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -83,7 +108,7 @@ export class SagemakerDeviceFleetOutputConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // s3_output_location - computed: false, optional: false, required: true
@@ -96,7 +121,7 @@ export class SagemakerDeviceFleetOutputConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get s3OutputLocationInput() {
-    return this._s3OutputLocation
+    return this._s3OutputLocation;
   }
 }
 
@@ -138,7 +163,7 @@ export class SagemakerDeviceFleet extends cdktf.TerraformResource {
     this._roleArn = config.roleArn;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._outputConfig = config.outputConfig;
+    this._outputConfig.internalValue = config.outputConfig;
   }
 
   // ==========
@@ -151,11 +176,11 @@ export class SagemakerDeviceFleet extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -163,7 +188,7 @@ export class SagemakerDeviceFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // device_fleet_name - computed: false, optional: false, required: true
@@ -176,15 +201,15 @@ export class SagemakerDeviceFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deviceFleetNameInput() {
-    return this._deviceFleetName
+    return this._deviceFleetName;
   }
 
   // enable_iot_role_alias - computed: false, optional: true, required: false
-  private _enableIotRoleAlias?: boolean | cdktf.IResolvable | undefined; 
+  private _enableIotRoleAlias?: boolean | cdktf.IResolvable; 
   public get enableIotRoleAlias() {
     return this.getBooleanAttribute('enable_iot_role_alias') as any;
   }
-  public set enableIotRoleAlias(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableIotRoleAlias(value: boolean | cdktf.IResolvable) {
     this._enableIotRoleAlias = value;
   }
   public resetEnableIotRoleAlias() {
@@ -192,7 +217,7 @@ export class SagemakerDeviceFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableIotRoleAliasInput() {
-    return this._enableIotRoleAlias
+    return this._enableIotRoleAlias;
   }
 
   // id - computed: true, optional: true, required: false
@@ -215,16 +240,16 @@ export class SagemakerDeviceFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -232,16 +257,16 @@ export class SagemakerDeviceFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -249,21 +274,20 @@ export class SagemakerDeviceFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // output_config - computed: false, optional: false, required: true
-  private _outputConfig?: SagemakerDeviceFleetOutputConfig; 
-  private __outputConfigOutput = new SagemakerDeviceFleetOutputConfigOutputReference(this as any, "output_config", true);
+  private _outputConfig = new SagemakerDeviceFleetOutputConfigOutputReference(this as any, "output_config", true);
   public get outputConfig() {
-    return this.__outputConfigOutput;
+    return this._outputConfig;
   }
   public putOutputConfig(value: SagemakerDeviceFleetOutputConfig) {
-    this._outputConfig = value;
+    this._outputConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get outputConfigInput() {
-    return this._outputConfig
+    return this._outputConfig.internalValue;
   }
 
   // =========
@@ -278,7 +302,7 @@ export class SagemakerDeviceFleet extends cdktf.TerraformResource {
       role_arn: cdktf.stringToTerraform(this._roleArn),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      output_config: sagemakerDeviceFleetOutputConfigToTerraform(this._outputConfig),
+      output_config: sagemakerDeviceFleetOutputConfigToTerraform(this._outputConfig.internalValue),
     };
   }
 }

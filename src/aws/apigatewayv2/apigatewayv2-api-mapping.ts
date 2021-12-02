@@ -77,15 +77,15 @@ export class Apigatewayv2ApiMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiIdInput() {
-    return this._apiId
+    return this._apiId;
   }
 
   // api_mapping_key - computed: false, optional: true, required: false
-  private _apiMappingKey?: string | undefined; 
+  private _apiMappingKey?: string; 
   public get apiMappingKey() {
     return this.getStringAttribute('api_mapping_key');
   }
-  public set apiMappingKey(value: string | undefined) {
+  public set apiMappingKey(value: string) {
     this._apiMappingKey = value;
   }
   public resetApiMappingKey() {
@@ -93,7 +93,7 @@ export class Apigatewayv2ApiMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiMappingKeyInput() {
-    return this._apiMappingKey
+    return this._apiMappingKey;
   }
 
   // domain_name - computed: false, optional: false, required: true
@@ -106,7 +106,7 @@ export class Apigatewayv2ApiMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainNameInput() {
-    return this._domainName
+    return this._domainName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -124,7 +124,7 @@ export class Apigatewayv2ApiMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stageInput() {
-    return this._stage
+    return this._stage;
   }
 
   // =========

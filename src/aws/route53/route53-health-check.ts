@@ -163,11 +163,11 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
 
   // child_health_threshold - computed: false, optional: true, required: false
-  private _childHealthThreshold?: number | undefined; 
+  private _childHealthThreshold?: number; 
   public get childHealthThreshold() {
     return this.getNumberAttribute('child_health_threshold');
   }
-  public set childHealthThreshold(value: number | undefined) {
+  public set childHealthThreshold(value: number) {
     this._childHealthThreshold = value;
   }
   public resetChildHealthThreshold() {
@@ -175,15 +175,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get childHealthThresholdInput() {
-    return this._childHealthThreshold
+    return this._childHealthThreshold;
   }
 
   // child_healthchecks - computed: false, optional: true, required: false
-  private _childHealthchecks?: string[] | undefined; 
+  private _childHealthchecks?: string[]; 
   public get childHealthchecks() {
     return this.getListAttribute('child_healthchecks');
   }
-  public set childHealthchecks(value: string[] | undefined) {
+  public set childHealthchecks(value: string[]) {
     this._childHealthchecks = value;
   }
   public resetChildHealthchecks() {
@@ -191,15 +191,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get childHealthchecksInput() {
-    return this._childHealthchecks
+    return this._childHealthchecks;
   }
 
   // cloudwatch_alarm_name - computed: false, optional: true, required: false
-  private _cloudwatchAlarmName?: string | undefined; 
+  private _cloudwatchAlarmName?: string; 
   public get cloudwatchAlarmName() {
     return this.getStringAttribute('cloudwatch_alarm_name');
   }
-  public set cloudwatchAlarmName(value: string | undefined) {
+  public set cloudwatchAlarmName(value: string) {
     this._cloudwatchAlarmName = value;
   }
   public resetCloudwatchAlarmName() {
@@ -207,15 +207,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchAlarmNameInput() {
-    return this._cloudwatchAlarmName
+    return this._cloudwatchAlarmName;
   }
 
   // cloudwatch_alarm_region - computed: false, optional: true, required: false
-  private _cloudwatchAlarmRegion?: string | undefined; 
+  private _cloudwatchAlarmRegion?: string; 
   public get cloudwatchAlarmRegion() {
     return this.getStringAttribute('cloudwatch_alarm_region');
   }
-  public set cloudwatchAlarmRegion(value: string | undefined) {
+  public set cloudwatchAlarmRegion(value: string) {
     this._cloudwatchAlarmRegion = value;
   }
   public resetCloudwatchAlarmRegion() {
@@ -223,15 +223,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchAlarmRegionInput() {
-    return this._cloudwatchAlarmRegion
+    return this._cloudwatchAlarmRegion;
   }
 
   // disabled - computed: false, optional: true, required: false
-  private _disabled?: boolean | cdktf.IResolvable | undefined; 
+  private _disabled?: boolean | cdktf.IResolvable; 
   public get disabled() {
     return this.getBooleanAttribute('disabled') as any;
   }
-  public set disabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set disabled(value: boolean | cdktf.IResolvable) {
     this._disabled = value;
   }
   public resetDisabled() {
@@ -239,15 +239,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get disabledInput() {
-    return this._disabled
+    return this._disabled;
   }
 
   // enable_sni - computed: true, optional: true, required: false
-  private _enableSni?: boolean | cdktf.IResolvable | undefined; 
+  private _enableSni?: boolean | cdktf.IResolvable; 
   public get enableSni() {
     return this.getBooleanAttribute('enable_sni') as any;
   }
-  public set enableSni(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableSni(value: boolean | cdktf.IResolvable) {
     this._enableSni = value;
   }
   public resetEnableSni() {
@@ -255,15 +255,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableSniInput() {
-    return this._enableSni
+    return this._enableSni;
   }
 
   // failure_threshold - computed: true, optional: true, required: false
-  private _failureThreshold?: number | undefined; 
+  private _failureThreshold?: number; 
   public get failureThreshold() {
     return this.getNumberAttribute('failure_threshold');
   }
-  public set failureThreshold(value: number | undefined) {
+  public set failureThreshold(value: number) {
     this._failureThreshold = value;
   }
   public resetFailureThreshold() {
@@ -271,15 +271,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get failureThresholdInput() {
-    return this._failureThreshold
+    return this._failureThreshold;
   }
 
   // fqdn - computed: false, optional: true, required: false
-  private _fqdn?: string | undefined; 
+  private _fqdn?: string; 
   public get fqdn() {
     return this.getStringAttribute('fqdn');
   }
-  public set fqdn(value: string | undefined) {
+  public set fqdn(value: string) {
     this._fqdn = value;
   }
   public resetFqdn() {
@@ -287,7 +287,7 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fqdnInput() {
-    return this._fqdn
+    return this._fqdn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -296,11 +296,11 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
 
   // insufficient_data_health_status - computed: false, optional: true, required: false
-  private _insufficientDataHealthStatus?: string | undefined; 
+  private _insufficientDataHealthStatus?: string; 
   public get insufficientDataHealthStatus() {
     return this.getStringAttribute('insufficient_data_health_status');
   }
-  public set insufficientDataHealthStatus(value: string | undefined) {
+  public set insufficientDataHealthStatus(value: string) {
     this._insufficientDataHealthStatus = value;
   }
   public resetInsufficientDataHealthStatus() {
@@ -308,15 +308,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get insufficientDataHealthStatusInput() {
-    return this._insufficientDataHealthStatus
+    return this._insufficientDataHealthStatus;
   }
 
   // invert_healthcheck - computed: false, optional: true, required: false
-  private _invertHealthcheck?: boolean | cdktf.IResolvable | undefined; 
+  private _invertHealthcheck?: boolean | cdktf.IResolvable; 
   public get invertHealthcheck() {
     return this.getBooleanAttribute('invert_healthcheck') as any;
   }
-  public set invertHealthcheck(value: boolean | cdktf.IResolvable | undefined) {
+  public set invertHealthcheck(value: boolean | cdktf.IResolvable) {
     this._invertHealthcheck = value;
   }
   public resetInvertHealthcheck() {
@@ -324,15 +324,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get invertHealthcheckInput() {
-    return this._invertHealthcheck
+    return this._invertHealthcheck;
   }
 
   // ip_address - computed: false, optional: true, required: false
-  private _ipAddress?: string | undefined; 
+  private _ipAddress?: string; 
   public get ipAddress() {
     return this.getStringAttribute('ip_address');
   }
-  public set ipAddress(value: string | undefined) {
+  public set ipAddress(value: string) {
     this._ipAddress = value;
   }
   public resetIpAddress() {
@@ -340,15 +340,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipAddressInput() {
-    return this._ipAddress
+    return this._ipAddress;
   }
 
   // measure_latency - computed: false, optional: true, required: false
-  private _measureLatency?: boolean | cdktf.IResolvable | undefined; 
+  private _measureLatency?: boolean | cdktf.IResolvable; 
   public get measureLatency() {
     return this.getBooleanAttribute('measure_latency') as any;
   }
-  public set measureLatency(value: boolean | cdktf.IResolvable | undefined) {
+  public set measureLatency(value: boolean | cdktf.IResolvable) {
     this._measureLatency = value;
   }
   public resetMeasureLatency() {
@@ -356,15 +356,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get measureLatencyInput() {
-    return this._measureLatency
+    return this._measureLatency;
   }
 
   // port - computed: false, optional: true, required: false
-  private _port?: number | undefined; 
+  private _port?: number; 
   public get port() {
     return this.getNumberAttribute('port');
   }
-  public set port(value: number | undefined) {
+  public set port(value: number) {
     this._port = value;
   }
   public resetPort() {
@@ -372,15 +372,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 
   // reference_name - computed: false, optional: true, required: false
-  private _referenceName?: string | undefined; 
+  private _referenceName?: string; 
   public get referenceName() {
     return this.getStringAttribute('reference_name');
   }
-  public set referenceName(value: string | undefined) {
+  public set referenceName(value: string) {
     this._referenceName = value;
   }
   public resetReferenceName() {
@@ -388,15 +388,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get referenceNameInput() {
-    return this._referenceName
+    return this._referenceName;
   }
 
   // regions - computed: false, optional: true, required: false
-  private _regions?: string[] | undefined; 
+  private _regions?: string[]; 
   public get regions() {
     return this.getListAttribute('regions');
   }
-  public set regions(value: string[] | undefined) {
+  public set regions(value: string[]) {
     this._regions = value;
   }
   public resetRegions() {
@@ -404,15 +404,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get regionsInput() {
-    return this._regions
+    return this._regions;
   }
 
   // request_interval - computed: false, optional: true, required: false
-  private _requestInterval?: number | undefined; 
+  private _requestInterval?: number; 
   public get requestInterval() {
     return this.getNumberAttribute('request_interval');
   }
-  public set requestInterval(value: number | undefined) {
+  public set requestInterval(value: number) {
     this._requestInterval = value;
   }
   public resetRequestInterval() {
@@ -420,15 +420,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requestIntervalInput() {
-    return this._requestInterval
+    return this._requestInterval;
   }
 
   // resource_path - computed: false, optional: true, required: false
-  private _resourcePath?: string | undefined; 
+  private _resourcePath?: string; 
   public get resourcePath() {
     return this.getStringAttribute('resource_path');
   }
-  public set resourcePath(value: string | undefined) {
+  public set resourcePath(value: string) {
     this._resourcePath = value;
   }
   public resetResourcePath() {
@@ -436,15 +436,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourcePathInput() {
-    return this._resourcePath
+    return this._resourcePath;
   }
 
   // routing_control_arn - computed: false, optional: true, required: false
-  private _routingControlArn?: string | undefined; 
+  private _routingControlArn?: string; 
   public get routingControlArn() {
     return this.getStringAttribute('routing_control_arn');
   }
-  public set routingControlArn(value: string | undefined) {
+  public set routingControlArn(value: string) {
     this._routingControlArn = value;
   }
   public resetRoutingControlArn() {
@@ -452,15 +452,15 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get routingControlArnInput() {
-    return this._routingControlArn
+    return this._routingControlArn;
   }
 
   // search_string - computed: false, optional: true, required: false
-  private _searchString?: string | undefined; 
+  private _searchString?: string; 
   public get searchString() {
     return this.getStringAttribute('search_string');
   }
-  public set searchString(value: string | undefined) {
+  public set searchString(value: string) {
     this._searchString = value;
   }
   public resetSearchString() {
@@ -468,16 +468,16 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get searchStringInput() {
-    return this._searchString
+    return this._searchString;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -485,16 +485,16 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -502,7 +502,7 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // type - computed: false, optional: false, required: true
@@ -515,7 +515,7 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // =========

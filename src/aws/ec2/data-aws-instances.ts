@@ -97,11 +97,11 @@ export class DataAwsInstances extends cdktf.TerraformDataSource {
   }
 
   // instance_state_names - computed: false, optional: true, required: false
-  private _instanceStateNames?: string[] | undefined; 
+  private _instanceStateNames?: string[]; 
   public get instanceStateNames() {
     return this.getListAttribute('instance_state_names');
   }
-  public set instanceStateNames(value: string[] | undefined) {
+  public set instanceStateNames(value: string[]) {
     this._instanceStateNames = value;
   }
   public resetInstanceStateNames() {
@@ -109,16 +109,16 @@ export class DataAwsInstances extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceStateNamesInput() {
-    return this._instanceStateNames
+    return this._instanceStateNames;
   }
 
   // instance_tags - computed: true, optional: true, required: false
-  private _instanceTags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _instanceTags?: { [key: string]: string } | cdktf.IResolvable; 
   public get instanceTags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('instance_tags') as any;
   }
-  public set instanceTags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set instanceTags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._instanceTags = value;
   }
   public resetInstanceTags() {
@@ -126,7 +126,7 @@ export class DataAwsInstances extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTagsInput() {
-    return this._instanceTags
+    return this._instanceTags;
   }
 
   // private_ips - computed: true, optional: false, required: false
@@ -140,12 +140,12 @@ export class DataAwsInstances extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsInstancesFilter[] | undefined; 
+  private _filter?: DataAwsInstancesFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsInstancesFilter[] | undefined) {
+  public set filter(value: DataAwsInstancesFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -153,7 +153,7 @@ export class DataAwsInstances extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

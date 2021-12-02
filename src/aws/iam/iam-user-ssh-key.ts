@@ -77,7 +77,7 @@ export class IamUserSshKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get encodingInput() {
-    return this._encoding
+    return this._encoding;
   }
 
   // fingerprint - computed: true, optional: false, required: false
@@ -100,7 +100,7 @@ export class IamUserSshKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get publicKeyInput() {
-    return this._publicKey
+    return this._publicKey;
   }
 
   // ssh_public_key_id - computed: true, optional: false, required: false
@@ -109,11 +109,11 @@ export class IamUserSshKey extends cdktf.TerraformResource {
   }
 
   // status - computed: true, optional: true, required: false
-  private _status?: string | undefined; 
+  private _status?: string; 
   public get status() {
     return this.getStringAttribute('status');
   }
-  public set status(value: string | undefined) {
+  public set status(value: string) {
     this._status = value;
   }
   public resetStatus() {
@@ -121,7 +121,7 @@ export class IamUserSshKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 
   // username - computed: false, optional: false, required: true
@@ -134,7 +134,7 @@ export class IamUserSshKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get usernameInput() {
-    return this._username
+    return this._username;
   }
 
   // =========

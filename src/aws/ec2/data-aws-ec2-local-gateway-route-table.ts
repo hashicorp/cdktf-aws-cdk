@@ -107,11 +107,11 @@ export class DataAwsEc2LocalGatewayRouteTable extends cdktf.TerraformDataSource 
   }
 
   // local_gateway_id - computed: true, optional: true, required: false
-  private _localGatewayId?: string | undefined; 
+  private _localGatewayId?: string; 
   public get localGatewayId() {
     return this.getStringAttribute('local_gateway_id');
   }
-  public set localGatewayId(value: string | undefined) {
+  public set localGatewayId(value: string) {
     this._localGatewayId = value;
   }
   public resetLocalGatewayId() {
@@ -119,15 +119,15 @@ export class DataAwsEc2LocalGatewayRouteTable extends cdktf.TerraformDataSource 
   }
   // Temporarily expose input value. Use with caution.
   public get localGatewayIdInput() {
-    return this._localGatewayId
+    return this._localGatewayId;
   }
 
   // local_gateway_route_table_id - computed: true, optional: true, required: false
-  private _localGatewayRouteTableId?: string | undefined; 
+  private _localGatewayRouteTableId?: string; 
   public get localGatewayRouteTableId() {
     return this.getStringAttribute('local_gateway_route_table_id');
   }
-  public set localGatewayRouteTableId(value: string | undefined) {
+  public set localGatewayRouteTableId(value: string) {
     this._localGatewayRouteTableId = value;
   }
   public resetLocalGatewayRouteTableId() {
@@ -135,15 +135,15 @@ export class DataAwsEc2LocalGatewayRouteTable extends cdktf.TerraformDataSource 
   }
   // Temporarily expose input value. Use with caution.
   public get localGatewayRouteTableIdInput() {
-    return this._localGatewayRouteTableId
+    return this._localGatewayRouteTableId;
   }
 
   // outpost_arn - computed: true, optional: true, required: false
-  private _outpostArn?: string | undefined; 
+  private _outpostArn?: string; 
   public get outpostArn() {
     return this.getStringAttribute('outpost_arn');
   }
-  public set outpostArn(value: string | undefined) {
+  public set outpostArn(value: string) {
     this._outpostArn = value;
   }
   public resetOutpostArn() {
@@ -151,15 +151,15 @@ export class DataAwsEc2LocalGatewayRouteTable extends cdktf.TerraformDataSource 
   }
   // Temporarily expose input value. Use with caution.
   public get outpostArnInput() {
-    return this._outpostArn
+    return this._outpostArn;
   }
 
   // state - computed: true, optional: true, required: false
-  private _state?: string | undefined; 
+  private _state?: string; 
   public get state() {
     return this.getStringAttribute('state');
   }
-  public set state(value: string | undefined) {
+  public set state(value: string) {
     this._state = value;
   }
   public resetState() {
@@ -167,16 +167,16 @@ export class DataAwsEc2LocalGatewayRouteTable extends cdktf.TerraformDataSource 
   }
   // Temporarily expose input value. Use with caution.
   public get stateInput() {
-    return this._state
+    return this._state;
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -184,16 +184,16 @@ export class DataAwsEc2LocalGatewayRouteTable extends cdktf.TerraformDataSource 
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsEc2LocalGatewayRouteTableFilter[] | undefined; 
+  private _filter?: DataAwsEc2LocalGatewayRouteTableFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsEc2LocalGatewayRouteTableFilter[] | undefined) {
+  public set filter(value: DataAwsEc2LocalGatewayRouteTableFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -201,7 +201,7 @@ export class DataAwsEc2LocalGatewayRouteTable extends cdktf.TerraformDataSource 
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

@@ -106,7 +106,7 @@ export class CognitoResourceServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get identifierInput() {
-    return this._identifier
+    return this._identifier;
   }
 
   // name - computed: false, optional: false, required: true
@@ -119,7 +119,7 @@ export class CognitoResourceServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // scope_identifiers - computed: true, optional: false, required: false
@@ -137,16 +137,16 @@ export class CognitoResourceServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userPoolIdInput() {
-    return this._userPoolId
+    return this._userPoolId;
   }
 
   // scope - computed: false, optional: true, required: false
-  private _scope?: CognitoResourceServerScope[] | undefined; 
+  private _scope?: CognitoResourceServerScope[]; 
   public get scope() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('scope') as any;
   }
-  public set scope(value: CognitoResourceServerScope[] | undefined) {
+  public set scope(value: CognitoResourceServerScope[]) {
     this._scope = value;
   }
   public resetScope() {
@@ -154,7 +154,7 @@ export class CognitoResourceServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scopeInput() {
-    return this._scope
+    return this._scope;
   }
 
   // =========

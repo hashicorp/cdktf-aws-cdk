@@ -72,7 +72,7 @@ export class NetworkfirewallResourcePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // resource_arn - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class NetworkfirewallResourcePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceArnInput() {
-    return this._resourceArn
+    return this._resourceArn;
   }
 
   // =========

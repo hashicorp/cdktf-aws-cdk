@@ -99,15 +99,15 @@ export class DataAwsCloudhsmV2Cluster extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterIdInput() {
-    return this._clusterId
+    return this._clusterId;
   }
 
   // cluster_state - computed: true, optional: true, required: false
-  private _clusterState?: string | undefined; 
+  private _clusterState?: string; 
   public get clusterState() {
     return this.getStringAttribute('cluster_state');
   }
-  public set clusterState(value: string | undefined) {
+  public set clusterState(value: string) {
     this._clusterState = value;
   }
   public resetClusterState() {
@@ -115,7 +115,7 @@ export class DataAwsCloudhsmV2Cluster extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterStateInput() {
-    return this._clusterState
+    return this._clusterState;
   }
 
   // id - computed: true, optional: true, required: false

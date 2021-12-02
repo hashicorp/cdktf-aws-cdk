@@ -185,12 +185,43 @@ export class AmiTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AmiTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AmiTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -198,15 +229,15 @@ export class AmiTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -214,15 +245,15 @@ export class AmiTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -230,7 +261,7 @@ export class AmiTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -280,7 +311,7 @@ export class Ami extends cdktf.TerraformResource {
     this._virtualizationType = config.virtualizationType;
     this._ebsBlockDevice = config.ebsBlockDevice;
     this._ephemeralBlockDevice = config.ephemeralBlockDevice;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -288,11 +319,11 @@ export class Ami extends cdktf.TerraformResource {
   // ==========
 
   // architecture - computed: false, optional: true, required: false
-  private _architecture?: string | undefined; 
+  private _architecture?: string; 
   public get architecture() {
     return this.getStringAttribute('architecture');
   }
-  public set architecture(value: string | undefined) {
+  public set architecture(value: string) {
     this._architecture = value;
   }
   public resetArchitecture() {
@@ -300,7 +331,7 @@ export class Ami extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get architectureInput() {
-    return this._architecture
+    return this._architecture;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -309,11 +340,11 @@ export class Ami extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -321,15 +352,15 @@ export class Ami extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // ena_support - computed: false, optional: true, required: false
-  private _enaSupport?: boolean | cdktf.IResolvable | undefined; 
+  private _enaSupport?: boolean | cdktf.IResolvable; 
   public get enaSupport() {
     return this.getBooleanAttribute('ena_support') as any;
   }
-  public set enaSupport(value: boolean | cdktf.IResolvable | undefined) {
+  public set enaSupport(value: boolean | cdktf.IResolvable) {
     this._enaSupport = value;
   }
   public resetEnaSupport() {
@@ -337,7 +368,7 @@ export class Ami extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enaSupportInput() {
-    return this._enaSupport
+    return this._enaSupport;
   }
 
   // hypervisor - computed: true, optional: false, required: false
@@ -351,11 +382,11 @@ export class Ami extends cdktf.TerraformResource {
   }
 
   // image_location - computed: true, optional: true, required: false
-  private _imageLocation?: string | undefined; 
+  private _imageLocation?: string; 
   public get imageLocation() {
     return this.getStringAttribute('image_location');
   }
-  public set imageLocation(value: string | undefined) {
+  public set imageLocation(value: string) {
     this._imageLocation = value;
   }
   public resetImageLocation() {
@@ -363,7 +394,7 @@ export class Ami extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get imageLocationInput() {
-    return this._imageLocation
+    return this._imageLocation;
   }
 
   // image_owner_alias - computed: true, optional: false, required: false
@@ -377,11 +408,11 @@ export class Ami extends cdktf.TerraformResource {
   }
 
   // kernel_id - computed: false, optional: true, required: false
-  private _kernelId?: string | undefined; 
+  private _kernelId?: string; 
   public get kernelId() {
     return this.getStringAttribute('kernel_id');
   }
-  public set kernelId(value: string | undefined) {
+  public set kernelId(value: string) {
     this._kernelId = value;
   }
   public resetKernelId() {
@@ -389,7 +420,7 @@ export class Ami extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kernelIdInput() {
-    return this._kernelId
+    return this._kernelId;
   }
 
   // manage_ebs_snapshots - computed: true, optional: false, required: false
@@ -407,7 +438,7 @@ export class Ami extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // owner_id - computed: true, optional: false, required: false
@@ -431,11 +462,11 @@ export class Ami extends cdktf.TerraformResource {
   }
 
   // ramdisk_id - computed: false, optional: true, required: false
-  private _ramdiskId?: string | undefined; 
+  private _ramdiskId?: string; 
   public get ramdiskId() {
     return this.getStringAttribute('ramdisk_id');
   }
-  public set ramdiskId(value: string | undefined) {
+  public set ramdiskId(value: string) {
     this._ramdiskId = value;
   }
   public resetRamdiskId() {
@@ -443,15 +474,15 @@ export class Ami extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ramdiskIdInput() {
-    return this._ramdiskId
+    return this._ramdiskId;
   }
 
   // root_device_name - computed: false, optional: true, required: false
-  private _rootDeviceName?: string | undefined; 
+  private _rootDeviceName?: string; 
   public get rootDeviceName() {
     return this.getStringAttribute('root_device_name');
   }
-  public set rootDeviceName(value: string | undefined) {
+  public set rootDeviceName(value: string) {
     this._rootDeviceName = value;
   }
   public resetRootDeviceName() {
@@ -459,7 +490,7 @@ export class Ami extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rootDeviceNameInput() {
-    return this._rootDeviceName
+    return this._rootDeviceName;
   }
 
   // root_snapshot_id - computed: true, optional: false, required: false
@@ -468,11 +499,11 @@ export class Ami extends cdktf.TerraformResource {
   }
 
   // sriov_net_support - computed: false, optional: true, required: false
-  private _sriovNetSupport?: string | undefined; 
+  private _sriovNetSupport?: string; 
   public get sriovNetSupport() {
     return this.getStringAttribute('sriov_net_support');
   }
-  public set sriovNetSupport(value: string | undefined) {
+  public set sriovNetSupport(value: string) {
     this._sriovNetSupport = value;
   }
   public resetSriovNetSupport() {
@@ -480,16 +511,16 @@ export class Ami extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sriovNetSupportInput() {
-    return this._sriovNetSupport
+    return this._sriovNetSupport;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -497,16 +528,16 @@ export class Ami extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -514,7 +545,7 @@ export class Ami extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // usage_operation - computed: true, optional: false, required: false
@@ -523,11 +554,11 @@ export class Ami extends cdktf.TerraformResource {
   }
 
   // virtualization_type - computed: false, optional: true, required: false
-  private _virtualizationType?: string | undefined; 
+  private _virtualizationType?: string; 
   public get virtualizationType() {
     return this.getStringAttribute('virtualization_type');
   }
-  public set virtualizationType(value: string | undefined) {
+  public set virtualizationType(value: string) {
     this._virtualizationType = value;
   }
   public resetVirtualizationType() {
@@ -535,16 +566,16 @@ export class Ami extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get virtualizationTypeInput() {
-    return this._virtualizationType
+    return this._virtualizationType;
   }
 
   // ebs_block_device - computed: false, optional: true, required: false
-  private _ebsBlockDevice?: AmiEbsBlockDevice[] | undefined; 
+  private _ebsBlockDevice?: AmiEbsBlockDevice[]; 
   public get ebsBlockDevice() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ebs_block_device') as any;
   }
-  public set ebsBlockDevice(value: AmiEbsBlockDevice[] | undefined) {
+  public set ebsBlockDevice(value: AmiEbsBlockDevice[]) {
     this._ebsBlockDevice = value;
   }
   public resetEbsBlockDevice() {
@@ -552,16 +583,16 @@ export class Ami extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ebsBlockDeviceInput() {
-    return this._ebsBlockDevice
+    return this._ebsBlockDevice;
   }
 
   // ephemeral_block_device - computed: false, optional: true, required: false
-  private _ephemeralBlockDevice?: AmiEphemeralBlockDevice[] | undefined; 
+  private _ephemeralBlockDevice?: AmiEphemeralBlockDevice[]; 
   public get ephemeralBlockDevice() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ephemeral_block_device') as any;
   }
-  public set ephemeralBlockDevice(value: AmiEphemeralBlockDevice[] | undefined) {
+  public set ephemeralBlockDevice(value: AmiEphemeralBlockDevice[]) {
     this._ephemeralBlockDevice = value;
   }
   public resetEphemeralBlockDevice() {
@@ -569,24 +600,23 @@ export class Ami extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ephemeralBlockDeviceInput() {
-    return this._ephemeralBlockDevice
+    return this._ephemeralBlockDevice;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: AmiTimeouts | undefined; 
-  private __timeoutsOutput = new AmiTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new AmiTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: AmiTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: AmiTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -609,7 +639,7 @@ export class Ami extends cdktf.TerraformResource {
       virtualization_type: cdktf.stringToTerraform(this._virtualizationType),
       ebs_block_device: cdktf.listMapper(amiEbsBlockDeviceToTerraform)(this._ebsBlockDevice),
       ephemeral_block_device: cdktf.listMapper(amiEphemeralBlockDeviceToTerraform)(this._ephemeralBlockDevice),
-      timeouts: amiTimeoutsToTerraform(this._timeouts),
+      timeouts: amiTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

@@ -67,7 +67,7 @@ export class ElbAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get elbInput() {
-    return this._elb
+    return this._elb;
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class ElbAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceInput() {
-    return this._instance
+    return this._instance;
   }
 
   // =========

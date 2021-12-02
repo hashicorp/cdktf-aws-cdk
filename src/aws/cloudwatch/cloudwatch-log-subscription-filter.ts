@@ -87,15 +87,15 @@ export class CloudwatchLogSubscriptionFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get destinationArnInput() {
-    return this._destinationArn
+    return this._destinationArn;
   }
 
   // distribution - computed: false, optional: true, required: false
-  private _distribution?: string | undefined; 
+  private _distribution?: string; 
   public get distribution() {
     return this.getStringAttribute('distribution');
   }
-  public set distribution(value: string | undefined) {
+  public set distribution(value: string) {
     this._distribution = value;
   }
   public resetDistribution() {
@@ -103,7 +103,7 @@ export class CloudwatchLogSubscriptionFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get distributionInput() {
-    return this._distribution
+    return this._distribution;
   }
 
   // filter_pattern - computed: false, optional: false, required: true
@@ -116,7 +116,7 @@ export class CloudwatchLogSubscriptionFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterPatternInput() {
-    return this._filterPattern
+    return this._filterPattern;
   }
 
   // id - computed: true, optional: true, required: false
@@ -134,7 +134,7 @@ export class CloudwatchLogSubscriptionFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupNameInput() {
-    return this._logGroupName
+    return this._logGroupName;
   }
 
   // name - computed: false, optional: false, required: true
@@ -147,15 +147,15 @@ export class CloudwatchLogSubscriptionFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // role_arn - computed: true, optional: true, required: false
-  private _roleArn?: string | undefined; 
+  private _roleArn?: string; 
   public get roleArn() {
     return this.getStringAttribute('role_arn');
   }
-  public set roleArn(value: string | undefined) {
+  public set roleArn(value: string) {
     this._roleArn = value;
   }
   public resetRoleArn() {
@@ -163,7 +163,7 @@ export class CloudwatchLogSubscriptionFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // =========

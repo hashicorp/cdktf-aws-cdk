@@ -68,11 +68,11 @@ export class Ec2TransitGatewayRoute extends cdktf.TerraformResource {
   // ==========
 
   // blackhole - computed: false, optional: true, required: false
-  private _blackhole?: boolean | cdktf.IResolvable | undefined; 
+  private _blackhole?: boolean | cdktf.IResolvable; 
   public get blackhole() {
     return this.getBooleanAttribute('blackhole') as any;
   }
-  public set blackhole(value: boolean | cdktf.IResolvable | undefined) {
+  public set blackhole(value: boolean | cdktf.IResolvable) {
     this._blackhole = value;
   }
   public resetBlackhole() {
@@ -80,7 +80,7 @@ export class Ec2TransitGatewayRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get blackholeInput() {
-    return this._blackhole
+    return this._blackhole;
   }
 
   // destination_cidr_block - computed: false, optional: false, required: true
@@ -93,7 +93,7 @@ export class Ec2TransitGatewayRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get destinationCidrBlockInput() {
-    return this._destinationCidrBlock
+    return this._destinationCidrBlock;
   }
 
   // id - computed: true, optional: true, required: false
@@ -102,11 +102,11 @@ export class Ec2TransitGatewayRoute extends cdktf.TerraformResource {
   }
 
   // transit_gateway_attachment_id - computed: false, optional: true, required: false
-  private _transitGatewayAttachmentId?: string | undefined; 
+  private _transitGatewayAttachmentId?: string; 
   public get transitGatewayAttachmentId() {
     return this.getStringAttribute('transit_gateway_attachment_id');
   }
-  public set transitGatewayAttachmentId(value: string | undefined) {
+  public set transitGatewayAttachmentId(value: string) {
     this._transitGatewayAttachmentId = value;
   }
   public resetTransitGatewayAttachmentId() {
@@ -114,7 +114,7 @@ export class Ec2TransitGatewayRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get transitGatewayAttachmentIdInput() {
-    return this._transitGatewayAttachmentId
+    return this._transitGatewayAttachmentId;
   }
 
   // transit_gateway_route_table_id - computed: false, optional: false, required: true
@@ -127,7 +127,7 @@ export class Ec2TransitGatewayRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get transitGatewayRouteTableIdInput() {
-    return this._transitGatewayRouteTableId
+    return this._transitGatewayRouteTableId;
   }
 
   // =========

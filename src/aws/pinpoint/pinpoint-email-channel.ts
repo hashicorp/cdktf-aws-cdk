@@ -87,15 +87,15 @@ export class PinpointEmailChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get applicationIdInput() {
-    return this._applicationId
+    return this._applicationId;
   }
 
   // configuration_set - computed: false, optional: true, required: false
-  private _configurationSet?: string | undefined; 
+  private _configurationSet?: string; 
   public get configurationSet() {
     return this.getStringAttribute('configuration_set');
   }
-  public set configurationSet(value: string | undefined) {
+  public set configurationSet(value: string) {
     this._configurationSet = value;
   }
   public resetConfigurationSet() {
@@ -103,15 +103,15 @@ export class PinpointEmailChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get configurationSetInput() {
-    return this._configurationSet
+    return this._configurationSet;
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -119,7 +119,7 @@ export class PinpointEmailChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // from_address - computed: false, optional: false, required: true
@@ -132,7 +132,7 @@ export class PinpointEmailChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fromAddressInput() {
-    return this._fromAddress
+    return this._fromAddress;
   }
 
   // id - computed: true, optional: true, required: false
@@ -150,7 +150,7 @@ export class PinpointEmailChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get identityInput() {
-    return this._identity
+    return this._identity;
   }
 
   // messages_per_second - computed: true, optional: false, required: false
@@ -159,11 +159,11 @@ export class PinpointEmailChannel extends cdktf.TerraformResource {
   }
 
   // role_arn - computed: false, optional: true, required: false
-  private _roleArn?: string | undefined; 
+  private _roleArn?: string; 
   public get roleArn() {
     return this.getStringAttribute('role_arn');
   }
-  public set roleArn(value: string | undefined) {
+  public set roleArn(value: string) {
     this._roleArn = value;
   }
   public resetRoleArn() {
@@ -171,7 +171,7 @@ export class PinpointEmailChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // =========

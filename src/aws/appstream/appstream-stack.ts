@@ -118,12 +118,37 @@ export class AppstreamStackApplicationSettingsOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppstreamStackApplicationSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._settingsGroup) {
+      hasAnyValues = true;
+      internalValueResult.settingsGroup = this._settingsGroup;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppstreamStackApplicationSettings | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._settingsGroup = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._settingsGroup = value.settingsGroup;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -131,15 +156,15 @@ export class AppstreamStackApplicationSettingsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // settings_group - computed: false, optional: true, required: false
-  private _settingsGroup?: string | undefined; 
+  private _settingsGroup?: string; 
   public get settingsGroup() {
     return this.getStringAttribute('settings_group');
   }
-  public set settingsGroup(value: string | undefined) {
+  public set settingsGroup(value: string) {
     this._settingsGroup = value;
   }
   public resetSettingsGroup() {
@@ -147,7 +172,7 @@ export class AppstreamStackApplicationSettingsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get settingsGroupInput() {
-    return this._settingsGroup
+    return this._settingsGroup;
   }
 }
 export interface AppstreamStackStorageConnectors {
@@ -241,7 +266,7 @@ export class AppstreamStack extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._accessEndpoints = config.accessEndpoints;
-    this._applicationSettings = config.applicationSettings;
+    this._applicationSettings.internalValue = config.applicationSettings;
     this._storageConnectors = config.storageConnectors;
     this._userSettings = config.userSettings;
   }
@@ -261,11 +286,11 @@ export class AppstreamStack extends cdktf.TerraformResource {
   }
 
   // description - computed: true, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -273,15 +298,15 @@ export class AppstreamStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // display_name - computed: true, optional: true, required: false
-  private _displayName?: string | undefined; 
+  private _displayName?: string; 
   public get displayName() {
     return this.getStringAttribute('display_name');
   }
-  public set displayName(value: string | undefined) {
+  public set displayName(value: string) {
     this._displayName = value;
   }
   public resetDisplayName() {
@@ -289,15 +314,15 @@ export class AppstreamStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get displayNameInput() {
-    return this._displayName
+    return this._displayName;
   }
 
   // embed_host_domains - computed: true, optional: true, required: false
-  private _embedHostDomains?: string[] | undefined; 
+  private _embedHostDomains?: string[]; 
   public get embedHostDomains() {
     return this.getListAttribute('embed_host_domains');
   }
-  public set embedHostDomains(value: string[] | undefined) {
+  public set embedHostDomains(value: string[]) {
     this._embedHostDomains = value;
   }
   public resetEmbedHostDomains() {
@@ -305,15 +330,15 @@ export class AppstreamStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get embedHostDomainsInput() {
-    return this._embedHostDomains
+    return this._embedHostDomains;
   }
 
   // feedback_url - computed: true, optional: true, required: false
-  private _feedbackUrl?: string | undefined; 
+  private _feedbackUrl?: string; 
   public get feedbackUrl() {
     return this.getStringAttribute('feedback_url');
   }
-  public set feedbackUrl(value: string | undefined) {
+  public set feedbackUrl(value: string) {
     this._feedbackUrl = value;
   }
   public resetFeedbackUrl() {
@@ -321,7 +346,7 @@ export class AppstreamStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get feedbackUrlInput() {
-    return this._feedbackUrl
+    return this._feedbackUrl;
   }
 
   // id - computed: true, optional: true, required: false
@@ -339,15 +364,15 @@ export class AppstreamStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // redirect_url - computed: true, optional: true, required: false
-  private _redirectUrl?: string | undefined; 
+  private _redirectUrl?: string; 
   public get redirectUrl() {
     return this.getStringAttribute('redirect_url');
   }
-  public set redirectUrl(value: string | undefined) {
+  public set redirectUrl(value: string) {
     this._redirectUrl = value;
   }
   public resetRedirectUrl() {
@@ -355,16 +380,16 @@ export class AppstreamStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get redirectUrlInput() {
-    return this._redirectUrl
+    return this._redirectUrl;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -372,16 +397,16 @@ export class AppstreamStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -389,16 +414,16 @@ export class AppstreamStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // access_endpoints - computed: false, optional: true, required: false
-  private _accessEndpoints?: AppstreamStackAccessEndpoints[] | undefined; 
+  private _accessEndpoints?: AppstreamStackAccessEndpoints[]; 
   public get accessEndpoints() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('access_endpoints') as any;
   }
-  public set accessEndpoints(value: AppstreamStackAccessEndpoints[] | undefined) {
+  public set accessEndpoints(value: AppstreamStackAccessEndpoints[]) {
     this._accessEndpoints = value;
   }
   public resetAccessEndpoints() {
@@ -406,33 +431,32 @@ export class AppstreamStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accessEndpointsInput() {
-    return this._accessEndpoints
+    return this._accessEndpoints;
   }
 
   // application_settings - computed: false, optional: true, required: false
-  private _applicationSettings?: AppstreamStackApplicationSettings | undefined; 
-  private __applicationSettingsOutput = new AppstreamStackApplicationSettingsOutputReference(this as any, "application_settings", true);
+  private _applicationSettings = new AppstreamStackApplicationSettingsOutputReference(this as any, "application_settings", true);
   public get applicationSettings() {
-    return this.__applicationSettingsOutput;
+    return this._applicationSettings;
   }
-  public putApplicationSettings(value: AppstreamStackApplicationSettings | undefined) {
-    this._applicationSettings = value;
+  public putApplicationSettings(value: AppstreamStackApplicationSettings) {
+    this._applicationSettings.internalValue = value;
   }
   public resetApplicationSettings() {
-    this._applicationSettings = undefined;
+    this._applicationSettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get applicationSettingsInput() {
-    return this._applicationSettings
+    return this._applicationSettings.internalValue;
   }
 
   // storage_connectors - computed: false, optional: true, required: false
-  private _storageConnectors?: AppstreamStackStorageConnectors[] | undefined; 
+  private _storageConnectors?: AppstreamStackStorageConnectors[]; 
   public get storageConnectors() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('storage_connectors') as any;
   }
-  public set storageConnectors(value: AppstreamStackStorageConnectors[] | undefined) {
+  public set storageConnectors(value: AppstreamStackStorageConnectors[]) {
     this._storageConnectors = value;
   }
   public resetStorageConnectors() {
@@ -440,16 +464,16 @@ export class AppstreamStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get storageConnectorsInput() {
-    return this._storageConnectors
+    return this._storageConnectors;
   }
 
   // user_settings - computed: false, optional: true, required: false
-  private _userSettings?: AppstreamStackUserSettings[] | undefined; 
+  private _userSettings?: AppstreamStackUserSettings[]; 
   public get userSettings() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('user_settings') as any;
   }
-  public set userSettings(value: AppstreamStackUserSettings[] | undefined) {
+  public set userSettings(value: AppstreamStackUserSettings[]) {
     this._userSettings = value;
   }
   public resetUserSettings() {
@@ -457,7 +481,7 @@ export class AppstreamStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userSettingsInput() {
-    return this._userSettings
+    return this._userSettings;
   }
 
   // =========
@@ -475,7 +499,7 @@ export class AppstreamStack extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       access_endpoints: cdktf.listMapper(appstreamStackAccessEndpointsToTerraform)(this._accessEndpoints),
-      application_settings: appstreamStackApplicationSettingsToTerraform(this._applicationSettings),
+      application_settings: appstreamStackApplicationSettingsToTerraform(this._applicationSettings.internalValue),
       storage_connectors: cdktf.listMapper(appstreamStackStorageConnectorsToTerraform)(this._storageConnectors),
       user_settings: cdktf.listMapper(appstreamStackUserSettingsToTerraform)(this._userSettings),
     };

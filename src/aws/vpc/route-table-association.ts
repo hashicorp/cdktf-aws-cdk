@@ -63,11 +63,11 @@ export class RouteTableAssociation extends cdktf.TerraformResource {
   // ==========
 
   // gateway_id - computed: false, optional: true, required: false
-  private _gatewayId?: string | undefined; 
+  private _gatewayId?: string; 
   public get gatewayId() {
     return this.getStringAttribute('gateway_id');
   }
-  public set gatewayId(value: string | undefined) {
+  public set gatewayId(value: string) {
     this._gatewayId = value;
   }
   public resetGatewayId() {
@@ -75,7 +75,7 @@ export class RouteTableAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get gatewayIdInput() {
-    return this._gatewayId
+    return this._gatewayId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -93,15 +93,15 @@ export class RouteTableAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get routeTableIdInput() {
-    return this._routeTableId
+    return this._routeTableId;
   }
 
   // subnet_id - computed: false, optional: true, required: false
-  private _subnetId?: string | undefined; 
+  private _subnetId?: string; 
   public get subnetId() {
     return this.getStringAttribute('subnet_id');
   }
-  public set subnetId(value: string | undefined) {
+  public set subnetId(value: string) {
     this._subnetId = value;
   }
   public resetSubnetId() {
@@ -109,7 +109,7 @@ export class RouteTableAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdInput() {
-    return this._subnetId
+    return this._subnetId;
   }
 
   // =========

@@ -67,7 +67,7 @@ export class BackupRegionSettings extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceTypeOptInPreferenceInput() {
-    return this._resourceTypeOptInPreference
+    return this._resourceTypeOptInPreference;
   }
 
   // =========

@@ -128,12 +128,12 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   // ==========
 
   // arguments - computed: false, optional: true, required: false
-  private _arguments?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _arguments?: { [key: string]: string } | cdktf.IResolvable; 
   public get arguments() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('arguments') as any;
   }
-  public set arguments(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set arguments(value: { [key: string]: string } | cdktf.IResolvable) {
     this._arguments = value;
   }
   public resetArguments() {
@@ -141,7 +141,7 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get argumentsInput() {
-    return this._arguments
+    return this._arguments;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -155,11 +155,11 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
 
   // extra_jars_s3_path - computed: false, optional: true, required: false
-  private _extraJarsS3Path?: string | undefined; 
+  private _extraJarsS3Path?: string; 
   public get extraJarsS3Path() {
     return this.getStringAttribute('extra_jars_s3_path');
   }
-  public set extraJarsS3Path(value: string | undefined) {
+  public set extraJarsS3Path(value: string) {
     this._extraJarsS3Path = value;
   }
   public resetExtraJarsS3Path() {
@@ -167,15 +167,15 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get extraJarsS3PathInput() {
-    return this._extraJarsS3Path
+    return this._extraJarsS3Path;
   }
 
   // extra_python_libs_s3_path - computed: false, optional: true, required: false
-  private _extraPythonLibsS3Path?: string | undefined; 
+  private _extraPythonLibsS3Path?: string; 
   public get extraPythonLibsS3Path() {
     return this.getStringAttribute('extra_python_libs_s3_path');
   }
-  public set extraPythonLibsS3Path(value: string | undefined) {
+  public set extraPythonLibsS3Path(value: string) {
     this._extraPythonLibsS3Path = value;
   }
   public resetExtraPythonLibsS3Path() {
@@ -183,7 +183,7 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get extraPythonLibsS3PathInput() {
-    return this._extraPythonLibsS3Path
+    return this._extraPythonLibsS3Path;
   }
 
   // failure_reason - computed: true, optional: false, required: false
@@ -192,11 +192,11 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
 
   // glue_version - computed: false, optional: true, required: false
-  private _glueVersion?: string | undefined; 
+  private _glueVersion?: string; 
   public get glueVersion() {
     return this.getStringAttribute('glue_version');
   }
-  public set glueVersion(value: string | undefined) {
+  public set glueVersion(value: string) {
     this._glueVersion = value;
   }
   public resetGlueVersion() {
@@ -204,7 +204,7 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get glueVersionInput() {
-    return this._glueVersion
+    return this._glueVersion;
   }
 
   // id - computed: true, optional: true, required: false
@@ -222,15 +222,15 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // number_of_nodes - computed: false, optional: true, required: false
-  private _numberOfNodes?: number | undefined; 
+  private _numberOfNodes?: number; 
   public get numberOfNodes() {
     return this.getNumberAttribute('number_of_nodes');
   }
-  public set numberOfNodes(value: number | undefined) {
+  public set numberOfNodes(value: number) {
     this._numberOfNodes = value;
   }
   public resetNumberOfNodes() {
@@ -238,15 +238,15 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get numberOfNodesInput() {
-    return this._numberOfNodes
+    return this._numberOfNodes;
   }
 
   // number_of_workers - computed: false, optional: true, required: false
-  private _numberOfWorkers?: number | undefined; 
+  private _numberOfWorkers?: number; 
   public get numberOfWorkers() {
     return this.getNumberAttribute('number_of_workers');
   }
-  public set numberOfWorkers(value: number | undefined) {
+  public set numberOfWorkers(value: number) {
     this._numberOfWorkers = value;
   }
   public resetNumberOfWorkers() {
@@ -254,7 +254,7 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get numberOfWorkersInput() {
-    return this._numberOfWorkers
+    return this._numberOfWorkers;
   }
 
   // private_address - computed: true, optional: false, required: false
@@ -268,11 +268,11 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
 
   // public_key - computed: false, optional: true, required: false
-  private _publicKey?: string | undefined; 
+  private _publicKey?: string; 
   public get publicKey() {
     return this.getStringAttribute('public_key');
   }
-  public set publicKey(value: string | undefined) {
+  public set publicKey(value: string) {
     this._publicKey = value;
   }
   public resetPublicKey() {
@@ -280,15 +280,15 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get publicKeyInput() {
-    return this._publicKey
+    return this._publicKey;
   }
 
   // public_keys - computed: false, optional: true, required: false
-  private _publicKeys?: string[] | undefined; 
+  private _publicKeys?: string[]; 
   public get publicKeys() {
     return this.getListAttribute('public_keys');
   }
-  public set publicKeys(value: string[] | undefined) {
+  public set publicKeys(value: string[]) {
     this._publicKeys = value;
   }
   public resetPublicKeys() {
@@ -296,7 +296,7 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get publicKeysInput() {
-    return this._publicKeys
+    return this._publicKeys;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -309,15 +309,15 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // security_configuration - computed: false, optional: true, required: false
-  private _securityConfiguration?: string | undefined; 
+  private _securityConfiguration?: string; 
   public get securityConfiguration() {
     return this.getStringAttribute('security_configuration');
   }
-  public set securityConfiguration(value: string | undefined) {
+  public set securityConfiguration(value: string) {
     this._securityConfiguration = value;
   }
   public resetSecurityConfiguration() {
@@ -325,15 +325,15 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityConfigurationInput() {
-    return this._securityConfiguration
+    return this._securityConfiguration;
   }
 
   // security_group_ids - computed: false, optional: true, required: false
-  private _securityGroupIds?: string[] | undefined; 
+  private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
     return this.getListAttribute('security_group_ids');
   }
-  public set securityGroupIds(value: string[] | undefined) {
+  public set securityGroupIds(value: string[]) {
     this._securityGroupIds = value;
   }
   public resetSecurityGroupIds() {
@@ -341,7 +341,7 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // status - computed: true, optional: false, required: false
@@ -350,11 +350,11 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
 
   // subnet_id - computed: false, optional: true, required: false
-  private _subnetId?: string | undefined; 
+  private _subnetId?: string; 
   public get subnetId() {
     return this.getStringAttribute('subnet_id');
   }
-  public set subnetId(value: string | undefined) {
+  public set subnetId(value: string) {
     this._subnetId = value;
   }
   public resetSubnetId() {
@@ -362,16 +362,16 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdInput() {
-    return this._subnetId
+    return this._subnetId;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -379,16 +379,16 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -396,7 +396,7 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // vpc_id - computed: true, optional: false, required: false
@@ -405,11 +405,11 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
 
   // worker_type - computed: false, optional: true, required: false
-  private _workerType?: string | undefined; 
+  private _workerType?: string; 
   public get workerType() {
     return this.getStringAttribute('worker_type');
   }
-  public set workerType(value: string | undefined) {
+  public set workerType(value: string) {
     this._workerType = value;
   }
   public resetWorkerType() {
@@ -417,7 +417,7 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get workerTypeInput() {
-    return this._workerType
+    return this._workerType;
   }
 
   // yarn_endpoint_address - computed: true, optional: false, required: false

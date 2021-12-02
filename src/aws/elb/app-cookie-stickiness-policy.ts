@@ -77,7 +77,7 @@ export class AppCookieStickinessPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cookieNameInput() {
-    return this._cookieName
+    return this._cookieName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -95,7 +95,7 @@ export class AppCookieStickinessPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get lbPortInput() {
-    return this._lbPort
+    return this._lbPort;
   }
 
   // load_balancer - computed: false, optional: false, required: true
@@ -108,7 +108,7 @@ export class AppCookieStickinessPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get loadBalancerInput() {
-    return this._loadBalancer
+    return this._loadBalancer;
   }
 
   // name - computed: false, optional: false, required: true
@@ -121,7 +121,7 @@ export class AppCookieStickinessPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // =========

@@ -103,11 +103,11 @@ export class SsmParameter extends cdktf.TerraformResource {
   // ==========
 
   // allowed_pattern - computed: false, optional: true, required: false
-  private _allowedPattern?: string | undefined; 
+  private _allowedPattern?: string; 
   public get allowedPattern() {
     return this.getStringAttribute('allowed_pattern');
   }
-  public set allowedPattern(value: string | undefined) {
+  public set allowedPattern(value: string) {
     this._allowedPattern = value;
   }
   public resetAllowedPattern() {
@@ -115,7 +115,7 @@ export class SsmParameter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allowedPatternInput() {
-    return this._allowedPattern
+    return this._allowedPattern;
   }
 
   // arn - computed: true, optional: true, required: false
@@ -124,11 +124,11 @@ export class SsmParameter extends cdktf.TerraformResource {
   }
 
   // data_type - computed: true, optional: true, required: false
-  private _dataType?: string | undefined; 
+  private _dataType?: string; 
   public get dataType() {
     return this.getStringAttribute('data_type');
   }
-  public set dataType(value: string | undefined) {
+  public set dataType(value: string) {
     this._dataType = value;
   }
   public resetDataType() {
@@ -136,15 +136,15 @@ export class SsmParameter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dataTypeInput() {
-    return this._dataType
+    return this._dataType;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -152,7 +152,7 @@ export class SsmParameter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -161,11 +161,11 @@ export class SsmParameter extends cdktf.TerraformResource {
   }
 
   // key_id - computed: true, optional: true, required: false
-  private _keyId?: string | undefined; 
+  private _keyId?: string; 
   public get keyId() {
     return this.getStringAttribute('key_id');
   }
-  public set keyId(value: string | undefined) {
+  public set keyId(value: string) {
     this._keyId = value;
   }
   public resetKeyId() {
@@ -173,7 +173,7 @@ export class SsmParameter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyIdInput() {
-    return this._keyId
+    return this._keyId;
   }
 
   // name - computed: false, optional: false, required: true
@@ -186,15 +186,15 @@ export class SsmParameter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // overwrite - computed: false, optional: true, required: false
-  private _overwrite?: boolean | cdktf.IResolvable | undefined; 
+  private _overwrite?: boolean | cdktf.IResolvable; 
   public get overwrite() {
     return this.getBooleanAttribute('overwrite') as any;
   }
-  public set overwrite(value: boolean | cdktf.IResolvable | undefined) {
+  public set overwrite(value: boolean | cdktf.IResolvable) {
     this._overwrite = value;
   }
   public resetOverwrite() {
@@ -202,16 +202,16 @@ export class SsmParameter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get overwriteInput() {
-    return this._overwrite
+    return this._overwrite;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -219,16 +219,16 @@ export class SsmParameter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -236,15 +236,15 @@ export class SsmParameter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // tier - computed: false, optional: true, required: false
-  private _tier?: string | undefined; 
+  private _tier?: string; 
   public get tier() {
     return this.getStringAttribute('tier');
   }
-  public set tier(value: string | undefined) {
+  public set tier(value: string) {
     this._tier = value;
   }
   public resetTier() {
@@ -252,7 +252,7 @@ export class SsmParameter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tierInput() {
-    return this._tier
+    return this._tier;
   }
 
   // type - computed: false, optional: false, required: true
@@ -265,7 +265,7 @@ export class SsmParameter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // value - computed: false, optional: false, required: true
@@ -278,7 +278,7 @@ export class SsmParameter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 
   // version - computed: true, optional: false, required: false

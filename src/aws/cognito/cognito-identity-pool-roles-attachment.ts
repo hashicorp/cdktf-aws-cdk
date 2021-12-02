@@ -145,7 +145,7 @@ export class CognitoIdentityPoolRolesAttachment extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get identityPoolIdInput() {
-    return this._identityPoolId
+    return this._identityPoolId;
   }
 
   // roles - computed: false, optional: false, required: true
@@ -159,16 +159,16 @@ export class CognitoIdentityPoolRolesAttachment extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get rolesInput() {
-    return this._roles
+    return this._roles;
   }
 
   // role_mapping - computed: false, optional: true, required: false
-  private _roleMapping?: CognitoIdentityPoolRolesAttachmentRoleMapping[] | undefined; 
+  private _roleMapping?: CognitoIdentityPoolRolesAttachmentRoleMapping[]; 
   public get roleMapping() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('role_mapping') as any;
   }
-  public set roleMapping(value: CognitoIdentityPoolRolesAttachmentRoleMapping[] | undefined) {
+  public set roleMapping(value: CognitoIdentityPoolRolesAttachmentRoleMapping[]) {
     this._roleMapping = value;
   }
   public resetRoleMapping() {
@@ -176,7 +176,7 @@ export class CognitoIdentityPoolRolesAttachment extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get roleMappingInput() {
-    return this._roleMapping
+    return this._roleMapping;
   }
 
   // =========

@@ -72,7 +72,7 @@ export class SecurityhubProductSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get productArnInput() {
-    return this._productArn
+    return this._productArn;
   }
 
   // =========

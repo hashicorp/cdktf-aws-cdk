@@ -59,6 +59,25 @@ export class Wafv2WebAclLoggingConfigurationLoggingFilterFilterConditionActionCo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._action) {
+      hasAnyValues = true;
+      internalValueResult.action = this._action;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition | undefined) {
+    if (value === undefined) {
+      this._action = undefined;
+    }
+    else {
+      this._action = value.action;
+    }
+  }
+
   // action - computed: false, optional: false, required: true
   private _action?: string; 
   public get action() {
@@ -69,7 +88,7 @@ export class Wafv2WebAclLoggingConfigurationLoggingFilterFilterConditionActionCo
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action;
   }
 }
 export interface Wafv2WebAclLoggingConfigurationLoggingFilterFilterConditionLabelNameCondition {
@@ -99,6 +118,25 @@ export class Wafv2WebAclLoggingConfigurationLoggingFilterFilterConditionLabelNam
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclLoggingConfigurationLoggingFilterFilterConditionLabelNameCondition | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._labelName) {
+      hasAnyValues = true;
+      internalValueResult.labelName = this._labelName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclLoggingConfigurationLoggingFilterFilterConditionLabelNameCondition | undefined) {
+    if (value === undefined) {
+      this._labelName = undefined;
+    }
+    else {
+      this._labelName = value.labelName;
+    }
+  }
+
   // label_name - computed: false, optional: false, required: true
   private _labelName?: string; 
   public get labelName() {
@@ -109,7 +147,7 @@ export class Wafv2WebAclLoggingConfigurationLoggingFilterFilterConditionLabelNam
   }
   // Temporarily expose input value. Use with caution.
   public get labelNameInput() {
-    return this._labelName
+    return this._labelName;
   }
 }
 export interface Wafv2WebAclLoggingConfigurationLoggingFilterFilterCondition {
@@ -201,6 +239,31 @@ export class Wafv2WebAclLoggingConfigurationLoggingFilterOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclLoggingConfigurationLoggingFilter | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._defaultBehavior) {
+      hasAnyValues = true;
+      internalValueResult.defaultBehavior = this._defaultBehavior;
+    }
+    if (this._filter) {
+      hasAnyValues = true;
+      internalValueResult.filter = this._filter;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclLoggingConfigurationLoggingFilter | undefined) {
+    if (value === undefined) {
+      this._defaultBehavior = undefined;
+      this._filter = undefined;
+    }
+    else {
+      this._defaultBehavior = value.defaultBehavior;
+      this._filter = value.filter;
+    }
+  }
+
   // default_behavior - computed: false, optional: false, required: true
   private _defaultBehavior?: string; 
   public get defaultBehavior() {
@@ -211,7 +274,7 @@ export class Wafv2WebAclLoggingConfigurationLoggingFilterOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get defaultBehaviorInput() {
-    return this._defaultBehavior
+    return this._defaultBehavior;
   }
 
   // filter - computed: false, optional: false, required: true
@@ -225,7 +288,7 @@ export class Wafv2WebAclLoggingConfigurationLoggingFilterOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 }
 export interface Wafv2WebAclLoggingConfigurationRedactedFieldsAllQueryArguments {
@@ -249,6 +312,19 @@ export class Wafv2WebAclLoggingConfigurationRedactedFieldsAllQueryArgumentsOutpu
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclLoggingConfigurationRedactedFieldsAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclLoggingConfigurationRedactedFieldsAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclLoggingConfigurationRedactedFieldsBody {
 }
@@ -270,6 +346,19 @@ export class Wafv2WebAclLoggingConfigurationRedactedFieldsBodyOutputReference ex
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclLoggingConfigurationRedactedFieldsBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclLoggingConfigurationRedactedFieldsBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclLoggingConfigurationRedactedFieldsMethod {
@@ -293,6 +382,19 @@ export class Wafv2WebAclLoggingConfigurationRedactedFieldsMethodOutputReference 
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclLoggingConfigurationRedactedFieldsMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclLoggingConfigurationRedactedFieldsMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclLoggingConfigurationRedactedFieldsQueryString {
 }
@@ -314,6 +416,19 @@ export class Wafv2WebAclLoggingConfigurationRedactedFieldsQueryStringOutputRefer
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclLoggingConfigurationRedactedFieldsQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclLoggingConfigurationRedactedFieldsQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclLoggingConfigurationRedactedFieldsSingleHeader {
@@ -343,6 +458,25 @@ export class Wafv2WebAclLoggingConfigurationRedactedFieldsSingleHeaderOutputRefe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclLoggingConfigurationRedactedFieldsSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclLoggingConfigurationRedactedFieldsSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -353,7 +487,7 @@ export class Wafv2WebAclLoggingConfigurationRedactedFieldsSingleHeaderOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclLoggingConfigurationRedactedFieldsSingleQueryArgument {
@@ -383,6 +517,25 @@ export class Wafv2WebAclLoggingConfigurationRedactedFieldsSingleQueryArgumentOut
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclLoggingConfigurationRedactedFieldsSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclLoggingConfigurationRedactedFieldsSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -393,7 +546,7 @@ export class Wafv2WebAclLoggingConfigurationRedactedFieldsSingleQueryArgumentOut
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclLoggingConfigurationRedactedFieldsUriPath {
@@ -416,6 +569,19 @@ export class Wafv2WebAclLoggingConfigurationRedactedFieldsUriPathOutputReference
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclLoggingConfigurationRedactedFieldsUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclLoggingConfigurationRedactedFieldsUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclLoggingConfigurationRedactedFields {
@@ -514,7 +680,7 @@ export class Wafv2WebAclLoggingConfiguration extends cdktf.TerraformResource {
     });
     this._logDestinationConfigs = config.logDestinationConfigs;
     this._resourceArn = config.resourceArn;
-    this._loggingFilter = config.loggingFilter;
+    this._loggingFilter.internalValue = config.loggingFilter;
     this._redactedFields = config.redactedFields;
   }
 
@@ -537,7 +703,7 @@ export class Wafv2WebAclLoggingConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get logDestinationConfigsInput() {
-    return this._logDestinationConfigs
+    return this._logDestinationConfigs;
   }
 
   // resource_arn - computed: false, optional: false, required: true
@@ -550,33 +716,32 @@ export class Wafv2WebAclLoggingConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceArnInput() {
-    return this._resourceArn
+    return this._resourceArn;
   }
 
   // logging_filter - computed: false, optional: true, required: false
-  private _loggingFilter?: Wafv2WebAclLoggingConfigurationLoggingFilter | undefined; 
-  private __loggingFilterOutput = new Wafv2WebAclLoggingConfigurationLoggingFilterOutputReference(this as any, "logging_filter", true);
+  private _loggingFilter = new Wafv2WebAclLoggingConfigurationLoggingFilterOutputReference(this as any, "logging_filter", true);
   public get loggingFilter() {
-    return this.__loggingFilterOutput;
+    return this._loggingFilter;
   }
-  public putLoggingFilter(value: Wafv2WebAclLoggingConfigurationLoggingFilter | undefined) {
-    this._loggingFilter = value;
+  public putLoggingFilter(value: Wafv2WebAclLoggingConfigurationLoggingFilter) {
+    this._loggingFilter.internalValue = value;
   }
   public resetLoggingFilter() {
-    this._loggingFilter = undefined;
+    this._loggingFilter.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get loggingFilterInput() {
-    return this._loggingFilter
+    return this._loggingFilter.internalValue;
   }
 
   // redacted_fields - computed: false, optional: true, required: false
-  private _redactedFields?: Wafv2WebAclLoggingConfigurationRedactedFields[] | undefined; 
+  private _redactedFields?: Wafv2WebAclLoggingConfigurationRedactedFields[]; 
   public get redactedFields() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('redacted_fields') as any;
   }
-  public set redactedFields(value: Wafv2WebAclLoggingConfigurationRedactedFields[] | undefined) {
+  public set redactedFields(value: Wafv2WebAclLoggingConfigurationRedactedFields[]) {
     this._redactedFields = value;
   }
   public resetRedactedFields() {
@@ -584,7 +749,7 @@ export class Wafv2WebAclLoggingConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get redactedFieldsInput() {
-    return this._redactedFields
+    return this._redactedFields;
   }
 
   // =========
@@ -595,7 +760,7 @@ export class Wafv2WebAclLoggingConfiguration extends cdktf.TerraformResource {
     return {
       log_destination_configs: cdktf.listMapper(cdktf.stringToTerraform)(this._logDestinationConfigs),
       resource_arn: cdktf.stringToTerraform(this._resourceArn),
-      logging_filter: wafv2WebAclLoggingConfigurationLoggingFilterToTerraform(this._loggingFilter),
+      logging_filter: wafv2WebAclLoggingConfigurationLoggingFilterToTerraform(this._loggingFilter.internalValue),
       redacted_fields: cdktf.listMapper(wafv2WebAclLoggingConfigurationRedactedFieldsToTerraform)(this._redactedFields),
     };
   }

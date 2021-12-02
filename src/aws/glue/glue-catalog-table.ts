@@ -190,12 +190,43 @@ export class GlueCatalogTableStorageDescriptorSchemaReferenceSchemaIdOutputRefer
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueCatalogTableStorageDescriptorSchemaReferenceSchemaId | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._registryName) {
+      hasAnyValues = true;
+      internalValueResult.registryName = this._registryName;
+    }
+    if (this._schemaArn) {
+      hasAnyValues = true;
+      internalValueResult.schemaArn = this._schemaArn;
+    }
+    if (this._schemaName) {
+      hasAnyValues = true;
+      internalValueResult.schemaName = this._schemaName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueCatalogTableStorageDescriptorSchemaReferenceSchemaId | undefined) {
+    if (value === undefined) {
+      this._registryName = undefined;
+      this._schemaArn = undefined;
+      this._schemaName = undefined;
+    }
+    else {
+      this._registryName = value.registryName;
+      this._schemaArn = value.schemaArn;
+      this._schemaName = value.schemaName;
+    }
+  }
+
   // registry_name - computed: false, optional: true, required: false
-  private _registryName?: string | undefined; 
+  private _registryName?: string; 
   public get registryName() {
     return this.getStringAttribute('registry_name');
   }
-  public set registryName(value: string | undefined) {
+  public set registryName(value: string) {
     this._registryName = value;
   }
   public resetRegistryName() {
@@ -203,15 +234,15 @@ export class GlueCatalogTableStorageDescriptorSchemaReferenceSchemaIdOutputRefer
   }
   // Temporarily expose input value. Use with caution.
   public get registryNameInput() {
-    return this._registryName
+    return this._registryName;
   }
 
   // schema_arn - computed: false, optional: true, required: false
-  private _schemaArn?: string | undefined; 
+  private _schemaArn?: string; 
   public get schemaArn() {
     return this.getStringAttribute('schema_arn');
   }
-  public set schemaArn(value: string | undefined) {
+  public set schemaArn(value: string) {
     this._schemaArn = value;
   }
   public resetSchemaArn() {
@@ -219,15 +250,15 @@ export class GlueCatalogTableStorageDescriptorSchemaReferenceSchemaIdOutputRefer
   }
   // Temporarily expose input value. Use with caution.
   public get schemaArnInput() {
-    return this._schemaArn
+    return this._schemaArn;
   }
 
   // schema_name - computed: false, optional: true, required: false
-  private _schemaName?: string | undefined; 
+  private _schemaName?: string; 
   public get schemaName() {
     return this.getStringAttribute('schema_name');
   }
-  public set schemaName(value: string | undefined) {
+  public set schemaName(value: string) {
     this._schemaName = value;
   }
   public resetSchemaName() {
@@ -235,7 +266,7 @@ export class GlueCatalogTableStorageDescriptorSchemaReferenceSchemaIdOutputRefer
   }
   // Temporarily expose input value. Use with caution.
   public get schemaNameInput() {
-    return this._schemaName
+    return this._schemaName;
   }
 }
 export interface GlueCatalogTableStorageDescriptorSchemaReference {
@@ -277,12 +308,43 @@ export class GlueCatalogTableStorageDescriptorSchemaReferenceOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueCatalogTableStorageDescriptorSchemaReference | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._schemaVersionId) {
+      hasAnyValues = true;
+      internalValueResult.schemaVersionId = this._schemaVersionId;
+    }
+    if (this._schemaVersionNumber) {
+      hasAnyValues = true;
+      internalValueResult.schemaVersionNumber = this._schemaVersionNumber;
+    }
+    if (this._schemaId) {
+      hasAnyValues = true;
+      internalValueResult.schemaId = this._schemaId?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueCatalogTableStorageDescriptorSchemaReference | undefined) {
+    if (value === undefined) {
+      this._schemaVersionId = undefined;
+      this._schemaVersionNumber = undefined;
+      this._schemaId.internalValue = undefined;
+    }
+    else {
+      this._schemaVersionId = value.schemaVersionId;
+      this._schemaVersionNumber = value.schemaVersionNumber;
+      this._schemaId.internalValue = value.schemaId;
+    }
+  }
+
   // schema_version_id - computed: false, optional: true, required: false
-  private _schemaVersionId?: string | undefined; 
+  private _schemaVersionId?: string; 
   public get schemaVersionId() {
     return this.getStringAttribute('schema_version_id');
   }
-  public set schemaVersionId(value: string | undefined) {
+  public set schemaVersionId(value: string) {
     this._schemaVersionId = value;
   }
   public resetSchemaVersionId() {
@@ -290,7 +352,7 @@ export class GlueCatalogTableStorageDescriptorSchemaReferenceOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get schemaVersionIdInput() {
-    return this._schemaVersionId
+    return this._schemaVersionId;
   }
 
   // schema_version_number - computed: false, optional: false, required: true
@@ -303,24 +365,23 @@ export class GlueCatalogTableStorageDescriptorSchemaReferenceOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get schemaVersionNumberInput() {
-    return this._schemaVersionNumber
+    return this._schemaVersionNumber;
   }
 
   // schema_id - computed: false, optional: true, required: false
-  private _schemaId?: GlueCatalogTableStorageDescriptorSchemaReferenceSchemaId | undefined; 
-  private __schemaIdOutput = new GlueCatalogTableStorageDescriptorSchemaReferenceSchemaIdOutputReference(this as any, "schema_id", true);
+  private _schemaId = new GlueCatalogTableStorageDescriptorSchemaReferenceSchemaIdOutputReference(this as any, "schema_id", true);
   public get schemaId() {
-    return this.__schemaIdOutput;
+    return this._schemaId;
   }
-  public putSchemaId(value: GlueCatalogTableStorageDescriptorSchemaReferenceSchemaId | undefined) {
-    this._schemaId = value;
+  public putSchemaId(value: GlueCatalogTableStorageDescriptorSchemaReferenceSchemaId) {
+    this._schemaId.internalValue = value;
   }
   public resetSchemaId() {
-    this._schemaId = undefined;
+    this._schemaId.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get schemaIdInput() {
-    return this._schemaId
+    return this._schemaId.internalValue;
   }
 }
 export interface GlueCatalogTableStorageDescriptorSerDeInfo {
@@ -360,12 +421,43 @@ export class GlueCatalogTableStorageDescriptorSerDeInfoOutputReference extends c
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueCatalogTableStorageDescriptorSerDeInfo | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._parameters) {
+      hasAnyValues = true;
+      internalValueResult.parameters = this._parameters;
+    }
+    if (this._serializationLibrary) {
+      hasAnyValues = true;
+      internalValueResult.serializationLibrary = this._serializationLibrary;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueCatalogTableStorageDescriptorSerDeInfo | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+      this._parameters = undefined;
+      this._serializationLibrary = undefined;
+    }
+    else {
+      this._name = value.name;
+      this._parameters = value.parameters;
+      this._serializationLibrary = value.serializationLibrary;
+    }
+  }
+
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -373,16 +465,16 @@ export class GlueCatalogTableStorageDescriptorSerDeInfoOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // parameters - computed: false, optional: true, required: false
-  private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _parameters?: { [key: string]: string } | cdktf.IResolvable; 
   public get parameters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('parameters') as any;
   }
-  public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set parameters(value: { [key: string]: string } | cdktf.IResolvable) {
     this._parameters = value;
   }
   public resetParameters() {
@@ -390,15 +482,15 @@ export class GlueCatalogTableStorageDescriptorSerDeInfoOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInput() {
-    return this._parameters
+    return this._parameters;
   }
 
   // serialization_library - computed: false, optional: true, required: false
-  private _serializationLibrary?: string | undefined; 
+  private _serializationLibrary?: string; 
   public get serializationLibrary() {
     return this.getStringAttribute('serialization_library');
   }
-  public set serializationLibrary(value: string | undefined) {
+  public set serializationLibrary(value: string) {
     this._serializationLibrary = value;
   }
   public resetSerializationLibrary() {
@@ -406,7 +498,7 @@ export class GlueCatalogTableStorageDescriptorSerDeInfoOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get serializationLibraryInput() {
-    return this._serializationLibrary
+    return this._serializationLibrary;
   }
 }
 export interface GlueCatalogTableStorageDescriptorSkewedInfo {
@@ -446,12 +538,43 @@ export class GlueCatalogTableStorageDescriptorSkewedInfoOutputReference extends 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueCatalogTableStorageDescriptorSkewedInfo | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._skewedColumnNames) {
+      hasAnyValues = true;
+      internalValueResult.skewedColumnNames = this._skewedColumnNames;
+    }
+    if (this._skewedColumnValueLocationMaps) {
+      hasAnyValues = true;
+      internalValueResult.skewedColumnValueLocationMaps = this._skewedColumnValueLocationMaps;
+    }
+    if (this._skewedColumnValues) {
+      hasAnyValues = true;
+      internalValueResult.skewedColumnValues = this._skewedColumnValues;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueCatalogTableStorageDescriptorSkewedInfo | undefined) {
+    if (value === undefined) {
+      this._skewedColumnNames = undefined;
+      this._skewedColumnValueLocationMaps = undefined;
+      this._skewedColumnValues = undefined;
+    }
+    else {
+      this._skewedColumnNames = value.skewedColumnNames;
+      this._skewedColumnValueLocationMaps = value.skewedColumnValueLocationMaps;
+      this._skewedColumnValues = value.skewedColumnValues;
+    }
+  }
+
   // skewed_column_names - computed: false, optional: true, required: false
-  private _skewedColumnNames?: string[] | undefined; 
+  private _skewedColumnNames?: string[]; 
   public get skewedColumnNames() {
     return this.getListAttribute('skewed_column_names');
   }
-  public set skewedColumnNames(value: string[] | undefined) {
+  public set skewedColumnNames(value: string[]) {
     this._skewedColumnNames = value;
   }
   public resetSkewedColumnNames() {
@@ -459,16 +582,16 @@ export class GlueCatalogTableStorageDescriptorSkewedInfoOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get skewedColumnNamesInput() {
-    return this._skewedColumnNames
+    return this._skewedColumnNames;
   }
 
   // skewed_column_value_location_maps - computed: false, optional: true, required: false
-  private _skewedColumnValueLocationMaps?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _skewedColumnValueLocationMaps?: { [key: string]: string } | cdktf.IResolvable; 
   public get skewedColumnValueLocationMaps() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('skewed_column_value_location_maps') as any;
   }
-  public set skewedColumnValueLocationMaps(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set skewedColumnValueLocationMaps(value: { [key: string]: string } | cdktf.IResolvable) {
     this._skewedColumnValueLocationMaps = value;
   }
   public resetSkewedColumnValueLocationMaps() {
@@ -476,15 +599,15 @@ export class GlueCatalogTableStorageDescriptorSkewedInfoOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get skewedColumnValueLocationMapsInput() {
-    return this._skewedColumnValueLocationMaps
+    return this._skewedColumnValueLocationMaps;
   }
 
   // skewed_column_values - computed: false, optional: true, required: false
-  private _skewedColumnValues?: string[] | undefined; 
+  private _skewedColumnValues?: string[]; 
   public get skewedColumnValues() {
     return this.getListAttribute('skewed_column_values');
   }
-  public set skewedColumnValues(value: string[] | undefined) {
+  public set skewedColumnValues(value: string[]) {
     this._skewedColumnValues = value;
   }
   public resetSkewedColumnValues() {
@@ -492,7 +615,7 @@ export class GlueCatalogTableStorageDescriptorSkewedInfoOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get skewedColumnValuesInput() {
-    return this._skewedColumnValues
+    return this._skewedColumnValues;
   }
 }
 export interface GlueCatalogTableStorageDescriptorSortColumns {
@@ -614,12 +737,103 @@ export class GlueCatalogTableStorageDescriptorOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueCatalogTableStorageDescriptor | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucketColumns) {
+      hasAnyValues = true;
+      internalValueResult.bucketColumns = this._bucketColumns;
+    }
+    if (this._compressed) {
+      hasAnyValues = true;
+      internalValueResult.compressed = this._compressed;
+    }
+    if (this._inputFormat) {
+      hasAnyValues = true;
+      internalValueResult.inputFormat = this._inputFormat;
+    }
+    if (this._location) {
+      hasAnyValues = true;
+      internalValueResult.location = this._location;
+    }
+    if (this._numberOfBuckets) {
+      hasAnyValues = true;
+      internalValueResult.numberOfBuckets = this._numberOfBuckets;
+    }
+    if (this._outputFormat) {
+      hasAnyValues = true;
+      internalValueResult.outputFormat = this._outputFormat;
+    }
+    if (this._parameters) {
+      hasAnyValues = true;
+      internalValueResult.parameters = this._parameters;
+    }
+    if (this._storedAsSubDirectories) {
+      hasAnyValues = true;
+      internalValueResult.storedAsSubDirectories = this._storedAsSubDirectories;
+    }
+    if (this._columns) {
+      hasAnyValues = true;
+      internalValueResult.columns = this._columns;
+    }
+    if (this._schemaReference) {
+      hasAnyValues = true;
+      internalValueResult.schemaReference = this._schemaReference?.internalValue;
+    }
+    if (this._serDeInfo) {
+      hasAnyValues = true;
+      internalValueResult.serDeInfo = this._serDeInfo?.internalValue;
+    }
+    if (this._skewedInfo) {
+      hasAnyValues = true;
+      internalValueResult.skewedInfo = this._skewedInfo?.internalValue;
+    }
+    if (this._sortColumns) {
+      hasAnyValues = true;
+      internalValueResult.sortColumns = this._sortColumns;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueCatalogTableStorageDescriptor | undefined) {
+    if (value === undefined) {
+      this._bucketColumns = undefined;
+      this._compressed = undefined;
+      this._inputFormat = undefined;
+      this._location = undefined;
+      this._numberOfBuckets = undefined;
+      this._outputFormat = undefined;
+      this._parameters = undefined;
+      this._storedAsSubDirectories = undefined;
+      this._columns = undefined;
+      this._schemaReference.internalValue = undefined;
+      this._serDeInfo.internalValue = undefined;
+      this._skewedInfo.internalValue = undefined;
+      this._sortColumns = undefined;
+    }
+    else {
+      this._bucketColumns = value.bucketColumns;
+      this._compressed = value.compressed;
+      this._inputFormat = value.inputFormat;
+      this._location = value.location;
+      this._numberOfBuckets = value.numberOfBuckets;
+      this._outputFormat = value.outputFormat;
+      this._parameters = value.parameters;
+      this._storedAsSubDirectories = value.storedAsSubDirectories;
+      this._columns = value.columns;
+      this._schemaReference.internalValue = value.schemaReference;
+      this._serDeInfo.internalValue = value.serDeInfo;
+      this._skewedInfo.internalValue = value.skewedInfo;
+      this._sortColumns = value.sortColumns;
+    }
+  }
+
   // bucket_columns - computed: false, optional: true, required: false
-  private _bucketColumns?: string[] | undefined; 
+  private _bucketColumns?: string[]; 
   public get bucketColumns() {
     return this.getListAttribute('bucket_columns');
   }
-  public set bucketColumns(value: string[] | undefined) {
+  public set bucketColumns(value: string[]) {
     this._bucketColumns = value;
   }
   public resetBucketColumns() {
@@ -627,15 +841,15 @@ export class GlueCatalogTableStorageDescriptorOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get bucketColumnsInput() {
-    return this._bucketColumns
+    return this._bucketColumns;
   }
 
   // compressed - computed: false, optional: true, required: false
-  private _compressed?: boolean | cdktf.IResolvable | undefined; 
+  private _compressed?: boolean | cdktf.IResolvable; 
   public get compressed() {
     return this.getBooleanAttribute('compressed') as any;
   }
-  public set compressed(value: boolean | cdktf.IResolvable | undefined) {
+  public set compressed(value: boolean | cdktf.IResolvable) {
     this._compressed = value;
   }
   public resetCompressed() {
@@ -643,15 +857,15 @@ export class GlueCatalogTableStorageDescriptorOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get compressedInput() {
-    return this._compressed
+    return this._compressed;
   }
 
   // input_format - computed: false, optional: true, required: false
-  private _inputFormat?: string | undefined; 
+  private _inputFormat?: string; 
   public get inputFormat() {
     return this.getStringAttribute('input_format');
   }
-  public set inputFormat(value: string | undefined) {
+  public set inputFormat(value: string) {
     this._inputFormat = value;
   }
   public resetInputFormat() {
@@ -659,15 +873,15 @@ export class GlueCatalogTableStorageDescriptorOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get inputFormatInput() {
-    return this._inputFormat
+    return this._inputFormat;
   }
 
   // location - computed: false, optional: true, required: false
-  private _location?: string | undefined; 
+  private _location?: string; 
   public get location() {
     return this.getStringAttribute('location');
   }
-  public set location(value: string | undefined) {
+  public set location(value: string) {
     this._location = value;
   }
   public resetLocation() {
@@ -675,15 +889,15 @@ export class GlueCatalogTableStorageDescriptorOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get locationInput() {
-    return this._location
+    return this._location;
   }
 
   // number_of_buckets - computed: false, optional: true, required: false
-  private _numberOfBuckets?: number | undefined; 
+  private _numberOfBuckets?: number; 
   public get numberOfBuckets() {
     return this.getNumberAttribute('number_of_buckets');
   }
-  public set numberOfBuckets(value: number | undefined) {
+  public set numberOfBuckets(value: number) {
     this._numberOfBuckets = value;
   }
   public resetNumberOfBuckets() {
@@ -691,15 +905,15 @@ export class GlueCatalogTableStorageDescriptorOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get numberOfBucketsInput() {
-    return this._numberOfBuckets
+    return this._numberOfBuckets;
   }
 
   // output_format - computed: false, optional: true, required: false
-  private _outputFormat?: string | undefined; 
+  private _outputFormat?: string; 
   public get outputFormat() {
     return this.getStringAttribute('output_format');
   }
-  public set outputFormat(value: string | undefined) {
+  public set outputFormat(value: string) {
     this._outputFormat = value;
   }
   public resetOutputFormat() {
@@ -707,16 +921,16 @@ export class GlueCatalogTableStorageDescriptorOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get outputFormatInput() {
-    return this._outputFormat
+    return this._outputFormat;
   }
 
   // parameters - computed: false, optional: true, required: false
-  private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _parameters?: { [key: string]: string } | cdktf.IResolvable; 
   public get parameters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('parameters') as any;
   }
-  public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set parameters(value: { [key: string]: string } | cdktf.IResolvable) {
     this._parameters = value;
   }
   public resetParameters() {
@@ -724,15 +938,15 @@ export class GlueCatalogTableStorageDescriptorOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInput() {
-    return this._parameters
+    return this._parameters;
   }
 
   // stored_as_sub_directories - computed: false, optional: true, required: false
-  private _storedAsSubDirectories?: boolean | cdktf.IResolvable | undefined; 
+  private _storedAsSubDirectories?: boolean | cdktf.IResolvable; 
   public get storedAsSubDirectories() {
     return this.getBooleanAttribute('stored_as_sub_directories') as any;
   }
-  public set storedAsSubDirectories(value: boolean | cdktf.IResolvable | undefined) {
+  public set storedAsSubDirectories(value: boolean | cdktf.IResolvable) {
     this._storedAsSubDirectories = value;
   }
   public resetStoredAsSubDirectories() {
@@ -740,16 +954,16 @@ export class GlueCatalogTableStorageDescriptorOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get storedAsSubDirectoriesInput() {
-    return this._storedAsSubDirectories
+    return this._storedAsSubDirectories;
   }
 
   // columns - computed: false, optional: true, required: false
-  private _columns?: GlueCatalogTableStorageDescriptorColumns[] | undefined; 
+  private _columns?: GlueCatalogTableStorageDescriptorColumns[]; 
   public get columns() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('columns') as any;
   }
-  public set columns(value: GlueCatalogTableStorageDescriptorColumns[] | undefined) {
+  public set columns(value: GlueCatalogTableStorageDescriptorColumns[]) {
     this._columns = value;
   }
   public resetColumns() {
@@ -757,67 +971,64 @@ export class GlueCatalogTableStorageDescriptorOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get columnsInput() {
-    return this._columns
+    return this._columns;
   }
 
   // schema_reference - computed: false, optional: true, required: false
-  private _schemaReference?: GlueCatalogTableStorageDescriptorSchemaReference | undefined; 
-  private __schemaReferenceOutput = new GlueCatalogTableStorageDescriptorSchemaReferenceOutputReference(this as any, "schema_reference", true);
+  private _schemaReference = new GlueCatalogTableStorageDescriptorSchemaReferenceOutputReference(this as any, "schema_reference", true);
   public get schemaReference() {
-    return this.__schemaReferenceOutput;
+    return this._schemaReference;
   }
-  public putSchemaReference(value: GlueCatalogTableStorageDescriptorSchemaReference | undefined) {
-    this._schemaReference = value;
+  public putSchemaReference(value: GlueCatalogTableStorageDescriptorSchemaReference) {
+    this._schemaReference.internalValue = value;
   }
   public resetSchemaReference() {
-    this._schemaReference = undefined;
+    this._schemaReference.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get schemaReferenceInput() {
-    return this._schemaReference
+    return this._schemaReference.internalValue;
   }
 
   // ser_de_info - computed: false, optional: true, required: false
-  private _serDeInfo?: GlueCatalogTableStorageDescriptorSerDeInfo | undefined; 
-  private __serDeInfoOutput = new GlueCatalogTableStorageDescriptorSerDeInfoOutputReference(this as any, "ser_de_info", true);
+  private _serDeInfo = new GlueCatalogTableStorageDescriptorSerDeInfoOutputReference(this as any, "ser_de_info", true);
   public get serDeInfo() {
-    return this.__serDeInfoOutput;
+    return this._serDeInfo;
   }
-  public putSerDeInfo(value: GlueCatalogTableStorageDescriptorSerDeInfo | undefined) {
-    this._serDeInfo = value;
+  public putSerDeInfo(value: GlueCatalogTableStorageDescriptorSerDeInfo) {
+    this._serDeInfo.internalValue = value;
   }
   public resetSerDeInfo() {
-    this._serDeInfo = undefined;
+    this._serDeInfo.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get serDeInfoInput() {
-    return this._serDeInfo
+    return this._serDeInfo.internalValue;
   }
 
   // skewed_info - computed: false, optional: true, required: false
-  private _skewedInfo?: GlueCatalogTableStorageDescriptorSkewedInfo | undefined; 
-  private __skewedInfoOutput = new GlueCatalogTableStorageDescriptorSkewedInfoOutputReference(this as any, "skewed_info", true);
+  private _skewedInfo = new GlueCatalogTableStorageDescriptorSkewedInfoOutputReference(this as any, "skewed_info", true);
   public get skewedInfo() {
-    return this.__skewedInfoOutput;
+    return this._skewedInfo;
   }
-  public putSkewedInfo(value: GlueCatalogTableStorageDescriptorSkewedInfo | undefined) {
-    this._skewedInfo = value;
+  public putSkewedInfo(value: GlueCatalogTableStorageDescriptorSkewedInfo) {
+    this._skewedInfo.internalValue = value;
   }
   public resetSkewedInfo() {
-    this._skewedInfo = undefined;
+    this._skewedInfo.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get skewedInfoInput() {
-    return this._skewedInfo
+    return this._skewedInfo.internalValue;
   }
 
   // sort_columns - computed: false, optional: true, required: false
-  private _sortColumns?: GlueCatalogTableStorageDescriptorSortColumns[] | undefined; 
+  private _sortColumns?: GlueCatalogTableStorageDescriptorSortColumns[]; 
   public get sortColumns() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('sort_columns') as any;
   }
-  public set sortColumns(value: GlueCatalogTableStorageDescriptorSortColumns[] | undefined) {
+  public set sortColumns(value: GlueCatalogTableStorageDescriptorSortColumns[]) {
     this._sortColumns = value;
   }
   public resetSortColumns() {
@@ -825,7 +1036,7 @@ export class GlueCatalogTableStorageDescriptorOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get sortColumnsInput() {
-    return this._sortColumns
+    return this._sortColumns;
   }
 }
 export interface GlueCatalogTableTargetTable {
@@ -865,6 +1076,37 @@ export class GlueCatalogTableTargetTableOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueCatalogTableTargetTable | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._catalogId) {
+      hasAnyValues = true;
+      internalValueResult.catalogId = this._catalogId;
+    }
+    if (this._databaseName) {
+      hasAnyValues = true;
+      internalValueResult.databaseName = this._databaseName;
+    }
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueCatalogTableTargetTable | undefined) {
+    if (value === undefined) {
+      this._catalogId = undefined;
+      this._databaseName = undefined;
+      this._name = undefined;
+    }
+    else {
+      this._catalogId = value.catalogId;
+      this._databaseName = value.databaseName;
+      this._name = value.name;
+    }
+  }
+
   // catalog_id - computed: false, optional: false, required: true
   private _catalogId?: string; 
   public get catalogId() {
@@ -875,7 +1117,7 @@ export class GlueCatalogTableTargetTableOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // database_name - computed: false, optional: false, required: true
@@ -888,7 +1130,7 @@ export class GlueCatalogTableTargetTableOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get databaseNameInput() {
-    return this._databaseName
+    return this._databaseName;
   }
 
   // name - computed: false, optional: false, required: true
@@ -901,7 +1143,7 @@ export class GlueCatalogTableTargetTableOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 
@@ -949,8 +1191,8 @@ export class GlueCatalogTable extends cdktf.TerraformResource {
     this._viewOriginalText = config.viewOriginalText;
     this._partitionIndex = config.partitionIndex;
     this._partitionKeys = config.partitionKeys;
-    this._storageDescriptor = config.storageDescriptor;
-    this._targetTable = config.targetTable;
+    this._storageDescriptor.internalValue = config.storageDescriptor;
+    this._targetTable.internalValue = config.targetTable;
   }
 
   // ==========
@@ -963,11 +1205,11 @@ export class GlueCatalogTable extends cdktf.TerraformResource {
   }
 
   // catalog_id - computed: true, optional: true, required: false
-  private _catalogId?: string | undefined; 
+  private _catalogId?: string; 
   public get catalogId() {
     return this.getStringAttribute('catalog_id');
   }
-  public set catalogId(value: string | undefined) {
+  public set catalogId(value: string) {
     this._catalogId = value;
   }
   public resetCatalogId() {
@@ -975,7 +1217,7 @@ export class GlueCatalogTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // database_name - computed: false, optional: false, required: true
@@ -988,15 +1230,15 @@ export class GlueCatalogTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get databaseNameInput() {
-    return this._databaseName
+    return this._databaseName;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -1004,7 +1246,7 @@ export class GlueCatalogTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -1022,15 +1264,15 @@ export class GlueCatalogTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // owner - computed: false, optional: true, required: false
-  private _owner?: string | undefined; 
+  private _owner?: string; 
   public get owner() {
     return this.getStringAttribute('owner');
   }
-  public set owner(value: string | undefined) {
+  public set owner(value: string) {
     this._owner = value;
   }
   public resetOwner() {
@@ -1038,16 +1280,16 @@ export class GlueCatalogTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerInput() {
-    return this._owner
+    return this._owner;
   }
 
   // parameters - computed: false, optional: true, required: false
-  private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _parameters?: { [key: string]: string } | cdktf.IResolvable; 
   public get parameters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('parameters') as any;
   }
-  public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set parameters(value: { [key: string]: string } | cdktf.IResolvable) {
     this._parameters = value;
   }
   public resetParameters() {
@@ -1055,15 +1297,15 @@ export class GlueCatalogTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInput() {
-    return this._parameters
+    return this._parameters;
   }
 
   // retention - computed: false, optional: true, required: false
-  private _retention?: number | undefined; 
+  private _retention?: number; 
   public get retention() {
     return this.getNumberAttribute('retention');
   }
-  public set retention(value: number | undefined) {
+  public set retention(value: number) {
     this._retention = value;
   }
   public resetRetention() {
@@ -1071,15 +1313,15 @@ export class GlueCatalogTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get retentionInput() {
-    return this._retention
+    return this._retention;
   }
 
   // table_type - computed: false, optional: true, required: false
-  private _tableType?: string | undefined; 
+  private _tableType?: string; 
   public get tableType() {
     return this.getStringAttribute('table_type');
   }
-  public set tableType(value: string | undefined) {
+  public set tableType(value: string) {
     this._tableType = value;
   }
   public resetTableType() {
@@ -1087,15 +1329,15 @@ export class GlueCatalogTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tableTypeInput() {
-    return this._tableType
+    return this._tableType;
   }
 
   // view_expanded_text - computed: false, optional: true, required: false
-  private _viewExpandedText?: string | undefined; 
+  private _viewExpandedText?: string; 
   public get viewExpandedText() {
     return this.getStringAttribute('view_expanded_text');
   }
-  public set viewExpandedText(value: string | undefined) {
+  public set viewExpandedText(value: string) {
     this._viewExpandedText = value;
   }
   public resetViewExpandedText() {
@@ -1103,15 +1345,15 @@ export class GlueCatalogTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get viewExpandedTextInput() {
-    return this._viewExpandedText
+    return this._viewExpandedText;
   }
 
   // view_original_text - computed: false, optional: true, required: false
-  private _viewOriginalText?: string | undefined; 
+  private _viewOriginalText?: string; 
   public get viewOriginalText() {
     return this.getStringAttribute('view_original_text');
   }
-  public set viewOriginalText(value: string | undefined) {
+  public set viewOriginalText(value: string) {
     this._viewOriginalText = value;
   }
   public resetViewOriginalText() {
@@ -1119,16 +1361,16 @@ export class GlueCatalogTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get viewOriginalTextInput() {
-    return this._viewOriginalText
+    return this._viewOriginalText;
   }
 
   // partition_index - computed: false, optional: true, required: false
-  private _partitionIndex?: GlueCatalogTablePartitionIndex[] | undefined; 
+  private _partitionIndex?: GlueCatalogTablePartitionIndex[]; 
   public get partitionIndex() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('partition_index') as any;
   }
-  public set partitionIndex(value: GlueCatalogTablePartitionIndex[] | undefined) {
+  public set partitionIndex(value: GlueCatalogTablePartitionIndex[]) {
     this._partitionIndex = value;
   }
   public resetPartitionIndex() {
@@ -1136,16 +1378,16 @@ export class GlueCatalogTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get partitionIndexInput() {
-    return this._partitionIndex
+    return this._partitionIndex;
   }
 
   // partition_keys - computed: false, optional: true, required: false
-  private _partitionKeys?: GlueCatalogTablePartitionKeys[] | undefined; 
+  private _partitionKeys?: GlueCatalogTablePartitionKeys[]; 
   public get partitionKeys() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('partition_keys') as any;
   }
-  public set partitionKeys(value: GlueCatalogTablePartitionKeys[] | undefined) {
+  public set partitionKeys(value: GlueCatalogTablePartitionKeys[]) {
     this._partitionKeys = value;
   }
   public resetPartitionKeys() {
@@ -1153,41 +1395,39 @@ export class GlueCatalogTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get partitionKeysInput() {
-    return this._partitionKeys
+    return this._partitionKeys;
   }
 
   // storage_descriptor - computed: false, optional: true, required: false
-  private _storageDescriptor?: GlueCatalogTableStorageDescriptor | undefined; 
-  private __storageDescriptorOutput = new GlueCatalogTableStorageDescriptorOutputReference(this as any, "storage_descriptor", true);
+  private _storageDescriptor = new GlueCatalogTableStorageDescriptorOutputReference(this as any, "storage_descriptor", true);
   public get storageDescriptor() {
-    return this.__storageDescriptorOutput;
+    return this._storageDescriptor;
   }
-  public putStorageDescriptor(value: GlueCatalogTableStorageDescriptor | undefined) {
-    this._storageDescriptor = value;
+  public putStorageDescriptor(value: GlueCatalogTableStorageDescriptor) {
+    this._storageDescriptor.internalValue = value;
   }
   public resetStorageDescriptor() {
-    this._storageDescriptor = undefined;
+    this._storageDescriptor.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get storageDescriptorInput() {
-    return this._storageDescriptor
+    return this._storageDescriptor.internalValue;
   }
 
   // target_table - computed: false, optional: true, required: false
-  private _targetTable?: GlueCatalogTableTargetTable | undefined; 
-  private __targetTableOutput = new GlueCatalogTableTargetTableOutputReference(this as any, "target_table", true);
+  private _targetTable = new GlueCatalogTableTargetTableOutputReference(this as any, "target_table", true);
   public get targetTable() {
-    return this.__targetTableOutput;
+    return this._targetTable;
   }
-  public putTargetTable(value: GlueCatalogTableTargetTable | undefined) {
-    this._targetTable = value;
+  public putTargetTable(value: GlueCatalogTableTargetTable) {
+    this._targetTable.internalValue = value;
   }
   public resetTargetTable() {
-    this._targetTable = undefined;
+    this._targetTable.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get targetTableInput() {
-    return this._targetTable
+    return this._targetTable.internalValue;
   }
 
   // =========
@@ -1208,8 +1448,8 @@ export class GlueCatalogTable extends cdktf.TerraformResource {
       view_original_text: cdktf.stringToTerraform(this._viewOriginalText),
       partition_index: cdktf.listMapper(glueCatalogTablePartitionIndexToTerraform)(this._partitionIndex),
       partition_keys: cdktf.listMapper(glueCatalogTablePartitionKeysToTerraform)(this._partitionKeys),
-      storage_descriptor: glueCatalogTableStorageDescriptorToTerraform(this._storageDescriptor),
-      target_table: glueCatalogTableTargetTableToTerraform(this._targetTable),
+      storage_descriptor: glueCatalogTableStorageDescriptorToTerraform(this._storageDescriptor.internalValue),
+      target_table: glueCatalogTableTargetTableToTerraform(this._targetTable.internalValue),
     };
   }
 }

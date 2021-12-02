@@ -79,12 +79,43 @@ export class DbProxyEndpointTimeoutsOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DbProxyEndpointTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DbProxyEndpointTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -92,15 +123,15 @@ export class DbProxyEndpointTimeoutsOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -108,15 +139,15 @@ export class DbProxyEndpointTimeoutsOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -124,7 +155,7 @@ export class DbProxyEndpointTimeoutsOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -167,7 +198,7 @@ export class DbProxyEndpoint extends cdktf.TerraformResource {
     this._targetRole = config.targetRole;
     this._vpcSecurityGroupIds = config.vpcSecurityGroupIds;
     this._vpcSubnetIds = config.vpcSubnetIds;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -189,7 +220,7 @@ export class DbProxyEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dbProxyEndpointNameInput() {
-    return this._dbProxyEndpointName
+    return this._dbProxyEndpointName;
   }
 
   // db_proxy_name - computed: false, optional: false, required: true
@@ -202,7 +233,7 @@ export class DbProxyEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dbProxyNameInput() {
-    return this._dbProxyName
+    return this._dbProxyName;
   }
 
   // endpoint - computed: true, optional: false, required: false
@@ -221,12 +252,12 @@ export class DbProxyEndpoint extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -234,16 +265,16 @@ export class DbProxyEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -251,15 +282,15 @@ export class DbProxyEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // target_role - computed: false, optional: true, required: false
-  private _targetRole?: string | undefined; 
+  private _targetRole?: string; 
   public get targetRole() {
     return this.getStringAttribute('target_role');
   }
-  public set targetRole(value: string | undefined) {
+  public set targetRole(value: string) {
     this._targetRole = value;
   }
   public resetTargetRole() {
@@ -267,7 +298,7 @@ export class DbProxyEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetRoleInput() {
-    return this._targetRole
+    return this._targetRole;
   }
 
   // vpc_id - computed: true, optional: false, required: false
@@ -276,11 +307,11 @@ export class DbProxyEndpoint extends cdktf.TerraformResource {
   }
 
   // vpc_security_group_ids - computed: true, optional: true, required: false
-  private _vpcSecurityGroupIds?: string[] | undefined; 
+  private _vpcSecurityGroupIds?: string[]; 
   public get vpcSecurityGroupIds() {
     return this.getListAttribute('vpc_security_group_ids');
   }
-  public set vpcSecurityGroupIds(value: string[] | undefined) {
+  public set vpcSecurityGroupIds(value: string[]) {
     this._vpcSecurityGroupIds = value;
   }
   public resetVpcSecurityGroupIds() {
@@ -288,7 +319,7 @@ export class DbProxyEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcSecurityGroupIdsInput() {
-    return this._vpcSecurityGroupIds
+    return this._vpcSecurityGroupIds;
   }
 
   // vpc_subnet_ids - computed: false, optional: false, required: true
@@ -301,24 +332,23 @@ export class DbProxyEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcSubnetIdsInput() {
-    return this._vpcSubnetIds
+    return this._vpcSubnetIds;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DbProxyEndpointTimeouts | undefined; 
-  private __timeoutsOutput = new DbProxyEndpointTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DbProxyEndpointTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DbProxyEndpointTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DbProxyEndpointTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -334,7 +364,7 @@ export class DbProxyEndpoint extends cdktf.TerraformResource {
       target_role: cdktf.stringToTerraform(this._targetRole),
       vpc_security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._vpcSecurityGroupIds),
       vpc_subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._vpcSubnetIds),
-      timeouts: dbProxyEndpointTimeoutsToTerraform(this._timeouts),
+      timeouts: dbProxyEndpointTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

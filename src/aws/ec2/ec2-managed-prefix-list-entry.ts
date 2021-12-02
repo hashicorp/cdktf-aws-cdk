@@ -72,15 +72,15 @@ export class Ec2ManagedPrefixListEntryA extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cidrInput() {
-    return this._cidr
+    return this._cidr;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -88,7 +88,7 @@ export class Ec2ManagedPrefixListEntryA extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -106,7 +106,7 @@ export class Ec2ManagedPrefixListEntryA extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get prefixListIdInput() {
-    return this._prefixListId
+    return this._prefixListId;
   }
 
   // =========

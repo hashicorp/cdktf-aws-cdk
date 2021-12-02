@@ -80,12 +80,37 @@ export class AppsyncResolverCachingConfigOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppsyncResolverCachingConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cachingKeys) {
+      hasAnyValues = true;
+      internalValueResult.cachingKeys = this._cachingKeys;
+    }
+    if (this._ttl) {
+      hasAnyValues = true;
+      internalValueResult.ttl = this._ttl;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppsyncResolverCachingConfig | undefined) {
+    if (value === undefined) {
+      this._cachingKeys = undefined;
+      this._ttl = undefined;
+    }
+    else {
+      this._cachingKeys = value.cachingKeys;
+      this._ttl = value.ttl;
+    }
+  }
+
   // caching_keys - computed: false, optional: true, required: false
-  private _cachingKeys?: string[] | undefined; 
+  private _cachingKeys?: string[]; 
   public get cachingKeys() {
     return this.getListAttribute('caching_keys');
   }
-  public set cachingKeys(value: string[] | undefined) {
+  public set cachingKeys(value: string[]) {
     this._cachingKeys = value;
   }
   public resetCachingKeys() {
@@ -93,15 +118,15 @@ export class AppsyncResolverCachingConfigOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get cachingKeysInput() {
-    return this._cachingKeys
+    return this._cachingKeys;
   }
 
   // ttl - computed: false, optional: true, required: false
-  private _ttl?: number | undefined; 
+  private _ttl?: number; 
   public get ttl() {
     return this.getNumberAttribute('ttl');
   }
-  public set ttl(value: number | undefined) {
+  public set ttl(value: number) {
     this._ttl = value;
   }
   public resetTtl() {
@@ -109,7 +134,7 @@ export class AppsyncResolverCachingConfigOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get ttlInput() {
-    return this._ttl
+    return this._ttl;
   }
 }
 export interface AppsyncResolverPipelineConfig {
@@ -139,12 +164,31 @@ export class AppsyncResolverPipelineConfigOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppsyncResolverPipelineConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._functions) {
+      hasAnyValues = true;
+      internalValueResult.functions = this._functions;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppsyncResolverPipelineConfig | undefined) {
+    if (value === undefined) {
+      this._functions = undefined;
+    }
+    else {
+      this._functions = value.functions;
+    }
+  }
+
   // functions - computed: false, optional: true, required: false
-  private _functions?: string[] | undefined; 
+  private _functions?: string[]; 
   public get functions() {
     return this.getListAttribute('functions');
   }
-  public set functions(value: string[] | undefined) {
+  public set functions(value: string[]) {
     this._functions = value;
   }
   public resetFunctions() {
@@ -152,7 +196,7 @@ export class AppsyncResolverPipelineConfigOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get functionsInput() {
-    return this._functions
+    return this._functions;
   }
 }
 
@@ -195,8 +239,8 @@ export class AppsyncResolver extends cdktf.TerraformResource {
     this._requestTemplate = config.requestTemplate;
     this._responseTemplate = config.responseTemplate;
     this._type = config.type;
-    this._cachingConfig = config.cachingConfig;
-    this._pipelineConfig = config.pipelineConfig;
+    this._cachingConfig.internalValue = config.cachingConfig;
+    this._pipelineConfig.internalValue = config.pipelineConfig;
   }
 
   // ==========
@@ -213,7 +257,7 @@ export class AppsyncResolver extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiIdInput() {
-    return this._apiId
+    return this._apiId;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -222,11 +266,11 @@ export class AppsyncResolver extends cdktf.TerraformResource {
   }
 
   // data_source - computed: false, optional: true, required: false
-  private _dataSource?: string | undefined; 
+  private _dataSource?: string; 
   public get dataSource() {
     return this.getStringAttribute('data_source');
   }
-  public set dataSource(value: string | undefined) {
+  public set dataSource(value: string) {
     this._dataSource = value;
   }
   public resetDataSource() {
@@ -234,7 +278,7 @@ export class AppsyncResolver extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dataSourceInput() {
-    return this._dataSource
+    return this._dataSource;
   }
 
   // field - computed: false, optional: false, required: true
@@ -247,7 +291,7 @@ export class AppsyncResolver extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fieldInput() {
-    return this._field
+    return this._field;
   }
 
   // id - computed: true, optional: true, required: false
@@ -256,11 +300,11 @@ export class AppsyncResolver extends cdktf.TerraformResource {
   }
 
   // kind - computed: false, optional: true, required: false
-  private _kind?: string | undefined; 
+  private _kind?: string; 
   public get kind() {
     return this.getStringAttribute('kind');
   }
-  public set kind(value: string | undefined) {
+  public set kind(value: string) {
     this._kind = value;
   }
   public resetKind() {
@@ -268,15 +312,15 @@ export class AppsyncResolver extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kindInput() {
-    return this._kind
+    return this._kind;
   }
 
   // request_template - computed: false, optional: true, required: false
-  private _requestTemplate?: string | undefined; 
+  private _requestTemplate?: string; 
   public get requestTemplate() {
     return this.getStringAttribute('request_template');
   }
-  public set requestTemplate(value: string | undefined) {
+  public set requestTemplate(value: string) {
     this._requestTemplate = value;
   }
   public resetRequestTemplate() {
@@ -284,15 +328,15 @@ export class AppsyncResolver extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requestTemplateInput() {
-    return this._requestTemplate
+    return this._requestTemplate;
   }
 
   // response_template - computed: false, optional: true, required: false
-  private _responseTemplate?: string | undefined; 
+  private _responseTemplate?: string; 
   public get responseTemplate() {
     return this.getStringAttribute('response_template');
   }
-  public set responseTemplate(value: string | undefined) {
+  public set responseTemplate(value: string) {
     this._responseTemplate = value;
   }
   public resetResponseTemplate() {
@@ -300,7 +344,7 @@ export class AppsyncResolver extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get responseTemplateInput() {
-    return this._responseTemplate
+    return this._responseTemplate;
   }
 
   // type - computed: false, optional: false, required: true
@@ -313,41 +357,39 @@ export class AppsyncResolver extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // caching_config - computed: false, optional: true, required: false
-  private _cachingConfig?: AppsyncResolverCachingConfig | undefined; 
-  private __cachingConfigOutput = new AppsyncResolverCachingConfigOutputReference(this as any, "caching_config", true);
+  private _cachingConfig = new AppsyncResolverCachingConfigOutputReference(this as any, "caching_config", true);
   public get cachingConfig() {
-    return this.__cachingConfigOutput;
+    return this._cachingConfig;
   }
-  public putCachingConfig(value: AppsyncResolverCachingConfig | undefined) {
-    this._cachingConfig = value;
+  public putCachingConfig(value: AppsyncResolverCachingConfig) {
+    this._cachingConfig.internalValue = value;
   }
   public resetCachingConfig() {
-    this._cachingConfig = undefined;
+    this._cachingConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cachingConfigInput() {
-    return this._cachingConfig
+    return this._cachingConfig.internalValue;
   }
 
   // pipeline_config - computed: false, optional: true, required: false
-  private _pipelineConfig?: AppsyncResolverPipelineConfig | undefined; 
-  private __pipelineConfigOutput = new AppsyncResolverPipelineConfigOutputReference(this as any, "pipeline_config", true);
+  private _pipelineConfig = new AppsyncResolverPipelineConfigOutputReference(this as any, "pipeline_config", true);
   public get pipelineConfig() {
-    return this.__pipelineConfigOutput;
+    return this._pipelineConfig;
   }
-  public putPipelineConfig(value: AppsyncResolverPipelineConfig | undefined) {
-    this._pipelineConfig = value;
+  public putPipelineConfig(value: AppsyncResolverPipelineConfig) {
+    this._pipelineConfig.internalValue = value;
   }
   public resetPipelineConfig() {
-    this._pipelineConfig = undefined;
+    this._pipelineConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get pipelineConfigInput() {
-    return this._pipelineConfig
+    return this._pipelineConfig.internalValue;
   }
 
   // =========
@@ -363,8 +405,8 @@ export class AppsyncResolver extends cdktf.TerraformResource {
       request_template: cdktf.stringToTerraform(this._requestTemplate),
       response_template: cdktf.stringToTerraform(this._responseTemplate),
       type: cdktf.stringToTerraform(this._type),
-      caching_config: appsyncResolverCachingConfigToTerraform(this._cachingConfig),
-      pipeline_config: appsyncResolverPipelineConfigToTerraform(this._pipelineConfig),
+      caching_config: appsyncResolverCachingConfigToTerraform(this._cachingConfig.internalValue),
+      pipeline_config: appsyncResolverPipelineConfigToTerraform(this._pipelineConfig.internalValue),
     };
   }
 }

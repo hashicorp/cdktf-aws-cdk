@@ -139,7 +139,7 @@ export class DataAwsSignerSigningJob extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get jobIdInput() {
-    return this._jobId
+    return this._jobId;
   }
 
   // job_invoker - computed: true, optional: false, required: false

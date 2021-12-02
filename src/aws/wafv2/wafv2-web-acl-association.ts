@@ -72,7 +72,7 @@ export class Wafv2WebAclAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceArnInput() {
-    return this._resourceArn
+    return this._resourceArn;
   }
 
   // web_acl_arn - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class Wafv2WebAclAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get webAclArnInput() {
-    return this._webAclArn
+    return this._webAclArn;
   }
 
   // =========

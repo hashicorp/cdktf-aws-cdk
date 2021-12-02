@@ -282,11 +282,11 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   // ==========
 
   // acl - computed: false, optional: true, required: false
-  private _acl?: string | undefined; 
+  private _acl?: string; 
   public get acl() {
     return this.getStringAttribute('acl');
   }
-  public set acl(value: string | undefined) {
+  public set acl(value: string) {
     this._acl = value;
   }
   public resetAcl() {
@@ -294,7 +294,7 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get aclInput() {
-    return this._acl
+    return this._acl;
   }
 
   // bucket - computed: false, optional: false, required: true
@@ -307,15 +307,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // bucket_key_enabled - computed: true, optional: true, required: false
-  private _bucketKeyEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _bucketKeyEnabled?: boolean | cdktf.IResolvable; 
   public get bucketKeyEnabled() {
     return this.getBooleanAttribute('bucket_key_enabled') as any;
   }
-  public set bucketKeyEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set bucketKeyEnabled(value: boolean | cdktf.IResolvable) {
     this._bucketKeyEnabled = value;
   }
   public resetBucketKeyEnabled() {
@@ -323,15 +323,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketKeyEnabledInput() {
-    return this._bucketKeyEnabled
+    return this._bucketKeyEnabled;
   }
 
   // cache_control - computed: true, optional: true, required: false
-  private _cacheControl?: string | undefined; 
+  private _cacheControl?: string; 
   public get cacheControl() {
     return this.getStringAttribute('cache_control');
   }
-  public set cacheControl(value: string | undefined) {
+  public set cacheControl(value: string) {
     this._cacheControl = value;
   }
   public resetCacheControl() {
@@ -339,15 +339,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cacheControlInput() {
-    return this._cacheControl
+    return this._cacheControl;
   }
 
   // content_disposition - computed: true, optional: true, required: false
-  private _contentDisposition?: string | undefined; 
+  private _contentDisposition?: string; 
   public get contentDisposition() {
     return this.getStringAttribute('content_disposition');
   }
-  public set contentDisposition(value: string | undefined) {
+  public set contentDisposition(value: string) {
     this._contentDisposition = value;
   }
   public resetContentDisposition() {
@@ -355,15 +355,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get contentDispositionInput() {
-    return this._contentDisposition
+    return this._contentDisposition;
   }
 
   // content_encoding - computed: true, optional: true, required: false
-  private _contentEncoding?: string | undefined; 
+  private _contentEncoding?: string; 
   public get contentEncoding() {
     return this.getStringAttribute('content_encoding');
   }
-  public set contentEncoding(value: string | undefined) {
+  public set contentEncoding(value: string) {
     this._contentEncoding = value;
   }
   public resetContentEncoding() {
@@ -371,15 +371,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get contentEncodingInput() {
-    return this._contentEncoding
+    return this._contentEncoding;
   }
 
   // content_language - computed: true, optional: true, required: false
-  private _contentLanguage?: string | undefined; 
+  private _contentLanguage?: string; 
   public get contentLanguage() {
     return this.getStringAttribute('content_language');
   }
-  public set contentLanguage(value: string | undefined) {
+  public set contentLanguage(value: string) {
     this._contentLanguage = value;
   }
   public resetContentLanguage() {
@@ -387,15 +387,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get contentLanguageInput() {
-    return this._contentLanguage
+    return this._contentLanguage;
   }
 
   // content_type - computed: true, optional: true, required: false
-  private _contentType?: string | undefined; 
+  private _contentType?: string; 
   public get contentType() {
     return this.getStringAttribute('content_type');
   }
-  public set contentType(value: string | undefined) {
+  public set contentType(value: string) {
     this._contentType = value;
   }
   public resetContentType() {
@@ -403,15 +403,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get contentTypeInput() {
-    return this._contentType
+    return this._contentType;
   }
 
   // copy_if_match - computed: false, optional: true, required: false
-  private _copyIfMatch?: string | undefined; 
+  private _copyIfMatch?: string; 
   public get copyIfMatch() {
     return this.getStringAttribute('copy_if_match');
   }
-  public set copyIfMatch(value: string | undefined) {
+  public set copyIfMatch(value: string) {
     this._copyIfMatch = value;
   }
   public resetCopyIfMatch() {
@@ -419,15 +419,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get copyIfMatchInput() {
-    return this._copyIfMatch
+    return this._copyIfMatch;
   }
 
   // copy_if_modified_since - computed: false, optional: true, required: false
-  private _copyIfModifiedSince?: string | undefined; 
+  private _copyIfModifiedSince?: string; 
   public get copyIfModifiedSince() {
     return this.getStringAttribute('copy_if_modified_since');
   }
-  public set copyIfModifiedSince(value: string | undefined) {
+  public set copyIfModifiedSince(value: string) {
     this._copyIfModifiedSince = value;
   }
   public resetCopyIfModifiedSince() {
@@ -435,15 +435,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get copyIfModifiedSinceInput() {
-    return this._copyIfModifiedSince
+    return this._copyIfModifiedSince;
   }
 
   // copy_if_none_match - computed: false, optional: true, required: false
-  private _copyIfNoneMatch?: string | undefined; 
+  private _copyIfNoneMatch?: string; 
   public get copyIfNoneMatch() {
     return this.getStringAttribute('copy_if_none_match');
   }
-  public set copyIfNoneMatch(value: string | undefined) {
+  public set copyIfNoneMatch(value: string) {
     this._copyIfNoneMatch = value;
   }
   public resetCopyIfNoneMatch() {
@@ -451,15 +451,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get copyIfNoneMatchInput() {
-    return this._copyIfNoneMatch
+    return this._copyIfNoneMatch;
   }
 
   // copy_if_unmodified_since - computed: false, optional: true, required: false
-  private _copyIfUnmodifiedSince?: string | undefined; 
+  private _copyIfUnmodifiedSince?: string; 
   public get copyIfUnmodifiedSince() {
     return this.getStringAttribute('copy_if_unmodified_since');
   }
-  public set copyIfUnmodifiedSince(value: string | undefined) {
+  public set copyIfUnmodifiedSince(value: string) {
     this._copyIfUnmodifiedSince = value;
   }
   public resetCopyIfUnmodifiedSince() {
@@ -467,15 +467,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get copyIfUnmodifiedSinceInput() {
-    return this._copyIfUnmodifiedSince
+    return this._copyIfUnmodifiedSince;
   }
 
   // customer_algorithm - computed: true, optional: true, required: false
-  private _customerAlgorithm?: string | undefined; 
+  private _customerAlgorithm?: string; 
   public get customerAlgorithm() {
     return this.getStringAttribute('customer_algorithm');
   }
-  public set customerAlgorithm(value: string | undefined) {
+  public set customerAlgorithm(value: string) {
     this._customerAlgorithm = value;
   }
   public resetCustomerAlgorithm() {
@@ -483,15 +483,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customerAlgorithmInput() {
-    return this._customerAlgorithm
+    return this._customerAlgorithm;
   }
 
   // customer_key - computed: false, optional: true, required: false
-  private _customerKey?: string | undefined; 
+  private _customerKey?: string; 
   public get customerKey() {
     return this.getStringAttribute('customer_key');
   }
-  public set customerKey(value: string | undefined) {
+  public set customerKey(value: string) {
     this._customerKey = value;
   }
   public resetCustomerKey() {
@@ -499,15 +499,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customerKeyInput() {
-    return this._customerKey
+    return this._customerKey;
   }
 
   // customer_key_md5 - computed: true, optional: true, required: false
-  private _customerKeyMd5?: string | undefined; 
+  private _customerKeyMd5?: string; 
   public get customerKeyMd5() {
     return this.getStringAttribute('customer_key_md5');
   }
-  public set customerKeyMd5(value: string | undefined) {
+  public set customerKeyMd5(value: string) {
     this._customerKeyMd5 = value;
   }
   public resetCustomerKeyMd5() {
@@ -515,7 +515,7 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customerKeyMd5Input() {
-    return this._customerKeyMd5
+    return this._customerKeyMd5;
   }
 
   // etag - computed: true, optional: false, required: false
@@ -524,11 +524,11 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
 
   // expected_bucket_owner - computed: false, optional: true, required: false
-  private _expectedBucketOwner?: string | undefined; 
+  private _expectedBucketOwner?: string; 
   public get expectedBucketOwner() {
     return this.getStringAttribute('expected_bucket_owner');
   }
-  public set expectedBucketOwner(value: string | undefined) {
+  public set expectedBucketOwner(value: string) {
     this._expectedBucketOwner = value;
   }
   public resetExpectedBucketOwner() {
@@ -536,15 +536,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get expectedBucketOwnerInput() {
-    return this._expectedBucketOwner
+    return this._expectedBucketOwner;
   }
 
   // expected_source_bucket_owner - computed: false, optional: true, required: false
-  private _expectedSourceBucketOwner?: string | undefined; 
+  private _expectedSourceBucketOwner?: string; 
   public get expectedSourceBucketOwner() {
     return this.getStringAttribute('expected_source_bucket_owner');
   }
-  public set expectedSourceBucketOwner(value: string | undefined) {
+  public set expectedSourceBucketOwner(value: string) {
     this._expectedSourceBucketOwner = value;
   }
   public resetExpectedSourceBucketOwner() {
@@ -552,7 +552,7 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get expectedSourceBucketOwnerInput() {
-    return this._expectedSourceBucketOwner
+    return this._expectedSourceBucketOwner;
   }
 
   // expiration - computed: true, optional: false, required: false
@@ -561,11 +561,11 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
 
   // expires - computed: false, optional: true, required: false
-  private _expires?: string | undefined; 
+  private _expires?: string; 
   public get expires() {
     return this.getStringAttribute('expires');
   }
-  public set expires(value: string | undefined) {
+  public set expires(value: string) {
     this._expires = value;
   }
   public resetExpires() {
@@ -573,15 +573,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get expiresInput() {
-    return this._expires
+    return this._expires;
   }
 
   // force_destroy - computed: false, optional: true, required: false
-  private _forceDestroy?: boolean | cdktf.IResolvable | undefined; 
+  private _forceDestroy?: boolean | cdktf.IResolvable; 
   public get forceDestroy() {
     return this.getBooleanAttribute('force_destroy') as any;
   }
-  public set forceDestroy(value: boolean | cdktf.IResolvable | undefined) {
+  public set forceDestroy(value: boolean | cdktf.IResolvable) {
     this._forceDestroy = value;
   }
   public resetForceDestroy() {
@@ -589,7 +589,7 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get forceDestroyInput() {
-    return this._forceDestroy
+    return this._forceDestroy;
   }
 
   // id - computed: true, optional: true, required: false
@@ -607,15 +607,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // kms_encryption_context - computed: true, optional: true, required: false
-  private _kmsEncryptionContext?: string | undefined; 
+  private _kmsEncryptionContext?: string; 
   public get kmsEncryptionContext() {
     return this.getStringAttribute('kms_encryption_context');
   }
-  public set kmsEncryptionContext(value: string | undefined) {
+  public set kmsEncryptionContext(value: string) {
     this._kmsEncryptionContext = value;
   }
   public resetKmsEncryptionContext() {
@@ -623,15 +623,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsEncryptionContextInput() {
-    return this._kmsEncryptionContext
+    return this._kmsEncryptionContext;
   }
 
   // kms_key_id - computed: true, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -639,7 +639,7 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // last_modified - computed: true, optional: false, required: false
@@ -648,12 +648,12 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
 
   // metadata - computed: true, optional: true, required: false
-  private _metadata?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _metadata?: { [key: string]: string } | cdktf.IResolvable; 
   public get metadata() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('metadata') as any;
   }
-  public set metadata(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set metadata(value: { [key: string]: string } | cdktf.IResolvable) {
     this._metadata = value;
   }
   public resetMetadata() {
@@ -661,15 +661,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get metadataInput() {
-    return this._metadata
+    return this._metadata;
   }
 
   // metadata_directive - computed: false, optional: true, required: false
-  private _metadataDirective?: string | undefined; 
+  private _metadataDirective?: string; 
   public get metadataDirective() {
     return this.getStringAttribute('metadata_directive');
   }
-  public set metadataDirective(value: string | undefined) {
+  public set metadataDirective(value: string) {
     this._metadataDirective = value;
   }
   public resetMetadataDirective() {
@@ -677,15 +677,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get metadataDirectiveInput() {
-    return this._metadataDirective
+    return this._metadataDirective;
   }
 
   // object_lock_legal_hold_status - computed: true, optional: true, required: false
-  private _objectLockLegalHoldStatus?: string | undefined; 
+  private _objectLockLegalHoldStatus?: string; 
   public get objectLockLegalHoldStatus() {
     return this.getStringAttribute('object_lock_legal_hold_status');
   }
-  public set objectLockLegalHoldStatus(value: string | undefined) {
+  public set objectLockLegalHoldStatus(value: string) {
     this._objectLockLegalHoldStatus = value;
   }
   public resetObjectLockLegalHoldStatus() {
@@ -693,15 +693,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get objectLockLegalHoldStatusInput() {
-    return this._objectLockLegalHoldStatus
+    return this._objectLockLegalHoldStatus;
   }
 
   // object_lock_mode - computed: true, optional: true, required: false
-  private _objectLockMode?: string | undefined; 
+  private _objectLockMode?: string; 
   public get objectLockMode() {
     return this.getStringAttribute('object_lock_mode');
   }
-  public set objectLockMode(value: string | undefined) {
+  public set objectLockMode(value: string) {
     this._objectLockMode = value;
   }
   public resetObjectLockMode() {
@@ -709,15 +709,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get objectLockModeInput() {
-    return this._objectLockMode
+    return this._objectLockMode;
   }
 
   // object_lock_retain_until_date - computed: true, optional: true, required: false
-  private _objectLockRetainUntilDate?: string | undefined; 
+  private _objectLockRetainUntilDate?: string; 
   public get objectLockRetainUntilDate() {
     return this.getStringAttribute('object_lock_retain_until_date');
   }
-  public set objectLockRetainUntilDate(value: string | undefined) {
+  public set objectLockRetainUntilDate(value: string) {
     this._objectLockRetainUntilDate = value;
   }
   public resetObjectLockRetainUntilDate() {
@@ -725,7 +725,7 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get objectLockRetainUntilDateInput() {
-    return this._objectLockRetainUntilDate
+    return this._objectLockRetainUntilDate;
   }
 
   // request_charged - computed: true, optional: false, required: false
@@ -734,11 +734,11 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
 
   // request_payer - computed: false, optional: true, required: false
-  private _requestPayer?: string | undefined; 
+  private _requestPayer?: string; 
   public get requestPayer() {
     return this.getStringAttribute('request_payer');
   }
-  public set requestPayer(value: string | undefined) {
+  public set requestPayer(value: string) {
     this._requestPayer = value;
   }
   public resetRequestPayer() {
@@ -746,15 +746,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requestPayerInput() {
-    return this._requestPayer
+    return this._requestPayer;
   }
 
   // server_side_encryption - computed: true, optional: true, required: false
-  private _serverSideEncryption?: string | undefined; 
+  private _serverSideEncryption?: string; 
   public get serverSideEncryption() {
     return this.getStringAttribute('server_side_encryption');
   }
-  public set serverSideEncryption(value: string | undefined) {
+  public set serverSideEncryption(value: string) {
     this._serverSideEncryption = value;
   }
   public resetServerSideEncryption() {
@@ -762,7 +762,7 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serverSideEncryptionInput() {
-    return this._serverSideEncryption
+    return this._serverSideEncryption;
   }
 
   // source - computed: false, optional: false, required: true
@@ -775,15 +775,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceInput() {
-    return this._source
+    return this._source;
   }
 
   // source_customer_algorithm - computed: false, optional: true, required: false
-  private _sourceCustomerAlgorithm?: string | undefined; 
+  private _sourceCustomerAlgorithm?: string; 
   public get sourceCustomerAlgorithm() {
     return this.getStringAttribute('source_customer_algorithm');
   }
-  public set sourceCustomerAlgorithm(value: string | undefined) {
+  public set sourceCustomerAlgorithm(value: string) {
     this._sourceCustomerAlgorithm = value;
   }
   public resetSourceCustomerAlgorithm() {
@@ -791,15 +791,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceCustomerAlgorithmInput() {
-    return this._sourceCustomerAlgorithm
+    return this._sourceCustomerAlgorithm;
   }
 
   // source_customer_key - computed: false, optional: true, required: false
-  private _sourceCustomerKey?: string | undefined; 
+  private _sourceCustomerKey?: string; 
   public get sourceCustomerKey() {
     return this.getStringAttribute('source_customer_key');
   }
-  public set sourceCustomerKey(value: string | undefined) {
+  public set sourceCustomerKey(value: string) {
     this._sourceCustomerKey = value;
   }
   public resetSourceCustomerKey() {
@@ -807,15 +807,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceCustomerKeyInput() {
-    return this._sourceCustomerKey
+    return this._sourceCustomerKey;
   }
 
   // source_customer_key_md5 - computed: false, optional: true, required: false
-  private _sourceCustomerKeyMd5?: string | undefined; 
+  private _sourceCustomerKeyMd5?: string; 
   public get sourceCustomerKeyMd5() {
     return this.getStringAttribute('source_customer_key_md5');
   }
-  public set sourceCustomerKeyMd5(value: string | undefined) {
+  public set sourceCustomerKeyMd5(value: string) {
     this._sourceCustomerKeyMd5 = value;
   }
   public resetSourceCustomerKeyMd5() {
@@ -823,7 +823,7 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceCustomerKeyMd5Input() {
-    return this._sourceCustomerKeyMd5
+    return this._sourceCustomerKeyMd5;
   }
 
   // source_version_id - computed: true, optional: false, required: false
@@ -832,11 +832,11 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
 
   // storage_class - computed: true, optional: true, required: false
-  private _storageClass?: string | undefined; 
+  private _storageClass?: string; 
   public get storageClass() {
     return this.getStringAttribute('storage_class');
   }
-  public set storageClass(value: string | undefined) {
+  public set storageClass(value: string) {
     this._storageClass = value;
   }
   public resetStorageClass() {
@@ -844,15 +844,15 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get storageClassInput() {
-    return this._storageClass
+    return this._storageClass;
   }
 
   // tagging_directive - computed: false, optional: true, required: false
-  private _taggingDirective?: string | undefined; 
+  private _taggingDirective?: string; 
   public get taggingDirective() {
     return this.getStringAttribute('tagging_directive');
   }
-  public set taggingDirective(value: string | undefined) {
+  public set taggingDirective(value: string) {
     this._taggingDirective = value;
   }
   public resetTaggingDirective() {
@@ -860,16 +860,16 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get taggingDirectiveInput() {
-    return this._taggingDirective
+    return this._taggingDirective;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -877,16 +877,16 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -894,7 +894,7 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // version_id - computed: true, optional: false, required: false
@@ -903,11 +903,11 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
 
   // website_redirect - computed: true, optional: true, required: false
-  private _websiteRedirect?: string | undefined; 
+  private _websiteRedirect?: string; 
   public get websiteRedirect() {
     return this.getStringAttribute('website_redirect');
   }
-  public set websiteRedirect(value: string | undefined) {
+  public set websiteRedirect(value: string) {
     this._websiteRedirect = value;
   }
   public resetWebsiteRedirect() {
@@ -915,16 +915,16 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get websiteRedirectInput() {
-    return this._websiteRedirect
+    return this._websiteRedirect;
   }
 
   // grant - computed: false, optional: true, required: false
-  private _grant?: S3ObjectCopyGrant[] | undefined; 
+  private _grant?: S3ObjectCopyGrant[]; 
   public get grant() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('grant') as any;
   }
-  public set grant(value: S3ObjectCopyGrant[] | undefined) {
+  public set grant(value: S3ObjectCopyGrant[]) {
     this._grant = value;
   }
   public resetGrant() {
@@ -932,7 +932,7 @@ export class S3ObjectCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get grantInput() {
-    return this._grant
+    return this._grant;
   }
 
   // =========

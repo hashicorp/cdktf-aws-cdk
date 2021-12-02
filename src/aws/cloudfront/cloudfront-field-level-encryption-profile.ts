@@ -49,12 +49,31 @@ export class CloudfrontFieldLevelEncryptionProfileEncryptionEntitiesItemsFieldPa
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontFieldLevelEncryptionProfileEncryptionEntitiesItemsFieldPatterns | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._items) {
+      hasAnyValues = true;
+      internalValueResult.items = this._items;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontFieldLevelEncryptionProfileEncryptionEntitiesItemsFieldPatterns | undefined) {
+    if (value === undefined) {
+      this._items = undefined;
+    }
+    else {
+      this._items = value.items;
+    }
+  }
+
   // items - computed: false, optional: true, required: false
-  private _items?: string[] | undefined; 
+  private _items?: string[]; 
   public get items() {
     return this.getListAttribute('items');
   }
-  public set items(value: string[] | undefined) {
+  public set items(value: string[]) {
     this._items = value;
   }
   public resetItems() {
@@ -62,7 +81,7 @@ export class CloudfrontFieldLevelEncryptionProfileEncryptionEntitiesItemsFieldPa
   }
   // Temporarily expose input value. Use with caution.
   public get itemsInput() {
-    return this._items
+    return this._items;
   }
 }
 export interface CloudfrontFieldLevelEncryptionProfileEncryptionEntitiesItems {
@@ -123,13 +142,32 @@ export class CloudfrontFieldLevelEncryptionProfileEncryptionEntitiesOutputRefere
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontFieldLevelEncryptionProfileEncryptionEntities | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._items) {
+      hasAnyValues = true;
+      internalValueResult.items = this._items;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontFieldLevelEncryptionProfileEncryptionEntities | undefined) {
+    if (value === undefined) {
+      this._items = undefined;
+    }
+    else {
+      this._items = value.items;
+    }
+  }
+
   // items - computed: false, optional: true, required: false
-  private _items?: CloudfrontFieldLevelEncryptionProfileEncryptionEntitiesItems[] | undefined; 
+  private _items?: CloudfrontFieldLevelEncryptionProfileEncryptionEntitiesItems[]; 
   public get items() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('items') as any;
   }
-  public set items(value: CloudfrontFieldLevelEncryptionProfileEncryptionEntitiesItems[] | undefined) {
+  public set items(value: CloudfrontFieldLevelEncryptionProfileEncryptionEntitiesItems[]) {
     this._items = value;
   }
   public resetItems() {
@@ -137,7 +175,7 @@ export class CloudfrontFieldLevelEncryptionProfileEncryptionEntitiesOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get itemsInput() {
-    return this._items
+    return this._items;
   }
 }
 
@@ -175,7 +213,7 @@ export class CloudfrontFieldLevelEncryptionProfile extends cdktf.TerraformResour
     });
     this._comment = config.comment;
     this._name = config.name;
-    this._encryptionEntities = config.encryptionEntities;
+    this._encryptionEntities.internalValue = config.encryptionEntities;
   }
 
   // ==========
@@ -188,11 +226,11 @@ export class CloudfrontFieldLevelEncryptionProfile extends cdktf.TerraformResour
   }
 
   // comment - computed: false, optional: true, required: false
-  private _comment?: string | undefined; 
+  private _comment?: string; 
   public get comment() {
     return this.getStringAttribute('comment');
   }
-  public set comment(value: string | undefined) {
+  public set comment(value: string) {
     this._comment = value;
   }
   public resetComment() {
@@ -200,7 +238,7 @@ export class CloudfrontFieldLevelEncryptionProfile extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get commentInput() {
-    return this._comment
+    return this._comment;
   }
 
   // etag - computed: true, optional: false, required: false
@@ -223,21 +261,20 @@ export class CloudfrontFieldLevelEncryptionProfile extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // encryption_entities - computed: false, optional: false, required: true
-  private _encryptionEntities?: CloudfrontFieldLevelEncryptionProfileEncryptionEntities; 
-  private __encryptionEntitiesOutput = new CloudfrontFieldLevelEncryptionProfileEncryptionEntitiesOutputReference(this as any, "encryption_entities", true);
+  private _encryptionEntities = new CloudfrontFieldLevelEncryptionProfileEncryptionEntitiesOutputReference(this as any, "encryption_entities", true);
   public get encryptionEntities() {
-    return this.__encryptionEntitiesOutput;
+    return this._encryptionEntities;
   }
   public putEncryptionEntities(value: CloudfrontFieldLevelEncryptionProfileEncryptionEntities) {
-    this._encryptionEntities = value;
+    this._encryptionEntities.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionEntitiesInput() {
-    return this._encryptionEntities
+    return this._encryptionEntities.internalValue;
   }
 
   // =========
@@ -248,7 +285,7 @@ export class CloudfrontFieldLevelEncryptionProfile extends cdktf.TerraformResour
     return {
       comment: cdktf.stringToTerraform(this._comment),
       name: cdktf.stringToTerraform(this._name),
-      encryption_entities: cloudfrontFieldLevelEncryptionProfileEncryptionEntitiesToTerraform(this._encryptionEntities),
+      encryption_entities: cloudfrontFieldLevelEncryptionProfileEncryptionEntitiesToTerraform(this._encryptionEntities.internalValue),
     };
   }
 }

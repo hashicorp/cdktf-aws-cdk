@@ -76,13 +76,32 @@ export class SagemakerEndpointDeploymentConfigAutoRollbackConfigurationOutputRef
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerEndpointDeploymentConfigAutoRollbackConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._alarms) {
+      hasAnyValues = true;
+      internalValueResult.alarms = this._alarms;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerEndpointDeploymentConfigAutoRollbackConfiguration | undefined) {
+    if (value === undefined) {
+      this._alarms = undefined;
+    }
+    else {
+      this._alarms = value.alarms;
+    }
+  }
+
   // alarms - computed: false, optional: true, required: false
-  private _alarms?: SagemakerEndpointDeploymentConfigAutoRollbackConfigurationAlarms[] | undefined; 
+  private _alarms?: SagemakerEndpointDeploymentConfigAutoRollbackConfigurationAlarms[]; 
   public get alarms() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('alarms') as any;
   }
-  public set alarms(value: SagemakerEndpointDeploymentConfigAutoRollbackConfigurationAlarms[] | undefined) {
+  public set alarms(value: SagemakerEndpointDeploymentConfigAutoRollbackConfigurationAlarms[]) {
     this._alarms = value;
   }
   public resetAlarms() {
@@ -90,7 +109,7 @@ export class SagemakerEndpointDeploymentConfigAutoRollbackConfigurationOutputRef
   }
   // Temporarily expose input value. Use with caution.
   public get alarmsInput() {
-    return this._alarms
+    return this._alarms;
   }
 }
 export interface SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySize {
@@ -125,6 +144,31 @@ export class SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutin
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySize | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySize | undefined) {
+    if (value === undefined) {
+      this._type = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._type = value.type;
+      this._value = value.value;
+    }
+  }
+
   // type - computed: false, optional: false, required: true
   private _type?: string; 
   public get type() {
@@ -135,7 +179,7 @@ export class SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutin
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // value - computed: false, optional: false, required: true
@@ -148,7 +192,7 @@ export class SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutin
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize {
@@ -183,6 +227,31 @@ export class SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutin
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize | undefined) {
+    if (value === undefined) {
+      this._type = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._type = value.type;
+      this._value = value.value;
+    }
+  }
+
   // type - computed: false, optional: false, required: true
   private _type?: string; 
   public get type() {
@@ -193,7 +262,7 @@ export class SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutin
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // value - computed: false, optional: false, required: true
@@ -206,7 +275,7 @@ export class SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutin
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration {
@@ -255,6 +324,43 @@ export class SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutin
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    if (this._waitIntervalInSeconds) {
+      hasAnyValues = true;
+      internalValueResult.waitIntervalInSeconds = this._waitIntervalInSeconds;
+    }
+    if (this._canarySize) {
+      hasAnyValues = true;
+      internalValueResult.canarySize = this._canarySize?.internalValue;
+    }
+    if (this._linearStepSize) {
+      hasAnyValues = true;
+      internalValueResult.linearStepSize = this._linearStepSize?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration | undefined) {
+    if (value === undefined) {
+      this._type = undefined;
+      this._waitIntervalInSeconds = undefined;
+      this._canarySize.internalValue = undefined;
+      this._linearStepSize.internalValue = undefined;
+    }
+    else {
+      this._type = value.type;
+      this._waitIntervalInSeconds = value.waitIntervalInSeconds;
+      this._canarySize.internalValue = value.canarySize;
+      this._linearStepSize.internalValue = value.linearStepSize;
+    }
+  }
+
   // type - computed: false, optional: false, required: true
   private _type?: string; 
   public get type() {
@@ -265,7 +371,7 @@ export class SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutin
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // wait_interval_in_seconds - computed: false, optional: false, required: true
@@ -278,41 +384,39 @@ export class SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutin
   }
   // Temporarily expose input value. Use with caution.
   public get waitIntervalInSecondsInput() {
-    return this._waitIntervalInSeconds
+    return this._waitIntervalInSeconds;
   }
 
   // canary_size - computed: false, optional: true, required: false
-  private _canarySize?: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySize | undefined; 
-  private __canarySizeOutput = new SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySizeOutputReference(this as any, "canary_size", true);
+  private _canarySize = new SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySizeOutputReference(this as any, "canary_size", true);
   public get canarySize() {
-    return this.__canarySizeOutput;
+    return this._canarySize;
   }
-  public putCanarySize(value: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySize | undefined) {
-    this._canarySize = value;
+  public putCanarySize(value: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySize) {
+    this._canarySize.internalValue = value;
   }
   public resetCanarySize() {
-    this._canarySize = undefined;
+    this._canarySize.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get canarySizeInput() {
-    return this._canarySize
+    return this._canarySize.internalValue;
   }
 
   // linear_step_size - computed: false, optional: true, required: false
-  private _linearStepSize?: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize | undefined; 
-  private __linearStepSizeOutput = new SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSizeOutputReference(this as any, "linear_step_size", true);
+  private _linearStepSize = new SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSizeOutputReference(this as any, "linear_step_size", true);
   public get linearStepSize() {
-    return this.__linearStepSizeOutput;
+    return this._linearStepSize;
   }
-  public putLinearStepSize(value: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize | undefined) {
-    this._linearStepSize = value;
+  public putLinearStepSize(value: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize) {
+    this._linearStepSize.internalValue = value;
   }
   public resetLinearStepSize() {
-    this._linearStepSize = undefined;
+    this._linearStepSize.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get linearStepSizeInput() {
-    return this._linearStepSize
+    return this._linearStepSize.internalValue;
   }
 }
 export interface SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicy {
@@ -354,12 +458,43 @@ export class SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyOutputReferen
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._maximumExecutionTimeoutInSeconds) {
+      hasAnyValues = true;
+      internalValueResult.maximumExecutionTimeoutInSeconds = this._maximumExecutionTimeoutInSeconds;
+    }
+    if (this._terminationWaitInSeconds) {
+      hasAnyValues = true;
+      internalValueResult.terminationWaitInSeconds = this._terminationWaitInSeconds;
+    }
+    if (this._trafficRoutingConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.trafficRoutingConfiguration = this._trafficRoutingConfiguration?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicy | undefined) {
+    if (value === undefined) {
+      this._maximumExecutionTimeoutInSeconds = undefined;
+      this._terminationWaitInSeconds = undefined;
+      this._trafficRoutingConfiguration.internalValue = undefined;
+    }
+    else {
+      this._maximumExecutionTimeoutInSeconds = value.maximumExecutionTimeoutInSeconds;
+      this._terminationWaitInSeconds = value.terminationWaitInSeconds;
+      this._trafficRoutingConfiguration.internalValue = value.trafficRoutingConfiguration;
+    }
+  }
+
   // maximum_execution_timeout_in_seconds - computed: false, optional: true, required: false
-  private _maximumExecutionTimeoutInSeconds?: number | undefined; 
+  private _maximumExecutionTimeoutInSeconds?: number; 
   public get maximumExecutionTimeoutInSeconds() {
     return this.getNumberAttribute('maximum_execution_timeout_in_seconds');
   }
-  public set maximumExecutionTimeoutInSeconds(value: number | undefined) {
+  public set maximumExecutionTimeoutInSeconds(value: number) {
     this._maximumExecutionTimeoutInSeconds = value;
   }
   public resetMaximumExecutionTimeoutInSeconds() {
@@ -367,15 +502,15 @@ export class SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyOutputReferen
   }
   // Temporarily expose input value. Use with caution.
   public get maximumExecutionTimeoutInSecondsInput() {
-    return this._maximumExecutionTimeoutInSeconds
+    return this._maximumExecutionTimeoutInSeconds;
   }
 
   // termination_wait_in_seconds - computed: false, optional: true, required: false
-  private _terminationWaitInSeconds?: number | undefined; 
+  private _terminationWaitInSeconds?: number; 
   public get terminationWaitInSeconds() {
     return this.getNumberAttribute('termination_wait_in_seconds');
   }
-  public set terminationWaitInSeconds(value: number | undefined) {
+  public set terminationWaitInSeconds(value: number) {
     this._terminationWaitInSeconds = value;
   }
   public resetTerminationWaitInSeconds() {
@@ -383,21 +518,20 @@ export class SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyOutputReferen
   }
   // Temporarily expose input value. Use with caution.
   public get terminationWaitInSecondsInput() {
-    return this._terminationWaitInSeconds
+    return this._terminationWaitInSeconds;
   }
 
   // traffic_routing_configuration - computed: false, optional: false, required: true
-  private _trafficRoutingConfiguration?: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration; 
-  private __trafficRoutingConfigurationOutput = new SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationOutputReference(this as any, "traffic_routing_configuration", true);
+  private _trafficRoutingConfiguration = new SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationOutputReference(this as any, "traffic_routing_configuration", true);
   public get trafficRoutingConfiguration() {
-    return this.__trafficRoutingConfigurationOutput;
+    return this._trafficRoutingConfiguration;
   }
   public putTrafficRoutingConfiguration(value: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration) {
-    this._trafficRoutingConfiguration = value;
+    this._trafficRoutingConfiguration.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get trafficRoutingConfigurationInput() {
-    return this._trafficRoutingConfiguration
+    return this._trafficRoutingConfiguration.internalValue;
   }
 }
 export interface SagemakerEndpointDeploymentConfig {
@@ -436,35 +570,58 @@ export class SagemakerEndpointDeploymentConfigOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // auto_rollback_configuration - computed: false, optional: true, required: false
-  private _autoRollbackConfiguration?: SagemakerEndpointDeploymentConfigAutoRollbackConfiguration | undefined; 
-  private __autoRollbackConfigurationOutput = new SagemakerEndpointDeploymentConfigAutoRollbackConfigurationOutputReference(this as any, "auto_rollback_configuration", true);
-  public get autoRollbackConfiguration() {
-    return this.__autoRollbackConfigurationOutput;
+  public get internalValue(): SagemakerEndpointDeploymentConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._autoRollbackConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.autoRollbackConfiguration = this._autoRollbackConfiguration?.internalValue;
+    }
+    if (this._blueGreenUpdatePolicy) {
+      hasAnyValues = true;
+      internalValueResult.blueGreenUpdatePolicy = this._blueGreenUpdatePolicy?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAutoRollbackConfiguration(value: SagemakerEndpointDeploymentConfigAutoRollbackConfiguration | undefined) {
-    this._autoRollbackConfiguration = value;
+
+  public set internalValue(value: SagemakerEndpointDeploymentConfig | undefined) {
+    if (value === undefined) {
+      this._autoRollbackConfiguration.internalValue = undefined;
+      this._blueGreenUpdatePolicy.internalValue = undefined;
+    }
+    else {
+      this._autoRollbackConfiguration.internalValue = value.autoRollbackConfiguration;
+      this._blueGreenUpdatePolicy.internalValue = value.blueGreenUpdatePolicy;
+    }
+  }
+
+  // auto_rollback_configuration - computed: false, optional: true, required: false
+  private _autoRollbackConfiguration = new SagemakerEndpointDeploymentConfigAutoRollbackConfigurationOutputReference(this as any, "auto_rollback_configuration", true);
+  public get autoRollbackConfiguration() {
+    return this._autoRollbackConfiguration;
+  }
+  public putAutoRollbackConfiguration(value: SagemakerEndpointDeploymentConfigAutoRollbackConfiguration) {
+    this._autoRollbackConfiguration.internalValue = value;
   }
   public resetAutoRollbackConfiguration() {
-    this._autoRollbackConfiguration = undefined;
+    this._autoRollbackConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get autoRollbackConfigurationInput() {
-    return this._autoRollbackConfiguration
+    return this._autoRollbackConfiguration.internalValue;
   }
 
   // blue_green_update_policy - computed: false, optional: false, required: true
-  private _blueGreenUpdatePolicy?: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicy; 
-  private __blueGreenUpdatePolicyOutput = new SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyOutputReference(this as any, "blue_green_update_policy", true);
+  private _blueGreenUpdatePolicy = new SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyOutputReference(this as any, "blue_green_update_policy", true);
   public get blueGreenUpdatePolicy() {
-    return this.__blueGreenUpdatePolicyOutput;
+    return this._blueGreenUpdatePolicy;
   }
   public putBlueGreenUpdatePolicy(value: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicy) {
-    this._blueGreenUpdatePolicy = value;
+    this._blueGreenUpdatePolicy.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get blueGreenUpdatePolicyInput() {
-    return this._blueGreenUpdatePolicy
+    return this._blueGreenUpdatePolicy.internalValue;
   }
 }
 
@@ -504,7 +661,7 @@ export class SagemakerEndpoint extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._deploymentConfig = config.deploymentConfig;
+    this._deploymentConfig.internalValue = config.deploymentConfig;
   }
 
   // ==========
@@ -526,7 +683,7 @@ export class SagemakerEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endpointConfigNameInput() {
-    return this._endpointConfigName
+    return this._endpointConfigName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -535,11 +692,11 @@ export class SagemakerEndpoint extends cdktf.TerraformResource {
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -547,16 +704,16 @@ export class SagemakerEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -564,16 +721,16 @@ export class SagemakerEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -581,24 +738,23 @@ export class SagemakerEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // deployment_config - computed: false, optional: true, required: false
-  private _deploymentConfig?: SagemakerEndpointDeploymentConfig | undefined; 
-  private __deploymentConfigOutput = new SagemakerEndpointDeploymentConfigOutputReference(this as any, "deployment_config", true);
+  private _deploymentConfig = new SagemakerEndpointDeploymentConfigOutputReference(this as any, "deployment_config", true);
   public get deploymentConfig() {
-    return this.__deploymentConfigOutput;
+    return this._deploymentConfig;
   }
-  public putDeploymentConfig(value: SagemakerEndpointDeploymentConfig | undefined) {
-    this._deploymentConfig = value;
+  public putDeploymentConfig(value: SagemakerEndpointDeploymentConfig) {
+    this._deploymentConfig.internalValue = value;
   }
   public resetDeploymentConfig() {
-    this._deploymentConfig = undefined;
+    this._deploymentConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentConfigInput() {
-    return this._deploymentConfig
+    return this._deploymentConfig.internalValue;
   }
 
   // =========
@@ -611,7 +767,7 @@ export class SagemakerEndpoint extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      deployment_config: sagemakerEndpointDeploymentConfigToTerraform(this._deploymentConfig),
+      deployment_config: sagemakerEndpointDeploymentConfigToTerraform(this._deploymentConfig.internalValue),
     };
   }
 }

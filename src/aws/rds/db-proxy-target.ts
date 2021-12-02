@@ -68,11 +68,11 @@ export class DbProxyTarget extends cdktf.TerraformResource {
   // ==========
 
   // db_cluster_identifier - computed: false, optional: true, required: false
-  private _dbClusterIdentifier?: string | undefined; 
+  private _dbClusterIdentifier?: string; 
   public get dbClusterIdentifier() {
     return this.getStringAttribute('db_cluster_identifier');
   }
-  public set dbClusterIdentifier(value: string | undefined) {
+  public set dbClusterIdentifier(value: string) {
     this._dbClusterIdentifier = value;
   }
   public resetDbClusterIdentifier() {
@@ -80,15 +80,15 @@ export class DbProxyTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dbClusterIdentifierInput() {
-    return this._dbClusterIdentifier
+    return this._dbClusterIdentifier;
   }
 
   // db_instance_identifier - computed: false, optional: true, required: false
-  private _dbInstanceIdentifier?: string | undefined; 
+  private _dbInstanceIdentifier?: string; 
   public get dbInstanceIdentifier() {
     return this.getStringAttribute('db_instance_identifier');
   }
-  public set dbInstanceIdentifier(value: string | undefined) {
+  public set dbInstanceIdentifier(value: string) {
     this._dbInstanceIdentifier = value;
   }
   public resetDbInstanceIdentifier() {
@@ -96,7 +96,7 @@ export class DbProxyTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dbInstanceIdentifierInput() {
-    return this._dbInstanceIdentifier
+    return this._dbInstanceIdentifier;
   }
 
   // db_proxy_name - computed: false, optional: false, required: true
@@ -109,7 +109,7 @@ export class DbProxyTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dbProxyNameInput() {
-    return this._dbProxyName
+    return this._dbProxyName;
   }
 
   // endpoint - computed: true, optional: false, required: false
@@ -147,7 +147,7 @@ export class DbProxyTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetGroupNameInput() {
-    return this._targetGroupName
+    return this._targetGroupName;
   }
 
   // tracked_cluster_id - computed: true, optional: false, required: false

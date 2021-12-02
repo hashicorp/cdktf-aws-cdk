@@ -67,7 +67,7 @@ export class PrometheusAlertManagerDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get definitionInput() {
-    return this._definition
+    return this._definition;
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class PrometheusAlertManagerDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get workspaceIdInput() {
-    return this._workspaceId
+    return this._workspaceId;
   }
 
   // =========

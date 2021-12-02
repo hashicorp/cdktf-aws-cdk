@@ -98,13 +98,74 @@ export class LbListenerRuleActionAuthenticateCognitoOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LbListenerRuleActionAuthenticateCognito | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._authenticationRequestExtraParams) {
+      hasAnyValues = true;
+      internalValueResult.authenticationRequestExtraParams = this._authenticationRequestExtraParams;
+    }
+    if (this._onUnauthenticatedRequest) {
+      hasAnyValues = true;
+      internalValueResult.onUnauthenticatedRequest = this._onUnauthenticatedRequest;
+    }
+    if (this._scope) {
+      hasAnyValues = true;
+      internalValueResult.scope = this._scope;
+    }
+    if (this._sessionCookieName) {
+      hasAnyValues = true;
+      internalValueResult.sessionCookieName = this._sessionCookieName;
+    }
+    if (this._sessionTimeout) {
+      hasAnyValues = true;
+      internalValueResult.sessionTimeout = this._sessionTimeout;
+    }
+    if (this._userPoolArn) {
+      hasAnyValues = true;
+      internalValueResult.userPoolArn = this._userPoolArn;
+    }
+    if (this._userPoolClientId) {
+      hasAnyValues = true;
+      internalValueResult.userPoolClientId = this._userPoolClientId;
+    }
+    if (this._userPoolDomain) {
+      hasAnyValues = true;
+      internalValueResult.userPoolDomain = this._userPoolDomain;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LbListenerRuleActionAuthenticateCognito | undefined) {
+    if (value === undefined) {
+      this._authenticationRequestExtraParams = undefined;
+      this._onUnauthenticatedRequest = undefined;
+      this._scope = undefined;
+      this._sessionCookieName = undefined;
+      this._sessionTimeout = undefined;
+      this._userPoolArn = undefined;
+      this._userPoolClientId = undefined;
+      this._userPoolDomain = undefined;
+    }
+    else {
+      this._authenticationRequestExtraParams = value.authenticationRequestExtraParams;
+      this._onUnauthenticatedRequest = value.onUnauthenticatedRequest;
+      this._scope = value.scope;
+      this._sessionCookieName = value.sessionCookieName;
+      this._sessionTimeout = value.sessionTimeout;
+      this._userPoolArn = value.userPoolArn;
+      this._userPoolClientId = value.userPoolClientId;
+      this._userPoolDomain = value.userPoolDomain;
+    }
+  }
+
   // authentication_request_extra_params - computed: false, optional: true, required: false
-  private _authenticationRequestExtraParams?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _authenticationRequestExtraParams?: { [key: string]: string } | cdktf.IResolvable; 
   public get authenticationRequestExtraParams() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('authentication_request_extra_params') as any;
   }
-  public set authenticationRequestExtraParams(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set authenticationRequestExtraParams(value: { [key: string]: string } | cdktf.IResolvable) {
     this._authenticationRequestExtraParams = value;
   }
   public resetAuthenticationRequestExtraParams() {
@@ -112,15 +173,15 @@ export class LbListenerRuleActionAuthenticateCognitoOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get authenticationRequestExtraParamsInput() {
-    return this._authenticationRequestExtraParams
+    return this._authenticationRequestExtraParams;
   }
 
   // on_unauthenticated_request - computed: true, optional: true, required: false
-  private _onUnauthenticatedRequest?: string | undefined; 
+  private _onUnauthenticatedRequest?: string; 
   public get onUnauthenticatedRequest() {
     return this.getStringAttribute('on_unauthenticated_request');
   }
-  public set onUnauthenticatedRequest(value: string | undefined) {
+  public set onUnauthenticatedRequest(value: string) {
     this._onUnauthenticatedRequest = value;
   }
   public resetOnUnauthenticatedRequest() {
@@ -128,15 +189,15 @@ export class LbListenerRuleActionAuthenticateCognitoOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get onUnauthenticatedRequestInput() {
-    return this._onUnauthenticatedRequest
+    return this._onUnauthenticatedRequest;
   }
 
   // scope - computed: false, optional: true, required: false
-  private _scope?: string | undefined; 
+  private _scope?: string; 
   public get scope() {
     return this.getStringAttribute('scope');
   }
-  public set scope(value: string | undefined) {
+  public set scope(value: string) {
     this._scope = value;
   }
   public resetScope() {
@@ -144,15 +205,15 @@ export class LbListenerRuleActionAuthenticateCognitoOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get scopeInput() {
-    return this._scope
+    return this._scope;
   }
 
   // session_cookie_name - computed: false, optional: true, required: false
-  private _sessionCookieName?: string | undefined; 
+  private _sessionCookieName?: string; 
   public get sessionCookieName() {
     return this.getStringAttribute('session_cookie_name');
   }
-  public set sessionCookieName(value: string | undefined) {
+  public set sessionCookieName(value: string) {
     this._sessionCookieName = value;
   }
   public resetSessionCookieName() {
@@ -160,15 +221,15 @@ export class LbListenerRuleActionAuthenticateCognitoOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get sessionCookieNameInput() {
-    return this._sessionCookieName
+    return this._sessionCookieName;
   }
 
   // session_timeout - computed: false, optional: true, required: false
-  private _sessionTimeout?: number | undefined; 
+  private _sessionTimeout?: number; 
   public get sessionTimeout() {
     return this.getNumberAttribute('session_timeout');
   }
-  public set sessionTimeout(value: number | undefined) {
+  public set sessionTimeout(value: number) {
     this._sessionTimeout = value;
   }
   public resetSessionTimeout() {
@@ -176,7 +237,7 @@ export class LbListenerRuleActionAuthenticateCognitoOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get sessionTimeoutInput() {
-    return this._sessionTimeout
+    return this._sessionTimeout;
   }
 
   // user_pool_arn - computed: false, optional: false, required: true
@@ -189,7 +250,7 @@ export class LbListenerRuleActionAuthenticateCognitoOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get userPoolArnInput() {
-    return this._userPoolArn
+    return this._userPoolArn;
   }
 
   // user_pool_client_id - computed: false, optional: false, required: true
@@ -202,7 +263,7 @@ export class LbListenerRuleActionAuthenticateCognitoOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get userPoolClientIdInput() {
-    return this._userPoolClientId
+    return this._userPoolClientId;
   }
 
   // user_pool_domain - computed: false, optional: false, required: true
@@ -215,7 +276,7 @@ export class LbListenerRuleActionAuthenticateCognitoOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get userPoolDomainInput() {
-    return this._userPoolDomain
+    return this._userPoolDomain;
   }
 }
 export interface LbListenerRuleActionAuthenticateOidc {
@@ -295,13 +356,92 @@ export class LbListenerRuleActionAuthenticateOidcOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LbListenerRuleActionAuthenticateOidc | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._authenticationRequestExtraParams) {
+      hasAnyValues = true;
+      internalValueResult.authenticationRequestExtraParams = this._authenticationRequestExtraParams;
+    }
+    if (this._authorizationEndpoint) {
+      hasAnyValues = true;
+      internalValueResult.authorizationEndpoint = this._authorizationEndpoint;
+    }
+    if (this._clientId) {
+      hasAnyValues = true;
+      internalValueResult.clientId = this._clientId;
+    }
+    if (this._clientSecret) {
+      hasAnyValues = true;
+      internalValueResult.clientSecret = this._clientSecret;
+    }
+    if (this._issuer) {
+      hasAnyValues = true;
+      internalValueResult.issuer = this._issuer;
+    }
+    if (this._onUnauthenticatedRequest) {
+      hasAnyValues = true;
+      internalValueResult.onUnauthenticatedRequest = this._onUnauthenticatedRequest;
+    }
+    if (this._scope) {
+      hasAnyValues = true;
+      internalValueResult.scope = this._scope;
+    }
+    if (this._sessionCookieName) {
+      hasAnyValues = true;
+      internalValueResult.sessionCookieName = this._sessionCookieName;
+    }
+    if (this._sessionTimeout) {
+      hasAnyValues = true;
+      internalValueResult.sessionTimeout = this._sessionTimeout;
+    }
+    if (this._tokenEndpoint) {
+      hasAnyValues = true;
+      internalValueResult.tokenEndpoint = this._tokenEndpoint;
+    }
+    if (this._userInfoEndpoint) {
+      hasAnyValues = true;
+      internalValueResult.userInfoEndpoint = this._userInfoEndpoint;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LbListenerRuleActionAuthenticateOidc | undefined) {
+    if (value === undefined) {
+      this._authenticationRequestExtraParams = undefined;
+      this._authorizationEndpoint = undefined;
+      this._clientId = undefined;
+      this._clientSecret = undefined;
+      this._issuer = undefined;
+      this._onUnauthenticatedRequest = undefined;
+      this._scope = undefined;
+      this._sessionCookieName = undefined;
+      this._sessionTimeout = undefined;
+      this._tokenEndpoint = undefined;
+      this._userInfoEndpoint = undefined;
+    }
+    else {
+      this._authenticationRequestExtraParams = value.authenticationRequestExtraParams;
+      this._authorizationEndpoint = value.authorizationEndpoint;
+      this._clientId = value.clientId;
+      this._clientSecret = value.clientSecret;
+      this._issuer = value.issuer;
+      this._onUnauthenticatedRequest = value.onUnauthenticatedRequest;
+      this._scope = value.scope;
+      this._sessionCookieName = value.sessionCookieName;
+      this._sessionTimeout = value.sessionTimeout;
+      this._tokenEndpoint = value.tokenEndpoint;
+      this._userInfoEndpoint = value.userInfoEndpoint;
+    }
+  }
+
   // authentication_request_extra_params - computed: false, optional: true, required: false
-  private _authenticationRequestExtraParams?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _authenticationRequestExtraParams?: { [key: string]: string } | cdktf.IResolvable; 
   public get authenticationRequestExtraParams() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('authentication_request_extra_params') as any;
   }
-  public set authenticationRequestExtraParams(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set authenticationRequestExtraParams(value: { [key: string]: string } | cdktf.IResolvable) {
     this._authenticationRequestExtraParams = value;
   }
   public resetAuthenticationRequestExtraParams() {
@@ -309,7 +449,7 @@ export class LbListenerRuleActionAuthenticateOidcOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get authenticationRequestExtraParamsInput() {
-    return this._authenticationRequestExtraParams
+    return this._authenticationRequestExtraParams;
   }
 
   // authorization_endpoint - computed: false, optional: false, required: true
@@ -322,7 +462,7 @@ export class LbListenerRuleActionAuthenticateOidcOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get authorizationEndpointInput() {
-    return this._authorizationEndpoint
+    return this._authorizationEndpoint;
   }
 
   // client_id - computed: false, optional: false, required: true
@@ -335,7 +475,7 @@ export class LbListenerRuleActionAuthenticateOidcOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get clientIdInput() {
-    return this._clientId
+    return this._clientId;
   }
 
   // client_secret - computed: false, optional: false, required: true
@@ -348,7 +488,7 @@ export class LbListenerRuleActionAuthenticateOidcOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get clientSecretInput() {
-    return this._clientSecret
+    return this._clientSecret;
   }
 
   // issuer - computed: false, optional: false, required: true
@@ -361,15 +501,15 @@ export class LbListenerRuleActionAuthenticateOidcOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get issuerInput() {
-    return this._issuer
+    return this._issuer;
   }
 
   // on_unauthenticated_request - computed: true, optional: true, required: false
-  private _onUnauthenticatedRequest?: string | undefined; 
+  private _onUnauthenticatedRequest?: string; 
   public get onUnauthenticatedRequest() {
     return this.getStringAttribute('on_unauthenticated_request');
   }
-  public set onUnauthenticatedRequest(value: string | undefined) {
+  public set onUnauthenticatedRequest(value: string) {
     this._onUnauthenticatedRequest = value;
   }
   public resetOnUnauthenticatedRequest() {
@@ -377,15 +517,15 @@ export class LbListenerRuleActionAuthenticateOidcOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get onUnauthenticatedRequestInput() {
-    return this._onUnauthenticatedRequest
+    return this._onUnauthenticatedRequest;
   }
 
   // scope - computed: false, optional: true, required: false
-  private _scope?: string | undefined; 
+  private _scope?: string; 
   public get scope() {
     return this.getStringAttribute('scope');
   }
-  public set scope(value: string | undefined) {
+  public set scope(value: string) {
     this._scope = value;
   }
   public resetScope() {
@@ -393,15 +533,15 @@ export class LbListenerRuleActionAuthenticateOidcOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get scopeInput() {
-    return this._scope
+    return this._scope;
   }
 
   // session_cookie_name - computed: false, optional: true, required: false
-  private _sessionCookieName?: string | undefined; 
+  private _sessionCookieName?: string; 
   public get sessionCookieName() {
     return this.getStringAttribute('session_cookie_name');
   }
-  public set sessionCookieName(value: string | undefined) {
+  public set sessionCookieName(value: string) {
     this._sessionCookieName = value;
   }
   public resetSessionCookieName() {
@@ -409,15 +549,15 @@ export class LbListenerRuleActionAuthenticateOidcOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get sessionCookieNameInput() {
-    return this._sessionCookieName
+    return this._sessionCookieName;
   }
 
   // session_timeout - computed: false, optional: true, required: false
-  private _sessionTimeout?: number | undefined; 
+  private _sessionTimeout?: number; 
   public get sessionTimeout() {
     return this.getNumberAttribute('session_timeout');
   }
-  public set sessionTimeout(value: number | undefined) {
+  public set sessionTimeout(value: number) {
     this._sessionTimeout = value;
   }
   public resetSessionTimeout() {
@@ -425,7 +565,7 @@ export class LbListenerRuleActionAuthenticateOidcOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get sessionTimeoutInput() {
-    return this._sessionTimeout
+    return this._sessionTimeout;
   }
 
   // token_endpoint - computed: false, optional: false, required: true
@@ -438,7 +578,7 @@ export class LbListenerRuleActionAuthenticateOidcOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get tokenEndpointInput() {
-    return this._tokenEndpoint
+    return this._tokenEndpoint;
   }
 
   // user_info_endpoint - computed: false, optional: false, required: true
@@ -451,7 +591,7 @@ export class LbListenerRuleActionAuthenticateOidcOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get userInfoEndpointInput() {
-    return this._userInfoEndpoint
+    return this._userInfoEndpoint;
   }
 }
 export interface LbListenerRuleActionFixedResponse {
@@ -491,6 +631,37 @@ export class LbListenerRuleActionFixedResponseOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LbListenerRuleActionFixedResponse | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._contentType) {
+      hasAnyValues = true;
+      internalValueResult.contentType = this._contentType;
+    }
+    if (this._messageBody) {
+      hasAnyValues = true;
+      internalValueResult.messageBody = this._messageBody;
+    }
+    if (this._statusCode) {
+      hasAnyValues = true;
+      internalValueResult.statusCode = this._statusCode;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LbListenerRuleActionFixedResponse | undefined) {
+    if (value === undefined) {
+      this._contentType = undefined;
+      this._messageBody = undefined;
+      this._statusCode = undefined;
+    }
+    else {
+      this._contentType = value.contentType;
+      this._messageBody = value.messageBody;
+      this._statusCode = value.statusCode;
+    }
+  }
+
   // content_type - computed: false, optional: false, required: true
   private _contentType?: string; 
   public get contentType() {
@@ -501,15 +672,15 @@ export class LbListenerRuleActionFixedResponseOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get contentTypeInput() {
-    return this._contentType
+    return this._contentType;
   }
 
   // message_body - computed: false, optional: true, required: false
-  private _messageBody?: string | undefined; 
+  private _messageBody?: string; 
   public get messageBody() {
     return this.getStringAttribute('message_body');
   }
-  public set messageBody(value: string | undefined) {
+  public set messageBody(value: string) {
     this._messageBody = value;
   }
   public resetMessageBody() {
@@ -517,15 +688,15 @@ export class LbListenerRuleActionFixedResponseOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get messageBodyInput() {
-    return this._messageBody
+    return this._messageBody;
   }
 
   // status_code - computed: true, optional: true, required: false
-  private _statusCode?: string | undefined; 
+  private _statusCode?: string; 
   public get statusCode() {
     return this.getStringAttribute('status_code');
   }
-  public set statusCode(value: string | undefined) {
+  public set statusCode(value: string) {
     this._statusCode = value;
   }
   public resetStatusCode() {
@@ -533,7 +704,7 @@ export class LbListenerRuleActionFixedResponseOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get statusCodeInput() {
-    return this._statusCode
+    return this._statusCode;
   }
 }
 export interface LbListenerRuleActionForwardStickiness {
@@ -568,6 +739,31 @@ export class LbListenerRuleActionForwardStickinessOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LbListenerRuleActionForwardStickiness | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._duration) {
+      hasAnyValues = true;
+      internalValueResult.duration = this._duration;
+    }
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LbListenerRuleActionForwardStickiness | undefined) {
+    if (value === undefined) {
+      this._duration = undefined;
+      this._enabled = undefined;
+    }
+    else {
+      this._duration = value.duration;
+      this._enabled = value.enabled;
+    }
+  }
+
   // duration - computed: false, optional: false, required: true
   private _duration?: number; 
   public get duration() {
@@ -578,15 +774,15 @@ export class LbListenerRuleActionForwardStickinessOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get durationInput() {
-    return this._duration
+    return this._duration;
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -594,7 +790,7 @@ export class LbListenerRuleActionForwardStickinessOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 }
 export interface LbListenerRuleActionForwardTargetGroup {
@@ -655,21 +851,45 @@ export class LbListenerRuleActionForwardOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // stickiness - computed: false, optional: true, required: false
-  private _stickiness?: LbListenerRuleActionForwardStickiness | undefined; 
-  private __stickinessOutput = new LbListenerRuleActionForwardStickinessOutputReference(this as any, "stickiness", true);
-  public get stickiness() {
-    return this.__stickinessOutput;
+  public get internalValue(): LbListenerRuleActionForward | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._stickiness) {
+      hasAnyValues = true;
+      internalValueResult.stickiness = this._stickiness?.internalValue;
+    }
+    if (this._targetGroup) {
+      hasAnyValues = true;
+      internalValueResult.targetGroup = this._targetGroup;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putStickiness(value: LbListenerRuleActionForwardStickiness | undefined) {
-    this._stickiness = value;
+
+  public set internalValue(value: LbListenerRuleActionForward | undefined) {
+    if (value === undefined) {
+      this._stickiness.internalValue = undefined;
+      this._targetGroup = undefined;
+    }
+    else {
+      this._stickiness.internalValue = value.stickiness;
+      this._targetGroup = value.targetGroup;
+    }
+  }
+
+  // stickiness - computed: false, optional: true, required: false
+  private _stickiness = new LbListenerRuleActionForwardStickinessOutputReference(this as any, "stickiness", true);
+  public get stickiness() {
+    return this._stickiness;
+  }
+  public putStickiness(value: LbListenerRuleActionForwardStickiness) {
+    this._stickiness.internalValue = value;
   }
   public resetStickiness() {
-    this._stickiness = undefined;
+    this._stickiness.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get stickinessInput() {
-    return this._stickiness
+    return this._stickiness.internalValue;
   }
 
   // target_group - computed: false, optional: false, required: true
@@ -683,7 +903,7 @@ export class LbListenerRuleActionForwardOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get targetGroupInput() {
-    return this._targetGroup
+    return this._targetGroup;
   }
 }
 export interface LbListenerRuleActionRedirect {
@@ -738,12 +958,61 @@ export class LbListenerRuleActionRedirectOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LbListenerRuleActionRedirect | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._host) {
+      hasAnyValues = true;
+      internalValueResult.host = this._host;
+    }
+    if (this._path) {
+      hasAnyValues = true;
+      internalValueResult.path = this._path;
+    }
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    if (this._protocol) {
+      hasAnyValues = true;
+      internalValueResult.protocol = this._protocol;
+    }
+    if (this._query) {
+      hasAnyValues = true;
+      internalValueResult.query = this._query;
+    }
+    if (this._statusCode) {
+      hasAnyValues = true;
+      internalValueResult.statusCode = this._statusCode;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LbListenerRuleActionRedirect | undefined) {
+    if (value === undefined) {
+      this._host = undefined;
+      this._path = undefined;
+      this._port = undefined;
+      this._protocol = undefined;
+      this._query = undefined;
+      this._statusCode = undefined;
+    }
+    else {
+      this._host = value.host;
+      this._path = value.path;
+      this._port = value.port;
+      this._protocol = value.protocol;
+      this._query = value.query;
+      this._statusCode = value.statusCode;
+    }
+  }
+
   // host - computed: false, optional: true, required: false
-  private _host?: string | undefined; 
+  private _host?: string; 
   public get host() {
     return this.getStringAttribute('host');
   }
-  public set host(value: string | undefined) {
+  public set host(value: string) {
     this._host = value;
   }
   public resetHost() {
@@ -751,15 +1020,15 @@ export class LbListenerRuleActionRedirectOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get hostInput() {
-    return this._host
+    return this._host;
   }
 
   // path - computed: false, optional: true, required: false
-  private _path?: string | undefined; 
+  private _path?: string; 
   public get path() {
     return this.getStringAttribute('path');
   }
-  public set path(value: string | undefined) {
+  public set path(value: string) {
     this._path = value;
   }
   public resetPath() {
@@ -767,15 +1036,15 @@ export class LbListenerRuleActionRedirectOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get pathInput() {
-    return this._path
+    return this._path;
   }
 
   // port - computed: false, optional: true, required: false
-  private _port?: string | undefined; 
+  private _port?: string; 
   public get port() {
     return this.getStringAttribute('port');
   }
-  public set port(value: string | undefined) {
+  public set port(value: string) {
     this._port = value;
   }
   public resetPort() {
@@ -783,15 +1052,15 @@ export class LbListenerRuleActionRedirectOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 
   // protocol - computed: false, optional: true, required: false
-  private _protocol?: string | undefined; 
+  private _protocol?: string; 
   public get protocol() {
     return this.getStringAttribute('protocol');
   }
-  public set protocol(value: string | undefined) {
+  public set protocol(value: string) {
     this._protocol = value;
   }
   public resetProtocol() {
@@ -799,15 +1068,15 @@ export class LbListenerRuleActionRedirectOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get protocolInput() {
-    return this._protocol
+    return this._protocol;
   }
 
   // query - computed: false, optional: true, required: false
-  private _query?: string | undefined; 
+  private _query?: string; 
   public get query() {
     return this.getStringAttribute('query');
   }
-  public set query(value: string | undefined) {
+  public set query(value: string) {
     this._query = value;
   }
   public resetQuery() {
@@ -815,7 +1084,7 @@ export class LbListenerRuleActionRedirectOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get queryInput() {
-    return this._query
+    return this._query;
   }
 
   // status_code - computed: false, optional: false, required: true
@@ -828,7 +1097,7 @@ export class LbListenerRuleActionRedirectOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get statusCodeInput() {
-    return this._statusCode
+    return this._statusCode;
   }
 }
 export interface LbListenerRuleAction {
@@ -920,6 +1189,25 @@ export class LbListenerRuleConditionHostHeaderOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LbListenerRuleConditionHostHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._values) {
+      hasAnyValues = true;
+      internalValueResult.values = this._values;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LbListenerRuleConditionHostHeader | undefined) {
+    if (value === undefined) {
+      this._values = undefined;
+    }
+    else {
+      this._values = value.values;
+    }
+  }
+
   // values - computed: false, optional: false, required: true
   private _values?: string[]; 
   public get values() {
@@ -930,7 +1218,7 @@ export class LbListenerRuleConditionHostHeaderOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get valuesInput() {
-    return this._values
+    return this._values;
   }
 }
 export interface LbListenerRuleConditionHttpHeader {
@@ -965,6 +1253,31 @@ export class LbListenerRuleConditionHttpHeaderOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LbListenerRuleConditionHttpHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._httpHeaderName) {
+      hasAnyValues = true;
+      internalValueResult.httpHeaderName = this._httpHeaderName;
+    }
+    if (this._values) {
+      hasAnyValues = true;
+      internalValueResult.values = this._values;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LbListenerRuleConditionHttpHeader | undefined) {
+    if (value === undefined) {
+      this._httpHeaderName = undefined;
+      this._values = undefined;
+    }
+    else {
+      this._httpHeaderName = value.httpHeaderName;
+      this._values = value.values;
+    }
+  }
+
   // http_header_name - computed: false, optional: false, required: true
   private _httpHeaderName?: string; 
   public get httpHeaderName() {
@@ -975,7 +1288,7 @@ export class LbListenerRuleConditionHttpHeaderOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get httpHeaderNameInput() {
-    return this._httpHeaderName
+    return this._httpHeaderName;
   }
 
   // values - computed: false, optional: false, required: true
@@ -988,7 +1301,7 @@ export class LbListenerRuleConditionHttpHeaderOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get valuesInput() {
-    return this._values
+    return this._values;
   }
 }
 export interface LbListenerRuleConditionHttpRequestMethod {
@@ -1018,6 +1331,25 @@ export class LbListenerRuleConditionHttpRequestMethodOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LbListenerRuleConditionHttpRequestMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._values) {
+      hasAnyValues = true;
+      internalValueResult.values = this._values;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LbListenerRuleConditionHttpRequestMethod | undefined) {
+    if (value === undefined) {
+      this._values = undefined;
+    }
+    else {
+      this._values = value.values;
+    }
+  }
+
   // values - computed: false, optional: false, required: true
   private _values?: string[]; 
   public get values() {
@@ -1028,7 +1360,7 @@ export class LbListenerRuleConditionHttpRequestMethodOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get valuesInput() {
-    return this._values
+    return this._values;
   }
 }
 export interface LbListenerRuleConditionPathPattern {
@@ -1058,6 +1390,25 @@ export class LbListenerRuleConditionPathPatternOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LbListenerRuleConditionPathPattern | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._values) {
+      hasAnyValues = true;
+      internalValueResult.values = this._values;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LbListenerRuleConditionPathPattern | undefined) {
+    if (value === undefined) {
+      this._values = undefined;
+    }
+    else {
+      this._values = value.values;
+    }
+  }
+
   // values - computed: false, optional: false, required: true
   private _values?: string[]; 
   public get values() {
@@ -1068,7 +1419,7 @@ export class LbListenerRuleConditionPathPatternOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get valuesInput() {
-    return this._values
+    return this._values;
   }
 }
 export interface LbListenerRuleConditionQueryString {
@@ -1120,6 +1471,25 @@ export class LbListenerRuleConditionSourceIpOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LbListenerRuleConditionSourceIp | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._values) {
+      hasAnyValues = true;
+      internalValueResult.values = this._values;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LbListenerRuleConditionSourceIp | undefined) {
+    if (value === undefined) {
+      this._values = undefined;
+    }
+    else {
+      this._values = value.values;
+    }
+  }
+
   // values - computed: false, optional: false, required: true
   private _values?: string[]; 
   public get values() {
@@ -1130,7 +1500,7 @@ export class LbListenerRuleConditionSourceIpOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get valuesInput() {
-    return this._values
+    return this._values;
   }
 }
 export interface LbListenerRuleCondition {
@@ -1252,15 +1622,15 @@ export class LbListenerRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get listenerArnInput() {
-    return this._listenerArn
+    return this._listenerArn;
   }
 
   // priority - computed: true, optional: true, required: false
-  private _priority?: number | undefined; 
+  private _priority?: number; 
   public get priority() {
     return this.getNumberAttribute('priority');
   }
-  public set priority(value: number | undefined) {
+  public set priority(value: number) {
     this._priority = value;
   }
   public resetPriority() {
@@ -1268,16 +1638,16 @@ export class LbListenerRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get priorityInput() {
-    return this._priority
+    return this._priority;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -1285,16 +1655,16 @@ export class LbListenerRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -1302,7 +1672,7 @@ export class LbListenerRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // action - computed: false, optional: false, required: true
@@ -1316,7 +1686,7 @@ export class LbListenerRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action;
   }
 
   // condition - computed: false, optional: false, required: true
@@ -1330,7 +1700,7 @@ export class LbListenerRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get conditionInput() {
-    return this._condition
+    return this._condition;
   }
 
   // =========

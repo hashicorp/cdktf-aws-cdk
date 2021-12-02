@@ -202,12 +202,12 @@ export class DefaultSecurityGroup extends cdktf.TerraformResource {
   }
 
   // egress - computed: true, optional: true, required: false
-  private _egress?: DefaultSecurityGroupEgress[] | undefined; 
+  private _egress?: DefaultSecurityGroupEgress[]; 
   public get egress() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('egress') as any;
   }
-  public set egress(value: DefaultSecurityGroupEgress[] | undefined) {
+  public set egress(value: DefaultSecurityGroupEgress[]) {
     this._egress = value;
   }
   public resetEgress() {
@@ -215,7 +215,7 @@ export class DefaultSecurityGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get egressInput() {
-    return this._egress
+    return this._egress;
   }
 
   // id - computed: true, optional: true, required: false
@@ -224,12 +224,12 @@ export class DefaultSecurityGroup extends cdktf.TerraformResource {
   }
 
   // ingress - computed: true, optional: true, required: false
-  private _ingress?: DefaultSecurityGroupIngress[] | undefined; 
+  private _ingress?: DefaultSecurityGroupIngress[]; 
   public get ingress() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ingress') as any;
   }
-  public set ingress(value: DefaultSecurityGroupIngress[] | undefined) {
+  public set ingress(value: DefaultSecurityGroupIngress[]) {
     this._ingress = value;
   }
   public resetIngress() {
@@ -237,7 +237,7 @@ export class DefaultSecurityGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ingressInput() {
-    return this._ingress
+    return this._ingress;
   }
 
   // name - computed: true, optional: false, required: false
@@ -251,11 +251,11 @@ export class DefaultSecurityGroup extends cdktf.TerraformResource {
   }
 
   // revoke_rules_on_delete - computed: false, optional: true, required: false
-  private _revokeRulesOnDelete?: boolean | cdktf.IResolvable | undefined; 
+  private _revokeRulesOnDelete?: boolean | cdktf.IResolvable; 
   public get revokeRulesOnDelete() {
     return this.getBooleanAttribute('revoke_rules_on_delete') as any;
   }
-  public set revokeRulesOnDelete(value: boolean | cdktf.IResolvable | undefined) {
+  public set revokeRulesOnDelete(value: boolean | cdktf.IResolvable) {
     this._revokeRulesOnDelete = value;
   }
   public resetRevokeRulesOnDelete() {
@@ -263,16 +263,16 @@ export class DefaultSecurityGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get revokeRulesOnDeleteInput() {
-    return this._revokeRulesOnDelete
+    return this._revokeRulesOnDelete;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -280,16 +280,16 @@ export class DefaultSecurityGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -297,15 +297,15 @@ export class DefaultSecurityGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // vpc_id - computed: true, optional: true, required: false
-  private _vpcId?: string | undefined; 
+  private _vpcId?: string; 
   public get vpcId() {
     return this.getStringAttribute('vpc_id');
   }
-  public set vpcId(value: string | undefined) {
+  public set vpcId(value: string) {
     this._vpcId = value;
   }
   public resetVpcId() {
@@ -313,7 +313,7 @@ export class DefaultSecurityGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 
   // =========

@@ -77,15 +77,15 @@ export class DataAwsCodeartifactRepositoryEndpoint extends cdktf.TerraformDataSo
   }
   // Temporarily expose input value. Use with caution.
   public get domainInput() {
-    return this._domain
+    return this._domain;
   }
 
   // domain_owner - computed: true, optional: true, required: false
-  private _domainOwner?: string | undefined; 
+  private _domainOwner?: string; 
   public get domainOwner() {
     return this.getStringAttribute('domain_owner');
   }
-  public set domainOwner(value: string | undefined) {
+  public set domainOwner(value: string) {
     this._domainOwner = value;
   }
   public resetDomainOwner() {
@@ -93,7 +93,7 @@ export class DataAwsCodeartifactRepositoryEndpoint extends cdktf.TerraformDataSo
   }
   // Temporarily expose input value. Use with caution.
   public get domainOwnerInput() {
-    return this._domainOwner
+    return this._domainOwner;
   }
 
   // format - computed: false, optional: false, required: true
@@ -106,7 +106,7 @@ export class DataAwsCodeartifactRepositoryEndpoint extends cdktf.TerraformDataSo
   }
   // Temporarily expose input value. Use with caution.
   public get formatInput() {
-    return this._format
+    return this._format;
   }
 
   // id - computed: true, optional: true, required: false
@@ -124,7 +124,7 @@ export class DataAwsCodeartifactRepositoryEndpoint extends cdktf.TerraformDataSo
   }
   // Temporarily expose input value. Use with caution.
   public get repositoryInput() {
-    return this._repository
+    return this._repository;
   }
 
   // repository_endpoint - computed: true, optional: false, required: false

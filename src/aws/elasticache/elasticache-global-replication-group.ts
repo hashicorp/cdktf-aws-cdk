@@ -103,11 +103,11 @@ export class ElasticacheGlobalReplicationGroup extends cdktf.TerraformResource {
   }
 
   // global_replication_group_description - computed: false, optional: true, required: false
-  private _globalReplicationGroupDescription?: string | undefined; 
+  private _globalReplicationGroupDescription?: string; 
   public get globalReplicationGroupDescription() {
     return this.getStringAttribute('global_replication_group_description');
   }
-  public set globalReplicationGroupDescription(value: string | undefined) {
+  public set globalReplicationGroupDescription(value: string) {
     this._globalReplicationGroupDescription = value;
   }
   public resetGlobalReplicationGroupDescription() {
@@ -115,7 +115,7 @@ export class ElasticacheGlobalReplicationGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get globalReplicationGroupDescriptionInput() {
-    return this._globalReplicationGroupDescription
+    return this._globalReplicationGroupDescription;
   }
 
   // global_replication_group_id - computed: true, optional: false, required: false
@@ -133,7 +133,7 @@ export class ElasticacheGlobalReplicationGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get globalReplicationGroupIdSuffixInput() {
-    return this._globalReplicationGroupIdSuffix
+    return this._globalReplicationGroupIdSuffix;
   }
 
   // id - computed: true, optional: true, required: false
@@ -151,7 +151,7 @@ export class ElasticacheGlobalReplicationGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get primaryReplicationGroupIdInput() {
-    return this._primaryReplicationGroupId
+    return this._primaryReplicationGroupId;
   }
 
   // transit_encryption_enabled - computed: true, optional: false, required: false

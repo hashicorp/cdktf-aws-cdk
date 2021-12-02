@@ -87,7 +87,7 @@ export class DataAwsS3BucketObject extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // bucket_key_enabled - computed: true, optional: false, required: false
@@ -155,7 +155,7 @@ export class DataAwsS3BucketObject extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // last_modified - computed: true, optional: false, required: false
@@ -184,11 +184,11 @@ export class DataAwsS3BucketObject extends cdktf.TerraformDataSource {
   }
 
   // range - computed: false, optional: true, required: false
-  private _range?: string | undefined; 
+  private _range?: string; 
   public get range() {
     return this.getStringAttribute('range');
   }
-  public set range(value: string | undefined) {
+  public set range(value: string) {
     this._range = value;
   }
   public resetRange() {
@@ -196,7 +196,7 @@ export class DataAwsS3BucketObject extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get rangeInput() {
-    return this._range
+    return this._range;
   }
 
   // server_side_encryption - computed: true, optional: false, required: false
@@ -215,12 +215,12 @@ export class DataAwsS3BucketObject extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -228,15 +228,15 @@ export class DataAwsS3BucketObject extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // version_id - computed: true, optional: true, required: false
-  private _versionId?: string | undefined; 
+  private _versionId?: string; 
   public get versionId() {
     return this.getStringAttribute('version_id');
   }
-  public set versionId(value: string | undefined) {
+  public set versionId(value: string) {
     this._versionId = value;
   }
   public resetVersionId() {
@@ -244,7 +244,7 @@ export class DataAwsS3BucketObject extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionIdInput() {
-    return this._versionId
+    return this._versionId;
   }
 
   // website_redirect_location - computed: true, optional: false, required: false

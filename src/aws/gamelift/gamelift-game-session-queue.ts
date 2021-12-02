@@ -107,11 +107,11 @@ export class GameliftGameSessionQueue extends cdktf.TerraformResource {
   }
 
   // destinations - computed: false, optional: true, required: false
-  private _destinations?: string[] | undefined; 
+  private _destinations?: string[]; 
   public get destinations() {
     return this.getListAttribute('destinations');
   }
-  public set destinations(value: string[] | undefined) {
+  public set destinations(value: string[]) {
     this._destinations = value;
   }
   public resetDestinations() {
@@ -119,7 +119,7 @@ export class GameliftGameSessionQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get destinationsInput() {
-    return this._destinations
+    return this._destinations;
   }
 
   // id - computed: true, optional: true, required: false
@@ -137,16 +137,16 @@ export class GameliftGameSessionQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -154,16 +154,16 @@ export class GameliftGameSessionQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -171,15 +171,15 @@ export class GameliftGameSessionQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // timeout_in_seconds - computed: false, optional: true, required: false
-  private _timeoutInSeconds?: number | undefined; 
+  private _timeoutInSeconds?: number; 
   public get timeoutInSeconds() {
     return this.getNumberAttribute('timeout_in_seconds');
   }
-  public set timeoutInSeconds(value: number | undefined) {
+  public set timeoutInSeconds(value: number) {
     this._timeoutInSeconds = value;
   }
   public resetTimeoutInSeconds() {
@@ -187,16 +187,16 @@ export class GameliftGameSessionQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutInSecondsInput() {
-    return this._timeoutInSeconds
+    return this._timeoutInSeconds;
   }
 
   // player_latency_policy - computed: false, optional: true, required: false
-  private _playerLatencyPolicy?: GameliftGameSessionQueuePlayerLatencyPolicy[] | undefined; 
+  private _playerLatencyPolicy?: GameliftGameSessionQueuePlayerLatencyPolicy[]; 
   public get playerLatencyPolicy() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('player_latency_policy') as any;
   }
-  public set playerLatencyPolicy(value: GameliftGameSessionQueuePlayerLatencyPolicy[] | undefined) {
+  public set playerLatencyPolicy(value: GameliftGameSessionQueuePlayerLatencyPolicy[]) {
     this._playerLatencyPolicy = value;
   }
   public resetPlayerLatencyPolicy() {
@@ -204,7 +204,7 @@ export class GameliftGameSessionQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get playerLatencyPolicyInput() {
-    return this._playerLatencyPolicy
+    return this._playerLatencyPolicy;
   }
 
   // =========

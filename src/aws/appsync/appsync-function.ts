@@ -92,7 +92,7 @@ export class AppsyncFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiIdInput() {
-    return this._apiId
+    return this._apiId;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -110,15 +110,15 @@ export class AppsyncFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dataSourceInput() {
-    return this._dataSource
+    return this._dataSource;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -126,7 +126,7 @@ export class AppsyncFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // function_id - computed: true, optional: false, required: false
@@ -135,11 +135,11 @@ export class AppsyncFunction extends cdktf.TerraformResource {
   }
 
   // function_version - computed: false, optional: true, required: false
-  private _functionVersion?: string | undefined; 
+  private _functionVersion?: string; 
   public get functionVersion() {
     return this.getStringAttribute('function_version');
   }
-  public set functionVersion(value: string | undefined) {
+  public set functionVersion(value: string) {
     this._functionVersion = value;
   }
   public resetFunctionVersion() {
@@ -147,7 +147,7 @@ export class AppsyncFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get functionVersionInput() {
-    return this._functionVersion
+    return this._functionVersion;
   }
 
   // id - computed: true, optional: true, required: false
@@ -165,7 +165,7 @@ export class AppsyncFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // request_mapping_template - computed: false, optional: false, required: true
@@ -178,7 +178,7 @@ export class AppsyncFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requestMappingTemplateInput() {
-    return this._requestMappingTemplate
+    return this._requestMappingTemplate;
   }
 
   // response_mapping_template - computed: false, optional: false, required: true
@@ -191,7 +191,7 @@ export class AppsyncFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get responseMappingTemplateInput() {
-    return this._responseMappingTemplate
+    return this._responseMappingTemplate;
   }
 
   // =========

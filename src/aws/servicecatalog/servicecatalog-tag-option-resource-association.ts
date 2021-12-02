@@ -87,7 +87,7 @@ export class ServicecatalogTagOptionResourceAssociation extends cdktf.TerraformR
   }
   // Temporarily expose input value. Use with caution.
   public get resourceIdInput() {
-    return this._resourceId
+    return this._resourceId;
   }
 
   // resource_name - computed: true, optional: false, required: false
@@ -105,7 +105,7 @@ export class ServicecatalogTagOptionResourceAssociation extends cdktf.TerraformR
   }
   // Temporarily expose input value. Use with caution.
   public get tagOptionIdInput() {
-    return this._tagOptionId
+    return this._tagOptionId;
   }
 
   // =========

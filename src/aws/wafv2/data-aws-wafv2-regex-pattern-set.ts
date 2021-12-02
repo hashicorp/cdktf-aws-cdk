@@ -89,7 +89,7 @@ export class DataAwsWafv2RegexPatternSet extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // regular_expression - computed: true, optional: false, required: false
@@ -107,7 +107,7 @@ export class DataAwsWafv2RegexPatternSet extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get scopeInput() {
-    return this._scope
+    return this._scope;
   }
 
   // =========

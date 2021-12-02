@@ -498,11 +498,11 @@ export class DataAwsLaunchTemplate extends cdktf.TerraformDataSource {
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -510,7 +510,7 @@ export class DataAwsLaunchTemplate extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // network_interfaces - computed: true, optional: false, required: false
@@ -539,12 +539,12 @@ export class DataAwsLaunchTemplate extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -552,7 +552,7 @@ export class DataAwsLaunchTemplate extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // user_data - computed: true, optional: false, required: false
@@ -566,12 +566,12 @@ export class DataAwsLaunchTemplate extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsLaunchTemplateFilter[] | undefined; 
+  private _filter?: DataAwsLaunchTemplateFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsLaunchTemplateFilter[] | undefined) {
+  public set filter(value: DataAwsLaunchTemplateFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -579,7 +579,7 @@ export class DataAwsLaunchTemplate extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

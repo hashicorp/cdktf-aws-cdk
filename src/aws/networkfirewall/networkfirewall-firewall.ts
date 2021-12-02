@@ -155,11 +155,11 @@ export class NetworkfirewallFirewall extends cdktf.TerraformResource {
   }
 
   // delete_protection - computed: false, optional: true, required: false
-  private _deleteProtection?: boolean | cdktf.IResolvable | undefined; 
+  private _deleteProtection?: boolean | cdktf.IResolvable; 
   public get deleteProtection() {
     return this.getBooleanAttribute('delete_protection') as any;
   }
-  public set deleteProtection(value: boolean | cdktf.IResolvable | undefined) {
+  public set deleteProtection(value: boolean | cdktf.IResolvable) {
     this._deleteProtection = value;
   }
   public resetDeleteProtection() {
@@ -167,15 +167,15 @@ export class NetworkfirewallFirewall extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteProtectionInput() {
-    return this._deleteProtection
+    return this._deleteProtection;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -183,7 +183,7 @@ export class NetworkfirewallFirewall extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // firewall_policy_arn - computed: false, optional: false, required: true
@@ -196,15 +196,15 @@ export class NetworkfirewallFirewall extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get firewallPolicyArnInput() {
-    return this._firewallPolicyArn
+    return this._firewallPolicyArn;
   }
 
   // firewall_policy_change_protection - computed: false, optional: true, required: false
-  private _firewallPolicyChangeProtection?: boolean | cdktf.IResolvable | undefined; 
+  private _firewallPolicyChangeProtection?: boolean | cdktf.IResolvable; 
   public get firewallPolicyChangeProtection() {
     return this.getBooleanAttribute('firewall_policy_change_protection') as any;
   }
-  public set firewallPolicyChangeProtection(value: boolean | cdktf.IResolvable | undefined) {
+  public set firewallPolicyChangeProtection(value: boolean | cdktf.IResolvable) {
     this._firewallPolicyChangeProtection = value;
   }
   public resetFirewallPolicyChangeProtection() {
@@ -212,7 +212,7 @@ export class NetworkfirewallFirewall extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get firewallPolicyChangeProtectionInput() {
-    return this._firewallPolicyChangeProtection
+    return this._firewallPolicyChangeProtection;
   }
 
   // firewall_status - computed: true, optional: false, required: false
@@ -235,15 +235,15 @@ export class NetworkfirewallFirewall extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // subnet_change_protection - computed: false, optional: true, required: false
-  private _subnetChangeProtection?: boolean | cdktf.IResolvable | undefined; 
+  private _subnetChangeProtection?: boolean | cdktf.IResolvable; 
   public get subnetChangeProtection() {
     return this.getBooleanAttribute('subnet_change_protection') as any;
   }
-  public set subnetChangeProtection(value: boolean | cdktf.IResolvable | undefined) {
+  public set subnetChangeProtection(value: boolean | cdktf.IResolvable) {
     this._subnetChangeProtection = value;
   }
   public resetSubnetChangeProtection() {
@@ -251,16 +251,16 @@ export class NetworkfirewallFirewall extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetChangeProtectionInput() {
-    return this._subnetChangeProtection
+    return this._subnetChangeProtection;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -268,16 +268,16 @@ export class NetworkfirewallFirewall extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -285,7 +285,7 @@ export class NetworkfirewallFirewall extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // update_token - computed: true, optional: false, required: false
@@ -303,7 +303,7 @@ export class NetworkfirewallFirewall extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 
   // subnet_mapping - computed: false, optional: false, required: true
@@ -317,7 +317,7 @@ export class NetworkfirewallFirewall extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetMappingInput() {
-    return this._subnetMapping
+    return this._subnetMapping;
   }
 
   // =========

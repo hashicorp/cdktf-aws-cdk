@@ -217,11 +217,11 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
 
   // auto_assign_elastic_ips - computed: false, optional: true, required: false
-  private _autoAssignElasticIps?: boolean | cdktf.IResolvable | undefined; 
+  private _autoAssignElasticIps?: boolean | cdktf.IResolvable; 
   public get autoAssignElasticIps() {
     return this.getBooleanAttribute('auto_assign_elastic_ips') as any;
   }
-  public set autoAssignElasticIps(value: boolean | cdktf.IResolvable | undefined) {
+  public set autoAssignElasticIps(value: boolean | cdktf.IResolvable) {
     this._autoAssignElasticIps = value;
   }
   public resetAutoAssignElasticIps() {
@@ -229,15 +229,15 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoAssignElasticIpsInput() {
-    return this._autoAssignElasticIps
+    return this._autoAssignElasticIps;
   }
 
   // auto_assign_public_ips - computed: false, optional: true, required: false
-  private _autoAssignPublicIps?: boolean | cdktf.IResolvable | undefined; 
+  private _autoAssignPublicIps?: boolean | cdktf.IResolvable; 
   public get autoAssignPublicIps() {
     return this.getBooleanAttribute('auto_assign_public_ips') as any;
   }
-  public set autoAssignPublicIps(value: boolean | cdktf.IResolvable | undefined) {
+  public set autoAssignPublicIps(value: boolean | cdktf.IResolvable) {
     this._autoAssignPublicIps = value;
   }
   public resetAutoAssignPublicIps() {
@@ -245,15 +245,15 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoAssignPublicIpsInput() {
-    return this._autoAssignPublicIps
+    return this._autoAssignPublicIps;
   }
 
   // auto_healing - computed: false, optional: true, required: false
-  private _autoHealing?: boolean | cdktf.IResolvable | undefined; 
+  private _autoHealing?: boolean | cdktf.IResolvable; 
   public get autoHealing() {
     return this.getBooleanAttribute('auto_healing') as any;
   }
-  public set autoHealing(value: boolean | cdktf.IResolvable | undefined) {
+  public set autoHealing(value: boolean | cdktf.IResolvable) {
     this._autoHealing = value;
   }
   public resetAutoHealing() {
@@ -261,15 +261,15 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoHealingInput() {
-    return this._autoHealing
+    return this._autoHealing;
   }
 
   // custom_configure_recipes - computed: false, optional: true, required: false
-  private _customConfigureRecipes?: string[] | undefined; 
+  private _customConfigureRecipes?: string[]; 
   public get customConfigureRecipes() {
     return this.getListAttribute('custom_configure_recipes');
   }
-  public set customConfigureRecipes(value: string[] | undefined) {
+  public set customConfigureRecipes(value: string[]) {
     this._customConfigureRecipes = value;
   }
   public resetCustomConfigureRecipes() {
@@ -277,15 +277,15 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customConfigureRecipesInput() {
-    return this._customConfigureRecipes
+    return this._customConfigureRecipes;
   }
 
   // custom_deploy_recipes - computed: false, optional: true, required: false
-  private _customDeployRecipes?: string[] | undefined; 
+  private _customDeployRecipes?: string[]; 
   public get customDeployRecipes() {
     return this.getListAttribute('custom_deploy_recipes');
   }
-  public set customDeployRecipes(value: string[] | undefined) {
+  public set customDeployRecipes(value: string[]) {
     this._customDeployRecipes = value;
   }
   public resetCustomDeployRecipes() {
@@ -293,15 +293,15 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customDeployRecipesInput() {
-    return this._customDeployRecipes
+    return this._customDeployRecipes;
   }
 
   // custom_instance_profile_arn - computed: false, optional: true, required: false
-  private _customInstanceProfileArn?: string | undefined; 
+  private _customInstanceProfileArn?: string; 
   public get customInstanceProfileArn() {
     return this.getStringAttribute('custom_instance_profile_arn');
   }
-  public set customInstanceProfileArn(value: string | undefined) {
+  public set customInstanceProfileArn(value: string) {
     this._customInstanceProfileArn = value;
   }
   public resetCustomInstanceProfileArn() {
@@ -309,15 +309,15 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customInstanceProfileArnInput() {
-    return this._customInstanceProfileArn
+    return this._customInstanceProfileArn;
   }
 
   // custom_json - computed: false, optional: true, required: false
-  private _customJson?: string | undefined; 
+  private _customJson?: string; 
   public get customJson() {
     return this.getStringAttribute('custom_json');
   }
-  public set customJson(value: string | undefined) {
+  public set customJson(value: string) {
     this._customJson = value;
   }
   public resetCustomJson() {
@@ -325,15 +325,15 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customJsonInput() {
-    return this._customJson
+    return this._customJson;
   }
 
   // custom_security_group_ids - computed: false, optional: true, required: false
-  private _customSecurityGroupIds?: string[] | undefined; 
+  private _customSecurityGroupIds?: string[]; 
   public get customSecurityGroupIds() {
     return this.getListAttribute('custom_security_group_ids');
   }
-  public set customSecurityGroupIds(value: string[] | undefined) {
+  public set customSecurityGroupIds(value: string[]) {
     this._customSecurityGroupIds = value;
   }
   public resetCustomSecurityGroupIds() {
@@ -341,15 +341,15 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customSecurityGroupIdsInput() {
-    return this._customSecurityGroupIds
+    return this._customSecurityGroupIds;
   }
 
   // custom_setup_recipes - computed: false, optional: true, required: false
-  private _customSetupRecipes?: string[] | undefined; 
+  private _customSetupRecipes?: string[]; 
   public get customSetupRecipes() {
     return this.getListAttribute('custom_setup_recipes');
   }
-  public set customSetupRecipes(value: string[] | undefined) {
+  public set customSetupRecipes(value: string[]) {
     this._customSetupRecipes = value;
   }
   public resetCustomSetupRecipes() {
@@ -357,15 +357,15 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customSetupRecipesInput() {
-    return this._customSetupRecipes
+    return this._customSetupRecipes;
   }
 
   // custom_shutdown_recipes - computed: false, optional: true, required: false
-  private _customShutdownRecipes?: string[] | undefined; 
+  private _customShutdownRecipes?: string[]; 
   public get customShutdownRecipes() {
     return this.getListAttribute('custom_shutdown_recipes');
   }
-  public set customShutdownRecipes(value: string[] | undefined) {
+  public set customShutdownRecipes(value: string[]) {
     this._customShutdownRecipes = value;
   }
   public resetCustomShutdownRecipes() {
@@ -373,15 +373,15 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customShutdownRecipesInput() {
-    return this._customShutdownRecipes
+    return this._customShutdownRecipes;
   }
 
   // custom_undeploy_recipes - computed: false, optional: true, required: false
-  private _customUndeployRecipes?: string[] | undefined; 
+  private _customUndeployRecipes?: string[]; 
   public get customUndeployRecipes() {
     return this.getListAttribute('custom_undeploy_recipes');
   }
-  public set customUndeployRecipes(value: string[] | undefined) {
+  public set customUndeployRecipes(value: string[]) {
     this._customUndeployRecipes = value;
   }
   public resetCustomUndeployRecipes() {
@@ -389,15 +389,15 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customUndeployRecipesInput() {
-    return this._customUndeployRecipes
+    return this._customUndeployRecipes;
   }
 
   // drain_elb_on_shutdown - computed: false, optional: true, required: false
-  private _drainElbOnShutdown?: boolean | cdktf.IResolvable | undefined; 
+  private _drainElbOnShutdown?: boolean | cdktf.IResolvable; 
   public get drainElbOnShutdown() {
     return this.getBooleanAttribute('drain_elb_on_shutdown') as any;
   }
-  public set drainElbOnShutdown(value: boolean | cdktf.IResolvable | undefined) {
+  public set drainElbOnShutdown(value: boolean | cdktf.IResolvable) {
     this._drainElbOnShutdown = value;
   }
   public resetDrainElbOnShutdown() {
@@ -405,15 +405,15 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get drainElbOnShutdownInput() {
-    return this._drainElbOnShutdown
+    return this._drainElbOnShutdown;
   }
 
   // elastic_load_balancer - computed: false, optional: true, required: false
-  private _elasticLoadBalancer?: string | undefined; 
+  private _elasticLoadBalancer?: string; 
   public get elasticLoadBalancer() {
     return this.getStringAttribute('elastic_load_balancer');
   }
-  public set elasticLoadBalancer(value: string | undefined) {
+  public set elasticLoadBalancer(value: string) {
     this._elasticLoadBalancer = value;
   }
   public resetElasticLoadBalancer() {
@@ -421,7 +421,7 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get elasticLoadBalancerInput() {
-    return this._elasticLoadBalancer
+    return this._elasticLoadBalancer;
   }
 
   // id - computed: true, optional: true, required: false
@@ -430,11 +430,11 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
 
   // install_updates_on_boot - computed: false, optional: true, required: false
-  private _installUpdatesOnBoot?: boolean | cdktf.IResolvable | undefined; 
+  private _installUpdatesOnBoot?: boolean | cdktf.IResolvable; 
   public get installUpdatesOnBoot() {
     return this.getBooleanAttribute('install_updates_on_boot') as any;
   }
-  public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable | undefined) {
+  public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable) {
     this._installUpdatesOnBoot = value;
   }
   public resetInstallUpdatesOnBoot() {
@@ -442,15 +442,15 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get installUpdatesOnBootInput() {
-    return this._installUpdatesOnBoot
+    return this._installUpdatesOnBoot;
   }
 
   // instance_shutdown_timeout - computed: false, optional: true, required: false
-  private _instanceShutdownTimeout?: number | undefined; 
+  private _instanceShutdownTimeout?: number; 
   public get instanceShutdownTimeout() {
     return this.getNumberAttribute('instance_shutdown_timeout');
   }
-  public set instanceShutdownTimeout(value: number | undefined) {
+  public set instanceShutdownTimeout(value: number) {
     this._instanceShutdownTimeout = value;
   }
   public resetInstanceShutdownTimeout() {
@@ -458,7 +458,7 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceShutdownTimeoutInput() {
-    return this._instanceShutdownTimeout
+    return this._instanceShutdownTimeout;
   }
 
   // name - computed: false, optional: false, required: true
@@ -471,7 +471,7 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // short_name - computed: false, optional: false, required: true
@@ -484,7 +484,7 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get shortNameInput() {
-    return this._shortName
+    return this._shortName;
   }
 
   // stack_id - computed: false, optional: false, required: true
@@ -497,15 +497,15 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stackIdInput() {
-    return this._stackId
+    return this._stackId;
   }
 
   // system_packages - computed: false, optional: true, required: false
-  private _systemPackages?: string[] | undefined; 
+  private _systemPackages?: string[]; 
   public get systemPackages() {
     return this.getListAttribute('system_packages');
   }
-  public set systemPackages(value: string[] | undefined) {
+  public set systemPackages(value: string[]) {
     this._systemPackages = value;
   }
   public resetSystemPackages() {
@@ -513,16 +513,16 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get systemPackagesInput() {
-    return this._systemPackages
+    return this._systemPackages;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -530,16 +530,16 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -547,15 +547,15 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // use_ebs_optimized_instances - computed: false, optional: true, required: false
-  private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable | undefined; 
+  private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable; 
   public get useEbsOptimizedInstances() {
     return this.getBooleanAttribute('use_ebs_optimized_instances') as any;
   }
-  public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable | undefined) {
+  public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable) {
     this._useEbsOptimizedInstances = value;
   }
   public resetUseEbsOptimizedInstances() {
@@ -563,16 +563,16 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get useEbsOptimizedInstancesInput() {
-    return this._useEbsOptimizedInstances
+    return this._useEbsOptimizedInstances;
   }
 
   // ebs_volume - computed: false, optional: true, required: false
-  private _ebsVolume?: OpsworksCustomLayerEbsVolume[] | undefined; 
+  private _ebsVolume?: OpsworksCustomLayerEbsVolume[]; 
   public get ebsVolume() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ebs_volume') as any;
   }
-  public set ebsVolume(value: OpsworksCustomLayerEbsVolume[] | undefined) {
+  public set ebsVolume(value: OpsworksCustomLayerEbsVolume[]) {
     this._ebsVolume = value;
   }
   public resetEbsVolume() {
@@ -580,7 +580,7 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ebsVolumeInput() {
-    return this._ebsVolume
+    return this._ebsVolume;
   }
 
   // =========

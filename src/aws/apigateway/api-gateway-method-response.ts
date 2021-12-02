@@ -87,7 +87,7 @@ export class ApiGatewayMethodResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get httpMethodInput() {
-    return this._httpMethod
+    return this._httpMethod;
   }
 
   // id - computed: true, optional: true, required: false
@@ -105,16 +105,16 @@ export class ApiGatewayMethodResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceIdInput() {
-    return this._resourceId
+    return this._resourceId;
   }
 
   // response_models - computed: false, optional: true, required: false
-  private _responseModels?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _responseModels?: { [key: string]: string } | cdktf.IResolvable; 
   public get responseModels() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('response_models') as any;
   }
-  public set responseModels(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set responseModels(value: { [key: string]: string } | cdktf.IResolvable) {
     this._responseModels = value;
   }
   public resetResponseModels() {
@@ -122,15 +122,15 @@ export class ApiGatewayMethodResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get responseModelsInput() {
-    return this._responseModels
+    return this._responseModels;
   }
 
   // response_parameters - computed: false, optional: true, required: false
-  private _responseParameters?: { [key: string]: boolean } | cdktf.IResolvable | undefined; 
+  private _responseParameters?: { [key: string]: boolean } | cdktf.IResolvable; 
   public get responseParameters() {
     return this.getBooleanAttribute('response_parameters') as any;
   }
-  public set responseParameters(value: { [key: string]: boolean } | cdktf.IResolvable | undefined) {
+  public set responseParameters(value: { [key: string]: boolean } | cdktf.IResolvable) {
     this._responseParameters = value;
   }
   public resetResponseParameters() {
@@ -138,7 +138,7 @@ export class ApiGatewayMethodResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get responseParametersInput() {
-    return this._responseParameters
+    return this._responseParameters;
   }
 
   // rest_api_id - computed: false, optional: false, required: true
@@ -151,7 +151,7 @@ export class ApiGatewayMethodResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get restApiIdInput() {
-    return this._restApiId
+    return this._restApiId;
   }
 
   // status_code - computed: false, optional: false, required: true
@@ -164,7 +164,7 @@ export class ApiGatewayMethodResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get statusCodeInput() {
-    return this._statusCode
+    return this._statusCode;
   }
 
   // =========

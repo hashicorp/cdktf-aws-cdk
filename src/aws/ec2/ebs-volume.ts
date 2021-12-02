@@ -122,15 +122,15 @@ export class EbsVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneInput() {
-    return this._availabilityZone
+    return this._availabilityZone;
   }
 
   // encrypted - computed: true, optional: true, required: false
-  private _encrypted?: boolean | cdktf.IResolvable | undefined; 
+  private _encrypted?: boolean | cdktf.IResolvable; 
   public get encrypted() {
     return this.getBooleanAttribute('encrypted') as any;
   }
-  public set encrypted(value: boolean | cdktf.IResolvable | undefined) {
+  public set encrypted(value: boolean | cdktf.IResolvable) {
     this._encrypted = value;
   }
   public resetEncrypted() {
@@ -138,7 +138,7 @@ export class EbsVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get encryptedInput() {
-    return this._encrypted
+    return this._encrypted;
   }
 
   // id - computed: true, optional: true, required: false
@@ -147,11 +147,11 @@ export class EbsVolume extends cdktf.TerraformResource {
   }
 
   // iops - computed: true, optional: true, required: false
-  private _iops?: number | undefined; 
+  private _iops?: number; 
   public get iops() {
     return this.getNumberAttribute('iops');
   }
-  public set iops(value: number | undefined) {
+  public set iops(value: number) {
     this._iops = value;
   }
   public resetIops() {
@@ -159,15 +159,15 @@ export class EbsVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iopsInput() {
-    return this._iops
+    return this._iops;
   }
 
   // kms_key_id - computed: true, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -175,15 +175,15 @@ export class EbsVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // multi_attach_enabled - computed: false, optional: true, required: false
-  private _multiAttachEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _multiAttachEnabled?: boolean | cdktf.IResolvable; 
   public get multiAttachEnabled() {
     return this.getBooleanAttribute('multi_attach_enabled') as any;
   }
-  public set multiAttachEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set multiAttachEnabled(value: boolean | cdktf.IResolvable) {
     this._multiAttachEnabled = value;
   }
   public resetMultiAttachEnabled() {
@@ -191,15 +191,15 @@ export class EbsVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get multiAttachEnabledInput() {
-    return this._multiAttachEnabled
+    return this._multiAttachEnabled;
   }
 
   // outpost_arn - computed: false, optional: true, required: false
-  private _outpostArn?: string | undefined; 
+  private _outpostArn?: string; 
   public get outpostArn() {
     return this.getStringAttribute('outpost_arn');
   }
-  public set outpostArn(value: string | undefined) {
+  public set outpostArn(value: string) {
     this._outpostArn = value;
   }
   public resetOutpostArn() {
@@ -207,15 +207,15 @@ export class EbsVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get outpostArnInput() {
-    return this._outpostArn
+    return this._outpostArn;
   }
 
   // size - computed: true, optional: true, required: false
-  private _size?: number | undefined; 
+  private _size?: number; 
   public get size() {
     return this.getNumberAttribute('size');
   }
-  public set size(value: number | undefined) {
+  public set size(value: number) {
     this._size = value;
   }
   public resetSize() {
@@ -223,15 +223,15 @@ export class EbsVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sizeInput() {
-    return this._size
+    return this._size;
   }
 
   // snapshot_id - computed: true, optional: true, required: false
-  private _snapshotId?: string | undefined; 
+  private _snapshotId?: string; 
   public get snapshotId() {
     return this.getStringAttribute('snapshot_id');
   }
-  public set snapshotId(value: string | undefined) {
+  public set snapshotId(value: string) {
     this._snapshotId = value;
   }
   public resetSnapshotId() {
@@ -239,16 +239,16 @@ export class EbsVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotIdInput() {
-    return this._snapshotId
+    return this._snapshotId;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -256,16 +256,16 @@ export class EbsVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -273,15 +273,15 @@ export class EbsVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // throughput - computed: true, optional: true, required: false
-  private _throughput?: number | undefined; 
+  private _throughput?: number; 
   public get throughput() {
     return this.getNumberAttribute('throughput');
   }
-  public set throughput(value: number | undefined) {
+  public set throughput(value: number) {
     this._throughput = value;
   }
   public resetThroughput() {
@@ -289,15 +289,15 @@ export class EbsVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get throughputInput() {
-    return this._throughput
+    return this._throughput;
   }
 
   // type - computed: true, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -305,7 +305,7 @@ export class EbsVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // =========

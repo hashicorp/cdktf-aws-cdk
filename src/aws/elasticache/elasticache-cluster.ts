@@ -190,11 +190,11 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   // ==========
 
   // apply_immediately - computed: true, optional: true, required: false
-  private _applyImmediately?: boolean | cdktf.IResolvable | undefined; 
+  private _applyImmediately?: boolean | cdktf.IResolvable; 
   public get applyImmediately() {
     return this.getBooleanAttribute('apply_immediately') as any;
   }
-  public set applyImmediately(value: boolean | cdktf.IResolvable | undefined) {
+  public set applyImmediately(value: boolean | cdktf.IResolvable) {
     this._applyImmediately = value;
   }
   public resetApplyImmediately() {
@@ -202,7 +202,7 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get applyImmediatelyInput() {
-    return this._applyImmediately
+    return this._applyImmediately;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -211,11 +211,11 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
 
   // availability_zone - computed: true, optional: true, required: false
-  private _availabilityZone?: string | undefined; 
+  private _availabilityZone?: string; 
   public get availabilityZone() {
     return this.getStringAttribute('availability_zone');
   }
-  public set availabilityZone(value: string | undefined) {
+  public set availabilityZone(value: string) {
     this._availabilityZone = value;
   }
   public resetAvailabilityZone() {
@@ -223,15 +223,15 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneInput() {
-    return this._availabilityZone
+    return this._availabilityZone;
   }
 
   // az_mode - computed: true, optional: true, required: false
-  private _azMode?: string | undefined; 
+  private _azMode?: string; 
   public get azMode() {
     return this.getStringAttribute('az_mode');
   }
-  public set azMode(value: string | undefined) {
+  public set azMode(value: string) {
     this._azMode = value;
   }
   public resetAzMode() {
@@ -239,7 +239,7 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get azModeInput() {
-    return this._azMode
+    return this._azMode;
   }
 
   // cache_nodes - computed: true, optional: false, required: false
@@ -262,7 +262,7 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterIdInput() {
-    return this._clusterId
+    return this._clusterId;
   }
 
   // configuration_endpoint - computed: true, optional: false, required: false
@@ -271,11 +271,11 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
 
   // engine - computed: true, optional: true, required: false
-  private _engine?: string | undefined; 
+  private _engine?: string; 
   public get engine() {
     return this.getStringAttribute('engine');
   }
-  public set engine(value: string | undefined) {
+  public set engine(value: string) {
     this._engine = value;
   }
   public resetEngine() {
@@ -283,15 +283,15 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineInput() {
-    return this._engine
+    return this._engine;
   }
 
   // engine_version - computed: true, optional: true, required: false
-  private _engineVersion?: string | undefined; 
+  private _engineVersion?: string; 
   public get engineVersion() {
     return this.getStringAttribute('engine_version');
   }
-  public set engineVersion(value: string | undefined) {
+  public set engineVersion(value: string) {
     this._engineVersion = value;
   }
   public resetEngineVersion() {
@@ -299,7 +299,7 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineVersionInput() {
-    return this._engineVersion
+    return this._engineVersion;
   }
 
   // engine_version_actual - computed: true, optional: false, required: false
@@ -308,11 +308,11 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
 
   // final_snapshot_identifier - computed: false, optional: true, required: false
-  private _finalSnapshotIdentifier?: string | undefined; 
+  private _finalSnapshotIdentifier?: string; 
   public get finalSnapshotIdentifier() {
     return this.getStringAttribute('final_snapshot_identifier');
   }
-  public set finalSnapshotIdentifier(value: string | undefined) {
+  public set finalSnapshotIdentifier(value: string) {
     this._finalSnapshotIdentifier = value;
   }
   public resetFinalSnapshotIdentifier() {
@@ -320,7 +320,7 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get finalSnapshotIdentifierInput() {
-    return this._finalSnapshotIdentifier
+    return this._finalSnapshotIdentifier;
   }
 
   // id - computed: true, optional: true, required: false
@@ -329,11 +329,11 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
 
   // maintenance_window - computed: true, optional: true, required: false
-  private _maintenanceWindow?: string | undefined; 
+  private _maintenanceWindow?: string; 
   public get maintenanceWindow() {
     return this.getStringAttribute('maintenance_window');
   }
-  public set maintenanceWindow(value: string | undefined) {
+  public set maintenanceWindow(value: string) {
     this._maintenanceWindow = value;
   }
   public resetMaintenanceWindow() {
@@ -341,15 +341,15 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maintenanceWindowInput() {
-    return this._maintenanceWindow
+    return this._maintenanceWindow;
   }
 
   // node_type - computed: true, optional: true, required: false
-  private _nodeType?: string | undefined; 
+  private _nodeType?: string; 
   public get nodeType() {
     return this.getStringAttribute('node_type');
   }
-  public set nodeType(value: string | undefined) {
+  public set nodeType(value: string) {
     this._nodeType = value;
   }
   public resetNodeType() {
@@ -357,15 +357,15 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nodeTypeInput() {
-    return this._nodeType
+    return this._nodeType;
   }
 
   // notification_topic_arn - computed: false, optional: true, required: false
-  private _notificationTopicArn?: string | undefined; 
+  private _notificationTopicArn?: string; 
   public get notificationTopicArn() {
     return this.getStringAttribute('notification_topic_arn');
   }
-  public set notificationTopicArn(value: string | undefined) {
+  public set notificationTopicArn(value: string) {
     this._notificationTopicArn = value;
   }
   public resetNotificationTopicArn() {
@@ -373,15 +373,15 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get notificationTopicArnInput() {
-    return this._notificationTopicArn
+    return this._notificationTopicArn;
   }
 
   // num_cache_nodes - computed: true, optional: true, required: false
-  private _numCacheNodes?: number | undefined; 
+  private _numCacheNodes?: number; 
   public get numCacheNodes() {
     return this.getNumberAttribute('num_cache_nodes');
   }
-  public set numCacheNodes(value: number | undefined) {
+  public set numCacheNodes(value: number) {
     this._numCacheNodes = value;
   }
   public resetNumCacheNodes() {
@@ -389,15 +389,15 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get numCacheNodesInput() {
-    return this._numCacheNodes
+    return this._numCacheNodes;
   }
 
   // parameter_group_name - computed: true, optional: true, required: false
-  private _parameterGroupName?: string | undefined; 
+  private _parameterGroupName?: string; 
   public get parameterGroupName() {
     return this.getStringAttribute('parameter_group_name');
   }
-  public set parameterGroupName(value: string | undefined) {
+  public set parameterGroupName(value: string) {
     this._parameterGroupName = value;
   }
   public resetParameterGroupName() {
@@ -405,15 +405,15 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parameterGroupNameInput() {
-    return this._parameterGroupName
+    return this._parameterGroupName;
   }
 
   // port - computed: true, optional: true, required: false
-  private _port?: number | undefined; 
+  private _port?: number; 
   public get port() {
     return this.getNumberAttribute('port');
   }
-  public set port(value: number | undefined) {
+  public set port(value: number) {
     this._port = value;
   }
   public resetPort() {
@@ -421,15 +421,15 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 
   // preferred_availability_zones - computed: false, optional: true, required: false
-  private _preferredAvailabilityZones?: string[] | undefined; 
+  private _preferredAvailabilityZones?: string[]; 
   public get preferredAvailabilityZones() {
     return this.getListAttribute('preferred_availability_zones');
   }
-  public set preferredAvailabilityZones(value: string[] | undefined) {
+  public set preferredAvailabilityZones(value: string[]) {
     this._preferredAvailabilityZones = value;
   }
   public resetPreferredAvailabilityZones() {
@@ -437,15 +437,15 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get preferredAvailabilityZonesInput() {
-    return this._preferredAvailabilityZones
+    return this._preferredAvailabilityZones;
   }
 
   // replication_group_id - computed: true, optional: true, required: false
-  private _replicationGroupId?: string | undefined; 
+  private _replicationGroupId?: string; 
   public get replicationGroupId() {
     return this.getStringAttribute('replication_group_id');
   }
-  public set replicationGroupId(value: string | undefined) {
+  public set replicationGroupId(value: string) {
     this._replicationGroupId = value;
   }
   public resetReplicationGroupId() {
@@ -453,15 +453,15 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get replicationGroupIdInput() {
-    return this._replicationGroupId
+    return this._replicationGroupId;
   }
 
   // security_group_ids - computed: true, optional: true, required: false
-  private _securityGroupIds?: string[] | undefined; 
+  private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
     return this.getListAttribute('security_group_ids');
   }
-  public set securityGroupIds(value: string[] | undefined) {
+  public set securityGroupIds(value: string[]) {
     this._securityGroupIds = value;
   }
   public resetSecurityGroupIds() {
@@ -469,15 +469,15 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // security_group_names - computed: true, optional: true, required: false
-  private _securityGroupNames?: string[] | undefined; 
+  private _securityGroupNames?: string[]; 
   public get securityGroupNames() {
     return this.getListAttribute('security_group_names');
   }
-  public set securityGroupNames(value: string[] | undefined) {
+  public set securityGroupNames(value: string[]) {
     this._securityGroupNames = value;
   }
   public resetSecurityGroupNames() {
@@ -485,15 +485,15 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupNamesInput() {
-    return this._securityGroupNames
+    return this._securityGroupNames;
   }
 
   // snapshot_arns - computed: false, optional: true, required: false
-  private _snapshotArns?: string[] | undefined; 
+  private _snapshotArns?: string[]; 
   public get snapshotArns() {
     return this.getListAttribute('snapshot_arns');
   }
-  public set snapshotArns(value: string[] | undefined) {
+  public set snapshotArns(value: string[]) {
     this._snapshotArns = value;
   }
   public resetSnapshotArns() {
@@ -501,15 +501,15 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotArnsInput() {
-    return this._snapshotArns
+    return this._snapshotArns;
   }
 
   // snapshot_name - computed: false, optional: true, required: false
-  private _snapshotName?: string | undefined; 
+  private _snapshotName?: string; 
   public get snapshotName() {
     return this.getStringAttribute('snapshot_name');
   }
-  public set snapshotName(value: string | undefined) {
+  public set snapshotName(value: string) {
     this._snapshotName = value;
   }
   public resetSnapshotName() {
@@ -517,15 +517,15 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotNameInput() {
-    return this._snapshotName
+    return this._snapshotName;
   }
 
   // snapshot_retention_limit - computed: false, optional: true, required: false
-  private _snapshotRetentionLimit?: number | undefined; 
+  private _snapshotRetentionLimit?: number; 
   public get snapshotRetentionLimit() {
     return this.getNumberAttribute('snapshot_retention_limit');
   }
-  public set snapshotRetentionLimit(value: number | undefined) {
+  public set snapshotRetentionLimit(value: number) {
     this._snapshotRetentionLimit = value;
   }
   public resetSnapshotRetentionLimit() {
@@ -533,15 +533,15 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotRetentionLimitInput() {
-    return this._snapshotRetentionLimit
+    return this._snapshotRetentionLimit;
   }
 
   // snapshot_window - computed: true, optional: true, required: false
-  private _snapshotWindow?: string | undefined; 
+  private _snapshotWindow?: string; 
   public get snapshotWindow() {
     return this.getStringAttribute('snapshot_window');
   }
-  public set snapshotWindow(value: string | undefined) {
+  public set snapshotWindow(value: string) {
     this._snapshotWindow = value;
   }
   public resetSnapshotWindow() {
@@ -549,15 +549,15 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotWindowInput() {
-    return this._snapshotWindow
+    return this._snapshotWindow;
   }
 
   // subnet_group_name - computed: true, optional: true, required: false
-  private _subnetGroupName?: string | undefined; 
+  private _subnetGroupName?: string; 
   public get subnetGroupName() {
     return this.getStringAttribute('subnet_group_name');
   }
-  public set subnetGroupName(value: string | undefined) {
+  public set subnetGroupName(value: string) {
     this._subnetGroupName = value;
   }
   public resetSubnetGroupName() {
@@ -565,16 +565,16 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetGroupNameInput() {
-    return this._subnetGroupName
+    return this._subnetGroupName;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -582,16 +582,16 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -599,7 +599,7 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

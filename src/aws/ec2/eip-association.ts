@@ -78,11 +78,11 @@ export class EipAssociation extends cdktf.TerraformResource {
   // ==========
 
   // allocation_id - computed: true, optional: true, required: false
-  private _allocationId?: string | undefined; 
+  private _allocationId?: string; 
   public get allocationId() {
     return this.getStringAttribute('allocation_id');
   }
-  public set allocationId(value: string | undefined) {
+  public set allocationId(value: string) {
     this._allocationId = value;
   }
   public resetAllocationId() {
@@ -90,15 +90,15 @@ export class EipAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allocationIdInput() {
-    return this._allocationId
+    return this._allocationId;
   }
 
   // allow_reassociation - computed: false, optional: true, required: false
-  private _allowReassociation?: boolean | cdktf.IResolvable | undefined; 
+  private _allowReassociation?: boolean | cdktf.IResolvable; 
   public get allowReassociation() {
     return this.getBooleanAttribute('allow_reassociation') as any;
   }
-  public set allowReassociation(value: boolean | cdktf.IResolvable | undefined) {
+  public set allowReassociation(value: boolean | cdktf.IResolvable) {
     this._allowReassociation = value;
   }
   public resetAllowReassociation() {
@@ -106,7 +106,7 @@ export class EipAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allowReassociationInput() {
-    return this._allowReassociation
+    return this._allowReassociation;
   }
 
   // id - computed: true, optional: true, required: false
@@ -115,11 +115,11 @@ export class EipAssociation extends cdktf.TerraformResource {
   }
 
   // instance_id - computed: true, optional: true, required: false
-  private _instanceId?: string | undefined; 
+  private _instanceId?: string; 
   public get instanceId() {
     return this.getStringAttribute('instance_id');
   }
-  public set instanceId(value: string | undefined) {
+  public set instanceId(value: string) {
     this._instanceId = value;
   }
   public resetInstanceId() {
@@ -127,15 +127,15 @@ export class EipAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceIdInput() {
-    return this._instanceId
+    return this._instanceId;
   }
 
   // network_interface_id - computed: true, optional: true, required: false
-  private _networkInterfaceId?: string | undefined; 
+  private _networkInterfaceId?: string; 
   public get networkInterfaceId() {
     return this.getStringAttribute('network_interface_id');
   }
-  public set networkInterfaceId(value: string | undefined) {
+  public set networkInterfaceId(value: string) {
     this._networkInterfaceId = value;
   }
   public resetNetworkInterfaceId() {
@@ -143,15 +143,15 @@ export class EipAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get networkInterfaceIdInput() {
-    return this._networkInterfaceId
+    return this._networkInterfaceId;
   }
 
   // private_ip_address - computed: true, optional: true, required: false
-  private _privateIpAddress?: string | undefined; 
+  private _privateIpAddress?: string; 
   public get privateIpAddress() {
     return this.getStringAttribute('private_ip_address');
   }
-  public set privateIpAddress(value: string | undefined) {
+  public set privateIpAddress(value: string) {
     this._privateIpAddress = value;
   }
   public resetPrivateIpAddress() {
@@ -159,15 +159,15 @@ export class EipAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get privateIpAddressInput() {
-    return this._privateIpAddress
+    return this._privateIpAddress;
   }
 
   // public_ip - computed: true, optional: true, required: false
-  private _publicIp?: string | undefined; 
+  private _publicIp?: string; 
   public get publicIp() {
     return this.getStringAttribute('public_ip');
   }
-  public set publicIp(value: string | undefined) {
+  public set publicIp(value: string) {
     this._publicIp = value;
   }
   public resetPublicIp() {
@@ -175,7 +175,7 @@ export class EipAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get publicIpInput() {
-    return this._publicIp
+    return this._publicIp;
   }
 
   // =========

@@ -102,11 +102,11 @@ export class DataAwsVpnGateway extends cdktf.TerraformDataSource {
   // ==========
 
   // amazon_side_asn - computed: true, optional: true, required: false
-  private _amazonSideAsn?: string | undefined; 
+  private _amazonSideAsn?: string; 
   public get amazonSideAsn() {
     return this.getStringAttribute('amazon_side_asn');
   }
-  public set amazonSideAsn(value: string | undefined) {
+  public set amazonSideAsn(value: string) {
     this._amazonSideAsn = value;
   }
   public resetAmazonSideAsn() {
@@ -114,7 +114,7 @@ export class DataAwsVpnGateway extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get amazonSideAsnInput() {
-    return this._amazonSideAsn
+    return this._amazonSideAsn;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -123,11 +123,11 @@ export class DataAwsVpnGateway extends cdktf.TerraformDataSource {
   }
 
   // attached_vpc_id - computed: true, optional: true, required: false
-  private _attachedVpcId?: string | undefined; 
+  private _attachedVpcId?: string; 
   public get attachedVpcId() {
     return this.getStringAttribute('attached_vpc_id');
   }
-  public set attachedVpcId(value: string | undefined) {
+  public set attachedVpcId(value: string) {
     this._attachedVpcId = value;
   }
   public resetAttachedVpcId() {
@@ -135,15 +135,15 @@ export class DataAwsVpnGateway extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get attachedVpcIdInput() {
-    return this._attachedVpcId
+    return this._attachedVpcId;
   }
 
   // availability_zone - computed: true, optional: true, required: false
-  private _availabilityZone?: string | undefined; 
+  private _availabilityZone?: string; 
   public get availabilityZone() {
     return this.getStringAttribute('availability_zone');
   }
-  public set availabilityZone(value: string | undefined) {
+  public set availabilityZone(value: string) {
     this._availabilityZone = value;
   }
   public resetAvailabilityZone() {
@@ -151,7 +151,7 @@ export class DataAwsVpnGateway extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneInput() {
-    return this._availabilityZone
+    return this._availabilityZone;
   }
 
   // id - computed: true, optional: true, required: false
@@ -160,11 +160,11 @@ export class DataAwsVpnGateway extends cdktf.TerraformDataSource {
   }
 
   // state - computed: true, optional: true, required: false
-  private _state?: string | undefined; 
+  private _state?: string; 
   public get state() {
     return this.getStringAttribute('state');
   }
-  public set state(value: string | undefined) {
+  public set state(value: string) {
     this._state = value;
   }
   public resetState() {
@@ -172,16 +172,16 @@ export class DataAwsVpnGateway extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get stateInput() {
-    return this._state
+    return this._state;
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -189,16 +189,16 @@ export class DataAwsVpnGateway extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsVpnGatewayFilter[] | undefined; 
+  private _filter?: DataAwsVpnGatewayFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsVpnGatewayFilter[] | undefined) {
+  public set filter(value: DataAwsVpnGatewayFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -206,7 +206,7 @@ export class DataAwsVpnGateway extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

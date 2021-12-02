@@ -67,7 +67,7 @@ export class DataAwsEfsAccessPoints extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get fileSystemIdInput() {
-    return this._fileSystemId
+    return this._fileSystemId;
   }
 
   // id - computed: true, optional: true, required: false

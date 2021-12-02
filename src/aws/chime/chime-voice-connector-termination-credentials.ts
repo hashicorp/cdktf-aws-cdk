@@ -96,7 +96,7 @@ export class ChimeVoiceConnectorTerminationCredentials extends cdktf.TerraformRe
   }
   // Temporarily expose input value. Use with caution.
   public get voiceConnectorIdInput() {
-    return this._voiceConnectorId
+    return this._voiceConnectorId;
   }
 
   // credentials - computed: false, optional: false, required: true
@@ -110,7 +110,7 @@ export class ChimeVoiceConnectorTerminationCredentials extends cdktf.TerraformRe
   }
   // Temporarily expose input value. Use with caution.
   public get credentialsInput() {
-    return this._credentials
+    return this._credentials;
   }
 
   // =========

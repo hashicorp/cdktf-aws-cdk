@@ -72,7 +72,7 @@ export class DataAwsOutpostsOutpostInstanceType extends cdktf.TerraformDataSourc
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -81,11 +81,11 @@ export class DataAwsOutpostsOutpostInstanceType extends cdktf.TerraformDataSourc
   }
 
   // instance_type - computed: true, optional: true, required: false
-  private _instanceType?: string | undefined; 
+  private _instanceType?: string; 
   public get instanceType() {
     return this.getStringAttribute('instance_type');
   }
-  public set instanceType(value: string | undefined) {
+  public set instanceType(value: string) {
     this._instanceType = value;
   }
   public resetInstanceType() {
@@ -93,15 +93,15 @@ export class DataAwsOutpostsOutpostInstanceType extends cdktf.TerraformDataSourc
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // preferred_instance_types - computed: false, optional: true, required: false
-  private _preferredInstanceTypes?: string[] | undefined; 
+  private _preferredInstanceTypes?: string[]; 
   public get preferredInstanceTypes() {
     return this.getListAttribute('preferred_instance_types');
   }
-  public set preferredInstanceTypes(value: string[] | undefined) {
+  public set preferredInstanceTypes(value: string[]) {
     this._preferredInstanceTypes = value;
   }
   public resetPreferredInstanceTypes() {
@@ -109,7 +109,7 @@ export class DataAwsOutpostsOutpostInstanceType extends cdktf.TerraformDataSourc
   }
   // Temporarily expose input value. Use with caution.
   public get preferredInstanceTypesInput() {
-    return this._preferredInstanceTypes
+    return this._preferredInstanceTypes;
   }
 
   // =========

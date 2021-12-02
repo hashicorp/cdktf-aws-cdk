@@ -58,11 +58,11 @@ export class GlueResourcePolicy extends cdktf.TerraformResource {
   // ==========
 
   // enable_hybrid - computed: false, optional: true, required: false
-  private _enableHybrid?: string | undefined; 
+  private _enableHybrid?: string; 
   public get enableHybrid() {
     return this.getStringAttribute('enable_hybrid');
   }
-  public set enableHybrid(value: string | undefined) {
+  public set enableHybrid(value: string) {
     this._enableHybrid = value;
   }
   public resetEnableHybrid() {
@@ -70,7 +70,7 @@ export class GlueResourcePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableHybridInput() {
-    return this._enableHybrid
+    return this._enableHybrid;
   }
 
   // id - computed: true, optional: true, required: false
@@ -88,7 +88,7 @@ export class GlueResourcePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // =========

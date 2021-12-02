@@ -58,12 +58,37 @@ export class LambdaProvisionedConcurrencyConfigTimeoutsOutputReference extends c
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LambdaProvisionedConcurrencyConfigTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LambdaProvisionedConcurrencyConfigTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -71,15 +96,15 @@ export class LambdaProvisionedConcurrencyConfigTimeoutsOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -87,7 +112,7 @@ export class LambdaProvisionedConcurrencyConfigTimeoutsOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -126,7 +151,7 @@ export class LambdaProvisionedConcurrencyConfig extends cdktf.TerraformResource 
     this._functionName = config.functionName;
     this._provisionedConcurrentExecutions = config.provisionedConcurrentExecutions;
     this._qualifier = config.qualifier;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -143,7 +168,7 @@ export class LambdaProvisionedConcurrencyConfig extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get functionNameInput() {
-    return this._functionName
+    return this._functionName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -161,7 +186,7 @@ export class LambdaProvisionedConcurrencyConfig extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get provisionedConcurrentExecutionsInput() {
-    return this._provisionedConcurrentExecutions
+    return this._provisionedConcurrentExecutions;
   }
 
   // qualifier - computed: false, optional: false, required: true
@@ -174,24 +199,23 @@ export class LambdaProvisionedConcurrencyConfig extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get qualifierInput() {
-    return this._qualifier
+    return this._qualifier;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: LambdaProvisionedConcurrencyConfigTimeouts | undefined; 
-  private __timeoutsOutput = new LambdaProvisionedConcurrencyConfigTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new LambdaProvisionedConcurrencyConfigTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: LambdaProvisionedConcurrencyConfigTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: LambdaProvisionedConcurrencyConfigTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -203,7 +227,7 @@ export class LambdaProvisionedConcurrencyConfig extends cdktf.TerraformResource 
       function_name: cdktf.stringToTerraform(this._functionName),
       provisioned_concurrent_executions: cdktf.numberToTerraform(this._provisionedConcurrentExecutions),
       qualifier: cdktf.stringToTerraform(this._qualifier),
-      timeouts: lambdaProvisionedConcurrencyConfigTimeoutsToTerraform(this._timeouts),
+      timeouts: lambdaProvisionedConcurrencyConfigTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

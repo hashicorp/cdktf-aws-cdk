@@ -255,12 +255,31 @@ export class SpotInstanceRequestCapacityReservationSpecificationCapacityReservat
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._capacityReservationId) {
+      hasAnyValues = true;
+      internalValueResult.capacityReservationId = this._capacityReservationId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget | undefined) {
+    if (value === undefined) {
+      this._capacityReservationId = undefined;
+    }
+    else {
+      this._capacityReservationId = value.capacityReservationId;
+    }
+  }
+
   // capacity_reservation_id - computed: false, optional: true, required: false
-  private _capacityReservationId?: string | undefined; 
+  private _capacityReservationId?: string; 
   public get capacityReservationId() {
     return this.getStringAttribute('capacity_reservation_id');
   }
-  public set capacityReservationId(value: string | undefined) {
+  public set capacityReservationId(value: string) {
     this._capacityReservationId = value;
   }
   public resetCapacityReservationId() {
@@ -268,7 +287,7 @@ export class SpotInstanceRequestCapacityReservationSpecificationCapacityReservat
   }
   // Temporarily expose input value. Use with caution.
   public get capacityReservationIdInput() {
-    return this._capacityReservationId
+    return this._capacityReservationId;
   }
 }
 export interface SpotInstanceRequestCapacityReservationSpecification {
@@ -305,12 +324,37 @@ export class SpotInstanceRequestCapacityReservationSpecificationOutputReference 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SpotInstanceRequestCapacityReservationSpecification | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._capacityReservationPreference) {
+      hasAnyValues = true;
+      internalValueResult.capacityReservationPreference = this._capacityReservationPreference;
+    }
+    if (this._capacityReservationTarget) {
+      hasAnyValues = true;
+      internalValueResult.capacityReservationTarget = this._capacityReservationTarget?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SpotInstanceRequestCapacityReservationSpecification | undefined) {
+    if (value === undefined) {
+      this._capacityReservationPreference = undefined;
+      this._capacityReservationTarget.internalValue = undefined;
+    }
+    else {
+      this._capacityReservationPreference = value.capacityReservationPreference;
+      this._capacityReservationTarget.internalValue = value.capacityReservationTarget;
+    }
+  }
+
   // capacity_reservation_preference - computed: false, optional: true, required: false
-  private _capacityReservationPreference?: string | undefined; 
+  private _capacityReservationPreference?: string; 
   public get capacityReservationPreference() {
     return this.getStringAttribute('capacity_reservation_preference');
   }
-  public set capacityReservationPreference(value: string | undefined) {
+  public set capacityReservationPreference(value: string) {
     this._capacityReservationPreference = value;
   }
   public resetCapacityReservationPreference() {
@@ -318,24 +362,23 @@ export class SpotInstanceRequestCapacityReservationSpecificationOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get capacityReservationPreferenceInput() {
-    return this._capacityReservationPreference
+    return this._capacityReservationPreference;
   }
 
   // capacity_reservation_target - computed: false, optional: true, required: false
-  private _capacityReservationTarget?: SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget | undefined; 
-  private __capacityReservationTargetOutput = new SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTargetOutputReference(this as any, "capacity_reservation_target", true);
+  private _capacityReservationTarget = new SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTargetOutputReference(this as any, "capacity_reservation_target", true);
   public get capacityReservationTarget() {
-    return this.__capacityReservationTargetOutput;
+    return this._capacityReservationTarget;
   }
-  public putCapacityReservationTarget(value: SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget | undefined) {
-    this._capacityReservationTarget = value;
+  public putCapacityReservationTarget(value: SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget) {
+    this._capacityReservationTarget.internalValue = value;
   }
   public resetCapacityReservationTarget() {
-    this._capacityReservationTarget = undefined;
+    this._capacityReservationTarget.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get capacityReservationTargetInput() {
-    return this._capacityReservationTarget
+    return this._capacityReservationTarget.internalValue;
   }
 }
 export interface SpotInstanceRequestCreditSpecification {
@@ -365,12 +408,31 @@ export class SpotInstanceRequestCreditSpecificationOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SpotInstanceRequestCreditSpecification | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cpuCredits) {
+      hasAnyValues = true;
+      internalValueResult.cpuCredits = this._cpuCredits;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SpotInstanceRequestCreditSpecification | undefined) {
+    if (value === undefined) {
+      this._cpuCredits = undefined;
+    }
+    else {
+      this._cpuCredits = value.cpuCredits;
+    }
+  }
+
   // cpu_credits - computed: false, optional: true, required: false
-  private _cpuCredits?: string | undefined; 
+  private _cpuCredits?: string; 
   public get cpuCredits() {
     return this.getStringAttribute('cpu_credits');
   }
-  public set cpuCredits(value: string | undefined) {
+  public set cpuCredits(value: string) {
     this._cpuCredits = value;
   }
   public resetCpuCredits() {
@@ -378,7 +440,7 @@ export class SpotInstanceRequestCreditSpecificationOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get cpuCreditsInput() {
-    return this._cpuCredits
+    return this._cpuCredits;
   }
 }
 export interface SpotInstanceRequestEbsBlockDevice {
@@ -470,12 +532,31 @@ export class SpotInstanceRequestEnclaveOptionsOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SpotInstanceRequestEnclaveOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SpotInstanceRequestEnclaveOptions | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+    }
+  }
+
   // enabled - computed: true, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -483,7 +564,7 @@ export class SpotInstanceRequestEnclaveOptionsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 }
 export interface SpotInstanceRequestEphemeralBlockDevice {
@@ -549,17 +630,42 @@ export class SpotInstanceRequestLaunchTemplateOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SpotInstanceRequestLaunchTemplate | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._version) {
+      hasAnyValues = true;
+      internalValueResult.version = this._version;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SpotInstanceRequestLaunchTemplate | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+      this._version = undefined;
+    }
+    else {
+      this._name = value.name;
+      this._version = value.version;
+    }
+  }
+
   // id - computed: true, optional: true, required: false
   public get id() {
     return this.getStringAttribute('id');
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -567,15 +673,15 @@ export class SpotInstanceRequestLaunchTemplateOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // version - computed: false, optional: true, required: false
-  private _version?: string | undefined; 
+  private _version?: string; 
   public get version() {
     return this.getStringAttribute('version');
   }
-  public set version(value: string | undefined) {
+  public set version(value: string) {
     this._version = value;
   }
   public resetVersion() {
@@ -583,7 +689,7 @@ export class SpotInstanceRequestLaunchTemplateOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 }
 export interface SpotInstanceRequestMetadataOptions {
@@ -623,12 +729,43 @@ export class SpotInstanceRequestMetadataOptionsOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SpotInstanceRequestMetadataOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._httpEndpoint) {
+      hasAnyValues = true;
+      internalValueResult.httpEndpoint = this._httpEndpoint;
+    }
+    if (this._httpPutResponseHopLimit) {
+      hasAnyValues = true;
+      internalValueResult.httpPutResponseHopLimit = this._httpPutResponseHopLimit;
+    }
+    if (this._httpTokens) {
+      hasAnyValues = true;
+      internalValueResult.httpTokens = this._httpTokens;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SpotInstanceRequestMetadataOptions | undefined) {
+    if (value === undefined) {
+      this._httpEndpoint = undefined;
+      this._httpPutResponseHopLimit = undefined;
+      this._httpTokens = undefined;
+    }
+    else {
+      this._httpEndpoint = value.httpEndpoint;
+      this._httpPutResponseHopLimit = value.httpPutResponseHopLimit;
+      this._httpTokens = value.httpTokens;
+    }
+  }
+
   // http_endpoint - computed: true, optional: true, required: false
-  private _httpEndpoint?: string | undefined; 
+  private _httpEndpoint?: string; 
   public get httpEndpoint() {
     return this.getStringAttribute('http_endpoint');
   }
-  public set httpEndpoint(value: string | undefined) {
+  public set httpEndpoint(value: string) {
     this._httpEndpoint = value;
   }
   public resetHttpEndpoint() {
@@ -636,15 +773,15 @@ export class SpotInstanceRequestMetadataOptionsOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get httpEndpointInput() {
-    return this._httpEndpoint
+    return this._httpEndpoint;
   }
 
   // http_put_response_hop_limit - computed: true, optional: true, required: false
-  private _httpPutResponseHopLimit?: number | undefined; 
+  private _httpPutResponseHopLimit?: number; 
   public get httpPutResponseHopLimit() {
     return this.getNumberAttribute('http_put_response_hop_limit');
   }
-  public set httpPutResponseHopLimit(value: number | undefined) {
+  public set httpPutResponseHopLimit(value: number) {
     this._httpPutResponseHopLimit = value;
   }
   public resetHttpPutResponseHopLimit() {
@@ -652,15 +789,15 @@ export class SpotInstanceRequestMetadataOptionsOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get httpPutResponseHopLimitInput() {
-    return this._httpPutResponseHopLimit
+    return this._httpPutResponseHopLimit;
   }
 
   // http_tokens - computed: true, optional: true, required: false
-  private _httpTokens?: string | undefined; 
+  private _httpTokens?: string; 
   public get httpTokens() {
     return this.getStringAttribute('http_tokens');
   }
-  public set httpTokens(value: string | undefined) {
+  public set httpTokens(value: string) {
     this._httpTokens = value;
   }
   public resetHttpTokens() {
@@ -668,7 +805,7 @@ export class SpotInstanceRequestMetadataOptionsOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get httpTokensInput() {
-    return this._httpTokens
+    return this._httpTokens;
   }
 }
 export interface SpotInstanceRequestNetworkInterface {
@@ -760,12 +897,73 @@ export class SpotInstanceRequestRootBlockDeviceOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SpotInstanceRequestRootBlockDevice | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._deleteOnTermination) {
+      hasAnyValues = true;
+      internalValueResult.deleteOnTermination = this._deleteOnTermination;
+    }
+    if (this._encrypted) {
+      hasAnyValues = true;
+      internalValueResult.encrypted = this._encrypted;
+    }
+    if (this._iops) {
+      hasAnyValues = true;
+      internalValueResult.iops = this._iops;
+    }
+    if (this._kmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyId = this._kmsKeyId;
+    }
+    if (this._tags) {
+      hasAnyValues = true;
+      internalValueResult.tags = this._tags;
+    }
+    if (this._throughput) {
+      hasAnyValues = true;
+      internalValueResult.throughput = this._throughput;
+    }
+    if (this._volumeSize) {
+      hasAnyValues = true;
+      internalValueResult.volumeSize = this._volumeSize;
+    }
+    if (this._volumeType) {
+      hasAnyValues = true;
+      internalValueResult.volumeType = this._volumeType;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SpotInstanceRequestRootBlockDevice | undefined) {
+    if (value === undefined) {
+      this._deleteOnTermination = undefined;
+      this._encrypted = undefined;
+      this._iops = undefined;
+      this._kmsKeyId = undefined;
+      this._tags = undefined;
+      this._throughput = undefined;
+      this._volumeSize = undefined;
+      this._volumeType = undefined;
+    }
+    else {
+      this._deleteOnTermination = value.deleteOnTermination;
+      this._encrypted = value.encrypted;
+      this._iops = value.iops;
+      this._kmsKeyId = value.kmsKeyId;
+      this._tags = value.tags;
+      this._throughput = value.throughput;
+      this._volumeSize = value.volumeSize;
+      this._volumeType = value.volumeType;
+    }
+  }
+
   // delete_on_termination - computed: false, optional: true, required: false
-  private _deleteOnTermination?: boolean | cdktf.IResolvable | undefined; 
+  private _deleteOnTermination?: boolean | cdktf.IResolvable; 
   public get deleteOnTermination() {
     return this.getBooleanAttribute('delete_on_termination') as any;
   }
-  public set deleteOnTermination(value: boolean | cdktf.IResolvable | undefined) {
+  public set deleteOnTermination(value: boolean | cdktf.IResolvable) {
     this._deleteOnTermination = value;
   }
   public resetDeleteOnTermination() {
@@ -773,15 +971,15 @@ export class SpotInstanceRequestRootBlockDeviceOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get deleteOnTerminationInput() {
-    return this._deleteOnTermination
+    return this._deleteOnTermination;
   }
 
   // encrypted - computed: true, optional: true, required: false
-  private _encrypted?: boolean | cdktf.IResolvable | undefined; 
+  private _encrypted?: boolean | cdktf.IResolvable; 
   public get encrypted() {
     return this.getBooleanAttribute('encrypted') as any;
   }
-  public set encrypted(value: boolean | cdktf.IResolvable | undefined) {
+  public set encrypted(value: boolean | cdktf.IResolvable) {
     this._encrypted = value;
   }
   public resetEncrypted() {
@@ -789,15 +987,15 @@ export class SpotInstanceRequestRootBlockDeviceOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get encryptedInput() {
-    return this._encrypted
+    return this._encrypted;
   }
 
   // iops - computed: true, optional: true, required: false
-  private _iops?: number | undefined; 
+  private _iops?: number; 
   public get iops() {
     return this.getNumberAttribute('iops');
   }
-  public set iops(value: number | undefined) {
+  public set iops(value: number) {
     this._iops = value;
   }
   public resetIops() {
@@ -805,15 +1003,15 @@ export class SpotInstanceRequestRootBlockDeviceOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get iopsInput() {
-    return this._iops
+    return this._iops;
   }
 
   // kms_key_id - computed: true, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -821,16 +1019,16 @@ export class SpotInstanceRequestRootBlockDeviceOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -838,15 +1036,15 @@ export class SpotInstanceRequestRootBlockDeviceOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // throughput - computed: true, optional: true, required: false
-  private _throughput?: number | undefined; 
+  private _throughput?: number; 
   public get throughput() {
     return this.getNumberAttribute('throughput');
   }
-  public set throughput(value: number | undefined) {
+  public set throughput(value: number) {
     this._throughput = value;
   }
   public resetThroughput() {
@@ -854,15 +1052,15 @@ export class SpotInstanceRequestRootBlockDeviceOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get throughputInput() {
-    return this._throughput
+    return this._throughput;
   }
 
   // volume_size - computed: true, optional: true, required: false
-  private _volumeSize?: number | undefined; 
+  private _volumeSize?: number; 
   public get volumeSize() {
     return this.getNumberAttribute('volume_size');
   }
-  public set volumeSize(value: number | undefined) {
+  public set volumeSize(value: number) {
     this._volumeSize = value;
   }
   public resetVolumeSize() {
@@ -870,15 +1068,15 @@ export class SpotInstanceRequestRootBlockDeviceOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get volumeSizeInput() {
-    return this._volumeSize
+    return this._volumeSize;
   }
 
   // volume_type - computed: true, optional: true, required: false
-  private _volumeType?: string | undefined; 
+  private _volumeType?: string; 
   public get volumeType() {
     return this.getStringAttribute('volume_type');
   }
-  public set volumeType(value: string | undefined) {
+  public set volumeType(value: string) {
     this._volumeType = value;
   }
   public resetVolumeType() {
@@ -886,7 +1084,7 @@ export class SpotInstanceRequestRootBlockDeviceOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get volumeTypeInput() {
-    return this._volumeType
+    return this._volumeType;
   }
 }
 export interface SpotInstanceRequestTimeouts {
@@ -921,12 +1119,37 @@ export class SpotInstanceRequestTimeoutsOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SpotInstanceRequestTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SpotInstanceRequestTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -934,15 +1157,15 @@ export class SpotInstanceRequestTimeoutsOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -950,7 +1173,7 @@ export class SpotInstanceRequestTimeoutsOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -1026,16 +1249,16 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
     this._volumeTags = config.volumeTags;
     this._vpcSecurityGroupIds = config.vpcSecurityGroupIds;
     this._waitForFulfillment = config.waitForFulfillment;
-    this._capacityReservationSpecification = config.capacityReservationSpecification;
-    this._creditSpecification = config.creditSpecification;
+    this._capacityReservationSpecification.internalValue = config.capacityReservationSpecification;
+    this._creditSpecification.internalValue = config.creditSpecification;
     this._ebsBlockDevice = config.ebsBlockDevice;
-    this._enclaveOptions = config.enclaveOptions;
+    this._enclaveOptions.internalValue = config.enclaveOptions;
     this._ephemeralBlockDevice = config.ephemeralBlockDevice;
-    this._launchTemplate = config.launchTemplate;
-    this._metadataOptions = config.metadataOptions;
+    this._launchTemplate.internalValue = config.launchTemplate;
+    this._metadataOptions.internalValue = config.metadataOptions;
     this._networkInterface = config.networkInterface;
-    this._rootBlockDevice = config.rootBlockDevice;
-    this._timeouts = config.timeouts;
+    this._rootBlockDevice.internalValue = config.rootBlockDevice;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -1043,11 +1266,11 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   // ==========
 
   // ami - computed: true, optional: true, required: false
-  private _ami?: string | undefined; 
+  private _ami?: string; 
   public get ami() {
     return this.getStringAttribute('ami');
   }
-  public set ami(value: string | undefined) {
+  public set ami(value: string) {
     this._ami = value;
   }
   public resetAmi() {
@@ -1055,7 +1278,7 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get amiInput() {
-    return this._ami
+    return this._ami;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -1064,11 +1287,11 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
 
   // associate_public_ip_address - computed: true, optional: true, required: false
-  private _associatePublicIpAddress?: boolean | cdktf.IResolvable | undefined; 
+  private _associatePublicIpAddress?: boolean | cdktf.IResolvable; 
   public get associatePublicIpAddress() {
     return this.getBooleanAttribute('associate_public_ip_address') as any;
   }
-  public set associatePublicIpAddress(value: boolean | cdktf.IResolvable | undefined) {
+  public set associatePublicIpAddress(value: boolean | cdktf.IResolvable) {
     this._associatePublicIpAddress = value;
   }
   public resetAssociatePublicIpAddress() {
@@ -1076,15 +1299,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get associatePublicIpAddressInput() {
-    return this._associatePublicIpAddress
+    return this._associatePublicIpAddress;
   }
 
   // availability_zone - computed: true, optional: true, required: false
-  private _availabilityZone?: string | undefined; 
+  private _availabilityZone?: string; 
   public get availabilityZone() {
     return this.getStringAttribute('availability_zone');
   }
-  public set availabilityZone(value: string | undefined) {
+  public set availabilityZone(value: string) {
     this._availabilityZone = value;
   }
   public resetAvailabilityZone() {
@@ -1092,15 +1315,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneInput() {
-    return this._availabilityZone
+    return this._availabilityZone;
   }
 
   // block_duration_minutes - computed: false, optional: true, required: false
-  private _blockDurationMinutes?: number | undefined; 
+  private _blockDurationMinutes?: number; 
   public get blockDurationMinutes() {
     return this.getNumberAttribute('block_duration_minutes');
   }
-  public set blockDurationMinutes(value: number | undefined) {
+  public set blockDurationMinutes(value: number) {
     this._blockDurationMinutes = value;
   }
   public resetBlockDurationMinutes() {
@@ -1108,15 +1331,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get blockDurationMinutesInput() {
-    return this._blockDurationMinutes
+    return this._blockDurationMinutes;
   }
 
   // cpu_core_count - computed: true, optional: true, required: false
-  private _cpuCoreCount?: number | undefined; 
+  private _cpuCoreCount?: number; 
   public get cpuCoreCount() {
     return this.getNumberAttribute('cpu_core_count');
   }
-  public set cpuCoreCount(value: number | undefined) {
+  public set cpuCoreCount(value: number) {
     this._cpuCoreCount = value;
   }
   public resetCpuCoreCount() {
@@ -1124,15 +1347,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cpuCoreCountInput() {
-    return this._cpuCoreCount
+    return this._cpuCoreCount;
   }
 
   // cpu_threads_per_core - computed: true, optional: true, required: false
-  private _cpuThreadsPerCore?: number | undefined; 
+  private _cpuThreadsPerCore?: number; 
   public get cpuThreadsPerCore() {
     return this.getNumberAttribute('cpu_threads_per_core');
   }
-  public set cpuThreadsPerCore(value: number | undefined) {
+  public set cpuThreadsPerCore(value: number) {
     this._cpuThreadsPerCore = value;
   }
   public resetCpuThreadsPerCore() {
@@ -1140,15 +1363,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cpuThreadsPerCoreInput() {
-    return this._cpuThreadsPerCore
+    return this._cpuThreadsPerCore;
   }
 
   // disable_api_termination - computed: true, optional: true, required: false
-  private _disableApiTermination?: boolean | cdktf.IResolvable | undefined; 
+  private _disableApiTermination?: boolean | cdktf.IResolvable; 
   public get disableApiTermination() {
     return this.getBooleanAttribute('disable_api_termination') as any;
   }
-  public set disableApiTermination(value: boolean | cdktf.IResolvable | undefined) {
+  public set disableApiTermination(value: boolean | cdktf.IResolvable) {
     this._disableApiTermination = value;
   }
   public resetDisableApiTermination() {
@@ -1156,15 +1379,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get disableApiTerminationInput() {
-    return this._disableApiTermination
+    return this._disableApiTermination;
   }
 
   // ebs_optimized - computed: true, optional: true, required: false
-  private _ebsOptimized?: boolean | cdktf.IResolvable | undefined; 
+  private _ebsOptimized?: boolean | cdktf.IResolvable; 
   public get ebsOptimized() {
     return this.getBooleanAttribute('ebs_optimized') as any;
   }
-  public set ebsOptimized(value: boolean | cdktf.IResolvable | undefined) {
+  public set ebsOptimized(value: boolean | cdktf.IResolvable) {
     this._ebsOptimized = value;
   }
   public resetEbsOptimized() {
@@ -1172,15 +1395,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ebsOptimizedInput() {
-    return this._ebsOptimized
+    return this._ebsOptimized;
   }
 
   // get_password_data - computed: false, optional: true, required: false
-  private _getPasswordData?: boolean | cdktf.IResolvable | undefined; 
+  private _getPasswordData?: boolean | cdktf.IResolvable; 
   public get fetchPasswordData() {
     return this.getBooleanAttribute('get_password_data') as any;
   }
-  public set fetchPasswordData(value: boolean | cdktf.IResolvable | undefined) {
+  public set fetchPasswordData(value: boolean | cdktf.IResolvable) {
     this._getPasswordData = value;
   }
   public resetFetchPasswordData() {
@@ -1188,15 +1411,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fetchPasswordDataInput() {
-    return this._getPasswordData
+    return this._getPasswordData;
   }
 
   // hibernation - computed: false, optional: true, required: false
-  private _hibernation?: boolean | cdktf.IResolvable | undefined; 
+  private _hibernation?: boolean | cdktf.IResolvable; 
   public get hibernation() {
     return this.getBooleanAttribute('hibernation') as any;
   }
-  public set hibernation(value: boolean | cdktf.IResolvable | undefined) {
+  public set hibernation(value: boolean | cdktf.IResolvable) {
     this._hibernation = value;
   }
   public resetHibernation() {
@@ -1204,15 +1427,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get hibernationInput() {
-    return this._hibernation
+    return this._hibernation;
   }
 
   // host_id - computed: true, optional: true, required: false
-  private _hostId?: string | undefined; 
+  private _hostId?: string; 
   public get hostId() {
     return this.getStringAttribute('host_id');
   }
-  public set hostId(value: string | undefined) {
+  public set hostId(value: string) {
     this._hostId = value;
   }
   public resetHostId() {
@@ -1220,15 +1443,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get hostIdInput() {
-    return this._hostId
+    return this._hostId;
   }
 
   // iam_instance_profile - computed: false, optional: true, required: false
-  private _iamInstanceProfile?: string | undefined; 
+  private _iamInstanceProfile?: string; 
   public get iamInstanceProfile() {
     return this.getStringAttribute('iam_instance_profile');
   }
-  public set iamInstanceProfile(value: string | undefined) {
+  public set iamInstanceProfile(value: string) {
     this._iamInstanceProfile = value;
   }
   public resetIamInstanceProfile() {
@@ -1236,7 +1459,7 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iamInstanceProfileInput() {
-    return this._iamInstanceProfile
+    return this._iamInstanceProfile;
   }
 
   // id - computed: true, optional: true, required: false
@@ -1245,11 +1468,11 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
 
   // instance_initiated_shutdown_behavior - computed: true, optional: true, required: false
-  private _instanceInitiatedShutdownBehavior?: string | undefined; 
+  private _instanceInitiatedShutdownBehavior?: string; 
   public get instanceInitiatedShutdownBehavior() {
     return this.getStringAttribute('instance_initiated_shutdown_behavior');
   }
-  public set instanceInitiatedShutdownBehavior(value: string | undefined) {
+  public set instanceInitiatedShutdownBehavior(value: string) {
     this._instanceInitiatedShutdownBehavior = value;
   }
   public resetInstanceInitiatedShutdownBehavior() {
@@ -1257,15 +1480,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceInitiatedShutdownBehaviorInput() {
-    return this._instanceInitiatedShutdownBehavior
+    return this._instanceInitiatedShutdownBehavior;
   }
 
   // instance_interruption_behavior - computed: true, optional: true, required: false
-  private _instanceInterruptionBehavior?: string | undefined; 
+  private _instanceInterruptionBehavior?: string; 
   public get instanceInterruptionBehavior() {
     return this.getStringAttribute('instance_interruption_behavior');
   }
-  public set instanceInterruptionBehavior(value: string | undefined) {
+  public set instanceInterruptionBehavior(value: string) {
     this._instanceInterruptionBehavior = value;
   }
   public resetInstanceInterruptionBehavior() {
@@ -1273,15 +1496,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceInterruptionBehaviorInput() {
-    return this._instanceInterruptionBehavior
+    return this._instanceInterruptionBehavior;
   }
 
   // instance_interruption_behaviour - computed: true, optional: true, required: false
-  private _instanceInterruptionBehaviour?: string | undefined; 
+  private _instanceInterruptionBehaviour?: string; 
   public get instanceInterruptionBehaviour() {
     return this.getStringAttribute('instance_interruption_behaviour');
   }
-  public set instanceInterruptionBehaviour(value: string | undefined) {
+  public set instanceInterruptionBehaviour(value: string) {
     this._instanceInterruptionBehaviour = value;
   }
   public resetInstanceInterruptionBehaviour() {
@@ -1289,7 +1512,7 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceInterruptionBehaviourInput() {
-    return this._instanceInterruptionBehaviour
+    return this._instanceInterruptionBehaviour;
   }
 
   // instance_state - computed: true, optional: false, required: false
@@ -1298,11 +1521,11 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
 
   // instance_type - computed: true, optional: true, required: false
-  private _instanceType?: string | undefined; 
+  private _instanceType?: string; 
   public get instanceType() {
     return this.getStringAttribute('instance_type');
   }
-  public set instanceType(value: string | undefined) {
+  public set instanceType(value: string) {
     this._instanceType = value;
   }
   public resetInstanceType() {
@@ -1310,15 +1533,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // ipv6_address_count - computed: true, optional: true, required: false
-  private _ipv6AddressCount?: number | undefined; 
+  private _ipv6AddressCount?: number; 
   public get ipv6AddressCount() {
     return this.getNumberAttribute('ipv6_address_count');
   }
-  public set ipv6AddressCount(value: number | undefined) {
+  public set ipv6AddressCount(value: number) {
     this._ipv6AddressCount = value;
   }
   public resetIpv6AddressCount() {
@@ -1326,15 +1549,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipv6AddressCountInput() {
-    return this._ipv6AddressCount
+    return this._ipv6AddressCount;
   }
 
   // ipv6_addresses - computed: true, optional: true, required: false
-  private _ipv6Addresses?: string[] | undefined; 
+  private _ipv6Addresses?: string[]; 
   public get ipv6Addresses() {
     return this.getListAttribute('ipv6_addresses');
   }
-  public set ipv6Addresses(value: string[] | undefined) {
+  public set ipv6Addresses(value: string[]) {
     this._ipv6Addresses = value;
   }
   public resetIpv6Addresses() {
@@ -1342,15 +1565,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipv6AddressesInput() {
-    return this._ipv6Addresses
+    return this._ipv6Addresses;
   }
 
   // key_name - computed: true, optional: true, required: false
-  private _keyName?: string | undefined; 
+  private _keyName?: string; 
   public get keyName() {
     return this.getStringAttribute('key_name');
   }
-  public set keyName(value: string | undefined) {
+  public set keyName(value: string) {
     this._keyName = value;
   }
   public resetKeyName() {
@@ -1358,15 +1581,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyNameInput() {
-    return this._keyName
+    return this._keyName;
   }
 
   // launch_group - computed: false, optional: true, required: false
-  private _launchGroup?: string | undefined; 
+  private _launchGroup?: string; 
   public get launchGroup() {
     return this.getStringAttribute('launch_group');
   }
-  public set launchGroup(value: string | undefined) {
+  public set launchGroup(value: string) {
     this._launchGroup = value;
   }
   public resetLaunchGroup() {
@@ -1374,15 +1597,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get launchGroupInput() {
-    return this._launchGroup
+    return this._launchGroup;
   }
 
   // monitoring - computed: true, optional: true, required: false
-  private _monitoring?: boolean | cdktf.IResolvable | undefined; 
+  private _monitoring?: boolean | cdktf.IResolvable; 
   public get monitoring() {
     return this.getBooleanAttribute('monitoring') as any;
   }
-  public set monitoring(value: boolean | cdktf.IResolvable | undefined) {
+  public set monitoring(value: boolean | cdktf.IResolvable) {
     this._monitoring = value;
   }
   public resetMonitoring() {
@@ -1390,7 +1613,7 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get monitoringInput() {
-    return this._monitoring
+    return this._monitoring;
   }
 
   // outpost_arn - computed: true, optional: false, required: false
@@ -1404,11 +1627,11 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
 
   // placement_group - computed: true, optional: true, required: false
-  private _placementGroup?: string | undefined; 
+  private _placementGroup?: string; 
   public get placementGroup() {
     return this.getStringAttribute('placement_group');
   }
-  public set placementGroup(value: string | undefined) {
+  public set placementGroup(value: string) {
     this._placementGroup = value;
   }
   public resetPlacementGroup() {
@@ -1416,15 +1639,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get placementGroupInput() {
-    return this._placementGroup
+    return this._placementGroup;
   }
 
   // placement_partition_number - computed: true, optional: true, required: false
-  private _placementPartitionNumber?: number | undefined; 
+  private _placementPartitionNumber?: number; 
   public get placementPartitionNumber() {
     return this.getNumberAttribute('placement_partition_number');
   }
-  public set placementPartitionNumber(value: number | undefined) {
+  public set placementPartitionNumber(value: number) {
     this._placementPartitionNumber = value;
   }
   public resetPlacementPartitionNumber() {
@@ -1432,7 +1655,7 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get placementPartitionNumberInput() {
-    return this._placementPartitionNumber
+    return this._placementPartitionNumber;
   }
 
   // primary_network_interface_id - computed: true, optional: false, required: false
@@ -1446,11 +1669,11 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
 
   // private_ip - computed: true, optional: true, required: false
-  private _privateIp?: string | undefined; 
+  private _privateIp?: string; 
   public get privateIp() {
     return this.getStringAttribute('private_ip');
   }
-  public set privateIp(value: string | undefined) {
+  public set privateIp(value: string) {
     this._privateIp = value;
   }
   public resetPrivateIp() {
@@ -1458,7 +1681,7 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get privateIpInput() {
-    return this._privateIp
+    return this._privateIp;
   }
 
   // public_dns - computed: true, optional: false, required: false
@@ -1472,11 +1695,11 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
 
   // secondary_private_ips - computed: true, optional: true, required: false
-  private _secondaryPrivateIps?: string[] | undefined; 
+  private _secondaryPrivateIps?: string[]; 
   public get secondaryPrivateIps() {
     return this.getListAttribute('secondary_private_ips');
   }
-  public set secondaryPrivateIps(value: string[] | undefined) {
+  public set secondaryPrivateIps(value: string[]) {
     this._secondaryPrivateIps = value;
   }
   public resetSecondaryPrivateIps() {
@@ -1484,15 +1707,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get secondaryPrivateIpsInput() {
-    return this._secondaryPrivateIps
+    return this._secondaryPrivateIps;
   }
 
   // security_groups - computed: true, optional: true, required: false
-  private _securityGroups?: string[] | undefined; 
+  private _securityGroups?: string[]; 
   public get securityGroups() {
     return this.getListAttribute('security_groups');
   }
-  public set securityGroups(value: string[] | undefined) {
+  public set securityGroups(value: string[]) {
     this._securityGroups = value;
   }
   public resetSecurityGroups() {
@@ -1500,15 +1723,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupsInput() {
-    return this._securityGroups
+    return this._securityGroups;
   }
 
   // source_dest_check - computed: false, optional: true, required: false
-  private _sourceDestCheck?: boolean | cdktf.IResolvable | undefined; 
+  private _sourceDestCheck?: boolean | cdktf.IResolvable; 
   public get sourceDestCheck() {
     return this.getBooleanAttribute('source_dest_check') as any;
   }
-  public set sourceDestCheck(value: boolean | cdktf.IResolvable | undefined) {
+  public set sourceDestCheck(value: boolean | cdktf.IResolvable) {
     this._sourceDestCheck = value;
   }
   public resetSourceDestCheck() {
@@ -1516,7 +1739,7 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceDestCheckInput() {
-    return this._sourceDestCheck
+    return this._sourceDestCheck;
   }
 
   // spot_bid_status - computed: true, optional: false, required: false
@@ -1530,11 +1753,11 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
 
   // spot_price - computed: true, optional: true, required: false
-  private _spotPrice?: string | undefined; 
+  private _spotPrice?: string; 
   public get spotPrice() {
     return this.getStringAttribute('spot_price');
   }
-  public set spotPrice(value: string | undefined) {
+  public set spotPrice(value: string) {
     this._spotPrice = value;
   }
   public resetSpotPrice() {
@@ -1542,7 +1765,7 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get spotPriceInput() {
-    return this._spotPrice
+    return this._spotPrice;
   }
 
   // spot_request_state - computed: true, optional: false, required: false
@@ -1551,11 +1774,11 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
 
   // spot_type - computed: false, optional: true, required: false
-  private _spotType?: string | undefined; 
+  private _spotType?: string; 
   public get spotType() {
     return this.getStringAttribute('spot_type');
   }
-  public set spotType(value: string | undefined) {
+  public set spotType(value: string) {
     this._spotType = value;
   }
   public resetSpotType() {
@@ -1563,15 +1786,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get spotTypeInput() {
-    return this._spotType
+    return this._spotType;
   }
 
   // subnet_id - computed: true, optional: true, required: false
-  private _subnetId?: string | undefined; 
+  private _subnetId?: string; 
   public get subnetId() {
     return this.getStringAttribute('subnet_id');
   }
-  public set subnetId(value: string | undefined) {
+  public set subnetId(value: string) {
     this._subnetId = value;
   }
   public resetSubnetId() {
@@ -1579,16 +1802,16 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdInput() {
-    return this._subnetId
+    return this._subnetId;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -1596,16 +1819,16 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -1613,15 +1836,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // tenancy - computed: true, optional: true, required: false
-  private _tenancy?: string | undefined; 
+  private _tenancy?: string; 
   public get tenancy() {
     return this.getStringAttribute('tenancy');
   }
-  public set tenancy(value: string | undefined) {
+  public set tenancy(value: string) {
     this._tenancy = value;
   }
   public resetTenancy() {
@@ -1629,15 +1852,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tenancyInput() {
-    return this._tenancy
+    return this._tenancy;
   }
 
   // user_data - computed: true, optional: true, required: false
-  private _userData?: string | undefined; 
+  private _userData?: string; 
   public get userData() {
     return this.getStringAttribute('user_data');
   }
-  public set userData(value: string | undefined) {
+  public set userData(value: string) {
     this._userData = value;
   }
   public resetUserData() {
@@ -1645,15 +1868,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userDataInput() {
-    return this._userData
+    return this._userData;
   }
 
   // user_data_base64 - computed: true, optional: true, required: false
-  private _userDataBase64?: string | undefined; 
+  private _userDataBase64?: string; 
   public get userDataBase64() {
     return this.getStringAttribute('user_data_base64');
   }
-  public set userDataBase64(value: string | undefined) {
+  public set userDataBase64(value: string) {
     this._userDataBase64 = value;
   }
   public resetUserDataBase64() {
@@ -1661,15 +1884,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userDataBase64Input() {
-    return this._userDataBase64
+    return this._userDataBase64;
   }
 
   // valid_from - computed: true, optional: true, required: false
-  private _validFrom?: string | undefined; 
+  private _validFrom?: string; 
   public get validFrom() {
     return this.getStringAttribute('valid_from');
   }
-  public set validFrom(value: string | undefined) {
+  public set validFrom(value: string) {
     this._validFrom = value;
   }
   public resetValidFrom() {
@@ -1677,15 +1900,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get validFromInput() {
-    return this._validFrom
+    return this._validFrom;
   }
 
   // valid_until - computed: true, optional: true, required: false
-  private _validUntil?: string | undefined; 
+  private _validUntil?: string; 
   public get validUntil() {
     return this.getStringAttribute('valid_until');
   }
-  public set validUntil(value: string | undefined) {
+  public set validUntil(value: string) {
     this._validUntil = value;
   }
   public resetValidUntil() {
@@ -1693,16 +1916,16 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get validUntilInput() {
-    return this._validUntil
+    return this._validUntil;
   }
 
   // volume_tags - computed: false, optional: true, required: false
-  private _volumeTags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _volumeTags?: { [key: string]: string } | cdktf.IResolvable; 
   public get volumeTags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('volume_tags') as any;
   }
-  public set volumeTags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set volumeTags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._volumeTags = value;
   }
   public resetVolumeTags() {
@@ -1710,15 +1933,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get volumeTagsInput() {
-    return this._volumeTags
+    return this._volumeTags;
   }
 
   // vpc_security_group_ids - computed: true, optional: true, required: false
-  private _vpcSecurityGroupIds?: string[] | undefined; 
+  private _vpcSecurityGroupIds?: string[]; 
   public get vpcSecurityGroupIds() {
     return this.getListAttribute('vpc_security_group_ids');
   }
-  public set vpcSecurityGroupIds(value: string[] | undefined) {
+  public set vpcSecurityGroupIds(value: string[]) {
     this._vpcSecurityGroupIds = value;
   }
   public resetVpcSecurityGroupIds() {
@@ -1726,15 +1949,15 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcSecurityGroupIdsInput() {
-    return this._vpcSecurityGroupIds
+    return this._vpcSecurityGroupIds;
   }
 
   // wait_for_fulfillment - computed: false, optional: true, required: false
-  private _waitForFulfillment?: boolean | cdktf.IResolvable | undefined; 
+  private _waitForFulfillment?: boolean | cdktf.IResolvable; 
   public get waitForFulfillment() {
     return this.getBooleanAttribute('wait_for_fulfillment') as any;
   }
-  public set waitForFulfillment(value: boolean | cdktf.IResolvable | undefined) {
+  public set waitForFulfillment(value: boolean | cdktf.IResolvable) {
     this._waitForFulfillment = value;
   }
   public resetWaitForFulfillment() {
@@ -1742,50 +1965,48 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get waitForFulfillmentInput() {
-    return this._waitForFulfillment
+    return this._waitForFulfillment;
   }
 
   // capacity_reservation_specification - computed: false, optional: true, required: false
-  private _capacityReservationSpecification?: SpotInstanceRequestCapacityReservationSpecification | undefined; 
-  private __capacityReservationSpecificationOutput = new SpotInstanceRequestCapacityReservationSpecificationOutputReference(this as any, "capacity_reservation_specification", true);
+  private _capacityReservationSpecification = new SpotInstanceRequestCapacityReservationSpecificationOutputReference(this as any, "capacity_reservation_specification", true);
   public get capacityReservationSpecification() {
-    return this.__capacityReservationSpecificationOutput;
+    return this._capacityReservationSpecification;
   }
-  public putCapacityReservationSpecification(value: SpotInstanceRequestCapacityReservationSpecification | undefined) {
-    this._capacityReservationSpecification = value;
+  public putCapacityReservationSpecification(value: SpotInstanceRequestCapacityReservationSpecification) {
+    this._capacityReservationSpecification.internalValue = value;
   }
   public resetCapacityReservationSpecification() {
-    this._capacityReservationSpecification = undefined;
+    this._capacityReservationSpecification.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get capacityReservationSpecificationInput() {
-    return this._capacityReservationSpecification
+    return this._capacityReservationSpecification.internalValue;
   }
 
   // credit_specification - computed: false, optional: true, required: false
-  private _creditSpecification?: SpotInstanceRequestCreditSpecification | undefined; 
-  private __creditSpecificationOutput = new SpotInstanceRequestCreditSpecificationOutputReference(this as any, "credit_specification", true);
+  private _creditSpecification = new SpotInstanceRequestCreditSpecificationOutputReference(this as any, "credit_specification", true);
   public get creditSpecification() {
-    return this.__creditSpecificationOutput;
+    return this._creditSpecification;
   }
-  public putCreditSpecification(value: SpotInstanceRequestCreditSpecification | undefined) {
-    this._creditSpecification = value;
+  public putCreditSpecification(value: SpotInstanceRequestCreditSpecification) {
+    this._creditSpecification.internalValue = value;
   }
   public resetCreditSpecification() {
-    this._creditSpecification = undefined;
+    this._creditSpecification.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get creditSpecificationInput() {
-    return this._creditSpecification
+    return this._creditSpecification.internalValue;
   }
 
   // ebs_block_device - computed: false, optional: true, required: false
-  private _ebsBlockDevice?: SpotInstanceRequestEbsBlockDevice[] | undefined; 
+  private _ebsBlockDevice?: SpotInstanceRequestEbsBlockDevice[]; 
   public get ebsBlockDevice() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ebs_block_device') as any;
   }
-  public set ebsBlockDevice(value: SpotInstanceRequestEbsBlockDevice[] | undefined) {
+  public set ebsBlockDevice(value: SpotInstanceRequestEbsBlockDevice[]) {
     this._ebsBlockDevice = value;
   }
   public resetEbsBlockDevice() {
@@ -1793,33 +2014,32 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ebsBlockDeviceInput() {
-    return this._ebsBlockDevice
+    return this._ebsBlockDevice;
   }
 
   // enclave_options - computed: false, optional: true, required: false
-  private _enclaveOptions?: SpotInstanceRequestEnclaveOptions | undefined; 
-  private __enclaveOptionsOutput = new SpotInstanceRequestEnclaveOptionsOutputReference(this as any, "enclave_options", true);
+  private _enclaveOptions = new SpotInstanceRequestEnclaveOptionsOutputReference(this as any, "enclave_options", true);
   public get enclaveOptions() {
-    return this.__enclaveOptionsOutput;
+    return this._enclaveOptions;
   }
-  public putEnclaveOptions(value: SpotInstanceRequestEnclaveOptions | undefined) {
-    this._enclaveOptions = value;
+  public putEnclaveOptions(value: SpotInstanceRequestEnclaveOptions) {
+    this._enclaveOptions.internalValue = value;
   }
   public resetEnclaveOptions() {
-    this._enclaveOptions = undefined;
+    this._enclaveOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get enclaveOptionsInput() {
-    return this._enclaveOptions
+    return this._enclaveOptions.internalValue;
   }
 
   // ephemeral_block_device - computed: false, optional: true, required: false
-  private _ephemeralBlockDevice?: SpotInstanceRequestEphemeralBlockDevice[] | undefined; 
+  private _ephemeralBlockDevice?: SpotInstanceRequestEphemeralBlockDevice[]; 
   public get ephemeralBlockDevice() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ephemeral_block_device') as any;
   }
-  public set ephemeralBlockDevice(value: SpotInstanceRequestEphemeralBlockDevice[] | undefined) {
+  public set ephemeralBlockDevice(value: SpotInstanceRequestEphemeralBlockDevice[]) {
     this._ephemeralBlockDevice = value;
   }
   public resetEphemeralBlockDevice() {
@@ -1827,50 +2047,48 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ephemeralBlockDeviceInput() {
-    return this._ephemeralBlockDevice
+    return this._ephemeralBlockDevice;
   }
 
   // launch_template - computed: false, optional: true, required: false
-  private _launchTemplate?: SpotInstanceRequestLaunchTemplate | undefined; 
-  private __launchTemplateOutput = new SpotInstanceRequestLaunchTemplateOutputReference(this as any, "launch_template", true);
+  private _launchTemplate = new SpotInstanceRequestLaunchTemplateOutputReference(this as any, "launch_template", true);
   public get launchTemplate() {
-    return this.__launchTemplateOutput;
+    return this._launchTemplate;
   }
-  public putLaunchTemplate(value: SpotInstanceRequestLaunchTemplate | undefined) {
-    this._launchTemplate = value;
+  public putLaunchTemplate(value: SpotInstanceRequestLaunchTemplate) {
+    this._launchTemplate.internalValue = value;
   }
   public resetLaunchTemplate() {
-    this._launchTemplate = undefined;
+    this._launchTemplate.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get launchTemplateInput() {
-    return this._launchTemplate
+    return this._launchTemplate.internalValue;
   }
 
   // metadata_options - computed: false, optional: true, required: false
-  private _metadataOptions?: SpotInstanceRequestMetadataOptions | undefined; 
-  private __metadataOptionsOutput = new SpotInstanceRequestMetadataOptionsOutputReference(this as any, "metadata_options", true);
+  private _metadataOptions = new SpotInstanceRequestMetadataOptionsOutputReference(this as any, "metadata_options", true);
   public get metadataOptions() {
-    return this.__metadataOptionsOutput;
+    return this._metadataOptions;
   }
-  public putMetadataOptions(value: SpotInstanceRequestMetadataOptions | undefined) {
-    this._metadataOptions = value;
+  public putMetadataOptions(value: SpotInstanceRequestMetadataOptions) {
+    this._metadataOptions.internalValue = value;
   }
   public resetMetadataOptions() {
-    this._metadataOptions = undefined;
+    this._metadataOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get metadataOptionsInput() {
-    return this._metadataOptions
+    return this._metadataOptions.internalValue;
   }
 
   // network_interface - computed: false, optional: true, required: false
-  private _networkInterface?: SpotInstanceRequestNetworkInterface[] | undefined; 
+  private _networkInterface?: SpotInstanceRequestNetworkInterface[]; 
   public get networkInterface() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('network_interface') as any;
   }
-  public set networkInterface(value: SpotInstanceRequestNetworkInterface[] | undefined) {
+  public set networkInterface(value: SpotInstanceRequestNetworkInterface[]) {
     this._networkInterface = value;
   }
   public resetNetworkInterface() {
@@ -1878,41 +2096,39 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get networkInterfaceInput() {
-    return this._networkInterface
+    return this._networkInterface;
   }
 
   // root_block_device - computed: false, optional: true, required: false
-  private _rootBlockDevice?: SpotInstanceRequestRootBlockDevice | undefined; 
-  private __rootBlockDeviceOutput = new SpotInstanceRequestRootBlockDeviceOutputReference(this as any, "root_block_device", true);
+  private _rootBlockDevice = new SpotInstanceRequestRootBlockDeviceOutputReference(this as any, "root_block_device", true);
   public get rootBlockDevice() {
-    return this.__rootBlockDeviceOutput;
+    return this._rootBlockDevice;
   }
-  public putRootBlockDevice(value: SpotInstanceRequestRootBlockDevice | undefined) {
-    this._rootBlockDevice = value;
+  public putRootBlockDevice(value: SpotInstanceRequestRootBlockDevice) {
+    this._rootBlockDevice.internalValue = value;
   }
   public resetRootBlockDevice() {
-    this._rootBlockDevice = undefined;
+    this._rootBlockDevice.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get rootBlockDeviceInput() {
-    return this._rootBlockDevice
+    return this._rootBlockDevice.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: SpotInstanceRequestTimeouts | undefined; 
-  private __timeoutsOutput = new SpotInstanceRequestTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new SpotInstanceRequestTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: SpotInstanceRequestTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: SpotInstanceRequestTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -1961,16 +2177,16 @@ export class SpotInstanceRequest extends cdktf.TerraformResource {
       volume_tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._volumeTags),
       vpc_security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._vpcSecurityGroupIds),
       wait_for_fulfillment: cdktf.booleanToTerraform(this._waitForFulfillment),
-      capacity_reservation_specification: spotInstanceRequestCapacityReservationSpecificationToTerraform(this._capacityReservationSpecification),
-      credit_specification: spotInstanceRequestCreditSpecificationToTerraform(this._creditSpecification),
+      capacity_reservation_specification: spotInstanceRequestCapacityReservationSpecificationToTerraform(this._capacityReservationSpecification.internalValue),
+      credit_specification: spotInstanceRequestCreditSpecificationToTerraform(this._creditSpecification.internalValue),
       ebs_block_device: cdktf.listMapper(spotInstanceRequestEbsBlockDeviceToTerraform)(this._ebsBlockDevice),
-      enclave_options: spotInstanceRequestEnclaveOptionsToTerraform(this._enclaveOptions),
+      enclave_options: spotInstanceRequestEnclaveOptionsToTerraform(this._enclaveOptions.internalValue),
       ephemeral_block_device: cdktf.listMapper(spotInstanceRequestEphemeralBlockDeviceToTerraform)(this._ephemeralBlockDevice),
-      launch_template: spotInstanceRequestLaunchTemplateToTerraform(this._launchTemplate),
-      metadata_options: spotInstanceRequestMetadataOptionsToTerraform(this._metadataOptions),
+      launch_template: spotInstanceRequestLaunchTemplateToTerraform(this._launchTemplate.internalValue),
+      metadata_options: spotInstanceRequestMetadataOptionsToTerraform(this._metadataOptions.internalValue),
       network_interface: cdktf.listMapper(spotInstanceRequestNetworkInterfaceToTerraform)(this._networkInterface),
-      root_block_device: spotInstanceRequestRootBlockDeviceToTerraform(this._rootBlockDevice),
-      timeouts: spotInstanceRequestTimeoutsToTerraform(this._timeouts),
+      root_block_device: spotInstanceRequestRootBlockDeviceToTerraform(this._rootBlockDevice.internalValue),
+      timeouts: spotInstanceRequestTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

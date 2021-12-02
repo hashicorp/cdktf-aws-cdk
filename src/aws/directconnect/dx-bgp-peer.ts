@@ -70,12 +70,37 @@ export class DxBgpPeerTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DxBgpPeerTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DxBgpPeerTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -83,15 +108,15 @@ export class DxBgpPeerTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -99,7 +124,7 @@ export class DxBgpPeerTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -141,7 +166,7 @@ export class DxBgpPeer extends cdktf.TerraformResource {
     this._bgpAuthKey = config.bgpAuthKey;
     this._customerAddress = config.customerAddress;
     this._virtualInterfaceId = config.virtualInterfaceId;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -158,15 +183,15 @@ export class DxBgpPeer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get addressFamilyInput() {
-    return this._addressFamily
+    return this._addressFamily;
   }
 
   // amazon_address - computed: true, optional: true, required: false
-  private _amazonAddress?: string | undefined; 
+  private _amazonAddress?: string; 
   public get amazonAddress() {
     return this.getStringAttribute('amazon_address');
   }
-  public set amazonAddress(value: string | undefined) {
+  public set amazonAddress(value: string) {
     this._amazonAddress = value;
   }
   public resetAmazonAddress() {
@@ -174,7 +199,7 @@ export class DxBgpPeer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get amazonAddressInput() {
-    return this._amazonAddress
+    return this._amazonAddress;
   }
 
   // aws_device - computed: true, optional: false, required: false
@@ -192,15 +217,15 @@ export class DxBgpPeer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bgpAsnInput() {
-    return this._bgpAsn
+    return this._bgpAsn;
   }
 
   // bgp_auth_key - computed: true, optional: true, required: false
-  private _bgpAuthKey?: string | undefined; 
+  private _bgpAuthKey?: string; 
   public get bgpAuthKey() {
     return this.getStringAttribute('bgp_auth_key');
   }
-  public set bgpAuthKey(value: string | undefined) {
+  public set bgpAuthKey(value: string) {
     this._bgpAuthKey = value;
   }
   public resetBgpAuthKey() {
@@ -208,7 +233,7 @@ export class DxBgpPeer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bgpAuthKeyInput() {
-    return this._bgpAuthKey
+    return this._bgpAuthKey;
   }
 
   // bgp_peer_id - computed: true, optional: false, required: false
@@ -222,11 +247,11 @@ export class DxBgpPeer extends cdktf.TerraformResource {
   }
 
   // customer_address - computed: true, optional: true, required: false
-  private _customerAddress?: string | undefined; 
+  private _customerAddress?: string; 
   public get customerAddress() {
     return this.getStringAttribute('customer_address');
   }
-  public set customerAddress(value: string | undefined) {
+  public set customerAddress(value: string) {
     this._customerAddress = value;
   }
   public resetCustomerAddress() {
@@ -234,7 +259,7 @@ export class DxBgpPeer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customerAddressInput() {
-    return this._customerAddress
+    return this._customerAddress;
   }
 
   // id - computed: true, optional: true, required: false
@@ -252,24 +277,23 @@ export class DxBgpPeer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get virtualInterfaceIdInput() {
-    return this._virtualInterfaceId
+    return this._virtualInterfaceId;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DxBgpPeerTimeouts | undefined; 
-  private __timeoutsOutput = new DxBgpPeerTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DxBgpPeerTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DxBgpPeerTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DxBgpPeerTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -284,7 +308,7 @@ export class DxBgpPeer extends cdktf.TerraformResource {
       bgp_auth_key: cdktf.stringToTerraform(this._bgpAuthKey),
       customer_address: cdktf.stringToTerraform(this._customerAddress),
       virtual_interface_id: cdktf.stringToTerraform(this._virtualInterfaceId),
-      timeouts: dxBgpPeerTimeoutsToTerraform(this._timeouts),
+      timeouts: dxBgpPeerTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

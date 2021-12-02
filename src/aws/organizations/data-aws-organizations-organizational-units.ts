@@ -89,7 +89,7 @@ export class DataAwsOrganizationsOrganizationalUnits extends cdktf.TerraformData
   }
   // Temporarily expose input value. Use with caution.
   public get parentIdInput() {
-    return this._parentId
+    return this._parentId;
   }
 
   // =========

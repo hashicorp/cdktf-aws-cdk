@@ -78,12 +78,49 @@ export class S3AccessPointPublicAccessBlockConfigurationOutputReference extends 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3AccessPointPublicAccessBlockConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._blockPublicAcls) {
+      hasAnyValues = true;
+      internalValueResult.blockPublicAcls = this._blockPublicAcls;
+    }
+    if (this._blockPublicPolicy) {
+      hasAnyValues = true;
+      internalValueResult.blockPublicPolicy = this._blockPublicPolicy;
+    }
+    if (this._ignorePublicAcls) {
+      hasAnyValues = true;
+      internalValueResult.ignorePublicAcls = this._ignorePublicAcls;
+    }
+    if (this._restrictPublicBuckets) {
+      hasAnyValues = true;
+      internalValueResult.restrictPublicBuckets = this._restrictPublicBuckets;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3AccessPointPublicAccessBlockConfiguration | undefined) {
+    if (value === undefined) {
+      this._blockPublicAcls = undefined;
+      this._blockPublicPolicy = undefined;
+      this._ignorePublicAcls = undefined;
+      this._restrictPublicBuckets = undefined;
+    }
+    else {
+      this._blockPublicAcls = value.blockPublicAcls;
+      this._blockPublicPolicy = value.blockPublicPolicy;
+      this._ignorePublicAcls = value.ignorePublicAcls;
+      this._restrictPublicBuckets = value.restrictPublicBuckets;
+    }
+  }
+
   // block_public_acls - computed: false, optional: true, required: false
-  private _blockPublicAcls?: boolean | cdktf.IResolvable | undefined; 
+  private _blockPublicAcls?: boolean | cdktf.IResolvable; 
   public get blockPublicAcls() {
     return this.getBooleanAttribute('block_public_acls') as any;
   }
-  public set blockPublicAcls(value: boolean | cdktf.IResolvable | undefined) {
+  public set blockPublicAcls(value: boolean | cdktf.IResolvable) {
     this._blockPublicAcls = value;
   }
   public resetBlockPublicAcls() {
@@ -91,15 +128,15 @@ export class S3AccessPointPublicAccessBlockConfigurationOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get blockPublicAclsInput() {
-    return this._blockPublicAcls
+    return this._blockPublicAcls;
   }
 
   // block_public_policy - computed: false, optional: true, required: false
-  private _blockPublicPolicy?: boolean | cdktf.IResolvable | undefined; 
+  private _blockPublicPolicy?: boolean | cdktf.IResolvable; 
   public get blockPublicPolicy() {
     return this.getBooleanAttribute('block_public_policy') as any;
   }
-  public set blockPublicPolicy(value: boolean | cdktf.IResolvable | undefined) {
+  public set blockPublicPolicy(value: boolean | cdktf.IResolvable) {
     this._blockPublicPolicy = value;
   }
   public resetBlockPublicPolicy() {
@@ -107,15 +144,15 @@ export class S3AccessPointPublicAccessBlockConfigurationOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get blockPublicPolicyInput() {
-    return this._blockPublicPolicy
+    return this._blockPublicPolicy;
   }
 
   // ignore_public_acls - computed: false, optional: true, required: false
-  private _ignorePublicAcls?: boolean | cdktf.IResolvable | undefined; 
+  private _ignorePublicAcls?: boolean | cdktf.IResolvable; 
   public get ignorePublicAcls() {
     return this.getBooleanAttribute('ignore_public_acls') as any;
   }
-  public set ignorePublicAcls(value: boolean | cdktf.IResolvable | undefined) {
+  public set ignorePublicAcls(value: boolean | cdktf.IResolvable) {
     this._ignorePublicAcls = value;
   }
   public resetIgnorePublicAcls() {
@@ -123,15 +160,15 @@ export class S3AccessPointPublicAccessBlockConfigurationOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get ignorePublicAclsInput() {
-    return this._ignorePublicAcls
+    return this._ignorePublicAcls;
   }
 
   // restrict_public_buckets - computed: false, optional: true, required: false
-  private _restrictPublicBuckets?: boolean | cdktf.IResolvable | undefined; 
+  private _restrictPublicBuckets?: boolean | cdktf.IResolvable; 
   public get restrictPublicBuckets() {
     return this.getBooleanAttribute('restrict_public_buckets') as any;
   }
-  public set restrictPublicBuckets(value: boolean | cdktf.IResolvable | undefined) {
+  public set restrictPublicBuckets(value: boolean | cdktf.IResolvable) {
     this._restrictPublicBuckets = value;
   }
   public resetRestrictPublicBuckets() {
@@ -139,7 +176,7 @@ export class S3AccessPointPublicAccessBlockConfigurationOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get restrictPublicBucketsInput() {
-    return this._restrictPublicBuckets
+    return this._restrictPublicBuckets;
   }
 }
 export interface S3AccessPointVpcConfiguration {
@@ -169,6 +206,25 @@ export class S3AccessPointVpcConfigurationOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3AccessPointVpcConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._vpcId) {
+      hasAnyValues = true;
+      internalValueResult.vpcId = this._vpcId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3AccessPointVpcConfiguration | undefined) {
+    if (value === undefined) {
+      this._vpcId = undefined;
+    }
+    else {
+      this._vpcId = value.vpcId;
+    }
+  }
+
   // vpc_id - computed: false, optional: false, required: true
   private _vpcId?: string; 
   public get vpcId() {
@@ -179,7 +235,7 @@ export class S3AccessPointVpcConfigurationOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 }
 
@@ -219,8 +275,8 @@ export class S3AccessPoint extends cdktf.TerraformResource {
     this._bucket = config.bucket;
     this._name = config.name;
     this._policy = config.policy;
-    this._publicAccessBlockConfiguration = config.publicAccessBlockConfiguration;
-    this._vpcConfiguration = config.vpcConfiguration;
+    this._publicAccessBlockConfiguration.internalValue = config.publicAccessBlockConfiguration;
+    this._vpcConfiguration.internalValue = config.vpcConfiguration;
   }
 
   // ==========
@@ -228,11 +284,11 @@ export class S3AccessPoint extends cdktf.TerraformResource {
   // ==========
 
   // account_id - computed: true, optional: true, required: false
-  private _accountId?: string | undefined; 
+  private _accountId?: string; 
   public get accountId() {
     return this.getStringAttribute('account_id');
   }
-  public set accountId(value: string | undefined) {
+  public set accountId(value: string) {
     this._accountId = value;
   }
   public resetAccountId() {
@@ -240,7 +296,7 @@ export class S3AccessPoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdInput() {
-    return this._accountId
+    return this._accountId;
   }
 
   // alias - computed: true, optional: false, required: false
@@ -263,7 +319,7 @@ export class S3AccessPoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // domain_name - computed: true, optional: false, required: false
@@ -296,7 +352,7 @@ export class S3AccessPoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // network_origin - computed: true, optional: false, required: false
@@ -305,11 +361,11 @@ export class S3AccessPoint extends cdktf.TerraformResource {
   }
 
   // policy - computed: false, optional: true, required: false
-  private _policy?: string | undefined; 
+  private _policy?: string; 
   public get policy() {
     return this.getStringAttribute('policy');
   }
-  public set policy(value: string | undefined) {
+  public set policy(value: string) {
     this._policy = value;
   }
   public resetPolicy() {
@@ -317,41 +373,39 @@ export class S3AccessPoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // public_access_block_configuration - computed: false, optional: true, required: false
-  private _publicAccessBlockConfiguration?: S3AccessPointPublicAccessBlockConfiguration | undefined; 
-  private __publicAccessBlockConfigurationOutput = new S3AccessPointPublicAccessBlockConfigurationOutputReference(this as any, "public_access_block_configuration", true);
+  private _publicAccessBlockConfiguration = new S3AccessPointPublicAccessBlockConfigurationOutputReference(this as any, "public_access_block_configuration", true);
   public get publicAccessBlockConfiguration() {
-    return this.__publicAccessBlockConfigurationOutput;
+    return this._publicAccessBlockConfiguration;
   }
-  public putPublicAccessBlockConfiguration(value: S3AccessPointPublicAccessBlockConfiguration | undefined) {
-    this._publicAccessBlockConfiguration = value;
+  public putPublicAccessBlockConfiguration(value: S3AccessPointPublicAccessBlockConfiguration) {
+    this._publicAccessBlockConfiguration.internalValue = value;
   }
   public resetPublicAccessBlockConfiguration() {
-    this._publicAccessBlockConfiguration = undefined;
+    this._publicAccessBlockConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get publicAccessBlockConfigurationInput() {
-    return this._publicAccessBlockConfiguration
+    return this._publicAccessBlockConfiguration.internalValue;
   }
 
   // vpc_configuration - computed: false, optional: true, required: false
-  private _vpcConfiguration?: S3AccessPointVpcConfiguration | undefined; 
-  private __vpcConfigurationOutput = new S3AccessPointVpcConfigurationOutputReference(this as any, "vpc_configuration", true);
+  private _vpcConfiguration = new S3AccessPointVpcConfigurationOutputReference(this as any, "vpc_configuration", true);
   public get vpcConfiguration() {
-    return this.__vpcConfigurationOutput;
+    return this._vpcConfiguration;
   }
-  public putVpcConfiguration(value: S3AccessPointVpcConfiguration | undefined) {
-    this._vpcConfiguration = value;
+  public putVpcConfiguration(value: S3AccessPointVpcConfiguration) {
+    this._vpcConfiguration.internalValue = value;
   }
   public resetVpcConfiguration() {
-    this._vpcConfiguration = undefined;
+    this._vpcConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get vpcConfigurationInput() {
-    return this._vpcConfiguration
+    return this._vpcConfiguration.internalValue;
   }
 
   // =========
@@ -364,8 +418,8 @@ export class S3AccessPoint extends cdktf.TerraformResource {
       bucket: cdktf.stringToTerraform(this._bucket),
       name: cdktf.stringToTerraform(this._name),
       policy: cdktf.stringToTerraform(this._policy),
-      public_access_block_configuration: s3AccessPointPublicAccessBlockConfigurationToTerraform(this._publicAccessBlockConfiguration),
-      vpc_configuration: s3AccessPointVpcConfigurationToTerraform(this._vpcConfiguration),
+      public_access_block_configuration: s3AccessPointPublicAccessBlockConfigurationToTerraform(this._publicAccessBlockConfiguration.internalValue),
+      vpc_configuration: s3AccessPointVpcConfigurationToTerraform(this._vpcConfiguration.internalValue),
     };
   }
 }

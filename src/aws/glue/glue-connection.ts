@@ -83,12 +83,43 @@ export class GlueConnectionPhysicalConnectionRequirementsOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueConnectionPhysicalConnectionRequirements | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._availabilityZone) {
+      hasAnyValues = true;
+      internalValueResult.availabilityZone = this._availabilityZone;
+    }
+    if (this._securityGroupIdList) {
+      hasAnyValues = true;
+      internalValueResult.securityGroupIdList = this._securityGroupIdList;
+    }
+    if (this._subnetId) {
+      hasAnyValues = true;
+      internalValueResult.subnetId = this._subnetId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueConnectionPhysicalConnectionRequirements | undefined) {
+    if (value === undefined) {
+      this._availabilityZone = undefined;
+      this._securityGroupIdList = undefined;
+      this._subnetId = undefined;
+    }
+    else {
+      this._availabilityZone = value.availabilityZone;
+      this._securityGroupIdList = value.securityGroupIdList;
+      this._subnetId = value.subnetId;
+    }
+  }
+
   // availability_zone - computed: false, optional: true, required: false
-  private _availabilityZone?: string | undefined; 
+  private _availabilityZone?: string; 
   public get availabilityZone() {
     return this.getStringAttribute('availability_zone');
   }
-  public set availabilityZone(value: string | undefined) {
+  public set availabilityZone(value: string) {
     this._availabilityZone = value;
   }
   public resetAvailabilityZone() {
@@ -96,15 +127,15 @@ export class GlueConnectionPhysicalConnectionRequirementsOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneInput() {
-    return this._availabilityZone
+    return this._availabilityZone;
   }
 
   // security_group_id_list - computed: false, optional: true, required: false
-  private _securityGroupIdList?: string[] | undefined; 
+  private _securityGroupIdList?: string[]; 
   public get securityGroupIdList() {
     return this.getListAttribute('security_group_id_list');
   }
-  public set securityGroupIdList(value: string[] | undefined) {
+  public set securityGroupIdList(value: string[]) {
     this._securityGroupIdList = value;
   }
   public resetSecurityGroupIdList() {
@@ -112,15 +143,15 @@ export class GlueConnectionPhysicalConnectionRequirementsOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdListInput() {
-    return this._securityGroupIdList
+    return this._securityGroupIdList;
   }
 
   // subnet_id - computed: false, optional: true, required: false
-  private _subnetId?: string | undefined; 
+  private _subnetId?: string; 
   public get subnetId() {
     return this.getStringAttribute('subnet_id');
   }
-  public set subnetId(value: string | undefined) {
+  public set subnetId(value: string) {
     this._subnetId = value;
   }
   public resetSubnetId() {
@@ -128,7 +159,7 @@ export class GlueConnectionPhysicalConnectionRequirementsOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdInput() {
-    return this._subnetId
+    return this._subnetId;
   }
 }
 
@@ -172,7 +203,7 @@ export class GlueConnection extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._physicalConnectionRequirements = config.physicalConnectionRequirements;
+    this._physicalConnectionRequirements.internalValue = config.physicalConnectionRequirements;
   }
 
   // ==========
@@ -185,11 +216,11 @@ export class GlueConnection extends cdktf.TerraformResource {
   }
 
   // catalog_id - computed: true, optional: true, required: false
-  private _catalogId?: string | undefined; 
+  private _catalogId?: string; 
   public get catalogId() {
     return this.getStringAttribute('catalog_id');
   }
-  public set catalogId(value: string | undefined) {
+  public set catalogId(value: string) {
     this._catalogId = value;
   }
   public resetCatalogId() {
@@ -197,16 +228,16 @@ export class GlueConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // connection_properties - computed: false, optional: true, required: false
-  private _connectionProperties?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _connectionProperties?: { [key: string]: string } | cdktf.IResolvable; 
   public get connectionProperties() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('connection_properties') as any;
   }
-  public set connectionProperties(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set connectionProperties(value: { [key: string]: string } | cdktf.IResolvable) {
     this._connectionProperties = value;
   }
   public resetConnectionProperties() {
@@ -214,15 +245,15 @@ export class GlueConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get connectionPropertiesInput() {
-    return this._connectionProperties
+    return this._connectionProperties;
   }
 
   // connection_type - computed: false, optional: true, required: false
-  private _connectionType?: string | undefined; 
+  private _connectionType?: string; 
   public get connectionType() {
     return this.getStringAttribute('connection_type');
   }
-  public set connectionType(value: string | undefined) {
+  public set connectionType(value: string) {
     this._connectionType = value;
   }
   public resetConnectionType() {
@@ -230,15 +261,15 @@ export class GlueConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get connectionTypeInput() {
-    return this._connectionType
+    return this._connectionType;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -246,7 +277,7 @@ export class GlueConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -255,11 +286,11 @@ export class GlueConnection extends cdktf.TerraformResource {
   }
 
   // match_criteria - computed: false, optional: true, required: false
-  private _matchCriteria?: string[] | undefined; 
+  private _matchCriteria?: string[]; 
   public get matchCriteria() {
     return this.getListAttribute('match_criteria');
   }
-  public set matchCriteria(value: string[] | undefined) {
+  public set matchCriteria(value: string[]) {
     this._matchCriteria = value;
   }
   public resetMatchCriteria() {
@@ -267,7 +298,7 @@ export class GlueConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get matchCriteriaInput() {
-    return this._matchCriteria
+    return this._matchCriteria;
   }
 
   // name - computed: false, optional: false, required: true
@@ -280,16 +311,16 @@ export class GlueConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -297,16 +328,16 @@ export class GlueConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -314,24 +345,23 @@ export class GlueConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // physical_connection_requirements - computed: false, optional: true, required: false
-  private _physicalConnectionRequirements?: GlueConnectionPhysicalConnectionRequirements | undefined; 
-  private __physicalConnectionRequirementsOutput = new GlueConnectionPhysicalConnectionRequirementsOutputReference(this as any, "physical_connection_requirements", true);
+  private _physicalConnectionRequirements = new GlueConnectionPhysicalConnectionRequirementsOutputReference(this as any, "physical_connection_requirements", true);
   public get physicalConnectionRequirements() {
-    return this.__physicalConnectionRequirementsOutput;
+    return this._physicalConnectionRequirements;
   }
-  public putPhysicalConnectionRequirements(value: GlueConnectionPhysicalConnectionRequirements | undefined) {
-    this._physicalConnectionRequirements = value;
+  public putPhysicalConnectionRequirements(value: GlueConnectionPhysicalConnectionRequirements) {
+    this._physicalConnectionRequirements.internalValue = value;
   }
   public resetPhysicalConnectionRequirements() {
-    this._physicalConnectionRequirements = undefined;
+    this._physicalConnectionRequirements.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get physicalConnectionRequirementsInput() {
-    return this._physicalConnectionRequirements
+    return this._physicalConnectionRequirements.internalValue;
   }
 
   // =========
@@ -348,7 +378,7 @@ export class GlueConnection extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      physical_connection_requirements: glueConnectionPhysicalConnectionRequirementsToTerraform(this._physicalConnectionRequirements),
+      physical_connection_requirements: glueConnectionPhysicalConnectionRequirementsToTerraform(this._physicalConnectionRequirements.internalValue),
     };
   }
 }

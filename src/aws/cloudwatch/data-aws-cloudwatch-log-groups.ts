@@ -72,7 +72,7 @@ export class DataAwsCloudwatchLogGroups extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupNamePrefixInput() {
-    return this._logGroupNamePrefix
+    return this._logGroupNamePrefix;
   }
 
   // log_group_names - computed: true, optional: false, required: false

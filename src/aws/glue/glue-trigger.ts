@@ -85,12 +85,31 @@ export class GlueTriggerActionsNotificationPropertyOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueTriggerActionsNotificationProperty | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._notifyDelayAfter) {
+      hasAnyValues = true;
+      internalValueResult.notifyDelayAfter = this._notifyDelayAfter;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueTriggerActionsNotificationProperty | undefined) {
+    if (value === undefined) {
+      this._notifyDelayAfter = undefined;
+    }
+    else {
+      this._notifyDelayAfter = value.notifyDelayAfter;
+    }
+  }
+
   // notify_delay_after - computed: false, optional: true, required: false
-  private _notifyDelayAfter?: number | undefined; 
+  private _notifyDelayAfter?: number; 
   public get notifyDelayAfter() {
     return this.getNumberAttribute('notify_delay_after');
   }
-  public set notifyDelayAfter(value: number | undefined) {
+  public set notifyDelayAfter(value: number) {
     this._notifyDelayAfter = value;
   }
   public resetNotifyDelayAfter() {
@@ -98,7 +117,7 @@ export class GlueTriggerActionsNotificationPropertyOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get notifyDelayAfterInput() {
-    return this._notifyDelayAfter
+    return this._notifyDelayAfter;
   }
 }
 export interface GlueTriggerActions {
@@ -216,12 +235,37 @@ export class GlueTriggerPredicateOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueTriggerPredicate | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._logical) {
+      hasAnyValues = true;
+      internalValueResult.logical = this._logical;
+    }
+    if (this._conditions) {
+      hasAnyValues = true;
+      internalValueResult.conditions = this._conditions;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueTriggerPredicate | undefined) {
+    if (value === undefined) {
+      this._logical = undefined;
+      this._conditions = undefined;
+    }
+    else {
+      this._logical = value.logical;
+      this._conditions = value.conditions;
+    }
+  }
+
   // logical - computed: false, optional: true, required: false
-  private _logical?: string | undefined; 
+  private _logical?: string; 
   public get logical() {
     return this.getStringAttribute('logical');
   }
-  public set logical(value: string | undefined) {
+  public set logical(value: string) {
     this._logical = value;
   }
   public resetLogical() {
@@ -229,7 +273,7 @@ export class GlueTriggerPredicateOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get logicalInput() {
-    return this._logical
+    return this._logical;
   }
 
   // conditions - computed: false, optional: false, required: true
@@ -243,7 +287,7 @@ export class GlueTriggerPredicateOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get conditionsInput() {
-    return this._conditions
+    return this._conditions;
   }
 }
 export interface GlueTriggerTimeouts {
@@ -278,12 +322,37 @@ export class GlueTriggerTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueTriggerTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueTriggerTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -291,15 +360,15 @@ export class GlueTriggerTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -307,7 +376,7 @@ export class GlueTriggerTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -352,8 +421,8 @@ export class GlueTrigger extends cdktf.TerraformResource {
     this._type = config.type;
     this._workflowName = config.workflowName;
     this._actions = config.actions;
-    this._predicate = config.predicate;
-    this._timeouts = config.timeouts;
+    this._predicate.internalValue = config.predicate;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -366,11 +435,11 @@ export class GlueTrigger extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -378,15 +447,15 @@ export class GlueTrigger extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -394,7 +463,7 @@ export class GlueTrigger extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // id - computed: true, optional: true, required: false
@@ -412,15 +481,15 @@ export class GlueTrigger extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // schedule - computed: false, optional: true, required: false
-  private _schedule?: string | undefined; 
+  private _schedule?: string; 
   public get schedule() {
     return this.getStringAttribute('schedule');
   }
-  public set schedule(value: string | undefined) {
+  public set schedule(value: string) {
     this._schedule = value;
   }
   public resetSchedule() {
@@ -428,7 +497,7 @@ export class GlueTrigger extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleInput() {
-    return this._schedule
+    return this._schedule;
   }
 
   // state - computed: true, optional: false, required: false
@@ -437,12 +506,12 @@ export class GlueTrigger extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -450,16 +519,16 @@ export class GlueTrigger extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -467,7 +536,7 @@ export class GlueTrigger extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // type - computed: false, optional: false, required: true
@@ -480,15 +549,15 @@ export class GlueTrigger extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // workflow_name - computed: false, optional: true, required: false
-  private _workflowName?: string | undefined; 
+  private _workflowName?: string; 
   public get workflowName() {
     return this.getStringAttribute('workflow_name');
   }
-  public set workflowName(value: string | undefined) {
+  public set workflowName(value: string) {
     this._workflowName = value;
   }
   public resetWorkflowName() {
@@ -496,7 +565,7 @@ export class GlueTrigger extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get workflowNameInput() {
-    return this._workflowName
+    return this._workflowName;
   }
 
   // actions - computed: false, optional: false, required: true
@@ -510,41 +579,39 @@ export class GlueTrigger extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get actionsInput() {
-    return this._actions
+    return this._actions;
   }
 
   // predicate - computed: false, optional: true, required: false
-  private _predicate?: GlueTriggerPredicate | undefined; 
-  private __predicateOutput = new GlueTriggerPredicateOutputReference(this as any, "predicate", true);
+  private _predicate = new GlueTriggerPredicateOutputReference(this as any, "predicate", true);
   public get predicate() {
-    return this.__predicateOutput;
+    return this._predicate;
   }
-  public putPredicate(value: GlueTriggerPredicate | undefined) {
-    this._predicate = value;
+  public putPredicate(value: GlueTriggerPredicate) {
+    this._predicate.internalValue = value;
   }
   public resetPredicate() {
-    this._predicate = undefined;
+    this._predicate.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get predicateInput() {
-    return this._predicate
+    return this._predicate.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: GlueTriggerTimeouts | undefined; 
-  private __timeoutsOutput = new GlueTriggerTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new GlueTriggerTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: GlueTriggerTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: GlueTriggerTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -562,8 +629,8 @@ export class GlueTrigger extends cdktf.TerraformResource {
       type: cdktf.stringToTerraform(this._type),
       workflow_name: cdktf.stringToTerraform(this._workflowName),
       actions: cdktf.listMapper(glueTriggerActionsToTerraform)(this._actions),
-      predicate: glueTriggerPredicateToTerraform(this._predicate),
-      timeouts: glueTriggerTimeoutsToTerraform(this._timeouts),
+      predicate: glueTriggerPredicateToTerraform(this._predicate.internalValue),
+      timeouts: glueTriggerTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

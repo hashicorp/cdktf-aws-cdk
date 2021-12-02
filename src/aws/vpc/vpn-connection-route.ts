@@ -67,7 +67,7 @@ export class VpnConnectionRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get destinationCidrBlockInput() {
-    return this._destinationCidrBlock
+    return this._destinationCidrBlock;
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class VpnConnectionRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpnConnectionIdInput() {
-    return this._vpnConnectionId
+    return this._vpnConnectionId;
   }
 
   // =========

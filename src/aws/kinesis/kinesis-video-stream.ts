@@ -79,12 +79,43 @@ export class KinesisVideoStreamTimeoutsOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisVideoStreamTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisVideoStreamTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -92,15 +123,15 @@ export class KinesisVideoStreamTimeoutsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -108,15 +139,15 @@ export class KinesisVideoStreamTimeoutsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -124,7 +155,7 @@ export class KinesisVideoStreamTimeoutsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -167,7 +198,7 @@ export class KinesisVideoStream extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -185,11 +216,11 @@ export class KinesisVideoStream extends cdktf.TerraformResource {
   }
 
   // data_retention_in_hours - computed: false, optional: true, required: false
-  private _dataRetentionInHours?: number | undefined; 
+  private _dataRetentionInHours?: number; 
   public get dataRetentionInHours() {
     return this.getNumberAttribute('data_retention_in_hours');
   }
-  public set dataRetentionInHours(value: number | undefined) {
+  public set dataRetentionInHours(value: number) {
     this._dataRetentionInHours = value;
   }
   public resetDataRetentionInHours() {
@@ -197,15 +228,15 @@ export class KinesisVideoStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dataRetentionInHoursInput() {
-    return this._dataRetentionInHours
+    return this._dataRetentionInHours;
   }
 
   // device_name - computed: false, optional: true, required: false
-  private _deviceName?: string | undefined; 
+  private _deviceName?: string; 
   public get deviceName() {
     return this.getStringAttribute('device_name');
   }
-  public set deviceName(value: string | undefined) {
+  public set deviceName(value: string) {
     this._deviceName = value;
   }
   public resetDeviceName() {
@@ -213,7 +244,7 @@ export class KinesisVideoStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deviceNameInput() {
-    return this._deviceName
+    return this._deviceName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -222,11 +253,11 @@ export class KinesisVideoStream extends cdktf.TerraformResource {
   }
 
   // kms_key_id - computed: true, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -234,15 +265,15 @@ export class KinesisVideoStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // media_type - computed: false, optional: true, required: false
-  private _mediaType?: string | undefined; 
+  private _mediaType?: string; 
   public get mediaType() {
     return this.getStringAttribute('media_type');
   }
-  public set mediaType(value: string | undefined) {
+  public set mediaType(value: string) {
     this._mediaType = value;
   }
   public resetMediaType() {
@@ -250,7 +281,7 @@ export class KinesisVideoStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get mediaTypeInput() {
-    return this._mediaType
+    return this._mediaType;
   }
 
   // name - computed: false, optional: false, required: true
@@ -263,16 +294,16 @@ export class KinesisVideoStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -280,16 +311,16 @@ export class KinesisVideoStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -297,7 +328,7 @@ export class KinesisVideoStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // version - computed: true, optional: false, required: false
@@ -306,20 +337,19 @@ export class KinesisVideoStream extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: KinesisVideoStreamTimeouts | undefined; 
-  private __timeoutsOutput = new KinesisVideoStreamTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new KinesisVideoStreamTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: KinesisVideoStreamTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: KinesisVideoStreamTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -335,7 +365,7 @@ export class KinesisVideoStream extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      timeouts: kinesisVideoStreamTimeoutsToTerraform(this._timeouts),
+      timeouts: kinesisVideoStreamTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

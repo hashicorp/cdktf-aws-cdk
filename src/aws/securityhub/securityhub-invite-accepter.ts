@@ -72,7 +72,7 @@ export class SecurityhubInviteAccepter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get masterIdInput() {
-    return this._masterId
+    return this._masterId;
   }
 
   // =========

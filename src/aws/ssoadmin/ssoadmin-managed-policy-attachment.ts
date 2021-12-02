@@ -77,7 +77,7 @@ export class SsoadminManagedPolicyAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceArnInput() {
-    return this._instanceArn
+    return this._instanceArn;
   }
 
   // managed_policy_arn - computed: false, optional: false, required: true
@@ -90,7 +90,7 @@ export class SsoadminManagedPolicyAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get managedPolicyArnInput() {
-    return this._managedPolicyArn
+    return this._managedPolicyArn;
   }
 
   // managed_policy_name - computed: true, optional: false, required: false
@@ -108,7 +108,7 @@ export class SsoadminManagedPolicyAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get permissionSetArnInput() {
-    return this._permissionSetArn
+    return this._permissionSetArn;
   }
 
   // =========

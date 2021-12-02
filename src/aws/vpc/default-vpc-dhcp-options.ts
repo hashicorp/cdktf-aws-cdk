@@ -93,11 +93,11 @@ export class DefaultVpcDhcpOptions extends cdktf.TerraformResource {
   }
 
   // netbios_name_servers - computed: false, optional: true, required: false
-  private _netbiosNameServers?: string[] | undefined; 
+  private _netbiosNameServers?: string[]; 
   public get netbiosNameServers() {
     return this.getListAttribute('netbios_name_servers');
   }
-  public set netbiosNameServers(value: string[] | undefined) {
+  public set netbiosNameServers(value: string[]) {
     this._netbiosNameServers = value;
   }
   public resetNetbiosNameServers() {
@@ -105,15 +105,15 @@ export class DefaultVpcDhcpOptions extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get netbiosNameServersInput() {
-    return this._netbiosNameServers
+    return this._netbiosNameServers;
   }
 
   // netbios_node_type - computed: false, optional: true, required: false
-  private _netbiosNodeType?: string | undefined; 
+  private _netbiosNodeType?: string; 
   public get netbiosNodeType() {
     return this.getStringAttribute('netbios_node_type');
   }
-  public set netbiosNodeType(value: string | undefined) {
+  public set netbiosNodeType(value: string) {
     this._netbiosNodeType = value;
   }
   public resetNetbiosNodeType() {
@@ -121,7 +121,7 @@ export class DefaultVpcDhcpOptions extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get netbiosNodeTypeInput() {
-    return this._netbiosNodeType
+    return this._netbiosNodeType;
   }
 
   // ntp_servers - computed: true, optional: false, required: false
@@ -130,11 +130,11 @@ export class DefaultVpcDhcpOptions extends cdktf.TerraformResource {
   }
 
   // owner_id - computed: true, optional: true, required: false
-  private _ownerId?: string | undefined; 
+  private _ownerId?: string; 
   public get ownerId() {
     return this.getStringAttribute('owner_id');
   }
-  public set ownerId(value: string | undefined) {
+  public set ownerId(value: string) {
     this._ownerId = value;
   }
   public resetOwnerId() {
@@ -142,16 +142,16 @@ export class DefaultVpcDhcpOptions extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerIdInput() {
-    return this._ownerId
+    return this._ownerId;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -159,16 +159,16 @@ export class DefaultVpcDhcpOptions extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -176,7 +176,7 @@ export class DefaultVpcDhcpOptions extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

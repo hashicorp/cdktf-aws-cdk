@@ -116,11 +116,11 @@ export class CodebuildWebhook extends cdktf.TerraformResource {
   // ==========
 
   // branch_filter - computed: false, optional: true, required: false
-  private _branchFilter?: string | undefined; 
+  private _branchFilter?: string; 
   public get branchFilter() {
     return this.getStringAttribute('branch_filter');
   }
-  public set branchFilter(value: string | undefined) {
+  public set branchFilter(value: string) {
     this._branchFilter = value;
   }
   public resetBranchFilter() {
@@ -128,15 +128,15 @@ export class CodebuildWebhook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get branchFilterInput() {
-    return this._branchFilter
+    return this._branchFilter;
   }
 
   // build_type - computed: false, optional: true, required: false
-  private _buildType?: string | undefined; 
+  private _buildType?: string; 
   public get buildType() {
     return this.getStringAttribute('build_type');
   }
-  public set buildType(value: string | undefined) {
+  public set buildType(value: string) {
     this._buildType = value;
   }
   public resetBuildType() {
@@ -144,7 +144,7 @@ export class CodebuildWebhook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get buildTypeInput() {
-    return this._buildType
+    return this._buildType;
   }
 
   // id - computed: true, optional: true, required: false
@@ -167,7 +167,7 @@ export class CodebuildWebhook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get projectNameInput() {
-    return this._projectName
+    return this._projectName;
   }
 
   // secret - computed: true, optional: false, required: false
@@ -181,12 +181,12 @@ export class CodebuildWebhook extends cdktf.TerraformResource {
   }
 
   // filter_group - computed: false, optional: true, required: false
-  private _filterGroup?: CodebuildWebhookFilterGroup[] | undefined; 
+  private _filterGroup?: CodebuildWebhookFilterGroup[]; 
   public get filterGroup() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter_group') as any;
   }
-  public set filterGroup(value: CodebuildWebhookFilterGroup[] | undefined) {
+  public set filterGroup(value: CodebuildWebhookFilterGroup[]) {
     this._filterGroup = value;
   }
   public resetFilterGroup() {
@@ -194,7 +194,7 @@ export class CodebuildWebhook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterGroupInput() {
-    return this._filterGroup
+    return this._filterGroup;
   }
 
   // =========

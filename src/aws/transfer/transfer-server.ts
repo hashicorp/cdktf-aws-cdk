@@ -117,12 +117,55 @@ export class TransferServerEndpointDetailsOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): TransferServerEndpointDetails | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._addressAllocationIds) {
+      hasAnyValues = true;
+      internalValueResult.addressAllocationIds = this._addressAllocationIds;
+    }
+    if (this._securityGroupIds) {
+      hasAnyValues = true;
+      internalValueResult.securityGroupIds = this._securityGroupIds;
+    }
+    if (this._subnetIds) {
+      hasAnyValues = true;
+      internalValueResult.subnetIds = this._subnetIds;
+    }
+    if (this._vpcEndpointId) {
+      hasAnyValues = true;
+      internalValueResult.vpcEndpointId = this._vpcEndpointId;
+    }
+    if (this._vpcId) {
+      hasAnyValues = true;
+      internalValueResult.vpcId = this._vpcId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: TransferServerEndpointDetails | undefined) {
+    if (value === undefined) {
+      this._addressAllocationIds = undefined;
+      this._securityGroupIds = undefined;
+      this._subnetIds = undefined;
+      this._vpcEndpointId = undefined;
+      this._vpcId = undefined;
+    }
+    else {
+      this._addressAllocationIds = value.addressAllocationIds;
+      this._securityGroupIds = value.securityGroupIds;
+      this._subnetIds = value.subnetIds;
+      this._vpcEndpointId = value.vpcEndpointId;
+      this._vpcId = value.vpcId;
+    }
+  }
+
   // address_allocation_ids - computed: false, optional: true, required: false
-  private _addressAllocationIds?: string[] | undefined; 
+  private _addressAllocationIds?: string[]; 
   public get addressAllocationIds() {
     return this.getListAttribute('address_allocation_ids');
   }
-  public set addressAllocationIds(value: string[] | undefined) {
+  public set addressAllocationIds(value: string[]) {
     this._addressAllocationIds = value;
   }
   public resetAddressAllocationIds() {
@@ -130,15 +173,15 @@ export class TransferServerEndpointDetailsOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get addressAllocationIdsInput() {
-    return this._addressAllocationIds
+    return this._addressAllocationIds;
   }
 
   // security_group_ids - computed: true, optional: true, required: false
-  private _securityGroupIds?: string[] | undefined; 
+  private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
     return this.getListAttribute('security_group_ids');
   }
-  public set securityGroupIds(value: string[] | undefined) {
+  public set securityGroupIds(value: string[]) {
     this._securityGroupIds = value;
   }
   public resetSecurityGroupIds() {
@@ -146,15 +189,15 @@ export class TransferServerEndpointDetailsOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // subnet_ids - computed: false, optional: true, required: false
-  private _subnetIds?: string[] | undefined; 
+  private _subnetIds?: string[]; 
   public get subnetIds() {
     return this.getListAttribute('subnet_ids');
   }
-  public set subnetIds(value: string[] | undefined) {
+  public set subnetIds(value: string[]) {
     this._subnetIds = value;
   }
   public resetSubnetIds() {
@@ -162,15 +205,15 @@ export class TransferServerEndpointDetailsOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 
   // vpc_endpoint_id - computed: true, optional: true, required: false
-  private _vpcEndpointId?: string | undefined; 
+  private _vpcEndpointId?: string; 
   public get vpcEndpointId() {
     return this.getStringAttribute('vpc_endpoint_id');
   }
-  public set vpcEndpointId(value: string | undefined) {
+  public set vpcEndpointId(value: string) {
     this._vpcEndpointId = value;
   }
   public resetVpcEndpointId() {
@@ -178,15 +221,15 @@ export class TransferServerEndpointDetailsOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get vpcEndpointIdInput() {
-    return this._vpcEndpointId
+    return this._vpcEndpointId;
   }
 
   // vpc_id - computed: false, optional: true, required: false
-  private _vpcId?: string | undefined; 
+  private _vpcId?: string; 
   public get vpcId() {
     return this.getStringAttribute('vpc_id');
   }
-  public set vpcId(value: string | undefined) {
+  public set vpcId(value: string) {
     this._vpcId = value;
   }
   public resetVpcId() {
@@ -194,7 +237,7 @@ export class TransferServerEndpointDetailsOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 }
 
@@ -244,7 +287,7 @@ export class TransferServer extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._url = config.url;
-    this._endpointDetails = config.endpointDetails;
+    this._endpointDetails.internalValue = config.endpointDetails;
   }
 
   // ==========
@@ -257,11 +300,11 @@ export class TransferServer extends cdktf.TerraformResource {
   }
 
   // certificate - computed: false, optional: true, required: false
-  private _certificate?: string | undefined; 
+  private _certificate?: string; 
   public get certificate() {
     return this.getStringAttribute('certificate');
   }
-  public set certificate(value: string | undefined) {
+  public set certificate(value: string) {
     this._certificate = value;
   }
   public resetCertificate() {
@@ -269,15 +312,15 @@ export class TransferServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificateInput() {
-    return this._certificate
+    return this._certificate;
   }
 
   // directory_id - computed: false, optional: true, required: false
-  private _directoryId?: string | undefined; 
+  private _directoryId?: string; 
   public get directoryId() {
     return this.getStringAttribute('directory_id');
   }
-  public set directoryId(value: string | undefined) {
+  public set directoryId(value: string) {
     this._directoryId = value;
   }
   public resetDirectoryId() {
@@ -285,15 +328,15 @@ export class TransferServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get directoryIdInput() {
-    return this._directoryId
+    return this._directoryId;
   }
 
   // domain - computed: false, optional: true, required: false
-  private _domain?: string | undefined; 
+  private _domain?: string; 
   public get domain() {
     return this.getStringAttribute('domain');
   }
-  public set domain(value: string | undefined) {
+  public set domain(value: string) {
     this._domain = value;
   }
   public resetDomain() {
@@ -301,7 +344,7 @@ export class TransferServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainInput() {
-    return this._domain
+    return this._domain;
   }
 
   // endpoint - computed: true, optional: false, required: false
@@ -310,11 +353,11 @@ export class TransferServer extends cdktf.TerraformResource {
   }
 
   // endpoint_type - computed: false, optional: true, required: false
-  private _endpointType?: string | undefined; 
+  private _endpointType?: string; 
   public get endpointType() {
     return this.getStringAttribute('endpoint_type');
   }
-  public set endpointType(value: string | undefined) {
+  public set endpointType(value: string) {
     this._endpointType = value;
   }
   public resetEndpointType() {
@@ -322,15 +365,15 @@ export class TransferServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endpointTypeInput() {
-    return this._endpointType
+    return this._endpointType;
   }
 
   // force_destroy - computed: false, optional: true, required: false
-  private _forceDestroy?: boolean | cdktf.IResolvable | undefined; 
+  private _forceDestroy?: boolean | cdktf.IResolvable; 
   public get forceDestroy() {
     return this.getBooleanAttribute('force_destroy') as any;
   }
-  public set forceDestroy(value: boolean | cdktf.IResolvable | undefined) {
+  public set forceDestroy(value: boolean | cdktf.IResolvable) {
     this._forceDestroy = value;
   }
   public resetForceDestroy() {
@@ -338,15 +381,15 @@ export class TransferServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get forceDestroyInput() {
-    return this._forceDestroy
+    return this._forceDestroy;
   }
 
   // host_key - computed: false, optional: true, required: false
-  private _hostKey?: string | undefined; 
+  private _hostKey?: string; 
   public get hostKey() {
     return this.getStringAttribute('host_key');
   }
-  public set hostKey(value: string | undefined) {
+  public set hostKey(value: string) {
     this._hostKey = value;
   }
   public resetHostKey() {
@@ -354,7 +397,7 @@ export class TransferServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get hostKeyInput() {
-    return this._hostKey
+    return this._hostKey;
   }
 
   // host_key_fingerprint - computed: true, optional: false, required: false
@@ -368,11 +411,11 @@ export class TransferServer extends cdktf.TerraformResource {
   }
 
   // identity_provider_type - computed: false, optional: true, required: false
-  private _identityProviderType?: string | undefined; 
+  private _identityProviderType?: string; 
   public get identityProviderType() {
     return this.getStringAttribute('identity_provider_type');
   }
-  public set identityProviderType(value: string | undefined) {
+  public set identityProviderType(value: string) {
     this._identityProviderType = value;
   }
   public resetIdentityProviderType() {
@@ -380,15 +423,15 @@ export class TransferServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get identityProviderTypeInput() {
-    return this._identityProviderType
+    return this._identityProviderType;
   }
 
   // invocation_role - computed: false, optional: true, required: false
-  private _invocationRole?: string | undefined; 
+  private _invocationRole?: string; 
   public get invocationRole() {
     return this.getStringAttribute('invocation_role');
   }
-  public set invocationRole(value: string | undefined) {
+  public set invocationRole(value: string) {
     this._invocationRole = value;
   }
   public resetInvocationRole() {
@@ -396,15 +439,15 @@ export class TransferServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get invocationRoleInput() {
-    return this._invocationRole
+    return this._invocationRole;
   }
 
   // logging_role - computed: false, optional: true, required: false
-  private _loggingRole?: string | undefined; 
+  private _loggingRole?: string; 
   public get loggingRole() {
     return this.getStringAttribute('logging_role');
   }
-  public set loggingRole(value: string | undefined) {
+  public set loggingRole(value: string) {
     this._loggingRole = value;
   }
   public resetLoggingRole() {
@@ -412,15 +455,15 @@ export class TransferServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get loggingRoleInput() {
-    return this._loggingRole
+    return this._loggingRole;
   }
 
   // protocols - computed: true, optional: true, required: false
-  private _protocols?: string[] | undefined; 
+  private _protocols?: string[]; 
   public get protocols() {
     return this.getListAttribute('protocols');
   }
-  public set protocols(value: string[] | undefined) {
+  public set protocols(value: string[]) {
     this._protocols = value;
   }
   public resetProtocols() {
@@ -428,15 +471,15 @@ export class TransferServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get protocolsInput() {
-    return this._protocols
+    return this._protocols;
   }
 
   // security_policy_name - computed: false, optional: true, required: false
-  private _securityPolicyName?: string | undefined; 
+  private _securityPolicyName?: string; 
   public get securityPolicyName() {
     return this.getStringAttribute('security_policy_name');
   }
-  public set securityPolicyName(value: string | undefined) {
+  public set securityPolicyName(value: string) {
     this._securityPolicyName = value;
   }
   public resetSecurityPolicyName() {
@@ -444,16 +487,16 @@ export class TransferServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityPolicyNameInput() {
-    return this._securityPolicyName
+    return this._securityPolicyName;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -461,16 +504,16 @@ export class TransferServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -478,15 +521,15 @@ export class TransferServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // url - computed: false, optional: true, required: false
-  private _url?: string | undefined; 
+  private _url?: string; 
   public get url() {
     return this.getStringAttribute('url');
   }
-  public set url(value: string | undefined) {
+  public set url(value: string) {
     this._url = value;
   }
   public resetUrl() {
@@ -494,24 +537,23 @@ export class TransferServer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get urlInput() {
-    return this._url
+    return this._url;
   }
 
   // endpoint_details - computed: false, optional: true, required: false
-  private _endpointDetails?: TransferServerEndpointDetails | undefined; 
-  private __endpointDetailsOutput = new TransferServerEndpointDetailsOutputReference(this as any, "endpoint_details", true);
+  private _endpointDetails = new TransferServerEndpointDetailsOutputReference(this as any, "endpoint_details", true);
   public get endpointDetails() {
-    return this.__endpointDetailsOutput;
+    return this._endpointDetails;
   }
-  public putEndpointDetails(value: TransferServerEndpointDetails | undefined) {
-    this._endpointDetails = value;
+  public putEndpointDetails(value: TransferServerEndpointDetails) {
+    this._endpointDetails.internalValue = value;
   }
   public resetEndpointDetails() {
-    this._endpointDetails = undefined;
+    this._endpointDetails.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get endpointDetailsInput() {
-    return this._endpointDetails
+    return this._endpointDetails.internalValue;
   }
 
   // =========
@@ -534,7 +576,7 @@ export class TransferServer extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       url: cdktf.stringToTerraform(this._url),
-      endpoint_details: transferServerEndpointDetailsToTerraform(this._endpointDetails),
+      endpoint_details: transferServerEndpointDetailsToTerraform(this._endpointDetails.internalValue),
     };
   }
 }

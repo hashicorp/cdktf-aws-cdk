@@ -112,11 +112,11 @@ export class Route53Zone extends cdktf.TerraformResource {
   }
 
   // comment - computed: false, optional: true, required: false
-  private _comment?: string | undefined; 
+  private _comment?: string; 
   public get comment() {
     return this.getStringAttribute('comment');
   }
-  public set comment(value: string | undefined) {
+  public set comment(value: string) {
     this._comment = value;
   }
   public resetComment() {
@@ -124,15 +124,15 @@ export class Route53Zone extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get commentInput() {
-    return this._comment
+    return this._comment;
   }
 
   // delegation_set_id - computed: false, optional: true, required: false
-  private _delegationSetId?: string | undefined; 
+  private _delegationSetId?: string; 
   public get delegationSetId() {
     return this.getStringAttribute('delegation_set_id');
   }
-  public set delegationSetId(value: string | undefined) {
+  public set delegationSetId(value: string) {
     this._delegationSetId = value;
   }
   public resetDelegationSetId() {
@@ -140,15 +140,15 @@ export class Route53Zone extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get delegationSetIdInput() {
-    return this._delegationSetId
+    return this._delegationSetId;
   }
 
   // force_destroy - computed: false, optional: true, required: false
-  private _forceDestroy?: boolean | cdktf.IResolvable | undefined; 
+  private _forceDestroy?: boolean | cdktf.IResolvable; 
   public get forceDestroy() {
     return this.getBooleanAttribute('force_destroy') as any;
   }
-  public set forceDestroy(value: boolean | cdktf.IResolvable | undefined) {
+  public set forceDestroy(value: boolean | cdktf.IResolvable) {
     this._forceDestroy = value;
   }
   public resetForceDestroy() {
@@ -156,7 +156,7 @@ export class Route53Zone extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get forceDestroyInput() {
-    return this._forceDestroy
+    return this._forceDestroy;
   }
 
   // id - computed: true, optional: true, required: false
@@ -174,7 +174,7 @@ export class Route53Zone extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_servers - computed: true, optional: false, required: false
@@ -183,12 +183,12 @@ export class Route53Zone extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -196,16 +196,16 @@ export class Route53Zone extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -213,7 +213,7 @@ export class Route53Zone extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // zone_id - computed: true, optional: false, required: false
@@ -222,12 +222,12 @@ export class Route53Zone extends cdktf.TerraformResource {
   }
 
   // vpc - computed: false, optional: true, required: false
-  private _vpc?: Route53ZoneVpc[] | undefined; 
+  private _vpc?: Route53ZoneVpc[]; 
   public get vpc() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('vpc') as any;
   }
-  public set vpc(value: Route53ZoneVpc[] | undefined) {
+  public set vpc(value: Route53ZoneVpc[]) {
     this._vpc = value;
   }
   public resetVpc() {
@@ -235,7 +235,7 @@ export class Route53Zone extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcInput() {
-    return this._vpc
+    return this._vpc;
   }
 
   // =========

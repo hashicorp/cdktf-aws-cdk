@@ -88,11 +88,11 @@ export class Offset extends cdktf.TerraformResource {
   // ==========
 
   // base_rfc3339 - computed: true, optional: true, required: false
-  private _baseRfc3339?: string | undefined; 
+  private _baseRfc3339?: string; 
   public get baseRfc3339() {
     return this.getStringAttribute('base_rfc3339');
   }
-  public set baseRfc3339(value: string | undefined) {
+  public set baseRfc3339(value: string) {
     this._baseRfc3339 = value;
   }
   public resetBaseRfc3339() {
@@ -100,7 +100,7 @@ export class Offset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get baseRfc3339Input() {
-    return this._baseRfc3339
+    return this._baseRfc3339;
   }
 
   // day - computed: true, optional: false, required: false
@@ -129,11 +129,11 @@ export class Offset extends cdktf.TerraformResource {
   }
 
   // offset_days - computed: false, optional: true, required: false
-  private _offsetDays?: number | undefined; 
+  private _offsetDays?: number; 
   public get offsetDays() {
     return this.getNumberAttribute('offset_days');
   }
-  public set offsetDays(value: number | undefined) {
+  public set offsetDays(value: number) {
     this._offsetDays = value;
   }
   public resetOffsetDays() {
@@ -141,15 +141,15 @@ export class Offset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get offsetDaysInput() {
-    return this._offsetDays
+    return this._offsetDays;
   }
 
   // offset_hours - computed: false, optional: true, required: false
-  private _offsetHours?: number | undefined; 
+  private _offsetHours?: number; 
   public get offsetHours() {
     return this.getNumberAttribute('offset_hours');
   }
-  public set offsetHours(value: number | undefined) {
+  public set offsetHours(value: number) {
     this._offsetHours = value;
   }
   public resetOffsetHours() {
@@ -157,15 +157,15 @@ export class Offset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get offsetHoursInput() {
-    return this._offsetHours
+    return this._offsetHours;
   }
 
   // offset_minutes - computed: false, optional: true, required: false
-  private _offsetMinutes?: number | undefined; 
+  private _offsetMinutes?: number; 
   public get offsetMinutes() {
     return this.getNumberAttribute('offset_minutes');
   }
-  public set offsetMinutes(value: number | undefined) {
+  public set offsetMinutes(value: number) {
     this._offsetMinutes = value;
   }
   public resetOffsetMinutes() {
@@ -173,15 +173,15 @@ export class Offset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get offsetMinutesInput() {
-    return this._offsetMinutes
+    return this._offsetMinutes;
   }
 
   // offset_months - computed: false, optional: true, required: false
-  private _offsetMonths?: number | undefined; 
+  private _offsetMonths?: number; 
   public get offsetMonths() {
     return this.getNumberAttribute('offset_months');
   }
-  public set offsetMonths(value: number | undefined) {
+  public set offsetMonths(value: number) {
     this._offsetMonths = value;
   }
   public resetOffsetMonths() {
@@ -189,15 +189,15 @@ export class Offset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get offsetMonthsInput() {
-    return this._offsetMonths
+    return this._offsetMonths;
   }
 
   // offset_seconds - computed: false, optional: true, required: false
-  private _offsetSeconds?: number | undefined; 
+  private _offsetSeconds?: number; 
   public get offsetSeconds() {
     return this.getNumberAttribute('offset_seconds');
   }
-  public set offsetSeconds(value: number | undefined) {
+  public set offsetSeconds(value: number) {
     this._offsetSeconds = value;
   }
   public resetOffsetSeconds() {
@@ -205,15 +205,15 @@ export class Offset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get offsetSecondsInput() {
-    return this._offsetSeconds
+    return this._offsetSeconds;
   }
 
   // offset_years - computed: false, optional: true, required: false
-  private _offsetYears?: number | undefined; 
+  private _offsetYears?: number; 
   public get offsetYears() {
     return this.getNumberAttribute('offset_years');
   }
-  public set offsetYears(value: number | undefined) {
+  public set offsetYears(value: number) {
     this._offsetYears = value;
   }
   public resetOffsetYears() {
@@ -221,7 +221,7 @@ export class Offset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get offsetYearsInput() {
-    return this._offsetYears
+    return this._offsetYears;
   }
 
   // rfc3339 - computed: true, optional: false, required: false
@@ -235,12 +235,12 @@ export class Offset extends cdktf.TerraformResource {
   }
 
   // triggers - computed: false, optional: true, required: false
-  private _triggers?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _triggers?: { [key: string]: string } | cdktf.IResolvable; 
   public get triggers() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('triggers') as any;
   }
-  public set triggers(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set triggers(value: { [key: string]: string } | cdktf.IResolvable) {
     this._triggers = value;
   }
   public resetTriggers() {
@@ -248,7 +248,7 @@ export class Offset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get triggersInput() {
-    return this._triggers
+    return this._triggers;
   }
 
   // unix - computed: true, optional: false, required: false

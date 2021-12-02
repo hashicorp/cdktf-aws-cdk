@@ -105,12 +105,31 @@ export class ApiGatewayIntegrationTlsConfigOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApiGatewayIntegrationTlsConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._insecureSkipVerification) {
+      hasAnyValues = true;
+      internalValueResult.insecureSkipVerification = this._insecureSkipVerification;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApiGatewayIntegrationTlsConfig | undefined) {
+    if (value === undefined) {
+      this._insecureSkipVerification = undefined;
+    }
+    else {
+      this._insecureSkipVerification = value.insecureSkipVerification;
+    }
+  }
+
   // insecure_skip_verification - computed: false, optional: true, required: false
-  private _insecureSkipVerification?: boolean | cdktf.IResolvable | undefined; 
+  private _insecureSkipVerification?: boolean | cdktf.IResolvable; 
   public get insecureSkipVerification() {
     return this.getBooleanAttribute('insecure_skip_verification') as any;
   }
-  public set insecureSkipVerification(value: boolean | cdktf.IResolvable | undefined) {
+  public set insecureSkipVerification(value: boolean | cdktf.IResolvable) {
     this._insecureSkipVerification = value;
   }
   public resetInsecureSkipVerification() {
@@ -118,7 +137,7 @@ export class ApiGatewayIntegrationTlsConfigOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get insecureSkipVerificationInput() {
-    return this._insecureSkipVerification
+    return this._insecureSkipVerification;
   }
 }
 
@@ -170,7 +189,7 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
     this._timeoutMilliseconds = config.timeoutMilliseconds;
     this._type = config.type;
     this._uri = config.uri;
-    this._tlsConfig = config.tlsConfig;
+    this._tlsConfig.internalValue = config.tlsConfig;
   }
 
   // ==========
@@ -178,11 +197,11 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   // ==========
 
   // cache_key_parameters - computed: false, optional: true, required: false
-  private _cacheKeyParameters?: string[] | undefined; 
+  private _cacheKeyParameters?: string[]; 
   public get cacheKeyParameters() {
     return this.getListAttribute('cache_key_parameters');
   }
-  public set cacheKeyParameters(value: string[] | undefined) {
+  public set cacheKeyParameters(value: string[]) {
     this._cacheKeyParameters = value;
   }
   public resetCacheKeyParameters() {
@@ -190,15 +209,15 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cacheKeyParametersInput() {
-    return this._cacheKeyParameters
+    return this._cacheKeyParameters;
   }
 
   // cache_namespace - computed: true, optional: true, required: false
-  private _cacheNamespace?: string | undefined; 
+  private _cacheNamespace?: string; 
   public get cacheNamespace() {
     return this.getStringAttribute('cache_namespace');
   }
-  public set cacheNamespace(value: string | undefined) {
+  public set cacheNamespace(value: string) {
     this._cacheNamespace = value;
   }
   public resetCacheNamespace() {
@@ -206,15 +225,15 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cacheNamespaceInput() {
-    return this._cacheNamespace
+    return this._cacheNamespace;
   }
 
   // connection_id - computed: false, optional: true, required: false
-  private _connectionId?: string | undefined; 
+  private _connectionId?: string; 
   public get connectionId() {
     return this.getStringAttribute('connection_id');
   }
-  public set connectionId(value: string | undefined) {
+  public set connectionId(value: string) {
     this._connectionId = value;
   }
   public resetConnectionId() {
@@ -222,15 +241,15 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get connectionIdInput() {
-    return this._connectionId
+    return this._connectionId;
   }
 
   // connection_type - computed: false, optional: true, required: false
-  private _connectionType?: string | undefined; 
+  private _connectionType?: string; 
   public get connectionType() {
     return this.getStringAttribute('connection_type');
   }
-  public set connectionType(value: string | undefined) {
+  public set connectionType(value: string) {
     this._connectionType = value;
   }
   public resetConnectionType() {
@@ -238,15 +257,15 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get connectionTypeInput() {
-    return this._connectionType
+    return this._connectionType;
   }
 
   // content_handling - computed: false, optional: true, required: false
-  private _contentHandling?: string | undefined; 
+  private _contentHandling?: string; 
   public get contentHandling() {
     return this.getStringAttribute('content_handling');
   }
-  public set contentHandling(value: string | undefined) {
+  public set contentHandling(value: string) {
     this._contentHandling = value;
   }
   public resetContentHandling() {
@@ -254,15 +273,15 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get contentHandlingInput() {
-    return this._contentHandling
+    return this._contentHandling;
   }
 
   // credentials - computed: false, optional: true, required: false
-  private _credentials?: string | undefined; 
+  private _credentials?: string; 
   public get credentials() {
     return this.getStringAttribute('credentials');
   }
-  public set credentials(value: string | undefined) {
+  public set credentials(value: string) {
     this._credentials = value;
   }
   public resetCredentials() {
@@ -270,7 +289,7 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get credentialsInput() {
-    return this._credentials
+    return this._credentials;
   }
 
   // http_method - computed: false, optional: false, required: true
@@ -283,7 +302,7 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get httpMethodInput() {
-    return this._httpMethod
+    return this._httpMethod;
   }
 
   // id - computed: true, optional: true, required: false
@@ -292,11 +311,11 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
 
   // integration_http_method - computed: false, optional: true, required: false
-  private _integrationHttpMethod?: string | undefined; 
+  private _integrationHttpMethod?: string; 
   public get integrationHttpMethod() {
     return this.getStringAttribute('integration_http_method');
   }
-  public set integrationHttpMethod(value: string | undefined) {
+  public set integrationHttpMethod(value: string) {
     this._integrationHttpMethod = value;
   }
   public resetIntegrationHttpMethod() {
@@ -304,15 +323,15 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get integrationHttpMethodInput() {
-    return this._integrationHttpMethod
+    return this._integrationHttpMethod;
   }
 
   // passthrough_behavior - computed: true, optional: true, required: false
-  private _passthroughBehavior?: string | undefined; 
+  private _passthroughBehavior?: string; 
   public get passthroughBehavior() {
     return this.getStringAttribute('passthrough_behavior');
   }
-  public set passthroughBehavior(value: string | undefined) {
+  public set passthroughBehavior(value: string) {
     this._passthroughBehavior = value;
   }
   public resetPassthroughBehavior() {
@@ -320,16 +339,16 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get passthroughBehaviorInput() {
-    return this._passthroughBehavior
+    return this._passthroughBehavior;
   }
 
   // request_parameters - computed: false, optional: true, required: false
-  private _requestParameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _requestParameters?: { [key: string]: string } | cdktf.IResolvable; 
   public get requestParameters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('request_parameters') as any;
   }
-  public set requestParameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set requestParameters(value: { [key: string]: string } | cdktf.IResolvable) {
     this._requestParameters = value;
   }
   public resetRequestParameters() {
@@ -337,16 +356,16 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requestParametersInput() {
-    return this._requestParameters
+    return this._requestParameters;
   }
 
   // request_templates - computed: false, optional: true, required: false
-  private _requestTemplates?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _requestTemplates?: { [key: string]: string } | cdktf.IResolvable; 
   public get requestTemplates() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('request_templates') as any;
   }
-  public set requestTemplates(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set requestTemplates(value: { [key: string]: string } | cdktf.IResolvable) {
     this._requestTemplates = value;
   }
   public resetRequestTemplates() {
@@ -354,7 +373,7 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requestTemplatesInput() {
-    return this._requestTemplates
+    return this._requestTemplates;
   }
 
   // resource_id - computed: false, optional: false, required: true
@@ -367,7 +386,7 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceIdInput() {
-    return this._resourceId
+    return this._resourceId;
   }
 
   // rest_api_id - computed: false, optional: false, required: true
@@ -380,15 +399,15 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get restApiIdInput() {
-    return this._restApiId
+    return this._restApiId;
   }
 
   // timeout_milliseconds - computed: false, optional: true, required: false
-  private _timeoutMilliseconds?: number | undefined; 
+  private _timeoutMilliseconds?: number; 
   public get timeoutMilliseconds() {
     return this.getNumberAttribute('timeout_milliseconds');
   }
-  public set timeoutMilliseconds(value: number | undefined) {
+  public set timeoutMilliseconds(value: number) {
     this._timeoutMilliseconds = value;
   }
   public resetTimeoutMilliseconds() {
@@ -396,7 +415,7 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutMillisecondsInput() {
-    return this._timeoutMilliseconds
+    return this._timeoutMilliseconds;
   }
 
   // type - computed: false, optional: false, required: true
@@ -409,15 +428,15 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // uri - computed: false, optional: true, required: false
-  private _uri?: string | undefined; 
+  private _uri?: string; 
   public get uri() {
     return this.getStringAttribute('uri');
   }
-  public set uri(value: string | undefined) {
+  public set uri(value: string) {
     this._uri = value;
   }
   public resetUri() {
@@ -425,24 +444,23 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get uriInput() {
-    return this._uri
+    return this._uri;
   }
 
   // tls_config - computed: false, optional: true, required: false
-  private _tlsConfig?: ApiGatewayIntegrationTlsConfig | undefined; 
-  private __tlsConfigOutput = new ApiGatewayIntegrationTlsConfigOutputReference(this as any, "tls_config", true);
+  private _tlsConfig = new ApiGatewayIntegrationTlsConfigOutputReference(this as any, "tls_config", true);
   public get tlsConfig() {
-    return this.__tlsConfigOutput;
+    return this._tlsConfig;
   }
-  public putTlsConfig(value: ApiGatewayIntegrationTlsConfig | undefined) {
-    this._tlsConfig = value;
+  public putTlsConfig(value: ApiGatewayIntegrationTlsConfig) {
+    this._tlsConfig.internalValue = value;
   }
   public resetTlsConfig() {
-    this._tlsConfig = undefined;
+    this._tlsConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get tlsConfigInput() {
-    return this._tlsConfig
+    return this._tlsConfig.internalValue;
   }
 
   // =========
@@ -467,7 +485,7 @@ export class ApiGatewayIntegration extends cdktf.TerraformResource {
       timeout_milliseconds: cdktf.numberToTerraform(this._timeoutMilliseconds),
       type: cdktf.stringToTerraform(this._type),
       uri: cdktf.stringToTerraform(this._uri),
-      tls_config: apiGatewayIntegrationTlsConfigToTerraform(this._tlsConfig),
+      tls_config: apiGatewayIntegrationTlsConfigToTerraform(this._tlsConfig.internalValue),
     };
   }
 }

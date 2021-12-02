@@ -63,11 +63,11 @@ export class ChimeVoiceConnector extends cdktf.TerraformResource {
   // ==========
 
   // aws_region - computed: false, optional: true, required: false
-  private _awsRegion?: string | undefined; 
+  private _awsRegion?: string; 
   public get awsRegion() {
     return this.getStringAttribute('aws_region');
   }
-  public set awsRegion(value: string | undefined) {
+  public set awsRegion(value: string) {
     this._awsRegion = value;
   }
   public resetAwsRegion() {
@@ -75,7 +75,7 @@ export class ChimeVoiceConnector extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get awsRegionInput() {
-    return this._awsRegion
+    return this._awsRegion;
   }
 
   // id - computed: true, optional: true, required: false
@@ -93,7 +93,7 @@ export class ChimeVoiceConnector extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // outbound_host_name - computed: true, optional: false, required: false
@@ -111,7 +111,7 @@ export class ChimeVoiceConnector extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requireEncryptionInput() {
-    return this._requireEncryption
+    return this._requireEncryption;
   }
 
   // =========

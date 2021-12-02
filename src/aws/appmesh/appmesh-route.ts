@@ -89,6 +89,25 @@ export class AppmeshRouteSpecGrpcRouteActionOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecGrpcRouteAction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._weightedTarget) {
+      hasAnyValues = true;
+      internalValueResult.weightedTarget = this._weightedTarget;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecGrpcRouteAction | undefined) {
+    if (value === undefined) {
+      this._weightedTarget = undefined;
+    }
+    else {
+      this._weightedTarget = value.weightedTarget;
+    }
+  }
+
   // weighted_target - computed: false, optional: false, required: true
   private _weightedTarget?: AppmeshRouteSpecGrpcRouteActionWeightedTarget[]; 
   public get weightedTarget() {
@@ -100,7 +119,7 @@ export class AppmeshRouteSpecGrpcRouteActionOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get weightedTargetInput() {
-    return this._weightedTarget
+    return this._weightedTarget;
   }
 }
 export interface AppmeshRouteSpecGrpcRouteMatchMetadataMatchRange {
@@ -135,6 +154,31 @@ export class AppmeshRouteSpecGrpcRouteMatchMetadataMatchRangeOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecGrpcRouteMatchMetadataMatchRange | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._end) {
+      hasAnyValues = true;
+      internalValueResult.end = this._end;
+    }
+    if (this._start) {
+      hasAnyValues = true;
+      internalValueResult.start = this._start;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecGrpcRouteMatchMetadataMatchRange | undefined) {
+    if (value === undefined) {
+      this._end = undefined;
+      this._start = undefined;
+    }
+    else {
+      this._end = value.end;
+      this._start = value.start;
+    }
+  }
+
   // end - computed: false, optional: false, required: true
   private _end?: number; 
   public get end() {
@@ -145,7 +189,7 @@ export class AppmeshRouteSpecGrpcRouteMatchMetadataMatchRangeOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get endInput() {
-    return this._end
+    return this._end;
   }
 
   // start - computed: false, optional: false, required: true
@@ -158,7 +202,7 @@ export class AppmeshRouteSpecGrpcRouteMatchMetadataMatchRangeOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get startInput() {
-    return this._start
+    return this._start;
   }
 }
 export interface AppmeshRouteSpecGrpcRouteMatchMetadataMatch {
@@ -210,12 +254,55 @@ export class AppmeshRouteSpecGrpcRouteMatchMetadataMatchOutputReference extends 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecGrpcRouteMatchMetadataMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._exact) {
+      hasAnyValues = true;
+      internalValueResult.exact = this._exact;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._regex) {
+      hasAnyValues = true;
+      internalValueResult.regex = this._regex;
+    }
+    if (this._suffix) {
+      hasAnyValues = true;
+      internalValueResult.suffix = this._suffix;
+    }
+    if (this._range) {
+      hasAnyValues = true;
+      internalValueResult.range = this._range?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecGrpcRouteMatchMetadataMatch | undefined) {
+    if (value === undefined) {
+      this._exact = undefined;
+      this._prefix = undefined;
+      this._regex = undefined;
+      this._suffix = undefined;
+      this._range.internalValue = undefined;
+    }
+    else {
+      this._exact = value.exact;
+      this._prefix = value.prefix;
+      this._regex = value.regex;
+      this._suffix = value.suffix;
+      this._range.internalValue = value.range;
+    }
+  }
+
   // exact - computed: false, optional: true, required: false
-  private _exact?: string | undefined; 
+  private _exact?: string; 
   public get exact() {
     return this.getStringAttribute('exact');
   }
-  public set exact(value: string | undefined) {
+  public set exact(value: string) {
     this._exact = value;
   }
   public resetExact() {
@@ -223,15 +310,15 @@ export class AppmeshRouteSpecGrpcRouteMatchMetadataMatchOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get exactInput() {
-    return this._exact
+    return this._exact;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -239,15 +326,15 @@ export class AppmeshRouteSpecGrpcRouteMatchMetadataMatchOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // regex - computed: false, optional: true, required: false
-  private _regex?: string | undefined; 
+  private _regex?: string; 
   public get regex() {
     return this.getStringAttribute('regex');
   }
-  public set regex(value: string | undefined) {
+  public set regex(value: string) {
     this._regex = value;
   }
   public resetRegex() {
@@ -255,15 +342,15 @@ export class AppmeshRouteSpecGrpcRouteMatchMetadataMatchOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get regexInput() {
-    return this._regex
+    return this._regex;
   }
 
   // suffix - computed: false, optional: true, required: false
-  private _suffix?: string | undefined; 
+  private _suffix?: string; 
   public get suffix() {
     return this.getStringAttribute('suffix');
   }
-  public set suffix(value: string | undefined) {
+  public set suffix(value: string) {
     this._suffix = value;
   }
   public resetSuffix() {
@@ -271,24 +358,23 @@ export class AppmeshRouteSpecGrpcRouteMatchMetadataMatchOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get suffixInput() {
-    return this._suffix
+    return this._suffix;
   }
 
   // range - computed: false, optional: true, required: false
-  private _range?: AppmeshRouteSpecGrpcRouteMatchMetadataMatchRange | undefined; 
-  private __rangeOutput = new AppmeshRouteSpecGrpcRouteMatchMetadataMatchRangeOutputReference(this as any, "range", true);
+  private _range = new AppmeshRouteSpecGrpcRouteMatchMetadataMatchRangeOutputReference(this as any, "range", true);
   public get range() {
-    return this.__rangeOutput;
+    return this._range;
   }
-  public putRange(value: AppmeshRouteSpecGrpcRouteMatchMetadataMatchRange | undefined) {
-    this._range = value;
+  public putRange(value: AppmeshRouteSpecGrpcRouteMatchMetadataMatchRange) {
+    this._range.internalValue = value;
   }
   public resetRange() {
-    this._range = undefined;
+    this._range.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get rangeInput() {
-    return this._range
+    return this._range.internalValue;
   }
 }
 export interface AppmeshRouteSpecGrpcRouteMatchMetadata {
@@ -364,12 +450,49 @@ export class AppmeshRouteSpecGrpcRouteMatchOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecGrpcRouteMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._methodName) {
+      hasAnyValues = true;
+      internalValueResult.methodName = this._methodName;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._serviceName) {
+      hasAnyValues = true;
+      internalValueResult.serviceName = this._serviceName;
+    }
+    if (this._metadata) {
+      hasAnyValues = true;
+      internalValueResult.metadata = this._metadata;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecGrpcRouteMatch | undefined) {
+    if (value === undefined) {
+      this._methodName = undefined;
+      this._prefix = undefined;
+      this._serviceName = undefined;
+      this._metadata = undefined;
+    }
+    else {
+      this._methodName = value.methodName;
+      this._prefix = value.prefix;
+      this._serviceName = value.serviceName;
+      this._metadata = value.metadata;
+    }
+  }
+
   // method_name - computed: false, optional: true, required: false
-  private _methodName?: string | undefined; 
+  private _methodName?: string; 
   public get methodName() {
     return this.getStringAttribute('method_name');
   }
-  public set methodName(value: string | undefined) {
+  public set methodName(value: string) {
     this._methodName = value;
   }
   public resetMethodName() {
@@ -377,15 +500,15 @@ export class AppmeshRouteSpecGrpcRouteMatchOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get methodNameInput() {
-    return this._methodName
+    return this._methodName;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -393,15 +516,15 @@ export class AppmeshRouteSpecGrpcRouteMatchOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // service_name - computed: false, optional: true, required: false
-  private _serviceName?: string | undefined; 
+  private _serviceName?: string; 
   public get serviceName() {
     return this.getStringAttribute('service_name');
   }
-  public set serviceName(value: string | undefined) {
+  public set serviceName(value: string) {
     this._serviceName = value;
   }
   public resetServiceName() {
@@ -409,16 +532,16 @@ export class AppmeshRouteSpecGrpcRouteMatchOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get serviceNameInput() {
-    return this._serviceName
+    return this._serviceName;
   }
 
   // metadata - computed: false, optional: true, required: false
-  private _metadata?: AppmeshRouteSpecGrpcRouteMatchMetadata[] | undefined; 
+  private _metadata?: AppmeshRouteSpecGrpcRouteMatchMetadata[]; 
   public get metadata() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('metadata') as any;
   }
-  public set metadata(value: AppmeshRouteSpecGrpcRouteMatchMetadata[] | undefined) {
+  public set metadata(value: AppmeshRouteSpecGrpcRouteMatchMetadata[]) {
     this._metadata = value;
   }
   public resetMetadata() {
@@ -426,7 +549,7 @@ export class AppmeshRouteSpecGrpcRouteMatchOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get metadataInput() {
-    return this._metadata
+    return this._metadata;
   }
 }
 export interface AppmeshRouteSpecGrpcRouteRetryPolicyPerRetryTimeout {
@@ -461,6 +584,31 @@ export class AppmeshRouteSpecGrpcRouteRetryPolicyPerRetryTimeoutOutputReference 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecGrpcRouteRetryPolicyPerRetryTimeout | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecGrpcRouteRetryPolicyPerRetryTimeout | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -471,7 +619,7 @@ export class AppmeshRouteSpecGrpcRouteRetryPolicyPerRetryTimeoutOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -484,7 +632,7 @@ export class AppmeshRouteSpecGrpcRouteRetryPolicyPerRetryTimeoutOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface AppmeshRouteSpecGrpcRouteRetryPolicy {
@@ -536,12 +684,55 @@ export class AppmeshRouteSpecGrpcRouteRetryPolicyOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecGrpcRouteRetryPolicy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._grpcRetryEvents) {
+      hasAnyValues = true;
+      internalValueResult.grpcRetryEvents = this._grpcRetryEvents;
+    }
+    if (this._httpRetryEvents) {
+      hasAnyValues = true;
+      internalValueResult.httpRetryEvents = this._httpRetryEvents;
+    }
+    if (this._maxRetries) {
+      hasAnyValues = true;
+      internalValueResult.maxRetries = this._maxRetries;
+    }
+    if (this._tcpRetryEvents) {
+      hasAnyValues = true;
+      internalValueResult.tcpRetryEvents = this._tcpRetryEvents;
+    }
+    if (this._perRetryTimeout) {
+      hasAnyValues = true;
+      internalValueResult.perRetryTimeout = this._perRetryTimeout?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecGrpcRouteRetryPolicy | undefined) {
+    if (value === undefined) {
+      this._grpcRetryEvents = undefined;
+      this._httpRetryEvents = undefined;
+      this._maxRetries = undefined;
+      this._tcpRetryEvents = undefined;
+      this._perRetryTimeout.internalValue = undefined;
+    }
+    else {
+      this._grpcRetryEvents = value.grpcRetryEvents;
+      this._httpRetryEvents = value.httpRetryEvents;
+      this._maxRetries = value.maxRetries;
+      this._tcpRetryEvents = value.tcpRetryEvents;
+      this._perRetryTimeout.internalValue = value.perRetryTimeout;
+    }
+  }
+
   // grpc_retry_events - computed: false, optional: true, required: false
-  private _grpcRetryEvents?: string[] | undefined; 
+  private _grpcRetryEvents?: string[]; 
   public get grpcRetryEvents() {
     return this.getListAttribute('grpc_retry_events');
   }
-  public set grpcRetryEvents(value: string[] | undefined) {
+  public set grpcRetryEvents(value: string[]) {
     this._grpcRetryEvents = value;
   }
   public resetGrpcRetryEvents() {
@@ -549,15 +740,15 @@ export class AppmeshRouteSpecGrpcRouteRetryPolicyOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get grpcRetryEventsInput() {
-    return this._grpcRetryEvents
+    return this._grpcRetryEvents;
   }
 
   // http_retry_events - computed: false, optional: true, required: false
-  private _httpRetryEvents?: string[] | undefined; 
+  private _httpRetryEvents?: string[]; 
   public get httpRetryEvents() {
     return this.getListAttribute('http_retry_events');
   }
-  public set httpRetryEvents(value: string[] | undefined) {
+  public set httpRetryEvents(value: string[]) {
     this._httpRetryEvents = value;
   }
   public resetHttpRetryEvents() {
@@ -565,7 +756,7 @@ export class AppmeshRouteSpecGrpcRouteRetryPolicyOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get httpRetryEventsInput() {
-    return this._httpRetryEvents
+    return this._httpRetryEvents;
   }
 
   // max_retries - computed: false, optional: false, required: true
@@ -578,15 +769,15 @@ export class AppmeshRouteSpecGrpcRouteRetryPolicyOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get maxRetriesInput() {
-    return this._maxRetries
+    return this._maxRetries;
   }
 
   // tcp_retry_events - computed: false, optional: true, required: false
-  private _tcpRetryEvents?: string[] | undefined; 
+  private _tcpRetryEvents?: string[]; 
   public get tcpRetryEvents() {
     return this.getListAttribute('tcp_retry_events');
   }
-  public set tcpRetryEvents(value: string[] | undefined) {
+  public set tcpRetryEvents(value: string[]) {
     this._tcpRetryEvents = value;
   }
   public resetTcpRetryEvents() {
@@ -594,21 +785,20 @@ export class AppmeshRouteSpecGrpcRouteRetryPolicyOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get tcpRetryEventsInput() {
-    return this._tcpRetryEvents
+    return this._tcpRetryEvents;
   }
 
   // per_retry_timeout - computed: false, optional: false, required: true
-  private _perRetryTimeout?: AppmeshRouteSpecGrpcRouteRetryPolicyPerRetryTimeout; 
-  private __perRetryTimeoutOutput = new AppmeshRouteSpecGrpcRouteRetryPolicyPerRetryTimeoutOutputReference(this as any, "per_retry_timeout", true);
+  private _perRetryTimeout = new AppmeshRouteSpecGrpcRouteRetryPolicyPerRetryTimeoutOutputReference(this as any, "per_retry_timeout", true);
   public get perRetryTimeout() {
-    return this.__perRetryTimeoutOutput;
+    return this._perRetryTimeout;
   }
   public putPerRetryTimeout(value: AppmeshRouteSpecGrpcRouteRetryPolicyPerRetryTimeout) {
-    this._perRetryTimeout = value;
+    this._perRetryTimeout.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get perRetryTimeoutInput() {
-    return this._perRetryTimeout
+    return this._perRetryTimeout.internalValue;
   }
 }
 export interface AppmeshRouteSpecGrpcRouteTimeoutIdle {
@@ -643,6 +833,31 @@ export class AppmeshRouteSpecGrpcRouteTimeoutIdleOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecGrpcRouteTimeoutIdle | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecGrpcRouteTimeoutIdle | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -653,7 +868,7 @@ export class AppmeshRouteSpecGrpcRouteTimeoutIdleOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -666,7 +881,7 @@ export class AppmeshRouteSpecGrpcRouteTimeoutIdleOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface AppmeshRouteSpecGrpcRouteTimeoutPerRequest {
@@ -701,6 +916,31 @@ export class AppmeshRouteSpecGrpcRouteTimeoutPerRequestOutputReference extends c
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecGrpcRouteTimeoutPerRequest | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecGrpcRouteTimeoutPerRequest | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -711,7 +951,7 @@ export class AppmeshRouteSpecGrpcRouteTimeoutPerRequestOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -724,7 +964,7 @@ export class AppmeshRouteSpecGrpcRouteTimeoutPerRequestOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface AppmeshRouteSpecGrpcRouteTimeout {
@@ -763,38 +1003,61 @@ export class AppmeshRouteSpecGrpcRouteTimeoutOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // idle - computed: false, optional: true, required: false
-  private _idle?: AppmeshRouteSpecGrpcRouteTimeoutIdle | undefined; 
-  private __idleOutput = new AppmeshRouteSpecGrpcRouteTimeoutIdleOutputReference(this as any, "idle", true);
-  public get idle() {
-    return this.__idleOutput;
+  public get internalValue(): AppmeshRouteSpecGrpcRouteTimeout | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._idle) {
+      hasAnyValues = true;
+      internalValueResult.idle = this._idle?.internalValue;
+    }
+    if (this._perRequest) {
+      hasAnyValues = true;
+      internalValueResult.perRequest = this._perRequest?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putIdle(value: AppmeshRouteSpecGrpcRouteTimeoutIdle | undefined) {
-    this._idle = value;
+
+  public set internalValue(value: AppmeshRouteSpecGrpcRouteTimeout | undefined) {
+    if (value === undefined) {
+      this._idle.internalValue = undefined;
+      this._perRequest.internalValue = undefined;
+    }
+    else {
+      this._idle.internalValue = value.idle;
+      this._perRequest.internalValue = value.perRequest;
+    }
+  }
+
+  // idle - computed: false, optional: true, required: false
+  private _idle = new AppmeshRouteSpecGrpcRouteTimeoutIdleOutputReference(this as any, "idle", true);
+  public get idle() {
+    return this._idle;
+  }
+  public putIdle(value: AppmeshRouteSpecGrpcRouteTimeoutIdle) {
+    this._idle.internalValue = value;
   }
   public resetIdle() {
-    this._idle = undefined;
+    this._idle.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get idleInput() {
-    return this._idle
+    return this._idle.internalValue;
   }
 
   // per_request - computed: false, optional: true, required: false
-  private _perRequest?: AppmeshRouteSpecGrpcRouteTimeoutPerRequest | undefined; 
-  private __perRequestOutput = new AppmeshRouteSpecGrpcRouteTimeoutPerRequestOutputReference(this as any, "per_request", true);
+  private _perRequest = new AppmeshRouteSpecGrpcRouteTimeoutPerRequestOutputReference(this as any, "per_request", true);
   public get perRequest() {
-    return this.__perRequestOutput;
+    return this._perRequest;
   }
-  public putPerRequest(value: AppmeshRouteSpecGrpcRouteTimeoutPerRequest | undefined) {
-    this._perRequest = value;
+  public putPerRequest(value: AppmeshRouteSpecGrpcRouteTimeoutPerRequest) {
+    this._perRequest.internalValue = value;
   }
   public resetPerRequest() {
-    this._perRequest = undefined;
+    this._perRequest.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get perRequestInput() {
-    return this._perRequest
+    return this._perRequest.internalValue;
   }
 }
 export interface AppmeshRouteSpecGrpcRoute {
@@ -847,69 +1110,102 @@ export class AppmeshRouteSpecGrpcRouteOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecGrpcRoute | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._action) {
+      hasAnyValues = true;
+      internalValueResult.action = this._action?.internalValue;
+    }
+    if (this._match) {
+      hasAnyValues = true;
+      internalValueResult.match = this._match?.internalValue;
+    }
+    if (this._retryPolicy) {
+      hasAnyValues = true;
+      internalValueResult.retryPolicy = this._retryPolicy?.internalValue;
+    }
+    if (this._timeout) {
+      hasAnyValues = true;
+      internalValueResult.timeout = this._timeout?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecGrpcRoute | undefined) {
+    if (value === undefined) {
+      this._action.internalValue = undefined;
+      this._match.internalValue = undefined;
+      this._retryPolicy.internalValue = undefined;
+      this._timeout.internalValue = undefined;
+    }
+    else {
+      this._action.internalValue = value.action;
+      this._match.internalValue = value.match;
+      this._retryPolicy.internalValue = value.retryPolicy;
+      this._timeout.internalValue = value.timeout;
+    }
+  }
+
   // action - computed: false, optional: false, required: true
-  private _action?: AppmeshRouteSpecGrpcRouteAction; 
-  private __actionOutput = new AppmeshRouteSpecGrpcRouteActionOutputReference(this as any, "action", true);
+  private _action = new AppmeshRouteSpecGrpcRouteActionOutputReference(this as any, "action", true);
   public get action() {
-    return this.__actionOutput;
+    return this._action;
   }
   public putAction(value: AppmeshRouteSpecGrpcRouteAction) {
-    this._action = value;
+    this._action.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action.internalValue;
   }
 
   // match - computed: false, optional: true, required: false
-  private _match?: AppmeshRouteSpecGrpcRouteMatch | undefined; 
-  private __matchOutput = new AppmeshRouteSpecGrpcRouteMatchOutputReference(this as any, "match", true);
+  private _match = new AppmeshRouteSpecGrpcRouteMatchOutputReference(this as any, "match", true);
   public get match() {
-    return this.__matchOutput;
+    return this._match;
   }
-  public putMatch(value: AppmeshRouteSpecGrpcRouteMatch | undefined) {
-    this._match = value;
+  public putMatch(value: AppmeshRouteSpecGrpcRouteMatch) {
+    this._match.internalValue = value;
   }
   public resetMatch() {
-    this._match = undefined;
+    this._match.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get matchInput() {
-    return this._match
+    return this._match.internalValue;
   }
 
   // retry_policy - computed: false, optional: true, required: false
-  private _retryPolicy?: AppmeshRouteSpecGrpcRouteRetryPolicy | undefined; 
-  private __retryPolicyOutput = new AppmeshRouteSpecGrpcRouteRetryPolicyOutputReference(this as any, "retry_policy", true);
+  private _retryPolicy = new AppmeshRouteSpecGrpcRouteRetryPolicyOutputReference(this as any, "retry_policy", true);
   public get retryPolicy() {
-    return this.__retryPolicyOutput;
+    return this._retryPolicy;
   }
-  public putRetryPolicy(value: AppmeshRouteSpecGrpcRouteRetryPolicy | undefined) {
-    this._retryPolicy = value;
+  public putRetryPolicy(value: AppmeshRouteSpecGrpcRouteRetryPolicy) {
+    this._retryPolicy.internalValue = value;
   }
   public resetRetryPolicy() {
-    this._retryPolicy = undefined;
+    this._retryPolicy.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get retryPolicyInput() {
-    return this._retryPolicy
+    return this._retryPolicy.internalValue;
   }
 
   // timeout - computed: false, optional: true, required: false
-  private _timeout?: AppmeshRouteSpecGrpcRouteTimeout | undefined; 
-  private __timeoutOutput = new AppmeshRouteSpecGrpcRouteTimeoutOutputReference(this as any, "timeout", true);
+  private _timeout = new AppmeshRouteSpecGrpcRouteTimeoutOutputReference(this as any, "timeout", true);
   public get timeout() {
-    return this.__timeoutOutput;
+    return this._timeout;
   }
-  public putTimeout(value: AppmeshRouteSpecGrpcRouteTimeout | undefined) {
-    this._timeout = value;
+  public putTimeout(value: AppmeshRouteSpecGrpcRouteTimeout) {
+    this._timeout.internalValue = value;
   }
   public resetTimeout() {
-    this._timeout = undefined;
+    this._timeout.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutInput() {
-    return this._timeout
+    return this._timeout.internalValue;
   }
 }
 export interface AppmeshRouteSpecHttp2RouteActionWeightedTarget {
@@ -963,6 +1259,25 @@ export class AppmeshRouteSpecHttp2RouteActionOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttp2RouteAction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._weightedTarget) {
+      hasAnyValues = true;
+      internalValueResult.weightedTarget = this._weightedTarget;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttp2RouteAction | undefined) {
+    if (value === undefined) {
+      this._weightedTarget = undefined;
+    }
+    else {
+      this._weightedTarget = value.weightedTarget;
+    }
+  }
+
   // weighted_target - computed: false, optional: false, required: true
   private _weightedTarget?: AppmeshRouteSpecHttp2RouteActionWeightedTarget[]; 
   public get weightedTarget() {
@@ -974,7 +1289,7 @@ export class AppmeshRouteSpecHttp2RouteActionOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get weightedTargetInput() {
-    return this._weightedTarget
+    return this._weightedTarget;
   }
 }
 export interface AppmeshRouteSpecHttp2RouteMatchHeaderMatchRange {
@@ -1009,6 +1324,31 @@ export class AppmeshRouteSpecHttp2RouteMatchHeaderMatchRangeOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttp2RouteMatchHeaderMatchRange | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._end) {
+      hasAnyValues = true;
+      internalValueResult.end = this._end;
+    }
+    if (this._start) {
+      hasAnyValues = true;
+      internalValueResult.start = this._start;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttp2RouteMatchHeaderMatchRange | undefined) {
+    if (value === undefined) {
+      this._end = undefined;
+      this._start = undefined;
+    }
+    else {
+      this._end = value.end;
+      this._start = value.start;
+    }
+  }
+
   // end - computed: false, optional: false, required: true
   private _end?: number; 
   public get end() {
@@ -1019,7 +1359,7 @@ export class AppmeshRouteSpecHttp2RouteMatchHeaderMatchRangeOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get endInput() {
-    return this._end
+    return this._end;
   }
 
   // start - computed: false, optional: false, required: true
@@ -1032,7 +1372,7 @@ export class AppmeshRouteSpecHttp2RouteMatchHeaderMatchRangeOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get startInput() {
-    return this._start
+    return this._start;
   }
 }
 export interface AppmeshRouteSpecHttp2RouteMatchHeaderMatch {
@@ -1084,12 +1424,55 @@ export class AppmeshRouteSpecHttp2RouteMatchHeaderMatchOutputReference extends c
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttp2RouteMatchHeaderMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._exact) {
+      hasAnyValues = true;
+      internalValueResult.exact = this._exact;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._regex) {
+      hasAnyValues = true;
+      internalValueResult.regex = this._regex;
+    }
+    if (this._suffix) {
+      hasAnyValues = true;
+      internalValueResult.suffix = this._suffix;
+    }
+    if (this._range) {
+      hasAnyValues = true;
+      internalValueResult.range = this._range?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttp2RouteMatchHeaderMatch | undefined) {
+    if (value === undefined) {
+      this._exact = undefined;
+      this._prefix = undefined;
+      this._regex = undefined;
+      this._suffix = undefined;
+      this._range.internalValue = undefined;
+    }
+    else {
+      this._exact = value.exact;
+      this._prefix = value.prefix;
+      this._regex = value.regex;
+      this._suffix = value.suffix;
+      this._range.internalValue = value.range;
+    }
+  }
+
   // exact - computed: false, optional: true, required: false
-  private _exact?: string | undefined; 
+  private _exact?: string; 
   public get exact() {
     return this.getStringAttribute('exact');
   }
-  public set exact(value: string | undefined) {
+  public set exact(value: string) {
     this._exact = value;
   }
   public resetExact() {
@@ -1097,15 +1480,15 @@ export class AppmeshRouteSpecHttp2RouteMatchHeaderMatchOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get exactInput() {
-    return this._exact
+    return this._exact;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -1113,15 +1496,15 @@ export class AppmeshRouteSpecHttp2RouteMatchHeaderMatchOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // regex - computed: false, optional: true, required: false
-  private _regex?: string | undefined; 
+  private _regex?: string; 
   public get regex() {
     return this.getStringAttribute('regex');
   }
-  public set regex(value: string | undefined) {
+  public set regex(value: string) {
     this._regex = value;
   }
   public resetRegex() {
@@ -1129,15 +1512,15 @@ export class AppmeshRouteSpecHttp2RouteMatchHeaderMatchOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get regexInput() {
-    return this._regex
+    return this._regex;
   }
 
   // suffix - computed: false, optional: true, required: false
-  private _suffix?: string | undefined; 
+  private _suffix?: string; 
   public get suffix() {
     return this.getStringAttribute('suffix');
   }
-  public set suffix(value: string | undefined) {
+  public set suffix(value: string) {
     this._suffix = value;
   }
   public resetSuffix() {
@@ -1145,24 +1528,23 @@ export class AppmeshRouteSpecHttp2RouteMatchHeaderMatchOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get suffixInput() {
-    return this._suffix
+    return this._suffix;
   }
 
   // range - computed: false, optional: true, required: false
-  private _range?: AppmeshRouteSpecHttp2RouteMatchHeaderMatchRange | undefined; 
-  private __rangeOutput = new AppmeshRouteSpecHttp2RouteMatchHeaderMatchRangeOutputReference(this as any, "range", true);
+  private _range = new AppmeshRouteSpecHttp2RouteMatchHeaderMatchRangeOutputReference(this as any, "range", true);
   public get range() {
-    return this.__rangeOutput;
+    return this._range;
   }
-  public putRange(value: AppmeshRouteSpecHttp2RouteMatchHeaderMatchRange | undefined) {
-    this._range = value;
+  public putRange(value: AppmeshRouteSpecHttp2RouteMatchHeaderMatchRange) {
+    this._range.internalValue = value;
   }
   public resetRange() {
-    this._range = undefined;
+    this._range.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get rangeInput() {
-    return this._range
+    return this._range.internalValue;
   }
 }
 export interface AppmeshRouteSpecHttp2RouteMatchHeader {
@@ -1238,12 +1620,49 @@ export class AppmeshRouteSpecHttp2RouteMatchOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttp2RouteMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._scheme) {
+      hasAnyValues = true;
+      internalValueResult.scheme = this._scheme;
+    }
+    if (this._header) {
+      hasAnyValues = true;
+      internalValueResult.header = this._header;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttp2RouteMatch | undefined) {
+    if (value === undefined) {
+      this._method = undefined;
+      this._prefix = undefined;
+      this._scheme = undefined;
+      this._header = undefined;
+    }
+    else {
+      this._method = value.method;
+      this._prefix = value.prefix;
+      this._scheme = value.scheme;
+      this._header = value.header;
+    }
+  }
+
   // method - computed: false, optional: true, required: false
-  private _method?: string | undefined; 
+  private _method?: string; 
   public get method() {
     return this.getStringAttribute('method');
   }
-  public set method(value: string | undefined) {
+  public set method(value: string) {
     this._method = value;
   }
   public resetMethod() {
@@ -1251,7 +1670,7 @@ export class AppmeshRouteSpecHttp2RouteMatchOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method;
   }
 
   // prefix - computed: false, optional: false, required: true
@@ -1264,15 +1683,15 @@ export class AppmeshRouteSpecHttp2RouteMatchOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // scheme - computed: false, optional: true, required: false
-  private _scheme?: string | undefined; 
+  private _scheme?: string; 
   public get scheme() {
     return this.getStringAttribute('scheme');
   }
-  public set scheme(value: string | undefined) {
+  public set scheme(value: string) {
     this._scheme = value;
   }
   public resetScheme() {
@@ -1280,16 +1699,16 @@ export class AppmeshRouteSpecHttp2RouteMatchOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get schemeInput() {
-    return this._scheme
+    return this._scheme;
   }
 
   // header - computed: false, optional: true, required: false
-  private _header?: AppmeshRouteSpecHttp2RouteMatchHeader[] | undefined; 
+  private _header?: AppmeshRouteSpecHttp2RouteMatchHeader[]; 
   public get header() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('header') as any;
   }
-  public set header(value: AppmeshRouteSpecHttp2RouteMatchHeader[] | undefined) {
+  public set header(value: AppmeshRouteSpecHttp2RouteMatchHeader[]) {
     this._header = value;
   }
   public resetHeader() {
@@ -1297,7 +1716,7 @@ export class AppmeshRouteSpecHttp2RouteMatchOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get headerInput() {
-    return this._header
+    return this._header;
   }
 }
 export interface AppmeshRouteSpecHttp2RouteRetryPolicyPerRetryTimeout {
@@ -1332,6 +1751,31 @@ export class AppmeshRouteSpecHttp2RouteRetryPolicyPerRetryTimeoutOutputReference
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttp2RouteRetryPolicyPerRetryTimeout | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttp2RouteRetryPolicyPerRetryTimeout | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -1342,7 +1786,7 @@ export class AppmeshRouteSpecHttp2RouteRetryPolicyPerRetryTimeoutOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -1355,7 +1799,7 @@ export class AppmeshRouteSpecHttp2RouteRetryPolicyPerRetryTimeoutOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface AppmeshRouteSpecHttp2RouteRetryPolicy {
@@ -1402,12 +1846,49 @@ export class AppmeshRouteSpecHttp2RouteRetryPolicyOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttp2RouteRetryPolicy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._httpRetryEvents) {
+      hasAnyValues = true;
+      internalValueResult.httpRetryEvents = this._httpRetryEvents;
+    }
+    if (this._maxRetries) {
+      hasAnyValues = true;
+      internalValueResult.maxRetries = this._maxRetries;
+    }
+    if (this._tcpRetryEvents) {
+      hasAnyValues = true;
+      internalValueResult.tcpRetryEvents = this._tcpRetryEvents;
+    }
+    if (this._perRetryTimeout) {
+      hasAnyValues = true;
+      internalValueResult.perRetryTimeout = this._perRetryTimeout?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttp2RouteRetryPolicy | undefined) {
+    if (value === undefined) {
+      this._httpRetryEvents = undefined;
+      this._maxRetries = undefined;
+      this._tcpRetryEvents = undefined;
+      this._perRetryTimeout.internalValue = undefined;
+    }
+    else {
+      this._httpRetryEvents = value.httpRetryEvents;
+      this._maxRetries = value.maxRetries;
+      this._tcpRetryEvents = value.tcpRetryEvents;
+      this._perRetryTimeout.internalValue = value.perRetryTimeout;
+    }
+  }
+
   // http_retry_events - computed: false, optional: true, required: false
-  private _httpRetryEvents?: string[] | undefined; 
+  private _httpRetryEvents?: string[]; 
   public get httpRetryEvents() {
     return this.getListAttribute('http_retry_events');
   }
-  public set httpRetryEvents(value: string[] | undefined) {
+  public set httpRetryEvents(value: string[]) {
     this._httpRetryEvents = value;
   }
   public resetHttpRetryEvents() {
@@ -1415,7 +1896,7 @@ export class AppmeshRouteSpecHttp2RouteRetryPolicyOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get httpRetryEventsInput() {
-    return this._httpRetryEvents
+    return this._httpRetryEvents;
   }
 
   // max_retries - computed: false, optional: false, required: true
@@ -1428,15 +1909,15 @@ export class AppmeshRouteSpecHttp2RouteRetryPolicyOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get maxRetriesInput() {
-    return this._maxRetries
+    return this._maxRetries;
   }
 
   // tcp_retry_events - computed: false, optional: true, required: false
-  private _tcpRetryEvents?: string[] | undefined; 
+  private _tcpRetryEvents?: string[]; 
   public get tcpRetryEvents() {
     return this.getListAttribute('tcp_retry_events');
   }
-  public set tcpRetryEvents(value: string[] | undefined) {
+  public set tcpRetryEvents(value: string[]) {
     this._tcpRetryEvents = value;
   }
   public resetTcpRetryEvents() {
@@ -1444,21 +1925,20 @@ export class AppmeshRouteSpecHttp2RouteRetryPolicyOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get tcpRetryEventsInput() {
-    return this._tcpRetryEvents
+    return this._tcpRetryEvents;
   }
 
   // per_retry_timeout - computed: false, optional: false, required: true
-  private _perRetryTimeout?: AppmeshRouteSpecHttp2RouteRetryPolicyPerRetryTimeout; 
-  private __perRetryTimeoutOutput = new AppmeshRouteSpecHttp2RouteRetryPolicyPerRetryTimeoutOutputReference(this as any, "per_retry_timeout", true);
+  private _perRetryTimeout = new AppmeshRouteSpecHttp2RouteRetryPolicyPerRetryTimeoutOutputReference(this as any, "per_retry_timeout", true);
   public get perRetryTimeout() {
-    return this.__perRetryTimeoutOutput;
+    return this._perRetryTimeout;
   }
   public putPerRetryTimeout(value: AppmeshRouteSpecHttp2RouteRetryPolicyPerRetryTimeout) {
-    this._perRetryTimeout = value;
+    this._perRetryTimeout.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get perRetryTimeoutInput() {
-    return this._perRetryTimeout
+    return this._perRetryTimeout.internalValue;
   }
 }
 export interface AppmeshRouteSpecHttp2RouteTimeoutIdle {
@@ -1493,6 +1973,31 @@ export class AppmeshRouteSpecHttp2RouteTimeoutIdleOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttp2RouteTimeoutIdle | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttp2RouteTimeoutIdle | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -1503,7 +2008,7 @@ export class AppmeshRouteSpecHttp2RouteTimeoutIdleOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -1516,7 +2021,7 @@ export class AppmeshRouteSpecHttp2RouteTimeoutIdleOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface AppmeshRouteSpecHttp2RouteTimeoutPerRequest {
@@ -1551,6 +2056,31 @@ export class AppmeshRouteSpecHttp2RouteTimeoutPerRequestOutputReference extends 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttp2RouteTimeoutPerRequest | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttp2RouteTimeoutPerRequest | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -1561,7 +2091,7 @@ export class AppmeshRouteSpecHttp2RouteTimeoutPerRequestOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -1574,7 +2104,7 @@ export class AppmeshRouteSpecHttp2RouteTimeoutPerRequestOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface AppmeshRouteSpecHttp2RouteTimeout {
@@ -1613,38 +2143,61 @@ export class AppmeshRouteSpecHttp2RouteTimeoutOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // idle - computed: false, optional: true, required: false
-  private _idle?: AppmeshRouteSpecHttp2RouteTimeoutIdle | undefined; 
-  private __idleOutput = new AppmeshRouteSpecHttp2RouteTimeoutIdleOutputReference(this as any, "idle", true);
-  public get idle() {
-    return this.__idleOutput;
+  public get internalValue(): AppmeshRouteSpecHttp2RouteTimeout | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._idle) {
+      hasAnyValues = true;
+      internalValueResult.idle = this._idle?.internalValue;
+    }
+    if (this._perRequest) {
+      hasAnyValues = true;
+      internalValueResult.perRequest = this._perRequest?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putIdle(value: AppmeshRouteSpecHttp2RouteTimeoutIdle | undefined) {
-    this._idle = value;
+
+  public set internalValue(value: AppmeshRouteSpecHttp2RouteTimeout | undefined) {
+    if (value === undefined) {
+      this._idle.internalValue = undefined;
+      this._perRequest.internalValue = undefined;
+    }
+    else {
+      this._idle.internalValue = value.idle;
+      this._perRequest.internalValue = value.perRequest;
+    }
+  }
+
+  // idle - computed: false, optional: true, required: false
+  private _idle = new AppmeshRouteSpecHttp2RouteTimeoutIdleOutputReference(this as any, "idle", true);
+  public get idle() {
+    return this._idle;
+  }
+  public putIdle(value: AppmeshRouteSpecHttp2RouteTimeoutIdle) {
+    this._idle.internalValue = value;
   }
   public resetIdle() {
-    this._idle = undefined;
+    this._idle.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get idleInput() {
-    return this._idle
+    return this._idle.internalValue;
   }
 
   // per_request - computed: false, optional: true, required: false
-  private _perRequest?: AppmeshRouteSpecHttp2RouteTimeoutPerRequest | undefined; 
-  private __perRequestOutput = new AppmeshRouteSpecHttp2RouteTimeoutPerRequestOutputReference(this as any, "per_request", true);
+  private _perRequest = new AppmeshRouteSpecHttp2RouteTimeoutPerRequestOutputReference(this as any, "per_request", true);
   public get perRequest() {
-    return this.__perRequestOutput;
+    return this._perRequest;
   }
-  public putPerRequest(value: AppmeshRouteSpecHttp2RouteTimeoutPerRequest | undefined) {
-    this._perRequest = value;
+  public putPerRequest(value: AppmeshRouteSpecHttp2RouteTimeoutPerRequest) {
+    this._perRequest.internalValue = value;
   }
   public resetPerRequest() {
-    this._perRequest = undefined;
+    this._perRequest.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get perRequestInput() {
-    return this._perRequest
+    return this._perRequest.internalValue;
   }
 }
 export interface AppmeshRouteSpecHttp2Route {
@@ -1697,66 +2250,99 @@ export class AppmeshRouteSpecHttp2RouteOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttp2Route | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._action) {
+      hasAnyValues = true;
+      internalValueResult.action = this._action?.internalValue;
+    }
+    if (this._match) {
+      hasAnyValues = true;
+      internalValueResult.match = this._match?.internalValue;
+    }
+    if (this._retryPolicy) {
+      hasAnyValues = true;
+      internalValueResult.retryPolicy = this._retryPolicy?.internalValue;
+    }
+    if (this._timeout) {
+      hasAnyValues = true;
+      internalValueResult.timeout = this._timeout?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttp2Route | undefined) {
+    if (value === undefined) {
+      this._action.internalValue = undefined;
+      this._match.internalValue = undefined;
+      this._retryPolicy.internalValue = undefined;
+      this._timeout.internalValue = undefined;
+    }
+    else {
+      this._action.internalValue = value.action;
+      this._match.internalValue = value.match;
+      this._retryPolicy.internalValue = value.retryPolicy;
+      this._timeout.internalValue = value.timeout;
+    }
+  }
+
   // action - computed: false, optional: false, required: true
-  private _action?: AppmeshRouteSpecHttp2RouteAction; 
-  private __actionOutput = new AppmeshRouteSpecHttp2RouteActionOutputReference(this as any, "action", true);
+  private _action = new AppmeshRouteSpecHttp2RouteActionOutputReference(this as any, "action", true);
   public get action() {
-    return this.__actionOutput;
+    return this._action;
   }
   public putAction(value: AppmeshRouteSpecHttp2RouteAction) {
-    this._action = value;
+    this._action.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action.internalValue;
   }
 
   // match - computed: false, optional: false, required: true
-  private _match?: AppmeshRouteSpecHttp2RouteMatch; 
-  private __matchOutput = new AppmeshRouteSpecHttp2RouteMatchOutputReference(this as any, "match", true);
+  private _match = new AppmeshRouteSpecHttp2RouteMatchOutputReference(this as any, "match", true);
   public get match() {
-    return this.__matchOutput;
+    return this._match;
   }
   public putMatch(value: AppmeshRouteSpecHttp2RouteMatch) {
-    this._match = value;
+    this._match.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get matchInput() {
-    return this._match
+    return this._match.internalValue;
   }
 
   // retry_policy - computed: false, optional: true, required: false
-  private _retryPolicy?: AppmeshRouteSpecHttp2RouteRetryPolicy | undefined; 
-  private __retryPolicyOutput = new AppmeshRouteSpecHttp2RouteRetryPolicyOutputReference(this as any, "retry_policy", true);
+  private _retryPolicy = new AppmeshRouteSpecHttp2RouteRetryPolicyOutputReference(this as any, "retry_policy", true);
   public get retryPolicy() {
-    return this.__retryPolicyOutput;
+    return this._retryPolicy;
   }
-  public putRetryPolicy(value: AppmeshRouteSpecHttp2RouteRetryPolicy | undefined) {
-    this._retryPolicy = value;
+  public putRetryPolicy(value: AppmeshRouteSpecHttp2RouteRetryPolicy) {
+    this._retryPolicy.internalValue = value;
   }
   public resetRetryPolicy() {
-    this._retryPolicy = undefined;
+    this._retryPolicy.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get retryPolicyInput() {
-    return this._retryPolicy
+    return this._retryPolicy.internalValue;
   }
 
   // timeout - computed: false, optional: true, required: false
-  private _timeout?: AppmeshRouteSpecHttp2RouteTimeout | undefined; 
-  private __timeoutOutput = new AppmeshRouteSpecHttp2RouteTimeoutOutputReference(this as any, "timeout", true);
+  private _timeout = new AppmeshRouteSpecHttp2RouteTimeoutOutputReference(this as any, "timeout", true);
   public get timeout() {
-    return this.__timeoutOutput;
+    return this._timeout;
   }
-  public putTimeout(value: AppmeshRouteSpecHttp2RouteTimeout | undefined) {
-    this._timeout = value;
+  public putTimeout(value: AppmeshRouteSpecHttp2RouteTimeout) {
+    this._timeout.internalValue = value;
   }
   public resetTimeout() {
-    this._timeout = undefined;
+    this._timeout.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutInput() {
-    return this._timeout
+    return this._timeout.internalValue;
   }
 }
 export interface AppmeshRouteSpecHttpRouteActionWeightedTarget {
@@ -1810,6 +2396,25 @@ export class AppmeshRouteSpecHttpRouteActionOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttpRouteAction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._weightedTarget) {
+      hasAnyValues = true;
+      internalValueResult.weightedTarget = this._weightedTarget;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttpRouteAction | undefined) {
+    if (value === undefined) {
+      this._weightedTarget = undefined;
+    }
+    else {
+      this._weightedTarget = value.weightedTarget;
+    }
+  }
+
   // weighted_target - computed: false, optional: false, required: true
   private _weightedTarget?: AppmeshRouteSpecHttpRouteActionWeightedTarget[]; 
   public get weightedTarget() {
@@ -1821,7 +2426,7 @@ export class AppmeshRouteSpecHttpRouteActionOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get weightedTargetInput() {
-    return this._weightedTarget
+    return this._weightedTarget;
   }
 }
 export interface AppmeshRouteSpecHttpRouteMatchHeaderMatchRange {
@@ -1856,6 +2461,31 @@ export class AppmeshRouteSpecHttpRouteMatchHeaderMatchRangeOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttpRouteMatchHeaderMatchRange | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._end) {
+      hasAnyValues = true;
+      internalValueResult.end = this._end;
+    }
+    if (this._start) {
+      hasAnyValues = true;
+      internalValueResult.start = this._start;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttpRouteMatchHeaderMatchRange | undefined) {
+    if (value === undefined) {
+      this._end = undefined;
+      this._start = undefined;
+    }
+    else {
+      this._end = value.end;
+      this._start = value.start;
+    }
+  }
+
   // end - computed: false, optional: false, required: true
   private _end?: number; 
   public get end() {
@@ -1866,7 +2496,7 @@ export class AppmeshRouteSpecHttpRouteMatchHeaderMatchRangeOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get endInput() {
-    return this._end
+    return this._end;
   }
 
   // start - computed: false, optional: false, required: true
@@ -1879,7 +2509,7 @@ export class AppmeshRouteSpecHttpRouteMatchHeaderMatchRangeOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get startInput() {
-    return this._start
+    return this._start;
   }
 }
 export interface AppmeshRouteSpecHttpRouteMatchHeaderMatch {
@@ -1931,12 +2561,55 @@ export class AppmeshRouteSpecHttpRouteMatchHeaderMatchOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttpRouteMatchHeaderMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._exact) {
+      hasAnyValues = true;
+      internalValueResult.exact = this._exact;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._regex) {
+      hasAnyValues = true;
+      internalValueResult.regex = this._regex;
+    }
+    if (this._suffix) {
+      hasAnyValues = true;
+      internalValueResult.suffix = this._suffix;
+    }
+    if (this._range) {
+      hasAnyValues = true;
+      internalValueResult.range = this._range?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttpRouteMatchHeaderMatch | undefined) {
+    if (value === undefined) {
+      this._exact = undefined;
+      this._prefix = undefined;
+      this._regex = undefined;
+      this._suffix = undefined;
+      this._range.internalValue = undefined;
+    }
+    else {
+      this._exact = value.exact;
+      this._prefix = value.prefix;
+      this._regex = value.regex;
+      this._suffix = value.suffix;
+      this._range.internalValue = value.range;
+    }
+  }
+
   // exact - computed: false, optional: true, required: false
-  private _exact?: string | undefined; 
+  private _exact?: string; 
   public get exact() {
     return this.getStringAttribute('exact');
   }
-  public set exact(value: string | undefined) {
+  public set exact(value: string) {
     this._exact = value;
   }
   public resetExact() {
@@ -1944,15 +2617,15 @@ export class AppmeshRouteSpecHttpRouteMatchHeaderMatchOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get exactInput() {
-    return this._exact
+    return this._exact;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -1960,15 +2633,15 @@ export class AppmeshRouteSpecHttpRouteMatchHeaderMatchOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // regex - computed: false, optional: true, required: false
-  private _regex?: string | undefined; 
+  private _regex?: string; 
   public get regex() {
     return this.getStringAttribute('regex');
   }
-  public set regex(value: string | undefined) {
+  public set regex(value: string) {
     this._regex = value;
   }
   public resetRegex() {
@@ -1976,15 +2649,15 @@ export class AppmeshRouteSpecHttpRouteMatchHeaderMatchOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get regexInput() {
-    return this._regex
+    return this._regex;
   }
 
   // suffix - computed: false, optional: true, required: false
-  private _suffix?: string | undefined; 
+  private _suffix?: string; 
   public get suffix() {
     return this.getStringAttribute('suffix');
   }
-  public set suffix(value: string | undefined) {
+  public set suffix(value: string) {
     this._suffix = value;
   }
   public resetSuffix() {
@@ -1992,24 +2665,23 @@ export class AppmeshRouteSpecHttpRouteMatchHeaderMatchOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get suffixInput() {
-    return this._suffix
+    return this._suffix;
   }
 
   // range - computed: false, optional: true, required: false
-  private _range?: AppmeshRouteSpecHttpRouteMatchHeaderMatchRange | undefined; 
-  private __rangeOutput = new AppmeshRouteSpecHttpRouteMatchHeaderMatchRangeOutputReference(this as any, "range", true);
+  private _range = new AppmeshRouteSpecHttpRouteMatchHeaderMatchRangeOutputReference(this as any, "range", true);
   public get range() {
-    return this.__rangeOutput;
+    return this._range;
   }
-  public putRange(value: AppmeshRouteSpecHttpRouteMatchHeaderMatchRange | undefined) {
-    this._range = value;
+  public putRange(value: AppmeshRouteSpecHttpRouteMatchHeaderMatchRange) {
+    this._range.internalValue = value;
   }
   public resetRange() {
-    this._range = undefined;
+    this._range.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get rangeInput() {
-    return this._range
+    return this._range.internalValue;
   }
 }
 export interface AppmeshRouteSpecHttpRouteMatchHeader {
@@ -2085,12 +2757,49 @@ export class AppmeshRouteSpecHttpRouteMatchOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttpRouteMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._scheme) {
+      hasAnyValues = true;
+      internalValueResult.scheme = this._scheme;
+    }
+    if (this._header) {
+      hasAnyValues = true;
+      internalValueResult.header = this._header;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttpRouteMatch | undefined) {
+    if (value === undefined) {
+      this._method = undefined;
+      this._prefix = undefined;
+      this._scheme = undefined;
+      this._header = undefined;
+    }
+    else {
+      this._method = value.method;
+      this._prefix = value.prefix;
+      this._scheme = value.scheme;
+      this._header = value.header;
+    }
+  }
+
   // method - computed: false, optional: true, required: false
-  private _method?: string | undefined; 
+  private _method?: string; 
   public get method() {
     return this.getStringAttribute('method');
   }
-  public set method(value: string | undefined) {
+  public set method(value: string) {
     this._method = value;
   }
   public resetMethod() {
@@ -2098,7 +2807,7 @@ export class AppmeshRouteSpecHttpRouteMatchOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method;
   }
 
   // prefix - computed: false, optional: false, required: true
@@ -2111,15 +2820,15 @@ export class AppmeshRouteSpecHttpRouteMatchOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // scheme - computed: false, optional: true, required: false
-  private _scheme?: string | undefined; 
+  private _scheme?: string; 
   public get scheme() {
     return this.getStringAttribute('scheme');
   }
-  public set scheme(value: string | undefined) {
+  public set scheme(value: string) {
     this._scheme = value;
   }
   public resetScheme() {
@@ -2127,16 +2836,16 @@ export class AppmeshRouteSpecHttpRouteMatchOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get schemeInput() {
-    return this._scheme
+    return this._scheme;
   }
 
   // header - computed: false, optional: true, required: false
-  private _header?: AppmeshRouteSpecHttpRouteMatchHeader[] | undefined; 
+  private _header?: AppmeshRouteSpecHttpRouteMatchHeader[]; 
   public get header() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('header') as any;
   }
-  public set header(value: AppmeshRouteSpecHttpRouteMatchHeader[] | undefined) {
+  public set header(value: AppmeshRouteSpecHttpRouteMatchHeader[]) {
     this._header = value;
   }
   public resetHeader() {
@@ -2144,7 +2853,7 @@ export class AppmeshRouteSpecHttpRouteMatchOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get headerInput() {
-    return this._header
+    return this._header;
   }
 }
 export interface AppmeshRouteSpecHttpRouteRetryPolicyPerRetryTimeout {
@@ -2179,6 +2888,31 @@ export class AppmeshRouteSpecHttpRouteRetryPolicyPerRetryTimeoutOutputReference 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttpRouteRetryPolicyPerRetryTimeout | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttpRouteRetryPolicyPerRetryTimeout | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -2189,7 +2923,7 @@ export class AppmeshRouteSpecHttpRouteRetryPolicyPerRetryTimeoutOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -2202,7 +2936,7 @@ export class AppmeshRouteSpecHttpRouteRetryPolicyPerRetryTimeoutOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface AppmeshRouteSpecHttpRouteRetryPolicy {
@@ -2249,12 +2983,49 @@ export class AppmeshRouteSpecHttpRouteRetryPolicyOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttpRouteRetryPolicy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._httpRetryEvents) {
+      hasAnyValues = true;
+      internalValueResult.httpRetryEvents = this._httpRetryEvents;
+    }
+    if (this._maxRetries) {
+      hasAnyValues = true;
+      internalValueResult.maxRetries = this._maxRetries;
+    }
+    if (this._tcpRetryEvents) {
+      hasAnyValues = true;
+      internalValueResult.tcpRetryEvents = this._tcpRetryEvents;
+    }
+    if (this._perRetryTimeout) {
+      hasAnyValues = true;
+      internalValueResult.perRetryTimeout = this._perRetryTimeout?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttpRouteRetryPolicy | undefined) {
+    if (value === undefined) {
+      this._httpRetryEvents = undefined;
+      this._maxRetries = undefined;
+      this._tcpRetryEvents = undefined;
+      this._perRetryTimeout.internalValue = undefined;
+    }
+    else {
+      this._httpRetryEvents = value.httpRetryEvents;
+      this._maxRetries = value.maxRetries;
+      this._tcpRetryEvents = value.tcpRetryEvents;
+      this._perRetryTimeout.internalValue = value.perRetryTimeout;
+    }
+  }
+
   // http_retry_events - computed: false, optional: true, required: false
-  private _httpRetryEvents?: string[] | undefined; 
+  private _httpRetryEvents?: string[]; 
   public get httpRetryEvents() {
     return this.getListAttribute('http_retry_events');
   }
-  public set httpRetryEvents(value: string[] | undefined) {
+  public set httpRetryEvents(value: string[]) {
     this._httpRetryEvents = value;
   }
   public resetHttpRetryEvents() {
@@ -2262,7 +3033,7 @@ export class AppmeshRouteSpecHttpRouteRetryPolicyOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get httpRetryEventsInput() {
-    return this._httpRetryEvents
+    return this._httpRetryEvents;
   }
 
   // max_retries - computed: false, optional: false, required: true
@@ -2275,15 +3046,15 @@ export class AppmeshRouteSpecHttpRouteRetryPolicyOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get maxRetriesInput() {
-    return this._maxRetries
+    return this._maxRetries;
   }
 
   // tcp_retry_events - computed: false, optional: true, required: false
-  private _tcpRetryEvents?: string[] | undefined; 
+  private _tcpRetryEvents?: string[]; 
   public get tcpRetryEvents() {
     return this.getListAttribute('tcp_retry_events');
   }
-  public set tcpRetryEvents(value: string[] | undefined) {
+  public set tcpRetryEvents(value: string[]) {
     this._tcpRetryEvents = value;
   }
   public resetTcpRetryEvents() {
@@ -2291,21 +3062,20 @@ export class AppmeshRouteSpecHttpRouteRetryPolicyOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get tcpRetryEventsInput() {
-    return this._tcpRetryEvents
+    return this._tcpRetryEvents;
   }
 
   // per_retry_timeout - computed: false, optional: false, required: true
-  private _perRetryTimeout?: AppmeshRouteSpecHttpRouteRetryPolicyPerRetryTimeout; 
-  private __perRetryTimeoutOutput = new AppmeshRouteSpecHttpRouteRetryPolicyPerRetryTimeoutOutputReference(this as any, "per_retry_timeout", true);
+  private _perRetryTimeout = new AppmeshRouteSpecHttpRouteRetryPolicyPerRetryTimeoutOutputReference(this as any, "per_retry_timeout", true);
   public get perRetryTimeout() {
-    return this.__perRetryTimeoutOutput;
+    return this._perRetryTimeout;
   }
   public putPerRetryTimeout(value: AppmeshRouteSpecHttpRouteRetryPolicyPerRetryTimeout) {
-    this._perRetryTimeout = value;
+    this._perRetryTimeout.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get perRetryTimeoutInput() {
-    return this._perRetryTimeout
+    return this._perRetryTimeout.internalValue;
   }
 }
 export interface AppmeshRouteSpecHttpRouteTimeoutIdle {
@@ -2340,6 +3110,31 @@ export class AppmeshRouteSpecHttpRouteTimeoutIdleOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttpRouteTimeoutIdle | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttpRouteTimeoutIdle | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -2350,7 +3145,7 @@ export class AppmeshRouteSpecHttpRouteTimeoutIdleOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -2363,7 +3158,7 @@ export class AppmeshRouteSpecHttpRouteTimeoutIdleOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface AppmeshRouteSpecHttpRouteTimeoutPerRequest {
@@ -2398,6 +3193,31 @@ export class AppmeshRouteSpecHttpRouteTimeoutPerRequestOutputReference extends c
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttpRouteTimeoutPerRequest | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttpRouteTimeoutPerRequest | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -2408,7 +3228,7 @@ export class AppmeshRouteSpecHttpRouteTimeoutPerRequestOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -2421,7 +3241,7 @@ export class AppmeshRouteSpecHttpRouteTimeoutPerRequestOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface AppmeshRouteSpecHttpRouteTimeout {
@@ -2460,38 +3280,61 @@ export class AppmeshRouteSpecHttpRouteTimeoutOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // idle - computed: false, optional: true, required: false
-  private _idle?: AppmeshRouteSpecHttpRouteTimeoutIdle | undefined; 
-  private __idleOutput = new AppmeshRouteSpecHttpRouteTimeoutIdleOutputReference(this as any, "idle", true);
-  public get idle() {
-    return this.__idleOutput;
+  public get internalValue(): AppmeshRouteSpecHttpRouteTimeout | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._idle) {
+      hasAnyValues = true;
+      internalValueResult.idle = this._idle?.internalValue;
+    }
+    if (this._perRequest) {
+      hasAnyValues = true;
+      internalValueResult.perRequest = this._perRequest?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putIdle(value: AppmeshRouteSpecHttpRouteTimeoutIdle | undefined) {
-    this._idle = value;
+
+  public set internalValue(value: AppmeshRouteSpecHttpRouteTimeout | undefined) {
+    if (value === undefined) {
+      this._idle.internalValue = undefined;
+      this._perRequest.internalValue = undefined;
+    }
+    else {
+      this._idle.internalValue = value.idle;
+      this._perRequest.internalValue = value.perRequest;
+    }
+  }
+
+  // idle - computed: false, optional: true, required: false
+  private _idle = new AppmeshRouteSpecHttpRouteTimeoutIdleOutputReference(this as any, "idle", true);
+  public get idle() {
+    return this._idle;
+  }
+  public putIdle(value: AppmeshRouteSpecHttpRouteTimeoutIdle) {
+    this._idle.internalValue = value;
   }
   public resetIdle() {
-    this._idle = undefined;
+    this._idle.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get idleInput() {
-    return this._idle
+    return this._idle.internalValue;
   }
 
   // per_request - computed: false, optional: true, required: false
-  private _perRequest?: AppmeshRouteSpecHttpRouteTimeoutPerRequest | undefined; 
-  private __perRequestOutput = new AppmeshRouteSpecHttpRouteTimeoutPerRequestOutputReference(this as any, "per_request", true);
+  private _perRequest = new AppmeshRouteSpecHttpRouteTimeoutPerRequestOutputReference(this as any, "per_request", true);
   public get perRequest() {
-    return this.__perRequestOutput;
+    return this._perRequest;
   }
-  public putPerRequest(value: AppmeshRouteSpecHttpRouteTimeoutPerRequest | undefined) {
-    this._perRequest = value;
+  public putPerRequest(value: AppmeshRouteSpecHttpRouteTimeoutPerRequest) {
+    this._perRequest.internalValue = value;
   }
   public resetPerRequest() {
-    this._perRequest = undefined;
+    this._perRequest.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get perRequestInput() {
-    return this._perRequest
+    return this._perRequest.internalValue;
   }
 }
 export interface AppmeshRouteSpecHttpRoute {
@@ -2544,66 +3387,99 @@ export class AppmeshRouteSpecHttpRouteOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecHttpRoute | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._action) {
+      hasAnyValues = true;
+      internalValueResult.action = this._action?.internalValue;
+    }
+    if (this._match) {
+      hasAnyValues = true;
+      internalValueResult.match = this._match?.internalValue;
+    }
+    if (this._retryPolicy) {
+      hasAnyValues = true;
+      internalValueResult.retryPolicy = this._retryPolicy?.internalValue;
+    }
+    if (this._timeout) {
+      hasAnyValues = true;
+      internalValueResult.timeout = this._timeout?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecHttpRoute | undefined) {
+    if (value === undefined) {
+      this._action.internalValue = undefined;
+      this._match.internalValue = undefined;
+      this._retryPolicy.internalValue = undefined;
+      this._timeout.internalValue = undefined;
+    }
+    else {
+      this._action.internalValue = value.action;
+      this._match.internalValue = value.match;
+      this._retryPolicy.internalValue = value.retryPolicy;
+      this._timeout.internalValue = value.timeout;
+    }
+  }
+
   // action - computed: false, optional: false, required: true
-  private _action?: AppmeshRouteSpecHttpRouteAction; 
-  private __actionOutput = new AppmeshRouteSpecHttpRouteActionOutputReference(this as any, "action", true);
+  private _action = new AppmeshRouteSpecHttpRouteActionOutputReference(this as any, "action", true);
   public get action() {
-    return this.__actionOutput;
+    return this._action;
   }
   public putAction(value: AppmeshRouteSpecHttpRouteAction) {
-    this._action = value;
+    this._action.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action.internalValue;
   }
 
   // match - computed: false, optional: false, required: true
-  private _match?: AppmeshRouteSpecHttpRouteMatch; 
-  private __matchOutput = new AppmeshRouteSpecHttpRouteMatchOutputReference(this as any, "match", true);
+  private _match = new AppmeshRouteSpecHttpRouteMatchOutputReference(this as any, "match", true);
   public get match() {
-    return this.__matchOutput;
+    return this._match;
   }
   public putMatch(value: AppmeshRouteSpecHttpRouteMatch) {
-    this._match = value;
+    this._match.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get matchInput() {
-    return this._match
+    return this._match.internalValue;
   }
 
   // retry_policy - computed: false, optional: true, required: false
-  private _retryPolicy?: AppmeshRouteSpecHttpRouteRetryPolicy | undefined; 
-  private __retryPolicyOutput = new AppmeshRouteSpecHttpRouteRetryPolicyOutputReference(this as any, "retry_policy", true);
+  private _retryPolicy = new AppmeshRouteSpecHttpRouteRetryPolicyOutputReference(this as any, "retry_policy", true);
   public get retryPolicy() {
-    return this.__retryPolicyOutput;
+    return this._retryPolicy;
   }
-  public putRetryPolicy(value: AppmeshRouteSpecHttpRouteRetryPolicy | undefined) {
-    this._retryPolicy = value;
+  public putRetryPolicy(value: AppmeshRouteSpecHttpRouteRetryPolicy) {
+    this._retryPolicy.internalValue = value;
   }
   public resetRetryPolicy() {
-    this._retryPolicy = undefined;
+    this._retryPolicy.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get retryPolicyInput() {
-    return this._retryPolicy
+    return this._retryPolicy.internalValue;
   }
 
   // timeout - computed: false, optional: true, required: false
-  private _timeout?: AppmeshRouteSpecHttpRouteTimeout | undefined; 
-  private __timeoutOutput = new AppmeshRouteSpecHttpRouteTimeoutOutputReference(this as any, "timeout", true);
+  private _timeout = new AppmeshRouteSpecHttpRouteTimeoutOutputReference(this as any, "timeout", true);
   public get timeout() {
-    return this.__timeoutOutput;
+    return this._timeout;
   }
-  public putTimeout(value: AppmeshRouteSpecHttpRouteTimeout | undefined) {
-    this._timeout = value;
+  public putTimeout(value: AppmeshRouteSpecHttpRouteTimeout) {
+    this._timeout.internalValue = value;
   }
   public resetTimeout() {
-    this._timeout = undefined;
+    this._timeout.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutInput() {
-    return this._timeout
+    return this._timeout.internalValue;
   }
 }
 export interface AppmeshRouteSpecTcpRouteActionWeightedTarget {
@@ -2657,6 +3533,25 @@ export class AppmeshRouteSpecTcpRouteActionOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecTcpRouteAction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._weightedTarget) {
+      hasAnyValues = true;
+      internalValueResult.weightedTarget = this._weightedTarget;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecTcpRouteAction | undefined) {
+    if (value === undefined) {
+      this._weightedTarget = undefined;
+    }
+    else {
+      this._weightedTarget = value.weightedTarget;
+    }
+  }
+
   // weighted_target - computed: false, optional: false, required: true
   private _weightedTarget?: AppmeshRouteSpecTcpRouteActionWeightedTarget[]; 
   public get weightedTarget() {
@@ -2668,7 +3563,7 @@ export class AppmeshRouteSpecTcpRouteActionOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get weightedTargetInput() {
-    return this._weightedTarget
+    return this._weightedTarget;
   }
 }
 export interface AppmeshRouteSpecTcpRouteTimeoutIdle {
@@ -2703,6 +3598,31 @@ export class AppmeshRouteSpecTcpRouteTimeoutIdleOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecTcpRouteTimeoutIdle | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecTcpRouteTimeoutIdle | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -2713,7 +3633,7 @@ export class AppmeshRouteSpecTcpRouteTimeoutIdleOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -2726,7 +3646,7 @@ export class AppmeshRouteSpecTcpRouteTimeoutIdleOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface AppmeshRouteSpecTcpRouteTimeout {
@@ -2758,21 +3678,39 @@ export class AppmeshRouteSpecTcpRouteTimeoutOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // idle - computed: false, optional: true, required: false
-  private _idle?: AppmeshRouteSpecTcpRouteTimeoutIdle | undefined; 
-  private __idleOutput = new AppmeshRouteSpecTcpRouteTimeoutIdleOutputReference(this as any, "idle", true);
-  public get idle() {
-    return this.__idleOutput;
+  public get internalValue(): AppmeshRouteSpecTcpRouteTimeout | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._idle) {
+      hasAnyValues = true;
+      internalValueResult.idle = this._idle?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putIdle(value: AppmeshRouteSpecTcpRouteTimeoutIdle | undefined) {
-    this._idle = value;
+
+  public set internalValue(value: AppmeshRouteSpecTcpRouteTimeout | undefined) {
+    if (value === undefined) {
+      this._idle.internalValue = undefined;
+    }
+    else {
+      this._idle.internalValue = value.idle;
+    }
+  }
+
+  // idle - computed: false, optional: true, required: false
+  private _idle = new AppmeshRouteSpecTcpRouteTimeoutIdleOutputReference(this as any, "idle", true);
+  public get idle() {
+    return this._idle;
+  }
+  public putIdle(value: AppmeshRouteSpecTcpRouteTimeoutIdle) {
+    this._idle.internalValue = value;
   }
   public resetIdle() {
-    this._idle = undefined;
+    this._idle.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get idleInput() {
-    return this._idle
+    return this._idle.internalValue;
   }
 }
 export interface AppmeshRouteSpecTcpRoute {
@@ -2811,35 +3749,58 @@ export class AppmeshRouteSpecTcpRouteOutputReference extends cdktf.ComplexObject
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpecTcpRoute | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._action) {
+      hasAnyValues = true;
+      internalValueResult.action = this._action?.internalValue;
+    }
+    if (this._timeout) {
+      hasAnyValues = true;
+      internalValueResult.timeout = this._timeout?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpecTcpRoute | undefined) {
+    if (value === undefined) {
+      this._action.internalValue = undefined;
+      this._timeout.internalValue = undefined;
+    }
+    else {
+      this._action.internalValue = value.action;
+      this._timeout.internalValue = value.timeout;
+    }
+  }
+
   // action - computed: false, optional: false, required: true
-  private _action?: AppmeshRouteSpecTcpRouteAction; 
-  private __actionOutput = new AppmeshRouteSpecTcpRouteActionOutputReference(this as any, "action", true);
+  private _action = new AppmeshRouteSpecTcpRouteActionOutputReference(this as any, "action", true);
   public get action() {
-    return this.__actionOutput;
+    return this._action;
   }
   public putAction(value: AppmeshRouteSpecTcpRouteAction) {
-    this._action = value;
+    this._action.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action.internalValue;
   }
 
   // timeout - computed: false, optional: true, required: false
-  private _timeout?: AppmeshRouteSpecTcpRouteTimeout | undefined; 
-  private __timeoutOutput = new AppmeshRouteSpecTcpRouteTimeoutOutputReference(this as any, "timeout", true);
+  private _timeout = new AppmeshRouteSpecTcpRouteTimeoutOutputReference(this as any, "timeout", true);
   public get timeout() {
-    return this.__timeoutOutput;
+    return this._timeout;
   }
-  public putTimeout(value: AppmeshRouteSpecTcpRouteTimeout | undefined) {
-    this._timeout = value;
+  public putTimeout(value: AppmeshRouteSpecTcpRouteTimeout) {
+    this._timeout.internalValue = value;
   }
   public resetTimeout() {
-    this._timeout = undefined;
+    this._timeout.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutInput() {
-    return this._timeout
+    return this._timeout.internalValue;
   }
 }
 export interface AppmeshRouteSpec {
@@ -2897,12 +3858,55 @@ export class AppmeshRouteSpecOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshRouteSpec | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._priority) {
+      hasAnyValues = true;
+      internalValueResult.priority = this._priority;
+    }
+    if (this._grpcRoute) {
+      hasAnyValues = true;
+      internalValueResult.grpcRoute = this._grpcRoute?.internalValue;
+    }
+    if (this._http2Route) {
+      hasAnyValues = true;
+      internalValueResult.http2Route = this._http2Route?.internalValue;
+    }
+    if (this._httpRoute) {
+      hasAnyValues = true;
+      internalValueResult.httpRoute = this._httpRoute?.internalValue;
+    }
+    if (this._tcpRoute) {
+      hasAnyValues = true;
+      internalValueResult.tcpRoute = this._tcpRoute?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshRouteSpec | undefined) {
+    if (value === undefined) {
+      this._priority = undefined;
+      this._grpcRoute.internalValue = undefined;
+      this._http2Route.internalValue = undefined;
+      this._httpRoute.internalValue = undefined;
+      this._tcpRoute.internalValue = undefined;
+    }
+    else {
+      this._priority = value.priority;
+      this._grpcRoute.internalValue = value.grpcRoute;
+      this._http2Route.internalValue = value.http2Route;
+      this._httpRoute.internalValue = value.httpRoute;
+      this._tcpRoute.internalValue = value.tcpRoute;
+    }
+  }
+
   // priority - computed: false, optional: true, required: false
-  private _priority?: number | undefined; 
+  private _priority?: number; 
   public get priority() {
     return this.getNumberAttribute('priority');
   }
-  public set priority(value: number | undefined) {
+  public set priority(value: number) {
     this._priority = value;
   }
   public resetPriority() {
@@ -2910,75 +3914,71 @@ export class AppmeshRouteSpecOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get priorityInput() {
-    return this._priority
+    return this._priority;
   }
 
   // grpc_route - computed: false, optional: true, required: false
-  private _grpcRoute?: AppmeshRouteSpecGrpcRoute | undefined; 
-  private __grpcRouteOutput = new AppmeshRouteSpecGrpcRouteOutputReference(this as any, "grpc_route", true);
+  private _grpcRoute = new AppmeshRouteSpecGrpcRouteOutputReference(this as any, "grpc_route", true);
   public get grpcRoute() {
-    return this.__grpcRouteOutput;
+    return this._grpcRoute;
   }
-  public putGrpcRoute(value: AppmeshRouteSpecGrpcRoute | undefined) {
-    this._grpcRoute = value;
+  public putGrpcRoute(value: AppmeshRouteSpecGrpcRoute) {
+    this._grpcRoute.internalValue = value;
   }
   public resetGrpcRoute() {
-    this._grpcRoute = undefined;
+    this._grpcRoute.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get grpcRouteInput() {
-    return this._grpcRoute
+    return this._grpcRoute.internalValue;
   }
 
   // http2_route - computed: false, optional: true, required: false
-  private _http2Route?: AppmeshRouteSpecHttp2Route | undefined; 
-  private __http2RouteOutput = new AppmeshRouteSpecHttp2RouteOutputReference(this as any, "http2_route", true);
+  private _http2Route = new AppmeshRouteSpecHttp2RouteOutputReference(this as any, "http2_route", true);
   public get http2Route() {
-    return this.__http2RouteOutput;
+    return this._http2Route;
   }
-  public putHttp2Route(value: AppmeshRouteSpecHttp2Route | undefined) {
-    this._http2Route = value;
+  public putHttp2Route(value: AppmeshRouteSpecHttp2Route) {
+    this._http2Route.internalValue = value;
   }
   public resetHttp2Route() {
-    this._http2Route = undefined;
+    this._http2Route.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get http2RouteInput() {
-    return this._http2Route
+    return this._http2Route.internalValue;
   }
 
   // http_route - computed: false, optional: true, required: false
-  private _httpRoute?: AppmeshRouteSpecHttpRoute | undefined; 
-  private __httpRouteOutput = new AppmeshRouteSpecHttpRouteOutputReference(this as any, "http_route", true);
+  private _httpRoute = new AppmeshRouteSpecHttpRouteOutputReference(this as any, "http_route", true);
   public get httpRoute() {
-    return this.__httpRouteOutput;
+    return this._httpRoute;
   }
-  public putHttpRoute(value: AppmeshRouteSpecHttpRoute | undefined) {
-    this._httpRoute = value;
+  public putHttpRoute(value: AppmeshRouteSpecHttpRoute) {
+    this._httpRoute.internalValue = value;
   }
   public resetHttpRoute() {
-    this._httpRoute = undefined;
+    this._httpRoute.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get httpRouteInput() {
-    return this._httpRoute
+    return this._httpRoute.internalValue;
   }
 
   // tcp_route - computed: false, optional: true, required: false
-  private _tcpRoute?: AppmeshRouteSpecTcpRoute | undefined; 
-  private __tcpRouteOutput = new AppmeshRouteSpecTcpRouteOutputReference(this as any, "tcp_route", true);
+  private _tcpRoute = new AppmeshRouteSpecTcpRouteOutputReference(this as any, "tcp_route", true);
   public get tcpRoute() {
-    return this.__tcpRouteOutput;
+    return this._tcpRoute;
   }
-  public putTcpRoute(value: AppmeshRouteSpecTcpRoute | undefined) {
-    this._tcpRoute = value;
+  public putTcpRoute(value: AppmeshRouteSpecTcpRoute) {
+    this._tcpRoute.internalValue = value;
   }
   public resetTcpRoute() {
-    this._tcpRoute = undefined;
+    this._tcpRoute.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get tcpRouteInput() {
-    return this._tcpRoute
+    return this._tcpRoute.internalValue;
   }
 }
 
@@ -3020,7 +4020,7 @@ export class AppmeshRoute extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._virtualRouterName = config.virtualRouterName;
-    this._spec = config.spec;
+    this._spec.internalValue = config.spec;
   }
 
   // ==========
@@ -3057,15 +4057,15 @@ export class AppmeshRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get meshNameInput() {
-    return this._meshName
+    return this._meshName;
   }
 
   // mesh_owner - computed: true, optional: true, required: false
-  private _meshOwner?: string | undefined; 
+  private _meshOwner?: string; 
   public get meshOwner() {
     return this.getStringAttribute('mesh_owner');
   }
-  public set meshOwner(value: string | undefined) {
+  public set meshOwner(value: string) {
     this._meshOwner = value;
   }
   public resetMeshOwner() {
@@ -3073,7 +4073,7 @@ export class AppmeshRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get meshOwnerInput() {
-    return this._meshOwner
+    return this._meshOwner;
   }
 
   // name - computed: false, optional: false, required: true
@@ -3086,7 +4086,7 @@ export class AppmeshRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // resource_owner - computed: true, optional: false, required: false
@@ -3095,12 +4095,12 @@ export class AppmeshRoute extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -3108,16 +4108,16 @@ export class AppmeshRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -3125,7 +4125,7 @@ export class AppmeshRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // virtual_router_name - computed: false, optional: false, required: true
@@ -3138,21 +4138,20 @@ export class AppmeshRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get virtualRouterNameInput() {
-    return this._virtualRouterName
+    return this._virtualRouterName;
   }
 
   // spec - computed: false, optional: false, required: true
-  private _spec?: AppmeshRouteSpec; 
-  private __specOutput = new AppmeshRouteSpecOutputReference(this as any, "spec", true);
+  private _spec = new AppmeshRouteSpecOutputReference(this as any, "spec", true);
   public get spec() {
-    return this.__specOutput;
+    return this._spec;
   }
   public putSpec(value: AppmeshRouteSpec) {
-    this._spec = value;
+    this._spec.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get specInput() {
-    return this._spec
+    return this._spec.internalValue;
   }
 
   // =========
@@ -3167,7 +4166,7 @@ export class AppmeshRoute extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       virtual_router_name: cdktf.stringToTerraform(this._virtualRouterName),
-      spec: appmeshRouteSpecToTerraform(this._spec),
+      spec: appmeshRouteSpecToTerraform(this._spec.internalValue),
     };
   }
 }

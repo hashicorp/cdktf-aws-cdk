@@ -93,11 +93,11 @@ export class MqConfiguration extends cdktf.TerraformResource {
   }
 
   // authentication_strategy - computed: true, optional: true, required: false
-  private _authenticationStrategy?: string | undefined; 
+  private _authenticationStrategy?: string; 
   public get authenticationStrategy() {
     return this.getStringAttribute('authentication_strategy');
   }
-  public set authenticationStrategy(value: string | undefined) {
+  public set authenticationStrategy(value: string) {
     this._authenticationStrategy = value;
   }
   public resetAuthenticationStrategy() {
@@ -105,7 +105,7 @@ export class MqConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authenticationStrategyInput() {
-    return this._authenticationStrategy
+    return this._authenticationStrategy;
   }
 
   // data - computed: false, optional: false, required: true
@@ -118,15 +118,15 @@ export class MqConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dataInput() {
-    return this._data
+    return this._data;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -134,7 +134,7 @@ export class MqConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // engine_type - computed: false, optional: false, required: true
@@ -147,7 +147,7 @@ export class MqConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineTypeInput() {
-    return this._engineType
+    return this._engineType;
   }
 
   // engine_version - computed: false, optional: false, required: true
@@ -160,7 +160,7 @@ export class MqConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineVersionInput() {
-    return this._engineVersion
+    return this._engineVersion;
   }
 
   // id - computed: true, optional: true, required: false
@@ -183,16 +183,16 @@ export class MqConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -200,16 +200,16 @@ export class MqConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -217,7 +217,7 @@ export class MqConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

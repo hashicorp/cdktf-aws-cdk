@@ -147,6 +147,31 @@ export class SecurityhubInsightFiltersCreatedAtDateRangeOutputReference extends 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SecurityhubInsightFiltersCreatedAtDateRange | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SecurityhubInsightFiltersCreatedAtDateRange | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -157,7 +182,7 @@ export class SecurityhubInsightFiltersCreatedAtDateRangeOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -170,7 +195,7 @@ export class SecurityhubInsightFiltersCreatedAtDateRangeOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface SecurityhubInsightFiltersCreatedAt {
@@ -447,6 +472,31 @@ export class SecurityhubInsightFiltersFirstObservedAtDateRangeOutputReference ex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SecurityhubInsightFiltersFirstObservedAtDateRange | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SecurityhubInsightFiltersFirstObservedAtDateRange | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -457,7 +507,7 @@ export class SecurityhubInsightFiltersFirstObservedAtDateRangeOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -470,7 +520,7 @@ export class SecurityhubInsightFiltersFirstObservedAtDateRangeOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface SecurityhubInsightFiltersFirstObservedAt {
@@ -595,6 +645,31 @@ export class SecurityhubInsightFiltersLastObservedAtDateRangeOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SecurityhubInsightFiltersLastObservedAtDateRange | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SecurityhubInsightFiltersLastObservedAtDateRange | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -605,7 +680,7 @@ export class SecurityhubInsightFiltersLastObservedAtDateRangeOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -618,7 +693,7 @@ export class SecurityhubInsightFiltersLastObservedAtDateRangeOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface SecurityhubInsightFiltersLastObservedAt {
@@ -1024,6 +1099,31 @@ export class SecurityhubInsightFiltersNoteUpdatedAtDateRangeOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SecurityhubInsightFiltersNoteUpdatedAtDateRange | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SecurityhubInsightFiltersNoteUpdatedAtDateRange | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -1034,7 +1134,7 @@ export class SecurityhubInsightFiltersNoteUpdatedAtDateRangeOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -1047,7 +1147,7 @@ export class SecurityhubInsightFiltersNoteUpdatedAtDateRangeOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface SecurityhubInsightFiltersNoteUpdatedAt {
@@ -1133,6 +1233,31 @@ export class SecurityhubInsightFiltersProcessLaunchedAtDateRangeOutputReference 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SecurityhubInsightFiltersProcessLaunchedAtDateRange | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SecurityhubInsightFiltersProcessLaunchedAtDateRange | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -1143,7 +1268,7 @@ export class SecurityhubInsightFiltersProcessLaunchedAtDateRangeOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -1156,7 +1281,7 @@ export class SecurityhubInsightFiltersProcessLaunchedAtDateRangeOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface SecurityhubInsightFiltersProcessLaunchedAt {
@@ -1318,6 +1443,31 @@ export class SecurityhubInsightFiltersProcessTerminatedAtDateRangeOutputReferenc
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SecurityhubInsightFiltersProcessTerminatedAtDateRange | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SecurityhubInsightFiltersProcessTerminatedAtDateRange | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -1328,7 +1478,7 @@ export class SecurityhubInsightFiltersProcessTerminatedAtDateRangeOutputReferenc
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -1341,7 +1491,7 @@ export class SecurityhubInsightFiltersProcessTerminatedAtDateRangeOutputReferenc
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface SecurityhubInsightFiltersProcessTerminatedAt {
@@ -1664,6 +1814,31 @@ export class SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRangeO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -1674,7 +1849,7 @@ export class SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRangeO
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -1687,7 +1862,7 @@ export class SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRangeO
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt {
@@ -1817,6 +1992,31 @@ export class SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRangeO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRange | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRange | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -1827,7 +2027,7 @@ export class SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRangeO
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -1840,7 +2040,7 @@ export class SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRangeO
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt {
@@ -2036,6 +2236,31 @@ export class SecurityhubInsightFiltersResourceContainerLaunchedAtDateRangeOutput
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SecurityhubInsightFiltersResourceContainerLaunchedAtDateRange | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SecurityhubInsightFiltersResourceContainerLaunchedAtDateRange | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -2046,7 +2271,7 @@ export class SecurityhubInsightFiltersResourceContainerLaunchedAtDateRangeOutput
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -2059,7 +2284,7 @@ export class SecurityhubInsightFiltersResourceContainerLaunchedAtDateRangeOutput
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface SecurityhubInsightFiltersResourceContainerLaunchedAt {
@@ -2353,6 +2578,31 @@ export class SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRang
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRange | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRange | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -2363,7 +2613,7 @@ export class SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRang
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -2376,7 +2626,7 @@ export class SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRang
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt {
@@ -2572,6 +2822,31 @@ export class SecurityhubInsightFiltersUpdatedAtDateRangeOutputReference extends 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SecurityhubInsightFiltersUpdatedAtDateRange | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SecurityhubInsightFiltersUpdatedAtDateRange | undefined) {
+    if (value === undefined) {
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // unit - computed: false, optional: false, required: true
   private _unit?: string; 
   public get unit() {
@@ -2582,7 +2857,7 @@ export class SecurityhubInsightFiltersUpdatedAtDateRangeOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -2595,7 +2870,7 @@ export class SecurityhubInsightFiltersUpdatedAtDateRangeOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface SecurityhubInsightFiltersUpdatedAt {
@@ -3336,13 +3611,554 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SecurityhubInsightFilters | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._awsAccountId) {
+      hasAnyValues = true;
+      internalValueResult.awsAccountId = this._awsAccountId;
+    }
+    if (this._companyName) {
+      hasAnyValues = true;
+      internalValueResult.companyName = this._companyName;
+    }
+    if (this._complianceStatus) {
+      hasAnyValues = true;
+      internalValueResult.complianceStatus = this._complianceStatus;
+    }
+    if (this._confidence) {
+      hasAnyValues = true;
+      internalValueResult.confidence = this._confidence;
+    }
+    if (this._createdAt) {
+      hasAnyValues = true;
+      internalValueResult.createdAt = this._createdAt;
+    }
+    if (this._criticality) {
+      hasAnyValues = true;
+      internalValueResult.criticality = this._criticality;
+    }
+    if (this._description) {
+      hasAnyValues = true;
+      internalValueResult.description = this._description;
+    }
+    if (this._findingProviderFieldsConfidence) {
+      hasAnyValues = true;
+      internalValueResult.findingProviderFieldsConfidence = this._findingProviderFieldsConfidence;
+    }
+    if (this._findingProviderFieldsCriticality) {
+      hasAnyValues = true;
+      internalValueResult.findingProviderFieldsCriticality = this._findingProviderFieldsCriticality;
+    }
+    if (this._findingProviderFieldsRelatedFindingsId) {
+      hasAnyValues = true;
+      internalValueResult.findingProviderFieldsRelatedFindingsId = this._findingProviderFieldsRelatedFindingsId;
+    }
+    if (this._findingProviderFieldsRelatedFindingsProductArn) {
+      hasAnyValues = true;
+      internalValueResult.findingProviderFieldsRelatedFindingsProductArn = this._findingProviderFieldsRelatedFindingsProductArn;
+    }
+    if (this._findingProviderFieldsSeverityLabel) {
+      hasAnyValues = true;
+      internalValueResult.findingProviderFieldsSeverityLabel = this._findingProviderFieldsSeverityLabel;
+    }
+    if (this._findingProviderFieldsSeverityOriginal) {
+      hasAnyValues = true;
+      internalValueResult.findingProviderFieldsSeverityOriginal = this._findingProviderFieldsSeverityOriginal;
+    }
+    if (this._findingProviderFieldsTypes) {
+      hasAnyValues = true;
+      internalValueResult.findingProviderFieldsTypes = this._findingProviderFieldsTypes;
+    }
+    if (this._firstObservedAt) {
+      hasAnyValues = true;
+      internalValueResult.firstObservedAt = this._firstObservedAt;
+    }
+    if (this._generatorId) {
+      hasAnyValues = true;
+      internalValueResult.generatorId = this._generatorId;
+    }
+    if (this._id) {
+      hasAnyValues = true;
+      internalValueResult.id = this._id;
+    }
+    if (this._keyword) {
+      hasAnyValues = true;
+      internalValueResult.keyword = this._keyword;
+    }
+    if (this._lastObservedAt) {
+      hasAnyValues = true;
+      internalValueResult.lastObservedAt = this._lastObservedAt;
+    }
+    if (this._malwareName) {
+      hasAnyValues = true;
+      internalValueResult.malwareName = this._malwareName;
+    }
+    if (this._malwarePath) {
+      hasAnyValues = true;
+      internalValueResult.malwarePath = this._malwarePath;
+    }
+    if (this._malwareState) {
+      hasAnyValues = true;
+      internalValueResult.malwareState = this._malwareState;
+    }
+    if (this._malwareType) {
+      hasAnyValues = true;
+      internalValueResult.malwareType = this._malwareType;
+    }
+    if (this._networkDestinationDomain) {
+      hasAnyValues = true;
+      internalValueResult.networkDestinationDomain = this._networkDestinationDomain;
+    }
+    if (this._networkDestinationIpv4) {
+      hasAnyValues = true;
+      internalValueResult.networkDestinationIpv4 = this._networkDestinationIpv4;
+    }
+    if (this._networkDestinationIpv6) {
+      hasAnyValues = true;
+      internalValueResult.networkDestinationIpv6 = this._networkDestinationIpv6;
+    }
+    if (this._networkDestinationPort) {
+      hasAnyValues = true;
+      internalValueResult.networkDestinationPort = this._networkDestinationPort;
+    }
+    if (this._networkDirection) {
+      hasAnyValues = true;
+      internalValueResult.networkDirection = this._networkDirection;
+    }
+    if (this._networkProtocol) {
+      hasAnyValues = true;
+      internalValueResult.networkProtocol = this._networkProtocol;
+    }
+    if (this._networkSourceDomain) {
+      hasAnyValues = true;
+      internalValueResult.networkSourceDomain = this._networkSourceDomain;
+    }
+    if (this._networkSourceIpv4) {
+      hasAnyValues = true;
+      internalValueResult.networkSourceIpv4 = this._networkSourceIpv4;
+    }
+    if (this._networkSourceIpv6) {
+      hasAnyValues = true;
+      internalValueResult.networkSourceIpv6 = this._networkSourceIpv6;
+    }
+    if (this._networkSourceMac) {
+      hasAnyValues = true;
+      internalValueResult.networkSourceMac = this._networkSourceMac;
+    }
+    if (this._networkSourcePort) {
+      hasAnyValues = true;
+      internalValueResult.networkSourcePort = this._networkSourcePort;
+    }
+    if (this._noteText) {
+      hasAnyValues = true;
+      internalValueResult.noteText = this._noteText;
+    }
+    if (this._noteUpdatedAt) {
+      hasAnyValues = true;
+      internalValueResult.noteUpdatedAt = this._noteUpdatedAt;
+    }
+    if (this._noteUpdatedBy) {
+      hasAnyValues = true;
+      internalValueResult.noteUpdatedBy = this._noteUpdatedBy;
+    }
+    if (this._processLaunchedAt) {
+      hasAnyValues = true;
+      internalValueResult.processLaunchedAt = this._processLaunchedAt;
+    }
+    if (this._processName) {
+      hasAnyValues = true;
+      internalValueResult.processName = this._processName;
+    }
+    if (this._processParentPid) {
+      hasAnyValues = true;
+      internalValueResult.processParentPid = this._processParentPid;
+    }
+    if (this._processPath) {
+      hasAnyValues = true;
+      internalValueResult.processPath = this._processPath;
+    }
+    if (this._processPid) {
+      hasAnyValues = true;
+      internalValueResult.processPid = this._processPid;
+    }
+    if (this._processTerminatedAt) {
+      hasAnyValues = true;
+      internalValueResult.processTerminatedAt = this._processTerminatedAt;
+    }
+    if (this._productArn) {
+      hasAnyValues = true;
+      internalValueResult.productArn = this._productArn;
+    }
+    if (this._productFields) {
+      hasAnyValues = true;
+      internalValueResult.productFields = this._productFields;
+    }
+    if (this._productName) {
+      hasAnyValues = true;
+      internalValueResult.productName = this._productName;
+    }
+    if (this._recommendationText) {
+      hasAnyValues = true;
+      internalValueResult.recommendationText = this._recommendationText;
+    }
+    if (this._recordState) {
+      hasAnyValues = true;
+      internalValueResult.recordState = this._recordState;
+    }
+    if (this._relatedFindingsId) {
+      hasAnyValues = true;
+      internalValueResult.relatedFindingsId = this._relatedFindingsId;
+    }
+    if (this._relatedFindingsProductArn) {
+      hasAnyValues = true;
+      internalValueResult.relatedFindingsProductArn = this._relatedFindingsProductArn;
+    }
+    if (this._resourceAwsEc2InstanceIamInstanceProfileArn) {
+      hasAnyValues = true;
+      internalValueResult.resourceAwsEc2InstanceIamInstanceProfileArn = this._resourceAwsEc2InstanceIamInstanceProfileArn;
+    }
+    if (this._resourceAwsEc2InstanceImageId) {
+      hasAnyValues = true;
+      internalValueResult.resourceAwsEc2InstanceImageId = this._resourceAwsEc2InstanceImageId;
+    }
+    if (this._resourceAwsEc2InstanceIpv4Addresses) {
+      hasAnyValues = true;
+      internalValueResult.resourceAwsEc2InstanceIpv4Addresses = this._resourceAwsEc2InstanceIpv4Addresses;
+    }
+    if (this._resourceAwsEc2InstanceIpv6Addresses) {
+      hasAnyValues = true;
+      internalValueResult.resourceAwsEc2InstanceIpv6Addresses = this._resourceAwsEc2InstanceIpv6Addresses;
+    }
+    if (this._resourceAwsEc2InstanceKeyName) {
+      hasAnyValues = true;
+      internalValueResult.resourceAwsEc2InstanceKeyName = this._resourceAwsEc2InstanceKeyName;
+    }
+    if (this._resourceAwsEc2InstanceLaunchedAt) {
+      hasAnyValues = true;
+      internalValueResult.resourceAwsEc2InstanceLaunchedAt = this._resourceAwsEc2InstanceLaunchedAt;
+    }
+    if (this._resourceAwsEc2InstanceSubnetId) {
+      hasAnyValues = true;
+      internalValueResult.resourceAwsEc2InstanceSubnetId = this._resourceAwsEc2InstanceSubnetId;
+    }
+    if (this._resourceAwsEc2InstanceType) {
+      hasAnyValues = true;
+      internalValueResult.resourceAwsEc2InstanceType = this._resourceAwsEc2InstanceType;
+    }
+    if (this._resourceAwsEc2InstanceVpcId) {
+      hasAnyValues = true;
+      internalValueResult.resourceAwsEc2InstanceVpcId = this._resourceAwsEc2InstanceVpcId;
+    }
+    if (this._resourceAwsIamAccessKeyCreatedAt) {
+      hasAnyValues = true;
+      internalValueResult.resourceAwsIamAccessKeyCreatedAt = this._resourceAwsIamAccessKeyCreatedAt;
+    }
+    if (this._resourceAwsIamAccessKeyStatus) {
+      hasAnyValues = true;
+      internalValueResult.resourceAwsIamAccessKeyStatus = this._resourceAwsIamAccessKeyStatus;
+    }
+    if (this._resourceAwsIamAccessKeyUserName) {
+      hasAnyValues = true;
+      internalValueResult.resourceAwsIamAccessKeyUserName = this._resourceAwsIamAccessKeyUserName;
+    }
+    if (this._resourceAwsS3BucketOwnerId) {
+      hasAnyValues = true;
+      internalValueResult.resourceAwsS3BucketOwnerId = this._resourceAwsS3BucketOwnerId;
+    }
+    if (this._resourceAwsS3BucketOwnerName) {
+      hasAnyValues = true;
+      internalValueResult.resourceAwsS3BucketOwnerName = this._resourceAwsS3BucketOwnerName;
+    }
+    if (this._resourceContainerImageId) {
+      hasAnyValues = true;
+      internalValueResult.resourceContainerImageId = this._resourceContainerImageId;
+    }
+    if (this._resourceContainerImageName) {
+      hasAnyValues = true;
+      internalValueResult.resourceContainerImageName = this._resourceContainerImageName;
+    }
+    if (this._resourceContainerLaunchedAt) {
+      hasAnyValues = true;
+      internalValueResult.resourceContainerLaunchedAt = this._resourceContainerLaunchedAt;
+    }
+    if (this._resourceContainerName) {
+      hasAnyValues = true;
+      internalValueResult.resourceContainerName = this._resourceContainerName;
+    }
+    if (this._resourceDetailsOther) {
+      hasAnyValues = true;
+      internalValueResult.resourceDetailsOther = this._resourceDetailsOther;
+    }
+    if (this._resourceId) {
+      hasAnyValues = true;
+      internalValueResult.resourceId = this._resourceId;
+    }
+    if (this._resourcePartition) {
+      hasAnyValues = true;
+      internalValueResult.resourcePartition = this._resourcePartition;
+    }
+    if (this._resourceRegion) {
+      hasAnyValues = true;
+      internalValueResult.resourceRegion = this._resourceRegion;
+    }
+    if (this._resourceTags) {
+      hasAnyValues = true;
+      internalValueResult.resourceTags = this._resourceTags;
+    }
+    if (this._resourceType) {
+      hasAnyValues = true;
+      internalValueResult.resourceType = this._resourceType;
+    }
+    if (this._severityLabel) {
+      hasAnyValues = true;
+      internalValueResult.severityLabel = this._severityLabel;
+    }
+    if (this._sourceUrl) {
+      hasAnyValues = true;
+      internalValueResult.sourceUrl = this._sourceUrl;
+    }
+    if (this._threatIntelIndicatorCategory) {
+      hasAnyValues = true;
+      internalValueResult.threatIntelIndicatorCategory = this._threatIntelIndicatorCategory;
+    }
+    if (this._threatIntelIndicatorLastObservedAt) {
+      hasAnyValues = true;
+      internalValueResult.threatIntelIndicatorLastObservedAt = this._threatIntelIndicatorLastObservedAt;
+    }
+    if (this._threatIntelIndicatorSource) {
+      hasAnyValues = true;
+      internalValueResult.threatIntelIndicatorSource = this._threatIntelIndicatorSource;
+    }
+    if (this._threatIntelIndicatorSourceUrl) {
+      hasAnyValues = true;
+      internalValueResult.threatIntelIndicatorSourceUrl = this._threatIntelIndicatorSourceUrl;
+    }
+    if (this._threatIntelIndicatorType) {
+      hasAnyValues = true;
+      internalValueResult.threatIntelIndicatorType = this._threatIntelIndicatorType;
+    }
+    if (this._threatIntelIndicatorValue) {
+      hasAnyValues = true;
+      internalValueResult.threatIntelIndicatorValue = this._threatIntelIndicatorValue;
+    }
+    if (this._title) {
+      hasAnyValues = true;
+      internalValueResult.title = this._title;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    if (this._updatedAt) {
+      hasAnyValues = true;
+      internalValueResult.updatedAt = this._updatedAt;
+    }
+    if (this._userDefinedValues) {
+      hasAnyValues = true;
+      internalValueResult.userDefinedValues = this._userDefinedValues;
+    }
+    if (this._verificationState) {
+      hasAnyValues = true;
+      internalValueResult.verificationState = this._verificationState;
+    }
+    if (this._workflowStatus) {
+      hasAnyValues = true;
+      internalValueResult.workflowStatus = this._workflowStatus;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SecurityhubInsightFilters | undefined) {
+    if (value === undefined) {
+      this._awsAccountId = undefined;
+      this._companyName = undefined;
+      this._complianceStatus = undefined;
+      this._confidence = undefined;
+      this._createdAt = undefined;
+      this._criticality = undefined;
+      this._description = undefined;
+      this._findingProviderFieldsConfidence = undefined;
+      this._findingProviderFieldsCriticality = undefined;
+      this._findingProviderFieldsRelatedFindingsId = undefined;
+      this._findingProviderFieldsRelatedFindingsProductArn = undefined;
+      this._findingProviderFieldsSeverityLabel = undefined;
+      this._findingProviderFieldsSeverityOriginal = undefined;
+      this._findingProviderFieldsTypes = undefined;
+      this._firstObservedAt = undefined;
+      this._generatorId = undefined;
+      this._id = undefined;
+      this._keyword = undefined;
+      this._lastObservedAt = undefined;
+      this._malwareName = undefined;
+      this._malwarePath = undefined;
+      this._malwareState = undefined;
+      this._malwareType = undefined;
+      this._networkDestinationDomain = undefined;
+      this._networkDestinationIpv4 = undefined;
+      this._networkDestinationIpv6 = undefined;
+      this._networkDestinationPort = undefined;
+      this._networkDirection = undefined;
+      this._networkProtocol = undefined;
+      this._networkSourceDomain = undefined;
+      this._networkSourceIpv4 = undefined;
+      this._networkSourceIpv6 = undefined;
+      this._networkSourceMac = undefined;
+      this._networkSourcePort = undefined;
+      this._noteText = undefined;
+      this._noteUpdatedAt = undefined;
+      this._noteUpdatedBy = undefined;
+      this._processLaunchedAt = undefined;
+      this._processName = undefined;
+      this._processParentPid = undefined;
+      this._processPath = undefined;
+      this._processPid = undefined;
+      this._processTerminatedAt = undefined;
+      this._productArn = undefined;
+      this._productFields = undefined;
+      this._productName = undefined;
+      this._recommendationText = undefined;
+      this._recordState = undefined;
+      this._relatedFindingsId = undefined;
+      this._relatedFindingsProductArn = undefined;
+      this._resourceAwsEc2InstanceIamInstanceProfileArn = undefined;
+      this._resourceAwsEc2InstanceImageId = undefined;
+      this._resourceAwsEc2InstanceIpv4Addresses = undefined;
+      this._resourceAwsEc2InstanceIpv6Addresses = undefined;
+      this._resourceAwsEc2InstanceKeyName = undefined;
+      this._resourceAwsEc2InstanceLaunchedAt = undefined;
+      this._resourceAwsEc2InstanceSubnetId = undefined;
+      this._resourceAwsEc2InstanceType = undefined;
+      this._resourceAwsEc2InstanceVpcId = undefined;
+      this._resourceAwsIamAccessKeyCreatedAt = undefined;
+      this._resourceAwsIamAccessKeyStatus = undefined;
+      this._resourceAwsIamAccessKeyUserName = undefined;
+      this._resourceAwsS3BucketOwnerId = undefined;
+      this._resourceAwsS3BucketOwnerName = undefined;
+      this._resourceContainerImageId = undefined;
+      this._resourceContainerImageName = undefined;
+      this._resourceContainerLaunchedAt = undefined;
+      this._resourceContainerName = undefined;
+      this._resourceDetailsOther = undefined;
+      this._resourceId = undefined;
+      this._resourcePartition = undefined;
+      this._resourceRegion = undefined;
+      this._resourceTags = undefined;
+      this._resourceType = undefined;
+      this._severityLabel = undefined;
+      this._sourceUrl = undefined;
+      this._threatIntelIndicatorCategory = undefined;
+      this._threatIntelIndicatorLastObservedAt = undefined;
+      this._threatIntelIndicatorSource = undefined;
+      this._threatIntelIndicatorSourceUrl = undefined;
+      this._threatIntelIndicatorType = undefined;
+      this._threatIntelIndicatorValue = undefined;
+      this._title = undefined;
+      this._type = undefined;
+      this._updatedAt = undefined;
+      this._userDefinedValues = undefined;
+      this._verificationState = undefined;
+      this._workflowStatus = undefined;
+    }
+    else {
+      this._awsAccountId = value.awsAccountId;
+      this._companyName = value.companyName;
+      this._complianceStatus = value.complianceStatus;
+      this._confidence = value.confidence;
+      this._createdAt = value.createdAt;
+      this._criticality = value.criticality;
+      this._description = value.description;
+      this._findingProviderFieldsConfidence = value.findingProviderFieldsConfidence;
+      this._findingProviderFieldsCriticality = value.findingProviderFieldsCriticality;
+      this._findingProviderFieldsRelatedFindingsId = value.findingProviderFieldsRelatedFindingsId;
+      this._findingProviderFieldsRelatedFindingsProductArn = value.findingProviderFieldsRelatedFindingsProductArn;
+      this._findingProviderFieldsSeverityLabel = value.findingProviderFieldsSeverityLabel;
+      this._findingProviderFieldsSeverityOriginal = value.findingProviderFieldsSeverityOriginal;
+      this._findingProviderFieldsTypes = value.findingProviderFieldsTypes;
+      this._firstObservedAt = value.firstObservedAt;
+      this._generatorId = value.generatorId;
+      this._id = value.id;
+      this._keyword = value.keyword;
+      this._lastObservedAt = value.lastObservedAt;
+      this._malwareName = value.malwareName;
+      this._malwarePath = value.malwarePath;
+      this._malwareState = value.malwareState;
+      this._malwareType = value.malwareType;
+      this._networkDestinationDomain = value.networkDestinationDomain;
+      this._networkDestinationIpv4 = value.networkDestinationIpv4;
+      this._networkDestinationIpv6 = value.networkDestinationIpv6;
+      this._networkDestinationPort = value.networkDestinationPort;
+      this._networkDirection = value.networkDirection;
+      this._networkProtocol = value.networkProtocol;
+      this._networkSourceDomain = value.networkSourceDomain;
+      this._networkSourceIpv4 = value.networkSourceIpv4;
+      this._networkSourceIpv6 = value.networkSourceIpv6;
+      this._networkSourceMac = value.networkSourceMac;
+      this._networkSourcePort = value.networkSourcePort;
+      this._noteText = value.noteText;
+      this._noteUpdatedAt = value.noteUpdatedAt;
+      this._noteUpdatedBy = value.noteUpdatedBy;
+      this._processLaunchedAt = value.processLaunchedAt;
+      this._processName = value.processName;
+      this._processParentPid = value.processParentPid;
+      this._processPath = value.processPath;
+      this._processPid = value.processPid;
+      this._processTerminatedAt = value.processTerminatedAt;
+      this._productArn = value.productArn;
+      this._productFields = value.productFields;
+      this._productName = value.productName;
+      this._recommendationText = value.recommendationText;
+      this._recordState = value.recordState;
+      this._relatedFindingsId = value.relatedFindingsId;
+      this._relatedFindingsProductArn = value.relatedFindingsProductArn;
+      this._resourceAwsEc2InstanceIamInstanceProfileArn = value.resourceAwsEc2InstanceIamInstanceProfileArn;
+      this._resourceAwsEc2InstanceImageId = value.resourceAwsEc2InstanceImageId;
+      this._resourceAwsEc2InstanceIpv4Addresses = value.resourceAwsEc2InstanceIpv4Addresses;
+      this._resourceAwsEc2InstanceIpv6Addresses = value.resourceAwsEc2InstanceIpv6Addresses;
+      this._resourceAwsEc2InstanceKeyName = value.resourceAwsEc2InstanceKeyName;
+      this._resourceAwsEc2InstanceLaunchedAt = value.resourceAwsEc2InstanceLaunchedAt;
+      this._resourceAwsEc2InstanceSubnetId = value.resourceAwsEc2InstanceSubnetId;
+      this._resourceAwsEc2InstanceType = value.resourceAwsEc2InstanceType;
+      this._resourceAwsEc2InstanceVpcId = value.resourceAwsEc2InstanceVpcId;
+      this._resourceAwsIamAccessKeyCreatedAt = value.resourceAwsIamAccessKeyCreatedAt;
+      this._resourceAwsIamAccessKeyStatus = value.resourceAwsIamAccessKeyStatus;
+      this._resourceAwsIamAccessKeyUserName = value.resourceAwsIamAccessKeyUserName;
+      this._resourceAwsS3BucketOwnerId = value.resourceAwsS3BucketOwnerId;
+      this._resourceAwsS3BucketOwnerName = value.resourceAwsS3BucketOwnerName;
+      this._resourceContainerImageId = value.resourceContainerImageId;
+      this._resourceContainerImageName = value.resourceContainerImageName;
+      this._resourceContainerLaunchedAt = value.resourceContainerLaunchedAt;
+      this._resourceContainerName = value.resourceContainerName;
+      this._resourceDetailsOther = value.resourceDetailsOther;
+      this._resourceId = value.resourceId;
+      this._resourcePartition = value.resourcePartition;
+      this._resourceRegion = value.resourceRegion;
+      this._resourceTags = value.resourceTags;
+      this._resourceType = value.resourceType;
+      this._severityLabel = value.severityLabel;
+      this._sourceUrl = value.sourceUrl;
+      this._threatIntelIndicatorCategory = value.threatIntelIndicatorCategory;
+      this._threatIntelIndicatorLastObservedAt = value.threatIntelIndicatorLastObservedAt;
+      this._threatIntelIndicatorSource = value.threatIntelIndicatorSource;
+      this._threatIntelIndicatorSourceUrl = value.threatIntelIndicatorSourceUrl;
+      this._threatIntelIndicatorType = value.threatIntelIndicatorType;
+      this._threatIntelIndicatorValue = value.threatIntelIndicatorValue;
+      this._title = value.title;
+      this._type = value.type;
+      this._updatedAt = value.updatedAt;
+      this._userDefinedValues = value.userDefinedValues;
+      this._verificationState = value.verificationState;
+      this._workflowStatus = value.workflowStatus;
+    }
+  }
+
   // aws_account_id - computed: false, optional: true, required: false
-  private _awsAccountId?: SecurityhubInsightFiltersAwsAccountId[] | undefined; 
+  private _awsAccountId?: SecurityhubInsightFiltersAwsAccountId[]; 
   public get awsAccountId() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('aws_account_id') as any;
   }
-  public set awsAccountId(value: SecurityhubInsightFiltersAwsAccountId[] | undefined) {
+  public set awsAccountId(value: SecurityhubInsightFiltersAwsAccountId[]) {
     this._awsAccountId = value;
   }
   public resetAwsAccountId() {
@@ -3350,16 +4166,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get awsAccountIdInput() {
-    return this._awsAccountId
+    return this._awsAccountId;
   }
 
   // company_name - computed: false, optional: true, required: false
-  private _companyName?: SecurityhubInsightFiltersCompanyName[] | undefined; 
+  private _companyName?: SecurityhubInsightFiltersCompanyName[]; 
   public get companyName() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('company_name') as any;
   }
-  public set companyName(value: SecurityhubInsightFiltersCompanyName[] | undefined) {
+  public set companyName(value: SecurityhubInsightFiltersCompanyName[]) {
     this._companyName = value;
   }
   public resetCompanyName() {
@@ -3367,16 +4183,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get companyNameInput() {
-    return this._companyName
+    return this._companyName;
   }
 
   // compliance_status - computed: false, optional: true, required: false
-  private _complianceStatus?: SecurityhubInsightFiltersComplianceStatus[] | undefined; 
+  private _complianceStatus?: SecurityhubInsightFiltersComplianceStatus[]; 
   public get complianceStatus() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('compliance_status') as any;
   }
-  public set complianceStatus(value: SecurityhubInsightFiltersComplianceStatus[] | undefined) {
+  public set complianceStatus(value: SecurityhubInsightFiltersComplianceStatus[]) {
     this._complianceStatus = value;
   }
   public resetComplianceStatus() {
@@ -3384,16 +4200,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get complianceStatusInput() {
-    return this._complianceStatus
+    return this._complianceStatus;
   }
 
   // confidence - computed: false, optional: true, required: false
-  private _confidence?: SecurityhubInsightFiltersConfidence[] | undefined; 
+  private _confidence?: SecurityhubInsightFiltersConfidence[]; 
   public get confidence() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('confidence') as any;
   }
-  public set confidence(value: SecurityhubInsightFiltersConfidence[] | undefined) {
+  public set confidence(value: SecurityhubInsightFiltersConfidence[]) {
     this._confidence = value;
   }
   public resetConfidence() {
@@ -3401,16 +4217,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get confidenceInput() {
-    return this._confidence
+    return this._confidence;
   }
 
   // created_at - computed: false, optional: true, required: false
-  private _createdAt?: SecurityhubInsightFiltersCreatedAt[] | undefined; 
+  private _createdAt?: SecurityhubInsightFiltersCreatedAt[]; 
   public get createdAt() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('created_at') as any;
   }
-  public set createdAt(value: SecurityhubInsightFiltersCreatedAt[] | undefined) {
+  public set createdAt(value: SecurityhubInsightFiltersCreatedAt[]) {
     this._createdAt = value;
   }
   public resetCreatedAt() {
@@ -3418,16 +4234,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get createdAtInput() {
-    return this._createdAt
+    return this._createdAt;
   }
 
   // criticality - computed: false, optional: true, required: false
-  private _criticality?: SecurityhubInsightFiltersCriticality[] | undefined; 
+  private _criticality?: SecurityhubInsightFiltersCriticality[]; 
   public get criticality() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('criticality') as any;
   }
-  public set criticality(value: SecurityhubInsightFiltersCriticality[] | undefined) {
+  public set criticality(value: SecurityhubInsightFiltersCriticality[]) {
     this._criticality = value;
   }
   public resetCriticality() {
@@ -3435,16 +4251,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get criticalityInput() {
-    return this._criticality
+    return this._criticality;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: SecurityhubInsightFiltersDescription[] | undefined; 
+  private _description?: SecurityhubInsightFiltersDescription[]; 
   public get description() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('description') as any;
   }
-  public set description(value: SecurityhubInsightFiltersDescription[] | undefined) {
+  public set description(value: SecurityhubInsightFiltersDescription[]) {
     this._description = value;
   }
   public resetDescription() {
@@ -3452,16 +4268,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // finding_provider_fields_confidence - computed: false, optional: true, required: false
-  private _findingProviderFieldsConfidence?: SecurityhubInsightFiltersFindingProviderFieldsConfidence[] | undefined; 
+  private _findingProviderFieldsConfidence?: SecurityhubInsightFiltersFindingProviderFieldsConfidence[]; 
   public get findingProviderFieldsConfidence() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('finding_provider_fields_confidence') as any;
   }
-  public set findingProviderFieldsConfidence(value: SecurityhubInsightFiltersFindingProviderFieldsConfidence[] | undefined) {
+  public set findingProviderFieldsConfidence(value: SecurityhubInsightFiltersFindingProviderFieldsConfidence[]) {
     this._findingProviderFieldsConfidence = value;
   }
   public resetFindingProviderFieldsConfidence() {
@@ -3469,16 +4285,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get findingProviderFieldsConfidenceInput() {
-    return this._findingProviderFieldsConfidence
+    return this._findingProviderFieldsConfidence;
   }
 
   // finding_provider_fields_criticality - computed: false, optional: true, required: false
-  private _findingProviderFieldsCriticality?: SecurityhubInsightFiltersFindingProviderFieldsCriticality[] | undefined; 
+  private _findingProviderFieldsCriticality?: SecurityhubInsightFiltersFindingProviderFieldsCriticality[]; 
   public get findingProviderFieldsCriticality() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('finding_provider_fields_criticality') as any;
   }
-  public set findingProviderFieldsCriticality(value: SecurityhubInsightFiltersFindingProviderFieldsCriticality[] | undefined) {
+  public set findingProviderFieldsCriticality(value: SecurityhubInsightFiltersFindingProviderFieldsCriticality[]) {
     this._findingProviderFieldsCriticality = value;
   }
   public resetFindingProviderFieldsCriticality() {
@@ -3486,16 +4302,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get findingProviderFieldsCriticalityInput() {
-    return this._findingProviderFieldsCriticality
+    return this._findingProviderFieldsCriticality;
   }
 
   // finding_provider_fields_related_findings_id - computed: false, optional: true, required: false
-  private _findingProviderFieldsRelatedFindingsId?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsId[] | undefined; 
+  private _findingProviderFieldsRelatedFindingsId?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsId[]; 
   public get findingProviderFieldsRelatedFindingsId() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('finding_provider_fields_related_findings_id') as any;
   }
-  public set findingProviderFieldsRelatedFindingsId(value: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsId[] | undefined) {
+  public set findingProviderFieldsRelatedFindingsId(value: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsId[]) {
     this._findingProviderFieldsRelatedFindingsId = value;
   }
   public resetFindingProviderFieldsRelatedFindingsId() {
@@ -3503,16 +4319,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get findingProviderFieldsRelatedFindingsIdInput() {
-    return this._findingProviderFieldsRelatedFindingsId
+    return this._findingProviderFieldsRelatedFindingsId;
   }
 
   // finding_provider_fields_related_findings_product_arn - computed: false, optional: true, required: false
-  private _findingProviderFieldsRelatedFindingsProductArn?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArn[] | undefined; 
+  private _findingProviderFieldsRelatedFindingsProductArn?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArn[]; 
   public get findingProviderFieldsRelatedFindingsProductArn() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('finding_provider_fields_related_findings_product_arn') as any;
   }
-  public set findingProviderFieldsRelatedFindingsProductArn(value: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArn[] | undefined) {
+  public set findingProviderFieldsRelatedFindingsProductArn(value: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArn[]) {
     this._findingProviderFieldsRelatedFindingsProductArn = value;
   }
   public resetFindingProviderFieldsRelatedFindingsProductArn() {
@@ -3520,16 +4336,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get findingProviderFieldsRelatedFindingsProductArnInput() {
-    return this._findingProviderFieldsRelatedFindingsProductArn
+    return this._findingProviderFieldsRelatedFindingsProductArn;
   }
 
   // finding_provider_fields_severity_label - computed: false, optional: true, required: false
-  private _findingProviderFieldsSeverityLabel?: SecurityhubInsightFiltersFindingProviderFieldsSeverityLabel[] | undefined; 
+  private _findingProviderFieldsSeverityLabel?: SecurityhubInsightFiltersFindingProviderFieldsSeverityLabel[]; 
   public get findingProviderFieldsSeverityLabel() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('finding_provider_fields_severity_label') as any;
   }
-  public set findingProviderFieldsSeverityLabel(value: SecurityhubInsightFiltersFindingProviderFieldsSeverityLabel[] | undefined) {
+  public set findingProviderFieldsSeverityLabel(value: SecurityhubInsightFiltersFindingProviderFieldsSeverityLabel[]) {
     this._findingProviderFieldsSeverityLabel = value;
   }
   public resetFindingProviderFieldsSeverityLabel() {
@@ -3537,16 +4353,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get findingProviderFieldsSeverityLabelInput() {
-    return this._findingProviderFieldsSeverityLabel
+    return this._findingProviderFieldsSeverityLabel;
   }
 
   // finding_provider_fields_severity_original - computed: false, optional: true, required: false
-  private _findingProviderFieldsSeverityOriginal?: SecurityhubInsightFiltersFindingProviderFieldsSeverityOriginal[] | undefined; 
+  private _findingProviderFieldsSeverityOriginal?: SecurityhubInsightFiltersFindingProviderFieldsSeverityOriginal[]; 
   public get findingProviderFieldsSeverityOriginal() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('finding_provider_fields_severity_original') as any;
   }
-  public set findingProviderFieldsSeverityOriginal(value: SecurityhubInsightFiltersFindingProviderFieldsSeverityOriginal[] | undefined) {
+  public set findingProviderFieldsSeverityOriginal(value: SecurityhubInsightFiltersFindingProviderFieldsSeverityOriginal[]) {
     this._findingProviderFieldsSeverityOriginal = value;
   }
   public resetFindingProviderFieldsSeverityOriginal() {
@@ -3554,16 +4370,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get findingProviderFieldsSeverityOriginalInput() {
-    return this._findingProviderFieldsSeverityOriginal
+    return this._findingProviderFieldsSeverityOriginal;
   }
 
   // finding_provider_fields_types - computed: false, optional: true, required: false
-  private _findingProviderFieldsTypes?: SecurityhubInsightFiltersFindingProviderFieldsTypes[] | undefined; 
+  private _findingProviderFieldsTypes?: SecurityhubInsightFiltersFindingProviderFieldsTypes[]; 
   public get findingProviderFieldsTypes() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('finding_provider_fields_types') as any;
   }
-  public set findingProviderFieldsTypes(value: SecurityhubInsightFiltersFindingProviderFieldsTypes[] | undefined) {
+  public set findingProviderFieldsTypes(value: SecurityhubInsightFiltersFindingProviderFieldsTypes[]) {
     this._findingProviderFieldsTypes = value;
   }
   public resetFindingProviderFieldsTypes() {
@@ -3571,16 +4387,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get findingProviderFieldsTypesInput() {
-    return this._findingProviderFieldsTypes
+    return this._findingProviderFieldsTypes;
   }
 
   // first_observed_at - computed: false, optional: true, required: false
-  private _firstObservedAt?: SecurityhubInsightFiltersFirstObservedAt[] | undefined; 
+  private _firstObservedAt?: SecurityhubInsightFiltersFirstObservedAt[]; 
   public get firstObservedAt() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('first_observed_at') as any;
   }
-  public set firstObservedAt(value: SecurityhubInsightFiltersFirstObservedAt[] | undefined) {
+  public set firstObservedAt(value: SecurityhubInsightFiltersFirstObservedAt[]) {
     this._firstObservedAt = value;
   }
   public resetFirstObservedAt() {
@@ -3588,16 +4404,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get firstObservedAtInput() {
-    return this._firstObservedAt
+    return this._firstObservedAt;
   }
 
   // generator_id - computed: false, optional: true, required: false
-  private _generatorId?: SecurityhubInsightFiltersGeneratorId[] | undefined; 
+  private _generatorId?: SecurityhubInsightFiltersGeneratorId[]; 
   public get generatorId() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('generator_id') as any;
   }
-  public set generatorId(value: SecurityhubInsightFiltersGeneratorId[] | undefined) {
+  public set generatorId(value: SecurityhubInsightFiltersGeneratorId[]) {
     this._generatorId = value;
   }
   public resetGeneratorId() {
@@ -3605,16 +4421,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get generatorIdInput() {
-    return this._generatorId
+    return this._generatorId;
   }
 
   // id - computed: false, optional: true, required: false
-  private _id?: SecurityhubInsightFiltersId[] | undefined; 
+  private _id?: SecurityhubInsightFiltersId[]; 
   public get id() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('id') as any;
   }
-  public set id(value: SecurityhubInsightFiltersId[] | undefined) {
+  public set id(value: SecurityhubInsightFiltersId[]) {
     this._id = value;
   }
   public resetId() {
@@ -3622,16 +4438,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get idInput() {
-    return this._id
+    return this._id;
   }
 
   // keyword - computed: false, optional: true, required: false
-  private _keyword?: SecurityhubInsightFiltersKeyword[] | undefined; 
+  private _keyword?: SecurityhubInsightFiltersKeyword[]; 
   public get keyword() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('keyword') as any;
   }
-  public set keyword(value: SecurityhubInsightFiltersKeyword[] | undefined) {
+  public set keyword(value: SecurityhubInsightFiltersKeyword[]) {
     this._keyword = value;
   }
   public resetKeyword() {
@@ -3639,16 +4455,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get keywordInput() {
-    return this._keyword
+    return this._keyword;
   }
 
   // last_observed_at - computed: false, optional: true, required: false
-  private _lastObservedAt?: SecurityhubInsightFiltersLastObservedAt[] | undefined; 
+  private _lastObservedAt?: SecurityhubInsightFiltersLastObservedAt[]; 
   public get lastObservedAt() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('last_observed_at') as any;
   }
-  public set lastObservedAt(value: SecurityhubInsightFiltersLastObservedAt[] | undefined) {
+  public set lastObservedAt(value: SecurityhubInsightFiltersLastObservedAt[]) {
     this._lastObservedAt = value;
   }
   public resetLastObservedAt() {
@@ -3656,16 +4472,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get lastObservedAtInput() {
-    return this._lastObservedAt
+    return this._lastObservedAt;
   }
 
   // malware_name - computed: false, optional: true, required: false
-  private _malwareName?: SecurityhubInsightFiltersMalwareName[] | undefined; 
+  private _malwareName?: SecurityhubInsightFiltersMalwareName[]; 
   public get malwareName() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('malware_name') as any;
   }
-  public set malwareName(value: SecurityhubInsightFiltersMalwareName[] | undefined) {
+  public set malwareName(value: SecurityhubInsightFiltersMalwareName[]) {
     this._malwareName = value;
   }
   public resetMalwareName() {
@@ -3673,16 +4489,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get malwareNameInput() {
-    return this._malwareName
+    return this._malwareName;
   }
 
   // malware_path - computed: false, optional: true, required: false
-  private _malwarePath?: SecurityhubInsightFiltersMalwarePath[] | undefined; 
+  private _malwarePath?: SecurityhubInsightFiltersMalwarePath[]; 
   public get malwarePath() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('malware_path') as any;
   }
-  public set malwarePath(value: SecurityhubInsightFiltersMalwarePath[] | undefined) {
+  public set malwarePath(value: SecurityhubInsightFiltersMalwarePath[]) {
     this._malwarePath = value;
   }
   public resetMalwarePath() {
@@ -3690,16 +4506,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get malwarePathInput() {
-    return this._malwarePath
+    return this._malwarePath;
   }
 
   // malware_state - computed: false, optional: true, required: false
-  private _malwareState?: SecurityhubInsightFiltersMalwareState[] | undefined; 
+  private _malwareState?: SecurityhubInsightFiltersMalwareState[]; 
   public get malwareState() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('malware_state') as any;
   }
-  public set malwareState(value: SecurityhubInsightFiltersMalwareState[] | undefined) {
+  public set malwareState(value: SecurityhubInsightFiltersMalwareState[]) {
     this._malwareState = value;
   }
   public resetMalwareState() {
@@ -3707,16 +4523,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get malwareStateInput() {
-    return this._malwareState
+    return this._malwareState;
   }
 
   // malware_type - computed: false, optional: true, required: false
-  private _malwareType?: SecurityhubInsightFiltersMalwareType[] | undefined; 
+  private _malwareType?: SecurityhubInsightFiltersMalwareType[]; 
   public get malwareType() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('malware_type') as any;
   }
-  public set malwareType(value: SecurityhubInsightFiltersMalwareType[] | undefined) {
+  public set malwareType(value: SecurityhubInsightFiltersMalwareType[]) {
     this._malwareType = value;
   }
   public resetMalwareType() {
@@ -3724,16 +4540,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get malwareTypeInput() {
-    return this._malwareType
+    return this._malwareType;
   }
 
   // network_destination_domain - computed: false, optional: true, required: false
-  private _networkDestinationDomain?: SecurityhubInsightFiltersNetworkDestinationDomain[] | undefined; 
+  private _networkDestinationDomain?: SecurityhubInsightFiltersNetworkDestinationDomain[]; 
   public get networkDestinationDomain() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('network_destination_domain') as any;
   }
-  public set networkDestinationDomain(value: SecurityhubInsightFiltersNetworkDestinationDomain[] | undefined) {
+  public set networkDestinationDomain(value: SecurityhubInsightFiltersNetworkDestinationDomain[]) {
     this._networkDestinationDomain = value;
   }
   public resetNetworkDestinationDomain() {
@@ -3741,16 +4557,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get networkDestinationDomainInput() {
-    return this._networkDestinationDomain
+    return this._networkDestinationDomain;
   }
 
   // network_destination_ipv4 - computed: false, optional: true, required: false
-  private _networkDestinationIpv4?: SecurityhubInsightFiltersNetworkDestinationIpv4[] | undefined; 
+  private _networkDestinationIpv4?: SecurityhubInsightFiltersNetworkDestinationIpv4[]; 
   public get networkDestinationIpv4() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('network_destination_ipv4') as any;
   }
-  public set networkDestinationIpv4(value: SecurityhubInsightFiltersNetworkDestinationIpv4[] | undefined) {
+  public set networkDestinationIpv4(value: SecurityhubInsightFiltersNetworkDestinationIpv4[]) {
     this._networkDestinationIpv4 = value;
   }
   public resetNetworkDestinationIpv4() {
@@ -3758,16 +4574,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get networkDestinationIpv4Input() {
-    return this._networkDestinationIpv4
+    return this._networkDestinationIpv4;
   }
 
   // network_destination_ipv6 - computed: false, optional: true, required: false
-  private _networkDestinationIpv6?: SecurityhubInsightFiltersNetworkDestinationIpv6[] | undefined; 
+  private _networkDestinationIpv6?: SecurityhubInsightFiltersNetworkDestinationIpv6[]; 
   public get networkDestinationIpv6() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('network_destination_ipv6') as any;
   }
-  public set networkDestinationIpv6(value: SecurityhubInsightFiltersNetworkDestinationIpv6[] | undefined) {
+  public set networkDestinationIpv6(value: SecurityhubInsightFiltersNetworkDestinationIpv6[]) {
     this._networkDestinationIpv6 = value;
   }
   public resetNetworkDestinationIpv6() {
@@ -3775,16 +4591,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get networkDestinationIpv6Input() {
-    return this._networkDestinationIpv6
+    return this._networkDestinationIpv6;
   }
 
   // network_destination_port - computed: false, optional: true, required: false
-  private _networkDestinationPort?: SecurityhubInsightFiltersNetworkDestinationPort[] | undefined; 
+  private _networkDestinationPort?: SecurityhubInsightFiltersNetworkDestinationPort[]; 
   public get networkDestinationPort() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('network_destination_port') as any;
   }
-  public set networkDestinationPort(value: SecurityhubInsightFiltersNetworkDestinationPort[] | undefined) {
+  public set networkDestinationPort(value: SecurityhubInsightFiltersNetworkDestinationPort[]) {
     this._networkDestinationPort = value;
   }
   public resetNetworkDestinationPort() {
@@ -3792,16 +4608,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get networkDestinationPortInput() {
-    return this._networkDestinationPort
+    return this._networkDestinationPort;
   }
 
   // network_direction - computed: false, optional: true, required: false
-  private _networkDirection?: SecurityhubInsightFiltersNetworkDirection[] | undefined; 
+  private _networkDirection?: SecurityhubInsightFiltersNetworkDirection[]; 
   public get networkDirection() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('network_direction') as any;
   }
-  public set networkDirection(value: SecurityhubInsightFiltersNetworkDirection[] | undefined) {
+  public set networkDirection(value: SecurityhubInsightFiltersNetworkDirection[]) {
     this._networkDirection = value;
   }
   public resetNetworkDirection() {
@@ -3809,16 +4625,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get networkDirectionInput() {
-    return this._networkDirection
+    return this._networkDirection;
   }
 
   // network_protocol - computed: false, optional: true, required: false
-  private _networkProtocol?: SecurityhubInsightFiltersNetworkProtocol[] | undefined; 
+  private _networkProtocol?: SecurityhubInsightFiltersNetworkProtocol[]; 
   public get networkProtocol() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('network_protocol') as any;
   }
-  public set networkProtocol(value: SecurityhubInsightFiltersNetworkProtocol[] | undefined) {
+  public set networkProtocol(value: SecurityhubInsightFiltersNetworkProtocol[]) {
     this._networkProtocol = value;
   }
   public resetNetworkProtocol() {
@@ -3826,16 +4642,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get networkProtocolInput() {
-    return this._networkProtocol
+    return this._networkProtocol;
   }
 
   // network_source_domain - computed: false, optional: true, required: false
-  private _networkSourceDomain?: SecurityhubInsightFiltersNetworkSourceDomain[] | undefined; 
+  private _networkSourceDomain?: SecurityhubInsightFiltersNetworkSourceDomain[]; 
   public get networkSourceDomain() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('network_source_domain') as any;
   }
-  public set networkSourceDomain(value: SecurityhubInsightFiltersNetworkSourceDomain[] | undefined) {
+  public set networkSourceDomain(value: SecurityhubInsightFiltersNetworkSourceDomain[]) {
     this._networkSourceDomain = value;
   }
   public resetNetworkSourceDomain() {
@@ -3843,16 +4659,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get networkSourceDomainInput() {
-    return this._networkSourceDomain
+    return this._networkSourceDomain;
   }
 
   // network_source_ipv4 - computed: false, optional: true, required: false
-  private _networkSourceIpv4?: SecurityhubInsightFiltersNetworkSourceIpv4[] | undefined; 
+  private _networkSourceIpv4?: SecurityhubInsightFiltersNetworkSourceIpv4[]; 
   public get networkSourceIpv4() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('network_source_ipv4') as any;
   }
-  public set networkSourceIpv4(value: SecurityhubInsightFiltersNetworkSourceIpv4[] | undefined) {
+  public set networkSourceIpv4(value: SecurityhubInsightFiltersNetworkSourceIpv4[]) {
     this._networkSourceIpv4 = value;
   }
   public resetNetworkSourceIpv4() {
@@ -3860,16 +4676,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get networkSourceIpv4Input() {
-    return this._networkSourceIpv4
+    return this._networkSourceIpv4;
   }
 
   // network_source_ipv6 - computed: false, optional: true, required: false
-  private _networkSourceIpv6?: SecurityhubInsightFiltersNetworkSourceIpv6[] | undefined; 
+  private _networkSourceIpv6?: SecurityhubInsightFiltersNetworkSourceIpv6[]; 
   public get networkSourceIpv6() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('network_source_ipv6') as any;
   }
-  public set networkSourceIpv6(value: SecurityhubInsightFiltersNetworkSourceIpv6[] | undefined) {
+  public set networkSourceIpv6(value: SecurityhubInsightFiltersNetworkSourceIpv6[]) {
     this._networkSourceIpv6 = value;
   }
   public resetNetworkSourceIpv6() {
@@ -3877,16 +4693,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get networkSourceIpv6Input() {
-    return this._networkSourceIpv6
+    return this._networkSourceIpv6;
   }
 
   // network_source_mac - computed: false, optional: true, required: false
-  private _networkSourceMac?: SecurityhubInsightFiltersNetworkSourceMac[] | undefined; 
+  private _networkSourceMac?: SecurityhubInsightFiltersNetworkSourceMac[]; 
   public get networkSourceMac() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('network_source_mac') as any;
   }
-  public set networkSourceMac(value: SecurityhubInsightFiltersNetworkSourceMac[] | undefined) {
+  public set networkSourceMac(value: SecurityhubInsightFiltersNetworkSourceMac[]) {
     this._networkSourceMac = value;
   }
   public resetNetworkSourceMac() {
@@ -3894,16 +4710,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get networkSourceMacInput() {
-    return this._networkSourceMac
+    return this._networkSourceMac;
   }
 
   // network_source_port - computed: false, optional: true, required: false
-  private _networkSourcePort?: SecurityhubInsightFiltersNetworkSourcePort[] | undefined; 
+  private _networkSourcePort?: SecurityhubInsightFiltersNetworkSourcePort[]; 
   public get networkSourcePort() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('network_source_port') as any;
   }
-  public set networkSourcePort(value: SecurityhubInsightFiltersNetworkSourcePort[] | undefined) {
+  public set networkSourcePort(value: SecurityhubInsightFiltersNetworkSourcePort[]) {
     this._networkSourcePort = value;
   }
   public resetNetworkSourcePort() {
@@ -3911,16 +4727,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get networkSourcePortInput() {
-    return this._networkSourcePort
+    return this._networkSourcePort;
   }
 
   // note_text - computed: false, optional: true, required: false
-  private _noteText?: SecurityhubInsightFiltersNoteText[] | undefined; 
+  private _noteText?: SecurityhubInsightFiltersNoteText[]; 
   public get noteText() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('note_text') as any;
   }
-  public set noteText(value: SecurityhubInsightFiltersNoteText[] | undefined) {
+  public set noteText(value: SecurityhubInsightFiltersNoteText[]) {
     this._noteText = value;
   }
   public resetNoteText() {
@@ -3928,16 +4744,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get noteTextInput() {
-    return this._noteText
+    return this._noteText;
   }
 
   // note_updated_at - computed: false, optional: true, required: false
-  private _noteUpdatedAt?: SecurityhubInsightFiltersNoteUpdatedAt[] | undefined; 
+  private _noteUpdatedAt?: SecurityhubInsightFiltersNoteUpdatedAt[]; 
   public get noteUpdatedAt() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('note_updated_at') as any;
   }
-  public set noteUpdatedAt(value: SecurityhubInsightFiltersNoteUpdatedAt[] | undefined) {
+  public set noteUpdatedAt(value: SecurityhubInsightFiltersNoteUpdatedAt[]) {
     this._noteUpdatedAt = value;
   }
   public resetNoteUpdatedAt() {
@@ -3945,16 +4761,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get noteUpdatedAtInput() {
-    return this._noteUpdatedAt
+    return this._noteUpdatedAt;
   }
 
   // note_updated_by - computed: false, optional: true, required: false
-  private _noteUpdatedBy?: SecurityhubInsightFiltersNoteUpdatedBy[] | undefined; 
+  private _noteUpdatedBy?: SecurityhubInsightFiltersNoteUpdatedBy[]; 
   public get noteUpdatedBy() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('note_updated_by') as any;
   }
-  public set noteUpdatedBy(value: SecurityhubInsightFiltersNoteUpdatedBy[] | undefined) {
+  public set noteUpdatedBy(value: SecurityhubInsightFiltersNoteUpdatedBy[]) {
     this._noteUpdatedBy = value;
   }
   public resetNoteUpdatedBy() {
@@ -3962,16 +4778,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get noteUpdatedByInput() {
-    return this._noteUpdatedBy
+    return this._noteUpdatedBy;
   }
 
   // process_launched_at - computed: false, optional: true, required: false
-  private _processLaunchedAt?: SecurityhubInsightFiltersProcessLaunchedAt[] | undefined; 
+  private _processLaunchedAt?: SecurityhubInsightFiltersProcessLaunchedAt[]; 
   public get processLaunchedAt() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('process_launched_at') as any;
   }
-  public set processLaunchedAt(value: SecurityhubInsightFiltersProcessLaunchedAt[] | undefined) {
+  public set processLaunchedAt(value: SecurityhubInsightFiltersProcessLaunchedAt[]) {
     this._processLaunchedAt = value;
   }
   public resetProcessLaunchedAt() {
@@ -3979,16 +4795,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get processLaunchedAtInput() {
-    return this._processLaunchedAt
+    return this._processLaunchedAt;
   }
 
   // process_name - computed: false, optional: true, required: false
-  private _processName?: SecurityhubInsightFiltersProcessName[] | undefined; 
+  private _processName?: SecurityhubInsightFiltersProcessName[]; 
   public get processName() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('process_name') as any;
   }
-  public set processName(value: SecurityhubInsightFiltersProcessName[] | undefined) {
+  public set processName(value: SecurityhubInsightFiltersProcessName[]) {
     this._processName = value;
   }
   public resetProcessName() {
@@ -3996,16 +4812,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get processNameInput() {
-    return this._processName
+    return this._processName;
   }
 
   // process_parent_pid - computed: false, optional: true, required: false
-  private _processParentPid?: SecurityhubInsightFiltersProcessParentPid[] | undefined; 
+  private _processParentPid?: SecurityhubInsightFiltersProcessParentPid[]; 
   public get processParentPid() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('process_parent_pid') as any;
   }
-  public set processParentPid(value: SecurityhubInsightFiltersProcessParentPid[] | undefined) {
+  public set processParentPid(value: SecurityhubInsightFiltersProcessParentPid[]) {
     this._processParentPid = value;
   }
   public resetProcessParentPid() {
@@ -4013,16 +4829,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get processParentPidInput() {
-    return this._processParentPid
+    return this._processParentPid;
   }
 
   // process_path - computed: false, optional: true, required: false
-  private _processPath?: SecurityhubInsightFiltersProcessPath[] | undefined; 
+  private _processPath?: SecurityhubInsightFiltersProcessPath[]; 
   public get processPath() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('process_path') as any;
   }
-  public set processPath(value: SecurityhubInsightFiltersProcessPath[] | undefined) {
+  public set processPath(value: SecurityhubInsightFiltersProcessPath[]) {
     this._processPath = value;
   }
   public resetProcessPath() {
@@ -4030,16 +4846,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get processPathInput() {
-    return this._processPath
+    return this._processPath;
   }
 
   // process_pid - computed: false, optional: true, required: false
-  private _processPid?: SecurityhubInsightFiltersProcessPid[] | undefined; 
+  private _processPid?: SecurityhubInsightFiltersProcessPid[]; 
   public get processPid() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('process_pid') as any;
   }
-  public set processPid(value: SecurityhubInsightFiltersProcessPid[] | undefined) {
+  public set processPid(value: SecurityhubInsightFiltersProcessPid[]) {
     this._processPid = value;
   }
   public resetProcessPid() {
@@ -4047,16 +4863,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get processPidInput() {
-    return this._processPid
+    return this._processPid;
   }
 
   // process_terminated_at - computed: false, optional: true, required: false
-  private _processTerminatedAt?: SecurityhubInsightFiltersProcessTerminatedAt[] | undefined; 
+  private _processTerminatedAt?: SecurityhubInsightFiltersProcessTerminatedAt[]; 
   public get processTerminatedAt() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('process_terminated_at') as any;
   }
-  public set processTerminatedAt(value: SecurityhubInsightFiltersProcessTerminatedAt[] | undefined) {
+  public set processTerminatedAt(value: SecurityhubInsightFiltersProcessTerminatedAt[]) {
     this._processTerminatedAt = value;
   }
   public resetProcessTerminatedAt() {
@@ -4064,16 +4880,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get processTerminatedAtInput() {
-    return this._processTerminatedAt
+    return this._processTerminatedAt;
   }
 
   // product_arn - computed: false, optional: true, required: false
-  private _productArn?: SecurityhubInsightFiltersProductArn[] | undefined; 
+  private _productArn?: SecurityhubInsightFiltersProductArn[]; 
   public get productArn() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('product_arn') as any;
   }
-  public set productArn(value: SecurityhubInsightFiltersProductArn[] | undefined) {
+  public set productArn(value: SecurityhubInsightFiltersProductArn[]) {
     this._productArn = value;
   }
   public resetProductArn() {
@@ -4081,16 +4897,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get productArnInput() {
-    return this._productArn
+    return this._productArn;
   }
 
   // product_fields - computed: false, optional: true, required: false
-  private _productFields?: SecurityhubInsightFiltersProductFields[] | undefined; 
+  private _productFields?: SecurityhubInsightFiltersProductFields[]; 
   public get productFields() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('product_fields') as any;
   }
-  public set productFields(value: SecurityhubInsightFiltersProductFields[] | undefined) {
+  public set productFields(value: SecurityhubInsightFiltersProductFields[]) {
     this._productFields = value;
   }
   public resetProductFields() {
@@ -4098,16 +4914,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get productFieldsInput() {
-    return this._productFields
+    return this._productFields;
   }
 
   // product_name - computed: false, optional: true, required: false
-  private _productName?: SecurityhubInsightFiltersProductName[] | undefined; 
+  private _productName?: SecurityhubInsightFiltersProductName[]; 
   public get productName() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('product_name') as any;
   }
-  public set productName(value: SecurityhubInsightFiltersProductName[] | undefined) {
+  public set productName(value: SecurityhubInsightFiltersProductName[]) {
     this._productName = value;
   }
   public resetProductName() {
@@ -4115,16 +4931,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get productNameInput() {
-    return this._productName
+    return this._productName;
   }
 
   // recommendation_text - computed: false, optional: true, required: false
-  private _recommendationText?: SecurityhubInsightFiltersRecommendationText[] | undefined; 
+  private _recommendationText?: SecurityhubInsightFiltersRecommendationText[]; 
   public get recommendationText() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('recommendation_text') as any;
   }
-  public set recommendationText(value: SecurityhubInsightFiltersRecommendationText[] | undefined) {
+  public set recommendationText(value: SecurityhubInsightFiltersRecommendationText[]) {
     this._recommendationText = value;
   }
   public resetRecommendationText() {
@@ -4132,16 +4948,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get recommendationTextInput() {
-    return this._recommendationText
+    return this._recommendationText;
   }
 
   // record_state - computed: false, optional: true, required: false
-  private _recordState?: SecurityhubInsightFiltersRecordState[] | undefined; 
+  private _recordState?: SecurityhubInsightFiltersRecordState[]; 
   public get recordState() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('record_state') as any;
   }
-  public set recordState(value: SecurityhubInsightFiltersRecordState[] | undefined) {
+  public set recordState(value: SecurityhubInsightFiltersRecordState[]) {
     this._recordState = value;
   }
   public resetRecordState() {
@@ -4149,16 +4965,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get recordStateInput() {
-    return this._recordState
+    return this._recordState;
   }
 
   // related_findings_id - computed: false, optional: true, required: false
-  private _relatedFindingsId?: SecurityhubInsightFiltersRelatedFindingsId[] | undefined; 
+  private _relatedFindingsId?: SecurityhubInsightFiltersRelatedFindingsId[]; 
   public get relatedFindingsId() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('related_findings_id') as any;
   }
-  public set relatedFindingsId(value: SecurityhubInsightFiltersRelatedFindingsId[] | undefined) {
+  public set relatedFindingsId(value: SecurityhubInsightFiltersRelatedFindingsId[]) {
     this._relatedFindingsId = value;
   }
   public resetRelatedFindingsId() {
@@ -4166,16 +4982,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get relatedFindingsIdInput() {
-    return this._relatedFindingsId
+    return this._relatedFindingsId;
   }
 
   // related_findings_product_arn - computed: false, optional: true, required: false
-  private _relatedFindingsProductArn?: SecurityhubInsightFiltersRelatedFindingsProductArn[] | undefined; 
+  private _relatedFindingsProductArn?: SecurityhubInsightFiltersRelatedFindingsProductArn[]; 
   public get relatedFindingsProductArn() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('related_findings_product_arn') as any;
   }
-  public set relatedFindingsProductArn(value: SecurityhubInsightFiltersRelatedFindingsProductArn[] | undefined) {
+  public set relatedFindingsProductArn(value: SecurityhubInsightFiltersRelatedFindingsProductArn[]) {
     this._relatedFindingsProductArn = value;
   }
   public resetRelatedFindingsProductArn() {
@@ -4183,16 +4999,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get relatedFindingsProductArnInput() {
-    return this._relatedFindingsProductArn
+    return this._relatedFindingsProductArn;
   }
 
   // resource_aws_ec2_instance_iam_instance_profile_arn - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceIamInstanceProfileArn?: SecurityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn[] | undefined; 
+  private _resourceAwsEc2InstanceIamInstanceProfileArn?: SecurityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn[]; 
   public get resourceAwsEc2InstanceIamInstanceProfileArn() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_aws_ec2_instance_iam_instance_profile_arn') as any;
   }
-  public set resourceAwsEc2InstanceIamInstanceProfileArn(value: SecurityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn[] | undefined) {
+  public set resourceAwsEc2InstanceIamInstanceProfileArn(value: SecurityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn[]) {
     this._resourceAwsEc2InstanceIamInstanceProfileArn = value;
   }
   public resetResourceAwsEc2InstanceIamInstanceProfileArn() {
@@ -4200,16 +5016,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceAwsEc2InstanceIamInstanceProfileArnInput() {
-    return this._resourceAwsEc2InstanceIamInstanceProfileArn
+    return this._resourceAwsEc2InstanceIamInstanceProfileArn;
   }
 
   // resource_aws_ec2_instance_image_id - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceImageId?: SecurityhubInsightFiltersResourceAwsEc2InstanceImageId[] | undefined; 
+  private _resourceAwsEc2InstanceImageId?: SecurityhubInsightFiltersResourceAwsEc2InstanceImageId[]; 
   public get resourceAwsEc2InstanceImageId() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_aws_ec2_instance_image_id') as any;
   }
-  public set resourceAwsEc2InstanceImageId(value: SecurityhubInsightFiltersResourceAwsEc2InstanceImageId[] | undefined) {
+  public set resourceAwsEc2InstanceImageId(value: SecurityhubInsightFiltersResourceAwsEc2InstanceImageId[]) {
     this._resourceAwsEc2InstanceImageId = value;
   }
   public resetResourceAwsEc2InstanceImageId() {
@@ -4217,16 +5033,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceAwsEc2InstanceImageIdInput() {
-    return this._resourceAwsEc2InstanceImageId
+    return this._resourceAwsEc2InstanceImageId;
   }
 
   // resource_aws_ec2_instance_ipv4_addresses - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceIpv4Addresses?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv4Addresses[] | undefined; 
+  private _resourceAwsEc2InstanceIpv4Addresses?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv4Addresses[]; 
   public get resourceAwsEc2InstanceIpv4Addresses() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_aws_ec2_instance_ipv4_addresses') as any;
   }
-  public set resourceAwsEc2InstanceIpv4Addresses(value: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv4Addresses[] | undefined) {
+  public set resourceAwsEc2InstanceIpv4Addresses(value: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv4Addresses[]) {
     this._resourceAwsEc2InstanceIpv4Addresses = value;
   }
   public resetResourceAwsEc2InstanceIpv4Addresses() {
@@ -4234,16 +5050,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceAwsEc2InstanceIpv4AddressesInput() {
-    return this._resourceAwsEc2InstanceIpv4Addresses
+    return this._resourceAwsEc2InstanceIpv4Addresses;
   }
 
   // resource_aws_ec2_instance_ipv6_addresses - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceIpv6Addresses?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv6Addresses[] | undefined; 
+  private _resourceAwsEc2InstanceIpv6Addresses?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv6Addresses[]; 
   public get resourceAwsEc2InstanceIpv6Addresses() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_aws_ec2_instance_ipv6_addresses') as any;
   }
-  public set resourceAwsEc2InstanceIpv6Addresses(value: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv6Addresses[] | undefined) {
+  public set resourceAwsEc2InstanceIpv6Addresses(value: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv6Addresses[]) {
     this._resourceAwsEc2InstanceIpv6Addresses = value;
   }
   public resetResourceAwsEc2InstanceIpv6Addresses() {
@@ -4251,16 +5067,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceAwsEc2InstanceIpv6AddressesInput() {
-    return this._resourceAwsEc2InstanceIpv6Addresses
+    return this._resourceAwsEc2InstanceIpv6Addresses;
   }
 
   // resource_aws_ec2_instance_key_name - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceKeyName?: SecurityhubInsightFiltersResourceAwsEc2InstanceKeyName[] | undefined; 
+  private _resourceAwsEc2InstanceKeyName?: SecurityhubInsightFiltersResourceAwsEc2InstanceKeyName[]; 
   public get resourceAwsEc2InstanceKeyName() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_aws_ec2_instance_key_name') as any;
   }
-  public set resourceAwsEc2InstanceKeyName(value: SecurityhubInsightFiltersResourceAwsEc2InstanceKeyName[] | undefined) {
+  public set resourceAwsEc2InstanceKeyName(value: SecurityhubInsightFiltersResourceAwsEc2InstanceKeyName[]) {
     this._resourceAwsEc2InstanceKeyName = value;
   }
   public resetResourceAwsEc2InstanceKeyName() {
@@ -4268,16 +5084,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceAwsEc2InstanceKeyNameInput() {
-    return this._resourceAwsEc2InstanceKeyName
+    return this._resourceAwsEc2InstanceKeyName;
   }
 
   // resource_aws_ec2_instance_launched_at - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceLaunchedAt?: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt[] | undefined; 
+  private _resourceAwsEc2InstanceLaunchedAt?: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt[]; 
   public get resourceAwsEc2InstanceLaunchedAt() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_aws_ec2_instance_launched_at') as any;
   }
-  public set resourceAwsEc2InstanceLaunchedAt(value: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt[] | undefined) {
+  public set resourceAwsEc2InstanceLaunchedAt(value: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt[]) {
     this._resourceAwsEc2InstanceLaunchedAt = value;
   }
   public resetResourceAwsEc2InstanceLaunchedAt() {
@@ -4285,16 +5101,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceAwsEc2InstanceLaunchedAtInput() {
-    return this._resourceAwsEc2InstanceLaunchedAt
+    return this._resourceAwsEc2InstanceLaunchedAt;
   }
 
   // resource_aws_ec2_instance_subnet_id - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceSubnetId?: SecurityhubInsightFiltersResourceAwsEc2InstanceSubnetId[] | undefined; 
+  private _resourceAwsEc2InstanceSubnetId?: SecurityhubInsightFiltersResourceAwsEc2InstanceSubnetId[]; 
   public get resourceAwsEc2InstanceSubnetId() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_aws_ec2_instance_subnet_id') as any;
   }
-  public set resourceAwsEc2InstanceSubnetId(value: SecurityhubInsightFiltersResourceAwsEc2InstanceSubnetId[] | undefined) {
+  public set resourceAwsEc2InstanceSubnetId(value: SecurityhubInsightFiltersResourceAwsEc2InstanceSubnetId[]) {
     this._resourceAwsEc2InstanceSubnetId = value;
   }
   public resetResourceAwsEc2InstanceSubnetId() {
@@ -4302,16 +5118,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceAwsEc2InstanceSubnetIdInput() {
-    return this._resourceAwsEc2InstanceSubnetId
+    return this._resourceAwsEc2InstanceSubnetId;
   }
 
   // resource_aws_ec2_instance_type - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceType?: SecurityhubInsightFiltersResourceAwsEc2InstanceType[] | undefined; 
+  private _resourceAwsEc2InstanceType?: SecurityhubInsightFiltersResourceAwsEc2InstanceType[]; 
   public get resourceAwsEc2InstanceType() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_aws_ec2_instance_type') as any;
   }
-  public set resourceAwsEc2InstanceType(value: SecurityhubInsightFiltersResourceAwsEc2InstanceType[] | undefined) {
+  public set resourceAwsEc2InstanceType(value: SecurityhubInsightFiltersResourceAwsEc2InstanceType[]) {
     this._resourceAwsEc2InstanceType = value;
   }
   public resetResourceAwsEc2InstanceType() {
@@ -4319,16 +5135,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceAwsEc2InstanceTypeInput() {
-    return this._resourceAwsEc2InstanceType
+    return this._resourceAwsEc2InstanceType;
   }
 
   // resource_aws_ec2_instance_vpc_id - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceVpcId?: SecurityhubInsightFiltersResourceAwsEc2InstanceVpcId[] | undefined; 
+  private _resourceAwsEc2InstanceVpcId?: SecurityhubInsightFiltersResourceAwsEc2InstanceVpcId[]; 
   public get resourceAwsEc2InstanceVpcId() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_aws_ec2_instance_vpc_id') as any;
   }
-  public set resourceAwsEc2InstanceVpcId(value: SecurityhubInsightFiltersResourceAwsEc2InstanceVpcId[] | undefined) {
+  public set resourceAwsEc2InstanceVpcId(value: SecurityhubInsightFiltersResourceAwsEc2InstanceVpcId[]) {
     this._resourceAwsEc2InstanceVpcId = value;
   }
   public resetResourceAwsEc2InstanceVpcId() {
@@ -4336,16 +5152,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceAwsEc2InstanceVpcIdInput() {
-    return this._resourceAwsEc2InstanceVpcId
+    return this._resourceAwsEc2InstanceVpcId;
   }
 
   // resource_aws_iam_access_key_created_at - computed: false, optional: true, required: false
-  private _resourceAwsIamAccessKeyCreatedAt?: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt[] | undefined; 
+  private _resourceAwsIamAccessKeyCreatedAt?: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt[]; 
   public get resourceAwsIamAccessKeyCreatedAt() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_aws_iam_access_key_created_at') as any;
   }
-  public set resourceAwsIamAccessKeyCreatedAt(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt[] | undefined) {
+  public set resourceAwsIamAccessKeyCreatedAt(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt[]) {
     this._resourceAwsIamAccessKeyCreatedAt = value;
   }
   public resetResourceAwsIamAccessKeyCreatedAt() {
@@ -4353,16 +5169,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceAwsIamAccessKeyCreatedAtInput() {
-    return this._resourceAwsIamAccessKeyCreatedAt
+    return this._resourceAwsIamAccessKeyCreatedAt;
   }
 
   // resource_aws_iam_access_key_status - computed: false, optional: true, required: false
-  private _resourceAwsIamAccessKeyStatus?: SecurityhubInsightFiltersResourceAwsIamAccessKeyStatus[] | undefined; 
+  private _resourceAwsIamAccessKeyStatus?: SecurityhubInsightFiltersResourceAwsIamAccessKeyStatus[]; 
   public get resourceAwsIamAccessKeyStatus() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_aws_iam_access_key_status') as any;
   }
-  public set resourceAwsIamAccessKeyStatus(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyStatus[] | undefined) {
+  public set resourceAwsIamAccessKeyStatus(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyStatus[]) {
     this._resourceAwsIamAccessKeyStatus = value;
   }
   public resetResourceAwsIamAccessKeyStatus() {
@@ -4370,16 +5186,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceAwsIamAccessKeyStatusInput() {
-    return this._resourceAwsIamAccessKeyStatus
+    return this._resourceAwsIamAccessKeyStatus;
   }
 
   // resource_aws_iam_access_key_user_name - computed: false, optional: true, required: false
-  private _resourceAwsIamAccessKeyUserName?: SecurityhubInsightFiltersResourceAwsIamAccessKeyUserName[] | undefined; 
+  private _resourceAwsIamAccessKeyUserName?: SecurityhubInsightFiltersResourceAwsIamAccessKeyUserName[]; 
   public get resourceAwsIamAccessKeyUserName() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_aws_iam_access_key_user_name') as any;
   }
-  public set resourceAwsIamAccessKeyUserName(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyUserName[] | undefined) {
+  public set resourceAwsIamAccessKeyUserName(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyUserName[]) {
     this._resourceAwsIamAccessKeyUserName = value;
   }
   public resetResourceAwsIamAccessKeyUserName() {
@@ -4387,16 +5203,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceAwsIamAccessKeyUserNameInput() {
-    return this._resourceAwsIamAccessKeyUserName
+    return this._resourceAwsIamAccessKeyUserName;
   }
 
   // resource_aws_s3_bucket_owner_id - computed: false, optional: true, required: false
-  private _resourceAwsS3BucketOwnerId?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerId[] | undefined; 
+  private _resourceAwsS3BucketOwnerId?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerId[]; 
   public get resourceAwsS3BucketOwnerId() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_aws_s3_bucket_owner_id') as any;
   }
-  public set resourceAwsS3BucketOwnerId(value: SecurityhubInsightFiltersResourceAwsS3BucketOwnerId[] | undefined) {
+  public set resourceAwsS3BucketOwnerId(value: SecurityhubInsightFiltersResourceAwsS3BucketOwnerId[]) {
     this._resourceAwsS3BucketOwnerId = value;
   }
   public resetResourceAwsS3BucketOwnerId() {
@@ -4404,16 +5220,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceAwsS3BucketOwnerIdInput() {
-    return this._resourceAwsS3BucketOwnerId
+    return this._resourceAwsS3BucketOwnerId;
   }
 
   // resource_aws_s3_bucket_owner_name - computed: false, optional: true, required: false
-  private _resourceAwsS3BucketOwnerName?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerName[] | undefined; 
+  private _resourceAwsS3BucketOwnerName?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerName[]; 
   public get resourceAwsS3BucketOwnerName() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_aws_s3_bucket_owner_name') as any;
   }
-  public set resourceAwsS3BucketOwnerName(value: SecurityhubInsightFiltersResourceAwsS3BucketOwnerName[] | undefined) {
+  public set resourceAwsS3BucketOwnerName(value: SecurityhubInsightFiltersResourceAwsS3BucketOwnerName[]) {
     this._resourceAwsS3BucketOwnerName = value;
   }
   public resetResourceAwsS3BucketOwnerName() {
@@ -4421,16 +5237,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceAwsS3BucketOwnerNameInput() {
-    return this._resourceAwsS3BucketOwnerName
+    return this._resourceAwsS3BucketOwnerName;
   }
 
   // resource_container_image_id - computed: false, optional: true, required: false
-  private _resourceContainerImageId?: SecurityhubInsightFiltersResourceContainerImageId[] | undefined; 
+  private _resourceContainerImageId?: SecurityhubInsightFiltersResourceContainerImageId[]; 
   public get resourceContainerImageId() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_container_image_id') as any;
   }
-  public set resourceContainerImageId(value: SecurityhubInsightFiltersResourceContainerImageId[] | undefined) {
+  public set resourceContainerImageId(value: SecurityhubInsightFiltersResourceContainerImageId[]) {
     this._resourceContainerImageId = value;
   }
   public resetResourceContainerImageId() {
@@ -4438,16 +5254,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceContainerImageIdInput() {
-    return this._resourceContainerImageId
+    return this._resourceContainerImageId;
   }
 
   // resource_container_image_name - computed: false, optional: true, required: false
-  private _resourceContainerImageName?: SecurityhubInsightFiltersResourceContainerImageName[] | undefined; 
+  private _resourceContainerImageName?: SecurityhubInsightFiltersResourceContainerImageName[]; 
   public get resourceContainerImageName() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_container_image_name') as any;
   }
-  public set resourceContainerImageName(value: SecurityhubInsightFiltersResourceContainerImageName[] | undefined) {
+  public set resourceContainerImageName(value: SecurityhubInsightFiltersResourceContainerImageName[]) {
     this._resourceContainerImageName = value;
   }
   public resetResourceContainerImageName() {
@@ -4455,16 +5271,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceContainerImageNameInput() {
-    return this._resourceContainerImageName
+    return this._resourceContainerImageName;
   }
 
   // resource_container_launched_at - computed: false, optional: true, required: false
-  private _resourceContainerLaunchedAt?: SecurityhubInsightFiltersResourceContainerLaunchedAt[] | undefined; 
+  private _resourceContainerLaunchedAt?: SecurityhubInsightFiltersResourceContainerLaunchedAt[]; 
   public get resourceContainerLaunchedAt() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_container_launched_at') as any;
   }
-  public set resourceContainerLaunchedAt(value: SecurityhubInsightFiltersResourceContainerLaunchedAt[] | undefined) {
+  public set resourceContainerLaunchedAt(value: SecurityhubInsightFiltersResourceContainerLaunchedAt[]) {
     this._resourceContainerLaunchedAt = value;
   }
   public resetResourceContainerLaunchedAt() {
@@ -4472,16 +5288,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceContainerLaunchedAtInput() {
-    return this._resourceContainerLaunchedAt
+    return this._resourceContainerLaunchedAt;
   }
 
   // resource_container_name - computed: false, optional: true, required: false
-  private _resourceContainerName?: SecurityhubInsightFiltersResourceContainerName[] | undefined; 
+  private _resourceContainerName?: SecurityhubInsightFiltersResourceContainerName[]; 
   public get resourceContainerName() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_container_name') as any;
   }
-  public set resourceContainerName(value: SecurityhubInsightFiltersResourceContainerName[] | undefined) {
+  public set resourceContainerName(value: SecurityhubInsightFiltersResourceContainerName[]) {
     this._resourceContainerName = value;
   }
   public resetResourceContainerName() {
@@ -4489,16 +5305,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceContainerNameInput() {
-    return this._resourceContainerName
+    return this._resourceContainerName;
   }
 
   // resource_details_other - computed: false, optional: true, required: false
-  private _resourceDetailsOther?: SecurityhubInsightFiltersResourceDetailsOther[] | undefined; 
+  private _resourceDetailsOther?: SecurityhubInsightFiltersResourceDetailsOther[]; 
   public get resourceDetailsOther() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_details_other') as any;
   }
-  public set resourceDetailsOther(value: SecurityhubInsightFiltersResourceDetailsOther[] | undefined) {
+  public set resourceDetailsOther(value: SecurityhubInsightFiltersResourceDetailsOther[]) {
     this._resourceDetailsOther = value;
   }
   public resetResourceDetailsOther() {
@@ -4506,16 +5322,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceDetailsOtherInput() {
-    return this._resourceDetailsOther
+    return this._resourceDetailsOther;
   }
 
   // resource_id - computed: false, optional: true, required: false
-  private _resourceId?: SecurityhubInsightFiltersResourceId[] | undefined; 
+  private _resourceId?: SecurityhubInsightFiltersResourceId[]; 
   public get resourceId() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_id') as any;
   }
-  public set resourceId(value: SecurityhubInsightFiltersResourceId[] | undefined) {
+  public set resourceId(value: SecurityhubInsightFiltersResourceId[]) {
     this._resourceId = value;
   }
   public resetResourceId() {
@@ -4523,16 +5339,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceIdInput() {
-    return this._resourceId
+    return this._resourceId;
   }
 
   // resource_partition - computed: false, optional: true, required: false
-  private _resourcePartition?: SecurityhubInsightFiltersResourcePartition[] | undefined; 
+  private _resourcePartition?: SecurityhubInsightFiltersResourcePartition[]; 
   public get resourcePartition() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_partition') as any;
   }
-  public set resourcePartition(value: SecurityhubInsightFiltersResourcePartition[] | undefined) {
+  public set resourcePartition(value: SecurityhubInsightFiltersResourcePartition[]) {
     this._resourcePartition = value;
   }
   public resetResourcePartition() {
@@ -4540,16 +5356,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourcePartitionInput() {
-    return this._resourcePartition
+    return this._resourcePartition;
   }
 
   // resource_region - computed: false, optional: true, required: false
-  private _resourceRegion?: SecurityhubInsightFiltersResourceRegion[] | undefined; 
+  private _resourceRegion?: SecurityhubInsightFiltersResourceRegion[]; 
   public get resourceRegion() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_region') as any;
   }
-  public set resourceRegion(value: SecurityhubInsightFiltersResourceRegion[] | undefined) {
+  public set resourceRegion(value: SecurityhubInsightFiltersResourceRegion[]) {
     this._resourceRegion = value;
   }
   public resetResourceRegion() {
@@ -4557,16 +5373,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceRegionInput() {
-    return this._resourceRegion
+    return this._resourceRegion;
   }
 
   // resource_tags - computed: false, optional: true, required: false
-  private _resourceTags?: SecurityhubInsightFiltersResourceTags[] | undefined; 
+  private _resourceTags?: SecurityhubInsightFiltersResourceTags[]; 
   public get resourceTags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_tags') as any;
   }
-  public set resourceTags(value: SecurityhubInsightFiltersResourceTags[] | undefined) {
+  public set resourceTags(value: SecurityhubInsightFiltersResourceTags[]) {
     this._resourceTags = value;
   }
   public resetResourceTags() {
@@ -4574,16 +5390,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceTagsInput() {
-    return this._resourceTags
+    return this._resourceTags;
   }
 
   // resource_type - computed: false, optional: true, required: false
-  private _resourceType?: SecurityhubInsightFiltersResourceType[] | undefined; 
+  private _resourceType?: SecurityhubInsightFiltersResourceType[]; 
   public get resourceType() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_type') as any;
   }
-  public set resourceType(value: SecurityhubInsightFiltersResourceType[] | undefined) {
+  public set resourceType(value: SecurityhubInsightFiltersResourceType[]) {
     this._resourceType = value;
   }
   public resetResourceType() {
@@ -4591,16 +5407,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get resourceTypeInput() {
-    return this._resourceType
+    return this._resourceType;
   }
 
   // severity_label - computed: false, optional: true, required: false
-  private _severityLabel?: SecurityhubInsightFiltersSeverityLabel[] | undefined; 
+  private _severityLabel?: SecurityhubInsightFiltersSeverityLabel[]; 
   public get severityLabel() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('severity_label') as any;
   }
-  public set severityLabel(value: SecurityhubInsightFiltersSeverityLabel[] | undefined) {
+  public set severityLabel(value: SecurityhubInsightFiltersSeverityLabel[]) {
     this._severityLabel = value;
   }
   public resetSeverityLabel() {
@@ -4608,16 +5424,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get severityLabelInput() {
-    return this._severityLabel
+    return this._severityLabel;
   }
 
   // source_url - computed: false, optional: true, required: false
-  private _sourceUrl?: SecurityhubInsightFiltersSourceUrl[] | undefined; 
+  private _sourceUrl?: SecurityhubInsightFiltersSourceUrl[]; 
   public get sourceUrl() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('source_url') as any;
   }
-  public set sourceUrl(value: SecurityhubInsightFiltersSourceUrl[] | undefined) {
+  public set sourceUrl(value: SecurityhubInsightFiltersSourceUrl[]) {
     this._sourceUrl = value;
   }
   public resetSourceUrl() {
@@ -4625,16 +5441,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get sourceUrlInput() {
-    return this._sourceUrl
+    return this._sourceUrl;
   }
 
   // threat_intel_indicator_category - computed: false, optional: true, required: false
-  private _threatIntelIndicatorCategory?: SecurityhubInsightFiltersThreatIntelIndicatorCategory[] | undefined; 
+  private _threatIntelIndicatorCategory?: SecurityhubInsightFiltersThreatIntelIndicatorCategory[]; 
   public get threatIntelIndicatorCategory() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('threat_intel_indicator_category') as any;
   }
-  public set threatIntelIndicatorCategory(value: SecurityhubInsightFiltersThreatIntelIndicatorCategory[] | undefined) {
+  public set threatIntelIndicatorCategory(value: SecurityhubInsightFiltersThreatIntelIndicatorCategory[]) {
     this._threatIntelIndicatorCategory = value;
   }
   public resetThreatIntelIndicatorCategory() {
@@ -4642,16 +5458,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get threatIntelIndicatorCategoryInput() {
-    return this._threatIntelIndicatorCategory
+    return this._threatIntelIndicatorCategory;
   }
 
   // threat_intel_indicator_last_observed_at - computed: false, optional: true, required: false
-  private _threatIntelIndicatorLastObservedAt?: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt[] | undefined; 
+  private _threatIntelIndicatorLastObservedAt?: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt[]; 
   public get threatIntelIndicatorLastObservedAt() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('threat_intel_indicator_last_observed_at') as any;
   }
-  public set threatIntelIndicatorLastObservedAt(value: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt[] | undefined) {
+  public set threatIntelIndicatorLastObservedAt(value: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt[]) {
     this._threatIntelIndicatorLastObservedAt = value;
   }
   public resetThreatIntelIndicatorLastObservedAt() {
@@ -4659,16 +5475,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get threatIntelIndicatorLastObservedAtInput() {
-    return this._threatIntelIndicatorLastObservedAt
+    return this._threatIntelIndicatorLastObservedAt;
   }
 
   // threat_intel_indicator_source - computed: false, optional: true, required: false
-  private _threatIntelIndicatorSource?: SecurityhubInsightFiltersThreatIntelIndicatorSource[] | undefined; 
+  private _threatIntelIndicatorSource?: SecurityhubInsightFiltersThreatIntelIndicatorSource[]; 
   public get threatIntelIndicatorSource() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('threat_intel_indicator_source') as any;
   }
-  public set threatIntelIndicatorSource(value: SecurityhubInsightFiltersThreatIntelIndicatorSource[] | undefined) {
+  public set threatIntelIndicatorSource(value: SecurityhubInsightFiltersThreatIntelIndicatorSource[]) {
     this._threatIntelIndicatorSource = value;
   }
   public resetThreatIntelIndicatorSource() {
@@ -4676,16 +5492,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get threatIntelIndicatorSourceInput() {
-    return this._threatIntelIndicatorSource
+    return this._threatIntelIndicatorSource;
   }
 
   // threat_intel_indicator_source_url - computed: false, optional: true, required: false
-  private _threatIntelIndicatorSourceUrl?: SecurityhubInsightFiltersThreatIntelIndicatorSourceUrl[] | undefined; 
+  private _threatIntelIndicatorSourceUrl?: SecurityhubInsightFiltersThreatIntelIndicatorSourceUrl[]; 
   public get threatIntelIndicatorSourceUrl() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('threat_intel_indicator_source_url') as any;
   }
-  public set threatIntelIndicatorSourceUrl(value: SecurityhubInsightFiltersThreatIntelIndicatorSourceUrl[] | undefined) {
+  public set threatIntelIndicatorSourceUrl(value: SecurityhubInsightFiltersThreatIntelIndicatorSourceUrl[]) {
     this._threatIntelIndicatorSourceUrl = value;
   }
   public resetThreatIntelIndicatorSourceUrl() {
@@ -4693,16 +5509,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get threatIntelIndicatorSourceUrlInput() {
-    return this._threatIntelIndicatorSourceUrl
+    return this._threatIntelIndicatorSourceUrl;
   }
 
   // threat_intel_indicator_type - computed: false, optional: true, required: false
-  private _threatIntelIndicatorType?: SecurityhubInsightFiltersThreatIntelIndicatorType[] | undefined; 
+  private _threatIntelIndicatorType?: SecurityhubInsightFiltersThreatIntelIndicatorType[]; 
   public get threatIntelIndicatorType() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('threat_intel_indicator_type') as any;
   }
-  public set threatIntelIndicatorType(value: SecurityhubInsightFiltersThreatIntelIndicatorType[] | undefined) {
+  public set threatIntelIndicatorType(value: SecurityhubInsightFiltersThreatIntelIndicatorType[]) {
     this._threatIntelIndicatorType = value;
   }
   public resetThreatIntelIndicatorType() {
@@ -4710,16 +5526,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get threatIntelIndicatorTypeInput() {
-    return this._threatIntelIndicatorType
+    return this._threatIntelIndicatorType;
   }
 
   // threat_intel_indicator_value - computed: false, optional: true, required: false
-  private _threatIntelIndicatorValue?: SecurityhubInsightFiltersThreatIntelIndicatorValue[] | undefined; 
+  private _threatIntelIndicatorValue?: SecurityhubInsightFiltersThreatIntelIndicatorValue[]; 
   public get threatIntelIndicatorValue() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('threat_intel_indicator_value') as any;
   }
-  public set threatIntelIndicatorValue(value: SecurityhubInsightFiltersThreatIntelIndicatorValue[] | undefined) {
+  public set threatIntelIndicatorValue(value: SecurityhubInsightFiltersThreatIntelIndicatorValue[]) {
     this._threatIntelIndicatorValue = value;
   }
   public resetThreatIntelIndicatorValue() {
@@ -4727,16 +5543,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get threatIntelIndicatorValueInput() {
-    return this._threatIntelIndicatorValue
+    return this._threatIntelIndicatorValue;
   }
 
   // title - computed: false, optional: true, required: false
-  private _title?: SecurityhubInsightFiltersTitle[] | undefined; 
+  private _title?: SecurityhubInsightFiltersTitle[]; 
   public get title() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('title') as any;
   }
-  public set title(value: SecurityhubInsightFiltersTitle[] | undefined) {
+  public set title(value: SecurityhubInsightFiltersTitle[]) {
     this._title = value;
   }
   public resetTitle() {
@@ -4744,16 +5560,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get titleInput() {
-    return this._title
+    return this._title;
   }
 
   // type - computed: false, optional: true, required: false
-  private _type?: SecurityhubInsightFiltersType[] | undefined; 
+  private _type?: SecurityhubInsightFiltersType[]; 
   public get type() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('type') as any;
   }
-  public set type(value: SecurityhubInsightFiltersType[] | undefined) {
+  public set type(value: SecurityhubInsightFiltersType[]) {
     this._type = value;
   }
   public resetType() {
@@ -4761,16 +5577,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // updated_at - computed: false, optional: true, required: false
-  private _updatedAt?: SecurityhubInsightFiltersUpdatedAt[] | undefined; 
+  private _updatedAt?: SecurityhubInsightFiltersUpdatedAt[]; 
   public get updatedAt() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('updated_at') as any;
   }
-  public set updatedAt(value: SecurityhubInsightFiltersUpdatedAt[] | undefined) {
+  public set updatedAt(value: SecurityhubInsightFiltersUpdatedAt[]) {
     this._updatedAt = value;
   }
   public resetUpdatedAt() {
@@ -4778,16 +5594,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get updatedAtInput() {
-    return this._updatedAt
+    return this._updatedAt;
   }
 
   // user_defined_values - computed: false, optional: true, required: false
-  private _userDefinedValues?: SecurityhubInsightFiltersUserDefinedValues[] | undefined; 
+  private _userDefinedValues?: SecurityhubInsightFiltersUserDefinedValues[]; 
   public get userDefinedValues() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('user_defined_values') as any;
   }
-  public set userDefinedValues(value: SecurityhubInsightFiltersUserDefinedValues[] | undefined) {
+  public set userDefinedValues(value: SecurityhubInsightFiltersUserDefinedValues[]) {
     this._userDefinedValues = value;
   }
   public resetUserDefinedValues() {
@@ -4795,16 +5611,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get userDefinedValuesInput() {
-    return this._userDefinedValues
+    return this._userDefinedValues;
   }
 
   // verification_state - computed: false, optional: true, required: false
-  private _verificationState?: SecurityhubInsightFiltersVerificationState[] | undefined; 
+  private _verificationState?: SecurityhubInsightFiltersVerificationState[]; 
   public get verificationState() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('verification_state') as any;
   }
-  public set verificationState(value: SecurityhubInsightFiltersVerificationState[] | undefined) {
+  public set verificationState(value: SecurityhubInsightFiltersVerificationState[]) {
     this._verificationState = value;
   }
   public resetVerificationState() {
@@ -4812,16 +5628,16 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get verificationStateInput() {
-    return this._verificationState
+    return this._verificationState;
   }
 
   // workflow_status - computed: false, optional: true, required: false
-  private _workflowStatus?: SecurityhubInsightFiltersWorkflowStatus[] | undefined; 
+  private _workflowStatus?: SecurityhubInsightFiltersWorkflowStatus[]; 
   public get workflowStatus() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('workflow_status') as any;
   }
-  public set workflowStatus(value: SecurityhubInsightFiltersWorkflowStatus[] | undefined) {
+  public set workflowStatus(value: SecurityhubInsightFiltersWorkflowStatus[]) {
     this._workflowStatus = value;
   }
   public resetWorkflowStatus() {
@@ -4829,7 +5645,7 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get workflowStatusInput() {
-    return this._workflowStatus
+    return this._workflowStatus;
   }
 }
 
@@ -4867,7 +5683,7 @@ export class SecurityhubInsight extends cdktf.TerraformResource {
     });
     this._groupByAttribute = config.groupByAttribute;
     this._name = config.name;
-    this._filters = config.filters;
+    this._filters.internalValue = config.filters;
   }
 
   // ==========
@@ -4889,7 +5705,7 @@ export class SecurityhubInsight extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get groupByAttributeInput() {
-    return this._groupByAttribute
+    return this._groupByAttribute;
   }
 
   // id - computed: true, optional: true, required: false
@@ -4907,21 +5723,20 @@ export class SecurityhubInsight extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // filters - computed: false, optional: false, required: true
-  private _filters?: SecurityhubInsightFilters; 
-  private __filtersOutput = new SecurityhubInsightFiltersOutputReference(this as any, "filters", true);
+  private _filters = new SecurityhubInsightFiltersOutputReference(this as any, "filters", true);
   public get filters() {
-    return this.__filtersOutput;
+    return this._filters;
   }
   public putFilters(value: SecurityhubInsightFilters) {
-    this._filters = value;
+    this._filters.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get filtersInput() {
-    return this._filters
+    return this._filters.internalValue;
   }
 
   // =========
@@ -4932,7 +5747,7 @@ export class SecurityhubInsight extends cdktf.TerraformResource {
     return {
       group_by_attribute: cdktf.stringToTerraform(this._groupByAttribute),
       name: cdktf.stringToTerraform(this._name),
-      filters: securityhubInsightFiltersToTerraform(this._filters),
+      filters: securityhubInsightFiltersToTerraform(this._filters.internalValue),
     };
   }
 }

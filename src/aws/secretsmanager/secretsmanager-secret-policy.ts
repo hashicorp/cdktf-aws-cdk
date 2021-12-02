@@ -63,11 +63,11 @@ export class SecretsmanagerSecretPolicy extends cdktf.TerraformResource {
   // ==========
 
   // block_public_policy - computed: false, optional: true, required: false
-  private _blockPublicPolicy?: boolean | cdktf.IResolvable | undefined; 
+  private _blockPublicPolicy?: boolean | cdktf.IResolvable; 
   public get blockPublicPolicy() {
     return this.getBooleanAttribute('block_public_policy') as any;
   }
-  public set blockPublicPolicy(value: boolean | cdktf.IResolvable | undefined) {
+  public set blockPublicPolicy(value: boolean | cdktf.IResolvable) {
     this._blockPublicPolicy = value;
   }
   public resetBlockPublicPolicy() {
@@ -75,7 +75,7 @@ export class SecretsmanagerSecretPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get blockPublicPolicyInput() {
-    return this._blockPublicPolicy
+    return this._blockPublicPolicy;
   }
 
   // id - computed: true, optional: true, required: false
@@ -93,7 +93,7 @@ export class SecretsmanagerSecretPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // secret_arn - computed: false, optional: false, required: true
@@ -106,7 +106,7 @@ export class SecretsmanagerSecretPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get secretArnInput() {
-    return this._secretArn
+    return this._secretArn;
   }
 
   // =========

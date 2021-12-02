@@ -58,11 +58,11 @@ export class DataAwsCloudfrontLogDeliveryCanonicalUserId extends cdktf.Terraform
   }
 
   // region - computed: false, optional: true, required: false
-  private _region?: string | undefined; 
+  private _region?: string; 
   public get region() {
     return this.getStringAttribute('region');
   }
-  public set region(value: string | undefined) {
+  public set region(value: string) {
     this._region = value;
   }
   public resetRegion() {
@@ -70,7 +70,7 @@ export class DataAwsCloudfrontLogDeliveryCanonicalUserId extends cdktf.Terraform
   }
   // Temporarily expose input value. Use with caution.
   public get regionInput() {
-    return this._region
+    return this._region;
   }
 
   // =========

@@ -67,7 +67,7 @@ export class DataAwsAcmpcaCertificate extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // certificate - computed: true, optional: false, required: false
@@ -85,7 +85,7 @@ export class DataAwsAcmpcaCertificate extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificateAuthorityArnInput() {
-    return this._certificateAuthorityArn
+    return this._certificateAuthorityArn;
   }
 
   // certificate_chain - computed: true, optional: false, required: false

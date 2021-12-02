@@ -160,11 +160,11 @@ export class DataAwsGlueScript extends cdktf.TerraformDataSource {
   }
 
   // language - computed: false, optional: true, required: false
-  private _language?: string | undefined; 
+  private _language?: string; 
   public get language() {
     return this.getStringAttribute('language');
   }
-  public set language(value: string | undefined) {
+  public set language(value: string) {
     this._language = value;
   }
   public resetLanguage() {
@@ -172,7 +172,7 @@ export class DataAwsGlueScript extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get languageInput() {
-    return this._language
+    return this._language;
   }
 
   // python_script - computed: true, optional: false, required: false
@@ -196,7 +196,7 @@ export class DataAwsGlueScript extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get dagEdgeInput() {
-    return this._dagEdge
+    return this._dagEdge;
   }
 
   // dag_node - computed: false, optional: false, required: true
@@ -210,7 +210,7 @@ export class DataAwsGlueScript extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get dagNodeInput() {
-    return this._dagNode
+    return this._dagNode;
   }
 
   // =========

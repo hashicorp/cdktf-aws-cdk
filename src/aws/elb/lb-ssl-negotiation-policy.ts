@@ -106,7 +106,7 @@ export class LbSslNegotiationPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get lbPortInput() {
-    return this._lbPort
+    return this._lbPort;
   }
 
   // load_balancer - computed: false, optional: false, required: true
@@ -119,7 +119,7 @@ export class LbSslNegotiationPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get loadBalancerInput() {
-    return this._loadBalancer
+    return this._loadBalancer;
   }
 
   // name - computed: false, optional: false, required: true
@@ -132,16 +132,16 @@ export class LbSslNegotiationPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // attribute - computed: false, optional: true, required: false
-  private _attribute?: LbSslNegotiationPolicyAttribute[] | undefined; 
+  private _attribute?: LbSslNegotiationPolicyAttribute[]; 
   public get attribute() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('attribute') as any;
   }
-  public set attribute(value: LbSslNegotiationPolicyAttribute[] | undefined) {
+  public set attribute(value: LbSslNegotiationPolicyAttribute[]) {
     this._attribute = value;
   }
   public resetAttribute() {
@@ -149,7 +149,7 @@ export class LbSslNegotiationPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get attributeInput() {
-    return this._attribute
+    return this._attribute;
   }
 
   // =========

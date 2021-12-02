@@ -67,7 +67,7 @@ export class DataAwsS3Bucket extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // bucket_domain_name - computed: true, optional: false, required: false

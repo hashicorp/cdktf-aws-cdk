@@ -124,12 +124,37 @@ export class AppstreamImageBuilderDomainJoinInfoOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppstreamImageBuilderDomainJoinInfo | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._directoryName) {
+      hasAnyValues = true;
+      internalValueResult.directoryName = this._directoryName;
+    }
+    if (this._organizationalUnitDistinguishedName) {
+      hasAnyValues = true;
+      internalValueResult.organizationalUnitDistinguishedName = this._organizationalUnitDistinguishedName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppstreamImageBuilderDomainJoinInfo | undefined) {
+    if (value === undefined) {
+      this._directoryName = undefined;
+      this._organizationalUnitDistinguishedName = undefined;
+    }
+    else {
+      this._directoryName = value.directoryName;
+      this._organizationalUnitDistinguishedName = value.organizationalUnitDistinguishedName;
+    }
+  }
+
   // directory_name - computed: false, optional: true, required: false
-  private _directoryName?: string | undefined; 
+  private _directoryName?: string; 
   public get directoryName() {
     return this.getStringAttribute('directory_name');
   }
-  public set directoryName(value: string | undefined) {
+  public set directoryName(value: string) {
     this._directoryName = value;
   }
   public resetDirectoryName() {
@@ -137,15 +162,15 @@ export class AppstreamImageBuilderDomainJoinInfoOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get directoryNameInput() {
-    return this._directoryName
+    return this._directoryName;
   }
 
   // organizational_unit_distinguished_name - computed: false, optional: true, required: false
-  private _organizationalUnitDistinguishedName?: string | undefined; 
+  private _organizationalUnitDistinguishedName?: string; 
   public get organizationalUnitDistinguishedName() {
     return this.getStringAttribute('organizational_unit_distinguished_name');
   }
-  public set organizationalUnitDistinguishedName(value: string | undefined) {
+  public set organizationalUnitDistinguishedName(value: string) {
     this._organizationalUnitDistinguishedName = value;
   }
   public resetOrganizationalUnitDistinguishedName() {
@@ -153,7 +178,7 @@ export class AppstreamImageBuilderDomainJoinInfoOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get organizationalUnitDistinguishedNameInput() {
-    return this._organizationalUnitDistinguishedName
+    return this._organizationalUnitDistinguishedName;
   }
 }
 export interface AppstreamImageBuilderVpcConfig {
@@ -188,12 +213,37 @@ export class AppstreamImageBuilderVpcConfigOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppstreamImageBuilderVpcConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._securityGroupIds) {
+      hasAnyValues = true;
+      internalValueResult.securityGroupIds = this._securityGroupIds;
+    }
+    if (this._subnetIds) {
+      hasAnyValues = true;
+      internalValueResult.subnetIds = this._subnetIds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppstreamImageBuilderVpcConfig | undefined) {
+    if (value === undefined) {
+      this._securityGroupIds = undefined;
+      this._subnetIds = undefined;
+    }
+    else {
+      this._securityGroupIds = value.securityGroupIds;
+      this._subnetIds = value.subnetIds;
+    }
+  }
+
   // security_group_ids - computed: true, optional: true, required: false
-  private _securityGroupIds?: string[] | undefined; 
+  private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
     return this.getListAttribute('security_group_ids');
   }
-  public set securityGroupIds(value: string[] | undefined) {
+  public set securityGroupIds(value: string[]) {
     this._securityGroupIds = value;
   }
   public resetSecurityGroupIds() {
@@ -201,15 +251,15 @@ export class AppstreamImageBuilderVpcConfigOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // subnet_ids - computed: true, optional: true, required: false
-  private _subnetIds?: string[] | undefined; 
+  private _subnetIds?: string[]; 
   public get subnetIds() {
     return this.getListAttribute('subnet_ids');
   }
-  public set subnetIds(value: string[] | undefined) {
+  public set subnetIds(value: string[]) {
     this._subnetIds = value;
   }
   public resetSubnetIds() {
@@ -217,7 +267,7 @@ export class AppstreamImageBuilderVpcConfigOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 }
 
@@ -265,8 +315,8 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._accessEndpoint = config.accessEndpoint;
-    this._domainJoinInfo = config.domainJoinInfo;
-    this._vpcConfig = config.vpcConfig;
+    this._domainJoinInfo.internalValue = config.domainJoinInfo;
+    this._vpcConfig.internalValue = config.vpcConfig;
   }
 
   // ==========
@@ -274,11 +324,11 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
   // ==========
 
   // appstream_agent_version - computed: true, optional: true, required: false
-  private _appstreamAgentVersion?: string | undefined; 
+  private _appstreamAgentVersion?: string; 
   public get appstreamAgentVersion() {
     return this.getStringAttribute('appstream_agent_version');
   }
-  public set appstreamAgentVersion(value: string | undefined) {
+  public set appstreamAgentVersion(value: string) {
     this._appstreamAgentVersion = value;
   }
   public resetAppstreamAgentVersion() {
@@ -286,7 +336,7 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get appstreamAgentVersionInput() {
-    return this._appstreamAgentVersion
+    return this._appstreamAgentVersion;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -300,11 +350,11 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
   }
 
   // description - computed: true, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -312,15 +362,15 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // display_name - computed: true, optional: true, required: false
-  private _displayName?: string | undefined; 
+  private _displayName?: string; 
   public get displayName() {
     return this.getStringAttribute('display_name');
   }
-  public set displayName(value: string | undefined) {
+  public set displayName(value: string) {
     this._displayName = value;
   }
   public resetDisplayName() {
@@ -328,15 +378,15 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get displayNameInput() {
-    return this._displayName
+    return this._displayName;
   }
 
   // enable_default_internet_access - computed: true, optional: true, required: false
-  private _enableDefaultInternetAccess?: boolean | cdktf.IResolvable | undefined; 
+  private _enableDefaultInternetAccess?: boolean | cdktf.IResolvable; 
   public get enableDefaultInternetAccess() {
     return this.getBooleanAttribute('enable_default_internet_access') as any;
   }
-  public set enableDefaultInternetAccess(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableDefaultInternetAccess(value: boolean | cdktf.IResolvable) {
     this._enableDefaultInternetAccess = value;
   }
   public resetEnableDefaultInternetAccess() {
@@ -344,15 +394,15 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableDefaultInternetAccessInput() {
-    return this._enableDefaultInternetAccess
+    return this._enableDefaultInternetAccess;
   }
 
   // iam_role_arn - computed: true, optional: true, required: false
-  private _iamRoleArn?: string | undefined; 
+  private _iamRoleArn?: string; 
   public get iamRoleArn() {
     return this.getStringAttribute('iam_role_arn');
   }
-  public set iamRoleArn(value: string | undefined) {
+  public set iamRoleArn(value: string) {
     this._iamRoleArn = value;
   }
   public resetIamRoleArn() {
@@ -360,7 +410,7 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iamRoleArnInput() {
-    return this._iamRoleArn
+    return this._iamRoleArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -369,11 +419,11 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
   }
 
   // image_arn - computed: true, optional: true, required: false
-  private _imageArn?: string | undefined; 
+  private _imageArn?: string; 
   public get imageArn() {
     return this.getStringAttribute('image_arn');
   }
-  public set imageArn(value: string | undefined) {
+  public set imageArn(value: string) {
     this._imageArn = value;
   }
   public resetImageArn() {
@@ -381,15 +431,15 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get imageArnInput() {
-    return this._imageArn
+    return this._imageArn;
   }
 
   // image_name - computed: true, optional: true, required: false
-  private _imageName?: string | undefined; 
+  private _imageName?: string; 
   public get imageName() {
     return this.getStringAttribute('image_name');
   }
-  public set imageName(value: string | undefined) {
+  public set imageName(value: string) {
     this._imageName = value;
   }
   public resetImageName() {
@@ -397,7 +447,7 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get imageNameInput() {
-    return this._imageName
+    return this._imageName;
   }
 
   // instance_type - computed: false, optional: false, required: true
@@ -410,7 +460,7 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // name - computed: false, optional: false, required: true
@@ -423,7 +473,7 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // state - computed: true, optional: false, required: false
@@ -432,12 +482,12 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -445,16 +495,16 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -462,16 +512,16 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // access_endpoint - computed: false, optional: true, required: false
-  private _accessEndpoint?: AppstreamImageBuilderAccessEndpoint[] | undefined; 
+  private _accessEndpoint?: AppstreamImageBuilderAccessEndpoint[]; 
   public get accessEndpoint() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('access_endpoint') as any;
   }
-  public set accessEndpoint(value: AppstreamImageBuilderAccessEndpoint[] | undefined) {
+  public set accessEndpoint(value: AppstreamImageBuilderAccessEndpoint[]) {
     this._accessEndpoint = value;
   }
   public resetAccessEndpoint() {
@@ -479,41 +529,39 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accessEndpointInput() {
-    return this._accessEndpoint
+    return this._accessEndpoint;
   }
 
   // domain_join_info - computed: false, optional: true, required: false
-  private _domainJoinInfo?: AppstreamImageBuilderDomainJoinInfo | undefined; 
-  private __domainJoinInfoOutput = new AppstreamImageBuilderDomainJoinInfoOutputReference(this as any, "domain_join_info", true);
+  private _domainJoinInfo = new AppstreamImageBuilderDomainJoinInfoOutputReference(this as any, "domain_join_info", true);
   public get domainJoinInfo() {
-    return this.__domainJoinInfoOutput;
+    return this._domainJoinInfo;
   }
-  public putDomainJoinInfo(value: AppstreamImageBuilderDomainJoinInfo | undefined) {
-    this._domainJoinInfo = value;
+  public putDomainJoinInfo(value: AppstreamImageBuilderDomainJoinInfo) {
+    this._domainJoinInfo.internalValue = value;
   }
   public resetDomainJoinInfo() {
-    this._domainJoinInfo = undefined;
+    this._domainJoinInfo.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get domainJoinInfoInput() {
-    return this._domainJoinInfo
+    return this._domainJoinInfo.internalValue;
   }
 
   // vpc_config - computed: false, optional: true, required: false
-  private _vpcConfig?: AppstreamImageBuilderVpcConfig | undefined; 
-  private __vpcConfigOutput = new AppstreamImageBuilderVpcConfigOutputReference(this as any, "vpc_config", true);
+  private _vpcConfig = new AppstreamImageBuilderVpcConfigOutputReference(this as any, "vpc_config", true);
   public get vpcConfig() {
-    return this.__vpcConfigOutput;
+    return this._vpcConfig;
   }
-  public putVpcConfig(value: AppstreamImageBuilderVpcConfig | undefined) {
-    this._vpcConfig = value;
+  public putVpcConfig(value: AppstreamImageBuilderVpcConfig) {
+    this._vpcConfig.internalValue = value;
   }
   public resetVpcConfig() {
-    this._vpcConfig = undefined;
+    this._vpcConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get vpcConfigInput() {
-    return this._vpcConfig
+    return this._vpcConfig.internalValue;
   }
 
   // =========
@@ -534,8 +582,8 @@ export class AppstreamImageBuilder extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       access_endpoint: cdktf.listMapper(appstreamImageBuilderAccessEndpointToTerraform)(this._accessEndpoint),
-      domain_join_info: appstreamImageBuilderDomainJoinInfoToTerraform(this._domainJoinInfo),
-      vpc_config: appstreamImageBuilderVpcConfigToTerraform(this._vpcConfig),
+      domain_join_info: appstreamImageBuilderDomainJoinInfoToTerraform(this._domainJoinInfo.internalValue),
+      vpc_config: appstreamImageBuilderVpcConfigToTerraform(this._vpcConfig.internalValue),
     };
   }
 }

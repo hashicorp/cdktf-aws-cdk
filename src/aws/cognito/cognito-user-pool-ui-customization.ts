@@ -68,11 +68,11 @@ export class CognitoUserPoolUiCustomization extends cdktf.TerraformResource {
   // ==========
 
   // client_id - computed: false, optional: true, required: false
-  private _clientId?: string | undefined; 
+  private _clientId?: string; 
   public get clientId() {
     return this.getStringAttribute('client_id');
   }
-  public set clientId(value: string | undefined) {
+  public set clientId(value: string) {
     this._clientId = value;
   }
   public resetClientId() {
@@ -80,7 +80,7 @@ export class CognitoUserPoolUiCustomization extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clientIdInput() {
-    return this._clientId
+    return this._clientId;
   }
 
   // creation_date - computed: true, optional: false, required: false
@@ -89,11 +89,11 @@ export class CognitoUserPoolUiCustomization extends cdktf.TerraformResource {
   }
 
   // css - computed: false, optional: true, required: false
-  private _css?: string | undefined; 
+  private _css?: string; 
   public get css() {
     return this.getStringAttribute('css');
   }
-  public set css(value: string | undefined) {
+  public set css(value: string) {
     this._css = value;
   }
   public resetCss() {
@@ -101,7 +101,7 @@ export class CognitoUserPoolUiCustomization extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cssInput() {
-    return this._css
+    return this._css;
   }
 
   // css_version - computed: true, optional: false, required: false
@@ -115,11 +115,11 @@ export class CognitoUserPoolUiCustomization extends cdktf.TerraformResource {
   }
 
   // image_file - computed: false, optional: true, required: false
-  private _imageFile?: string | undefined; 
+  private _imageFile?: string; 
   public get imageFile() {
     return this.getStringAttribute('image_file');
   }
-  public set imageFile(value: string | undefined) {
+  public set imageFile(value: string) {
     this._imageFile = value;
   }
   public resetImageFile() {
@@ -127,7 +127,7 @@ export class CognitoUserPoolUiCustomization extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get imageFileInput() {
-    return this._imageFile
+    return this._imageFile;
   }
 
   // image_url - computed: true, optional: false, required: false
@@ -150,7 +150,7 @@ export class CognitoUserPoolUiCustomization extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userPoolIdInput() {
-    return this._userPoolId
+    return this._userPoolId;
   }
 
   // =========

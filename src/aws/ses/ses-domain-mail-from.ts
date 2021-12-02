@@ -63,11 +63,11 @@ export class SesDomainMailFrom extends cdktf.TerraformResource {
   // ==========
 
   // behavior_on_mx_failure - computed: false, optional: true, required: false
-  private _behaviorOnMxFailure?: string | undefined; 
+  private _behaviorOnMxFailure?: string; 
   public get behaviorOnMxFailure() {
     return this.getStringAttribute('behavior_on_mx_failure');
   }
-  public set behaviorOnMxFailure(value: string | undefined) {
+  public set behaviorOnMxFailure(value: string) {
     this._behaviorOnMxFailure = value;
   }
   public resetBehaviorOnMxFailure() {
@@ -75,7 +75,7 @@ export class SesDomainMailFrom extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get behaviorOnMxFailureInput() {
-    return this._behaviorOnMxFailure
+    return this._behaviorOnMxFailure;
   }
 
   // domain - computed: false, optional: false, required: true
@@ -88,7 +88,7 @@ export class SesDomainMailFrom extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainInput() {
-    return this._domain
+    return this._domain;
   }
 
   // id - computed: true, optional: true, required: false
@@ -106,7 +106,7 @@ export class SesDomainMailFrom extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get mailFromDomainInput() {
-    return this._mailFromDomain
+    return this._mailFromDomain;
   }
 
   // =========

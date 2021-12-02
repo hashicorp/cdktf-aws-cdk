@@ -288,11 +288,11 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
 
   // cloud_watch_logs_group_arn - computed: false, optional: true, required: false
-  private _cloudWatchLogsGroupArn?: string | undefined; 
+  private _cloudWatchLogsGroupArn?: string; 
   public get cloudWatchLogsGroupArn() {
     return this.getStringAttribute('cloud_watch_logs_group_arn');
   }
-  public set cloudWatchLogsGroupArn(value: string | undefined) {
+  public set cloudWatchLogsGroupArn(value: string) {
     this._cloudWatchLogsGroupArn = value;
   }
   public resetCloudWatchLogsGroupArn() {
@@ -300,15 +300,15 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cloudWatchLogsGroupArnInput() {
-    return this._cloudWatchLogsGroupArn
+    return this._cloudWatchLogsGroupArn;
   }
 
   // cloud_watch_logs_role_arn - computed: false, optional: true, required: false
-  private _cloudWatchLogsRoleArn?: string | undefined; 
+  private _cloudWatchLogsRoleArn?: string; 
   public get cloudWatchLogsRoleArn() {
     return this.getStringAttribute('cloud_watch_logs_role_arn');
   }
-  public set cloudWatchLogsRoleArn(value: string | undefined) {
+  public set cloudWatchLogsRoleArn(value: string) {
     this._cloudWatchLogsRoleArn = value;
   }
   public resetCloudWatchLogsRoleArn() {
@@ -316,15 +316,15 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cloudWatchLogsRoleArnInput() {
-    return this._cloudWatchLogsRoleArn
+    return this._cloudWatchLogsRoleArn;
   }
 
   // enable_log_file_validation - computed: false, optional: true, required: false
-  private _enableLogFileValidation?: boolean | cdktf.IResolvable | undefined; 
+  private _enableLogFileValidation?: boolean | cdktf.IResolvable; 
   public get enableLogFileValidation() {
     return this.getBooleanAttribute('enable_log_file_validation') as any;
   }
-  public set enableLogFileValidation(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableLogFileValidation(value: boolean | cdktf.IResolvable) {
     this._enableLogFileValidation = value;
   }
   public resetEnableLogFileValidation() {
@@ -332,15 +332,15 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableLogFileValidationInput() {
-    return this._enableLogFileValidation
+    return this._enableLogFileValidation;
   }
 
   // enable_logging - computed: false, optional: true, required: false
-  private _enableLogging?: boolean | cdktf.IResolvable | undefined; 
+  private _enableLogging?: boolean | cdktf.IResolvable; 
   public get enableLogging() {
     return this.getBooleanAttribute('enable_logging') as any;
   }
-  public set enableLogging(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableLogging(value: boolean | cdktf.IResolvable) {
     this._enableLogging = value;
   }
   public resetEnableLogging() {
@@ -348,7 +348,7 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableLoggingInput() {
-    return this._enableLogging
+    return this._enableLogging;
   }
 
   // home_region - computed: true, optional: false, required: false
@@ -362,11 +362,11 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
 
   // include_global_service_events - computed: false, optional: true, required: false
-  private _includeGlobalServiceEvents?: boolean | cdktf.IResolvable | undefined; 
+  private _includeGlobalServiceEvents?: boolean | cdktf.IResolvable; 
   public get includeGlobalServiceEvents() {
     return this.getBooleanAttribute('include_global_service_events') as any;
   }
-  public set includeGlobalServiceEvents(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeGlobalServiceEvents(value: boolean | cdktf.IResolvable) {
     this._includeGlobalServiceEvents = value;
   }
   public resetIncludeGlobalServiceEvents() {
@@ -374,15 +374,15 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get includeGlobalServiceEventsInput() {
-    return this._includeGlobalServiceEvents
+    return this._includeGlobalServiceEvents;
   }
 
   // is_multi_region_trail - computed: false, optional: true, required: false
-  private _isMultiRegionTrail?: boolean | cdktf.IResolvable | undefined; 
+  private _isMultiRegionTrail?: boolean | cdktf.IResolvable; 
   public get isMultiRegionTrail() {
     return this.getBooleanAttribute('is_multi_region_trail') as any;
   }
-  public set isMultiRegionTrail(value: boolean | cdktf.IResolvable | undefined) {
+  public set isMultiRegionTrail(value: boolean | cdktf.IResolvable) {
     this._isMultiRegionTrail = value;
   }
   public resetIsMultiRegionTrail() {
@@ -390,15 +390,15 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get isMultiRegionTrailInput() {
-    return this._isMultiRegionTrail
+    return this._isMultiRegionTrail;
   }
 
   // is_organization_trail - computed: false, optional: true, required: false
-  private _isOrganizationTrail?: boolean | cdktf.IResolvable | undefined; 
+  private _isOrganizationTrail?: boolean | cdktf.IResolvable; 
   public get isOrganizationTrail() {
     return this.getBooleanAttribute('is_organization_trail') as any;
   }
-  public set isOrganizationTrail(value: boolean | cdktf.IResolvable | undefined) {
+  public set isOrganizationTrail(value: boolean | cdktf.IResolvable) {
     this._isOrganizationTrail = value;
   }
   public resetIsOrganizationTrail() {
@@ -406,15 +406,15 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get isOrganizationTrailInput() {
-    return this._isOrganizationTrail
+    return this._isOrganizationTrail;
   }
 
   // kms_key_id - computed: false, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -422,7 +422,7 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // name - computed: false, optional: false, required: true
@@ -435,7 +435,7 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // s3_bucket_name - computed: false, optional: false, required: true
@@ -448,15 +448,15 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3BucketNameInput() {
-    return this._s3BucketName
+    return this._s3BucketName;
   }
 
   // s3_key_prefix - computed: false, optional: true, required: false
-  private _s3KeyPrefix?: string | undefined; 
+  private _s3KeyPrefix?: string; 
   public get s3KeyPrefix() {
     return this.getStringAttribute('s3_key_prefix');
   }
-  public set s3KeyPrefix(value: string | undefined) {
+  public set s3KeyPrefix(value: string) {
     this._s3KeyPrefix = value;
   }
   public resetS3KeyPrefix() {
@@ -464,15 +464,15 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3KeyPrefixInput() {
-    return this._s3KeyPrefix
+    return this._s3KeyPrefix;
   }
 
   // sns_topic_name - computed: false, optional: true, required: false
-  private _snsTopicName?: string | undefined; 
+  private _snsTopicName?: string; 
   public get snsTopicName() {
     return this.getStringAttribute('sns_topic_name');
   }
-  public set snsTopicName(value: string | undefined) {
+  public set snsTopicName(value: string) {
     this._snsTopicName = value;
   }
   public resetSnsTopicName() {
@@ -480,16 +480,16 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get snsTopicNameInput() {
-    return this._snsTopicName
+    return this._snsTopicName;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -497,16 +497,16 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -514,16 +514,16 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // advanced_event_selector - computed: false, optional: true, required: false
-  private _advancedEventSelector?: CloudtrailAdvancedEventSelector[] | undefined; 
+  private _advancedEventSelector?: CloudtrailAdvancedEventSelector[]; 
   public get advancedEventSelector() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('advanced_event_selector') as any;
   }
-  public set advancedEventSelector(value: CloudtrailAdvancedEventSelector[] | undefined) {
+  public set advancedEventSelector(value: CloudtrailAdvancedEventSelector[]) {
     this._advancedEventSelector = value;
   }
   public resetAdvancedEventSelector() {
@@ -531,16 +531,16 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get advancedEventSelectorInput() {
-    return this._advancedEventSelector
+    return this._advancedEventSelector;
   }
 
   // event_selector - computed: false, optional: true, required: false
-  private _eventSelector?: CloudtrailEventSelector[] | undefined; 
+  private _eventSelector?: CloudtrailEventSelector[]; 
   public get eventSelector() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('event_selector') as any;
   }
-  public set eventSelector(value: CloudtrailEventSelector[] | undefined) {
+  public set eventSelector(value: CloudtrailEventSelector[]) {
     this._eventSelector = value;
   }
   public resetEventSelector() {
@@ -548,16 +548,16 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get eventSelectorInput() {
-    return this._eventSelector
+    return this._eventSelector;
   }
 
   // insight_selector - computed: false, optional: true, required: false
-  private _insightSelector?: CloudtrailInsightSelector[] | undefined; 
+  private _insightSelector?: CloudtrailInsightSelector[]; 
   public get insightSelector() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('insight_selector') as any;
   }
-  public set insightSelector(value: CloudtrailInsightSelector[] | undefined) {
+  public set insightSelector(value: CloudtrailInsightSelector[]) {
     this._insightSelector = value;
   }
   public resetInsightSelector() {
@@ -565,7 +565,7 @@ export class Cloudtrail extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get insightSelectorInput() {
-    return this._insightSelector
+    return this._insightSelector;
   }
 
   // =========

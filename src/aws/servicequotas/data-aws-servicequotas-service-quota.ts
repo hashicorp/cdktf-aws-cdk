@@ -88,11 +88,11 @@ export class DataAwsServicequotasServiceQuota extends cdktf.TerraformDataSource 
   }
 
   // quota_code - computed: true, optional: true, required: false
-  private _quotaCode?: string | undefined; 
+  private _quotaCode?: string; 
   public get quotaCode() {
     return this.getStringAttribute('quota_code');
   }
-  public set quotaCode(value: string | undefined) {
+  public set quotaCode(value: string) {
     this._quotaCode = value;
   }
   public resetQuotaCode() {
@@ -100,15 +100,15 @@ export class DataAwsServicequotasServiceQuota extends cdktf.TerraformDataSource 
   }
   // Temporarily expose input value. Use with caution.
   public get quotaCodeInput() {
-    return this._quotaCode
+    return this._quotaCode;
   }
 
   // quota_name - computed: true, optional: true, required: false
-  private _quotaName?: string | undefined; 
+  private _quotaName?: string; 
   public get quotaName() {
     return this.getStringAttribute('quota_name');
   }
-  public set quotaName(value: string | undefined) {
+  public set quotaName(value: string) {
     this._quotaName = value;
   }
   public resetQuotaName() {
@@ -116,7 +116,7 @@ export class DataAwsServicequotasServiceQuota extends cdktf.TerraformDataSource 
   }
   // Temporarily expose input value. Use with caution.
   public get quotaNameInput() {
-    return this._quotaName
+    return this._quotaName;
   }
 
   // service_code - computed: false, optional: false, required: true
@@ -129,7 +129,7 @@ export class DataAwsServicequotasServiceQuota extends cdktf.TerraformDataSource 
   }
   // Temporarily expose input value. Use with caution.
   public get serviceCodeInput() {
-    return this._serviceCode
+    return this._serviceCode;
   }
 
   // service_name - computed: true, optional: false, required: false

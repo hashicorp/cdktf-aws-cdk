@@ -72,7 +72,7 @@ export class DataAwsIamUserSshKey extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get encodingInput() {
-    return this._encoding
+    return this._encoding;
   }
 
   // fingerprint - computed: true, optional: false, required: false
@@ -100,7 +100,7 @@ export class DataAwsIamUserSshKey extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get sshPublicKeyIdInput() {
-    return this._sshPublicKeyId
+    return this._sshPublicKeyId;
   }
 
   // status - computed: true, optional: false, required: false
@@ -118,7 +118,7 @@ export class DataAwsIamUserSshKey extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get usernameInput() {
-    return this._username
+    return this._username;
   }
 
   // =========

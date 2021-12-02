@@ -329,12 +329,43 @@ export class OpsworksInstanceTimeoutsOutputReference extends cdktf.ComplexObject
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): OpsworksInstanceTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: OpsworksInstanceTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -342,15 +373,15 @@ export class OpsworksInstanceTimeoutsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -358,15 +389,15 @@ export class OpsworksInstanceTimeoutsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -374,7 +405,7 @@ export class OpsworksInstanceTimeoutsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -454,7 +485,7 @@ export class OpsworksInstance extends cdktf.TerraformResource {
     this._ebsBlockDevice = config.ebsBlockDevice;
     this._ephemeralBlockDevice = config.ephemeralBlockDevice;
     this._rootBlockDevice = config.rootBlockDevice;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -462,11 +493,11 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   // ==========
 
   // agent_version - computed: false, optional: true, required: false
-  private _agentVersion?: string | undefined; 
+  private _agentVersion?: string; 
   public get agentVersion() {
     return this.getStringAttribute('agent_version');
   }
-  public set agentVersion(value: string | undefined) {
+  public set agentVersion(value: string) {
     this._agentVersion = value;
   }
   public resetAgentVersion() {
@@ -474,15 +505,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get agentVersionInput() {
-    return this._agentVersion
+    return this._agentVersion;
   }
 
   // ami_id - computed: true, optional: true, required: false
-  private _amiId?: string | undefined; 
+  private _amiId?: string; 
   public get amiId() {
     return this.getStringAttribute('ami_id');
   }
-  public set amiId(value: string | undefined) {
+  public set amiId(value: string) {
     this._amiId = value;
   }
   public resetAmiId() {
@@ -490,15 +521,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get amiIdInput() {
-    return this._amiId
+    return this._amiId;
   }
 
   // architecture - computed: false, optional: true, required: false
-  private _architecture?: string | undefined; 
+  private _architecture?: string; 
   public get architecture() {
     return this.getStringAttribute('architecture');
   }
-  public set architecture(value: string | undefined) {
+  public set architecture(value: string) {
     this._architecture = value;
   }
   public resetArchitecture() {
@@ -506,15 +537,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get architectureInput() {
-    return this._architecture
+    return this._architecture;
   }
 
   // auto_scaling_type - computed: false, optional: true, required: false
-  private _autoScalingType?: string | undefined; 
+  private _autoScalingType?: string; 
   public get autoScalingType() {
     return this.getStringAttribute('auto_scaling_type');
   }
-  public set autoScalingType(value: string | undefined) {
+  public set autoScalingType(value: string) {
     this._autoScalingType = value;
   }
   public resetAutoScalingType() {
@@ -522,15 +553,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoScalingTypeInput() {
-    return this._autoScalingType
+    return this._autoScalingType;
   }
 
   // availability_zone - computed: true, optional: true, required: false
-  private _availabilityZone?: string | undefined; 
+  private _availabilityZone?: string; 
   public get availabilityZone() {
     return this.getStringAttribute('availability_zone');
   }
-  public set availabilityZone(value: string | undefined) {
+  public set availabilityZone(value: string) {
     this._availabilityZone = value;
   }
   public resetAvailabilityZone() {
@@ -538,15 +569,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneInput() {
-    return this._availabilityZone
+    return this._availabilityZone;
   }
 
   // created_at - computed: true, optional: true, required: false
-  private _createdAt?: string | undefined; 
+  private _createdAt?: string; 
   public get createdAt() {
     return this.getStringAttribute('created_at');
   }
-  public set createdAt(value: string | undefined) {
+  public set createdAt(value: string) {
     this._createdAt = value;
   }
   public resetCreatedAt() {
@@ -554,15 +585,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get createdAtInput() {
-    return this._createdAt
+    return this._createdAt;
   }
 
   // delete_ebs - computed: false, optional: true, required: false
-  private _deleteEbs?: boolean | cdktf.IResolvable | undefined; 
+  private _deleteEbs?: boolean | cdktf.IResolvable; 
   public get deleteEbs() {
     return this.getBooleanAttribute('delete_ebs') as any;
   }
-  public set deleteEbs(value: boolean | cdktf.IResolvable | undefined) {
+  public set deleteEbs(value: boolean | cdktf.IResolvable) {
     this._deleteEbs = value;
   }
   public resetDeleteEbs() {
@@ -570,15 +601,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteEbsInput() {
-    return this._deleteEbs
+    return this._deleteEbs;
   }
 
   // delete_eip - computed: false, optional: true, required: false
-  private _deleteEip?: boolean | cdktf.IResolvable | undefined; 
+  private _deleteEip?: boolean | cdktf.IResolvable; 
   public get deleteEip() {
     return this.getBooleanAttribute('delete_eip') as any;
   }
-  public set deleteEip(value: boolean | cdktf.IResolvable | undefined) {
+  public set deleteEip(value: boolean | cdktf.IResolvable) {
     this._deleteEip = value;
   }
   public resetDeleteEip() {
@@ -586,15 +617,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteEipInput() {
-    return this._deleteEip
+    return this._deleteEip;
   }
 
   // ebs_optimized - computed: false, optional: true, required: false
-  private _ebsOptimized?: boolean | cdktf.IResolvable | undefined; 
+  private _ebsOptimized?: boolean | cdktf.IResolvable; 
   public get ebsOptimized() {
     return this.getBooleanAttribute('ebs_optimized') as any;
   }
-  public set ebsOptimized(value: boolean | cdktf.IResolvable | undefined) {
+  public set ebsOptimized(value: boolean | cdktf.IResolvable) {
     this._ebsOptimized = value;
   }
   public resetEbsOptimized() {
@@ -602,7 +633,7 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ebsOptimizedInput() {
-    return this._ebsOptimized
+    return this._ebsOptimized;
   }
 
   // ec2_instance_id - computed: true, optional: false, required: false
@@ -611,11 +642,11 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
 
   // ecs_cluster_arn - computed: true, optional: true, required: false
-  private _ecsClusterArn?: string | undefined; 
+  private _ecsClusterArn?: string; 
   public get ecsClusterArn() {
     return this.getStringAttribute('ecs_cluster_arn');
   }
-  public set ecsClusterArn(value: string | undefined) {
+  public set ecsClusterArn(value: string) {
     this._ecsClusterArn = value;
   }
   public resetEcsClusterArn() {
@@ -623,15 +654,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ecsClusterArnInput() {
-    return this._ecsClusterArn
+    return this._ecsClusterArn;
   }
 
   // elastic_ip - computed: true, optional: true, required: false
-  private _elasticIp?: string | undefined; 
+  private _elasticIp?: string; 
   public get elasticIp() {
     return this.getStringAttribute('elastic_ip');
   }
-  public set elasticIp(value: string | undefined) {
+  public set elasticIp(value: string) {
     this._elasticIp = value;
   }
   public resetElasticIp() {
@@ -639,15 +670,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get elasticIpInput() {
-    return this._elasticIp
+    return this._elasticIp;
   }
 
   // hostname - computed: true, optional: true, required: false
-  private _hostname?: string | undefined; 
+  private _hostname?: string; 
   public get hostname() {
     return this.getStringAttribute('hostname');
   }
-  public set hostname(value: string | undefined) {
+  public set hostname(value: string) {
     this._hostname = value;
   }
   public resetHostname() {
@@ -655,7 +686,7 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get hostnameInput() {
-    return this._hostname
+    return this._hostname;
   }
 
   // id - computed: true, optional: true, required: false
@@ -664,11 +695,11 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
 
   // infrastructure_class - computed: true, optional: true, required: false
-  private _infrastructureClass?: string | undefined; 
+  private _infrastructureClass?: string; 
   public get infrastructureClass() {
     return this.getStringAttribute('infrastructure_class');
   }
-  public set infrastructureClass(value: string | undefined) {
+  public set infrastructureClass(value: string) {
     this._infrastructureClass = value;
   }
   public resetInfrastructureClass() {
@@ -676,15 +707,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get infrastructureClassInput() {
-    return this._infrastructureClass
+    return this._infrastructureClass;
   }
 
   // install_updates_on_boot - computed: false, optional: true, required: false
-  private _installUpdatesOnBoot?: boolean | cdktf.IResolvable | undefined; 
+  private _installUpdatesOnBoot?: boolean | cdktf.IResolvable; 
   public get installUpdatesOnBoot() {
     return this.getBooleanAttribute('install_updates_on_boot') as any;
   }
-  public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable | undefined) {
+  public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable) {
     this._installUpdatesOnBoot = value;
   }
   public resetInstallUpdatesOnBoot() {
@@ -692,15 +723,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get installUpdatesOnBootInput() {
-    return this._installUpdatesOnBoot
+    return this._installUpdatesOnBoot;
   }
 
   // instance_profile_arn - computed: true, optional: true, required: false
-  private _instanceProfileArn?: string | undefined; 
+  private _instanceProfileArn?: string; 
   public get instanceProfileArn() {
     return this.getStringAttribute('instance_profile_arn');
   }
-  public set instanceProfileArn(value: string | undefined) {
+  public set instanceProfileArn(value: string) {
     this._instanceProfileArn = value;
   }
   public resetInstanceProfileArn() {
@@ -708,15 +739,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceProfileArnInput() {
-    return this._instanceProfileArn
+    return this._instanceProfileArn;
   }
 
   // instance_type - computed: false, optional: true, required: false
-  private _instanceType?: string | undefined; 
+  private _instanceType?: string; 
   public get instanceType() {
     return this.getStringAttribute('instance_type');
   }
-  public set instanceType(value: string | undefined) {
+  public set instanceType(value: string) {
     this._instanceType = value;
   }
   public resetInstanceType() {
@@ -724,15 +755,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // last_service_error_id - computed: true, optional: true, required: false
-  private _lastServiceErrorId?: string | undefined; 
+  private _lastServiceErrorId?: string; 
   public get lastServiceErrorId() {
     return this.getStringAttribute('last_service_error_id');
   }
-  public set lastServiceErrorId(value: string | undefined) {
+  public set lastServiceErrorId(value: string) {
     this._lastServiceErrorId = value;
   }
   public resetLastServiceErrorId() {
@@ -740,7 +771,7 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get lastServiceErrorIdInput() {
-    return this._lastServiceErrorId
+    return this._lastServiceErrorId;
   }
 
   // layer_ids - computed: false, optional: false, required: true
@@ -753,15 +784,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get layerIdsInput() {
-    return this._layerIds
+    return this._layerIds;
   }
 
   // os - computed: true, optional: true, required: false
-  private _os?: string | undefined; 
+  private _os?: string; 
   public get os() {
     return this.getStringAttribute('os');
   }
-  public set os(value: string | undefined) {
+  public set os(value: string) {
     this._os = value;
   }
   public resetOs() {
@@ -769,15 +800,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get osInput() {
-    return this._os
+    return this._os;
   }
 
   // platform - computed: true, optional: true, required: false
-  private _platform?: string | undefined; 
+  private _platform?: string; 
   public get platform() {
     return this.getStringAttribute('platform');
   }
-  public set platform(value: string | undefined) {
+  public set platform(value: string) {
     this._platform = value;
   }
   public resetPlatform() {
@@ -785,15 +816,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get platformInput() {
-    return this._platform
+    return this._platform;
   }
 
   // private_dns - computed: true, optional: true, required: false
-  private _privateDns?: string | undefined; 
+  private _privateDns?: string; 
   public get privateDns() {
     return this.getStringAttribute('private_dns');
   }
-  public set privateDns(value: string | undefined) {
+  public set privateDns(value: string) {
     this._privateDns = value;
   }
   public resetPrivateDns() {
@@ -801,15 +832,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get privateDnsInput() {
-    return this._privateDns
+    return this._privateDns;
   }
 
   // private_ip - computed: true, optional: true, required: false
-  private _privateIp?: string | undefined; 
+  private _privateIp?: string; 
   public get privateIp() {
     return this.getStringAttribute('private_ip');
   }
-  public set privateIp(value: string | undefined) {
+  public set privateIp(value: string) {
     this._privateIp = value;
   }
   public resetPrivateIp() {
@@ -817,15 +848,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get privateIpInput() {
-    return this._privateIp
+    return this._privateIp;
   }
 
   // public_dns - computed: true, optional: true, required: false
-  private _publicDns?: string | undefined; 
+  private _publicDns?: string; 
   public get publicDns() {
     return this.getStringAttribute('public_dns');
   }
-  public set publicDns(value: string | undefined) {
+  public set publicDns(value: string) {
     this._publicDns = value;
   }
   public resetPublicDns() {
@@ -833,15 +864,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get publicDnsInput() {
-    return this._publicDns
+    return this._publicDns;
   }
 
   // public_ip - computed: true, optional: true, required: false
-  private _publicIp?: string | undefined; 
+  private _publicIp?: string; 
   public get publicIp() {
     return this.getStringAttribute('public_ip');
   }
-  public set publicIp(value: string | undefined) {
+  public set publicIp(value: string) {
     this._publicIp = value;
   }
   public resetPublicIp() {
@@ -849,15 +880,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get publicIpInput() {
-    return this._publicIp
+    return this._publicIp;
   }
 
   // registered_by - computed: true, optional: true, required: false
-  private _registeredBy?: string | undefined; 
+  private _registeredBy?: string; 
   public get registeredBy() {
     return this.getStringAttribute('registered_by');
   }
-  public set registeredBy(value: string | undefined) {
+  public set registeredBy(value: string) {
     this._registeredBy = value;
   }
   public resetRegisteredBy() {
@@ -865,15 +896,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get registeredByInput() {
-    return this._registeredBy
+    return this._registeredBy;
   }
 
   // reported_agent_version - computed: true, optional: true, required: false
-  private _reportedAgentVersion?: string | undefined; 
+  private _reportedAgentVersion?: string; 
   public get reportedAgentVersion() {
     return this.getStringAttribute('reported_agent_version');
   }
-  public set reportedAgentVersion(value: string | undefined) {
+  public set reportedAgentVersion(value: string) {
     this._reportedAgentVersion = value;
   }
   public resetReportedAgentVersion() {
@@ -881,15 +912,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get reportedAgentVersionInput() {
-    return this._reportedAgentVersion
+    return this._reportedAgentVersion;
   }
 
   // reported_os_family - computed: true, optional: true, required: false
-  private _reportedOsFamily?: string | undefined; 
+  private _reportedOsFamily?: string; 
   public get reportedOsFamily() {
     return this.getStringAttribute('reported_os_family');
   }
-  public set reportedOsFamily(value: string | undefined) {
+  public set reportedOsFamily(value: string) {
     this._reportedOsFamily = value;
   }
   public resetReportedOsFamily() {
@@ -897,15 +928,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get reportedOsFamilyInput() {
-    return this._reportedOsFamily
+    return this._reportedOsFamily;
   }
 
   // reported_os_name - computed: true, optional: true, required: false
-  private _reportedOsName?: string | undefined; 
+  private _reportedOsName?: string; 
   public get reportedOsName() {
     return this.getStringAttribute('reported_os_name');
   }
-  public set reportedOsName(value: string | undefined) {
+  public set reportedOsName(value: string) {
     this._reportedOsName = value;
   }
   public resetReportedOsName() {
@@ -913,15 +944,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get reportedOsNameInput() {
-    return this._reportedOsName
+    return this._reportedOsName;
   }
 
   // reported_os_version - computed: true, optional: true, required: false
-  private _reportedOsVersion?: string | undefined; 
+  private _reportedOsVersion?: string; 
   public get reportedOsVersion() {
     return this.getStringAttribute('reported_os_version');
   }
-  public set reportedOsVersion(value: string | undefined) {
+  public set reportedOsVersion(value: string) {
     this._reportedOsVersion = value;
   }
   public resetReportedOsVersion() {
@@ -929,15 +960,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get reportedOsVersionInput() {
-    return this._reportedOsVersion
+    return this._reportedOsVersion;
   }
 
   // root_device_type - computed: true, optional: true, required: false
-  private _rootDeviceType?: string | undefined; 
+  private _rootDeviceType?: string; 
   public get rootDeviceType() {
     return this.getStringAttribute('root_device_type');
   }
-  public set rootDeviceType(value: string | undefined) {
+  public set rootDeviceType(value: string) {
     this._rootDeviceType = value;
   }
   public resetRootDeviceType() {
@@ -945,15 +976,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rootDeviceTypeInput() {
-    return this._rootDeviceType
+    return this._rootDeviceType;
   }
 
   // root_device_volume_id - computed: true, optional: true, required: false
-  private _rootDeviceVolumeId?: string | undefined; 
+  private _rootDeviceVolumeId?: string; 
   public get rootDeviceVolumeId() {
     return this.getStringAttribute('root_device_volume_id');
   }
-  public set rootDeviceVolumeId(value: string | undefined) {
+  public set rootDeviceVolumeId(value: string) {
     this._rootDeviceVolumeId = value;
   }
   public resetRootDeviceVolumeId() {
@@ -961,15 +992,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rootDeviceVolumeIdInput() {
-    return this._rootDeviceVolumeId
+    return this._rootDeviceVolumeId;
   }
 
   // security_group_ids - computed: true, optional: true, required: false
-  private _securityGroupIds?: string[] | undefined; 
+  private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
     return this.getListAttribute('security_group_ids');
   }
-  public set securityGroupIds(value: string[] | undefined) {
+  public set securityGroupIds(value: string[]) {
     this._securityGroupIds = value;
   }
   public resetSecurityGroupIds() {
@@ -977,15 +1008,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // ssh_host_dsa_key_fingerprint - computed: true, optional: true, required: false
-  private _sshHostDsaKeyFingerprint?: string | undefined; 
+  private _sshHostDsaKeyFingerprint?: string; 
   public get sshHostDsaKeyFingerprint() {
     return this.getStringAttribute('ssh_host_dsa_key_fingerprint');
   }
-  public set sshHostDsaKeyFingerprint(value: string | undefined) {
+  public set sshHostDsaKeyFingerprint(value: string) {
     this._sshHostDsaKeyFingerprint = value;
   }
   public resetSshHostDsaKeyFingerprint() {
@@ -993,15 +1024,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sshHostDsaKeyFingerprintInput() {
-    return this._sshHostDsaKeyFingerprint
+    return this._sshHostDsaKeyFingerprint;
   }
 
   // ssh_host_rsa_key_fingerprint - computed: true, optional: true, required: false
-  private _sshHostRsaKeyFingerprint?: string | undefined; 
+  private _sshHostRsaKeyFingerprint?: string; 
   public get sshHostRsaKeyFingerprint() {
     return this.getStringAttribute('ssh_host_rsa_key_fingerprint');
   }
-  public set sshHostRsaKeyFingerprint(value: string | undefined) {
+  public set sshHostRsaKeyFingerprint(value: string) {
     this._sshHostRsaKeyFingerprint = value;
   }
   public resetSshHostRsaKeyFingerprint() {
@@ -1009,15 +1040,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sshHostRsaKeyFingerprintInput() {
-    return this._sshHostRsaKeyFingerprint
+    return this._sshHostRsaKeyFingerprint;
   }
 
   // ssh_key_name - computed: true, optional: true, required: false
-  private _sshKeyName?: string | undefined; 
+  private _sshKeyName?: string; 
   public get sshKeyName() {
     return this.getStringAttribute('ssh_key_name');
   }
-  public set sshKeyName(value: string | undefined) {
+  public set sshKeyName(value: string) {
     this._sshKeyName = value;
   }
   public resetSshKeyName() {
@@ -1025,7 +1056,7 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sshKeyNameInput() {
-    return this._sshKeyName
+    return this._sshKeyName;
   }
 
   // stack_id - computed: false, optional: false, required: true
@@ -1038,15 +1069,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stackIdInput() {
-    return this._stackId
+    return this._stackId;
   }
 
   // state - computed: false, optional: true, required: false
-  private _state?: string | undefined; 
+  private _state?: string; 
   public get state() {
     return this.getStringAttribute('state');
   }
-  public set state(value: string | undefined) {
+  public set state(value: string) {
     this._state = value;
   }
   public resetState() {
@@ -1054,15 +1085,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stateInput() {
-    return this._state
+    return this._state;
   }
 
   // status - computed: true, optional: true, required: false
-  private _status?: string | undefined; 
+  private _status?: string; 
   public get status() {
     return this.getStringAttribute('status');
   }
-  public set status(value: string | undefined) {
+  public set status(value: string) {
     this._status = value;
   }
   public resetStatus() {
@@ -1070,15 +1101,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 
   // subnet_id - computed: true, optional: true, required: false
-  private _subnetId?: string | undefined; 
+  private _subnetId?: string; 
   public get subnetId() {
     return this.getStringAttribute('subnet_id');
   }
-  public set subnetId(value: string | undefined) {
+  public set subnetId(value: string) {
     this._subnetId = value;
   }
   public resetSubnetId() {
@@ -1086,15 +1117,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdInput() {
-    return this._subnetId
+    return this._subnetId;
   }
 
   // tenancy - computed: true, optional: true, required: false
-  private _tenancy?: string | undefined; 
+  private _tenancy?: string; 
   public get tenancy() {
     return this.getStringAttribute('tenancy');
   }
-  public set tenancy(value: string | undefined) {
+  public set tenancy(value: string) {
     this._tenancy = value;
   }
   public resetTenancy() {
@@ -1102,15 +1133,15 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tenancyInput() {
-    return this._tenancy
+    return this._tenancy;
   }
 
   // virtualization_type - computed: true, optional: true, required: false
-  private _virtualizationType?: string | undefined; 
+  private _virtualizationType?: string; 
   public get virtualizationType() {
     return this.getStringAttribute('virtualization_type');
   }
-  public set virtualizationType(value: string | undefined) {
+  public set virtualizationType(value: string) {
     this._virtualizationType = value;
   }
   public resetVirtualizationType() {
@@ -1118,16 +1149,16 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get virtualizationTypeInput() {
-    return this._virtualizationType
+    return this._virtualizationType;
   }
 
   // ebs_block_device - computed: false, optional: true, required: false
-  private _ebsBlockDevice?: OpsworksInstanceEbsBlockDevice[] | undefined; 
+  private _ebsBlockDevice?: OpsworksInstanceEbsBlockDevice[]; 
   public get ebsBlockDevice() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ebs_block_device') as any;
   }
-  public set ebsBlockDevice(value: OpsworksInstanceEbsBlockDevice[] | undefined) {
+  public set ebsBlockDevice(value: OpsworksInstanceEbsBlockDevice[]) {
     this._ebsBlockDevice = value;
   }
   public resetEbsBlockDevice() {
@@ -1135,16 +1166,16 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ebsBlockDeviceInput() {
-    return this._ebsBlockDevice
+    return this._ebsBlockDevice;
   }
 
   // ephemeral_block_device - computed: false, optional: true, required: false
-  private _ephemeralBlockDevice?: OpsworksInstanceEphemeralBlockDevice[] | undefined; 
+  private _ephemeralBlockDevice?: OpsworksInstanceEphemeralBlockDevice[]; 
   public get ephemeralBlockDevice() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ephemeral_block_device') as any;
   }
-  public set ephemeralBlockDevice(value: OpsworksInstanceEphemeralBlockDevice[] | undefined) {
+  public set ephemeralBlockDevice(value: OpsworksInstanceEphemeralBlockDevice[]) {
     this._ephemeralBlockDevice = value;
   }
   public resetEphemeralBlockDevice() {
@@ -1152,16 +1183,16 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ephemeralBlockDeviceInput() {
-    return this._ephemeralBlockDevice
+    return this._ephemeralBlockDevice;
   }
 
   // root_block_device - computed: false, optional: true, required: false
-  private _rootBlockDevice?: OpsworksInstanceRootBlockDevice[] | undefined; 
+  private _rootBlockDevice?: OpsworksInstanceRootBlockDevice[]; 
   public get rootBlockDevice() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('root_block_device') as any;
   }
-  public set rootBlockDevice(value: OpsworksInstanceRootBlockDevice[] | undefined) {
+  public set rootBlockDevice(value: OpsworksInstanceRootBlockDevice[]) {
     this._rootBlockDevice = value;
   }
   public resetRootBlockDevice() {
@@ -1169,24 +1200,23 @@ export class OpsworksInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rootBlockDeviceInput() {
-    return this._rootBlockDevice
+    return this._rootBlockDevice;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: OpsworksInstanceTimeouts | undefined; 
-  private __timeoutsOutput = new OpsworksInstanceTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new OpsworksInstanceTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: OpsworksInstanceTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: OpsworksInstanceTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -1239,7 +1269,7 @@ export class OpsworksInstance extends cdktf.TerraformResource {
       ebs_block_device: cdktf.listMapper(opsworksInstanceEbsBlockDeviceToTerraform)(this._ebsBlockDevice),
       ephemeral_block_device: cdktf.listMapper(opsworksInstanceEphemeralBlockDeviceToTerraform)(this._ephemeralBlockDevice),
       root_block_device: cdktf.listMapper(opsworksInstanceRootBlockDeviceToTerraform)(this._rootBlockDevice),
-      timeouts: opsworksInstanceTimeoutsToTerraform(this._timeouts),
+      timeouts: opsworksInstanceTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

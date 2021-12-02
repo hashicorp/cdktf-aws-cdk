@@ -67,7 +67,7 @@ export class SsmPatchGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get baselineIdInput() {
-    return this._baselineId
+    return this._baselineId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class SsmPatchGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get patchGroupInput() {
-    return this._patchGroup
+    return this._patchGroup;
   }
 
   // =========

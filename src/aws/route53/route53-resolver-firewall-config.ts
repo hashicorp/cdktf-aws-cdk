@@ -58,11 +58,11 @@ export class Route53ResolverFirewallConfig extends cdktf.TerraformResource {
   // ==========
 
   // firewall_fail_open - computed: true, optional: true, required: false
-  private _firewallFailOpen?: string | undefined; 
+  private _firewallFailOpen?: string; 
   public get firewallFailOpen() {
     return this.getStringAttribute('firewall_fail_open');
   }
-  public set firewallFailOpen(value: string | undefined) {
+  public set firewallFailOpen(value: string) {
     this._firewallFailOpen = value;
   }
   public resetFirewallFailOpen() {
@@ -70,7 +70,7 @@ export class Route53ResolverFirewallConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get firewallFailOpenInput() {
-    return this._firewallFailOpen
+    return this._firewallFailOpen;
   }
 
   // id - computed: true, optional: true, required: false
@@ -93,7 +93,7 @@ export class Route53ResolverFirewallConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceIdInput() {
-    return this._resourceId
+    return this._resourceId;
   }
 
   // =========

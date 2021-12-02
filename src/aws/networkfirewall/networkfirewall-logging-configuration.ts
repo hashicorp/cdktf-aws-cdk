@@ -74,6 +74,25 @@ export class NetworkfirewallLoggingConfigurationLoggingConfigurationOutputRefere
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): NetworkfirewallLoggingConfigurationLoggingConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._logDestinationConfig) {
+      hasAnyValues = true;
+      internalValueResult.logDestinationConfig = this._logDestinationConfig;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: NetworkfirewallLoggingConfigurationLoggingConfiguration | undefined) {
+    if (value === undefined) {
+      this._logDestinationConfig = undefined;
+    }
+    else {
+      this._logDestinationConfig = value.logDestinationConfig;
+    }
+  }
+
   // log_destination_config - computed: false, optional: false, required: true
   private _logDestinationConfig?: NetworkfirewallLoggingConfigurationLoggingConfigurationLogDestinationConfig[]; 
   public get logDestinationConfig() {
@@ -85,7 +104,7 @@ export class NetworkfirewallLoggingConfigurationLoggingConfigurationOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get logDestinationConfigInput() {
-    return this._logDestinationConfig
+    return this._logDestinationConfig;
   }
 }
 
@@ -122,7 +141,7 @@ export class NetworkfirewallLoggingConfiguration extends cdktf.TerraformResource
       lifecycle: config.lifecycle
     });
     this._firewallArn = config.firewallArn;
-    this._loggingConfiguration = config.loggingConfiguration;
+    this._loggingConfiguration.internalValue = config.loggingConfiguration;
   }
 
   // ==========
@@ -139,7 +158,7 @@ export class NetworkfirewallLoggingConfiguration extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get firewallArnInput() {
-    return this._firewallArn
+    return this._firewallArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -148,17 +167,16 @@ export class NetworkfirewallLoggingConfiguration extends cdktf.TerraformResource
   }
 
   // logging_configuration - computed: false, optional: false, required: true
-  private _loggingConfiguration?: NetworkfirewallLoggingConfigurationLoggingConfiguration; 
-  private __loggingConfigurationOutput = new NetworkfirewallLoggingConfigurationLoggingConfigurationOutputReference(this as any, "logging_configuration", true);
+  private _loggingConfiguration = new NetworkfirewallLoggingConfigurationLoggingConfigurationOutputReference(this as any, "logging_configuration", true);
   public get loggingConfiguration() {
-    return this.__loggingConfigurationOutput;
+    return this._loggingConfiguration;
   }
   public putLoggingConfiguration(value: NetworkfirewallLoggingConfigurationLoggingConfiguration) {
-    this._loggingConfiguration = value;
+    this._loggingConfiguration.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get loggingConfigurationInput() {
-    return this._loggingConfiguration
+    return this._loggingConfiguration.internalValue;
   }
 
   // =========
@@ -168,7 +186,7 @@ export class NetworkfirewallLoggingConfiguration extends cdktf.TerraformResource
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       firewall_arn: cdktf.stringToTerraform(this._firewallArn),
-      logging_configuration: networkfirewallLoggingConfigurationLoggingConfigurationToTerraform(this._loggingConfiguration),
+      logging_configuration: networkfirewallLoggingConfigurationLoggingConfigurationToTerraform(this._loggingConfiguration.internalValue),
     };
   }
 }

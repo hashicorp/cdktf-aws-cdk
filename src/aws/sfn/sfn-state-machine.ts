@@ -81,12 +81,43 @@ export class SfnStateMachineLoggingConfigurationOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SfnStateMachineLoggingConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._includeExecutionData) {
+      hasAnyValues = true;
+      internalValueResult.includeExecutionData = this._includeExecutionData;
+    }
+    if (this._level) {
+      hasAnyValues = true;
+      internalValueResult.level = this._level;
+    }
+    if (this._logDestination) {
+      hasAnyValues = true;
+      internalValueResult.logDestination = this._logDestination;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SfnStateMachineLoggingConfiguration | undefined) {
+    if (value === undefined) {
+      this._includeExecutionData = undefined;
+      this._level = undefined;
+      this._logDestination = undefined;
+    }
+    else {
+      this._includeExecutionData = value.includeExecutionData;
+      this._level = value.level;
+      this._logDestination = value.logDestination;
+    }
+  }
+
   // include_execution_data - computed: false, optional: true, required: false
-  private _includeExecutionData?: boolean | cdktf.IResolvable | undefined; 
+  private _includeExecutionData?: boolean | cdktf.IResolvable; 
   public get includeExecutionData() {
     return this.getBooleanAttribute('include_execution_data') as any;
   }
-  public set includeExecutionData(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeExecutionData(value: boolean | cdktf.IResolvable) {
     this._includeExecutionData = value;
   }
   public resetIncludeExecutionData() {
@@ -94,15 +125,15 @@ export class SfnStateMachineLoggingConfigurationOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get includeExecutionDataInput() {
-    return this._includeExecutionData
+    return this._includeExecutionData;
   }
 
   // level - computed: false, optional: true, required: false
-  private _level?: string | undefined; 
+  private _level?: string; 
   public get level() {
     return this.getStringAttribute('level');
   }
-  public set level(value: string | undefined) {
+  public set level(value: string) {
     this._level = value;
   }
   public resetLevel() {
@@ -110,15 +141,15 @@ export class SfnStateMachineLoggingConfigurationOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get levelInput() {
-    return this._level
+    return this._level;
   }
 
   // log_destination - computed: false, optional: true, required: false
-  private _logDestination?: string | undefined; 
+  private _logDestination?: string; 
   public get logDestination() {
     return this.getStringAttribute('log_destination');
   }
-  public set logDestination(value: string | undefined) {
+  public set logDestination(value: string) {
     this._logDestination = value;
   }
   public resetLogDestination() {
@@ -126,7 +157,7 @@ export class SfnStateMachineLoggingConfigurationOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get logDestinationInput() {
-    return this._logDestination
+    return this._logDestination;
   }
 }
 export interface SfnStateMachineTracingConfiguration {
@@ -156,12 +187,31 @@ export class SfnStateMachineTracingConfigurationOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SfnStateMachineTracingConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SfnStateMachineTracingConfiguration | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -169,7 +219,7 @@ export class SfnStateMachineTracingConfigurationOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 }
 
@@ -211,8 +261,8 @@ export class SfnStateMachine extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._type = config.type;
-    this._loggingConfiguration = config.loggingConfiguration;
-    this._tracingConfiguration = config.tracingConfiguration;
+    this._loggingConfiguration.internalValue = config.loggingConfiguration;
+    this._tracingConfiguration.internalValue = config.tracingConfiguration;
   }
 
   // ==========
@@ -239,7 +289,7 @@ export class SfnStateMachine extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get definitionInput() {
-    return this._definition
+    return this._definition;
   }
 
   // id - computed: true, optional: true, required: false
@@ -257,7 +307,7 @@ export class SfnStateMachine extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -270,7 +320,7 @@ export class SfnStateMachine extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // status - computed: true, optional: false, required: false
@@ -279,12 +329,12 @@ export class SfnStateMachine extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -292,16 +342,16 @@ export class SfnStateMachine extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -309,15 +359,15 @@ export class SfnStateMachine extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // type - computed: false, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -325,41 +375,39 @@ export class SfnStateMachine extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // logging_configuration - computed: false, optional: true, required: false
-  private _loggingConfiguration?: SfnStateMachineLoggingConfiguration | undefined; 
-  private __loggingConfigurationOutput = new SfnStateMachineLoggingConfigurationOutputReference(this as any, "logging_configuration", true);
+  private _loggingConfiguration = new SfnStateMachineLoggingConfigurationOutputReference(this as any, "logging_configuration", true);
   public get loggingConfiguration() {
-    return this.__loggingConfigurationOutput;
+    return this._loggingConfiguration;
   }
-  public putLoggingConfiguration(value: SfnStateMachineLoggingConfiguration | undefined) {
-    this._loggingConfiguration = value;
+  public putLoggingConfiguration(value: SfnStateMachineLoggingConfiguration) {
+    this._loggingConfiguration.internalValue = value;
   }
   public resetLoggingConfiguration() {
-    this._loggingConfiguration = undefined;
+    this._loggingConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get loggingConfigurationInput() {
-    return this._loggingConfiguration
+    return this._loggingConfiguration.internalValue;
   }
 
   // tracing_configuration - computed: false, optional: true, required: false
-  private _tracingConfiguration?: SfnStateMachineTracingConfiguration | undefined; 
-  private __tracingConfigurationOutput = new SfnStateMachineTracingConfigurationOutputReference(this as any, "tracing_configuration", true);
+  private _tracingConfiguration = new SfnStateMachineTracingConfigurationOutputReference(this as any, "tracing_configuration", true);
   public get tracingConfiguration() {
-    return this.__tracingConfigurationOutput;
+    return this._tracingConfiguration;
   }
-  public putTracingConfiguration(value: SfnStateMachineTracingConfiguration | undefined) {
-    this._tracingConfiguration = value;
+  public putTracingConfiguration(value: SfnStateMachineTracingConfiguration) {
+    this._tracingConfiguration.internalValue = value;
   }
   public resetTracingConfiguration() {
-    this._tracingConfiguration = undefined;
+    this._tracingConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get tracingConfigurationInput() {
-    return this._tracingConfiguration
+    return this._tracingConfiguration.internalValue;
   }
 
   // =========
@@ -374,8 +422,8 @@ export class SfnStateMachine extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       type: cdktf.stringToTerraform(this._type),
-      logging_configuration: sfnStateMachineLoggingConfigurationToTerraform(this._loggingConfiguration),
-      tracing_configuration: sfnStateMachineTracingConfigurationToTerraform(this._tracingConfiguration),
+      logging_configuration: sfnStateMachineLoggingConfigurationToTerraform(this._loggingConfiguration.internalValue),
+      tracing_configuration: sfnStateMachineTracingConfigurationToTerraform(this._tracingConfiguration.internalValue),
     };
   }
 }

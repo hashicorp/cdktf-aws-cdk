@@ -65,6 +65,25 @@ export class EcrReplicationConfigurationReplicationConfigurationRuleOutputRefere
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcrReplicationConfigurationReplicationConfigurationRule | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._destination) {
+      hasAnyValues = true;
+      internalValueResult.destination = this._destination;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcrReplicationConfigurationReplicationConfigurationRule | undefined) {
+    if (value === undefined) {
+      this._destination = undefined;
+    }
+    else {
+      this._destination = value.destination;
+    }
+  }
+
   // destination - computed: false, optional: false, required: true
   private _destination?: EcrReplicationConfigurationReplicationConfigurationRuleDestination[]; 
   public get destination() {
@@ -76,7 +95,7 @@ export class EcrReplicationConfigurationReplicationConfigurationRuleOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get destinationInput() {
-    return this._destination
+    return this._destination;
   }
 }
 export interface EcrReplicationConfigurationReplicationConfiguration {
@@ -108,18 +127,36 @@ export class EcrReplicationConfigurationReplicationConfigurationOutputReference 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcrReplicationConfigurationReplicationConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._rule) {
+      hasAnyValues = true;
+      internalValueResult.rule = this._rule?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcrReplicationConfigurationReplicationConfiguration | undefined) {
+    if (value === undefined) {
+      this._rule.internalValue = undefined;
+    }
+    else {
+      this._rule.internalValue = value.rule;
+    }
+  }
+
   // rule - computed: false, optional: false, required: true
-  private _rule?: EcrReplicationConfigurationReplicationConfigurationRule; 
-  private __ruleOutput = new EcrReplicationConfigurationReplicationConfigurationRuleOutputReference(this as any, "rule", true);
+  private _rule = new EcrReplicationConfigurationReplicationConfigurationRuleOutputReference(this as any, "rule", true);
   public get rule() {
-    return this.__ruleOutput;
+    return this._rule;
   }
   public putRule(value: EcrReplicationConfigurationReplicationConfigurationRule) {
-    this._rule = value;
+    this._rule.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get ruleInput() {
-    return this._rule
+    return this._rule.internalValue;
   }
 }
 
@@ -155,7 +192,7 @@ export class EcrReplicationConfiguration extends cdktf.TerraformResource {
       count: config.count,
       lifecycle: config.lifecycle
     });
-    this._replicationConfiguration = config.replicationConfiguration;
+    this._replicationConfiguration.internalValue = config.replicationConfiguration;
   }
 
   // ==========
@@ -173,20 +210,19 @@ export class EcrReplicationConfiguration extends cdktf.TerraformResource {
   }
 
   // replication_configuration - computed: false, optional: true, required: false
-  private _replicationConfiguration?: EcrReplicationConfigurationReplicationConfiguration | undefined; 
-  private __replicationConfigurationOutput = new EcrReplicationConfigurationReplicationConfigurationOutputReference(this as any, "replication_configuration", true);
+  private _replicationConfiguration = new EcrReplicationConfigurationReplicationConfigurationOutputReference(this as any, "replication_configuration", true);
   public get replicationConfiguration() {
-    return this.__replicationConfigurationOutput;
+    return this._replicationConfiguration;
   }
-  public putReplicationConfiguration(value: EcrReplicationConfigurationReplicationConfiguration | undefined) {
-    this._replicationConfiguration = value;
+  public putReplicationConfiguration(value: EcrReplicationConfigurationReplicationConfiguration) {
+    this._replicationConfiguration.internalValue = value;
   }
   public resetReplicationConfiguration() {
-    this._replicationConfiguration = undefined;
+    this._replicationConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get replicationConfigurationInput() {
-    return this._replicationConfiguration
+    return this._replicationConfiguration.internalValue;
   }
 
   // =========
@@ -195,7 +231,7 @@ export class EcrReplicationConfiguration extends cdktf.TerraformResource {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
-      replication_configuration: ecrReplicationConfigurationReplicationConfigurationToTerraform(this._replicationConfiguration),
+      replication_configuration: ecrReplicationConfigurationReplicationConfigurationToTerraform(this._replicationConfiguration.internalValue),
     };
   }
 }

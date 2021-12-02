@@ -77,7 +77,7 @@ export class Route53ResolverDnssecConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceIdInput() {
-    return this._resourceId
+    return this._resourceId;
   }
 
   // validation_status - computed: true, optional: false, required: false

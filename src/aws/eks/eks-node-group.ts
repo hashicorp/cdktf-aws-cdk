@@ -160,17 +160,42 @@ export class EksNodeGroupLaunchTemplateOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EksNodeGroupLaunchTemplate | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._version) {
+      hasAnyValues = true;
+      internalValueResult.version = this._version;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EksNodeGroupLaunchTemplate | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+      this._version = undefined;
+    }
+    else {
+      this._name = value.name;
+      this._version = value.version;
+    }
+  }
+
   // id - computed: true, optional: true, required: false
   public get id() {
     return this.getStringAttribute('id');
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -178,7 +203,7 @@ export class EksNodeGroupLaunchTemplateOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // version - computed: false, optional: false, required: true
@@ -191,7 +216,7 @@ export class EksNodeGroupLaunchTemplateOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 }
 export interface EksNodeGroupRemoteAccess {
@@ -226,12 +251,37 @@ export class EksNodeGroupRemoteAccessOutputReference extends cdktf.ComplexObject
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EksNodeGroupRemoteAccess | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._ec2SshKey) {
+      hasAnyValues = true;
+      internalValueResult.ec2SshKey = this._ec2SshKey;
+    }
+    if (this._sourceSecurityGroupIds) {
+      hasAnyValues = true;
+      internalValueResult.sourceSecurityGroupIds = this._sourceSecurityGroupIds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EksNodeGroupRemoteAccess | undefined) {
+    if (value === undefined) {
+      this._ec2SshKey = undefined;
+      this._sourceSecurityGroupIds = undefined;
+    }
+    else {
+      this._ec2SshKey = value.ec2SshKey;
+      this._sourceSecurityGroupIds = value.sourceSecurityGroupIds;
+    }
+  }
+
   // ec2_ssh_key - computed: false, optional: true, required: false
-  private _ec2SshKey?: string | undefined; 
+  private _ec2SshKey?: string; 
   public get ec2SshKey() {
     return this.getStringAttribute('ec2_ssh_key');
   }
-  public set ec2SshKey(value: string | undefined) {
+  public set ec2SshKey(value: string) {
     this._ec2SshKey = value;
   }
   public resetEc2SshKey() {
@@ -239,15 +289,15 @@ export class EksNodeGroupRemoteAccessOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get ec2SshKeyInput() {
-    return this._ec2SshKey
+    return this._ec2SshKey;
   }
 
   // source_security_group_ids - computed: false, optional: true, required: false
-  private _sourceSecurityGroupIds?: string[] | undefined; 
+  private _sourceSecurityGroupIds?: string[]; 
   public get sourceSecurityGroupIds() {
     return this.getListAttribute('source_security_group_ids');
   }
-  public set sourceSecurityGroupIds(value: string[] | undefined) {
+  public set sourceSecurityGroupIds(value: string[]) {
     this._sourceSecurityGroupIds = value;
   }
   public resetSourceSecurityGroupIds() {
@@ -255,7 +305,7 @@ export class EksNodeGroupRemoteAccessOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get sourceSecurityGroupIdsInput() {
-    return this._sourceSecurityGroupIds
+    return this._sourceSecurityGroupIds;
   }
 }
 export interface EksNodeGroupScalingConfig {
@@ -295,6 +345,37 @@ export class EksNodeGroupScalingConfigOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EksNodeGroupScalingConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._desiredSize) {
+      hasAnyValues = true;
+      internalValueResult.desiredSize = this._desiredSize;
+    }
+    if (this._maxSize) {
+      hasAnyValues = true;
+      internalValueResult.maxSize = this._maxSize;
+    }
+    if (this._minSize) {
+      hasAnyValues = true;
+      internalValueResult.minSize = this._minSize;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EksNodeGroupScalingConfig | undefined) {
+    if (value === undefined) {
+      this._desiredSize = undefined;
+      this._maxSize = undefined;
+      this._minSize = undefined;
+    }
+    else {
+      this._desiredSize = value.desiredSize;
+      this._maxSize = value.maxSize;
+      this._minSize = value.minSize;
+    }
+  }
+
   // desired_size - computed: false, optional: false, required: true
   private _desiredSize?: number; 
   public get desiredSize() {
@@ -305,7 +386,7 @@ export class EksNodeGroupScalingConfigOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get desiredSizeInput() {
-    return this._desiredSize
+    return this._desiredSize;
   }
 
   // max_size - computed: false, optional: false, required: true
@@ -318,7 +399,7 @@ export class EksNodeGroupScalingConfigOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get maxSizeInput() {
-    return this._maxSize
+    return this._maxSize;
   }
 
   // min_size - computed: false, optional: false, required: true
@@ -331,7 +412,7 @@ export class EksNodeGroupScalingConfigOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get minSizeInput() {
-    return this._minSize
+    return this._minSize;
   }
 }
 export interface EksNodeGroupTaint {
@@ -398,12 +479,43 @@ export class EksNodeGroupTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EksNodeGroupTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EksNodeGroupTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -411,15 +523,15 @@ export class EksNodeGroupTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -427,15 +539,15 @@ export class EksNodeGroupTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -443,7 +555,7 @@ export class EksNodeGroupTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 export interface EksNodeGroupUpdateConfig {
@@ -478,12 +590,37 @@ export class EksNodeGroupUpdateConfigOutputReference extends cdktf.ComplexObject
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EksNodeGroupUpdateConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._maxUnavailable) {
+      hasAnyValues = true;
+      internalValueResult.maxUnavailable = this._maxUnavailable;
+    }
+    if (this._maxUnavailablePercentage) {
+      hasAnyValues = true;
+      internalValueResult.maxUnavailablePercentage = this._maxUnavailablePercentage;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EksNodeGroupUpdateConfig | undefined) {
+    if (value === undefined) {
+      this._maxUnavailable = undefined;
+      this._maxUnavailablePercentage = undefined;
+    }
+    else {
+      this._maxUnavailable = value.maxUnavailable;
+      this._maxUnavailablePercentage = value.maxUnavailablePercentage;
+    }
+  }
+
   // max_unavailable - computed: false, optional: true, required: false
-  private _maxUnavailable?: number | undefined; 
+  private _maxUnavailable?: number; 
   public get maxUnavailable() {
     return this.getNumberAttribute('max_unavailable');
   }
-  public set maxUnavailable(value: number | undefined) {
+  public set maxUnavailable(value: number) {
     this._maxUnavailable = value;
   }
   public resetMaxUnavailable() {
@@ -491,15 +628,15 @@ export class EksNodeGroupUpdateConfigOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get maxUnavailableInput() {
-    return this._maxUnavailable
+    return this._maxUnavailable;
   }
 
   // max_unavailable_percentage - computed: false, optional: true, required: false
-  private _maxUnavailablePercentage?: number | undefined; 
+  private _maxUnavailablePercentage?: number; 
   public get maxUnavailablePercentage() {
     return this.getNumberAttribute('max_unavailable_percentage');
   }
-  public set maxUnavailablePercentage(value: number | undefined) {
+  public set maxUnavailablePercentage(value: number) {
     this._maxUnavailablePercentage = value;
   }
   public resetMaxUnavailablePercentage() {
@@ -507,7 +644,7 @@ export class EksNodeGroupUpdateConfigOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get maxUnavailablePercentageInput() {
-    return this._maxUnavailablePercentage
+    return this._maxUnavailablePercentage;
   }
 }
 
@@ -558,12 +695,12 @@ export class EksNodeGroup extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._version = config.version;
-    this._launchTemplate = config.launchTemplate;
-    this._remoteAccess = config.remoteAccess;
-    this._scalingConfig = config.scalingConfig;
+    this._launchTemplate.internalValue = config.launchTemplate;
+    this._remoteAccess.internalValue = config.remoteAccess;
+    this._scalingConfig.internalValue = config.scalingConfig;
     this._taint = config.taint;
-    this._timeouts = config.timeouts;
-    this._updateConfig = config.updateConfig;
+    this._timeouts.internalValue = config.timeouts;
+    this._updateConfig.internalValue = config.updateConfig;
   }
 
   // ==========
@@ -571,11 +708,11 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   // ==========
 
   // ami_type - computed: true, optional: true, required: false
-  private _amiType?: string | undefined; 
+  private _amiType?: string; 
   public get amiType() {
     return this.getStringAttribute('ami_type');
   }
-  public set amiType(value: string | undefined) {
+  public set amiType(value: string) {
     this._amiType = value;
   }
   public resetAmiType() {
@@ -583,7 +720,7 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get amiTypeInput() {
-    return this._amiType
+    return this._amiType;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -592,11 +729,11 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
 
   // capacity_type - computed: true, optional: true, required: false
-  private _capacityType?: string | undefined; 
+  private _capacityType?: string; 
   public get capacityType() {
     return this.getStringAttribute('capacity_type');
   }
-  public set capacityType(value: string | undefined) {
+  public set capacityType(value: string) {
     this._capacityType = value;
   }
   public resetCapacityType() {
@@ -604,7 +741,7 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get capacityTypeInput() {
-    return this._capacityType
+    return this._capacityType;
   }
 
   // cluster_name - computed: false, optional: false, required: true
@@ -617,15 +754,15 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterNameInput() {
-    return this._clusterName
+    return this._clusterName;
   }
 
   // disk_size - computed: true, optional: true, required: false
-  private _diskSize?: number | undefined; 
+  private _diskSize?: number; 
   public get diskSize() {
     return this.getNumberAttribute('disk_size');
   }
-  public set diskSize(value: number | undefined) {
+  public set diskSize(value: number) {
     this._diskSize = value;
   }
   public resetDiskSize() {
@@ -633,15 +770,15 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get diskSizeInput() {
-    return this._diskSize
+    return this._diskSize;
   }
 
   // force_update_version - computed: false, optional: true, required: false
-  private _forceUpdateVersion?: boolean | cdktf.IResolvable | undefined; 
+  private _forceUpdateVersion?: boolean | cdktf.IResolvable; 
   public get forceUpdateVersion() {
     return this.getBooleanAttribute('force_update_version') as any;
   }
-  public set forceUpdateVersion(value: boolean | cdktf.IResolvable | undefined) {
+  public set forceUpdateVersion(value: boolean | cdktf.IResolvable) {
     this._forceUpdateVersion = value;
   }
   public resetForceUpdateVersion() {
@@ -649,7 +786,7 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get forceUpdateVersionInput() {
-    return this._forceUpdateVersion
+    return this._forceUpdateVersion;
   }
 
   // id - computed: true, optional: true, required: false
@@ -658,11 +795,11 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
 
   // instance_types - computed: true, optional: true, required: false
-  private _instanceTypes?: string[] | undefined; 
+  private _instanceTypes?: string[]; 
   public get instanceTypes() {
     return this.getListAttribute('instance_types');
   }
-  public set instanceTypes(value: string[] | undefined) {
+  public set instanceTypes(value: string[]) {
     this._instanceTypes = value;
   }
   public resetInstanceTypes() {
@@ -670,16 +807,16 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypesInput() {
-    return this._instanceTypes
+    return this._instanceTypes;
   }
 
   // labels - computed: false, optional: true, required: false
-  private _labels?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _labels?: { [key: string]: string } | cdktf.IResolvable; 
   public get labels() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('labels') as any;
   }
-  public set labels(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set labels(value: { [key: string]: string } | cdktf.IResolvable) {
     this._labels = value;
   }
   public resetLabels() {
@@ -687,15 +824,15 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get labelsInput() {
-    return this._labels
+    return this._labels;
   }
 
   // node_group_name - computed: true, optional: true, required: false
-  private _nodeGroupName?: string | undefined; 
+  private _nodeGroupName?: string; 
   public get nodeGroupName() {
     return this.getStringAttribute('node_group_name');
   }
-  public set nodeGroupName(value: string | undefined) {
+  public set nodeGroupName(value: string) {
     this._nodeGroupName = value;
   }
   public resetNodeGroupName() {
@@ -703,15 +840,15 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nodeGroupNameInput() {
-    return this._nodeGroupName
+    return this._nodeGroupName;
   }
 
   // node_group_name_prefix - computed: true, optional: true, required: false
-  private _nodeGroupNamePrefix?: string | undefined; 
+  private _nodeGroupNamePrefix?: string; 
   public get nodeGroupNamePrefix() {
     return this.getStringAttribute('node_group_name_prefix');
   }
-  public set nodeGroupNamePrefix(value: string | undefined) {
+  public set nodeGroupNamePrefix(value: string) {
     this._nodeGroupNamePrefix = value;
   }
   public resetNodeGroupNamePrefix() {
@@ -719,7 +856,7 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nodeGroupNamePrefixInput() {
-    return this._nodeGroupNamePrefix
+    return this._nodeGroupNamePrefix;
   }
 
   // node_role_arn - computed: false, optional: false, required: true
@@ -732,15 +869,15 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nodeRoleArnInput() {
-    return this._nodeRoleArn
+    return this._nodeRoleArn;
   }
 
   // release_version - computed: true, optional: true, required: false
-  private _releaseVersion?: string | undefined; 
+  private _releaseVersion?: string; 
   public get releaseVersion() {
     return this.getStringAttribute('release_version');
   }
-  public set releaseVersion(value: string | undefined) {
+  public set releaseVersion(value: string) {
     this._releaseVersion = value;
   }
   public resetReleaseVersion() {
@@ -748,7 +885,7 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get releaseVersionInput() {
-    return this._releaseVersion
+    return this._releaseVersion;
   }
 
   // resources - computed: true, optional: false, required: false
@@ -771,16 +908,16 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -788,16 +925,16 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -805,15 +942,15 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // version - computed: true, optional: true, required: false
-  private _version?: string | undefined; 
+  private _version?: string; 
   public get version() {
     return this.getStringAttribute('version');
   }
-  public set version(value: string | undefined) {
+  public set version(value: string) {
     this._version = value;
   }
   public resetVersion() {
@@ -821,64 +958,61 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 
   // launch_template - computed: false, optional: true, required: false
-  private _launchTemplate?: EksNodeGroupLaunchTemplate | undefined; 
-  private __launchTemplateOutput = new EksNodeGroupLaunchTemplateOutputReference(this as any, "launch_template", true);
+  private _launchTemplate = new EksNodeGroupLaunchTemplateOutputReference(this as any, "launch_template", true);
   public get launchTemplate() {
-    return this.__launchTemplateOutput;
+    return this._launchTemplate;
   }
-  public putLaunchTemplate(value: EksNodeGroupLaunchTemplate | undefined) {
-    this._launchTemplate = value;
+  public putLaunchTemplate(value: EksNodeGroupLaunchTemplate) {
+    this._launchTemplate.internalValue = value;
   }
   public resetLaunchTemplate() {
-    this._launchTemplate = undefined;
+    this._launchTemplate.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get launchTemplateInput() {
-    return this._launchTemplate
+    return this._launchTemplate.internalValue;
   }
 
   // remote_access - computed: false, optional: true, required: false
-  private _remoteAccess?: EksNodeGroupRemoteAccess | undefined; 
-  private __remoteAccessOutput = new EksNodeGroupRemoteAccessOutputReference(this as any, "remote_access", true);
+  private _remoteAccess = new EksNodeGroupRemoteAccessOutputReference(this as any, "remote_access", true);
   public get remoteAccess() {
-    return this.__remoteAccessOutput;
+    return this._remoteAccess;
   }
-  public putRemoteAccess(value: EksNodeGroupRemoteAccess | undefined) {
-    this._remoteAccess = value;
+  public putRemoteAccess(value: EksNodeGroupRemoteAccess) {
+    this._remoteAccess.internalValue = value;
   }
   public resetRemoteAccess() {
-    this._remoteAccess = undefined;
+    this._remoteAccess.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get remoteAccessInput() {
-    return this._remoteAccess
+    return this._remoteAccess.internalValue;
   }
 
   // scaling_config - computed: false, optional: false, required: true
-  private _scalingConfig?: EksNodeGroupScalingConfig; 
-  private __scalingConfigOutput = new EksNodeGroupScalingConfigOutputReference(this as any, "scaling_config", true);
+  private _scalingConfig = new EksNodeGroupScalingConfigOutputReference(this as any, "scaling_config", true);
   public get scalingConfig() {
-    return this.__scalingConfigOutput;
+    return this._scalingConfig;
   }
   public putScalingConfig(value: EksNodeGroupScalingConfig) {
-    this._scalingConfig = value;
+    this._scalingConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get scalingConfigInput() {
-    return this._scalingConfig
+    return this._scalingConfig.internalValue;
   }
 
   // taint - computed: false, optional: true, required: false
-  private _taint?: EksNodeGroupTaint[] | undefined; 
+  private _taint?: EksNodeGroupTaint[]; 
   public get taint() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('taint') as any;
   }
-  public set taint(value: EksNodeGroupTaint[] | undefined) {
+  public set taint(value: EksNodeGroupTaint[]) {
     this._taint = value;
   }
   public resetTaint() {
@@ -886,41 +1020,39 @@ export class EksNodeGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get taintInput() {
-    return this._taint
+    return this._taint;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: EksNodeGroupTimeouts | undefined; 
-  private __timeoutsOutput = new EksNodeGroupTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new EksNodeGroupTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: EksNodeGroupTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: EksNodeGroupTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // update_config - computed: false, optional: true, required: false
-  private _updateConfig?: EksNodeGroupUpdateConfig | undefined; 
-  private __updateConfigOutput = new EksNodeGroupUpdateConfigOutputReference(this as any, "update_config", true);
+  private _updateConfig = new EksNodeGroupUpdateConfigOutputReference(this as any, "update_config", true);
   public get updateConfig() {
-    return this.__updateConfigOutput;
+    return this._updateConfig;
   }
-  public putUpdateConfig(value: EksNodeGroupUpdateConfig | undefined) {
-    this._updateConfig = value;
+  public putUpdateConfig(value: EksNodeGroupUpdateConfig) {
+    this._updateConfig.internalValue = value;
   }
   public resetUpdateConfig() {
-    this._updateConfig = undefined;
+    this._updateConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get updateConfigInput() {
-    return this._updateConfig
+    return this._updateConfig.internalValue;
   }
 
   // =========
@@ -944,12 +1076,12 @@ export class EksNodeGroup extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       version: cdktf.stringToTerraform(this._version),
-      launch_template: eksNodeGroupLaunchTemplateToTerraform(this._launchTemplate),
-      remote_access: eksNodeGroupRemoteAccessToTerraform(this._remoteAccess),
-      scaling_config: eksNodeGroupScalingConfigToTerraform(this._scalingConfig),
+      launch_template: eksNodeGroupLaunchTemplateToTerraform(this._launchTemplate.internalValue),
+      remote_access: eksNodeGroupRemoteAccessToTerraform(this._remoteAccess.internalValue),
+      scaling_config: eksNodeGroupScalingConfigToTerraform(this._scalingConfig.internalValue),
       taint: cdktf.listMapper(eksNodeGroupTaintToTerraform)(this._taint),
-      timeouts: eksNodeGroupTimeoutsToTerraform(this._timeouts),
-      update_config: eksNodeGroupUpdateConfigToTerraform(this._updateConfig),
+      timeouts: eksNodeGroupTimeoutsToTerraform(this._timeouts.internalValue),
+      update_config: eksNodeGroupUpdateConfigToTerraform(this._updateConfig.internalValue),
     };
   }
 }

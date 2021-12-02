@@ -53,12 +53,31 @@ export class AppmeshMeshSpecEgressFilterOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshMeshSpecEgressFilter | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshMeshSpecEgressFilter | undefined) {
+    if (value === undefined) {
+      this._type = undefined;
+    }
+    else {
+      this._type = value.type;
+    }
+  }
+
   // type - computed: false, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -66,7 +85,7 @@ export class AppmeshMeshSpecEgressFilterOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 export interface AppmeshMeshSpec {
@@ -98,21 +117,39 @@ export class AppmeshMeshSpecOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // egress_filter - computed: false, optional: true, required: false
-  private _egressFilter?: AppmeshMeshSpecEgressFilter | undefined; 
-  private __egressFilterOutput = new AppmeshMeshSpecEgressFilterOutputReference(this as any, "egress_filter", true);
-  public get egressFilter() {
-    return this.__egressFilterOutput;
+  public get internalValue(): AppmeshMeshSpec | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._egressFilter) {
+      hasAnyValues = true;
+      internalValueResult.egressFilter = this._egressFilter?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putEgressFilter(value: AppmeshMeshSpecEgressFilter | undefined) {
-    this._egressFilter = value;
+
+  public set internalValue(value: AppmeshMeshSpec | undefined) {
+    if (value === undefined) {
+      this._egressFilter.internalValue = undefined;
+    }
+    else {
+      this._egressFilter.internalValue = value.egressFilter;
+    }
+  }
+
+  // egress_filter - computed: false, optional: true, required: false
+  private _egressFilter = new AppmeshMeshSpecEgressFilterOutputReference(this as any, "egress_filter", true);
+  public get egressFilter() {
+    return this._egressFilter;
+  }
+  public putEgressFilter(value: AppmeshMeshSpecEgressFilter) {
+    this._egressFilter.internalValue = value;
   }
   public resetEgressFilter() {
-    this._egressFilter = undefined;
+    this._egressFilter.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get egressFilterInput() {
-    return this._egressFilter
+    return this._egressFilter.internalValue;
   }
 }
 
@@ -151,7 +188,7 @@ export class AppmeshMesh extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._spec = config.spec;
+    this._spec.internalValue = config.spec;
   }
 
   // ==========
@@ -193,7 +230,7 @@ export class AppmeshMesh extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // resource_owner - computed: true, optional: false, required: false
@@ -202,12 +239,12 @@ export class AppmeshMesh extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -215,16 +252,16 @@ export class AppmeshMesh extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -232,24 +269,23 @@ export class AppmeshMesh extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // spec - computed: false, optional: true, required: false
-  private _spec?: AppmeshMeshSpec | undefined; 
-  private __specOutput = new AppmeshMeshSpecOutputReference(this as any, "spec", true);
+  private _spec = new AppmeshMeshSpecOutputReference(this as any, "spec", true);
   public get spec() {
-    return this.__specOutput;
+    return this._spec;
   }
-  public putSpec(value: AppmeshMeshSpec | undefined) {
-    this._spec = value;
+  public putSpec(value: AppmeshMeshSpec) {
+    this._spec.internalValue = value;
   }
   public resetSpec() {
-    this._spec = undefined;
+    this._spec.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get specInput() {
-    return this._spec
+    return this._spec.internalValue;
   }
 
   // =========
@@ -261,7 +297,7 @@ export class AppmeshMesh extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      spec: appmeshMeshSpecToTerraform(this._spec),
+      spec: appmeshMeshSpecToTerraform(this._spec.internalValue),
     };
   }
 }

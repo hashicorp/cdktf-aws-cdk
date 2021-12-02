@@ -107,15 +107,15 @@ export class AutoscalingSchedule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoscalingGroupNameInput() {
-    return this._autoscalingGroupName
+    return this._autoscalingGroupName;
   }
 
   // desired_capacity - computed: true, optional: true, required: false
-  private _desiredCapacity?: number | undefined; 
+  private _desiredCapacity?: number; 
   public get desiredCapacity() {
     return this.getNumberAttribute('desired_capacity');
   }
-  public set desiredCapacity(value: number | undefined) {
+  public set desiredCapacity(value: number) {
     this._desiredCapacity = value;
   }
   public resetDesiredCapacity() {
@@ -123,15 +123,15 @@ export class AutoscalingSchedule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get desiredCapacityInput() {
-    return this._desiredCapacity
+    return this._desiredCapacity;
   }
 
   // end_time - computed: true, optional: true, required: false
-  private _endTime?: string | undefined; 
+  private _endTime?: string; 
   public get endTime() {
     return this.getStringAttribute('end_time');
   }
-  public set endTime(value: string | undefined) {
+  public set endTime(value: string) {
     this._endTime = value;
   }
   public resetEndTime() {
@@ -139,7 +139,7 @@ export class AutoscalingSchedule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endTimeInput() {
-    return this._endTime
+    return this._endTime;
   }
 
   // id - computed: true, optional: true, required: false
@@ -148,11 +148,11 @@ export class AutoscalingSchedule extends cdktf.TerraformResource {
   }
 
   // max_size - computed: true, optional: true, required: false
-  private _maxSize?: number | undefined; 
+  private _maxSize?: number; 
   public get maxSize() {
     return this.getNumberAttribute('max_size');
   }
-  public set maxSize(value: number | undefined) {
+  public set maxSize(value: number) {
     this._maxSize = value;
   }
   public resetMaxSize() {
@@ -160,15 +160,15 @@ export class AutoscalingSchedule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxSizeInput() {
-    return this._maxSize
+    return this._maxSize;
   }
 
   // min_size - computed: true, optional: true, required: false
-  private _minSize?: number | undefined; 
+  private _minSize?: number; 
   public get minSize() {
     return this.getNumberAttribute('min_size');
   }
-  public set minSize(value: number | undefined) {
+  public set minSize(value: number) {
     this._minSize = value;
   }
   public resetMinSize() {
@@ -176,15 +176,15 @@ export class AutoscalingSchedule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get minSizeInput() {
-    return this._minSize
+    return this._minSize;
   }
 
   // recurrence - computed: true, optional: true, required: false
-  private _recurrence?: string | undefined; 
+  private _recurrence?: string; 
   public get recurrence() {
     return this.getStringAttribute('recurrence');
   }
-  public set recurrence(value: string | undefined) {
+  public set recurrence(value: string) {
     this._recurrence = value;
   }
   public resetRecurrence() {
@@ -192,7 +192,7 @@ export class AutoscalingSchedule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get recurrenceInput() {
-    return this._recurrence
+    return this._recurrence;
   }
 
   // scheduled_action_name - computed: false, optional: false, required: true
@@ -205,15 +205,15 @@ export class AutoscalingSchedule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scheduledActionNameInput() {
-    return this._scheduledActionName
+    return this._scheduledActionName;
   }
 
   // start_time - computed: true, optional: true, required: false
-  private _startTime?: string | undefined; 
+  private _startTime?: string; 
   public get startTime() {
     return this.getStringAttribute('start_time');
   }
-  public set startTime(value: string | undefined) {
+  public set startTime(value: string) {
     this._startTime = value;
   }
   public resetStartTime() {
@@ -221,15 +221,15 @@ export class AutoscalingSchedule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get startTimeInput() {
-    return this._startTime
+    return this._startTime;
   }
 
   // time_zone - computed: true, optional: true, required: false
-  private _timeZone?: string | undefined; 
+  private _timeZone?: string; 
   public get timeZone() {
     return this.getStringAttribute('time_zone');
   }
-  public set timeZone(value: string | undefined) {
+  public set timeZone(value: string) {
     this._timeZone = value;
   }
   public resetTimeZone() {
@@ -237,7 +237,7 @@ export class AutoscalingSchedule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get timeZoneInput() {
-    return this._timeZone
+    return this._timeZone;
   }
 
   // =========

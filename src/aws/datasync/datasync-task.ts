@@ -88,12 +88,37 @@ export class DatasyncTaskExcludesOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DatasyncTaskExcludes | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._filterType) {
+      hasAnyValues = true;
+      internalValueResult.filterType = this._filterType;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DatasyncTaskExcludes | undefined) {
+    if (value === undefined) {
+      this._filterType = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._filterType = value.filterType;
+      this._value = value.value;
+    }
+  }
+
   // filter_type - computed: false, optional: true, required: false
-  private _filterType?: string | undefined; 
+  private _filterType?: string; 
   public get filterType() {
     return this.getStringAttribute('filter_type');
   }
-  public set filterType(value: string | undefined) {
+  public set filterType(value: string) {
     this._filterType = value;
   }
   public resetFilterType() {
@@ -101,15 +126,15 @@ export class DatasyncTaskExcludesOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get filterTypeInput() {
-    return this._filterType
+    return this._filterType;
   }
 
   // value - computed: false, optional: true, required: false
-  private _value?: string | undefined; 
+  private _value?: string; 
   public get value() {
     return this.getStringAttribute('value');
   }
-  public set value(value: string | undefined) {
+  public set value(value: string) {
     this._value = value;
   }
   public resetValue() {
@@ -117,7 +142,7 @@ export class DatasyncTaskExcludesOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface DatasyncTaskOptions {
@@ -207,12 +232,103 @@ export class DatasyncTaskOptionsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DatasyncTaskOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._atime) {
+      hasAnyValues = true;
+      internalValueResult.atime = this._atime;
+    }
+    if (this._bytesPerSecond) {
+      hasAnyValues = true;
+      internalValueResult.bytesPerSecond = this._bytesPerSecond;
+    }
+    if (this._gid) {
+      hasAnyValues = true;
+      internalValueResult.gid = this._gid;
+    }
+    if (this._logLevel) {
+      hasAnyValues = true;
+      internalValueResult.logLevel = this._logLevel;
+    }
+    if (this._mtime) {
+      hasAnyValues = true;
+      internalValueResult.mtime = this._mtime;
+    }
+    if (this._overwriteMode) {
+      hasAnyValues = true;
+      internalValueResult.overwriteMode = this._overwriteMode;
+    }
+    if (this._posixPermissions) {
+      hasAnyValues = true;
+      internalValueResult.posixPermissions = this._posixPermissions;
+    }
+    if (this._preserveDeletedFiles) {
+      hasAnyValues = true;
+      internalValueResult.preserveDeletedFiles = this._preserveDeletedFiles;
+    }
+    if (this._preserveDevices) {
+      hasAnyValues = true;
+      internalValueResult.preserveDevices = this._preserveDevices;
+    }
+    if (this._taskQueueing) {
+      hasAnyValues = true;
+      internalValueResult.taskQueueing = this._taskQueueing;
+    }
+    if (this._transferMode) {
+      hasAnyValues = true;
+      internalValueResult.transferMode = this._transferMode;
+    }
+    if (this._uid) {
+      hasAnyValues = true;
+      internalValueResult.uid = this._uid;
+    }
+    if (this._verifyMode) {
+      hasAnyValues = true;
+      internalValueResult.verifyMode = this._verifyMode;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DatasyncTaskOptions | undefined) {
+    if (value === undefined) {
+      this._atime = undefined;
+      this._bytesPerSecond = undefined;
+      this._gid = undefined;
+      this._logLevel = undefined;
+      this._mtime = undefined;
+      this._overwriteMode = undefined;
+      this._posixPermissions = undefined;
+      this._preserveDeletedFiles = undefined;
+      this._preserveDevices = undefined;
+      this._taskQueueing = undefined;
+      this._transferMode = undefined;
+      this._uid = undefined;
+      this._verifyMode = undefined;
+    }
+    else {
+      this._atime = value.atime;
+      this._bytesPerSecond = value.bytesPerSecond;
+      this._gid = value.gid;
+      this._logLevel = value.logLevel;
+      this._mtime = value.mtime;
+      this._overwriteMode = value.overwriteMode;
+      this._posixPermissions = value.posixPermissions;
+      this._preserveDeletedFiles = value.preserveDeletedFiles;
+      this._preserveDevices = value.preserveDevices;
+      this._taskQueueing = value.taskQueueing;
+      this._transferMode = value.transferMode;
+      this._uid = value.uid;
+      this._verifyMode = value.verifyMode;
+    }
+  }
+
   // atime - computed: false, optional: true, required: false
-  private _atime?: string | undefined; 
+  private _atime?: string; 
   public get atime() {
     return this.getStringAttribute('atime');
   }
-  public set atime(value: string | undefined) {
+  public set atime(value: string) {
     this._atime = value;
   }
   public resetAtime() {
@@ -220,15 +336,15 @@ export class DatasyncTaskOptionsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get atimeInput() {
-    return this._atime
+    return this._atime;
   }
 
   // bytes_per_second - computed: false, optional: true, required: false
-  private _bytesPerSecond?: number | undefined; 
+  private _bytesPerSecond?: number; 
   public get bytesPerSecond() {
     return this.getNumberAttribute('bytes_per_second');
   }
-  public set bytesPerSecond(value: number | undefined) {
+  public set bytesPerSecond(value: number) {
     this._bytesPerSecond = value;
   }
   public resetBytesPerSecond() {
@@ -236,15 +352,15 @@ export class DatasyncTaskOptionsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get bytesPerSecondInput() {
-    return this._bytesPerSecond
+    return this._bytesPerSecond;
   }
 
   // gid - computed: false, optional: true, required: false
-  private _gid?: string | undefined; 
+  private _gid?: string; 
   public get gid() {
     return this.getStringAttribute('gid');
   }
-  public set gid(value: string | undefined) {
+  public set gid(value: string) {
     this._gid = value;
   }
   public resetGid() {
@@ -252,15 +368,15 @@ export class DatasyncTaskOptionsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get gidInput() {
-    return this._gid
+    return this._gid;
   }
 
   // log_level - computed: false, optional: true, required: false
-  private _logLevel?: string | undefined; 
+  private _logLevel?: string; 
   public get logLevel() {
     return this.getStringAttribute('log_level');
   }
-  public set logLevel(value: string | undefined) {
+  public set logLevel(value: string) {
     this._logLevel = value;
   }
   public resetLogLevel() {
@@ -268,15 +384,15 @@ export class DatasyncTaskOptionsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get logLevelInput() {
-    return this._logLevel
+    return this._logLevel;
   }
 
   // mtime - computed: false, optional: true, required: false
-  private _mtime?: string | undefined; 
+  private _mtime?: string; 
   public get mtime() {
     return this.getStringAttribute('mtime');
   }
-  public set mtime(value: string | undefined) {
+  public set mtime(value: string) {
     this._mtime = value;
   }
   public resetMtime() {
@@ -284,15 +400,15 @@ export class DatasyncTaskOptionsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get mtimeInput() {
-    return this._mtime
+    return this._mtime;
   }
 
   // overwrite_mode - computed: false, optional: true, required: false
-  private _overwriteMode?: string | undefined; 
+  private _overwriteMode?: string; 
   public get overwriteMode() {
     return this.getStringAttribute('overwrite_mode');
   }
-  public set overwriteMode(value: string | undefined) {
+  public set overwriteMode(value: string) {
     this._overwriteMode = value;
   }
   public resetOverwriteMode() {
@@ -300,15 +416,15 @@ export class DatasyncTaskOptionsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get overwriteModeInput() {
-    return this._overwriteMode
+    return this._overwriteMode;
   }
 
   // posix_permissions - computed: false, optional: true, required: false
-  private _posixPermissions?: string | undefined; 
+  private _posixPermissions?: string; 
   public get posixPermissions() {
     return this.getStringAttribute('posix_permissions');
   }
-  public set posixPermissions(value: string | undefined) {
+  public set posixPermissions(value: string) {
     this._posixPermissions = value;
   }
   public resetPosixPermissions() {
@@ -316,15 +432,15 @@ export class DatasyncTaskOptionsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get posixPermissionsInput() {
-    return this._posixPermissions
+    return this._posixPermissions;
   }
 
   // preserve_deleted_files - computed: false, optional: true, required: false
-  private _preserveDeletedFiles?: string | undefined; 
+  private _preserveDeletedFiles?: string; 
   public get preserveDeletedFiles() {
     return this.getStringAttribute('preserve_deleted_files');
   }
-  public set preserveDeletedFiles(value: string | undefined) {
+  public set preserveDeletedFiles(value: string) {
     this._preserveDeletedFiles = value;
   }
   public resetPreserveDeletedFiles() {
@@ -332,15 +448,15 @@ export class DatasyncTaskOptionsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get preserveDeletedFilesInput() {
-    return this._preserveDeletedFiles
+    return this._preserveDeletedFiles;
   }
 
   // preserve_devices - computed: false, optional: true, required: false
-  private _preserveDevices?: string | undefined; 
+  private _preserveDevices?: string; 
   public get preserveDevices() {
     return this.getStringAttribute('preserve_devices');
   }
-  public set preserveDevices(value: string | undefined) {
+  public set preserveDevices(value: string) {
     this._preserveDevices = value;
   }
   public resetPreserveDevices() {
@@ -348,15 +464,15 @@ export class DatasyncTaskOptionsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get preserveDevicesInput() {
-    return this._preserveDevices
+    return this._preserveDevices;
   }
 
   // task_queueing - computed: false, optional: true, required: false
-  private _taskQueueing?: string | undefined; 
+  private _taskQueueing?: string; 
   public get taskQueueing() {
     return this.getStringAttribute('task_queueing');
   }
-  public set taskQueueing(value: string | undefined) {
+  public set taskQueueing(value: string) {
     this._taskQueueing = value;
   }
   public resetTaskQueueing() {
@@ -364,15 +480,15 @@ export class DatasyncTaskOptionsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get taskQueueingInput() {
-    return this._taskQueueing
+    return this._taskQueueing;
   }
 
   // transfer_mode - computed: false, optional: true, required: false
-  private _transferMode?: string | undefined; 
+  private _transferMode?: string; 
   public get transferMode() {
     return this.getStringAttribute('transfer_mode');
   }
-  public set transferMode(value: string | undefined) {
+  public set transferMode(value: string) {
     this._transferMode = value;
   }
   public resetTransferMode() {
@@ -380,15 +496,15 @@ export class DatasyncTaskOptionsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get transferModeInput() {
-    return this._transferMode
+    return this._transferMode;
   }
 
   // uid - computed: false, optional: true, required: false
-  private _uid?: string | undefined; 
+  private _uid?: string; 
   public get uid() {
     return this.getStringAttribute('uid');
   }
-  public set uid(value: string | undefined) {
+  public set uid(value: string) {
     this._uid = value;
   }
   public resetUid() {
@@ -396,15 +512,15 @@ export class DatasyncTaskOptionsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get uidInput() {
-    return this._uid
+    return this._uid;
   }
 
   // verify_mode - computed: false, optional: true, required: false
-  private _verifyMode?: string | undefined; 
+  private _verifyMode?: string; 
   public get verifyMode() {
     return this.getStringAttribute('verify_mode');
   }
-  public set verifyMode(value: string | undefined) {
+  public set verifyMode(value: string) {
     this._verifyMode = value;
   }
   public resetVerifyMode() {
@@ -412,7 +528,7 @@ export class DatasyncTaskOptionsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get verifyModeInput() {
-    return this._verifyMode
+    return this._verifyMode;
   }
 }
 export interface DatasyncTaskSchedule {
@@ -442,6 +558,25 @@ export class DatasyncTaskScheduleOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DatasyncTaskSchedule | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._scheduleExpression) {
+      hasAnyValues = true;
+      internalValueResult.scheduleExpression = this._scheduleExpression;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DatasyncTaskSchedule | undefined) {
+    if (value === undefined) {
+      this._scheduleExpression = undefined;
+    }
+    else {
+      this._scheduleExpression = value.scheduleExpression;
+    }
+  }
+
   // schedule_expression - computed: false, optional: false, required: true
   private _scheduleExpression?: string; 
   public get scheduleExpression() {
@@ -452,7 +587,7 @@ export class DatasyncTaskScheduleOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleExpressionInput() {
-    return this._scheduleExpression
+    return this._scheduleExpression;
   }
 }
 export interface DatasyncTaskTimeouts {
@@ -482,12 +617,31 @@ export class DatasyncTaskTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DatasyncTaskTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DatasyncTaskTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+    }
+    else {
+      this._create = value.create;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -495,7 +649,7 @@ export class DatasyncTaskTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 }
 
@@ -537,10 +691,10 @@ export class DatasyncTask extends cdktf.TerraformResource {
     this._sourceLocationArn = config.sourceLocationArn;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._excludes = config.excludes;
-    this._options = config.options;
-    this._schedule = config.schedule;
-    this._timeouts = config.timeouts;
+    this._excludes.internalValue = config.excludes;
+    this._options.internalValue = config.options;
+    this._schedule.internalValue = config.schedule;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -553,11 +707,11 @@ export class DatasyncTask extends cdktf.TerraformResource {
   }
 
   // cloudwatch_log_group_arn - computed: false, optional: true, required: false
-  private _cloudwatchLogGroupArn?: string | undefined; 
+  private _cloudwatchLogGroupArn?: string; 
   public get cloudwatchLogGroupArn() {
     return this.getStringAttribute('cloudwatch_log_group_arn');
   }
-  public set cloudwatchLogGroupArn(value: string | undefined) {
+  public set cloudwatchLogGroupArn(value: string) {
     this._cloudwatchLogGroupArn = value;
   }
   public resetCloudwatchLogGroupArn() {
@@ -565,7 +719,7 @@ export class DatasyncTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchLogGroupArnInput() {
-    return this._cloudwatchLogGroupArn
+    return this._cloudwatchLogGroupArn;
   }
 
   // destination_location_arn - computed: false, optional: false, required: true
@@ -578,7 +732,7 @@ export class DatasyncTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get destinationLocationArnInput() {
-    return this._destinationLocationArn
+    return this._destinationLocationArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -587,11 +741,11 @@ export class DatasyncTask extends cdktf.TerraformResource {
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -599,7 +753,7 @@ export class DatasyncTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // source_location_arn - computed: false, optional: false, required: true
@@ -612,16 +766,16 @@ export class DatasyncTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceLocationArnInput() {
-    return this._sourceLocationArn
+    return this._sourceLocationArn;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -629,16 +783,16 @@ export class DatasyncTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -646,75 +800,71 @@ export class DatasyncTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // excludes - computed: false, optional: true, required: false
-  private _excludes?: DatasyncTaskExcludes | undefined; 
-  private __excludesOutput = new DatasyncTaskExcludesOutputReference(this as any, "excludes", true);
+  private _excludes = new DatasyncTaskExcludesOutputReference(this as any, "excludes", true);
   public get excludes() {
-    return this.__excludesOutput;
+    return this._excludes;
   }
-  public putExcludes(value: DatasyncTaskExcludes | undefined) {
-    this._excludes = value;
+  public putExcludes(value: DatasyncTaskExcludes) {
+    this._excludes.internalValue = value;
   }
   public resetExcludes() {
-    this._excludes = undefined;
+    this._excludes.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get excludesInput() {
-    return this._excludes
+    return this._excludes.internalValue;
   }
 
   // options - computed: false, optional: true, required: false
-  private _options?: DatasyncTaskOptions | undefined; 
-  private __optionsOutput = new DatasyncTaskOptionsOutputReference(this as any, "options", true);
+  private _options = new DatasyncTaskOptionsOutputReference(this as any, "options", true);
   public get options() {
-    return this.__optionsOutput;
+    return this._options;
   }
-  public putOptions(value: DatasyncTaskOptions | undefined) {
-    this._options = value;
+  public putOptions(value: DatasyncTaskOptions) {
+    this._options.internalValue = value;
   }
   public resetOptions() {
-    this._options = undefined;
+    this._options.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get optionsInput() {
-    return this._options
+    return this._options.internalValue;
   }
 
   // schedule - computed: false, optional: true, required: false
-  private _schedule?: DatasyncTaskSchedule | undefined; 
-  private __scheduleOutput = new DatasyncTaskScheduleOutputReference(this as any, "schedule", true);
+  private _schedule = new DatasyncTaskScheduleOutputReference(this as any, "schedule", true);
   public get schedule() {
-    return this.__scheduleOutput;
+    return this._schedule;
   }
-  public putSchedule(value: DatasyncTaskSchedule | undefined) {
-    this._schedule = value;
+  public putSchedule(value: DatasyncTaskSchedule) {
+    this._schedule.internalValue = value;
   }
   public resetSchedule() {
-    this._schedule = undefined;
+    this._schedule.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleInput() {
-    return this._schedule
+    return this._schedule.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DatasyncTaskTimeouts | undefined; 
-  private __timeoutsOutput = new DatasyncTaskTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DatasyncTaskTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DatasyncTaskTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DatasyncTaskTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -729,10 +879,10 @@ export class DatasyncTask extends cdktf.TerraformResource {
       source_location_arn: cdktf.stringToTerraform(this._sourceLocationArn),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      excludes: datasyncTaskExcludesToTerraform(this._excludes),
-      options: datasyncTaskOptionsToTerraform(this._options),
-      schedule: datasyncTaskScheduleToTerraform(this._schedule),
-      timeouts: datasyncTaskTimeoutsToTerraform(this._timeouts),
+      excludes: datasyncTaskExcludesToTerraform(this._excludes.internalValue),
+      options: datasyncTaskOptionsToTerraform(this._options.internalValue),
+      schedule: datasyncTaskScheduleToTerraform(this._schedule.internalValue),
+      timeouts: datasyncTaskTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

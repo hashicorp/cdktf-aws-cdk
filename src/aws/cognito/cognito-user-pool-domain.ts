@@ -68,11 +68,11 @@ export class CognitoUserPoolDomain extends cdktf.TerraformResource {
   }
 
   // certificate_arn - computed: false, optional: true, required: false
-  private _certificateArn?: string | undefined; 
+  private _certificateArn?: string; 
   public get certificateArn() {
     return this.getStringAttribute('certificate_arn');
   }
-  public set certificateArn(value: string | undefined) {
+  public set certificateArn(value: string) {
     this._certificateArn = value;
   }
   public resetCertificateArn() {
@@ -80,7 +80,7 @@ export class CognitoUserPoolDomain extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificateArnInput() {
-    return this._certificateArn
+    return this._certificateArn;
   }
 
   // cloudfront_distribution_arn - computed: true, optional: false, required: false
@@ -98,7 +98,7 @@ export class CognitoUserPoolDomain extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainInput() {
-    return this._domain
+    return this._domain;
   }
 
   // id - computed: true, optional: true, required: false
@@ -121,7 +121,7 @@ export class CognitoUserPoolDomain extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userPoolIdInput() {
-    return this._userPoolId
+    return this._userPoolId;
   }
 
   // version - computed: true, optional: false, required: false

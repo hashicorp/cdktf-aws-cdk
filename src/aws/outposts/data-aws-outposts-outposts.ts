@@ -73,11 +73,11 @@ export class DataAwsOutpostsOutposts extends cdktf.TerraformDataSource {
   }
 
   // availability_zone - computed: true, optional: true, required: false
-  private _availabilityZone?: string | undefined; 
+  private _availabilityZone?: string; 
   public get availabilityZone() {
     return this.getStringAttribute('availability_zone');
   }
-  public set availabilityZone(value: string | undefined) {
+  public set availabilityZone(value: string) {
     this._availabilityZone = value;
   }
   public resetAvailabilityZone() {
@@ -85,15 +85,15 @@ export class DataAwsOutpostsOutposts extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneInput() {
-    return this._availabilityZone
+    return this._availabilityZone;
   }
 
   // availability_zone_id - computed: true, optional: true, required: false
-  private _availabilityZoneId?: string | undefined; 
+  private _availabilityZoneId?: string; 
   public get availabilityZoneId() {
     return this.getStringAttribute('availability_zone_id');
   }
-  public set availabilityZoneId(value: string | undefined) {
+  public set availabilityZoneId(value: string) {
     this._availabilityZoneId = value;
   }
   public resetAvailabilityZoneId() {
@@ -101,7 +101,7 @@ export class DataAwsOutpostsOutposts extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneIdInput() {
-    return this._availabilityZoneId
+    return this._availabilityZoneId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -115,11 +115,11 @@ export class DataAwsOutpostsOutposts extends cdktf.TerraformDataSource {
   }
 
   // owner_id - computed: true, optional: true, required: false
-  private _ownerId?: string | undefined; 
+  private _ownerId?: string; 
   public get ownerId() {
     return this.getStringAttribute('owner_id');
   }
-  public set ownerId(value: string | undefined) {
+  public set ownerId(value: string) {
     this._ownerId = value;
   }
   public resetOwnerId() {
@@ -127,15 +127,15 @@ export class DataAwsOutpostsOutposts extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerIdInput() {
-    return this._ownerId
+    return this._ownerId;
   }
 
   // site_id - computed: true, optional: true, required: false
-  private _siteId?: string | undefined; 
+  private _siteId?: string; 
   public get siteId() {
     return this.getStringAttribute('site_id');
   }
-  public set siteId(value: string | undefined) {
+  public set siteId(value: string) {
     this._siteId = value;
   }
   public resetSiteId() {
@@ -143,7 +143,7 @@ export class DataAwsOutpostsOutposts extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get siteIdInput() {
-    return this._siteId
+    return this._siteId;
   }
 
   // =========

@@ -101,6 +101,31 @@ export class SesEventDestinationKinesisDestinationOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SesEventDestinationKinesisDestination | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._streamArn) {
+      hasAnyValues = true;
+      internalValueResult.streamArn = this._streamArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SesEventDestinationKinesisDestination | undefined) {
+    if (value === undefined) {
+      this._roleArn = undefined;
+      this._streamArn = undefined;
+    }
+    else {
+      this._roleArn = value.roleArn;
+      this._streamArn = value.streamArn;
+    }
+  }
+
   // role_arn - computed: false, optional: false, required: true
   private _roleArn?: string; 
   public get roleArn() {
@@ -111,7 +136,7 @@ export class SesEventDestinationKinesisDestinationOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // stream_arn - computed: false, optional: false, required: true
@@ -124,7 +149,7 @@ export class SesEventDestinationKinesisDestinationOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get streamArnInput() {
-    return this._streamArn
+    return this._streamArn;
   }
 }
 export interface SesEventDestinationSnsDestination {
@@ -154,6 +179,25 @@ export class SesEventDestinationSnsDestinationOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SesEventDestinationSnsDestination | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._topicArn) {
+      hasAnyValues = true;
+      internalValueResult.topicArn = this._topicArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SesEventDestinationSnsDestination | undefined) {
+    if (value === undefined) {
+      this._topicArn = undefined;
+    }
+    else {
+      this._topicArn = value.topicArn;
+    }
+  }
+
   // topic_arn - computed: false, optional: false, required: true
   private _topicArn?: string; 
   public get topicArn() {
@@ -164,7 +208,7 @@ export class SesEventDestinationSnsDestinationOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get topicArnInput() {
-    return this._topicArn
+    return this._topicArn;
   }
 }
 
@@ -205,8 +249,8 @@ export class SesEventDestination extends cdktf.TerraformResource {
     this._matchingTypes = config.matchingTypes;
     this._name = config.name;
     this._cloudwatchDestination = config.cloudwatchDestination;
-    this._kinesisDestination = config.kinesisDestination;
-    this._snsDestination = config.snsDestination;
+    this._kinesisDestination.internalValue = config.kinesisDestination;
+    this._snsDestination.internalValue = config.snsDestination;
   }
 
   // ==========
@@ -228,15 +272,15 @@ export class SesEventDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get configurationSetNameInput() {
-    return this._configurationSetName
+    return this._configurationSetName;
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -244,7 +288,7 @@ export class SesEventDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // id - computed: true, optional: true, required: false
@@ -262,7 +306,7 @@ export class SesEventDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get matchingTypesInput() {
-    return this._matchingTypes
+    return this._matchingTypes;
   }
 
   // name - computed: false, optional: false, required: true
@@ -275,16 +319,16 @@ export class SesEventDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // cloudwatch_destination - computed: false, optional: true, required: false
-  private _cloudwatchDestination?: SesEventDestinationCloudwatchDestination[] | undefined; 
+  private _cloudwatchDestination?: SesEventDestinationCloudwatchDestination[]; 
   public get cloudwatchDestination() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('cloudwatch_destination') as any;
   }
-  public set cloudwatchDestination(value: SesEventDestinationCloudwatchDestination[] | undefined) {
+  public set cloudwatchDestination(value: SesEventDestinationCloudwatchDestination[]) {
     this._cloudwatchDestination = value;
   }
   public resetCloudwatchDestination() {
@@ -292,41 +336,39 @@ export class SesEventDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchDestinationInput() {
-    return this._cloudwatchDestination
+    return this._cloudwatchDestination;
   }
 
   // kinesis_destination - computed: false, optional: true, required: false
-  private _kinesisDestination?: SesEventDestinationKinesisDestination | undefined; 
-  private __kinesisDestinationOutput = new SesEventDestinationKinesisDestinationOutputReference(this as any, "kinesis_destination", true);
+  private _kinesisDestination = new SesEventDestinationKinesisDestinationOutputReference(this as any, "kinesis_destination", true);
   public get kinesisDestination() {
-    return this.__kinesisDestinationOutput;
+    return this._kinesisDestination;
   }
-  public putKinesisDestination(value: SesEventDestinationKinesisDestination | undefined) {
-    this._kinesisDestination = value;
+  public putKinesisDestination(value: SesEventDestinationKinesisDestination) {
+    this._kinesisDestination.internalValue = value;
   }
   public resetKinesisDestination() {
-    this._kinesisDestination = undefined;
+    this._kinesisDestination.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get kinesisDestinationInput() {
-    return this._kinesisDestination
+    return this._kinesisDestination.internalValue;
   }
 
   // sns_destination - computed: false, optional: true, required: false
-  private _snsDestination?: SesEventDestinationSnsDestination | undefined; 
-  private __snsDestinationOutput = new SesEventDestinationSnsDestinationOutputReference(this as any, "sns_destination", true);
+  private _snsDestination = new SesEventDestinationSnsDestinationOutputReference(this as any, "sns_destination", true);
   public get snsDestination() {
-    return this.__snsDestinationOutput;
+    return this._snsDestination;
   }
-  public putSnsDestination(value: SesEventDestinationSnsDestination | undefined) {
-    this._snsDestination = value;
+  public putSnsDestination(value: SesEventDestinationSnsDestination) {
+    this._snsDestination.internalValue = value;
   }
   public resetSnsDestination() {
-    this._snsDestination = undefined;
+    this._snsDestination.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get snsDestinationInput() {
-    return this._snsDestination
+    return this._snsDestination.internalValue;
   }
 
   // =========
@@ -340,8 +382,8 @@ export class SesEventDestination extends cdktf.TerraformResource {
       matching_types: cdktf.listMapper(cdktf.stringToTerraform)(this._matchingTypes),
       name: cdktf.stringToTerraform(this._name),
       cloudwatch_destination: cdktf.listMapper(sesEventDestinationCloudwatchDestinationToTerraform)(this._cloudwatchDestination),
-      kinesis_destination: sesEventDestinationKinesisDestinationToTerraform(this._kinesisDestination),
-      sns_destination: sesEventDestinationSnsDestinationToTerraform(this._snsDestination),
+      kinesis_destination: sesEventDestinationKinesisDestinationToTerraform(this._kinesisDestination.internalValue),
+      sns_destination: sesEventDestinationSnsDestinationToTerraform(this._snsDestination.internalValue),
     };
   }
 }

@@ -87,11 +87,11 @@ export class DaxParameterGroup extends cdktf.TerraformResource {
   // ==========
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -99,7 +99,7 @@ export class DaxParameterGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -117,16 +117,16 @@ export class DaxParameterGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // parameters - computed: false, optional: true, required: false
-  private _parameters?: DaxParameterGroupParameters[] | undefined; 
+  private _parameters?: DaxParameterGroupParameters[]; 
   public get parameters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('parameters') as any;
   }
-  public set parameters(value: DaxParameterGroupParameters[] | undefined) {
+  public set parameters(value: DaxParameterGroupParameters[]) {
     this._parameters = value;
   }
   public resetParameters() {
@@ -134,7 +134,7 @@ export class DaxParameterGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInput() {
-    return this._parameters
+    return this._parameters;
   }
 
   // =========

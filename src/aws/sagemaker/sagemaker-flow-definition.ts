@@ -75,6 +75,25 @@ export class SagemakerFlowDefinitionHumanLoopActivationConfigHumanLoopActivation
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerFlowDefinitionHumanLoopActivationConfigHumanLoopActivationConditionsConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._humanLoopActivationConditions) {
+      hasAnyValues = true;
+      internalValueResult.humanLoopActivationConditions = this._humanLoopActivationConditions;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerFlowDefinitionHumanLoopActivationConfigHumanLoopActivationConditionsConfig | undefined) {
+    if (value === undefined) {
+      this._humanLoopActivationConditions = undefined;
+    }
+    else {
+      this._humanLoopActivationConditions = value.humanLoopActivationConditions;
+    }
+  }
+
   // human_loop_activation_conditions - computed: false, optional: false, required: true
   private _humanLoopActivationConditions?: string; 
   public get humanLoopActivationConditions() {
@@ -85,7 +104,7 @@ export class SagemakerFlowDefinitionHumanLoopActivationConfigHumanLoopActivation
   }
   // Temporarily expose input value. Use with caution.
   public get humanLoopActivationConditionsInput() {
-    return this._humanLoopActivationConditions
+    return this._humanLoopActivationConditions;
   }
 }
 export interface SagemakerFlowDefinitionHumanLoopActivationConfig {
@@ -117,21 +136,39 @@ export class SagemakerFlowDefinitionHumanLoopActivationConfigOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // human_loop_activation_conditions_config - computed: false, optional: true, required: false
-  private _humanLoopActivationConditionsConfig?: SagemakerFlowDefinitionHumanLoopActivationConfigHumanLoopActivationConditionsConfig | undefined; 
-  private __humanLoopActivationConditionsConfigOutput = new SagemakerFlowDefinitionHumanLoopActivationConfigHumanLoopActivationConditionsConfigOutputReference(this as any, "human_loop_activation_conditions_config", true);
-  public get humanLoopActivationConditionsConfig() {
-    return this.__humanLoopActivationConditionsConfigOutput;
+  public get internalValue(): SagemakerFlowDefinitionHumanLoopActivationConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._humanLoopActivationConditionsConfig) {
+      hasAnyValues = true;
+      internalValueResult.humanLoopActivationConditionsConfig = this._humanLoopActivationConditionsConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putHumanLoopActivationConditionsConfig(value: SagemakerFlowDefinitionHumanLoopActivationConfigHumanLoopActivationConditionsConfig | undefined) {
-    this._humanLoopActivationConditionsConfig = value;
+
+  public set internalValue(value: SagemakerFlowDefinitionHumanLoopActivationConfig | undefined) {
+    if (value === undefined) {
+      this._humanLoopActivationConditionsConfig.internalValue = undefined;
+    }
+    else {
+      this._humanLoopActivationConditionsConfig.internalValue = value.humanLoopActivationConditionsConfig;
+    }
+  }
+
+  // human_loop_activation_conditions_config - computed: false, optional: true, required: false
+  private _humanLoopActivationConditionsConfig = new SagemakerFlowDefinitionHumanLoopActivationConfigHumanLoopActivationConditionsConfigOutputReference(this as any, "human_loop_activation_conditions_config", true);
+  public get humanLoopActivationConditionsConfig() {
+    return this._humanLoopActivationConditionsConfig;
+  }
+  public putHumanLoopActivationConditionsConfig(value: SagemakerFlowDefinitionHumanLoopActivationConfigHumanLoopActivationConditionsConfig) {
+    this._humanLoopActivationConditionsConfig.internalValue = value;
   }
   public resetHumanLoopActivationConditionsConfig() {
-    this._humanLoopActivationConditionsConfig = undefined;
+    this._humanLoopActivationConditionsConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get humanLoopActivationConditionsConfigInput() {
-    return this._humanLoopActivationConditionsConfig
+    return this._humanLoopActivationConditionsConfig.internalValue;
   }
 }
 export interface SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd {
@@ -171,12 +208,43 @@ export class SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmoun
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cents) {
+      hasAnyValues = true;
+      internalValueResult.cents = this._cents;
+    }
+    if (this._dollars) {
+      hasAnyValues = true;
+      internalValueResult.dollars = this._dollars;
+    }
+    if (this._tenthFractionsOfACent) {
+      hasAnyValues = true;
+      internalValueResult.tenthFractionsOfACent = this._tenthFractionsOfACent;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd | undefined) {
+    if (value === undefined) {
+      this._cents = undefined;
+      this._dollars = undefined;
+      this._tenthFractionsOfACent = undefined;
+    }
+    else {
+      this._cents = value.cents;
+      this._dollars = value.dollars;
+      this._tenthFractionsOfACent = value.tenthFractionsOfACent;
+    }
+  }
+
   // cents - computed: false, optional: true, required: false
-  private _cents?: number | undefined; 
+  private _cents?: number; 
   public get cents() {
     return this.getNumberAttribute('cents');
   }
-  public set cents(value: number | undefined) {
+  public set cents(value: number) {
     this._cents = value;
   }
   public resetCents() {
@@ -184,15 +252,15 @@ export class SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmoun
   }
   // Temporarily expose input value. Use with caution.
   public get centsInput() {
-    return this._cents
+    return this._cents;
   }
 
   // dollars - computed: false, optional: true, required: false
-  private _dollars?: number | undefined; 
+  private _dollars?: number; 
   public get dollars() {
     return this.getNumberAttribute('dollars');
   }
-  public set dollars(value: number | undefined) {
+  public set dollars(value: number) {
     this._dollars = value;
   }
   public resetDollars() {
@@ -200,15 +268,15 @@ export class SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmoun
   }
   // Temporarily expose input value. Use with caution.
   public get dollarsInput() {
-    return this._dollars
+    return this._dollars;
   }
 
   // tenth_fractions_of_a_cent - computed: false, optional: true, required: false
-  private _tenthFractionsOfACent?: number | undefined; 
+  private _tenthFractionsOfACent?: number; 
   public get tenthFractionsOfACent() {
     return this.getNumberAttribute('tenth_fractions_of_a_cent');
   }
-  public set tenthFractionsOfACent(value: number | undefined) {
+  public set tenthFractionsOfACent(value: number) {
     this._tenthFractionsOfACent = value;
   }
   public resetTenthFractionsOfACent() {
@@ -216,7 +284,7 @@ export class SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmoun
   }
   // Temporarily expose input value. Use with caution.
   public get tenthFractionsOfACentInput() {
-    return this._tenthFractionsOfACent
+    return this._tenthFractionsOfACent;
   }
 }
 export interface SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice {
@@ -248,21 +316,39 @@ export class SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceOutpu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // amount_in_usd - computed: false, optional: true, required: false
-  private _amountInUsd?: SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd | undefined; 
-  private __amountInUsdOutput = new SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsdOutputReference(this as any, "amount_in_usd", true);
-  public get amountInUsd() {
-    return this.__amountInUsdOutput;
+  public get internalValue(): SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._amountInUsd) {
+      hasAnyValues = true;
+      internalValueResult.amountInUsd = this._amountInUsd?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAmountInUsd(value: SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd | undefined) {
-    this._amountInUsd = value;
+
+  public set internalValue(value: SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice | undefined) {
+    if (value === undefined) {
+      this._amountInUsd.internalValue = undefined;
+    }
+    else {
+      this._amountInUsd.internalValue = value.amountInUsd;
+    }
+  }
+
+  // amount_in_usd - computed: false, optional: true, required: false
+  private _amountInUsd = new SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsdOutputReference(this as any, "amount_in_usd", true);
+  public get amountInUsd() {
+    return this._amountInUsd;
+  }
+  public putAmountInUsd(value: SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd) {
+    this._amountInUsd.internalValue = value;
   }
   public resetAmountInUsd() {
-    this._amountInUsd = undefined;
+    this._amountInUsd.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get amountInUsdInput() {
-    return this._amountInUsd
+    return this._amountInUsd.internalValue;
   }
 }
 export interface SagemakerFlowDefinitionHumanLoopConfig {
@@ -334,6 +420,73 @@ export class SagemakerFlowDefinitionHumanLoopConfigOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerFlowDefinitionHumanLoopConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._humanTaskUiArn) {
+      hasAnyValues = true;
+      internalValueResult.humanTaskUiArn = this._humanTaskUiArn;
+    }
+    if (this._taskAvailabilityLifetimeInSeconds) {
+      hasAnyValues = true;
+      internalValueResult.taskAvailabilityLifetimeInSeconds = this._taskAvailabilityLifetimeInSeconds;
+    }
+    if (this._taskCount) {
+      hasAnyValues = true;
+      internalValueResult.taskCount = this._taskCount;
+    }
+    if (this._taskDescription) {
+      hasAnyValues = true;
+      internalValueResult.taskDescription = this._taskDescription;
+    }
+    if (this._taskKeywords) {
+      hasAnyValues = true;
+      internalValueResult.taskKeywords = this._taskKeywords;
+    }
+    if (this._taskTimeLimitInSeconds) {
+      hasAnyValues = true;
+      internalValueResult.taskTimeLimitInSeconds = this._taskTimeLimitInSeconds;
+    }
+    if (this._taskTitle) {
+      hasAnyValues = true;
+      internalValueResult.taskTitle = this._taskTitle;
+    }
+    if (this._workteamArn) {
+      hasAnyValues = true;
+      internalValueResult.workteamArn = this._workteamArn;
+    }
+    if (this._publicWorkforceTaskPrice) {
+      hasAnyValues = true;
+      internalValueResult.publicWorkforceTaskPrice = this._publicWorkforceTaskPrice?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerFlowDefinitionHumanLoopConfig | undefined) {
+    if (value === undefined) {
+      this._humanTaskUiArn = undefined;
+      this._taskAvailabilityLifetimeInSeconds = undefined;
+      this._taskCount = undefined;
+      this._taskDescription = undefined;
+      this._taskKeywords = undefined;
+      this._taskTimeLimitInSeconds = undefined;
+      this._taskTitle = undefined;
+      this._workteamArn = undefined;
+      this._publicWorkforceTaskPrice.internalValue = undefined;
+    }
+    else {
+      this._humanTaskUiArn = value.humanTaskUiArn;
+      this._taskAvailabilityLifetimeInSeconds = value.taskAvailabilityLifetimeInSeconds;
+      this._taskCount = value.taskCount;
+      this._taskDescription = value.taskDescription;
+      this._taskKeywords = value.taskKeywords;
+      this._taskTimeLimitInSeconds = value.taskTimeLimitInSeconds;
+      this._taskTitle = value.taskTitle;
+      this._workteamArn = value.workteamArn;
+      this._publicWorkforceTaskPrice.internalValue = value.publicWorkforceTaskPrice;
+    }
+  }
+
   // human_task_ui_arn - computed: false, optional: false, required: true
   private _humanTaskUiArn?: string; 
   public get humanTaskUiArn() {
@@ -344,15 +497,15 @@ export class SagemakerFlowDefinitionHumanLoopConfigOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get humanTaskUiArnInput() {
-    return this._humanTaskUiArn
+    return this._humanTaskUiArn;
   }
 
   // task_availability_lifetime_in_seconds - computed: false, optional: true, required: false
-  private _taskAvailabilityLifetimeInSeconds?: number | undefined; 
+  private _taskAvailabilityLifetimeInSeconds?: number; 
   public get taskAvailabilityLifetimeInSeconds() {
     return this.getNumberAttribute('task_availability_lifetime_in_seconds');
   }
-  public set taskAvailabilityLifetimeInSeconds(value: number | undefined) {
+  public set taskAvailabilityLifetimeInSeconds(value: number) {
     this._taskAvailabilityLifetimeInSeconds = value;
   }
   public resetTaskAvailabilityLifetimeInSeconds() {
@@ -360,7 +513,7 @@ export class SagemakerFlowDefinitionHumanLoopConfigOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get taskAvailabilityLifetimeInSecondsInput() {
-    return this._taskAvailabilityLifetimeInSeconds
+    return this._taskAvailabilityLifetimeInSeconds;
   }
 
   // task_count - computed: false, optional: false, required: true
@@ -373,7 +526,7 @@ export class SagemakerFlowDefinitionHumanLoopConfigOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get taskCountInput() {
-    return this._taskCount
+    return this._taskCount;
   }
 
   // task_description - computed: false, optional: false, required: true
@@ -386,15 +539,15 @@ export class SagemakerFlowDefinitionHumanLoopConfigOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get taskDescriptionInput() {
-    return this._taskDescription
+    return this._taskDescription;
   }
 
   // task_keywords - computed: false, optional: true, required: false
-  private _taskKeywords?: string[] | undefined; 
+  private _taskKeywords?: string[]; 
   public get taskKeywords() {
     return this.getListAttribute('task_keywords');
   }
-  public set taskKeywords(value: string[] | undefined) {
+  public set taskKeywords(value: string[]) {
     this._taskKeywords = value;
   }
   public resetTaskKeywords() {
@@ -402,15 +555,15 @@ export class SagemakerFlowDefinitionHumanLoopConfigOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get taskKeywordsInput() {
-    return this._taskKeywords
+    return this._taskKeywords;
   }
 
   // task_time_limit_in_seconds - computed: false, optional: true, required: false
-  private _taskTimeLimitInSeconds?: number | undefined; 
+  private _taskTimeLimitInSeconds?: number; 
   public get taskTimeLimitInSeconds() {
     return this.getNumberAttribute('task_time_limit_in_seconds');
   }
-  public set taskTimeLimitInSeconds(value: number | undefined) {
+  public set taskTimeLimitInSeconds(value: number) {
     this._taskTimeLimitInSeconds = value;
   }
   public resetTaskTimeLimitInSeconds() {
@@ -418,7 +571,7 @@ export class SagemakerFlowDefinitionHumanLoopConfigOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get taskTimeLimitInSecondsInput() {
-    return this._taskTimeLimitInSeconds
+    return this._taskTimeLimitInSeconds;
   }
 
   // task_title - computed: false, optional: false, required: true
@@ -431,7 +584,7 @@ export class SagemakerFlowDefinitionHumanLoopConfigOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get taskTitleInput() {
-    return this._taskTitle
+    return this._taskTitle;
   }
 
   // workteam_arn - computed: false, optional: false, required: true
@@ -444,24 +597,23 @@ export class SagemakerFlowDefinitionHumanLoopConfigOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get workteamArnInput() {
-    return this._workteamArn
+    return this._workteamArn;
   }
 
   // public_workforce_task_price - computed: false, optional: true, required: false
-  private _publicWorkforceTaskPrice?: SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice | undefined; 
-  private __publicWorkforceTaskPriceOutput = new SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceOutputReference(this as any, "public_workforce_task_price", true);
+  private _publicWorkforceTaskPrice = new SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceOutputReference(this as any, "public_workforce_task_price", true);
   public get publicWorkforceTaskPrice() {
-    return this.__publicWorkforceTaskPriceOutput;
+    return this._publicWorkforceTaskPrice;
   }
-  public putPublicWorkforceTaskPrice(value: SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice | undefined) {
-    this._publicWorkforceTaskPrice = value;
+  public putPublicWorkforceTaskPrice(value: SagemakerFlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice) {
+    this._publicWorkforceTaskPrice.internalValue = value;
   }
   public resetPublicWorkforceTaskPrice() {
-    this._publicWorkforceTaskPrice = undefined;
+    this._publicWorkforceTaskPrice.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get publicWorkforceTaskPriceInput() {
-    return this._publicWorkforceTaskPrice
+    return this._publicWorkforceTaskPrice.internalValue;
   }
 }
 export interface SagemakerFlowDefinitionHumanLoopRequestSource {
@@ -491,6 +643,25 @@ export class SagemakerFlowDefinitionHumanLoopRequestSourceOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerFlowDefinitionHumanLoopRequestSource | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._awsManagedHumanLoopRequestSource) {
+      hasAnyValues = true;
+      internalValueResult.awsManagedHumanLoopRequestSource = this._awsManagedHumanLoopRequestSource;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerFlowDefinitionHumanLoopRequestSource | undefined) {
+    if (value === undefined) {
+      this._awsManagedHumanLoopRequestSource = undefined;
+    }
+    else {
+      this._awsManagedHumanLoopRequestSource = value.awsManagedHumanLoopRequestSource;
+    }
+  }
+
   // aws_managed_human_loop_request_source - computed: false, optional: false, required: true
   private _awsManagedHumanLoopRequestSource?: string; 
   public get awsManagedHumanLoopRequestSource() {
@@ -501,7 +672,7 @@ export class SagemakerFlowDefinitionHumanLoopRequestSourceOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get awsManagedHumanLoopRequestSourceInput() {
-    return this._awsManagedHumanLoopRequestSource
+    return this._awsManagedHumanLoopRequestSource;
   }
 }
 export interface SagemakerFlowDefinitionOutputConfig {
@@ -536,12 +707,37 @@ export class SagemakerFlowDefinitionOutputConfigOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerFlowDefinitionOutputConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._kmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyId = this._kmsKeyId;
+    }
+    if (this._s3OutputPath) {
+      hasAnyValues = true;
+      internalValueResult.s3OutputPath = this._s3OutputPath;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerFlowDefinitionOutputConfig | undefined) {
+    if (value === undefined) {
+      this._kmsKeyId = undefined;
+      this._s3OutputPath = undefined;
+    }
+    else {
+      this._kmsKeyId = value.kmsKeyId;
+      this._s3OutputPath = value.s3OutputPath;
+    }
+  }
+
   // kms_key_id - computed: false, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -549,7 +745,7 @@ export class SagemakerFlowDefinitionOutputConfigOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // s3_output_path - computed: false, optional: false, required: true
@@ -562,7 +758,7 @@ export class SagemakerFlowDefinitionOutputConfigOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get s3OutputPathInput() {
-    return this._s3OutputPath
+    return this._s3OutputPath;
   }
 }
 
@@ -602,10 +798,10 @@ export class SagemakerFlowDefinition extends cdktf.TerraformResource {
     this._roleArn = config.roleArn;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._humanLoopActivationConfig = config.humanLoopActivationConfig;
-    this._humanLoopConfig = config.humanLoopConfig;
-    this._humanLoopRequestSource = config.humanLoopRequestSource;
-    this._outputConfig = config.outputConfig;
+    this._humanLoopActivationConfig.internalValue = config.humanLoopActivationConfig;
+    this._humanLoopConfig.internalValue = config.humanLoopConfig;
+    this._humanLoopRequestSource.internalValue = config.humanLoopRequestSource;
+    this._outputConfig.internalValue = config.outputConfig;
   }
 
   // ==========
@@ -627,7 +823,7 @@ export class SagemakerFlowDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get flowDefinitionNameInput() {
-    return this._flowDefinitionName
+    return this._flowDefinitionName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -645,16 +841,16 @@ export class SagemakerFlowDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -662,16 +858,16 @@ export class SagemakerFlowDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -679,69 +875,65 @@ export class SagemakerFlowDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // human_loop_activation_config - computed: false, optional: true, required: false
-  private _humanLoopActivationConfig?: SagemakerFlowDefinitionHumanLoopActivationConfig | undefined; 
-  private __humanLoopActivationConfigOutput = new SagemakerFlowDefinitionHumanLoopActivationConfigOutputReference(this as any, "human_loop_activation_config", true);
+  private _humanLoopActivationConfig = new SagemakerFlowDefinitionHumanLoopActivationConfigOutputReference(this as any, "human_loop_activation_config", true);
   public get humanLoopActivationConfig() {
-    return this.__humanLoopActivationConfigOutput;
+    return this._humanLoopActivationConfig;
   }
-  public putHumanLoopActivationConfig(value: SagemakerFlowDefinitionHumanLoopActivationConfig | undefined) {
-    this._humanLoopActivationConfig = value;
+  public putHumanLoopActivationConfig(value: SagemakerFlowDefinitionHumanLoopActivationConfig) {
+    this._humanLoopActivationConfig.internalValue = value;
   }
   public resetHumanLoopActivationConfig() {
-    this._humanLoopActivationConfig = undefined;
+    this._humanLoopActivationConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get humanLoopActivationConfigInput() {
-    return this._humanLoopActivationConfig
+    return this._humanLoopActivationConfig.internalValue;
   }
 
   // human_loop_config - computed: false, optional: false, required: true
-  private _humanLoopConfig?: SagemakerFlowDefinitionHumanLoopConfig; 
-  private __humanLoopConfigOutput = new SagemakerFlowDefinitionHumanLoopConfigOutputReference(this as any, "human_loop_config", true);
+  private _humanLoopConfig = new SagemakerFlowDefinitionHumanLoopConfigOutputReference(this as any, "human_loop_config", true);
   public get humanLoopConfig() {
-    return this.__humanLoopConfigOutput;
+    return this._humanLoopConfig;
   }
   public putHumanLoopConfig(value: SagemakerFlowDefinitionHumanLoopConfig) {
-    this._humanLoopConfig = value;
+    this._humanLoopConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get humanLoopConfigInput() {
-    return this._humanLoopConfig
+    return this._humanLoopConfig.internalValue;
   }
 
   // human_loop_request_source - computed: false, optional: true, required: false
-  private _humanLoopRequestSource?: SagemakerFlowDefinitionHumanLoopRequestSource | undefined; 
-  private __humanLoopRequestSourceOutput = new SagemakerFlowDefinitionHumanLoopRequestSourceOutputReference(this as any, "human_loop_request_source", true);
+  private _humanLoopRequestSource = new SagemakerFlowDefinitionHumanLoopRequestSourceOutputReference(this as any, "human_loop_request_source", true);
   public get humanLoopRequestSource() {
-    return this.__humanLoopRequestSourceOutput;
+    return this._humanLoopRequestSource;
   }
-  public putHumanLoopRequestSource(value: SagemakerFlowDefinitionHumanLoopRequestSource | undefined) {
-    this._humanLoopRequestSource = value;
+  public putHumanLoopRequestSource(value: SagemakerFlowDefinitionHumanLoopRequestSource) {
+    this._humanLoopRequestSource.internalValue = value;
   }
   public resetHumanLoopRequestSource() {
-    this._humanLoopRequestSource = undefined;
+    this._humanLoopRequestSource.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get humanLoopRequestSourceInput() {
-    return this._humanLoopRequestSource
+    return this._humanLoopRequestSource.internalValue;
   }
 
   // output_config - computed: false, optional: false, required: true
-  private _outputConfig?: SagemakerFlowDefinitionOutputConfig; 
-  private __outputConfigOutput = new SagemakerFlowDefinitionOutputConfigOutputReference(this as any, "output_config", true);
+  private _outputConfig = new SagemakerFlowDefinitionOutputConfigOutputReference(this as any, "output_config", true);
   public get outputConfig() {
-    return this.__outputConfigOutput;
+    return this._outputConfig;
   }
   public putOutputConfig(value: SagemakerFlowDefinitionOutputConfig) {
-    this._outputConfig = value;
+    this._outputConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get outputConfigInput() {
-    return this._outputConfig
+    return this._outputConfig.internalValue;
   }
 
   // =========
@@ -754,10 +946,10 @@ export class SagemakerFlowDefinition extends cdktf.TerraformResource {
       role_arn: cdktf.stringToTerraform(this._roleArn),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      human_loop_activation_config: sagemakerFlowDefinitionHumanLoopActivationConfigToTerraform(this._humanLoopActivationConfig),
-      human_loop_config: sagemakerFlowDefinitionHumanLoopConfigToTerraform(this._humanLoopConfig),
-      human_loop_request_source: sagemakerFlowDefinitionHumanLoopRequestSourceToTerraform(this._humanLoopRequestSource),
-      output_config: sagemakerFlowDefinitionOutputConfigToTerraform(this._outputConfig),
+      human_loop_activation_config: sagemakerFlowDefinitionHumanLoopActivationConfigToTerraform(this._humanLoopActivationConfig.internalValue),
+      human_loop_config: sagemakerFlowDefinitionHumanLoopConfigToTerraform(this._humanLoopConfig.internalValue),
+      human_loop_request_source: sagemakerFlowDefinitionHumanLoopRequestSourceToTerraform(this._humanLoopRequestSource.internalValue),
+      output_config: sagemakerFlowDefinitionOutputConfigToTerraform(this._outputConfig.internalValue),
     };
   }
 }

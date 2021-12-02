@@ -83,11 +83,11 @@ export class DataAwsIpRanges extends cdktf.TerraformDataSource {
   }
 
   // regions - computed: false, optional: true, required: false
-  private _regions?: string[] | undefined; 
+  private _regions?: string[]; 
   public get regions() {
     return this.getListAttribute('regions');
   }
-  public set regions(value: string[] | undefined) {
+  public set regions(value: string[]) {
     this._regions = value;
   }
   public resetRegions() {
@@ -95,7 +95,7 @@ export class DataAwsIpRanges extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get regionsInput() {
-    return this._regions
+    return this._regions;
   }
 
   // services - computed: false, optional: false, required: true
@@ -108,7 +108,7 @@ export class DataAwsIpRanges extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get servicesInput() {
-    return this._services
+    return this._services;
   }
 
   // sync_token - computed: true, optional: false, required: false
@@ -117,11 +117,11 @@ export class DataAwsIpRanges extends cdktf.TerraformDataSource {
   }
 
   // url - computed: false, optional: true, required: false
-  private _url?: string | undefined; 
+  private _url?: string; 
   public get url() {
     return this.getStringAttribute('url');
   }
-  public set url(value: string | undefined) {
+  public set url(value: string) {
     this._url = value;
   }
   public resetUrl() {
@@ -129,7 +129,7 @@ export class DataAwsIpRanges extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get urlInput() {
-    return this._url
+    return this._url;
   }
 
   // =========

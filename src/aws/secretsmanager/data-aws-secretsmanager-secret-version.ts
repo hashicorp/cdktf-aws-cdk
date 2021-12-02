@@ -87,7 +87,7 @@ export class DataAwsSecretsmanagerSecretVersion extends cdktf.TerraformDataSourc
   }
   // Temporarily expose input value. Use with caution.
   public get secretIdInput() {
-    return this._secretId
+    return this._secretId;
   }
 
   // secret_string - computed: true, optional: false, required: false
@@ -96,11 +96,11 @@ export class DataAwsSecretsmanagerSecretVersion extends cdktf.TerraformDataSourc
   }
 
   // version_id - computed: true, optional: true, required: false
-  private _versionId?: string | undefined; 
+  private _versionId?: string; 
   public get versionId() {
     return this.getStringAttribute('version_id');
   }
-  public set versionId(value: string | undefined) {
+  public set versionId(value: string) {
     this._versionId = value;
   }
   public resetVersionId() {
@@ -108,15 +108,15 @@ export class DataAwsSecretsmanagerSecretVersion extends cdktf.TerraformDataSourc
   }
   // Temporarily expose input value. Use with caution.
   public get versionIdInput() {
-    return this._versionId
+    return this._versionId;
   }
 
   // version_stage - computed: false, optional: true, required: false
-  private _versionStage?: string | undefined; 
+  private _versionStage?: string; 
   public get versionStage() {
     return this.getStringAttribute('version_stage');
   }
-  public set versionStage(value: string | undefined) {
+  public set versionStage(value: string) {
     this._versionStage = value;
   }
   public resetVersionStage() {
@@ -124,7 +124,7 @@ export class DataAwsSecretsmanagerSecretVersion extends cdktf.TerraformDataSourc
   }
   // Temporarily expose input value. Use with caution.
   public get versionStageInput() {
-    return this._versionStage
+    return this._versionStage;
   }
 
   // version_stages - computed: true, optional: false, required: false

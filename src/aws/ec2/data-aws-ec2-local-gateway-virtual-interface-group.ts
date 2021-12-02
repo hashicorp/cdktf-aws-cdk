@@ -92,11 +92,11 @@ export class DataAwsEc2LocalGatewayVirtualInterfaceGroup extends cdktf.Terraform
   }
 
   // local_gateway_id - computed: true, optional: true, required: false
-  private _localGatewayId?: string | undefined; 
+  private _localGatewayId?: string; 
   public get localGatewayId() {
     return this.getStringAttribute('local_gateway_id');
   }
-  public set localGatewayId(value: string | undefined) {
+  public set localGatewayId(value: string) {
     this._localGatewayId = value;
   }
   public resetLocalGatewayId() {
@@ -104,7 +104,7 @@ export class DataAwsEc2LocalGatewayVirtualInterfaceGroup extends cdktf.Terraform
   }
   // Temporarily expose input value. Use with caution.
   public get localGatewayIdInput() {
-    return this._localGatewayId
+    return this._localGatewayId;
   }
 
   // local_gateway_virtual_interface_ids - computed: true, optional: false, required: false
@@ -113,12 +113,12 @@ export class DataAwsEc2LocalGatewayVirtualInterfaceGroup extends cdktf.Terraform
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -126,16 +126,16 @@ export class DataAwsEc2LocalGatewayVirtualInterfaceGroup extends cdktf.Terraform
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsEc2LocalGatewayVirtualInterfaceGroupFilter[] | undefined; 
+  private _filter?: DataAwsEc2LocalGatewayVirtualInterfaceGroupFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsEc2LocalGatewayVirtualInterfaceGroupFilter[] | undefined) {
+  public set filter(value: DataAwsEc2LocalGatewayVirtualInterfaceGroupFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -143,7 +143,7 @@ export class DataAwsEc2LocalGatewayVirtualInterfaceGroup extends cdktf.Terraform
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

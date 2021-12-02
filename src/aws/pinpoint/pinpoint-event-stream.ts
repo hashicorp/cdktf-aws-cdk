@@ -72,7 +72,7 @@ export class PinpointEventStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get applicationIdInput() {
-    return this._applicationId
+    return this._applicationId;
   }
 
   // destination_stream_arn - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class PinpointEventStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get destinationStreamArnInput() {
-    return this._destinationStreamArn
+    return this._destinationStreamArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -103,7 +103,7 @@ export class PinpointEventStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // =========

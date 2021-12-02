@@ -67,7 +67,7 @@ export class SesDomainIdentity extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainInput() {
-    return this._domain
+    return this._domain;
   }
 
   // id - computed: true, optional: true, required: false

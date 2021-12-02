@@ -45,6 +45,25 @@ export class CloudfrontMonitoringSubscriptionMonitoringSubscriptionRealtimeMetri
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontMonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._realtimeMetricsSubscriptionStatus) {
+      hasAnyValues = true;
+      internalValueResult.realtimeMetricsSubscriptionStatus = this._realtimeMetricsSubscriptionStatus;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontMonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig | undefined) {
+    if (value === undefined) {
+      this._realtimeMetricsSubscriptionStatus = undefined;
+    }
+    else {
+      this._realtimeMetricsSubscriptionStatus = value.realtimeMetricsSubscriptionStatus;
+    }
+  }
+
   // realtime_metrics_subscription_status - computed: false, optional: false, required: true
   private _realtimeMetricsSubscriptionStatus?: string; 
   public get realtimeMetricsSubscriptionStatus() {
@@ -55,7 +74,7 @@ export class CloudfrontMonitoringSubscriptionMonitoringSubscriptionRealtimeMetri
   }
   // Temporarily expose input value. Use with caution.
   public get realtimeMetricsSubscriptionStatusInput() {
-    return this._realtimeMetricsSubscriptionStatus
+    return this._realtimeMetricsSubscriptionStatus;
   }
 }
 export interface CloudfrontMonitoringSubscriptionMonitoringSubscription {
@@ -87,18 +106,36 @@ export class CloudfrontMonitoringSubscriptionMonitoringSubscriptionOutputReferen
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontMonitoringSubscriptionMonitoringSubscription | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._realtimeMetricsSubscriptionConfig) {
+      hasAnyValues = true;
+      internalValueResult.realtimeMetricsSubscriptionConfig = this._realtimeMetricsSubscriptionConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontMonitoringSubscriptionMonitoringSubscription | undefined) {
+    if (value === undefined) {
+      this._realtimeMetricsSubscriptionConfig.internalValue = undefined;
+    }
+    else {
+      this._realtimeMetricsSubscriptionConfig.internalValue = value.realtimeMetricsSubscriptionConfig;
+    }
+  }
+
   // realtime_metrics_subscription_config - computed: false, optional: false, required: true
-  private _realtimeMetricsSubscriptionConfig?: CloudfrontMonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig; 
-  private __realtimeMetricsSubscriptionConfigOutput = new CloudfrontMonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfigOutputReference(this as any, "realtime_metrics_subscription_config", true);
+  private _realtimeMetricsSubscriptionConfig = new CloudfrontMonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfigOutputReference(this as any, "realtime_metrics_subscription_config", true);
   public get realtimeMetricsSubscriptionConfig() {
-    return this.__realtimeMetricsSubscriptionConfigOutput;
+    return this._realtimeMetricsSubscriptionConfig;
   }
   public putRealtimeMetricsSubscriptionConfig(value: CloudfrontMonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig) {
-    this._realtimeMetricsSubscriptionConfig = value;
+    this._realtimeMetricsSubscriptionConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get realtimeMetricsSubscriptionConfigInput() {
-    return this._realtimeMetricsSubscriptionConfig
+    return this._realtimeMetricsSubscriptionConfig.internalValue;
   }
 }
 
@@ -135,7 +172,7 @@ export class CloudfrontMonitoringSubscription extends cdktf.TerraformResource {
       lifecycle: config.lifecycle
     });
     this._distributionId = config.distributionId;
-    this._monitoringSubscription = config.monitoringSubscription;
+    this._monitoringSubscription.internalValue = config.monitoringSubscription;
   }
 
   // ==========
@@ -152,7 +189,7 @@ export class CloudfrontMonitoringSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get distributionIdInput() {
-    return this._distributionId
+    return this._distributionId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -161,17 +198,16 @@ export class CloudfrontMonitoringSubscription extends cdktf.TerraformResource {
   }
 
   // monitoring_subscription - computed: false, optional: false, required: true
-  private _monitoringSubscription?: CloudfrontMonitoringSubscriptionMonitoringSubscription; 
-  private __monitoringSubscriptionOutput = new CloudfrontMonitoringSubscriptionMonitoringSubscriptionOutputReference(this as any, "monitoring_subscription", true);
+  private _monitoringSubscription = new CloudfrontMonitoringSubscriptionMonitoringSubscriptionOutputReference(this as any, "monitoring_subscription", true);
   public get monitoringSubscription() {
-    return this.__monitoringSubscriptionOutput;
+    return this._monitoringSubscription;
   }
   public putMonitoringSubscription(value: CloudfrontMonitoringSubscriptionMonitoringSubscription) {
-    this._monitoringSubscription = value;
+    this._monitoringSubscription.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get monitoringSubscriptionInput() {
-    return this._monitoringSubscription
+    return this._monitoringSubscription.internalValue;
   }
 
   // =========
@@ -181,7 +217,7 @@ export class CloudfrontMonitoringSubscription extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       distribution_id: cdktf.stringToTerraform(this._distributionId),
-      monitoring_subscription: cloudfrontMonitoringSubscriptionMonitoringSubscriptionToTerraform(this._monitoringSubscription),
+      monitoring_subscription: cloudfrontMonitoringSubscriptionMonitoringSubscriptionToTerraform(this._monitoringSubscription.internalValue),
     };
   }
 }

@@ -90,6 +90,31 @@ export class ApiGatewayRestApiEndpointConfigurationOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApiGatewayRestApiEndpointConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._types) {
+      hasAnyValues = true;
+      internalValueResult.types = this._types;
+    }
+    if (this._vpcEndpointIds) {
+      hasAnyValues = true;
+      internalValueResult.vpcEndpointIds = this._vpcEndpointIds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApiGatewayRestApiEndpointConfiguration | undefined) {
+    if (value === undefined) {
+      this._types = undefined;
+      this._vpcEndpointIds = undefined;
+    }
+    else {
+      this._types = value.types;
+      this._vpcEndpointIds = value.vpcEndpointIds;
+    }
+  }
+
   // types - computed: false, optional: false, required: true
   private _types?: string[]; 
   public get types() {
@@ -100,15 +125,15 @@ export class ApiGatewayRestApiEndpointConfigurationOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get typesInput() {
-    return this._types
+    return this._types;
   }
 
   // vpc_endpoint_ids - computed: true, optional: true, required: false
-  private _vpcEndpointIds?: string[] | undefined; 
+  private _vpcEndpointIds?: string[]; 
   public get vpcEndpointIds() {
     return this.getListAttribute('vpc_endpoint_ids');
   }
-  public set vpcEndpointIds(value: string[] | undefined) {
+  public set vpcEndpointIds(value: string[]) {
     this._vpcEndpointIds = value;
   }
   public resetVpcEndpointIds() {
@@ -116,7 +141,7 @@ export class ApiGatewayRestApiEndpointConfigurationOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get vpcEndpointIdsInput() {
-    return this._vpcEndpointIds
+    return this._vpcEndpointIds;
   }
 }
 
@@ -163,7 +188,7 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
     this._policy = config.policy;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._endpointConfiguration = config.endpointConfiguration;
+    this._endpointConfiguration.internalValue = config.endpointConfiguration;
   }
 
   // ==========
@@ -171,11 +196,11 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
   // ==========
 
   // api_key_source - computed: true, optional: true, required: false
-  private _apiKeySource?: string | undefined; 
+  private _apiKeySource?: string; 
   public get apiKeySource() {
     return this.getStringAttribute('api_key_source');
   }
-  public set apiKeySource(value: string | undefined) {
+  public set apiKeySource(value: string) {
     this._apiKeySource = value;
   }
   public resetApiKeySource() {
@@ -183,7 +208,7 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiKeySourceInput() {
-    return this._apiKeySource
+    return this._apiKeySource;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -192,11 +217,11 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
   }
 
   // binary_media_types - computed: true, optional: true, required: false
-  private _binaryMediaTypes?: string[] | undefined; 
+  private _binaryMediaTypes?: string[]; 
   public get binaryMediaTypes() {
     return this.getListAttribute('binary_media_types');
   }
-  public set binaryMediaTypes(value: string[] | undefined) {
+  public set binaryMediaTypes(value: string[]) {
     this._binaryMediaTypes = value;
   }
   public resetBinaryMediaTypes() {
@@ -204,15 +229,15 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get binaryMediaTypesInput() {
-    return this._binaryMediaTypes
+    return this._binaryMediaTypes;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: string | undefined; 
+  private _body?: string; 
   public get body() {
     return this.getStringAttribute('body');
   }
-  public set body(value: string | undefined) {
+  public set body(value: string) {
     this._body = value;
   }
   public resetBody() {
@@ -220,7 +245,7 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body;
   }
 
   // created_date - computed: true, optional: false, required: false
@@ -229,11 +254,11 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
   }
 
   // description - computed: true, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -241,15 +266,15 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // disable_execute_api_endpoint - computed: true, optional: true, required: false
-  private _disableExecuteApiEndpoint?: boolean | cdktf.IResolvable | undefined; 
+  private _disableExecuteApiEndpoint?: boolean | cdktf.IResolvable; 
   public get disableExecuteApiEndpoint() {
     return this.getBooleanAttribute('disable_execute_api_endpoint') as any;
   }
-  public set disableExecuteApiEndpoint(value: boolean | cdktf.IResolvable | undefined) {
+  public set disableExecuteApiEndpoint(value: boolean | cdktf.IResolvable) {
     this._disableExecuteApiEndpoint = value;
   }
   public resetDisableExecuteApiEndpoint() {
@@ -257,7 +282,7 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get disableExecuteApiEndpointInput() {
-    return this._disableExecuteApiEndpoint
+    return this._disableExecuteApiEndpoint;
   }
 
   // execution_arn - computed: true, optional: false, required: false
@@ -271,11 +296,11 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
   }
 
   // minimum_compression_size - computed: false, optional: true, required: false
-  private _minimumCompressionSize?: number | undefined; 
+  private _minimumCompressionSize?: number; 
   public get minimumCompressionSize() {
     return this.getNumberAttribute('minimum_compression_size');
   }
-  public set minimumCompressionSize(value: number | undefined) {
+  public set minimumCompressionSize(value: number) {
     this._minimumCompressionSize = value;
   }
   public resetMinimumCompressionSize() {
@@ -283,7 +308,7 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get minimumCompressionSizeInput() {
-    return this._minimumCompressionSize
+    return this._minimumCompressionSize;
   }
 
   // name - computed: false, optional: false, required: true
@@ -296,16 +321,16 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // parameters - computed: false, optional: true, required: false
-  private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _parameters?: { [key: string]: string } | cdktf.IResolvable; 
   public get parameters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('parameters') as any;
   }
-  public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set parameters(value: { [key: string]: string } | cdktf.IResolvable) {
     this._parameters = value;
   }
   public resetParameters() {
@@ -313,15 +338,15 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInput() {
-    return this._parameters
+    return this._parameters;
   }
 
   // policy - computed: true, optional: true, required: false
-  private _policy?: string | undefined; 
+  private _policy?: string; 
   public get policy() {
     return this.getStringAttribute('policy');
   }
-  public set policy(value: string | undefined) {
+  public set policy(value: string) {
     this._policy = value;
   }
   public resetPolicy() {
@@ -329,7 +354,7 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // root_resource_id - computed: true, optional: false, required: false
@@ -338,12 +363,12 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -351,16 +376,16 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -368,24 +393,23 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // endpoint_configuration - computed: false, optional: true, required: false
-  private _endpointConfiguration?: ApiGatewayRestApiEndpointConfiguration | undefined; 
-  private __endpointConfigurationOutput = new ApiGatewayRestApiEndpointConfigurationOutputReference(this as any, "endpoint_configuration", true);
+  private _endpointConfiguration = new ApiGatewayRestApiEndpointConfigurationOutputReference(this as any, "endpoint_configuration", true);
   public get endpointConfiguration() {
-    return this.__endpointConfigurationOutput;
+    return this._endpointConfiguration;
   }
-  public putEndpointConfiguration(value: ApiGatewayRestApiEndpointConfiguration | undefined) {
-    this._endpointConfiguration = value;
+  public putEndpointConfiguration(value: ApiGatewayRestApiEndpointConfiguration) {
+    this._endpointConfiguration.internalValue = value;
   }
   public resetEndpointConfiguration() {
-    this._endpointConfiguration = undefined;
+    this._endpointConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get endpointConfigurationInput() {
-    return this._endpointConfiguration
+    return this._endpointConfiguration.internalValue;
   }
 
   // =========
@@ -405,7 +429,7 @@ export class ApiGatewayRestApi extends cdktf.TerraformResource {
       policy: cdktf.stringToTerraform(this._policy),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      endpoint_configuration: apiGatewayRestApiEndpointConfigurationToTerraform(this._endpointConfiguration),
+      endpoint_configuration: apiGatewayRestApiEndpointConfigurationToTerraform(this._endpointConfiguration.internalValue),
     };
   }
 }

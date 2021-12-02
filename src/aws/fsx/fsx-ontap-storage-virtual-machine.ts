@@ -170,6 +170,55 @@ export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManage
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._dnsIps) {
+      hasAnyValues = true;
+      internalValueResult.dnsIps = this._dnsIps;
+    }
+    if (this._domainName) {
+      hasAnyValues = true;
+      internalValueResult.domainName = this._domainName;
+    }
+    if (this._fileSystemAdministratorsGroup) {
+      hasAnyValues = true;
+      internalValueResult.fileSystemAdministratorsGroup = this._fileSystemAdministratorsGroup;
+    }
+    if (this._organizationalUnitDistinguidshedName) {
+      hasAnyValues = true;
+      internalValueResult.organizationalUnitDistinguidshedName = this._organizationalUnitDistinguidshedName;
+    }
+    if (this._password) {
+      hasAnyValues = true;
+      internalValueResult.password = this._password;
+    }
+    if (this._username) {
+      hasAnyValues = true;
+      internalValueResult.username = this._username;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration | undefined) {
+    if (value === undefined) {
+      this._dnsIps = undefined;
+      this._domainName = undefined;
+      this._fileSystemAdministratorsGroup = undefined;
+      this._organizationalUnitDistinguidshedName = undefined;
+      this._password = undefined;
+      this._username = undefined;
+    }
+    else {
+      this._dnsIps = value.dnsIps;
+      this._domainName = value.domainName;
+      this._fileSystemAdministratorsGroup = value.fileSystemAdministratorsGroup;
+      this._organizationalUnitDistinguidshedName = value.organizationalUnitDistinguidshedName;
+      this._password = value.password;
+      this._username = value.username;
+    }
+  }
+
   // dns_ips - computed: false, optional: false, required: true
   private _dnsIps?: string[]; 
   public get dnsIps() {
@@ -180,7 +229,7 @@ export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManage
   }
   // Temporarily expose input value. Use with caution.
   public get dnsIpsInput() {
-    return this._dnsIps
+    return this._dnsIps;
   }
 
   // domain_name - computed: false, optional: false, required: true
@@ -193,15 +242,15 @@ export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManage
   }
   // Temporarily expose input value. Use with caution.
   public get domainNameInput() {
-    return this._domainName
+    return this._domainName;
   }
 
   // file_system_administrators_group - computed: false, optional: true, required: false
-  private _fileSystemAdministratorsGroup?: string | undefined; 
+  private _fileSystemAdministratorsGroup?: string; 
   public get fileSystemAdministratorsGroup() {
     return this.getStringAttribute('file_system_administrators_group');
   }
-  public set fileSystemAdministratorsGroup(value: string | undefined) {
+  public set fileSystemAdministratorsGroup(value: string) {
     this._fileSystemAdministratorsGroup = value;
   }
   public resetFileSystemAdministratorsGroup() {
@@ -209,15 +258,15 @@ export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManage
   }
   // Temporarily expose input value. Use with caution.
   public get fileSystemAdministratorsGroupInput() {
-    return this._fileSystemAdministratorsGroup
+    return this._fileSystemAdministratorsGroup;
   }
 
   // organizational_unit_distinguidshed_name - computed: false, optional: true, required: false
-  private _organizationalUnitDistinguidshedName?: string | undefined; 
+  private _organizationalUnitDistinguidshedName?: string; 
   public get organizationalUnitDistinguidshedName() {
     return this.getStringAttribute('organizational_unit_distinguidshed_name');
   }
-  public set organizationalUnitDistinguidshedName(value: string | undefined) {
+  public set organizationalUnitDistinguidshedName(value: string) {
     this._organizationalUnitDistinguidshedName = value;
   }
   public resetOrganizationalUnitDistinguidshedName() {
@@ -225,7 +274,7 @@ export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManage
   }
   // Temporarily expose input value. Use with caution.
   public get organizationalUnitDistinguidshedNameInput() {
-    return this._organizationalUnitDistinguidshedName
+    return this._organizationalUnitDistinguidshedName;
   }
 
   // password - computed: false, optional: false, required: true
@@ -238,7 +287,7 @@ export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManage
   }
   // Temporarily expose input value. Use with caution.
   public get passwordInput() {
-    return this._password
+    return this._password;
   }
 
   // username - computed: false, optional: false, required: true
@@ -251,7 +300,7 @@ export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManage
   }
   // Temporarily expose input value. Use with caution.
   public get usernameInput() {
-    return this._username
+    return this._username;
   }
 }
 export interface FsxOntapStorageVirtualMachineActiveDirectoryConfiguration {
@@ -288,12 +337,37 @@ export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationOutputRefe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): FsxOntapStorageVirtualMachineActiveDirectoryConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._netbiosName) {
+      hasAnyValues = true;
+      internalValueResult.netbiosName = this._netbiosName;
+    }
+    if (this._selfManagedActiveDirectoryConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.selfManagedActiveDirectoryConfiguration = this._selfManagedActiveDirectoryConfiguration?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: FsxOntapStorageVirtualMachineActiveDirectoryConfiguration | undefined) {
+    if (value === undefined) {
+      this._netbiosName = undefined;
+      this._selfManagedActiveDirectoryConfiguration.internalValue = undefined;
+    }
+    else {
+      this._netbiosName = value.netbiosName;
+      this._selfManagedActiveDirectoryConfiguration.internalValue = value.selfManagedActiveDirectoryConfiguration;
+    }
+  }
+
   // netbios_name - computed: false, optional: true, required: false
-  private _netbiosName?: string | undefined; 
+  private _netbiosName?: string; 
   public get netbiosName() {
     return this.getStringAttribute('netbios_name');
   }
-  public set netbiosName(value: string | undefined) {
+  public set netbiosName(value: string) {
     this._netbiosName = value;
   }
   public resetNetbiosName() {
@@ -301,24 +375,23 @@ export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get netbiosNameInput() {
-    return this._netbiosName
+    return this._netbiosName;
   }
 
   // self_managed_active_directory_configuration - computed: false, optional: true, required: false
-  private _selfManagedActiveDirectoryConfiguration?: FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration | undefined; 
-  private __selfManagedActiveDirectoryConfigurationOutput = new FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationOutputReference(this as any, "self_managed_active_directory_configuration", true);
+  private _selfManagedActiveDirectoryConfiguration = new FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationOutputReference(this as any, "self_managed_active_directory_configuration", true);
   public get selfManagedActiveDirectoryConfiguration() {
-    return this.__selfManagedActiveDirectoryConfigurationOutput;
+    return this._selfManagedActiveDirectoryConfiguration;
   }
-  public putSelfManagedActiveDirectoryConfiguration(value: FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration | undefined) {
-    this._selfManagedActiveDirectoryConfiguration = value;
+  public putSelfManagedActiveDirectoryConfiguration(value: FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration) {
+    this._selfManagedActiveDirectoryConfiguration.internalValue = value;
   }
   public resetSelfManagedActiveDirectoryConfiguration() {
-    this._selfManagedActiveDirectoryConfiguration = undefined;
+    this._selfManagedActiveDirectoryConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get selfManagedActiveDirectoryConfigurationInput() {
-    return this._selfManagedActiveDirectoryConfiguration
+    return this._selfManagedActiveDirectoryConfiguration.internalValue;
   }
 }
 export interface FsxOntapStorageVirtualMachineTimeouts {
@@ -358,12 +431,43 @@ export class FsxOntapStorageVirtualMachineTimeoutsOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): FsxOntapStorageVirtualMachineTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: FsxOntapStorageVirtualMachineTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -371,15 +475,15 @@ export class FsxOntapStorageVirtualMachineTimeoutsOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -387,15 +491,15 @@ export class FsxOntapStorageVirtualMachineTimeoutsOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -403,7 +507,7 @@ export class FsxOntapStorageVirtualMachineTimeoutsOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -445,8 +549,8 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
     this._svmAdminPassword = config.svmAdminPassword;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._activeDirectoryConfiguration = config.activeDirectoryConfiguration;
-    this._timeouts = config.timeouts;
+    this._activeDirectoryConfiguration.internalValue = config.activeDirectoryConfiguration;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -473,7 +577,7 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fileSystemIdInput() {
-    return this._fileSystemId
+    return this._fileSystemId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -491,15 +595,15 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // root_volume_security_style - computed: false, optional: true, required: false
-  private _rootVolumeSecurityStyle?: string | undefined; 
+  private _rootVolumeSecurityStyle?: string; 
   public get rootVolumeSecurityStyle() {
     return this.getStringAttribute('root_volume_security_style');
   }
-  public set rootVolumeSecurityStyle(value: string | undefined) {
+  public set rootVolumeSecurityStyle(value: string) {
     this._rootVolumeSecurityStyle = value;
   }
   public resetRootVolumeSecurityStyle() {
@@ -507,7 +611,7 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rootVolumeSecurityStyleInput() {
-    return this._rootVolumeSecurityStyle
+    return this._rootVolumeSecurityStyle;
   }
 
   // subtype - computed: true, optional: false, required: false
@@ -516,11 +620,11 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
   }
 
   // svm_admin_password - computed: false, optional: true, required: false
-  private _svmAdminPassword?: string | undefined; 
+  private _svmAdminPassword?: string; 
   public get svmAdminPassword() {
     return this.getStringAttribute('svm_admin_password');
   }
-  public set svmAdminPassword(value: string | undefined) {
+  public set svmAdminPassword(value: string) {
     this._svmAdminPassword = value;
   }
   public resetSvmAdminPassword() {
@@ -528,16 +632,16 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get svmAdminPasswordInput() {
-    return this._svmAdminPassword
+    return this._svmAdminPassword;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -545,16 +649,16 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -562,7 +666,7 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // uuid - computed: true, optional: false, required: false
@@ -571,37 +675,35 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
   }
 
   // active_directory_configuration - computed: false, optional: true, required: false
-  private _activeDirectoryConfiguration?: FsxOntapStorageVirtualMachineActiveDirectoryConfiguration | undefined; 
-  private __activeDirectoryConfigurationOutput = new FsxOntapStorageVirtualMachineActiveDirectoryConfigurationOutputReference(this as any, "active_directory_configuration", true);
+  private _activeDirectoryConfiguration = new FsxOntapStorageVirtualMachineActiveDirectoryConfigurationOutputReference(this as any, "active_directory_configuration", true);
   public get activeDirectoryConfiguration() {
-    return this.__activeDirectoryConfigurationOutput;
+    return this._activeDirectoryConfiguration;
   }
-  public putActiveDirectoryConfiguration(value: FsxOntapStorageVirtualMachineActiveDirectoryConfiguration | undefined) {
-    this._activeDirectoryConfiguration = value;
+  public putActiveDirectoryConfiguration(value: FsxOntapStorageVirtualMachineActiveDirectoryConfiguration) {
+    this._activeDirectoryConfiguration.internalValue = value;
   }
   public resetActiveDirectoryConfiguration() {
-    this._activeDirectoryConfiguration = undefined;
+    this._activeDirectoryConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get activeDirectoryConfigurationInput() {
-    return this._activeDirectoryConfiguration
+    return this._activeDirectoryConfiguration.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: FsxOntapStorageVirtualMachineTimeouts | undefined; 
-  private __timeoutsOutput = new FsxOntapStorageVirtualMachineTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new FsxOntapStorageVirtualMachineTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: FsxOntapStorageVirtualMachineTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: FsxOntapStorageVirtualMachineTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -616,8 +718,8 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
       svm_admin_password: cdktf.stringToTerraform(this._svmAdminPassword),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      active_directory_configuration: fsxOntapStorageVirtualMachineActiveDirectoryConfigurationToTerraform(this._activeDirectoryConfiguration),
-      timeouts: fsxOntapStorageVirtualMachineTimeoutsToTerraform(this._timeouts),
+      active_directory_configuration: fsxOntapStorageVirtualMachineActiveDirectoryConfigurationToTerraform(this._activeDirectoryConfiguration.internalValue),
+      timeouts: fsxOntapStorageVirtualMachineTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

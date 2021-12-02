@@ -63,12 +63,43 @@ export class SagemakerAppImageConfigKernelGatewayImageConfigFileSystemConfigOutp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerAppImageConfigKernelGatewayImageConfigFileSystemConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._defaultGid) {
+      hasAnyValues = true;
+      internalValueResult.defaultGid = this._defaultGid;
+    }
+    if (this._defaultUid) {
+      hasAnyValues = true;
+      internalValueResult.defaultUid = this._defaultUid;
+    }
+    if (this._mountPath) {
+      hasAnyValues = true;
+      internalValueResult.mountPath = this._mountPath;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerAppImageConfigKernelGatewayImageConfigFileSystemConfig | undefined) {
+    if (value === undefined) {
+      this._defaultGid = undefined;
+      this._defaultUid = undefined;
+      this._mountPath = undefined;
+    }
+    else {
+      this._defaultGid = value.defaultGid;
+      this._defaultUid = value.defaultUid;
+      this._mountPath = value.mountPath;
+    }
+  }
+
   // default_gid - computed: false, optional: true, required: false
-  private _defaultGid?: number | undefined; 
+  private _defaultGid?: number; 
   public get defaultGid() {
     return this.getNumberAttribute('default_gid');
   }
-  public set defaultGid(value: number | undefined) {
+  public set defaultGid(value: number) {
     this._defaultGid = value;
   }
   public resetDefaultGid() {
@@ -76,15 +107,15 @@ export class SagemakerAppImageConfigKernelGatewayImageConfigFileSystemConfigOutp
   }
   // Temporarily expose input value. Use with caution.
   public get defaultGidInput() {
-    return this._defaultGid
+    return this._defaultGid;
   }
 
   // default_uid - computed: false, optional: true, required: false
-  private _defaultUid?: number | undefined; 
+  private _defaultUid?: number; 
   public get defaultUid() {
     return this.getNumberAttribute('default_uid');
   }
-  public set defaultUid(value: number | undefined) {
+  public set defaultUid(value: number) {
     this._defaultUid = value;
   }
   public resetDefaultUid() {
@@ -92,15 +123,15 @@ export class SagemakerAppImageConfigKernelGatewayImageConfigFileSystemConfigOutp
   }
   // Temporarily expose input value. Use with caution.
   public get defaultUidInput() {
-    return this._defaultUid
+    return this._defaultUid;
   }
 
   // mount_path - computed: false, optional: true, required: false
-  private _mountPath?: string | undefined; 
+  private _mountPath?: string; 
   public get mountPath() {
     return this.getStringAttribute('mount_path');
   }
-  public set mountPath(value: string | undefined) {
+  public set mountPath(value: string) {
     this._mountPath = value;
   }
   public resetMountPath() {
@@ -108,7 +139,7 @@ export class SagemakerAppImageConfigKernelGatewayImageConfigFileSystemConfigOutp
   }
   // Temporarily expose input value. Use with caution.
   public get mountPathInput() {
-    return this._mountPath
+    return this._mountPath;
   }
 }
 export interface SagemakerAppImageConfigKernelGatewayImageConfigKernelSpec {
@@ -143,12 +174,37 @@ export class SagemakerAppImageConfigKernelGatewayImageConfigKernelSpecOutputRefe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerAppImageConfigKernelGatewayImageConfigKernelSpec | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._displayName) {
+      hasAnyValues = true;
+      internalValueResult.displayName = this._displayName;
+    }
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerAppImageConfigKernelGatewayImageConfigKernelSpec | undefined) {
+    if (value === undefined) {
+      this._displayName = undefined;
+      this._name = undefined;
+    }
+    else {
+      this._displayName = value.displayName;
+      this._name = value.name;
+    }
+  }
+
   // display_name - computed: false, optional: true, required: false
-  private _displayName?: string | undefined; 
+  private _displayName?: string; 
   public get displayName() {
     return this.getStringAttribute('display_name');
   }
-  public set displayName(value: string | undefined) {
+  public set displayName(value: string) {
     this._displayName = value;
   }
   public resetDisplayName() {
@@ -156,7 +212,7 @@ export class SagemakerAppImageConfigKernelGatewayImageConfigKernelSpecOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get displayNameInput() {
-    return this._displayName
+    return this._displayName;
   }
 
   // name - computed: false, optional: false, required: true
@@ -169,7 +225,7 @@ export class SagemakerAppImageConfigKernelGatewayImageConfigKernelSpecOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface SagemakerAppImageConfigKernelGatewayImageConfig {
@@ -208,35 +264,58 @@ export class SagemakerAppImageConfigKernelGatewayImageConfigOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // file_system_config - computed: false, optional: true, required: false
-  private _fileSystemConfig?: SagemakerAppImageConfigKernelGatewayImageConfigFileSystemConfig | undefined; 
-  private __fileSystemConfigOutput = new SagemakerAppImageConfigKernelGatewayImageConfigFileSystemConfigOutputReference(this as any, "file_system_config", true);
-  public get fileSystemConfig() {
-    return this.__fileSystemConfigOutput;
+  public get internalValue(): SagemakerAppImageConfigKernelGatewayImageConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fileSystemConfig) {
+      hasAnyValues = true;
+      internalValueResult.fileSystemConfig = this._fileSystemConfig?.internalValue;
+    }
+    if (this._kernelSpec) {
+      hasAnyValues = true;
+      internalValueResult.kernelSpec = this._kernelSpec?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFileSystemConfig(value: SagemakerAppImageConfigKernelGatewayImageConfigFileSystemConfig | undefined) {
-    this._fileSystemConfig = value;
+
+  public set internalValue(value: SagemakerAppImageConfigKernelGatewayImageConfig | undefined) {
+    if (value === undefined) {
+      this._fileSystemConfig.internalValue = undefined;
+      this._kernelSpec.internalValue = undefined;
+    }
+    else {
+      this._fileSystemConfig.internalValue = value.fileSystemConfig;
+      this._kernelSpec.internalValue = value.kernelSpec;
+    }
+  }
+
+  // file_system_config - computed: false, optional: true, required: false
+  private _fileSystemConfig = new SagemakerAppImageConfigKernelGatewayImageConfigFileSystemConfigOutputReference(this as any, "file_system_config", true);
+  public get fileSystemConfig() {
+    return this._fileSystemConfig;
+  }
+  public putFileSystemConfig(value: SagemakerAppImageConfigKernelGatewayImageConfigFileSystemConfig) {
+    this._fileSystemConfig.internalValue = value;
   }
   public resetFileSystemConfig() {
-    this._fileSystemConfig = undefined;
+    this._fileSystemConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fileSystemConfigInput() {
-    return this._fileSystemConfig
+    return this._fileSystemConfig.internalValue;
   }
 
   // kernel_spec - computed: false, optional: false, required: true
-  private _kernelSpec?: SagemakerAppImageConfigKernelGatewayImageConfigKernelSpec; 
-  private __kernelSpecOutput = new SagemakerAppImageConfigKernelGatewayImageConfigKernelSpecOutputReference(this as any, "kernel_spec", true);
+  private _kernelSpec = new SagemakerAppImageConfigKernelGatewayImageConfigKernelSpecOutputReference(this as any, "kernel_spec", true);
   public get kernelSpec() {
-    return this.__kernelSpecOutput;
+    return this._kernelSpec;
   }
   public putKernelSpec(value: SagemakerAppImageConfigKernelGatewayImageConfigKernelSpec) {
-    this._kernelSpec = value;
+    this._kernelSpec.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get kernelSpecInput() {
-    return this._kernelSpec
+    return this._kernelSpec.internalValue;
   }
 }
 
@@ -275,7 +354,7 @@ export class SagemakerAppImageConfig extends cdktf.TerraformResource {
     this._appImageConfigName = config.appImageConfigName;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._kernelGatewayImageConfig = config.kernelGatewayImageConfig;
+    this._kernelGatewayImageConfig.internalValue = config.kernelGatewayImageConfig;
   }
 
   // ==========
@@ -292,7 +371,7 @@ export class SagemakerAppImageConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get appImageConfigNameInput() {
-    return this._appImageConfigName
+    return this._appImageConfigName;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -306,12 +385,12 @@ export class SagemakerAppImageConfig extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -319,16 +398,16 @@ export class SagemakerAppImageConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -336,24 +415,23 @@ export class SagemakerAppImageConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // kernel_gateway_image_config - computed: false, optional: true, required: false
-  private _kernelGatewayImageConfig?: SagemakerAppImageConfigKernelGatewayImageConfig | undefined; 
-  private __kernelGatewayImageConfigOutput = new SagemakerAppImageConfigKernelGatewayImageConfigOutputReference(this as any, "kernel_gateway_image_config", true);
+  private _kernelGatewayImageConfig = new SagemakerAppImageConfigKernelGatewayImageConfigOutputReference(this as any, "kernel_gateway_image_config", true);
   public get kernelGatewayImageConfig() {
-    return this.__kernelGatewayImageConfigOutput;
+    return this._kernelGatewayImageConfig;
   }
-  public putKernelGatewayImageConfig(value: SagemakerAppImageConfigKernelGatewayImageConfig | undefined) {
-    this._kernelGatewayImageConfig = value;
+  public putKernelGatewayImageConfig(value: SagemakerAppImageConfigKernelGatewayImageConfig) {
+    this._kernelGatewayImageConfig.internalValue = value;
   }
   public resetKernelGatewayImageConfig() {
-    this._kernelGatewayImageConfig = undefined;
+    this._kernelGatewayImageConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get kernelGatewayImageConfigInput() {
-    return this._kernelGatewayImageConfig
+    return this._kernelGatewayImageConfig.internalValue;
   }
 
   // =========
@@ -365,7 +443,7 @@ export class SagemakerAppImageConfig extends cdktf.TerraformResource {
       app_image_config_name: cdktf.stringToTerraform(this._appImageConfigName),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      kernel_gateway_image_config: sagemakerAppImageConfigKernelGatewayImageConfigToTerraform(this._kernelGatewayImageConfig),
+      kernel_gateway_image_config: sagemakerAppImageConfigKernelGatewayImageConfigToTerraform(this._kernelGatewayImageConfig.internalValue),
     };
   }
 }

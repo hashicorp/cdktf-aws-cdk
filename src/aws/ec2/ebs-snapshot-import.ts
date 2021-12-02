@@ -92,12 +92,49 @@ export class EbsSnapshotImportClientDataOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EbsSnapshotImportClientData | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._comment) {
+      hasAnyValues = true;
+      internalValueResult.comment = this._comment;
+    }
+    if (this._uploadEnd) {
+      hasAnyValues = true;
+      internalValueResult.uploadEnd = this._uploadEnd;
+    }
+    if (this._uploadSize) {
+      hasAnyValues = true;
+      internalValueResult.uploadSize = this._uploadSize;
+    }
+    if (this._uploadStart) {
+      hasAnyValues = true;
+      internalValueResult.uploadStart = this._uploadStart;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EbsSnapshotImportClientData | undefined) {
+    if (value === undefined) {
+      this._comment = undefined;
+      this._uploadEnd = undefined;
+      this._uploadSize = undefined;
+      this._uploadStart = undefined;
+    }
+    else {
+      this._comment = value.comment;
+      this._uploadEnd = value.uploadEnd;
+      this._uploadSize = value.uploadSize;
+      this._uploadStart = value.uploadStart;
+    }
+  }
+
   // comment - computed: false, optional: true, required: false
-  private _comment?: string | undefined; 
+  private _comment?: string; 
   public get comment() {
     return this.getStringAttribute('comment');
   }
-  public set comment(value: string | undefined) {
+  public set comment(value: string) {
     this._comment = value;
   }
   public resetComment() {
@@ -105,15 +142,15 @@ export class EbsSnapshotImportClientDataOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get commentInput() {
-    return this._comment
+    return this._comment;
   }
 
   // upload_end - computed: true, optional: true, required: false
-  private _uploadEnd?: string | undefined; 
+  private _uploadEnd?: string; 
   public get uploadEnd() {
     return this.getStringAttribute('upload_end');
   }
-  public set uploadEnd(value: string | undefined) {
+  public set uploadEnd(value: string) {
     this._uploadEnd = value;
   }
   public resetUploadEnd() {
@@ -121,15 +158,15 @@ export class EbsSnapshotImportClientDataOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get uploadEndInput() {
-    return this._uploadEnd
+    return this._uploadEnd;
   }
 
   // upload_size - computed: true, optional: true, required: false
-  private _uploadSize?: number | undefined; 
+  private _uploadSize?: number; 
   public get uploadSize() {
     return this.getNumberAttribute('upload_size');
   }
-  public set uploadSize(value: number | undefined) {
+  public set uploadSize(value: number) {
     this._uploadSize = value;
   }
   public resetUploadSize() {
@@ -137,15 +174,15 @@ export class EbsSnapshotImportClientDataOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get uploadSizeInput() {
-    return this._uploadSize
+    return this._uploadSize;
   }
 
   // upload_start - computed: true, optional: true, required: false
-  private _uploadStart?: string | undefined; 
+  private _uploadStart?: string; 
   public get uploadStart() {
     return this.getStringAttribute('upload_start');
   }
-  public set uploadStart(value: string | undefined) {
+  public set uploadStart(value: string) {
     this._uploadStart = value;
   }
   public resetUploadStart() {
@@ -153,7 +190,7 @@ export class EbsSnapshotImportClientDataOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get uploadStartInput() {
-    return this._uploadStart
+    return this._uploadStart;
   }
 }
 export interface EbsSnapshotImportDiskContainerUserBucket {
@@ -188,6 +225,31 @@ export class EbsSnapshotImportDiskContainerUserBucketOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EbsSnapshotImportDiskContainerUserBucket | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._s3Bucket) {
+      hasAnyValues = true;
+      internalValueResult.s3Bucket = this._s3Bucket;
+    }
+    if (this._s3Key) {
+      hasAnyValues = true;
+      internalValueResult.s3Key = this._s3Key;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EbsSnapshotImportDiskContainerUserBucket | undefined) {
+    if (value === undefined) {
+      this._s3Bucket = undefined;
+      this._s3Key = undefined;
+    }
+    else {
+      this._s3Bucket = value.s3Bucket;
+      this._s3Key = value.s3Key;
+    }
+  }
+
   // s3_bucket - computed: false, optional: false, required: true
   private _s3Bucket?: string; 
   public get s3Bucket() {
@@ -198,7 +260,7 @@ export class EbsSnapshotImportDiskContainerUserBucketOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get s3BucketInput() {
-    return this._s3Bucket
+    return this._s3Bucket;
   }
 
   // s3_key - computed: false, optional: false, required: true
@@ -211,7 +273,7 @@ export class EbsSnapshotImportDiskContainerUserBucketOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get s3KeyInput() {
-    return this._s3Key
+    return this._s3Key;
   }
 }
 export interface EbsSnapshotImportDiskContainer {
@@ -258,12 +320,49 @@ export class EbsSnapshotImportDiskContainerOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EbsSnapshotImportDiskContainer | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._description) {
+      hasAnyValues = true;
+      internalValueResult.description = this._description;
+    }
+    if (this._format) {
+      hasAnyValues = true;
+      internalValueResult.format = this._format;
+    }
+    if (this._url) {
+      hasAnyValues = true;
+      internalValueResult.url = this._url;
+    }
+    if (this._userBucket) {
+      hasAnyValues = true;
+      internalValueResult.userBucket = this._userBucket?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EbsSnapshotImportDiskContainer | undefined) {
+    if (value === undefined) {
+      this._description = undefined;
+      this._format = undefined;
+      this._url = undefined;
+      this._userBucket.internalValue = undefined;
+    }
+    else {
+      this._description = value.description;
+      this._format = value.format;
+      this._url = value.url;
+      this._userBucket.internalValue = value.userBucket;
+    }
+  }
+
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -271,7 +370,7 @@ export class EbsSnapshotImportDiskContainerOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // format - computed: false, optional: false, required: true
@@ -284,15 +383,15 @@ export class EbsSnapshotImportDiskContainerOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get formatInput() {
-    return this._format
+    return this._format;
   }
 
   // url - computed: false, optional: true, required: false
-  private _url?: string | undefined; 
+  private _url?: string; 
   public get url() {
     return this.getStringAttribute('url');
   }
-  public set url(value: string | undefined) {
+  public set url(value: string) {
     this._url = value;
   }
   public resetUrl() {
@@ -300,24 +399,23 @@ export class EbsSnapshotImportDiskContainerOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get urlInput() {
-    return this._url
+    return this._url;
   }
 
   // user_bucket - computed: false, optional: true, required: false
-  private _userBucket?: EbsSnapshotImportDiskContainerUserBucket | undefined; 
-  private __userBucketOutput = new EbsSnapshotImportDiskContainerUserBucketOutputReference(this as any, "user_bucket", true);
+  private _userBucket = new EbsSnapshotImportDiskContainerUserBucketOutputReference(this as any, "user_bucket", true);
   public get userBucket() {
-    return this.__userBucketOutput;
+    return this._userBucket;
   }
-  public putUserBucket(value: EbsSnapshotImportDiskContainerUserBucket | undefined) {
-    this._userBucket = value;
+  public putUserBucket(value: EbsSnapshotImportDiskContainerUserBucket) {
+    this._userBucket.internalValue = value;
   }
   public resetUserBucket() {
-    this._userBucket = undefined;
+    this._userBucket.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get userBucketInput() {
-    return this._userBucket
+    return this._userBucket.internalValue;
   }
 }
 export interface EbsSnapshotImportTimeouts {
@@ -352,12 +450,37 @@ export class EbsSnapshotImportTimeoutsOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EbsSnapshotImportTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EbsSnapshotImportTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -365,15 +488,15 @@ export class EbsSnapshotImportTimeoutsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -381,7 +504,7 @@ export class EbsSnapshotImportTimeoutsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -423,9 +546,9 @@ export class EbsSnapshotImport extends cdktf.TerraformResource {
     this._roleName = config.roleName;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._clientData = config.clientData;
-    this._diskContainer = config.diskContainer;
-    this._timeouts = config.timeouts;
+    this._clientData.internalValue = config.clientData;
+    this._diskContainer.internalValue = config.diskContainer;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -443,11 +566,11 @@ export class EbsSnapshotImport extends cdktf.TerraformResource {
   }
 
   // description - computed: true, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -455,15 +578,15 @@ export class EbsSnapshotImport extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // encrypted - computed: false, optional: true, required: false
-  private _encrypted?: boolean | cdktf.IResolvable | undefined; 
+  private _encrypted?: boolean | cdktf.IResolvable; 
   public get encrypted() {
     return this.getBooleanAttribute('encrypted') as any;
   }
-  public set encrypted(value: boolean | cdktf.IResolvable | undefined) {
+  public set encrypted(value: boolean | cdktf.IResolvable) {
     this._encrypted = value;
   }
   public resetEncrypted() {
@@ -471,7 +594,7 @@ export class EbsSnapshotImport extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get encryptedInput() {
-    return this._encrypted
+    return this._encrypted;
   }
 
   // id - computed: true, optional: true, required: false
@@ -480,11 +603,11 @@ export class EbsSnapshotImport extends cdktf.TerraformResource {
   }
 
   // kms_key_id - computed: false, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -492,7 +615,7 @@ export class EbsSnapshotImport extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // owner_alias - computed: true, optional: false, required: false
@@ -506,11 +629,11 @@ export class EbsSnapshotImport extends cdktf.TerraformResource {
   }
 
   // role_name - computed: false, optional: true, required: false
-  private _roleName?: string | undefined; 
+  private _roleName?: string; 
   public get roleName() {
     return this.getStringAttribute('role_name');
   }
-  public set roleName(value: string | undefined) {
+  public set roleName(value: string) {
     this._roleName = value;
   }
   public resetRoleName() {
@@ -518,16 +641,16 @@ export class EbsSnapshotImport extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleNameInput() {
-    return this._roleName
+    return this._roleName;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -535,16 +658,16 @@ export class EbsSnapshotImport extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -552,7 +675,7 @@ export class EbsSnapshotImport extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // volume_size - computed: true, optional: false, required: false
@@ -561,51 +684,48 @@ export class EbsSnapshotImport extends cdktf.TerraformResource {
   }
 
   // client_data - computed: false, optional: true, required: false
-  private _clientData?: EbsSnapshotImportClientData | undefined; 
-  private __clientDataOutput = new EbsSnapshotImportClientDataOutputReference(this as any, "client_data", true);
+  private _clientData = new EbsSnapshotImportClientDataOutputReference(this as any, "client_data", true);
   public get clientData() {
-    return this.__clientDataOutput;
+    return this._clientData;
   }
-  public putClientData(value: EbsSnapshotImportClientData | undefined) {
-    this._clientData = value;
+  public putClientData(value: EbsSnapshotImportClientData) {
+    this._clientData.internalValue = value;
   }
   public resetClientData() {
-    this._clientData = undefined;
+    this._clientData.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get clientDataInput() {
-    return this._clientData
+    return this._clientData.internalValue;
   }
 
   // disk_container - computed: false, optional: false, required: true
-  private _diskContainer?: EbsSnapshotImportDiskContainer; 
-  private __diskContainerOutput = new EbsSnapshotImportDiskContainerOutputReference(this as any, "disk_container", true);
+  private _diskContainer = new EbsSnapshotImportDiskContainerOutputReference(this as any, "disk_container", true);
   public get diskContainer() {
-    return this.__diskContainerOutput;
+    return this._diskContainer;
   }
   public putDiskContainer(value: EbsSnapshotImportDiskContainer) {
-    this._diskContainer = value;
+    this._diskContainer.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get diskContainerInput() {
-    return this._diskContainer
+    return this._diskContainer.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: EbsSnapshotImportTimeouts | undefined; 
-  private __timeoutsOutput = new EbsSnapshotImportTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new EbsSnapshotImportTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: EbsSnapshotImportTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: EbsSnapshotImportTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -620,9 +740,9 @@ export class EbsSnapshotImport extends cdktf.TerraformResource {
       role_name: cdktf.stringToTerraform(this._roleName),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      client_data: ebsSnapshotImportClientDataToTerraform(this._clientData),
-      disk_container: ebsSnapshotImportDiskContainerToTerraform(this._diskContainer),
-      timeouts: ebsSnapshotImportTimeoutsToTerraform(this._timeouts),
+      client_data: ebsSnapshotImportClientDataToTerraform(this._clientData.internalValue),
+      disk_container: ebsSnapshotImportDiskContainerToTerraform(this._diskContainer.internalValue),
+      timeouts: ebsSnapshotImportTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

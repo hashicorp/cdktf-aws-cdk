@@ -72,15 +72,15 @@ export class AppsyncApiKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiIdInput() {
-    return this._apiId
+    return this._apiId;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -88,15 +88,15 @@ export class AppsyncApiKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // expires - computed: false, optional: true, required: false
-  private _expires?: string | undefined; 
+  private _expires?: string; 
   public get expires() {
     return this.getStringAttribute('expires');
   }
-  public set expires(value: string | undefined) {
+  public set expires(value: string) {
     this._expires = value;
   }
   public resetExpires() {
@@ -104,7 +104,7 @@ export class AppsyncApiKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get expiresInput() {
-    return this._expires
+    return this._expires;
   }
 
   // id - computed: true, optional: true, required: false

@@ -94,11 +94,11 @@ export class DataAwsServicecatalogLaunchPaths extends cdktf.TerraformDataSource 
   // ==========
 
   // accept_language - computed: false, optional: true, required: false
-  private _acceptLanguage?: string | undefined; 
+  private _acceptLanguage?: string; 
   public get acceptLanguage() {
     return this.getStringAttribute('accept_language');
   }
-  public set acceptLanguage(value: string | undefined) {
+  public set acceptLanguage(value: string) {
     this._acceptLanguage = value;
   }
   public resetAcceptLanguage() {
@@ -106,7 +106,7 @@ export class DataAwsServicecatalogLaunchPaths extends cdktf.TerraformDataSource 
   }
   // Temporarily expose input value. Use with caution.
   public get acceptLanguageInput() {
-    return this._acceptLanguage
+    return this._acceptLanguage;
   }
 
   // id - computed: true, optional: true, required: false
@@ -124,7 +124,7 @@ export class DataAwsServicecatalogLaunchPaths extends cdktf.TerraformDataSource 
   }
   // Temporarily expose input value. Use with caution.
   public get productIdInput() {
-    return this._productId
+    return this._productId;
   }
 
   // summaries - computed: true, optional: false, required: false

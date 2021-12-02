@@ -92,7 +92,7 @@ export class DataAwsWafv2IpSet extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // scope - computed: false, optional: false, required: true
@@ -105,7 +105,7 @@ export class DataAwsWafv2IpSet extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get scopeInput() {
-    return this._scope
+    return this._scope;
   }
 
   // =========

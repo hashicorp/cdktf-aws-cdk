@@ -163,7 +163,7 @@ export class SsmDocument extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get contentInput() {
-    return this._content
+    return this._content;
   }
 
   // created_date - computed: true, optional: false, required: false
@@ -182,11 +182,11 @@ export class SsmDocument extends cdktf.TerraformResource {
   }
 
   // document_format - computed: false, optional: true, required: false
-  private _documentFormat?: string | undefined; 
+  private _documentFormat?: string; 
   public get documentFormat() {
     return this.getStringAttribute('document_format');
   }
-  public set documentFormat(value: string | undefined) {
+  public set documentFormat(value: string) {
     this._documentFormat = value;
   }
   public resetDocumentFormat() {
@@ -194,7 +194,7 @@ export class SsmDocument extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get documentFormatInput() {
-    return this._documentFormat
+    return this._documentFormat;
   }
 
   // document_type - computed: false, optional: false, required: true
@@ -207,7 +207,7 @@ export class SsmDocument extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get documentTypeInput() {
-    return this._documentType
+    return this._documentType;
   }
 
   // document_version - computed: true, optional: false, required: false
@@ -245,7 +245,7 @@ export class SsmDocument extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // owner - computed: true, optional: false, required: false
@@ -259,12 +259,12 @@ export class SsmDocument extends cdktf.TerraformResource {
   }
 
   // permissions - computed: false, optional: true, required: false
-  private _permissions?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _permissions?: { [key: string]: string } | cdktf.IResolvable; 
   public get permissions() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('permissions') as any;
   }
-  public set permissions(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set permissions(value: { [key: string]: string } | cdktf.IResolvable) {
     this._permissions = value;
   }
   public resetPermissions() {
@@ -272,7 +272,7 @@ export class SsmDocument extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get permissionsInput() {
-    return this._permissions
+    return this._permissions;
   }
 
   // platform_types - computed: true, optional: false, required: false
@@ -291,12 +291,12 @@ export class SsmDocument extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -304,16 +304,16 @@ export class SsmDocument extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -321,15 +321,15 @@ export class SsmDocument extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // target_type - computed: false, optional: true, required: false
-  private _targetType?: string | undefined; 
+  private _targetType?: string; 
   public get targetType() {
     return this.getStringAttribute('target_type');
   }
-  public set targetType(value: string | undefined) {
+  public set targetType(value: string) {
     this._targetType = value;
   }
   public resetTargetType() {
@@ -337,15 +337,15 @@ export class SsmDocument extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetTypeInput() {
-    return this._targetType
+    return this._targetType;
   }
 
   // version_name - computed: false, optional: true, required: false
-  private _versionName?: string | undefined; 
+  private _versionName?: string; 
   public get versionName() {
     return this.getStringAttribute('version_name');
   }
-  public set versionName(value: string | undefined) {
+  public set versionName(value: string) {
     this._versionName = value;
   }
   public resetVersionName() {
@@ -353,16 +353,16 @@ export class SsmDocument extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionNameInput() {
-    return this._versionName
+    return this._versionName;
   }
 
   // attachments_source - computed: false, optional: true, required: false
-  private _attachmentsSource?: SsmDocumentAttachmentsSource[] | undefined; 
+  private _attachmentsSource?: SsmDocumentAttachmentsSource[]; 
   public get attachmentsSource() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('attachments_source') as any;
   }
-  public set attachmentsSource(value: SsmDocumentAttachmentsSource[] | undefined) {
+  public set attachmentsSource(value: SsmDocumentAttachmentsSource[]) {
     this._attachmentsSource = value;
   }
   public resetAttachmentsSource() {
@@ -370,7 +370,7 @@ export class SsmDocument extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get attachmentsSourceInput() {
-    return this._attachmentsSource
+    return this._attachmentsSource;
   }
 
   // =========

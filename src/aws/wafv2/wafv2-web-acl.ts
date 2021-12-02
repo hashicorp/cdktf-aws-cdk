@@ -101,9 +101,9 @@ export class Wafv2WebAcl extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._customResponseBody = config.customResponseBody;
-    this._defaultAction = config.defaultAction;
+    this._defaultAction.internalValue = config.defaultAction;
     this._rule = config.rule;
-    this._visibilityConfig = config.visibilityConfig;
+    this._visibilityConfig.internalValue = config.visibilityConfig;
   }
 
   // ==========
@@ -121,11 +121,11 @@ export class Wafv2WebAcl extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -133,7 +133,7 @@ export class Wafv2WebAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -156,7 +156,7 @@ export class Wafv2WebAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // scope - computed: false, optional: false, required: true
@@ -169,16 +169,16 @@ export class Wafv2WebAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scopeInput() {
-    return this._scope
+    return this._scope;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -186,16 +186,16 @@ export class Wafv2WebAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -203,16 +203,16 @@ export class Wafv2WebAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // custom_response_body - computed: false, optional: true, required: false
-  private _customResponseBody?: Wafv2WebAclCustomResponseBody[] | undefined; 
+  private _customResponseBody?: Wafv2WebAclCustomResponseBody[]; 
   public get customResponseBody() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('custom_response_body') as any;
   }
-  public set customResponseBody(value: Wafv2WebAclCustomResponseBody[] | undefined) {
+  public set customResponseBody(value: Wafv2WebAclCustomResponseBody[]) {
     this._customResponseBody = value;
   }
   public resetCustomResponseBody() {
@@ -220,30 +220,29 @@ export class Wafv2WebAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customResponseBodyInput() {
-    return this._customResponseBody
+    return this._customResponseBody;
   }
 
   // default_action - computed: false, optional: false, required: true
-  private _defaultAction?: Wafv2WebAclDefaultAction; 
-  private __defaultActionOutput = new Wafv2WebAclDefaultActionOutputReference(this as any, "default_action", true);
+  private _defaultAction = new Wafv2WebAclDefaultActionOutputReference(this as any, "default_action", true);
   public get defaultAction() {
-    return this.__defaultActionOutput;
+    return this._defaultAction;
   }
   public putDefaultAction(value: Wafv2WebAclDefaultAction) {
-    this._defaultAction = value;
+    this._defaultAction.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get defaultActionInput() {
-    return this._defaultAction
+    return this._defaultAction.internalValue;
   }
 
   // rule - computed: false, optional: true, required: false
-  private _rule?: Wafv2WebAclRule[] | undefined; 
+  private _rule?: Wafv2WebAclRule[]; 
   public get rule() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('rule') as any;
   }
-  public set rule(value: Wafv2WebAclRule[] | undefined) {
+  public set rule(value: Wafv2WebAclRule[]) {
     this._rule = value;
   }
   public resetRule() {
@@ -251,21 +250,20 @@ export class Wafv2WebAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ruleInput() {
-    return this._rule
+    return this._rule;
   }
 
   // visibility_config - computed: false, optional: false, required: true
-  private _visibilityConfig?: Wafv2WebAclVisibilityConfig; 
-  private __visibilityConfigOutput = new Wafv2WebAclVisibilityConfigOutputReference(this as any, "visibility_config", true);
+  private _visibilityConfig = new Wafv2WebAclVisibilityConfigOutputReference(this as any, "visibility_config", true);
   public get visibilityConfig() {
-    return this.__visibilityConfigOutput;
+    return this._visibilityConfig;
   }
   public putVisibilityConfig(value: Wafv2WebAclVisibilityConfig) {
-    this._visibilityConfig = value;
+    this._visibilityConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get visibilityConfigInput() {
-    return this._visibilityConfig
+    return this._visibilityConfig.internalValue;
   }
 
   // =========
@@ -280,9 +278,9 @@ export class Wafv2WebAcl extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       custom_response_body: cdktf.listMapper(wafv2WebAclCustomResponseBodyToTerraform)(this._customResponseBody),
-      default_action: wafv2WebAclDefaultActionToTerraform(this._defaultAction),
+      default_action: wafv2WebAclDefaultActionToTerraform(this._defaultAction.internalValue),
       rule: cdktf.listMapper(wafv2WebAclRuleToTerraform)(this._rule),
-      visibility_config: wafv2WebAclVisibilityConfigToTerraform(this._visibilityConfig),
+      visibility_config: wafv2WebAclVisibilityConfigToTerraform(this._visibilityConfig.internalValue),
     };
   }
 }

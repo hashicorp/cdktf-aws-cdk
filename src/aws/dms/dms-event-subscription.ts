@@ -83,12 +83,43 @@ export class DmsEventSubscriptionTimeoutsOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DmsEventSubscriptionTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DmsEventSubscriptionTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -96,15 +127,15 @@ export class DmsEventSubscriptionTimeoutsOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -112,15 +143,15 @@ export class DmsEventSubscriptionTimeoutsOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -128,7 +159,7 @@ export class DmsEventSubscriptionTimeoutsOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -172,7 +203,7 @@ export class DmsEventSubscription extends cdktf.TerraformResource {
     this._sourceType = config.sourceType;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -185,11 +216,11 @@ export class DmsEventSubscription extends cdktf.TerraformResource {
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -197,7 +228,7 @@ export class DmsEventSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // event_categories - computed: false, optional: false, required: true
@@ -210,7 +241,7 @@ export class DmsEventSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get eventCategoriesInput() {
-    return this._eventCategories
+    return this._eventCategories;
   }
 
   // id - computed: true, optional: true, required: false
@@ -228,7 +259,7 @@ export class DmsEventSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // sns_topic_arn - computed: false, optional: false, required: true
@@ -241,15 +272,15 @@ export class DmsEventSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get snsTopicArnInput() {
-    return this._snsTopicArn
+    return this._snsTopicArn;
   }
 
   // source_ids - computed: false, optional: true, required: false
-  private _sourceIds?: string[] | undefined; 
+  private _sourceIds?: string[]; 
   public get sourceIds() {
     return this.getListAttribute('source_ids');
   }
-  public set sourceIds(value: string[] | undefined) {
+  public set sourceIds(value: string[]) {
     this._sourceIds = value;
   }
   public resetSourceIds() {
@@ -257,15 +288,15 @@ export class DmsEventSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceIdsInput() {
-    return this._sourceIds
+    return this._sourceIds;
   }
 
   // source_type - computed: false, optional: true, required: false
-  private _sourceType?: string | undefined; 
+  private _sourceType?: string; 
   public get sourceType() {
     return this.getStringAttribute('source_type');
   }
-  public set sourceType(value: string | undefined) {
+  public set sourceType(value: string) {
     this._sourceType = value;
   }
   public resetSourceType() {
@@ -273,16 +304,16 @@ export class DmsEventSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceTypeInput() {
-    return this._sourceType
+    return this._sourceType;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -290,16 +321,16 @@ export class DmsEventSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -307,24 +338,23 @@ export class DmsEventSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DmsEventSubscriptionTimeouts | undefined; 
-  private __timeoutsOutput = new DmsEventSubscriptionTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DmsEventSubscriptionTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DmsEventSubscriptionTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DmsEventSubscriptionTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -341,7 +371,7 @@ export class DmsEventSubscription extends cdktf.TerraformResource {
       source_type: cdktf.stringToTerraform(this._sourceType),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      timeouts: dmsEventSubscriptionTimeoutsToTerraform(this._timeouts),
+      timeouts: dmsEventSubscriptionTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

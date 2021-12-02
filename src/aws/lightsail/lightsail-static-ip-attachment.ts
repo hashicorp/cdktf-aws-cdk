@@ -72,7 +72,7 @@ export class LightsailStaticIpAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceNameInput() {
-    return this._instanceName
+    return this._instanceName;
   }
 
   // ip_address - computed: true, optional: false, required: false
@@ -90,7 +90,7 @@ export class LightsailStaticIpAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get staticIpNameInput() {
-    return this._staticIpName
+    return this._staticIpName;
   }
 
   // =========

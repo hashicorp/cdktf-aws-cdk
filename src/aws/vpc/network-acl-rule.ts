@@ -103,11 +103,11 @@ export class NetworkAclRule extends cdktf.TerraformResource {
   // ==========
 
   // cidr_block - computed: false, optional: true, required: false
-  private _cidrBlock?: string | undefined; 
+  private _cidrBlock?: string; 
   public get cidrBlock() {
     return this.getStringAttribute('cidr_block');
   }
-  public set cidrBlock(value: string | undefined) {
+  public set cidrBlock(value: string) {
     this._cidrBlock = value;
   }
   public resetCidrBlock() {
@@ -115,15 +115,15 @@ export class NetworkAclRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cidrBlockInput() {
-    return this._cidrBlock
+    return this._cidrBlock;
   }
 
   // egress - computed: false, optional: true, required: false
-  private _egress?: boolean | cdktf.IResolvable | undefined; 
+  private _egress?: boolean | cdktf.IResolvable; 
   public get egress() {
     return this.getBooleanAttribute('egress') as any;
   }
-  public set egress(value: boolean | cdktf.IResolvable | undefined) {
+  public set egress(value: boolean | cdktf.IResolvable) {
     this._egress = value;
   }
   public resetEgress() {
@@ -131,15 +131,15 @@ export class NetworkAclRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get egressInput() {
-    return this._egress
+    return this._egress;
   }
 
   // from_port - computed: false, optional: true, required: false
-  private _fromPort?: number | undefined; 
+  private _fromPort?: number; 
   public get fromPort() {
     return this.getNumberAttribute('from_port');
   }
-  public set fromPort(value: number | undefined) {
+  public set fromPort(value: number) {
     this._fromPort = value;
   }
   public resetFromPort() {
@@ -147,15 +147,15 @@ export class NetworkAclRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fromPortInput() {
-    return this._fromPort
+    return this._fromPort;
   }
 
   // icmp_code - computed: false, optional: true, required: false
-  private _icmpCode?: string | undefined; 
+  private _icmpCode?: string; 
   public get icmpCode() {
     return this.getStringAttribute('icmp_code');
   }
-  public set icmpCode(value: string | undefined) {
+  public set icmpCode(value: string) {
     this._icmpCode = value;
   }
   public resetIcmpCode() {
@@ -163,15 +163,15 @@ export class NetworkAclRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get icmpCodeInput() {
-    return this._icmpCode
+    return this._icmpCode;
   }
 
   // icmp_type - computed: false, optional: true, required: false
-  private _icmpType?: string | undefined; 
+  private _icmpType?: string; 
   public get icmpType() {
     return this.getStringAttribute('icmp_type');
   }
-  public set icmpType(value: string | undefined) {
+  public set icmpType(value: string) {
     this._icmpType = value;
   }
   public resetIcmpType() {
@@ -179,7 +179,7 @@ export class NetworkAclRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get icmpTypeInput() {
-    return this._icmpType
+    return this._icmpType;
   }
 
   // id - computed: true, optional: true, required: false
@@ -188,11 +188,11 @@ export class NetworkAclRule extends cdktf.TerraformResource {
   }
 
   // ipv6_cidr_block - computed: false, optional: true, required: false
-  private _ipv6CidrBlock?: string | undefined; 
+  private _ipv6CidrBlock?: string; 
   public get ipv6CidrBlock() {
     return this.getStringAttribute('ipv6_cidr_block');
   }
-  public set ipv6CidrBlock(value: string | undefined) {
+  public set ipv6CidrBlock(value: string) {
     this._ipv6CidrBlock = value;
   }
   public resetIpv6CidrBlock() {
@@ -200,7 +200,7 @@ export class NetworkAclRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipv6CidrBlockInput() {
-    return this._ipv6CidrBlock
+    return this._ipv6CidrBlock;
   }
 
   // network_acl_id - computed: false, optional: false, required: true
@@ -213,7 +213,7 @@ export class NetworkAclRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get networkAclIdInput() {
-    return this._networkAclId
+    return this._networkAclId;
   }
 
   // protocol - computed: false, optional: false, required: true
@@ -226,7 +226,7 @@ export class NetworkAclRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get protocolInput() {
-    return this._protocol
+    return this._protocol;
   }
 
   // rule_action - computed: false, optional: false, required: true
@@ -239,7 +239,7 @@ export class NetworkAclRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ruleActionInput() {
-    return this._ruleAction
+    return this._ruleAction;
   }
 
   // rule_number - computed: false, optional: false, required: true
@@ -252,15 +252,15 @@ export class NetworkAclRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ruleNumberInput() {
-    return this._ruleNumber
+    return this._ruleNumber;
   }
 
   // to_port - computed: false, optional: true, required: false
-  private _toPort?: number | undefined; 
+  private _toPort?: number; 
   public get toPort() {
     return this.getNumberAttribute('to_port');
   }
-  public set toPort(value: number | undefined) {
+  public set toPort(value: number) {
     this._toPort = value;
   }
   public resetToPort() {
@@ -268,7 +268,7 @@ export class NetworkAclRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get toPortInput() {
-    return this._toPort
+    return this._toPort;
   }
 
   // =========

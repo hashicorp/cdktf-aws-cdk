@@ -117,12 +117,12 @@ export class DataAwsEc2LocalGatewayVirtualInterface extends cdktf.TerraformDataS
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -130,7 +130,7 @@ export class DataAwsEc2LocalGatewayVirtualInterface extends cdktf.TerraformDataS
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // vlan - computed: true, optional: false, required: false
@@ -139,12 +139,12 @@ export class DataAwsEc2LocalGatewayVirtualInterface extends cdktf.TerraformDataS
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsEc2LocalGatewayVirtualInterfaceFilter[] | undefined; 
+  private _filter?: DataAwsEc2LocalGatewayVirtualInterfaceFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsEc2LocalGatewayVirtualInterfaceFilter[] | undefined) {
+  public set filter(value: DataAwsEc2LocalGatewayVirtualInterfaceFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -152,7 +152,7 @@ export class DataAwsEc2LocalGatewayVirtualInterface extends cdktf.TerraformDataS
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

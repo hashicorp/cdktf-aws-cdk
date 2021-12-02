@@ -72,7 +72,7 @@ export class IotPolicyAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // target - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class IotPolicyAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetInput() {
-    return this._target
+    return this._target;
   }
 
   // =========

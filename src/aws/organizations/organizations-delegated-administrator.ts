@@ -67,7 +67,7 @@ export class OrganizationsDelegatedAdministrator extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdInput() {
-    return this._accountId
+    return this._accountId;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -115,7 +115,7 @@ export class OrganizationsDelegatedAdministrator extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get servicePrincipalInput() {
-    return this._servicePrincipal
+    return this._servicePrincipal;
   }
 
   // status - computed: true, optional: false, required: false

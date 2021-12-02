@@ -68,6 +68,43 @@ export class CodestarconnectionsHostVpcConfigurationOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodestarconnectionsHostVpcConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._securityGroupIds) {
+      hasAnyValues = true;
+      internalValueResult.securityGroupIds = this._securityGroupIds;
+    }
+    if (this._subnetIds) {
+      hasAnyValues = true;
+      internalValueResult.subnetIds = this._subnetIds;
+    }
+    if (this._tlsCertificate) {
+      hasAnyValues = true;
+      internalValueResult.tlsCertificate = this._tlsCertificate;
+    }
+    if (this._vpcId) {
+      hasAnyValues = true;
+      internalValueResult.vpcId = this._vpcId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodestarconnectionsHostVpcConfiguration | undefined) {
+    if (value === undefined) {
+      this._securityGroupIds = undefined;
+      this._subnetIds = undefined;
+      this._tlsCertificate = undefined;
+      this._vpcId = undefined;
+    }
+    else {
+      this._securityGroupIds = value.securityGroupIds;
+      this._subnetIds = value.subnetIds;
+      this._tlsCertificate = value.tlsCertificate;
+      this._vpcId = value.vpcId;
+    }
+  }
+
   // security_group_ids - computed: false, optional: false, required: true
   private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
@@ -78,7 +115,7 @@ export class CodestarconnectionsHostVpcConfigurationOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // subnet_ids - computed: false, optional: false, required: true
@@ -91,15 +128,15 @@ export class CodestarconnectionsHostVpcConfigurationOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 
   // tls_certificate - computed: false, optional: true, required: false
-  private _tlsCertificate?: string | undefined; 
+  private _tlsCertificate?: string; 
   public get tlsCertificate() {
     return this.getStringAttribute('tls_certificate');
   }
-  public set tlsCertificate(value: string | undefined) {
+  public set tlsCertificate(value: string) {
     this._tlsCertificate = value;
   }
   public resetTlsCertificate() {
@@ -107,7 +144,7 @@ export class CodestarconnectionsHostVpcConfigurationOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get tlsCertificateInput() {
-    return this._tlsCertificate
+    return this._tlsCertificate;
   }
 
   // vpc_id - computed: false, optional: false, required: true
@@ -120,7 +157,7 @@ export class CodestarconnectionsHostVpcConfigurationOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 }
 
@@ -159,7 +196,7 @@ export class CodestarconnectionsHost extends cdktf.TerraformResource {
     this._name = config.name;
     this._providerEndpoint = config.providerEndpoint;
     this._providerType = config.providerType;
-    this._vpcConfiguration = config.vpcConfiguration;
+    this._vpcConfiguration.internalValue = config.vpcConfiguration;
   }
 
   // ==========
@@ -186,7 +223,7 @@ export class CodestarconnectionsHost extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // provider_endpoint - computed: false, optional: false, required: true
@@ -199,7 +236,7 @@ export class CodestarconnectionsHost extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get providerEndpointInput() {
-    return this._providerEndpoint
+    return this._providerEndpoint;
   }
 
   // provider_type - computed: false, optional: false, required: true
@@ -212,7 +249,7 @@ export class CodestarconnectionsHost extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get providerTypeInput() {
-    return this._providerType
+    return this._providerType;
   }
 
   // status - computed: true, optional: false, required: false
@@ -221,20 +258,19 @@ export class CodestarconnectionsHost extends cdktf.TerraformResource {
   }
 
   // vpc_configuration - computed: false, optional: true, required: false
-  private _vpcConfiguration?: CodestarconnectionsHostVpcConfiguration | undefined; 
-  private __vpcConfigurationOutput = new CodestarconnectionsHostVpcConfigurationOutputReference(this as any, "vpc_configuration", true);
+  private _vpcConfiguration = new CodestarconnectionsHostVpcConfigurationOutputReference(this as any, "vpc_configuration", true);
   public get vpcConfiguration() {
-    return this.__vpcConfigurationOutput;
+    return this._vpcConfiguration;
   }
-  public putVpcConfiguration(value: CodestarconnectionsHostVpcConfiguration | undefined) {
-    this._vpcConfiguration = value;
+  public putVpcConfiguration(value: CodestarconnectionsHostVpcConfiguration) {
+    this._vpcConfiguration.internalValue = value;
   }
   public resetVpcConfiguration() {
-    this._vpcConfiguration = undefined;
+    this._vpcConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get vpcConfigurationInput() {
-    return this._vpcConfiguration
+    return this._vpcConfiguration.internalValue;
   }
 
   // =========
@@ -246,7 +282,7 @@ export class CodestarconnectionsHost extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       provider_endpoint: cdktf.stringToTerraform(this._providerEndpoint),
       provider_type: cdktf.stringToTerraform(this._providerType),
-      vpc_configuration: codestarconnectionsHostVpcConfigurationToTerraform(this._vpcConfiguration),
+      vpc_configuration: codestarconnectionsHostVpcConfigurationToTerraform(this._vpcConfiguration.internalValue),
     };
   }
 }

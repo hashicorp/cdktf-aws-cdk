@@ -49,6 +49,25 @@ export class GuarddutyOrganizationConfigurationDatasourcesS3LogsOutputReference 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GuarddutyOrganizationConfigurationDatasourcesS3Logs | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._autoEnable) {
+      hasAnyValues = true;
+      internalValueResult.autoEnable = this._autoEnable;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GuarddutyOrganizationConfigurationDatasourcesS3Logs | undefined) {
+    if (value === undefined) {
+      this._autoEnable = undefined;
+    }
+    else {
+      this._autoEnable = value.autoEnable;
+    }
+  }
+
   // auto_enable - computed: false, optional: false, required: true
   private _autoEnable?: boolean | cdktf.IResolvable; 
   public get autoEnable() {
@@ -59,7 +78,7 @@ export class GuarddutyOrganizationConfigurationDatasourcesS3LogsOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get autoEnableInput() {
-    return this._autoEnable
+    return this._autoEnable;
   }
 }
 export interface GuarddutyOrganizationConfigurationDatasources {
@@ -91,21 +110,39 @@ export class GuarddutyOrganizationConfigurationDatasourcesOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // s3_logs - computed: false, optional: true, required: false
-  private _s3Logs?: GuarddutyOrganizationConfigurationDatasourcesS3Logs | undefined; 
-  private __s3LogsOutput = new GuarddutyOrganizationConfigurationDatasourcesS3LogsOutputReference(this as any, "s3_logs", true);
-  public get s3Logs() {
-    return this.__s3LogsOutput;
+  public get internalValue(): GuarddutyOrganizationConfigurationDatasources | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._s3Logs) {
+      hasAnyValues = true;
+      internalValueResult.s3Logs = this._s3Logs?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putS3Logs(value: GuarddutyOrganizationConfigurationDatasourcesS3Logs | undefined) {
-    this._s3Logs = value;
+
+  public set internalValue(value: GuarddutyOrganizationConfigurationDatasources | undefined) {
+    if (value === undefined) {
+      this._s3Logs.internalValue = undefined;
+    }
+    else {
+      this._s3Logs.internalValue = value.s3Logs;
+    }
+  }
+
+  // s3_logs - computed: false, optional: true, required: false
+  private _s3Logs = new GuarddutyOrganizationConfigurationDatasourcesS3LogsOutputReference(this as any, "s3_logs", true);
+  public get s3Logs() {
+    return this._s3Logs;
+  }
+  public putS3Logs(value: GuarddutyOrganizationConfigurationDatasourcesS3Logs) {
+    this._s3Logs.internalValue = value;
   }
   public resetS3Logs() {
-    this._s3Logs = undefined;
+    this._s3Logs.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get s3LogsInput() {
-    return this._s3Logs
+    return this._s3Logs.internalValue;
   }
 }
 
@@ -143,7 +180,7 @@ export class GuarddutyOrganizationConfiguration extends cdktf.TerraformResource 
     });
     this._autoEnable = config.autoEnable;
     this._detectorId = config.detectorId;
-    this._datasources = config.datasources;
+    this._datasources.internalValue = config.datasources;
   }
 
   // ==========
@@ -160,7 +197,7 @@ export class GuarddutyOrganizationConfiguration extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get autoEnableInput() {
-    return this._autoEnable
+    return this._autoEnable;
   }
 
   // detector_id - computed: false, optional: false, required: true
@@ -173,7 +210,7 @@ export class GuarddutyOrganizationConfiguration extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get detectorIdInput() {
-    return this._detectorId
+    return this._detectorId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -182,20 +219,19 @@ export class GuarddutyOrganizationConfiguration extends cdktf.TerraformResource 
   }
 
   // datasources - computed: false, optional: true, required: false
-  private _datasources?: GuarddutyOrganizationConfigurationDatasources | undefined; 
-  private __datasourcesOutput = new GuarddutyOrganizationConfigurationDatasourcesOutputReference(this as any, "datasources", true);
+  private _datasources = new GuarddutyOrganizationConfigurationDatasourcesOutputReference(this as any, "datasources", true);
   public get datasources() {
-    return this.__datasourcesOutput;
+    return this._datasources;
   }
-  public putDatasources(value: GuarddutyOrganizationConfigurationDatasources | undefined) {
-    this._datasources = value;
+  public putDatasources(value: GuarddutyOrganizationConfigurationDatasources) {
+    this._datasources.internalValue = value;
   }
   public resetDatasources() {
-    this._datasources = undefined;
+    this._datasources.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get datasourcesInput() {
-    return this._datasources
+    return this._datasources.internalValue;
   }
 
   // =========
@@ -206,7 +242,7 @@ export class GuarddutyOrganizationConfiguration extends cdktf.TerraformResource 
     return {
       auto_enable: cdktf.booleanToTerraform(this._autoEnable),
       detector_id: cdktf.stringToTerraform(this._detectorId),
-      datasources: guarddutyOrganizationConfigurationDatasourcesToTerraform(this._datasources),
+      datasources: guarddutyOrganizationConfigurationDatasourcesToTerraform(this._datasources.internalValue),
     };
   }
 }

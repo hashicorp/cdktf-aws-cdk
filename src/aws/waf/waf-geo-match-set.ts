@@ -101,16 +101,16 @@ export class WafGeoMatchSet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // geo_match_constraint - computed: false, optional: true, required: false
-  private _geoMatchConstraint?: WafGeoMatchSetGeoMatchConstraint[] | undefined; 
+  private _geoMatchConstraint?: WafGeoMatchSetGeoMatchConstraint[]; 
   public get geoMatchConstraint() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('geo_match_constraint') as any;
   }
-  public set geoMatchConstraint(value: WafGeoMatchSetGeoMatchConstraint[] | undefined) {
+  public set geoMatchConstraint(value: WafGeoMatchSetGeoMatchConstraint[]) {
     this._geoMatchConstraint = value;
   }
   public resetGeoMatchConstraint() {
@@ -118,7 +118,7 @@ export class WafGeoMatchSet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get geoMatchConstraintInput() {
-    return this._geoMatchConstraint
+    return this._geoMatchConstraint;
   }
 
   // =========

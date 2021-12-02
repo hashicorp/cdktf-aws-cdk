@@ -97,11 +97,11 @@ export class DataAwsImagebuilderImageRecipes extends cdktf.TerraformDataSource {
   }
 
   // owner - computed: false, optional: true, required: false
-  private _owner?: string | undefined; 
+  private _owner?: string; 
   public get owner() {
     return this.getStringAttribute('owner');
   }
-  public set owner(value: string | undefined) {
+  public set owner(value: string) {
     this._owner = value;
   }
   public resetOwner() {
@@ -109,16 +109,16 @@ export class DataAwsImagebuilderImageRecipes extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerInput() {
-    return this._owner
+    return this._owner;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsImagebuilderImageRecipesFilter[] | undefined; 
+  private _filter?: DataAwsImagebuilderImageRecipesFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsImagebuilderImageRecipesFilter[] | undefined) {
+  public set filter(value: DataAwsImagebuilderImageRecipesFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -126,7 +126,7 @@ export class DataAwsImagebuilderImageRecipes extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

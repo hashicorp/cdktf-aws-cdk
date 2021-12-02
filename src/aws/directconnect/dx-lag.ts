@@ -93,11 +93,11 @@ export class DxLag extends cdktf.TerraformResource {
   }
 
   // connection_id - computed: false, optional: true, required: false
-  private _connectionId?: string | undefined; 
+  private _connectionId?: string; 
   public get connectionId() {
     return this.getStringAttribute('connection_id');
   }
-  public set connectionId(value: string | undefined) {
+  public set connectionId(value: string) {
     this._connectionId = value;
   }
   public resetConnectionId() {
@@ -105,7 +105,7 @@ export class DxLag extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get connectionIdInput() {
-    return this._connectionId
+    return this._connectionId;
   }
 
   // connections_bandwidth - computed: false, optional: false, required: true
@@ -118,15 +118,15 @@ export class DxLag extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get connectionsBandwidthInput() {
-    return this._connectionsBandwidth
+    return this._connectionsBandwidth;
   }
 
   // force_destroy - computed: false, optional: true, required: false
-  private _forceDestroy?: boolean | cdktf.IResolvable | undefined; 
+  private _forceDestroy?: boolean | cdktf.IResolvable; 
   public get forceDestroy() {
     return this.getBooleanAttribute('force_destroy') as any;
   }
-  public set forceDestroy(value: boolean | cdktf.IResolvable | undefined) {
+  public set forceDestroy(value: boolean | cdktf.IResolvable) {
     this._forceDestroy = value;
   }
   public resetForceDestroy() {
@@ -134,7 +134,7 @@ export class DxLag extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get forceDestroyInput() {
-    return this._forceDestroy
+    return this._forceDestroy;
   }
 
   // has_logical_redundancy - computed: true, optional: false, required: false
@@ -162,7 +162,7 @@ export class DxLag extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get locationInput() {
-    return this._location
+    return this._location;
   }
 
   // name - computed: false, optional: false, required: true
@@ -175,7 +175,7 @@ export class DxLag extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // owner_account_id - computed: true, optional: false, required: false
@@ -184,11 +184,11 @@ export class DxLag extends cdktf.TerraformResource {
   }
 
   // provider_name - computed: true, optional: true, required: false
-  private _providerName?: string | undefined; 
+  private _providerName?: string; 
   public get providerName() {
     return this.getStringAttribute('provider_name');
   }
-  public set providerName(value: string | undefined) {
+  public set providerName(value: string) {
     this._providerName = value;
   }
   public resetProviderName() {
@@ -196,16 +196,16 @@ export class DxLag extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get providerNameInput() {
-    return this._providerName
+    return this._providerName;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -213,16 +213,16 @@ export class DxLag extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -230,7 +230,7 @@ export class DxLag extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

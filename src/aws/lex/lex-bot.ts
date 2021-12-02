@@ -137,12 +137,37 @@ export class LexBotAbortStatementOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LexBotAbortStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._responseCard) {
+      hasAnyValues = true;
+      internalValueResult.responseCard = this._responseCard;
+    }
+    if (this._message) {
+      hasAnyValues = true;
+      internalValueResult.message = this._message;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LexBotAbortStatement | undefined) {
+    if (value === undefined) {
+      this._responseCard = undefined;
+      this._message = undefined;
+    }
+    else {
+      this._responseCard = value.responseCard;
+      this._message = value.message;
+    }
+  }
+
   // response_card - computed: false, optional: true, required: false
-  private _responseCard?: string | undefined; 
+  private _responseCard?: string; 
   public get responseCard() {
     return this.getStringAttribute('response_card');
   }
-  public set responseCard(value: string | undefined) {
+  public set responseCard(value: string) {
     this._responseCard = value;
   }
   public resetResponseCard() {
@@ -150,7 +175,7 @@ export class LexBotAbortStatementOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get responseCardInput() {
-    return this._responseCard
+    return this._responseCard;
   }
 
   // message - computed: false, optional: false, required: true
@@ -164,7 +189,7 @@ export class LexBotAbortStatementOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get messageInput() {
-    return this._message
+    return this._message;
   }
 }
 export interface LexBotClarificationPromptMessage {
@@ -233,6 +258,37 @@ export class LexBotClarificationPromptOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LexBotClarificationPrompt | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._maxAttempts) {
+      hasAnyValues = true;
+      internalValueResult.maxAttempts = this._maxAttempts;
+    }
+    if (this._responseCard) {
+      hasAnyValues = true;
+      internalValueResult.responseCard = this._responseCard;
+    }
+    if (this._message) {
+      hasAnyValues = true;
+      internalValueResult.message = this._message;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LexBotClarificationPrompt | undefined) {
+    if (value === undefined) {
+      this._maxAttempts = undefined;
+      this._responseCard = undefined;
+      this._message = undefined;
+    }
+    else {
+      this._maxAttempts = value.maxAttempts;
+      this._responseCard = value.responseCard;
+      this._message = value.message;
+    }
+  }
+
   // max_attempts - computed: false, optional: false, required: true
   private _maxAttempts?: number; 
   public get maxAttempts() {
@@ -243,15 +299,15 @@ export class LexBotClarificationPromptOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get maxAttemptsInput() {
-    return this._maxAttempts
+    return this._maxAttempts;
   }
 
   // response_card - computed: false, optional: true, required: false
-  private _responseCard?: string | undefined; 
+  private _responseCard?: string; 
   public get responseCard() {
     return this.getStringAttribute('response_card');
   }
-  public set responseCard(value: string | undefined) {
+  public set responseCard(value: string) {
     this._responseCard = value;
   }
   public resetResponseCard() {
@@ -259,7 +315,7 @@ export class LexBotClarificationPromptOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get responseCardInput() {
-    return this._responseCard
+    return this._responseCard;
   }
 
   // message - computed: false, optional: false, required: true
@@ -273,7 +329,7 @@ export class LexBotClarificationPromptOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get messageInput() {
-    return this._message
+    return this._message;
   }
 }
 export interface LexBotIntent {
@@ -335,12 +391,43 @@ export class LexBotTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LexBotTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LexBotTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -348,15 +435,15 @@ export class LexBotTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -364,15 +451,15 @@ export class LexBotTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -380,7 +467,7 @@ export class LexBotTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -427,10 +514,10 @@ export class LexBot extends cdktf.TerraformResource {
     this._nluIntentConfidenceThreshold = config.nluIntentConfidenceThreshold;
     this._processBehavior = config.processBehavior;
     this._voiceId = config.voiceId;
-    this._abortStatement = config.abortStatement;
-    this._clarificationPrompt = config.clarificationPrompt;
+    this._abortStatement.internalValue = config.abortStatement;
+    this._clarificationPrompt.internalValue = config.clarificationPrompt;
     this._intent = config.intent;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -457,15 +544,15 @@ export class LexBot extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get childDirectedInput() {
-    return this._childDirected
+    return this._childDirected;
   }
 
   // create_version - computed: false, optional: true, required: false
-  private _createVersion?: boolean | cdktf.IResolvable | undefined; 
+  private _createVersion?: boolean | cdktf.IResolvable; 
   public get createVersion() {
     return this.getBooleanAttribute('create_version') as any;
   }
-  public set createVersion(value: boolean | cdktf.IResolvable | undefined) {
+  public set createVersion(value: boolean | cdktf.IResolvable) {
     this._createVersion = value;
   }
   public resetCreateVersion() {
@@ -473,7 +560,7 @@ export class LexBot extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get createVersionInput() {
-    return this._createVersion
+    return this._createVersion;
   }
 
   // created_date - computed: true, optional: false, required: false
@@ -482,11 +569,11 @@ export class LexBot extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -494,15 +581,15 @@ export class LexBot extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // detect_sentiment - computed: false, optional: true, required: false
-  private _detectSentiment?: boolean | cdktf.IResolvable | undefined; 
+  private _detectSentiment?: boolean | cdktf.IResolvable; 
   public get detectSentiment() {
     return this.getBooleanAttribute('detect_sentiment') as any;
   }
-  public set detectSentiment(value: boolean | cdktf.IResolvable | undefined) {
+  public set detectSentiment(value: boolean | cdktf.IResolvable) {
     this._detectSentiment = value;
   }
   public resetDetectSentiment() {
@@ -510,15 +597,15 @@ export class LexBot extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get detectSentimentInput() {
-    return this._detectSentiment
+    return this._detectSentiment;
   }
 
   // enable_model_improvements - computed: false, optional: true, required: false
-  private _enableModelImprovements?: boolean | cdktf.IResolvable | undefined; 
+  private _enableModelImprovements?: boolean | cdktf.IResolvable; 
   public get enableModelImprovements() {
     return this.getBooleanAttribute('enable_model_improvements') as any;
   }
-  public set enableModelImprovements(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableModelImprovements(value: boolean | cdktf.IResolvable) {
     this._enableModelImprovements = value;
   }
   public resetEnableModelImprovements() {
@@ -526,7 +613,7 @@ export class LexBot extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableModelImprovementsInput() {
-    return this._enableModelImprovements
+    return this._enableModelImprovements;
   }
 
   // failure_reason - computed: true, optional: false, required: false
@@ -540,11 +627,11 @@ export class LexBot extends cdktf.TerraformResource {
   }
 
   // idle_session_ttl_in_seconds - computed: false, optional: true, required: false
-  private _idleSessionTtlInSeconds?: number | undefined; 
+  private _idleSessionTtlInSeconds?: number; 
   public get idleSessionTtlInSeconds() {
     return this.getNumberAttribute('idle_session_ttl_in_seconds');
   }
-  public set idleSessionTtlInSeconds(value: number | undefined) {
+  public set idleSessionTtlInSeconds(value: number) {
     this._idleSessionTtlInSeconds = value;
   }
   public resetIdleSessionTtlInSeconds() {
@@ -552,7 +639,7 @@ export class LexBot extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get idleSessionTtlInSecondsInput() {
-    return this._idleSessionTtlInSeconds
+    return this._idleSessionTtlInSeconds;
   }
 
   // last_updated_date - computed: true, optional: false, required: false
@@ -561,11 +648,11 @@ export class LexBot extends cdktf.TerraformResource {
   }
 
   // locale - computed: false, optional: true, required: false
-  private _locale?: string | undefined; 
+  private _locale?: string; 
   public get locale() {
     return this.getStringAttribute('locale');
   }
-  public set locale(value: string | undefined) {
+  public set locale(value: string) {
     this._locale = value;
   }
   public resetLocale() {
@@ -573,7 +660,7 @@ export class LexBot extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get localeInput() {
-    return this._locale
+    return this._locale;
   }
 
   // name - computed: false, optional: false, required: true
@@ -586,15 +673,15 @@ export class LexBot extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // nlu_intent_confidence_threshold - computed: false, optional: true, required: false
-  private _nluIntentConfidenceThreshold?: number | undefined; 
+  private _nluIntentConfidenceThreshold?: number; 
   public get nluIntentConfidenceThreshold() {
     return this.getNumberAttribute('nlu_intent_confidence_threshold');
   }
-  public set nluIntentConfidenceThreshold(value: number | undefined) {
+  public set nluIntentConfidenceThreshold(value: number) {
     this._nluIntentConfidenceThreshold = value;
   }
   public resetNluIntentConfidenceThreshold() {
@@ -602,15 +689,15 @@ export class LexBot extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nluIntentConfidenceThresholdInput() {
-    return this._nluIntentConfidenceThreshold
+    return this._nluIntentConfidenceThreshold;
   }
 
   // process_behavior - computed: false, optional: true, required: false
-  private _processBehavior?: string | undefined; 
+  private _processBehavior?: string; 
   public get processBehavior() {
     return this.getStringAttribute('process_behavior');
   }
-  public set processBehavior(value: string | undefined) {
+  public set processBehavior(value: string) {
     this._processBehavior = value;
   }
   public resetProcessBehavior() {
@@ -618,7 +705,7 @@ export class LexBot extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get processBehaviorInput() {
-    return this._processBehavior
+    return this._processBehavior;
   }
 
   // status - computed: true, optional: false, required: false
@@ -632,11 +719,11 @@ export class LexBot extends cdktf.TerraformResource {
   }
 
   // voice_id - computed: true, optional: true, required: false
-  private _voiceId?: string | undefined; 
+  private _voiceId?: string; 
   public get voiceId() {
     return this.getStringAttribute('voice_id');
   }
-  public set voiceId(value: string | undefined) {
+  public set voiceId(value: string) {
     this._voiceId = value;
   }
   public resetVoiceId() {
@@ -644,38 +731,36 @@ export class LexBot extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get voiceIdInput() {
-    return this._voiceId
+    return this._voiceId;
   }
 
   // abort_statement - computed: false, optional: false, required: true
-  private _abortStatement?: LexBotAbortStatement; 
-  private __abortStatementOutput = new LexBotAbortStatementOutputReference(this as any, "abort_statement", true);
+  private _abortStatement = new LexBotAbortStatementOutputReference(this as any, "abort_statement", true);
   public get abortStatement() {
-    return this.__abortStatementOutput;
+    return this._abortStatement;
   }
   public putAbortStatement(value: LexBotAbortStatement) {
-    this._abortStatement = value;
+    this._abortStatement.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get abortStatementInput() {
-    return this._abortStatement
+    return this._abortStatement.internalValue;
   }
 
   // clarification_prompt - computed: false, optional: true, required: false
-  private _clarificationPrompt?: LexBotClarificationPrompt | undefined; 
-  private __clarificationPromptOutput = new LexBotClarificationPromptOutputReference(this as any, "clarification_prompt", true);
+  private _clarificationPrompt = new LexBotClarificationPromptOutputReference(this as any, "clarification_prompt", true);
   public get clarificationPrompt() {
-    return this.__clarificationPromptOutput;
+    return this._clarificationPrompt;
   }
-  public putClarificationPrompt(value: LexBotClarificationPrompt | undefined) {
-    this._clarificationPrompt = value;
+  public putClarificationPrompt(value: LexBotClarificationPrompt) {
+    this._clarificationPrompt.internalValue = value;
   }
   public resetClarificationPrompt() {
-    this._clarificationPrompt = undefined;
+    this._clarificationPrompt.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get clarificationPromptInput() {
-    return this._clarificationPrompt
+    return this._clarificationPrompt.internalValue;
   }
 
   // intent - computed: false, optional: false, required: true
@@ -689,24 +774,23 @@ export class LexBot extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get intentInput() {
-    return this._intent
+    return this._intent;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: LexBotTimeouts | undefined; 
-  private __timeoutsOutput = new LexBotTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new LexBotTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: LexBotTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: LexBotTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -726,10 +810,10 @@ export class LexBot extends cdktf.TerraformResource {
       nlu_intent_confidence_threshold: cdktf.numberToTerraform(this._nluIntentConfidenceThreshold),
       process_behavior: cdktf.stringToTerraform(this._processBehavior),
       voice_id: cdktf.stringToTerraform(this._voiceId),
-      abort_statement: lexBotAbortStatementToTerraform(this._abortStatement),
-      clarification_prompt: lexBotClarificationPromptToTerraform(this._clarificationPrompt),
+      abort_statement: lexBotAbortStatementToTerraform(this._abortStatement.internalValue),
+      clarification_prompt: lexBotClarificationPromptToTerraform(this._clarificationPrompt.internalValue),
       intent: cdktf.listMapper(lexBotIntentToTerraform)(this._intent),
-      timeouts: lexBotTimeoutsToTerraform(this._timeouts),
+      timeouts: lexBotTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

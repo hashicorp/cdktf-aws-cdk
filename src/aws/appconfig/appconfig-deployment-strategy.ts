@@ -107,15 +107,15 @@ export class AppconfigDeploymentStrategy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentDurationInMinutesInput() {
-    return this._deploymentDurationInMinutes
+    return this._deploymentDurationInMinutes;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -123,15 +123,15 @@ export class AppconfigDeploymentStrategy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // final_bake_time_in_minutes - computed: false, optional: true, required: false
-  private _finalBakeTimeInMinutes?: number | undefined; 
+  private _finalBakeTimeInMinutes?: number; 
   public get finalBakeTimeInMinutes() {
     return this.getNumberAttribute('final_bake_time_in_minutes');
   }
-  public set finalBakeTimeInMinutes(value: number | undefined) {
+  public set finalBakeTimeInMinutes(value: number) {
     this._finalBakeTimeInMinutes = value;
   }
   public resetFinalBakeTimeInMinutes() {
@@ -139,7 +139,7 @@ export class AppconfigDeploymentStrategy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get finalBakeTimeInMinutesInput() {
-    return this._finalBakeTimeInMinutes
+    return this._finalBakeTimeInMinutes;
   }
 
   // growth_factor - computed: false, optional: false, required: true
@@ -152,15 +152,15 @@ export class AppconfigDeploymentStrategy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get growthFactorInput() {
-    return this._growthFactor
+    return this._growthFactor;
   }
 
   // growth_type - computed: false, optional: true, required: false
-  private _growthType?: string | undefined; 
+  private _growthType?: string; 
   public get growthType() {
     return this.getStringAttribute('growth_type');
   }
-  public set growthType(value: string | undefined) {
+  public set growthType(value: string) {
     this._growthType = value;
   }
   public resetGrowthType() {
@@ -168,7 +168,7 @@ export class AppconfigDeploymentStrategy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get growthTypeInput() {
-    return this._growthType
+    return this._growthType;
   }
 
   // id - computed: true, optional: true, required: false
@@ -186,7 +186,7 @@ export class AppconfigDeploymentStrategy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // replicate_to - computed: false, optional: false, required: true
@@ -199,16 +199,16 @@ export class AppconfigDeploymentStrategy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get replicateToInput() {
-    return this._replicateTo
+    return this._replicateTo;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -216,16 +216,16 @@ export class AppconfigDeploymentStrategy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -233,7 +233,7 @@ export class AppconfigDeploymentStrategy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

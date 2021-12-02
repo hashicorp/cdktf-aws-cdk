@@ -97,11 +97,11 @@ export class DataAwsPrefixList extends cdktf.TerraformDataSource {
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -109,15 +109,15 @@ export class DataAwsPrefixList extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // prefix_list_id - computed: false, optional: true, required: false
-  private _prefixListId?: string | undefined; 
+  private _prefixListId?: string; 
   public get prefixListId() {
     return this.getStringAttribute('prefix_list_id');
   }
-  public set prefixListId(value: string | undefined) {
+  public set prefixListId(value: string) {
     this._prefixListId = value;
   }
   public resetPrefixListId() {
@@ -125,16 +125,16 @@ export class DataAwsPrefixList extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get prefixListIdInput() {
-    return this._prefixListId
+    return this._prefixListId;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsPrefixListFilter[] | undefined; 
+  private _filter?: DataAwsPrefixListFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsPrefixListFilter[] | undefined) {
+  public set filter(value: DataAwsPrefixListFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -142,7 +142,7 @@ export class DataAwsPrefixList extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

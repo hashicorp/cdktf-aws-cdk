@@ -102,15 +102,15 @@ export class Route53ResolverFirewallRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action;
   }
 
   // block_override_dns_type - computed: false, optional: true, required: false
-  private _blockOverrideDnsType?: string | undefined; 
+  private _blockOverrideDnsType?: string; 
   public get blockOverrideDnsType() {
     return this.getStringAttribute('block_override_dns_type');
   }
-  public set blockOverrideDnsType(value: string | undefined) {
+  public set blockOverrideDnsType(value: string) {
     this._blockOverrideDnsType = value;
   }
   public resetBlockOverrideDnsType() {
@@ -118,15 +118,15 @@ export class Route53ResolverFirewallRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get blockOverrideDnsTypeInput() {
-    return this._blockOverrideDnsType
+    return this._blockOverrideDnsType;
   }
 
   // block_override_domain - computed: false, optional: true, required: false
-  private _blockOverrideDomain?: string | undefined; 
+  private _blockOverrideDomain?: string; 
   public get blockOverrideDomain() {
     return this.getStringAttribute('block_override_domain');
   }
-  public set blockOverrideDomain(value: string | undefined) {
+  public set blockOverrideDomain(value: string) {
     this._blockOverrideDomain = value;
   }
   public resetBlockOverrideDomain() {
@@ -134,15 +134,15 @@ export class Route53ResolverFirewallRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get blockOverrideDomainInput() {
-    return this._blockOverrideDomain
+    return this._blockOverrideDomain;
   }
 
   // block_override_ttl - computed: false, optional: true, required: false
-  private _blockOverrideTtl?: number | undefined; 
+  private _blockOverrideTtl?: number; 
   public get blockOverrideTtl() {
     return this.getNumberAttribute('block_override_ttl');
   }
-  public set blockOverrideTtl(value: number | undefined) {
+  public set blockOverrideTtl(value: number) {
     this._blockOverrideTtl = value;
   }
   public resetBlockOverrideTtl() {
@@ -150,15 +150,15 @@ export class Route53ResolverFirewallRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get blockOverrideTtlInput() {
-    return this._blockOverrideTtl
+    return this._blockOverrideTtl;
   }
 
   // block_response - computed: false, optional: true, required: false
-  private _blockResponse?: string | undefined; 
+  private _blockResponse?: string; 
   public get blockResponse() {
     return this.getStringAttribute('block_response');
   }
-  public set blockResponse(value: string | undefined) {
+  public set blockResponse(value: string) {
     this._blockResponse = value;
   }
   public resetBlockResponse() {
@@ -166,7 +166,7 @@ export class Route53ResolverFirewallRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get blockResponseInput() {
-    return this._blockResponse
+    return this._blockResponse;
   }
 
   // firewall_domain_list_id - computed: false, optional: false, required: true
@@ -179,7 +179,7 @@ export class Route53ResolverFirewallRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get firewallDomainListIdInput() {
-    return this._firewallDomainListId
+    return this._firewallDomainListId;
   }
 
   // firewall_rule_group_id - computed: false, optional: false, required: true
@@ -192,7 +192,7 @@ export class Route53ResolverFirewallRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get firewallRuleGroupIdInput() {
-    return this._firewallRuleGroupId
+    return this._firewallRuleGroupId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -210,7 +210,7 @@ export class Route53ResolverFirewallRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // priority - computed: false, optional: false, required: true
@@ -223,7 +223,7 @@ export class Route53ResolverFirewallRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get priorityInput() {
-    return this._priority
+    return this._priority;
   }
 
   // =========

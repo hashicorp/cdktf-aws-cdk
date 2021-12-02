@@ -72,7 +72,7 @@ export class DataAwsWorkspacesImage extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get imageIdInput() {
-    return this._imageId
+    return this._imageId;
   }
 
   // name - computed: true, optional: false, required: false

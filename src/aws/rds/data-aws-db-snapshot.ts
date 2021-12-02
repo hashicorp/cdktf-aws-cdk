@@ -88,11 +88,11 @@ export class DataAwsDbSnapshot extends cdktf.TerraformDataSource {
   }
 
   // db_instance_identifier - computed: false, optional: true, required: false
-  private _dbInstanceIdentifier?: string | undefined; 
+  private _dbInstanceIdentifier?: string; 
   public get dbInstanceIdentifier() {
     return this.getStringAttribute('db_instance_identifier');
   }
-  public set dbInstanceIdentifier(value: string | undefined) {
+  public set dbInstanceIdentifier(value: string) {
     this._dbInstanceIdentifier = value;
   }
   public resetDbInstanceIdentifier() {
@@ -100,7 +100,7 @@ export class DataAwsDbSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get dbInstanceIdentifierInput() {
-    return this._dbInstanceIdentifier
+    return this._dbInstanceIdentifier;
   }
 
   // db_snapshot_arn - computed: true, optional: false, required: false
@@ -109,11 +109,11 @@ export class DataAwsDbSnapshot extends cdktf.TerraformDataSource {
   }
 
   // db_snapshot_identifier - computed: false, optional: true, required: false
-  private _dbSnapshotIdentifier?: string | undefined; 
+  private _dbSnapshotIdentifier?: string; 
   public get dbSnapshotIdentifier() {
     return this.getStringAttribute('db_snapshot_identifier');
   }
-  public set dbSnapshotIdentifier(value: string | undefined) {
+  public set dbSnapshotIdentifier(value: string) {
     this._dbSnapshotIdentifier = value;
   }
   public resetDbSnapshotIdentifier() {
@@ -121,7 +121,7 @@ export class DataAwsDbSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get dbSnapshotIdentifierInput() {
-    return this._dbSnapshotIdentifier
+    return this._dbSnapshotIdentifier;
   }
 
   // encrypted - computed: true, optional: false, required: false
@@ -145,11 +145,11 @@ export class DataAwsDbSnapshot extends cdktf.TerraformDataSource {
   }
 
   // include_public - computed: false, optional: true, required: false
-  private _includePublic?: boolean | cdktf.IResolvable | undefined; 
+  private _includePublic?: boolean | cdktf.IResolvable; 
   public get includePublic() {
     return this.getBooleanAttribute('include_public') as any;
   }
-  public set includePublic(value: boolean | cdktf.IResolvable | undefined) {
+  public set includePublic(value: boolean | cdktf.IResolvable) {
     this._includePublic = value;
   }
   public resetIncludePublic() {
@@ -157,15 +157,15 @@ export class DataAwsDbSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get includePublicInput() {
-    return this._includePublic
+    return this._includePublic;
   }
 
   // include_shared - computed: false, optional: true, required: false
-  private _includeShared?: boolean | cdktf.IResolvable | undefined; 
+  private _includeShared?: boolean | cdktf.IResolvable; 
   public get includeShared() {
     return this.getBooleanAttribute('include_shared') as any;
   }
-  public set includeShared(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeShared(value: boolean | cdktf.IResolvable) {
     this._includeShared = value;
   }
   public resetIncludeShared() {
@@ -173,7 +173,7 @@ export class DataAwsDbSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get includeSharedInput() {
-    return this._includeShared
+    return this._includeShared;
   }
 
   // iops - computed: true, optional: false, required: false
@@ -192,11 +192,11 @@ export class DataAwsDbSnapshot extends cdktf.TerraformDataSource {
   }
 
   // most_recent - computed: false, optional: true, required: false
-  private _mostRecent?: boolean | cdktf.IResolvable | undefined; 
+  private _mostRecent?: boolean | cdktf.IResolvable; 
   public get mostRecent() {
     return this.getBooleanAttribute('most_recent') as any;
   }
-  public set mostRecent(value: boolean | cdktf.IResolvable | undefined) {
+  public set mostRecent(value: boolean | cdktf.IResolvable) {
     this._mostRecent = value;
   }
   public resetMostRecent() {
@@ -204,7 +204,7 @@ export class DataAwsDbSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get mostRecentInput() {
-    return this._mostRecent
+    return this._mostRecent;
   }
 
   // option_group_name - computed: true, optional: false, required: false
@@ -223,11 +223,11 @@ export class DataAwsDbSnapshot extends cdktf.TerraformDataSource {
   }
 
   // snapshot_type - computed: false, optional: true, required: false
-  private _snapshotType?: string | undefined; 
+  private _snapshotType?: string; 
   public get snapshotType() {
     return this.getStringAttribute('snapshot_type');
   }
-  public set snapshotType(value: string | undefined) {
+  public set snapshotType(value: string) {
     this._snapshotType = value;
   }
   public resetSnapshotType() {
@@ -235,7 +235,7 @@ export class DataAwsDbSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotTypeInput() {
-    return this._snapshotType
+    return this._snapshotType;
   }
 
   // source_db_snapshot_identifier - computed: true, optional: false, required: false

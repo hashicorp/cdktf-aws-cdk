@@ -77,7 +77,7 @@ export class Ec2ClientVpnNetworkAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clientVpnEndpointIdInput() {
-    return this._clientVpnEndpointId
+    return this._clientVpnEndpointId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -86,11 +86,11 @@ export class Ec2ClientVpnNetworkAssociation extends cdktf.TerraformResource {
   }
 
   // security_groups - computed: true, optional: true, required: false
-  private _securityGroups?: string[] | undefined; 
+  private _securityGroups?: string[]; 
   public get securityGroups() {
     return this.getListAttribute('security_groups');
   }
-  public set securityGroups(value: string[] | undefined) {
+  public set securityGroups(value: string[]) {
     this._securityGroups = value;
   }
   public resetSecurityGroups() {
@@ -98,7 +98,7 @@ export class Ec2ClientVpnNetworkAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupsInput() {
-    return this._securityGroups
+    return this._securityGroups;
   }
 
   // status - computed: true, optional: false, required: false
@@ -116,7 +116,7 @@ export class Ec2ClientVpnNetworkAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdInput() {
-    return this._subnetId
+    return this._subnetId;
   }
 
   // vpc_id - computed: true, optional: false, required: false

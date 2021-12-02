@@ -68,11 +68,11 @@ export class IotThingGroupMembership extends cdktf.TerraformResource {
   }
 
   // override_dynamic_group - computed: false, optional: true, required: false
-  private _overrideDynamicGroup?: boolean | cdktf.IResolvable | undefined; 
+  private _overrideDynamicGroup?: boolean | cdktf.IResolvable; 
   public get overrideDynamicGroup() {
     return this.getBooleanAttribute('override_dynamic_group') as any;
   }
-  public set overrideDynamicGroup(value: boolean | cdktf.IResolvable | undefined) {
+  public set overrideDynamicGroup(value: boolean | cdktf.IResolvable) {
     this._overrideDynamicGroup = value;
   }
   public resetOverrideDynamicGroup() {
@@ -80,7 +80,7 @@ export class IotThingGroupMembership extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get overrideDynamicGroupInput() {
-    return this._overrideDynamicGroup
+    return this._overrideDynamicGroup;
   }
 
   // thing_group_name - computed: false, optional: false, required: true
@@ -93,7 +93,7 @@ export class IotThingGroupMembership extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get thingGroupNameInput() {
-    return this._thingGroupName
+    return this._thingGroupName;
   }
 
   // thing_name - computed: false, optional: false, required: true
@@ -106,7 +106,7 @@ export class IotThingGroupMembership extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get thingNameInput() {
-    return this._thingName
+    return this._thingName;
   }
 
   // =========

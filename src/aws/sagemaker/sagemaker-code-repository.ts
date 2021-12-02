@@ -63,12 +63,43 @@ export class SagemakerCodeRepositoryGitConfigOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerCodeRepositoryGitConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._branch) {
+      hasAnyValues = true;
+      internalValueResult.branch = this._branch;
+    }
+    if (this._repositoryUrl) {
+      hasAnyValues = true;
+      internalValueResult.repositoryUrl = this._repositoryUrl;
+    }
+    if (this._secretArn) {
+      hasAnyValues = true;
+      internalValueResult.secretArn = this._secretArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerCodeRepositoryGitConfig | undefined) {
+    if (value === undefined) {
+      this._branch = undefined;
+      this._repositoryUrl = undefined;
+      this._secretArn = undefined;
+    }
+    else {
+      this._branch = value.branch;
+      this._repositoryUrl = value.repositoryUrl;
+      this._secretArn = value.secretArn;
+    }
+  }
+
   // branch - computed: false, optional: true, required: false
-  private _branch?: string | undefined; 
+  private _branch?: string; 
   public get branch() {
     return this.getStringAttribute('branch');
   }
-  public set branch(value: string | undefined) {
+  public set branch(value: string) {
     this._branch = value;
   }
   public resetBranch() {
@@ -76,7 +107,7 @@ export class SagemakerCodeRepositoryGitConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get branchInput() {
-    return this._branch
+    return this._branch;
   }
 
   // repository_url - computed: false, optional: false, required: true
@@ -89,15 +120,15 @@ export class SagemakerCodeRepositoryGitConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get repositoryUrlInput() {
-    return this._repositoryUrl
+    return this._repositoryUrl;
   }
 
   // secret_arn - computed: false, optional: true, required: false
-  private _secretArn?: string | undefined; 
+  private _secretArn?: string; 
   public get secretArn() {
     return this.getStringAttribute('secret_arn');
   }
-  public set secretArn(value: string | undefined) {
+  public set secretArn(value: string) {
     this._secretArn = value;
   }
   public resetSecretArn() {
@@ -105,7 +136,7 @@ export class SagemakerCodeRepositoryGitConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get secretArnInput() {
-    return this._secretArn
+    return this._secretArn;
   }
 }
 
@@ -144,7 +175,7 @@ export class SagemakerCodeRepository extends cdktf.TerraformResource {
     this._codeRepositoryName = config.codeRepositoryName;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._gitConfig = config.gitConfig;
+    this._gitConfig.internalValue = config.gitConfig;
   }
 
   // ==========
@@ -166,7 +197,7 @@ export class SagemakerCodeRepository extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get codeRepositoryNameInput() {
-    return this._codeRepositoryName
+    return this._codeRepositoryName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -175,12 +206,12 @@ export class SagemakerCodeRepository extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -188,16 +219,16 @@ export class SagemakerCodeRepository extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -205,21 +236,20 @@ export class SagemakerCodeRepository extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // git_config - computed: false, optional: false, required: true
-  private _gitConfig?: SagemakerCodeRepositoryGitConfig; 
-  private __gitConfigOutput = new SagemakerCodeRepositoryGitConfigOutputReference(this as any, "git_config", true);
+  private _gitConfig = new SagemakerCodeRepositoryGitConfigOutputReference(this as any, "git_config", true);
   public get gitConfig() {
-    return this.__gitConfigOutput;
+    return this._gitConfig;
   }
   public putGitConfig(value: SagemakerCodeRepositoryGitConfig) {
-    this._gitConfig = value;
+    this._gitConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get gitConfigInput() {
-    return this._gitConfig
+    return this._gitConfig.internalValue;
   }
 
   // =========
@@ -231,7 +261,7 @@ export class SagemakerCodeRepository extends cdktf.TerraformResource {
       code_repository_name: cdktf.stringToTerraform(this._codeRepositoryName),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      git_config: sagemakerCodeRepositoryGitConfigToTerraform(this._gitConfig),
+      git_config: sagemakerCodeRepositoryGitConfigToTerraform(this._gitConfig.internalValue),
     };
   }
 }

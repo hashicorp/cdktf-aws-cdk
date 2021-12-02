@@ -81,6 +81,49 @@ export class CodebuildReportGroupExportConfigS3DestinationOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildReportGroupExportConfigS3Destination | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucket) {
+      hasAnyValues = true;
+      internalValueResult.bucket = this._bucket;
+    }
+    if (this._encryptionDisabled) {
+      hasAnyValues = true;
+      internalValueResult.encryptionDisabled = this._encryptionDisabled;
+    }
+    if (this._encryptionKey) {
+      hasAnyValues = true;
+      internalValueResult.encryptionKey = this._encryptionKey;
+    }
+    if (this._packaging) {
+      hasAnyValues = true;
+      internalValueResult.packaging = this._packaging;
+    }
+    if (this._path) {
+      hasAnyValues = true;
+      internalValueResult.path = this._path;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildReportGroupExportConfigS3Destination | undefined) {
+    if (value === undefined) {
+      this._bucket = undefined;
+      this._encryptionDisabled = undefined;
+      this._encryptionKey = undefined;
+      this._packaging = undefined;
+      this._path = undefined;
+    }
+    else {
+      this._bucket = value.bucket;
+      this._encryptionDisabled = value.encryptionDisabled;
+      this._encryptionKey = value.encryptionKey;
+      this._packaging = value.packaging;
+      this._path = value.path;
+    }
+  }
+
   // bucket - computed: false, optional: false, required: true
   private _bucket?: string; 
   public get bucket() {
@@ -91,15 +134,15 @@ export class CodebuildReportGroupExportConfigS3DestinationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // encryption_disabled - computed: false, optional: true, required: false
-  private _encryptionDisabled?: boolean | cdktf.IResolvable | undefined; 
+  private _encryptionDisabled?: boolean | cdktf.IResolvable; 
   public get encryptionDisabled() {
     return this.getBooleanAttribute('encryption_disabled') as any;
   }
-  public set encryptionDisabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set encryptionDisabled(value: boolean | cdktf.IResolvable) {
     this._encryptionDisabled = value;
   }
   public resetEncryptionDisabled() {
@@ -107,7 +150,7 @@ export class CodebuildReportGroupExportConfigS3DestinationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionDisabledInput() {
-    return this._encryptionDisabled
+    return this._encryptionDisabled;
   }
 
   // encryption_key - computed: false, optional: false, required: true
@@ -120,15 +163,15 @@ export class CodebuildReportGroupExportConfigS3DestinationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionKeyInput() {
-    return this._encryptionKey
+    return this._encryptionKey;
   }
 
   // packaging - computed: false, optional: true, required: false
-  private _packaging?: string | undefined; 
+  private _packaging?: string; 
   public get packaging() {
     return this.getStringAttribute('packaging');
   }
-  public set packaging(value: string | undefined) {
+  public set packaging(value: string) {
     this._packaging = value;
   }
   public resetPackaging() {
@@ -136,15 +179,15 @@ export class CodebuildReportGroupExportConfigS3DestinationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get packagingInput() {
-    return this._packaging
+    return this._packaging;
   }
 
   // path - computed: false, optional: true, required: false
-  private _path?: string | undefined; 
+  private _path?: string; 
   public get path() {
     return this.getStringAttribute('path');
   }
-  public set path(value: string | undefined) {
+  public set path(value: string) {
     this._path = value;
   }
   public resetPath() {
@@ -152,7 +195,7 @@ export class CodebuildReportGroupExportConfigS3DestinationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get pathInput() {
-    return this._path
+    return this._path;
   }
 }
 export interface CodebuildReportGroupExportConfig {
@@ -189,6 +232,31 @@ export class CodebuildReportGroupExportConfigOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildReportGroupExportConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    if (this._s3Destination) {
+      hasAnyValues = true;
+      internalValueResult.s3Destination = this._s3Destination?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildReportGroupExportConfig | undefined) {
+    if (value === undefined) {
+      this._type = undefined;
+      this._s3Destination.internalValue = undefined;
+    }
+    else {
+      this._type = value.type;
+      this._s3Destination.internalValue = value.s3Destination;
+    }
+  }
+
   // type - computed: false, optional: false, required: true
   private _type?: string; 
   public get type() {
@@ -199,24 +267,23 @@ export class CodebuildReportGroupExportConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // s3_destination - computed: false, optional: true, required: false
-  private _s3Destination?: CodebuildReportGroupExportConfigS3Destination | undefined; 
-  private __s3DestinationOutput = new CodebuildReportGroupExportConfigS3DestinationOutputReference(this as any, "s3_destination", true);
+  private _s3Destination = new CodebuildReportGroupExportConfigS3DestinationOutputReference(this as any, "s3_destination", true);
   public get s3Destination() {
-    return this.__s3DestinationOutput;
+    return this._s3Destination;
   }
-  public putS3Destination(value: CodebuildReportGroupExportConfigS3Destination | undefined) {
-    this._s3Destination = value;
+  public putS3Destination(value: CodebuildReportGroupExportConfigS3Destination) {
+    this._s3Destination.internalValue = value;
   }
   public resetS3Destination() {
-    this._s3Destination = undefined;
+    this._s3Destination.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get s3DestinationInput() {
-    return this._s3Destination
+    return this._s3Destination.internalValue;
   }
 }
 
@@ -257,7 +324,7 @@ export class CodebuildReportGroup extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._type = config.type;
-    this._exportConfig = config.exportConfig;
+    this._exportConfig.internalValue = config.exportConfig;
   }
 
   // ==========
@@ -275,11 +342,11 @@ export class CodebuildReportGroup extends cdktf.TerraformResource {
   }
 
   // delete_reports - computed: false, optional: true, required: false
-  private _deleteReports?: boolean | cdktf.IResolvable | undefined; 
+  private _deleteReports?: boolean | cdktf.IResolvable; 
   public get deleteReports() {
     return this.getBooleanAttribute('delete_reports') as any;
   }
-  public set deleteReports(value: boolean | cdktf.IResolvable | undefined) {
+  public set deleteReports(value: boolean | cdktf.IResolvable) {
     this._deleteReports = value;
   }
   public resetDeleteReports() {
@@ -287,7 +354,7 @@ export class CodebuildReportGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteReportsInput() {
-    return this._deleteReports
+    return this._deleteReports;
   }
 
   // id - computed: true, optional: true, required: false
@@ -305,16 +372,16 @@ export class CodebuildReportGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -322,16 +389,16 @@ export class CodebuildReportGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -339,7 +406,7 @@ export class CodebuildReportGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // type - computed: false, optional: false, required: true
@@ -352,21 +419,20 @@ export class CodebuildReportGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // export_config - computed: false, optional: false, required: true
-  private _exportConfig?: CodebuildReportGroupExportConfig; 
-  private __exportConfigOutput = new CodebuildReportGroupExportConfigOutputReference(this as any, "export_config", true);
+  private _exportConfig = new CodebuildReportGroupExportConfigOutputReference(this as any, "export_config", true);
   public get exportConfig() {
-    return this.__exportConfigOutput;
+    return this._exportConfig;
   }
   public putExportConfig(value: CodebuildReportGroupExportConfig) {
-    this._exportConfig = value;
+    this._exportConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get exportConfigInput() {
-    return this._exportConfig
+    return this._exportConfig.internalValue;
   }
 
   // =========
@@ -380,7 +446,7 @@ export class CodebuildReportGroup extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       type: cdktf.stringToTerraform(this._type),
-      export_config: codebuildReportGroupExportConfigToTerraform(this._exportConfig),
+      export_config: codebuildReportGroupExportConfigToTerraform(this._exportConfig.internalValue),
     };
   }
 }

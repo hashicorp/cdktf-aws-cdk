@@ -67,7 +67,7 @@ export class VpcDhcpOptionsAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dhcpOptionsIdInput() {
-    return this._dhcpOptionsId
+    return this._dhcpOptionsId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class VpcDhcpOptionsAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 
   // =========

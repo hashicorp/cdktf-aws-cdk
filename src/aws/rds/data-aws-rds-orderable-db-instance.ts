@@ -133,11 +133,11 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   // ==========
 
   // availability_zone_group - computed: true, optional: true, required: false
-  private _availabilityZoneGroup?: string | undefined; 
+  private _availabilityZoneGroup?: string; 
   public get availabilityZoneGroup() {
     return this.getStringAttribute('availability_zone_group');
   }
-  public set availabilityZoneGroup(value: string | undefined) {
+  public set availabilityZoneGroup(value: string) {
     this._availabilityZoneGroup = value;
   }
   public resetAvailabilityZoneGroup() {
@@ -145,7 +145,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneGroupInput() {
-    return this._availabilityZoneGroup
+    return this._availabilityZoneGroup;
   }
 
   // availability_zones - computed: true, optional: false, required: false
@@ -163,15 +163,15 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineInput() {
-    return this._engine
+    return this._engine;
   }
 
   // engine_version - computed: true, optional: true, required: false
-  private _engineVersion?: string | undefined; 
+  private _engineVersion?: string; 
   public get engineVersion() {
     return this.getStringAttribute('engine_version');
   }
-  public set engineVersion(value: string | undefined) {
+  public set engineVersion(value: string) {
     this._engineVersion = value;
   }
   public resetEngineVersion() {
@@ -179,7 +179,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineVersionInput() {
-    return this._engineVersion
+    return this._engineVersion;
   }
 
   // id - computed: true, optional: true, required: false
@@ -188,11 +188,11 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
 
   // instance_class - computed: true, optional: true, required: false
-  private _instanceClass?: string | undefined; 
+  private _instanceClass?: string; 
   public get instanceClass() {
     return this.getStringAttribute('instance_class');
   }
-  public set instanceClass(value: string | undefined) {
+  public set instanceClass(value: string) {
     this._instanceClass = value;
   }
   public resetInstanceClass() {
@@ -200,15 +200,15 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceClassInput() {
-    return this._instanceClass
+    return this._instanceClass;
   }
 
   // license_model - computed: true, optional: true, required: false
-  private _licenseModel?: string | undefined; 
+  private _licenseModel?: string; 
   public get licenseModel() {
     return this.getStringAttribute('license_model');
   }
-  public set licenseModel(value: string | undefined) {
+  public set licenseModel(value: string) {
     this._licenseModel = value;
   }
   public resetLicenseModel() {
@@ -216,7 +216,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get licenseModelInput() {
-    return this._licenseModel
+    return this._licenseModel;
   }
 
   // max_iops_per_db_instance - computed: true, optional: false, required: false
@@ -260,11 +260,11 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
 
   // preferred_engine_versions - computed: false, optional: true, required: false
-  private _preferredEngineVersions?: string[] | undefined; 
+  private _preferredEngineVersions?: string[]; 
   public get preferredEngineVersions() {
     return this.getListAttribute('preferred_engine_versions');
   }
-  public set preferredEngineVersions(value: string[] | undefined) {
+  public set preferredEngineVersions(value: string[]) {
     this._preferredEngineVersions = value;
   }
   public resetPreferredEngineVersions() {
@@ -272,15 +272,15 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get preferredEngineVersionsInput() {
-    return this._preferredEngineVersions
+    return this._preferredEngineVersions;
   }
 
   // preferred_instance_classes - computed: false, optional: true, required: false
-  private _preferredInstanceClasses?: string[] | undefined; 
+  private _preferredInstanceClasses?: string[]; 
   public get preferredInstanceClasses() {
     return this.getListAttribute('preferred_instance_classes');
   }
-  public set preferredInstanceClasses(value: string[] | undefined) {
+  public set preferredInstanceClasses(value: string[]) {
     this._preferredInstanceClasses = value;
   }
   public resetPreferredInstanceClasses() {
@@ -288,7 +288,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get preferredInstanceClassesInput() {
-    return this._preferredInstanceClasses
+    return this._preferredInstanceClasses;
   }
 
   // read_replica_capable - computed: true, optional: false, required: false
@@ -297,11 +297,11 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
 
   // storage_type - computed: true, optional: true, required: false
-  private _storageType?: string | undefined; 
+  private _storageType?: string; 
   public get storageType() {
     return this.getStringAttribute('storage_type');
   }
-  public set storageType(value: string | undefined) {
+  public set storageType(value: string) {
     this._storageType = value;
   }
   public resetStorageType() {
@@ -309,7 +309,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get storageTypeInput() {
-    return this._storageType
+    return this._storageType;
   }
 
   // supported_engine_modes - computed: true, optional: false, required: false
@@ -318,11 +318,11 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
 
   // supports_enhanced_monitoring - computed: true, optional: true, required: false
-  private _supportsEnhancedMonitoring?: boolean | cdktf.IResolvable | undefined; 
+  private _supportsEnhancedMonitoring?: boolean | cdktf.IResolvable; 
   public get supportsEnhancedMonitoring() {
     return this.getBooleanAttribute('supports_enhanced_monitoring') as any;
   }
-  public set supportsEnhancedMonitoring(value: boolean | cdktf.IResolvable | undefined) {
+  public set supportsEnhancedMonitoring(value: boolean | cdktf.IResolvable) {
     this._supportsEnhancedMonitoring = value;
   }
   public resetSupportsEnhancedMonitoring() {
@@ -330,15 +330,15 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get supportsEnhancedMonitoringInput() {
-    return this._supportsEnhancedMonitoring
+    return this._supportsEnhancedMonitoring;
   }
 
   // supports_global_databases - computed: true, optional: true, required: false
-  private _supportsGlobalDatabases?: boolean | cdktf.IResolvable | undefined; 
+  private _supportsGlobalDatabases?: boolean | cdktf.IResolvable; 
   public get supportsGlobalDatabases() {
     return this.getBooleanAttribute('supports_global_databases') as any;
   }
-  public set supportsGlobalDatabases(value: boolean | cdktf.IResolvable | undefined) {
+  public set supportsGlobalDatabases(value: boolean | cdktf.IResolvable) {
     this._supportsGlobalDatabases = value;
   }
   public resetSupportsGlobalDatabases() {
@@ -346,15 +346,15 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get supportsGlobalDatabasesInput() {
-    return this._supportsGlobalDatabases
+    return this._supportsGlobalDatabases;
   }
 
   // supports_iam_database_authentication - computed: true, optional: true, required: false
-  private _supportsIamDatabaseAuthentication?: boolean | cdktf.IResolvable | undefined; 
+  private _supportsIamDatabaseAuthentication?: boolean | cdktf.IResolvable; 
   public get supportsIamDatabaseAuthentication() {
     return this.getBooleanAttribute('supports_iam_database_authentication') as any;
   }
-  public set supportsIamDatabaseAuthentication(value: boolean | cdktf.IResolvable | undefined) {
+  public set supportsIamDatabaseAuthentication(value: boolean | cdktf.IResolvable) {
     this._supportsIamDatabaseAuthentication = value;
   }
   public resetSupportsIamDatabaseAuthentication() {
@@ -362,15 +362,15 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get supportsIamDatabaseAuthenticationInput() {
-    return this._supportsIamDatabaseAuthentication
+    return this._supportsIamDatabaseAuthentication;
   }
 
   // supports_iops - computed: true, optional: true, required: false
-  private _supportsIops?: boolean | cdktf.IResolvable | undefined; 
+  private _supportsIops?: boolean | cdktf.IResolvable; 
   public get supportsIops() {
     return this.getBooleanAttribute('supports_iops') as any;
   }
-  public set supportsIops(value: boolean | cdktf.IResolvable | undefined) {
+  public set supportsIops(value: boolean | cdktf.IResolvable) {
     this._supportsIops = value;
   }
   public resetSupportsIops() {
@@ -378,15 +378,15 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get supportsIopsInput() {
-    return this._supportsIops
+    return this._supportsIops;
   }
 
   // supports_kerberos_authentication - computed: true, optional: true, required: false
-  private _supportsKerberosAuthentication?: boolean | cdktf.IResolvable | undefined; 
+  private _supportsKerberosAuthentication?: boolean | cdktf.IResolvable; 
   public get supportsKerberosAuthentication() {
     return this.getBooleanAttribute('supports_kerberos_authentication') as any;
   }
-  public set supportsKerberosAuthentication(value: boolean | cdktf.IResolvable | undefined) {
+  public set supportsKerberosAuthentication(value: boolean | cdktf.IResolvable) {
     this._supportsKerberosAuthentication = value;
   }
   public resetSupportsKerberosAuthentication() {
@@ -394,15 +394,15 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get supportsKerberosAuthenticationInput() {
-    return this._supportsKerberosAuthentication
+    return this._supportsKerberosAuthentication;
   }
 
   // supports_performance_insights - computed: true, optional: true, required: false
-  private _supportsPerformanceInsights?: boolean | cdktf.IResolvable | undefined; 
+  private _supportsPerformanceInsights?: boolean | cdktf.IResolvable; 
   public get supportsPerformanceInsights() {
     return this.getBooleanAttribute('supports_performance_insights') as any;
   }
-  public set supportsPerformanceInsights(value: boolean | cdktf.IResolvable | undefined) {
+  public set supportsPerformanceInsights(value: boolean | cdktf.IResolvable) {
     this._supportsPerformanceInsights = value;
   }
   public resetSupportsPerformanceInsights() {
@@ -410,15 +410,15 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get supportsPerformanceInsightsInput() {
-    return this._supportsPerformanceInsights
+    return this._supportsPerformanceInsights;
   }
 
   // supports_storage_autoscaling - computed: true, optional: true, required: false
-  private _supportsStorageAutoscaling?: boolean | cdktf.IResolvable | undefined; 
+  private _supportsStorageAutoscaling?: boolean | cdktf.IResolvable; 
   public get supportsStorageAutoscaling() {
     return this.getBooleanAttribute('supports_storage_autoscaling') as any;
   }
-  public set supportsStorageAutoscaling(value: boolean | cdktf.IResolvable | undefined) {
+  public set supportsStorageAutoscaling(value: boolean | cdktf.IResolvable) {
     this._supportsStorageAutoscaling = value;
   }
   public resetSupportsStorageAutoscaling() {
@@ -426,15 +426,15 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get supportsStorageAutoscalingInput() {
-    return this._supportsStorageAutoscaling
+    return this._supportsStorageAutoscaling;
   }
 
   // supports_storage_encryption - computed: true, optional: true, required: false
-  private _supportsStorageEncryption?: boolean | cdktf.IResolvable | undefined; 
+  private _supportsStorageEncryption?: boolean | cdktf.IResolvable; 
   public get supportsStorageEncryption() {
     return this.getBooleanAttribute('supports_storage_encryption') as any;
   }
-  public set supportsStorageEncryption(value: boolean | cdktf.IResolvable | undefined) {
+  public set supportsStorageEncryption(value: boolean | cdktf.IResolvable) {
     this._supportsStorageEncryption = value;
   }
   public resetSupportsStorageEncryption() {
@@ -442,15 +442,15 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get supportsStorageEncryptionInput() {
-    return this._supportsStorageEncryption
+    return this._supportsStorageEncryption;
   }
 
   // vpc - computed: true, optional: true, required: false
-  private _vpc?: boolean | cdktf.IResolvable | undefined; 
+  private _vpc?: boolean | cdktf.IResolvable; 
   public get vpc() {
     return this.getBooleanAttribute('vpc') as any;
   }
-  public set vpc(value: boolean | cdktf.IResolvable | undefined) {
+  public set vpc(value: boolean | cdktf.IResolvable) {
     this._vpc = value;
   }
   public resetVpc() {
@@ -458,7 +458,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcInput() {
-    return this._vpc
+    return this._vpc;
   }
 
   // =========

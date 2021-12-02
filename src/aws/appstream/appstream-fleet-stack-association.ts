@@ -67,7 +67,7 @@ export class AppstreamFleetStackAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fleetNameInput() {
-    return this._fleetName
+    return this._fleetName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class AppstreamFleetStackAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stackNameInput() {
-    return this._stackName
+    return this._stackName;
   }
 
   // =========

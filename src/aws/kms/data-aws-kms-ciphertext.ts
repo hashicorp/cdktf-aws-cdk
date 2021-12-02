@@ -68,12 +68,12 @@ export class DataAwsKmsCiphertext extends cdktf.TerraformDataSource {
   }
 
   // context - computed: false, optional: true, required: false
-  private _context?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _context?: { [key: string]: string } | cdktf.IResolvable; 
   public get context() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('context') as any;
   }
-  public set context(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set context(value: { [key: string]: string } | cdktf.IResolvable) {
     this._context = value;
   }
   public resetContext() {
@@ -81,7 +81,7 @@ export class DataAwsKmsCiphertext extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get contextInput() {
-    return this._context
+    return this._context;
   }
 
   // id - computed: true, optional: true, required: false
@@ -99,7 +99,7 @@ export class DataAwsKmsCiphertext extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyIdInput() {
-    return this._keyId
+    return this._keyId;
   }
 
   // plaintext - computed: false, optional: false, required: true
@@ -112,7 +112,7 @@ export class DataAwsKmsCiphertext extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get plaintextInput() {
-    return this._plaintext
+    return this._plaintext;
   }
 
   // =========

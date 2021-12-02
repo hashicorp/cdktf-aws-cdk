@@ -77,7 +77,7 @@ export class SsoadminPermissionSetInlinePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get inlinePolicyInput() {
-    return this._inlinePolicy
+    return this._inlinePolicy;
   }
 
   // instance_arn - computed: false, optional: false, required: true
@@ -90,7 +90,7 @@ export class SsoadminPermissionSetInlinePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceArnInput() {
-    return this._instanceArn
+    return this._instanceArn;
   }
 
   // permission_set_arn - computed: false, optional: false, required: true
@@ -103,7 +103,7 @@ export class SsoadminPermissionSetInlinePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get permissionSetArnInput() {
-    return this._permissionSetArn
+    return this._permissionSetArn;
   }
 
   // =========

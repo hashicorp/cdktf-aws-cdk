@@ -86,12 +86,37 @@ export class FmsPolicyExcludeMapOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): FmsPolicyExcludeMap | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._account) {
+      hasAnyValues = true;
+      internalValueResult.account = this._account;
+    }
+    if (this._orgunit) {
+      hasAnyValues = true;
+      internalValueResult.orgunit = this._orgunit;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: FmsPolicyExcludeMap | undefined) {
+    if (value === undefined) {
+      this._account = undefined;
+      this._orgunit = undefined;
+    }
+    else {
+      this._account = value.account;
+      this._orgunit = value.orgunit;
+    }
+  }
+
   // account - computed: false, optional: true, required: false
-  private _account?: string[] | undefined; 
+  private _account?: string[]; 
   public get account() {
     return this.getListAttribute('account');
   }
-  public set account(value: string[] | undefined) {
+  public set account(value: string[]) {
     this._account = value;
   }
   public resetAccount() {
@@ -99,15 +124,15 @@ export class FmsPolicyExcludeMapOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get accountInput() {
-    return this._account
+    return this._account;
   }
 
   // orgunit - computed: false, optional: true, required: false
-  private _orgunit?: string[] | undefined; 
+  private _orgunit?: string[]; 
   public get orgunit() {
     return this.getListAttribute('orgunit');
   }
-  public set orgunit(value: string[] | undefined) {
+  public set orgunit(value: string[]) {
     this._orgunit = value;
   }
   public resetOrgunit() {
@@ -115,7 +140,7 @@ export class FmsPolicyExcludeMapOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get orgunitInput() {
-    return this._orgunit
+    return this._orgunit;
   }
 }
 export interface FmsPolicyIncludeMap {
@@ -150,12 +175,37 @@ export class FmsPolicyIncludeMapOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): FmsPolicyIncludeMap | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._account) {
+      hasAnyValues = true;
+      internalValueResult.account = this._account;
+    }
+    if (this._orgunit) {
+      hasAnyValues = true;
+      internalValueResult.orgunit = this._orgunit;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: FmsPolicyIncludeMap | undefined) {
+    if (value === undefined) {
+      this._account = undefined;
+      this._orgunit = undefined;
+    }
+    else {
+      this._account = value.account;
+      this._orgunit = value.orgunit;
+    }
+  }
+
   // account - computed: false, optional: true, required: false
-  private _account?: string[] | undefined; 
+  private _account?: string[]; 
   public get account() {
     return this.getListAttribute('account');
   }
-  public set account(value: string[] | undefined) {
+  public set account(value: string[]) {
     this._account = value;
   }
   public resetAccount() {
@@ -163,15 +213,15 @@ export class FmsPolicyIncludeMapOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get accountInput() {
-    return this._account
+    return this._account;
   }
 
   // orgunit - computed: false, optional: true, required: false
-  private _orgunit?: string[] | undefined; 
+  private _orgunit?: string[]; 
   public get orgunit() {
     return this.getListAttribute('orgunit');
   }
-  public set orgunit(value: string[] | undefined) {
+  public set orgunit(value: string[]) {
     this._orgunit = value;
   }
   public resetOrgunit() {
@@ -179,7 +229,7 @@ export class FmsPolicyIncludeMapOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get orgunitInput() {
-    return this._orgunit
+    return this._orgunit;
   }
 }
 export interface FmsPolicySecurityServicePolicyData {
@@ -214,12 +264,37 @@ export class FmsPolicySecurityServicePolicyDataOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): FmsPolicySecurityServicePolicyData | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._managedServiceData) {
+      hasAnyValues = true;
+      internalValueResult.managedServiceData = this._managedServiceData;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: FmsPolicySecurityServicePolicyData | undefined) {
+    if (value === undefined) {
+      this._managedServiceData = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._managedServiceData = value.managedServiceData;
+      this._type = value.type;
+    }
+  }
+
   // managed_service_data - computed: false, optional: true, required: false
-  private _managedServiceData?: string | undefined; 
+  private _managedServiceData?: string; 
   public get managedServiceData() {
     return this.getStringAttribute('managed_service_data');
   }
-  public set managedServiceData(value: string | undefined) {
+  public set managedServiceData(value: string) {
     this._managedServiceData = value;
   }
   public resetManagedServiceData() {
@@ -227,7 +302,7 @@ export class FmsPolicySecurityServicePolicyDataOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get managedServiceDataInput() {
-    return this._managedServiceData
+    return this._managedServiceData;
   }
 
   // type - computed: false, optional: false, required: true
@@ -240,7 +315,7 @@ export class FmsPolicySecurityServicePolicyDataOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 
@@ -283,9 +358,9 @@ export class FmsPolicy extends cdktf.TerraformResource {
     this._resourceTags = config.resourceTags;
     this._resourceType = config.resourceType;
     this._resourceTypeList = config.resourceTypeList;
-    this._excludeMap = config.excludeMap;
-    this._includeMap = config.includeMap;
-    this._securityServicePolicyData = config.securityServicePolicyData;
+    this._excludeMap.internalValue = config.excludeMap;
+    this._includeMap.internalValue = config.includeMap;
+    this._securityServicePolicyData.internalValue = config.securityServicePolicyData;
   }
 
   // ==========
@@ -298,11 +373,11 @@ export class FmsPolicy extends cdktf.TerraformResource {
   }
 
   // delete_all_policy_resources - computed: false, optional: true, required: false
-  private _deleteAllPolicyResources?: boolean | cdktf.IResolvable | undefined; 
+  private _deleteAllPolicyResources?: boolean | cdktf.IResolvable; 
   public get deleteAllPolicyResources() {
     return this.getBooleanAttribute('delete_all_policy_resources') as any;
   }
-  public set deleteAllPolicyResources(value: boolean | cdktf.IResolvable | undefined) {
+  public set deleteAllPolicyResources(value: boolean | cdktf.IResolvable) {
     this._deleteAllPolicyResources = value;
   }
   public resetDeleteAllPolicyResources() {
@@ -310,7 +385,7 @@ export class FmsPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteAllPolicyResourcesInput() {
-    return this._deleteAllPolicyResources
+    return this._deleteAllPolicyResources;
   }
 
   // exclude_resource_tags - computed: false, optional: false, required: true
@@ -323,7 +398,7 @@ export class FmsPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get excludeResourceTagsInput() {
-    return this._excludeResourceTags
+    return this._excludeResourceTags;
   }
 
   // id - computed: true, optional: true, required: false
@@ -341,7 +416,7 @@ export class FmsPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // policy_update_token - computed: true, optional: false, required: false
@@ -350,11 +425,11 @@ export class FmsPolicy extends cdktf.TerraformResource {
   }
 
   // remediation_enabled - computed: false, optional: true, required: false
-  private _remediationEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _remediationEnabled?: boolean | cdktf.IResolvable; 
   public get remediationEnabled() {
     return this.getBooleanAttribute('remediation_enabled') as any;
   }
-  public set remediationEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set remediationEnabled(value: boolean | cdktf.IResolvable) {
     this._remediationEnabled = value;
   }
   public resetRemediationEnabled() {
@@ -362,16 +437,16 @@ export class FmsPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get remediationEnabledInput() {
-    return this._remediationEnabled
+    return this._remediationEnabled;
   }
 
   // resource_tags - computed: false, optional: true, required: false
-  private _resourceTags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _resourceTags?: { [key: string]: string } | cdktf.IResolvable; 
   public get resourceTags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_tags') as any;
   }
-  public set resourceTags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set resourceTags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._resourceTags = value;
   }
   public resetResourceTags() {
@@ -379,15 +454,15 @@ export class FmsPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceTagsInput() {
-    return this._resourceTags
+    return this._resourceTags;
   }
 
   // resource_type - computed: true, optional: true, required: false
-  private _resourceType?: string | undefined; 
+  private _resourceType?: string; 
   public get resourceType() {
     return this.getStringAttribute('resource_type');
   }
-  public set resourceType(value: string | undefined) {
+  public set resourceType(value: string) {
     this._resourceType = value;
   }
   public resetResourceType() {
@@ -395,15 +470,15 @@ export class FmsPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceTypeInput() {
-    return this._resourceType
+    return this._resourceType;
   }
 
   // resource_type_list - computed: true, optional: true, required: false
-  private _resourceTypeList?: string[] | undefined; 
+  private _resourceTypeList?: string[]; 
   public get resourceTypeList() {
     return this.getListAttribute('resource_type_list');
   }
-  public set resourceTypeList(value: string[] | undefined) {
+  public set resourceTypeList(value: string[]) {
     this._resourceTypeList = value;
   }
   public resetResourceTypeList() {
@@ -411,55 +486,52 @@ export class FmsPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceTypeListInput() {
-    return this._resourceTypeList
+    return this._resourceTypeList;
   }
 
   // exclude_map - computed: false, optional: true, required: false
-  private _excludeMap?: FmsPolicyExcludeMap | undefined; 
-  private __excludeMapOutput = new FmsPolicyExcludeMapOutputReference(this as any, "exclude_map", true);
+  private _excludeMap = new FmsPolicyExcludeMapOutputReference(this as any, "exclude_map", true);
   public get excludeMap() {
-    return this.__excludeMapOutput;
+    return this._excludeMap;
   }
-  public putExcludeMap(value: FmsPolicyExcludeMap | undefined) {
-    this._excludeMap = value;
+  public putExcludeMap(value: FmsPolicyExcludeMap) {
+    this._excludeMap.internalValue = value;
   }
   public resetExcludeMap() {
-    this._excludeMap = undefined;
+    this._excludeMap.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get excludeMapInput() {
-    return this._excludeMap
+    return this._excludeMap.internalValue;
   }
 
   // include_map - computed: false, optional: true, required: false
-  private _includeMap?: FmsPolicyIncludeMap | undefined; 
-  private __includeMapOutput = new FmsPolicyIncludeMapOutputReference(this as any, "include_map", true);
+  private _includeMap = new FmsPolicyIncludeMapOutputReference(this as any, "include_map", true);
   public get includeMap() {
-    return this.__includeMapOutput;
+    return this._includeMap;
   }
-  public putIncludeMap(value: FmsPolicyIncludeMap | undefined) {
-    this._includeMap = value;
+  public putIncludeMap(value: FmsPolicyIncludeMap) {
+    this._includeMap.internalValue = value;
   }
   public resetIncludeMap() {
-    this._includeMap = undefined;
+    this._includeMap.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get includeMapInput() {
-    return this._includeMap
+    return this._includeMap.internalValue;
   }
 
   // security_service_policy_data - computed: false, optional: false, required: true
-  private _securityServicePolicyData?: FmsPolicySecurityServicePolicyData; 
-  private __securityServicePolicyDataOutput = new FmsPolicySecurityServicePolicyDataOutputReference(this as any, "security_service_policy_data", true);
+  private _securityServicePolicyData = new FmsPolicySecurityServicePolicyDataOutputReference(this as any, "security_service_policy_data", true);
   public get securityServicePolicyData() {
-    return this.__securityServicePolicyDataOutput;
+    return this._securityServicePolicyData;
   }
   public putSecurityServicePolicyData(value: FmsPolicySecurityServicePolicyData) {
-    this._securityServicePolicyData = value;
+    this._securityServicePolicyData.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get securityServicePolicyDataInput() {
-    return this._securityServicePolicyData
+    return this._securityServicePolicyData.internalValue;
   }
 
   // =========
@@ -475,9 +547,9 @@ export class FmsPolicy extends cdktf.TerraformResource {
       resource_tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._resourceTags),
       resource_type: cdktf.stringToTerraform(this._resourceType),
       resource_type_list: cdktf.listMapper(cdktf.stringToTerraform)(this._resourceTypeList),
-      exclude_map: fmsPolicyExcludeMapToTerraform(this._excludeMap),
-      include_map: fmsPolicyIncludeMapToTerraform(this._includeMap),
-      security_service_policy_data: fmsPolicySecurityServicePolicyDataToTerraform(this._securityServicePolicyData),
+      exclude_map: fmsPolicyExcludeMapToTerraform(this._excludeMap.internalValue),
+      include_map: fmsPolicyIncludeMapToTerraform(this._includeMap.internalValue),
+      security_service_policy_data: fmsPolicySecurityServicePolicyDataToTerraform(this._securityServicePolicyData.internalValue),
     };
   }
 }

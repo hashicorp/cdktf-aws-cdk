@@ -196,7 +196,7 @@ export interface AwsProviderAssumeRole {
   readonly transitiveTagKeys?: string[];
 }
 
-export function awsProviderAssumeRoleToTerraform(struct?: AwsProviderAssumeRoleOutputReference | AwsProviderAssumeRole): any {
+export function awsProviderAssumeRoleToTerraform(struct?: AwsProviderAssumeRole): any {
   if (!cdktf.canInspect(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
@@ -213,144 +213,6 @@ export function awsProviderAssumeRoleToTerraform(struct?: AwsProviderAssumeRoleO
   }
 }
 
-export class AwsProviderAssumeRoleOutputReference extends cdktf.ComplexObject {
-  /**
-  * @param terraformResource The parent resource
-  * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
-  */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
-  }
-
-  // duration_seconds - computed: false, optional: true, required: false
-  private _durationSeconds?: number | undefined; 
-  public get durationSeconds() {
-    return this._durationSeconds;
-  }
-  public set durationSeconds(value: number | undefined| undefined) {
-    this._durationSeconds = value;
-  }
-  public resetDurationSeconds() {
-    this._durationSeconds = undefined;
-  }
-  // Temporarily expose input value. Use with caution.
-  public get durationSecondsInput() {
-    return this._durationSeconds
-  }
-
-  // external_id - computed: false, optional: true, required: false
-  private _externalId?: string | undefined; 
-  public get externalId() {
-    return this._externalId;
-  }
-  public set externalId(value: string | undefined| undefined) {
-    this._externalId = value;
-  }
-  public resetExternalId() {
-    this._externalId = undefined;
-  }
-  // Temporarily expose input value. Use with caution.
-  public get externalIdInput() {
-    return this._externalId
-  }
-
-  // policy - computed: false, optional: true, required: false
-  private _policy?: string | undefined; 
-  public get policy() {
-    return this._policy;
-  }
-  public set policy(value: string | undefined| undefined) {
-    this._policy = value;
-  }
-  public resetPolicy() {
-    this._policy = undefined;
-  }
-  // Temporarily expose input value. Use with caution.
-  public get policyInput() {
-    return this._policy
-  }
-
-  // policy_arns - computed: false, optional: true, required: false
-  private _policyArns?: string[] | undefined; 
-  public get policyArns() {
-    return this._policyArns;
-  }
-  public set policyArns(value: string[] | undefined| undefined) {
-    this._policyArns = value;
-  }
-  public resetPolicyArns() {
-    this._policyArns = undefined;
-  }
-  // Temporarily expose input value. Use with caution.
-  public get policyArnsInput() {
-    return this._policyArns
-  }
-
-  // role_arn - computed: false, optional: true, required: false
-  private _roleArn?: string | undefined; 
-  public get roleArn() {
-    return this._roleArn;
-  }
-  public set roleArn(value: string | undefined| undefined) {
-    this._roleArn = value;
-  }
-  public resetRoleArn() {
-    this._roleArn = undefined;
-  }
-  // Temporarily expose input value. Use with caution.
-  public get roleArnInput() {
-    return this._roleArn
-  }
-
-  // session_name - computed: false, optional: true, required: false
-  private _sessionName?: string | undefined; 
-  public get sessionName() {
-    return this._sessionName;
-  }
-  public set sessionName(value: string | undefined| undefined) {
-    this._sessionName = value;
-  }
-  public resetSessionName() {
-    this._sessionName = undefined;
-  }
-  // Temporarily expose input value. Use with caution.
-  public get sessionNameInput() {
-    return this._sessionName
-  }
-
-  // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
-  public get tags() {
-    return this._tags;
-  }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined| undefined) {
-    this._tags = value;
-  }
-  public resetTags() {
-    this._tags = undefined;
-  }
-  // Temporarily expose input value. Use with caution.
-  public get tagsInput() {
-    return this._tags
-  }
-
-  // transitive_tag_keys - computed: false, optional: true, required: false
-  private _transitiveTagKeys?: string[] | undefined; 
-  public get transitiveTagKeys() {
-    return this._transitiveTagKeys;
-  }
-  public set transitiveTagKeys(value: string[] | undefined| undefined) {
-    this._transitiveTagKeys = value;
-  }
-  public resetTransitiveTagKeys() {
-    this._transitiveTagKeys = undefined;
-  }
-  // Temporarily expose input value. Use with caution.
-  public get transitiveTagKeysInput() {
-    return this._transitiveTagKeys
-  }
-}
 export interface AwsProviderDefaultTags {
   /**
   * Resource tags to default across all resources
@@ -360,7 +222,7 @@ export interface AwsProviderDefaultTags {
   readonly tags?: { [key: string]: string } | cdktf.IResolvable;
 }
 
-export function awsProviderDefaultTagsToTerraform(struct?: AwsProviderDefaultTagsOutputReference | AwsProviderDefaultTags): any {
+export function awsProviderDefaultTagsToTerraform(struct?: AwsProviderDefaultTags): any {
   if (!cdktf.canInspect(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
@@ -370,32 +232,6 @@ export function awsProviderDefaultTagsToTerraform(struct?: AwsProviderDefaultTag
   }
 }
 
-export class AwsProviderDefaultTagsOutputReference extends cdktf.ComplexObject {
-  /**
-  * @param terraformResource The parent resource
-  * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
-  */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
-  }
-
-  // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
-  public get tags() {
-    return this._tags;
-  }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined| undefined) {
-    this._tags = value;
-  }
-  public resetTags() {
-    this._tags = undefined;
-  }
-  // Temporarily expose input value. Use with caution.
-  public get tagsInput() {
-    return this._tags
-  }
-}
 export interface AwsProviderEndpoints {
   /**
   * Use this to override the default service endpoint URL
@@ -2523,7 +2359,7 @@ export interface AwsProviderIgnoreTags {
   readonly keys?: string[];
 }
 
-export function awsProviderIgnoreTagsToTerraform(struct?: AwsProviderIgnoreTagsOutputReference | AwsProviderIgnoreTags): any {
+export function awsProviderIgnoreTagsToTerraform(struct?: AwsProviderIgnoreTags): any {
   if (!cdktf.canInspect(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
@@ -2534,48 +2370,6 @@ export function awsProviderIgnoreTagsToTerraform(struct?: AwsProviderIgnoreTagsO
   }
 }
 
-export class AwsProviderIgnoreTagsOutputReference extends cdktf.ComplexObject {
-  /**
-  * @param terraformResource The parent resource
-  * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
-  */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
-  }
-
-  // key_prefixes - computed: false, optional: true, required: false
-  private _keyPrefixes?: string[] | undefined; 
-  public get keyPrefixes() {
-    return this._keyPrefixes;
-  }
-  public set keyPrefixes(value: string[] | undefined| undefined) {
-    this._keyPrefixes = value;
-  }
-  public resetKeyPrefixes() {
-    this._keyPrefixes = undefined;
-  }
-  // Temporarily expose input value. Use with caution.
-  public get keyPrefixesInput() {
-    return this._keyPrefixes
-  }
-
-  // keys - computed: false, optional: true, required: false
-  private _keys?: string[] | undefined; 
-  public get keys() {
-    return this._keys;
-  }
-  public set keys(value: string[] | undefined| undefined) {
-    this._keys = value;
-  }
-  public resetKeys() {
-    this._keys = undefined;
-  }
-  // Temporarily expose input value. Use with caution.
-  public get keysInput() {
-    return this._keys
-  }
-}
 
 /**
 * Represents a {@link https://www.terraform.io/docs/providers/aws aws}
@@ -2636,11 +2430,11 @@ export class AwsProvider extends cdktf.TerraformProvider {
   // ==========
 
   // access_key - computed: false, optional: true, required: false
-  private _accessKey?: string | undefined; 
+  private _accessKey?: string; 
   public get accessKey() {
     return this._accessKey;
   }
-  public set accessKey(value: string | undefined| undefined) {
+  public set accessKey(value: string | undefined) {
     this._accessKey = value;
   }
   public resetAccessKey() {
@@ -2648,15 +2442,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get accessKeyInput() {
-    return this._accessKey
+    return this._accessKey;
   }
 
   // allowed_account_ids - computed: false, optional: true, required: false
-  private _allowedAccountIds?: string[] | undefined; 
+  private _allowedAccountIds?: string[]; 
   public get allowedAccountIds() {
     return this._allowedAccountIds;
   }
-  public set allowedAccountIds(value: string[] | undefined| undefined) {
+  public set allowedAccountIds(value: string[] | undefined) {
     this._allowedAccountIds = value;
   }
   public resetAllowedAccountIds() {
@@ -2664,15 +2458,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get allowedAccountIdsInput() {
-    return this._allowedAccountIds
+    return this._allowedAccountIds;
   }
 
   // forbidden_account_ids - computed: false, optional: true, required: false
-  private _forbiddenAccountIds?: string[] | undefined; 
+  private _forbiddenAccountIds?: string[]; 
   public get forbiddenAccountIds() {
     return this._forbiddenAccountIds;
   }
-  public set forbiddenAccountIds(value: string[] | undefined| undefined) {
+  public set forbiddenAccountIds(value: string[] | undefined) {
     this._forbiddenAccountIds = value;
   }
   public resetForbiddenAccountIds() {
@@ -2680,15 +2474,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get forbiddenAccountIdsInput() {
-    return this._forbiddenAccountIds
+    return this._forbiddenAccountIds;
   }
 
   // http_proxy - computed: false, optional: true, required: false
-  private _httpProxy?: string | undefined; 
+  private _httpProxy?: string; 
   public get httpProxy() {
     return this._httpProxy;
   }
-  public set httpProxy(value: string | undefined| undefined) {
+  public set httpProxy(value: string | undefined) {
     this._httpProxy = value;
   }
   public resetHttpProxy() {
@@ -2696,15 +2490,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get httpProxyInput() {
-    return this._httpProxy
+    return this._httpProxy;
   }
 
   // insecure - computed: false, optional: true, required: false
-  private _insecure?: boolean | cdktf.IResolvable | undefined; 
+  private _insecure?: boolean | cdktf.IResolvable; 
   public get insecure() {
     return this._insecure;
   }
-  public set insecure(value: boolean | cdktf.IResolvable | undefined| undefined) {
+  public set insecure(value: boolean | cdktf.IResolvable | undefined) {
     this._insecure = value;
   }
   public resetInsecure() {
@@ -2712,15 +2506,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get insecureInput() {
-    return this._insecure
+    return this._insecure;
   }
 
   // max_retries - computed: false, optional: true, required: false
-  private _maxRetries?: number | undefined; 
+  private _maxRetries?: number; 
   public get maxRetries() {
     return this._maxRetries;
   }
-  public set maxRetries(value: number | undefined| undefined) {
+  public set maxRetries(value: number | undefined) {
     this._maxRetries = value;
   }
   public resetMaxRetries() {
@@ -2728,15 +2522,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get maxRetriesInput() {
-    return this._maxRetries
+    return this._maxRetries;
   }
 
   // profile - computed: false, optional: true, required: false
-  private _profile?: string | undefined; 
+  private _profile?: string; 
   public get profile() {
     return this._profile;
   }
-  public set profile(value: string | undefined| undefined) {
+  public set profile(value: string | undefined) {
     this._profile = value;
   }
   public resetProfile() {
@@ -2744,7 +2538,7 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get profileInput() {
-    return this._profile
+    return this._profile;
   }
 
   // region - computed: false, optional: false, required: true
@@ -2752,20 +2546,20 @@ export class AwsProvider extends cdktf.TerraformProvider {
   public get region() {
     return this._region;
   }
-  public set region(value: string| undefined) {
+  public set region(value: string | undefined) {
     this._region = value;
   }
   // Temporarily expose input value. Use with caution.
   public get regionInput() {
-    return this._region
+    return this._region;
   }
 
   // s3_force_path_style - computed: false, optional: true, required: false
-  private _s3ForcePathStyle?: boolean | cdktf.IResolvable | undefined; 
+  private _s3ForcePathStyle?: boolean | cdktf.IResolvable; 
   public get s3ForcePathStyle() {
     return this._s3ForcePathStyle;
   }
-  public set s3ForcePathStyle(value: boolean | cdktf.IResolvable | undefined| undefined) {
+  public set s3ForcePathStyle(value: boolean | cdktf.IResolvable | undefined) {
     this._s3ForcePathStyle = value;
   }
   public resetS3ForcePathStyle() {
@@ -2773,15 +2567,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get s3ForcePathStyleInput() {
-    return this._s3ForcePathStyle
+    return this._s3ForcePathStyle;
   }
 
   // secret_key - computed: false, optional: true, required: false
-  private _secretKey?: string | undefined; 
+  private _secretKey?: string; 
   public get secretKey() {
     return this._secretKey;
   }
-  public set secretKey(value: string | undefined| undefined) {
+  public set secretKey(value: string | undefined) {
     this._secretKey = value;
   }
   public resetSecretKey() {
@@ -2789,15 +2583,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get secretKeyInput() {
-    return this._secretKey
+    return this._secretKey;
   }
 
   // shared_credentials_file - computed: false, optional: true, required: false
-  private _sharedCredentialsFile?: string | undefined; 
+  private _sharedCredentialsFile?: string; 
   public get sharedCredentialsFile() {
     return this._sharedCredentialsFile;
   }
-  public set sharedCredentialsFile(value: string | undefined| undefined) {
+  public set sharedCredentialsFile(value: string | undefined) {
     this._sharedCredentialsFile = value;
   }
   public resetSharedCredentialsFile() {
@@ -2805,15 +2599,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get sharedCredentialsFileInput() {
-    return this._sharedCredentialsFile
+    return this._sharedCredentialsFile;
   }
 
   // skip_credentials_validation - computed: false, optional: true, required: false
-  private _skipCredentialsValidation?: boolean | cdktf.IResolvable | undefined; 
+  private _skipCredentialsValidation?: boolean | cdktf.IResolvable; 
   public get skipCredentialsValidation() {
     return this._skipCredentialsValidation;
   }
-  public set skipCredentialsValidation(value: boolean | cdktf.IResolvable | undefined| undefined) {
+  public set skipCredentialsValidation(value: boolean | cdktf.IResolvable | undefined) {
     this._skipCredentialsValidation = value;
   }
   public resetSkipCredentialsValidation() {
@@ -2821,15 +2615,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get skipCredentialsValidationInput() {
-    return this._skipCredentialsValidation
+    return this._skipCredentialsValidation;
   }
 
   // skip_get_ec2_platforms - computed: false, optional: true, required: false
-  private _skipGetEc2Platforms?: boolean | cdktf.IResolvable | undefined; 
+  private _skipGetEc2Platforms?: boolean | cdktf.IResolvable; 
   public get skipGetEc2Platforms() {
     return this._skipGetEc2Platforms;
   }
-  public set skipGetEc2Platforms(value: boolean | cdktf.IResolvable | undefined| undefined) {
+  public set skipGetEc2Platforms(value: boolean | cdktf.IResolvable | undefined) {
     this._skipGetEc2Platforms = value;
   }
   public resetSkipGetEc2Platforms() {
@@ -2837,15 +2631,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get skipGetEc2PlatformsInput() {
-    return this._skipGetEc2Platforms
+    return this._skipGetEc2Platforms;
   }
 
   // skip_metadata_api_check - computed: false, optional: true, required: false
-  private _skipMetadataApiCheck?: boolean | cdktf.IResolvable | undefined; 
+  private _skipMetadataApiCheck?: boolean | cdktf.IResolvable; 
   public get skipMetadataApiCheck() {
     return this._skipMetadataApiCheck;
   }
-  public set skipMetadataApiCheck(value: boolean | cdktf.IResolvable | undefined| undefined) {
+  public set skipMetadataApiCheck(value: boolean | cdktf.IResolvable | undefined) {
     this._skipMetadataApiCheck = value;
   }
   public resetSkipMetadataApiCheck() {
@@ -2853,15 +2647,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get skipMetadataApiCheckInput() {
-    return this._skipMetadataApiCheck
+    return this._skipMetadataApiCheck;
   }
 
   // skip_region_validation - computed: false, optional: true, required: false
-  private _skipRegionValidation?: boolean | cdktf.IResolvable | undefined; 
+  private _skipRegionValidation?: boolean | cdktf.IResolvable; 
   public get skipRegionValidation() {
     return this._skipRegionValidation;
   }
-  public set skipRegionValidation(value: boolean | cdktf.IResolvable | undefined| undefined) {
+  public set skipRegionValidation(value: boolean | cdktf.IResolvable | undefined) {
     this._skipRegionValidation = value;
   }
   public resetSkipRegionValidation() {
@@ -2869,15 +2663,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get skipRegionValidationInput() {
-    return this._skipRegionValidation
+    return this._skipRegionValidation;
   }
 
   // skip_requesting_account_id - computed: false, optional: true, required: false
-  private _skipRequestingAccountId?: boolean | cdktf.IResolvable | undefined; 
+  private _skipRequestingAccountId?: boolean | cdktf.IResolvable; 
   public get skipRequestingAccountId() {
     return this._skipRequestingAccountId;
   }
-  public set skipRequestingAccountId(value: boolean | cdktf.IResolvable | undefined| undefined) {
+  public set skipRequestingAccountId(value: boolean | cdktf.IResolvable | undefined) {
     this._skipRequestingAccountId = value;
   }
   public resetSkipRequestingAccountId() {
@@ -2885,15 +2679,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get skipRequestingAccountIdInput() {
-    return this._skipRequestingAccountId
+    return this._skipRequestingAccountId;
   }
 
   // token - computed: false, optional: true, required: false
-  private _token?: string | undefined; 
+  private _token?: string; 
   public get token() {
     return this._token;
   }
-  public set token(value: string | undefined| undefined) {
+  public set token(value: string | undefined) {
     this._token = value;
   }
   public resetToken() {
@@ -2901,15 +2695,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get tokenInput() {
-    return this._token
+    return this._token;
   }
 
   // alias - computed: false, optional: true, required: false
-  private _alias?: string | undefined; 
+  private _alias?: string; 
   public get alias() {
     return this._alias;
   }
-  public set alias(value: string | undefined| undefined) {
+  public set alias(value: string | undefined) {
     this._alias = value;
   }
   public resetAlias() {
@@ -2917,15 +2711,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get aliasInput() {
-    return this._alias
+    return this._alias;
   }
 
   // assume_role - computed: false, optional: true, required: false
-  private _assumeRole?: AwsProviderAssumeRole | undefined; 
+  private _assumeRole?: AwsProviderAssumeRole; 
   public get assumeRole() {
     return this._assumeRole;
   }
-  public set assumeRole(value: AwsProviderAssumeRole | undefined| undefined) {
+  public set assumeRole(value: AwsProviderAssumeRole | undefined) {
     this._assumeRole = value;
   }
   public resetAssumeRole() {
@@ -2933,15 +2727,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get assumeRoleInput() {
-    return this._assumeRole
+    return this._assumeRole;
   }
 
   // default_tags - computed: false, optional: true, required: false
-  private _defaultTags?: AwsProviderDefaultTags | undefined; 
+  private _defaultTags?: AwsProviderDefaultTags; 
   public get defaultTags() {
     return this._defaultTags;
   }
-  public set defaultTags(value: AwsProviderDefaultTags | undefined| undefined) {
+  public set defaultTags(value: AwsProviderDefaultTags | undefined) {
     this._defaultTags = value;
   }
   public resetDefaultTags() {
@@ -2949,15 +2743,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultTagsInput() {
-    return this._defaultTags
+    return this._defaultTags;
   }
 
   // endpoints - computed: false, optional: true, required: false
-  private _endpoints?: AwsProviderEndpoints[] | undefined; 
+  private _endpoints?: AwsProviderEndpoints[]; 
   public get endpoints() {
     return this._endpoints;
   }
-  public set endpoints(value: AwsProviderEndpoints[] | undefined| undefined) {
+  public set endpoints(value: AwsProviderEndpoints[] | undefined) {
     this._endpoints = value;
   }
   public resetEndpoints() {
@@ -2965,15 +2759,15 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get endpointsInput() {
-    return this._endpoints
+    return this._endpoints;
   }
 
   // ignore_tags - computed: false, optional: true, required: false
-  private _ignoreTags?: AwsProviderIgnoreTags | undefined; 
+  private _ignoreTags?: AwsProviderIgnoreTags; 
   public get ignoreTags() {
     return this._ignoreTags;
   }
-  public set ignoreTags(value: AwsProviderIgnoreTags | undefined| undefined) {
+  public set ignoreTags(value: AwsProviderIgnoreTags | undefined) {
     this._ignoreTags = value;
   }
   public resetIgnoreTags() {
@@ -2981,7 +2775,7 @@ export class AwsProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get ignoreTagsInput() {
-    return this._ignoreTags
+    return this._ignoreTags;
   }
 
   // =========

@@ -62,7 +62,7 @@ export class DxConnectionConfirmation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get connectionIdInput() {
-    return this._connectionId
+    return this._connectionId;
   }
 
   // id - computed: true, optional: true, required: false

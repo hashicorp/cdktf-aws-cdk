@@ -87,7 +87,7 @@ export class LambdaLayerVersionPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action;
   }
 
   // id - computed: true, optional: true, required: false
@@ -105,15 +105,15 @@ export class LambdaLayerVersionPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get layerNameInput() {
-    return this._layerName
+    return this._layerName;
   }
 
   // organization_id - computed: false, optional: true, required: false
-  private _organizationId?: string | undefined; 
+  private _organizationId?: string; 
   public get organizationId() {
     return this.getStringAttribute('organization_id');
   }
-  public set organizationId(value: string | undefined) {
+  public set organizationId(value: string) {
     this._organizationId = value;
   }
   public resetOrganizationId() {
@@ -121,7 +121,7 @@ export class LambdaLayerVersionPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get organizationIdInput() {
-    return this._organizationId
+    return this._organizationId;
   }
 
   // policy - computed: true, optional: false, required: false
@@ -139,7 +139,7 @@ export class LambdaLayerVersionPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get principalInput() {
-    return this._principal
+    return this._principal;
   }
 
   // revision_id - computed: true, optional: false, required: false
@@ -157,7 +157,7 @@ export class LambdaLayerVersionPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get statementIdInput() {
-    return this._statementId
+    return this._statementId;
   }
 
   // version_number - computed: false, optional: false, required: true
@@ -170,7 +170,7 @@ export class LambdaLayerVersionPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionNumberInput() {
-    return this._versionNumber
+    return this._versionNumber;
   }
 
   // =========

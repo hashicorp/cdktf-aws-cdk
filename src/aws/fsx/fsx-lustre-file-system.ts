@@ -131,12 +131,43 @@ export class FsxLustreFileSystemTimeoutsOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): FsxLustreFileSystemTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: FsxLustreFileSystemTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -144,15 +175,15 @@ export class FsxLustreFileSystemTimeoutsOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -160,15 +191,15 @@ export class FsxLustreFileSystemTimeoutsOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -176,7 +207,7 @@ export class FsxLustreFileSystemTimeoutsOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -232,7 +263,7 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._weeklyMaintenanceStartTime = config.weeklyMaintenanceStartTime;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -245,11 +276,11 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
 
   // auto_import_policy - computed: true, optional: true, required: false
-  private _autoImportPolicy?: string | undefined; 
+  private _autoImportPolicy?: string; 
   public get autoImportPolicy() {
     return this.getStringAttribute('auto_import_policy');
   }
-  public set autoImportPolicy(value: string | undefined) {
+  public set autoImportPolicy(value: string) {
     this._autoImportPolicy = value;
   }
   public resetAutoImportPolicy() {
@@ -257,15 +288,15 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoImportPolicyInput() {
-    return this._autoImportPolicy
+    return this._autoImportPolicy;
   }
 
   // automatic_backup_retention_days - computed: true, optional: true, required: false
-  private _automaticBackupRetentionDays?: number | undefined; 
+  private _automaticBackupRetentionDays?: number; 
   public get automaticBackupRetentionDays() {
     return this.getNumberAttribute('automatic_backup_retention_days');
   }
-  public set automaticBackupRetentionDays(value: number | undefined) {
+  public set automaticBackupRetentionDays(value: number) {
     this._automaticBackupRetentionDays = value;
   }
   public resetAutomaticBackupRetentionDays() {
@@ -273,15 +304,15 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get automaticBackupRetentionDaysInput() {
-    return this._automaticBackupRetentionDays
+    return this._automaticBackupRetentionDays;
   }
 
   // backup_id - computed: false, optional: true, required: false
-  private _backupId?: string | undefined; 
+  private _backupId?: string; 
   public get backupId() {
     return this.getStringAttribute('backup_id');
   }
-  public set backupId(value: string | undefined) {
+  public set backupId(value: string) {
     this._backupId = value;
   }
   public resetBackupId() {
@@ -289,15 +320,15 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get backupIdInput() {
-    return this._backupId
+    return this._backupId;
   }
 
   // copy_tags_to_backups - computed: false, optional: true, required: false
-  private _copyTagsToBackups?: boolean | cdktf.IResolvable | undefined; 
+  private _copyTagsToBackups?: boolean | cdktf.IResolvable; 
   public get copyTagsToBackups() {
     return this.getBooleanAttribute('copy_tags_to_backups') as any;
   }
-  public set copyTagsToBackups(value: boolean | cdktf.IResolvable | undefined) {
+  public set copyTagsToBackups(value: boolean | cdktf.IResolvable) {
     this._copyTagsToBackups = value;
   }
   public resetCopyTagsToBackups() {
@@ -305,15 +336,15 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get copyTagsToBackupsInput() {
-    return this._copyTagsToBackups
+    return this._copyTagsToBackups;
   }
 
   // daily_automatic_backup_start_time - computed: true, optional: true, required: false
-  private _dailyAutomaticBackupStartTime?: string | undefined; 
+  private _dailyAutomaticBackupStartTime?: string; 
   public get dailyAutomaticBackupStartTime() {
     return this.getStringAttribute('daily_automatic_backup_start_time');
   }
-  public set dailyAutomaticBackupStartTime(value: string | undefined) {
+  public set dailyAutomaticBackupStartTime(value: string) {
     this._dailyAutomaticBackupStartTime = value;
   }
   public resetDailyAutomaticBackupStartTime() {
@@ -321,15 +352,15 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dailyAutomaticBackupStartTimeInput() {
-    return this._dailyAutomaticBackupStartTime
+    return this._dailyAutomaticBackupStartTime;
   }
 
   // data_compression_type - computed: false, optional: true, required: false
-  private _dataCompressionType?: string | undefined; 
+  private _dataCompressionType?: string; 
   public get dataCompressionType() {
     return this.getStringAttribute('data_compression_type');
   }
-  public set dataCompressionType(value: string | undefined) {
+  public set dataCompressionType(value: string) {
     this._dataCompressionType = value;
   }
   public resetDataCompressionType() {
@@ -337,15 +368,15 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dataCompressionTypeInput() {
-    return this._dataCompressionType
+    return this._dataCompressionType;
   }
 
   // deployment_type - computed: false, optional: true, required: false
-  private _deploymentType?: string | undefined; 
+  private _deploymentType?: string; 
   public get deploymentType() {
     return this.getStringAttribute('deployment_type');
   }
-  public set deploymentType(value: string | undefined) {
+  public set deploymentType(value: string) {
     this._deploymentType = value;
   }
   public resetDeploymentType() {
@@ -353,7 +384,7 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentTypeInput() {
-    return this._deploymentType
+    return this._deploymentType;
   }
 
   // dns_name - computed: true, optional: false, required: false
@@ -362,11 +393,11 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
 
   // drive_cache_type - computed: false, optional: true, required: false
-  private _driveCacheType?: string | undefined; 
+  private _driveCacheType?: string; 
   public get driveCacheType() {
     return this.getStringAttribute('drive_cache_type');
   }
-  public set driveCacheType(value: string | undefined) {
+  public set driveCacheType(value: string) {
     this._driveCacheType = value;
   }
   public resetDriveCacheType() {
@@ -374,15 +405,15 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get driveCacheTypeInput() {
-    return this._driveCacheType
+    return this._driveCacheType;
   }
 
   // export_path - computed: true, optional: true, required: false
-  private _exportPath?: string | undefined; 
+  private _exportPath?: string; 
   public get exportPath() {
     return this.getStringAttribute('export_path');
   }
-  public set exportPath(value: string | undefined) {
+  public set exportPath(value: string) {
     this._exportPath = value;
   }
   public resetExportPath() {
@@ -390,7 +421,7 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get exportPathInput() {
-    return this._exportPath
+    return this._exportPath;
   }
 
   // id - computed: true, optional: true, required: false
@@ -399,11 +430,11 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
 
   // import_path - computed: false, optional: true, required: false
-  private _importPath?: string | undefined; 
+  private _importPath?: string; 
   public get importPath() {
     return this.getStringAttribute('import_path');
   }
-  public set importPath(value: string | undefined) {
+  public set importPath(value: string) {
     this._importPath = value;
   }
   public resetImportPath() {
@@ -411,15 +442,15 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get importPathInput() {
-    return this._importPath
+    return this._importPath;
   }
 
   // imported_file_chunk_size - computed: true, optional: true, required: false
-  private _importedFileChunkSize?: number | undefined; 
+  private _importedFileChunkSize?: number; 
   public get importedFileChunkSize() {
     return this.getNumberAttribute('imported_file_chunk_size');
   }
-  public set importedFileChunkSize(value: number | undefined) {
+  public set importedFileChunkSize(value: number) {
     this._importedFileChunkSize = value;
   }
   public resetImportedFileChunkSize() {
@@ -427,15 +458,15 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get importedFileChunkSizeInput() {
-    return this._importedFileChunkSize
+    return this._importedFileChunkSize;
   }
 
   // kms_key_id - computed: true, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -443,7 +474,7 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // mount_name - computed: true, optional: false, required: false
@@ -462,11 +493,11 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
 
   // per_unit_storage_throughput - computed: false, optional: true, required: false
-  private _perUnitStorageThroughput?: number | undefined; 
+  private _perUnitStorageThroughput?: number; 
   public get perUnitStorageThroughput() {
     return this.getNumberAttribute('per_unit_storage_throughput');
   }
-  public set perUnitStorageThroughput(value: number | undefined) {
+  public set perUnitStorageThroughput(value: number) {
     this._perUnitStorageThroughput = value;
   }
   public resetPerUnitStorageThroughput() {
@@ -474,15 +505,15 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get perUnitStorageThroughputInput() {
-    return this._perUnitStorageThroughput
+    return this._perUnitStorageThroughput;
   }
 
   // security_group_ids - computed: false, optional: true, required: false
-  private _securityGroupIds?: string[] | undefined; 
+  private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
     return this.getListAttribute('security_group_ids');
   }
-  public set securityGroupIds(value: string[] | undefined) {
+  public set securityGroupIds(value: string[]) {
     this._securityGroupIds = value;
   }
   public resetSecurityGroupIds() {
@@ -490,15 +521,15 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // storage_capacity - computed: false, optional: true, required: false
-  private _storageCapacity?: number | undefined; 
+  private _storageCapacity?: number; 
   public get storageCapacity() {
     return this.getNumberAttribute('storage_capacity');
   }
-  public set storageCapacity(value: number | undefined) {
+  public set storageCapacity(value: number) {
     this._storageCapacity = value;
   }
   public resetStorageCapacity() {
@@ -506,15 +537,15 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get storageCapacityInput() {
-    return this._storageCapacity
+    return this._storageCapacity;
   }
 
   // storage_type - computed: false, optional: true, required: false
-  private _storageType?: string | undefined; 
+  private _storageType?: string; 
   public get storageType() {
     return this.getStringAttribute('storage_type');
   }
-  public set storageType(value: string | undefined) {
+  public set storageType(value: string) {
     this._storageType = value;
   }
   public resetStorageType() {
@@ -522,7 +553,7 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get storageTypeInput() {
-    return this._storageType
+    return this._storageType;
   }
 
   // subnet_ids - computed: false, optional: false, required: true
@@ -535,16 +566,16 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -552,16 +583,16 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -569,7 +600,7 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // vpc_id - computed: true, optional: false, required: false
@@ -578,11 +609,11 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
 
   // weekly_maintenance_start_time - computed: true, optional: true, required: false
-  private _weeklyMaintenanceStartTime?: string | undefined; 
+  private _weeklyMaintenanceStartTime?: string; 
   public get weeklyMaintenanceStartTime() {
     return this.getStringAttribute('weekly_maintenance_start_time');
   }
-  public set weeklyMaintenanceStartTime(value: string | undefined) {
+  public set weeklyMaintenanceStartTime(value: string) {
     this._weeklyMaintenanceStartTime = value;
   }
   public resetWeeklyMaintenanceStartTime() {
@@ -590,24 +621,23 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get weeklyMaintenanceStartTimeInput() {
-    return this._weeklyMaintenanceStartTime
+    return this._weeklyMaintenanceStartTime;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: FsxLustreFileSystemTimeouts | undefined; 
-  private __timeoutsOutput = new FsxLustreFileSystemTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new FsxLustreFileSystemTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: FsxLustreFileSystemTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: FsxLustreFileSystemTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -636,7 +666,7 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       weekly_maintenance_start_time: cdktf.stringToTerraform(this._weeklyMaintenanceStartTime),
-      timeouts: fsxLustreFileSystemTimeoutsToTerraform(this._timeouts),
+      timeouts: fsxLustreFileSystemTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

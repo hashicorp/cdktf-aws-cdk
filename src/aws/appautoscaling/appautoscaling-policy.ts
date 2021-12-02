@@ -116,12 +116,55 @@ export class AppautoscalingPolicyStepScalingPolicyConfigurationOutputReference e
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppautoscalingPolicyStepScalingPolicyConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._adjustmentType) {
+      hasAnyValues = true;
+      internalValueResult.adjustmentType = this._adjustmentType;
+    }
+    if (this._cooldown) {
+      hasAnyValues = true;
+      internalValueResult.cooldown = this._cooldown;
+    }
+    if (this._metricAggregationType) {
+      hasAnyValues = true;
+      internalValueResult.metricAggregationType = this._metricAggregationType;
+    }
+    if (this._minAdjustmentMagnitude) {
+      hasAnyValues = true;
+      internalValueResult.minAdjustmentMagnitude = this._minAdjustmentMagnitude;
+    }
+    if (this._stepAdjustment) {
+      hasAnyValues = true;
+      internalValueResult.stepAdjustment = this._stepAdjustment;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppautoscalingPolicyStepScalingPolicyConfiguration | undefined) {
+    if (value === undefined) {
+      this._adjustmentType = undefined;
+      this._cooldown = undefined;
+      this._metricAggregationType = undefined;
+      this._minAdjustmentMagnitude = undefined;
+      this._stepAdjustment = undefined;
+    }
+    else {
+      this._adjustmentType = value.adjustmentType;
+      this._cooldown = value.cooldown;
+      this._metricAggregationType = value.metricAggregationType;
+      this._minAdjustmentMagnitude = value.minAdjustmentMagnitude;
+      this._stepAdjustment = value.stepAdjustment;
+    }
+  }
+
   // adjustment_type - computed: false, optional: true, required: false
-  private _adjustmentType?: string | undefined; 
+  private _adjustmentType?: string; 
   public get adjustmentType() {
     return this.getStringAttribute('adjustment_type');
   }
-  public set adjustmentType(value: string | undefined) {
+  public set adjustmentType(value: string) {
     this._adjustmentType = value;
   }
   public resetAdjustmentType() {
@@ -129,15 +172,15 @@ export class AppautoscalingPolicyStepScalingPolicyConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get adjustmentTypeInput() {
-    return this._adjustmentType
+    return this._adjustmentType;
   }
 
   // cooldown - computed: false, optional: true, required: false
-  private _cooldown?: number | undefined; 
+  private _cooldown?: number; 
   public get cooldown() {
     return this.getNumberAttribute('cooldown');
   }
-  public set cooldown(value: number | undefined) {
+  public set cooldown(value: number) {
     this._cooldown = value;
   }
   public resetCooldown() {
@@ -145,15 +188,15 @@ export class AppautoscalingPolicyStepScalingPolicyConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get cooldownInput() {
-    return this._cooldown
+    return this._cooldown;
   }
 
   // metric_aggregation_type - computed: false, optional: true, required: false
-  private _metricAggregationType?: string | undefined; 
+  private _metricAggregationType?: string; 
   public get metricAggregationType() {
     return this.getStringAttribute('metric_aggregation_type');
   }
-  public set metricAggregationType(value: string | undefined) {
+  public set metricAggregationType(value: string) {
     this._metricAggregationType = value;
   }
   public resetMetricAggregationType() {
@@ -161,15 +204,15 @@ export class AppautoscalingPolicyStepScalingPolicyConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get metricAggregationTypeInput() {
-    return this._metricAggregationType
+    return this._metricAggregationType;
   }
 
   // min_adjustment_magnitude - computed: false, optional: true, required: false
-  private _minAdjustmentMagnitude?: number | undefined; 
+  private _minAdjustmentMagnitude?: number; 
   public get minAdjustmentMagnitude() {
     return this.getNumberAttribute('min_adjustment_magnitude');
   }
-  public set minAdjustmentMagnitude(value: number | undefined) {
+  public set minAdjustmentMagnitude(value: number) {
     this._minAdjustmentMagnitude = value;
   }
   public resetMinAdjustmentMagnitude() {
@@ -177,16 +220,16 @@ export class AppautoscalingPolicyStepScalingPolicyConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get minAdjustmentMagnitudeInput() {
-    return this._minAdjustmentMagnitude
+    return this._minAdjustmentMagnitude;
   }
 
   // step_adjustment - computed: false, optional: true, required: false
-  private _stepAdjustment?: AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustment[] | undefined; 
+  private _stepAdjustment?: AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustment[]; 
   public get stepAdjustment() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('step_adjustment') as any;
   }
-  public set stepAdjustment(value: AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustment[] | undefined) {
+  public set stepAdjustment(value: AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustment[]) {
     this._stepAdjustment = value;
   }
   public resetStepAdjustment() {
@@ -194,7 +237,7 @@ export class AppautoscalingPolicyStepScalingPolicyConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get stepAdjustmentInput() {
-    return this._stepAdjustment
+    return this._stepAdjustment;
   }
 }
 export interface AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensions {
@@ -268,6 +311,49 @@ export class AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomi
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._metricName) {
+      hasAnyValues = true;
+      internalValueResult.metricName = this._metricName;
+    }
+    if (this._namespace) {
+      hasAnyValues = true;
+      internalValueResult.namespace = this._namespace;
+    }
+    if (this._statistic) {
+      hasAnyValues = true;
+      internalValueResult.statistic = this._statistic;
+    }
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._dimensions) {
+      hasAnyValues = true;
+      internalValueResult.dimensions = this._dimensions;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification | undefined) {
+    if (value === undefined) {
+      this._metricName = undefined;
+      this._namespace = undefined;
+      this._statistic = undefined;
+      this._unit = undefined;
+      this._dimensions = undefined;
+    }
+    else {
+      this._metricName = value.metricName;
+      this._namespace = value.namespace;
+      this._statistic = value.statistic;
+      this._unit = value.unit;
+      this._dimensions = value.dimensions;
+    }
+  }
+
   // metric_name - computed: false, optional: false, required: true
   private _metricName?: string; 
   public get metricName() {
@@ -278,7 +364,7 @@ export class AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomi
   }
   // Temporarily expose input value. Use with caution.
   public get metricNameInput() {
-    return this._metricName
+    return this._metricName;
   }
 
   // namespace - computed: false, optional: false, required: true
@@ -291,7 +377,7 @@ export class AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomi
   }
   // Temporarily expose input value. Use with caution.
   public get namespaceInput() {
-    return this._namespace
+    return this._namespace;
   }
 
   // statistic - computed: false, optional: false, required: true
@@ -304,15 +390,15 @@ export class AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomi
   }
   // Temporarily expose input value. Use with caution.
   public get statisticInput() {
-    return this._statistic
+    return this._statistic;
   }
 
   // unit - computed: false, optional: true, required: false
-  private _unit?: string | undefined; 
+  private _unit?: string; 
   public get unit() {
     return this.getStringAttribute('unit');
   }
-  public set unit(value: string | undefined) {
+  public set unit(value: string) {
     this._unit = value;
   }
   public resetUnit() {
@@ -320,16 +406,16 @@ export class AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomi
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // dimensions - computed: false, optional: true, required: false
-  private _dimensions?: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensions[] | undefined; 
+  private _dimensions?: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensions[]; 
   public get dimensions() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('dimensions') as any;
   }
-  public set dimensions(value: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensions[] | undefined) {
+  public set dimensions(value: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensions[]) {
     this._dimensions = value;
   }
   public resetDimensions() {
@@ -337,7 +423,7 @@ export class AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomi
   }
   // Temporarily expose input value. Use with caution.
   public get dimensionsInput() {
-    return this._dimensions
+    return this._dimensions;
   }
 }
 export interface AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification {
@@ -372,6 +458,31 @@ export class AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefi
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._predefinedMetricType) {
+      hasAnyValues = true;
+      internalValueResult.predefinedMetricType = this._predefinedMetricType;
+    }
+    if (this._resourceLabel) {
+      hasAnyValues = true;
+      internalValueResult.resourceLabel = this._resourceLabel;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification | undefined) {
+    if (value === undefined) {
+      this._predefinedMetricType = undefined;
+      this._resourceLabel = undefined;
+    }
+    else {
+      this._predefinedMetricType = value.predefinedMetricType;
+      this._resourceLabel = value.resourceLabel;
+    }
+  }
+
   // predefined_metric_type - computed: false, optional: false, required: true
   private _predefinedMetricType?: string; 
   public get predefinedMetricType() {
@@ -382,15 +493,15 @@ export class AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefi
   }
   // Temporarily expose input value. Use with caution.
   public get predefinedMetricTypeInput() {
-    return this._predefinedMetricType
+    return this._predefinedMetricType;
   }
 
   // resource_label - computed: false, optional: true, required: false
-  private _resourceLabel?: string | undefined; 
+  private _resourceLabel?: string; 
   public get resourceLabel() {
     return this.getStringAttribute('resource_label');
   }
-  public set resourceLabel(value: string | undefined) {
+  public set resourceLabel(value: string) {
     this._resourceLabel = value;
   }
   public resetResourceLabel() {
@@ -398,7 +509,7 @@ export class AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefi
   }
   // Temporarily expose input value. Use with caution.
   public get resourceLabelInput() {
-    return this._resourceLabel
+    return this._resourceLabel;
   }
 }
 export interface AppautoscalingPolicyTargetTrackingScalingPolicyConfiguration {
@@ -457,12 +568,61 @@ export class AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationOutputR
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppautoscalingPolicyTargetTrackingScalingPolicyConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._disableScaleIn) {
+      hasAnyValues = true;
+      internalValueResult.disableScaleIn = this._disableScaleIn;
+    }
+    if (this._scaleInCooldown) {
+      hasAnyValues = true;
+      internalValueResult.scaleInCooldown = this._scaleInCooldown;
+    }
+    if (this._scaleOutCooldown) {
+      hasAnyValues = true;
+      internalValueResult.scaleOutCooldown = this._scaleOutCooldown;
+    }
+    if (this._targetValue) {
+      hasAnyValues = true;
+      internalValueResult.targetValue = this._targetValue;
+    }
+    if (this._customizedMetricSpecification) {
+      hasAnyValues = true;
+      internalValueResult.customizedMetricSpecification = this._customizedMetricSpecification?.internalValue;
+    }
+    if (this._predefinedMetricSpecification) {
+      hasAnyValues = true;
+      internalValueResult.predefinedMetricSpecification = this._predefinedMetricSpecification?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppautoscalingPolicyTargetTrackingScalingPolicyConfiguration | undefined) {
+    if (value === undefined) {
+      this._disableScaleIn = undefined;
+      this._scaleInCooldown = undefined;
+      this._scaleOutCooldown = undefined;
+      this._targetValue = undefined;
+      this._customizedMetricSpecification.internalValue = undefined;
+      this._predefinedMetricSpecification.internalValue = undefined;
+    }
+    else {
+      this._disableScaleIn = value.disableScaleIn;
+      this._scaleInCooldown = value.scaleInCooldown;
+      this._scaleOutCooldown = value.scaleOutCooldown;
+      this._targetValue = value.targetValue;
+      this._customizedMetricSpecification.internalValue = value.customizedMetricSpecification;
+      this._predefinedMetricSpecification.internalValue = value.predefinedMetricSpecification;
+    }
+  }
+
   // disable_scale_in - computed: false, optional: true, required: false
-  private _disableScaleIn?: boolean | cdktf.IResolvable | undefined; 
+  private _disableScaleIn?: boolean | cdktf.IResolvable; 
   public get disableScaleIn() {
     return this.getBooleanAttribute('disable_scale_in') as any;
   }
-  public set disableScaleIn(value: boolean | cdktf.IResolvable | undefined) {
+  public set disableScaleIn(value: boolean | cdktf.IResolvable) {
     this._disableScaleIn = value;
   }
   public resetDisableScaleIn() {
@@ -470,15 +630,15 @@ export class AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationOutputR
   }
   // Temporarily expose input value. Use with caution.
   public get disableScaleInInput() {
-    return this._disableScaleIn
+    return this._disableScaleIn;
   }
 
   // scale_in_cooldown - computed: false, optional: true, required: false
-  private _scaleInCooldown?: number | undefined; 
+  private _scaleInCooldown?: number; 
   public get scaleInCooldown() {
     return this.getNumberAttribute('scale_in_cooldown');
   }
-  public set scaleInCooldown(value: number | undefined) {
+  public set scaleInCooldown(value: number) {
     this._scaleInCooldown = value;
   }
   public resetScaleInCooldown() {
@@ -486,15 +646,15 @@ export class AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationOutputR
   }
   // Temporarily expose input value. Use with caution.
   public get scaleInCooldownInput() {
-    return this._scaleInCooldown
+    return this._scaleInCooldown;
   }
 
   // scale_out_cooldown - computed: false, optional: true, required: false
-  private _scaleOutCooldown?: number | undefined; 
+  private _scaleOutCooldown?: number; 
   public get scaleOutCooldown() {
     return this.getNumberAttribute('scale_out_cooldown');
   }
-  public set scaleOutCooldown(value: number | undefined) {
+  public set scaleOutCooldown(value: number) {
     this._scaleOutCooldown = value;
   }
   public resetScaleOutCooldown() {
@@ -502,7 +662,7 @@ export class AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationOutputR
   }
   // Temporarily expose input value. Use with caution.
   public get scaleOutCooldownInput() {
-    return this._scaleOutCooldown
+    return this._scaleOutCooldown;
   }
 
   // target_value - computed: false, optional: false, required: true
@@ -515,41 +675,39 @@ export class AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationOutputR
   }
   // Temporarily expose input value. Use with caution.
   public get targetValueInput() {
-    return this._targetValue
+    return this._targetValue;
   }
 
   // customized_metric_specification - computed: false, optional: true, required: false
-  private _customizedMetricSpecification?: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification | undefined; 
-  private __customizedMetricSpecificationOutput = new AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationOutputReference(this as any, "customized_metric_specification", true);
+  private _customizedMetricSpecification = new AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationOutputReference(this as any, "customized_metric_specification", true);
   public get customizedMetricSpecification() {
-    return this.__customizedMetricSpecificationOutput;
+    return this._customizedMetricSpecification;
   }
-  public putCustomizedMetricSpecification(value: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification | undefined) {
-    this._customizedMetricSpecification = value;
+  public putCustomizedMetricSpecification(value: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification) {
+    this._customizedMetricSpecification.internalValue = value;
   }
   public resetCustomizedMetricSpecification() {
-    this._customizedMetricSpecification = undefined;
+    this._customizedMetricSpecification.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get customizedMetricSpecificationInput() {
-    return this._customizedMetricSpecification
+    return this._customizedMetricSpecification.internalValue;
   }
 
   // predefined_metric_specification - computed: false, optional: true, required: false
-  private _predefinedMetricSpecification?: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification | undefined; 
-  private __predefinedMetricSpecificationOutput = new AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationOutputReference(this as any, "predefined_metric_specification", true);
+  private _predefinedMetricSpecification = new AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationOutputReference(this as any, "predefined_metric_specification", true);
   public get predefinedMetricSpecification() {
-    return this.__predefinedMetricSpecificationOutput;
+    return this._predefinedMetricSpecification;
   }
-  public putPredefinedMetricSpecification(value: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification | undefined) {
-    this._predefinedMetricSpecification = value;
+  public putPredefinedMetricSpecification(value: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification) {
+    this._predefinedMetricSpecification.internalValue = value;
   }
   public resetPredefinedMetricSpecification() {
-    this._predefinedMetricSpecification = undefined;
+    this._predefinedMetricSpecification.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get predefinedMetricSpecificationInput() {
-    return this._predefinedMetricSpecification
+    return this._predefinedMetricSpecification.internalValue;
   }
 }
 
@@ -590,8 +748,8 @@ export class AppautoscalingPolicy extends cdktf.TerraformResource {
     this._resourceId = config.resourceId;
     this._scalableDimension = config.scalableDimension;
     this._serviceNamespace = config.serviceNamespace;
-    this._stepScalingPolicyConfiguration = config.stepScalingPolicyConfiguration;
-    this._targetTrackingScalingPolicyConfiguration = config.targetTrackingScalingPolicyConfiguration;
+    this._stepScalingPolicyConfiguration.internalValue = config.stepScalingPolicyConfiguration;
+    this._targetTrackingScalingPolicyConfiguration.internalValue = config.targetTrackingScalingPolicyConfiguration;
   }
 
   // ==========
@@ -618,15 +776,15 @@ export class AppautoscalingPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // policy_type - computed: false, optional: true, required: false
-  private _policyType?: string | undefined; 
+  private _policyType?: string; 
   public get policyType() {
     return this.getStringAttribute('policy_type');
   }
-  public set policyType(value: string | undefined) {
+  public set policyType(value: string) {
     this._policyType = value;
   }
   public resetPolicyType() {
@@ -634,7 +792,7 @@ export class AppautoscalingPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyTypeInput() {
-    return this._policyType
+    return this._policyType;
   }
 
   // resource_id - computed: false, optional: false, required: true
@@ -647,7 +805,7 @@ export class AppautoscalingPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceIdInput() {
-    return this._resourceId
+    return this._resourceId;
   }
 
   // scalable_dimension - computed: false, optional: false, required: true
@@ -660,7 +818,7 @@ export class AppautoscalingPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scalableDimensionInput() {
-    return this._scalableDimension
+    return this._scalableDimension;
   }
 
   // service_namespace - computed: false, optional: false, required: true
@@ -673,41 +831,39 @@ export class AppautoscalingPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceNamespaceInput() {
-    return this._serviceNamespace
+    return this._serviceNamespace;
   }
 
   // step_scaling_policy_configuration - computed: false, optional: true, required: false
-  private _stepScalingPolicyConfiguration?: AppautoscalingPolicyStepScalingPolicyConfiguration | undefined; 
-  private __stepScalingPolicyConfigurationOutput = new AppautoscalingPolicyStepScalingPolicyConfigurationOutputReference(this as any, "step_scaling_policy_configuration", true);
+  private _stepScalingPolicyConfiguration = new AppautoscalingPolicyStepScalingPolicyConfigurationOutputReference(this as any, "step_scaling_policy_configuration", true);
   public get stepScalingPolicyConfiguration() {
-    return this.__stepScalingPolicyConfigurationOutput;
+    return this._stepScalingPolicyConfiguration;
   }
-  public putStepScalingPolicyConfiguration(value: AppautoscalingPolicyStepScalingPolicyConfiguration | undefined) {
-    this._stepScalingPolicyConfiguration = value;
+  public putStepScalingPolicyConfiguration(value: AppautoscalingPolicyStepScalingPolicyConfiguration) {
+    this._stepScalingPolicyConfiguration.internalValue = value;
   }
   public resetStepScalingPolicyConfiguration() {
-    this._stepScalingPolicyConfiguration = undefined;
+    this._stepScalingPolicyConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get stepScalingPolicyConfigurationInput() {
-    return this._stepScalingPolicyConfiguration
+    return this._stepScalingPolicyConfiguration.internalValue;
   }
 
   // target_tracking_scaling_policy_configuration - computed: false, optional: true, required: false
-  private _targetTrackingScalingPolicyConfiguration?: AppautoscalingPolicyTargetTrackingScalingPolicyConfiguration | undefined; 
-  private __targetTrackingScalingPolicyConfigurationOutput = new AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationOutputReference(this as any, "target_tracking_scaling_policy_configuration", true);
+  private _targetTrackingScalingPolicyConfiguration = new AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationOutputReference(this as any, "target_tracking_scaling_policy_configuration", true);
   public get targetTrackingScalingPolicyConfiguration() {
-    return this.__targetTrackingScalingPolicyConfigurationOutput;
+    return this._targetTrackingScalingPolicyConfiguration;
   }
-  public putTargetTrackingScalingPolicyConfiguration(value: AppautoscalingPolicyTargetTrackingScalingPolicyConfiguration | undefined) {
-    this._targetTrackingScalingPolicyConfiguration = value;
+  public putTargetTrackingScalingPolicyConfiguration(value: AppautoscalingPolicyTargetTrackingScalingPolicyConfiguration) {
+    this._targetTrackingScalingPolicyConfiguration.internalValue = value;
   }
   public resetTargetTrackingScalingPolicyConfiguration() {
-    this._targetTrackingScalingPolicyConfiguration = undefined;
+    this._targetTrackingScalingPolicyConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get targetTrackingScalingPolicyConfigurationInput() {
-    return this._targetTrackingScalingPolicyConfiguration
+    return this._targetTrackingScalingPolicyConfiguration.internalValue;
   }
 
   // =========
@@ -721,8 +877,8 @@ export class AppautoscalingPolicy extends cdktf.TerraformResource {
       resource_id: cdktf.stringToTerraform(this._resourceId),
       scalable_dimension: cdktf.stringToTerraform(this._scalableDimension),
       service_namespace: cdktf.stringToTerraform(this._serviceNamespace),
-      step_scaling_policy_configuration: appautoscalingPolicyStepScalingPolicyConfigurationToTerraform(this._stepScalingPolicyConfiguration),
-      target_tracking_scaling_policy_configuration: appautoscalingPolicyTargetTrackingScalingPolicyConfigurationToTerraform(this._targetTrackingScalingPolicyConfiguration),
+      step_scaling_policy_configuration: appautoscalingPolicyStepScalingPolicyConfigurationToTerraform(this._stepScalingPolicyConfiguration.internalValue),
+      target_tracking_scaling_policy_configuration: appautoscalingPolicyTargetTrackingScalingPolicyConfigurationToTerraform(this._targetTrackingScalingPolicyConfiguration.internalValue),
     };
   }
 }

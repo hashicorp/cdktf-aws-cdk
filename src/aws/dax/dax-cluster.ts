@@ -121,12 +121,31 @@ export class DaxClusterServerSideEncryptionOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DaxClusterServerSideEncryption | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DaxClusterServerSideEncryption | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -134,7 +153,7 @@ export class DaxClusterServerSideEncryptionOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 }
 export interface DaxClusterTimeouts {
@@ -174,12 +193,43 @@ export class DaxClusterTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DaxClusterTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DaxClusterTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -187,15 +237,15 @@ export class DaxClusterTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -203,15 +253,15 @@ export class DaxClusterTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -219,7 +269,7 @@ export class DaxClusterTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -268,8 +318,8 @@ export class DaxCluster extends cdktf.TerraformResource {
     this._subnetGroupName = config.subnetGroupName;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._serverSideEncryption = config.serverSideEncryption;
-    this._timeouts = config.timeouts;
+    this._serverSideEncryption.internalValue = config.serverSideEncryption;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -282,11 +332,11 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
 
   // availability_zones - computed: false, optional: true, required: false
-  private _availabilityZones?: string[] | undefined; 
+  private _availabilityZones?: string[]; 
   public get availabilityZones() {
     return this.getListAttribute('availability_zones');
   }
-  public set availabilityZones(value: string[] | undefined) {
+  public set availabilityZones(value: string[]) {
     this._availabilityZones = value;
   }
   public resetAvailabilityZones() {
@@ -294,7 +344,7 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZonesInput() {
-    return this._availabilityZones
+    return this._availabilityZones;
   }
 
   // cluster_address - computed: true, optional: false, required: false
@@ -312,7 +362,7 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterNameInput() {
-    return this._clusterName
+    return this._clusterName;
   }
 
   // configuration_endpoint - computed: true, optional: false, required: false
@@ -321,11 +371,11 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -333,7 +383,7 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // iam_role_arn - computed: false, optional: false, required: true
@@ -346,7 +396,7 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iamRoleArnInput() {
-    return this._iamRoleArn
+    return this._iamRoleArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -355,11 +405,11 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
 
   // maintenance_window - computed: true, optional: true, required: false
-  private _maintenanceWindow?: string | undefined; 
+  private _maintenanceWindow?: string; 
   public get maintenanceWindow() {
     return this.getStringAttribute('maintenance_window');
   }
-  public set maintenanceWindow(value: string | undefined) {
+  public set maintenanceWindow(value: string) {
     this._maintenanceWindow = value;
   }
   public resetMaintenanceWindow() {
@@ -367,7 +417,7 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maintenanceWindowInput() {
-    return this._maintenanceWindow
+    return this._maintenanceWindow;
   }
 
   // node_type - computed: false, optional: false, required: true
@@ -380,7 +430,7 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nodeTypeInput() {
-    return this._nodeType
+    return this._nodeType;
   }
 
   // nodes - computed: true, optional: false, required: false
@@ -389,11 +439,11 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
 
   // notification_topic_arn - computed: false, optional: true, required: false
-  private _notificationTopicArn?: string | undefined; 
+  private _notificationTopicArn?: string; 
   public get notificationTopicArn() {
     return this.getStringAttribute('notification_topic_arn');
   }
-  public set notificationTopicArn(value: string | undefined) {
+  public set notificationTopicArn(value: string) {
     this._notificationTopicArn = value;
   }
   public resetNotificationTopicArn() {
@@ -401,15 +451,15 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get notificationTopicArnInput() {
-    return this._notificationTopicArn
+    return this._notificationTopicArn;
   }
 
   // parameter_group_name - computed: true, optional: true, required: false
-  private _parameterGroupName?: string | undefined; 
+  private _parameterGroupName?: string; 
   public get parameterGroupName() {
     return this.getStringAttribute('parameter_group_name');
   }
-  public set parameterGroupName(value: string | undefined) {
+  public set parameterGroupName(value: string) {
     this._parameterGroupName = value;
   }
   public resetParameterGroupName() {
@@ -417,7 +467,7 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parameterGroupNameInput() {
-    return this._parameterGroupName
+    return this._parameterGroupName;
   }
 
   // port - computed: true, optional: false, required: false
@@ -435,15 +485,15 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get replicationFactorInput() {
-    return this._replicationFactor
+    return this._replicationFactor;
   }
 
   // security_group_ids - computed: true, optional: true, required: false
-  private _securityGroupIds?: string[] | undefined; 
+  private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
     return this.getListAttribute('security_group_ids');
   }
-  public set securityGroupIds(value: string[] | undefined) {
+  public set securityGroupIds(value: string[]) {
     this._securityGroupIds = value;
   }
   public resetSecurityGroupIds() {
@@ -451,15 +501,15 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // subnet_group_name - computed: true, optional: true, required: false
-  private _subnetGroupName?: string | undefined; 
+  private _subnetGroupName?: string; 
   public get subnetGroupName() {
     return this.getStringAttribute('subnet_group_name');
   }
-  public set subnetGroupName(value: string | undefined) {
+  public set subnetGroupName(value: string) {
     this._subnetGroupName = value;
   }
   public resetSubnetGroupName() {
@@ -467,16 +517,16 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetGroupNameInput() {
-    return this._subnetGroupName
+    return this._subnetGroupName;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -484,16 +534,16 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -501,41 +551,39 @@ export class DaxCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // server_side_encryption - computed: false, optional: true, required: false
-  private _serverSideEncryption?: DaxClusterServerSideEncryption | undefined; 
-  private __serverSideEncryptionOutput = new DaxClusterServerSideEncryptionOutputReference(this as any, "server_side_encryption", true);
+  private _serverSideEncryption = new DaxClusterServerSideEncryptionOutputReference(this as any, "server_side_encryption", true);
   public get serverSideEncryption() {
-    return this.__serverSideEncryptionOutput;
+    return this._serverSideEncryption;
   }
-  public putServerSideEncryption(value: DaxClusterServerSideEncryption | undefined) {
-    this._serverSideEncryption = value;
+  public putServerSideEncryption(value: DaxClusterServerSideEncryption) {
+    this._serverSideEncryption.internalValue = value;
   }
   public resetServerSideEncryption() {
-    this._serverSideEncryption = undefined;
+    this._serverSideEncryption.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get serverSideEncryptionInput() {
-    return this._serverSideEncryption
+    return this._serverSideEncryption.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DaxClusterTimeouts | undefined; 
-  private __timeoutsOutput = new DaxClusterTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DaxClusterTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DaxClusterTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DaxClusterTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -557,8 +605,8 @@ export class DaxCluster extends cdktf.TerraformResource {
       subnet_group_name: cdktf.stringToTerraform(this._subnetGroupName),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      server_side_encryption: daxClusterServerSideEncryptionToTerraform(this._serverSideEncryption),
-      timeouts: daxClusterTimeoutsToTerraform(this._timeouts),
+      server_side_encryption: daxClusterServerSideEncryptionToTerraform(this._serverSideEncryption.internalValue),
+      timeouts: daxClusterTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

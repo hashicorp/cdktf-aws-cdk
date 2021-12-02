@@ -73,11 +73,11 @@ export class DataAwsLambdaLayerVersion extends cdktf.TerraformDataSource {
   }
 
   // compatible_architecture - computed: false, optional: true, required: false
-  private _compatibleArchitecture?: string | undefined; 
+  private _compatibleArchitecture?: string; 
   public get compatibleArchitecture() {
     return this.getStringAttribute('compatible_architecture');
   }
-  public set compatibleArchitecture(value: string | undefined) {
+  public set compatibleArchitecture(value: string) {
     this._compatibleArchitecture = value;
   }
   public resetCompatibleArchitecture() {
@@ -85,7 +85,7 @@ export class DataAwsLambdaLayerVersion extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get compatibleArchitectureInput() {
-    return this._compatibleArchitecture
+    return this._compatibleArchitecture;
   }
 
   // compatible_architectures - computed: true, optional: false, required: false
@@ -94,11 +94,11 @@ export class DataAwsLambdaLayerVersion extends cdktf.TerraformDataSource {
   }
 
   // compatible_runtime - computed: false, optional: true, required: false
-  private _compatibleRuntime?: string | undefined; 
+  private _compatibleRuntime?: string; 
   public get compatibleRuntime() {
     return this.getStringAttribute('compatible_runtime');
   }
-  public set compatibleRuntime(value: string | undefined) {
+  public set compatibleRuntime(value: string) {
     this._compatibleRuntime = value;
   }
   public resetCompatibleRuntime() {
@@ -106,7 +106,7 @@ export class DataAwsLambdaLayerVersion extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get compatibleRuntimeInput() {
-    return this._compatibleRuntime
+    return this._compatibleRuntime;
   }
 
   // compatible_runtimes - computed: true, optional: false, required: false
@@ -144,7 +144,7 @@ export class DataAwsLambdaLayerVersion extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get layerNameInput() {
-    return this._layerName
+    return this._layerName;
   }
 
   // license_info - computed: true, optional: false, required: false
@@ -173,11 +173,11 @@ export class DataAwsLambdaLayerVersion extends cdktf.TerraformDataSource {
   }
 
   // version - computed: true, optional: true, required: false
-  private _version?: number | undefined; 
+  private _version?: number; 
   public get version() {
     return this.getNumberAttribute('version');
   }
-  public set version(value: number | undefined) {
+  public set version(value: number) {
     this._version = value;
   }
   public resetVersion() {
@@ -185,7 +185,7 @@ export class DataAwsLambdaLayerVersion extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 
   // =========

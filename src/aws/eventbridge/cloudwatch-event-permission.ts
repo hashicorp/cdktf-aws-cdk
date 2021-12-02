@@ -67,6 +67,37 @@ export class CloudwatchEventPermissionConditionOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventPermissionCondition | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventPermissionCondition | undefined) {
+    if (value === undefined) {
+      this._key = undefined;
+      this._type = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._key = value.key;
+      this._type = value.type;
+      this._value = value.value;
+    }
+  }
+
   // key - computed: false, optional: false, required: true
   private _key?: string; 
   public get key() {
@@ -77,7 +108,7 @@ export class CloudwatchEventPermissionConditionOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // type - computed: false, optional: false, required: true
@@ -90,7 +121,7 @@ export class CloudwatchEventPermissionConditionOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // value - computed: false, optional: false, required: true
@@ -103,7 +134,7 @@ export class CloudwatchEventPermissionConditionOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 
@@ -143,7 +174,7 @@ export class CloudwatchEventPermission extends cdktf.TerraformResource {
     this._eventBusName = config.eventBusName;
     this._principal = config.principal;
     this._statementId = config.statementId;
-    this._condition = config.condition;
+    this._condition.internalValue = config.condition;
   }
 
   // ==========
@@ -151,11 +182,11 @@ export class CloudwatchEventPermission extends cdktf.TerraformResource {
   // ==========
 
   // action - computed: false, optional: true, required: false
-  private _action?: string | undefined; 
+  private _action?: string; 
   public get action() {
     return this.getStringAttribute('action');
   }
-  public set action(value: string | undefined) {
+  public set action(value: string) {
     this._action = value;
   }
   public resetAction() {
@@ -163,15 +194,15 @@ export class CloudwatchEventPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action;
   }
 
   // event_bus_name - computed: false, optional: true, required: false
-  private _eventBusName?: string | undefined; 
+  private _eventBusName?: string; 
   public get eventBusName() {
     return this.getStringAttribute('event_bus_name');
   }
-  public set eventBusName(value: string | undefined) {
+  public set eventBusName(value: string) {
     this._eventBusName = value;
   }
   public resetEventBusName() {
@@ -179,7 +210,7 @@ export class CloudwatchEventPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get eventBusNameInput() {
-    return this._eventBusName
+    return this._eventBusName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -197,7 +228,7 @@ export class CloudwatchEventPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get principalInput() {
-    return this._principal
+    return this._principal;
   }
 
   // statement_id - computed: false, optional: false, required: true
@@ -210,24 +241,23 @@ export class CloudwatchEventPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get statementIdInput() {
-    return this._statementId
+    return this._statementId;
   }
 
   // condition - computed: false, optional: true, required: false
-  private _condition?: CloudwatchEventPermissionCondition | undefined; 
-  private __conditionOutput = new CloudwatchEventPermissionConditionOutputReference(this as any, "condition", true);
+  private _condition = new CloudwatchEventPermissionConditionOutputReference(this as any, "condition", true);
   public get condition() {
-    return this.__conditionOutput;
+    return this._condition;
   }
-  public putCondition(value: CloudwatchEventPermissionCondition | undefined) {
-    this._condition = value;
+  public putCondition(value: CloudwatchEventPermissionCondition) {
+    this._condition.internalValue = value;
   }
   public resetCondition() {
-    this._condition = undefined;
+    this._condition.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get conditionInput() {
-    return this._condition
+    return this._condition.internalValue;
   }
 
   // =========
@@ -240,7 +270,7 @@ export class CloudwatchEventPermission extends cdktf.TerraformResource {
       event_bus_name: cdktf.stringToTerraform(this._eventBusName),
       principal: cdktf.stringToTerraform(this._principal),
       statement_id: cdktf.stringToTerraform(this._statementId),
-      condition: cloudwatchEventPermissionConditionToTerraform(this._condition),
+      condition: cloudwatchEventPermissionConditionToTerraform(this._condition.internalValue),
     };
   }
 }

@@ -351,11 +351,11 @@ export class SesReceiptRule extends cdktf.TerraformResource {
   // ==========
 
   // after - computed: false, optional: true, required: false
-  private _after?: string | undefined; 
+  private _after?: string; 
   public get after() {
     return this.getStringAttribute('after');
   }
-  public set after(value: string | undefined) {
+  public set after(value: string) {
     this._after = value;
   }
   public resetAfter() {
@@ -363,7 +363,7 @@ export class SesReceiptRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get afterInput() {
-    return this._after
+    return this._after;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -372,11 +372,11 @@ export class SesReceiptRule extends cdktf.TerraformResource {
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -384,7 +384,7 @@ export class SesReceiptRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // id - computed: true, optional: true, required: false
@@ -402,15 +402,15 @@ export class SesReceiptRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // recipients - computed: false, optional: true, required: false
-  private _recipients?: string[] | undefined; 
+  private _recipients?: string[]; 
   public get recipients() {
     return this.getListAttribute('recipients');
   }
-  public set recipients(value: string[] | undefined) {
+  public set recipients(value: string[]) {
     this._recipients = value;
   }
   public resetRecipients() {
@@ -418,7 +418,7 @@ export class SesReceiptRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get recipientsInput() {
-    return this._recipients
+    return this._recipients;
   }
 
   // rule_set_name - computed: false, optional: false, required: true
@@ -431,15 +431,15 @@ export class SesReceiptRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ruleSetNameInput() {
-    return this._ruleSetName
+    return this._ruleSetName;
   }
 
   // scan_enabled - computed: false, optional: true, required: false
-  private _scanEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _scanEnabled?: boolean | cdktf.IResolvable; 
   public get scanEnabled() {
     return this.getBooleanAttribute('scan_enabled') as any;
   }
-  public set scanEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set scanEnabled(value: boolean | cdktf.IResolvable) {
     this._scanEnabled = value;
   }
   public resetScanEnabled() {
@@ -447,15 +447,15 @@ export class SesReceiptRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scanEnabledInput() {
-    return this._scanEnabled
+    return this._scanEnabled;
   }
 
   // tls_policy - computed: true, optional: true, required: false
-  private _tlsPolicy?: string | undefined; 
+  private _tlsPolicy?: string; 
   public get tlsPolicy() {
     return this.getStringAttribute('tls_policy');
   }
-  public set tlsPolicy(value: string | undefined) {
+  public set tlsPolicy(value: string) {
     this._tlsPolicy = value;
   }
   public resetTlsPolicy() {
@@ -463,16 +463,16 @@ export class SesReceiptRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tlsPolicyInput() {
-    return this._tlsPolicy
+    return this._tlsPolicy;
   }
 
   // add_header_action - computed: false, optional: true, required: false
-  private _addHeaderAction?: SesReceiptRuleAddHeaderAction[] | undefined; 
+  private _addHeaderAction?: SesReceiptRuleAddHeaderAction[]; 
   public get addHeaderAction() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('add_header_action') as any;
   }
-  public set addHeaderAction(value: SesReceiptRuleAddHeaderAction[] | undefined) {
+  public set addHeaderAction(value: SesReceiptRuleAddHeaderAction[]) {
     this._addHeaderAction = value;
   }
   public resetAddHeaderAction() {
@@ -480,16 +480,16 @@ export class SesReceiptRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get addHeaderActionInput() {
-    return this._addHeaderAction
+    return this._addHeaderAction;
   }
 
   // bounce_action - computed: false, optional: true, required: false
-  private _bounceAction?: SesReceiptRuleBounceAction[] | undefined; 
+  private _bounceAction?: SesReceiptRuleBounceAction[]; 
   public get bounceAction() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('bounce_action') as any;
   }
-  public set bounceAction(value: SesReceiptRuleBounceAction[] | undefined) {
+  public set bounceAction(value: SesReceiptRuleBounceAction[]) {
     this._bounceAction = value;
   }
   public resetBounceAction() {
@@ -497,16 +497,16 @@ export class SesReceiptRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bounceActionInput() {
-    return this._bounceAction
+    return this._bounceAction;
   }
 
   // lambda_action - computed: false, optional: true, required: false
-  private _lambdaAction?: SesReceiptRuleLambdaAction[] | undefined; 
+  private _lambdaAction?: SesReceiptRuleLambdaAction[]; 
   public get lambdaAction() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('lambda_action') as any;
   }
-  public set lambdaAction(value: SesReceiptRuleLambdaAction[] | undefined) {
+  public set lambdaAction(value: SesReceiptRuleLambdaAction[]) {
     this._lambdaAction = value;
   }
   public resetLambdaAction() {
@@ -514,16 +514,16 @@ export class SesReceiptRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get lambdaActionInput() {
-    return this._lambdaAction
+    return this._lambdaAction;
   }
 
   // s3_action - computed: false, optional: true, required: false
-  private _s3Action?: SesReceiptRuleS3Action[] | undefined; 
+  private _s3Action?: SesReceiptRuleS3Action[]; 
   public get s3Action() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('s3_action') as any;
   }
-  public set s3Action(value: SesReceiptRuleS3Action[] | undefined) {
+  public set s3Action(value: SesReceiptRuleS3Action[]) {
     this._s3Action = value;
   }
   public resetS3Action() {
@@ -531,16 +531,16 @@ export class SesReceiptRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3ActionInput() {
-    return this._s3Action
+    return this._s3Action;
   }
 
   // sns_action - computed: false, optional: true, required: false
-  private _snsAction?: SesReceiptRuleSnsAction[] | undefined; 
+  private _snsAction?: SesReceiptRuleSnsAction[]; 
   public get snsAction() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('sns_action') as any;
   }
-  public set snsAction(value: SesReceiptRuleSnsAction[] | undefined) {
+  public set snsAction(value: SesReceiptRuleSnsAction[]) {
     this._snsAction = value;
   }
   public resetSnsAction() {
@@ -548,16 +548,16 @@ export class SesReceiptRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get snsActionInput() {
-    return this._snsAction
+    return this._snsAction;
   }
 
   // stop_action - computed: false, optional: true, required: false
-  private _stopAction?: SesReceiptRuleStopAction[] | undefined; 
+  private _stopAction?: SesReceiptRuleStopAction[]; 
   public get stopAction() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('stop_action') as any;
   }
-  public set stopAction(value: SesReceiptRuleStopAction[] | undefined) {
+  public set stopAction(value: SesReceiptRuleStopAction[]) {
     this._stopAction = value;
   }
   public resetStopAction() {
@@ -565,16 +565,16 @@ export class SesReceiptRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stopActionInput() {
-    return this._stopAction
+    return this._stopAction;
   }
 
   // workmail_action - computed: false, optional: true, required: false
-  private _workmailAction?: SesReceiptRuleWorkmailAction[] | undefined; 
+  private _workmailAction?: SesReceiptRuleWorkmailAction[]; 
   public get workmailAction() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('workmail_action') as any;
   }
-  public set workmailAction(value: SesReceiptRuleWorkmailAction[] | undefined) {
+  public set workmailAction(value: SesReceiptRuleWorkmailAction[]) {
     this._workmailAction = value;
   }
   public resetWorkmailAction() {
@@ -582,7 +582,7 @@ export class SesReceiptRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get workmailActionInput() {
-    return this._workmailAction
+    return this._workmailAction;
   }
 
   // =========

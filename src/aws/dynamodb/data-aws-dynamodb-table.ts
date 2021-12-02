@@ -145,6 +145,19 @@ export class DataAwsDynamodbTableServerSideEncryptionOutputReference extends cdk
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): DataAwsDynamodbTableServerSideEncryption | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DataAwsDynamodbTableServerSideEncryption | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 
 /**
@@ -181,7 +194,7 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
     });
     this._name = config.name;
     this._tags = config.tags;
-    this._serverSideEncryption = config.serverSideEncryption;
+    this._serverSideEncryption.internalValue = config.serverSideEncryption;
   }
 
   // ==========
@@ -233,7 +246,7 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // point_in_time_recovery - computed: true, optional: false, required: false
@@ -277,12 +290,12 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -290,7 +303,7 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // ttl - computed: true, optional: false, required: false
@@ -304,20 +317,19 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
   }
 
   // server_side_encryption - computed: false, optional: true, required: false
-  private _serverSideEncryption?: DataAwsDynamodbTableServerSideEncryption | undefined; 
-  private __serverSideEncryptionOutput = new DataAwsDynamodbTableServerSideEncryptionOutputReference(this as any, "server_side_encryption", true);
+  private _serverSideEncryption = new DataAwsDynamodbTableServerSideEncryptionOutputReference(this as any, "server_side_encryption", true);
   public get serverSideEncryption() {
-    return this.__serverSideEncryptionOutput;
+    return this._serverSideEncryption;
   }
-  public putServerSideEncryption(value: DataAwsDynamodbTableServerSideEncryption | undefined) {
-    this._serverSideEncryption = value;
+  public putServerSideEncryption(value: DataAwsDynamodbTableServerSideEncryption) {
+    this._serverSideEncryption.internalValue = value;
   }
   public resetServerSideEncryption() {
-    this._serverSideEncryption = undefined;
+    this._serverSideEncryption.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get serverSideEncryptionInput() {
-    return this._serverSideEncryption
+    return this._serverSideEncryption.internalValue;
   }
 
   // =========
@@ -328,7 +340,7 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
     return {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      server_side_encryption: dataAwsDynamodbTableServerSideEncryptionToTerraform(this._serverSideEncryption),
+      server_side_encryption: dataAwsDynamodbTableServerSideEncryptionToTerraform(this._serverSideEncryption.internalValue),
     };
   }
 }

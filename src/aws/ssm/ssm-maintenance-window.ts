@@ -113,11 +113,11 @@ export class SsmMaintenanceWindow extends cdktf.TerraformResource {
   // ==========
 
   // allow_unassociated_targets - computed: false, optional: true, required: false
-  private _allowUnassociatedTargets?: boolean | cdktf.IResolvable | undefined; 
+  private _allowUnassociatedTargets?: boolean | cdktf.IResolvable; 
   public get allowUnassociatedTargets() {
     return this.getBooleanAttribute('allow_unassociated_targets') as any;
   }
-  public set allowUnassociatedTargets(value: boolean | cdktf.IResolvable | undefined) {
+  public set allowUnassociatedTargets(value: boolean | cdktf.IResolvable) {
     this._allowUnassociatedTargets = value;
   }
   public resetAllowUnassociatedTargets() {
@@ -125,7 +125,7 @@ export class SsmMaintenanceWindow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allowUnassociatedTargetsInput() {
-    return this._allowUnassociatedTargets
+    return this._allowUnassociatedTargets;
   }
 
   // cutoff - computed: false, optional: false, required: true
@@ -138,15 +138,15 @@ export class SsmMaintenanceWindow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cutoffInput() {
-    return this._cutoff
+    return this._cutoff;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -154,7 +154,7 @@ export class SsmMaintenanceWindow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // duration - computed: false, optional: false, required: true
@@ -167,15 +167,15 @@ export class SsmMaintenanceWindow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get durationInput() {
-    return this._duration
+    return this._duration;
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -183,15 +183,15 @@ export class SsmMaintenanceWindow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // end_date - computed: false, optional: true, required: false
-  private _endDate?: string | undefined; 
+  private _endDate?: string; 
   public get endDate() {
     return this.getStringAttribute('end_date');
   }
-  public set endDate(value: string | undefined) {
+  public set endDate(value: string) {
     this._endDate = value;
   }
   public resetEndDate() {
@@ -199,7 +199,7 @@ export class SsmMaintenanceWindow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endDateInput() {
-    return this._endDate
+    return this._endDate;
   }
 
   // id - computed: true, optional: true, required: false
@@ -217,7 +217,7 @@ export class SsmMaintenanceWindow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // schedule - computed: false, optional: false, required: true
@@ -230,15 +230,15 @@ export class SsmMaintenanceWindow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleInput() {
-    return this._schedule
+    return this._schedule;
   }
 
   // schedule_offset - computed: false, optional: true, required: false
-  private _scheduleOffset?: number | undefined; 
+  private _scheduleOffset?: number; 
   public get scheduleOffset() {
     return this.getNumberAttribute('schedule_offset');
   }
-  public set scheduleOffset(value: number | undefined) {
+  public set scheduleOffset(value: number) {
     this._scheduleOffset = value;
   }
   public resetScheduleOffset() {
@@ -246,15 +246,15 @@ export class SsmMaintenanceWindow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleOffsetInput() {
-    return this._scheduleOffset
+    return this._scheduleOffset;
   }
 
   // schedule_timezone - computed: false, optional: true, required: false
-  private _scheduleTimezone?: string | undefined; 
+  private _scheduleTimezone?: string; 
   public get scheduleTimezone() {
     return this.getStringAttribute('schedule_timezone');
   }
-  public set scheduleTimezone(value: string | undefined) {
+  public set scheduleTimezone(value: string) {
     this._scheduleTimezone = value;
   }
   public resetScheduleTimezone() {
@@ -262,15 +262,15 @@ export class SsmMaintenanceWindow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleTimezoneInput() {
-    return this._scheduleTimezone
+    return this._scheduleTimezone;
   }
 
   // start_date - computed: false, optional: true, required: false
-  private _startDate?: string | undefined; 
+  private _startDate?: string; 
   public get startDate() {
     return this.getStringAttribute('start_date');
   }
-  public set startDate(value: string | undefined) {
+  public set startDate(value: string) {
     this._startDate = value;
   }
   public resetStartDate() {
@@ -278,16 +278,16 @@ export class SsmMaintenanceWindow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get startDateInput() {
-    return this._startDate
+    return this._startDate;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -295,16 +295,16 @@ export class SsmMaintenanceWindow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -312,7 +312,7 @@ export class SsmMaintenanceWindow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

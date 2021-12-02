@@ -87,15 +87,15 @@ export class Apigatewayv2IntegrationResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiIdInput() {
-    return this._apiId
+    return this._apiId;
   }
 
   // content_handling_strategy - computed: false, optional: true, required: false
-  private _contentHandlingStrategy?: string | undefined; 
+  private _contentHandlingStrategy?: string; 
   public get contentHandlingStrategy() {
     return this.getStringAttribute('content_handling_strategy');
   }
-  public set contentHandlingStrategy(value: string | undefined) {
+  public set contentHandlingStrategy(value: string) {
     this._contentHandlingStrategy = value;
   }
   public resetContentHandlingStrategy() {
@@ -103,7 +103,7 @@ export class Apigatewayv2IntegrationResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get contentHandlingStrategyInput() {
-    return this._contentHandlingStrategy
+    return this._contentHandlingStrategy;
   }
 
   // id - computed: true, optional: true, required: false
@@ -121,7 +121,7 @@ export class Apigatewayv2IntegrationResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get integrationIdInput() {
-    return this._integrationId
+    return this._integrationId;
   }
 
   // integration_response_key - computed: false, optional: false, required: true
@@ -134,16 +134,16 @@ export class Apigatewayv2IntegrationResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get integrationResponseKeyInput() {
-    return this._integrationResponseKey
+    return this._integrationResponseKey;
   }
 
   // response_templates - computed: false, optional: true, required: false
-  private _responseTemplates?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _responseTemplates?: { [key: string]: string } | cdktf.IResolvable; 
   public get responseTemplates() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('response_templates') as any;
   }
-  public set responseTemplates(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set responseTemplates(value: { [key: string]: string } | cdktf.IResolvable) {
     this._responseTemplates = value;
   }
   public resetResponseTemplates() {
@@ -151,15 +151,15 @@ export class Apigatewayv2IntegrationResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get responseTemplatesInput() {
-    return this._responseTemplates
+    return this._responseTemplates;
   }
 
   // template_selection_expression - computed: false, optional: true, required: false
-  private _templateSelectionExpression?: string | undefined; 
+  private _templateSelectionExpression?: string; 
   public get templateSelectionExpression() {
     return this.getStringAttribute('template_selection_expression');
   }
-  public set templateSelectionExpression(value: string | undefined) {
+  public set templateSelectionExpression(value: string) {
     this._templateSelectionExpression = value;
   }
   public resetTemplateSelectionExpression() {
@@ -167,7 +167,7 @@ export class Apigatewayv2IntegrationResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get templateSelectionExpressionInput() {
-    return this._templateSelectionExpression
+    return this._templateSelectionExpression;
   }
 
   // =========

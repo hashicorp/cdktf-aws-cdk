@@ -62,7 +62,7 @@ export class DataAwsLakeformationResource extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // id - computed: true, optional: true, required: false

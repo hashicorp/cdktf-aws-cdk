@@ -67,7 +67,7 @@ export class Kinesisanalyticsv2ApplicationSnapshot extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get applicationNameInput() {
-    return this._applicationName
+    return this._applicationName;
   }
 
   // application_version_id - computed: true, optional: false, required: false
@@ -95,7 +95,7 @@ export class Kinesisanalyticsv2ApplicationSnapshot extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotNameInput() {
-    return this._snapshotName
+    return this._snapshotName;
   }
 
   // =========

@@ -114,15 +114,15 @@ export class VpcEndpointService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get acceptanceRequiredInput() {
-    return this._acceptanceRequired
+    return this._acceptanceRequired;
   }
 
   // allowed_principals - computed: true, optional: true, required: false
-  private _allowedPrincipals?: string[] | undefined; 
+  private _allowedPrincipals?: string[]; 
   public get allowedPrincipals() {
     return this.getListAttribute('allowed_principals');
   }
-  public set allowedPrincipals(value: string[] | undefined) {
+  public set allowedPrincipals(value: string[]) {
     this._allowedPrincipals = value;
   }
   public resetAllowedPrincipals() {
@@ -130,7 +130,7 @@ export class VpcEndpointService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allowedPrincipalsInput() {
-    return this._allowedPrincipals
+    return this._allowedPrincipals;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -149,11 +149,11 @@ export class VpcEndpointService extends cdktf.TerraformResource {
   }
 
   // gateway_load_balancer_arns - computed: false, optional: true, required: false
-  private _gatewayLoadBalancerArns?: string[] | undefined; 
+  private _gatewayLoadBalancerArns?: string[]; 
   public get gatewayLoadBalancerArns() {
     return this.getListAttribute('gateway_load_balancer_arns');
   }
-  public set gatewayLoadBalancerArns(value: string[] | undefined) {
+  public set gatewayLoadBalancerArns(value: string[]) {
     this._gatewayLoadBalancerArns = value;
   }
   public resetGatewayLoadBalancerArns() {
@@ -161,7 +161,7 @@ export class VpcEndpointService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get gatewayLoadBalancerArnsInput() {
-    return this._gatewayLoadBalancerArns
+    return this._gatewayLoadBalancerArns;
   }
 
   // id - computed: true, optional: true, required: false
@@ -175,11 +175,11 @@ export class VpcEndpointService extends cdktf.TerraformResource {
   }
 
   // network_load_balancer_arns - computed: false, optional: true, required: false
-  private _networkLoadBalancerArns?: string[] | undefined; 
+  private _networkLoadBalancerArns?: string[]; 
   public get networkLoadBalancerArns() {
     return this.getListAttribute('network_load_balancer_arns');
   }
-  public set networkLoadBalancerArns(value: string[] | undefined) {
+  public set networkLoadBalancerArns(value: string[]) {
     this._networkLoadBalancerArns = value;
   }
   public resetNetworkLoadBalancerArns() {
@@ -187,15 +187,15 @@ export class VpcEndpointService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get networkLoadBalancerArnsInput() {
-    return this._networkLoadBalancerArns
+    return this._networkLoadBalancerArns;
   }
 
   // private_dns_name - computed: true, optional: true, required: false
-  private _privateDnsName?: string | undefined; 
+  private _privateDnsName?: string; 
   public get privateDnsName() {
     return this.getStringAttribute('private_dns_name');
   }
-  public set privateDnsName(value: string | undefined) {
+  public set privateDnsName(value: string) {
     this._privateDnsName = value;
   }
   public resetPrivateDnsName() {
@@ -203,7 +203,7 @@ export class VpcEndpointService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get privateDnsNameInput() {
-    return this._privateDnsName
+    return this._privateDnsName;
   }
 
   // private_dns_name_configuration - computed: true, optional: false, required: false
@@ -227,12 +227,12 @@ export class VpcEndpointService extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -240,16 +240,16 @@ export class VpcEndpointService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -257,7 +257,7 @@ export class VpcEndpointService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

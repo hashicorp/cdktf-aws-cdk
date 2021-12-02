@@ -98,12 +98,43 @@ export class CloudhsmV2ClusterTimeoutsOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudhsmV2ClusterTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudhsmV2ClusterTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -111,15 +142,15 @@ export class CloudhsmV2ClusterTimeoutsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -127,15 +158,15 @@ export class CloudhsmV2ClusterTimeoutsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -143,7 +174,7 @@ export class CloudhsmV2ClusterTimeoutsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -184,7 +215,7 @@ export class CloudhsmV2Cluster extends cdktf.TerraformResource {
     this._subnetIds = config.subnetIds;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -216,7 +247,7 @@ export class CloudhsmV2Cluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get hsmTypeInput() {
-    return this._hsmType
+    return this._hsmType;
   }
 
   // id - computed: true, optional: true, required: false
@@ -230,11 +261,11 @@ export class CloudhsmV2Cluster extends cdktf.TerraformResource {
   }
 
   // source_backup_identifier - computed: false, optional: true, required: false
-  private _sourceBackupIdentifier?: string | undefined; 
+  private _sourceBackupIdentifier?: string; 
   public get sourceBackupIdentifier() {
     return this.getStringAttribute('source_backup_identifier');
   }
-  public set sourceBackupIdentifier(value: string | undefined) {
+  public set sourceBackupIdentifier(value: string) {
     this._sourceBackupIdentifier = value;
   }
   public resetSourceBackupIdentifier() {
@@ -242,7 +273,7 @@ export class CloudhsmV2Cluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceBackupIdentifierInput() {
-    return this._sourceBackupIdentifier
+    return this._sourceBackupIdentifier;
   }
 
   // subnet_ids - computed: false, optional: false, required: true
@@ -255,16 +286,16 @@ export class CloudhsmV2Cluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -272,16 +303,16 @@ export class CloudhsmV2Cluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -289,7 +320,7 @@ export class CloudhsmV2Cluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // vpc_id - computed: true, optional: false, required: false
@@ -298,20 +329,19 @@ export class CloudhsmV2Cluster extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: CloudhsmV2ClusterTimeouts | undefined; 
-  private __timeoutsOutput = new CloudhsmV2ClusterTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new CloudhsmV2ClusterTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: CloudhsmV2ClusterTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: CloudhsmV2ClusterTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -325,7 +355,7 @@ export class CloudhsmV2Cluster extends cdktf.TerraformResource {
       subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._subnetIds),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      timeouts: cloudhsmV2ClusterTimeoutsToTerraform(this._timeouts),
+      timeouts: cloudhsmV2ClusterTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

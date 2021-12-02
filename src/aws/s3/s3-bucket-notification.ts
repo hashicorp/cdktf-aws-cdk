@@ -191,7 +191,7 @@ export class S3BucketNotification extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // id - computed: true, optional: true, required: false
@@ -200,12 +200,12 @@ export class S3BucketNotification extends cdktf.TerraformResource {
   }
 
   // lambda_function - computed: false, optional: true, required: false
-  private _lambdaFunction?: S3BucketNotificationLambdaFunction[] | undefined; 
+  private _lambdaFunction?: S3BucketNotificationLambdaFunction[]; 
   public get lambdaFunction() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('lambda_function') as any;
   }
-  public set lambdaFunction(value: S3BucketNotificationLambdaFunction[] | undefined) {
+  public set lambdaFunction(value: S3BucketNotificationLambdaFunction[]) {
     this._lambdaFunction = value;
   }
   public resetLambdaFunction() {
@@ -213,16 +213,16 @@ export class S3BucketNotification extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get lambdaFunctionInput() {
-    return this._lambdaFunction
+    return this._lambdaFunction;
   }
 
   // queue - computed: false, optional: true, required: false
-  private _queue?: S3BucketNotificationQueue[] | undefined; 
+  private _queue?: S3BucketNotificationQueue[]; 
   public get queue() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('queue') as any;
   }
-  public set queue(value: S3BucketNotificationQueue[] | undefined) {
+  public set queue(value: S3BucketNotificationQueue[]) {
     this._queue = value;
   }
   public resetQueue() {
@@ -230,16 +230,16 @@ export class S3BucketNotification extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get queueInput() {
-    return this._queue
+    return this._queue;
   }
 
   // topic - computed: false, optional: true, required: false
-  private _topic?: S3BucketNotificationTopic[] | undefined; 
+  private _topic?: S3BucketNotificationTopic[]; 
   public get topic() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('topic') as any;
   }
-  public set topic(value: S3BucketNotificationTopic[] | undefined) {
+  public set topic(value: S3BucketNotificationTopic[]) {
     this._topic = value;
   }
   public resetTopic() {
@@ -247,7 +247,7 @@ export class S3BucketNotification extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get topicInput() {
-    return this._topic
+    return this._topic;
   }
 
   // =========

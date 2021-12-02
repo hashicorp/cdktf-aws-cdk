@@ -139,6 +139,37 @@ export class ApiGatewayUsagePlanQuotaSettingsOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApiGatewayUsagePlanQuotaSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._limit) {
+      hasAnyValues = true;
+      internalValueResult.limit = this._limit;
+    }
+    if (this._offset) {
+      hasAnyValues = true;
+      internalValueResult.offset = this._offset;
+    }
+    if (this._period) {
+      hasAnyValues = true;
+      internalValueResult.period = this._period;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApiGatewayUsagePlanQuotaSettings | undefined) {
+    if (value === undefined) {
+      this._limit = undefined;
+      this._offset = undefined;
+      this._period = undefined;
+    }
+    else {
+      this._limit = value.limit;
+      this._offset = value.offset;
+      this._period = value.period;
+    }
+  }
+
   // limit - computed: false, optional: false, required: true
   private _limit?: number; 
   public get limit() {
@@ -149,15 +180,15 @@ export class ApiGatewayUsagePlanQuotaSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get limitInput() {
-    return this._limit
+    return this._limit;
   }
 
   // offset - computed: false, optional: true, required: false
-  private _offset?: number | undefined; 
+  private _offset?: number; 
   public get offset() {
     return this.getNumberAttribute('offset');
   }
-  public set offset(value: number | undefined) {
+  public set offset(value: number) {
     this._offset = value;
   }
   public resetOffset() {
@@ -165,7 +196,7 @@ export class ApiGatewayUsagePlanQuotaSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get offsetInput() {
-    return this._offset
+    return this._offset;
   }
 
   // period - computed: false, optional: false, required: true
@@ -178,7 +209,7 @@ export class ApiGatewayUsagePlanQuotaSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get periodInput() {
-    return this._period
+    return this._period;
   }
 }
 export interface ApiGatewayUsagePlanThrottleSettings {
@@ -213,12 +244,37 @@ export class ApiGatewayUsagePlanThrottleSettingsOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApiGatewayUsagePlanThrottleSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._burstLimit) {
+      hasAnyValues = true;
+      internalValueResult.burstLimit = this._burstLimit;
+    }
+    if (this._rateLimit) {
+      hasAnyValues = true;
+      internalValueResult.rateLimit = this._rateLimit;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApiGatewayUsagePlanThrottleSettings | undefined) {
+    if (value === undefined) {
+      this._burstLimit = undefined;
+      this._rateLimit = undefined;
+    }
+    else {
+      this._burstLimit = value.burstLimit;
+      this._rateLimit = value.rateLimit;
+    }
+  }
+
   // burst_limit - computed: false, optional: true, required: false
-  private _burstLimit?: number | undefined; 
+  private _burstLimit?: number; 
   public get burstLimit() {
     return this.getNumberAttribute('burst_limit');
   }
-  public set burstLimit(value: number | undefined) {
+  public set burstLimit(value: number) {
     this._burstLimit = value;
   }
   public resetBurstLimit() {
@@ -226,15 +282,15 @@ export class ApiGatewayUsagePlanThrottleSettingsOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get burstLimitInput() {
-    return this._burstLimit
+    return this._burstLimit;
   }
 
   // rate_limit - computed: false, optional: true, required: false
-  private _rateLimit?: number | undefined; 
+  private _rateLimit?: number; 
   public get rateLimit() {
     return this.getNumberAttribute('rate_limit');
   }
-  public set rateLimit(value: number | undefined) {
+  public set rateLimit(value: number) {
     this._rateLimit = value;
   }
   public resetRateLimit() {
@@ -242,7 +298,7 @@ export class ApiGatewayUsagePlanThrottleSettingsOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get rateLimitInput() {
-    return this._rateLimit
+    return this._rateLimit;
   }
 }
 
@@ -284,8 +340,8 @@ export class ApiGatewayUsagePlan extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._apiStages = config.apiStages;
-    this._quotaSettings = config.quotaSettings;
-    this._throttleSettings = config.throttleSettings;
+    this._quotaSettings.internalValue = config.quotaSettings;
+    this._throttleSettings.internalValue = config.throttleSettings;
   }
 
   // ==========
@@ -298,11 +354,11 @@ export class ApiGatewayUsagePlan extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -310,7 +366,7 @@ export class ApiGatewayUsagePlan extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -328,15 +384,15 @@ export class ApiGatewayUsagePlan extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // product_code - computed: false, optional: true, required: false
-  private _productCode?: string | undefined; 
+  private _productCode?: string; 
   public get productCode() {
     return this.getStringAttribute('product_code');
   }
-  public set productCode(value: string | undefined) {
+  public set productCode(value: string) {
     this._productCode = value;
   }
   public resetProductCode() {
@@ -344,16 +400,16 @@ export class ApiGatewayUsagePlan extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get productCodeInput() {
-    return this._productCode
+    return this._productCode;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -361,16 +417,16 @@ export class ApiGatewayUsagePlan extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -378,16 +434,16 @@ export class ApiGatewayUsagePlan extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // api_stages - computed: false, optional: true, required: false
-  private _apiStages?: ApiGatewayUsagePlanApiStages[] | undefined; 
+  private _apiStages?: ApiGatewayUsagePlanApiStages[]; 
   public get apiStages() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('api_stages') as any;
   }
-  public set apiStages(value: ApiGatewayUsagePlanApiStages[] | undefined) {
+  public set apiStages(value: ApiGatewayUsagePlanApiStages[]) {
     this._apiStages = value;
   }
   public resetApiStages() {
@@ -395,41 +451,39 @@ export class ApiGatewayUsagePlan extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiStagesInput() {
-    return this._apiStages
+    return this._apiStages;
   }
 
   // quota_settings - computed: false, optional: true, required: false
-  private _quotaSettings?: ApiGatewayUsagePlanQuotaSettings | undefined; 
-  private __quotaSettingsOutput = new ApiGatewayUsagePlanQuotaSettingsOutputReference(this as any, "quota_settings", true);
+  private _quotaSettings = new ApiGatewayUsagePlanQuotaSettingsOutputReference(this as any, "quota_settings", true);
   public get quotaSettings() {
-    return this.__quotaSettingsOutput;
+    return this._quotaSettings;
   }
-  public putQuotaSettings(value: ApiGatewayUsagePlanQuotaSettings | undefined) {
-    this._quotaSettings = value;
+  public putQuotaSettings(value: ApiGatewayUsagePlanQuotaSettings) {
+    this._quotaSettings.internalValue = value;
   }
   public resetQuotaSettings() {
-    this._quotaSettings = undefined;
+    this._quotaSettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get quotaSettingsInput() {
-    return this._quotaSettings
+    return this._quotaSettings.internalValue;
   }
 
   // throttle_settings - computed: false, optional: true, required: false
-  private _throttleSettings?: ApiGatewayUsagePlanThrottleSettings | undefined; 
-  private __throttleSettingsOutput = new ApiGatewayUsagePlanThrottleSettingsOutputReference(this as any, "throttle_settings", true);
+  private _throttleSettings = new ApiGatewayUsagePlanThrottleSettingsOutputReference(this as any, "throttle_settings", true);
   public get throttleSettings() {
-    return this.__throttleSettingsOutput;
+    return this._throttleSettings;
   }
-  public putThrottleSettings(value: ApiGatewayUsagePlanThrottleSettings | undefined) {
-    this._throttleSettings = value;
+  public putThrottleSettings(value: ApiGatewayUsagePlanThrottleSettings) {
+    this._throttleSettings.internalValue = value;
   }
   public resetThrottleSettings() {
-    this._throttleSettings = undefined;
+    this._throttleSettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get throttleSettingsInput() {
-    return this._throttleSettings
+    return this._throttleSettings.internalValue;
   }
 
   // =========
@@ -444,8 +498,8 @@ export class ApiGatewayUsagePlan extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       api_stages: cdktf.listMapper(apiGatewayUsagePlanApiStagesToTerraform)(this._apiStages),
-      quota_settings: apiGatewayUsagePlanQuotaSettingsToTerraform(this._quotaSettings),
-      throttle_settings: apiGatewayUsagePlanThrottleSettingsToTerraform(this._throttleSettings),
+      quota_settings: apiGatewayUsagePlanQuotaSettingsToTerraform(this._quotaSettings.internalValue),
+      throttle_settings: apiGatewayUsagePlanThrottleSettingsToTerraform(this._throttleSettings.internalValue),
     };
   }
 }

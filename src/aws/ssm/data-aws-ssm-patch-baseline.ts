@@ -68,11 +68,11 @@ export class DataAwsSsmPatchBaseline extends cdktf.TerraformDataSource {
   // ==========
 
   // default_baseline - computed: false, optional: true, required: false
-  private _defaultBaseline?: boolean | cdktf.IResolvable | undefined; 
+  private _defaultBaseline?: boolean | cdktf.IResolvable; 
   public get defaultBaseline() {
     return this.getBooleanAttribute('default_baseline') as any;
   }
-  public set defaultBaseline(value: boolean | cdktf.IResolvable | undefined) {
+  public set defaultBaseline(value: boolean | cdktf.IResolvable) {
     this._defaultBaseline = value;
   }
   public resetDefaultBaseline() {
@@ -80,7 +80,7 @@ export class DataAwsSsmPatchBaseline extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultBaselineInput() {
-    return this._defaultBaseline
+    return this._defaultBaseline;
   }
 
   // description - computed: true, optional: false, required: false
@@ -99,11 +99,11 @@ export class DataAwsSsmPatchBaseline extends cdktf.TerraformDataSource {
   }
 
   // name_prefix - computed: false, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -111,15 +111,15 @@ export class DataAwsSsmPatchBaseline extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // operating_system - computed: false, optional: true, required: false
-  private _operatingSystem?: string | undefined; 
+  private _operatingSystem?: string; 
   public get operatingSystem() {
     return this.getStringAttribute('operating_system');
   }
-  public set operatingSystem(value: string | undefined) {
+  public set operatingSystem(value: string) {
     this._operatingSystem = value;
   }
   public resetOperatingSystem() {
@@ -127,7 +127,7 @@ export class DataAwsSsmPatchBaseline extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get operatingSystemInput() {
-    return this._operatingSystem
+    return this._operatingSystem;
   }
 
   // owner - computed: false, optional: false, required: true
@@ -140,7 +140,7 @@ export class DataAwsSsmPatchBaseline extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerInput() {
-    return this._owner
+    return this._owner;
   }
 
   // =========

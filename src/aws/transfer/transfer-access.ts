@@ -103,6 +103,37 @@ export class TransferAccessPosixProfileOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): TransferAccessPosixProfile | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._gid) {
+      hasAnyValues = true;
+      internalValueResult.gid = this._gid;
+    }
+    if (this._secondaryGids) {
+      hasAnyValues = true;
+      internalValueResult.secondaryGids = this._secondaryGids;
+    }
+    if (this._uid) {
+      hasAnyValues = true;
+      internalValueResult.uid = this._uid;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: TransferAccessPosixProfile | undefined) {
+    if (value === undefined) {
+      this._gid = undefined;
+      this._secondaryGids = undefined;
+      this._uid = undefined;
+    }
+    else {
+      this._gid = value.gid;
+      this._secondaryGids = value.secondaryGids;
+      this._uid = value.uid;
+    }
+  }
+
   // gid - computed: false, optional: false, required: true
   private _gid?: number; 
   public get gid() {
@@ -113,16 +144,16 @@ export class TransferAccessPosixProfileOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get gidInput() {
-    return this._gid
+    return this._gid;
   }
 
   // secondary_gids - computed: false, optional: true, required: false
-  private _secondaryGids?: number[] | undefined; 
+  private _secondaryGids?: number[]; 
   public get secondaryGids() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('secondary_gids') as any;
   }
-  public set secondaryGids(value: number[] | undefined) {
+  public set secondaryGids(value: number[]) {
     this._secondaryGids = value;
   }
   public resetSecondaryGids() {
@@ -130,7 +161,7 @@ export class TransferAccessPosixProfileOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get secondaryGidsInput() {
-    return this._secondaryGids
+    return this._secondaryGids;
   }
 
   // uid - computed: false, optional: false, required: true
@@ -143,7 +174,7 @@ export class TransferAccessPosixProfileOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get uidInput() {
-    return this._uid
+    return this._uid;
   }
 }
 
@@ -186,7 +217,7 @@ export class TransferAccess extends cdktf.TerraformResource {
     this._role = config.role;
     this._serverId = config.serverId;
     this._homeDirectoryMappings = config.homeDirectoryMappings;
-    this._posixProfile = config.posixProfile;
+    this._posixProfile.internalValue = config.posixProfile;
   }
 
   // ==========
@@ -203,15 +234,15 @@ export class TransferAccess extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get externalIdInput() {
-    return this._externalId
+    return this._externalId;
   }
 
   // home_directory - computed: false, optional: true, required: false
-  private _homeDirectory?: string | undefined; 
+  private _homeDirectory?: string; 
   public get homeDirectory() {
     return this.getStringAttribute('home_directory');
   }
-  public set homeDirectory(value: string | undefined) {
+  public set homeDirectory(value: string) {
     this._homeDirectory = value;
   }
   public resetHomeDirectory() {
@@ -219,15 +250,15 @@ export class TransferAccess extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get homeDirectoryInput() {
-    return this._homeDirectory
+    return this._homeDirectory;
   }
 
   // home_directory_type - computed: false, optional: true, required: false
-  private _homeDirectoryType?: string | undefined; 
+  private _homeDirectoryType?: string; 
   public get homeDirectoryType() {
     return this.getStringAttribute('home_directory_type');
   }
-  public set homeDirectoryType(value: string | undefined) {
+  public set homeDirectoryType(value: string) {
     this._homeDirectoryType = value;
   }
   public resetHomeDirectoryType() {
@@ -235,7 +266,7 @@ export class TransferAccess extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get homeDirectoryTypeInput() {
-    return this._homeDirectoryType
+    return this._homeDirectoryType;
   }
 
   // id - computed: true, optional: true, required: false
@@ -244,11 +275,11 @@ export class TransferAccess extends cdktf.TerraformResource {
   }
 
   // policy - computed: false, optional: true, required: false
-  private _policy?: string | undefined; 
+  private _policy?: string; 
   public get policy() {
     return this.getStringAttribute('policy');
   }
-  public set policy(value: string | undefined) {
+  public set policy(value: string) {
     this._policy = value;
   }
   public resetPolicy() {
@@ -256,15 +287,15 @@ export class TransferAccess extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // role - computed: false, optional: true, required: false
-  private _role?: string | undefined; 
+  private _role?: string; 
   public get role() {
     return this.getStringAttribute('role');
   }
-  public set role(value: string | undefined) {
+  public set role(value: string) {
     this._role = value;
   }
   public resetRole() {
@@ -272,7 +303,7 @@ export class TransferAccess extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleInput() {
-    return this._role
+    return this._role;
   }
 
   // server_id - computed: false, optional: false, required: true
@@ -285,16 +316,16 @@ export class TransferAccess extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serverIdInput() {
-    return this._serverId
+    return this._serverId;
   }
 
   // home_directory_mappings - computed: false, optional: true, required: false
-  private _homeDirectoryMappings?: TransferAccessHomeDirectoryMappings[] | undefined; 
+  private _homeDirectoryMappings?: TransferAccessHomeDirectoryMappings[]; 
   public get homeDirectoryMappings() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('home_directory_mappings') as any;
   }
-  public set homeDirectoryMappings(value: TransferAccessHomeDirectoryMappings[] | undefined) {
+  public set homeDirectoryMappings(value: TransferAccessHomeDirectoryMappings[]) {
     this._homeDirectoryMappings = value;
   }
   public resetHomeDirectoryMappings() {
@@ -302,24 +333,23 @@ export class TransferAccess extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get homeDirectoryMappingsInput() {
-    return this._homeDirectoryMappings
+    return this._homeDirectoryMappings;
   }
 
   // posix_profile - computed: false, optional: true, required: false
-  private _posixProfile?: TransferAccessPosixProfile | undefined; 
-  private __posixProfileOutput = new TransferAccessPosixProfileOutputReference(this as any, "posix_profile", true);
+  private _posixProfile = new TransferAccessPosixProfileOutputReference(this as any, "posix_profile", true);
   public get posixProfile() {
-    return this.__posixProfileOutput;
+    return this._posixProfile;
   }
-  public putPosixProfile(value: TransferAccessPosixProfile | undefined) {
-    this._posixProfile = value;
+  public putPosixProfile(value: TransferAccessPosixProfile) {
+    this._posixProfile.internalValue = value;
   }
   public resetPosixProfile() {
-    this._posixProfile = undefined;
+    this._posixProfile.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get posixProfileInput() {
-    return this._posixProfile
+    return this._posixProfile.internalValue;
   }
 
   // =========
@@ -335,7 +365,7 @@ export class TransferAccess extends cdktf.TerraformResource {
       role: cdktf.stringToTerraform(this._role),
       server_id: cdktf.stringToTerraform(this._serverId),
       home_directory_mappings: cdktf.listMapper(transferAccessHomeDirectoryMappingsToTerraform)(this._homeDirectoryMappings),
-      posix_profile: transferAccessPosixProfileToTerraform(this._posixProfile),
+      posix_profile: transferAccessPosixProfileToTerraform(this._posixProfile.internalValue),
     };
   }
 }

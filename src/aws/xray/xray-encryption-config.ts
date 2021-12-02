@@ -63,11 +63,11 @@ export class XrayEncryptionConfig extends cdktf.TerraformResource {
   }
 
   // key_id - computed: false, optional: true, required: false
-  private _keyId?: string | undefined; 
+  private _keyId?: string; 
   public get keyId() {
     return this.getStringAttribute('key_id');
   }
-  public set keyId(value: string | undefined) {
+  public set keyId(value: string) {
     this._keyId = value;
   }
   public resetKeyId() {
@@ -75,7 +75,7 @@ export class XrayEncryptionConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyIdInput() {
-    return this._keyId
+    return this._keyId;
   }
 
   // type - computed: false, optional: false, required: true
@@ -88,7 +88,7 @@ export class XrayEncryptionConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // =========

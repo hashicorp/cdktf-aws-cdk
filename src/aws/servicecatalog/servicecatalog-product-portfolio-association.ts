@@ -68,11 +68,11 @@ export class ServicecatalogProductPortfolioAssociation extends cdktf.TerraformRe
   // ==========
 
   // accept_language - computed: false, optional: true, required: false
-  private _acceptLanguage?: string | undefined; 
+  private _acceptLanguage?: string; 
   public get acceptLanguage() {
     return this.getStringAttribute('accept_language');
   }
-  public set acceptLanguage(value: string | undefined) {
+  public set acceptLanguage(value: string) {
     this._acceptLanguage = value;
   }
   public resetAcceptLanguage() {
@@ -80,7 +80,7 @@ export class ServicecatalogProductPortfolioAssociation extends cdktf.TerraformRe
   }
   // Temporarily expose input value. Use with caution.
   public get acceptLanguageInput() {
-    return this._acceptLanguage
+    return this._acceptLanguage;
   }
 
   // id - computed: true, optional: true, required: false
@@ -98,7 +98,7 @@ export class ServicecatalogProductPortfolioAssociation extends cdktf.TerraformRe
   }
   // Temporarily expose input value. Use with caution.
   public get portfolioIdInput() {
-    return this._portfolioId
+    return this._portfolioId;
   }
 
   // product_id - computed: false, optional: false, required: true
@@ -111,15 +111,15 @@ export class ServicecatalogProductPortfolioAssociation extends cdktf.TerraformRe
   }
   // Temporarily expose input value. Use with caution.
   public get productIdInput() {
-    return this._productId
+    return this._productId;
   }
 
   // source_portfolio_id - computed: false, optional: true, required: false
-  private _sourcePortfolioId?: string | undefined; 
+  private _sourcePortfolioId?: string; 
   public get sourcePortfolioId() {
     return this.getStringAttribute('source_portfolio_id');
   }
-  public set sourcePortfolioId(value: string | undefined) {
+  public set sourcePortfolioId(value: string) {
     this._sourcePortfolioId = value;
   }
   public resetSourcePortfolioId() {
@@ -127,7 +127,7 @@ export class ServicecatalogProductPortfolioAssociation extends cdktf.TerraformRe
   }
   // Temporarily expose input value. Use with caution.
   public get sourcePortfolioIdInput() {
-    return this._sourcePortfolioId
+    return this._sourcePortfolioId;
   }
 
   // =========

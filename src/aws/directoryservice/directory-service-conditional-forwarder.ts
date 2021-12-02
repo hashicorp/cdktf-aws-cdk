@@ -72,7 +72,7 @@ export class DirectoryServiceConditionalForwarder extends cdktf.TerraformResourc
   }
   // Temporarily expose input value. Use with caution.
   public get directoryIdInput() {
-    return this._directoryId
+    return this._directoryId;
   }
 
   // dns_ips - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class DirectoryServiceConditionalForwarder extends cdktf.TerraformResourc
   }
   // Temporarily expose input value. Use with caution.
   public get dnsIpsInput() {
-    return this._dnsIps
+    return this._dnsIps;
   }
 
   // id - computed: true, optional: true, required: false
@@ -103,7 +103,7 @@ export class DirectoryServiceConditionalForwarder extends cdktf.TerraformResourc
   }
   // Temporarily expose input value. Use with caution.
   public get remoteDomainNameInput() {
-    return this._remoteDomainName
+    return this._remoteDomainName;
   }
 
   // =========

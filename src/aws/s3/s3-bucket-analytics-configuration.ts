@@ -60,12 +60,37 @@ export class S3BucketAnalyticsConfigurationFilterOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketAnalyticsConfigurationFilter | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._tags) {
+      hasAnyValues = true;
+      internalValueResult.tags = this._tags;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketAnalyticsConfigurationFilter | undefined) {
+    if (value === undefined) {
+      this._prefix = undefined;
+      this._tags = undefined;
+    }
+    else {
+      this._prefix = value.prefix;
+      this._tags = value.tags;
+    }
+  }
+
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -73,16 +98,16 @@ export class S3BucketAnalyticsConfigurationFilterOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -90,7 +115,7 @@ export class S3BucketAnalyticsConfigurationFilterOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 }
 export interface S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination {
@@ -135,12 +160,49 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestina
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucketAccountId) {
+      hasAnyValues = true;
+      internalValueResult.bucketAccountId = this._bucketAccountId;
+    }
+    if (this._bucketArn) {
+      hasAnyValues = true;
+      internalValueResult.bucketArn = this._bucketArn;
+    }
+    if (this._format) {
+      hasAnyValues = true;
+      internalValueResult.format = this._format;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination | undefined) {
+    if (value === undefined) {
+      this._bucketAccountId = undefined;
+      this._bucketArn = undefined;
+      this._format = undefined;
+      this._prefix = undefined;
+    }
+    else {
+      this._bucketAccountId = value.bucketAccountId;
+      this._bucketArn = value.bucketArn;
+      this._format = value.format;
+      this._prefix = value.prefix;
+    }
+  }
+
   // bucket_account_id - computed: false, optional: true, required: false
-  private _bucketAccountId?: string | undefined; 
+  private _bucketAccountId?: string; 
   public get bucketAccountId() {
     return this.getStringAttribute('bucket_account_id');
   }
-  public set bucketAccountId(value: string | undefined) {
+  public set bucketAccountId(value: string) {
     this._bucketAccountId = value;
   }
   public resetBucketAccountId() {
@@ -148,7 +210,7 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestina
   }
   // Temporarily expose input value. Use with caution.
   public get bucketAccountIdInput() {
-    return this._bucketAccountId
+    return this._bucketAccountId;
   }
 
   // bucket_arn - computed: false, optional: false, required: true
@@ -161,15 +223,15 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestina
   }
   // Temporarily expose input value. Use with caution.
   public get bucketArnInput() {
-    return this._bucketArn
+    return this._bucketArn;
   }
 
   // format - computed: false, optional: true, required: false
-  private _format?: string | undefined; 
+  private _format?: string; 
   public get format() {
     return this.getStringAttribute('format');
   }
-  public set format(value: string | undefined) {
+  public set format(value: string) {
     this._format = value;
   }
   public resetFormat() {
@@ -177,15 +239,15 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestina
   }
   // Temporarily expose input value. Use with caution.
   public get formatInput() {
-    return this._format
+    return this._format;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -193,7 +255,7 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestina
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 }
 export interface S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestination {
@@ -225,18 +287,36 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestina
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestination | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._s3BucketDestination) {
+      hasAnyValues = true;
+      internalValueResult.s3BucketDestination = this._s3BucketDestination?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestination | undefined) {
+    if (value === undefined) {
+      this._s3BucketDestination.internalValue = undefined;
+    }
+    else {
+      this._s3BucketDestination.internalValue = value.s3BucketDestination;
+    }
+  }
+
   // s3_bucket_destination - computed: false, optional: false, required: true
-  private _s3BucketDestination?: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination; 
-  private __s3BucketDestinationOutput = new S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationOutputReference(this as any, "s3_bucket_destination", true);
+  private _s3BucketDestination = new S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationOutputReference(this as any, "s3_bucket_destination", true);
   public get s3BucketDestination() {
-    return this.__s3BucketDestinationOutput;
+    return this._s3BucketDestination;
   }
   public putS3BucketDestination(value: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination) {
-    this._s3BucketDestination = value;
+    this._s3BucketDestination.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get s3BucketDestinationInput() {
-    return this._s3BucketDestination
+    return this._s3BucketDestination.internalValue;
   }
 }
 export interface S3BucketAnalyticsConfigurationStorageClassAnalysisDataExport {
@@ -273,12 +353,37 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportOutputR
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketAnalyticsConfigurationStorageClassAnalysisDataExport | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._outputSchemaVersion) {
+      hasAnyValues = true;
+      internalValueResult.outputSchemaVersion = this._outputSchemaVersion;
+    }
+    if (this._destination) {
+      hasAnyValues = true;
+      internalValueResult.destination = this._destination?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExport | undefined) {
+    if (value === undefined) {
+      this._outputSchemaVersion = undefined;
+      this._destination.internalValue = undefined;
+    }
+    else {
+      this._outputSchemaVersion = value.outputSchemaVersion;
+      this._destination.internalValue = value.destination;
+    }
+  }
+
   // output_schema_version - computed: false, optional: true, required: false
-  private _outputSchemaVersion?: string | undefined; 
+  private _outputSchemaVersion?: string; 
   public get outputSchemaVersion() {
     return this.getStringAttribute('output_schema_version');
   }
-  public set outputSchemaVersion(value: string | undefined) {
+  public set outputSchemaVersion(value: string) {
     this._outputSchemaVersion = value;
   }
   public resetOutputSchemaVersion() {
@@ -286,21 +391,20 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportOutputR
   }
   // Temporarily expose input value. Use with caution.
   public get outputSchemaVersionInput() {
-    return this._outputSchemaVersion
+    return this._outputSchemaVersion;
   }
 
   // destination - computed: false, optional: false, required: true
-  private _destination?: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestination; 
-  private __destinationOutput = new S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationOutputReference(this as any, "destination", true);
+  private _destination = new S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationOutputReference(this as any, "destination", true);
   public get destination() {
-    return this.__destinationOutput;
+    return this._destination;
   }
   public putDestination(value: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestination) {
-    this._destination = value;
+    this._destination.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get destinationInput() {
-    return this._destination
+    return this._destination.internalValue;
   }
 }
 export interface S3BucketAnalyticsConfigurationStorageClassAnalysis {
@@ -332,18 +436,36 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisOutputReference e
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketAnalyticsConfigurationStorageClassAnalysis | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._dataExport) {
+      hasAnyValues = true;
+      internalValueResult.dataExport = this._dataExport?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketAnalyticsConfigurationStorageClassAnalysis | undefined) {
+    if (value === undefined) {
+      this._dataExport.internalValue = undefined;
+    }
+    else {
+      this._dataExport.internalValue = value.dataExport;
+    }
+  }
+
   // data_export - computed: false, optional: false, required: true
-  private _dataExport?: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExport; 
-  private __dataExportOutput = new S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportOutputReference(this as any, "data_export", true);
+  private _dataExport = new S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportOutputReference(this as any, "data_export", true);
   public get dataExport() {
-    return this.__dataExportOutput;
+    return this._dataExport;
   }
   public putDataExport(value: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExport) {
-    this._dataExport = value;
+    this._dataExport.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get dataExportInput() {
-    return this._dataExport
+    return this._dataExport.internalValue;
   }
 }
 
@@ -381,8 +503,8 @@ export class S3BucketAnalyticsConfiguration extends cdktf.TerraformResource {
     });
     this._bucket = config.bucket;
     this._name = config.name;
-    this._filter = config.filter;
-    this._storageClassAnalysis = config.storageClassAnalysis;
+    this._filter.internalValue = config.filter;
+    this._storageClassAnalysis.internalValue = config.storageClassAnalysis;
   }
 
   // ==========
@@ -399,7 +521,7 @@ export class S3BucketAnalyticsConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // id - computed: true, optional: true, required: false
@@ -417,41 +539,39 @@ export class S3BucketAnalyticsConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: S3BucketAnalyticsConfigurationFilter | undefined; 
-  private __filterOutput = new S3BucketAnalyticsConfigurationFilterOutputReference(this as any, "filter", true);
+  private _filter = new S3BucketAnalyticsConfigurationFilterOutputReference(this as any, "filter", true);
   public get filter() {
-    return this.__filterOutput;
+    return this._filter;
   }
-  public putFilter(value: S3BucketAnalyticsConfigurationFilter | undefined) {
-    this._filter = value;
+  public putFilter(value: S3BucketAnalyticsConfigurationFilter) {
+    this._filter.internalValue = value;
   }
   public resetFilter() {
-    this._filter = undefined;
+    this._filter.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter.internalValue;
   }
 
   // storage_class_analysis - computed: false, optional: true, required: false
-  private _storageClassAnalysis?: S3BucketAnalyticsConfigurationStorageClassAnalysis | undefined; 
-  private __storageClassAnalysisOutput = new S3BucketAnalyticsConfigurationStorageClassAnalysisOutputReference(this as any, "storage_class_analysis", true);
+  private _storageClassAnalysis = new S3BucketAnalyticsConfigurationStorageClassAnalysisOutputReference(this as any, "storage_class_analysis", true);
   public get storageClassAnalysis() {
-    return this.__storageClassAnalysisOutput;
+    return this._storageClassAnalysis;
   }
-  public putStorageClassAnalysis(value: S3BucketAnalyticsConfigurationStorageClassAnalysis | undefined) {
-    this._storageClassAnalysis = value;
+  public putStorageClassAnalysis(value: S3BucketAnalyticsConfigurationStorageClassAnalysis) {
+    this._storageClassAnalysis.internalValue = value;
   }
   public resetStorageClassAnalysis() {
-    this._storageClassAnalysis = undefined;
+    this._storageClassAnalysis.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get storageClassAnalysisInput() {
-    return this._storageClassAnalysis
+    return this._storageClassAnalysis.internalValue;
   }
 
   // =========
@@ -462,8 +582,8 @@ export class S3BucketAnalyticsConfiguration extends cdktf.TerraformResource {
     return {
       bucket: cdktf.stringToTerraform(this._bucket),
       name: cdktf.stringToTerraform(this._name),
-      filter: s3BucketAnalyticsConfigurationFilterToTerraform(this._filter),
-      storage_class_analysis: s3BucketAnalyticsConfigurationStorageClassAnalysisToTerraform(this._storageClassAnalysis),
+      filter: s3BucketAnalyticsConfigurationFilterToTerraform(this._filter.internalValue),
+      storage_class_analysis: s3BucketAnalyticsConfigurationStorageClassAnalysisToTerraform(this._storageClassAnalysis.internalValue),
     };
   }
 }

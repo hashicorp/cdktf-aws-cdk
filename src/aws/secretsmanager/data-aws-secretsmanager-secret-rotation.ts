@@ -89,7 +89,7 @@ export class DataAwsSecretsmanagerSecretRotation extends cdktf.TerraformDataSour
   }
   // Temporarily expose input value. Use with caution.
   public get secretIdInput() {
-    return this._secretId
+    return this._secretId;
   }
 
   // =========

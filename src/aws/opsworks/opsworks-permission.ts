@@ -73,11 +73,11 @@ export class OpsworksPermission extends cdktf.TerraformResource {
   // ==========
 
   // allow_ssh - computed: true, optional: true, required: false
-  private _allowSsh?: boolean | cdktf.IResolvable | undefined; 
+  private _allowSsh?: boolean | cdktf.IResolvable; 
   public get allowSsh() {
     return this.getBooleanAttribute('allow_ssh') as any;
   }
-  public set allowSsh(value: boolean | cdktf.IResolvable | undefined) {
+  public set allowSsh(value: boolean | cdktf.IResolvable) {
     this._allowSsh = value;
   }
   public resetAllowSsh() {
@@ -85,15 +85,15 @@ export class OpsworksPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allowSshInput() {
-    return this._allowSsh
+    return this._allowSsh;
   }
 
   // allow_sudo - computed: true, optional: true, required: false
-  private _allowSudo?: boolean | cdktf.IResolvable | undefined; 
+  private _allowSudo?: boolean | cdktf.IResolvable; 
   public get allowSudo() {
     return this.getBooleanAttribute('allow_sudo') as any;
   }
-  public set allowSudo(value: boolean | cdktf.IResolvable | undefined) {
+  public set allowSudo(value: boolean | cdktf.IResolvable) {
     this._allowSudo = value;
   }
   public resetAllowSudo() {
@@ -101,7 +101,7 @@ export class OpsworksPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allowSudoInput() {
-    return this._allowSudo
+    return this._allowSudo;
   }
 
   // id - computed: true, optional: true, required: false
@@ -110,11 +110,11 @@ export class OpsworksPermission extends cdktf.TerraformResource {
   }
 
   // level - computed: true, optional: true, required: false
-  private _level?: string | undefined; 
+  private _level?: string; 
   public get level() {
     return this.getStringAttribute('level');
   }
-  public set level(value: string | undefined) {
+  public set level(value: string) {
     this._level = value;
   }
   public resetLevel() {
@@ -122,15 +122,15 @@ export class OpsworksPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get levelInput() {
-    return this._level
+    return this._level;
   }
 
   // stack_id - computed: true, optional: true, required: false
-  private _stackId?: string | undefined; 
+  private _stackId?: string; 
   public get stackId() {
     return this.getStringAttribute('stack_id');
   }
-  public set stackId(value: string | undefined) {
+  public set stackId(value: string) {
     this._stackId = value;
   }
   public resetStackId() {
@@ -138,7 +138,7 @@ export class OpsworksPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stackIdInput() {
-    return this._stackId
+    return this._stackId;
   }
 
   // user_arn - computed: false, optional: false, required: true
@@ -151,7 +151,7 @@ export class OpsworksPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userArnInput() {
-    return this._userArn
+    return this._userArn;
   }
 
   // =========

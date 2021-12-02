@@ -77,15 +77,15 @@ export class Route53RecoverycontrolconfigRoutingControl extends cdktf.TerraformR
   }
   // Temporarily expose input value. Use with caution.
   public get clusterArnInput() {
-    return this._clusterArn
+    return this._clusterArn;
   }
 
   // control_panel_arn - computed: true, optional: true, required: false
-  private _controlPanelArn?: string | undefined; 
+  private _controlPanelArn?: string; 
   public get controlPanelArn() {
     return this.getStringAttribute('control_panel_arn');
   }
-  public set controlPanelArn(value: string | undefined) {
+  public set controlPanelArn(value: string) {
     this._controlPanelArn = value;
   }
   public resetControlPanelArn() {
@@ -93,7 +93,7 @@ export class Route53RecoverycontrolconfigRoutingControl extends cdktf.TerraformR
   }
   // Temporarily expose input value. Use with caution.
   public get controlPanelArnInput() {
-    return this._controlPanelArn
+    return this._controlPanelArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -111,7 +111,7 @@ export class Route53RecoverycontrolconfigRoutingControl extends cdktf.TerraformR
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // status - computed: true, optional: false, required: false

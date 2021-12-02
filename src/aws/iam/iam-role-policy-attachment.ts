@@ -72,7 +72,7 @@ export class IamRolePolicyAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyArnInput() {
-    return this._policyArn
+    return this._policyArn;
   }
 
   // role - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class IamRolePolicyAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleInput() {
-    return this._role
+    return this._role;
   }
 
   // =========

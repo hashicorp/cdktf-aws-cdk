@@ -77,7 +77,7 @@ export class DataAwsApiGatewayResource extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get pathInput() {
-    return this._path
+    return this._path;
   }
 
   // path_part - computed: true, optional: false, required: false
@@ -95,7 +95,7 @@ export class DataAwsApiGatewayResource extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get restApiIdInput() {
-    return this._restApiId
+    return this._restApiId;
   }
 
   // =========

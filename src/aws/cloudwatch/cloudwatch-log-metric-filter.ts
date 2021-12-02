@@ -78,12 +78,61 @@ export class CloudwatchLogMetricFilterMetricTransformationOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchLogMetricFilterMetricTransformation | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._defaultValue) {
+      hasAnyValues = true;
+      internalValueResult.defaultValue = this._defaultValue;
+    }
+    if (this._dimensions) {
+      hasAnyValues = true;
+      internalValueResult.dimensions = this._dimensions;
+    }
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._namespace) {
+      hasAnyValues = true;
+      internalValueResult.namespace = this._namespace;
+    }
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchLogMetricFilterMetricTransformation | undefined) {
+    if (value === undefined) {
+      this._defaultValue = undefined;
+      this._dimensions = undefined;
+      this._name = undefined;
+      this._namespace = undefined;
+      this._unit = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._defaultValue = value.defaultValue;
+      this._dimensions = value.dimensions;
+      this._name = value.name;
+      this._namespace = value.namespace;
+      this._unit = value.unit;
+      this._value = value.value;
+    }
+  }
+
   // default_value - computed: false, optional: true, required: false
-  private _defaultValue?: string | undefined; 
+  private _defaultValue?: string; 
   public get defaultValue() {
     return this.getStringAttribute('default_value');
   }
-  public set defaultValue(value: string | undefined) {
+  public set defaultValue(value: string) {
     this._defaultValue = value;
   }
   public resetDefaultValue() {
@@ -91,16 +140,16 @@ export class CloudwatchLogMetricFilterMetricTransformationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get defaultValueInput() {
-    return this._defaultValue
+    return this._defaultValue;
   }
 
   // dimensions - computed: false, optional: true, required: false
-  private _dimensions?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _dimensions?: { [key: string]: string } | cdktf.IResolvable; 
   public get dimensions() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('dimensions') as any;
   }
-  public set dimensions(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set dimensions(value: { [key: string]: string } | cdktf.IResolvable) {
     this._dimensions = value;
   }
   public resetDimensions() {
@@ -108,7 +157,7 @@ export class CloudwatchLogMetricFilterMetricTransformationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get dimensionsInput() {
-    return this._dimensions
+    return this._dimensions;
   }
 
   // name - computed: false, optional: false, required: true
@@ -121,7 +170,7 @@ export class CloudwatchLogMetricFilterMetricTransformationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // namespace - computed: false, optional: false, required: true
@@ -134,15 +183,15 @@ export class CloudwatchLogMetricFilterMetricTransformationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get namespaceInput() {
-    return this._namespace
+    return this._namespace;
   }
 
   // unit - computed: false, optional: true, required: false
-  private _unit?: string | undefined; 
+  private _unit?: string; 
   public get unit() {
     return this.getStringAttribute('unit');
   }
-  public set unit(value: string | undefined) {
+  public set unit(value: string) {
     this._unit = value;
   }
   public resetUnit() {
@@ -150,7 +199,7 @@ export class CloudwatchLogMetricFilterMetricTransformationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 
   // value - computed: false, optional: false, required: true
@@ -163,7 +212,7 @@ export class CloudwatchLogMetricFilterMetricTransformationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 
@@ -202,7 +251,7 @@ export class CloudwatchLogMetricFilter extends cdktf.TerraformResource {
     this._logGroupName = config.logGroupName;
     this._name = config.name;
     this._pattern = config.pattern;
-    this._metricTransformation = config.metricTransformation;
+    this._metricTransformation.internalValue = config.metricTransformation;
   }
 
   // ==========
@@ -224,7 +273,7 @@ export class CloudwatchLogMetricFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupNameInput() {
-    return this._logGroupName
+    return this._logGroupName;
   }
 
   // name - computed: false, optional: false, required: true
@@ -237,7 +286,7 @@ export class CloudwatchLogMetricFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // pattern - computed: false, optional: false, required: true
@@ -250,21 +299,20 @@ export class CloudwatchLogMetricFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get patternInput() {
-    return this._pattern
+    return this._pattern;
   }
 
   // metric_transformation - computed: false, optional: false, required: true
-  private _metricTransformation?: CloudwatchLogMetricFilterMetricTransformation; 
-  private __metricTransformationOutput = new CloudwatchLogMetricFilterMetricTransformationOutputReference(this as any, "metric_transformation", true);
+  private _metricTransformation = new CloudwatchLogMetricFilterMetricTransformationOutputReference(this as any, "metric_transformation", true);
   public get metricTransformation() {
-    return this.__metricTransformationOutput;
+    return this._metricTransformation;
   }
   public putMetricTransformation(value: CloudwatchLogMetricFilterMetricTransformation) {
-    this._metricTransformation = value;
+    this._metricTransformation.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get metricTransformationInput() {
-    return this._metricTransformation
+    return this._metricTransformation.internalValue;
   }
 
   // =========
@@ -276,7 +324,7 @@ export class CloudwatchLogMetricFilter extends cdktf.TerraformResource {
       log_group_name: cdktf.stringToTerraform(this._logGroupName),
       name: cdktf.stringToTerraform(this._name),
       pattern: cdktf.stringToTerraform(this._pattern),
-      metric_transformation: cloudwatchLogMetricFilterMetricTransformationToTerraform(this._metricTransformation),
+      metric_transformation: cloudwatchLogMetricFilterMetricTransformationToTerraform(this._metricTransformation.internalValue),
     };
   }
 }

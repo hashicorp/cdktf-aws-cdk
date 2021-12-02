@@ -72,7 +72,7 @@ export class ProxyProtocolPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instancePortsInput() {
-    return this._instancePorts
+    return this._instancePorts;
   }
 
   // load_balancer - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class ProxyProtocolPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get loadBalancerInput() {
-    return this._loadBalancer
+    return this._loadBalancer;
   }
 
   // =========

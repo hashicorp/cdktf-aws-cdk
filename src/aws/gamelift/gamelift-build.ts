@@ -71,6 +71,37 @@ export class GameliftBuildStorageLocationOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GameliftBuildStorageLocation | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucket) {
+      hasAnyValues = true;
+      internalValueResult.bucket = this._bucket;
+    }
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GameliftBuildStorageLocation | undefined) {
+    if (value === undefined) {
+      this._bucket = undefined;
+      this._key = undefined;
+      this._roleArn = undefined;
+    }
+    else {
+      this._bucket = value.bucket;
+      this._key = value.key;
+      this._roleArn = value.roleArn;
+    }
+  }
+
   // bucket - computed: false, optional: false, required: true
   private _bucket?: string; 
   public get bucket() {
@@ -81,7 +112,7 @@ export class GameliftBuildStorageLocationOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // key - computed: false, optional: false, required: true
@@ -94,7 +125,7 @@ export class GameliftBuildStorageLocationOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -107,7 +138,7 @@ export class GameliftBuildStorageLocationOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 }
 
@@ -148,7 +179,7 @@ export class GameliftBuild extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._version = config.version;
-    this._storageLocation = config.storageLocation;
+    this._storageLocation.internalValue = config.storageLocation;
   }
 
   // ==========
@@ -175,7 +206,7 @@ export class GameliftBuild extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // operating_system - computed: false, optional: false, required: true
@@ -188,16 +219,16 @@ export class GameliftBuild extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get operatingSystemInput() {
-    return this._operatingSystem
+    return this._operatingSystem;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -205,16 +236,16 @@ export class GameliftBuild extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -222,15 +253,15 @@ export class GameliftBuild extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // version - computed: false, optional: true, required: false
-  private _version?: string | undefined; 
+  private _version?: string; 
   public get version() {
     return this.getStringAttribute('version');
   }
-  public set version(value: string | undefined) {
+  public set version(value: string) {
     this._version = value;
   }
   public resetVersion() {
@@ -238,21 +269,20 @@ export class GameliftBuild extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 
   // storage_location - computed: false, optional: false, required: true
-  private _storageLocation?: GameliftBuildStorageLocation; 
-  private __storageLocationOutput = new GameliftBuildStorageLocationOutputReference(this as any, "storage_location", true);
+  private _storageLocation = new GameliftBuildStorageLocationOutputReference(this as any, "storage_location", true);
   public get storageLocation() {
-    return this.__storageLocationOutput;
+    return this._storageLocation;
   }
   public putStorageLocation(value: GameliftBuildStorageLocation) {
-    this._storageLocation = value;
+    this._storageLocation.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get storageLocationInput() {
-    return this._storageLocation
+    return this._storageLocation.internalValue;
   }
 
   // =========
@@ -266,7 +296,7 @@ export class GameliftBuild extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       version: cdktf.stringToTerraform(this._version),
-      storage_location: gameliftBuildStorageLocationToTerraform(this._storageLocation),
+      storage_location: gameliftBuildStorageLocationToTerraform(this._storageLocation.internalValue),
     };
   }
 }

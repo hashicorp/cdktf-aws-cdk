@@ -101,7 +101,7 @@ export class DataAwsPricingProduct extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceCodeInput() {
-    return this._serviceCode
+    return this._serviceCode;
   }
 
   // filters - computed: false, optional: false, required: true
@@ -115,7 +115,7 @@ export class DataAwsPricingProduct extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filtersInput() {
-    return this._filters
+    return this._filters;
   }
 
   // =========

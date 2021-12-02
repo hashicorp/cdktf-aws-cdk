@@ -58,12 +58,37 @@ export class MacieS3BucketAssociationClassificationTypeOutputReference extends c
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MacieS3BucketAssociationClassificationType | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._continuous) {
+      hasAnyValues = true;
+      internalValueResult.continuous = this._continuous;
+    }
+    if (this._oneTime) {
+      hasAnyValues = true;
+      internalValueResult.oneTime = this._oneTime;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MacieS3BucketAssociationClassificationType | undefined) {
+    if (value === undefined) {
+      this._continuous = undefined;
+      this._oneTime = undefined;
+    }
+    else {
+      this._continuous = value.continuous;
+      this._oneTime = value.oneTime;
+    }
+  }
+
   // continuous - computed: false, optional: true, required: false
-  private _continuous?: string | undefined; 
+  private _continuous?: string; 
   public get continuous() {
     return this.getStringAttribute('continuous');
   }
-  public set continuous(value: string | undefined) {
+  public set continuous(value: string) {
     this._continuous = value;
   }
   public resetContinuous() {
@@ -71,15 +96,15 @@ export class MacieS3BucketAssociationClassificationTypeOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get continuousInput() {
-    return this._continuous
+    return this._continuous;
   }
 
   // one_time - computed: false, optional: true, required: false
-  private _oneTime?: string | undefined; 
+  private _oneTime?: string; 
   public get oneTime() {
     return this.getStringAttribute('one_time');
   }
-  public set oneTime(value: string | undefined) {
+  public set oneTime(value: string) {
     this._oneTime = value;
   }
   public resetOneTime() {
@@ -87,7 +112,7 @@ export class MacieS3BucketAssociationClassificationTypeOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get oneTimeInput() {
-    return this._oneTime
+    return this._oneTime;
   }
 }
 
@@ -126,7 +151,7 @@ export class MacieS3BucketAssociation extends cdktf.TerraformResource {
     this._bucketName = config.bucketName;
     this._memberAccountId = config.memberAccountId;
     this._prefix = config.prefix;
-    this._classificationType = config.classificationType;
+    this._classificationType.internalValue = config.classificationType;
   }
 
   // ==========
@@ -143,7 +168,7 @@ export class MacieS3BucketAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketNameInput() {
-    return this._bucketName
+    return this._bucketName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -152,11 +177,11 @@ export class MacieS3BucketAssociation extends cdktf.TerraformResource {
   }
 
   // member_account_id - computed: false, optional: true, required: false
-  private _memberAccountId?: string | undefined; 
+  private _memberAccountId?: string; 
   public get memberAccountId() {
     return this.getStringAttribute('member_account_id');
   }
-  public set memberAccountId(value: string | undefined) {
+  public set memberAccountId(value: string) {
     this._memberAccountId = value;
   }
   public resetMemberAccountId() {
@@ -164,15 +189,15 @@ export class MacieS3BucketAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get memberAccountIdInput() {
-    return this._memberAccountId
+    return this._memberAccountId;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -180,24 +205,23 @@ export class MacieS3BucketAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // classification_type - computed: false, optional: true, required: false
-  private _classificationType?: MacieS3BucketAssociationClassificationType | undefined; 
-  private __classificationTypeOutput = new MacieS3BucketAssociationClassificationTypeOutputReference(this as any, "classification_type", true);
+  private _classificationType = new MacieS3BucketAssociationClassificationTypeOutputReference(this as any, "classification_type", true);
   public get classificationType() {
-    return this.__classificationTypeOutput;
+    return this._classificationType;
   }
-  public putClassificationType(value: MacieS3BucketAssociationClassificationType | undefined) {
-    this._classificationType = value;
+  public putClassificationType(value: MacieS3BucketAssociationClassificationType) {
+    this._classificationType.internalValue = value;
   }
   public resetClassificationType() {
-    this._classificationType = undefined;
+    this._classificationType.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get classificationTypeInput() {
-    return this._classificationType
+    return this._classificationType.internalValue;
   }
 
   // =========
@@ -209,7 +233,7 @@ export class MacieS3BucketAssociation extends cdktf.TerraformResource {
       bucket_name: cdktf.stringToTerraform(this._bucketName),
       member_account_id: cdktf.stringToTerraform(this._memberAccountId),
       prefix: cdktf.stringToTerraform(this._prefix),
-      classification_type: macieS3BucketAssociationClassificationTypeToTerraform(this._classificationType),
+      classification_type: macieS3BucketAssociationClassificationTypeToTerraform(this._classificationType.internalValue),
     };
   }
 }

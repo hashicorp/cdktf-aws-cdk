@@ -107,7 +107,7 @@ export class DataAwsKmsSecrets extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get secretInput() {
-    return this._secret
+    return this._secret;
   }
 
   // =========

@@ -77,7 +77,7 @@ export class BackupVaultNotifications extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get backupVaultEventsInput() {
-    return this._backupVaultEvents
+    return this._backupVaultEvents;
   }
 
   // backup_vault_name - computed: false, optional: false, required: true
@@ -90,7 +90,7 @@ export class BackupVaultNotifications extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get backupVaultNameInput() {
-    return this._backupVaultName
+    return this._backupVaultName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -108,7 +108,7 @@ export class BackupVaultNotifications extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get snsTopicArnInput() {
-    return this._snsTopicArn
+    return this._snsTopicArn;
   }
 
   // =========

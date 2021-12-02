@@ -77,7 +77,7 @@ export class DataAwsSsmParameter extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // type - computed: true, optional: false, required: false
@@ -96,11 +96,11 @@ export class DataAwsSsmParameter extends cdktf.TerraformDataSource {
   }
 
   // with_decryption - computed: false, optional: true, required: false
-  private _withDecryption?: boolean | cdktf.IResolvable | undefined; 
+  private _withDecryption?: boolean | cdktf.IResolvable; 
   public get withDecryption() {
     return this.getBooleanAttribute('with_decryption') as any;
   }
-  public set withDecryption(value: boolean | cdktf.IResolvable | undefined) {
+  public set withDecryption(value: boolean | cdktf.IResolvable) {
     this._withDecryption = value;
   }
   public resetWithDecryption() {
@@ -108,7 +108,7 @@ export class DataAwsSsmParameter extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get withDecryptionInput() {
-    return this._withDecryption
+    return this._withDecryption;
   }
 
   // =========

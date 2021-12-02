@@ -65,6 +65,49 @@ export class SsmResourceDataSyncS3DestinationOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SsmResourceDataSyncS3Destination | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucketName) {
+      hasAnyValues = true;
+      internalValueResult.bucketName = this._bucketName;
+    }
+    if (this._kmsKeyArn) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyArn = this._kmsKeyArn;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._region) {
+      hasAnyValues = true;
+      internalValueResult.region = this._region;
+    }
+    if (this._syncFormat) {
+      hasAnyValues = true;
+      internalValueResult.syncFormat = this._syncFormat;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SsmResourceDataSyncS3Destination | undefined) {
+    if (value === undefined) {
+      this._bucketName = undefined;
+      this._kmsKeyArn = undefined;
+      this._prefix = undefined;
+      this._region = undefined;
+      this._syncFormat = undefined;
+    }
+    else {
+      this._bucketName = value.bucketName;
+      this._kmsKeyArn = value.kmsKeyArn;
+      this._prefix = value.prefix;
+      this._region = value.region;
+      this._syncFormat = value.syncFormat;
+    }
+  }
+
   // bucket_name - computed: false, optional: false, required: true
   private _bucketName?: string; 
   public get bucketName() {
@@ -75,15 +118,15 @@ export class SsmResourceDataSyncS3DestinationOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get bucketNameInput() {
-    return this._bucketName
+    return this._bucketName;
   }
 
   // kms_key_arn - computed: false, optional: true, required: false
-  private _kmsKeyArn?: string | undefined; 
+  private _kmsKeyArn?: string; 
   public get kmsKeyArn() {
     return this.getStringAttribute('kms_key_arn');
   }
-  public set kmsKeyArn(value: string | undefined) {
+  public set kmsKeyArn(value: string) {
     this._kmsKeyArn = value;
   }
   public resetKmsKeyArn() {
@@ -91,15 +134,15 @@ export class SsmResourceDataSyncS3DestinationOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyArnInput() {
-    return this._kmsKeyArn
+    return this._kmsKeyArn;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -107,7 +150,7 @@ export class SsmResourceDataSyncS3DestinationOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // region - computed: false, optional: false, required: true
@@ -120,15 +163,15 @@ export class SsmResourceDataSyncS3DestinationOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get regionInput() {
-    return this._region
+    return this._region;
   }
 
   // sync_format - computed: false, optional: true, required: false
-  private _syncFormat?: string | undefined; 
+  private _syncFormat?: string; 
   public get syncFormat() {
     return this.getStringAttribute('sync_format');
   }
-  public set syncFormat(value: string | undefined) {
+  public set syncFormat(value: string) {
     this._syncFormat = value;
   }
   public resetSyncFormat() {
@@ -136,7 +179,7 @@ export class SsmResourceDataSyncS3DestinationOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get syncFormatInput() {
-    return this._syncFormat
+    return this._syncFormat;
   }
 }
 
@@ -173,7 +216,7 @@ export class SsmResourceDataSync extends cdktf.TerraformResource {
       lifecycle: config.lifecycle
     });
     this._name = config.name;
-    this._s3Destination = config.s3Destination;
+    this._s3Destination.internalValue = config.s3Destination;
   }
 
   // ==========
@@ -195,21 +238,20 @@ export class SsmResourceDataSync extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // s3_destination - computed: false, optional: false, required: true
-  private _s3Destination?: SsmResourceDataSyncS3Destination; 
-  private __s3DestinationOutput = new SsmResourceDataSyncS3DestinationOutputReference(this as any, "s3_destination", true);
+  private _s3Destination = new SsmResourceDataSyncS3DestinationOutputReference(this as any, "s3_destination", true);
   public get s3Destination() {
-    return this.__s3DestinationOutput;
+    return this._s3Destination;
   }
   public putS3Destination(value: SsmResourceDataSyncS3Destination) {
-    this._s3Destination = value;
+    this._s3Destination.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get s3DestinationInput() {
-    return this._s3Destination
+    return this._s3Destination.internalValue;
   }
 
   // =========
@@ -219,7 +261,7 @@ export class SsmResourceDataSync extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       name: cdktf.stringToTerraform(this._name),
-      s3_destination: ssmResourceDataSyncS3DestinationToTerraform(this._s3Destination),
+      s3_destination: ssmResourceDataSyncS3DestinationToTerraform(this._s3Destination.internalValue),
     };
   }
 }

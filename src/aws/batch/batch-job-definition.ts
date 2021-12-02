@@ -118,12 +118,37 @@ export class BatchJobDefinitionRetryStrategyOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): BatchJobDefinitionRetryStrategy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._attempts) {
+      hasAnyValues = true;
+      internalValueResult.attempts = this._attempts;
+    }
+    if (this._evaluateOnExit) {
+      hasAnyValues = true;
+      internalValueResult.evaluateOnExit = this._evaluateOnExit;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: BatchJobDefinitionRetryStrategy | undefined) {
+    if (value === undefined) {
+      this._attempts = undefined;
+      this._evaluateOnExit = undefined;
+    }
+    else {
+      this._attempts = value.attempts;
+      this._evaluateOnExit = value.evaluateOnExit;
+    }
+  }
+
   // attempts - computed: false, optional: true, required: false
-  private _attempts?: number | undefined; 
+  private _attempts?: number; 
   public get attempts() {
     return this.getNumberAttribute('attempts');
   }
-  public set attempts(value: number | undefined) {
+  public set attempts(value: number) {
     this._attempts = value;
   }
   public resetAttempts() {
@@ -131,16 +156,16 @@ export class BatchJobDefinitionRetryStrategyOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get attemptsInput() {
-    return this._attempts
+    return this._attempts;
   }
 
   // evaluate_on_exit - computed: false, optional: true, required: false
-  private _evaluateOnExit?: BatchJobDefinitionRetryStrategyEvaluateOnExit[] | undefined; 
+  private _evaluateOnExit?: BatchJobDefinitionRetryStrategyEvaluateOnExit[]; 
   public get evaluateOnExit() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('evaluate_on_exit') as any;
   }
-  public set evaluateOnExit(value: BatchJobDefinitionRetryStrategyEvaluateOnExit[] | undefined) {
+  public set evaluateOnExit(value: BatchJobDefinitionRetryStrategyEvaluateOnExit[]) {
     this._evaluateOnExit = value;
   }
   public resetEvaluateOnExit() {
@@ -148,7 +173,7 @@ export class BatchJobDefinitionRetryStrategyOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get evaluateOnExitInput() {
-    return this._evaluateOnExit
+    return this._evaluateOnExit;
   }
 }
 export interface BatchJobDefinitionTimeout {
@@ -178,12 +203,31 @@ export class BatchJobDefinitionTimeoutOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): BatchJobDefinitionTimeout | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._attemptDurationSeconds) {
+      hasAnyValues = true;
+      internalValueResult.attemptDurationSeconds = this._attemptDurationSeconds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: BatchJobDefinitionTimeout | undefined) {
+    if (value === undefined) {
+      this._attemptDurationSeconds = undefined;
+    }
+    else {
+      this._attemptDurationSeconds = value.attemptDurationSeconds;
+    }
+  }
+
   // attempt_duration_seconds - computed: false, optional: true, required: false
-  private _attemptDurationSeconds?: number | undefined; 
+  private _attemptDurationSeconds?: number; 
   public get attemptDurationSeconds() {
     return this.getNumberAttribute('attempt_duration_seconds');
   }
-  public set attemptDurationSeconds(value: number | undefined) {
+  public set attemptDurationSeconds(value: number) {
     this._attemptDurationSeconds = value;
   }
   public resetAttemptDurationSeconds() {
@@ -191,7 +235,7 @@ export class BatchJobDefinitionTimeoutOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get attemptDurationSecondsInput() {
-    return this._attemptDurationSeconds
+    return this._attemptDurationSeconds;
   }
 }
 
@@ -235,8 +279,8 @@ export class BatchJobDefinition extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._type = config.type;
-    this._retryStrategy = config.retryStrategy;
-    this._timeout = config.timeout;
+    this._retryStrategy.internalValue = config.retryStrategy;
+    this._timeout.internalValue = config.timeout;
   }
 
   // ==========
@@ -249,11 +293,11 @@ export class BatchJobDefinition extends cdktf.TerraformResource {
   }
 
   // container_properties - computed: false, optional: true, required: false
-  private _containerProperties?: string | undefined; 
+  private _containerProperties?: string; 
   public get containerProperties() {
     return this.getStringAttribute('container_properties');
   }
-  public set containerProperties(value: string | undefined) {
+  public set containerProperties(value: string) {
     this._containerProperties = value;
   }
   public resetContainerProperties() {
@@ -261,7 +305,7 @@ export class BatchJobDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get containerPropertiesInput() {
-    return this._containerProperties
+    return this._containerProperties;
   }
 
   // id - computed: true, optional: true, required: false
@@ -279,16 +323,16 @@ export class BatchJobDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // parameters - computed: false, optional: true, required: false
-  private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _parameters?: { [key: string]: string } | cdktf.IResolvable; 
   public get parameters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('parameters') as any;
   }
-  public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set parameters(value: { [key: string]: string } | cdktf.IResolvable) {
     this._parameters = value;
   }
   public resetParameters() {
@@ -296,15 +340,15 @@ export class BatchJobDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInput() {
-    return this._parameters
+    return this._parameters;
   }
 
   // platform_capabilities - computed: false, optional: true, required: false
-  private _platformCapabilities?: string[] | undefined; 
+  private _platformCapabilities?: string[]; 
   public get platformCapabilities() {
     return this.getListAttribute('platform_capabilities');
   }
-  public set platformCapabilities(value: string[] | undefined) {
+  public set platformCapabilities(value: string[]) {
     this._platformCapabilities = value;
   }
   public resetPlatformCapabilities() {
@@ -312,15 +356,15 @@ export class BatchJobDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get platformCapabilitiesInput() {
-    return this._platformCapabilities
+    return this._platformCapabilities;
   }
 
   // propagate_tags - computed: false, optional: true, required: false
-  private _propagateTags?: boolean | cdktf.IResolvable | undefined; 
+  private _propagateTags?: boolean | cdktf.IResolvable; 
   public get propagateTags() {
     return this.getBooleanAttribute('propagate_tags') as any;
   }
-  public set propagateTags(value: boolean | cdktf.IResolvable | undefined) {
+  public set propagateTags(value: boolean | cdktf.IResolvable) {
     this._propagateTags = value;
   }
   public resetPropagateTags() {
@@ -328,7 +372,7 @@ export class BatchJobDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get propagateTagsInput() {
-    return this._propagateTags
+    return this._propagateTags;
   }
 
   // revision - computed: true, optional: false, required: false
@@ -337,12 +381,12 @@ export class BatchJobDefinition extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -350,16 +394,16 @@ export class BatchJobDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -367,7 +411,7 @@ export class BatchJobDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // type - computed: false, optional: false, required: true
@@ -380,41 +424,39 @@ export class BatchJobDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // retry_strategy - computed: false, optional: true, required: false
-  private _retryStrategy?: BatchJobDefinitionRetryStrategy | undefined; 
-  private __retryStrategyOutput = new BatchJobDefinitionRetryStrategyOutputReference(this as any, "retry_strategy", true);
+  private _retryStrategy = new BatchJobDefinitionRetryStrategyOutputReference(this as any, "retry_strategy", true);
   public get retryStrategy() {
-    return this.__retryStrategyOutput;
+    return this._retryStrategy;
   }
-  public putRetryStrategy(value: BatchJobDefinitionRetryStrategy | undefined) {
-    this._retryStrategy = value;
+  public putRetryStrategy(value: BatchJobDefinitionRetryStrategy) {
+    this._retryStrategy.internalValue = value;
   }
   public resetRetryStrategy() {
-    this._retryStrategy = undefined;
+    this._retryStrategy.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get retryStrategyInput() {
-    return this._retryStrategy
+    return this._retryStrategy.internalValue;
   }
 
   // timeout - computed: false, optional: true, required: false
-  private _timeout?: BatchJobDefinitionTimeout | undefined; 
-  private __timeoutOutput = new BatchJobDefinitionTimeoutOutputReference(this as any, "timeout", true);
+  private _timeout = new BatchJobDefinitionTimeoutOutputReference(this as any, "timeout", true);
   public get timeout() {
-    return this.__timeoutOutput;
+    return this._timeout;
   }
-  public putTimeout(value: BatchJobDefinitionTimeout | undefined) {
-    this._timeout = value;
+  public putTimeout(value: BatchJobDefinitionTimeout) {
+    this._timeout.internalValue = value;
   }
   public resetTimeout() {
-    this._timeout = undefined;
+    this._timeout.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutInput() {
-    return this._timeout
+    return this._timeout.internalValue;
   }
 
   // =========
@@ -431,8 +473,8 @@ export class BatchJobDefinition extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       type: cdktf.stringToTerraform(this._type),
-      retry_strategy: batchJobDefinitionRetryStrategyToTerraform(this._retryStrategy),
-      timeout: batchJobDefinitionTimeoutToTerraform(this._timeout),
+      retry_strategy: batchJobDefinitionRetryStrategyToTerraform(this._retryStrategy.internalValue),
+      timeout: batchJobDefinitionTimeoutToTerraform(this._timeout.internalValue),
     };
   }
 }

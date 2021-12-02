@@ -94,6 +94,31 @@ export class QuicksightDataSourceCredentialsCredentialPairOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceCredentialsCredentialPair | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._password) {
+      hasAnyValues = true;
+      internalValueResult.password = this._password;
+    }
+    if (this._username) {
+      hasAnyValues = true;
+      internalValueResult.username = this._username;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceCredentialsCredentialPair | undefined) {
+    if (value === undefined) {
+      this._password = undefined;
+      this._username = undefined;
+    }
+    else {
+      this._password = value.password;
+      this._username = value.username;
+    }
+  }
+
   // password - computed: false, optional: false, required: true
   private _password?: string; 
   public get password() {
@@ -104,7 +129,7 @@ export class QuicksightDataSourceCredentialsCredentialPairOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get passwordInput() {
-    return this._password
+    return this._password;
   }
 
   // username - computed: false, optional: false, required: true
@@ -117,7 +142,7 @@ export class QuicksightDataSourceCredentialsCredentialPairOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get usernameInput() {
-    return this._username
+    return this._username;
   }
 }
 export interface QuicksightDataSourceCredentials {
@@ -154,12 +179,37 @@ export class QuicksightDataSourceCredentialsOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceCredentials | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._copySourceArn) {
+      hasAnyValues = true;
+      internalValueResult.copySourceArn = this._copySourceArn;
+    }
+    if (this._credentialPair) {
+      hasAnyValues = true;
+      internalValueResult.credentialPair = this._credentialPair?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceCredentials | undefined) {
+    if (value === undefined) {
+      this._copySourceArn = undefined;
+      this._credentialPair.internalValue = undefined;
+    }
+    else {
+      this._copySourceArn = value.copySourceArn;
+      this._credentialPair.internalValue = value.credentialPair;
+    }
+  }
+
   // copy_source_arn - computed: false, optional: true, required: false
-  private _copySourceArn?: string | undefined; 
+  private _copySourceArn?: string; 
   public get copySourceArn() {
     return this.getStringAttribute('copy_source_arn');
   }
-  public set copySourceArn(value: string | undefined) {
+  public set copySourceArn(value: string) {
     this._copySourceArn = value;
   }
   public resetCopySourceArn() {
@@ -167,24 +217,23 @@ export class QuicksightDataSourceCredentialsOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get copySourceArnInput() {
-    return this._copySourceArn
+    return this._copySourceArn;
   }
 
   // credential_pair - computed: false, optional: true, required: false
-  private _credentialPair?: QuicksightDataSourceCredentialsCredentialPair | undefined; 
-  private __credentialPairOutput = new QuicksightDataSourceCredentialsCredentialPairOutputReference(this as any, "credential_pair", true);
+  private _credentialPair = new QuicksightDataSourceCredentialsCredentialPairOutputReference(this as any, "credential_pair", true);
   public get credentialPair() {
-    return this.__credentialPairOutput;
+    return this._credentialPair;
   }
-  public putCredentialPair(value: QuicksightDataSourceCredentialsCredentialPair | undefined) {
-    this._credentialPair = value;
+  public putCredentialPair(value: QuicksightDataSourceCredentialsCredentialPair) {
+    this._credentialPair.internalValue = value;
   }
   public resetCredentialPair() {
-    this._credentialPair = undefined;
+    this._credentialPair.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get credentialPairInput() {
-    return this._credentialPair
+    return this._credentialPair.internalValue;
   }
 }
 export interface QuicksightDataSourceParametersAmazonElasticsearch {
@@ -214,6 +263,25 @@ export class QuicksightDataSourceParametersAmazonElasticsearchOutputReference ex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersAmazonElasticsearch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._domain) {
+      hasAnyValues = true;
+      internalValueResult.domain = this._domain;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersAmazonElasticsearch | undefined) {
+    if (value === undefined) {
+      this._domain = undefined;
+    }
+    else {
+      this._domain = value.domain;
+    }
+  }
+
   // domain - computed: false, optional: false, required: true
   private _domain?: string; 
   public get domain() {
@@ -224,7 +292,7 @@ export class QuicksightDataSourceParametersAmazonElasticsearchOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get domainInput() {
-    return this._domain
+    return this._domain;
   }
 }
 export interface QuicksightDataSourceParametersAthena {
@@ -254,12 +322,31 @@ export class QuicksightDataSourceParametersAthenaOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersAthena | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._workGroup) {
+      hasAnyValues = true;
+      internalValueResult.workGroup = this._workGroup;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersAthena | undefined) {
+    if (value === undefined) {
+      this._workGroup = undefined;
+    }
+    else {
+      this._workGroup = value.workGroup;
+    }
+  }
+
   // work_group - computed: false, optional: true, required: false
-  private _workGroup?: string | undefined; 
+  private _workGroup?: string; 
   public get workGroup() {
     return this.getStringAttribute('work_group');
   }
-  public set workGroup(value: string | undefined) {
+  public set workGroup(value: string) {
     this._workGroup = value;
   }
   public resetWorkGroup() {
@@ -267,7 +354,7 @@ export class QuicksightDataSourceParametersAthenaOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get workGroupInput() {
-    return this._workGroup
+    return this._workGroup;
   }
 }
 export interface QuicksightDataSourceParametersAurora {
@@ -307,6 +394,37 @@ export class QuicksightDataSourceParametersAuroraOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersAurora | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._database) {
+      hasAnyValues = true;
+      internalValueResult.database = this._database;
+    }
+    if (this._host) {
+      hasAnyValues = true;
+      internalValueResult.host = this._host;
+    }
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersAurora | undefined) {
+    if (value === undefined) {
+      this._database = undefined;
+      this._host = undefined;
+      this._port = undefined;
+    }
+    else {
+      this._database = value.database;
+      this._host = value.host;
+      this._port = value.port;
+    }
+  }
+
   // database - computed: false, optional: false, required: true
   private _database?: string; 
   public get database() {
@@ -317,7 +435,7 @@ export class QuicksightDataSourceParametersAuroraOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get databaseInput() {
-    return this._database
+    return this._database;
   }
 
   // host - computed: false, optional: false, required: true
@@ -330,7 +448,7 @@ export class QuicksightDataSourceParametersAuroraOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get hostInput() {
-    return this._host
+    return this._host;
   }
 
   // port - computed: false, optional: false, required: true
@@ -343,7 +461,7 @@ export class QuicksightDataSourceParametersAuroraOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 }
 export interface QuicksightDataSourceParametersAuroraPostgresql {
@@ -383,6 +501,37 @@ export class QuicksightDataSourceParametersAuroraPostgresqlOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersAuroraPostgresql | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._database) {
+      hasAnyValues = true;
+      internalValueResult.database = this._database;
+    }
+    if (this._host) {
+      hasAnyValues = true;
+      internalValueResult.host = this._host;
+    }
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersAuroraPostgresql | undefined) {
+    if (value === undefined) {
+      this._database = undefined;
+      this._host = undefined;
+      this._port = undefined;
+    }
+    else {
+      this._database = value.database;
+      this._host = value.host;
+      this._port = value.port;
+    }
+  }
+
   // database - computed: false, optional: false, required: true
   private _database?: string; 
   public get database() {
@@ -393,7 +542,7 @@ export class QuicksightDataSourceParametersAuroraPostgresqlOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get databaseInput() {
-    return this._database
+    return this._database;
   }
 
   // host - computed: false, optional: false, required: true
@@ -406,7 +555,7 @@ export class QuicksightDataSourceParametersAuroraPostgresqlOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get hostInput() {
-    return this._host
+    return this._host;
   }
 
   // port - computed: false, optional: false, required: true
@@ -419,7 +568,7 @@ export class QuicksightDataSourceParametersAuroraPostgresqlOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 }
 export interface QuicksightDataSourceParametersAwsIotAnalytics {
@@ -449,6 +598,25 @@ export class QuicksightDataSourceParametersAwsIotAnalyticsOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersAwsIotAnalytics | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._dataSetName) {
+      hasAnyValues = true;
+      internalValueResult.dataSetName = this._dataSetName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersAwsIotAnalytics | undefined) {
+    if (value === undefined) {
+      this._dataSetName = undefined;
+    }
+    else {
+      this._dataSetName = value.dataSetName;
+    }
+  }
+
   // data_set_name - computed: false, optional: false, required: true
   private _dataSetName?: string; 
   public get dataSetName() {
@@ -459,7 +627,7 @@ export class QuicksightDataSourceParametersAwsIotAnalyticsOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get dataSetNameInput() {
-    return this._dataSetName
+    return this._dataSetName;
   }
 }
 export interface QuicksightDataSourceParametersJira {
@@ -489,6 +657,25 @@ export class QuicksightDataSourceParametersJiraOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersJira | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._siteBaseUrl) {
+      hasAnyValues = true;
+      internalValueResult.siteBaseUrl = this._siteBaseUrl;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersJira | undefined) {
+    if (value === undefined) {
+      this._siteBaseUrl = undefined;
+    }
+    else {
+      this._siteBaseUrl = value.siteBaseUrl;
+    }
+  }
+
   // site_base_url - computed: false, optional: false, required: true
   private _siteBaseUrl?: string; 
   public get siteBaseUrl() {
@@ -499,7 +686,7 @@ export class QuicksightDataSourceParametersJiraOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get siteBaseUrlInput() {
-    return this._siteBaseUrl
+    return this._siteBaseUrl;
   }
 }
 export interface QuicksightDataSourceParametersMariaDb {
@@ -539,6 +726,37 @@ export class QuicksightDataSourceParametersMariaDbOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersMariaDb | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._database) {
+      hasAnyValues = true;
+      internalValueResult.database = this._database;
+    }
+    if (this._host) {
+      hasAnyValues = true;
+      internalValueResult.host = this._host;
+    }
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersMariaDb | undefined) {
+    if (value === undefined) {
+      this._database = undefined;
+      this._host = undefined;
+      this._port = undefined;
+    }
+    else {
+      this._database = value.database;
+      this._host = value.host;
+      this._port = value.port;
+    }
+  }
+
   // database - computed: false, optional: false, required: true
   private _database?: string; 
   public get database() {
@@ -549,7 +767,7 @@ export class QuicksightDataSourceParametersMariaDbOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get databaseInput() {
-    return this._database
+    return this._database;
   }
 
   // host - computed: false, optional: false, required: true
@@ -562,7 +780,7 @@ export class QuicksightDataSourceParametersMariaDbOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get hostInput() {
-    return this._host
+    return this._host;
   }
 
   // port - computed: false, optional: false, required: true
@@ -575,7 +793,7 @@ export class QuicksightDataSourceParametersMariaDbOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 }
 export interface QuicksightDataSourceParametersMysql {
@@ -615,6 +833,37 @@ export class QuicksightDataSourceParametersMysqlOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersMysql | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._database) {
+      hasAnyValues = true;
+      internalValueResult.database = this._database;
+    }
+    if (this._host) {
+      hasAnyValues = true;
+      internalValueResult.host = this._host;
+    }
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersMysql | undefined) {
+    if (value === undefined) {
+      this._database = undefined;
+      this._host = undefined;
+      this._port = undefined;
+    }
+    else {
+      this._database = value.database;
+      this._host = value.host;
+      this._port = value.port;
+    }
+  }
+
   // database - computed: false, optional: false, required: true
   private _database?: string; 
   public get database() {
@@ -625,7 +874,7 @@ export class QuicksightDataSourceParametersMysqlOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get databaseInput() {
-    return this._database
+    return this._database;
   }
 
   // host - computed: false, optional: false, required: true
@@ -638,7 +887,7 @@ export class QuicksightDataSourceParametersMysqlOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get hostInput() {
-    return this._host
+    return this._host;
   }
 
   // port - computed: false, optional: false, required: true
@@ -651,7 +900,7 @@ export class QuicksightDataSourceParametersMysqlOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 }
 export interface QuicksightDataSourceParametersOracle {
@@ -691,6 +940,37 @@ export class QuicksightDataSourceParametersOracleOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersOracle | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._database) {
+      hasAnyValues = true;
+      internalValueResult.database = this._database;
+    }
+    if (this._host) {
+      hasAnyValues = true;
+      internalValueResult.host = this._host;
+    }
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersOracle | undefined) {
+    if (value === undefined) {
+      this._database = undefined;
+      this._host = undefined;
+      this._port = undefined;
+    }
+    else {
+      this._database = value.database;
+      this._host = value.host;
+      this._port = value.port;
+    }
+  }
+
   // database - computed: false, optional: false, required: true
   private _database?: string; 
   public get database() {
@@ -701,7 +981,7 @@ export class QuicksightDataSourceParametersOracleOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get databaseInput() {
-    return this._database
+    return this._database;
   }
 
   // host - computed: false, optional: false, required: true
@@ -714,7 +994,7 @@ export class QuicksightDataSourceParametersOracleOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get hostInput() {
-    return this._host
+    return this._host;
   }
 
   // port - computed: false, optional: false, required: true
@@ -727,7 +1007,7 @@ export class QuicksightDataSourceParametersOracleOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 }
 export interface QuicksightDataSourceParametersPostgresql {
@@ -767,6 +1047,37 @@ export class QuicksightDataSourceParametersPostgresqlOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersPostgresql | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._database) {
+      hasAnyValues = true;
+      internalValueResult.database = this._database;
+    }
+    if (this._host) {
+      hasAnyValues = true;
+      internalValueResult.host = this._host;
+    }
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersPostgresql | undefined) {
+    if (value === undefined) {
+      this._database = undefined;
+      this._host = undefined;
+      this._port = undefined;
+    }
+    else {
+      this._database = value.database;
+      this._host = value.host;
+      this._port = value.port;
+    }
+  }
+
   // database - computed: false, optional: false, required: true
   private _database?: string; 
   public get database() {
@@ -777,7 +1088,7 @@ export class QuicksightDataSourceParametersPostgresqlOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get databaseInput() {
-    return this._database
+    return this._database;
   }
 
   // host - computed: false, optional: false, required: true
@@ -790,7 +1101,7 @@ export class QuicksightDataSourceParametersPostgresqlOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get hostInput() {
-    return this._host
+    return this._host;
   }
 
   // port - computed: false, optional: false, required: true
@@ -803,7 +1114,7 @@ export class QuicksightDataSourceParametersPostgresqlOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 }
 export interface QuicksightDataSourceParametersPresto {
@@ -843,6 +1154,37 @@ export class QuicksightDataSourceParametersPrestoOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersPresto | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._catalog) {
+      hasAnyValues = true;
+      internalValueResult.catalog = this._catalog;
+    }
+    if (this._host) {
+      hasAnyValues = true;
+      internalValueResult.host = this._host;
+    }
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersPresto | undefined) {
+    if (value === undefined) {
+      this._catalog = undefined;
+      this._host = undefined;
+      this._port = undefined;
+    }
+    else {
+      this._catalog = value.catalog;
+      this._host = value.host;
+      this._port = value.port;
+    }
+  }
+
   // catalog - computed: false, optional: false, required: true
   private _catalog?: string; 
   public get catalog() {
@@ -853,7 +1195,7 @@ export class QuicksightDataSourceParametersPrestoOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get catalogInput() {
-    return this._catalog
+    return this._catalog;
   }
 
   // host - computed: false, optional: false, required: true
@@ -866,7 +1208,7 @@ export class QuicksightDataSourceParametersPrestoOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get hostInput() {
-    return this._host
+    return this._host;
   }
 
   // port - computed: false, optional: false, required: true
@@ -879,7 +1221,7 @@ export class QuicksightDataSourceParametersPrestoOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 }
 export interface QuicksightDataSourceParametersRds {
@@ -914,6 +1256,31 @@ export class QuicksightDataSourceParametersRdsOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersRds | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._database) {
+      hasAnyValues = true;
+      internalValueResult.database = this._database;
+    }
+    if (this._instanceId) {
+      hasAnyValues = true;
+      internalValueResult.instanceId = this._instanceId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersRds | undefined) {
+    if (value === undefined) {
+      this._database = undefined;
+      this._instanceId = undefined;
+    }
+    else {
+      this._database = value.database;
+      this._instanceId = value.instanceId;
+    }
+  }
+
   // database - computed: false, optional: false, required: true
   private _database?: string; 
   public get database() {
@@ -924,7 +1291,7 @@ export class QuicksightDataSourceParametersRdsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get databaseInput() {
-    return this._database
+    return this._database;
   }
 
   // instance_id - computed: false, optional: false, required: true
@@ -937,7 +1304,7 @@ export class QuicksightDataSourceParametersRdsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get instanceIdInput() {
-    return this._instanceId
+    return this._instanceId;
   }
 }
 export interface QuicksightDataSourceParametersRedshift {
@@ -982,12 +1349,49 @@ export class QuicksightDataSourceParametersRedshiftOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersRedshift | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._clusterId) {
+      hasAnyValues = true;
+      internalValueResult.clusterId = this._clusterId;
+    }
+    if (this._database) {
+      hasAnyValues = true;
+      internalValueResult.database = this._database;
+    }
+    if (this._host) {
+      hasAnyValues = true;
+      internalValueResult.host = this._host;
+    }
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersRedshift | undefined) {
+    if (value === undefined) {
+      this._clusterId = undefined;
+      this._database = undefined;
+      this._host = undefined;
+      this._port = undefined;
+    }
+    else {
+      this._clusterId = value.clusterId;
+      this._database = value.database;
+      this._host = value.host;
+      this._port = value.port;
+    }
+  }
+
   // cluster_id - computed: false, optional: true, required: false
-  private _clusterId?: string | undefined; 
+  private _clusterId?: string; 
   public get clusterId() {
     return this.getStringAttribute('cluster_id');
   }
-  public set clusterId(value: string | undefined) {
+  public set clusterId(value: string) {
     this._clusterId = value;
   }
   public resetClusterId() {
@@ -995,7 +1399,7 @@ export class QuicksightDataSourceParametersRedshiftOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get clusterIdInput() {
-    return this._clusterId
+    return this._clusterId;
   }
 
   // database - computed: false, optional: false, required: true
@@ -1008,15 +1412,15 @@ export class QuicksightDataSourceParametersRedshiftOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get databaseInput() {
-    return this._database
+    return this._database;
   }
 
   // host - computed: false, optional: true, required: false
-  private _host?: string | undefined; 
+  private _host?: string; 
   public get host() {
     return this.getStringAttribute('host');
   }
-  public set host(value: string | undefined) {
+  public set host(value: string) {
     this._host = value;
   }
   public resetHost() {
@@ -1024,15 +1428,15 @@ export class QuicksightDataSourceParametersRedshiftOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get hostInput() {
-    return this._host
+    return this._host;
   }
 
   // port - computed: false, optional: true, required: false
-  private _port?: number | undefined; 
+  private _port?: number; 
   public get port() {
     return this.getNumberAttribute('port');
   }
-  public set port(value: number | undefined) {
+  public set port(value: number) {
     this._port = value;
   }
   public resetPort() {
@@ -1040,7 +1444,7 @@ export class QuicksightDataSourceParametersRedshiftOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 }
 export interface QuicksightDataSourceParametersS3ManifestFileLocation {
@@ -1075,6 +1479,31 @@ export class QuicksightDataSourceParametersS3ManifestFileLocationOutputReference
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersS3ManifestFileLocation | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucket) {
+      hasAnyValues = true;
+      internalValueResult.bucket = this._bucket;
+    }
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersS3ManifestFileLocation | undefined) {
+    if (value === undefined) {
+      this._bucket = undefined;
+      this._key = undefined;
+    }
+    else {
+      this._bucket = value.bucket;
+      this._key = value.key;
+    }
+  }
+
   // bucket - computed: false, optional: false, required: true
   private _bucket?: string; 
   public get bucket() {
@@ -1085,7 +1514,7 @@ export class QuicksightDataSourceParametersS3ManifestFileLocationOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // key - computed: false, optional: false, required: true
@@ -1098,7 +1527,7 @@ export class QuicksightDataSourceParametersS3ManifestFileLocationOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 }
 export interface QuicksightDataSourceParametersS3 {
@@ -1130,18 +1559,36 @@ export class QuicksightDataSourceParametersS3OutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersS3 | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._manifestFileLocation) {
+      hasAnyValues = true;
+      internalValueResult.manifestFileLocation = this._manifestFileLocation?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersS3 | undefined) {
+    if (value === undefined) {
+      this._manifestFileLocation.internalValue = undefined;
+    }
+    else {
+      this._manifestFileLocation.internalValue = value.manifestFileLocation;
+    }
+  }
+
   // manifest_file_location - computed: false, optional: false, required: true
-  private _manifestFileLocation?: QuicksightDataSourceParametersS3ManifestFileLocation; 
-  private __manifestFileLocationOutput = new QuicksightDataSourceParametersS3ManifestFileLocationOutputReference(this as any, "manifest_file_location", true);
+  private _manifestFileLocation = new QuicksightDataSourceParametersS3ManifestFileLocationOutputReference(this as any, "manifest_file_location", true);
   public get manifestFileLocation() {
-    return this.__manifestFileLocationOutput;
+    return this._manifestFileLocation;
   }
   public putManifestFileLocation(value: QuicksightDataSourceParametersS3ManifestFileLocation) {
-    this._manifestFileLocation = value;
+    this._manifestFileLocation.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get manifestFileLocationInput() {
-    return this._manifestFileLocation
+    return this._manifestFileLocation.internalValue;
   }
 }
 export interface QuicksightDataSourceParametersServiceNow {
@@ -1171,6 +1618,25 @@ export class QuicksightDataSourceParametersServiceNowOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersServiceNow | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._siteBaseUrl) {
+      hasAnyValues = true;
+      internalValueResult.siteBaseUrl = this._siteBaseUrl;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersServiceNow | undefined) {
+    if (value === undefined) {
+      this._siteBaseUrl = undefined;
+    }
+    else {
+      this._siteBaseUrl = value.siteBaseUrl;
+    }
+  }
+
   // site_base_url - computed: false, optional: false, required: true
   private _siteBaseUrl?: string; 
   public get siteBaseUrl() {
@@ -1181,7 +1647,7 @@ export class QuicksightDataSourceParametersServiceNowOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get siteBaseUrlInput() {
-    return this._siteBaseUrl
+    return this._siteBaseUrl;
   }
 }
 export interface QuicksightDataSourceParametersSnowflake {
@@ -1221,6 +1687,37 @@ export class QuicksightDataSourceParametersSnowflakeOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersSnowflake | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._database) {
+      hasAnyValues = true;
+      internalValueResult.database = this._database;
+    }
+    if (this._host) {
+      hasAnyValues = true;
+      internalValueResult.host = this._host;
+    }
+    if (this._warehouse) {
+      hasAnyValues = true;
+      internalValueResult.warehouse = this._warehouse;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersSnowflake | undefined) {
+    if (value === undefined) {
+      this._database = undefined;
+      this._host = undefined;
+      this._warehouse = undefined;
+    }
+    else {
+      this._database = value.database;
+      this._host = value.host;
+      this._warehouse = value.warehouse;
+    }
+  }
+
   // database - computed: false, optional: false, required: true
   private _database?: string; 
   public get database() {
@@ -1231,7 +1728,7 @@ export class QuicksightDataSourceParametersSnowflakeOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get databaseInput() {
-    return this._database
+    return this._database;
   }
 
   // host - computed: false, optional: false, required: true
@@ -1244,7 +1741,7 @@ export class QuicksightDataSourceParametersSnowflakeOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get hostInput() {
-    return this._host
+    return this._host;
   }
 
   // warehouse - computed: false, optional: false, required: true
@@ -1257,7 +1754,7 @@ export class QuicksightDataSourceParametersSnowflakeOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get warehouseInput() {
-    return this._warehouse
+    return this._warehouse;
   }
 }
 export interface QuicksightDataSourceParametersSpark {
@@ -1292,6 +1789,31 @@ export class QuicksightDataSourceParametersSparkOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersSpark | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._host) {
+      hasAnyValues = true;
+      internalValueResult.host = this._host;
+    }
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersSpark | undefined) {
+    if (value === undefined) {
+      this._host = undefined;
+      this._port = undefined;
+    }
+    else {
+      this._host = value.host;
+      this._port = value.port;
+    }
+  }
+
   // host - computed: false, optional: false, required: true
   private _host?: string; 
   public get host() {
@@ -1302,7 +1824,7 @@ export class QuicksightDataSourceParametersSparkOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get hostInput() {
-    return this._host
+    return this._host;
   }
 
   // port - computed: false, optional: false, required: true
@@ -1315,7 +1837,7 @@ export class QuicksightDataSourceParametersSparkOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 }
 export interface QuicksightDataSourceParametersSqlServer {
@@ -1355,6 +1877,37 @@ export class QuicksightDataSourceParametersSqlServerOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersSqlServer | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._database) {
+      hasAnyValues = true;
+      internalValueResult.database = this._database;
+    }
+    if (this._host) {
+      hasAnyValues = true;
+      internalValueResult.host = this._host;
+    }
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersSqlServer | undefined) {
+    if (value === undefined) {
+      this._database = undefined;
+      this._host = undefined;
+      this._port = undefined;
+    }
+    else {
+      this._database = value.database;
+      this._host = value.host;
+      this._port = value.port;
+    }
+  }
+
   // database - computed: false, optional: false, required: true
   private _database?: string; 
   public get database() {
@@ -1365,7 +1918,7 @@ export class QuicksightDataSourceParametersSqlServerOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get databaseInput() {
-    return this._database
+    return this._database;
   }
 
   // host - computed: false, optional: false, required: true
@@ -1378,7 +1931,7 @@ export class QuicksightDataSourceParametersSqlServerOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get hostInput() {
-    return this._host
+    return this._host;
   }
 
   // port - computed: false, optional: false, required: true
@@ -1391,7 +1944,7 @@ export class QuicksightDataSourceParametersSqlServerOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 }
 export interface QuicksightDataSourceParametersTeradata {
@@ -1431,6 +1984,37 @@ export class QuicksightDataSourceParametersTeradataOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersTeradata | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._database) {
+      hasAnyValues = true;
+      internalValueResult.database = this._database;
+    }
+    if (this._host) {
+      hasAnyValues = true;
+      internalValueResult.host = this._host;
+    }
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersTeradata | undefined) {
+    if (value === undefined) {
+      this._database = undefined;
+      this._host = undefined;
+      this._port = undefined;
+    }
+    else {
+      this._database = value.database;
+      this._host = value.host;
+      this._port = value.port;
+    }
+  }
+
   // database - computed: false, optional: false, required: true
   private _database?: string; 
   public get database() {
@@ -1441,7 +2025,7 @@ export class QuicksightDataSourceParametersTeradataOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get databaseInput() {
-    return this._database
+    return this._database;
   }
 
   // host - computed: false, optional: false, required: true
@@ -1454,7 +2038,7 @@ export class QuicksightDataSourceParametersTeradataOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get hostInput() {
-    return this._host
+    return this._host;
   }
 
   // port - computed: false, optional: false, required: true
@@ -1467,7 +2051,7 @@ export class QuicksightDataSourceParametersTeradataOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 }
 export interface QuicksightDataSourceParametersTwitter {
@@ -1502,6 +2086,31 @@ export class QuicksightDataSourceParametersTwitterOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceParametersTwitter | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._maxRows) {
+      hasAnyValues = true;
+      internalValueResult.maxRows = this._maxRows;
+    }
+    if (this._query) {
+      hasAnyValues = true;
+      internalValueResult.query = this._query;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceParametersTwitter | undefined) {
+    if (value === undefined) {
+      this._maxRows = undefined;
+      this._query = undefined;
+    }
+    else {
+      this._maxRows = value.maxRows;
+      this._query = value.query;
+    }
+  }
+
   // max_rows - computed: false, optional: false, required: true
   private _maxRows?: number; 
   public get maxRows() {
@@ -1512,7 +2121,7 @@ export class QuicksightDataSourceParametersTwitterOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get maxRowsInput() {
-    return this._maxRows
+    return this._maxRows;
   }
 
   // query - computed: false, optional: false, required: true
@@ -1525,7 +2134,7 @@ export class QuicksightDataSourceParametersTwitterOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get queryInput() {
-    return this._query
+    return this._query;
   }
 }
 export interface QuicksightDataSourceParameters {
@@ -1690,344 +2299,457 @@ export class QuicksightDataSourceParametersOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // amazon_elasticsearch - computed: false, optional: true, required: false
-  private _amazonElasticsearch?: QuicksightDataSourceParametersAmazonElasticsearch | undefined; 
-  private __amazonElasticsearchOutput = new QuicksightDataSourceParametersAmazonElasticsearchOutputReference(this as any, "amazon_elasticsearch", true);
-  public get amazonElasticsearch() {
-    return this.__amazonElasticsearchOutput;
+  public get internalValue(): QuicksightDataSourceParameters | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._amazonElasticsearch) {
+      hasAnyValues = true;
+      internalValueResult.amazonElasticsearch = this._amazonElasticsearch?.internalValue;
+    }
+    if (this._athena) {
+      hasAnyValues = true;
+      internalValueResult.athena = this._athena?.internalValue;
+    }
+    if (this._aurora) {
+      hasAnyValues = true;
+      internalValueResult.aurora = this._aurora?.internalValue;
+    }
+    if (this._auroraPostgresql) {
+      hasAnyValues = true;
+      internalValueResult.auroraPostgresql = this._auroraPostgresql?.internalValue;
+    }
+    if (this._awsIotAnalytics) {
+      hasAnyValues = true;
+      internalValueResult.awsIotAnalytics = this._awsIotAnalytics?.internalValue;
+    }
+    if (this._jira) {
+      hasAnyValues = true;
+      internalValueResult.jira = this._jira?.internalValue;
+    }
+    if (this._mariaDb) {
+      hasAnyValues = true;
+      internalValueResult.mariaDb = this._mariaDb?.internalValue;
+    }
+    if (this._mysql) {
+      hasAnyValues = true;
+      internalValueResult.mysql = this._mysql?.internalValue;
+    }
+    if (this._oracle) {
+      hasAnyValues = true;
+      internalValueResult.oracle = this._oracle?.internalValue;
+    }
+    if (this._postgresql) {
+      hasAnyValues = true;
+      internalValueResult.postgresql = this._postgresql?.internalValue;
+    }
+    if (this._presto) {
+      hasAnyValues = true;
+      internalValueResult.presto = this._presto?.internalValue;
+    }
+    if (this._rds) {
+      hasAnyValues = true;
+      internalValueResult.rds = this._rds?.internalValue;
+    }
+    if (this._redshift) {
+      hasAnyValues = true;
+      internalValueResult.redshift = this._redshift?.internalValue;
+    }
+    if (this._s3) {
+      hasAnyValues = true;
+      internalValueResult.s3 = this._s3?.internalValue;
+    }
+    if (this._serviceNow) {
+      hasAnyValues = true;
+      internalValueResult.serviceNow = this._serviceNow?.internalValue;
+    }
+    if (this._snowflake) {
+      hasAnyValues = true;
+      internalValueResult.snowflake = this._snowflake?.internalValue;
+    }
+    if (this._spark) {
+      hasAnyValues = true;
+      internalValueResult.spark = this._spark?.internalValue;
+    }
+    if (this._sqlServer) {
+      hasAnyValues = true;
+      internalValueResult.sqlServer = this._sqlServer?.internalValue;
+    }
+    if (this._teradata) {
+      hasAnyValues = true;
+      internalValueResult.teradata = this._teradata?.internalValue;
+    }
+    if (this._twitter) {
+      hasAnyValues = true;
+      internalValueResult.twitter = this._twitter?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAmazonElasticsearch(value: QuicksightDataSourceParametersAmazonElasticsearch | undefined) {
-    this._amazonElasticsearch = value;
+
+  public set internalValue(value: QuicksightDataSourceParameters | undefined) {
+    if (value === undefined) {
+      this._amazonElasticsearch.internalValue = undefined;
+      this._athena.internalValue = undefined;
+      this._aurora.internalValue = undefined;
+      this._auroraPostgresql.internalValue = undefined;
+      this._awsIotAnalytics.internalValue = undefined;
+      this._jira.internalValue = undefined;
+      this._mariaDb.internalValue = undefined;
+      this._mysql.internalValue = undefined;
+      this._oracle.internalValue = undefined;
+      this._postgresql.internalValue = undefined;
+      this._presto.internalValue = undefined;
+      this._rds.internalValue = undefined;
+      this._redshift.internalValue = undefined;
+      this._s3.internalValue = undefined;
+      this._serviceNow.internalValue = undefined;
+      this._snowflake.internalValue = undefined;
+      this._spark.internalValue = undefined;
+      this._sqlServer.internalValue = undefined;
+      this._teradata.internalValue = undefined;
+      this._twitter.internalValue = undefined;
+    }
+    else {
+      this._amazonElasticsearch.internalValue = value.amazonElasticsearch;
+      this._athena.internalValue = value.athena;
+      this._aurora.internalValue = value.aurora;
+      this._auroraPostgresql.internalValue = value.auroraPostgresql;
+      this._awsIotAnalytics.internalValue = value.awsIotAnalytics;
+      this._jira.internalValue = value.jira;
+      this._mariaDb.internalValue = value.mariaDb;
+      this._mysql.internalValue = value.mysql;
+      this._oracle.internalValue = value.oracle;
+      this._postgresql.internalValue = value.postgresql;
+      this._presto.internalValue = value.presto;
+      this._rds.internalValue = value.rds;
+      this._redshift.internalValue = value.redshift;
+      this._s3.internalValue = value.s3;
+      this._serviceNow.internalValue = value.serviceNow;
+      this._snowflake.internalValue = value.snowflake;
+      this._spark.internalValue = value.spark;
+      this._sqlServer.internalValue = value.sqlServer;
+      this._teradata.internalValue = value.teradata;
+      this._twitter.internalValue = value.twitter;
+    }
+  }
+
+  // amazon_elasticsearch - computed: false, optional: true, required: false
+  private _amazonElasticsearch = new QuicksightDataSourceParametersAmazonElasticsearchOutputReference(this as any, "amazon_elasticsearch", true);
+  public get amazonElasticsearch() {
+    return this._amazonElasticsearch;
+  }
+  public putAmazonElasticsearch(value: QuicksightDataSourceParametersAmazonElasticsearch) {
+    this._amazonElasticsearch.internalValue = value;
   }
   public resetAmazonElasticsearch() {
-    this._amazonElasticsearch = undefined;
+    this._amazonElasticsearch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get amazonElasticsearchInput() {
-    return this._amazonElasticsearch
+    return this._amazonElasticsearch.internalValue;
   }
 
   // athena - computed: false, optional: true, required: false
-  private _athena?: QuicksightDataSourceParametersAthena | undefined; 
-  private __athenaOutput = new QuicksightDataSourceParametersAthenaOutputReference(this as any, "athena", true);
+  private _athena = new QuicksightDataSourceParametersAthenaOutputReference(this as any, "athena", true);
   public get athena() {
-    return this.__athenaOutput;
+    return this._athena;
   }
-  public putAthena(value: QuicksightDataSourceParametersAthena | undefined) {
-    this._athena = value;
+  public putAthena(value: QuicksightDataSourceParametersAthena) {
+    this._athena.internalValue = value;
   }
   public resetAthena() {
-    this._athena = undefined;
+    this._athena.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get athenaInput() {
-    return this._athena
+    return this._athena.internalValue;
   }
 
   // aurora - computed: false, optional: true, required: false
-  private _aurora?: QuicksightDataSourceParametersAurora | undefined; 
-  private __auroraOutput = new QuicksightDataSourceParametersAuroraOutputReference(this as any, "aurora", true);
+  private _aurora = new QuicksightDataSourceParametersAuroraOutputReference(this as any, "aurora", true);
   public get aurora() {
-    return this.__auroraOutput;
+    return this._aurora;
   }
-  public putAurora(value: QuicksightDataSourceParametersAurora | undefined) {
-    this._aurora = value;
+  public putAurora(value: QuicksightDataSourceParametersAurora) {
+    this._aurora.internalValue = value;
   }
   public resetAurora() {
-    this._aurora = undefined;
+    this._aurora.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get auroraInput() {
-    return this._aurora
+    return this._aurora.internalValue;
   }
 
   // aurora_postgresql - computed: false, optional: true, required: false
-  private _auroraPostgresql?: QuicksightDataSourceParametersAuroraPostgresql | undefined; 
-  private __auroraPostgresqlOutput = new QuicksightDataSourceParametersAuroraPostgresqlOutputReference(this as any, "aurora_postgresql", true);
+  private _auroraPostgresql = new QuicksightDataSourceParametersAuroraPostgresqlOutputReference(this as any, "aurora_postgresql", true);
   public get auroraPostgresql() {
-    return this.__auroraPostgresqlOutput;
+    return this._auroraPostgresql;
   }
-  public putAuroraPostgresql(value: QuicksightDataSourceParametersAuroraPostgresql | undefined) {
-    this._auroraPostgresql = value;
+  public putAuroraPostgresql(value: QuicksightDataSourceParametersAuroraPostgresql) {
+    this._auroraPostgresql.internalValue = value;
   }
   public resetAuroraPostgresql() {
-    this._auroraPostgresql = undefined;
+    this._auroraPostgresql.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get auroraPostgresqlInput() {
-    return this._auroraPostgresql
+    return this._auroraPostgresql.internalValue;
   }
 
   // aws_iot_analytics - computed: false, optional: true, required: false
-  private _awsIotAnalytics?: QuicksightDataSourceParametersAwsIotAnalytics | undefined; 
-  private __awsIotAnalyticsOutput = new QuicksightDataSourceParametersAwsIotAnalyticsOutputReference(this as any, "aws_iot_analytics", true);
+  private _awsIotAnalytics = new QuicksightDataSourceParametersAwsIotAnalyticsOutputReference(this as any, "aws_iot_analytics", true);
   public get awsIotAnalytics() {
-    return this.__awsIotAnalyticsOutput;
+    return this._awsIotAnalytics;
   }
-  public putAwsIotAnalytics(value: QuicksightDataSourceParametersAwsIotAnalytics | undefined) {
-    this._awsIotAnalytics = value;
+  public putAwsIotAnalytics(value: QuicksightDataSourceParametersAwsIotAnalytics) {
+    this._awsIotAnalytics.internalValue = value;
   }
   public resetAwsIotAnalytics() {
-    this._awsIotAnalytics = undefined;
+    this._awsIotAnalytics.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get awsIotAnalyticsInput() {
-    return this._awsIotAnalytics
+    return this._awsIotAnalytics.internalValue;
   }
 
   // jira - computed: false, optional: true, required: false
-  private _jira?: QuicksightDataSourceParametersJira | undefined; 
-  private __jiraOutput = new QuicksightDataSourceParametersJiraOutputReference(this as any, "jira", true);
+  private _jira = new QuicksightDataSourceParametersJiraOutputReference(this as any, "jira", true);
   public get jira() {
-    return this.__jiraOutput;
+    return this._jira;
   }
-  public putJira(value: QuicksightDataSourceParametersJira | undefined) {
-    this._jira = value;
+  public putJira(value: QuicksightDataSourceParametersJira) {
+    this._jira.internalValue = value;
   }
   public resetJira() {
-    this._jira = undefined;
+    this._jira.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get jiraInput() {
-    return this._jira
+    return this._jira.internalValue;
   }
 
   // maria_db - computed: false, optional: true, required: false
-  private _mariaDb?: QuicksightDataSourceParametersMariaDb | undefined; 
-  private __mariaDbOutput = new QuicksightDataSourceParametersMariaDbOutputReference(this as any, "maria_db", true);
+  private _mariaDb = new QuicksightDataSourceParametersMariaDbOutputReference(this as any, "maria_db", true);
   public get mariaDb() {
-    return this.__mariaDbOutput;
+    return this._mariaDb;
   }
-  public putMariaDb(value: QuicksightDataSourceParametersMariaDb | undefined) {
-    this._mariaDb = value;
+  public putMariaDb(value: QuicksightDataSourceParametersMariaDb) {
+    this._mariaDb.internalValue = value;
   }
   public resetMariaDb() {
-    this._mariaDb = undefined;
+    this._mariaDb.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get mariaDbInput() {
-    return this._mariaDb
+    return this._mariaDb.internalValue;
   }
 
   // mysql - computed: false, optional: true, required: false
-  private _mysql?: QuicksightDataSourceParametersMysql | undefined; 
-  private __mysqlOutput = new QuicksightDataSourceParametersMysqlOutputReference(this as any, "mysql", true);
+  private _mysql = new QuicksightDataSourceParametersMysqlOutputReference(this as any, "mysql", true);
   public get mysql() {
-    return this.__mysqlOutput;
+    return this._mysql;
   }
-  public putMysql(value: QuicksightDataSourceParametersMysql | undefined) {
-    this._mysql = value;
+  public putMysql(value: QuicksightDataSourceParametersMysql) {
+    this._mysql.internalValue = value;
   }
   public resetMysql() {
-    this._mysql = undefined;
+    this._mysql.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get mysqlInput() {
-    return this._mysql
+    return this._mysql.internalValue;
   }
 
   // oracle - computed: false, optional: true, required: false
-  private _oracle?: QuicksightDataSourceParametersOracle | undefined; 
-  private __oracleOutput = new QuicksightDataSourceParametersOracleOutputReference(this as any, "oracle", true);
+  private _oracle = new QuicksightDataSourceParametersOracleOutputReference(this as any, "oracle", true);
   public get oracle() {
-    return this.__oracleOutput;
+    return this._oracle;
   }
-  public putOracle(value: QuicksightDataSourceParametersOracle | undefined) {
-    this._oracle = value;
+  public putOracle(value: QuicksightDataSourceParametersOracle) {
+    this._oracle.internalValue = value;
   }
   public resetOracle() {
-    this._oracle = undefined;
+    this._oracle.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get oracleInput() {
-    return this._oracle
+    return this._oracle.internalValue;
   }
 
   // postgresql - computed: false, optional: true, required: false
-  private _postgresql?: QuicksightDataSourceParametersPostgresql | undefined; 
-  private __postgresqlOutput = new QuicksightDataSourceParametersPostgresqlOutputReference(this as any, "postgresql", true);
+  private _postgresql = new QuicksightDataSourceParametersPostgresqlOutputReference(this as any, "postgresql", true);
   public get postgresql() {
-    return this.__postgresqlOutput;
+    return this._postgresql;
   }
-  public putPostgresql(value: QuicksightDataSourceParametersPostgresql | undefined) {
-    this._postgresql = value;
+  public putPostgresql(value: QuicksightDataSourceParametersPostgresql) {
+    this._postgresql.internalValue = value;
   }
   public resetPostgresql() {
-    this._postgresql = undefined;
+    this._postgresql.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get postgresqlInput() {
-    return this._postgresql
+    return this._postgresql.internalValue;
   }
 
   // presto - computed: false, optional: true, required: false
-  private _presto?: QuicksightDataSourceParametersPresto | undefined; 
-  private __prestoOutput = new QuicksightDataSourceParametersPrestoOutputReference(this as any, "presto", true);
+  private _presto = new QuicksightDataSourceParametersPrestoOutputReference(this as any, "presto", true);
   public get presto() {
-    return this.__prestoOutput;
+    return this._presto;
   }
-  public putPresto(value: QuicksightDataSourceParametersPresto | undefined) {
-    this._presto = value;
+  public putPresto(value: QuicksightDataSourceParametersPresto) {
+    this._presto.internalValue = value;
   }
   public resetPresto() {
-    this._presto = undefined;
+    this._presto.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get prestoInput() {
-    return this._presto
+    return this._presto.internalValue;
   }
 
   // rds - computed: false, optional: true, required: false
-  private _rds?: QuicksightDataSourceParametersRds | undefined; 
-  private __rdsOutput = new QuicksightDataSourceParametersRdsOutputReference(this as any, "rds", true);
+  private _rds = new QuicksightDataSourceParametersRdsOutputReference(this as any, "rds", true);
   public get rds() {
-    return this.__rdsOutput;
+    return this._rds;
   }
-  public putRds(value: QuicksightDataSourceParametersRds | undefined) {
-    this._rds = value;
+  public putRds(value: QuicksightDataSourceParametersRds) {
+    this._rds.internalValue = value;
   }
   public resetRds() {
-    this._rds = undefined;
+    this._rds.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get rdsInput() {
-    return this._rds
+    return this._rds.internalValue;
   }
 
   // redshift - computed: false, optional: true, required: false
-  private _redshift?: QuicksightDataSourceParametersRedshift | undefined; 
-  private __redshiftOutput = new QuicksightDataSourceParametersRedshiftOutputReference(this as any, "redshift", true);
+  private _redshift = new QuicksightDataSourceParametersRedshiftOutputReference(this as any, "redshift", true);
   public get redshift() {
-    return this.__redshiftOutput;
+    return this._redshift;
   }
-  public putRedshift(value: QuicksightDataSourceParametersRedshift | undefined) {
-    this._redshift = value;
+  public putRedshift(value: QuicksightDataSourceParametersRedshift) {
+    this._redshift.internalValue = value;
   }
   public resetRedshift() {
-    this._redshift = undefined;
+    this._redshift.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get redshiftInput() {
-    return this._redshift
+    return this._redshift.internalValue;
   }
 
   // s3 - computed: false, optional: true, required: false
-  private _s3?: QuicksightDataSourceParametersS3 | undefined; 
-  private __s3Output = new QuicksightDataSourceParametersS3OutputReference(this as any, "s3", true);
+  private _s3 = new QuicksightDataSourceParametersS3OutputReference(this as any, "s3", true);
   public get s3() {
-    return this.__s3Output;
+    return this._s3;
   }
-  public putS3(value: QuicksightDataSourceParametersS3 | undefined) {
-    this._s3 = value;
+  public putS3(value: QuicksightDataSourceParametersS3) {
+    this._s3.internalValue = value;
   }
   public resetS3() {
-    this._s3 = undefined;
+    this._s3.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get s3Input() {
-    return this._s3
+    return this._s3.internalValue;
   }
 
   // service_now - computed: false, optional: true, required: false
-  private _serviceNow?: QuicksightDataSourceParametersServiceNow | undefined; 
-  private __serviceNowOutput = new QuicksightDataSourceParametersServiceNowOutputReference(this as any, "service_now", true);
+  private _serviceNow = new QuicksightDataSourceParametersServiceNowOutputReference(this as any, "service_now", true);
   public get serviceNow() {
-    return this.__serviceNowOutput;
+    return this._serviceNow;
   }
-  public putServiceNow(value: QuicksightDataSourceParametersServiceNow | undefined) {
-    this._serviceNow = value;
+  public putServiceNow(value: QuicksightDataSourceParametersServiceNow) {
+    this._serviceNow.internalValue = value;
   }
   public resetServiceNow() {
-    this._serviceNow = undefined;
+    this._serviceNow.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get serviceNowInput() {
-    return this._serviceNow
+    return this._serviceNow.internalValue;
   }
 
   // snowflake - computed: false, optional: true, required: false
-  private _snowflake?: QuicksightDataSourceParametersSnowflake | undefined; 
-  private __snowflakeOutput = new QuicksightDataSourceParametersSnowflakeOutputReference(this as any, "snowflake", true);
+  private _snowflake = new QuicksightDataSourceParametersSnowflakeOutputReference(this as any, "snowflake", true);
   public get snowflake() {
-    return this.__snowflakeOutput;
+    return this._snowflake;
   }
-  public putSnowflake(value: QuicksightDataSourceParametersSnowflake | undefined) {
-    this._snowflake = value;
+  public putSnowflake(value: QuicksightDataSourceParametersSnowflake) {
+    this._snowflake.internalValue = value;
   }
   public resetSnowflake() {
-    this._snowflake = undefined;
+    this._snowflake.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get snowflakeInput() {
-    return this._snowflake
+    return this._snowflake.internalValue;
   }
 
   // spark - computed: false, optional: true, required: false
-  private _spark?: QuicksightDataSourceParametersSpark | undefined; 
-  private __sparkOutput = new QuicksightDataSourceParametersSparkOutputReference(this as any, "spark", true);
+  private _spark = new QuicksightDataSourceParametersSparkOutputReference(this as any, "spark", true);
   public get spark() {
-    return this.__sparkOutput;
+    return this._spark;
   }
-  public putSpark(value: QuicksightDataSourceParametersSpark | undefined) {
-    this._spark = value;
+  public putSpark(value: QuicksightDataSourceParametersSpark) {
+    this._spark.internalValue = value;
   }
   public resetSpark() {
-    this._spark = undefined;
+    this._spark.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get sparkInput() {
-    return this._spark
+    return this._spark.internalValue;
   }
 
   // sql_server - computed: false, optional: true, required: false
-  private _sqlServer?: QuicksightDataSourceParametersSqlServer | undefined; 
-  private __sqlServerOutput = new QuicksightDataSourceParametersSqlServerOutputReference(this as any, "sql_server", true);
+  private _sqlServer = new QuicksightDataSourceParametersSqlServerOutputReference(this as any, "sql_server", true);
   public get sqlServer() {
-    return this.__sqlServerOutput;
+    return this._sqlServer;
   }
-  public putSqlServer(value: QuicksightDataSourceParametersSqlServer | undefined) {
-    this._sqlServer = value;
+  public putSqlServer(value: QuicksightDataSourceParametersSqlServer) {
+    this._sqlServer.internalValue = value;
   }
   public resetSqlServer() {
-    this._sqlServer = undefined;
+    this._sqlServer.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get sqlServerInput() {
-    return this._sqlServer
+    return this._sqlServer.internalValue;
   }
 
   // teradata - computed: false, optional: true, required: false
-  private _teradata?: QuicksightDataSourceParametersTeradata | undefined; 
-  private __teradataOutput = new QuicksightDataSourceParametersTeradataOutputReference(this as any, "teradata", true);
+  private _teradata = new QuicksightDataSourceParametersTeradataOutputReference(this as any, "teradata", true);
   public get teradata() {
-    return this.__teradataOutput;
+    return this._teradata;
   }
-  public putTeradata(value: QuicksightDataSourceParametersTeradata | undefined) {
-    this._teradata = value;
+  public putTeradata(value: QuicksightDataSourceParametersTeradata) {
+    this._teradata.internalValue = value;
   }
   public resetTeradata() {
-    this._teradata = undefined;
+    this._teradata.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get teradataInput() {
-    return this._teradata
+    return this._teradata.internalValue;
   }
 
   // twitter - computed: false, optional: true, required: false
-  private _twitter?: QuicksightDataSourceParametersTwitter | undefined; 
-  private __twitterOutput = new QuicksightDataSourceParametersTwitterOutputReference(this as any, "twitter", true);
+  private _twitter = new QuicksightDataSourceParametersTwitterOutputReference(this as any, "twitter", true);
   public get twitter() {
-    return this.__twitterOutput;
+    return this._twitter;
   }
-  public putTwitter(value: QuicksightDataSourceParametersTwitter | undefined) {
-    this._twitter = value;
+  public putTwitter(value: QuicksightDataSourceParametersTwitter) {
+    this._twitter.internalValue = value;
   }
   public resetTwitter() {
-    this._twitter = undefined;
+    this._twitter.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get twitterInput() {
-    return this._twitter
+    return this._twitter.internalValue;
   }
 }
 export interface QuicksightDataSourcePermission {
@@ -2079,6 +2801,25 @@ export class QuicksightDataSourceSslPropertiesOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceSslProperties | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._disableSsl) {
+      hasAnyValues = true;
+      internalValueResult.disableSsl = this._disableSsl;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceSslProperties | undefined) {
+    if (value === undefined) {
+      this._disableSsl = undefined;
+    }
+    else {
+      this._disableSsl = value.disableSsl;
+    }
+  }
+
   // disable_ssl - computed: false, optional: false, required: true
   private _disableSsl?: boolean | cdktf.IResolvable; 
   public get disableSsl() {
@@ -2089,7 +2830,7 @@ export class QuicksightDataSourceSslPropertiesOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get disableSslInput() {
-    return this._disableSsl
+    return this._disableSsl;
   }
 }
 export interface QuicksightDataSourceVpcConnectionProperties {
@@ -2119,6 +2860,25 @@ export class QuicksightDataSourceVpcConnectionPropertiesOutputReference extends 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): QuicksightDataSourceVpcConnectionProperties | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._vpcConnectionArn) {
+      hasAnyValues = true;
+      internalValueResult.vpcConnectionArn = this._vpcConnectionArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: QuicksightDataSourceVpcConnectionProperties | undefined) {
+    if (value === undefined) {
+      this._vpcConnectionArn = undefined;
+    }
+    else {
+      this._vpcConnectionArn = value.vpcConnectionArn;
+    }
+  }
+
   // vpc_connection_arn - computed: false, optional: false, required: true
   private _vpcConnectionArn?: string; 
   public get vpcConnectionArn() {
@@ -2129,7 +2889,7 @@ export class QuicksightDataSourceVpcConnectionPropertiesOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get vpcConnectionArnInput() {
-    return this._vpcConnectionArn
+    return this._vpcConnectionArn;
   }
 }
 
@@ -2171,11 +2931,11 @@ export class QuicksightDataSource extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._type = config.type;
-    this._credentials = config.credentials;
-    this._parameters = config.parameters;
+    this._credentials.internalValue = config.credentials;
+    this._parameters.internalValue = config.parameters;
     this._permission = config.permission;
-    this._sslProperties = config.sslProperties;
-    this._vpcConnectionProperties = config.vpcConnectionProperties;
+    this._sslProperties.internalValue = config.sslProperties;
+    this._vpcConnectionProperties.internalValue = config.vpcConnectionProperties;
   }
 
   // ==========
@@ -2188,11 +2948,11 @@ export class QuicksightDataSource extends cdktf.TerraformResource {
   }
 
   // aws_account_id - computed: true, optional: true, required: false
-  private _awsAccountId?: string | undefined; 
+  private _awsAccountId?: string; 
   public get awsAccountId() {
     return this.getStringAttribute('aws_account_id');
   }
-  public set awsAccountId(value: string | undefined) {
+  public set awsAccountId(value: string) {
     this._awsAccountId = value;
   }
   public resetAwsAccountId() {
@@ -2200,7 +2960,7 @@ export class QuicksightDataSource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get awsAccountIdInput() {
-    return this._awsAccountId
+    return this._awsAccountId;
   }
 
   // data_source_id - computed: false, optional: false, required: true
@@ -2213,7 +2973,7 @@ export class QuicksightDataSource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dataSourceIdInput() {
-    return this._dataSourceId
+    return this._dataSourceId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -2231,16 +2991,16 @@ export class QuicksightDataSource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -2248,16 +3008,16 @@ export class QuicksightDataSource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -2265,7 +3025,7 @@ export class QuicksightDataSource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // type - computed: false, optional: false, required: true
@@ -2278,47 +3038,45 @@ export class QuicksightDataSource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // credentials - computed: false, optional: true, required: false
-  private _credentials?: QuicksightDataSourceCredentials | undefined; 
-  private __credentialsOutput = new QuicksightDataSourceCredentialsOutputReference(this as any, "credentials", true);
+  private _credentials = new QuicksightDataSourceCredentialsOutputReference(this as any, "credentials", true);
   public get credentials() {
-    return this.__credentialsOutput;
+    return this._credentials;
   }
-  public putCredentials(value: QuicksightDataSourceCredentials | undefined) {
-    this._credentials = value;
+  public putCredentials(value: QuicksightDataSourceCredentials) {
+    this._credentials.internalValue = value;
   }
   public resetCredentials() {
-    this._credentials = undefined;
+    this._credentials.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get credentialsInput() {
-    return this._credentials
+    return this._credentials.internalValue;
   }
 
   // parameters - computed: false, optional: false, required: true
-  private _parameters?: QuicksightDataSourceParameters; 
-  private __parametersOutput = new QuicksightDataSourceParametersOutputReference(this as any, "parameters", true);
+  private _parameters = new QuicksightDataSourceParametersOutputReference(this as any, "parameters", true);
   public get parameters() {
-    return this.__parametersOutput;
+    return this._parameters;
   }
   public putParameters(value: QuicksightDataSourceParameters) {
-    this._parameters = value;
+    this._parameters.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInput() {
-    return this._parameters
+    return this._parameters.internalValue;
   }
 
   // permission - computed: false, optional: true, required: false
-  private _permission?: QuicksightDataSourcePermission[] | undefined; 
+  private _permission?: QuicksightDataSourcePermission[]; 
   public get permission() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('permission') as any;
   }
-  public set permission(value: QuicksightDataSourcePermission[] | undefined) {
+  public set permission(value: QuicksightDataSourcePermission[]) {
     this._permission = value;
   }
   public resetPermission() {
@@ -2326,41 +3084,39 @@ export class QuicksightDataSource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get permissionInput() {
-    return this._permission
+    return this._permission;
   }
 
   // ssl_properties - computed: false, optional: true, required: false
-  private _sslProperties?: QuicksightDataSourceSslProperties | undefined; 
-  private __sslPropertiesOutput = new QuicksightDataSourceSslPropertiesOutputReference(this as any, "ssl_properties", true);
+  private _sslProperties = new QuicksightDataSourceSslPropertiesOutputReference(this as any, "ssl_properties", true);
   public get sslProperties() {
-    return this.__sslPropertiesOutput;
+    return this._sslProperties;
   }
-  public putSslProperties(value: QuicksightDataSourceSslProperties | undefined) {
-    this._sslProperties = value;
+  public putSslProperties(value: QuicksightDataSourceSslProperties) {
+    this._sslProperties.internalValue = value;
   }
   public resetSslProperties() {
-    this._sslProperties = undefined;
+    this._sslProperties.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get sslPropertiesInput() {
-    return this._sslProperties
+    return this._sslProperties.internalValue;
   }
 
   // vpc_connection_properties - computed: false, optional: true, required: false
-  private _vpcConnectionProperties?: QuicksightDataSourceVpcConnectionProperties | undefined; 
-  private __vpcConnectionPropertiesOutput = new QuicksightDataSourceVpcConnectionPropertiesOutputReference(this as any, "vpc_connection_properties", true);
+  private _vpcConnectionProperties = new QuicksightDataSourceVpcConnectionPropertiesOutputReference(this as any, "vpc_connection_properties", true);
   public get vpcConnectionProperties() {
-    return this.__vpcConnectionPropertiesOutput;
+    return this._vpcConnectionProperties;
   }
-  public putVpcConnectionProperties(value: QuicksightDataSourceVpcConnectionProperties | undefined) {
-    this._vpcConnectionProperties = value;
+  public putVpcConnectionProperties(value: QuicksightDataSourceVpcConnectionProperties) {
+    this._vpcConnectionProperties.internalValue = value;
   }
   public resetVpcConnectionProperties() {
-    this._vpcConnectionProperties = undefined;
+    this._vpcConnectionProperties.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get vpcConnectionPropertiesInput() {
-    return this._vpcConnectionProperties
+    return this._vpcConnectionProperties.internalValue;
   }
 
   // =========
@@ -2375,11 +3131,11 @@ export class QuicksightDataSource extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       type: cdktf.stringToTerraform(this._type),
-      credentials: quicksightDataSourceCredentialsToTerraform(this._credentials),
-      parameters: quicksightDataSourceParametersToTerraform(this._parameters),
+      credentials: quicksightDataSourceCredentialsToTerraform(this._credentials.internalValue),
+      parameters: quicksightDataSourceParametersToTerraform(this._parameters.internalValue),
       permission: cdktf.listMapper(quicksightDataSourcePermissionToTerraform)(this._permission),
-      ssl_properties: quicksightDataSourceSslPropertiesToTerraform(this._sslProperties),
-      vpc_connection_properties: quicksightDataSourceVpcConnectionPropertiesToTerraform(this._vpcConnectionProperties),
+      ssl_properties: quicksightDataSourceSslPropertiesToTerraform(this._sslProperties.internalValue),
+      vpc_connection_properties: quicksightDataSourceVpcConnectionPropertiesToTerraform(this._vpcConnectionProperties.internalValue),
     };
   }
 }

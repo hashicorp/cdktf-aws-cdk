@@ -82,7 +82,7 @@ export class KinesisStreamConsumer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // stream_arn - computed: false, optional: false, required: true
@@ -95,7 +95,7 @@ export class KinesisStreamConsumer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get streamArnInput() {
-    return this._streamArn
+    return this._streamArn;
   }
 
   // =========

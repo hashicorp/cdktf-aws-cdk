@@ -78,11 +78,11 @@ export class SecretsmanagerSecretVersion extends cdktf.TerraformResource {
   }
 
   // secret_binary - computed: false, optional: true, required: false
-  private _secretBinary?: string | undefined; 
+  private _secretBinary?: string; 
   public get secretBinary() {
     return this.getStringAttribute('secret_binary');
   }
-  public set secretBinary(value: string | undefined) {
+  public set secretBinary(value: string) {
     this._secretBinary = value;
   }
   public resetSecretBinary() {
@@ -90,7 +90,7 @@ export class SecretsmanagerSecretVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get secretBinaryInput() {
-    return this._secretBinary
+    return this._secretBinary;
   }
 
   // secret_id - computed: false, optional: false, required: true
@@ -103,15 +103,15 @@ export class SecretsmanagerSecretVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get secretIdInput() {
-    return this._secretId
+    return this._secretId;
   }
 
   // secret_string - computed: false, optional: true, required: false
-  private _secretString?: string | undefined; 
+  private _secretString?: string; 
   public get secretString() {
     return this.getStringAttribute('secret_string');
   }
-  public set secretString(value: string | undefined) {
+  public set secretString(value: string) {
     this._secretString = value;
   }
   public resetSecretString() {
@@ -119,7 +119,7 @@ export class SecretsmanagerSecretVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get secretStringInput() {
-    return this._secretString
+    return this._secretString;
   }
 
   // version_id - computed: true, optional: false, required: false
@@ -128,11 +128,11 @@ export class SecretsmanagerSecretVersion extends cdktf.TerraformResource {
   }
 
   // version_stages - computed: true, optional: true, required: false
-  private _versionStages?: string[] | undefined; 
+  private _versionStages?: string[]; 
   public get versionStages() {
     return this.getListAttribute('version_stages');
   }
-  public set versionStages(value: string[] | undefined) {
+  public set versionStages(value: string[]) {
     this._versionStages = value;
   }
   public resetVersionStages() {
@@ -140,7 +140,7 @@ export class SecretsmanagerSecretVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionStagesInput() {
-    return this._versionStages
+    return this._versionStages;
   }
 
   // =========

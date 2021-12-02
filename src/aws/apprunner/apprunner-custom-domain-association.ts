@@ -104,15 +104,15 @@ export class ApprunnerCustomDomainAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainNameInput() {
-    return this._domainName
+    return this._domainName;
   }
 
   // enable_www_subdomain - computed: false, optional: true, required: false
-  private _enableWwwSubdomain?: boolean | cdktf.IResolvable | undefined; 
+  private _enableWwwSubdomain?: boolean | cdktf.IResolvable; 
   public get enableWwwSubdomain() {
     return this.getBooleanAttribute('enable_www_subdomain') as any;
   }
-  public set enableWwwSubdomain(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableWwwSubdomain(value: boolean | cdktf.IResolvable) {
     this._enableWwwSubdomain = value;
   }
   public resetEnableWwwSubdomain() {
@@ -120,7 +120,7 @@ export class ApprunnerCustomDomainAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableWwwSubdomainInput() {
-    return this._enableWwwSubdomain
+    return this._enableWwwSubdomain;
   }
 
   // id - computed: true, optional: true, required: false
@@ -138,7 +138,7 @@ export class ApprunnerCustomDomainAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceArnInput() {
-    return this._serviceArn
+    return this._serviceArn;
   }
 
   // status - computed: true, optional: false, required: false

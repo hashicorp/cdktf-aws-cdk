@@ -146,11 +146,11 @@ export class DataAwsVpcPeeringConnection extends cdktf.TerraformDataSource {
   }
 
   // cidr_block - computed: true, optional: true, required: false
-  private _cidrBlock?: string | undefined; 
+  private _cidrBlock?: string; 
   public get cidrBlock() {
     return this.getStringAttribute('cidr_block');
   }
-  public set cidrBlock(value: string | undefined) {
+  public set cidrBlock(value: string) {
     this._cidrBlock = value;
   }
   public resetCidrBlock() {
@@ -158,7 +158,7 @@ export class DataAwsVpcPeeringConnection extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get cidrBlockInput() {
-    return this._cidrBlock
+    return this._cidrBlock;
   }
 
   // cidr_block_set - computed: true, optional: false, required: false
@@ -172,11 +172,11 @@ export class DataAwsVpcPeeringConnection extends cdktf.TerraformDataSource {
   }
 
   // owner_id - computed: true, optional: true, required: false
-  private _ownerId?: string | undefined; 
+  private _ownerId?: string; 
   public get ownerId() {
     return this.getStringAttribute('owner_id');
   }
-  public set ownerId(value: string | undefined) {
+  public set ownerId(value: string) {
     this._ownerId = value;
   }
   public resetOwnerId() {
@@ -184,15 +184,15 @@ export class DataAwsVpcPeeringConnection extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerIdInput() {
-    return this._ownerId
+    return this._ownerId;
   }
 
   // peer_cidr_block - computed: true, optional: true, required: false
-  private _peerCidrBlock?: string | undefined; 
+  private _peerCidrBlock?: string; 
   public get peerCidrBlock() {
     return this.getStringAttribute('peer_cidr_block');
   }
-  public set peerCidrBlock(value: string | undefined) {
+  public set peerCidrBlock(value: string) {
     this._peerCidrBlock = value;
   }
   public resetPeerCidrBlock() {
@@ -200,7 +200,7 @@ export class DataAwsVpcPeeringConnection extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get peerCidrBlockInput() {
-    return this._peerCidrBlock
+    return this._peerCidrBlock;
   }
 
   // peer_cidr_block_set - computed: true, optional: false, required: false
@@ -209,11 +209,11 @@ export class DataAwsVpcPeeringConnection extends cdktf.TerraformDataSource {
   }
 
   // peer_owner_id - computed: true, optional: true, required: false
-  private _peerOwnerId?: string | undefined; 
+  private _peerOwnerId?: string; 
   public get peerOwnerId() {
     return this.getStringAttribute('peer_owner_id');
   }
-  public set peerOwnerId(value: string | undefined) {
+  public set peerOwnerId(value: string) {
     this._peerOwnerId = value;
   }
   public resetPeerOwnerId() {
@@ -221,15 +221,15 @@ export class DataAwsVpcPeeringConnection extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get peerOwnerIdInput() {
-    return this._peerOwnerId
+    return this._peerOwnerId;
   }
 
   // peer_region - computed: true, optional: true, required: false
-  private _peerRegion?: string | undefined; 
+  private _peerRegion?: string; 
   public get peerRegion() {
     return this.getStringAttribute('peer_region');
   }
-  public set peerRegion(value: string | undefined) {
+  public set peerRegion(value: string) {
     this._peerRegion = value;
   }
   public resetPeerRegion() {
@@ -237,15 +237,15 @@ export class DataAwsVpcPeeringConnection extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get peerRegionInput() {
-    return this._peerRegion
+    return this._peerRegion;
   }
 
   // peer_vpc_id - computed: true, optional: true, required: false
-  private _peerVpcId?: string | undefined; 
+  private _peerVpcId?: string; 
   public get peerVpcId() {
     return this.getStringAttribute('peer_vpc_id');
   }
-  public set peerVpcId(value: string | undefined) {
+  public set peerVpcId(value: string) {
     this._peerVpcId = value;
   }
   public resetPeerVpcId() {
@@ -253,15 +253,15 @@ export class DataAwsVpcPeeringConnection extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get peerVpcIdInput() {
-    return this._peerVpcId
+    return this._peerVpcId;
   }
 
   // region - computed: true, optional: true, required: false
-  private _region?: string | undefined; 
+  private _region?: string; 
   public get region() {
     return this.getStringAttribute('region');
   }
-  public set region(value: string | undefined) {
+  public set region(value: string) {
     this._region = value;
   }
   public resetRegion() {
@@ -269,7 +269,7 @@ export class DataAwsVpcPeeringConnection extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get regionInput() {
-    return this._region
+    return this._region;
   }
 
   // requester - computed: true, optional: false, required: false
@@ -278,11 +278,11 @@ export class DataAwsVpcPeeringConnection extends cdktf.TerraformDataSource {
   }
 
   // status - computed: true, optional: true, required: false
-  private _status?: string | undefined; 
+  private _status?: string; 
   public get status() {
     return this.getStringAttribute('status');
   }
-  public set status(value: string | undefined) {
+  public set status(value: string) {
     this._status = value;
   }
   public resetStatus() {
@@ -290,16 +290,16 @@ export class DataAwsVpcPeeringConnection extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -307,15 +307,15 @@ export class DataAwsVpcPeeringConnection extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // vpc_id - computed: true, optional: true, required: false
-  private _vpcId?: string | undefined; 
+  private _vpcId?: string; 
   public get vpcId() {
     return this.getStringAttribute('vpc_id');
   }
-  public set vpcId(value: string | undefined) {
+  public set vpcId(value: string) {
     this._vpcId = value;
   }
   public resetVpcId() {
@@ -323,16 +323,16 @@ export class DataAwsVpcPeeringConnection extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsVpcPeeringConnectionFilter[] | undefined; 
+  private _filter?: DataAwsVpcPeeringConnectionFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsVpcPeeringConnectionFilter[] | undefined) {
+  public set filter(value: DataAwsVpcPeeringConnectionFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -340,7 +340,7 @@ export class DataAwsVpcPeeringConnection extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

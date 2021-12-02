@@ -226,12 +226,31 @@ export class EmrClusterAutoTerminationPolicyOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EmrClusterAutoTerminationPolicy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._idleTimeout) {
+      hasAnyValues = true;
+      internalValueResult.idleTimeout = this._idleTimeout;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EmrClusterAutoTerminationPolicy | undefined) {
+    if (value === undefined) {
+      this._idleTimeout = undefined;
+    }
+    else {
+      this._idleTimeout = value.idleTimeout;
+    }
+  }
+
   // idle_timeout - computed: false, optional: true, required: false
-  private _idleTimeout?: number | undefined; 
+  private _idleTimeout?: number; 
   public get idleTimeout() {
     return this.getNumberAttribute('idle_timeout');
   }
-  public set idleTimeout(value: number | undefined) {
+  public set idleTimeout(value: number) {
     this._idleTimeout = value;
   }
   public resetIdleTimeout() {
@@ -239,7 +258,7 @@ export class EmrClusterAutoTerminationPolicyOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get idleTimeoutInput() {
-    return this._idleTimeout
+    return this._idleTimeout;
   }
 }
 export interface EmrClusterBootstrapAction {
@@ -454,13 +473,38 @@ export class EmrClusterCoreInstanceFleetLaunchSpecificationsOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EmrClusterCoreInstanceFleetLaunchSpecifications | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._onDemandSpecification) {
+      hasAnyValues = true;
+      internalValueResult.onDemandSpecification = this._onDemandSpecification;
+    }
+    if (this._spotSpecification) {
+      hasAnyValues = true;
+      internalValueResult.spotSpecification = this._spotSpecification;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EmrClusterCoreInstanceFleetLaunchSpecifications | undefined) {
+    if (value === undefined) {
+      this._onDemandSpecification = undefined;
+      this._spotSpecification = undefined;
+    }
+    else {
+      this._onDemandSpecification = value.onDemandSpecification;
+      this._spotSpecification = value.spotSpecification;
+    }
+  }
+
   // on_demand_specification - computed: false, optional: true, required: false
-  private _onDemandSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification[] | undefined; 
+  private _onDemandSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification[]; 
   public get onDemandSpecification() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('on_demand_specification') as any;
   }
-  public set onDemandSpecification(value: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification[] | undefined) {
+  public set onDemandSpecification(value: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification[]) {
     this._onDemandSpecification = value;
   }
   public resetOnDemandSpecification() {
@@ -468,16 +512,16 @@ export class EmrClusterCoreInstanceFleetLaunchSpecificationsOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get onDemandSpecificationInput() {
-    return this._onDemandSpecification
+    return this._onDemandSpecification;
   }
 
   // spot_specification - computed: false, optional: true, required: false
-  private _spotSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification[] | undefined; 
+  private _spotSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification[]; 
   public get spotSpecification() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('spot_specification') as any;
   }
-  public set spotSpecification(value: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification[] | undefined) {
+  public set spotSpecification(value: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification[]) {
     this._spotSpecification = value;
   }
   public resetSpotSpecification() {
@@ -485,7 +529,7 @@ export class EmrClusterCoreInstanceFleetLaunchSpecificationsOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get spotSpecificationInput() {
-    return this._spotSpecification
+    return this._spotSpecification;
   }
 }
 export interface EmrClusterCoreInstanceFleet {
@@ -539,12 +583,55 @@ export class EmrClusterCoreInstanceFleetOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EmrClusterCoreInstanceFleet | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._targetOnDemandCapacity) {
+      hasAnyValues = true;
+      internalValueResult.targetOnDemandCapacity = this._targetOnDemandCapacity;
+    }
+    if (this._targetSpotCapacity) {
+      hasAnyValues = true;
+      internalValueResult.targetSpotCapacity = this._targetSpotCapacity;
+    }
+    if (this._instanceTypeConfigs) {
+      hasAnyValues = true;
+      internalValueResult.instanceTypeConfigs = this._instanceTypeConfigs;
+    }
+    if (this._launchSpecifications) {
+      hasAnyValues = true;
+      internalValueResult.launchSpecifications = this._launchSpecifications?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EmrClusterCoreInstanceFleet | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+      this._targetOnDemandCapacity = undefined;
+      this._targetSpotCapacity = undefined;
+      this._instanceTypeConfigs = undefined;
+      this._launchSpecifications.internalValue = undefined;
+    }
+    else {
+      this._name = value.name;
+      this._targetOnDemandCapacity = value.targetOnDemandCapacity;
+      this._targetSpotCapacity = value.targetSpotCapacity;
+      this._instanceTypeConfigs = value.instanceTypeConfigs;
+      this._launchSpecifications.internalValue = value.launchSpecifications;
+    }
+  }
+
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -552,15 +639,15 @@ export class EmrClusterCoreInstanceFleetOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // target_on_demand_capacity - computed: false, optional: true, required: false
-  private _targetOnDemandCapacity?: number | undefined; 
+  private _targetOnDemandCapacity?: number; 
   public get targetOnDemandCapacity() {
     return this.getNumberAttribute('target_on_demand_capacity');
   }
-  public set targetOnDemandCapacity(value: number | undefined) {
+  public set targetOnDemandCapacity(value: number) {
     this._targetOnDemandCapacity = value;
   }
   public resetTargetOnDemandCapacity() {
@@ -568,15 +655,15 @@ export class EmrClusterCoreInstanceFleetOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get targetOnDemandCapacityInput() {
-    return this._targetOnDemandCapacity
+    return this._targetOnDemandCapacity;
   }
 
   // target_spot_capacity - computed: false, optional: true, required: false
-  private _targetSpotCapacity?: number | undefined; 
+  private _targetSpotCapacity?: number; 
   public get targetSpotCapacity() {
     return this.getNumberAttribute('target_spot_capacity');
   }
-  public set targetSpotCapacity(value: number | undefined) {
+  public set targetSpotCapacity(value: number) {
     this._targetSpotCapacity = value;
   }
   public resetTargetSpotCapacity() {
@@ -584,16 +671,16 @@ export class EmrClusterCoreInstanceFleetOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get targetSpotCapacityInput() {
-    return this._targetSpotCapacity
+    return this._targetSpotCapacity;
   }
 
   // instance_type_configs - computed: false, optional: true, required: false
-  private _instanceTypeConfigs?: EmrClusterCoreInstanceFleetInstanceTypeConfigs[] | undefined; 
+  private _instanceTypeConfigs?: EmrClusterCoreInstanceFleetInstanceTypeConfigs[]; 
   public get instanceTypeConfigs() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('instance_type_configs') as any;
   }
-  public set instanceTypeConfigs(value: EmrClusterCoreInstanceFleetInstanceTypeConfigs[] | undefined) {
+  public set instanceTypeConfigs(value: EmrClusterCoreInstanceFleetInstanceTypeConfigs[]) {
     this._instanceTypeConfigs = value;
   }
   public resetInstanceTypeConfigs() {
@@ -601,24 +688,23 @@ export class EmrClusterCoreInstanceFleetOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeConfigsInput() {
-    return this._instanceTypeConfigs
+    return this._instanceTypeConfigs;
   }
 
   // launch_specifications - computed: false, optional: true, required: false
-  private _launchSpecifications?: EmrClusterCoreInstanceFleetLaunchSpecifications | undefined; 
-  private __launchSpecificationsOutput = new EmrClusterCoreInstanceFleetLaunchSpecificationsOutputReference(this as any, "launch_specifications", true);
+  private _launchSpecifications = new EmrClusterCoreInstanceFleetLaunchSpecificationsOutputReference(this as any, "launch_specifications", true);
   public get launchSpecifications() {
-    return this.__launchSpecificationsOutput;
+    return this._launchSpecifications;
   }
-  public putLaunchSpecifications(value: EmrClusterCoreInstanceFleetLaunchSpecifications | undefined) {
-    this._launchSpecifications = value;
+  public putLaunchSpecifications(value: EmrClusterCoreInstanceFleetLaunchSpecifications) {
+    this._launchSpecifications.internalValue = value;
   }
   public resetLaunchSpecifications() {
-    this._launchSpecifications = undefined;
+    this._launchSpecifications.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get launchSpecificationsInput() {
-    return this._launchSpecifications
+    return this._launchSpecifications.internalValue;
   }
 }
 export interface EmrClusterCoreInstanceGroupEbsConfig {
@@ -707,12 +793,61 @@ export class EmrClusterCoreInstanceGroupOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EmrClusterCoreInstanceGroup | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._autoscalingPolicy) {
+      hasAnyValues = true;
+      internalValueResult.autoscalingPolicy = this._autoscalingPolicy;
+    }
+    if (this._bidPrice) {
+      hasAnyValues = true;
+      internalValueResult.bidPrice = this._bidPrice;
+    }
+    if (this._instanceCount) {
+      hasAnyValues = true;
+      internalValueResult.instanceCount = this._instanceCount;
+    }
+    if (this._instanceType) {
+      hasAnyValues = true;
+      internalValueResult.instanceType = this._instanceType;
+    }
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._ebsConfig) {
+      hasAnyValues = true;
+      internalValueResult.ebsConfig = this._ebsConfig;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EmrClusterCoreInstanceGroup | undefined) {
+    if (value === undefined) {
+      this._autoscalingPolicy = undefined;
+      this._bidPrice = undefined;
+      this._instanceCount = undefined;
+      this._instanceType = undefined;
+      this._name = undefined;
+      this._ebsConfig = undefined;
+    }
+    else {
+      this._autoscalingPolicy = value.autoscalingPolicy;
+      this._bidPrice = value.bidPrice;
+      this._instanceCount = value.instanceCount;
+      this._instanceType = value.instanceType;
+      this._name = value.name;
+      this._ebsConfig = value.ebsConfig;
+    }
+  }
+
   // autoscaling_policy - computed: false, optional: true, required: false
-  private _autoscalingPolicy?: string | undefined; 
+  private _autoscalingPolicy?: string; 
   public get autoscalingPolicy() {
     return this.getStringAttribute('autoscaling_policy');
   }
-  public set autoscalingPolicy(value: string | undefined) {
+  public set autoscalingPolicy(value: string) {
     this._autoscalingPolicy = value;
   }
   public resetAutoscalingPolicy() {
@@ -720,15 +855,15 @@ export class EmrClusterCoreInstanceGroupOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get autoscalingPolicyInput() {
-    return this._autoscalingPolicy
+    return this._autoscalingPolicy;
   }
 
   // bid_price - computed: false, optional: true, required: false
-  private _bidPrice?: string | undefined; 
+  private _bidPrice?: string; 
   public get bidPrice() {
     return this.getStringAttribute('bid_price');
   }
-  public set bidPrice(value: string | undefined) {
+  public set bidPrice(value: string) {
     this._bidPrice = value;
   }
   public resetBidPrice() {
@@ -736,15 +871,15 @@ export class EmrClusterCoreInstanceGroupOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get bidPriceInput() {
-    return this._bidPrice
+    return this._bidPrice;
   }
 
   // instance_count - computed: false, optional: true, required: false
-  private _instanceCount?: number | undefined; 
+  private _instanceCount?: number; 
   public get instanceCount() {
     return this.getNumberAttribute('instance_count');
   }
-  public set instanceCount(value: number | undefined) {
+  public set instanceCount(value: number) {
     this._instanceCount = value;
   }
   public resetInstanceCount() {
@@ -752,7 +887,7 @@ export class EmrClusterCoreInstanceGroupOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get instanceCountInput() {
-    return this._instanceCount
+    return this._instanceCount;
   }
 
   // instance_type - computed: false, optional: false, required: true
@@ -765,15 +900,15 @@ export class EmrClusterCoreInstanceGroupOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -781,16 +916,16 @@ export class EmrClusterCoreInstanceGroupOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // ebs_config - computed: false, optional: true, required: false
-  private _ebsConfig?: EmrClusterCoreInstanceGroupEbsConfig[] | undefined; 
+  private _ebsConfig?: EmrClusterCoreInstanceGroupEbsConfig[]; 
   public get ebsConfig() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ebs_config') as any;
   }
-  public set ebsConfig(value: EmrClusterCoreInstanceGroupEbsConfig[] | undefined) {
+  public set ebsConfig(value: EmrClusterCoreInstanceGroupEbsConfig[]) {
     this._ebsConfig = value;
   }
   public resetEbsConfig() {
@@ -798,7 +933,7 @@ export class EmrClusterCoreInstanceGroupOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get ebsConfigInput() {
-    return this._ebsConfig
+    return this._ebsConfig;
   }
 }
 export interface EmrClusterEc2Attributes {
@@ -868,12 +1003,79 @@ export class EmrClusterEc2AttributesOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EmrClusterEc2Attributes | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._additionalMasterSecurityGroups) {
+      hasAnyValues = true;
+      internalValueResult.additionalMasterSecurityGroups = this._additionalMasterSecurityGroups;
+    }
+    if (this._additionalSlaveSecurityGroups) {
+      hasAnyValues = true;
+      internalValueResult.additionalSlaveSecurityGroups = this._additionalSlaveSecurityGroups;
+    }
+    if (this._emrManagedMasterSecurityGroup) {
+      hasAnyValues = true;
+      internalValueResult.emrManagedMasterSecurityGroup = this._emrManagedMasterSecurityGroup;
+    }
+    if (this._emrManagedSlaveSecurityGroup) {
+      hasAnyValues = true;
+      internalValueResult.emrManagedSlaveSecurityGroup = this._emrManagedSlaveSecurityGroup;
+    }
+    if (this._instanceProfile) {
+      hasAnyValues = true;
+      internalValueResult.instanceProfile = this._instanceProfile;
+    }
+    if (this._keyName) {
+      hasAnyValues = true;
+      internalValueResult.keyName = this._keyName;
+    }
+    if (this._serviceAccessSecurityGroup) {
+      hasAnyValues = true;
+      internalValueResult.serviceAccessSecurityGroup = this._serviceAccessSecurityGroup;
+    }
+    if (this._subnetId) {
+      hasAnyValues = true;
+      internalValueResult.subnetId = this._subnetId;
+    }
+    if (this._subnetIds) {
+      hasAnyValues = true;
+      internalValueResult.subnetIds = this._subnetIds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EmrClusterEc2Attributes | undefined) {
+    if (value === undefined) {
+      this._additionalMasterSecurityGroups = undefined;
+      this._additionalSlaveSecurityGroups = undefined;
+      this._emrManagedMasterSecurityGroup = undefined;
+      this._emrManagedSlaveSecurityGroup = undefined;
+      this._instanceProfile = undefined;
+      this._keyName = undefined;
+      this._serviceAccessSecurityGroup = undefined;
+      this._subnetId = undefined;
+      this._subnetIds = undefined;
+    }
+    else {
+      this._additionalMasterSecurityGroups = value.additionalMasterSecurityGroups;
+      this._additionalSlaveSecurityGroups = value.additionalSlaveSecurityGroups;
+      this._emrManagedMasterSecurityGroup = value.emrManagedMasterSecurityGroup;
+      this._emrManagedSlaveSecurityGroup = value.emrManagedSlaveSecurityGroup;
+      this._instanceProfile = value.instanceProfile;
+      this._keyName = value.keyName;
+      this._serviceAccessSecurityGroup = value.serviceAccessSecurityGroup;
+      this._subnetId = value.subnetId;
+      this._subnetIds = value.subnetIds;
+    }
+  }
+
   // additional_master_security_groups - computed: false, optional: true, required: false
-  private _additionalMasterSecurityGroups?: string | undefined; 
+  private _additionalMasterSecurityGroups?: string; 
   public get additionalMasterSecurityGroups() {
     return this.getStringAttribute('additional_master_security_groups');
   }
-  public set additionalMasterSecurityGroups(value: string | undefined) {
+  public set additionalMasterSecurityGroups(value: string) {
     this._additionalMasterSecurityGroups = value;
   }
   public resetAdditionalMasterSecurityGroups() {
@@ -881,15 +1083,15 @@ export class EmrClusterEc2AttributesOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get additionalMasterSecurityGroupsInput() {
-    return this._additionalMasterSecurityGroups
+    return this._additionalMasterSecurityGroups;
   }
 
   // additional_slave_security_groups - computed: false, optional: true, required: false
-  private _additionalSlaveSecurityGroups?: string | undefined; 
+  private _additionalSlaveSecurityGroups?: string; 
   public get additionalSlaveSecurityGroups() {
     return this.getStringAttribute('additional_slave_security_groups');
   }
-  public set additionalSlaveSecurityGroups(value: string | undefined) {
+  public set additionalSlaveSecurityGroups(value: string) {
     this._additionalSlaveSecurityGroups = value;
   }
   public resetAdditionalSlaveSecurityGroups() {
@@ -897,15 +1099,15 @@ export class EmrClusterEc2AttributesOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get additionalSlaveSecurityGroupsInput() {
-    return this._additionalSlaveSecurityGroups
+    return this._additionalSlaveSecurityGroups;
   }
 
   // emr_managed_master_security_group - computed: true, optional: true, required: false
-  private _emrManagedMasterSecurityGroup?: string | undefined; 
+  private _emrManagedMasterSecurityGroup?: string; 
   public get emrManagedMasterSecurityGroup() {
     return this.getStringAttribute('emr_managed_master_security_group');
   }
-  public set emrManagedMasterSecurityGroup(value: string | undefined) {
+  public set emrManagedMasterSecurityGroup(value: string) {
     this._emrManagedMasterSecurityGroup = value;
   }
   public resetEmrManagedMasterSecurityGroup() {
@@ -913,15 +1115,15 @@ export class EmrClusterEc2AttributesOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get emrManagedMasterSecurityGroupInput() {
-    return this._emrManagedMasterSecurityGroup
+    return this._emrManagedMasterSecurityGroup;
   }
 
   // emr_managed_slave_security_group - computed: true, optional: true, required: false
-  private _emrManagedSlaveSecurityGroup?: string | undefined; 
+  private _emrManagedSlaveSecurityGroup?: string; 
   public get emrManagedSlaveSecurityGroup() {
     return this.getStringAttribute('emr_managed_slave_security_group');
   }
-  public set emrManagedSlaveSecurityGroup(value: string | undefined) {
+  public set emrManagedSlaveSecurityGroup(value: string) {
     this._emrManagedSlaveSecurityGroup = value;
   }
   public resetEmrManagedSlaveSecurityGroup() {
@@ -929,7 +1131,7 @@ export class EmrClusterEc2AttributesOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get emrManagedSlaveSecurityGroupInput() {
-    return this._emrManagedSlaveSecurityGroup
+    return this._emrManagedSlaveSecurityGroup;
   }
 
   // instance_profile - computed: false, optional: false, required: true
@@ -942,15 +1144,15 @@ export class EmrClusterEc2AttributesOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get instanceProfileInput() {
-    return this._instanceProfile
+    return this._instanceProfile;
   }
 
   // key_name - computed: false, optional: true, required: false
-  private _keyName?: string | undefined; 
+  private _keyName?: string; 
   public get keyName() {
     return this.getStringAttribute('key_name');
   }
-  public set keyName(value: string | undefined) {
+  public set keyName(value: string) {
     this._keyName = value;
   }
   public resetKeyName() {
@@ -958,15 +1160,15 @@ export class EmrClusterEc2AttributesOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get keyNameInput() {
-    return this._keyName
+    return this._keyName;
   }
 
   // service_access_security_group - computed: true, optional: true, required: false
-  private _serviceAccessSecurityGroup?: string | undefined; 
+  private _serviceAccessSecurityGroup?: string; 
   public get serviceAccessSecurityGroup() {
     return this.getStringAttribute('service_access_security_group');
   }
-  public set serviceAccessSecurityGroup(value: string | undefined) {
+  public set serviceAccessSecurityGroup(value: string) {
     this._serviceAccessSecurityGroup = value;
   }
   public resetServiceAccessSecurityGroup() {
@@ -974,15 +1176,15 @@ export class EmrClusterEc2AttributesOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get serviceAccessSecurityGroupInput() {
-    return this._serviceAccessSecurityGroup
+    return this._serviceAccessSecurityGroup;
   }
 
   // subnet_id - computed: true, optional: true, required: false
-  private _subnetId?: string | undefined; 
+  private _subnetId?: string; 
   public get subnetId() {
     return this.getStringAttribute('subnet_id');
   }
-  public set subnetId(value: string | undefined) {
+  public set subnetId(value: string) {
     this._subnetId = value;
   }
   public resetSubnetId() {
@@ -990,15 +1192,15 @@ export class EmrClusterEc2AttributesOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdInput() {
-    return this._subnetId
+    return this._subnetId;
   }
 
   // subnet_ids - computed: true, optional: true, required: false
-  private _subnetIds?: string[] | undefined; 
+  private _subnetIds?: string[]; 
   public get subnetIds() {
     return this.getListAttribute('subnet_ids');
   }
-  public set subnetIds(value: string[] | undefined) {
+  public set subnetIds(value: string[]) {
     this._subnetIds = value;
   }
   public resetSubnetIds() {
@@ -1006,7 +1208,7 @@ export class EmrClusterEc2AttributesOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 }
 export interface EmrClusterKerberosAttributes {
@@ -1056,12 +1258,55 @@ export class EmrClusterKerberosAttributesOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EmrClusterKerberosAttributes | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._adDomainJoinPassword) {
+      hasAnyValues = true;
+      internalValueResult.adDomainJoinPassword = this._adDomainJoinPassword;
+    }
+    if (this._adDomainJoinUser) {
+      hasAnyValues = true;
+      internalValueResult.adDomainJoinUser = this._adDomainJoinUser;
+    }
+    if (this._crossRealmTrustPrincipalPassword) {
+      hasAnyValues = true;
+      internalValueResult.crossRealmTrustPrincipalPassword = this._crossRealmTrustPrincipalPassword;
+    }
+    if (this._kdcAdminPassword) {
+      hasAnyValues = true;
+      internalValueResult.kdcAdminPassword = this._kdcAdminPassword;
+    }
+    if (this._realm) {
+      hasAnyValues = true;
+      internalValueResult.realm = this._realm;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EmrClusterKerberosAttributes | undefined) {
+    if (value === undefined) {
+      this._adDomainJoinPassword = undefined;
+      this._adDomainJoinUser = undefined;
+      this._crossRealmTrustPrincipalPassword = undefined;
+      this._kdcAdminPassword = undefined;
+      this._realm = undefined;
+    }
+    else {
+      this._adDomainJoinPassword = value.adDomainJoinPassword;
+      this._adDomainJoinUser = value.adDomainJoinUser;
+      this._crossRealmTrustPrincipalPassword = value.crossRealmTrustPrincipalPassword;
+      this._kdcAdminPassword = value.kdcAdminPassword;
+      this._realm = value.realm;
+    }
+  }
+
   // ad_domain_join_password - computed: false, optional: true, required: false
-  private _adDomainJoinPassword?: string | undefined; 
+  private _adDomainJoinPassword?: string; 
   public get adDomainJoinPassword() {
     return this.getStringAttribute('ad_domain_join_password');
   }
-  public set adDomainJoinPassword(value: string | undefined) {
+  public set adDomainJoinPassword(value: string) {
     this._adDomainJoinPassword = value;
   }
   public resetAdDomainJoinPassword() {
@@ -1069,15 +1314,15 @@ export class EmrClusterKerberosAttributesOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get adDomainJoinPasswordInput() {
-    return this._adDomainJoinPassword
+    return this._adDomainJoinPassword;
   }
 
   // ad_domain_join_user - computed: false, optional: true, required: false
-  private _adDomainJoinUser?: string | undefined; 
+  private _adDomainJoinUser?: string; 
   public get adDomainJoinUser() {
     return this.getStringAttribute('ad_domain_join_user');
   }
-  public set adDomainJoinUser(value: string | undefined) {
+  public set adDomainJoinUser(value: string) {
     this._adDomainJoinUser = value;
   }
   public resetAdDomainJoinUser() {
@@ -1085,15 +1330,15 @@ export class EmrClusterKerberosAttributesOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get adDomainJoinUserInput() {
-    return this._adDomainJoinUser
+    return this._adDomainJoinUser;
   }
 
   // cross_realm_trust_principal_password - computed: false, optional: true, required: false
-  private _crossRealmTrustPrincipalPassword?: string | undefined; 
+  private _crossRealmTrustPrincipalPassword?: string; 
   public get crossRealmTrustPrincipalPassword() {
     return this.getStringAttribute('cross_realm_trust_principal_password');
   }
-  public set crossRealmTrustPrincipalPassword(value: string | undefined) {
+  public set crossRealmTrustPrincipalPassword(value: string) {
     this._crossRealmTrustPrincipalPassword = value;
   }
   public resetCrossRealmTrustPrincipalPassword() {
@@ -1101,7 +1346,7 @@ export class EmrClusterKerberosAttributesOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get crossRealmTrustPrincipalPasswordInput() {
-    return this._crossRealmTrustPrincipalPassword
+    return this._crossRealmTrustPrincipalPassword;
   }
 
   // kdc_admin_password - computed: false, optional: false, required: true
@@ -1114,7 +1359,7 @@ export class EmrClusterKerberosAttributesOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get kdcAdminPasswordInput() {
-    return this._kdcAdminPassword
+    return this._kdcAdminPassword;
   }
 
   // realm - computed: false, optional: false, required: true
@@ -1127,7 +1372,7 @@ export class EmrClusterKerberosAttributesOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get realmInput() {
-    return this._realm
+    return this._realm;
   }
 }
 export interface EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations {
@@ -1315,13 +1560,38 @@ export class EmrClusterMasterInstanceFleetLaunchSpecificationsOutputReference ex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EmrClusterMasterInstanceFleetLaunchSpecifications | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._onDemandSpecification) {
+      hasAnyValues = true;
+      internalValueResult.onDemandSpecification = this._onDemandSpecification;
+    }
+    if (this._spotSpecification) {
+      hasAnyValues = true;
+      internalValueResult.spotSpecification = this._spotSpecification;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EmrClusterMasterInstanceFleetLaunchSpecifications | undefined) {
+    if (value === undefined) {
+      this._onDemandSpecification = undefined;
+      this._spotSpecification = undefined;
+    }
+    else {
+      this._onDemandSpecification = value.onDemandSpecification;
+      this._spotSpecification = value.spotSpecification;
+    }
+  }
+
   // on_demand_specification - computed: false, optional: true, required: false
-  private _onDemandSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification[] | undefined; 
+  private _onDemandSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification[]; 
   public get onDemandSpecification() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('on_demand_specification') as any;
   }
-  public set onDemandSpecification(value: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification[] | undefined) {
+  public set onDemandSpecification(value: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification[]) {
     this._onDemandSpecification = value;
   }
   public resetOnDemandSpecification() {
@@ -1329,16 +1599,16 @@ export class EmrClusterMasterInstanceFleetLaunchSpecificationsOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get onDemandSpecificationInput() {
-    return this._onDemandSpecification
+    return this._onDemandSpecification;
   }
 
   // spot_specification - computed: false, optional: true, required: false
-  private _spotSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification[] | undefined; 
+  private _spotSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification[]; 
   public get spotSpecification() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('spot_specification') as any;
   }
-  public set spotSpecification(value: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification[] | undefined) {
+  public set spotSpecification(value: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification[]) {
     this._spotSpecification = value;
   }
   public resetSpotSpecification() {
@@ -1346,7 +1616,7 @@ export class EmrClusterMasterInstanceFleetLaunchSpecificationsOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get spotSpecificationInput() {
-    return this._spotSpecification
+    return this._spotSpecification;
   }
 }
 export interface EmrClusterMasterInstanceFleet {
@@ -1400,12 +1670,55 @@ export class EmrClusterMasterInstanceFleetOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EmrClusterMasterInstanceFleet | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._targetOnDemandCapacity) {
+      hasAnyValues = true;
+      internalValueResult.targetOnDemandCapacity = this._targetOnDemandCapacity;
+    }
+    if (this._targetSpotCapacity) {
+      hasAnyValues = true;
+      internalValueResult.targetSpotCapacity = this._targetSpotCapacity;
+    }
+    if (this._instanceTypeConfigs) {
+      hasAnyValues = true;
+      internalValueResult.instanceTypeConfigs = this._instanceTypeConfigs;
+    }
+    if (this._launchSpecifications) {
+      hasAnyValues = true;
+      internalValueResult.launchSpecifications = this._launchSpecifications?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EmrClusterMasterInstanceFleet | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+      this._targetOnDemandCapacity = undefined;
+      this._targetSpotCapacity = undefined;
+      this._instanceTypeConfigs = undefined;
+      this._launchSpecifications.internalValue = undefined;
+    }
+    else {
+      this._name = value.name;
+      this._targetOnDemandCapacity = value.targetOnDemandCapacity;
+      this._targetSpotCapacity = value.targetSpotCapacity;
+      this._instanceTypeConfigs = value.instanceTypeConfigs;
+      this._launchSpecifications.internalValue = value.launchSpecifications;
+    }
+  }
+
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -1413,15 +1726,15 @@ export class EmrClusterMasterInstanceFleetOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // target_on_demand_capacity - computed: false, optional: true, required: false
-  private _targetOnDemandCapacity?: number | undefined; 
+  private _targetOnDemandCapacity?: number; 
   public get targetOnDemandCapacity() {
     return this.getNumberAttribute('target_on_demand_capacity');
   }
-  public set targetOnDemandCapacity(value: number | undefined) {
+  public set targetOnDemandCapacity(value: number) {
     this._targetOnDemandCapacity = value;
   }
   public resetTargetOnDemandCapacity() {
@@ -1429,15 +1742,15 @@ export class EmrClusterMasterInstanceFleetOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get targetOnDemandCapacityInput() {
-    return this._targetOnDemandCapacity
+    return this._targetOnDemandCapacity;
   }
 
   // target_spot_capacity - computed: false, optional: true, required: false
-  private _targetSpotCapacity?: number | undefined; 
+  private _targetSpotCapacity?: number; 
   public get targetSpotCapacity() {
     return this.getNumberAttribute('target_spot_capacity');
   }
-  public set targetSpotCapacity(value: number | undefined) {
+  public set targetSpotCapacity(value: number) {
     this._targetSpotCapacity = value;
   }
   public resetTargetSpotCapacity() {
@@ -1445,16 +1758,16 @@ export class EmrClusterMasterInstanceFleetOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get targetSpotCapacityInput() {
-    return this._targetSpotCapacity
+    return this._targetSpotCapacity;
   }
 
   // instance_type_configs - computed: false, optional: true, required: false
-  private _instanceTypeConfigs?: EmrClusterMasterInstanceFleetInstanceTypeConfigs[] | undefined; 
+  private _instanceTypeConfigs?: EmrClusterMasterInstanceFleetInstanceTypeConfigs[]; 
   public get instanceTypeConfigs() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('instance_type_configs') as any;
   }
-  public set instanceTypeConfigs(value: EmrClusterMasterInstanceFleetInstanceTypeConfigs[] | undefined) {
+  public set instanceTypeConfigs(value: EmrClusterMasterInstanceFleetInstanceTypeConfigs[]) {
     this._instanceTypeConfigs = value;
   }
   public resetInstanceTypeConfigs() {
@@ -1462,24 +1775,23 @@ export class EmrClusterMasterInstanceFleetOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeConfigsInput() {
-    return this._instanceTypeConfigs
+    return this._instanceTypeConfigs;
   }
 
   // launch_specifications - computed: false, optional: true, required: false
-  private _launchSpecifications?: EmrClusterMasterInstanceFleetLaunchSpecifications | undefined; 
-  private __launchSpecificationsOutput = new EmrClusterMasterInstanceFleetLaunchSpecificationsOutputReference(this as any, "launch_specifications", true);
+  private _launchSpecifications = new EmrClusterMasterInstanceFleetLaunchSpecificationsOutputReference(this as any, "launch_specifications", true);
   public get launchSpecifications() {
-    return this.__launchSpecificationsOutput;
+    return this._launchSpecifications;
   }
-  public putLaunchSpecifications(value: EmrClusterMasterInstanceFleetLaunchSpecifications | undefined) {
-    this._launchSpecifications = value;
+  public putLaunchSpecifications(value: EmrClusterMasterInstanceFleetLaunchSpecifications) {
+    this._launchSpecifications.internalValue = value;
   }
   public resetLaunchSpecifications() {
-    this._launchSpecifications = undefined;
+    this._launchSpecifications.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get launchSpecificationsInput() {
-    return this._launchSpecifications
+    return this._launchSpecifications.internalValue;
   }
 }
 export interface EmrClusterMasterInstanceGroupEbsConfig {
@@ -1563,12 +1875,55 @@ export class EmrClusterMasterInstanceGroupOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EmrClusterMasterInstanceGroup | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bidPrice) {
+      hasAnyValues = true;
+      internalValueResult.bidPrice = this._bidPrice;
+    }
+    if (this._instanceCount) {
+      hasAnyValues = true;
+      internalValueResult.instanceCount = this._instanceCount;
+    }
+    if (this._instanceType) {
+      hasAnyValues = true;
+      internalValueResult.instanceType = this._instanceType;
+    }
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._ebsConfig) {
+      hasAnyValues = true;
+      internalValueResult.ebsConfig = this._ebsConfig;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EmrClusterMasterInstanceGroup | undefined) {
+    if (value === undefined) {
+      this._bidPrice = undefined;
+      this._instanceCount = undefined;
+      this._instanceType = undefined;
+      this._name = undefined;
+      this._ebsConfig = undefined;
+    }
+    else {
+      this._bidPrice = value.bidPrice;
+      this._instanceCount = value.instanceCount;
+      this._instanceType = value.instanceType;
+      this._name = value.name;
+      this._ebsConfig = value.ebsConfig;
+    }
+  }
+
   // bid_price - computed: false, optional: true, required: false
-  private _bidPrice?: string | undefined; 
+  private _bidPrice?: string; 
   public get bidPrice() {
     return this.getStringAttribute('bid_price');
   }
-  public set bidPrice(value: string | undefined) {
+  public set bidPrice(value: string) {
     this._bidPrice = value;
   }
   public resetBidPrice() {
@@ -1576,15 +1931,15 @@ export class EmrClusterMasterInstanceGroupOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get bidPriceInput() {
-    return this._bidPrice
+    return this._bidPrice;
   }
 
   // instance_count - computed: false, optional: true, required: false
-  private _instanceCount?: number | undefined; 
+  private _instanceCount?: number; 
   public get instanceCount() {
     return this.getNumberAttribute('instance_count');
   }
-  public set instanceCount(value: number | undefined) {
+  public set instanceCount(value: number) {
     this._instanceCount = value;
   }
   public resetInstanceCount() {
@@ -1592,7 +1947,7 @@ export class EmrClusterMasterInstanceGroupOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get instanceCountInput() {
-    return this._instanceCount
+    return this._instanceCount;
   }
 
   // instance_type - computed: false, optional: false, required: true
@@ -1605,15 +1960,15 @@ export class EmrClusterMasterInstanceGroupOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -1621,16 +1976,16 @@ export class EmrClusterMasterInstanceGroupOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // ebs_config - computed: false, optional: true, required: false
-  private _ebsConfig?: EmrClusterMasterInstanceGroupEbsConfig[] | undefined; 
+  private _ebsConfig?: EmrClusterMasterInstanceGroupEbsConfig[]; 
   public get ebsConfig() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ebs_config') as any;
   }
-  public set ebsConfig(value: EmrClusterMasterInstanceGroupEbsConfig[] | undefined) {
+  public set ebsConfig(value: EmrClusterMasterInstanceGroupEbsConfig[]) {
     this._ebsConfig = value;
   }
   public resetEbsConfig() {
@@ -1638,7 +1993,7 @@ export class EmrClusterMasterInstanceGroupOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get ebsConfigInput() {
-    return this._ebsConfig
+    return this._ebsConfig;
   }
 }
 
@@ -1695,14 +2050,14 @@ export class EmrCluster extends cdktf.TerraformResource {
     this._tagsAll = config.tagsAll;
     this._terminationProtection = config.terminationProtection;
     this._visibleToAllUsers = config.visibleToAllUsers;
-    this._autoTerminationPolicy = config.autoTerminationPolicy;
+    this._autoTerminationPolicy.internalValue = config.autoTerminationPolicy;
     this._bootstrapAction = config.bootstrapAction;
-    this._coreInstanceFleet = config.coreInstanceFleet;
-    this._coreInstanceGroup = config.coreInstanceGroup;
-    this._ec2Attributes = config.ec2Attributes;
-    this._kerberosAttributes = config.kerberosAttributes;
-    this._masterInstanceFleet = config.masterInstanceFleet;
-    this._masterInstanceGroup = config.masterInstanceGroup;
+    this._coreInstanceFleet.internalValue = config.coreInstanceFleet;
+    this._coreInstanceGroup.internalValue = config.coreInstanceGroup;
+    this._ec2Attributes.internalValue = config.ec2Attributes;
+    this._kerberosAttributes.internalValue = config.kerberosAttributes;
+    this._masterInstanceFleet.internalValue = config.masterInstanceFleet;
+    this._masterInstanceGroup.internalValue = config.masterInstanceGroup;
   }
 
   // ==========
@@ -1710,11 +2065,11 @@ export class EmrCluster extends cdktf.TerraformResource {
   // ==========
 
   // additional_info - computed: false, optional: true, required: false
-  private _additionalInfo?: string | undefined; 
+  private _additionalInfo?: string; 
   public get additionalInfo() {
     return this.getStringAttribute('additional_info');
   }
-  public set additionalInfo(value: string | undefined) {
+  public set additionalInfo(value: string) {
     this._additionalInfo = value;
   }
   public resetAdditionalInfo() {
@@ -1722,15 +2077,15 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get additionalInfoInput() {
-    return this._additionalInfo
+    return this._additionalInfo;
   }
 
   // applications - computed: false, optional: true, required: false
-  private _applications?: string[] | undefined; 
+  private _applications?: string[]; 
   public get applications() {
     return this.getListAttribute('applications');
   }
-  public set applications(value: string[] | undefined) {
+  public set applications(value: string[]) {
     this._applications = value;
   }
   public resetApplications() {
@@ -1738,7 +2093,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get applicationsInput() {
-    return this._applications
+    return this._applications;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -1747,11 +2102,11 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
 
   // autoscaling_role - computed: false, optional: true, required: false
-  private _autoscalingRole?: string | undefined; 
+  private _autoscalingRole?: string; 
   public get autoscalingRole() {
     return this.getStringAttribute('autoscaling_role');
   }
-  public set autoscalingRole(value: string | undefined) {
+  public set autoscalingRole(value: string) {
     this._autoscalingRole = value;
   }
   public resetAutoscalingRole() {
@@ -1759,7 +2114,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoscalingRoleInput() {
-    return this._autoscalingRole
+    return this._autoscalingRole;
   }
 
   // cluster_state - computed: true, optional: false, required: false
@@ -1768,11 +2123,11 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
 
   // configurations - computed: false, optional: true, required: false
-  private _configurations?: string | undefined; 
+  private _configurations?: string; 
   public get configurations() {
     return this.getStringAttribute('configurations');
   }
-  public set configurations(value: string | undefined) {
+  public set configurations(value: string) {
     this._configurations = value;
   }
   public resetConfigurations() {
@@ -1780,15 +2135,15 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get configurationsInput() {
-    return this._configurations
+    return this._configurations;
   }
 
   // configurations_json - computed: false, optional: true, required: false
-  private _configurationsJson?: string | undefined; 
+  private _configurationsJson?: string; 
   public get configurationsJson() {
     return this.getStringAttribute('configurations_json');
   }
-  public set configurationsJson(value: string | undefined) {
+  public set configurationsJson(value: string) {
     this._configurationsJson = value;
   }
   public resetConfigurationsJson() {
@@ -1796,15 +2151,15 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get configurationsJsonInput() {
-    return this._configurationsJson
+    return this._configurationsJson;
   }
 
   // custom_ami_id - computed: false, optional: true, required: false
-  private _customAmiId?: string | undefined; 
+  private _customAmiId?: string; 
   public get customAmiId() {
     return this.getStringAttribute('custom_ami_id');
   }
-  public set customAmiId(value: string | undefined) {
+  public set customAmiId(value: string) {
     this._customAmiId = value;
   }
   public resetCustomAmiId() {
@@ -1812,15 +2167,15 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customAmiIdInput() {
-    return this._customAmiId
+    return this._customAmiId;
   }
 
   // ebs_root_volume_size - computed: false, optional: true, required: false
-  private _ebsRootVolumeSize?: number | undefined; 
+  private _ebsRootVolumeSize?: number; 
   public get ebsRootVolumeSize() {
     return this.getNumberAttribute('ebs_root_volume_size');
   }
-  public set ebsRootVolumeSize(value: number | undefined) {
+  public set ebsRootVolumeSize(value: number) {
     this._ebsRootVolumeSize = value;
   }
   public resetEbsRootVolumeSize() {
@@ -1828,7 +2183,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ebsRootVolumeSizeInput() {
-    return this._ebsRootVolumeSize
+    return this._ebsRootVolumeSize;
   }
 
   // id - computed: true, optional: true, required: false
@@ -1837,11 +2192,11 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
 
   // keep_job_flow_alive_when_no_steps - computed: true, optional: true, required: false
-  private _keepJobFlowAliveWhenNoSteps?: boolean | cdktf.IResolvable | undefined; 
+  private _keepJobFlowAliveWhenNoSteps?: boolean | cdktf.IResolvable; 
   public get keepJobFlowAliveWhenNoSteps() {
     return this.getBooleanAttribute('keep_job_flow_alive_when_no_steps') as any;
   }
-  public set keepJobFlowAliveWhenNoSteps(value: boolean | cdktf.IResolvable | undefined) {
+  public set keepJobFlowAliveWhenNoSteps(value: boolean | cdktf.IResolvable) {
     this._keepJobFlowAliveWhenNoSteps = value;
   }
   public resetKeepJobFlowAliveWhenNoSteps() {
@@ -1849,15 +2204,15 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get keepJobFlowAliveWhenNoStepsInput() {
-    return this._keepJobFlowAliveWhenNoSteps
+    return this._keepJobFlowAliveWhenNoSteps;
   }
 
   // log_encryption_kms_key_id - computed: false, optional: true, required: false
-  private _logEncryptionKmsKeyId?: string | undefined; 
+  private _logEncryptionKmsKeyId?: string; 
   public get logEncryptionKmsKeyId() {
     return this.getStringAttribute('log_encryption_kms_key_id');
   }
-  public set logEncryptionKmsKeyId(value: string | undefined) {
+  public set logEncryptionKmsKeyId(value: string) {
     this._logEncryptionKmsKeyId = value;
   }
   public resetLogEncryptionKmsKeyId() {
@@ -1865,15 +2220,15 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get logEncryptionKmsKeyIdInput() {
-    return this._logEncryptionKmsKeyId
+    return this._logEncryptionKmsKeyId;
   }
 
   // log_uri - computed: false, optional: true, required: false
-  private _logUri?: string | undefined; 
+  private _logUri?: string; 
   public get logUri() {
     return this.getStringAttribute('log_uri');
   }
-  public set logUri(value: string | undefined) {
+  public set logUri(value: string) {
     this._logUri = value;
   }
   public resetLogUri() {
@@ -1881,7 +2236,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get logUriInput() {
-    return this._logUri
+    return this._logUri;
   }
 
   // master_public_dns - computed: true, optional: false, required: false
@@ -1899,7 +2254,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // release_label - computed: false, optional: false, required: true
@@ -1912,15 +2267,15 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get releaseLabelInput() {
-    return this._releaseLabel
+    return this._releaseLabel;
   }
 
   // scale_down_behavior - computed: true, optional: true, required: false
-  private _scaleDownBehavior?: string | undefined; 
+  private _scaleDownBehavior?: string; 
   public get scaleDownBehavior() {
     return this.getStringAttribute('scale_down_behavior');
   }
-  public set scaleDownBehavior(value: string | undefined) {
+  public set scaleDownBehavior(value: string) {
     this._scaleDownBehavior = value;
   }
   public resetScaleDownBehavior() {
@@ -1928,15 +2283,15 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scaleDownBehaviorInput() {
-    return this._scaleDownBehavior
+    return this._scaleDownBehavior;
   }
 
   // security_configuration - computed: false, optional: true, required: false
-  private _securityConfiguration?: string | undefined; 
+  private _securityConfiguration?: string; 
   public get securityConfiguration() {
     return this.getStringAttribute('security_configuration');
   }
-  public set securityConfiguration(value: string | undefined) {
+  public set securityConfiguration(value: string) {
     this._securityConfiguration = value;
   }
   public resetSecurityConfiguration() {
@@ -1944,7 +2299,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityConfigurationInput() {
-    return this._securityConfiguration
+    return this._securityConfiguration;
   }
 
   // service_role - computed: false, optional: false, required: true
@@ -1957,16 +2312,16 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceRoleInput() {
-    return this._serviceRole
+    return this._serviceRole;
   }
 
   // step - computed: true, optional: true, required: false
-  private _step?: EmrClusterStep[] | undefined; 
+  private _step?: EmrClusterStep[]; 
   public get step() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('step') as any;
   }
-  public set step(value: EmrClusterStep[] | undefined) {
+  public set step(value: EmrClusterStep[]) {
     this._step = value;
   }
   public resetStep() {
@@ -1974,15 +2329,15 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stepInput() {
-    return this._step
+    return this._step;
   }
 
   // step_concurrency_level - computed: false, optional: true, required: false
-  private _stepConcurrencyLevel?: number | undefined; 
+  private _stepConcurrencyLevel?: number; 
   public get stepConcurrencyLevel() {
     return this.getNumberAttribute('step_concurrency_level');
   }
-  public set stepConcurrencyLevel(value: number | undefined) {
+  public set stepConcurrencyLevel(value: number) {
     this._stepConcurrencyLevel = value;
   }
   public resetStepConcurrencyLevel() {
@@ -1990,16 +2345,16 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stepConcurrencyLevelInput() {
-    return this._stepConcurrencyLevel
+    return this._stepConcurrencyLevel;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -2007,16 +2362,16 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -2024,15 +2379,15 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // termination_protection - computed: true, optional: true, required: false
-  private _terminationProtection?: boolean | cdktf.IResolvable | undefined; 
+  private _terminationProtection?: boolean | cdktf.IResolvable; 
   public get terminationProtection() {
     return this.getBooleanAttribute('termination_protection') as any;
   }
-  public set terminationProtection(value: boolean | cdktf.IResolvable | undefined) {
+  public set terminationProtection(value: boolean | cdktf.IResolvable) {
     this._terminationProtection = value;
   }
   public resetTerminationProtection() {
@@ -2040,15 +2395,15 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get terminationProtectionInput() {
-    return this._terminationProtection
+    return this._terminationProtection;
   }
 
   // visible_to_all_users - computed: false, optional: true, required: false
-  private _visibleToAllUsers?: boolean | cdktf.IResolvable | undefined; 
+  private _visibleToAllUsers?: boolean | cdktf.IResolvable; 
   public get visibleToAllUsers() {
     return this.getBooleanAttribute('visible_to_all_users') as any;
   }
-  public set visibleToAllUsers(value: boolean | cdktf.IResolvable | undefined) {
+  public set visibleToAllUsers(value: boolean | cdktf.IResolvable) {
     this._visibleToAllUsers = value;
   }
   public resetVisibleToAllUsers() {
@@ -2056,33 +2411,32 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get visibleToAllUsersInput() {
-    return this._visibleToAllUsers
+    return this._visibleToAllUsers;
   }
 
   // auto_termination_policy - computed: false, optional: true, required: false
-  private _autoTerminationPolicy?: EmrClusterAutoTerminationPolicy | undefined; 
-  private __autoTerminationPolicyOutput = new EmrClusterAutoTerminationPolicyOutputReference(this as any, "auto_termination_policy", true);
+  private _autoTerminationPolicy = new EmrClusterAutoTerminationPolicyOutputReference(this as any, "auto_termination_policy", true);
   public get autoTerminationPolicy() {
-    return this.__autoTerminationPolicyOutput;
+    return this._autoTerminationPolicy;
   }
-  public putAutoTerminationPolicy(value: EmrClusterAutoTerminationPolicy | undefined) {
-    this._autoTerminationPolicy = value;
+  public putAutoTerminationPolicy(value: EmrClusterAutoTerminationPolicy) {
+    this._autoTerminationPolicy.internalValue = value;
   }
   public resetAutoTerminationPolicy() {
-    this._autoTerminationPolicy = undefined;
+    this._autoTerminationPolicy.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get autoTerminationPolicyInput() {
-    return this._autoTerminationPolicy
+    return this._autoTerminationPolicy.internalValue;
   }
 
   // bootstrap_action - computed: false, optional: true, required: false
-  private _bootstrapAction?: EmrClusterBootstrapAction[] | undefined; 
+  private _bootstrapAction?: EmrClusterBootstrapAction[]; 
   public get bootstrapAction() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('bootstrap_action') as any;
   }
-  public set bootstrapAction(value: EmrClusterBootstrapAction[] | undefined) {
+  public set bootstrapAction(value: EmrClusterBootstrapAction[]) {
     this._bootstrapAction = value;
   }
   public resetBootstrapAction() {
@@ -2090,109 +2444,103 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bootstrapActionInput() {
-    return this._bootstrapAction
+    return this._bootstrapAction;
   }
 
   // core_instance_fleet - computed: false, optional: true, required: false
-  private _coreInstanceFleet?: EmrClusterCoreInstanceFleet | undefined; 
-  private __coreInstanceFleetOutput = new EmrClusterCoreInstanceFleetOutputReference(this as any, "core_instance_fleet", true);
+  private _coreInstanceFleet = new EmrClusterCoreInstanceFleetOutputReference(this as any, "core_instance_fleet", true);
   public get coreInstanceFleet() {
-    return this.__coreInstanceFleetOutput;
+    return this._coreInstanceFleet;
   }
-  public putCoreInstanceFleet(value: EmrClusterCoreInstanceFleet | undefined) {
-    this._coreInstanceFleet = value;
+  public putCoreInstanceFleet(value: EmrClusterCoreInstanceFleet) {
+    this._coreInstanceFleet.internalValue = value;
   }
   public resetCoreInstanceFleet() {
-    this._coreInstanceFleet = undefined;
+    this._coreInstanceFleet.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get coreInstanceFleetInput() {
-    return this._coreInstanceFleet
+    return this._coreInstanceFleet.internalValue;
   }
 
   // core_instance_group - computed: false, optional: true, required: false
-  private _coreInstanceGroup?: EmrClusterCoreInstanceGroup | undefined; 
-  private __coreInstanceGroupOutput = new EmrClusterCoreInstanceGroupOutputReference(this as any, "core_instance_group", true);
+  private _coreInstanceGroup = new EmrClusterCoreInstanceGroupOutputReference(this as any, "core_instance_group", true);
   public get coreInstanceGroup() {
-    return this.__coreInstanceGroupOutput;
+    return this._coreInstanceGroup;
   }
-  public putCoreInstanceGroup(value: EmrClusterCoreInstanceGroup | undefined) {
-    this._coreInstanceGroup = value;
+  public putCoreInstanceGroup(value: EmrClusterCoreInstanceGroup) {
+    this._coreInstanceGroup.internalValue = value;
   }
   public resetCoreInstanceGroup() {
-    this._coreInstanceGroup = undefined;
+    this._coreInstanceGroup.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get coreInstanceGroupInput() {
-    return this._coreInstanceGroup
+    return this._coreInstanceGroup.internalValue;
   }
 
   // ec2_attributes - computed: false, optional: true, required: false
-  private _ec2Attributes?: EmrClusterEc2Attributes | undefined; 
-  private __ec2AttributesOutput = new EmrClusterEc2AttributesOutputReference(this as any, "ec2_attributes", true);
+  private _ec2Attributes = new EmrClusterEc2AttributesOutputReference(this as any, "ec2_attributes", true);
   public get ec2Attributes() {
-    return this.__ec2AttributesOutput;
+    return this._ec2Attributes;
   }
-  public putEc2Attributes(value: EmrClusterEc2Attributes | undefined) {
-    this._ec2Attributes = value;
+  public putEc2Attributes(value: EmrClusterEc2Attributes) {
+    this._ec2Attributes.internalValue = value;
   }
   public resetEc2Attributes() {
-    this._ec2Attributes = undefined;
+    this._ec2Attributes.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ec2AttributesInput() {
-    return this._ec2Attributes
+    return this._ec2Attributes.internalValue;
   }
 
   // kerberos_attributes - computed: false, optional: true, required: false
-  private _kerberosAttributes?: EmrClusterKerberosAttributes | undefined; 
-  private __kerberosAttributesOutput = new EmrClusterKerberosAttributesOutputReference(this as any, "kerberos_attributes", true);
+  private _kerberosAttributes = new EmrClusterKerberosAttributesOutputReference(this as any, "kerberos_attributes", true);
   public get kerberosAttributes() {
-    return this.__kerberosAttributesOutput;
+    return this._kerberosAttributes;
   }
-  public putKerberosAttributes(value: EmrClusterKerberosAttributes | undefined) {
-    this._kerberosAttributes = value;
+  public putKerberosAttributes(value: EmrClusterKerberosAttributes) {
+    this._kerberosAttributes.internalValue = value;
   }
   public resetKerberosAttributes() {
-    this._kerberosAttributes = undefined;
+    this._kerberosAttributes.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get kerberosAttributesInput() {
-    return this._kerberosAttributes
+    return this._kerberosAttributes.internalValue;
   }
 
   // master_instance_fleet - computed: false, optional: true, required: false
-  private _masterInstanceFleet?: EmrClusterMasterInstanceFleet | undefined; 
-  private __masterInstanceFleetOutput = new EmrClusterMasterInstanceFleetOutputReference(this as any, "master_instance_fleet", true);
+  private _masterInstanceFleet = new EmrClusterMasterInstanceFleetOutputReference(this as any, "master_instance_fleet", true);
   public get masterInstanceFleet() {
-    return this.__masterInstanceFleetOutput;
+    return this._masterInstanceFleet;
   }
-  public putMasterInstanceFleet(value: EmrClusterMasterInstanceFleet | undefined) {
-    this._masterInstanceFleet = value;
+  public putMasterInstanceFleet(value: EmrClusterMasterInstanceFleet) {
+    this._masterInstanceFleet.internalValue = value;
   }
   public resetMasterInstanceFleet() {
-    this._masterInstanceFleet = undefined;
+    this._masterInstanceFleet.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get masterInstanceFleetInput() {
-    return this._masterInstanceFleet
+    return this._masterInstanceFleet.internalValue;
   }
 
   // master_instance_group - computed: false, optional: true, required: false
-  private _masterInstanceGroup?: EmrClusterMasterInstanceGroup | undefined; 
-  private __masterInstanceGroupOutput = new EmrClusterMasterInstanceGroupOutputReference(this as any, "master_instance_group", true);
+  private _masterInstanceGroup = new EmrClusterMasterInstanceGroupOutputReference(this as any, "master_instance_group", true);
   public get masterInstanceGroup() {
-    return this.__masterInstanceGroupOutput;
+    return this._masterInstanceGroup;
   }
-  public putMasterInstanceGroup(value: EmrClusterMasterInstanceGroup | undefined) {
-    this._masterInstanceGroup = value;
+  public putMasterInstanceGroup(value: EmrClusterMasterInstanceGroup) {
+    this._masterInstanceGroup.internalValue = value;
   }
   public resetMasterInstanceGroup() {
-    this._masterInstanceGroup = undefined;
+    this._masterInstanceGroup.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get masterInstanceGroupInput() {
-    return this._masterInstanceGroup
+    return this._masterInstanceGroup.internalValue;
   }
 
   // =========
@@ -2222,14 +2570,14 @@ export class EmrCluster extends cdktf.TerraformResource {
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       termination_protection: cdktf.booleanToTerraform(this._terminationProtection),
       visible_to_all_users: cdktf.booleanToTerraform(this._visibleToAllUsers),
-      auto_termination_policy: emrClusterAutoTerminationPolicyToTerraform(this._autoTerminationPolicy),
+      auto_termination_policy: emrClusterAutoTerminationPolicyToTerraform(this._autoTerminationPolicy.internalValue),
       bootstrap_action: cdktf.listMapper(emrClusterBootstrapActionToTerraform)(this._bootstrapAction),
-      core_instance_fleet: emrClusterCoreInstanceFleetToTerraform(this._coreInstanceFleet),
-      core_instance_group: emrClusterCoreInstanceGroupToTerraform(this._coreInstanceGroup),
-      ec2_attributes: emrClusterEc2AttributesToTerraform(this._ec2Attributes),
-      kerberos_attributes: emrClusterKerberosAttributesToTerraform(this._kerberosAttributes),
-      master_instance_fleet: emrClusterMasterInstanceFleetToTerraform(this._masterInstanceFleet),
-      master_instance_group: emrClusterMasterInstanceGroupToTerraform(this._masterInstanceGroup),
+      core_instance_fleet: emrClusterCoreInstanceFleetToTerraform(this._coreInstanceFleet.internalValue),
+      core_instance_group: emrClusterCoreInstanceGroupToTerraform(this._coreInstanceGroup.internalValue),
+      ec2_attributes: emrClusterEc2AttributesToTerraform(this._ec2Attributes.internalValue),
+      kerberos_attributes: emrClusterKerberosAttributesToTerraform(this._kerberosAttributes.internalValue),
+      master_instance_fleet: emrClusterMasterInstanceFleetToTerraform(this._masterInstanceFleet.internalValue),
+      master_instance_group: emrClusterMasterInstanceGroupToTerraform(this._masterInstanceGroup.internalValue),
     };
   }
 }

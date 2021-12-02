@@ -154,12 +154,37 @@ export class MwaaEnvironmentLoggingConfigurationDagProcessingLogsOutputReference
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MwaaEnvironmentLoggingConfigurationDagProcessingLogs | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logLevel) {
+      hasAnyValues = true;
+      internalValueResult.logLevel = this._logLevel;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MwaaEnvironmentLoggingConfigurationDagProcessingLogs | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._logLevel = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._logLevel = value.logLevel;
+    }
+  }
+
   // enabled - computed: true, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -167,15 +192,15 @@ export class MwaaEnvironmentLoggingConfigurationDagProcessingLogsOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // log_level - computed: true, optional: true, required: false
-  private _logLevel?: string | undefined; 
+  private _logLevel?: string; 
   public get logLevel() {
     return this.getStringAttribute('log_level');
   }
-  public set logLevel(value: string | undefined) {
+  public set logLevel(value: string) {
     this._logLevel = value;
   }
   public resetLogLevel() {
@@ -183,7 +208,7 @@ export class MwaaEnvironmentLoggingConfigurationDagProcessingLogsOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get logLevelInput() {
-    return this._logLevel
+    return this._logLevel;
   }
 }
 export interface MwaaEnvironmentLoggingConfigurationSchedulerLogs {
@@ -218,12 +243,37 @@ export class MwaaEnvironmentLoggingConfigurationSchedulerLogsOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MwaaEnvironmentLoggingConfigurationSchedulerLogs | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logLevel) {
+      hasAnyValues = true;
+      internalValueResult.logLevel = this._logLevel;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MwaaEnvironmentLoggingConfigurationSchedulerLogs | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._logLevel = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._logLevel = value.logLevel;
+    }
+  }
+
   // enabled - computed: true, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -231,15 +281,15 @@ export class MwaaEnvironmentLoggingConfigurationSchedulerLogsOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // log_level - computed: true, optional: true, required: false
-  private _logLevel?: string | undefined; 
+  private _logLevel?: string; 
   public get logLevel() {
     return this.getStringAttribute('log_level');
   }
-  public set logLevel(value: string | undefined) {
+  public set logLevel(value: string) {
     this._logLevel = value;
   }
   public resetLogLevel() {
@@ -247,7 +297,7 @@ export class MwaaEnvironmentLoggingConfigurationSchedulerLogsOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get logLevelInput() {
-    return this._logLevel
+    return this._logLevel;
   }
 }
 export interface MwaaEnvironmentLoggingConfigurationTaskLogs {
@@ -282,12 +332,37 @@ export class MwaaEnvironmentLoggingConfigurationTaskLogsOutputReference extends 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MwaaEnvironmentLoggingConfigurationTaskLogs | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logLevel) {
+      hasAnyValues = true;
+      internalValueResult.logLevel = this._logLevel;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MwaaEnvironmentLoggingConfigurationTaskLogs | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._logLevel = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._logLevel = value.logLevel;
+    }
+  }
+
   // enabled - computed: true, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -295,15 +370,15 @@ export class MwaaEnvironmentLoggingConfigurationTaskLogsOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // log_level - computed: true, optional: true, required: false
-  private _logLevel?: string | undefined; 
+  private _logLevel?: string; 
   public get logLevel() {
     return this.getStringAttribute('log_level');
   }
-  public set logLevel(value: string | undefined) {
+  public set logLevel(value: string) {
     this._logLevel = value;
   }
   public resetLogLevel() {
@@ -311,7 +386,7 @@ export class MwaaEnvironmentLoggingConfigurationTaskLogsOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get logLevelInput() {
-    return this._logLevel
+    return this._logLevel;
   }
 }
 export interface MwaaEnvironmentLoggingConfigurationWebserverLogs {
@@ -346,12 +421,37 @@ export class MwaaEnvironmentLoggingConfigurationWebserverLogsOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MwaaEnvironmentLoggingConfigurationWebserverLogs | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logLevel) {
+      hasAnyValues = true;
+      internalValueResult.logLevel = this._logLevel;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MwaaEnvironmentLoggingConfigurationWebserverLogs | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._logLevel = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._logLevel = value.logLevel;
+    }
+  }
+
   // enabled - computed: true, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -359,15 +459,15 @@ export class MwaaEnvironmentLoggingConfigurationWebserverLogsOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // log_level - computed: true, optional: true, required: false
-  private _logLevel?: string | undefined; 
+  private _logLevel?: string; 
   public get logLevel() {
     return this.getStringAttribute('log_level');
   }
-  public set logLevel(value: string | undefined) {
+  public set logLevel(value: string) {
     this._logLevel = value;
   }
   public resetLogLevel() {
@@ -375,7 +475,7 @@ export class MwaaEnvironmentLoggingConfigurationWebserverLogsOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get logLevelInput() {
-    return this._logLevel
+    return this._logLevel;
   }
 }
 export interface MwaaEnvironmentLoggingConfigurationWorkerLogs {
@@ -410,12 +510,37 @@ export class MwaaEnvironmentLoggingConfigurationWorkerLogsOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MwaaEnvironmentLoggingConfigurationWorkerLogs | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logLevel) {
+      hasAnyValues = true;
+      internalValueResult.logLevel = this._logLevel;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MwaaEnvironmentLoggingConfigurationWorkerLogs | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._logLevel = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._logLevel = value.logLevel;
+    }
+  }
+
   // enabled - computed: true, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -423,15 +548,15 @@ export class MwaaEnvironmentLoggingConfigurationWorkerLogsOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // log_level - computed: true, optional: true, required: false
-  private _logLevel?: string | undefined; 
+  private _logLevel?: string; 
   public get logLevel() {
     return this.getStringAttribute('log_level');
   }
-  public set logLevel(value: string | undefined) {
+  public set logLevel(value: string) {
     this._logLevel = value;
   }
   public resetLogLevel() {
@@ -439,7 +564,7 @@ export class MwaaEnvironmentLoggingConfigurationWorkerLogsOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get logLevelInput() {
-    return this._logLevel
+    return this._logLevel;
   }
 }
 export interface MwaaEnvironmentLoggingConfiguration {
@@ -499,89 +624,127 @@ export class MwaaEnvironmentLoggingConfigurationOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // dag_processing_logs - computed: false, optional: true, required: false
-  private _dagProcessingLogs?: MwaaEnvironmentLoggingConfigurationDagProcessingLogs | undefined; 
-  private __dagProcessingLogsOutput = new MwaaEnvironmentLoggingConfigurationDagProcessingLogsOutputReference(this as any, "dag_processing_logs", true);
-  public get dagProcessingLogs() {
-    return this.__dagProcessingLogsOutput;
+  public get internalValue(): MwaaEnvironmentLoggingConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._dagProcessingLogs) {
+      hasAnyValues = true;
+      internalValueResult.dagProcessingLogs = this._dagProcessingLogs?.internalValue;
+    }
+    if (this._schedulerLogs) {
+      hasAnyValues = true;
+      internalValueResult.schedulerLogs = this._schedulerLogs?.internalValue;
+    }
+    if (this._taskLogs) {
+      hasAnyValues = true;
+      internalValueResult.taskLogs = this._taskLogs?.internalValue;
+    }
+    if (this._webserverLogs) {
+      hasAnyValues = true;
+      internalValueResult.webserverLogs = this._webserverLogs?.internalValue;
+    }
+    if (this._workerLogs) {
+      hasAnyValues = true;
+      internalValueResult.workerLogs = this._workerLogs?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putDagProcessingLogs(value: MwaaEnvironmentLoggingConfigurationDagProcessingLogs | undefined) {
-    this._dagProcessingLogs = value;
+
+  public set internalValue(value: MwaaEnvironmentLoggingConfiguration | undefined) {
+    if (value === undefined) {
+      this._dagProcessingLogs.internalValue = undefined;
+      this._schedulerLogs.internalValue = undefined;
+      this._taskLogs.internalValue = undefined;
+      this._webserverLogs.internalValue = undefined;
+      this._workerLogs.internalValue = undefined;
+    }
+    else {
+      this._dagProcessingLogs.internalValue = value.dagProcessingLogs;
+      this._schedulerLogs.internalValue = value.schedulerLogs;
+      this._taskLogs.internalValue = value.taskLogs;
+      this._webserverLogs.internalValue = value.webserverLogs;
+      this._workerLogs.internalValue = value.workerLogs;
+    }
+  }
+
+  // dag_processing_logs - computed: false, optional: true, required: false
+  private _dagProcessingLogs = new MwaaEnvironmentLoggingConfigurationDagProcessingLogsOutputReference(this as any, "dag_processing_logs", true);
+  public get dagProcessingLogs() {
+    return this._dagProcessingLogs;
+  }
+  public putDagProcessingLogs(value: MwaaEnvironmentLoggingConfigurationDagProcessingLogs) {
+    this._dagProcessingLogs.internalValue = value;
   }
   public resetDagProcessingLogs() {
-    this._dagProcessingLogs = undefined;
+    this._dagProcessingLogs.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get dagProcessingLogsInput() {
-    return this._dagProcessingLogs
+    return this._dagProcessingLogs.internalValue;
   }
 
   // scheduler_logs - computed: false, optional: true, required: false
-  private _schedulerLogs?: MwaaEnvironmentLoggingConfigurationSchedulerLogs | undefined; 
-  private __schedulerLogsOutput = new MwaaEnvironmentLoggingConfigurationSchedulerLogsOutputReference(this as any, "scheduler_logs", true);
+  private _schedulerLogs = new MwaaEnvironmentLoggingConfigurationSchedulerLogsOutputReference(this as any, "scheduler_logs", true);
   public get schedulerLogs() {
-    return this.__schedulerLogsOutput;
+    return this._schedulerLogs;
   }
-  public putSchedulerLogs(value: MwaaEnvironmentLoggingConfigurationSchedulerLogs | undefined) {
-    this._schedulerLogs = value;
+  public putSchedulerLogs(value: MwaaEnvironmentLoggingConfigurationSchedulerLogs) {
+    this._schedulerLogs.internalValue = value;
   }
   public resetSchedulerLogs() {
-    this._schedulerLogs = undefined;
+    this._schedulerLogs.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get schedulerLogsInput() {
-    return this._schedulerLogs
+    return this._schedulerLogs.internalValue;
   }
 
   // task_logs - computed: false, optional: true, required: false
-  private _taskLogs?: MwaaEnvironmentLoggingConfigurationTaskLogs | undefined; 
-  private __taskLogsOutput = new MwaaEnvironmentLoggingConfigurationTaskLogsOutputReference(this as any, "task_logs", true);
+  private _taskLogs = new MwaaEnvironmentLoggingConfigurationTaskLogsOutputReference(this as any, "task_logs", true);
   public get taskLogs() {
-    return this.__taskLogsOutput;
+    return this._taskLogs;
   }
-  public putTaskLogs(value: MwaaEnvironmentLoggingConfigurationTaskLogs | undefined) {
-    this._taskLogs = value;
+  public putTaskLogs(value: MwaaEnvironmentLoggingConfigurationTaskLogs) {
+    this._taskLogs.internalValue = value;
   }
   public resetTaskLogs() {
-    this._taskLogs = undefined;
+    this._taskLogs.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get taskLogsInput() {
-    return this._taskLogs
+    return this._taskLogs.internalValue;
   }
 
   // webserver_logs - computed: false, optional: true, required: false
-  private _webserverLogs?: MwaaEnvironmentLoggingConfigurationWebserverLogs | undefined; 
-  private __webserverLogsOutput = new MwaaEnvironmentLoggingConfigurationWebserverLogsOutputReference(this as any, "webserver_logs", true);
+  private _webserverLogs = new MwaaEnvironmentLoggingConfigurationWebserverLogsOutputReference(this as any, "webserver_logs", true);
   public get webserverLogs() {
-    return this.__webserverLogsOutput;
+    return this._webserverLogs;
   }
-  public putWebserverLogs(value: MwaaEnvironmentLoggingConfigurationWebserverLogs | undefined) {
-    this._webserverLogs = value;
+  public putWebserverLogs(value: MwaaEnvironmentLoggingConfigurationWebserverLogs) {
+    this._webserverLogs.internalValue = value;
   }
   public resetWebserverLogs() {
-    this._webserverLogs = undefined;
+    this._webserverLogs.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get webserverLogsInput() {
-    return this._webserverLogs
+    return this._webserverLogs.internalValue;
   }
 
   // worker_logs - computed: false, optional: true, required: false
-  private _workerLogs?: MwaaEnvironmentLoggingConfigurationWorkerLogs | undefined; 
-  private __workerLogsOutput = new MwaaEnvironmentLoggingConfigurationWorkerLogsOutputReference(this as any, "worker_logs", true);
+  private _workerLogs = new MwaaEnvironmentLoggingConfigurationWorkerLogsOutputReference(this as any, "worker_logs", true);
   public get workerLogs() {
-    return this.__workerLogsOutput;
+    return this._workerLogs;
   }
-  public putWorkerLogs(value: MwaaEnvironmentLoggingConfigurationWorkerLogs | undefined) {
-    this._workerLogs = value;
+  public putWorkerLogs(value: MwaaEnvironmentLoggingConfigurationWorkerLogs) {
+    this._workerLogs.internalValue = value;
   }
   public resetWorkerLogs() {
-    this._workerLogs = undefined;
+    this._workerLogs.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get workerLogsInput() {
-    return this._workerLogs
+    return this._workerLogs.internalValue;
   }
 }
 export interface MwaaEnvironmentNetworkConfiguration {
@@ -616,6 +779,31 @@ export class MwaaEnvironmentNetworkConfigurationOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MwaaEnvironmentNetworkConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._securityGroupIds) {
+      hasAnyValues = true;
+      internalValueResult.securityGroupIds = this._securityGroupIds;
+    }
+    if (this._subnetIds) {
+      hasAnyValues = true;
+      internalValueResult.subnetIds = this._subnetIds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MwaaEnvironmentNetworkConfiguration | undefined) {
+    if (value === undefined) {
+      this._securityGroupIds = undefined;
+      this._subnetIds = undefined;
+    }
+    else {
+      this._securityGroupIds = value.securityGroupIds;
+      this._subnetIds = value.subnetIds;
+    }
+  }
+
   // security_group_ids - computed: false, optional: false, required: true
   private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
@@ -626,7 +814,7 @@ export class MwaaEnvironmentNetworkConfigurationOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // subnet_ids - computed: false, optional: false, required: true
@@ -639,7 +827,7 @@ export class MwaaEnvironmentNetworkConfigurationOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 }
 
@@ -693,8 +881,8 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
     this._tagsAll = config.tagsAll;
     this._webserverAccessMode = config.webserverAccessMode;
     this._weeklyMaintenanceWindowStart = config.weeklyMaintenanceWindowStart;
-    this._loggingConfiguration = config.loggingConfiguration;
-    this._networkConfiguration = config.networkConfiguration;
+    this._loggingConfiguration.internalValue = config.loggingConfiguration;
+    this._networkConfiguration.internalValue = config.networkConfiguration;
   }
 
   // ==========
@@ -702,12 +890,12 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   // ==========
 
   // airflow_configuration_options - computed: false, optional: true, required: false
-  private _airflowConfigurationOptions?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _airflowConfigurationOptions?: { [key: string]: string } | cdktf.IResolvable; 
   public get airflowConfigurationOptions() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('airflow_configuration_options') as any;
   }
-  public set airflowConfigurationOptions(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set airflowConfigurationOptions(value: { [key: string]: string } | cdktf.IResolvable) {
     this._airflowConfigurationOptions = value;
   }
   public resetAirflowConfigurationOptions() {
@@ -715,15 +903,15 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get airflowConfigurationOptionsInput() {
-    return this._airflowConfigurationOptions
+    return this._airflowConfigurationOptions;
   }
 
   // airflow_version - computed: true, optional: true, required: false
-  private _airflowVersion?: string | undefined; 
+  private _airflowVersion?: string; 
   public get airflowVersion() {
     return this.getStringAttribute('airflow_version');
   }
-  public set airflowVersion(value: string | undefined) {
+  public set airflowVersion(value: string) {
     this._airflowVersion = value;
   }
   public resetAirflowVersion() {
@@ -731,7 +919,7 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get airflowVersionInput() {
-    return this._airflowVersion
+    return this._airflowVersion;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -754,15 +942,15 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dagS3PathInput() {
-    return this._dagS3Path
+    return this._dagS3Path;
   }
 
   // environment_class - computed: true, optional: true, required: false
-  private _environmentClass?: string | undefined; 
+  private _environmentClass?: string; 
   public get environmentClass() {
     return this.getStringAttribute('environment_class');
   }
-  public set environmentClass(value: string | undefined) {
+  public set environmentClass(value: string) {
     this._environmentClass = value;
   }
   public resetEnvironmentClass() {
@@ -770,7 +958,7 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get environmentClassInput() {
-    return this._environmentClass
+    return this._environmentClass;
   }
 
   // execution_role_arn - computed: false, optional: false, required: true
@@ -783,7 +971,7 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get executionRoleArnInput() {
-    return this._executionRoleArn
+    return this._executionRoleArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -792,11 +980,11 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
 
   // kms_key - computed: false, optional: true, required: false
-  private _kmsKey?: string | undefined; 
+  private _kmsKey?: string; 
   public get kmsKey() {
     return this.getStringAttribute('kms_key');
   }
-  public set kmsKey(value: string | undefined) {
+  public set kmsKey(value: string) {
     this._kmsKey = value;
   }
   public resetKmsKey() {
@@ -804,7 +992,7 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyInput() {
-    return this._kmsKey
+    return this._kmsKey;
   }
 
   // last_updated - computed: true, optional: false, required: false
@@ -813,11 +1001,11 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
 
   // max_workers - computed: true, optional: true, required: false
-  private _maxWorkers?: number | undefined; 
+  private _maxWorkers?: number; 
   public get maxWorkers() {
     return this.getNumberAttribute('max_workers');
   }
-  public set maxWorkers(value: number | undefined) {
+  public set maxWorkers(value: number) {
     this._maxWorkers = value;
   }
   public resetMaxWorkers() {
@@ -825,15 +1013,15 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxWorkersInput() {
-    return this._maxWorkers
+    return this._maxWorkers;
   }
 
   // min_workers - computed: true, optional: true, required: false
-  private _minWorkers?: number | undefined; 
+  private _minWorkers?: number; 
   public get minWorkers() {
     return this.getNumberAttribute('min_workers');
   }
-  public set minWorkers(value: number | undefined) {
+  public set minWorkers(value: number) {
     this._minWorkers = value;
   }
   public resetMinWorkers() {
@@ -841,7 +1029,7 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get minWorkersInput() {
-    return this._minWorkers
+    return this._minWorkers;
   }
 
   // name - computed: false, optional: false, required: true
@@ -854,15 +1042,15 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // plugins_s3_object_version - computed: true, optional: true, required: false
-  private _pluginsS3ObjectVersion?: string | undefined; 
+  private _pluginsS3ObjectVersion?: string; 
   public get pluginsS3ObjectVersion() {
     return this.getStringAttribute('plugins_s3_object_version');
   }
-  public set pluginsS3ObjectVersion(value: string | undefined) {
+  public set pluginsS3ObjectVersion(value: string) {
     this._pluginsS3ObjectVersion = value;
   }
   public resetPluginsS3ObjectVersion() {
@@ -870,15 +1058,15 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get pluginsS3ObjectVersionInput() {
-    return this._pluginsS3ObjectVersion
+    return this._pluginsS3ObjectVersion;
   }
 
   // plugins_s3_path - computed: false, optional: true, required: false
-  private _pluginsS3Path?: string | undefined; 
+  private _pluginsS3Path?: string; 
   public get pluginsS3Path() {
     return this.getStringAttribute('plugins_s3_path');
   }
-  public set pluginsS3Path(value: string | undefined) {
+  public set pluginsS3Path(value: string) {
     this._pluginsS3Path = value;
   }
   public resetPluginsS3Path() {
@@ -886,15 +1074,15 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get pluginsS3PathInput() {
-    return this._pluginsS3Path
+    return this._pluginsS3Path;
   }
 
   // requirements_s3_object_version - computed: true, optional: true, required: false
-  private _requirementsS3ObjectVersion?: string | undefined; 
+  private _requirementsS3ObjectVersion?: string; 
   public get requirementsS3ObjectVersion() {
     return this.getStringAttribute('requirements_s3_object_version');
   }
-  public set requirementsS3ObjectVersion(value: string | undefined) {
+  public set requirementsS3ObjectVersion(value: string) {
     this._requirementsS3ObjectVersion = value;
   }
   public resetRequirementsS3ObjectVersion() {
@@ -902,15 +1090,15 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requirementsS3ObjectVersionInput() {
-    return this._requirementsS3ObjectVersion
+    return this._requirementsS3ObjectVersion;
   }
 
   // requirements_s3_path - computed: false, optional: true, required: false
-  private _requirementsS3Path?: string | undefined; 
+  private _requirementsS3Path?: string; 
   public get requirementsS3Path() {
     return this.getStringAttribute('requirements_s3_path');
   }
-  public set requirementsS3Path(value: string | undefined) {
+  public set requirementsS3Path(value: string) {
     this._requirementsS3Path = value;
   }
   public resetRequirementsS3Path() {
@@ -918,7 +1106,7 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requirementsS3PathInput() {
-    return this._requirementsS3Path
+    return this._requirementsS3Path;
   }
 
   // service_role_arn - computed: true, optional: false, required: false
@@ -936,7 +1124,7 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceBucketArnInput() {
-    return this._sourceBucketArn
+    return this._sourceBucketArn;
   }
 
   // status - computed: true, optional: false, required: false
@@ -945,12 +1133,12 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -958,16 +1146,16 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -975,15 +1163,15 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // webserver_access_mode - computed: true, optional: true, required: false
-  private _webserverAccessMode?: string | undefined; 
+  private _webserverAccessMode?: string; 
   public get webserverAccessMode() {
     return this.getStringAttribute('webserver_access_mode');
   }
-  public set webserverAccessMode(value: string | undefined) {
+  public set webserverAccessMode(value: string) {
     this._webserverAccessMode = value;
   }
   public resetWebserverAccessMode() {
@@ -991,7 +1179,7 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get webserverAccessModeInput() {
-    return this._webserverAccessMode
+    return this._webserverAccessMode;
   }
 
   // webserver_url - computed: true, optional: false, required: false
@@ -1000,11 +1188,11 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
 
   // weekly_maintenance_window_start - computed: true, optional: true, required: false
-  private _weeklyMaintenanceWindowStart?: string | undefined; 
+  private _weeklyMaintenanceWindowStart?: string; 
   public get weeklyMaintenanceWindowStart() {
     return this.getStringAttribute('weekly_maintenance_window_start');
   }
-  public set weeklyMaintenanceWindowStart(value: string | undefined) {
+  public set weeklyMaintenanceWindowStart(value: string) {
     this._weeklyMaintenanceWindowStart = value;
   }
   public resetWeeklyMaintenanceWindowStart() {
@@ -1012,38 +1200,36 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get weeklyMaintenanceWindowStartInput() {
-    return this._weeklyMaintenanceWindowStart
+    return this._weeklyMaintenanceWindowStart;
   }
 
   // logging_configuration - computed: false, optional: true, required: false
-  private _loggingConfiguration?: MwaaEnvironmentLoggingConfiguration | undefined; 
-  private __loggingConfigurationOutput = new MwaaEnvironmentLoggingConfigurationOutputReference(this as any, "logging_configuration", true);
+  private _loggingConfiguration = new MwaaEnvironmentLoggingConfigurationOutputReference(this as any, "logging_configuration", true);
   public get loggingConfiguration() {
-    return this.__loggingConfigurationOutput;
+    return this._loggingConfiguration;
   }
-  public putLoggingConfiguration(value: MwaaEnvironmentLoggingConfiguration | undefined) {
-    this._loggingConfiguration = value;
+  public putLoggingConfiguration(value: MwaaEnvironmentLoggingConfiguration) {
+    this._loggingConfiguration.internalValue = value;
   }
   public resetLoggingConfiguration() {
-    this._loggingConfiguration = undefined;
+    this._loggingConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get loggingConfigurationInput() {
-    return this._loggingConfiguration
+    return this._loggingConfiguration.internalValue;
   }
 
   // network_configuration - computed: false, optional: false, required: true
-  private _networkConfiguration?: MwaaEnvironmentNetworkConfiguration; 
-  private __networkConfigurationOutput = new MwaaEnvironmentNetworkConfigurationOutputReference(this as any, "network_configuration", true);
+  private _networkConfiguration = new MwaaEnvironmentNetworkConfigurationOutputReference(this as any, "network_configuration", true);
   public get networkConfiguration() {
-    return this.__networkConfigurationOutput;
+    return this._networkConfiguration;
   }
   public putNetworkConfiguration(value: MwaaEnvironmentNetworkConfiguration) {
-    this._networkConfiguration = value;
+    this._networkConfiguration.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get networkConfigurationInput() {
-    return this._networkConfiguration
+    return this._networkConfiguration.internalValue;
   }
 
   // =========
@@ -1070,8 +1256,8 @@ export class MwaaEnvironment extends cdktf.TerraformResource {
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       webserver_access_mode: cdktf.stringToTerraform(this._webserverAccessMode),
       weekly_maintenance_window_start: cdktf.stringToTerraform(this._weeklyMaintenanceWindowStart),
-      logging_configuration: mwaaEnvironmentLoggingConfigurationToTerraform(this._loggingConfiguration),
-      network_configuration: mwaaEnvironmentNetworkConfigurationToTerraform(this._networkConfiguration),
+      logging_configuration: mwaaEnvironmentLoggingConfigurationToTerraform(this._loggingConfiguration.internalValue),
+      network_configuration: mwaaEnvironmentNetworkConfigurationToTerraform(this._networkConfiguration.internalValue),
     };
   }
 }

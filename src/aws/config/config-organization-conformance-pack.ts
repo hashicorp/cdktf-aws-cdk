@@ -103,12 +103,43 @@ export class ConfigOrganizationConformancePackTimeoutsOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ConfigOrganizationConformancePackTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ConfigOrganizationConformancePackTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -116,15 +147,15 @@ export class ConfigOrganizationConformancePackTimeoutsOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -132,15 +163,15 @@ export class ConfigOrganizationConformancePackTimeoutsOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -148,7 +179,7 @@ export class ConfigOrganizationConformancePackTimeoutsOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -191,7 +222,7 @@ export class ConfigOrganizationConformancePack extends cdktf.TerraformResource {
     this._templateBody = config.templateBody;
     this._templateS3Uri = config.templateS3Uri;
     this._inputParameter = config.inputParameter;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -204,11 +235,11 @@ export class ConfigOrganizationConformancePack extends cdktf.TerraformResource {
   }
 
   // delivery_s3_bucket - computed: false, optional: true, required: false
-  private _deliveryS3Bucket?: string | undefined; 
+  private _deliveryS3Bucket?: string; 
   public get deliveryS3Bucket() {
     return this.getStringAttribute('delivery_s3_bucket');
   }
-  public set deliveryS3Bucket(value: string | undefined) {
+  public set deliveryS3Bucket(value: string) {
     this._deliveryS3Bucket = value;
   }
   public resetDeliveryS3Bucket() {
@@ -216,15 +247,15 @@ export class ConfigOrganizationConformancePack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deliveryS3BucketInput() {
-    return this._deliveryS3Bucket
+    return this._deliveryS3Bucket;
   }
 
   // delivery_s3_key_prefix - computed: false, optional: true, required: false
-  private _deliveryS3KeyPrefix?: string | undefined; 
+  private _deliveryS3KeyPrefix?: string; 
   public get deliveryS3KeyPrefix() {
     return this.getStringAttribute('delivery_s3_key_prefix');
   }
-  public set deliveryS3KeyPrefix(value: string | undefined) {
+  public set deliveryS3KeyPrefix(value: string) {
     this._deliveryS3KeyPrefix = value;
   }
   public resetDeliveryS3KeyPrefix() {
@@ -232,15 +263,15 @@ export class ConfigOrganizationConformancePack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deliveryS3KeyPrefixInput() {
-    return this._deliveryS3KeyPrefix
+    return this._deliveryS3KeyPrefix;
   }
 
   // excluded_accounts - computed: false, optional: true, required: false
-  private _excludedAccounts?: string[] | undefined; 
+  private _excludedAccounts?: string[]; 
   public get excludedAccounts() {
     return this.getListAttribute('excluded_accounts');
   }
-  public set excludedAccounts(value: string[] | undefined) {
+  public set excludedAccounts(value: string[]) {
     this._excludedAccounts = value;
   }
   public resetExcludedAccounts() {
@@ -248,7 +279,7 @@ export class ConfigOrganizationConformancePack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get excludedAccountsInput() {
-    return this._excludedAccounts
+    return this._excludedAccounts;
   }
 
   // id - computed: true, optional: true, required: false
@@ -266,15 +297,15 @@ export class ConfigOrganizationConformancePack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // template_body - computed: false, optional: true, required: false
-  private _templateBody?: string | undefined; 
+  private _templateBody?: string; 
   public get templateBody() {
     return this.getStringAttribute('template_body');
   }
-  public set templateBody(value: string | undefined) {
+  public set templateBody(value: string) {
     this._templateBody = value;
   }
   public resetTemplateBody() {
@@ -282,15 +313,15 @@ export class ConfigOrganizationConformancePack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get templateBodyInput() {
-    return this._templateBody
+    return this._templateBody;
   }
 
   // template_s3_uri - computed: false, optional: true, required: false
-  private _templateS3Uri?: string | undefined; 
+  private _templateS3Uri?: string; 
   public get templateS3Uri() {
     return this.getStringAttribute('template_s3_uri');
   }
-  public set templateS3Uri(value: string | undefined) {
+  public set templateS3Uri(value: string) {
     this._templateS3Uri = value;
   }
   public resetTemplateS3Uri() {
@@ -298,16 +329,16 @@ export class ConfigOrganizationConformancePack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get templateS3UriInput() {
-    return this._templateS3Uri
+    return this._templateS3Uri;
   }
 
   // input_parameter - computed: false, optional: true, required: false
-  private _inputParameter?: ConfigOrganizationConformancePackInputParameter[] | undefined; 
+  private _inputParameter?: ConfigOrganizationConformancePackInputParameter[]; 
   public get inputParameter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('input_parameter') as any;
   }
-  public set inputParameter(value: ConfigOrganizationConformancePackInputParameter[] | undefined) {
+  public set inputParameter(value: ConfigOrganizationConformancePackInputParameter[]) {
     this._inputParameter = value;
   }
   public resetInputParameter() {
@@ -315,24 +346,23 @@ export class ConfigOrganizationConformancePack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get inputParameterInput() {
-    return this._inputParameter
+    return this._inputParameter;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: ConfigOrganizationConformancePackTimeouts | undefined; 
-  private __timeoutsOutput = new ConfigOrganizationConformancePackTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new ConfigOrganizationConformancePackTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: ConfigOrganizationConformancePackTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: ConfigOrganizationConformancePackTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -348,7 +378,7 @@ export class ConfigOrganizationConformancePack extends cdktf.TerraformResource {
       template_body: cdktf.stringToTerraform(this._templateBody),
       template_s3_uri: cdktf.stringToTerraform(this._templateS3Uri),
       input_parameter: cdktf.listMapper(configOrganizationConformancePackInputParameterToTerraform)(this._inputParameter),
-      timeouts: configOrganizationConformancePackTimeoutsToTerraform(this._timeouts),
+      timeouts: configOrganizationConformancePackTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

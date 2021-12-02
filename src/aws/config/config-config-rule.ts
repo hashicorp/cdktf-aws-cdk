@@ -86,12 +86,49 @@ export class ConfigConfigRuleScopeOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ConfigConfigRuleScope | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._complianceResourceId) {
+      hasAnyValues = true;
+      internalValueResult.complianceResourceId = this._complianceResourceId;
+    }
+    if (this._complianceResourceTypes) {
+      hasAnyValues = true;
+      internalValueResult.complianceResourceTypes = this._complianceResourceTypes;
+    }
+    if (this._tagKey) {
+      hasAnyValues = true;
+      internalValueResult.tagKey = this._tagKey;
+    }
+    if (this._tagValue) {
+      hasAnyValues = true;
+      internalValueResult.tagValue = this._tagValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ConfigConfigRuleScope | undefined) {
+    if (value === undefined) {
+      this._complianceResourceId = undefined;
+      this._complianceResourceTypes = undefined;
+      this._tagKey = undefined;
+      this._tagValue = undefined;
+    }
+    else {
+      this._complianceResourceId = value.complianceResourceId;
+      this._complianceResourceTypes = value.complianceResourceTypes;
+      this._tagKey = value.tagKey;
+      this._tagValue = value.tagValue;
+    }
+  }
+
   // compliance_resource_id - computed: false, optional: true, required: false
-  private _complianceResourceId?: string | undefined; 
+  private _complianceResourceId?: string; 
   public get complianceResourceId() {
     return this.getStringAttribute('compliance_resource_id');
   }
-  public set complianceResourceId(value: string | undefined) {
+  public set complianceResourceId(value: string) {
     this._complianceResourceId = value;
   }
   public resetComplianceResourceId() {
@@ -99,15 +136,15 @@ export class ConfigConfigRuleScopeOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get complianceResourceIdInput() {
-    return this._complianceResourceId
+    return this._complianceResourceId;
   }
 
   // compliance_resource_types - computed: false, optional: true, required: false
-  private _complianceResourceTypes?: string[] | undefined; 
+  private _complianceResourceTypes?: string[]; 
   public get complianceResourceTypes() {
     return this.getListAttribute('compliance_resource_types');
   }
-  public set complianceResourceTypes(value: string[] | undefined) {
+  public set complianceResourceTypes(value: string[]) {
     this._complianceResourceTypes = value;
   }
   public resetComplianceResourceTypes() {
@@ -115,15 +152,15 @@ export class ConfigConfigRuleScopeOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get complianceResourceTypesInput() {
-    return this._complianceResourceTypes
+    return this._complianceResourceTypes;
   }
 
   // tag_key - computed: false, optional: true, required: false
-  private _tagKey?: string | undefined; 
+  private _tagKey?: string; 
   public get tagKey() {
     return this.getStringAttribute('tag_key');
   }
-  public set tagKey(value: string | undefined) {
+  public set tagKey(value: string) {
     this._tagKey = value;
   }
   public resetTagKey() {
@@ -131,15 +168,15 @@ export class ConfigConfigRuleScopeOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get tagKeyInput() {
-    return this._tagKey
+    return this._tagKey;
   }
 
   // tag_value - computed: false, optional: true, required: false
-  private _tagValue?: string | undefined; 
+  private _tagValue?: string; 
   public get tagValue() {
     return this.getStringAttribute('tag_value');
   }
-  public set tagValue(value: string | undefined) {
+  public set tagValue(value: string) {
     this._tagValue = value;
   }
   public resetTagValue() {
@@ -147,7 +184,7 @@ export class ConfigConfigRuleScopeOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get tagValueInput() {
-    return this._tagValue
+    return this._tagValue;
   }
 }
 export interface ConfigConfigRuleSourceSourceDetail {
@@ -216,6 +253,37 @@ export class ConfigConfigRuleSourceOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ConfigConfigRuleSource | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._owner) {
+      hasAnyValues = true;
+      internalValueResult.owner = this._owner;
+    }
+    if (this._sourceIdentifier) {
+      hasAnyValues = true;
+      internalValueResult.sourceIdentifier = this._sourceIdentifier;
+    }
+    if (this._sourceDetail) {
+      hasAnyValues = true;
+      internalValueResult.sourceDetail = this._sourceDetail;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ConfigConfigRuleSource | undefined) {
+    if (value === undefined) {
+      this._owner = undefined;
+      this._sourceIdentifier = undefined;
+      this._sourceDetail = undefined;
+    }
+    else {
+      this._owner = value.owner;
+      this._sourceIdentifier = value.sourceIdentifier;
+      this._sourceDetail = value.sourceDetail;
+    }
+  }
+
   // owner - computed: false, optional: false, required: true
   private _owner?: string; 
   public get owner() {
@@ -226,7 +294,7 @@ export class ConfigConfigRuleSourceOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerInput() {
-    return this._owner
+    return this._owner;
   }
 
   // source_identifier - computed: false, optional: false, required: true
@@ -239,16 +307,16 @@ export class ConfigConfigRuleSourceOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceIdentifierInput() {
-    return this._sourceIdentifier
+    return this._sourceIdentifier;
   }
 
   // source_detail - computed: false, optional: true, required: false
-  private _sourceDetail?: ConfigConfigRuleSourceSourceDetail[] | undefined; 
+  private _sourceDetail?: ConfigConfigRuleSourceSourceDetail[]; 
   public get sourceDetail() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('source_detail') as any;
   }
-  public set sourceDetail(value: ConfigConfigRuleSourceSourceDetail[] | undefined) {
+  public set sourceDetail(value: ConfigConfigRuleSourceSourceDetail[]) {
     this._sourceDetail = value;
   }
   public resetSourceDetail() {
@@ -256,7 +324,7 @@ export class ConfigConfigRuleSourceOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceDetailInput() {
-    return this._sourceDetail
+    return this._sourceDetail;
   }
 }
 
@@ -298,8 +366,8 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._scope = config.scope;
-    this._source = config.source;
+    this._scope.internalValue = config.scope;
+    this._source.internalValue = config.source;
   }
 
   // ==========
@@ -312,11 +380,11 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -324,7 +392,7 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -333,11 +401,11 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
   }
 
   // input_parameters - computed: false, optional: true, required: false
-  private _inputParameters?: string | undefined; 
+  private _inputParameters?: string; 
   public get inputParameters() {
     return this.getStringAttribute('input_parameters');
   }
-  public set inputParameters(value: string | undefined) {
+  public set inputParameters(value: string) {
     this._inputParameters = value;
   }
   public resetInputParameters() {
@@ -345,15 +413,15 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get inputParametersInput() {
-    return this._inputParameters
+    return this._inputParameters;
   }
 
   // maximum_execution_frequency - computed: false, optional: true, required: false
-  private _maximumExecutionFrequency?: string | undefined; 
+  private _maximumExecutionFrequency?: string; 
   public get maximumExecutionFrequency() {
     return this.getStringAttribute('maximum_execution_frequency');
   }
-  public set maximumExecutionFrequency(value: string | undefined) {
+  public set maximumExecutionFrequency(value: string) {
     this._maximumExecutionFrequency = value;
   }
   public resetMaximumExecutionFrequency() {
@@ -361,7 +429,7 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maximumExecutionFrequencyInput() {
-    return this._maximumExecutionFrequency
+    return this._maximumExecutionFrequency;
   }
 
   // name - computed: false, optional: false, required: true
@@ -374,7 +442,7 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // rule_id - computed: true, optional: false, required: false
@@ -383,12 +451,12 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -396,16 +464,16 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -413,38 +481,36 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // scope - computed: false, optional: true, required: false
-  private _scope?: ConfigConfigRuleScope | undefined; 
-  private __scopeOutput = new ConfigConfigRuleScopeOutputReference(this as any, "scope", true);
+  private _scope = new ConfigConfigRuleScopeOutputReference(this as any, "scope", true);
   public get scope() {
-    return this.__scopeOutput;
+    return this._scope;
   }
-  public putScope(value: ConfigConfigRuleScope | undefined) {
-    this._scope = value;
+  public putScope(value: ConfigConfigRuleScope) {
+    this._scope.internalValue = value;
   }
   public resetScope() {
-    this._scope = undefined;
+    this._scope.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get scopeInput() {
-    return this._scope
+    return this._scope.internalValue;
   }
 
   // source - computed: false, optional: false, required: true
-  private _source?: ConfigConfigRuleSource; 
-  private __sourceOutput = new ConfigConfigRuleSourceOutputReference(this as any, "source", true);
+  private _source = new ConfigConfigRuleSourceOutputReference(this as any, "source", true);
   public get source() {
-    return this.__sourceOutput;
+    return this._source;
   }
   public putSource(value: ConfigConfigRuleSource) {
-    this._source = value;
+    this._source.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get sourceInput() {
-    return this._source
+    return this._source.internalValue;
   }
 
   // =========
@@ -459,8 +525,8 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      scope: configConfigRuleScopeToTerraform(this._scope),
-      source: configConfigRuleSourceToTerraform(this._source),
+      scope: configConfigRuleScopeToTerraform(this._scope.internalValue),
+      source: configConfigRuleSourceToTerraform(this._source.internalValue),
     };
   }
 }

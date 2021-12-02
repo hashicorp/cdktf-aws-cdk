@@ -67,7 +67,7 @@ export class RedshiftSnapshotScheduleAssociation extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get clusterIdentifierInput() {
-    return this._clusterIdentifier
+    return this._clusterIdentifier;
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class RedshiftSnapshotScheduleAssociation extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleIdentifierInput() {
-    return this._scheduleIdentifier
+    return this._scheduleIdentifier;
   }
 
   // =========

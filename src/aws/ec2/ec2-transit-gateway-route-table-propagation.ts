@@ -82,7 +82,7 @@ export class Ec2TransitGatewayRouteTablePropagation extends cdktf.TerraformResou
   }
   // Temporarily expose input value. Use with caution.
   public get transitGatewayAttachmentIdInput() {
-    return this._transitGatewayAttachmentId
+    return this._transitGatewayAttachmentId;
   }
 
   // transit_gateway_route_table_id - computed: false, optional: false, required: true
@@ -95,7 +95,7 @@ export class Ec2TransitGatewayRouteTablePropagation extends cdktf.TerraformResou
   }
   // Temporarily expose input value. Use with caution.
   public get transitGatewayRouteTableIdInput() {
-    return this._transitGatewayRouteTableId
+    return this._transitGatewayRouteTableId;
   }
 
   // =========

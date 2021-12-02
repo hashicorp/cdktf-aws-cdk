@@ -98,12 +98,43 @@ export class GluePartitionStorageDescriptorSerDeInfoOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GluePartitionStorageDescriptorSerDeInfo | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._parameters) {
+      hasAnyValues = true;
+      internalValueResult.parameters = this._parameters;
+    }
+    if (this._serializationLibrary) {
+      hasAnyValues = true;
+      internalValueResult.serializationLibrary = this._serializationLibrary;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GluePartitionStorageDescriptorSerDeInfo | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+      this._parameters = undefined;
+      this._serializationLibrary = undefined;
+    }
+    else {
+      this._name = value.name;
+      this._parameters = value.parameters;
+      this._serializationLibrary = value.serializationLibrary;
+    }
+  }
+
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -111,16 +142,16 @@ export class GluePartitionStorageDescriptorSerDeInfoOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // parameters - computed: false, optional: true, required: false
-  private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _parameters?: { [key: string]: string } | cdktf.IResolvable; 
   public get parameters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('parameters') as any;
   }
-  public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set parameters(value: { [key: string]: string } | cdktf.IResolvable) {
     this._parameters = value;
   }
   public resetParameters() {
@@ -128,15 +159,15 @@ export class GluePartitionStorageDescriptorSerDeInfoOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInput() {
-    return this._parameters
+    return this._parameters;
   }
 
   // serialization_library - computed: false, optional: true, required: false
-  private _serializationLibrary?: string | undefined; 
+  private _serializationLibrary?: string; 
   public get serializationLibrary() {
     return this.getStringAttribute('serialization_library');
   }
-  public set serializationLibrary(value: string | undefined) {
+  public set serializationLibrary(value: string) {
     this._serializationLibrary = value;
   }
   public resetSerializationLibrary() {
@@ -144,7 +175,7 @@ export class GluePartitionStorageDescriptorSerDeInfoOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get serializationLibraryInput() {
-    return this._serializationLibrary
+    return this._serializationLibrary;
   }
 }
 export interface GluePartitionStorageDescriptorSkewedInfo {
@@ -184,12 +215,43 @@ export class GluePartitionStorageDescriptorSkewedInfoOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GluePartitionStorageDescriptorSkewedInfo | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._skewedColumnNames) {
+      hasAnyValues = true;
+      internalValueResult.skewedColumnNames = this._skewedColumnNames;
+    }
+    if (this._skewedColumnValueLocationMaps) {
+      hasAnyValues = true;
+      internalValueResult.skewedColumnValueLocationMaps = this._skewedColumnValueLocationMaps;
+    }
+    if (this._skewedColumnValues) {
+      hasAnyValues = true;
+      internalValueResult.skewedColumnValues = this._skewedColumnValues;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GluePartitionStorageDescriptorSkewedInfo | undefined) {
+    if (value === undefined) {
+      this._skewedColumnNames = undefined;
+      this._skewedColumnValueLocationMaps = undefined;
+      this._skewedColumnValues = undefined;
+    }
+    else {
+      this._skewedColumnNames = value.skewedColumnNames;
+      this._skewedColumnValueLocationMaps = value.skewedColumnValueLocationMaps;
+      this._skewedColumnValues = value.skewedColumnValues;
+    }
+  }
+
   // skewed_column_names - computed: false, optional: true, required: false
-  private _skewedColumnNames?: string[] | undefined; 
+  private _skewedColumnNames?: string[]; 
   public get skewedColumnNames() {
     return this.getListAttribute('skewed_column_names');
   }
-  public set skewedColumnNames(value: string[] | undefined) {
+  public set skewedColumnNames(value: string[]) {
     this._skewedColumnNames = value;
   }
   public resetSkewedColumnNames() {
@@ -197,16 +259,16 @@ export class GluePartitionStorageDescriptorSkewedInfoOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get skewedColumnNamesInput() {
-    return this._skewedColumnNames
+    return this._skewedColumnNames;
   }
 
   // skewed_column_value_location_maps - computed: false, optional: true, required: false
-  private _skewedColumnValueLocationMaps?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _skewedColumnValueLocationMaps?: { [key: string]: string } | cdktf.IResolvable; 
   public get skewedColumnValueLocationMaps() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('skewed_column_value_location_maps') as any;
   }
-  public set skewedColumnValueLocationMaps(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set skewedColumnValueLocationMaps(value: { [key: string]: string } | cdktf.IResolvable) {
     this._skewedColumnValueLocationMaps = value;
   }
   public resetSkewedColumnValueLocationMaps() {
@@ -214,15 +276,15 @@ export class GluePartitionStorageDescriptorSkewedInfoOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get skewedColumnValueLocationMapsInput() {
-    return this._skewedColumnValueLocationMaps
+    return this._skewedColumnValueLocationMaps;
   }
 
   // skewed_column_values - computed: false, optional: true, required: false
-  private _skewedColumnValues?: string[] | undefined; 
+  private _skewedColumnValues?: string[]; 
   public get skewedColumnValues() {
     return this.getListAttribute('skewed_column_values');
   }
-  public set skewedColumnValues(value: string[] | undefined) {
+  public set skewedColumnValues(value: string[]) {
     this._skewedColumnValues = value;
   }
   public resetSkewedColumnValues() {
@@ -230,7 +292,7 @@ export class GluePartitionStorageDescriptorSkewedInfoOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get skewedColumnValuesInput() {
-    return this._skewedColumnValues
+    return this._skewedColumnValues;
   }
 }
 export interface GluePartitionStorageDescriptorSortColumns {
@@ -345,12 +407,97 @@ export class GluePartitionStorageDescriptorOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GluePartitionStorageDescriptor | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucketColumns) {
+      hasAnyValues = true;
+      internalValueResult.bucketColumns = this._bucketColumns;
+    }
+    if (this._compressed) {
+      hasAnyValues = true;
+      internalValueResult.compressed = this._compressed;
+    }
+    if (this._inputFormat) {
+      hasAnyValues = true;
+      internalValueResult.inputFormat = this._inputFormat;
+    }
+    if (this._location) {
+      hasAnyValues = true;
+      internalValueResult.location = this._location;
+    }
+    if (this._numberOfBuckets) {
+      hasAnyValues = true;
+      internalValueResult.numberOfBuckets = this._numberOfBuckets;
+    }
+    if (this._outputFormat) {
+      hasAnyValues = true;
+      internalValueResult.outputFormat = this._outputFormat;
+    }
+    if (this._parameters) {
+      hasAnyValues = true;
+      internalValueResult.parameters = this._parameters;
+    }
+    if (this._storedAsSubDirectories) {
+      hasAnyValues = true;
+      internalValueResult.storedAsSubDirectories = this._storedAsSubDirectories;
+    }
+    if (this._columns) {
+      hasAnyValues = true;
+      internalValueResult.columns = this._columns;
+    }
+    if (this._serDeInfo) {
+      hasAnyValues = true;
+      internalValueResult.serDeInfo = this._serDeInfo?.internalValue;
+    }
+    if (this._skewedInfo) {
+      hasAnyValues = true;
+      internalValueResult.skewedInfo = this._skewedInfo?.internalValue;
+    }
+    if (this._sortColumns) {
+      hasAnyValues = true;
+      internalValueResult.sortColumns = this._sortColumns;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GluePartitionStorageDescriptor | undefined) {
+    if (value === undefined) {
+      this._bucketColumns = undefined;
+      this._compressed = undefined;
+      this._inputFormat = undefined;
+      this._location = undefined;
+      this._numberOfBuckets = undefined;
+      this._outputFormat = undefined;
+      this._parameters = undefined;
+      this._storedAsSubDirectories = undefined;
+      this._columns = undefined;
+      this._serDeInfo.internalValue = undefined;
+      this._skewedInfo.internalValue = undefined;
+      this._sortColumns = undefined;
+    }
+    else {
+      this._bucketColumns = value.bucketColumns;
+      this._compressed = value.compressed;
+      this._inputFormat = value.inputFormat;
+      this._location = value.location;
+      this._numberOfBuckets = value.numberOfBuckets;
+      this._outputFormat = value.outputFormat;
+      this._parameters = value.parameters;
+      this._storedAsSubDirectories = value.storedAsSubDirectories;
+      this._columns = value.columns;
+      this._serDeInfo.internalValue = value.serDeInfo;
+      this._skewedInfo.internalValue = value.skewedInfo;
+      this._sortColumns = value.sortColumns;
+    }
+  }
+
   // bucket_columns - computed: false, optional: true, required: false
-  private _bucketColumns?: string[] | undefined; 
+  private _bucketColumns?: string[]; 
   public get bucketColumns() {
     return this.getListAttribute('bucket_columns');
   }
-  public set bucketColumns(value: string[] | undefined) {
+  public set bucketColumns(value: string[]) {
     this._bucketColumns = value;
   }
   public resetBucketColumns() {
@@ -358,15 +505,15 @@ export class GluePartitionStorageDescriptorOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get bucketColumnsInput() {
-    return this._bucketColumns
+    return this._bucketColumns;
   }
 
   // compressed - computed: false, optional: true, required: false
-  private _compressed?: boolean | cdktf.IResolvable | undefined; 
+  private _compressed?: boolean | cdktf.IResolvable; 
   public get compressed() {
     return this.getBooleanAttribute('compressed') as any;
   }
-  public set compressed(value: boolean | cdktf.IResolvable | undefined) {
+  public set compressed(value: boolean | cdktf.IResolvable) {
     this._compressed = value;
   }
   public resetCompressed() {
@@ -374,15 +521,15 @@ export class GluePartitionStorageDescriptorOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get compressedInput() {
-    return this._compressed
+    return this._compressed;
   }
 
   // input_format - computed: false, optional: true, required: false
-  private _inputFormat?: string | undefined; 
+  private _inputFormat?: string; 
   public get inputFormat() {
     return this.getStringAttribute('input_format');
   }
-  public set inputFormat(value: string | undefined) {
+  public set inputFormat(value: string) {
     this._inputFormat = value;
   }
   public resetInputFormat() {
@@ -390,15 +537,15 @@ export class GluePartitionStorageDescriptorOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get inputFormatInput() {
-    return this._inputFormat
+    return this._inputFormat;
   }
 
   // location - computed: false, optional: true, required: false
-  private _location?: string | undefined; 
+  private _location?: string; 
   public get location() {
     return this.getStringAttribute('location');
   }
-  public set location(value: string | undefined) {
+  public set location(value: string) {
     this._location = value;
   }
   public resetLocation() {
@@ -406,15 +553,15 @@ export class GluePartitionStorageDescriptorOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get locationInput() {
-    return this._location
+    return this._location;
   }
 
   // number_of_buckets - computed: false, optional: true, required: false
-  private _numberOfBuckets?: number | undefined; 
+  private _numberOfBuckets?: number; 
   public get numberOfBuckets() {
     return this.getNumberAttribute('number_of_buckets');
   }
-  public set numberOfBuckets(value: number | undefined) {
+  public set numberOfBuckets(value: number) {
     this._numberOfBuckets = value;
   }
   public resetNumberOfBuckets() {
@@ -422,15 +569,15 @@ export class GluePartitionStorageDescriptorOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get numberOfBucketsInput() {
-    return this._numberOfBuckets
+    return this._numberOfBuckets;
   }
 
   // output_format - computed: false, optional: true, required: false
-  private _outputFormat?: string | undefined; 
+  private _outputFormat?: string; 
   public get outputFormat() {
     return this.getStringAttribute('output_format');
   }
-  public set outputFormat(value: string | undefined) {
+  public set outputFormat(value: string) {
     this._outputFormat = value;
   }
   public resetOutputFormat() {
@@ -438,16 +585,16 @@ export class GluePartitionStorageDescriptorOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get outputFormatInput() {
-    return this._outputFormat
+    return this._outputFormat;
   }
 
   // parameters - computed: false, optional: true, required: false
-  private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _parameters?: { [key: string]: string } | cdktf.IResolvable; 
   public get parameters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('parameters') as any;
   }
-  public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set parameters(value: { [key: string]: string } | cdktf.IResolvable) {
     this._parameters = value;
   }
   public resetParameters() {
@@ -455,15 +602,15 @@ export class GluePartitionStorageDescriptorOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInput() {
-    return this._parameters
+    return this._parameters;
   }
 
   // stored_as_sub_directories - computed: false, optional: true, required: false
-  private _storedAsSubDirectories?: boolean | cdktf.IResolvable | undefined; 
+  private _storedAsSubDirectories?: boolean | cdktf.IResolvable; 
   public get storedAsSubDirectories() {
     return this.getBooleanAttribute('stored_as_sub_directories') as any;
   }
-  public set storedAsSubDirectories(value: boolean | cdktf.IResolvable | undefined) {
+  public set storedAsSubDirectories(value: boolean | cdktf.IResolvable) {
     this._storedAsSubDirectories = value;
   }
   public resetStoredAsSubDirectories() {
@@ -471,16 +618,16 @@ export class GluePartitionStorageDescriptorOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get storedAsSubDirectoriesInput() {
-    return this._storedAsSubDirectories
+    return this._storedAsSubDirectories;
   }
 
   // columns - computed: false, optional: true, required: false
-  private _columns?: GluePartitionStorageDescriptorColumns[] | undefined; 
+  private _columns?: GluePartitionStorageDescriptorColumns[]; 
   public get columns() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('columns') as any;
   }
-  public set columns(value: GluePartitionStorageDescriptorColumns[] | undefined) {
+  public set columns(value: GluePartitionStorageDescriptorColumns[]) {
     this._columns = value;
   }
   public resetColumns() {
@@ -488,50 +635,48 @@ export class GluePartitionStorageDescriptorOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get columnsInput() {
-    return this._columns
+    return this._columns;
   }
 
   // ser_de_info - computed: false, optional: true, required: false
-  private _serDeInfo?: GluePartitionStorageDescriptorSerDeInfo | undefined; 
-  private __serDeInfoOutput = new GluePartitionStorageDescriptorSerDeInfoOutputReference(this as any, "ser_de_info", true);
+  private _serDeInfo = new GluePartitionStorageDescriptorSerDeInfoOutputReference(this as any, "ser_de_info", true);
   public get serDeInfo() {
-    return this.__serDeInfoOutput;
+    return this._serDeInfo;
   }
-  public putSerDeInfo(value: GluePartitionStorageDescriptorSerDeInfo | undefined) {
-    this._serDeInfo = value;
+  public putSerDeInfo(value: GluePartitionStorageDescriptorSerDeInfo) {
+    this._serDeInfo.internalValue = value;
   }
   public resetSerDeInfo() {
-    this._serDeInfo = undefined;
+    this._serDeInfo.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get serDeInfoInput() {
-    return this._serDeInfo
+    return this._serDeInfo.internalValue;
   }
 
   // skewed_info - computed: false, optional: true, required: false
-  private _skewedInfo?: GluePartitionStorageDescriptorSkewedInfo | undefined; 
-  private __skewedInfoOutput = new GluePartitionStorageDescriptorSkewedInfoOutputReference(this as any, "skewed_info", true);
+  private _skewedInfo = new GluePartitionStorageDescriptorSkewedInfoOutputReference(this as any, "skewed_info", true);
   public get skewedInfo() {
-    return this.__skewedInfoOutput;
+    return this._skewedInfo;
   }
-  public putSkewedInfo(value: GluePartitionStorageDescriptorSkewedInfo | undefined) {
-    this._skewedInfo = value;
+  public putSkewedInfo(value: GluePartitionStorageDescriptorSkewedInfo) {
+    this._skewedInfo.internalValue = value;
   }
   public resetSkewedInfo() {
-    this._skewedInfo = undefined;
+    this._skewedInfo.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get skewedInfoInput() {
-    return this._skewedInfo
+    return this._skewedInfo.internalValue;
   }
 
   // sort_columns - computed: false, optional: true, required: false
-  private _sortColumns?: GluePartitionStorageDescriptorSortColumns[] | undefined; 
+  private _sortColumns?: GluePartitionStorageDescriptorSortColumns[]; 
   public get sortColumns() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('sort_columns') as any;
   }
-  public set sortColumns(value: GluePartitionStorageDescriptorSortColumns[] | undefined) {
+  public set sortColumns(value: GluePartitionStorageDescriptorSortColumns[]) {
     this._sortColumns = value;
   }
   public resetSortColumns() {
@@ -539,7 +684,7 @@ export class GluePartitionStorageDescriptorOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get sortColumnsInput() {
-    return this._sortColumns
+    return this._sortColumns;
   }
 }
 
@@ -580,7 +725,7 @@ export class GluePartition extends cdktf.TerraformResource {
     this._parameters = config.parameters;
     this._partitionValues = config.partitionValues;
     this._tableName = config.tableName;
-    this._storageDescriptor = config.storageDescriptor;
+    this._storageDescriptor.internalValue = config.storageDescriptor;
   }
 
   // ==========
@@ -588,11 +733,11 @@ export class GluePartition extends cdktf.TerraformResource {
   // ==========
 
   // catalog_id - computed: true, optional: true, required: false
-  private _catalogId?: string | undefined; 
+  private _catalogId?: string; 
   public get catalogId() {
     return this.getStringAttribute('catalog_id');
   }
-  public set catalogId(value: string | undefined) {
+  public set catalogId(value: string) {
     this._catalogId = value;
   }
   public resetCatalogId() {
@@ -600,7 +745,7 @@ export class GluePartition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // creation_time - computed: true, optional: false, required: false
@@ -618,7 +763,7 @@ export class GluePartition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get databaseNameInput() {
-    return this._databaseName
+    return this._databaseName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -637,12 +782,12 @@ export class GluePartition extends cdktf.TerraformResource {
   }
 
   // parameters - computed: false, optional: true, required: false
-  private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _parameters?: { [key: string]: string } | cdktf.IResolvable; 
   public get parameters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('parameters') as any;
   }
-  public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set parameters(value: { [key: string]: string } | cdktf.IResolvable) {
     this._parameters = value;
   }
   public resetParameters() {
@@ -650,7 +795,7 @@ export class GluePartition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInput() {
-    return this._parameters
+    return this._parameters;
   }
 
   // partition_values - computed: false, optional: false, required: true
@@ -663,7 +808,7 @@ export class GluePartition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get partitionValuesInput() {
-    return this._partitionValues
+    return this._partitionValues;
   }
 
   // table_name - computed: false, optional: false, required: true
@@ -676,24 +821,23 @@ export class GluePartition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tableNameInput() {
-    return this._tableName
+    return this._tableName;
   }
 
   // storage_descriptor - computed: false, optional: true, required: false
-  private _storageDescriptor?: GluePartitionStorageDescriptor | undefined; 
-  private __storageDescriptorOutput = new GluePartitionStorageDescriptorOutputReference(this as any, "storage_descriptor", true);
+  private _storageDescriptor = new GluePartitionStorageDescriptorOutputReference(this as any, "storage_descriptor", true);
   public get storageDescriptor() {
-    return this.__storageDescriptorOutput;
+    return this._storageDescriptor;
   }
-  public putStorageDescriptor(value: GluePartitionStorageDescriptor | undefined) {
-    this._storageDescriptor = value;
+  public putStorageDescriptor(value: GluePartitionStorageDescriptor) {
+    this._storageDescriptor.internalValue = value;
   }
   public resetStorageDescriptor() {
-    this._storageDescriptor = undefined;
+    this._storageDescriptor.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get storageDescriptorInput() {
-    return this._storageDescriptor
+    return this._storageDescriptor.internalValue;
   }
 
   // =========
@@ -707,7 +851,7 @@ export class GluePartition extends cdktf.TerraformResource {
       parameters: cdktf.hashMapper(cdktf.anyToTerraform)(this._parameters),
       partition_values: cdktf.listMapper(cdktf.stringToTerraform)(this._partitionValues),
       table_name: cdktf.stringToTerraform(this._tableName),
-      storage_descriptor: gluePartitionStorageDescriptorToTerraform(this._storageDescriptor),
+      storage_descriptor: gluePartitionStorageDescriptorToTerraform(this._storageDescriptor.internalValue),
     };
   }
 }

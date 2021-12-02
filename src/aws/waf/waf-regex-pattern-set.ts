@@ -77,15 +77,15 @@ export class WafRegexPatternSet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // regex_pattern_strings - computed: false, optional: true, required: false
-  private _regexPatternStrings?: string[] | undefined; 
+  private _regexPatternStrings?: string[]; 
   public get regexPatternStrings() {
     return this.getListAttribute('regex_pattern_strings');
   }
-  public set regexPatternStrings(value: string[] | undefined) {
+  public set regexPatternStrings(value: string[]) {
     this._regexPatternStrings = value;
   }
   public resetRegexPatternStrings() {
@@ -93,7 +93,7 @@ export class WafRegexPatternSet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get regexPatternStringsInput() {
-    return this._regexPatternStrings
+    return this._regexPatternStrings;
   }
 
   // =========

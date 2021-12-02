@@ -57,6 +57,25 @@ export class LambdaFunctionEventInvokeConfigDestinationConfigOnFailureOutputRefe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LambdaFunctionEventInvokeConfigDestinationConfigOnFailure | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._destination) {
+      hasAnyValues = true;
+      internalValueResult.destination = this._destination;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LambdaFunctionEventInvokeConfigDestinationConfigOnFailure | undefined) {
+    if (value === undefined) {
+      this._destination = undefined;
+    }
+    else {
+      this._destination = value.destination;
+    }
+  }
+
   // destination - computed: false, optional: false, required: true
   private _destination?: string; 
   public get destination() {
@@ -67,7 +86,7 @@ export class LambdaFunctionEventInvokeConfigDestinationConfigOnFailureOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get destinationInput() {
-    return this._destination
+    return this._destination;
   }
 }
 export interface LambdaFunctionEventInvokeConfigDestinationConfigOnSuccess {
@@ -97,6 +116,25 @@ export class LambdaFunctionEventInvokeConfigDestinationConfigOnSuccessOutputRefe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LambdaFunctionEventInvokeConfigDestinationConfigOnSuccess | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._destination) {
+      hasAnyValues = true;
+      internalValueResult.destination = this._destination;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LambdaFunctionEventInvokeConfigDestinationConfigOnSuccess | undefined) {
+    if (value === undefined) {
+      this._destination = undefined;
+    }
+    else {
+      this._destination = value.destination;
+    }
+  }
+
   // destination - computed: false, optional: false, required: true
   private _destination?: string; 
   public get destination() {
@@ -107,7 +145,7 @@ export class LambdaFunctionEventInvokeConfigDestinationConfigOnSuccessOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get destinationInput() {
-    return this._destination
+    return this._destination;
   }
 }
 export interface LambdaFunctionEventInvokeConfigDestinationConfig {
@@ -146,38 +184,61 @@ export class LambdaFunctionEventInvokeConfigDestinationConfigOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // on_failure - computed: false, optional: true, required: false
-  private _onFailure?: LambdaFunctionEventInvokeConfigDestinationConfigOnFailure | undefined; 
-  private __onFailureOutput = new LambdaFunctionEventInvokeConfigDestinationConfigOnFailureOutputReference(this as any, "on_failure", true);
-  public get onFailure() {
-    return this.__onFailureOutput;
+  public get internalValue(): LambdaFunctionEventInvokeConfigDestinationConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._onFailure) {
+      hasAnyValues = true;
+      internalValueResult.onFailure = this._onFailure?.internalValue;
+    }
+    if (this._onSuccess) {
+      hasAnyValues = true;
+      internalValueResult.onSuccess = this._onSuccess?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putOnFailure(value: LambdaFunctionEventInvokeConfigDestinationConfigOnFailure | undefined) {
-    this._onFailure = value;
+
+  public set internalValue(value: LambdaFunctionEventInvokeConfigDestinationConfig | undefined) {
+    if (value === undefined) {
+      this._onFailure.internalValue = undefined;
+      this._onSuccess.internalValue = undefined;
+    }
+    else {
+      this._onFailure.internalValue = value.onFailure;
+      this._onSuccess.internalValue = value.onSuccess;
+    }
+  }
+
+  // on_failure - computed: false, optional: true, required: false
+  private _onFailure = new LambdaFunctionEventInvokeConfigDestinationConfigOnFailureOutputReference(this as any, "on_failure", true);
+  public get onFailure() {
+    return this._onFailure;
+  }
+  public putOnFailure(value: LambdaFunctionEventInvokeConfigDestinationConfigOnFailure) {
+    this._onFailure.internalValue = value;
   }
   public resetOnFailure() {
-    this._onFailure = undefined;
+    this._onFailure.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get onFailureInput() {
-    return this._onFailure
+    return this._onFailure.internalValue;
   }
 
   // on_success - computed: false, optional: true, required: false
-  private _onSuccess?: LambdaFunctionEventInvokeConfigDestinationConfigOnSuccess | undefined; 
-  private __onSuccessOutput = new LambdaFunctionEventInvokeConfigDestinationConfigOnSuccessOutputReference(this as any, "on_success", true);
+  private _onSuccess = new LambdaFunctionEventInvokeConfigDestinationConfigOnSuccessOutputReference(this as any, "on_success", true);
   public get onSuccess() {
-    return this.__onSuccessOutput;
+    return this._onSuccess;
   }
-  public putOnSuccess(value: LambdaFunctionEventInvokeConfigDestinationConfigOnSuccess | undefined) {
-    this._onSuccess = value;
+  public putOnSuccess(value: LambdaFunctionEventInvokeConfigDestinationConfigOnSuccess) {
+    this._onSuccess.internalValue = value;
   }
   public resetOnSuccess() {
-    this._onSuccess = undefined;
+    this._onSuccess.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get onSuccessInput() {
-    return this._onSuccess
+    return this._onSuccess.internalValue;
   }
 }
 
@@ -217,7 +278,7 @@ export class LambdaFunctionEventInvokeConfig extends cdktf.TerraformResource {
     this._maximumEventAgeInSeconds = config.maximumEventAgeInSeconds;
     this._maximumRetryAttempts = config.maximumRetryAttempts;
     this._qualifier = config.qualifier;
-    this._destinationConfig = config.destinationConfig;
+    this._destinationConfig.internalValue = config.destinationConfig;
   }
 
   // ==========
@@ -234,7 +295,7 @@ export class LambdaFunctionEventInvokeConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get functionNameInput() {
-    return this._functionName
+    return this._functionName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -243,11 +304,11 @@ export class LambdaFunctionEventInvokeConfig extends cdktf.TerraformResource {
   }
 
   // maximum_event_age_in_seconds - computed: false, optional: true, required: false
-  private _maximumEventAgeInSeconds?: number | undefined; 
+  private _maximumEventAgeInSeconds?: number; 
   public get maximumEventAgeInSeconds() {
     return this.getNumberAttribute('maximum_event_age_in_seconds');
   }
-  public set maximumEventAgeInSeconds(value: number | undefined) {
+  public set maximumEventAgeInSeconds(value: number) {
     this._maximumEventAgeInSeconds = value;
   }
   public resetMaximumEventAgeInSeconds() {
@@ -255,15 +316,15 @@ export class LambdaFunctionEventInvokeConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maximumEventAgeInSecondsInput() {
-    return this._maximumEventAgeInSeconds
+    return this._maximumEventAgeInSeconds;
   }
 
   // maximum_retry_attempts - computed: false, optional: true, required: false
-  private _maximumRetryAttempts?: number | undefined; 
+  private _maximumRetryAttempts?: number; 
   public get maximumRetryAttempts() {
     return this.getNumberAttribute('maximum_retry_attempts');
   }
-  public set maximumRetryAttempts(value: number | undefined) {
+  public set maximumRetryAttempts(value: number) {
     this._maximumRetryAttempts = value;
   }
   public resetMaximumRetryAttempts() {
@@ -271,15 +332,15 @@ export class LambdaFunctionEventInvokeConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maximumRetryAttemptsInput() {
-    return this._maximumRetryAttempts
+    return this._maximumRetryAttempts;
   }
 
   // qualifier - computed: false, optional: true, required: false
-  private _qualifier?: string | undefined; 
+  private _qualifier?: string; 
   public get qualifier() {
     return this.getStringAttribute('qualifier');
   }
-  public set qualifier(value: string | undefined) {
+  public set qualifier(value: string) {
     this._qualifier = value;
   }
   public resetQualifier() {
@@ -287,24 +348,23 @@ export class LambdaFunctionEventInvokeConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get qualifierInput() {
-    return this._qualifier
+    return this._qualifier;
   }
 
   // destination_config - computed: false, optional: true, required: false
-  private _destinationConfig?: LambdaFunctionEventInvokeConfigDestinationConfig | undefined; 
-  private __destinationConfigOutput = new LambdaFunctionEventInvokeConfigDestinationConfigOutputReference(this as any, "destination_config", true);
+  private _destinationConfig = new LambdaFunctionEventInvokeConfigDestinationConfigOutputReference(this as any, "destination_config", true);
   public get destinationConfig() {
-    return this.__destinationConfigOutput;
+    return this._destinationConfig;
   }
-  public putDestinationConfig(value: LambdaFunctionEventInvokeConfigDestinationConfig | undefined) {
-    this._destinationConfig = value;
+  public putDestinationConfig(value: LambdaFunctionEventInvokeConfigDestinationConfig) {
+    this._destinationConfig.internalValue = value;
   }
   public resetDestinationConfig() {
-    this._destinationConfig = undefined;
+    this._destinationConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get destinationConfigInput() {
-    return this._destinationConfig
+    return this._destinationConfig.internalValue;
   }
 
   // =========
@@ -317,7 +377,7 @@ export class LambdaFunctionEventInvokeConfig extends cdktf.TerraformResource {
       maximum_event_age_in_seconds: cdktf.numberToTerraform(this._maximumEventAgeInSeconds),
       maximum_retry_attempts: cdktf.numberToTerraform(this._maximumRetryAttempts),
       qualifier: cdktf.stringToTerraform(this._qualifier),
-      destination_config: lambdaFunctionEventInvokeConfigDestinationConfigToTerraform(this._destinationConfig),
+      destination_config: lambdaFunctionEventInvokeConfigDestinationConfigToTerraform(this._destinationConfig.internalValue),
     };
   }
 }

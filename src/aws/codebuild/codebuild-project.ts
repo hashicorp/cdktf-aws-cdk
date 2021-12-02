@@ -179,12 +179,79 @@ export class CodebuildProjectArtifactsOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildProjectArtifacts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._artifactIdentifier) {
+      hasAnyValues = true;
+      internalValueResult.artifactIdentifier = this._artifactIdentifier;
+    }
+    if (this._encryptionDisabled) {
+      hasAnyValues = true;
+      internalValueResult.encryptionDisabled = this._encryptionDisabled;
+    }
+    if (this._location) {
+      hasAnyValues = true;
+      internalValueResult.location = this._location;
+    }
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._namespaceType) {
+      hasAnyValues = true;
+      internalValueResult.namespaceType = this._namespaceType;
+    }
+    if (this._overrideArtifactName) {
+      hasAnyValues = true;
+      internalValueResult.overrideArtifactName = this._overrideArtifactName;
+    }
+    if (this._packaging) {
+      hasAnyValues = true;
+      internalValueResult.packaging = this._packaging;
+    }
+    if (this._path) {
+      hasAnyValues = true;
+      internalValueResult.path = this._path;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildProjectArtifacts | undefined) {
+    if (value === undefined) {
+      this._artifactIdentifier = undefined;
+      this._encryptionDisabled = undefined;
+      this._location = undefined;
+      this._name = undefined;
+      this._namespaceType = undefined;
+      this._overrideArtifactName = undefined;
+      this._packaging = undefined;
+      this._path = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._artifactIdentifier = value.artifactIdentifier;
+      this._encryptionDisabled = value.encryptionDisabled;
+      this._location = value.location;
+      this._name = value.name;
+      this._namespaceType = value.namespaceType;
+      this._overrideArtifactName = value.overrideArtifactName;
+      this._packaging = value.packaging;
+      this._path = value.path;
+      this._type = value.type;
+    }
+  }
+
   // artifact_identifier - computed: false, optional: true, required: false
-  private _artifactIdentifier?: string | undefined; 
+  private _artifactIdentifier?: string; 
   public get artifactIdentifier() {
     return this.getStringAttribute('artifact_identifier');
   }
-  public set artifactIdentifier(value: string | undefined) {
+  public set artifactIdentifier(value: string) {
     this._artifactIdentifier = value;
   }
   public resetArtifactIdentifier() {
@@ -192,15 +259,15 @@ export class CodebuildProjectArtifactsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get artifactIdentifierInput() {
-    return this._artifactIdentifier
+    return this._artifactIdentifier;
   }
 
   // encryption_disabled - computed: false, optional: true, required: false
-  private _encryptionDisabled?: boolean | cdktf.IResolvable | undefined; 
+  private _encryptionDisabled?: boolean | cdktf.IResolvable; 
   public get encryptionDisabled() {
     return this.getBooleanAttribute('encryption_disabled') as any;
   }
-  public set encryptionDisabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set encryptionDisabled(value: boolean | cdktf.IResolvable) {
     this._encryptionDisabled = value;
   }
   public resetEncryptionDisabled() {
@@ -208,15 +275,15 @@ export class CodebuildProjectArtifactsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionDisabledInput() {
-    return this._encryptionDisabled
+    return this._encryptionDisabled;
   }
 
   // location - computed: false, optional: true, required: false
-  private _location?: string | undefined; 
+  private _location?: string; 
   public get location() {
     return this.getStringAttribute('location');
   }
-  public set location(value: string | undefined) {
+  public set location(value: string) {
     this._location = value;
   }
   public resetLocation() {
@@ -224,15 +291,15 @@ export class CodebuildProjectArtifactsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get locationInput() {
-    return this._location
+    return this._location;
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -240,15 +307,15 @@ export class CodebuildProjectArtifactsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // namespace_type - computed: false, optional: true, required: false
-  private _namespaceType?: string | undefined; 
+  private _namespaceType?: string; 
   public get namespaceType() {
     return this.getStringAttribute('namespace_type');
   }
-  public set namespaceType(value: string | undefined) {
+  public set namespaceType(value: string) {
     this._namespaceType = value;
   }
   public resetNamespaceType() {
@@ -256,15 +323,15 @@ export class CodebuildProjectArtifactsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get namespaceTypeInput() {
-    return this._namespaceType
+    return this._namespaceType;
   }
 
   // override_artifact_name - computed: false, optional: true, required: false
-  private _overrideArtifactName?: boolean | cdktf.IResolvable | undefined; 
+  private _overrideArtifactName?: boolean | cdktf.IResolvable; 
   public get overrideArtifactName() {
     return this.getBooleanAttribute('override_artifact_name') as any;
   }
-  public set overrideArtifactName(value: boolean | cdktf.IResolvable | undefined) {
+  public set overrideArtifactName(value: boolean | cdktf.IResolvable) {
     this._overrideArtifactName = value;
   }
   public resetOverrideArtifactName() {
@@ -272,15 +339,15 @@ export class CodebuildProjectArtifactsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get overrideArtifactNameInput() {
-    return this._overrideArtifactName
+    return this._overrideArtifactName;
   }
 
   // packaging - computed: false, optional: true, required: false
-  private _packaging?: string | undefined; 
+  private _packaging?: string; 
   public get packaging() {
     return this.getStringAttribute('packaging');
   }
-  public set packaging(value: string | undefined) {
+  public set packaging(value: string) {
     this._packaging = value;
   }
   public resetPackaging() {
@@ -288,15 +355,15 @@ export class CodebuildProjectArtifactsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get packagingInput() {
-    return this._packaging
+    return this._packaging;
   }
 
   // path - computed: false, optional: true, required: false
-  private _path?: string | undefined; 
+  private _path?: string; 
   public get path() {
     return this.getStringAttribute('path');
   }
-  public set path(value: string | undefined) {
+  public set path(value: string) {
     this._path = value;
   }
   public resetPath() {
@@ -304,7 +371,7 @@ export class CodebuildProjectArtifactsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get pathInput() {
-    return this._path
+    return this._path;
   }
 
   // type - computed: false, optional: false, required: true
@@ -317,7 +384,7 @@ export class CodebuildProjectArtifactsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 export interface CodebuildProjectBuildBatchConfigRestrictions {
@@ -352,12 +419,37 @@ export class CodebuildProjectBuildBatchConfigRestrictionsOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildProjectBuildBatchConfigRestrictions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._computeTypesAllowed) {
+      hasAnyValues = true;
+      internalValueResult.computeTypesAllowed = this._computeTypesAllowed;
+    }
+    if (this._maximumBuildsAllowed) {
+      hasAnyValues = true;
+      internalValueResult.maximumBuildsAllowed = this._maximumBuildsAllowed;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildProjectBuildBatchConfigRestrictions | undefined) {
+    if (value === undefined) {
+      this._computeTypesAllowed = undefined;
+      this._maximumBuildsAllowed = undefined;
+    }
+    else {
+      this._computeTypesAllowed = value.computeTypesAllowed;
+      this._maximumBuildsAllowed = value.maximumBuildsAllowed;
+    }
+  }
+
   // compute_types_allowed - computed: false, optional: true, required: false
-  private _computeTypesAllowed?: string[] | undefined; 
+  private _computeTypesAllowed?: string[]; 
   public get computeTypesAllowed() {
     return this.getListAttribute('compute_types_allowed');
   }
-  public set computeTypesAllowed(value: string[] | undefined) {
+  public set computeTypesAllowed(value: string[]) {
     this._computeTypesAllowed = value;
   }
   public resetComputeTypesAllowed() {
@@ -365,15 +457,15 @@ export class CodebuildProjectBuildBatchConfigRestrictionsOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get computeTypesAllowedInput() {
-    return this._computeTypesAllowed
+    return this._computeTypesAllowed;
   }
 
   // maximum_builds_allowed - computed: false, optional: true, required: false
-  private _maximumBuildsAllowed?: number | undefined; 
+  private _maximumBuildsAllowed?: number; 
   public get maximumBuildsAllowed() {
     return this.getNumberAttribute('maximum_builds_allowed');
   }
-  public set maximumBuildsAllowed(value: number | undefined) {
+  public set maximumBuildsAllowed(value: number) {
     this._maximumBuildsAllowed = value;
   }
   public resetMaximumBuildsAllowed() {
@@ -381,7 +473,7 @@ export class CodebuildProjectBuildBatchConfigRestrictionsOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get maximumBuildsAllowedInput() {
-    return this._maximumBuildsAllowed
+    return this._maximumBuildsAllowed;
   }
 }
 export interface CodebuildProjectBuildBatchConfig {
@@ -428,12 +520,49 @@ export class CodebuildProjectBuildBatchConfigOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildProjectBuildBatchConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._combineArtifacts) {
+      hasAnyValues = true;
+      internalValueResult.combineArtifacts = this._combineArtifacts;
+    }
+    if (this._serviceRole) {
+      hasAnyValues = true;
+      internalValueResult.serviceRole = this._serviceRole;
+    }
+    if (this._timeoutInMins) {
+      hasAnyValues = true;
+      internalValueResult.timeoutInMins = this._timeoutInMins;
+    }
+    if (this._restrictions) {
+      hasAnyValues = true;
+      internalValueResult.restrictions = this._restrictions?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildProjectBuildBatchConfig | undefined) {
+    if (value === undefined) {
+      this._combineArtifacts = undefined;
+      this._serviceRole = undefined;
+      this._timeoutInMins = undefined;
+      this._restrictions.internalValue = undefined;
+    }
+    else {
+      this._combineArtifacts = value.combineArtifacts;
+      this._serviceRole = value.serviceRole;
+      this._timeoutInMins = value.timeoutInMins;
+      this._restrictions.internalValue = value.restrictions;
+    }
+  }
+
   // combine_artifacts - computed: false, optional: true, required: false
-  private _combineArtifacts?: boolean | cdktf.IResolvable | undefined; 
+  private _combineArtifacts?: boolean | cdktf.IResolvable; 
   public get combineArtifacts() {
     return this.getBooleanAttribute('combine_artifacts') as any;
   }
-  public set combineArtifacts(value: boolean | cdktf.IResolvable | undefined) {
+  public set combineArtifacts(value: boolean | cdktf.IResolvable) {
     this._combineArtifacts = value;
   }
   public resetCombineArtifacts() {
@@ -441,7 +570,7 @@ export class CodebuildProjectBuildBatchConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get combineArtifactsInput() {
-    return this._combineArtifacts
+    return this._combineArtifacts;
   }
 
   // service_role - computed: false, optional: false, required: true
@@ -454,15 +583,15 @@ export class CodebuildProjectBuildBatchConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get serviceRoleInput() {
-    return this._serviceRole
+    return this._serviceRole;
   }
 
   // timeout_in_mins - computed: false, optional: true, required: false
-  private _timeoutInMins?: number | undefined; 
+  private _timeoutInMins?: number; 
   public get timeoutInMins() {
     return this.getNumberAttribute('timeout_in_mins');
   }
-  public set timeoutInMins(value: number | undefined) {
+  public set timeoutInMins(value: number) {
     this._timeoutInMins = value;
   }
   public resetTimeoutInMins() {
@@ -470,24 +599,23 @@ export class CodebuildProjectBuildBatchConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutInMinsInput() {
-    return this._timeoutInMins
+    return this._timeoutInMins;
   }
 
   // restrictions - computed: false, optional: true, required: false
-  private _restrictions?: CodebuildProjectBuildBatchConfigRestrictions | undefined; 
-  private __restrictionsOutput = new CodebuildProjectBuildBatchConfigRestrictionsOutputReference(this as any, "restrictions", true);
+  private _restrictions = new CodebuildProjectBuildBatchConfigRestrictionsOutputReference(this as any, "restrictions", true);
   public get restrictions() {
-    return this.__restrictionsOutput;
+    return this._restrictions;
   }
-  public putRestrictions(value: CodebuildProjectBuildBatchConfigRestrictions | undefined) {
-    this._restrictions = value;
+  public putRestrictions(value: CodebuildProjectBuildBatchConfigRestrictions) {
+    this._restrictions.internalValue = value;
   }
   public resetRestrictions() {
-    this._restrictions = undefined;
+    this._restrictions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get restrictionsInput() {
-    return this._restrictions
+    return this._restrictions.internalValue;
   }
 }
 export interface CodebuildProjectCache {
@@ -527,12 +655,43 @@ export class CodebuildProjectCacheOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildProjectCache | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._location) {
+      hasAnyValues = true;
+      internalValueResult.location = this._location;
+    }
+    if (this._modes) {
+      hasAnyValues = true;
+      internalValueResult.modes = this._modes;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildProjectCache | undefined) {
+    if (value === undefined) {
+      this._location = undefined;
+      this._modes = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._location = value.location;
+      this._modes = value.modes;
+      this._type = value.type;
+    }
+  }
+
   // location - computed: false, optional: true, required: false
-  private _location?: string | undefined; 
+  private _location?: string; 
   public get location() {
     return this.getStringAttribute('location');
   }
-  public set location(value: string | undefined) {
+  public set location(value: string) {
     this._location = value;
   }
   public resetLocation() {
@@ -540,15 +699,15 @@ export class CodebuildProjectCacheOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get locationInput() {
-    return this._location
+    return this._location;
   }
 
   // modes - computed: false, optional: true, required: false
-  private _modes?: string[] | undefined; 
+  private _modes?: string[]; 
   public get modes() {
     return this.getListAttribute('modes');
   }
-  public set modes(value: string[] | undefined) {
+  public set modes(value: string[]) {
     this._modes = value;
   }
   public resetModes() {
@@ -556,15 +715,15 @@ export class CodebuildProjectCacheOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get modesInput() {
-    return this._modes
+    return this._modes;
   }
 
   // type - computed: false, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -572,7 +731,7 @@ export class CodebuildProjectCacheOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 export interface CodebuildProjectEnvironmentEnvironmentVariable {
@@ -634,6 +793,31 @@ export class CodebuildProjectEnvironmentRegistryCredentialOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildProjectEnvironmentRegistryCredential | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._credential) {
+      hasAnyValues = true;
+      internalValueResult.credential = this._credential;
+    }
+    if (this._credentialProvider) {
+      hasAnyValues = true;
+      internalValueResult.credentialProvider = this._credentialProvider;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildProjectEnvironmentRegistryCredential | undefined) {
+    if (value === undefined) {
+      this._credential = undefined;
+      this._credentialProvider = undefined;
+    }
+    else {
+      this._credential = value.credential;
+      this._credentialProvider = value.credentialProvider;
+    }
+  }
+
   // credential - computed: false, optional: false, required: true
   private _credential?: string; 
   public get credential() {
@@ -644,7 +828,7 @@ export class CodebuildProjectEnvironmentRegistryCredentialOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get credentialInput() {
-    return this._credential
+    return this._credential;
   }
 
   // credential_provider - computed: false, optional: false, required: true
@@ -657,7 +841,7 @@ export class CodebuildProjectEnvironmentRegistryCredentialOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get credentialProviderInput() {
-    return this._credentialProvider
+    return this._credentialProvider;
   }
 }
 export interface CodebuildProjectEnvironment {
@@ -726,12 +910,73 @@ export class CodebuildProjectEnvironmentOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildProjectEnvironment | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._certificate) {
+      hasAnyValues = true;
+      internalValueResult.certificate = this._certificate;
+    }
+    if (this._computeType) {
+      hasAnyValues = true;
+      internalValueResult.computeType = this._computeType;
+    }
+    if (this._image) {
+      hasAnyValues = true;
+      internalValueResult.image = this._image;
+    }
+    if (this._imagePullCredentialsType) {
+      hasAnyValues = true;
+      internalValueResult.imagePullCredentialsType = this._imagePullCredentialsType;
+    }
+    if (this._privilegedMode) {
+      hasAnyValues = true;
+      internalValueResult.privilegedMode = this._privilegedMode;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    if (this._environmentVariable) {
+      hasAnyValues = true;
+      internalValueResult.environmentVariable = this._environmentVariable;
+    }
+    if (this._registryCredential) {
+      hasAnyValues = true;
+      internalValueResult.registryCredential = this._registryCredential?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildProjectEnvironment | undefined) {
+    if (value === undefined) {
+      this._certificate = undefined;
+      this._computeType = undefined;
+      this._image = undefined;
+      this._imagePullCredentialsType = undefined;
+      this._privilegedMode = undefined;
+      this._type = undefined;
+      this._environmentVariable = undefined;
+      this._registryCredential.internalValue = undefined;
+    }
+    else {
+      this._certificate = value.certificate;
+      this._computeType = value.computeType;
+      this._image = value.image;
+      this._imagePullCredentialsType = value.imagePullCredentialsType;
+      this._privilegedMode = value.privilegedMode;
+      this._type = value.type;
+      this._environmentVariable = value.environmentVariable;
+      this._registryCredential.internalValue = value.registryCredential;
+    }
+  }
+
   // certificate - computed: false, optional: true, required: false
-  private _certificate?: string | undefined; 
+  private _certificate?: string; 
   public get certificate() {
     return this.getStringAttribute('certificate');
   }
-  public set certificate(value: string | undefined) {
+  public set certificate(value: string) {
     this._certificate = value;
   }
   public resetCertificate() {
@@ -739,7 +984,7 @@ export class CodebuildProjectEnvironmentOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get certificateInput() {
-    return this._certificate
+    return this._certificate;
   }
 
   // compute_type - computed: false, optional: false, required: true
@@ -752,7 +997,7 @@ export class CodebuildProjectEnvironmentOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get computeTypeInput() {
-    return this._computeType
+    return this._computeType;
   }
 
   // image - computed: false, optional: false, required: true
@@ -765,15 +1010,15 @@ export class CodebuildProjectEnvironmentOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get imageInput() {
-    return this._image
+    return this._image;
   }
 
   // image_pull_credentials_type - computed: false, optional: true, required: false
-  private _imagePullCredentialsType?: string | undefined; 
+  private _imagePullCredentialsType?: string; 
   public get imagePullCredentialsType() {
     return this.getStringAttribute('image_pull_credentials_type');
   }
-  public set imagePullCredentialsType(value: string | undefined) {
+  public set imagePullCredentialsType(value: string) {
     this._imagePullCredentialsType = value;
   }
   public resetImagePullCredentialsType() {
@@ -781,15 +1026,15 @@ export class CodebuildProjectEnvironmentOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get imagePullCredentialsTypeInput() {
-    return this._imagePullCredentialsType
+    return this._imagePullCredentialsType;
   }
 
   // privileged_mode - computed: false, optional: true, required: false
-  private _privilegedMode?: boolean | cdktf.IResolvable | undefined; 
+  private _privilegedMode?: boolean | cdktf.IResolvable; 
   public get privilegedMode() {
     return this.getBooleanAttribute('privileged_mode') as any;
   }
-  public set privilegedMode(value: boolean | cdktf.IResolvable | undefined) {
+  public set privilegedMode(value: boolean | cdktf.IResolvable) {
     this._privilegedMode = value;
   }
   public resetPrivilegedMode() {
@@ -797,7 +1042,7 @@ export class CodebuildProjectEnvironmentOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get privilegedModeInput() {
-    return this._privilegedMode
+    return this._privilegedMode;
   }
 
   // type - computed: false, optional: false, required: true
@@ -810,16 +1055,16 @@ export class CodebuildProjectEnvironmentOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // environment_variable - computed: false, optional: true, required: false
-  private _environmentVariable?: CodebuildProjectEnvironmentEnvironmentVariable[] | undefined; 
+  private _environmentVariable?: CodebuildProjectEnvironmentEnvironmentVariable[]; 
   public get environmentVariable() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('environment_variable') as any;
   }
-  public set environmentVariable(value: CodebuildProjectEnvironmentEnvironmentVariable[] | undefined) {
+  public set environmentVariable(value: CodebuildProjectEnvironmentEnvironmentVariable[]) {
     this._environmentVariable = value;
   }
   public resetEnvironmentVariable() {
@@ -827,24 +1072,23 @@ export class CodebuildProjectEnvironmentOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get environmentVariableInput() {
-    return this._environmentVariable
+    return this._environmentVariable;
   }
 
   // registry_credential - computed: false, optional: true, required: false
-  private _registryCredential?: CodebuildProjectEnvironmentRegistryCredential | undefined; 
-  private __registryCredentialOutput = new CodebuildProjectEnvironmentRegistryCredentialOutputReference(this as any, "registry_credential", true);
+  private _registryCredential = new CodebuildProjectEnvironmentRegistryCredentialOutputReference(this as any, "registry_credential", true);
   public get registryCredential() {
-    return this.__registryCredentialOutput;
+    return this._registryCredential;
   }
-  public putRegistryCredential(value: CodebuildProjectEnvironmentRegistryCredential | undefined) {
-    this._registryCredential = value;
+  public putRegistryCredential(value: CodebuildProjectEnvironmentRegistryCredential) {
+    this._registryCredential.internalValue = value;
   }
   public resetRegistryCredential() {
-    this._registryCredential = undefined;
+    this._registryCredential.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get registryCredentialInput() {
-    return this._registryCredential
+    return this._registryCredential.internalValue;
   }
 }
 export interface CodebuildProjectFileSystemLocations {
@@ -921,12 +1165,43 @@ export class CodebuildProjectLogsConfigCloudwatchLogsOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildProjectLogsConfigCloudwatchLogs | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._groupName) {
+      hasAnyValues = true;
+      internalValueResult.groupName = this._groupName;
+    }
+    if (this._status) {
+      hasAnyValues = true;
+      internalValueResult.status = this._status;
+    }
+    if (this._streamName) {
+      hasAnyValues = true;
+      internalValueResult.streamName = this._streamName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildProjectLogsConfigCloudwatchLogs | undefined) {
+    if (value === undefined) {
+      this._groupName = undefined;
+      this._status = undefined;
+      this._streamName = undefined;
+    }
+    else {
+      this._groupName = value.groupName;
+      this._status = value.status;
+      this._streamName = value.streamName;
+    }
+  }
+
   // group_name - computed: false, optional: true, required: false
-  private _groupName?: string | undefined; 
+  private _groupName?: string; 
   public get groupName() {
     return this.getStringAttribute('group_name');
   }
-  public set groupName(value: string | undefined) {
+  public set groupName(value: string) {
     this._groupName = value;
   }
   public resetGroupName() {
@@ -934,15 +1209,15 @@ export class CodebuildProjectLogsConfigCloudwatchLogsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get groupNameInput() {
-    return this._groupName
+    return this._groupName;
   }
 
   // status - computed: false, optional: true, required: false
-  private _status?: string | undefined; 
+  private _status?: string; 
   public get status() {
     return this.getStringAttribute('status');
   }
-  public set status(value: string | undefined) {
+  public set status(value: string) {
     this._status = value;
   }
   public resetStatus() {
@@ -950,15 +1225,15 @@ export class CodebuildProjectLogsConfigCloudwatchLogsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 
   // stream_name - computed: false, optional: true, required: false
-  private _streamName?: string | undefined; 
+  private _streamName?: string; 
   public get streamName() {
     return this.getStringAttribute('stream_name');
   }
-  public set streamName(value: string | undefined) {
+  public set streamName(value: string) {
     this._streamName = value;
   }
   public resetStreamName() {
@@ -966,7 +1241,7 @@ export class CodebuildProjectLogsConfigCloudwatchLogsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get streamNameInput() {
-    return this._streamName
+    return this._streamName;
   }
 }
 export interface CodebuildProjectLogsConfigS3Logs {
@@ -1006,12 +1281,43 @@ export class CodebuildProjectLogsConfigS3LogsOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildProjectLogsConfigS3Logs | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._encryptionDisabled) {
+      hasAnyValues = true;
+      internalValueResult.encryptionDisabled = this._encryptionDisabled;
+    }
+    if (this._location) {
+      hasAnyValues = true;
+      internalValueResult.location = this._location;
+    }
+    if (this._status) {
+      hasAnyValues = true;
+      internalValueResult.status = this._status;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildProjectLogsConfigS3Logs | undefined) {
+    if (value === undefined) {
+      this._encryptionDisabled = undefined;
+      this._location = undefined;
+      this._status = undefined;
+    }
+    else {
+      this._encryptionDisabled = value.encryptionDisabled;
+      this._location = value.location;
+      this._status = value.status;
+    }
+  }
+
   // encryption_disabled - computed: false, optional: true, required: false
-  private _encryptionDisabled?: boolean | cdktf.IResolvable | undefined; 
+  private _encryptionDisabled?: boolean | cdktf.IResolvable; 
   public get encryptionDisabled() {
     return this.getBooleanAttribute('encryption_disabled') as any;
   }
-  public set encryptionDisabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set encryptionDisabled(value: boolean | cdktf.IResolvable) {
     this._encryptionDisabled = value;
   }
   public resetEncryptionDisabled() {
@@ -1019,15 +1325,15 @@ export class CodebuildProjectLogsConfigS3LogsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionDisabledInput() {
-    return this._encryptionDisabled
+    return this._encryptionDisabled;
   }
 
   // location - computed: false, optional: true, required: false
-  private _location?: string | undefined; 
+  private _location?: string; 
   public get location() {
     return this.getStringAttribute('location');
   }
-  public set location(value: string | undefined) {
+  public set location(value: string) {
     this._location = value;
   }
   public resetLocation() {
@@ -1035,15 +1341,15 @@ export class CodebuildProjectLogsConfigS3LogsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get locationInput() {
-    return this._location
+    return this._location;
   }
 
   // status - computed: false, optional: true, required: false
-  private _status?: string | undefined; 
+  private _status?: string; 
   public get status() {
     return this.getStringAttribute('status');
   }
-  public set status(value: string | undefined) {
+  public set status(value: string) {
     this._status = value;
   }
   public resetStatus() {
@@ -1051,7 +1357,7 @@ export class CodebuildProjectLogsConfigS3LogsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 }
 export interface CodebuildProjectLogsConfig {
@@ -1090,38 +1396,61 @@ export class CodebuildProjectLogsConfigOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // cloudwatch_logs - computed: false, optional: true, required: false
-  private _cloudwatchLogs?: CodebuildProjectLogsConfigCloudwatchLogs | undefined; 
-  private __cloudwatchLogsOutput = new CodebuildProjectLogsConfigCloudwatchLogsOutputReference(this as any, "cloudwatch_logs", true);
-  public get cloudwatchLogs() {
-    return this.__cloudwatchLogsOutput;
+  public get internalValue(): CodebuildProjectLogsConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cloudwatchLogs) {
+      hasAnyValues = true;
+      internalValueResult.cloudwatchLogs = this._cloudwatchLogs?.internalValue;
+    }
+    if (this._s3Logs) {
+      hasAnyValues = true;
+      internalValueResult.s3Logs = this._s3Logs?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putCloudwatchLogs(value: CodebuildProjectLogsConfigCloudwatchLogs | undefined) {
-    this._cloudwatchLogs = value;
+
+  public set internalValue(value: CodebuildProjectLogsConfig | undefined) {
+    if (value === undefined) {
+      this._cloudwatchLogs.internalValue = undefined;
+      this._s3Logs.internalValue = undefined;
+    }
+    else {
+      this._cloudwatchLogs.internalValue = value.cloudwatchLogs;
+      this._s3Logs.internalValue = value.s3Logs;
+    }
+  }
+
+  // cloudwatch_logs - computed: false, optional: true, required: false
+  private _cloudwatchLogs = new CodebuildProjectLogsConfigCloudwatchLogsOutputReference(this as any, "cloudwatch_logs", true);
+  public get cloudwatchLogs() {
+    return this._cloudwatchLogs;
+  }
+  public putCloudwatchLogs(value: CodebuildProjectLogsConfigCloudwatchLogs) {
+    this._cloudwatchLogs.internalValue = value;
   }
   public resetCloudwatchLogs() {
-    this._cloudwatchLogs = undefined;
+    this._cloudwatchLogs.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchLogsInput() {
-    return this._cloudwatchLogs
+    return this._cloudwatchLogs.internalValue;
   }
 
   // s3_logs - computed: false, optional: true, required: false
-  private _s3Logs?: CodebuildProjectLogsConfigS3Logs | undefined; 
-  private __s3LogsOutput = new CodebuildProjectLogsConfigS3LogsOutputReference(this as any, "s3_logs", true);
+  private _s3Logs = new CodebuildProjectLogsConfigS3LogsOutputReference(this as any, "s3_logs", true);
   public get s3Logs() {
-    return this.__s3LogsOutput;
+    return this._s3Logs;
   }
-  public putS3Logs(value: CodebuildProjectLogsConfigS3Logs | undefined) {
-    this._s3Logs = value;
+  public putS3Logs(value: CodebuildProjectLogsConfigS3Logs) {
+    this._s3Logs.internalValue = value;
   }
   public resetS3Logs() {
-    this._s3Logs = undefined;
+    this._s3Logs.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get s3LogsInput() {
-    return this._s3Logs
+    return this._s3Logs.internalValue;
   }
 }
 export interface CodebuildProjectSecondaryArtifacts {
@@ -1213,12 +1542,37 @@ export class CodebuildProjectSecondarySourcesAuthOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildProjectSecondarySourcesAuth | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._resource) {
+      hasAnyValues = true;
+      internalValueResult.resource = this._resource;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildProjectSecondarySourcesAuth | undefined) {
+    if (value === undefined) {
+      this._resource = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._resource = value.resource;
+      this._type = value.type;
+    }
+  }
+
   // resource - computed: false, optional: true, required: false
-  private _resource?: string | undefined; 
+  private _resource?: string; 
   public get resource() {
     return this.getStringAttribute('resource');
   }
-  public set resource(value: string | undefined) {
+  public set resource(value: string) {
     this._resource = value;
   }
   public resetResource() {
@@ -1226,7 +1580,7 @@ export class CodebuildProjectSecondarySourcesAuthOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get resourceInput() {
-    return this._resource
+    return this._resource;
   }
 
   // type - computed: false, optional: false, required: true
@@ -1239,7 +1593,7 @@ export class CodebuildProjectSecondarySourcesAuthOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 export interface CodebuildProjectSecondarySourcesBuildStatusConfig {
@@ -1274,12 +1628,37 @@ export class CodebuildProjectSecondarySourcesBuildStatusConfigOutputReference ex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildProjectSecondarySourcesBuildStatusConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._context) {
+      hasAnyValues = true;
+      internalValueResult.context = this._context;
+    }
+    if (this._targetUrl) {
+      hasAnyValues = true;
+      internalValueResult.targetUrl = this._targetUrl;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildProjectSecondarySourcesBuildStatusConfig | undefined) {
+    if (value === undefined) {
+      this._context = undefined;
+      this._targetUrl = undefined;
+    }
+    else {
+      this._context = value.context;
+      this._targetUrl = value.targetUrl;
+    }
+  }
+
   // context - computed: false, optional: true, required: false
-  private _context?: string | undefined; 
+  private _context?: string; 
   public get context() {
     return this.getStringAttribute('context');
   }
-  public set context(value: string | undefined) {
+  public set context(value: string) {
     this._context = value;
   }
   public resetContext() {
@@ -1287,15 +1666,15 @@ export class CodebuildProjectSecondarySourcesBuildStatusConfigOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get contextInput() {
-    return this._context
+    return this._context;
   }
 
   // target_url - computed: false, optional: true, required: false
-  private _targetUrl?: string | undefined; 
+  private _targetUrl?: string; 
   public get targetUrl() {
     return this.getStringAttribute('target_url');
   }
-  public set targetUrl(value: string | undefined) {
+  public set targetUrl(value: string) {
     this._targetUrl = value;
   }
   public resetTargetUrl() {
@@ -1303,7 +1682,7 @@ export class CodebuildProjectSecondarySourcesBuildStatusConfigOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get targetUrlInput() {
-    return this._targetUrl
+    return this._targetUrl;
   }
 }
 export interface CodebuildProjectSecondarySourcesGitSubmodulesConfig {
@@ -1333,6 +1712,25 @@ export class CodebuildProjectSecondarySourcesGitSubmodulesConfigOutputReference 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildProjectSecondarySourcesGitSubmodulesConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fetchSubmodules) {
+      hasAnyValues = true;
+      internalValueResult.fetchSubmodules = this._fetchSubmodules;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildProjectSecondarySourcesGitSubmodulesConfig | undefined) {
+    if (value === undefined) {
+      this._fetchSubmodules = undefined;
+    }
+    else {
+      this._fetchSubmodules = value.fetchSubmodules;
+    }
+  }
+
   // fetch_submodules - computed: false, optional: false, required: true
   private _fetchSubmodules?: boolean | cdktf.IResolvable; 
   public get fetchSubmodules() {
@@ -1343,7 +1741,7 @@ export class CodebuildProjectSecondarySourcesGitSubmodulesConfigOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get fetchSubmodulesInput() {
-    return this._fetchSubmodules
+    return this._fetchSubmodules;
   }
 }
 export interface CodebuildProjectSecondarySources {
@@ -1446,12 +1844,37 @@ export class CodebuildProjectSourceAuthOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildProjectSourceAuth | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._resource) {
+      hasAnyValues = true;
+      internalValueResult.resource = this._resource;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildProjectSourceAuth | undefined) {
+    if (value === undefined) {
+      this._resource = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._resource = value.resource;
+      this._type = value.type;
+    }
+  }
+
   // resource - computed: false, optional: true, required: false
-  private _resource?: string | undefined; 
+  private _resource?: string; 
   public get resource() {
     return this.getStringAttribute('resource');
   }
-  public set resource(value: string | undefined) {
+  public set resource(value: string) {
     this._resource = value;
   }
   public resetResource() {
@@ -1459,7 +1882,7 @@ export class CodebuildProjectSourceAuthOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get resourceInput() {
-    return this._resource
+    return this._resource;
   }
 
   // type - computed: false, optional: false, required: true
@@ -1472,7 +1895,7 @@ export class CodebuildProjectSourceAuthOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 export interface CodebuildProjectSourceBuildStatusConfig {
@@ -1507,12 +1930,37 @@ export class CodebuildProjectSourceBuildStatusConfigOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildProjectSourceBuildStatusConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._context) {
+      hasAnyValues = true;
+      internalValueResult.context = this._context;
+    }
+    if (this._targetUrl) {
+      hasAnyValues = true;
+      internalValueResult.targetUrl = this._targetUrl;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildProjectSourceBuildStatusConfig | undefined) {
+    if (value === undefined) {
+      this._context = undefined;
+      this._targetUrl = undefined;
+    }
+    else {
+      this._context = value.context;
+      this._targetUrl = value.targetUrl;
+    }
+  }
+
   // context - computed: false, optional: true, required: false
-  private _context?: string | undefined; 
+  private _context?: string; 
   public get context() {
     return this.getStringAttribute('context');
   }
-  public set context(value: string | undefined) {
+  public set context(value: string) {
     this._context = value;
   }
   public resetContext() {
@@ -1520,15 +1968,15 @@ export class CodebuildProjectSourceBuildStatusConfigOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get contextInput() {
-    return this._context
+    return this._context;
   }
 
   // target_url - computed: false, optional: true, required: false
-  private _targetUrl?: string | undefined; 
+  private _targetUrl?: string; 
   public get targetUrl() {
     return this.getStringAttribute('target_url');
   }
-  public set targetUrl(value: string | undefined) {
+  public set targetUrl(value: string) {
     this._targetUrl = value;
   }
   public resetTargetUrl() {
@@ -1536,7 +1984,7 @@ export class CodebuildProjectSourceBuildStatusConfigOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get targetUrlInput() {
-    return this._targetUrl
+    return this._targetUrl;
   }
 }
 export interface CodebuildProjectSourceGitSubmodulesConfig {
@@ -1566,6 +2014,25 @@ export class CodebuildProjectSourceGitSubmodulesConfigOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildProjectSourceGitSubmodulesConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fetchSubmodules) {
+      hasAnyValues = true;
+      internalValueResult.fetchSubmodules = this._fetchSubmodules;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildProjectSourceGitSubmodulesConfig | undefined) {
+    if (value === undefined) {
+      this._fetchSubmodules = undefined;
+    }
+    else {
+      this._fetchSubmodules = value.fetchSubmodules;
+    }
+  }
+
   // fetch_submodules - computed: false, optional: false, required: true
   private _fetchSubmodules?: boolean | cdktf.IResolvable; 
   public get fetchSubmodules() {
@@ -1576,7 +2043,7 @@ export class CodebuildProjectSourceGitSubmodulesConfigOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get fetchSubmodulesInput() {
-    return this._fetchSubmodules
+    return this._fetchSubmodules;
   }
 }
 export interface CodebuildProjectSource {
@@ -1652,12 +2119,79 @@ export class CodebuildProjectSourceOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildProjectSource | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._buildspec) {
+      hasAnyValues = true;
+      internalValueResult.buildspec = this._buildspec;
+    }
+    if (this._gitCloneDepth) {
+      hasAnyValues = true;
+      internalValueResult.gitCloneDepth = this._gitCloneDepth;
+    }
+    if (this._insecureSsl) {
+      hasAnyValues = true;
+      internalValueResult.insecureSsl = this._insecureSsl;
+    }
+    if (this._location) {
+      hasAnyValues = true;
+      internalValueResult.location = this._location;
+    }
+    if (this._reportBuildStatus) {
+      hasAnyValues = true;
+      internalValueResult.reportBuildStatus = this._reportBuildStatus;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    if (this._auth) {
+      hasAnyValues = true;
+      internalValueResult.auth = this._auth?.internalValue;
+    }
+    if (this._buildStatusConfig) {
+      hasAnyValues = true;
+      internalValueResult.buildStatusConfig = this._buildStatusConfig?.internalValue;
+    }
+    if (this._gitSubmodulesConfig) {
+      hasAnyValues = true;
+      internalValueResult.gitSubmodulesConfig = this._gitSubmodulesConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildProjectSource | undefined) {
+    if (value === undefined) {
+      this._buildspec = undefined;
+      this._gitCloneDepth = undefined;
+      this._insecureSsl = undefined;
+      this._location = undefined;
+      this._reportBuildStatus = undefined;
+      this._type = undefined;
+      this._auth.internalValue = undefined;
+      this._buildStatusConfig.internalValue = undefined;
+      this._gitSubmodulesConfig.internalValue = undefined;
+    }
+    else {
+      this._buildspec = value.buildspec;
+      this._gitCloneDepth = value.gitCloneDepth;
+      this._insecureSsl = value.insecureSsl;
+      this._location = value.location;
+      this._reportBuildStatus = value.reportBuildStatus;
+      this._type = value.type;
+      this._auth.internalValue = value.auth;
+      this._buildStatusConfig.internalValue = value.buildStatusConfig;
+      this._gitSubmodulesConfig.internalValue = value.gitSubmodulesConfig;
+    }
+  }
+
   // buildspec - computed: false, optional: true, required: false
-  private _buildspec?: string | undefined; 
+  private _buildspec?: string; 
   public get buildspec() {
     return this.getStringAttribute('buildspec');
   }
-  public set buildspec(value: string | undefined) {
+  public set buildspec(value: string) {
     this._buildspec = value;
   }
   public resetBuildspec() {
@@ -1665,15 +2199,15 @@ export class CodebuildProjectSourceOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get buildspecInput() {
-    return this._buildspec
+    return this._buildspec;
   }
 
   // git_clone_depth - computed: false, optional: true, required: false
-  private _gitCloneDepth?: number | undefined; 
+  private _gitCloneDepth?: number; 
   public get gitCloneDepth() {
     return this.getNumberAttribute('git_clone_depth');
   }
-  public set gitCloneDepth(value: number | undefined) {
+  public set gitCloneDepth(value: number) {
     this._gitCloneDepth = value;
   }
   public resetGitCloneDepth() {
@@ -1681,15 +2215,15 @@ export class CodebuildProjectSourceOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get gitCloneDepthInput() {
-    return this._gitCloneDepth
+    return this._gitCloneDepth;
   }
 
   // insecure_ssl - computed: false, optional: true, required: false
-  private _insecureSsl?: boolean | cdktf.IResolvable | undefined; 
+  private _insecureSsl?: boolean | cdktf.IResolvable; 
   public get insecureSsl() {
     return this.getBooleanAttribute('insecure_ssl') as any;
   }
-  public set insecureSsl(value: boolean | cdktf.IResolvable | undefined) {
+  public set insecureSsl(value: boolean | cdktf.IResolvable) {
     this._insecureSsl = value;
   }
   public resetInsecureSsl() {
@@ -1697,15 +2231,15 @@ export class CodebuildProjectSourceOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get insecureSslInput() {
-    return this._insecureSsl
+    return this._insecureSsl;
   }
 
   // location - computed: false, optional: true, required: false
-  private _location?: string | undefined; 
+  private _location?: string; 
   public get location() {
     return this.getStringAttribute('location');
   }
-  public set location(value: string | undefined) {
+  public set location(value: string) {
     this._location = value;
   }
   public resetLocation() {
@@ -1713,15 +2247,15 @@ export class CodebuildProjectSourceOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get locationInput() {
-    return this._location
+    return this._location;
   }
 
   // report_build_status - computed: false, optional: true, required: false
-  private _reportBuildStatus?: boolean | cdktf.IResolvable | undefined; 
+  private _reportBuildStatus?: boolean | cdktf.IResolvable; 
   public get reportBuildStatus() {
     return this.getBooleanAttribute('report_build_status') as any;
   }
-  public set reportBuildStatus(value: boolean | cdktf.IResolvable | undefined) {
+  public set reportBuildStatus(value: boolean | cdktf.IResolvable) {
     this._reportBuildStatus = value;
   }
   public resetReportBuildStatus() {
@@ -1729,7 +2263,7 @@ export class CodebuildProjectSourceOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get reportBuildStatusInput() {
-    return this._reportBuildStatus
+    return this._reportBuildStatus;
   }
 
   // type - computed: false, optional: false, required: true
@@ -1742,58 +2276,55 @@ export class CodebuildProjectSourceOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // auth - computed: false, optional: true, required: false
-  private _auth?: CodebuildProjectSourceAuth | undefined; 
-  private __authOutput = new CodebuildProjectSourceAuthOutputReference(this as any, "auth", true);
+  private _auth = new CodebuildProjectSourceAuthOutputReference(this as any, "auth", true);
   public get auth() {
-    return this.__authOutput;
+    return this._auth;
   }
-  public putAuth(value: CodebuildProjectSourceAuth | undefined) {
-    this._auth = value;
+  public putAuth(value: CodebuildProjectSourceAuth) {
+    this._auth.internalValue = value;
   }
   public resetAuth() {
-    this._auth = undefined;
+    this._auth.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get authInput() {
-    return this._auth
+    return this._auth.internalValue;
   }
 
   // build_status_config - computed: false, optional: true, required: false
-  private _buildStatusConfig?: CodebuildProjectSourceBuildStatusConfig | undefined; 
-  private __buildStatusConfigOutput = new CodebuildProjectSourceBuildStatusConfigOutputReference(this as any, "build_status_config", true);
+  private _buildStatusConfig = new CodebuildProjectSourceBuildStatusConfigOutputReference(this as any, "build_status_config", true);
   public get buildStatusConfig() {
-    return this.__buildStatusConfigOutput;
+    return this._buildStatusConfig;
   }
-  public putBuildStatusConfig(value: CodebuildProjectSourceBuildStatusConfig | undefined) {
-    this._buildStatusConfig = value;
+  public putBuildStatusConfig(value: CodebuildProjectSourceBuildStatusConfig) {
+    this._buildStatusConfig.internalValue = value;
   }
   public resetBuildStatusConfig() {
-    this._buildStatusConfig = undefined;
+    this._buildStatusConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get buildStatusConfigInput() {
-    return this._buildStatusConfig
+    return this._buildStatusConfig.internalValue;
   }
 
   // git_submodules_config - computed: false, optional: true, required: false
-  private _gitSubmodulesConfig?: CodebuildProjectSourceGitSubmodulesConfig | undefined; 
-  private __gitSubmodulesConfigOutput = new CodebuildProjectSourceGitSubmodulesConfigOutputReference(this as any, "git_submodules_config", true);
+  private _gitSubmodulesConfig = new CodebuildProjectSourceGitSubmodulesConfigOutputReference(this as any, "git_submodules_config", true);
   public get gitSubmodulesConfig() {
-    return this.__gitSubmodulesConfigOutput;
+    return this._gitSubmodulesConfig;
   }
-  public putGitSubmodulesConfig(value: CodebuildProjectSourceGitSubmodulesConfig | undefined) {
-    this._gitSubmodulesConfig = value;
+  public putGitSubmodulesConfig(value: CodebuildProjectSourceGitSubmodulesConfig) {
+    this._gitSubmodulesConfig.internalValue = value;
   }
   public resetGitSubmodulesConfig() {
-    this._gitSubmodulesConfig = undefined;
+    this._gitSubmodulesConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get gitSubmodulesConfigInput() {
-    return this._gitSubmodulesConfig
+    return this._gitSubmodulesConfig.internalValue;
   }
 }
 export interface CodebuildProjectVpcConfig {
@@ -1833,6 +2364,37 @@ export class CodebuildProjectVpcConfigOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodebuildProjectVpcConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._securityGroupIds) {
+      hasAnyValues = true;
+      internalValueResult.securityGroupIds = this._securityGroupIds;
+    }
+    if (this._subnets) {
+      hasAnyValues = true;
+      internalValueResult.subnets = this._subnets;
+    }
+    if (this._vpcId) {
+      hasAnyValues = true;
+      internalValueResult.vpcId = this._vpcId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodebuildProjectVpcConfig | undefined) {
+    if (value === undefined) {
+      this._securityGroupIds = undefined;
+      this._subnets = undefined;
+      this._vpcId = undefined;
+    }
+    else {
+      this._securityGroupIds = value.securityGroupIds;
+      this._subnets = value.subnets;
+      this._vpcId = value.vpcId;
+    }
+  }
+
   // security_group_ids - computed: false, optional: false, required: true
   private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
@@ -1843,7 +2405,7 @@ export class CodebuildProjectVpcConfigOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // subnets - computed: false, optional: false, required: true
@@ -1856,7 +2418,7 @@ export class CodebuildProjectVpcConfigOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get subnetsInput() {
-    return this._subnets
+    return this._subnets;
   }
 
   // vpc_id - computed: false, optional: false, required: true
@@ -1869,7 +2431,7 @@ export class CodebuildProjectVpcConfigOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 }
 
@@ -1916,16 +2478,16 @@ export class CodebuildProject extends cdktf.TerraformResource {
     this._sourceVersion = config.sourceVersion;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._artifacts = config.artifacts;
-    this._buildBatchConfig = config.buildBatchConfig;
-    this._cache = config.cache;
-    this._environment = config.environment;
+    this._artifacts.internalValue = config.artifacts;
+    this._buildBatchConfig.internalValue = config.buildBatchConfig;
+    this._cache.internalValue = config.cache;
+    this._environment.internalValue = config.environment;
     this._fileSystemLocations = config.fileSystemLocations;
-    this._logsConfig = config.logsConfig;
+    this._logsConfig.internalValue = config.logsConfig;
     this._secondaryArtifacts = config.secondaryArtifacts;
     this._secondarySources = config.secondarySources;
-    this._source = config.source;
-    this._vpcConfig = config.vpcConfig;
+    this._source.internalValue = config.source;
+    this._vpcConfig.internalValue = config.vpcConfig;
   }
 
   // ==========
@@ -1938,11 +2500,11 @@ export class CodebuildProject extends cdktf.TerraformResource {
   }
 
   // badge_enabled - computed: false, optional: true, required: false
-  private _badgeEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _badgeEnabled?: boolean | cdktf.IResolvable; 
   public get badgeEnabled() {
     return this.getBooleanAttribute('badge_enabled') as any;
   }
-  public set badgeEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set badgeEnabled(value: boolean | cdktf.IResolvable) {
     this._badgeEnabled = value;
   }
   public resetBadgeEnabled() {
@@ -1950,7 +2512,7 @@ export class CodebuildProject extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get badgeEnabledInput() {
-    return this._badgeEnabled
+    return this._badgeEnabled;
   }
 
   // badge_url - computed: true, optional: false, required: false
@@ -1959,11 +2521,11 @@ export class CodebuildProject extends cdktf.TerraformResource {
   }
 
   // build_timeout - computed: false, optional: true, required: false
-  private _buildTimeout?: number | undefined; 
+  private _buildTimeout?: number; 
   public get buildTimeout() {
     return this.getNumberAttribute('build_timeout');
   }
-  public set buildTimeout(value: number | undefined) {
+  public set buildTimeout(value: number) {
     this._buildTimeout = value;
   }
   public resetBuildTimeout() {
@@ -1971,15 +2533,15 @@ export class CodebuildProject extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get buildTimeoutInput() {
-    return this._buildTimeout
+    return this._buildTimeout;
   }
 
   // concurrent_build_limit - computed: false, optional: true, required: false
-  private _concurrentBuildLimit?: number | undefined; 
+  private _concurrentBuildLimit?: number; 
   public get concurrentBuildLimit() {
     return this.getNumberAttribute('concurrent_build_limit');
   }
-  public set concurrentBuildLimit(value: number | undefined) {
+  public set concurrentBuildLimit(value: number) {
     this._concurrentBuildLimit = value;
   }
   public resetConcurrentBuildLimit() {
@@ -1987,15 +2549,15 @@ export class CodebuildProject extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get concurrentBuildLimitInput() {
-    return this._concurrentBuildLimit
+    return this._concurrentBuildLimit;
   }
 
   // description - computed: true, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -2003,15 +2565,15 @@ export class CodebuildProject extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // encryption_key - computed: true, optional: true, required: false
-  private _encryptionKey?: string | undefined; 
+  private _encryptionKey?: string; 
   public get encryptionKey() {
     return this.getStringAttribute('encryption_key');
   }
-  public set encryptionKey(value: string | undefined) {
+  public set encryptionKey(value: string) {
     this._encryptionKey = value;
   }
   public resetEncryptionKey() {
@@ -2019,7 +2581,7 @@ export class CodebuildProject extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionKeyInput() {
-    return this._encryptionKey
+    return this._encryptionKey;
   }
 
   // id - computed: true, optional: true, required: false
@@ -2037,15 +2599,15 @@ export class CodebuildProject extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // queued_timeout - computed: false, optional: true, required: false
-  private _queuedTimeout?: number | undefined; 
+  private _queuedTimeout?: number; 
   public get queuedTimeout() {
     return this.getNumberAttribute('queued_timeout');
   }
-  public set queuedTimeout(value: number | undefined) {
+  public set queuedTimeout(value: number) {
     this._queuedTimeout = value;
   }
   public resetQueuedTimeout() {
@@ -2053,7 +2615,7 @@ export class CodebuildProject extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get queuedTimeoutInput() {
-    return this._queuedTimeout
+    return this._queuedTimeout;
   }
 
   // service_role - computed: false, optional: false, required: true
@@ -2066,15 +2628,15 @@ export class CodebuildProject extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceRoleInput() {
-    return this._serviceRole
+    return this._serviceRole;
   }
 
   // source_version - computed: false, optional: true, required: false
-  private _sourceVersion?: string | undefined; 
+  private _sourceVersion?: string; 
   public get sourceVersion() {
     return this.getStringAttribute('source_version');
   }
-  public set sourceVersion(value: string | undefined) {
+  public set sourceVersion(value: string) {
     this._sourceVersion = value;
   }
   public resetSourceVersion() {
@@ -2082,16 +2644,16 @@ export class CodebuildProject extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceVersionInput() {
-    return this._sourceVersion
+    return this._sourceVersion;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -2099,16 +2661,16 @@ export class CodebuildProject extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -2116,78 +2678,74 @@ export class CodebuildProject extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // artifacts - computed: false, optional: false, required: true
-  private _artifacts?: CodebuildProjectArtifacts; 
-  private __artifactsOutput = new CodebuildProjectArtifactsOutputReference(this as any, "artifacts", true);
+  private _artifacts = new CodebuildProjectArtifactsOutputReference(this as any, "artifacts", true);
   public get artifacts() {
-    return this.__artifactsOutput;
+    return this._artifacts;
   }
   public putArtifacts(value: CodebuildProjectArtifacts) {
-    this._artifacts = value;
+    this._artifacts.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get artifactsInput() {
-    return this._artifacts
+    return this._artifacts.internalValue;
   }
 
   // build_batch_config - computed: false, optional: true, required: false
-  private _buildBatchConfig?: CodebuildProjectBuildBatchConfig | undefined; 
-  private __buildBatchConfigOutput = new CodebuildProjectBuildBatchConfigOutputReference(this as any, "build_batch_config", true);
+  private _buildBatchConfig = new CodebuildProjectBuildBatchConfigOutputReference(this as any, "build_batch_config", true);
   public get buildBatchConfig() {
-    return this.__buildBatchConfigOutput;
+    return this._buildBatchConfig;
   }
-  public putBuildBatchConfig(value: CodebuildProjectBuildBatchConfig | undefined) {
-    this._buildBatchConfig = value;
+  public putBuildBatchConfig(value: CodebuildProjectBuildBatchConfig) {
+    this._buildBatchConfig.internalValue = value;
   }
   public resetBuildBatchConfig() {
-    this._buildBatchConfig = undefined;
+    this._buildBatchConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get buildBatchConfigInput() {
-    return this._buildBatchConfig
+    return this._buildBatchConfig.internalValue;
   }
 
   // cache - computed: false, optional: true, required: false
-  private _cache?: CodebuildProjectCache | undefined; 
-  private __cacheOutput = new CodebuildProjectCacheOutputReference(this as any, "cache", true);
+  private _cache = new CodebuildProjectCacheOutputReference(this as any, "cache", true);
   public get cache() {
-    return this.__cacheOutput;
+    return this._cache;
   }
-  public putCache(value: CodebuildProjectCache | undefined) {
-    this._cache = value;
+  public putCache(value: CodebuildProjectCache) {
+    this._cache.internalValue = value;
   }
   public resetCache() {
-    this._cache = undefined;
+    this._cache.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cacheInput() {
-    return this._cache
+    return this._cache.internalValue;
   }
 
   // environment - computed: false, optional: false, required: true
-  private _environment?: CodebuildProjectEnvironment; 
-  private __environmentOutput = new CodebuildProjectEnvironmentOutputReference(this as any, "environment", true);
+  private _environment = new CodebuildProjectEnvironmentOutputReference(this as any, "environment", true);
   public get environment() {
-    return this.__environmentOutput;
+    return this._environment;
   }
   public putEnvironment(value: CodebuildProjectEnvironment) {
-    this._environment = value;
+    this._environment.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get environmentInput() {
-    return this._environment
+    return this._environment.internalValue;
   }
 
   // file_system_locations - computed: false, optional: true, required: false
-  private _fileSystemLocations?: CodebuildProjectFileSystemLocations[] | undefined; 
+  private _fileSystemLocations?: CodebuildProjectFileSystemLocations[]; 
   public get fileSystemLocations() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('file_system_locations') as any;
   }
-  public set fileSystemLocations(value: CodebuildProjectFileSystemLocations[] | undefined) {
+  public set fileSystemLocations(value: CodebuildProjectFileSystemLocations[]) {
     this._fileSystemLocations = value;
   }
   public resetFileSystemLocations() {
@@ -2195,33 +2753,32 @@ export class CodebuildProject extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fileSystemLocationsInput() {
-    return this._fileSystemLocations
+    return this._fileSystemLocations;
   }
 
   // logs_config - computed: false, optional: true, required: false
-  private _logsConfig?: CodebuildProjectLogsConfig | undefined; 
-  private __logsConfigOutput = new CodebuildProjectLogsConfigOutputReference(this as any, "logs_config", true);
+  private _logsConfig = new CodebuildProjectLogsConfigOutputReference(this as any, "logs_config", true);
   public get logsConfig() {
-    return this.__logsConfigOutput;
+    return this._logsConfig;
   }
-  public putLogsConfig(value: CodebuildProjectLogsConfig | undefined) {
-    this._logsConfig = value;
+  public putLogsConfig(value: CodebuildProjectLogsConfig) {
+    this._logsConfig.internalValue = value;
   }
   public resetLogsConfig() {
-    this._logsConfig = undefined;
+    this._logsConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get logsConfigInput() {
-    return this._logsConfig
+    return this._logsConfig.internalValue;
   }
 
   // secondary_artifacts - computed: false, optional: true, required: false
-  private _secondaryArtifacts?: CodebuildProjectSecondaryArtifacts[] | undefined; 
+  private _secondaryArtifacts?: CodebuildProjectSecondaryArtifacts[]; 
   public get secondaryArtifacts() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('secondary_artifacts') as any;
   }
-  public set secondaryArtifacts(value: CodebuildProjectSecondaryArtifacts[] | undefined) {
+  public set secondaryArtifacts(value: CodebuildProjectSecondaryArtifacts[]) {
     this._secondaryArtifacts = value;
   }
   public resetSecondaryArtifacts() {
@@ -2229,16 +2786,16 @@ export class CodebuildProject extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get secondaryArtifactsInput() {
-    return this._secondaryArtifacts
+    return this._secondaryArtifacts;
   }
 
   // secondary_sources - computed: false, optional: true, required: false
-  private _secondarySources?: CodebuildProjectSecondarySources[] | undefined; 
+  private _secondarySources?: CodebuildProjectSecondarySources[]; 
   public get secondarySources() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('secondary_sources') as any;
   }
-  public set secondarySources(value: CodebuildProjectSecondarySources[] | undefined) {
+  public set secondarySources(value: CodebuildProjectSecondarySources[]) {
     this._secondarySources = value;
   }
   public resetSecondarySources() {
@@ -2246,38 +2803,36 @@ export class CodebuildProject extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get secondarySourcesInput() {
-    return this._secondarySources
+    return this._secondarySources;
   }
 
   // source - computed: false, optional: false, required: true
-  private _source?: CodebuildProjectSource; 
-  private __sourceOutput = new CodebuildProjectSourceOutputReference(this as any, "source", true);
+  private _source = new CodebuildProjectSourceOutputReference(this as any, "source", true);
   public get source() {
-    return this.__sourceOutput;
+    return this._source;
   }
   public putSource(value: CodebuildProjectSource) {
-    this._source = value;
+    this._source.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get sourceInput() {
-    return this._source
+    return this._source.internalValue;
   }
 
   // vpc_config - computed: false, optional: true, required: false
-  private _vpcConfig?: CodebuildProjectVpcConfig | undefined; 
-  private __vpcConfigOutput = new CodebuildProjectVpcConfigOutputReference(this as any, "vpc_config", true);
+  private _vpcConfig = new CodebuildProjectVpcConfigOutputReference(this as any, "vpc_config", true);
   public get vpcConfig() {
-    return this.__vpcConfigOutput;
+    return this._vpcConfig;
   }
-  public putVpcConfig(value: CodebuildProjectVpcConfig | undefined) {
-    this._vpcConfig = value;
+  public putVpcConfig(value: CodebuildProjectVpcConfig) {
+    this._vpcConfig.internalValue = value;
   }
   public resetVpcConfig() {
-    this._vpcConfig = undefined;
+    this._vpcConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get vpcConfigInput() {
-    return this._vpcConfig
+    return this._vpcConfig.internalValue;
   }
 
   // =========
@@ -2297,16 +2852,16 @@ export class CodebuildProject extends cdktf.TerraformResource {
       source_version: cdktf.stringToTerraform(this._sourceVersion),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      artifacts: codebuildProjectArtifactsToTerraform(this._artifacts),
-      build_batch_config: codebuildProjectBuildBatchConfigToTerraform(this._buildBatchConfig),
-      cache: codebuildProjectCacheToTerraform(this._cache),
-      environment: codebuildProjectEnvironmentToTerraform(this._environment),
+      artifacts: codebuildProjectArtifactsToTerraform(this._artifacts.internalValue),
+      build_batch_config: codebuildProjectBuildBatchConfigToTerraform(this._buildBatchConfig.internalValue),
+      cache: codebuildProjectCacheToTerraform(this._cache.internalValue),
+      environment: codebuildProjectEnvironmentToTerraform(this._environment.internalValue),
       file_system_locations: cdktf.listMapper(codebuildProjectFileSystemLocationsToTerraform)(this._fileSystemLocations),
-      logs_config: codebuildProjectLogsConfigToTerraform(this._logsConfig),
+      logs_config: codebuildProjectLogsConfigToTerraform(this._logsConfig.internalValue),
       secondary_artifacts: cdktf.listMapper(codebuildProjectSecondaryArtifactsToTerraform)(this._secondaryArtifacts),
       secondary_sources: cdktf.listMapper(codebuildProjectSecondarySourcesToTerraform)(this._secondarySources),
-      source: codebuildProjectSourceToTerraform(this._source),
-      vpc_config: codebuildProjectVpcConfigToTerraform(this._vpcConfig),
+      source: codebuildProjectSourceToTerraform(this._source.internalValue),
+      vpc_config: codebuildProjectVpcConfigToTerraform(this._vpcConfig.internalValue),
     };
   }
 }

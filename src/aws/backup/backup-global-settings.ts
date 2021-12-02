@@ -63,7 +63,7 @@ export class BackupGlobalSettings extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get globalSettingsInput() {
-    return this._globalSettings
+    return this._globalSettings;
   }
 
   // id - computed: true, optional: true, required: false

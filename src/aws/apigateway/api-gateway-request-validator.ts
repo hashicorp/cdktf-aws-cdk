@@ -82,7 +82,7 @@ export class ApiGatewayRequestValidator extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // rest_api_id - computed: false, optional: false, required: true
@@ -95,15 +95,15 @@ export class ApiGatewayRequestValidator extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get restApiIdInput() {
-    return this._restApiId
+    return this._restApiId;
   }
 
   // validate_request_body - computed: false, optional: true, required: false
-  private _validateRequestBody?: boolean | cdktf.IResolvable | undefined; 
+  private _validateRequestBody?: boolean | cdktf.IResolvable; 
   public get validateRequestBody() {
     return this.getBooleanAttribute('validate_request_body') as any;
   }
-  public set validateRequestBody(value: boolean | cdktf.IResolvable | undefined) {
+  public set validateRequestBody(value: boolean | cdktf.IResolvable) {
     this._validateRequestBody = value;
   }
   public resetValidateRequestBody() {
@@ -111,15 +111,15 @@ export class ApiGatewayRequestValidator extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get validateRequestBodyInput() {
-    return this._validateRequestBody
+    return this._validateRequestBody;
   }
 
   // validate_request_parameters - computed: false, optional: true, required: false
-  private _validateRequestParameters?: boolean | cdktf.IResolvable | undefined; 
+  private _validateRequestParameters?: boolean | cdktf.IResolvable; 
   public get validateRequestParameters() {
     return this.getBooleanAttribute('validate_request_parameters') as any;
   }
-  public set validateRequestParameters(value: boolean | cdktf.IResolvable | undefined) {
+  public set validateRequestParameters(value: boolean | cdktf.IResolvable) {
     this._validateRequestParameters = value;
   }
   public resetValidateRequestParameters() {
@@ -127,7 +127,7 @@ export class ApiGatewayRequestValidator extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get validateRequestParametersInput() {
-    return this._validateRequestParameters
+    return this._validateRequestParameters;
   }
 
   // =========

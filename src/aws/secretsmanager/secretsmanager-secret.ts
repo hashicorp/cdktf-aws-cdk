@@ -109,6 +109,25 @@ export class SecretsmanagerSecretRotationRulesOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SecretsmanagerSecretRotationRules | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._automaticallyAfterDays) {
+      hasAnyValues = true;
+      internalValueResult.automaticallyAfterDays = this._automaticallyAfterDays;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SecretsmanagerSecretRotationRules | undefined) {
+    if (value === undefined) {
+      this._automaticallyAfterDays = undefined;
+    }
+    else {
+      this._automaticallyAfterDays = value.automaticallyAfterDays;
+    }
+  }
+
   // automatically_after_days - computed: false, optional: false, required: true
   private _automaticallyAfterDays?: number; 
   public get automaticallyAfterDays() {
@@ -119,7 +138,7 @@ export class SecretsmanagerSecretRotationRulesOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get automaticallyAfterDaysInput() {
-    return this._automaticallyAfterDays
+    return this._automaticallyAfterDays;
   }
 }
 
@@ -166,7 +185,7 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._replica = config.replica;
-    this._rotationRules = config.rotationRules;
+    this._rotationRules.internalValue = config.rotationRules;
   }
 
   // ==========
@@ -179,11 +198,11 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -191,15 +210,15 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // force_overwrite_replica_secret - computed: false, optional: true, required: false
-  private _forceOverwriteReplicaSecret?: boolean | cdktf.IResolvable | undefined; 
+  private _forceOverwriteReplicaSecret?: boolean | cdktf.IResolvable; 
   public get forceOverwriteReplicaSecret() {
     return this.getBooleanAttribute('force_overwrite_replica_secret') as any;
   }
-  public set forceOverwriteReplicaSecret(value: boolean | cdktf.IResolvable | undefined) {
+  public set forceOverwriteReplicaSecret(value: boolean | cdktf.IResolvable) {
     this._forceOverwriteReplicaSecret = value;
   }
   public resetForceOverwriteReplicaSecret() {
@@ -207,7 +226,7 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get forceOverwriteReplicaSecretInput() {
-    return this._forceOverwriteReplicaSecret
+    return this._forceOverwriteReplicaSecret;
   }
 
   // id - computed: true, optional: true, required: false
@@ -216,11 +235,11 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
 
   // kms_key_id - computed: false, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -228,15 +247,15 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -244,15 +263,15 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_prefix - computed: true, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -260,15 +279,15 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // policy - computed: true, optional: true, required: false
-  private _policy?: string | undefined; 
+  private _policy?: string; 
   public get policy() {
     return this.getStringAttribute('policy');
   }
-  public set policy(value: string | undefined) {
+  public set policy(value: string) {
     this._policy = value;
   }
   public resetPolicy() {
@@ -276,15 +295,15 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // recovery_window_in_days - computed: false, optional: true, required: false
-  private _recoveryWindowInDays?: number | undefined; 
+  private _recoveryWindowInDays?: number; 
   public get recoveryWindowInDays() {
     return this.getNumberAttribute('recovery_window_in_days');
   }
-  public set recoveryWindowInDays(value: number | undefined) {
+  public set recoveryWindowInDays(value: number) {
     this._recoveryWindowInDays = value;
   }
   public resetRecoveryWindowInDays() {
@@ -292,7 +311,7 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get recoveryWindowInDaysInput() {
-    return this._recoveryWindowInDays
+    return this._recoveryWindowInDays;
   }
 
   // rotation_enabled - computed: true, optional: false, required: false
@@ -301,11 +320,11 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
 
   // rotation_lambda_arn - computed: true, optional: true, required: false
-  private _rotationLambdaArn?: string | undefined; 
+  private _rotationLambdaArn?: string; 
   public get rotationLambdaArn() {
     return this.getStringAttribute('rotation_lambda_arn');
   }
-  public set rotationLambdaArn(value: string | undefined) {
+  public set rotationLambdaArn(value: string) {
     this._rotationLambdaArn = value;
   }
   public resetRotationLambdaArn() {
@@ -313,16 +332,16 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rotationLambdaArnInput() {
-    return this._rotationLambdaArn
+    return this._rotationLambdaArn;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -330,16 +349,16 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -347,16 +366,16 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // replica - computed: false, optional: true, required: false
-  private _replica?: SecretsmanagerSecretReplica[] | undefined; 
+  private _replica?: SecretsmanagerSecretReplica[]; 
   public get replica() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('replica') as any;
   }
-  public set replica(value: SecretsmanagerSecretReplica[] | undefined) {
+  public set replica(value: SecretsmanagerSecretReplica[]) {
     this._replica = value;
   }
   public resetReplica() {
@@ -364,24 +383,23 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get replicaInput() {
-    return this._replica
+    return this._replica;
   }
 
   // rotation_rules - computed: false, optional: true, required: false
-  private _rotationRules?: SecretsmanagerSecretRotationRules | undefined; 
-  private __rotationRulesOutput = new SecretsmanagerSecretRotationRulesOutputReference(this as any, "rotation_rules", true);
+  private _rotationRules = new SecretsmanagerSecretRotationRulesOutputReference(this as any, "rotation_rules", true);
   public get rotationRules() {
-    return this.__rotationRulesOutput;
+    return this._rotationRules;
   }
-  public putRotationRules(value: SecretsmanagerSecretRotationRules | undefined) {
-    this._rotationRules = value;
+  public putRotationRules(value: SecretsmanagerSecretRotationRules) {
+    this._rotationRules.internalValue = value;
   }
   public resetRotationRules() {
-    this._rotationRules = undefined;
+    this._rotationRules.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get rotationRulesInput() {
-    return this._rotationRules
+    return this._rotationRules.internalValue;
   }
 
   // =========
@@ -401,7 +419,7 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       replica: cdktf.listMapper(secretsmanagerSecretReplicaToTerraform)(this._replica),
-      rotation_rules: secretsmanagerSecretRotationRulesToTerraform(this._rotationRules),
+      rotation_rules: secretsmanagerSecretRotationRulesToTerraform(this._rotationRules.internalValue),
     };
   }
 }

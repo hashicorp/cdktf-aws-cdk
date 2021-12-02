@@ -92,15 +92,15 @@ export class CloudwatchEventApiDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get connectionArnInput() {
-    return this._connectionArn
+    return this._connectionArn;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -108,7 +108,7 @@ export class CloudwatchEventApiDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // http_method - computed: false, optional: false, required: true
@@ -121,7 +121,7 @@ export class CloudwatchEventApiDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get httpMethodInput() {
-    return this._httpMethod
+    return this._httpMethod;
   }
 
   // id - computed: true, optional: true, required: false
@@ -139,15 +139,15 @@ export class CloudwatchEventApiDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get invocationEndpointInput() {
-    return this._invocationEndpoint
+    return this._invocationEndpoint;
   }
 
   // invocation_rate_limit_per_second - computed: false, optional: true, required: false
-  private _invocationRateLimitPerSecond?: number | undefined; 
+  private _invocationRateLimitPerSecond?: number; 
   public get invocationRateLimitPerSecond() {
     return this.getNumberAttribute('invocation_rate_limit_per_second');
   }
-  public set invocationRateLimitPerSecond(value: number | undefined) {
+  public set invocationRateLimitPerSecond(value: number) {
     this._invocationRateLimitPerSecond = value;
   }
   public resetInvocationRateLimitPerSecond() {
@@ -155,7 +155,7 @@ export class CloudwatchEventApiDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get invocationRateLimitPerSecondInput() {
-    return this._invocationRateLimitPerSecond
+    return this._invocationRateLimitPerSecond;
   }
 
   // name - computed: false, optional: false, required: true
@@ -168,7 +168,7 @@ export class CloudwatchEventApiDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // =========

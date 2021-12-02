@@ -45,6 +45,25 @@ export class S3BucketOwnershipControlsRuleOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketOwnershipControlsRule | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._objectOwnership) {
+      hasAnyValues = true;
+      internalValueResult.objectOwnership = this._objectOwnership;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketOwnershipControlsRule | undefined) {
+    if (value === undefined) {
+      this._objectOwnership = undefined;
+    }
+    else {
+      this._objectOwnership = value.objectOwnership;
+    }
+  }
+
   // object_ownership - computed: false, optional: false, required: true
   private _objectOwnership?: string; 
   public get objectOwnership() {
@@ -55,7 +74,7 @@ export class S3BucketOwnershipControlsRuleOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get objectOwnershipInput() {
-    return this._objectOwnership
+    return this._objectOwnership;
   }
 }
 
@@ -92,7 +111,7 @@ export class S3BucketOwnershipControls extends cdktf.TerraformResource {
       lifecycle: config.lifecycle
     });
     this._bucket = config.bucket;
-    this._rule = config.rule;
+    this._rule.internalValue = config.rule;
   }
 
   // ==========
@@ -109,7 +128,7 @@ export class S3BucketOwnershipControls extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // id - computed: true, optional: true, required: false
@@ -118,17 +137,16 @@ export class S3BucketOwnershipControls extends cdktf.TerraformResource {
   }
 
   // rule - computed: false, optional: false, required: true
-  private _rule?: S3BucketOwnershipControlsRule; 
-  private __ruleOutput = new S3BucketOwnershipControlsRuleOutputReference(this as any, "rule", true);
+  private _rule = new S3BucketOwnershipControlsRuleOutputReference(this as any, "rule", true);
   public get rule() {
-    return this.__ruleOutput;
+    return this._rule;
   }
   public putRule(value: S3BucketOwnershipControlsRule) {
-    this._rule = value;
+    this._rule.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get ruleInput() {
-    return this._rule
+    return this._rule.internalValue;
   }
 
   // =========
@@ -138,7 +156,7 @@ export class S3BucketOwnershipControls extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       bucket: cdktf.stringToTerraform(this._bucket),
-      rule: s3BucketOwnershipControlsRuleToTerraform(this._rule),
+      rule: s3BucketOwnershipControlsRuleToTerraform(this._rule.internalValue),
     };
   }
 }

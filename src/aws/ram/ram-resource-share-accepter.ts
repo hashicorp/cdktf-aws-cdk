@@ -50,12 +50,37 @@ export class RamResourceShareAccepterTimeoutsOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): RamResourceShareAccepterTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: RamResourceShareAccepterTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -63,15 +88,15 @@ export class RamResourceShareAccepterTimeoutsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -79,7 +104,7 @@ export class RamResourceShareAccepterTimeoutsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -116,7 +141,7 @@ export class RamResourceShareAccepter extends cdktf.TerraformResource {
       lifecycle: config.lifecycle
     });
     this._shareArn = config.shareArn;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -158,7 +183,7 @@ export class RamResourceShareAccepter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get shareArnInput() {
-    return this._shareArn
+    return this._shareArn;
   }
 
   // share_id - computed: true, optional: false, required: false
@@ -177,20 +202,19 @@ export class RamResourceShareAccepter extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: RamResourceShareAccepterTimeouts | undefined; 
-  private __timeoutsOutput = new RamResourceShareAccepterTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new RamResourceShareAccepterTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: RamResourceShareAccepterTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: RamResourceShareAccepterTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -200,7 +224,7 @@ export class RamResourceShareAccepter extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       share_arn: cdktf.stringToTerraform(this._shareArn),
-      timeouts: ramResourceShareAccepterTimeoutsToTerraform(this._timeouts),
+      timeouts: ramResourceShareAccepterTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

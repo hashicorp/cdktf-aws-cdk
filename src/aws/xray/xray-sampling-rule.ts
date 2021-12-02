@@ -123,12 +123,12 @@ export class XraySamplingRule extends cdktf.TerraformResource {
   }
 
   // attributes - computed: false, optional: true, required: false
-  private _attributes?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _attributes?: { [key: string]: string } | cdktf.IResolvable; 
   public get attributes() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('attributes') as any;
   }
-  public set attributes(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set attributes(value: { [key: string]: string } | cdktf.IResolvable) {
     this._attributes = value;
   }
   public resetAttributes() {
@@ -136,7 +136,7 @@ export class XraySamplingRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get attributesInput() {
-    return this._attributes
+    return this._attributes;
   }
 
   // fixed_rate - computed: false, optional: false, required: true
@@ -149,7 +149,7 @@ export class XraySamplingRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fixedRateInput() {
-    return this._fixedRate
+    return this._fixedRate;
   }
 
   // host - computed: false, optional: false, required: true
@@ -162,7 +162,7 @@ export class XraySamplingRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get hostInput() {
-    return this._host
+    return this._host;
   }
 
   // http_method - computed: false, optional: false, required: true
@@ -175,7 +175,7 @@ export class XraySamplingRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get httpMethodInput() {
-    return this._httpMethod
+    return this._httpMethod;
   }
 
   // id - computed: true, optional: true, required: false
@@ -193,7 +193,7 @@ export class XraySamplingRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get priorityInput() {
-    return this._priority
+    return this._priority;
   }
 
   // reservoir_size - computed: false, optional: false, required: true
@@ -206,7 +206,7 @@ export class XraySamplingRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get reservoirSizeInput() {
-    return this._reservoirSize
+    return this._reservoirSize;
   }
 
   // resource_arn - computed: false, optional: false, required: true
@@ -219,15 +219,15 @@ export class XraySamplingRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceArnInput() {
-    return this._resourceArn
+    return this._resourceArn;
   }
 
   // rule_name - computed: false, optional: true, required: false
-  private _ruleName?: string | undefined; 
+  private _ruleName?: string; 
   public get ruleName() {
     return this.getStringAttribute('rule_name');
   }
-  public set ruleName(value: string | undefined) {
+  public set ruleName(value: string) {
     this._ruleName = value;
   }
   public resetRuleName() {
@@ -235,7 +235,7 @@ export class XraySamplingRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ruleNameInput() {
-    return this._ruleName
+    return this._ruleName;
   }
 
   // service_name - computed: false, optional: false, required: true
@@ -248,7 +248,7 @@ export class XraySamplingRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceNameInput() {
-    return this._serviceName
+    return this._serviceName;
   }
 
   // service_type - computed: false, optional: false, required: true
@@ -261,16 +261,16 @@ export class XraySamplingRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceTypeInput() {
-    return this._serviceType
+    return this._serviceType;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -278,16 +278,16 @@ export class XraySamplingRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -295,7 +295,7 @@ export class XraySamplingRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // url_path - computed: false, optional: false, required: true
@@ -308,7 +308,7 @@ export class XraySamplingRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get urlPathInput() {
-    return this._urlPath
+    return this._urlPath;
   }
 
   // version - computed: false, optional: false, required: true
@@ -321,7 +321,7 @@ export class XraySamplingRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 
   // =========

@@ -77,7 +77,7 @@ export class Ec2Tag extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // resource_id - computed: false, optional: false, required: true
@@ -90,7 +90,7 @@ export class Ec2Tag extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceIdInput() {
-    return this._resourceId
+    return this._resourceId;
   }
 
   // value - computed: false, optional: false, required: true
@@ -103,7 +103,7 @@ export class Ec2Tag extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 
   // =========

@@ -63,11 +63,11 @@ export class Sleep extends cdktf.TerraformResource {
   // ==========
 
   // create_duration - computed: false, optional: true, required: false
-  private _createDuration?: string | undefined; 
+  private _createDuration?: string; 
   public get createDuration() {
     return this.getStringAttribute('create_duration');
   }
-  public set createDuration(value: string | undefined) {
+  public set createDuration(value: string) {
     this._createDuration = value;
   }
   public resetCreateDuration() {
@@ -75,15 +75,15 @@ export class Sleep extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get createDurationInput() {
-    return this._createDuration
+    return this._createDuration;
   }
 
   // destroy_duration - computed: false, optional: true, required: false
-  private _destroyDuration?: string | undefined; 
+  private _destroyDuration?: string; 
   public get destroyDuration() {
     return this.getStringAttribute('destroy_duration');
   }
-  public set destroyDuration(value: string | undefined) {
+  public set destroyDuration(value: string) {
     this._destroyDuration = value;
   }
   public resetDestroyDuration() {
@@ -91,7 +91,7 @@ export class Sleep extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get destroyDurationInput() {
-    return this._destroyDuration
+    return this._destroyDuration;
   }
 
   // id - computed: true, optional: true, required: false
@@ -100,12 +100,12 @@ export class Sleep extends cdktf.TerraformResource {
   }
 
   // triggers - computed: false, optional: true, required: false
-  private _triggers?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _triggers?: { [key: string]: string } | cdktf.IResolvable; 
   public get triggers() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('triggers') as any;
   }
-  public set triggers(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set triggers(value: { [key: string]: string } | cdktf.IResolvable) {
     this._triggers = value;
   }
   public resetTriggers() {
@@ -113,7 +113,7 @@ export class Sleep extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get triggersInput() {
-    return this._triggers
+    return this._triggers;
   }
 
   // =========

@@ -82,7 +82,7 @@ export class CodebuildSourceCredential extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authTypeInput() {
-    return this._authType
+    return this._authType;
   }
 
   // id - computed: true, optional: true, required: false
@@ -100,7 +100,7 @@ export class CodebuildSourceCredential extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serverTypeInput() {
-    return this._serverType
+    return this._serverType;
   }
 
   // token - computed: false, optional: false, required: true
@@ -113,15 +113,15 @@ export class CodebuildSourceCredential extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tokenInput() {
-    return this._token
+    return this._token;
   }
 
   // user_name - computed: false, optional: true, required: false
-  private _userName?: string | undefined; 
+  private _userName?: string; 
   public get userName() {
     return this.getStringAttribute('user_name');
   }
-  public set userName(value: string | undefined) {
+  public set userName(value: string) {
     this._userName = value;
   }
   public resetUserName() {
@@ -129,7 +129,7 @@ export class CodebuildSourceCredential extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userNameInput() {
-    return this._userName
+    return this._userName;
   }
 
   // =========

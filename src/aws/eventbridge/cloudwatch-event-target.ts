@@ -138,12 +138,49 @@ export class CloudwatchEventTargetBatchTargetOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventTargetBatchTarget | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arraySize) {
+      hasAnyValues = true;
+      internalValueResult.arraySize = this._arraySize;
+    }
+    if (this._jobAttempts) {
+      hasAnyValues = true;
+      internalValueResult.jobAttempts = this._jobAttempts;
+    }
+    if (this._jobDefinition) {
+      hasAnyValues = true;
+      internalValueResult.jobDefinition = this._jobDefinition;
+    }
+    if (this._jobName) {
+      hasAnyValues = true;
+      internalValueResult.jobName = this._jobName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventTargetBatchTarget | undefined) {
+    if (value === undefined) {
+      this._arraySize = undefined;
+      this._jobAttempts = undefined;
+      this._jobDefinition = undefined;
+      this._jobName = undefined;
+    }
+    else {
+      this._arraySize = value.arraySize;
+      this._jobAttempts = value.jobAttempts;
+      this._jobDefinition = value.jobDefinition;
+      this._jobName = value.jobName;
+    }
+  }
+
   // array_size - computed: false, optional: true, required: false
-  private _arraySize?: number | undefined; 
+  private _arraySize?: number; 
   public get arraySize() {
     return this.getNumberAttribute('array_size');
   }
-  public set arraySize(value: number | undefined) {
+  public set arraySize(value: number) {
     this._arraySize = value;
   }
   public resetArraySize() {
@@ -151,15 +188,15 @@ export class CloudwatchEventTargetBatchTargetOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get arraySizeInput() {
-    return this._arraySize
+    return this._arraySize;
   }
 
   // job_attempts - computed: false, optional: true, required: false
-  private _jobAttempts?: number | undefined; 
+  private _jobAttempts?: number; 
   public get jobAttempts() {
     return this.getNumberAttribute('job_attempts');
   }
-  public set jobAttempts(value: number | undefined) {
+  public set jobAttempts(value: number) {
     this._jobAttempts = value;
   }
   public resetJobAttempts() {
@@ -167,7 +204,7 @@ export class CloudwatchEventTargetBatchTargetOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get jobAttemptsInput() {
-    return this._jobAttempts
+    return this._jobAttempts;
   }
 
   // job_definition - computed: false, optional: false, required: true
@@ -180,7 +217,7 @@ export class CloudwatchEventTargetBatchTargetOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get jobDefinitionInput() {
-    return this._jobDefinition
+    return this._jobDefinition;
   }
 
   // job_name - computed: false, optional: false, required: true
@@ -193,7 +230,7 @@ export class CloudwatchEventTargetBatchTargetOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get jobNameInput() {
-    return this._jobName
+    return this._jobName;
   }
 }
 export interface CloudwatchEventTargetDeadLetterConfig {
@@ -223,12 +260,31 @@ export class CloudwatchEventTargetDeadLetterConfigOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventTargetDeadLetterConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventTargetDeadLetterConfig | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+    }
+    else {
+      this._arn = value.arn;
+    }
+  }
+
   // arn - computed: false, optional: true, required: false
-  private _arn?: string | undefined; 
+  private _arn?: string; 
   public get arn() {
     return this.getStringAttribute('arn');
   }
-  public set arn(value: string | undefined) {
+  public set arn(value: string) {
     this._arn = value;
   }
   public resetArn() {
@@ -236,7 +292,7 @@ export class CloudwatchEventTargetDeadLetterConfigOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 }
 export interface CloudwatchEventTargetEcsTargetNetworkConfiguration {
@@ -276,12 +332,43 @@ export class CloudwatchEventTargetEcsTargetNetworkConfigurationOutputReference e
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventTargetEcsTargetNetworkConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._assignPublicIp) {
+      hasAnyValues = true;
+      internalValueResult.assignPublicIp = this._assignPublicIp;
+    }
+    if (this._securityGroups) {
+      hasAnyValues = true;
+      internalValueResult.securityGroups = this._securityGroups;
+    }
+    if (this._subnets) {
+      hasAnyValues = true;
+      internalValueResult.subnets = this._subnets;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventTargetEcsTargetNetworkConfiguration | undefined) {
+    if (value === undefined) {
+      this._assignPublicIp = undefined;
+      this._securityGroups = undefined;
+      this._subnets = undefined;
+    }
+    else {
+      this._assignPublicIp = value.assignPublicIp;
+      this._securityGroups = value.securityGroups;
+      this._subnets = value.subnets;
+    }
+  }
+
   // assign_public_ip - computed: false, optional: true, required: false
-  private _assignPublicIp?: boolean | cdktf.IResolvable | undefined; 
+  private _assignPublicIp?: boolean | cdktf.IResolvable; 
   public get assignPublicIp() {
     return this.getBooleanAttribute('assign_public_ip') as any;
   }
-  public set assignPublicIp(value: boolean | cdktf.IResolvable | undefined) {
+  public set assignPublicIp(value: boolean | cdktf.IResolvable) {
     this._assignPublicIp = value;
   }
   public resetAssignPublicIp() {
@@ -289,15 +376,15 @@ export class CloudwatchEventTargetEcsTargetNetworkConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get assignPublicIpInput() {
-    return this._assignPublicIp
+    return this._assignPublicIp;
   }
 
   // security_groups - computed: false, optional: true, required: false
-  private _securityGroups?: string[] | undefined; 
+  private _securityGroups?: string[]; 
   public get securityGroups() {
     return this.getListAttribute('security_groups');
   }
-  public set securityGroups(value: string[] | undefined) {
+  public set securityGroups(value: string[]) {
     this._securityGroups = value;
   }
   public resetSecurityGroups() {
@@ -305,7 +392,7 @@ export class CloudwatchEventTargetEcsTargetNetworkConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupsInput() {
-    return this._securityGroups
+    return this._securityGroups;
   }
 
   // subnets - computed: false, optional: false, required: true
@@ -318,7 +405,7 @@ export class CloudwatchEventTargetEcsTargetNetworkConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get subnetsInput() {
-    return this._subnets
+    return this._subnets;
   }
 }
 export interface CloudwatchEventTargetEcsTargetPlacementConstraint {
@@ -424,12 +511,91 @@ export class CloudwatchEventTargetEcsTargetOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventTargetEcsTarget | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enableEcsManagedTags) {
+      hasAnyValues = true;
+      internalValueResult.enableEcsManagedTags = this._enableEcsManagedTags;
+    }
+    if (this._enableExecuteCommand) {
+      hasAnyValues = true;
+      internalValueResult.enableExecuteCommand = this._enableExecuteCommand;
+    }
+    if (this._group) {
+      hasAnyValues = true;
+      internalValueResult.group = this._group;
+    }
+    if (this._launchType) {
+      hasAnyValues = true;
+      internalValueResult.launchType = this._launchType;
+    }
+    if (this._platformVersion) {
+      hasAnyValues = true;
+      internalValueResult.platformVersion = this._platformVersion;
+    }
+    if (this._propagateTags) {
+      hasAnyValues = true;
+      internalValueResult.propagateTags = this._propagateTags;
+    }
+    if (this._tags) {
+      hasAnyValues = true;
+      internalValueResult.tags = this._tags;
+    }
+    if (this._taskCount) {
+      hasAnyValues = true;
+      internalValueResult.taskCount = this._taskCount;
+    }
+    if (this._taskDefinitionArn) {
+      hasAnyValues = true;
+      internalValueResult.taskDefinitionArn = this._taskDefinitionArn;
+    }
+    if (this._networkConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.networkConfiguration = this._networkConfiguration?.internalValue;
+    }
+    if (this._placementConstraint) {
+      hasAnyValues = true;
+      internalValueResult.placementConstraint = this._placementConstraint;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventTargetEcsTarget | undefined) {
+    if (value === undefined) {
+      this._enableEcsManagedTags = undefined;
+      this._enableExecuteCommand = undefined;
+      this._group = undefined;
+      this._launchType = undefined;
+      this._platformVersion = undefined;
+      this._propagateTags = undefined;
+      this._tags = undefined;
+      this._taskCount = undefined;
+      this._taskDefinitionArn = undefined;
+      this._networkConfiguration.internalValue = undefined;
+      this._placementConstraint = undefined;
+    }
+    else {
+      this._enableEcsManagedTags = value.enableEcsManagedTags;
+      this._enableExecuteCommand = value.enableExecuteCommand;
+      this._group = value.group;
+      this._launchType = value.launchType;
+      this._platformVersion = value.platformVersion;
+      this._propagateTags = value.propagateTags;
+      this._tags = value.tags;
+      this._taskCount = value.taskCount;
+      this._taskDefinitionArn = value.taskDefinitionArn;
+      this._networkConfiguration.internalValue = value.networkConfiguration;
+      this._placementConstraint = value.placementConstraint;
+    }
+  }
+
   // enable_ecs_managed_tags - computed: false, optional: true, required: false
-  private _enableEcsManagedTags?: boolean | cdktf.IResolvable | undefined; 
+  private _enableEcsManagedTags?: boolean | cdktf.IResolvable; 
   public get enableEcsManagedTags() {
     return this.getBooleanAttribute('enable_ecs_managed_tags') as any;
   }
-  public set enableEcsManagedTags(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableEcsManagedTags(value: boolean | cdktf.IResolvable) {
     this._enableEcsManagedTags = value;
   }
   public resetEnableEcsManagedTags() {
@@ -437,15 +603,15 @@ export class CloudwatchEventTargetEcsTargetOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get enableEcsManagedTagsInput() {
-    return this._enableEcsManagedTags
+    return this._enableEcsManagedTags;
   }
 
   // enable_execute_command - computed: false, optional: true, required: false
-  private _enableExecuteCommand?: boolean | cdktf.IResolvable | undefined; 
+  private _enableExecuteCommand?: boolean | cdktf.IResolvable; 
   public get enableExecuteCommand() {
     return this.getBooleanAttribute('enable_execute_command') as any;
   }
-  public set enableExecuteCommand(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableExecuteCommand(value: boolean | cdktf.IResolvable) {
     this._enableExecuteCommand = value;
   }
   public resetEnableExecuteCommand() {
@@ -453,15 +619,15 @@ export class CloudwatchEventTargetEcsTargetOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get enableExecuteCommandInput() {
-    return this._enableExecuteCommand
+    return this._enableExecuteCommand;
   }
 
   // group - computed: false, optional: true, required: false
-  private _group?: string | undefined; 
+  private _group?: string; 
   public get group() {
     return this.getStringAttribute('group');
   }
-  public set group(value: string | undefined) {
+  public set group(value: string) {
     this._group = value;
   }
   public resetGroup() {
@@ -469,15 +635,15 @@ export class CloudwatchEventTargetEcsTargetOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get groupInput() {
-    return this._group
+    return this._group;
   }
 
   // launch_type - computed: false, optional: true, required: false
-  private _launchType?: string | undefined; 
+  private _launchType?: string; 
   public get launchType() {
     return this.getStringAttribute('launch_type');
   }
-  public set launchType(value: string | undefined) {
+  public set launchType(value: string) {
     this._launchType = value;
   }
   public resetLaunchType() {
@@ -485,15 +651,15 @@ export class CloudwatchEventTargetEcsTargetOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get launchTypeInput() {
-    return this._launchType
+    return this._launchType;
   }
 
   // platform_version - computed: false, optional: true, required: false
-  private _platformVersion?: string | undefined; 
+  private _platformVersion?: string; 
   public get platformVersion() {
     return this.getStringAttribute('platform_version');
   }
-  public set platformVersion(value: string | undefined) {
+  public set platformVersion(value: string) {
     this._platformVersion = value;
   }
   public resetPlatformVersion() {
@@ -501,15 +667,15 @@ export class CloudwatchEventTargetEcsTargetOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get platformVersionInput() {
-    return this._platformVersion
+    return this._platformVersion;
   }
 
   // propagate_tags - computed: false, optional: true, required: false
-  private _propagateTags?: string | undefined; 
+  private _propagateTags?: string; 
   public get propagateTags() {
     return this.getStringAttribute('propagate_tags');
   }
-  public set propagateTags(value: string | undefined) {
+  public set propagateTags(value: string) {
     this._propagateTags = value;
   }
   public resetPropagateTags() {
@@ -517,16 +683,16 @@ export class CloudwatchEventTargetEcsTargetOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get propagateTagsInput() {
-    return this._propagateTags
+    return this._propagateTags;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -534,15 +700,15 @@ export class CloudwatchEventTargetEcsTargetOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // task_count - computed: false, optional: true, required: false
-  private _taskCount?: number | undefined; 
+  private _taskCount?: number; 
   public get taskCount() {
     return this.getNumberAttribute('task_count');
   }
-  public set taskCount(value: number | undefined) {
+  public set taskCount(value: number) {
     this._taskCount = value;
   }
   public resetTaskCount() {
@@ -550,7 +716,7 @@ export class CloudwatchEventTargetEcsTargetOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get taskCountInput() {
-    return this._taskCount
+    return this._taskCount;
   }
 
   // task_definition_arn - computed: false, optional: false, required: true
@@ -563,33 +729,32 @@ export class CloudwatchEventTargetEcsTargetOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get taskDefinitionArnInput() {
-    return this._taskDefinitionArn
+    return this._taskDefinitionArn;
   }
 
   // network_configuration - computed: false, optional: true, required: false
-  private _networkConfiguration?: CloudwatchEventTargetEcsTargetNetworkConfiguration | undefined; 
-  private __networkConfigurationOutput = new CloudwatchEventTargetEcsTargetNetworkConfigurationOutputReference(this as any, "network_configuration", true);
+  private _networkConfiguration = new CloudwatchEventTargetEcsTargetNetworkConfigurationOutputReference(this as any, "network_configuration", true);
   public get networkConfiguration() {
-    return this.__networkConfigurationOutput;
+    return this._networkConfiguration;
   }
-  public putNetworkConfiguration(value: CloudwatchEventTargetEcsTargetNetworkConfiguration | undefined) {
-    this._networkConfiguration = value;
+  public putNetworkConfiguration(value: CloudwatchEventTargetEcsTargetNetworkConfiguration) {
+    this._networkConfiguration.internalValue = value;
   }
   public resetNetworkConfiguration() {
-    this._networkConfiguration = undefined;
+    this._networkConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get networkConfigurationInput() {
-    return this._networkConfiguration
+    return this._networkConfiguration.internalValue;
   }
 
   // placement_constraint - computed: false, optional: true, required: false
-  private _placementConstraint?: CloudwatchEventTargetEcsTargetPlacementConstraint[] | undefined; 
+  private _placementConstraint?: CloudwatchEventTargetEcsTargetPlacementConstraint[]; 
   public get placementConstraint() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('placement_constraint') as any;
   }
-  public set placementConstraint(value: CloudwatchEventTargetEcsTargetPlacementConstraint[] | undefined) {
+  public set placementConstraint(value: CloudwatchEventTargetEcsTargetPlacementConstraint[]) {
     this._placementConstraint = value;
   }
   public resetPlacementConstraint() {
@@ -597,7 +762,7 @@ export class CloudwatchEventTargetEcsTargetOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get placementConstraintInput() {
-    return this._placementConstraint
+    return this._placementConstraint;
   }
 }
 export interface CloudwatchEventTargetHttpTarget {
@@ -637,13 +802,44 @@ export class CloudwatchEventTargetHttpTargetOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventTargetHttpTarget | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._headerParameters) {
+      hasAnyValues = true;
+      internalValueResult.headerParameters = this._headerParameters;
+    }
+    if (this._pathParameterValues) {
+      hasAnyValues = true;
+      internalValueResult.pathParameterValues = this._pathParameterValues;
+    }
+    if (this._queryStringParameters) {
+      hasAnyValues = true;
+      internalValueResult.queryStringParameters = this._queryStringParameters;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventTargetHttpTarget | undefined) {
+    if (value === undefined) {
+      this._headerParameters = undefined;
+      this._pathParameterValues = undefined;
+      this._queryStringParameters = undefined;
+    }
+    else {
+      this._headerParameters = value.headerParameters;
+      this._pathParameterValues = value.pathParameterValues;
+      this._queryStringParameters = value.queryStringParameters;
+    }
+  }
+
   // header_parameters - computed: false, optional: true, required: false
-  private _headerParameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _headerParameters?: { [key: string]: string } | cdktf.IResolvable; 
   public get headerParameters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('header_parameters') as any;
   }
-  public set headerParameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set headerParameters(value: { [key: string]: string } | cdktf.IResolvable) {
     this._headerParameters = value;
   }
   public resetHeaderParameters() {
@@ -651,15 +847,15 @@ export class CloudwatchEventTargetHttpTargetOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get headerParametersInput() {
-    return this._headerParameters
+    return this._headerParameters;
   }
 
   // path_parameter_values - computed: false, optional: true, required: false
-  private _pathParameterValues?: string[] | undefined; 
+  private _pathParameterValues?: string[]; 
   public get pathParameterValues() {
     return this.getListAttribute('path_parameter_values');
   }
-  public set pathParameterValues(value: string[] | undefined) {
+  public set pathParameterValues(value: string[]) {
     this._pathParameterValues = value;
   }
   public resetPathParameterValues() {
@@ -667,16 +863,16 @@ export class CloudwatchEventTargetHttpTargetOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get pathParameterValuesInput() {
-    return this._pathParameterValues
+    return this._pathParameterValues;
   }
 
   // query_string_parameters - computed: false, optional: true, required: false
-  private _queryStringParameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _queryStringParameters?: { [key: string]: string } | cdktf.IResolvable; 
   public get queryStringParameters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('query_string_parameters') as any;
   }
-  public set queryStringParameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set queryStringParameters(value: { [key: string]: string } | cdktf.IResolvable) {
     this._queryStringParameters = value;
   }
   public resetQueryStringParameters() {
@@ -684,7 +880,7 @@ export class CloudwatchEventTargetHttpTargetOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringParametersInput() {
-    return this._queryStringParameters
+    return this._queryStringParameters;
   }
 }
 export interface CloudwatchEventTargetInputTransformer {
@@ -719,13 +915,38 @@ export class CloudwatchEventTargetInputTransformerOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventTargetInputTransformer | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._inputPaths) {
+      hasAnyValues = true;
+      internalValueResult.inputPaths = this._inputPaths;
+    }
+    if (this._inputTemplate) {
+      hasAnyValues = true;
+      internalValueResult.inputTemplate = this._inputTemplate;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventTargetInputTransformer | undefined) {
+    if (value === undefined) {
+      this._inputPaths = undefined;
+      this._inputTemplate = undefined;
+    }
+    else {
+      this._inputPaths = value.inputPaths;
+      this._inputTemplate = value.inputTemplate;
+    }
+  }
+
   // input_paths - computed: false, optional: true, required: false
-  private _inputPaths?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _inputPaths?: { [key: string]: string } | cdktf.IResolvable; 
   public get inputPaths() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('input_paths') as any;
   }
-  public set inputPaths(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set inputPaths(value: { [key: string]: string } | cdktf.IResolvable) {
     this._inputPaths = value;
   }
   public resetInputPaths() {
@@ -733,7 +954,7 @@ export class CloudwatchEventTargetInputTransformerOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get inputPathsInput() {
-    return this._inputPaths
+    return this._inputPaths;
   }
 
   // input_template - computed: false, optional: false, required: true
@@ -746,7 +967,7 @@ export class CloudwatchEventTargetInputTransformerOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get inputTemplateInput() {
-    return this._inputTemplate
+    return this._inputTemplate;
   }
 }
 export interface CloudwatchEventTargetKinesisTarget {
@@ -776,12 +997,31 @@ export class CloudwatchEventTargetKinesisTargetOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventTargetKinesisTarget | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._partitionKeyPath) {
+      hasAnyValues = true;
+      internalValueResult.partitionKeyPath = this._partitionKeyPath;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventTargetKinesisTarget | undefined) {
+    if (value === undefined) {
+      this._partitionKeyPath = undefined;
+    }
+    else {
+      this._partitionKeyPath = value.partitionKeyPath;
+    }
+  }
+
   // partition_key_path - computed: false, optional: true, required: false
-  private _partitionKeyPath?: string | undefined; 
+  private _partitionKeyPath?: string; 
   public get partitionKeyPath() {
     return this.getStringAttribute('partition_key_path');
   }
-  public set partitionKeyPath(value: string | undefined) {
+  public set partitionKeyPath(value: string) {
     this._partitionKeyPath = value;
   }
   public resetPartitionKeyPath() {
@@ -789,7 +1029,7 @@ export class CloudwatchEventTargetKinesisTargetOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get partitionKeyPathInput() {
-    return this._partitionKeyPath
+    return this._partitionKeyPath;
   }
 }
 export interface CloudwatchEventTargetRedshiftTarget {
@@ -844,6 +1084,55 @@ export class CloudwatchEventTargetRedshiftTargetOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventTargetRedshiftTarget | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._database) {
+      hasAnyValues = true;
+      internalValueResult.database = this._database;
+    }
+    if (this._dbUser) {
+      hasAnyValues = true;
+      internalValueResult.dbUser = this._dbUser;
+    }
+    if (this._secretsManagerArn) {
+      hasAnyValues = true;
+      internalValueResult.secretsManagerArn = this._secretsManagerArn;
+    }
+    if (this._sql) {
+      hasAnyValues = true;
+      internalValueResult.sql = this._sql;
+    }
+    if (this._statementName) {
+      hasAnyValues = true;
+      internalValueResult.statementName = this._statementName;
+    }
+    if (this._withEvent) {
+      hasAnyValues = true;
+      internalValueResult.withEvent = this._withEvent;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventTargetRedshiftTarget | undefined) {
+    if (value === undefined) {
+      this._database = undefined;
+      this._dbUser = undefined;
+      this._secretsManagerArn = undefined;
+      this._sql = undefined;
+      this._statementName = undefined;
+      this._withEvent = undefined;
+    }
+    else {
+      this._database = value.database;
+      this._dbUser = value.dbUser;
+      this._secretsManagerArn = value.secretsManagerArn;
+      this._sql = value.sql;
+      this._statementName = value.statementName;
+      this._withEvent = value.withEvent;
+    }
+  }
+
   // database - computed: false, optional: false, required: true
   private _database?: string; 
   public get database() {
@@ -854,15 +1143,15 @@ export class CloudwatchEventTargetRedshiftTargetOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get databaseInput() {
-    return this._database
+    return this._database;
   }
 
   // db_user - computed: false, optional: true, required: false
-  private _dbUser?: string | undefined; 
+  private _dbUser?: string; 
   public get dbUser() {
     return this.getStringAttribute('db_user');
   }
-  public set dbUser(value: string | undefined) {
+  public set dbUser(value: string) {
     this._dbUser = value;
   }
   public resetDbUser() {
@@ -870,15 +1159,15 @@ export class CloudwatchEventTargetRedshiftTargetOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get dbUserInput() {
-    return this._dbUser
+    return this._dbUser;
   }
 
   // secrets_manager_arn - computed: false, optional: true, required: false
-  private _secretsManagerArn?: string | undefined; 
+  private _secretsManagerArn?: string; 
   public get secretsManagerArn() {
     return this.getStringAttribute('secrets_manager_arn');
   }
-  public set secretsManagerArn(value: string | undefined) {
+  public set secretsManagerArn(value: string) {
     this._secretsManagerArn = value;
   }
   public resetSecretsManagerArn() {
@@ -886,15 +1175,15 @@ export class CloudwatchEventTargetRedshiftTargetOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get secretsManagerArnInput() {
-    return this._secretsManagerArn
+    return this._secretsManagerArn;
   }
 
   // sql - computed: false, optional: true, required: false
-  private _sql?: string | undefined; 
+  private _sql?: string; 
   public get sql() {
     return this.getStringAttribute('sql');
   }
-  public set sql(value: string | undefined) {
+  public set sql(value: string) {
     this._sql = value;
   }
   public resetSql() {
@@ -902,15 +1191,15 @@ export class CloudwatchEventTargetRedshiftTargetOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get sqlInput() {
-    return this._sql
+    return this._sql;
   }
 
   // statement_name - computed: false, optional: true, required: false
-  private _statementName?: string | undefined; 
+  private _statementName?: string; 
   public get statementName() {
     return this.getStringAttribute('statement_name');
   }
-  public set statementName(value: string | undefined) {
+  public set statementName(value: string) {
     this._statementName = value;
   }
   public resetStatementName() {
@@ -918,15 +1207,15 @@ export class CloudwatchEventTargetRedshiftTargetOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get statementNameInput() {
-    return this._statementName
+    return this._statementName;
   }
 
   // with_event - computed: false, optional: true, required: false
-  private _withEvent?: boolean | cdktf.IResolvable | undefined; 
+  private _withEvent?: boolean | cdktf.IResolvable; 
   public get withEvent() {
     return this.getBooleanAttribute('with_event') as any;
   }
-  public set withEvent(value: boolean | cdktf.IResolvable | undefined) {
+  public set withEvent(value: boolean | cdktf.IResolvable) {
     this._withEvent = value;
   }
   public resetWithEvent() {
@@ -934,7 +1223,7 @@ export class CloudwatchEventTargetRedshiftTargetOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get withEventInput() {
-    return this._withEvent
+    return this._withEvent;
   }
 }
 export interface CloudwatchEventTargetRetryPolicy {
@@ -969,12 +1258,37 @@ export class CloudwatchEventTargetRetryPolicyOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventTargetRetryPolicy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._maximumEventAgeInSeconds) {
+      hasAnyValues = true;
+      internalValueResult.maximumEventAgeInSeconds = this._maximumEventAgeInSeconds;
+    }
+    if (this._maximumRetryAttempts) {
+      hasAnyValues = true;
+      internalValueResult.maximumRetryAttempts = this._maximumRetryAttempts;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventTargetRetryPolicy | undefined) {
+    if (value === undefined) {
+      this._maximumEventAgeInSeconds = undefined;
+      this._maximumRetryAttempts = undefined;
+    }
+    else {
+      this._maximumEventAgeInSeconds = value.maximumEventAgeInSeconds;
+      this._maximumRetryAttempts = value.maximumRetryAttempts;
+    }
+  }
+
   // maximum_event_age_in_seconds - computed: false, optional: true, required: false
-  private _maximumEventAgeInSeconds?: number | undefined; 
+  private _maximumEventAgeInSeconds?: number; 
   public get maximumEventAgeInSeconds() {
     return this.getNumberAttribute('maximum_event_age_in_seconds');
   }
-  public set maximumEventAgeInSeconds(value: number | undefined) {
+  public set maximumEventAgeInSeconds(value: number) {
     this._maximumEventAgeInSeconds = value;
   }
   public resetMaximumEventAgeInSeconds() {
@@ -982,15 +1296,15 @@ export class CloudwatchEventTargetRetryPolicyOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get maximumEventAgeInSecondsInput() {
-    return this._maximumEventAgeInSeconds
+    return this._maximumEventAgeInSeconds;
   }
 
   // maximum_retry_attempts - computed: false, optional: true, required: false
-  private _maximumRetryAttempts?: number | undefined; 
+  private _maximumRetryAttempts?: number; 
   public get maximumRetryAttempts() {
     return this.getNumberAttribute('maximum_retry_attempts');
   }
-  public set maximumRetryAttempts(value: number | undefined) {
+  public set maximumRetryAttempts(value: number) {
     this._maximumRetryAttempts = value;
   }
   public resetMaximumRetryAttempts() {
@@ -998,7 +1312,7 @@ export class CloudwatchEventTargetRetryPolicyOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get maximumRetryAttemptsInput() {
-    return this._maximumRetryAttempts
+    return this._maximumRetryAttempts;
   }
 }
 export interface CloudwatchEventTargetRunCommandTargets {
@@ -1050,12 +1364,31 @@ export class CloudwatchEventTargetSqsTargetOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchEventTargetSqsTarget | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._messageGroupId) {
+      hasAnyValues = true;
+      internalValueResult.messageGroupId = this._messageGroupId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchEventTargetSqsTarget | undefined) {
+    if (value === undefined) {
+      this._messageGroupId = undefined;
+    }
+    else {
+      this._messageGroupId = value.messageGroupId;
+    }
+  }
+
   // message_group_id - computed: false, optional: true, required: false
-  private _messageGroupId?: string | undefined; 
+  private _messageGroupId?: string; 
   public get messageGroupId() {
     return this.getStringAttribute('message_group_id');
   }
-  public set messageGroupId(value: string | undefined) {
+  public set messageGroupId(value: string) {
     this._messageGroupId = value;
   }
   public resetMessageGroupId() {
@@ -1063,7 +1396,7 @@ export class CloudwatchEventTargetSqsTargetOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get messageGroupIdInput() {
-    return this._messageGroupId
+    return this._messageGroupId;
   }
 }
 
@@ -1106,16 +1439,16 @@ export class CloudwatchEventTarget extends cdktf.TerraformResource {
     this._roleArn = config.roleArn;
     this._rule = config.rule;
     this._targetId = config.targetId;
-    this._batchTarget = config.batchTarget;
-    this._deadLetterConfig = config.deadLetterConfig;
-    this._ecsTarget = config.ecsTarget;
-    this._httpTarget = config.httpTarget;
-    this._inputTransformer = config.inputTransformer;
-    this._kinesisTarget = config.kinesisTarget;
-    this._redshiftTarget = config.redshiftTarget;
-    this._retryPolicy = config.retryPolicy;
+    this._batchTarget.internalValue = config.batchTarget;
+    this._deadLetterConfig.internalValue = config.deadLetterConfig;
+    this._ecsTarget.internalValue = config.ecsTarget;
+    this._httpTarget.internalValue = config.httpTarget;
+    this._inputTransformer.internalValue = config.inputTransformer;
+    this._kinesisTarget.internalValue = config.kinesisTarget;
+    this._redshiftTarget.internalValue = config.redshiftTarget;
+    this._retryPolicy.internalValue = config.retryPolicy;
     this._runCommandTargets = config.runCommandTargets;
-    this._sqsTarget = config.sqsTarget;
+    this._sqsTarget.internalValue = config.sqsTarget;
   }
 
   // ==========
@@ -1132,15 +1465,15 @@ export class CloudwatchEventTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // event_bus_name - computed: false, optional: true, required: false
-  private _eventBusName?: string | undefined; 
+  private _eventBusName?: string; 
   public get eventBusName() {
     return this.getStringAttribute('event_bus_name');
   }
-  public set eventBusName(value: string | undefined) {
+  public set eventBusName(value: string) {
     this._eventBusName = value;
   }
   public resetEventBusName() {
@@ -1148,7 +1481,7 @@ export class CloudwatchEventTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get eventBusNameInput() {
-    return this._eventBusName
+    return this._eventBusName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -1157,11 +1490,11 @@ export class CloudwatchEventTarget extends cdktf.TerraformResource {
   }
 
   // input - computed: false, optional: true, required: false
-  private _input?: string | undefined; 
+  private _input?: string; 
   public get input() {
     return this.getStringAttribute('input');
   }
-  public set input(value: string | undefined) {
+  public set input(value: string) {
     this._input = value;
   }
   public resetInput() {
@@ -1169,15 +1502,15 @@ export class CloudwatchEventTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get inputInput() {
-    return this._input
+    return this._input;
   }
 
   // input_path - computed: false, optional: true, required: false
-  private _inputPath?: string | undefined; 
+  private _inputPath?: string; 
   public get inputPath() {
     return this.getStringAttribute('input_path');
   }
-  public set inputPath(value: string | undefined) {
+  public set inputPath(value: string) {
     this._inputPath = value;
   }
   public resetInputPath() {
@@ -1185,15 +1518,15 @@ export class CloudwatchEventTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get inputPathInput() {
-    return this._inputPath
+    return this._inputPath;
   }
 
   // role_arn - computed: false, optional: true, required: false
-  private _roleArn?: string | undefined; 
+  private _roleArn?: string; 
   public get roleArn() {
     return this.getStringAttribute('role_arn');
   }
-  public set roleArn(value: string | undefined) {
+  public set roleArn(value: string) {
     this._roleArn = value;
   }
   public resetRoleArn() {
@@ -1201,7 +1534,7 @@ export class CloudwatchEventTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // rule - computed: false, optional: false, required: true
@@ -1214,15 +1547,15 @@ export class CloudwatchEventTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ruleInput() {
-    return this._rule
+    return this._rule;
   }
 
   // target_id - computed: true, optional: true, required: false
-  private _targetId?: string | undefined; 
+  private _targetId?: string; 
   public get targetId() {
     return this.getStringAttribute('target_id');
   }
-  public set targetId(value: string | undefined) {
+  public set targetId(value: string) {
     this._targetId = value;
   }
   public resetTargetId() {
@@ -1230,152 +1563,144 @@ export class CloudwatchEventTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetIdInput() {
-    return this._targetId
+    return this._targetId;
   }
 
   // batch_target - computed: false, optional: true, required: false
-  private _batchTarget?: CloudwatchEventTargetBatchTarget | undefined; 
-  private __batchTargetOutput = new CloudwatchEventTargetBatchTargetOutputReference(this as any, "batch_target", true);
+  private _batchTarget = new CloudwatchEventTargetBatchTargetOutputReference(this as any, "batch_target", true);
   public get batchTarget() {
-    return this.__batchTargetOutput;
+    return this._batchTarget;
   }
-  public putBatchTarget(value: CloudwatchEventTargetBatchTarget | undefined) {
-    this._batchTarget = value;
+  public putBatchTarget(value: CloudwatchEventTargetBatchTarget) {
+    this._batchTarget.internalValue = value;
   }
   public resetBatchTarget() {
-    this._batchTarget = undefined;
+    this._batchTarget.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get batchTargetInput() {
-    return this._batchTarget
+    return this._batchTarget.internalValue;
   }
 
   // dead_letter_config - computed: false, optional: true, required: false
-  private _deadLetterConfig?: CloudwatchEventTargetDeadLetterConfig | undefined; 
-  private __deadLetterConfigOutput = new CloudwatchEventTargetDeadLetterConfigOutputReference(this as any, "dead_letter_config", true);
+  private _deadLetterConfig = new CloudwatchEventTargetDeadLetterConfigOutputReference(this as any, "dead_letter_config", true);
   public get deadLetterConfig() {
-    return this.__deadLetterConfigOutput;
+    return this._deadLetterConfig;
   }
-  public putDeadLetterConfig(value: CloudwatchEventTargetDeadLetterConfig | undefined) {
-    this._deadLetterConfig = value;
+  public putDeadLetterConfig(value: CloudwatchEventTargetDeadLetterConfig) {
+    this._deadLetterConfig.internalValue = value;
   }
   public resetDeadLetterConfig() {
-    this._deadLetterConfig = undefined;
+    this._deadLetterConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get deadLetterConfigInput() {
-    return this._deadLetterConfig
+    return this._deadLetterConfig.internalValue;
   }
 
   // ecs_target - computed: false, optional: true, required: false
-  private _ecsTarget?: CloudwatchEventTargetEcsTarget | undefined; 
-  private __ecsTargetOutput = new CloudwatchEventTargetEcsTargetOutputReference(this as any, "ecs_target", true);
+  private _ecsTarget = new CloudwatchEventTargetEcsTargetOutputReference(this as any, "ecs_target", true);
   public get ecsTarget() {
-    return this.__ecsTargetOutput;
+    return this._ecsTarget;
   }
-  public putEcsTarget(value: CloudwatchEventTargetEcsTarget | undefined) {
-    this._ecsTarget = value;
+  public putEcsTarget(value: CloudwatchEventTargetEcsTarget) {
+    this._ecsTarget.internalValue = value;
   }
   public resetEcsTarget() {
-    this._ecsTarget = undefined;
+    this._ecsTarget.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ecsTargetInput() {
-    return this._ecsTarget
+    return this._ecsTarget.internalValue;
   }
 
   // http_target - computed: false, optional: true, required: false
-  private _httpTarget?: CloudwatchEventTargetHttpTarget | undefined; 
-  private __httpTargetOutput = new CloudwatchEventTargetHttpTargetOutputReference(this as any, "http_target", true);
+  private _httpTarget = new CloudwatchEventTargetHttpTargetOutputReference(this as any, "http_target", true);
   public get httpTarget() {
-    return this.__httpTargetOutput;
+    return this._httpTarget;
   }
-  public putHttpTarget(value: CloudwatchEventTargetHttpTarget | undefined) {
-    this._httpTarget = value;
+  public putHttpTarget(value: CloudwatchEventTargetHttpTarget) {
+    this._httpTarget.internalValue = value;
   }
   public resetHttpTarget() {
-    this._httpTarget = undefined;
+    this._httpTarget.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get httpTargetInput() {
-    return this._httpTarget
+    return this._httpTarget.internalValue;
   }
 
   // input_transformer - computed: false, optional: true, required: false
-  private _inputTransformer?: CloudwatchEventTargetInputTransformer | undefined; 
-  private __inputTransformerOutput = new CloudwatchEventTargetInputTransformerOutputReference(this as any, "input_transformer", true);
+  private _inputTransformer = new CloudwatchEventTargetInputTransformerOutputReference(this as any, "input_transformer", true);
   public get inputTransformer() {
-    return this.__inputTransformerOutput;
+    return this._inputTransformer;
   }
-  public putInputTransformer(value: CloudwatchEventTargetInputTransformer | undefined) {
-    this._inputTransformer = value;
+  public putInputTransformer(value: CloudwatchEventTargetInputTransformer) {
+    this._inputTransformer.internalValue = value;
   }
   public resetInputTransformer() {
-    this._inputTransformer = undefined;
+    this._inputTransformer.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get inputTransformerInput() {
-    return this._inputTransformer
+    return this._inputTransformer.internalValue;
   }
 
   // kinesis_target - computed: false, optional: true, required: false
-  private _kinesisTarget?: CloudwatchEventTargetKinesisTarget | undefined; 
-  private __kinesisTargetOutput = new CloudwatchEventTargetKinesisTargetOutputReference(this as any, "kinesis_target", true);
+  private _kinesisTarget = new CloudwatchEventTargetKinesisTargetOutputReference(this as any, "kinesis_target", true);
   public get kinesisTarget() {
-    return this.__kinesisTargetOutput;
+    return this._kinesisTarget;
   }
-  public putKinesisTarget(value: CloudwatchEventTargetKinesisTarget | undefined) {
-    this._kinesisTarget = value;
+  public putKinesisTarget(value: CloudwatchEventTargetKinesisTarget) {
+    this._kinesisTarget.internalValue = value;
   }
   public resetKinesisTarget() {
-    this._kinesisTarget = undefined;
+    this._kinesisTarget.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get kinesisTargetInput() {
-    return this._kinesisTarget
+    return this._kinesisTarget.internalValue;
   }
 
   // redshift_target - computed: false, optional: true, required: false
-  private _redshiftTarget?: CloudwatchEventTargetRedshiftTarget | undefined; 
-  private __redshiftTargetOutput = new CloudwatchEventTargetRedshiftTargetOutputReference(this as any, "redshift_target", true);
+  private _redshiftTarget = new CloudwatchEventTargetRedshiftTargetOutputReference(this as any, "redshift_target", true);
   public get redshiftTarget() {
-    return this.__redshiftTargetOutput;
+    return this._redshiftTarget;
   }
-  public putRedshiftTarget(value: CloudwatchEventTargetRedshiftTarget | undefined) {
-    this._redshiftTarget = value;
+  public putRedshiftTarget(value: CloudwatchEventTargetRedshiftTarget) {
+    this._redshiftTarget.internalValue = value;
   }
   public resetRedshiftTarget() {
-    this._redshiftTarget = undefined;
+    this._redshiftTarget.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get redshiftTargetInput() {
-    return this._redshiftTarget
+    return this._redshiftTarget.internalValue;
   }
 
   // retry_policy - computed: false, optional: true, required: false
-  private _retryPolicy?: CloudwatchEventTargetRetryPolicy | undefined; 
-  private __retryPolicyOutput = new CloudwatchEventTargetRetryPolicyOutputReference(this as any, "retry_policy", true);
+  private _retryPolicy = new CloudwatchEventTargetRetryPolicyOutputReference(this as any, "retry_policy", true);
   public get retryPolicy() {
-    return this.__retryPolicyOutput;
+    return this._retryPolicy;
   }
-  public putRetryPolicy(value: CloudwatchEventTargetRetryPolicy | undefined) {
-    this._retryPolicy = value;
+  public putRetryPolicy(value: CloudwatchEventTargetRetryPolicy) {
+    this._retryPolicy.internalValue = value;
   }
   public resetRetryPolicy() {
-    this._retryPolicy = undefined;
+    this._retryPolicy.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get retryPolicyInput() {
-    return this._retryPolicy
+    return this._retryPolicy.internalValue;
   }
 
   // run_command_targets - computed: false, optional: true, required: false
-  private _runCommandTargets?: CloudwatchEventTargetRunCommandTargets[] | undefined; 
+  private _runCommandTargets?: CloudwatchEventTargetRunCommandTargets[]; 
   public get runCommandTargets() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('run_command_targets') as any;
   }
-  public set runCommandTargets(value: CloudwatchEventTargetRunCommandTargets[] | undefined) {
+  public set runCommandTargets(value: CloudwatchEventTargetRunCommandTargets[]) {
     this._runCommandTargets = value;
   }
   public resetRunCommandTargets() {
@@ -1383,24 +1708,23 @@ export class CloudwatchEventTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get runCommandTargetsInput() {
-    return this._runCommandTargets
+    return this._runCommandTargets;
   }
 
   // sqs_target - computed: false, optional: true, required: false
-  private _sqsTarget?: CloudwatchEventTargetSqsTarget | undefined; 
-  private __sqsTargetOutput = new CloudwatchEventTargetSqsTargetOutputReference(this as any, "sqs_target", true);
+  private _sqsTarget = new CloudwatchEventTargetSqsTargetOutputReference(this as any, "sqs_target", true);
   public get sqsTarget() {
-    return this.__sqsTargetOutput;
+    return this._sqsTarget;
   }
-  public putSqsTarget(value: CloudwatchEventTargetSqsTarget | undefined) {
-    this._sqsTarget = value;
+  public putSqsTarget(value: CloudwatchEventTargetSqsTarget) {
+    this._sqsTarget.internalValue = value;
   }
   public resetSqsTarget() {
-    this._sqsTarget = undefined;
+    this._sqsTarget.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get sqsTargetInput() {
-    return this._sqsTarget
+    return this._sqsTarget.internalValue;
   }
 
   // =========
@@ -1416,16 +1740,16 @@ export class CloudwatchEventTarget extends cdktf.TerraformResource {
       role_arn: cdktf.stringToTerraform(this._roleArn),
       rule: cdktf.stringToTerraform(this._rule),
       target_id: cdktf.stringToTerraform(this._targetId),
-      batch_target: cloudwatchEventTargetBatchTargetToTerraform(this._batchTarget),
-      dead_letter_config: cloudwatchEventTargetDeadLetterConfigToTerraform(this._deadLetterConfig),
-      ecs_target: cloudwatchEventTargetEcsTargetToTerraform(this._ecsTarget),
-      http_target: cloudwatchEventTargetHttpTargetToTerraform(this._httpTarget),
-      input_transformer: cloudwatchEventTargetInputTransformerToTerraform(this._inputTransformer),
-      kinesis_target: cloudwatchEventTargetKinesisTargetToTerraform(this._kinesisTarget),
-      redshift_target: cloudwatchEventTargetRedshiftTargetToTerraform(this._redshiftTarget),
-      retry_policy: cloudwatchEventTargetRetryPolicyToTerraform(this._retryPolicy),
+      batch_target: cloudwatchEventTargetBatchTargetToTerraform(this._batchTarget.internalValue),
+      dead_letter_config: cloudwatchEventTargetDeadLetterConfigToTerraform(this._deadLetterConfig.internalValue),
+      ecs_target: cloudwatchEventTargetEcsTargetToTerraform(this._ecsTarget.internalValue),
+      http_target: cloudwatchEventTargetHttpTargetToTerraform(this._httpTarget.internalValue),
+      input_transformer: cloudwatchEventTargetInputTransformerToTerraform(this._inputTransformer.internalValue),
+      kinesis_target: cloudwatchEventTargetKinesisTargetToTerraform(this._kinesisTarget.internalValue),
+      redshift_target: cloudwatchEventTargetRedshiftTargetToTerraform(this._redshiftTarget.internalValue),
+      retry_policy: cloudwatchEventTargetRetryPolicyToTerraform(this._retryPolicy.internalValue),
       run_command_targets: cdktf.listMapper(cloudwatchEventTargetRunCommandTargetsToTerraform)(this._runCommandTargets),
-      sqs_target: cloudwatchEventTargetSqsTargetToTerraform(this._sqsTarget),
+      sqs_target: cloudwatchEventTargetSqsTargetToTerraform(this._sqsTarget.internalValue),
     };
   }
 }

@@ -82,7 +82,7 @@ export class Apigatewayv2RouteResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiIdInput() {
-    return this._apiId
+    return this._apiId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -91,11 +91,11 @@ export class Apigatewayv2RouteResponse extends cdktf.TerraformResource {
   }
 
   // model_selection_expression - computed: false, optional: true, required: false
-  private _modelSelectionExpression?: string | undefined; 
+  private _modelSelectionExpression?: string; 
   public get modelSelectionExpression() {
     return this.getStringAttribute('model_selection_expression');
   }
-  public set modelSelectionExpression(value: string | undefined) {
+  public set modelSelectionExpression(value: string) {
     this._modelSelectionExpression = value;
   }
   public resetModelSelectionExpression() {
@@ -103,16 +103,16 @@ export class Apigatewayv2RouteResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get modelSelectionExpressionInput() {
-    return this._modelSelectionExpression
+    return this._modelSelectionExpression;
   }
 
   // response_models - computed: false, optional: true, required: false
-  private _responseModels?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _responseModels?: { [key: string]: string } | cdktf.IResolvable; 
   public get responseModels() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('response_models') as any;
   }
-  public set responseModels(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set responseModels(value: { [key: string]: string } | cdktf.IResolvable) {
     this._responseModels = value;
   }
   public resetResponseModels() {
@@ -120,7 +120,7 @@ export class Apigatewayv2RouteResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get responseModelsInput() {
-    return this._responseModels
+    return this._responseModels;
   }
 
   // route_id - computed: false, optional: false, required: true
@@ -133,7 +133,7 @@ export class Apigatewayv2RouteResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get routeIdInput() {
-    return this._routeId
+    return this._routeId;
   }
 
   // route_response_key - computed: false, optional: false, required: true
@@ -146,7 +146,7 @@ export class Apigatewayv2RouteResponse extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get routeResponseKeyInput() {
-    return this._routeResponseKey
+    return this._routeResponseKey;
   }
 
   // =========

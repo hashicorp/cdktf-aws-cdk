@@ -93,12 +93,55 @@ export class WorkspacesDirectorySelfServicePermissionsOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): WorkspacesDirectorySelfServicePermissions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._changeComputeType) {
+      hasAnyValues = true;
+      internalValueResult.changeComputeType = this._changeComputeType;
+    }
+    if (this._increaseVolumeSize) {
+      hasAnyValues = true;
+      internalValueResult.increaseVolumeSize = this._increaseVolumeSize;
+    }
+    if (this._rebuildWorkspace) {
+      hasAnyValues = true;
+      internalValueResult.rebuildWorkspace = this._rebuildWorkspace;
+    }
+    if (this._restartWorkspace) {
+      hasAnyValues = true;
+      internalValueResult.restartWorkspace = this._restartWorkspace;
+    }
+    if (this._switchRunningMode) {
+      hasAnyValues = true;
+      internalValueResult.switchRunningMode = this._switchRunningMode;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: WorkspacesDirectorySelfServicePermissions | undefined) {
+    if (value === undefined) {
+      this._changeComputeType = undefined;
+      this._increaseVolumeSize = undefined;
+      this._rebuildWorkspace = undefined;
+      this._restartWorkspace = undefined;
+      this._switchRunningMode = undefined;
+    }
+    else {
+      this._changeComputeType = value.changeComputeType;
+      this._increaseVolumeSize = value.increaseVolumeSize;
+      this._rebuildWorkspace = value.rebuildWorkspace;
+      this._restartWorkspace = value.restartWorkspace;
+      this._switchRunningMode = value.switchRunningMode;
+    }
+  }
+
   // change_compute_type - computed: false, optional: true, required: false
-  private _changeComputeType?: boolean | cdktf.IResolvable | undefined; 
+  private _changeComputeType?: boolean | cdktf.IResolvable; 
   public get changeComputeType() {
     return this.getBooleanAttribute('change_compute_type') as any;
   }
-  public set changeComputeType(value: boolean | cdktf.IResolvable | undefined) {
+  public set changeComputeType(value: boolean | cdktf.IResolvable) {
     this._changeComputeType = value;
   }
   public resetChangeComputeType() {
@@ -106,15 +149,15 @@ export class WorkspacesDirectorySelfServicePermissionsOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get changeComputeTypeInput() {
-    return this._changeComputeType
+    return this._changeComputeType;
   }
 
   // increase_volume_size - computed: false, optional: true, required: false
-  private _increaseVolumeSize?: boolean | cdktf.IResolvable | undefined; 
+  private _increaseVolumeSize?: boolean | cdktf.IResolvable; 
   public get increaseVolumeSize() {
     return this.getBooleanAttribute('increase_volume_size') as any;
   }
-  public set increaseVolumeSize(value: boolean | cdktf.IResolvable | undefined) {
+  public set increaseVolumeSize(value: boolean | cdktf.IResolvable) {
     this._increaseVolumeSize = value;
   }
   public resetIncreaseVolumeSize() {
@@ -122,15 +165,15 @@ export class WorkspacesDirectorySelfServicePermissionsOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get increaseVolumeSizeInput() {
-    return this._increaseVolumeSize
+    return this._increaseVolumeSize;
   }
 
   // rebuild_workspace - computed: false, optional: true, required: false
-  private _rebuildWorkspace?: boolean | cdktf.IResolvable | undefined; 
+  private _rebuildWorkspace?: boolean | cdktf.IResolvable; 
   public get rebuildWorkspace() {
     return this.getBooleanAttribute('rebuild_workspace') as any;
   }
-  public set rebuildWorkspace(value: boolean | cdktf.IResolvable | undefined) {
+  public set rebuildWorkspace(value: boolean | cdktf.IResolvable) {
     this._rebuildWorkspace = value;
   }
   public resetRebuildWorkspace() {
@@ -138,15 +181,15 @@ export class WorkspacesDirectorySelfServicePermissionsOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get rebuildWorkspaceInput() {
-    return this._rebuildWorkspace
+    return this._rebuildWorkspace;
   }
 
   // restart_workspace - computed: false, optional: true, required: false
-  private _restartWorkspace?: boolean | cdktf.IResolvable | undefined; 
+  private _restartWorkspace?: boolean | cdktf.IResolvable; 
   public get restartWorkspace() {
     return this.getBooleanAttribute('restart_workspace') as any;
   }
-  public set restartWorkspace(value: boolean | cdktf.IResolvable | undefined) {
+  public set restartWorkspace(value: boolean | cdktf.IResolvable) {
     this._restartWorkspace = value;
   }
   public resetRestartWorkspace() {
@@ -154,15 +197,15 @@ export class WorkspacesDirectorySelfServicePermissionsOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get restartWorkspaceInput() {
-    return this._restartWorkspace
+    return this._restartWorkspace;
   }
 
   // switch_running_mode - computed: false, optional: true, required: false
-  private _switchRunningMode?: boolean | cdktf.IResolvable | undefined; 
+  private _switchRunningMode?: boolean | cdktf.IResolvable; 
   public get switchRunningMode() {
     return this.getBooleanAttribute('switch_running_mode') as any;
   }
-  public set switchRunningMode(value: boolean | cdktf.IResolvable | undefined) {
+  public set switchRunningMode(value: boolean | cdktf.IResolvable) {
     this._switchRunningMode = value;
   }
   public resetSwitchRunningMode() {
@@ -170,7 +213,7 @@ export class WorkspacesDirectorySelfServicePermissionsOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get switchRunningModeInput() {
-    return this._switchRunningMode
+    return this._switchRunningMode;
   }
 }
 export interface WorkspacesDirectoryWorkspaceAccessProperties {
@@ -235,12 +278,73 @@ export class WorkspacesDirectoryWorkspaceAccessPropertiesOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): WorkspacesDirectoryWorkspaceAccessProperties | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._deviceTypeAndroid) {
+      hasAnyValues = true;
+      internalValueResult.deviceTypeAndroid = this._deviceTypeAndroid;
+    }
+    if (this._deviceTypeChromeos) {
+      hasAnyValues = true;
+      internalValueResult.deviceTypeChromeos = this._deviceTypeChromeos;
+    }
+    if (this._deviceTypeIos) {
+      hasAnyValues = true;
+      internalValueResult.deviceTypeIos = this._deviceTypeIos;
+    }
+    if (this._deviceTypeLinux) {
+      hasAnyValues = true;
+      internalValueResult.deviceTypeLinux = this._deviceTypeLinux;
+    }
+    if (this._deviceTypeOsx) {
+      hasAnyValues = true;
+      internalValueResult.deviceTypeOsx = this._deviceTypeOsx;
+    }
+    if (this._deviceTypeWeb) {
+      hasAnyValues = true;
+      internalValueResult.deviceTypeWeb = this._deviceTypeWeb;
+    }
+    if (this._deviceTypeWindows) {
+      hasAnyValues = true;
+      internalValueResult.deviceTypeWindows = this._deviceTypeWindows;
+    }
+    if (this._deviceTypeZeroclient) {
+      hasAnyValues = true;
+      internalValueResult.deviceTypeZeroclient = this._deviceTypeZeroclient;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: WorkspacesDirectoryWorkspaceAccessProperties | undefined) {
+    if (value === undefined) {
+      this._deviceTypeAndroid = undefined;
+      this._deviceTypeChromeos = undefined;
+      this._deviceTypeIos = undefined;
+      this._deviceTypeLinux = undefined;
+      this._deviceTypeOsx = undefined;
+      this._deviceTypeWeb = undefined;
+      this._deviceTypeWindows = undefined;
+      this._deviceTypeZeroclient = undefined;
+    }
+    else {
+      this._deviceTypeAndroid = value.deviceTypeAndroid;
+      this._deviceTypeChromeos = value.deviceTypeChromeos;
+      this._deviceTypeIos = value.deviceTypeIos;
+      this._deviceTypeLinux = value.deviceTypeLinux;
+      this._deviceTypeOsx = value.deviceTypeOsx;
+      this._deviceTypeWeb = value.deviceTypeWeb;
+      this._deviceTypeWindows = value.deviceTypeWindows;
+      this._deviceTypeZeroclient = value.deviceTypeZeroclient;
+    }
+  }
+
   // device_type_android - computed: false, optional: true, required: false
-  private _deviceTypeAndroid?: string | undefined; 
+  private _deviceTypeAndroid?: string; 
   public get deviceTypeAndroid() {
     return this.getStringAttribute('device_type_android');
   }
-  public set deviceTypeAndroid(value: string | undefined) {
+  public set deviceTypeAndroid(value: string) {
     this._deviceTypeAndroid = value;
   }
   public resetDeviceTypeAndroid() {
@@ -248,15 +352,15 @@ export class WorkspacesDirectoryWorkspaceAccessPropertiesOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get deviceTypeAndroidInput() {
-    return this._deviceTypeAndroid
+    return this._deviceTypeAndroid;
   }
 
   // device_type_chromeos - computed: false, optional: true, required: false
-  private _deviceTypeChromeos?: string | undefined; 
+  private _deviceTypeChromeos?: string; 
   public get deviceTypeChromeos() {
     return this.getStringAttribute('device_type_chromeos');
   }
-  public set deviceTypeChromeos(value: string | undefined) {
+  public set deviceTypeChromeos(value: string) {
     this._deviceTypeChromeos = value;
   }
   public resetDeviceTypeChromeos() {
@@ -264,15 +368,15 @@ export class WorkspacesDirectoryWorkspaceAccessPropertiesOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get deviceTypeChromeosInput() {
-    return this._deviceTypeChromeos
+    return this._deviceTypeChromeos;
   }
 
   // device_type_ios - computed: false, optional: true, required: false
-  private _deviceTypeIos?: string | undefined; 
+  private _deviceTypeIos?: string; 
   public get deviceTypeIos() {
     return this.getStringAttribute('device_type_ios');
   }
-  public set deviceTypeIos(value: string | undefined) {
+  public set deviceTypeIos(value: string) {
     this._deviceTypeIos = value;
   }
   public resetDeviceTypeIos() {
@@ -280,15 +384,15 @@ export class WorkspacesDirectoryWorkspaceAccessPropertiesOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get deviceTypeIosInput() {
-    return this._deviceTypeIos
+    return this._deviceTypeIos;
   }
 
   // device_type_linux - computed: false, optional: true, required: false
-  private _deviceTypeLinux?: string | undefined; 
+  private _deviceTypeLinux?: string; 
   public get deviceTypeLinux() {
     return this.getStringAttribute('device_type_linux');
   }
-  public set deviceTypeLinux(value: string | undefined) {
+  public set deviceTypeLinux(value: string) {
     this._deviceTypeLinux = value;
   }
   public resetDeviceTypeLinux() {
@@ -296,15 +400,15 @@ export class WorkspacesDirectoryWorkspaceAccessPropertiesOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get deviceTypeLinuxInput() {
-    return this._deviceTypeLinux
+    return this._deviceTypeLinux;
   }
 
   // device_type_osx - computed: false, optional: true, required: false
-  private _deviceTypeOsx?: string | undefined; 
+  private _deviceTypeOsx?: string; 
   public get deviceTypeOsx() {
     return this.getStringAttribute('device_type_osx');
   }
-  public set deviceTypeOsx(value: string | undefined) {
+  public set deviceTypeOsx(value: string) {
     this._deviceTypeOsx = value;
   }
   public resetDeviceTypeOsx() {
@@ -312,15 +416,15 @@ export class WorkspacesDirectoryWorkspaceAccessPropertiesOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get deviceTypeOsxInput() {
-    return this._deviceTypeOsx
+    return this._deviceTypeOsx;
   }
 
   // device_type_web - computed: false, optional: true, required: false
-  private _deviceTypeWeb?: string | undefined; 
+  private _deviceTypeWeb?: string; 
   public get deviceTypeWeb() {
     return this.getStringAttribute('device_type_web');
   }
-  public set deviceTypeWeb(value: string | undefined) {
+  public set deviceTypeWeb(value: string) {
     this._deviceTypeWeb = value;
   }
   public resetDeviceTypeWeb() {
@@ -328,15 +432,15 @@ export class WorkspacesDirectoryWorkspaceAccessPropertiesOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get deviceTypeWebInput() {
-    return this._deviceTypeWeb
+    return this._deviceTypeWeb;
   }
 
   // device_type_windows - computed: false, optional: true, required: false
-  private _deviceTypeWindows?: string | undefined; 
+  private _deviceTypeWindows?: string; 
   public get deviceTypeWindows() {
     return this.getStringAttribute('device_type_windows');
   }
-  public set deviceTypeWindows(value: string | undefined) {
+  public set deviceTypeWindows(value: string) {
     this._deviceTypeWindows = value;
   }
   public resetDeviceTypeWindows() {
@@ -344,15 +448,15 @@ export class WorkspacesDirectoryWorkspaceAccessPropertiesOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get deviceTypeWindowsInput() {
-    return this._deviceTypeWindows
+    return this._deviceTypeWindows;
   }
 
   // device_type_zeroclient - computed: false, optional: true, required: false
-  private _deviceTypeZeroclient?: string | undefined; 
+  private _deviceTypeZeroclient?: string; 
   public get deviceTypeZeroclient() {
     return this.getStringAttribute('device_type_zeroclient');
   }
-  public set deviceTypeZeroclient(value: string | undefined) {
+  public set deviceTypeZeroclient(value: string) {
     this._deviceTypeZeroclient = value;
   }
   public resetDeviceTypeZeroclient() {
@@ -360,7 +464,7 @@ export class WorkspacesDirectoryWorkspaceAccessPropertiesOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get deviceTypeZeroclientInput() {
-    return this._deviceTypeZeroclient
+    return this._deviceTypeZeroclient;
   }
 }
 export interface WorkspacesDirectoryWorkspaceCreationProperties {
@@ -410,12 +514,55 @@ export class WorkspacesDirectoryWorkspaceCreationPropertiesOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): WorkspacesDirectoryWorkspaceCreationProperties | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._customSecurityGroupId) {
+      hasAnyValues = true;
+      internalValueResult.customSecurityGroupId = this._customSecurityGroupId;
+    }
+    if (this._defaultOu) {
+      hasAnyValues = true;
+      internalValueResult.defaultOu = this._defaultOu;
+    }
+    if (this._enableInternetAccess) {
+      hasAnyValues = true;
+      internalValueResult.enableInternetAccess = this._enableInternetAccess;
+    }
+    if (this._enableMaintenanceMode) {
+      hasAnyValues = true;
+      internalValueResult.enableMaintenanceMode = this._enableMaintenanceMode;
+    }
+    if (this._userEnabledAsLocalAdministrator) {
+      hasAnyValues = true;
+      internalValueResult.userEnabledAsLocalAdministrator = this._userEnabledAsLocalAdministrator;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: WorkspacesDirectoryWorkspaceCreationProperties | undefined) {
+    if (value === undefined) {
+      this._customSecurityGroupId = undefined;
+      this._defaultOu = undefined;
+      this._enableInternetAccess = undefined;
+      this._enableMaintenanceMode = undefined;
+      this._userEnabledAsLocalAdministrator = undefined;
+    }
+    else {
+      this._customSecurityGroupId = value.customSecurityGroupId;
+      this._defaultOu = value.defaultOu;
+      this._enableInternetAccess = value.enableInternetAccess;
+      this._enableMaintenanceMode = value.enableMaintenanceMode;
+      this._userEnabledAsLocalAdministrator = value.userEnabledAsLocalAdministrator;
+    }
+  }
+
   // custom_security_group_id - computed: false, optional: true, required: false
-  private _customSecurityGroupId?: string | undefined; 
+  private _customSecurityGroupId?: string; 
   public get customSecurityGroupId() {
     return this.getStringAttribute('custom_security_group_id');
   }
-  public set customSecurityGroupId(value: string | undefined) {
+  public set customSecurityGroupId(value: string) {
     this._customSecurityGroupId = value;
   }
   public resetCustomSecurityGroupId() {
@@ -423,15 +570,15 @@ export class WorkspacesDirectoryWorkspaceCreationPropertiesOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get customSecurityGroupIdInput() {
-    return this._customSecurityGroupId
+    return this._customSecurityGroupId;
   }
 
   // default_ou - computed: false, optional: true, required: false
-  private _defaultOu?: string | undefined; 
+  private _defaultOu?: string; 
   public get defaultOu() {
     return this.getStringAttribute('default_ou');
   }
-  public set defaultOu(value: string | undefined) {
+  public set defaultOu(value: string) {
     this._defaultOu = value;
   }
   public resetDefaultOu() {
@@ -439,15 +586,15 @@ export class WorkspacesDirectoryWorkspaceCreationPropertiesOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get defaultOuInput() {
-    return this._defaultOu
+    return this._defaultOu;
   }
 
   // enable_internet_access - computed: false, optional: true, required: false
-  private _enableInternetAccess?: boolean | cdktf.IResolvable | undefined; 
+  private _enableInternetAccess?: boolean | cdktf.IResolvable; 
   public get enableInternetAccess() {
     return this.getBooleanAttribute('enable_internet_access') as any;
   }
-  public set enableInternetAccess(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableInternetAccess(value: boolean | cdktf.IResolvable) {
     this._enableInternetAccess = value;
   }
   public resetEnableInternetAccess() {
@@ -455,15 +602,15 @@ export class WorkspacesDirectoryWorkspaceCreationPropertiesOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get enableInternetAccessInput() {
-    return this._enableInternetAccess
+    return this._enableInternetAccess;
   }
 
   // enable_maintenance_mode - computed: false, optional: true, required: false
-  private _enableMaintenanceMode?: boolean | cdktf.IResolvable | undefined; 
+  private _enableMaintenanceMode?: boolean | cdktf.IResolvable; 
   public get enableMaintenanceMode() {
     return this.getBooleanAttribute('enable_maintenance_mode') as any;
   }
-  public set enableMaintenanceMode(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableMaintenanceMode(value: boolean | cdktf.IResolvable) {
     this._enableMaintenanceMode = value;
   }
   public resetEnableMaintenanceMode() {
@@ -471,15 +618,15 @@ export class WorkspacesDirectoryWorkspaceCreationPropertiesOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get enableMaintenanceModeInput() {
-    return this._enableMaintenanceMode
+    return this._enableMaintenanceMode;
   }
 
   // user_enabled_as_local_administrator - computed: false, optional: true, required: false
-  private _userEnabledAsLocalAdministrator?: boolean | cdktf.IResolvable | undefined; 
+  private _userEnabledAsLocalAdministrator?: boolean | cdktf.IResolvable; 
   public get userEnabledAsLocalAdministrator() {
     return this.getBooleanAttribute('user_enabled_as_local_administrator') as any;
   }
-  public set userEnabledAsLocalAdministrator(value: boolean | cdktf.IResolvable | undefined) {
+  public set userEnabledAsLocalAdministrator(value: boolean | cdktf.IResolvable) {
     this._userEnabledAsLocalAdministrator = value;
   }
   public resetUserEnabledAsLocalAdministrator() {
@@ -487,7 +634,7 @@ export class WorkspacesDirectoryWorkspaceCreationPropertiesOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get userEnabledAsLocalAdministratorInput() {
-    return this._userEnabledAsLocalAdministrator
+    return this._userEnabledAsLocalAdministrator;
   }
 }
 
@@ -528,9 +675,9 @@ export class WorkspacesDirectory extends cdktf.TerraformResource {
     this._subnetIds = config.subnetIds;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._selfServicePermissions = config.selfServicePermissions;
-    this._workspaceAccessProperties = config.workspaceAccessProperties;
-    this._workspaceCreationProperties = config.workspaceCreationProperties;
+    this._selfServicePermissions.internalValue = config.selfServicePermissions;
+    this._workspaceAccessProperties.internalValue = config.workspaceAccessProperties;
+    this._workspaceCreationProperties.internalValue = config.workspaceCreationProperties;
   }
 
   // ==========
@@ -557,7 +704,7 @@ export class WorkspacesDirectory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get directoryIdInput() {
-    return this._directoryId
+    return this._directoryId;
   }
 
   // directory_name - computed: true, optional: false, required: false
@@ -586,11 +733,11 @@ export class WorkspacesDirectory extends cdktf.TerraformResource {
   }
 
   // ip_group_ids - computed: true, optional: true, required: false
-  private _ipGroupIds?: string[] | undefined; 
+  private _ipGroupIds?: string[]; 
   public get ipGroupIds() {
     return this.getListAttribute('ip_group_ids');
   }
-  public set ipGroupIds(value: string[] | undefined) {
+  public set ipGroupIds(value: string[]) {
     this._ipGroupIds = value;
   }
   public resetIpGroupIds() {
@@ -598,7 +745,7 @@ export class WorkspacesDirectory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipGroupIdsInput() {
-    return this._ipGroupIds
+    return this._ipGroupIds;
   }
 
   // registration_code - computed: true, optional: false, required: false
@@ -607,11 +754,11 @@ export class WorkspacesDirectory extends cdktf.TerraformResource {
   }
 
   // subnet_ids - computed: true, optional: true, required: false
-  private _subnetIds?: string[] | undefined; 
+  private _subnetIds?: string[]; 
   public get subnetIds() {
     return this.getListAttribute('subnet_ids');
   }
-  public set subnetIds(value: string[] | undefined) {
+  public set subnetIds(value: string[]) {
     this._subnetIds = value;
   }
   public resetSubnetIds() {
@@ -619,16 +766,16 @@ export class WorkspacesDirectory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -636,16 +783,16 @@ export class WorkspacesDirectory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -653,7 +800,7 @@ export class WorkspacesDirectory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // workspace_security_group_id - computed: true, optional: false, required: false
@@ -662,54 +809,51 @@ export class WorkspacesDirectory extends cdktf.TerraformResource {
   }
 
   // self_service_permissions - computed: false, optional: true, required: false
-  private _selfServicePermissions?: WorkspacesDirectorySelfServicePermissions | undefined; 
-  private __selfServicePermissionsOutput = new WorkspacesDirectorySelfServicePermissionsOutputReference(this as any, "self_service_permissions", true);
+  private _selfServicePermissions = new WorkspacesDirectorySelfServicePermissionsOutputReference(this as any, "self_service_permissions", true);
   public get selfServicePermissions() {
-    return this.__selfServicePermissionsOutput;
+    return this._selfServicePermissions;
   }
-  public putSelfServicePermissions(value: WorkspacesDirectorySelfServicePermissions | undefined) {
-    this._selfServicePermissions = value;
+  public putSelfServicePermissions(value: WorkspacesDirectorySelfServicePermissions) {
+    this._selfServicePermissions.internalValue = value;
   }
   public resetSelfServicePermissions() {
-    this._selfServicePermissions = undefined;
+    this._selfServicePermissions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get selfServicePermissionsInput() {
-    return this._selfServicePermissions
+    return this._selfServicePermissions.internalValue;
   }
 
   // workspace_access_properties - computed: false, optional: true, required: false
-  private _workspaceAccessProperties?: WorkspacesDirectoryWorkspaceAccessProperties | undefined; 
-  private __workspaceAccessPropertiesOutput = new WorkspacesDirectoryWorkspaceAccessPropertiesOutputReference(this as any, "workspace_access_properties", true);
+  private _workspaceAccessProperties = new WorkspacesDirectoryWorkspaceAccessPropertiesOutputReference(this as any, "workspace_access_properties", true);
   public get workspaceAccessProperties() {
-    return this.__workspaceAccessPropertiesOutput;
+    return this._workspaceAccessProperties;
   }
-  public putWorkspaceAccessProperties(value: WorkspacesDirectoryWorkspaceAccessProperties | undefined) {
-    this._workspaceAccessProperties = value;
+  public putWorkspaceAccessProperties(value: WorkspacesDirectoryWorkspaceAccessProperties) {
+    this._workspaceAccessProperties.internalValue = value;
   }
   public resetWorkspaceAccessProperties() {
-    this._workspaceAccessProperties = undefined;
+    this._workspaceAccessProperties.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get workspaceAccessPropertiesInput() {
-    return this._workspaceAccessProperties
+    return this._workspaceAccessProperties.internalValue;
   }
 
   // workspace_creation_properties - computed: false, optional: true, required: false
-  private _workspaceCreationProperties?: WorkspacesDirectoryWorkspaceCreationProperties | undefined; 
-  private __workspaceCreationPropertiesOutput = new WorkspacesDirectoryWorkspaceCreationPropertiesOutputReference(this as any, "workspace_creation_properties", true);
+  private _workspaceCreationProperties = new WorkspacesDirectoryWorkspaceCreationPropertiesOutputReference(this as any, "workspace_creation_properties", true);
   public get workspaceCreationProperties() {
-    return this.__workspaceCreationPropertiesOutput;
+    return this._workspaceCreationProperties;
   }
-  public putWorkspaceCreationProperties(value: WorkspacesDirectoryWorkspaceCreationProperties | undefined) {
-    this._workspaceCreationProperties = value;
+  public putWorkspaceCreationProperties(value: WorkspacesDirectoryWorkspaceCreationProperties) {
+    this._workspaceCreationProperties.internalValue = value;
   }
   public resetWorkspaceCreationProperties() {
-    this._workspaceCreationProperties = undefined;
+    this._workspaceCreationProperties.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get workspaceCreationPropertiesInput() {
-    return this._workspaceCreationProperties
+    return this._workspaceCreationProperties.internalValue;
   }
 
   // =========
@@ -723,9 +867,9 @@ export class WorkspacesDirectory extends cdktf.TerraformResource {
       subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._subnetIds),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      self_service_permissions: workspacesDirectorySelfServicePermissionsToTerraform(this._selfServicePermissions),
-      workspace_access_properties: workspacesDirectoryWorkspaceAccessPropertiesToTerraform(this._workspaceAccessProperties),
-      workspace_creation_properties: workspacesDirectoryWorkspaceCreationPropertiesToTerraform(this._workspaceCreationProperties),
+      self_service_permissions: workspacesDirectorySelfServicePermissionsToTerraform(this._selfServicePermissions.internalValue),
+      workspace_access_properties: workspacesDirectoryWorkspaceAccessPropertiesToTerraform(this._workspaceAccessProperties.internalValue),
+      workspace_creation_properties: workspacesDirectoryWorkspaceCreationPropertiesToTerraform(this._workspaceCreationProperties.internalValue),
     };
   }
 }

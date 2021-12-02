@@ -82,12 +82,37 @@ export class ConnectInstanceTimeoutsOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ConnectInstanceTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ConnectInstanceTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -95,15 +120,15 @@ export class ConnectInstanceTimeoutsOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -111,7 +136,7 @@ export class ConnectInstanceTimeoutsOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -156,7 +181,7 @@ export class ConnectInstance extends cdktf.TerraformResource {
     this._inboundCallsEnabled = config.inboundCallsEnabled;
     this._instanceAlias = config.instanceAlias;
     this._outboundCallsEnabled = config.outboundCallsEnabled;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -169,11 +194,11 @@ export class ConnectInstance extends cdktf.TerraformResource {
   }
 
   // auto_resolve_best_voices_enabled - computed: false, optional: true, required: false
-  private _autoResolveBestVoicesEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _autoResolveBestVoicesEnabled?: boolean | cdktf.IResolvable; 
   public get autoResolveBestVoicesEnabled() {
     return this.getBooleanAttribute('auto_resolve_best_voices_enabled') as any;
   }
-  public set autoResolveBestVoicesEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set autoResolveBestVoicesEnabled(value: boolean | cdktf.IResolvable) {
     this._autoResolveBestVoicesEnabled = value;
   }
   public resetAutoResolveBestVoicesEnabled() {
@@ -181,15 +206,15 @@ export class ConnectInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoResolveBestVoicesEnabledInput() {
-    return this._autoResolveBestVoicesEnabled
+    return this._autoResolveBestVoicesEnabled;
   }
 
   // contact_flow_logs_enabled - computed: false, optional: true, required: false
-  private _contactFlowLogsEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _contactFlowLogsEnabled?: boolean | cdktf.IResolvable; 
   public get contactFlowLogsEnabled() {
     return this.getBooleanAttribute('contact_flow_logs_enabled') as any;
   }
-  public set contactFlowLogsEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set contactFlowLogsEnabled(value: boolean | cdktf.IResolvable) {
     this._contactFlowLogsEnabled = value;
   }
   public resetContactFlowLogsEnabled() {
@@ -197,15 +222,15 @@ export class ConnectInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get contactFlowLogsEnabledInput() {
-    return this._contactFlowLogsEnabled
+    return this._contactFlowLogsEnabled;
   }
 
   // contact_lens_enabled - computed: false, optional: true, required: false
-  private _contactLensEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _contactLensEnabled?: boolean | cdktf.IResolvable; 
   public get contactLensEnabled() {
     return this.getBooleanAttribute('contact_lens_enabled') as any;
   }
-  public set contactLensEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set contactLensEnabled(value: boolean | cdktf.IResolvable) {
     this._contactLensEnabled = value;
   }
   public resetContactLensEnabled() {
@@ -213,7 +238,7 @@ export class ConnectInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get contactLensEnabledInput() {
-    return this._contactLensEnabled
+    return this._contactLensEnabled;
   }
 
   // created_time - computed: true, optional: false, required: false
@@ -222,11 +247,11 @@ export class ConnectInstance extends cdktf.TerraformResource {
   }
 
   // directory_id - computed: false, optional: true, required: false
-  private _directoryId?: string | undefined; 
+  private _directoryId?: string; 
   public get directoryId() {
     return this.getStringAttribute('directory_id');
   }
-  public set directoryId(value: string | undefined) {
+  public set directoryId(value: string) {
     this._directoryId = value;
   }
   public resetDirectoryId() {
@@ -234,15 +259,15 @@ export class ConnectInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get directoryIdInput() {
-    return this._directoryId
+    return this._directoryId;
   }
 
   // early_media_enabled - computed: false, optional: true, required: false
-  private _earlyMediaEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _earlyMediaEnabled?: boolean | cdktf.IResolvable; 
   public get earlyMediaEnabled() {
     return this.getBooleanAttribute('early_media_enabled') as any;
   }
-  public set earlyMediaEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set earlyMediaEnabled(value: boolean | cdktf.IResolvable) {
     this._earlyMediaEnabled = value;
   }
   public resetEarlyMediaEnabled() {
@@ -250,7 +275,7 @@ export class ConnectInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get earlyMediaEnabledInput() {
-    return this._earlyMediaEnabled
+    return this._earlyMediaEnabled;
   }
 
   // id - computed: true, optional: true, required: false
@@ -268,7 +293,7 @@ export class ConnectInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get identityManagementTypeInput() {
-    return this._identityManagementType
+    return this._identityManagementType;
   }
 
   // inbound_calls_enabled - computed: false, optional: false, required: true
@@ -281,15 +306,15 @@ export class ConnectInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get inboundCallsEnabledInput() {
-    return this._inboundCallsEnabled
+    return this._inboundCallsEnabled;
   }
 
   // instance_alias - computed: false, optional: true, required: false
-  private _instanceAlias?: string | undefined; 
+  private _instanceAlias?: string; 
   public get instanceAlias() {
     return this.getStringAttribute('instance_alias');
   }
-  public set instanceAlias(value: string | undefined) {
+  public set instanceAlias(value: string) {
     this._instanceAlias = value;
   }
   public resetInstanceAlias() {
@@ -297,7 +322,7 @@ export class ConnectInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceAliasInput() {
-    return this._instanceAlias
+    return this._instanceAlias;
   }
 
   // outbound_calls_enabled - computed: false, optional: false, required: true
@@ -310,7 +335,7 @@ export class ConnectInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get outboundCallsEnabledInput() {
-    return this._outboundCallsEnabled
+    return this._outboundCallsEnabled;
   }
 
   // service_role - computed: true, optional: false, required: false
@@ -324,20 +349,19 @@ export class ConnectInstance extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: ConnectInstanceTimeouts | undefined; 
-  private __timeoutsOutput = new ConnectInstanceTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new ConnectInstanceTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: ConnectInstanceTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: ConnectInstanceTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -355,7 +379,7 @@ export class ConnectInstance extends cdktf.TerraformResource {
       inbound_calls_enabled: cdktf.booleanToTerraform(this._inboundCallsEnabled),
       instance_alias: cdktf.stringToTerraform(this._instanceAlias),
       outbound_calls_enabled: cdktf.booleanToTerraform(this._outboundCallsEnabled),
-      timeouts: connectInstanceTimeoutsToTerraform(this._timeouts),
+      timeouts: connectInstanceTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

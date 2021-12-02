@@ -110,12 +110,61 @@ export class ServicecatalogProductProvisioningArtifactParametersOutputReference 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ServicecatalogProductProvisioningArtifactParameters | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._description) {
+      hasAnyValues = true;
+      internalValueResult.description = this._description;
+    }
+    if (this._disableTemplateValidation) {
+      hasAnyValues = true;
+      internalValueResult.disableTemplateValidation = this._disableTemplateValidation;
+    }
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._templatePhysicalId) {
+      hasAnyValues = true;
+      internalValueResult.templatePhysicalId = this._templatePhysicalId;
+    }
+    if (this._templateUrl) {
+      hasAnyValues = true;
+      internalValueResult.templateUrl = this._templateUrl;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ServicecatalogProductProvisioningArtifactParameters | undefined) {
+    if (value === undefined) {
+      this._description = undefined;
+      this._disableTemplateValidation = undefined;
+      this._name = undefined;
+      this._templatePhysicalId = undefined;
+      this._templateUrl = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._description = value.description;
+      this._disableTemplateValidation = value.disableTemplateValidation;
+      this._name = value.name;
+      this._templatePhysicalId = value.templatePhysicalId;
+      this._templateUrl = value.templateUrl;
+      this._type = value.type;
+    }
+  }
+
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -123,15 +172,15 @@ export class ServicecatalogProductProvisioningArtifactParametersOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // disable_template_validation - computed: false, optional: true, required: false
-  private _disableTemplateValidation?: boolean | cdktf.IResolvable | undefined; 
+  private _disableTemplateValidation?: boolean | cdktf.IResolvable; 
   public get disableTemplateValidation() {
     return this.getBooleanAttribute('disable_template_validation') as any;
   }
-  public set disableTemplateValidation(value: boolean | cdktf.IResolvable | undefined) {
+  public set disableTemplateValidation(value: boolean | cdktf.IResolvable) {
     this._disableTemplateValidation = value;
   }
   public resetDisableTemplateValidation() {
@@ -139,15 +188,15 @@ export class ServicecatalogProductProvisioningArtifactParametersOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get disableTemplateValidationInput() {
-    return this._disableTemplateValidation
+    return this._disableTemplateValidation;
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -155,15 +204,15 @@ export class ServicecatalogProductProvisioningArtifactParametersOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // template_physical_id - computed: false, optional: true, required: false
-  private _templatePhysicalId?: string | undefined; 
+  private _templatePhysicalId?: string; 
   public get templatePhysicalId() {
     return this.getStringAttribute('template_physical_id');
   }
-  public set templatePhysicalId(value: string | undefined) {
+  public set templatePhysicalId(value: string) {
     this._templatePhysicalId = value;
   }
   public resetTemplatePhysicalId() {
@@ -171,15 +220,15 @@ export class ServicecatalogProductProvisioningArtifactParametersOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get templatePhysicalIdInput() {
-    return this._templatePhysicalId
+    return this._templatePhysicalId;
   }
 
   // template_url - computed: false, optional: true, required: false
-  private _templateUrl?: string | undefined; 
+  private _templateUrl?: string; 
   public get templateUrl() {
     return this.getStringAttribute('template_url');
   }
-  public set templateUrl(value: string | undefined) {
+  public set templateUrl(value: string) {
     this._templateUrl = value;
   }
   public resetTemplateUrl() {
@@ -187,15 +236,15 @@ export class ServicecatalogProductProvisioningArtifactParametersOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get templateUrlInput() {
-    return this._templateUrl
+    return this._templateUrl;
   }
 
   // type - computed: false, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -203,7 +252,7 @@ export class ServicecatalogProductProvisioningArtifactParametersOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 
@@ -250,7 +299,7 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._type = config.type;
-    this._provisioningArtifactParameters = config.provisioningArtifactParameters;
+    this._provisioningArtifactParameters.internalValue = config.provisioningArtifactParameters;
   }
 
   // ==========
@@ -258,11 +307,11 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
   // ==========
 
   // accept_language - computed: false, optional: true, required: false
-  private _acceptLanguage?: string | undefined; 
+  private _acceptLanguage?: string; 
   public get acceptLanguage() {
     return this.getStringAttribute('accept_language');
   }
-  public set acceptLanguage(value: string | undefined) {
+  public set acceptLanguage(value: string) {
     this._acceptLanguage = value;
   }
   public resetAcceptLanguage() {
@@ -270,7 +319,7 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get acceptLanguageInput() {
-    return this._acceptLanguage
+    return this._acceptLanguage;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -284,11 +333,11 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
   }
 
   // description - computed: true, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -296,15 +345,15 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // distributor - computed: true, optional: true, required: false
-  private _distributor?: string | undefined; 
+  private _distributor?: string; 
   public get distributor() {
     return this.getStringAttribute('distributor');
   }
-  public set distributor(value: string | undefined) {
+  public set distributor(value: string) {
     this._distributor = value;
   }
   public resetDistributor() {
@@ -312,7 +361,7 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get distributorInput() {
-    return this._distributor
+    return this._distributor;
   }
 
   // has_default_path - computed: true, optional: false, required: false
@@ -335,7 +384,7 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // owner - computed: false, optional: false, required: true
@@ -348,7 +397,7 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerInput() {
-    return this._owner
+    return this._owner;
   }
 
   // status - computed: true, optional: false, required: false
@@ -357,11 +406,11 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
   }
 
   // support_description - computed: true, optional: true, required: false
-  private _supportDescription?: string | undefined; 
+  private _supportDescription?: string; 
   public get supportDescription() {
     return this.getStringAttribute('support_description');
   }
-  public set supportDescription(value: string | undefined) {
+  public set supportDescription(value: string) {
     this._supportDescription = value;
   }
   public resetSupportDescription() {
@@ -369,15 +418,15 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get supportDescriptionInput() {
-    return this._supportDescription
+    return this._supportDescription;
   }
 
   // support_email - computed: true, optional: true, required: false
-  private _supportEmail?: string | undefined; 
+  private _supportEmail?: string; 
   public get supportEmail() {
     return this.getStringAttribute('support_email');
   }
-  public set supportEmail(value: string | undefined) {
+  public set supportEmail(value: string) {
     this._supportEmail = value;
   }
   public resetSupportEmail() {
@@ -385,15 +434,15 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get supportEmailInput() {
-    return this._supportEmail
+    return this._supportEmail;
   }
 
   // support_url - computed: true, optional: true, required: false
-  private _supportUrl?: string | undefined; 
+  private _supportUrl?: string; 
   public get supportUrl() {
     return this.getStringAttribute('support_url');
   }
-  public set supportUrl(value: string | undefined) {
+  public set supportUrl(value: string) {
     this._supportUrl = value;
   }
   public resetSupportUrl() {
@@ -401,16 +450,16 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get supportUrlInput() {
-    return this._supportUrl
+    return this._supportUrl;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -418,16 +467,16 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -435,7 +484,7 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // type - computed: false, optional: false, required: true
@@ -448,21 +497,20 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // provisioning_artifact_parameters - computed: false, optional: false, required: true
-  private _provisioningArtifactParameters?: ServicecatalogProductProvisioningArtifactParameters; 
-  private __provisioningArtifactParametersOutput = new ServicecatalogProductProvisioningArtifactParametersOutputReference(this as any, "provisioning_artifact_parameters", true);
+  private _provisioningArtifactParameters = new ServicecatalogProductProvisioningArtifactParametersOutputReference(this as any, "provisioning_artifact_parameters", true);
   public get provisioningArtifactParameters() {
-    return this.__provisioningArtifactParametersOutput;
+    return this._provisioningArtifactParameters;
   }
   public putProvisioningArtifactParameters(value: ServicecatalogProductProvisioningArtifactParameters) {
-    this._provisioningArtifactParameters = value;
+    this._provisioningArtifactParameters.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get provisioningArtifactParametersInput() {
-    return this._provisioningArtifactParameters
+    return this._provisioningArtifactParameters.internalValue;
   }
 
   // =========
@@ -482,7 +530,7 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       type: cdktf.stringToTerraform(this._type),
-      provisioning_artifact_parameters: servicecatalogProductProvisioningArtifactParametersToTerraform(this._provisioningArtifactParameters),
+      provisioning_artifact_parameters: servicecatalogProductProvisioningArtifactParametersToTerraform(this._provisioningArtifactParameters.internalValue),
     };
   }
 }

@@ -77,7 +77,7 @@ export class VpcEndpointConnectionNotification extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get connectionEventsInput() {
-    return this._connectionEvents
+    return this._connectionEvents;
   }
 
   // connection_notification_arn - computed: false, optional: false, required: true
@@ -90,7 +90,7 @@ export class VpcEndpointConnectionNotification extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get connectionNotificationArnInput() {
-    return this._connectionNotificationArn
+    return this._connectionNotificationArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -109,11 +109,11 @@ export class VpcEndpointConnectionNotification extends cdktf.TerraformResource {
   }
 
   // vpc_endpoint_id - computed: false, optional: true, required: false
-  private _vpcEndpointId?: string | undefined; 
+  private _vpcEndpointId?: string; 
   public get vpcEndpointId() {
     return this.getStringAttribute('vpc_endpoint_id');
   }
-  public set vpcEndpointId(value: string | undefined) {
+  public set vpcEndpointId(value: string) {
     this._vpcEndpointId = value;
   }
   public resetVpcEndpointId() {
@@ -121,15 +121,15 @@ export class VpcEndpointConnectionNotification extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcEndpointIdInput() {
-    return this._vpcEndpointId
+    return this._vpcEndpointId;
   }
 
   // vpc_endpoint_service_id - computed: false, optional: true, required: false
-  private _vpcEndpointServiceId?: string | undefined; 
+  private _vpcEndpointServiceId?: string; 
   public get vpcEndpointServiceId() {
     return this.getStringAttribute('vpc_endpoint_service_id');
   }
-  public set vpcEndpointServiceId(value: string | undefined) {
+  public set vpcEndpointServiceId(value: string) {
     this._vpcEndpointServiceId = value;
   }
   public resetVpcEndpointServiceId() {
@@ -137,7 +137,7 @@ export class VpcEndpointConnectionNotification extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcEndpointServiceIdInput() {
-    return this._vpcEndpointServiceId
+    return this._vpcEndpointServiceId;
   }
 
   // =========

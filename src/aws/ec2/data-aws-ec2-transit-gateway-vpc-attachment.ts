@@ -107,12 +107,12 @@ export class DataAwsEc2TransitGatewayVpcAttachment extends cdktf.TerraformDataSo
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -120,7 +120,7 @@ export class DataAwsEc2TransitGatewayVpcAttachment extends cdktf.TerraformDataSo
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // transit_gateway_id - computed: true, optional: false, required: false
@@ -139,12 +139,12 @@ export class DataAwsEc2TransitGatewayVpcAttachment extends cdktf.TerraformDataSo
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsEc2TransitGatewayVpcAttachmentFilter[] | undefined; 
+  private _filter?: DataAwsEc2TransitGatewayVpcAttachmentFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsEc2TransitGatewayVpcAttachmentFilter[] | undefined) {
+  public set filter(value: DataAwsEc2TransitGatewayVpcAttachmentFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -152,7 +152,7 @@ export class DataAwsEc2TransitGatewayVpcAttachment extends cdktf.TerraformDataSo
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

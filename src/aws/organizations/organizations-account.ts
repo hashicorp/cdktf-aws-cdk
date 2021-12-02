@@ -97,15 +97,15 @@ export class OrganizationsAccount extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get emailInput() {
-    return this._email
+    return this._email;
   }
 
   // iam_user_access_to_billing - computed: false, optional: true, required: false
-  private _iamUserAccessToBilling?: string | undefined; 
+  private _iamUserAccessToBilling?: string; 
   public get iamUserAccessToBilling() {
     return this.getStringAttribute('iam_user_access_to_billing');
   }
-  public set iamUserAccessToBilling(value: string | undefined) {
+  public set iamUserAccessToBilling(value: string) {
     this._iamUserAccessToBilling = value;
   }
   public resetIamUserAccessToBilling() {
@@ -113,7 +113,7 @@ export class OrganizationsAccount extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iamUserAccessToBillingInput() {
-    return this._iamUserAccessToBilling
+    return this._iamUserAccessToBilling;
   }
 
   // id - computed: true, optional: true, required: false
@@ -141,15 +141,15 @@ export class OrganizationsAccount extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // parent_id - computed: true, optional: true, required: false
-  private _parentId?: string | undefined; 
+  private _parentId?: string; 
   public get parentId() {
     return this.getStringAttribute('parent_id');
   }
-  public set parentId(value: string | undefined) {
+  public set parentId(value: string) {
     this._parentId = value;
   }
   public resetParentId() {
@@ -157,15 +157,15 @@ export class OrganizationsAccount extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parentIdInput() {
-    return this._parentId
+    return this._parentId;
   }
 
   // role_name - computed: false, optional: true, required: false
-  private _roleName?: string | undefined; 
+  private _roleName?: string; 
   public get roleName() {
     return this.getStringAttribute('role_name');
   }
-  public set roleName(value: string | undefined) {
+  public set roleName(value: string) {
     this._roleName = value;
   }
   public resetRoleName() {
@@ -173,7 +173,7 @@ export class OrganizationsAccount extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleNameInput() {
-    return this._roleName
+    return this._roleName;
   }
 
   // status - computed: true, optional: false, required: false
@@ -182,12 +182,12 @@ export class OrganizationsAccount extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -195,16 +195,16 @@ export class OrganizationsAccount extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -212,7 +212,7 @@ export class OrganizationsAccount extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

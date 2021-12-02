@@ -188,7 +188,7 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get applicationInput() {
-    return this._application
+    return this._application;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -207,11 +207,11 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
 
   // cname_prefix - computed: true, optional: true, required: false
-  private _cnamePrefix?: string | undefined; 
+  private _cnamePrefix?: string; 
   public get cnamePrefix() {
     return this.getStringAttribute('cname_prefix');
   }
-  public set cnamePrefix(value: string | undefined) {
+  public set cnamePrefix(value: string) {
     this._cnamePrefix = value;
   }
   public resetCnamePrefix() {
@@ -219,15 +219,15 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cnamePrefixInput() {
-    return this._cnamePrefix
+    return this._cnamePrefix;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -235,7 +235,7 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // endpoint_url - computed: true, optional: false, required: false
@@ -273,15 +273,15 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // platform_arn - computed: true, optional: true, required: false
-  private _platformArn?: string | undefined; 
+  private _platformArn?: string; 
   public get platformArn() {
     return this.getStringAttribute('platform_arn');
   }
-  public set platformArn(value: string | undefined) {
+  public set platformArn(value: string) {
     this._platformArn = value;
   }
   public resetPlatformArn() {
@@ -289,15 +289,15 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get platformArnInput() {
-    return this._platformArn
+    return this._platformArn;
   }
 
   // poll_interval - computed: false, optional: true, required: false
-  private _pollInterval?: string | undefined; 
+  private _pollInterval?: string; 
   public get pollInterval() {
     return this.getStringAttribute('poll_interval');
   }
-  public set pollInterval(value: string | undefined) {
+  public set pollInterval(value: string) {
     this._pollInterval = value;
   }
   public resetPollInterval() {
@@ -305,7 +305,7 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get pollIntervalInput() {
-    return this._pollInterval
+    return this._pollInterval;
   }
 
   // queues - computed: true, optional: false, required: false
@@ -314,11 +314,11 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
 
   // solution_stack_name - computed: true, optional: true, required: false
-  private _solutionStackName?: string | undefined; 
+  private _solutionStackName?: string; 
   public get solutionStackName() {
     return this.getStringAttribute('solution_stack_name');
   }
-  public set solutionStackName(value: string | undefined) {
+  public set solutionStackName(value: string) {
     this._solutionStackName = value;
   }
   public resetSolutionStackName() {
@@ -326,16 +326,16 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get solutionStackNameInput() {
-    return this._solutionStackName
+    return this._solutionStackName;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -343,16 +343,16 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -360,15 +360,15 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // template_name - computed: false, optional: true, required: false
-  private _templateName?: string | undefined; 
+  private _templateName?: string; 
   public get templateName() {
     return this.getStringAttribute('template_name');
   }
-  public set templateName(value: string | undefined) {
+  public set templateName(value: string) {
     this._templateName = value;
   }
   public resetTemplateName() {
@@ -376,15 +376,15 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get templateNameInput() {
-    return this._templateName
+    return this._templateName;
   }
 
   // tier - computed: false, optional: true, required: false
-  private _tier?: string | undefined; 
+  private _tier?: string; 
   public get tier() {
     return this.getStringAttribute('tier');
   }
-  public set tier(value: string | undefined) {
+  public set tier(value: string) {
     this._tier = value;
   }
   public resetTier() {
@@ -392,7 +392,7 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tierInput() {
-    return this._tier
+    return this._tier;
   }
 
   // triggers - computed: true, optional: false, required: false
@@ -401,11 +401,11 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
 
   // version_label - computed: true, optional: true, required: false
-  private _versionLabel?: string | undefined; 
+  private _versionLabel?: string; 
   public get versionLabel() {
     return this.getStringAttribute('version_label');
   }
-  public set versionLabel(value: string | undefined) {
+  public set versionLabel(value: string) {
     this._versionLabel = value;
   }
   public resetVersionLabel() {
@@ -413,15 +413,15 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionLabelInput() {
-    return this._versionLabel
+    return this._versionLabel;
   }
 
   // wait_for_ready_timeout - computed: false, optional: true, required: false
-  private _waitForReadyTimeout?: string | undefined; 
+  private _waitForReadyTimeout?: string; 
   public get waitForReadyTimeout() {
     return this.getStringAttribute('wait_for_ready_timeout');
   }
-  public set waitForReadyTimeout(value: string | undefined) {
+  public set waitForReadyTimeout(value: string) {
     this._waitForReadyTimeout = value;
   }
   public resetWaitForReadyTimeout() {
@@ -429,16 +429,16 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get waitForReadyTimeoutInput() {
-    return this._waitForReadyTimeout
+    return this._waitForReadyTimeout;
   }
 
   // setting - computed: false, optional: true, required: false
-  private _setting?: ElasticBeanstalkEnvironmentSetting[] | undefined; 
+  private _setting?: ElasticBeanstalkEnvironmentSetting[]; 
   public get setting() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('setting') as any;
   }
-  public set setting(value: ElasticBeanstalkEnvironmentSetting[] | undefined) {
+  public set setting(value: ElasticBeanstalkEnvironmentSetting[]) {
     this._setting = value;
   }
   public resetSetting() {
@@ -446,7 +446,7 @@ export class ElasticBeanstalkEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get settingInput() {
-    return this._setting
+    return this._setting;
   }
 
   // =========

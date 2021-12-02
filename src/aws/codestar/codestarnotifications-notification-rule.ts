@@ -126,7 +126,7 @@ export class CodestarnotificationsNotificationRule extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get detailTypeInput() {
-    return this._detailType
+    return this._detailType;
   }
 
   // event_type_ids - computed: false, optional: false, required: true
@@ -139,7 +139,7 @@ export class CodestarnotificationsNotificationRule extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get eventTypeIdsInput() {
-    return this._eventTypeIds
+    return this._eventTypeIds;
   }
 
   // id - computed: true, optional: true, required: false
@@ -157,7 +157,7 @@ export class CodestarnotificationsNotificationRule extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // resource - computed: false, optional: false, required: true
@@ -170,15 +170,15 @@ export class CodestarnotificationsNotificationRule extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get resourceInput() {
-    return this._resource
+    return this._resource;
   }
 
   // status - computed: false, optional: true, required: false
-  private _status?: string | undefined; 
+  private _status?: string; 
   public get status() {
     return this.getStringAttribute('status');
   }
-  public set status(value: string | undefined) {
+  public set status(value: string) {
     this._status = value;
   }
   public resetStatus() {
@@ -186,16 +186,16 @@ export class CodestarnotificationsNotificationRule extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -203,16 +203,16 @@ export class CodestarnotificationsNotificationRule extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -220,16 +220,16 @@ export class CodestarnotificationsNotificationRule extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // target - computed: false, optional: true, required: false
-  private _target?: CodestarnotificationsNotificationRuleTarget[] | undefined; 
+  private _target?: CodestarnotificationsNotificationRuleTarget[]; 
   public get target() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('target') as any;
   }
-  public set target(value: CodestarnotificationsNotificationRuleTarget[] | undefined) {
+  public set target(value: CodestarnotificationsNotificationRuleTarget[]) {
     this._target = value;
   }
   public resetTarget() {
@@ -237,7 +237,7 @@ export class CodestarnotificationsNotificationRule extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get targetInput() {
-    return this._target
+    return this._target;
   }
 
   // =========

@@ -77,7 +77,7 @@ export class AppstreamUserStackAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authenticationTypeInput() {
-    return this._authenticationType
+    return this._authenticationType;
   }
 
   // id - computed: true, optional: true, required: false
@@ -86,11 +86,11 @@ export class AppstreamUserStackAssociation extends cdktf.TerraformResource {
   }
 
   // send_email_notification - computed: false, optional: true, required: false
-  private _sendEmailNotification?: boolean | cdktf.IResolvable | undefined; 
+  private _sendEmailNotification?: boolean | cdktf.IResolvable; 
   public get sendEmailNotification() {
     return this.getBooleanAttribute('send_email_notification') as any;
   }
-  public set sendEmailNotification(value: boolean | cdktf.IResolvable | undefined) {
+  public set sendEmailNotification(value: boolean | cdktf.IResolvable) {
     this._sendEmailNotification = value;
   }
   public resetSendEmailNotification() {
@@ -98,7 +98,7 @@ export class AppstreamUserStackAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sendEmailNotificationInput() {
-    return this._sendEmailNotification
+    return this._sendEmailNotification;
   }
 
   // stack_name - computed: false, optional: false, required: true
@@ -111,7 +111,7 @@ export class AppstreamUserStackAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stackNameInput() {
-    return this._stackName
+    return this._stackName;
   }
 
   // user_name - computed: false, optional: false, required: true
@@ -124,7 +124,7 @@ export class AppstreamUserStackAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userNameInput() {
-    return this._userName
+    return this._userName;
   }
 
   // =========

@@ -72,7 +72,7 @@ export class VpcEndpointRouteTableAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get routeTableIdInput() {
-    return this._routeTableId
+    return this._routeTableId;
   }
 
   // vpc_endpoint_id - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class VpcEndpointRouteTableAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcEndpointIdInput() {
-    return this._vpcEndpointId
+    return this._vpcEndpointId;
   }
 
   // =========

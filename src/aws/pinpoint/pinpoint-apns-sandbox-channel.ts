@@ -102,15 +102,15 @@ export class PinpointApnsSandboxChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get applicationIdInput() {
-    return this._applicationId
+    return this._applicationId;
   }
 
   // bundle_id - computed: false, optional: true, required: false
-  private _bundleId?: string | undefined; 
+  private _bundleId?: string; 
   public get bundleId() {
     return this.getStringAttribute('bundle_id');
   }
-  public set bundleId(value: string | undefined) {
+  public set bundleId(value: string) {
     this._bundleId = value;
   }
   public resetBundleId() {
@@ -118,15 +118,15 @@ export class PinpointApnsSandboxChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bundleIdInput() {
-    return this._bundleId
+    return this._bundleId;
   }
 
   // certificate - computed: false, optional: true, required: false
-  private _certificate?: string | undefined; 
+  private _certificate?: string; 
   public get certificate() {
     return this.getStringAttribute('certificate');
   }
-  public set certificate(value: string | undefined) {
+  public set certificate(value: string) {
     this._certificate = value;
   }
   public resetCertificate() {
@@ -134,15 +134,15 @@ export class PinpointApnsSandboxChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificateInput() {
-    return this._certificate
+    return this._certificate;
   }
 
   // default_authentication_method - computed: false, optional: true, required: false
-  private _defaultAuthenticationMethod?: string | undefined; 
+  private _defaultAuthenticationMethod?: string; 
   public get defaultAuthenticationMethod() {
     return this.getStringAttribute('default_authentication_method');
   }
-  public set defaultAuthenticationMethod(value: string | undefined) {
+  public set defaultAuthenticationMethod(value: string) {
     this._defaultAuthenticationMethod = value;
   }
   public resetDefaultAuthenticationMethod() {
@@ -150,15 +150,15 @@ export class PinpointApnsSandboxChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultAuthenticationMethodInput() {
-    return this._defaultAuthenticationMethod
+    return this._defaultAuthenticationMethod;
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -166,7 +166,7 @@ export class PinpointApnsSandboxChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // id - computed: true, optional: true, required: false
@@ -175,11 +175,11 @@ export class PinpointApnsSandboxChannel extends cdktf.TerraformResource {
   }
 
   // private_key - computed: false, optional: true, required: false
-  private _privateKey?: string | undefined; 
+  private _privateKey?: string; 
   public get privateKey() {
     return this.getStringAttribute('private_key');
   }
-  public set privateKey(value: string | undefined) {
+  public set privateKey(value: string) {
     this._privateKey = value;
   }
   public resetPrivateKey() {
@@ -187,15 +187,15 @@ export class PinpointApnsSandboxChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get privateKeyInput() {
-    return this._privateKey
+    return this._privateKey;
   }
 
   // team_id - computed: false, optional: true, required: false
-  private _teamId?: string | undefined; 
+  private _teamId?: string; 
   public get teamId() {
     return this.getStringAttribute('team_id');
   }
-  public set teamId(value: string | undefined) {
+  public set teamId(value: string) {
     this._teamId = value;
   }
   public resetTeamId() {
@@ -203,15 +203,15 @@ export class PinpointApnsSandboxChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get teamIdInput() {
-    return this._teamId
+    return this._teamId;
   }
 
   // token_key - computed: false, optional: true, required: false
-  private _tokenKey?: string | undefined; 
+  private _tokenKey?: string; 
   public get tokenKey() {
     return this.getStringAttribute('token_key');
   }
-  public set tokenKey(value: string | undefined) {
+  public set tokenKey(value: string) {
     this._tokenKey = value;
   }
   public resetTokenKey() {
@@ -219,15 +219,15 @@ export class PinpointApnsSandboxChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tokenKeyInput() {
-    return this._tokenKey
+    return this._tokenKey;
   }
 
   // token_key_id - computed: false, optional: true, required: false
-  private _tokenKeyId?: string | undefined; 
+  private _tokenKeyId?: string; 
   public get tokenKeyId() {
     return this.getStringAttribute('token_key_id');
   }
-  public set tokenKeyId(value: string | undefined) {
+  public set tokenKeyId(value: string) {
     this._tokenKeyId = value;
   }
   public resetTokenKeyId() {
@@ -235,7 +235,7 @@ export class PinpointApnsSandboxChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tokenKeyIdInput() {
-    return this._tokenKeyId
+    return this._tokenKeyId;
   }
 
   // =========

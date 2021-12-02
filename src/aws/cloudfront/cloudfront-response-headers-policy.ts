@@ -65,12 +65,31 @@ export class CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowHeadersO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowHeaders | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._items) {
+      hasAnyValues = true;
+      internalValueResult.items = this._items;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowHeaders | undefined) {
+    if (value === undefined) {
+      this._items = undefined;
+    }
+    else {
+      this._items = value.items;
+    }
+  }
+
   // items - computed: false, optional: true, required: false
-  private _items?: string[] | undefined; 
+  private _items?: string[]; 
   public get items() {
     return this.getListAttribute('items');
   }
-  public set items(value: string[] | undefined) {
+  public set items(value: string[]) {
     this._items = value;
   }
   public resetItems() {
@@ -78,7 +97,7 @@ export class CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowHeadersO
   }
   // Temporarily expose input value. Use with caution.
   public get itemsInput() {
-    return this._items
+    return this._items;
   }
 }
 export interface CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowMethods {
@@ -108,12 +127,31 @@ export class CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowMethodsO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowMethods | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._items) {
+      hasAnyValues = true;
+      internalValueResult.items = this._items;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowMethods | undefined) {
+    if (value === undefined) {
+      this._items = undefined;
+    }
+    else {
+      this._items = value.items;
+    }
+  }
+
   // items - computed: false, optional: true, required: false
-  private _items?: string[] | undefined; 
+  private _items?: string[]; 
   public get items() {
     return this.getListAttribute('items');
   }
-  public set items(value: string[] | undefined) {
+  public set items(value: string[]) {
     this._items = value;
   }
   public resetItems() {
@@ -121,7 +159,7 @@ export class CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowMethodsO
   }
   // Temporarily expose input value. Use with caution.
   public get itemsInput() {
-    return this._items
+    return this._items;
   }
 }
 export interface CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowOrigins {
@@ -151,12 +189,31 @@ export class CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowOriginsO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowOrigins | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._items) {
+      hasAnyValues = true;
+      internalValueResult.items = this._items;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowOrigins | undefined) {
+    if (value === undefined) {
+      this._items = undefined;
+    }
+    else {
+      this._items = value.items;
+    }
+  }
+
   // items - computed: false, optional: true, required: false
-  private _items?: string[] | undefined; 
+  private _items?: string[]; 
   public get items() {
     return this.getListAttribute('items');
   }
-  public set items(value: string[] | undefined) {
+  public set items(value: string[]) {
     this._items = value;
   }
   public resetItems() {
@@ -164,7 +221,7 @@ export class CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowOriginsO
   }
   // Temporarily expose input value. Use with caution.
   public get itemsInput() {
-    return this._items
+    return this._items;
   }
 }
 export interface CloudfrontResponseHeadersPolicyCorsConfigAccessControlExposeHeaders {
@@ -194,12 +251,31 @@ export class CloudfrontResponseHeadersPolicyCorsConfigAccessControlExposeHeaders
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontResponseHeadersPolicyCorsConfigAccessControlExposeHeaders | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._items) {
+      hasAnyValues = true;
+      internalValueResult.items = this._items;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontResponseHeadersPolicyCorsConfigAccessControlExposeHeaders | undefined) {
+    if (value === undefined) {
+      this._items = undefined;
+    }
+    else {
+      this._items = value.items;
+    }
+  }
+
   // items - computed: false, optional: true, required: false
-  private _items?: string[] | undefined; 
+  private _items?: string[]; 
   public get items() {
     return this.getListAttribute('items');
   }
-  public set items(value: string[] | undefined) {
+  public set items(value: string[]) {
     this._items = value;
   }
   public resetItems() {
@@ -207,7 +283,7 @@ export class CloudfrontResponseHeadersPolicyCorsConfigAccessControlExposeHeaders
   }
   // Temporarily expose input value. Use with caution.
   public get itemsInput() {
-    return this._items
+    return this._items;
   }
 }
 export interface CloudfrontResponseHeadersPolicyCorsConfig {
@@ -275,6 +351,61 @@ export class CloudfrontResponseHeadersPolicyCorsConfigOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontResponseHeadersPolicyCorsConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._accessControlAllowCredentials) {
+      hasAnyValues = true;
+      internalValueResult.accessControlAllowCredentials = this._accessControlAllowCredentials;
+    }
+    if (this._accessControlMaxAgeSec) {
+      hasAnyValues = true;
+      internalValueResult.accessControlMaxAgeSec = this._accessControlMaxAgeSec;
+    }
+    if (this._originOverride) {
+      hasAnyValues = true;
+      internalValueResult.originOverride = this._originOverride;
+    }
+    if (this._accessControlAllowHeaders) {
+      hasAnyValues = true;
+      internalValueResult.accessControlAllowHeaders = this._accessControlAllowHeaders?.internalValue;
+    }
+    if (this._accessControlAllowMethods) {
+      hasAnyValues = true;
+      internalValueResult.accessControlAllowMethods = this._accessControlAllowMethods?.internalValue;
+    }
+    if (this._accessControlAllowOrigins) {
+      hasAnyValues = true;
+      internalValueResult.accessControlAllowOrigins = this._accessControlAllowOrigins?.internalValue;
+    }
+    if (this._accessControlExposeHeaders) {
+      hasAnyValues = true;
+      internalValueResult.accessControlExposeHeaders = this._accessControlExposeHeaders?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontResponseHeadersPolicyCorsConfig | undefined) {
+    if (value === undefined) {
+      this._accessControlAllowCredentials = undefined;
+      this._accessControlMaxAgeSec = undefined;
+      this._originOverride = undefined;
+      this._accessControlAllowHeaders.internalValue = undefined;
+      this._accessControlAllowMethods.internalValue = undefined;
+      this._accessControlAllowOrigins.internalValue = undefined;
+      this._accessControlExposeHeaders.internalValue = undefined;
+    }
+    else {
+      this._accessControlAllowCredentials = value.accessControlAllowCredentials;
+      this._accessControlMaxAgeSec = value.accessControlMaxAgeSec;
+      this._originOverride = value.originOverride;
+      this._accessControlAllowHeaders.internalValue = value.accessControlAllowHeaders;
+      this._accessControlAllowMethods.internalValue = value.accessControlAllowMethods;
+      this._accessControlAllowOrigins.internalValue = value.accessControlAllowOrigins;
+      this._accessControlExposeHeaders.internalValue = value.accessControlExposeHeaders;
+    }
+  }
+
   // access_control_allow_credentials - computed: false, optional: false, required: true
   private _accessControlAllowCredentials?: boolean | cdktf.IResolvable; 
   public get accessControlAllowCredentials() {
@@ -285,15 +416,15 @@ export class CloudfrontResponseHeadersPolicyCorsConfigOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get accessControlAllowCredentialsInput() {
-    return this._accessControlAllowCredentials
+    return this._accessControlAllowCredentials;
   }
 
   // access_control_max_age_sec - computed: false, optional: true, required: false
-  private _accessControlMaxAgeSec?: number | undefined; 
+  private _accessControlMaxAgeSec?: number; 
   public get accessControlMaxAgeSec() {
     return this.getNumberAttribute('access_control_max_age_sec');
   }
-  public set accessControlMaxAgeSec(value: number | undefined) {
+  public set accessControlMaxAgeSec(value: number) {
     this._accessControlMaxAgeSec = value;
   }
   public resetAccessControlMaxAgeSec() {
@@ -301,7 +432,7 @@ export class CloudfrontResponseHeadersPolicyCorsConfigOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get accessControlMaxAgeSecInput() {
-    return this._accessControlMaxAgeSec
+    return this._accessControlMaxAgeSec;
   }
 
   // origin_override - computed: false, optional: false, required: true
@@ -314,66 +445,62 @@ export class CloudfrontResponseHeadersPolicyCorsConfigOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get originOverrideInput() {
-    return this._originOverride
+    return this._originOverride;
   }
 
   // access_control_allow_headers - computed: false, optional: false, required: true
-  private _accessControlAllowHeaders?: CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowHeaders; 
-  private __accessControlAllowHeadersOutput = new CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowHeadersOutputReference(this as any, "access_control_allow_headers", true);
+  private _accessControlAllowHeaders = new CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowHeadersOutputReference(this as any, "access_control_allow_headers", true);
   public get accessControlAllowHeaders() {
-    return this.__accessControlAllowHeadersOutput;
+    return this._accessControlAllowHeaders;
   }
   public putAccessControlAllowHeaders(value: CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowHeaders) {
-    this._accessControlAllowHeaders = value;
+    this._accessControlAllowHeaders.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get accessControlAllowHeadersInput() {
-    return this._accessControlAllowHeaders
+    return this._accessControlAllowHeaders.internalValue;
   }
 
   // access_control_allow_methods - computed: false, optional: false, required: true
-  private _accessControlAllowMethods?: CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowMethods; 
-  private __accessControlAllowMethodsOutput = new CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowMethodsOutputReference(this as any, "access_control_allow_methods", true);
+  private _accessControlAllowMethods = new CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowMethodsOutputReference(this as any, "access_control_allow_methods", true);
   public get accessControlAllowMethods() {
-    return this.__accessControlAllowMethodsOutput;
+    return this._accessControlAllowMethods;
   }
   public putAccessControlAllowMethods(value: CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowMethods) {
-    this._accessControlAllowMethods = value;
+    this._accessControlAllowMethods.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get accessControlAllowMethodsInput() {
-    return this._accessControlAllowMethods
+    return this._accessControlAllowMethods.internalValue;
   }
 
   // access_control_allow_origins - computed: false, optional: false, required: true
-  private _accessControlAllowOrigins?: CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowOrigins; 
-  private __accessControlAllowOriginsOutput = new CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowOriginsOutputReference(this as any, "access_control_allow_origins", true);
+  private _accessControlAllowOrigins = new CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowOriginsOutputReference(this as any, "access_control_allow_origins", true);
   public get accessControlAllowOrigins() {
-    return this.__accessControlAllowOriginsOutput;
+    return this._accessControlAllowOrigins;
   }
   public putAccessControlAllowOrigins(value: CloudfrontResponseHeadersPolicyCorsConfigAccessControlAllowOrigins) {
-    this._accessControlAllowOrigins = value;
+    this._accessControlAllowOrigins.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get accessControlAllowOriginsInput() {
-    return this._accessControlAllowOrigins
+    return this._accessControlAllowOrigins.internalValue;
   }
 
   // access_control_expose_headers - computed: false, optional: true, required: false
-  private _accessControlExposeHeaders?: CloudfrontResponseHeadersPolicyCorsConfigAccessControlExposeHeaders | undefined; 
-  private __accessControlExposeHeadersOutput = new CloudfrontResponseHeadersPolicyCorsConfigAccessControlExposeHeadersOutputReference(this as any, "access_control_expose_headers", true);
+  private _accessControlExposeHeaders = new CloudfrontResponseHeadersPolicyCorsConfigAccessControlExposeHeadersOutputReference(this as any, "access_control_expose_headers", true);
   public get accessControlExposeHeaders() {
-    return this.__accessControlExposeHeadersOutput;
+    return this._accessControlExposeHeaders;
   }
-  public putAccessControlExposeHeaders(value: CloudfrontResponseHeadersPolicyCorsConfigAccessControlExposeHeaders | undefined) {
-    this._accessControlExposeHeaders = value;
+  public putAccessControlExposeHeaders(value: CloudfrontResponseHeadersPolicyCorsConfigAccessControlExposeHeaders) {
+    this._accessControlExposeHeaders.internalValue = value;
   }
   public resetAccessControlExposeHeaders() {
-    this._accessControlExposeHeaders = undefined;
+    this._accessControlExposeHeaders.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get accessControlExposeHeadersInput() {
-    return this._accessControlExposeHeaders
+    return this._accessControlExposeHeaders.internalValue;
   }
 }
 export interface CloudfrontResponseHeadersPolicyCustomHeadersConfigItems {
@@ -432,13 +559,32 @@ export class CloudfrontResponseHeadersPolicyCustomHeadersConfigOutputReference e
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontResponseHeadersPolicyCustomHeadersConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._items) {
+      hasAnyValues = true;
+      internalValueResult.items = this._items;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontResponseHeadersPolicyCustomHeadersConfig | undefined) {
+    if (value === undefined) {
+      this._items = undefined;
+    }
+    else {
+      this._items = value.items;
+    }
+  }
+
   // items - computed: false, optional: true, required: false
-  private _items?: CloudfrontResponseHeadersPolicyCustomHeadersConfigItems[] | undefined; 
+  private _items?: CloudfrontResponseHeadersPolicyCustomHeadersConfigItems[]; 
   public get items() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('items') as any;
   }
-  public set items(value: CloudfrontResponseHeadersPolicyCustomHeadersConfigItems[] | undefined) {
+  public set items(value: CloudfrontResponseHeadersPolicyCustomHeadersConfigItems[]) {
     this._items = value;
   }
   public resetItems() {
@@ -446,7 +592,7 @@ export class CloudfrontResponseHeadersPolicyCustomHeadersConfigOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get itemsInput() {
-    return this._items
+    return this._items;
   }
 }
 export interface CloudfrontResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy {
@@ -481,6 +627,31 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigContentSecurity
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._contentSecurityPolicy) {
+      hasAnyValues = true;
+      internalValueResult.contentSecurityPolicy = this._contentSecurityPolicy;
+    }
+    if (this._override) {
+      hasAnyValues = true;
+      internalValueResult.override = this._override;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy | undefined) {
+    if (value === undefined) {
+      this._contentSecurityPolicy = undefined;
+      this._override = undefined;
+    }
+    else {
+      this._contentSecurityPolicy = value.contentSecurityPolicy;
+      this._override = value.override;
+    }
+  }
+
   // content_security_policy - computed: false, optional: false, required: true
   private _contentSecurityPolicy?: string; 
   public get contentSecurityPolicy() {
@@ -491,7 +662,7 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigContentSecurity
   }
   // Temporarily expose input value. Use with caution.
   public get contentSecurityPolicyInput() {
-    return this._contentSecurityPolicy
+    return this._contentSecurityPolicy;
   }
 
   // override - computed: false, optional: false, required: true
@@ -504,7 +675,7 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigContentSecurity
   }
   // Temporarily expose input value. Use with caution.
   public get overrideInput() {
-    return this._override
+    return this._override;
   }
 }
 export interface CloudfrontResponseHeadersPolicySecurityHeadersConfigContentTypeOptions {
@@ -534,6 +705,25 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigContentTypeOpti
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontResponseHeadersPolicySecurityHeadersConfigContentTypeOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._override) {
+      hasAnyValues = true;
+      internalValueResult.override = this._override;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigContentTypeOptions | undefined) {
+    if (value === undefined) {
+      this._override = undefined;
+    }
+    else {
+      this._override = value.override;
+    }
+  }
+
   // override - computed: false, optional: false, required: true
   private _override?: boolean | cdktf.IResolvable; 
   public get override() {
@@ -544,7 +734,7 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigContentTypeOpti
   }
   // Temporarily expose input value. Use with caution.
   public get overrideInput() {
-    return this._override
+    return this._override;
   }
 }
 export interface CloudfrontResponseHeadersPolicySecurityHeadersConfigFrameOptions {
@@ -579,6 +769,31 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigFrameOptionsOut
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontResponseHeadersPolicySecurityHeadersConfigFrameOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._frameOption) {
+      hasAnyValues = true;
+      internalValueResult.frameOption = this._frameOption;
+    }
+    if (this._override) {
+      hasAnyValues = true;
+      internalValueResult.override = this._override;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigFrameOptions | undefined) {
+    if (value === undefined) {
+      this._frameOption = undefined;
+      this._override = undefined;
+    }
+    else {
+      this._frameOption = value.frameOption;
+      this._override = value.override;
+    }
+  }
+
   // frame_option - computed: false, optional: false, required: true
   private _frameOption?: string; 
   public get frameOption() {
@@ -589,7 +804,7 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigFrameOptionsOut
   }
   // Temporarily expose input value. Use with caution.
   public get frameOptionInput() {
-    return this._frameOption
+    return this._frameOption;
   }
 
   // override - computed: false, optional: false, required: true
@@ -602,7 +817,7 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigFrameOptionsOut
   }
   // Temporarily expose input value. Use with caution.
   public get overrideInput() {
-    return this._override
+    return this._override;
   }
 }
 export interface CloudfrontResponseHeadersPolicySecurityHeadersConfigReferrerPolicy {
@@ -637,6 +852,31 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigReferrerPolicyO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontResponseHeadersPolicySecurityHeadersConfigReferrerPolicy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._override) {
+      hasAnyValues = true;
+      internalValueResult.override = this._override;
+    }
+    if (this._referrerPolicy) {
+      hasAnyValues = true;
+      internalValueResult.referrerPolicy = this._referrerPolicy;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigReferrerPolicy | undefined) {
+    if (value === undefined) {
+      this._override = undefined;
+      this._referrerPolicy = undefined;
+    }
+    else {
+      this._override = value.override;
+      this._referrerPolicy = value.referrerPolicy;
+    }
+  }
+
   // override - computed: false, optional: false, required: true
   private _override?: boolean | cdktf.IResolvable; 
   public get override() {
@@ -647,7 +887,7 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigReferrerPolicyO
   }
   // Temporarily expose input value. Use with caution.
   public get overrideInput() {
-    return this._override
+    return this._override;
   }
 
   // referrer_policy - computed: false, optional: false, required: true
@@ -660,7 +900,7 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigReferrerPolicyO
   }
   // Temporarily expose input value. Use with caution.
   public get referrerPolicyInput() {
-    return this._referrerPolicy
+    return this._referrerPolicy;
   }
 }
 export interface CloudfrontResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity {
@@ -705,6 +945,43 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigStrictTransport
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._accessControlMaxAgeSec) {
+      hasAnyValues = true;
+      internalValueResult.accessControlMaxAgeSec = this._accessControlMaxAgeSec;
+    }
+    if (this._includeSubdomains) {
+      hasAnyValues = true;
+      internalValueResult.includeSubdomains = this._includeSubdomains;
+    }
+    if (this._override) {
+      hasAnyValues = true;
+      internalValueResult.override = this._override;
+    }
+    if (this._preload) {
+      hasAnyValues = true;
+      internalValueResult.preload = this._preload;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity | undefined) {
+    if (value === undefined) {
+      this._accessControlMaxAgeSec = undefined;
+      this._includeSubdomains = undefined;
+      this._override = undefined;
+      this._preload = undefined;
+    }
+    else {
+      this._accessControlMaxAgeSec = value.accessControlMaxAgeSec;
+      this._includeSubdomains = value.includeSubdomains;
+      this._override = value.override;
+      this._preload = value.preload;
+    }
+  }
+
   // access_control_max_age_sec - computed: false, optional: false, required: true
   private _accessControlMaxAgeSec?: number; 
   public get accessControlMaxAgeSec() {
@@ -715,15 +992,15 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigStrictTransport
   }
   // Temporarily expose input value. Use with caution.
   public get accessControlMaxAgeSecInput() {
-    return this._accessControlMaxAgeSec
+    return this._accessControlMaxAgeSec;
   }
 
   // include_subdomains - computed: false, optional: true, required: false
-  private _includeSubdomains?: boolean | cdktf.IResolvable | undefined; 
+  private _includeSubdomains?: boolean | cdktf.IResolvable; 
   public get includeSubdomains() {
     return this.getBooleanAttribute('include_subdomains') as any;
   }
-  public set includeSubdomains(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeSubdomains(value: boolean | cdktf.IResolvable) {
     this._includeSubdomains = value;
   }
   public resetIncludeSubdomains() {
@@ -731,7 +1008,7 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigStrictTransport
   }
   // Temporarily expose input value. Use with caution.
   public get includeSubdomainsInput() {
-    return this._includeSubdomains
+    return this._includeSubdomains;
   }
 
   // override - computed: false, optional: false, required: true
@@ -744,15 +1021,15 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigStrictTransport
   }
   // Temporarily expose input value. Use with caution.
   public get overrideInput() {
-    return this._override
+    return this._override;
   }
 
   // preload - computed: false, optional: true, required: false
-  private _preload?: boolean | cdktf.IResolvable | undefined; 
+  private _preload?: boolean | cdktf.IResolvable; 
   public get preload() {
     return this.getBooleanAttribute('preload') as any;
   }
-  public set preload(value: boolean | cdktf.IResolvable | undefined) {
+  public set preload(value: boolean | cdktf.IResolvable) {
     this._preload = value;
   }
   public resetPreload() {
@@ -760,7 +1037,7 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigStrictTransport
   }
   // Temporarily expose input value. Use with caution.
   public get preloadInput() {
-    return this._preload
+    return this._preload;
   }
 }
 export interface CloudfrontResponseHeadersPolicySecurityHeadersConfigXssProtection {
@@ -805,12 +1082,49 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigXssProtectionOu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontResponseHeadersPolicySecurityHeadersConfigXssProtection | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._modeBlock) {
+      hasAnyValues = true;
+      internalValueResult.modeBlock = this._modeBlock;
+    }
+    if (this._override) {
+      hasAnyValues = true;
+      internalValueResult.override = this._override;
+    }
+    if (this._protection) {
+      hasAnyValues = true;
+      internalValueResult.protection = this._protection;
+    }
+    if (this._reportUri) {
+      hasAnyValues = true;
+      internalValueResult.reportUri = this._reportUri;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigXssProtection | undefined) {
+    if (value === undefined) {
+      this._modeBlock = undefined;
+      this._override = undefined;
+      this._protection = undefined;
+      this._reportUri = undefined;
+    }
+    else {
+      this._modeBlock = value.modeBlock;
+      this._override = value.override;
+      this._protection = value.protection;
+      this._reportUri = value.reportUri;
+    }
+  }
+
   // mode_block - computed: false, optional: true, required: false
-  private _modeBlock?: boolean | cdktf.IResolvable | undefined; 
+  private _modeBlock?: boolean | cdktf.IResolvable; 
   public get modeBlock() {
     return this.getBooleanAttribute('mode_block') as any;
   }
-  public set modeBlock(value: boolean | cdktf.IResolvable | undefined) {
+  public set modeBlock(value: boolean | cdktf.IResolvable) {
     this._modeBlock = value;
   }
   public resetModeBlock() {
@@ -818,7 +1132,7 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigXssProtectionOu
   }
   // Temporarily expose input value. Use with caution.
   public get modeBlockInput() {
-    return this._modeBlock
+    return this._modeBlock;
   }
 
   // override - computed: false, optional: false, required: true
@@ -831,7 +1145,7 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigXssProtectionOu
   }
   // Temporarily expose input value. Use with caution.
   public get overrideInput() {
-    return this._override
+    return this._override;
   }
 
   // protection - computed: false, optional: false, required: true
@@ -844,15 +1158,15 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigXssProtectionOu
   }
   // Temporarily expose input value. Use with caution.
   public get protectionInput() {
-    return this._protection
+    return this._protection;
   }
 
   // report_uri - computed: false, optional: true, required: false
-  private _reportUri?: string | undefined; 
+  private _reportUri?: string; 
   public get reportUri() {
     return this.getStringAttribute('report_uri');
   }
-  public set reportUri(value: string | undefined) {
+  public set reportUri(value: string) {
     this._reportUri = value;
   }
   public resetReportUri() {
@@ -860,7 +1174,7 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigXssProtectionOu
   }
   // Temporarily expose input value. Use with caution.
   public get reportUriInput() {
-    return this._reportUri
+    return this._reportUri;
   }
 }
 export interface CloudfrontResponseHeadersPolicySecurityHeadersConfig {
@@ -927,106 +1241,149 @@ export class CloudfrontResponseHeadersPolicySecurityHeadersConfigOutputReference
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // content_security_policy - computed: false, optional: true, required: false
-  private _contentSecurityPolicy?: CloudfrontResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy | undefined; 
-  private __contentSecurityPolicyOutput = new CloudfrontResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicyOutputReference(this as any, "content_security_policy", true);
-  public get contentSecurityPolicy() {
-    return this.__contentSecurityPolicyOutput;
+  public get internalValue(): CloudfrontResponseHeadersPolicySecurityHeadersConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._contentSecurityPolicy) {
+      hasAnyValues = true;
+      internalValueResult.contentSecurityPolicy = this._contentSecurityPolicy?.internalValue;
+    }
+    if (this._contentTypeOptions) {
+      hasAnyValues = true;
+      internalValueResult.contentTypeOptions = this._contentTypeOptions?.internalValue;
+    }
+    if (this._frameOptions) {
+      hasAnyValues = true;
+      internalValueResult.frameOptions = this._frameOptions?.internalValue;
+    }
+    if (this._referrerPolicy) {
+      hasAnyValues = true;
+      internalValueResult.referrerPolicy = this._referrerPolicy?.internalValue;
+    }
+    if (this._strictTransportSecurity) {
+      hasAnyValues = true;
+      internalValueResult.strictTransportSecurity = this._strictTransportSecurity?.internalValue;
+    }
+    if (this._xssProtection) {
+      hasAnyValues = true;
+      internalValueResult.xssProtection = this._xssProtection?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putContentSecurityPolicy(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy | undefined) {
-    this._contentSecurityPolicy = value;
+
+  public set internalValue(value: CloudfrontResponseHeadersPolicySecurityHeadersConfig | undefined) {
+    if (value === undefined) {
+      this._contentSecurityPolicy.internalValue = undefined;
+      this._contentTypeOptions.internalValue = undefined;
+      this._frameOptions.internalValue = undefined;
+      this._referrerPolicy.internalValue = undefined;
+      this._strictTransportSecurity.internalValue = undefined;
+      this._xssProtection.internalValue = undefined;
+    }
+    else {
+      this._contentSecurityPolicy.internalValue = value.contentSecurityPolicy;
+      this._contentTypeOptions.internalValue = value.contentTypeOptions;
+      this._frameOptions.internalValue = value.frameOptions;
+      this._referrerPolicy.internalValue = value.referrerPolicy;
+      this._strictTransportSecurity.internalValue = value.strictTransportSecurity;
+      this._xssProtection.internalValue = value.xssProtection;
+    }
+  }
+
+  // content_security_policy - computed: false, optional: true, required: false
+  private _contentSecurityPolicy = new CloudfrontResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicyOutputReference(this as any, "content_security_policy", true);
+  public get contentSecurityPolicy() {
+    return this._contentSecurityPolicy;
+  }
+  public putContentSecurityPolicy(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy) {
+    this._contentSecurityPolicy.internalValue = value;
   }
   public resetContentSecurityPolicy() {
-    this._contentSecurityPolicy = undefined;
+    this._contentSecurityPolicy.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get contentSecurityPolicyInput() {
-    return this._contentSecurityPolicy
+    return this._contentSecurityPolicy.internalValue;
   }
 
   // content_type_options - computed: false, optional: true, required: false
-  private _contentTypeOptions?: CloudfrontResponseHeadersPolicySecurityHeadersConfigContentTypeOptions | undefined; 
-  private __contentTypeOptionsOutput = new CloudfrontResponseHeadersPolicySecurityHeadersConfigContentTypeOptionsOutputReference(this as any, "content_type_options", true);
+  private _contentTypeOptions = new CloudfrontResponseHeadersPolicySecurityHeadersConfigContentTypeOptionsOutputReference(this as any, "content_type_options", true);
   public get contentTypeOptions() {
-    return this.__contentTypeOptionsOutput;
+    return this._contentTypeOptions;
   }
-  public putContentTypeOptions(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigContentTypeOptions | undefined) {
-    this._contentTypeOptions = value;
+  public putContentTypeOptions(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigContentTypeOptions) {
+    this._contentTypeOptions.internalValue = value;
   }
   public resetContentTypeOptions() {
-    this._contentTypeOptions = undefined;
+    this._contentTypeOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get contentTypeOptionsInput() {
-    return this._contentTypeOptions
+    return this._contentTypeOptions.internalValue;
   }
 
   // frame_options - computed: false, optional: true, required: false
-  private _frameOptions?: CloudfrontResponseHeadersPolicySecurityHeadersConfigFrameOptions | undefined; 
-  private __frameOptionsOutput = new CloudfrontResponseHeadersPolicySecurityHeadersConfigFrameOptionsOutputReference(this as any, "frame_options", true);
+  private _frameOptions = new CloudfrontResponseHeadersPolicySecurityHeadersConfigFrameOptionsOutputReference(this as any, "frame_options", true);
   public get frameOptions() {
-    return this.__frameOptionsOutput;
+    return this._frameOptions;
   }
-  public putFrameOptions(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigFrameOptions | undefined) {
-    this._frameOptions = value;
+  public putFrameOptions(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigFrameOptions) {
+    this._frameOptions.internalValue = value;
   }
   public resetFrameOptions() {
-    this._frameOptions = undefined;
+    this._frameOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get frameOptionsInput() {
-    return this._frameOptions
+    return this._frameOptions.internalValue;
   }
 
   // referrer_policy - computed: false, optional: true, required: false
-  private _referrerPolicy?: CloudfrontResponseHeadersPolicySecurityHeadersConfigReferrerPolicy | undefined; 
-  private __referrerPolicyOutput = new CloudfrontResponseHeadersPolicySecurityHeadersConfigReferrerPolicyOutputReference(this as any, "referrer_policy", true);
+  private _referrerPolicy = new CloudfrontResponseHeadersPolicySecurityHeadersConfigReferrerPolicyOutputReference(this as any, "referrer_policy", true);
   public get referrerPolicy() {
-    return this.__referrerPolicyOutput;
+    return this._referrerPolicy;
   }
-  public putReferrerPolicy(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigReferrerPolicy | undefined) {
-    this._referrerPolicy = value;
+  public putReferrerPolicy(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigReferrerPolicy) {
+    this._referrerPolicy.internalValue = value;
   }
   public resetReferrerPolicy() {
-    this._referrerPolicy = undefined;
+    this._referrerPolicy.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get referrerPolicyInput() {
-    return this._referrerPolicy
+    return this._referrerPolicy.internalValue;
   }
 
   // strict_transport_security - computed: false, optional: true, required: false
-  private _strictTransportSecurity?: CloudfrontResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity | undefined; 
-  private __strictTransportSecurityOutput = new CloudfrontResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurityOutputReference(this as any, "strict_transport_security", true);
+  private _strictTransportSecurity = new CloudfrontResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurityOutputReference(this as any, "strict_transport_security", true);
   public get strictTransportSecurity() {
-    return this.__strictTransportSecurityOutput;
+    return this._strictTransportSecurity;
   }
-  public putStrictTransportSecurity(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity | undefined) {
-    this._strictTransportSecurity = value;
+  public putStrictTransportSecurity(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity) {
+    this._strictTransportSecurity.internalValue = value;
   }
   public resetStrictTransportSecurity() {
-    this._strictTransportSecurity = undefined;
+    this._strictTransportSecurity.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get strictTransportSecurityInput() {
-    return this._strictTransportSecurity
+    return this._strictTransportSecurity.internalValue;
   }
 
   // xss_protection - computed: false, optional: true, required: false
-  private _xssProtection?: CloudfrontResponseHeadersPolicySecurityHeadersConfigXssProtection | undefined; 
-  private __xssProtectionOutput = new CloudfrontResponseHeadersPolicySecurityHeadersConfigXssProtectionOutputReference(this as any, "xss_protection", true);
+  private _xssProtection = new CloudfrontResponseHeadersPolicySecurityHeadersConfigXssProtectionOutputReference(this as any, "xss_protection", true);
   public get xssProtection() {
-    return this.__xssProtectionOutput;
+    return this._xssProtection;
   }
-  public putXssProtection(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigXssProtection | undefined) {
-    this._xssProtection = value;
+  public putXssProtection(value: CloudfrontResponseHeadersPolicySecurityHeadersConfigXssProtection) {
+    this._xssProtection.internalValue = value;
   }
   public resetXssProtection() {
-    this._xssProtection = undefined;
+    this._xssProtection.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get xssProtectionInput() {
-    return this._xssProtection
+    return this._xssProtection.internalValue;
   }
 }
 
@@ -1065,9 +1422,9 @@ export class CloudfrontResponseHeadersPolicy extends cdktf.TerraformResource {
     this._comment = config.comment;
     this._etag = config.etag;
     this._name = config.name;
-    this._corsConfig = config.corsConfig;
-    this._customHeadersConfig = config.customHeadersConfig;
-    this._securityHeadersConfig = config.securityHeadersConfig;
+    this._corsConfig.internalValue = config.corsConfig;
+    this._customHeadersConfig.internalValue = config.customHeadersConfig;
+    this._securityHeadersConfig.internalValue = config.securityHeadersConfig;
   }
 
   // ==========
@@ -1075,11 +1432,11 @@ export class CloudfrontResponseHeadersPolicy extends cdktf.TerraformResource {
   // ==========
 
   // comment - computed: false, optional: true, required: false
-  private _comment?: string | undefined; 
+  private _comment?: string; 
   public get comment() {
     return this.getStringAttribute('comment');
   }
-  public set comment(value: string | undefined) {
+  public set comment(value: string) {
     this._comment = value;
   }
   public resetComment() {
@@ -1087,15 +1444,15 @@ export class CloudfrontResponseHeadersPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get commentInput() {
-    return this._comment
+    return this._comment;
   }
 
   // etag - computed: true, optional: true, required: false
-  private _etag?: string | undefined; 
+  private _etag?: string; 
   public get etag() {
     return this.getStringAttribute('etag');
   }
-  public set etag(value: string | undefined) {
+  public set etag(value: string) {
     this._etag = value;
   }
   public resetEtag() {
@@ -1103,7 +1460,7 @@ export class CloudfrontResponseHeadersPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get etagInput() {
-    return this._etag
+    return this._etag;
   }
 
   // id - computed: true, optional: true, required: false
@@ -1121,58 +1478,55 @@ export class CloudfrontResponseHeadersPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // cors_config - computed: false, optional: true, required: false
-  private _corsConfig?: CloudfrontResponseHeadersPolicyCorsConfig | undefined; 
-  private __corsConfigOutput = new CloudfrontResponseHeadersPolicyCorsConfigOutputReference(this as any, "cors_config", true);
+  private _corsConfig = new CloudfrontResponseHeadersPolicyCorsConfigOutputReference(this as any, "cors_config", true);
   public get corsConfig() {
-    return this.__corsConfigOutput;
+    return this._corsConfig;
   }
-  public putCorsConfig(value: CloudfrontResponseHeadersPolicyCorsConfig | undefined) {
-    this._corsConfig = value;
+  public putCorsConfig(value: CloudfrontResponseHeadersPolicyCorsConfig) {
+    this._corsConfig.internalValue = value;
   }
   public resetCorsConfig() {
-    this._corsConfig = undefined;
+    this._corsConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get corsConfigInput() {
-    return this._corsConfig
+    return this._corsConfig.internalValue;
   }
 
   // custom_headers_config - computed: false, optional: true, required: false
-  private _customHeadersConfig?: CloudfrontResponseHeadersPolicyCustomHeadersConfig | undefined; 
-  private __customHeadersConfigOutput = new CloudfrontResponseHeadersPolicyCustomHeadersConfigOutputReference(this as any, "custom_headers_config", true);
+  private _customHeadersConfig = new CloudfrontResponseHeadersPolicyCustomHeadersConfigOutputReference(this as any, "custom_headers_config", true);
   public get customHeadersConfig() {
-    return this.__customHeadersConfigOutput;
+    return this._customHeadersConfig;
   }
-  public putCustomHeadersConfig(value: CloudfrontResponseHeadersPolicyCustomHeadersConfig | undefined) {
-    this._customHeadersConfig = value;
+  public putCustomHeadersConfig(value: CloudfrontResponseHeadersPolicyCustomHeadersConfig) {
+    this._customHeadersConfig.internalValue = value;
   }
   public resetCustomHeadersConfig() {
-    this._customHeadersConfig = undefined;
+    this._customHeadersConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get customHeadersConfigInput() {
-    return this._customHeadersConfig
+    return this._customHeadersConfig.internalValue;
   }
 
   // security_headers_config - computed: false, optional: true, required: false
-  private _securityHeadersConfig?: CloudfrontResponseHeadersPolicySecurityHeadersConfig | undefined; 
-  private __securityHeadersConfigOutput = new CloudfrontResponseHeadersPolicySecurityHeadersConfigOutputReference(this as any, "security_headers_config", true);
+  private _securityHeadersConfig = new CloudfrontResponseHeadersPolicySecurityHeadersConfigOutputReference(this as any, "security_headers_config", true);
   public get securityHeadersConfig() {
-    return this.__securityHeadersConfigOutput;
+    return this._securityHeadersConfig;
   }
-  public putSecurityHeadersConfig(value: CloudfrontResponseHeadersPolicySecurityHeadersConfig | undefined) {
-    this._securityHeadersConfig = value;
+  public putSecurityHeadersConfig(value: CloudfrontResponseHeadersPolicySecurityHeadersConfig) {
+    this._securityHeadersConfig.internalValue = value;
   }
   public resetSecurityHeadersConfig() {
-    this._securityHeadersConfig = undefined;
+    this._securityHeadersConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get securityHeadersConfigInput() {
-    return this._securityHeadersConfig
+    return this._securityHeadersConfig.internalValue;
   }
 
   // =========
@@ -1184,9 +1538,9 @@ export class CloudfrontResponseHeadersPolicy extends cdktf.TerraformResource {
       comment: cdktf.stringToTerraform(this._comment),
       etag: cdktf.stringToTerraform(this._etag),
       name: cdktf.stringToTerraform(this._name),
-      cors_config: cloudfrontResponseHeadersPolicyCorsConfigToTerraform(this._corsConfig),
-      custom_headers_config: cloudfrontResponseHeadersPolicyCustomHeadersConfigToTerraform(this._customHeadersConfig),
-      security_headers_config: cloudfrontResponseHeadersPolicySecurityHeadersConfigToTerraform(this._securityHeadersConfig),
+      cors_config: cloudfrontResponseHeadersPolicyCorsConfigToTerraform(this._corsConfig.internalValue),
+      custom_headers_config: cloudfrontResponseHeadersPolicyCustomHeadersConfigToTerraform(this._customHeadersConfig.internalValue),
+      security_headers_config: cloudfrontResponseHeadersPolicySecurityHeadersConfigToTerraform(this._securityHeadersConfig.internalValue),
     };
   }
 }

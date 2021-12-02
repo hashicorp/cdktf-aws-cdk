@@ -72,7 +72,7 @@ export class SecurityhubMember extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdInput() {
-    return this._accountId
+    return this._accountId;
   }
 
   // email - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class SecurityhubMember extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get emailInput() {
-    return this._email
+    return this._email;
   }
 
   // id - computed: true, optional: true, required: false
@@ -94,11 +94,11 @@ export class SecurityhubMember extends cdktf.TerraformResource {
   }
 
   // invite - computed: false, optional: true, required: false
-  private _invite?: boolean | cdktf.IResolvable | undefined; 
+  private _invite?: boolean | cdktf.IResolvable; 
   public get invite() {
     return this.getBooleanAttribute('invite') as any;
   }
-  public set invite(value: boolean | cdktf.IResolvable | undefined) {
+  public set invite(value: boolean | cdktf.IResolvable) {
     this._invite = value;
   }
   public resetInvite() {
@@ -106,7 +106,7 @@ export class SecurityhubMember extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get inviteInput() {
-    return this._invite
+    return this._invite;
   }
 
   // master_id - computed: true, optional: false, required: false

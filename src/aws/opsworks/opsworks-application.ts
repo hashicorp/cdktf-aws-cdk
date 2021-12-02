@@ -235,11 +235,11 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   // ==========
 
   // auto_bundle_on_deploy - computed: false, optional: true, required: false
-  private _autoBundleOnDeploy?: string | undefined; 
+  private _autoBundleOnDeploy?: string; 
   public get autoBundleOnDeploy() {
     return this.getStringAttribute('auto_bundle_on_deploy');
   }
-  public set autoBundleOnDeploy(value: string | undefined) {
+  public set autoBundleOnDeploy(value: string) {
     this._autoBundleOnDeploy = value;
   }
   public resetAutoBundleOnDeploy() {
@@ -247,15 +247,15 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoBundleOnDeployInput() {
-    return this._autoBundleOnDeploy
+    return this._autoBundleOnDeploy;
   }
 
   // aws_flow_ruby_settings - computed: false, optional: true, required: false
-  private _awsFlowRubySettings?: string | undefined; 
+  private _awsFlowRubySettings?: string; 
   public get awsFlowRubySettings() {
     return this.getStringAttribute('aws_flow_ruby_settings');
   }
-  public set awsFlowRubySettings(value: string | undefined) {
+  public set awsFlowRubySettings(value: string) {
     this._awsFlowRubySettings = value;
   }
   public resetAwsFlowRubySettings() {
@@ -263,15 +263,15 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get awsFlowRubySettingsInput() {
-    return this._awsFlowRubySettings
+    return this._awsFlowRubySettings;
   }
 
   // data_source_arn - computed: false, optional: true, required: false
-  private _dataSourceArn?: string | undefined; 
+  private _dataSourceArn?: string; 
   public get dataSourceArn() {
     return this.getStringAttribute('data_source_arn');
   }
-  public set dataSourceArn(value: string | undefined) {
+  public set dataSourceArn(value: string) {
     this._dataSourceArn = value;
   }
   public resetDataSourceArn() {
@@ -279,15 +279,15 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dataSourceArnInput() {
-    return this._dataSourceArn
+    return this._dataSourceArn;
   }
 
   // data_source_database_name - computed: false, optional: true, required: false
-  private _dataSourceDatabaseName?: string | undefined; 
+  private _dataSourceDatabaseName?: string; 
   public get dataSourceDatabaseName() {
     return this.getStringAttribute('data_source_database_name');
   }
-  public set dataSourceDatabaseName(value: string | undefined) {
+  public set dataSourceDatabaseName(value: string) {
     this._dataSourceDatabaseName = value;
   }
   public resetDataSourceDatabaseName() {
@@ -295,15 +295,15 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dataSourceDatabaseNameInput() {
-    return this._dataSourceDatabaseName
+    return this._dataSourceDatabaseName;
   }
 
   // data_source_type - computed: false, optional: true, required: false
-  private _dataSourceType?: string | undefined; 
+  private _dataSourceType?: string; 
   public get dataSourceType() {
     return this.getStringAttribute('data_source_type');
   }
-  public set dataSourceType(value: string | undefined) {
+  public set dataSourceType(value: string) {
     this._dataSourceType = value;
   }
   public resetDataSourceType() {
@@ -311,15 +311,15 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dataSourceTypeInput() {
-    return this._dataSourceType
+    return this._dataSourceType;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -327,15 +327,15 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // document_root - computed: false, optional: true, required: false
-  private _documentRoot?: string | undefined; 
+  private _documentRoot?: string; 
   public get documentRoot() {
     return this.getStringAttribute('document_root');
   }
-  public set documentRoot(value: string | undefined) {
+  public set documentRoot(value: string) {
     this._documentRoot = value;
   }
   public resetDocumentRoot() {
@@ -343,15 +343,15 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get documentRootInput() {
-    return this._documentRoot
+    return this._documentRoot;
   }
 
   // domains - computed: false, optional: true, required: false
-  private _domains?: string[] | undefined; 
+  private _domains?: string[]; 
   public get domains() {
     return this.getListAttribute('domains');
   }
-  public set domains(value: string[] | undefined) {
+  public set domains(value: string[]) {
     this._domains = value;
   }
   public resetDomains() {
@@ -359,15 +359,15 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainsInput() {
-    return this._domains
+    return this._domains;
   }
 
   // enable_ssl - computed: false, optional: true, required: false
-  private _enableSsl?: boolean | cdktf.IResolvable | undefined; 
+  private _enableSsl?: boolean | cdktf.IResolvable; 
   public get enableSsl() {
     return this.getBooleanAttribute('enable_ssl') as any;
   }
-  public set enableSsl(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableSsl(value: boolean | cdktf.IResolvable) {
     this._enableSsl = value;
   }
   public resetEnableSsl() {
@@ -375,7 +375,7 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableSslInput() {
-    return this._enableSsl
+    return this._enableSsl;
   }
 
   // id - computed: true, optional: true, required: false
@@ -393,15 +393,15 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // rails_env - computed: false, optional: true, required: false
-  private _railsEnv?: string | undefined; 
+  private _railsEnv?: string; 
   public get railsEnv() {
     return this.getStringAttribute('rails_env');
   }
-  public set railsEnv(value: string | undefined) {
+  public set railsEnv(value: string) {
     this._railsEnv = value;
   }
   public resetRailsEnv() {
@@ -409,15 +409,15 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get railsEnvInput() {
-    return this._railsEnv
+    return this._railsEnv;
   }
 
   // short_name - computed: true, optional: true, required: false
-  private _shortName?: string | undefined; 
+  private _shortName?: string; 
   public get shortName() {
     return this.getStringAttribute('short_name');
   }
-  public set shortName(value: string | undefined) {
+  public set shortName(value: string) {
     this._shortName = value;
   }
   public resetShortName() {
@@ -425,7 +425,7 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get shortNameInput() {
-    return this._shortName
+    return this._shortName;
   }
 
   // stack_id - computed: false, optional: false, required: true
@@ -438,7 +438,7 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stackIdInput() {
-    return this._stackId
+    return this._stackId;
   }
 
   // type - computed: false, optional: false, required: true
@@ -451,16 +451,16 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // app_source - computed: false, optional: true, required: false
-  private _appSource?: OpsworksApplicationAppSource[] | undefined; 
+  private _appSource?: OpsworksApplicationAppSource[]; 
   public get appSource() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('app_source') as any;
   }
-  public set appSource(value: OpsworksApplicationAppSource[] | undefined) {
+  public set appSource(value: OpsworksApplicationAppSource[]) {
     this._appSource = value;
   }
   public resetAppSource() {
@@ -468,16 +468,16 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get appSourceInput() {
-    return this._appSource
+    return this._appSource;
   }
 
   // environment - computed: false, optional: true, required: false
-  private _environment?: OpsworksApplicationEnvironment[] | undefined; 
+  private _environment?: OpsworksApplicationEnvironment[]; 
   public get environment() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('environment') as any;
   }
-  public set environment(value: OpsworksApplicationEnvironment[] | undefined) {
+  public set environment(value: OpsworksApplicationEnvironment[]) {
     this._environment = value;
   }
   public resetEnvironment() {
@@ -485,16 +485,16 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get environmentInput() {
-    return this._environment
+    return this._environment;
   }
 
   // ssl_configuration - computed: false, optional: true, required: false
-  private _sslConfiguration?: OpsworksApplicationSslConfiguration[] | undefined; 
+  private _sslConfiguration?: OpsworksApplicationSslConfiguration[]; 
   public get sslConfiguration() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ssl_configuration') as any;
   }
-  public set sslConfiguration(value: OpsworksApplicationSslConfiguration[] | undefined) {
+  public set sslConfiguration(value: OpsworksApplicationSslConfiguration[]) {
     this._sslConfiguration = value;
   }
   public resetSslConfiguration() {
@@ -502,7 +502,7 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sslConfigurationInput() {
-    return this._sslConfiguration
+    return this._sslConfiguration;
   }
 
   // =========

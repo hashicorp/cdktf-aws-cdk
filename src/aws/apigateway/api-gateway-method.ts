@@ -103,11 +103,11 @@ export class ApiGatewayMethod extends cdktf.TerraformResource {
   // ==========
 
   // api_key_required - computed: false, optional: true, required: false
-  private _apiKeyRequired?: boolean | cdktf.IResolvable | undefined; 
+  private _apiKeyRequired?: boolean | cdktf.IResolvable; 
   public get apiKeyRequired() {
     return this.getBooleanAttribute('api_key_required') as any;
   }
-  public set apiKeyRequired(value: boolean | cdktf.IResolvable | undefined) {
+  public set apiKeyRequired(value: boolean | cdktf.IResolvable) {
     this._apiKeyRequired = value;
   }
   public resetApiKeyRequired() {
@@ -115,7 +115,7 @@ export class ApiGatewayMethod extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiKeyRequiredInput() {
-    return this._apiKeyRequired
+    return this._apiKeyRequired;
   }
 
   // authorization - computed: false, optional: false, required: true
@@ -128,15 +128,15 @@ export class ApiGatewayMethod extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizationInput() {
-    return this._authorization
+    return this._authorization;
   }
 
   // authorization_scopes - computed: false, optional: true, required: false
-  private _authorizationScopes?: string[] | undefined; 
+  private _authorizationScopes?: string[]; 
   public get authorizationScopes() {
     return this.getListAttribute('authorization_scopes');
   }
-  public set authorizationScopes(value: string[] | undefined) {
+  public set authorizationScopes(value: string[]) {
     this._authorizationScopes = value;
   }
   public resetAuthorizationScopes() {
@@ -144,15 +144,15 @@ export class ApiGatewayMethod extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizationScopesInput() {
-    return this._authorizationScopes
+    return this._authorizationScopes;
   }
 
   // authorizer_id - computed: false, optional: true, required: false
-  private _authorizerId?: string | undefined; 
+  private _authorizerId?: string; 
   public get authorizerId() {
     return this.getStringAttribute('authorizer_id');
   }
-  public set authorizerId(value: string | undefined) {
+  public set authorizerId(value: string) {
     this._authorizerId = value;
   }
   public resetAuthorizerId() {
@@ -160,7 +160,7 @@ export class ApiGatewayMethod extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizerIdInput() {
-    return this._authorizerId
+    return this._authorizerId;
   }
 
   // http_method - computed: false, optional: false, required: true
@@ -173,7 +173,7 @@ export class ApiGatewayMethod extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get httpMethodInput() {
-    return this._httpMethod
+    return this._httpMethod;
   }
 
   // id - computed: true, optional: true, required: false
@@ -182,11 +182,11 @@ export class ApiGatewayMethod extends cdktf.TerraformResource {
   }
 
   // operation_name - computed: false, optional: true, required: false
-  private _operationName?: string | undefined; 
+  private _operationName?: string; 
   public get operationName() {
     return this.getStringAttribute('operation_name');
   }
-  public set operationName(value: string | undefined) {
+  public set operationName(value: string) {
     this._operationName = value;
   }
   public resetOperationName() {
@@ -194,16 +194,16 @@ export class ApiGatewayMethod extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get operationNameInput() {
-    return this._operationName
+    return this._operationName;
   }
 
   // request_models - computed: false, optional: true, required: false
-  private _requestModels?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _requestModels?: { [key: string]: string } | cdktf.IResolvable; 
   public get requestModels() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('request_models') as any;
   }
-  public set requestModels(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set requestModels(value: { [key: string]: string } | cdktf.IResolvable) {
     this._requestModels = value;
   }
   public resetRequestModels() {
@@ -211,15 +211,15 @@ export class ApiGatewayMethod extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requestModelsInput() {
-    return this._requestModels
+    return this._requestModels;
   }
 
   // request_parameters - computed: false, optional: true, required: false
-  private _requestParameters?: { [key: string]: boolean } | cdktf.IResolvable | undefined; 
+  private _requestParameters?: { [key: string]: boolean } | cdktf.IResolvable; 
   public get requestParameters() {
     return this.getBooleanAttribute('request_parameters') as any;
   }
-  public set requestParameters(value: { [key: string]: boolean } | cdktf.IResolvable | undefined) {
+  public set requestParameters(value: { [key: string]: boolean } | cdktf.IResolvable) {
     this._requestParameters = value;
   }
   public resetRequestParameters() {
@@ -227,15 +227,15 @@ export class ApiGatewayMethod extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requestParametersInput() {
-    return this._requestParameters
+    return this._requestParameters;
   }
 
   // request_validator_id - computed: false, optional: true, required: false
-  private _requestValidatorId?: string | undefined; 
+  private _requestValidatorId?: string; 
   public get requestValidatorId() {
     return this.getStringAttribute('request_validator_id');
   }
-  public set requestValidatorId(value: string | undefined) {
+  public set requestValidatorId(value: string) {
     this._requestValidatorId = value;
   }
   public resetRequestValidatorId() {
@@ -243,7 +243,7 @@ export class ApiGatewayMethod extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requestValidatorIdInput() {
-    return this._requestValidatorId
+    return this._requestValidatorId;
   }
 
   // resource_id - computed: false, optional: false, required: true
@@ -256,7 +256,7 @@ export class ApiGatewayMethod extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceIdInput() {
-    return this._resourceId
+    return this._resourceId;
   }
 
   // rest_api_id - computed: false, optional: false, required: true
@@ -269,7 +269,7 @@ export class ApiGatewayMethod extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get restApiIdInput() {
-    return this._restApiId
+    return this._restApiId;
   }
 
   // =========

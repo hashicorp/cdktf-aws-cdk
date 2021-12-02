@@ -93,11 +93,11 @@ export class Cloud9EnvironmentEc2 extends cdktf.TerraformResource {
   }
 
   // automatic_stop_time_minutes - computed: false, optional: true, required: false
-  private _automaticStopTimeMinutes?: number | undefined; 
+  private _automaticStopTimeMinutes?: number; 
   public get automaticStopTimeMinutes() {
     return this.getNumberAttribute('automatic_stop_time_minutes');
   }
-  public set automaticStopTimeMinutes(value: number | undefined) {
+  public set automaticStopTimeMinutes(value: number) {
     this._automaticStopTimeMinutes = value;
   }
   public resetAutomaticStopTimeMinutes() {
@@ -105,15 +105,15 @@ export class Cloud9EnvironmentEc2 extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get automaticStopTimeMinutesInput() {
-    return this._automaticStopTimeMinutes
+    return this._automaticStopTimeMinutes;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -121,7 +121,7 @@ export class Cloud9EnvironmentEc2 extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -139,7 +139,7 @@ export class Cloud9EnvironmentEc2 extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // name - computed: false, optional: false, required: true
@@ -152,15 +152,15 @@ export class Cloud9EnvironmentEc2 extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // owner_arn - computed: true, optional: true, required: false
-  private _ownerArn?: string | undefined; 
+  private _ownerArn?: string; 
   public get ownerArn() {
     return this.getStringAttribute('owner_arn');
   }
-  public set ownerArn(value: string | undefined) {
+  public set ownerArn(value: string) {
     this._ownerArn = value;
   }
   public resetOwnerArn() {
@@ -168,15 +168,15 @@ export class Cloud9EnvironmentEc2 extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerArnInput() {
-    return this._ownerArn
+    return this._ownerArn;
   }
 
   // subnet_id - computed: false, optional: true, required: false
-  private _subnetId?: string | undefined; 
+  private _subnetId?: string; 
   public get subnetId() {
     return this.getStringAttribute('subnet_id');
   }
-  public set subnetId(value: string | undefined) {
+  public set subnetId(value: string) {
     this._subnetId = value;
   }
   public resetSubnetId() {
@@ -184,16 +184,16 @@ export class Cloud9EnvironmentEc2 extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdInput() {
-    return this._subnetId
+    return this._subnetId;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -201,16 +201,16 @@ export class Cloud9EnvironmentEc2 extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -218,7 +218,7 @@ export class Cloud9EnvironmentEc2 extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // type - computed: true, optional: false, required: false

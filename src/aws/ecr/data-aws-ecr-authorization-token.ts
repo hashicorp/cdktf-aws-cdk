@@ -78,11 +78,11 @@ export class DataAwsEcrAuthorizationToken extends cdktf.TerraformDataSource {
   }
 
   // registry_id - computed: false, optional: true, required: false
-  private _registryId?: string | undefined; 
+  private _registryId?: string; 
   public get registryId() {
     return this.getStringAttribute('registry_id');
   }
-  public set registryId(value: string | undefined) {
+  public set registryId(value: string) {
     this._registryId = value;
   }
   public resetRegistryId() {
@@ -90,7 +90,7 @@ export class DataAwsEcrAuthorizationToken extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get registryIdInput() {
-    return this._registryId
+    return this._registryId;
   }
 
   // user_name - computed: true, optional: false, required: false

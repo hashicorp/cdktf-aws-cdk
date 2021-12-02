@@ -91,12 +91,43 @@ export class ConfigOrganizationManagedRuleTimeoutsOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ConfigOrganizationManagedRuleTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ConfigOrganizationManagedRuleTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -104,15 +135,15 @@ export class ConfigOrganizationManagedRuleTimeoutsOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -120,15 +151,15 @@ export class ConfigOrganizationManagedRuleTimeoutsOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -136,7 +167,7 @@ export class ConfigOrganizationManagedRuleTimeoutsOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -182,7 +213,7 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
     this._ruleIdentifier = config.ruleIdentifier;
     this._tagKeyScope = config.tagKeyScope;
     this._tagValueScope = config.tagValueScope;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -195,11 +226,11 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -207,15 +238,15 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // excluded_accounts - computed: false, optional: true, required: false
-  private _excludedAccounts?: string[] | undefined; 
+  private _excludedAccounts?: string[]; 
   public get excludedAccounts() {
     return this.getListAttribute('excluded_accounts');
   }
-  public set excludedAccounts(value: string[] | undefined) {
+  public set excludedAccounts(value: string[]) {
     this._excludedAccounts = value;
   }
   public resetExcludedAccounts() {
@@ -223,7 +254,7 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get excludedAccountsInput() {
-    return this._excludedAccounts
+    return this._excludedAccounts;
   }
 
   // id - computed: true, optional: true, required: false
@@ -232,11 +263,11 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
   }
 
   // input_parameters - computed: false, optional: true, required: false
-  private _inputParameters?: string | undefined; 
+  private _inputParameters?: string; 
   public get inputParameters() {
     return this.getStringAttribute('input_parameters');
   }
-  public set inputParameters(value: string | undefined) {
+  public set inputParameters(value: string) {
     this._inputParameters = value;
   }
   public resetInputParameters() {
@@ -244,15 +275,15 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get inputParametersInput() {
-    return this._inputParameters
+    return this._inputParameters;
   }
 
   // maximum_execution_frequency - computed: false, optional: true, required: false
-  private _maximumExecutionFrequency?: string | undefined; 
+  private _maximumExecutionFrequency?: string; 
   public get maximumExecutionFrequency() {
     return this.getStringAttribute('maximum_execution_frequency');
   }
-  public set maximumExecutionFrequency(value: string | undefined) {
+  public set maximumExecutionFrequency(value: string) {
     this._maximumExecutionFrequency = value;
   }
   public resetMaximumExecutionFrequency() {
@@ -260,7 +291,7 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maximumExecutionFrequencyInput() {
-    return this._maximumExecutionFrequency
+    return this._maximumExecutionFrequency;
   }
 
   // name - computed: false, optional: false, required: true
@@ -273,15 +304,15 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // resource_id_scope - computed: false, optional: true, required: false
-  private _resourceIdScope?: string | undefined; 
+  private _resourceIdScope?: string; 
   public get resourceIdScope() {
     return this.getStringAttribute('resource_id_scope');
   }
-  public set resourceIdScope(value: string | undefined) {
+  public set resourceIdScope(value: string) {
     this._resourceIdScope = value;
   }
   public resetResourceIdScope() {
@@ -289,15 +320,15 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceIdScopeInput() {
-    return this._resourceIdScope
+    return this._resourceIdScope;
   }
 
   // resource_types_scope - computed: false, optional: true, required: false
-  private _resourceTypesScope?: string[] | undefined; 
+  private _resourceTypesScope?: string[]; 
   public get resourceTypesScope() {
     return this.getListAttribute('resource_types_scope');
   }
-  public set resourceTypesScope(value: string[] | undefined) {
+  public set resourceTypesScope(value: string[]) {
     this._resourceTypesScope = value;
   }
   public resetResourceTypesScope() {
@@ -305,7 +336,7 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceTypesScopeInput() {
-    return this._resourceTypesScope
+    return this._resourceTypesScope;
   }
 
   // rule_identifier - computed: false, optional: false, required: true
@@ -318,15 +349,15 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ruleIdentifierInput() {
-    return this._ruleIdentifier
+    return this._ruleIdentifier;
   }
 
   // tag_key_scope - computed: false, optional: true, required: false
-  private _tagKeyScope?: string | undefined; 
+  private _tagKeyScope?: string; 
   public get tagKeyScope() {
     return this.getStringAttribute('tag_key_scope');
   }
-  public set tagKeyScope(value: string | undefined) {
+  public set tagKeyScope(value: string) {
     this._tagKeyScope = value;
   }
   public resetTagKeyScope() {
@@ -334,15 +365,15 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagKeyScopeInput() {
-    return this._tagKeyScope
+    return this._tagKeyScope;
   }
 
   // tag_value_scope - computed: false, optional: true, required: false
-  private _tagValueScope?: string | undefined; 
+  private _tagValueScope?: string; 
   public get tagValueScope() {
     return this.getStringAttribute('tag_value_scope');
   }
-  public set tagValueScope(value: string | undefined) {
+  public set tagValueScope(value: string) {
     this._tagValueScope = value;
   }
   public resetTagValueScope() {
@@ -350,24 +381,23 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagValueScopeInput() {
-    return this._tagValueScope
+    return this._tagValueScope;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: ConfigOrganizationManagedRuleTimeouts | undefined; 
-  private __timeoutsOutput = new ConfigOrganizationManagedRuleTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new ConfigOrganizationManagedRuleTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: ConfigOrganizationManagedRuleTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: ConfigOrganizationManagedRuleTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -386,7 +416,7 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
       rule_identifier: cdktf.stringToTerraform(this._ruleIdentifier),
       tag_key_scope: cdktf.stringToTerraform(this._tagKeyScope),
       tag_value_scope: cdktf.stringToTerraform(this._tagValueScope),
-      timeouts: configOrganizationManagedRuleTimeoutsToTerraform(this._timeouts),
+      timeouts: configOrganizationManagedRuleTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

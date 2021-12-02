@@ -87,7 +87,7 @@ export class DxHostedConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bandwidthInput() {
-    return this._bandwidth
+    return this._bandwidth;
   }
 
   // connection_id - computed: false, optional: false, required: true
@@ -100,7 +100,7 @@ export class DxHostedConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get connectionIdInput() {
-    return this._connectionId
+    return this._connectionId;
   }
 
   // has_logical_redundancy - computed: true, optional: false, required: false
@@ -143,7 +143,7 @@ export class DxHostedConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // owner_account_id - computed: false, optional: false, required: true
@@ -156,7 +156,7 @@ export class DxHostedConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerAccountIdInput() {
-    return this._ownerAccountId
+    return this._ownerAccountId;
   }
 
   // partner_name - computed: true, optional: false, required: false
@@ -189,7 +189,7 @@ export class DxHostedConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vlanInput() {
-    return this._vlan
+    return this._vlan;
   }
 
   // =========

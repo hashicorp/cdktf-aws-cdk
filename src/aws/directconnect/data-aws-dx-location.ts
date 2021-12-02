@@ -77,7 +77,7 @@ export class DataAwsDxLocation extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get locationCodeInput() {
-    return this._locationCode
+    return this._locationCode;
   }
 
   // location_name - computed: true, optional: false, required: false

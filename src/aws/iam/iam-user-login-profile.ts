@@ -83,11 +83,11 @@ export class IamUserLoginProfile extends cdktf.TerraformResource {
   }
 
   // password_length - computed: false, optional: true, required: false
-  private _passwordLength?: number | undefined; 
+  private _passwordLength?: number; 
   public get passwordLength() {
     return this.getNumberAttribute('password_length');
   }
-  public set passwordLength(value: number | undefined) {
+  public set passwordLength(value: number) {
     this._passwordLength = value;
   }
   public resetPasswordLength() {
@@ -95,15 +95,15 @@ export class IamUserLoginProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get passwordLengthInput() {
-    return this._passwordLength
+    return this._passwordLength;
   }
 
   // password_reset_required - computed: false, optional: true, required: false
-  private _passwordResetRequired?: boolean | cdktf.IResolvable | undefined; 
+  private _passwordResetRequired?: boolean | cdktf.IResolvable; 
   public get passwordResetRequired() {
     return this.getBooleanAttribute('password_reset_required') as any;
   }
-  public set passwordResetRequired(value: boolean | cdktf.IResolvable | undefined) {
+  public set passwordResetRequired(value: boolean | cdktf.IResolvable) {
     this._passwordResetRequired = value;
   }
   public resetPasswordResetRequired() {
@@ -111,7 +111,7 @@ export class IamUserLoginProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get passwordResetRequiredInput() {
-    return this._passwordResetRequired
+    return this._passwordResetRequired;
   }
 
   // pgp_key - computed: false, optional: false, required: true
@@ -124,7 +124,7 @@ export class IamUserLoginProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get pgpKeyInput() {
-    return this._pgpKey
+    return this._pgpKey;
   }
 
   // user - computed: false, optional: false, required: true
@@ -137,7 +137,7 @@ export class IamUserLoginProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userInput() {
-    return this._user
+    return this._user;
   }
 
   // =========

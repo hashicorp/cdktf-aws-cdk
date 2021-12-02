@@ -67,7 +67,7 @@ export class DataAwsEcsContainerDefinition extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get containerNameInput() {
-    return this._containerName
+    return this._containerName;
   }
 
   // cpu - computed: true, optional: false, required: false
@@ -125,7 +125,7 @@ export class DataAwsEcsContainerDefinition extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get taskDefinitionInput() {
-    return this._taskDefinition
+    return this._taskDefinition;
   }
 
   // =========

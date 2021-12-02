@@ -93,11 +93,11 @@ export class DataAwsDbClusterSnapshot extends cdktf.TerraformDataSource {
   }
 
   // db_cluster_identifier - computed: false, optional: true, required: false
-  private _dbClusterIdentifier?: string | undefined; 
+  private _dbClusterIdentifier?: string; 
   public get dbClusterIdentifier() {
     return this.getStringAttribute('db_cluster_identifier');
   }
-  public set dbClusterIdentifier(value: string | undefined) {
+  public set dbClusterIdentifier(value: string) {
     this._dbClusterIdentifier = value;
   }
   public resetDbClusterIdentifier() {
@@ -105,7 +105,7 @@ export class DataAwsDbClusterSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get dbClusterIdentifierInput() {
-    return this._dbClusterIdentifier
+    return this._dbClusterIdentifier;
   }
 
   // db_cluster_snapshot_arn - computed: true, optional: false, required: false
@@ -114,11 +114,11 @@ export class DataAwsDbClusterSnapshot extends cdktf.TerraformDataSource {
   }
 
   // db_cluster_snapshot_identifier - computed: false, optional: true, required: false
-  private _dbClusterSnapshotIdentifier?: string | undefined; 
+  private _dbClusterSnapshotIdentifier?: string; 
   public get dbClusterSnapshotIdentifier() {
     return this.getStringAttribute('db_cluster_snapshot_identifier');
   }
-  public set dbClusterSnapshotIdentifier(value: string | undefined) {
+  public set dbClusterSnapshotIdentifier(value: string) {
     this._dbClusterSnapshotIdentifier = value;
   }
   public resetDbClusterSnapshotIdentifier() {
@@ -126,7 +126,7 @@ export class DataAwsDbClusterSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get dbClusterSnapshotIdentifierInput() {
-    return this._dbClusterSnapshotIdentifier
+    return this._dbClusterSnapshotIdentifier;
   }
 
   // engine - computed: true, optional: false, required: false
@@ -145,11 +145,11 @@ export class DataAwsDbClusterSnapshot extends cdktf.TerraformDataSource {
   }
 
   // include_public - computed: false, optional: true, required: false
-  private _includePublic?: boolean | cdktf.IResolvable | undefined; 
+  private _includePublic?: boolean | cdktf.IResolvable; 
   public get includePublic() {
     return this.getBooleanAttribute('include_public') as any;
   }
-  public set includePublic(value: boolean | cdktf.IResolvable | undefined) {
+  public set includePublic(value: boolean | cdktf.IResolvable) {
     this._includePublic = value;
   }
   public resetIncludePublic() {
@@ -157,15 +157,15 @@ export class DataAwsDbClusterSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get includePublicInput() {
-    return this._includePublic
+    return this._includePublic;
   }
 
   // include_shared - computed: false, optional: true, required: false
-  private _includeShared?: boolean | cdktf.IResolvable | undefined; 
+  private _includeShared?: boolean | cdktf.IResolvable; 
   public get includeShared() {
     return this.getBooleanAttribute('include_shared') as any;
   }
-  public set includeShared(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeShared(value: boolean | cdktf.IResolvable) {
     this._includeShared = value;
   }
   public resetIncludeShared() {
@@ -173,7 +173,7 @@ export class DataAwsDbClusterSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get includeSharedInput() {
-    return this._includeShared
+    return this._includeShared;
   }
 
   // kms_key_id - computed: true, optional: false, required: false
@@ -187,11 +187,11 @@ export class DataAwsDbClusterSnapshot extends cdktf.TerraformDataSource {
   }
 
   // most_recent - computed: false, optional: true, required: false
-  private _mostRecent?: boolean | cdktf.IResolvable | undefined; 
+  private _mostRecent?: boolean | cdktf.IResolvable; 
   public get mostRecent() {
     return this.getBooleanAttribute('most_recent') as any;
   }
-  public set mostRecent(value: boolean | cdktf.IResolvable | undefined) {
+  public set mostRecent(value: boolean | cdktf.IResolvable) {
     this._mostRecent = value;
   }
   public resetMostRecent() {
@@ -199,7 +199,7 @@ export class DataAwsDbClusterSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get mostRecentInput() {
-    return this._mostRecent
+    return this._mostRecent;
   }
 
   // port - computed: true, optional: false, required: false
@@ -213,11 +213,11 @@ export class DataAwsDbClusterSnapshot extends cdktf.TerraformDataSource {
   }
 
   // snapshot_type - computed: false, optional: true, required: false
-  private _snapshotType?: string | undefined; 
+  private _snapshotType?: string; 
   public get snapshotType() {
     return this.getStringAttribute('snapshot_type');
   }
-  public set snapshotType(value: string | undefined) {
+  public set snapshotType(value: string) {
     this._snapshotType = value;
   }
   public resetSnapshotType() {
@@ -225,7 +225,7 @@ export class DataAwsDbClusterSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotTypeInput() {
-    return this._snapshotType
+    return this._snapshotType;
   }
 
   // source_db_cluster_snapshot_arn - computed: true, optional: false, required: false
@@ -244,12 +244,12 @@ export class DataAwsDbClusterSnapshot extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -257,7 +257,7 @@ export class DataAwsDbClusterSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // vpc_id - computed: true, optional: false, required: false

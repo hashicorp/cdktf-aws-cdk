@@ -67,7 +67,7 @@ export class DataAwsWafregionalWebAcl extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // =========

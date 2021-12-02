@@ -96,16 +96,16 @@ export class ChimeVoiceConnectorGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // connector - computed: false, optional: true, required: false
-  private _connector?: ChimeVoiceConnectorGroupConnector[] | undefined; 
+  private _connector?: ChimeVoiceConnectorGroupConnector[]; 
   public get connector() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('connector') as any;
   }
-  public set connector(value: ChimeVoiceConnectorGroupConnector[] | undefined) {
+  public set connector(value: ChimeVoiceConnectorGroupConnector[]) {
     this._connector = value;
   }
   public resetConnector() {
@@ -113,7 +113,7 @@ export class ChimeVoiceConnectorGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get connectorInput() {
-    return this._connector
+    return this._connector;
   }
 
   // =========

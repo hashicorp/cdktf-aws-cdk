@@ -87,11 +87,11 @@ export class DataAwsEc2SpotPrice extends cdktf.TerraformDataSource {
   // ==========
 
   // availability_zone - computed: false, optional: true, required: false
-  private _availabilityZone?: string | undefined; 
+  private _availabilityZone?: string; 
   public get availabilityZone() {
     return this.getStringAttribute('availability_zone');
   }
-  public set availabilityZone(value: string | undefined) {
+  public set availabilityZone(value: string) {
     this._availabilityZone = value;
   }
   public resetAvailabilityZone() {
@@ -99,7 +99,7 @@ export class DataAwsEc2SpotPrice extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneInput() {
-    return this._availabilityZone
+    return this._availabilityZone;
   }
 
   // id - computed: true, optional: true, required: false
@@ -108,11 +108,11 @@ export class DataAwsEc2SpotPrice extends cdktf.TerraformDataSource {
   }
 
   // instance_type - computed: false, optional: true, required: false
-  private _instanceType?: string | undefined; 
+  private _instanceType?: string; 
   public get instanceType() {
     return this.getStringAttribute('instance_type');
   }
-  public set instanceType(value: string | undefined) {
+  public set instanceType(value: string) {
     this._instanceType = value;
   }
   public resetInstanceType() {
@@ -120,7 +120,7 @@ export class DataAwsEc2SpotPrice extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // spot_price - computed: true, optional: false, required: false
@@ -134,12 +134,12 @@ export class DataAwsEc2SpotPrice extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsEc2SpotPriceFilter[] | undefined; 
+  private _filter?: DataAwsEc2SpotPriceFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsEc2SpotPriceFilter[] | undefined) {
+  public set filter(value: DataAwsEc2SpotPriceFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -147,7 +147,7 @@ export class DataAwsEc2SpotPrice extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

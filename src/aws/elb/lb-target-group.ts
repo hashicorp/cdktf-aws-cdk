@@ -8,6 +8,10 @@ import * as cdktf from 'cdktf';
 */
 export interface LbTargetGroupConfig extends cdktf.TerraformMetaArguments {
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_target_group.html#connection_termination LbTargetGroup#connection_termination}
+  */
+  readonly connectionTermination?: boolean | cdktf.IResolvable;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_target_group.html#deregistration_delay LbTargetGroup#deregistration_delay}
   */
   readonly deregistrationDelay?: string;
@@ -147,12 +151,79 @@ export class LbTargetGroupHealthCheckOutputReference extends cdktf.ComplexObject
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LbTargetGroupHealthCheck | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._healthyThreshold) {
+      hasAnyValues = true;
+      internalValueResult.healthyThreshold = this._healthyThreshold;
+    }
+    if (this._interval) {
+      hasAnyValues = true;
+      internalValueResult.interval = this._interval;
+    }
+    if (this._matcher) {
+      hasAnyValues = true;
+      internalValueResult.matcher = this._matcher;
+    }
+    if (this._path) {
+      hasAnyValues = true;
+      internalValueResult.path = this._path;
+    }
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    if (this._protocol) {
+      hasAnyValues = true;
+      internalValueResult.protocol = this._protocol;
+    }
+    if (this._timeout) {
+      hasAnyValues = true;
+      internalValueResult.timeout = this._timeout;
+    }
+    if (this._unhealthyThreshold) {
+      hasAnyValues = true;
+      internalValueResult.unhealthyThreshold = this._unhealthyThreshold;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LbTargetGroupHealthCheck | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._healthyThreshold = undefined;
+      this._interval = undefined;
+      this._matcher = undefined;
+      this._path = undefined;
+      this._port = undefined;
+      this._protocol = undefined;
+      this._timeout = undefined;
+      this._unhealthyThreshold = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._healthyThreshold = value.healthyThreshold;
+      this._interval = value.interval;
+      this._matcher = value.matcher;
+      this._path = value.path;
+      this._port = value.port;
+      this._protocol = value.protocol;
+      this._timeout = value.timeout;
+      this._unhealthyThreshold = value.unhealthyThreshold;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -160,15 +231,15 @@ export class LbTargetGroupHealthCheckOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // healthy_threshold - computed: false, optional: true, required: false
-  private _healthyThreshold?: number | undefined; 
+  private _healthyThreshold?: number; 
   public get healthyThreshold() {
     return this.getNumberAttribute('healthy_threshold');
   }
-  public set healthyThreshold(value: number | undefined) {
+  public set healthyThreshold(value: number) {
     this._healthyThreshold = value;
   }
   public resetHealthyThreshold() {
@@ -176,15 +247,15 @@ export class LbTargetGroupHealthCheckOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get healthyThresholdInput() {
-    return this._healthyThreshold
+    return this._healthyThreshold;
   }
 
   // interval - computed: false, optional: true, required: false
-  private _interval?: number | undefined; 
+  private _interval?: number; 
   public get interval() {
     return this.getNumberAttribute('interval');
   }
-  public set interval(value: number | undefined) {
+  public set interval(value: number) {
     this._interval = value;
   }
   public resetInterval() {
@@ -192,15 +263,15 @@ export class LbTargetGroupHealthCheckOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get intervalInput() {
-    return this._interval
+    return this._interval;
   }
 
   // matcher - computed: true, optional: true, required: false
-  private _matcher?: string | undefined; 
+  private _matcher?: string; 
   public get matcher() {
     return this.getStringAttribute('matcher');
   }
-  public set matcher(value: string | undefined) {
+  public set matcher(value: string) {
     this._matcher = value;
   }
   public resetMatcher() {
@@ -208,15 +279,15 @@ export class LbTargetGroupHealthCheckOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get matcherInput() {
-    return this._matcher
+    return this._matcher;
   }
 
   // path - computed: true, optional: true, required: false
-  private _path?: string | undefined; 
+  private _path?: string; 
   public get path() {
     return this.getStringAttribute('path');
   }
-  public set path(value: string | undefined) {
+  public set path(value: string) {
     this._path = value;
   }
   public resetPath() {
@@ -224,15 +295,15 @@ export class LbTargetGroupHealthCheckOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get pathInput() {
-    return this._path
+    return this._path;
   }
 
   // port - computed: false, optional: true, required: false
-  private _port?: string | undefined; 
+  private _port?: string; 
   public get port() {
     return this.getStringAttribute('port');
   }
-  public set port(value: string | undefined) {
+  public set port(value: string) {
     this._port = value;
   }
   public resetPort() {
@@ -240,15 +311,15 @@ export class LbTargetGroupHealthCheckOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 
   // protocol - computed: false, optional: true, required: false
-  private _protocol?: string | undefined; 
+  private _protocol?: string; 
   public get protocol() {
     return this.getStringAttribute('protocol');
   }
-  public set protocol(value: string | undefined) {
+  public set protocol(value: string) {
     this._protocol = value;
   }
   public resetProtocol() {
@@ -256,15 +327,15 @@ export class LbTargetGroupHealthCheckOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get protocolInput() {
-    return this._protocol
+    return this._protocol;
   }
 
   // timeout - computed: true, optional: true, required: false
-  private _timeout?: number | undefined; 
+  private _timeout?: number; 
   public get timeout() {
     return this.getNumberAttribute('timeout');
   }
-  public set timeout(value: number | undefined) {
+  public set timeout(value: number) {
     this._timeout = value;
   }
   public resetTimeout() {
@@ -272,15 +343,15 @@ export class LbTargetGroupHealthCheckOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutInput() {
-    return this._timeout
+    return this._timeout;
   }
 
   // unhealthy_threshold - computed: false, optional: true, required: false
-  private _unhealthyThreshold?: number | undefined; 
+  private _unhealthyThreshold?: number; 
   public get unhealthyThreshold() {
     return this.getNumberAttribute('unhealthy_threshold');
   }
-  public set unhealthyThreshold(value: number | undefined) {
+  public set unhealthyThreshold(value: number) {
     this._unhealthyThreshold = value;
   }
   public resetUnhealthyThreshold() {
@@ -288,7 +359,7 @@ export class LbTargetGroupHealthCheckOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get unhealthyThresholdInput() {
-    return this._unhealthyThreshold
+    return this._unhealthyThreshold;
   }
 }
 export interface LbTargetGroupStickiness {
@@ -333,12 +404,49 @@ export class LbTargetGroupStickinessOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LbTargetGroupStickiness | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cookieDuration) {
+      hasAnyValues = true;
+      internalValueResult.cookieDuration = this._cookieDuration;
+    }
+    if (this._cookieName) {
+      hasAnyValues = true;
+      internalValueResult.cookieName = this._cookieName;
+    }
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LbTargetGroupStickiness | undefined) {
+    if (value === undefined) {
+      this._cookieDuration = undefined;
+      this._cookieName = undefined;
+      this._enabled = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._cookieDuration = value.cookieDuration;
+      this._cookieName = value.cookieName;
+      this._enabled = value.enabled;
+      this._type = value.type;
+    }
+  }
+
   // cookie_duration - computed: false, optional: true, required: false
-  private _cookieDuration?: number | undefined; 
+  private _cookieDuration?: number; 
   public get cookieDuration() {
     return this.getNumberAttribute('cookie_duration');
   }
-  public set cookieDuration(value: number | undefined) {
+  public set cookieDuration(value: number) {
     this._cookieDuration = value;
   }
   public resetCookieDuration() {
@@ -346,15 +454,15 @@ export class LbTargetGroupStickinessOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get cookieDurationInput() {
-    return this._cookieDuration
+    return this._cookieDuration;
   }
 
   // cookie_name - computed: false, optional: true, required: false
-  private _cookieName?: string | undefined; 
+  private _cookieName?: string; 
   public get cookieName() {
     return this.getStringAttribute('cookie_name');
   }
-  public set cookieName(value: string | undefined) {
+  public set cookieName(value: string) {
     this._cookieName = value;
   }
   public resetCookieName() {
@@ -362,15 +470,15 @@ export class LbTargetGroupStickinessOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get cookieNameInput() {
-    return this._cookieName
+    return this._cookieName;
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -378,7 +486,7 @@ export class LbTargetGroupStickinessOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // type - computed: false, optional: false, required: true
@@ -391,7 +499,7 @@ export class LbTargetGroupStickinessOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 
@@ -427,6 +535,7 @@ export class LbTargetGroup extends cdktf.TerraformResource {
       count: config.count,
       lifecycle: config.lifecycle
     });
+    this._connectionTermination = config.connectionTermination;
     this._deregistrationDelay = config.deregistrationDelay;
     this._lambdaMultiValueHeadersEnabled = config.lambdaMultiValueHeadersEnabled;
     this._loadBalancingAlgorithmType = config.loadBalancingAlgorithmType;
@@ -442,8 +551,8 @@ export class LbTargetGroup extends cdktf.TerraformResource {
     this._tagsAll = config.tagsAll;
     this._targetType = config.targetType;
     this._vpcId = config.vpcId;
-    this._healthCheck = config.healthCheck;
-    this._stickiness = config.stickiness;
+    this._healthCheck.internalValue = config.healthCheck;
+    this._stickiness.internalValue = config.stickiness;
   }
 
   // ==========
@@ -460,12 +569,28 @@ export class LbTargetGroup extends cdktf.TerraformResource {
     return this.getStringAttribute('arn_suffix');
   }
 
+  // connection_termination - computed: false, optional: true, required: false
+  private _connectionTermination?: boolean | cdktf.IResolvable; 
+  public get connectionTermination() {
+    return this.getBooleanAttribute('connection_termination') as any;
+  }
+  public set connectionTermination(value: boolean | cdktf.IResolvable) {
+    this._connectionTermination = value;
+  }
+  public resetConnectionTermination() {
+    this._connectionTermination = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get connectionTerminationInput() {
+    return this._connectionTermination;
+  }
+
   // deregistration_delay - computed: false, optional: true, required: false
-  private _deregistrationDelay?: string | undefined; 
+  private _deregistrationDelay?: string; 
   public get deregistrationDelay() {
     return this.getStringAttribute('deregistration_delay');
   }
-  public set deregistrationDelay(value: string | undefined) {
+  public set deregistrationDelay(value: string) {
     this._deregistrationDelay = value;
   }
   public resetDeregistrationDelay() {
@@ -473,7 +598,7 @@ export class LbTargetGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deregistrationDelayInput() {
-    return this._deregistrationDelay
+    return this._deregistrationDelay;
   }
 
   // id - computed: true, optional: true, required: false
@@ -482,11 +607,11 @@ export class LbTargetGroup extends cdktf.TerraformResource {
   }
 
   // lambda_multi_value_headers_enabled - computed: false, optional: true, required: false
-  private _lambdaMultiValueHeadersEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _lambdaMultiValueHeadersEnabled?: boolean | cdktf.IResolvable; 
   public get lambdaMultiValueHeadersEnabled() {
     return this.getBooleanAttribute('lambda_multi_value_headers_enabled') as any;
   }
-  public set lambdaMultiValueHeadersEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set lambdaMultiValueHeadersEnabled(value: boolean | cdktf.IResolvable) {
     this._lambdaMultiValueHeadersEnabled = value;
   }
   public resetLambdaMultiValueHeadersEnabled() {
@@ -494,15 +619,15 @@ export class LbTargetGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get lambdaMultiValueHeadersEnabledInput() {
-    return this._lambdaMultiValueHeadersEnabled
+    return this._lambdaMultiValueHeadersEnabled;
   }
 
   // load_balancing_algorithm_type - computed: true, optional: true, required: false
-  private _loadBalancingAlgorithmType?: string | undefined; 
+  private _loadBalancingAlgorithmType?: string; 
   public get loadBalancingAlgorithmType() {
     return this.getStringAttribute('load_balancing_algorithm_type');
   }
-  public set loadBalancingAlgorithmType(value: string | undefined) {
+  public set loadBalancingAlgorithmType(value: string) {
     this._loadBalancingAlgorithmType = value;
   }
   public resetLoadBalancingAlgorithmType() {
@@ -510,15 +635,15 @@ export class LbTargetGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get loadBalancingAlgorithmTypeInput() {
-    return this._loadBalancingAlgorithmType
+    return this._loadBalancingAlgorithmType;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -526,15 +651,15 @@ export class LbTargetGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_prefix - computed: false, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -542,15 +667,15 @@ export class LbTargetGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // port - computed: false, optional: true, required: false
-  private _port?: number | undefined; 
+  private _port?: number; 
   public get port() {
     return this.getNumberAttribute('port');
   }
-  public set port(value: number | undefined) {
+  public set port(value: number) {
     this._port = value;
   }
   public resetPort() {
@@ -558,15 +683,15 @@ export class LbTargetGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 
   // preserve_client_ip - computed: true, optional: true, required: false
-  private _preserveClientIp?: string | undefined; 
+  private _preserveClientIp?: string; 
   public get preserveClientIp() {
     return this.getStringAttribute('preserve_client_ip');
   }
-  public set preserveClientIp(value: string | undefined) {
+  public set preserveClientIp(value: string) {
     this._preserveClientIp = value;
   }
   public resetPreserveClientIp() {
@@ -574,15 +699,15 @@ export class LbTargetGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get preserveClientIpInput() {
-    return this._preserveClientIp
+    return this._preserveClientIp;
   }
 
   // protocol - computed: false, optional: true, required: false
-  private _protocol?: string | undefined; 
+  private _protocol?: string; 
   public get protocol() {
     return this.getStringAttribute('protocol');
   }
-  public set protocol(value: string | undefined) {
+  public set protocol(value: string) {
     this._protocol = value;
   }
   public resetProtocol() {
@@ -590,15 +715,15 @@ export class LbTargetGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get protocolInput() {
-    return this._protocol
+    return this._protocol;
   }
 
   // protocol_version - computed: true, optional: true, required: false
-  private _protocolVersion?: string | undefined; 
+  private _protocolVersion?: string; 
   public get protocolVersion() {
     return this.getStringAttribute('protocol_version');
   }
-  public set protocolVersion(value: string | undefined) {
+  public set protocolVersion(value: string) {
     this._protocolVersion = value;
   }
   public resetProtocolVersion() {
@@ -606,15 +731,15 @@ export class LbTargetGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get protocolVersionInput() {
-    return this._protocolVersion
+    return this._protocolVersion;
   }
 
   // proxy_protocol_v2 - computed: false, optional: true, required: false
-  private _proxyProtocolV2?: boolean | cdktf.IResolvable | undefined; 
+  private _proxyProtocolV2?: boolean | cdktf.IResolvable; 
   public get proxyProtocolV2() {
     return this.getBooleanAttribute('proxy_protocol_v2') as any;
   }
-  public set proxyProtocolV2(value: boolean | cdktf.IResolvable | undefined) {
+  public set proxyProtocolV2(value: boolean | cdktf.IResolvable) {
     this._proxyProtocolV2 = value;
   }
   public resetProxyProtocolV2() {
@@ -622,15 +747,15 @@ export class LbTargetGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get proxyProtocolV2Input() {
-    return this._proxyProtocolV2
+    return this._proxyProtocolV2;
   }
 
   // slow_start - computed: false, optional: true, required: false
-  private _slowStart?: number | undefined; 
+  private _slowStart?: number; 
   public get slowStart() {
     return this.getNumberAttribute('slow_start');
   }
-  public set slowStart(value: number | undefined) {
+  public set slowStart(value: number) {
     this._slowStart = value;
   }
   public resetSlowStart() {
@@ -638,16 +763,16 @@ export class LbTargetGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get slowStartInput() {
-    return this._slowStart
+    return this._slowStart;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -655,16 +780,16 @@ export class LbTargetGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -672,15 +797,15 @@ export class LbTargetGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // target_type - computed: false, optional: true, required: false
-  private _targetType?: string | undefined; 
+  private _targetType?: string; 
   public get targetType() {
     return this.getStringAttribute('target_type');
   }
-  public set targetType(value: string | undefined) {
+  public set targetType(value: string) {
     this._targetType = value;
   }
   public resetTargetType() {
@@ -688,15 +813,15 @@ export class LbTargetGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetTypeInput() {
-    return this._targetType
+    return this._targetType;
   }
 
   // vpc_id - computed: false, optional: true, required: false
-  private _vpcId?: string | undefined; 
+  private _vpcId?: string; 
   public get vpcId() {
     return this.getStringAttribute('vpc_id');
   }
-  public set vpcId(value: string | undefined) {
+  public set vpcId(value: string) {
     this._vpcId = value;
   }
   public resetVpcId() {
@@ -704,41 +829,39 @@ export class LbTargetGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 
   // health_check - computed: false, optional: true, required: false
-  private _healthCheck?: LbTargetGroupHealthCheck | undefined; 
-  private __healthCheckOutput = new LbTargetGroupHealthCheckOutputReference(this as any, "health_check", true);
+  private _healthCheck = new LbTargetGroupHealthCheckOutputReference(this as any, "health_check", true);
   public get healthCheck() {
-    return this.__healthCheckOutput;
+    return this._healthCheck;
   }
-  public putHealthCheck(value: LbTargetGroupHealthCheck | undefined) {
-    this._healthCheck = value;
+  public putHealthCheck(value: LbTargetGroupHealthCheck) {
+    this._healthCheck.internalValue = value;
   }
   public resetHealthCheck() {
-    this._healthCheck = undefined;
+    this._healthCheck.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get healthCheckInput() {
-    return this._healthCheck
+    return this._healthCheck.internalValue;
   }
 
   // stickiness - computed: false, optional: true, required: false
-  private _stickiness?: LbTargetGroupStickiness | undefined; 
-  private __stickinessOutput = new LbTargetGroupStickinessOutputReference(this as any, "stickiness", true);
+  private _stickiness = new LbTargetGroupStickinessOutputReference(this as any, "stickiness", true);
   public get stickiness() {
-    return this.__stickinessOutput;
+    return this._stickiness;
   }
-  public putStickiness(value: LbTargetGroupStickiness | undefined) {
-    this._stickiness = value;
+  public putStickiness(value: LbTargetGroupStickiness) {
+    this._stickiness.internalValue = value;
   }
   public resetStickiness() {
-    this._stickiness = undefined;
+    this._stickiness.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get stickinessInput() {
-    return this._stickiness
+    return this._stickiness.internalValue;
   }
 
   // =========
@@ -747,6 +870,7 @@ export class LbTargetGroup extends cdktf.TerraformResource {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
+      connection_termination: cdktf.booleanToTerraform(this._connectionTermination),
       deregistration_delay: cdktf.stringToTerraform(this._deregistrationDelay),
       lambda_multi_value_headers_enabled: cdktf.booleanToTerraform(this._lambdaMultiValueHeadersEnabled),
       load_balancing_algorithm_type: cdktf.stringToTerraform(this._loadBalancingAlgorithmType),
@@ -762,8 +886,8 @@ export class LbTargetGroup extends cdktf.TerraformResource {
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       target_type: cdktf.stringToTerraform(this._targetType),
       vpc_id: cdktf.stringToTerraform(this._vpcId),
-      health_check: lbTargetGroupHealthCheckToTerraform(this._healthCheck),
-      stickiness: lbTargetGroupStickinessToTerraform(this._stickiness),
+      health_check: lbTargetGroupHealthCheckToTerraform(this._healthCheck.internalValue),
+      stickiness: lbTargetGroupStickinessToTerraform(this._stickiness.internalValue),
     };
   }
 }

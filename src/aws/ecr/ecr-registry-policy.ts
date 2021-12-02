@@ -67,7 +67,7 @@ export class EcrRegistryPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // registry_id - computed: true, optional: false, required: false

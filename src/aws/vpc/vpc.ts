@@ -14,7 +14,7 @@ export interface VpcConfig extends cdktf.TerraformMetaArguments {
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#cidr_block Vpc#cidr_block}
   */
-  readonly cidrBlock: string;
+  readonly cidrBlock?: string;
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#enable_classiclink Vpc#enable_classiclink}
   */
@@ -35,6 +35,26 @@ export interface VpcConfig extends cdktf.TerraformMetaArguments {
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#instance_tenancy Vpc#instance_tenancy}
   */
   readonly instanceTenancy?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#ipv4_ipam_pool_id Vpc#ipv4_ipam_pool_id}
+  */
+  readonly ipv4IpamPoolId?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#ipv4_netmask_length Vpc#ipv4_netmask_length}
+  */
+  readonly ipv4NetmaskLength?: number;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#ipv6_cidr_block Vpc#ipv6_cidr_block}
+  */
+  readonly ipv6CidrBlock?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#ipv6_ipam_pool_id Vpc#ipv6_ipam_pool_id}
+  */
+  readonly ipv6IpamPoolId?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#ipv6_netmask_length Vpc#ipv6_netmask_length}
+  */
+  readonly ipv6NetmaskLength?: number;
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#tags Vpc#tags}
   */
@@ -64,9 +84,9 @@ export class Vpc extends cdktf.TerraformResource {
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
-  * @param options VpcConfig
+  * @param options VpcConfig = {}
   */
-  public constructor(scope: Construct, id: string, config: VpcConfig) {
+  public constructor(scope: Construct, id: string, config: VpcConfig = {}) {
     super(scope, id, {
       terraformResourceType: 'aws_vpc',
       terraformGeneratorMetadata: {
@@ -84,6 +104,11 @@ export class Vpc extends cdktf.TerraformResource {
     this._enableDnsHostnames = config.enableDnsHostnames;
     this._enableDnsSupport = config.enableDnsSupport;
     this._instanceTenancy = config.instanceTenancy;
+    this._ipv4IpamPoolId = config.ipv4IpamPoolId;
+    this._ipv4NetmaskLength = config.ipv4NetmaskLength;
+    this._ipv6CidrBlock = config.ipv6CidrBlock;
+    this._ipv6IpamPoolId = config.ipv6IpamPoolId;
+    this._ipv6NetmaskLength = config.ipv6NetmaskLength;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
   }
@@ -98,11 +123,11 @@ export class Vpc extends cdktf.TerraformResource {
   }
 
   // assign_generated_ipv6_cidr_block - computed: false, optional: true, required: false
-  private _assignGeneratedIpv6CidrBlock?: boolean | cdktf.IResolvable | undefined; 
+  private _assignGeneratedIpv6CidrBlock?: boolean | cdktf.IResolvable; 
   public get assignGeneratedIpv6CidrBlock() {
     return this.getBooleanAttribute('assign_generated_ipv6_cidr_block') as any;
   }
-  public set assignGeneratedIpv6CidrBlock(value: boolean | cdktf.IResolvable | undefined) {
+  public set assignGeneratedIpv6CidrBlock(value: boolean | cdktf.IResolvable) {
     this._assignGeneratedIpv6CidrBlock = value;
   }
   public resetAssignGeneratedIpv6CidrBlock() {
@@ -110,10 +135,10 @@ export class Vpc extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get assignGeneratedIpv6CidrBlockInput() {
-    return this._assignGeneratedIpv6CidrBlock
+    return this._assignGeneratedIpv6CidrBlock;
   }
 
-  // cidr_block - computed: false, optional: false, required: true
+  // cidr_block - computed: true, optional: true, required: false
   private _cidrBlock?: string; 
   public get cidrBlock() {
     return this.getStringAttribute('cidr_block');
@@ -121,9 +146,12 @@ export class Vpc extends cdktf.TerraformResource {
   public set cidrBlock(value: string) {
     this._cidrBlock = value;
   }
+  public resetCidrBlock() {
+    this._cidrBlock = undefined;
+  }
   // Temporarily expose input value. Use with caution.
   public get cidrBlockInput() {
-    return this._cidrBlock
+    return this._cidrBlock;
   }
 
   // default_network_acl_id - computed: true, optional: false, required: false
@@ -147,11 +175,11 @@ export class Vpc extends cdktf.TerraformResource {
   }
 
   // enable_classiclink - computed: true, optional: true, required: false
-  private _enableClassiclink?: boolean | cdktf.IResolvable | undefined; 
+  private _enableClassiclink?: boolean | cdktf.IResolvable; 
   public get enableClassiclink() {
     return this.getBooleanAttribute('enable_classiclink') as any;
   }
-  public set enableClassiclink(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableClassiclink(value: boolean | cdktf.IResolvable) {
     this._enableClassiclink = value;
   }
   public resetEnableClassiclink() {
@@ -159,15 +187,15 @@ export class Vpc extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableClassiclinkInput() {
-    return this._enableClassiclink
+    return this._enableClassiclink;
   }
 
   // enable_classiclink_dns_support - computed: true, optional: true, required: false
-  private _enableClassiclinkDnsSupport?: boolean | cdktf.IResolvable | undefined; 
+  private _enableClassiclinkDnsSupport?: boolean | cdktf.IResolvable; 
   public get enableClassiclinkDnsSupport() {
     return this.getBooleanAttribute('enable_classiclink_dns_support') as any;
   }
-  public set enableClassiclinkDnsSupport(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableClassiclinkDnsSupport(value: boolean | cdktf.IResolvable) {
     this._enableClassiclinkDnsSupport = value;
   }
   public resetEnableClassiclinkDnsSupport() {
@@ -175,15 +203,15 @@ export class Vpc extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableClassiclinkDnsSupportInput() {
-    return this._enableClassiclinkDnsSupport
+    return this._enableClassiclinkDnsSupport;
   }
 
   // enable_dns_hostnames - computed: true, optional: true, required: false
-  private _enableDnsHostnames?: boolean | cdktf.IResolvable | undefined; 
+  private _enableDnsHostnames?: boolean | cdktf.IResolvable; 
   public get enableDnsHostnames() {
     return this.getBooleanAttribute('enable_dns_hostnames') as any;
   }
-  public set enableDnsHostnames(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableDnsHostnames(value: boolean | cdktf.IResolvable) {
     this._enableDnsHostnames = value;
   }
   public resetEnableDnsHostnames() {
@@ -191,15 +219,15 @@ export class Vpc extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableDnsHostnamesInput() {
-    return this._enableDnsHostnames
+    return this._enableDnsHostnames;
   }
 
   // enable_dns_support - computed: false, optional: true, required: false
-  private _enableDnsSupport?: boolean | cdktf.IResolvable | undefined; 
+  private _enableDnsSupport?: boolean | cdktf.IResolvable; 
   public get enableDnsSupport() {
     return this.getBooleanAttribute('enable_dns_support') as any;
   }
-  public set enableDnsSupport(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableDnsSupport(value: boolean | cdktf.IResolvable) {
     this._enableDnsSupport = value;
   }
   public resetEnableDnsSupport() {
@@ -207,7 +235,7 @@ export class Vpc extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableDnsSupportInput() {
-    return this._enableDnsSupport
+    return this._enableDnsSupport;
   }
 
   // id - computed: true, optional: true, required: false
@@ -216,11 +244,11 @@ export class Vpc extends cdktf.TerraformResource {
   }
 
   // instance_tenancy - computed: false, optional: true, required: false
-  private _instanceTenancy?: string | undefined; 
+  private _instanceTenancy?: string; 
   public get instanceTenancy() {
     return this.getStringAttribute('instance_tenancy');
   }
-  public set instanceTenancy(value: string | undefined) {
+  public set instanceTenancy(value: string) {
     this._instanceTenancy = value;
   }
   public resetInstanceTenancy() {
@@ -228,7 +256,39 @@ export class Vpc extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTenancyInput() {
-    return this._instanceTenancy
+    return this._instanceTenancy;
+  }
+
+  // ipv4_ipam_pool_id - computed: false, optional: true, required: false
+  private _ipv4IpamPoolId?: string; 
+  public get ipv4IpamPoolId() {
+    return this.getStringAttribute('ipv4_ipam_pool_id');
+  }
+  public set ipv4IpamPoolId(value: string) {
+    this._ipv4IpamPoolId = value;
+  }
+  public resetIpv4IpamPoolId() {
+    this._ipv4IpamPoolId = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get ipv4IpamPoolIdInput() {
+    return this._ipv4IpamPoolId;
+  }
+
+  // ipv4_netmask_length - computed: false, optional: true, required: false
+  private _ipv4NetmaskLength?: number; 
+  public get ipv4NetmaskLength() {
+    return this.getNumberAttribute('ipv4_netmask_length');
+  }
+  public set ipv4NetmaskLength(value: number) {
+    this._ipv4NetmaskLength = value;
+  }
+  public resetIpv4NetmaskLength() {
+    this._ipv4NetmaskLength = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get ipv4NetmaskLengthInput() {
+    return this._ipv4NetmaskLength;
   }
 
   // ipv6_association_id - computed: true, optional: false, required: false
@@ -236,9 +296,52 @@ export class Vpc extends cdktf.TerraformResource {
     return this.getStringAttribute('ipv6_association_id');
   }
 
-  // ipv6_cidr_block - computed: true, optional: false, required: false
+  // ipv6_cidr_block - computed: true, optional: true, required: false
+  private _ipv6CidrBlock?: string; 
   public get ipv6CidrBlock() {
     return this.getStringAttribute('ipv6_cidr_block');
+  }
+  public set ipv6CidrBlock(value: string) {
+    this._ipv6CidrBlock = value;
+  }
+  public resetIpv6CidrBlock() {
+    this._ipv6CidrBlock = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get ipv6CidrBlockInput() {
+    return this._ipv6CidrBlock;
+  }
+
+  // ipv6_ipam_pool_id - computed: false, optional: true, required: false
+  private _ipv6IpamPoolId?: string; 
+  public get ipv6IpamPoolId() {
+    return this.getStringAttribute('ipv6_ipam_pool_id');
+  }
+  public set ipv6IpamPoolId(value: string) {
+    this._ipv6IpamPoolId = value;
+  }
+  public resetIpv6IpamPoolId() {
+    this._ipv6IpamPoolId = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get ipv6IpamPoolIdInput() {
+    return this._ipv6IpamPoolId;
+  }
+
+  // ipv6_netmask_length - computed: false, optional: true, required: false
+  private _ipv6NetmaskLength?: number; 
+  public get ipv6NetmaskLength() {
+    return this.getNumberAttribute('ipv6_netmask_length');
+  }
+  public set ipv6NetmaskLength(value: number) {
+    this._ipv6NetmaskLength = value;
+  }
+  public resetIpv6NetmaskLength() {
+    this._ipv6NetmaskLength = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get ipv6NetmaskLengthInput() {
+    return this._ipv6NetmaskLength;
   }
 
   // main_route_table_id - computed: true, optional: false, required: false
@@ -252,12 +355,12 @@ export class Vpc extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -265,16 +368,16 @@ export class Vpc extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -282,7 +385,7 @@ export class Vpc extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========
@@ -298,6 +401,11 @@ export class Vpc extends cdktf.TerraformResource {
       enable_dns_hostnames: cdktf.booleanToTerraform(this._enableDnsHostnames),
       enable_dns_support: cdktf.booleanToTerraform(this._enableDnsSupport),
       instance_tenancy: cdktf.stringToTerraform(this._instanceTenancy),
+      ipv4_ipam_pool_id: cdktf.stringToTerraform(this._ipv4IpamPoolId),
+      ipv4_netmask_length: cdktf.numberToTerraform(this._ipv4NetmaskLength),
+      ipv6_cidr_block: cdktf.stringToTerraform(this._ipv6CidrBlock),
+      ipv6_ipam_pool_id: cdktf.stringToTerraform(this._ipv6IpamPoolId),
+      ipv6_netmask_length: cdktf.numberToTerraform(this._ipv6NetmaskLength),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
     };

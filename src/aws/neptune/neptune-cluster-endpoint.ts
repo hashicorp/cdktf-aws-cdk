@@ -97,7 +97,7 @@ export class NeptuneClusterEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterEndpointIdentifierInput() {
-    return this._clusterEndpointIdentifier
+    return this._clusterEndpointIdentifier;
   }
 
   // cluster_identifier - computed: false, optional: false, required: true
@@ -110,7 +110,7 @@ export class NeptuneClusterEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterIdentifierInput() {
-    return this._clusterIdentifier
+    return this._clusterIdentifier;
   }
 
   // endpoint - computed: true, optional: false, required: false
@@ -128,15 +128,15 @@ export class NeptuneClusterEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endpointTypeInput() {
-    return this._endpointType
+    return this._endpointType;
   }
 
   // excluded_members - computed: false, optional: true, required: false
-  private _excludedMembers?: string[] | undefined; 
+  private _excludedMembers?: string[]; 
   public get excludedMembers() {
     return this.getListAttribute('excluded_members');
   }
-  public set excludedMembers(value: string[] | undefined) {
+  public set excludedMembers(value: string[]) {
     this._excludedMembers = value;
   }
   public resetExcludedMembers() {
@@ -144,7 +144,7 @@ export class NeptuneClusterEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get excludedMembersInput() {
-    return this._excludedMembers
+    return this._excludedMembers;
   }
 
   // id - computed: true, optional: true, required: false
@@ -153,11 +153,11 @@ export class NeptuneClusterEndpoint extends cdktf.TerraformResource {
   }
 
   // static_members - computed: false, optional: true, required: false
-  private _staticMembers?: string[] | undefined; 
+  private _staticMembers?: string[]; 
   public get staticMembers() {
     return this.getListAttribute('static_members');
   }
-  public set staticMembers(value: string[] | undefined) {
+  public set staticMembers(value: string[]) {
     this._staticMembers = value;
   }
   public resetStaticMembers() {
@@ -165,16 +165,16 @@ export class NeptuneClusterEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get staticMembersInput() {
-    return this._staticMembers
+    return this._staticMembers;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -182,16 +182,16 @@ export class NeptuneClusterEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -199,7 +199,7 @@ export class NeptuneClusterEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

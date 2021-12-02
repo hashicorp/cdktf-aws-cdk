@@ -62,6 +62,31 @@ export class ResourcegroupsGroupResourceQueryOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ResourcegroupsGroupResourceQuery | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._query) {
+      hasAnyValues = true;
+      internalValueResult.query = this._query;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ResourcegroupsGroupResourceQuery | undefined) {
+    if (value === undefined) {
+      this._query = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._query = value.query;
+      this._type = value.type;
+    }
+  }
+
   // query - computed: false, optional: false, required: true
   private _query?: string; 
   public get query() {
@@ -72,15 +97,15 @@ export class ResourcegroupsGroupResourceQueryOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get queryInput() {
-    return this._query
+    return this._query;
   }
 
   // type - computed: false, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -88,7 +113,7 @@ export class ResourcegroupsGroupResourceQueryOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 
@@ -128,7 +153,7 @@ export class ResourcegroupsGroup extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._resourceQuery = config.resourceQuery;
+    this._resourceQuery.internalValue = config.resourceQuery;
   }
 
   // ==========
@@ -141,11 +166,11 @@ export class ResourcegroupsGroup extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -153,7 +178,7 @@ export class ResourcegroupsGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -171,16 +196,16 @@ export class ResourcegroupsGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -188,16 +213,16 @@ export class ResourcegroupsGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -205,21 +230,20 @@ export class ResourcegroupsGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // resource_query - computed: false, optional: false, required: true
-  private _resourceQuery?: ResourcegroupsGroupResourceQuery; 
-  private __resourceQueryOutput = new ResourcegroupsGroupResourceQueryOutputReference(this as any, "resource_query", true);
+  private _resourceQuery = new ResourcegroupsGroupResourceQueryOutputReference(this as any, "resource_query", true);
   public get resourceQuery() {
-    return this.__resourceQueryOutput;
+    return this._resourceQuery;
   }
   public putResourceQuery(value: ResourcegroupsGroupResourceQuery) {
-    this._resourceQuery = value;
+    this._resourceQuery.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get resourceQueryInput() {
-    return this._resourceQuery
+    return this._resourceQuery.internalValue;
   }
 
   // =========
@@ -232,7 +256,7 @@ export class ResourcegroupsGroup extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      resource_query: resourcegroupsGroupResourceQueryToTerraform(this._resourceQuery),
+      resource_query: resourcegroupsGroupResourceQueryToTerraform(this._resourceQuery.internalValue),
     };
   }
 }

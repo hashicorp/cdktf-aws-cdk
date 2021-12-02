@@ -108,11 +108,11 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
   }
 
   // compatible_architectures - computed: false, optional: true, required: false
-  private _compatibleArchitectures?: string[] | undefined; 
+  private _compatibleArchitectures?: string[]; 
   public get compatibleArchitectures() {
     return this.getListAttribute('compatible_architectures');
   }
-  public set compatibleArchitectures(value: string[] | undefined) {
+  public set compatibleArchitectures(value: string[]) {
     this._compatibleArchitectures = value;
   }
   public resetCompatibleArchitectures() {
@@ -120,15 +120,15 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get compatibleArchitecturesInput() {
-    return this._compatibleArchitectures
+    return this._compatibleArchitectures;
   }
 
   // compatible_runtimes - computed: false, optional: true, required: false
-  private _compatibleRuntimes?: string[] | undefined; 
+  private _compatibleRuntimes?: string[]; 
   public get compatibleRuntimes() {
     return this.getListAttribute('compatible_runtimes');
   }
-  public set compatibleRuntimes(value: string[] | undefined) {
+  public set compatibleRuntimes(value: string[]) {
     this._compatibleRuntimes = value;
   }
   public resetCompatibleRuntimes() {
@@ -136,7 +136,7 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get compatibleRuntimesInput() {
-    return this._compatibleRuntimes
+    return this._compatibleRuntimes;
   }
 
   // created_date - computed: true, optional: false, required: false
@@ -145,11 +145,11 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -157,15 +157,15 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // filename - computed: false, optional: true, required: false
-  private _filename?: string | undefined; 
+  private _filename?: string; 
   public get filename() {
     return this.getStringAttribute('filename');
   }
-  public set filename(value: string | undefined) {
+  public set filename(value: string) {
     this._filename = value;
   }
   public resetFilename() {
@@ -173,7 +173,7 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get filenameInput() {
-    return this._filename
+    return this._filename;
   }
 
   // id - computed: true, optional: true, required: false
@@ -196,15 +196,15 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get layerNameInput() {
-    return this._layerName
+    return this._layerName;
   }
 
   // license_info - computed: false, optional: true, required: false
-  private _licenseInfo?: string | undefined; 
+  private _licenseInfo?: string; 
   public get licenseInfo() {
     return this.getStringAttribute('license_info');
   }
-  public set licenseInfo(value: string | undefined) {
+  public set licenseInfo(value: string) {
     this._licenseInfo = value;
   }
   public resetLicenseInfo() {
@@ -212,15 +212,15 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get licenseInfoInput() {
-    return this._licenseInfo
+    return this._licenseInfo;
   }
 
   // s3_bucket - computed: false, optional: true, required: false
-  private _s3Bucket?: string | undefined; 
+  private _s3Bucket?: string; 
   public get s3Bucket() {
     return this.getStringAttribute('s3_bucket');
   }
-  public set s3Bucket(value: string | undefined) {
+  public set s3Bucket(value: string) {
     this._s3Bucket = value;
   }
   public resetS3Bucket() {
@@ -228,15 +228,15 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3BucketInput() {
-    return this._s3Bucket
+    return this._s3Bucket;
   }
 
   // s3_key - computed: false, optional: true, required: false
-  private _s3Key?: string | undefined; 
+  private _s3Key?: string; 
   public get s3Key() {
     return this.getStringAttribute('s3_key');
   }
-  public set s3Key(value: string | undefined) {
+  public set s3Key(value: string) {
     this._s3Key = value;
   }
   public resetS3Key() {
@@ -244,15 +244,15 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3KeyInput() {
-    return this._s3Key
+    return this._s3Key;
   }
 
   // s3_object_version - computed: false, optional: true, required: false
-  private _s3ObjectVersion?: string | undefined; 
+  private _s3ObjectVersion?: string; 
   public get s3ObjectVersion() {
     return this.getStringAttribute('s3_object_version');
   }
-  public set s3ObjectVersion(value: string | undefined) {
+  public set s3ObjectVersion(value: string) {
     this._s3ObjectVersion = value;
   }
   public resetS3ObjectVersion() {
@@ -260,7 +260,7 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3ObjectVersionInput() {
-    return this._s3ObjectVersion
+    return this._s3ObjectVersion;
   }
 
   // signing_job_arn - computed: true, optional: false, required: false
@@ -274,11 +274,11 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
   }
 
   // skip_destroy - computed: false, optional: true, required: false
-  private _skipDestroy?: boolean | cdktf.IResolvable | undefined; 
+  private _skipDestroy?: boolean | cdktf.IResolvable; 
   public get skipDestroy() {
     return this.getBooleanAttribute('skip_destroy') as any;
   }
-  public set skipDestroy(value: boolean | cdktf.IResolvable | undefined) {
+  public set skipDestroy(value: boolean | cdktf.IResolvable) {
     this._skipDestroy = value;
   }
   public resetSkipDestroy() {
@@ -286,15 +286,15 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get skipDestroyInput() {
-    return this._skipDestroy
+    return this._skipDestroy;
   }
 
   // source_code_hash - computed: true, optional: true, required: false
-  private _sourceCodeHash?: string | undefined; 
+  private _sourceCodeHash?: string; 
   public get sourceCodeHash() {
     return this.getStringAttribute('source_code_hash');
   }
-  public set sourceCodeHash(value: string | undefined) {
+  public set sourceCodeHash(value: string) {
     this._sourceCodeHash = value;
   }
   public resetSourceCodeHash() {
@@ -302,7 +302,7 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceCodeHashInput() {
-    return this._sourceCodeHash
+    return this._sourceCodeHash;
   }
 
   // source_code_size - computed: true, optional: false, required: false

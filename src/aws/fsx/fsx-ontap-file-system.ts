@@ -154,12 +154,37 @@ export class FsxOntapFileSystemDiskIopsConfigurationOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): FsxOntapFileSystemDiskIopsConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._iops) {
+      hasAnyValues = true;
+      internalValueResult.iops = this._iops;
+    }
+    if (this._mode) {
+      hasAnyValues = true;
+      internalValueResult.mode = this._mode;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: FsxOntapFileSystemDiskIopsConfiguration | undefined) {
+    if (value === undefined) {
+      this._iops = undefined;
+      this._mode = undefined;
+    }
+    else {
+      this._iops = value.iops;
+      this._mode = value.mode;
+    }
+  }
+
   // iops - computed: true, optional: true, required: false
-  private _iops?: number | undefined; 
+  private _iops?: number; 
   public get iops() {
     return this.getNumberAttribute('iops');
   }
-  public set iops(value: number | undefined) {
+  public set iops(value: number) {
     this._iops = value;
   }
   public resetIops() {
@@ -167,15 +192,15 @@ export class FsxOntapFileSystemDiskIopsConfigurationOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get iopsInput() {
-    return this._iops
+    return this._iops;
   }
 
   // mode - computed: false, optional: true, required: false
-  private _mode?: string | undefined; 
+  private _mode?: string; 
   public get mode() {
     return this.getStringAttribute('mode');
   }
-  public set mode(value: string | undefined) {
+  public set mode(value: string) {
     this._mode = value;
   }
   public resetMode() {
@@ -183,7 +208,7 @@ export class FsxOntapFileSystemDiskIopsConfigurationOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get modeInput() {
-    return this._mode
+    return this._mode;
   }
 }
 export interface FsxOntapFileSystemTimeouts {
@@ -223,12 +248,43 @@ export class FsxOntapFileSystemTimeoutsOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): FsxOntapFileSystemTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: FsxOntapFileSystemTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -236,15 +292,15 @@ export class FsxOntapFileSystemTimeoutsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -252,15 +308,15 @@ export class FsxOntapFileSystemTimeoutsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -268,7 +324,7 @@ export class FsxOntapFileSystemTimeoutsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -320,8 +376,8 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
     this._tagsAll = config.tagsAll;
     this._throughputCapacity = config.throughputCapacity;
     this._weeklyMaintenanceStartTime = config.weeklyMaintenanceStartTime;
-    this._diskIopsConfiguration = config.diskIopsConfiguration;
-    this._timeouts = config.timeouts;
+    this._diskIopsConfiguration.internalValue = config.diskIopsConfiguration;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -334,11 +390,11 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
 
   // automatic_backup_retention_days - computed: false, optional: true, required: false
-  private _automaticBackupRetentionDays?: number | undefined; 
+  private _automaticBackupRetentionDays?: number; 
   public get automaticBackupRetentionDays() {
     return this.getNumberAttribute('automatic_backup_retention_days');
   }
-  public set automaticBackupRetentionDays(value: number | undefined) {
+  public set automaticBackupRetentionDays(value: number) {
     this._automaticBackupRetentionDays = value;
   }
   public resetAutomaticBackupRetentionDays() {
@@ -346,15 +402,15 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get automaticBackupRetentionDaysInput() {
-    return this._automaticBackupRetentionDays
+    return this._automaticBackupRetentionDays;
   }
 
   // daily_automatic_backup_start_time - computed: true, optional: true, required: false
-  private _dailyAutomaticBackupStartTime?: string | undefined; 
+  private _dailyAutomaticBackupStartTime?: string; 
   public get dailyAutomaticBackupStartTime() {
     return this.getStringAttribute('daily_automatic_backup_start_time');
   }
-  public set dailyAutomaticBackupStartTime(value: string | undefined) {
+  public set dailyAutomaticBackupStartTime(value: string) {
     this._dailyAutomaticBackupStartTime = value;
   }
   public resetDailyAutomaticBackupStartTime() {
@@ -362,7 +418,7 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dailyAutomaticBackupStartTimeInput() {
-    return this._dailyAutomaticBackupStartTime
+    return this._dailyAutomaticBackupStartTime;
   }
 
   // deployment_type - computed: false, optional: false, required: true
@@ -375,7 +431,7 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentTypeInput() {
-    return this._deploymentType
+    return this._deploymentType;
   }
 
   // dns_name - computed: true, optional: false, required: false
@@ -384,11 +440,11 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
 
   // endpoint_ip_address_range - computed: true, optional: true, required: false
-  private _endpointIpAddressRange?: string | undefined; 
+  private _endpointIpAddressRange?: string; 
   public get endpointIpAddressRange() {
     return this.getStringAttribute('endpoint_ip_address_range');
   }
-  public set endpointIpAddressRange(value: string | undefined) {
+  public set endpointIpAddressRange(value: string) {
     this._endpointIpAddressRange = value;
   }
   public resetEndpointIpAddressRange() {
@@ -396,7 +452,7 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endpointIpAddressRangeInput() {
-    return this._endpointIpAddressRange
+    return this._endpointIpAddressRange;
   }
 
   // endpoints - computed: true, optional: false, required: false
@@ -405,11 +461,11 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
 
   // fsx_admin_password - computed: false, optional: true, required: false
-  private _fsxAdminPassword?: string | undefined; 
+  private _fsxAdminPassword?: string; 
   public get fsxAdminPassword() {
     return this.getStringAttribute('fsx_admin_password');
   }
-  public set fsxAdminPassword(value: string | undefined) {
+  public set fsxAdminPassword(value: string) {
     this._fsxAdminPassword = value;
   }
   public resetFsxAdminPassword() {
@@ -417,7 +473,7 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fsxAdminPasswordInput() {
-    return this._fsxAdminPassword
+    return this._fsxAdminPassword;
   }
 
   // id - computed: true, optional: true, required: false
@@ -426,11 +482,11 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
 
   // kms_key_id - computed: true, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -438,7 +494,7 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // network_interface_ids - computed: true, optional: false, required: false
@@ -461,15 +517,15 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get preferredSubnetIdInput() {
-    return this._preferredSubnetId
+    return this._preferredSubnetId;
   }
 
   // route_table_ids - computed: true, optional: true, required: false
-  private _routeTableIds?: string[] | undefined; 
+  private _routeTableIds?: string[]; 
   public get routeTableIds() {
     return this.getListAttribute('route_table_ids');
   }
-  public set routeTableIds(value: string[] | undefined) {
+  public set routeTableIds(value: string[]) {
     this._routeTableIds = value;
   }
   public resetRouteTableIds() {
@@ -477,15 +533,15 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get routeTableIdsInput() {
-    return this._routeTableIds
+    return this._routeTableIds;
   }
 
   // security_group_ids - computed: false, optional: true, required: false
-  private _securityGroupIds?: string[] | undefined; 
+  private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
     return this.getListAttribute('security_group_ids');
   }
-  public set securityGroupIds(value: string[] | undefined) {
+  public set securityGroupIds(value: string[]) {
     this._securityGroupIds = value;
   }
   public resetSecurityGroupIds() {
@@ -493,15 +549,15 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // storage_capacity - computed: false, optional: true, required: false
-  private _storageCapacity?: number | undefined; 
+  private _storageCapacity?: number; 
   public get storageCapacity() {
     return this.getNumberAttribute('storage_capacity');
   }
-  public set storageCapacity(value: number | undefined) {
+  public set storageCapacity(value: number) {
     this._storageCapacity = value;
   }
   public resetStorageCapacity() {
@@ -509,15 +565,15 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get storageCapacityInput() {
-    return this._storageCapacity
+    return this._storageCapacity;
   }
 
   // storage_type - computed: false, optional: true, required: false
-  private _storageType?: string | undefined; 
+  private _storageType?: string; 
   public get storageType() {
     return this.getStringAttribute('storage_type');
   }
-  public set storageType(value: string | undefined) {
+  public set storageType(value: string) {
     this._storageType = value;
   }
   public resetStorageType() {
@@ -525,7 +581,7 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get storageTypeInput() {
-    return this._storageType
+    return this._storageType;
   }
 
   // subnet_ids - computed: false, optional: false, required: true
@@ -538,16 +594,16 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -555,16 +611,16 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -572,7 +628,7 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // throughput_capacity - computed: false, optional: false, required: true
@@ -585,7 +641,7 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get throughputCapacityInput() {
-    return this._throughputCapacity
+    return this._throughputCapacity;
   }
 
   // vpc_id - computed: true, optional: false, required: false
@@ -594,11 +650,11 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
 
   // weekly_maintenance_start_time - computed: true, optional: true, required: false
-  private _weeklyMaintenanceStartTime?: string | undefined; 
+  private _weeklyMaintenanceStartTime?: string; 
   public get weeklyMaintenanceStartTime() {
     return this.getStringAttribute('weekly_maintenance_start_time');
   }
-  public set weeklyMaintenanceStartTime(value: string | undefined) {
+  public set weeklyMaintenanceStartTime(value: string) {
     this._weeklyMaintenanceStartTime = value;
   }
   public resetWeeklyMaintenanceStartTime() {
@@ -606,41 +662,39 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get weeklyMaintenanceStartTimeInput() {
-    return this._weeklyMaintenanceStartTime
+    return this._weeklyMaintenanceStartTime;
   }
 
   // disk_iops_configuration - computed: false, optional: true, required: false
-  private _diskIopsConfiguration?: FsxOntapFileSystemDiskIopsConfiguration | undefined; 
-  private __diskIopsConfigurationOutput = new FsxOntapFileSystemDiskIopsConfigurationOutputReference(this as any, "disk_iops_configuration", true);
+  private _diskIopsConfiguration = new FsxOntapFileSystemDiskIopsConfigurationOutputReference(this as any, "disk_iops_configuration", true);
   public get diskIopsConfiguration() {
-    return this.__diskIopsConfigurationOutput;
+    return this._diskIopsConfiguration;
   }
-  public putDiskIopsConfiguration(value: FsxOntapFileSystemDiskIopsConfiguration | undefined) {
-    this._diskIopsConfiguration = value;
+  public putDiskIopsConfiguration(value: FsxOntapFileSystemDiskIopsConfiguration) {
+    this._diskIopsConfiguration.internalValue = value;
   }
   public resetDiskIopsConfiguration() {
-    this._diskIopsConfiguration = undefined;
+    this._diskIopsConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get diskIopsConfigurationInput() {
-    return this._diskIopsConfiguration
+    return this._diskIopsConfiguration.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: FsxOntapFileSystemTimeouts | undefined; 
-  private __timeoutsOutput = new FsxOntapFileSystemTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new FsxOntapFileSystemTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: FsxOntapFileSystemTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: FsxOntapFileSystemTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -665,8 +719,8 @@ export class FsxOntapFileSystem extends cdktf.TerraformResource {
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       throughput_capacity: cdktf.numberToTerraform(this._throughputCapacity),
       weekly_maintenance_start_time: cdktf.stringToTerraform(this._weeklyMaintenanceStartTime),
-      disk_iops_configuration: fsxOntapFileSystemDiskIopsConfigurationToTerraform(this._diskIopsConfiguration),
-      timeouts: fsxOntapFileSystemTimeoutsToTerraform(this._timeouts),
+      disk_iops_configuration: fsxOntapFileSystemDiskIopsConfigurationToTerraform(this._diskIopsConfiguration.internalValue),
+      timeouts: fsxOntapFileSystemTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

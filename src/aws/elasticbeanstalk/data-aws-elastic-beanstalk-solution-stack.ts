@@ -63,11 +63,11 @@ export class DataAwsElasticBeanstalkSolutionStack extends cdktf.TerraformDataSou
   }
 
   // most_recent - computed: false, optional: true, required: false
-  private _mostRecent?: boolean | cdktf.IResolvable | undefined; 
+  private _mostRecent?: boolean | cdktf.IResolvable; 
   public get mostRecent() {
     return this.getBooleanAttribute('most_recent') as any;
   }
-  public set mostRecent(value: boolean | cdktf.IResolvable | undefined) {
+  public set mostRecent(value: boolean | cdktf.IResolvable) {
     this._mostRecent = value;
   }
   public resetMostRecent() {
@@ -75,7 +75,7 @@ export class DataAwsElasticBeanstalkSolutionStack extends cdktf.TerraformDataSou
   }
   // Temporarily expose input value. Use with caution.
   public get mostRecentInput() {
-    return this._mostRecent
+    return this._mostRecent;
   }
 
   // name - computed: true, optional: false, required: false
@@ -93,7 +93,7 @@ export class DataAwsElasticBeanstalkSolutionStack extends cdktf.TerraformDataSou
   }
   // Temporarily expose input value. Use with caution.
   public get nameRegexInput() {
-    return this._nameRegex
+    return this._nameRegex;
   }
 
   // =========

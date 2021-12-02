@@ -72,7 +72,7 @@ export class DataAwsEcsService extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterArnInput() {
-    return this._clusterArn
+    return this._clusterArn;
   }
 
   // desired_count - computed: true, optional: false, required: false
@@ -105,7 +105,7 @@ export class DataAwsEcsService extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceNameInput() {
-    return this._serviceName
+    return this._serviceName;
   }
 
   // task_definition - computed: true, optional: false, required: false

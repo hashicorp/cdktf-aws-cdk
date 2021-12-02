@@ -311,11 +311,11 @@ export class DataAwsInstance extends cdktf.TerraformDataSource {
   }
 
   // get_password_data - computed: false, optional: true, required: false
-  private _getPasswordData?: boolean | cdktf.IResolvable | undefined; 
+  private _getPasswordData?: boolean | cdktf.IResolvable; 
   public get fetchPasswordData() {
     return this.getBooleanAttribute('get_password_data') as any;
   }
-  public set fetchPasswordData(value: boolean | cdktf.IResolvable | undefined) {
+  public set fetchPasswordData(value: boolean | cdktf.IResolvable) {
     this._getPasswordData = value;
   }
   public resetFetchPasswordData() {
@@ -323,15 +323,15 @@ export class DataAwsInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get fetchPasswordDataInput() {
-    return this._getPasswordData
+    return this._getPasswordData;
   }
 
   // get_user_data - computed: false, optional: true, required: false
-  private _getUserData?: boolean | cdktf.IResolvable | undefined; 
+  private _getUserData?: boolean | cdktf.IResolvable; 
   public get fetchUserData() {
     return this.getBooleanAttribute('get_user_data') as any;
   }
-  public set fetchUserData(value: boolean | cdktf.IResolvable | undefined) {
+  public set fetchUserData(value: boolean | cdktf.IResolvable) {
     this._getUserData = value;
   }
   public resetFetchUserData() {
@@ -339,7 +339,7 @@ export class DataAwsInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get fetchUserDataInput() {
-    return this._getUserData
+    return this._getUserData;
   }
 
   // host_id - computed: true, optional: false, required: false
@@ -358,11 +358,11 @@ export class DataAwsInstance extends cdktf.TerraformDataSource {
   }
 
   // instance_id - computed: false, optional: true, required: false
-  private _instanceId?: string | undefined; 
+  private _instanceId?: string; 
   public get instanceId() {
     return this.getStringAttribute('instance_id');
   }
-  public set instanceId(value: string | undefined) {
+  public set instanceId(value: string) {
     this._instanceId = value;
   }
   public resetInstanceId() {
@@ -370,7 +370,7 @@ export class DataAwsInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceIdInput() {
-    return this._instanceId
+    return this._instanceId;
   }
 
   // instance_state - computed: true, optional: false, required: false
@@ -379,12 +379,12 @@ export class DataAwsInstance extends cdktf.TerraformDataSource {
   }
 
   // instance_tags - computed: true, optional: true, required: false
-  private _instanceTags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _instanceTags?: { [key: string]: string } | cdktf.IResolvable; 
   public get instanceTags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('instance_tags') as any;
   }
-  public set instanceTags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set instanceTags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._instanceTags = value;
   }
   public resetInstanceTags() {
@@ -392,7 +392,7 @@ export class DataAwsInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTagsInput() {
-    return this._instanceTags
+    return this._instanceTags;
   }
 
   // instance_type - computed: true, optional: false, required: false
@@ -491,12 +491,12 @@ export class DataAwsInstance extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -504,7 +504,7 @@ export class DataAwsInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tenancy - computed: true, optional: false, required: false
@@ -528,12 +528,12 @@ export class DataAwsInstance extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsInstanceFilter[] | undefined; 
+  private _filter?: DataAwsInstanceFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsInstanceFilter[] | undefined) {
+  public set filter(value: DataAwsInstanceFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -541,7 +541,7 @@ export class DataAwsInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

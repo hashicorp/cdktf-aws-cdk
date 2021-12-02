@@ -89,12 +89,55 @@ export class EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcsClusterConfigurationExecuteCommandConfigurationLogConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cloudWatchEncryptionEnabled) {
+      hasAnyValues = true;
+      internalValueResult.cloudWatchEncryptionEnabled = this._cloudWatchEncryptionEnabled;
+    }
+    if (this._cloudWatchLogGroupName) {
+      hasAnyValues = true;
+      internalValueResult.cloudWatchLogGroupName = this._cloudWatchLogGroupName;
+    }
+    if (this._s3BucketEncryptionEnabled) {
+      hasAnyValues = true;
+      internalValueResult.s3BucketEncryptionEnabled = this._s3BucketEncryptionEnabled;
+    }
+    if (this._s3BucketName) {
+      hasAnyValues = true;
+      internalValueResult.s3BucketName = this._s3BucketName;
+    }
+    if (this._s3KeyPrefix) {
+      hasAnyValues = true;
+      internalValueResult.s3KeyPrefix = this._s3KeyPrefix;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcsClusterConfigurationExecuteCommandConfigurationLogConfiguration | undefined) {
+    if (value === undefined) {
+      this._cloudWatchEncryptionEnabled = undefined;
+      this._cloudWatchLogGroupName = undefined;
+      this._s3BucketEncryptionEnabled = undefined;
+      this._s3BucketName = undefined;
+      this._s3KeyPrefix = undefined;
+    }
+    else {
+      this._cloudWatchEncryptionEnabled = value.cloudWatchEncryptionEnabled;
+      this._cloudWatchLogGroupName = value.cloudWatchLogGroupName;
+      this._s3BucketEncryptionEnabled = value.s3BucketEncryptionEnabled;
+      this._s3BucketName = value.s3BucketName;
+      this._s3KeyPrefix = value.s3KeyPrefix;
+    }
+  }
+
   // cloud_watch_encryption_enabled - computed: false, optional: true, required: false
-  private _cloudWatchEncryptionEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _cloudWatchEncryptionEnabled?: boolean | cdktf.IResolvable; 
   public get cloudWatchEncryptionEnabled() {
     return this.getBooleanAttribute('cloud_watch_encryption_enabled') as any;
   }
-  public set cloudWatchEncryptionEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set cloudWatchEncryptionEnabled(value: boolean | cdktf.IResolvable) {
     this._cloudWatchEncryptionEnabled = value;
   }
   public resetCloudWatchEncryptionEnabled() {
@@ -102,15 +145,15 @@ export class EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationO
   }
   // Temporarily expose input value. Use with caution.
   public get cloudWatchEncryptionEnabledInput() {
-    return this._cloudWatchEncryptionEnabled
+    return this._cloudWatchEncryptionEnabled;
   }
 
   // cloud_watch_log_group_name - computed: false, optional: true, required: false
-  private _cloudWatchLogGroupName?: string | undefined; 
+  private _cloudWatchLogGroupName?: string; 
   public get cloudWatchLogGroupName() {
     return this.getStringAttribute('cloud_watch_log_group_name');
   }
-  public set cloudWatchLogGroupName(value: string | undefined) {
+  public set cloudWatchLogGroupName(value: string) {
     this._cloudWatchLogGroupName = value;
   }
   public resetCloudWatchLogGroupName() {
@@ -118,15 +161,15 @@ export class EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationO
   }
   // Temporarily expose input value. Use with caution.
   public get cloudWatchLogGroupNameInput() {
-    return this._cloudWatchLogGroupName
+    return this._cloudWatchLogGroupName;
   }
 
   // s3_bucket_encryption_enabled - computed: false, optional: true, required: false
-  private _s3BucketEncryptionEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _s3BucketEncryptionEnabled?: boolean | cdktf.IResolvable; 
   public get s3BucketEncryptionEnabled() {
     return this.getBooleanAttribute('s3_bucket_encryption_enabled') as any;
   }
-  public set s3BucketEncryptionEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set s3BucketEncryptionEnabled(value: boolean | cdktf.IResolvable) {
     this._s3BucketEncryptionEnabled = value;
   }
   public resetS3BucketEncryptionEnabled() {
@@ -134,15 +177,15 @@ export class EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationO
   }
   // Temporarily expose input value. Use with caution.
   public get s3BucketEncryptionEnabledInput() {
-    return this._s3BucketEncryptionEnabled
+    return this._s3BucketEncryptionEnabled;
   }
 
   // s3_bucket_name - computed: false, optional: true, required: false
-  private _s3BucketName?: string | undefined; 
+  private _s3BucketName?: string; 
   public get s3BucketName() {
     return this.getStringAttribute('s3_bucket_name');
   }
-  public set s3BucketName(value: string | undefined) {
+  public set s3BucketName(value: string) {
     this._s3BucketName = value;
   }
   public resetS3BucketName() {
@@ -150,15 +193,15 @@ export class EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationO
   }
   // Temporarily expose input value. Use with caution.
   public get s3BucketNameInput() {
-    return this._s3BucketName
+    return this._s3BucketName;
   }
 
   // s3_key_prefix - computed: false, optional: true, required: false
-  private _s3KeyPrefix?: string | undefined; 
+  private _s3KeyPrefix?: string; 
   public get s3KeyPrefix() {
     return this.getStringAttribute('s3_key_prefix');
   }
-  public set s3KeyPrefix(value: string | undefined) {
+  public set s3KeyPrefix(value: string) {
     this._s3KeyPrefix = value;
   }
   public resetS3KeyPrefix() {
@@ -166,7 +209,7 @@ export class EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationO
   }
   // Temporarily expose input value. Use with caution.
   public get s3KeyPrefixInput() {
-    return this._s3KeyPrefix
+    return this._s3KeyPrefix;
   }
 }
 export interface EcsClusterConfigurationExecuteCommandConfiguration {
@@ -208,12 +251,43 @@ export class EcsClusterConfigurationExecuteCommandConfigurationOutputReference e
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcsClusterConfigurationExecuteCommandConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._kmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyId = this._kmsKeyId;
+    }
+    if (this._logging) {
+      hasAnyValues = true;
+      internalValueResult.logging = this._logging;
+    }
+    if (this._logConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.logConfiguration = this._logConfiguration?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcsClusterConfigurationExecuteCommandConfiguration | undefined) {
+    if (value === undefined) {
+      this._kmsKeyId = undefined;
+      this._logging = undefined;
+      this._logConfiguration.internalValue = undefined;
+    }
+    else {
+      this._kmsKeyId = value.kmsKeyId;
+      this._logging = value.logging;
+      this._logConfiguration.internalValue = value.logConfiguration;
+    }
+  }
+
   // kms_key_id - computed: false, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -221,15 +295,15 @@ export class EcsClusterConfigurationExecuteCommandConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // logging - computed: false, optional: true, required: false
-  private _logging?: string | undefined; 
+  private _logging?: string; 
   public get logging() {
     return this.getStringAttribute('logging');
   }
-  public set logging(value: string | undefined) {
+  public set logging(value: string) {
     this._logging = value;
   }
   public resetLogging() {
@@ -237,24 +311,23 @@ export class EcsClusterConfigurationExecuteCommandConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get loggingInput() {
-    return this._logging
+    return this._logging;
   }
 
   // log_configuration - computed: false, optional: true, required: false
-  private _logConfiguration?: EcsClusterConfigurationExecuteCommandConfigurationLogConfiguration | undefined; 
-  private __logConfigurationOutput = new EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationOutputReference(this as any, "log_configuration", true);
+  private _logConfiguration = new EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationOutputReference(this as any, "log_configuration", true);
   public get logConfiguration() {
-    return this.__logConfigurationOutput;
+    return this._logConfiguration;
   }
-  public putLogConfiguration(value: EcsClusterConfigurationExecuteCommandConfigurationLogConfiguration | undefined) {
-    this._logConfiguration = value;
+  public putLogConfiguration(value: EcsClusterConfigurationExecuteCommandConfigurationLogConfiguration) {
+    this._logConfiguration.internalValue = value;
   }
   public resetLogConfiguration() {
-    this._logConfiguration = undefined;
+    this._logConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get logConfigurationInput() {
-    return this._logConfiguration
+    return this._logConfiguration.internalValue;
   }
 }
 export interface EcsClusterConfiguration {
@@ -286,21 +359,39 @@ export class EcsClusterConfigurationOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // execute_command_configuration - computed: false, optional: true, required: false
-  private _executeCommandConfiguration?: EcsClusterConfigurationExecuteCommandConfiguration | undefined; 
-  private __executeCommandConfigurationOutput = new EcsClusterConfigurationExecuteCommandConfigurationOutputReference(this as any, "execute_command_configuration", true);
-  public get executeCommandConfiguration() {
-    return this.__executeCommandConfigurationOutput;
+  public get internalValue(): EcsClusterConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._executeCommandConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.executeCommandConfiguration = this._executeCommandConfiguration?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putExecuteCommandConfiguration(value: EcsClusterConfigurationExecuteCommandConfiguration | undefined) {
-    this._executeCommandConfiguration = value;
+
+  public set internalValue(value: EcsClusterConfiguration | undefined) {
+    if (value === undefined) {
+      this._executeCommandConfiguration.internalValue = undefined;
+    }
+    else {
+      this._executeCommandConfiguration.internalValue = value.executeCommandConfiguration;
+    }
+  }
+
+  // execute_command_configuration - computed: false, optional: true, required: false
+  private _executeCommandConfiguration = new EcsClusterConfigurationExecuteCommandConfigurationOutputReference(this as any, "execute_command_configuration", true);
+  public get executeCommandConfiguration() {
+    return this._executeCommandConfiguration;
+  }
+  public putExecuteCommandConfiguration(value: EcsClusterConfigurationExecuteCommandConfiguration) {
+    this._executeCommandConfiguration.internalValue = value;
   }
   public resetExecuteCommandConfiguration() {
-    this._executeCommandConfiguration = undefined;
+    this._executeCommandConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get executeCommandConfigurationInput() {
-    return this._executeCommandConfiguration
+    return this._executeCommandConfiguration.internalValue;
   }
 }
 export interface EcsClusterDefaultCapacityProviderStrategy {
@@ -389,7 +480,7 @@ export class EcsCluster extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._configuration = config.configuration;
+    this._configuration.internalValue = config.configuration;
     this._defaultCapacityProviderStrategy = config.defaultCapacityProviderStrategy;
     this._setting = config.setting;
   }
@@ -404,11 +495,11 @@ export class EcsCluster extends cdktf.TerraformResource {
   }
 
   // capacity_providers - computed: false, optional: true, required: false
-  private _capacityProviders?: string[] | undefined; 
+  private _capacityProviders?: string[]; 
   public get capacityProviders() {
     return this.getListAttribute('capacity_providers');
   }
-  public set capacityProviders(value: string[] | undefined) {
+  public set capacityProviders(value: string[]) {
     this._capacityProviders = value;
   }
   public resetCapacityProviders() {
@@ -416,7 +507,7 @@ export class EcsCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get capacityProvidersInput() {
-    return this._capacityProviders
+    return this._capacityProviders;
   }
 
   // id - computed: true, optional: true, required: false
@@ -434,16 +525,16 @@ export class EcsCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -451,16 +542,16 @@ export class EcsCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -468,33 +559,32 @@ export class EcsCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // configuration - computed: false, optional: true, required: false
-  private _configuration?: EcsClusterConfiguration | undefined; 
-  private __configurationOutput = new EcsClusterConfigurationOutputReference(this as any, "configuration", true);
+  private _configuration = new EcsClusterConfigurationOutputReference(this as any, "configuration", true);
   public get configuration() {
-    return this.__configurationOutput;
+    return this._configuration;
   }
-  public putConfiguration(value: EcsClusterConfiguration | undefined) {
-    this._configuration = value;
+  public putConfiguration(value: EcsClusterConfiguration) {
+    this._configuration.internalValue = value;
   }
   public resetConfiguration() {
-    this._configuration = undefined;
+    this._configuration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get configurationInput() {
-    return this._configuration
+    return this._configuration.internalValue;
   }
 
   // default_capacity_provider_strategy - computed: false, optional: true, required: false
-  private _defaultCapacityProviderStrategy?: EcsClusterDefaultCapacityProviderStrategy[] | undefined; 
+  private _defaultCapacityProviderStrategy?: EcsClusterDefaultCapacityProviderStrategy[]; 
   public get defaultCapacityProviderStrategy() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('default_capacity_provider_strategy') as any;
   }
-  public set defaultCapacityProviderStrategy(value: EcsClusterDefaultCapacityProviderStrategy[] | undefined) {
+  public set defaultCapacityProviderStrategy(value: EcsClusterDefaultCapacityProviderStrategy[]) {
     this._defaultCapacityProviderStrategy = value;
   }
   public resetDefaultCapacityProviderStrategy() {
@@ -502,16 +592,16 @@ export class EcsCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultCapacityProviderStrategyInput() {
-    return this._defaultCapacityProviderStrategy
+    return this._defaultCapacityProviderStrategy;
   }
 
   // setting - computed: false, optional: true, required: false
-  private _setting?: EcsClusterSetting[] | undefined; 
+  private _setting?: EcsClusterSetting[]; 
   public get setting() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('setting') as any;
   }
-  public set setting(value: EcsClusterSetting[] | undefined) {
+  public set setting(value: EcsClusterSetting[]) {
     this._setting = value;
   }
   public resetSetting() {
@@ -519,7 +609,7 @@ export class EcsCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get settingInput() {
-    return this._setting
+    return this._setting;
   }
 
   // =========
@@ -532,7 +622,7 @@ export class EcsCluster extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      configuration: ecsClusterConfigurationToTerraform(this._configuration),
+      configuration: ecsClusterConfigurationToTerraform(this._configuration.internalValue),
       default_capacity_provider_strategy: cdktf.listMapper(ecsClusterDefaultCapacityProviderStrategyToTerraform)(this._defaultCapacityProviderStrategy),
       setting: cdktf.listMapper(ecsClusterSettingToTerraform)(this._setting),
     };

@@ -72,7 +72,7 @@ export class AcmpcaCertificateAuthorityCertificate extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get certificateInput() {
-    return this._certificate
+    return this._certificate;
   }
 
   // certificate_authority_arn - computed: false, optional: false, required: true
@@ -85,15 +85,15 @@ export class AcmpcaCertificateAuthorityCertificate extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get certificateAuthorityArnInput() {
-    return this._certificateAuthorityArn
+    return this._certificateAuthorityArn;
   }
 
   // certificate_chain - computed: false, optional: true, required: false
-  private _certificateChain?: string | undefined; 
+  private _certificateChain?: string; 
   public get certificateChain() {
     return this.getStringAttribute('certificate_chain');
   }
-  public set certificateChain(value: string | undefined) {
+  public set certificateChain(value: string) {
     this._certificateChain = value;
   }
   public resetCertificateChain() {
@@ -101,7 +101,7 @@ export class AcmpcaCertificateAuthorityCertificate extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get certificateChainInput() {
-    return this._certificateChain
+    return this._certificateChain;
   }
 
   // id - computed: true, optional: true, required: false

@@ -102,11 +102,11 @@ export class SsmMaintenanceWindowTarget extends cdktf.TerraformResource {
   // ==========
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -114,7 +114,7 @@ export class SsmMaintenanceWindowTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -123,11 +123,11 @@ export class SsmMaintenanceWindowTarget extends cdktf.TerraformResource {
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -135,15 +135,15 @@ export class SsmMaintenanceWindowTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // owner_information - computed: false, optional: true, required: false
-  private _ownerInformation?: string | undefined; 
+  private _ownerInformation?: string; 
   public get ownerInformation() {
     return this.getStringAttribute('owner_information');
   }
-  public set ownerInformation(value: string | undefined) {
+  public set ownerInformation(value: string) {
     this._ownerInformation = value;
   }
   public resetOwnerInformation() {
@@ -151,7 +151,7 @@ export class SsmMaintenanceWindowTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerInformationInput() {
-    return this._ownerInformation
+    return this._ownerInformation;
   }
 
   // resource_type - computed: false, optional: false, required: true
@@ -164,7 +164,7 @@ export class SsmMaintenanceWindowTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceTypeInput() {
-    return this._resourceType
+    return this._resourceType;
   }
 
   // window_id - computed: false, optional: false, required: true
@@ -177,7 +177,7 @@ export class SsmMaintenanceWindowTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get windowIdInput() {
-    return this._windowId
+    return this._windowId;
   }
 
   // targets - computed: false, optional: false, required: true
@@ -191,7 +191,7 @@ export class SsmMaintenanceWindowTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetsInput() {
-    return this._targets
+    return this._targets;
   }
 
   // =========

@@ -78,11 +78,11 @@ export class SnsSmsPreferences extends cdktf.TerraformResource {
   // ==========
 
   // default_sender_id - computed: false, optional: true, required: false
-  private _defaultSenderId?: string | undefined; 
+  private _defaultSenderId?: string; 
   public get defaultSenderId() {
     return this.getStringAttribute('default_sender_id');
   }
-  public set defaultSenderId(value: string | undefined) {
+  public set defaultSenderId(value: string) {
     this._defaultSenderId = value;
   }
   public resetDefaultSenderId() {
@@ -90,15 +90,15 @@ export class SnsSmsPreferences extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultSenderIdInput() {
-    return this._defaultSenderId
+    return this._defaultSenderId;
   }
 
   // default_sms_type - computed: false, optional: true, required: false
-  private _defaultSmsType?: string | undefined; 
+  private _defaultSmsType?: string; 
   public get defaultSmsType() {
     return this.getStringAttribute('default_sms_type');
   }
-  public set defaultSmsType(value: string | undefined) {
+  public set defaultSmsType(value: string) {
     this._defaultSmsType = value;
   }
   public resetDefaultSmsType() {
@@ -106,15 +106,15 @@ export class SnsSmsPreferences extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultSmsTypeInput() {
-    return this._defaultSmsType
+    return this._defaultSmsType;
   }
 
   // delivery_status_iam_role_arn - computed: false, optional: true, required: false
-  private _deliveryStatusIamRoleArn?: string | undefined; 
+  private _deliveryStatusIamRoleArn?: string; 
   public get deliveryStatusIamRoleArn() {
     return this.getStringAttribute('delivery_status_iam_role_arn');
   }
-  public set deliveryStatusIamRoleArn(value: string | undefined) {
+  public set deliveryStatusIamRoleArn(value: string) {
     this._deliveryStatusIamRoleArn = value;
   }
   public resetDeliveryStatusIamRoleArn() {
@@ -122,15 +122,15 @@ export class SnsSmsPreferences extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deliveryStatusIamRoleArnInput() {
-    return this._deliveryStatusIamRoleArn
+    return this._deliveryStatusIamRoleArn;
   }
 
   // delivery_status_success_sampling_rate - computed: false, optional: true, required: false
-  private _deliveryStatusSuccessSamplingRate?: string | undefined; 
+  private _deliveryStatusSuccessSamplingRate?: string; 
   public get deliveryStatusSuccessSamplingRate() {
     return this.getStringAttribute('delivery_status_success_sampling_rate');
   }
-  public set deliveryStatusSuccessSamplingRate(value: string | undefined) {
+  public set deliveryStatusSuccessSamplingRate(value: string) {
     this._deliveryStatusSuccessSamplingRate = value;
   }
   public resetDeliveryStatusSuccessSamplingRate() {
@@ -138,7 +138,7 @@ export class SnsSmsPreferences extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deliveryStatusSuccessSamplingRateInput() {
-    return this._deliveryStatusSuccessSamplingRate
+    return this._deliveryStatusSuccessSamplingRate;
   }
 
   // id - computed: true, optional: true, required: false
@@ -147,11 +147,11 @@ export class SnsSmsPreferences extends cdktf.TerraformResource {
   }
 
   // monthly_spend_limit - computed: true, optional: true, required: false
-  private _monthlySpendLimit?: number | undefined; 
+  private _monthlySpendLimit?: number; 
   public get monthlySpendLimit() {
     return this.getNumberAttribute('monthly_spend_limit');
   }
-  public set monthlySpendLimit(value: number | undefined) {
+  public set monthlySpendLimit(value: number) {
     this._monthlySpendLimit = value;
   }
   public resetMonthlySpendLimit() {
@@ -159,15 +159,15 @@ export class SnsSmsPreferences extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get monthlySpendLimitInput() {
-    return this._monthlySpendLimit
+    return this._monthlySpendLimit;
   }
 
   // usage_report_s3_bucket - computed: false, optional: true, required: false
-  private _usageReportS3Bucket?: string | undefined; 
+  private _usageReportS3Bucket?: string; 
   public get usageReportS3Bucket() {
     return this.getStringAttribute('usage_report_s3_bucket');
   }
-  public set usageReportS3Bucket(value: string | undefined) {
+  public set usageReportS3Bucket(value: string) {
     this._usageReportS3Bucket = value;
   }
   public resetUsageReportS3Bucket() {
@@ -175,7 +175,7 @@ export class SnsSmsPreferences extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get usageReportS3BucketInput() {
-    return this._usageReportS3Bucket
+    return this._usageReportS3Bucket;
   }
 
   // =========

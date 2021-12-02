@@ -132,11 +132,11 @@ export class DataAwsEbsSnapshot extends cdktf.TerraformDataSource {
   }
 
   // most_recent - computed: false, optional: true, required: false
-  private _mostRecent?: boolean | cdktf.IResolvable | undefined; 
+  private _mostRecent?: boolean | cdktf.IResolvable; 
   public get mostRecent() {
     return this.getBooleanAttribute('most_recent') as any;
   }
-  public set mostRecent(value: boolean | cdktf.IResolvable | undefined) {
+  public set mostRecent(value: boolean | cdktf.IResolvable) {
     this._mostRecent = value;
   }
   public resetMostRecent() {
@@ -144,7 +144,7 @@ export class DataAwsEbsSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get mostRecentInput() {
-    return this._mostRecent
+    return this._mostRecent;
   }
 
   // owner_alias - computed: true, optional: false, required: false
@@ -158,11 +158,11 @@ export class DataAwsEbsSnapshot extends cdktf.TerraformDataSource {
   }
 
   // owners - computed: false, optional: true, required: false
-  private _owners?: string[] | undefined; 
+  private _owners?: string[]; 
   public get owners() {
     return this.getListAttribute('owners');
   }
-  public set owners(value: string[] | undefined) {
+  public set owners(value: string[]) {
     this._owners = value;
   }
   public resetOwners() {
@@ -170,15 +170,15 @@ export class DataAwsEbsSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownersInput() {
-    return this._owners
+    return this._owners;
   }
 
   // restorable_by_user_ids - computed: false, optional: true, required: false
-  private _restorableByUserIds?: string[] | undefined; 
+  private _restorableByUserIds?: string[]; 
   public get restorableByUserIds() {
     return this.getListAttribute('restorable_by_user_ids');
   }
-  public set restorableByUserIds(value: string[] | undefined) {
+  public set restorableByUserIds(value: string[]) {
     this._restorableByUserIds = value;
   }
   public resetRestorableByUserIds() {
@@ -186,7 +186,7 @@ export class DataAwsEbsSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get restorableByUserIdsInput() {
-    return this._restorableByUserIds
+    return this._restorableByUserIds;
   }
 
   // snapshot_id - computed: true, optional: false, required: false
@@ -195,11 +195,11 @@ export class DataAwsEbsSnapshot extends cdktf.TerraformDataSource {
   }
 
   // snapshot_ids - computed: false, optional: true, required: false
-  private _snapshotIds?: string[] | undefined; 
+  private _snapshotIds?: string[]; 
   public get snapshotIds() {
     return this.getListAttribute('snapshot_ids');
   }
-  public set snapshotIds(value: string[] | undefined) {
+  public set snapshotIds(value: string[]) {
     this._snapshotIds = value;
   }
   public resetSnapshotIds() {
@@ -207,7 +207,7 @@ export class DataAwsEbsSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotIdsInput() {
-    return this._snapshotIds
+    return this._snapshotIds;
   }
 
   // state - computed: true, optional: false, required: false
@@ -216,12 +216,12 @@ export class DataAwsEbsSnapshot extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -229,7 +229,7 @@ export class DataAwsEbsSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // volume_id - computed: true, optional: false, required: false
@@ -243,12 +243,12 @@ export class DataAwsEbsSnapshot extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsEbsSnapshotFilter[] | undefined; 
+  private _filter?: DataAwsEbsSnapshotFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsEbsSnapshotFilter[] | undefined) {
+  public set filter(value: DataAwsEbsSnapshotFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -256,7 +256,7 @@ export class DataAwsEbsSnapshot extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

@@ -84,12 +84,37 @@ export class ConfigRemediationConfigurationExecutionControlsSsmControlsOutputRef
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ConfigRemediationConfigurationExecutionControlsSsmControls | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._concurrentExecutionRatePercentage) {
+      hasAnyValues = true;
+      internalValueResult.concurrentExecutionRatePercentage = this._concurrentExecutionRatePercentage;
+    }
+    if (this._errorPercentage) {
+      hasAnyValues = true;
+      internalValueResult.errorPercentage = this._errorPercentage;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ConfigRemediationConfigurationExecutionControlsSsmControls | undefined) {
+    if (value === undefined) {
+      this._concurrentExecutionRatePercentage = undefined;
+      this._errorPercentage = undefined;
+    }
+    else {
+      this._concurrentExecutionRatePercentage = value.concurrentExecutionRatePercentage;
+      this._errorPercentage = value.errorPercentage;
+    }
+  }
+
   // concurrent_execution_rate_percentage - computed: false, optional: true, required: false
-  private _concurrentExecutionRatePercentage?: number | undefined; 
+  private _concurrentExecutionRatePercentage?: number; 
   public get concurrentExecutionRatePercentage() {
     return this.getNumberAttribute('concurrent_execution_rate_percentage');
   }
-  public set concurrentExecutionRatePercentage(value: number | undefined) {
+  public set concurrentExecutionRatePercentage(value: number) {
     this._concurrentExecutionRatePercentage = value;
   }
   public resetConcurrentExecutionRatePercentage() {
@@ -97,15 +122,15 @@ export class ConfigRemediationConfigurationExecutionControlsSsmControlsOutputRef
   }
   // Temporarily expose input value. Use with caution.
   public get concurrentExecutionRatePercentageInput() {
-    return this._concurrentExecutionRatePercentage
+    return this._concurrentExecutionRatePercentage;
   }
 
   // error_percentage - computed: false, optional: true, required: false
-  private _errorPercentage?: number | undefined; 
+  private _errorPercentage?: number; 
   public get errorPercentage() {
     return this.getNumberAttribute('error_percentage');
   }
-  public set errorPercentage(value: number | undefined) {
+  public set errorPercentage(value: number) {
     this._errorPercentage = value;
   }
   public resetErrorPercentage() {
@@ -113,7 +138,7 @@ export class ConfigRemediationConfigurationExecutionControlsSsmControlsOutputRef
   }
   // Temporarily expose input value. Use with caution.
   public get errorPercentageInput() {
-    return this._errorPercentage
+    return this._errorPercentage;
   }
 }
 export interface ConfigRemediationConfigurationExecutionControls {
@@ -145,21 +170,39 @@ export class ConfigRemediationConfigurationExecutionControlsOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // ssm_controls - computed: false, optional: true, required: false
-  private _ssmControls?: ConfigRemediationConfigurationExecutionControlsSsmControls | undefined; 
-  private __ssmControlsOutput = new ConfigRemediationConfigurationExecutionControlsSsmControlsOutputReference(this as any, "ssm_controls", true);
-  public get ssmControls() {
-    return this.__ssmControlsOutput;
+  public get internalValue(): ConfigRemediationConfigurationExecutionControls | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._ssmControls) {
+      hasAnyValues = true;
+      internalValueResult.ssmControls = this._ssmControls?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putSsmControls(value: ConfigRemediationConfigurationExecutionControlsSsmControls | undefined) {
-    this._ssmControls = value;
+
+  public set internalValue(value: ConfigRemediationConfigurationExecutionControls | undefined) {
+    if (value === undefined) {
+      this._ssmControls.internalValue = undefined;
+    }
+    else {
+      this._ssmControls.internalValue = value.ssmControls;
+    }
+  }
+
+  // ssm_controls - computed: false, optional: true, required: false
+  private _ssmControls = new ConfigRemediationConfigurationExecutionControlsSsmControlsOutputReference(this as any, "ssm_controls", true);
+  public get ssmControls() {
+    return this._ssmControls;
+  }
+  public putSsmControls(value: ConfigRemediationConfigurationExecutionControlsSsmControls) {
+    this._ssmControls.internalValue = value;
   }
   public resetSsmControls() {
-    this._ssmControls = undefined;
+    this._ssmControls.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ssmControlsInput() {
-    return this._ssmControls
+    return this._ssmControls.internalValue;
   }
 }
 export interface ConfigRemediationConfigurationParameter {
@@ -230,7 +273,7 @@ export class ConfigRemediationConfiguration extends cdktf.TerraformResource {
     this._targetId = config.targetId;
     this._targetType = config.targetType;
     this._targetVersion = config.targetVersion;
-    this._executionControls = config.executionControls;
+    this._executionControls.internalValue = config.executionControls;
     this._parameter = config.parameter;
   }
 
@@ -244,11 +287,11 @@ export class ConfigRemediationConfiguration extends cdktf.TerraformResource {
   }
 
   // automatic - computed: false, optional: true, required: false
-  private _automatic?: boolean | cdktf.IResolvable | undefined; 
+  private _automatic?: boolean | cdktf.IResolvable; 
   public get automatic() {
     return this.getBooleanAttribute('automatic') as any;
   }
-  public set automatic(value: boolean | cdktf.IResolvable | undefined) {
+  public set automatic(value: boolean | cdktf.IResolvable) {
     this._automatic = value;
   }
   public resetAutomatic() {
@@ -256,7 +299,7 @@ export class ConfigRemediationConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get automaticInput() {
-    return this._automatic
+    return this._automatic;
   }
 
   // config_rule_name - computed: false, optional: false, required: true
@@ -269,7 +312,7 @@ export class ConfigRemediationConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get configRuleNameInput() {
-    return this._configRuleName
+    return this._configRuleName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -278,11 +321,11 @@ export class ConfigRemediationConfiguration extends cdktf.TerraformResource {
   }
 
   // maximum_automatic_attempts - computed: false, optional: true, required: false
-  private _maximumAutomaticAttempts?: number | undefined; 
+  private _maximumAutomaticAttempts?: number; 
   public get maximumAutomaticAttempts() {
     return this.getNumberAttribute('maximum_automatic_attempts');
   }
-  public set maximumAutomaticAttempts(value: number | undefined) {
+  public set maximumAutomaticAttempts(value: number) {
     this._maximumAutomaticAttempts = value;
   }
   public resetMaximumAutomaticAttempts() {
@@ -290,15 +333,15 @@ export class ConfigRemediationConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maximumAutomaticAttemptsInput() {
-    return this._maximumAutomaticAttempts
+    return this._maximumAutomaticAttempts;
   }
 
   // resource_type - computed: false, optional: true, required: false
-  private _resourceType?: string | undefined; 
+  private _resourceType?: string; 
   public get resourceType() {
     return this.getStringAttribute('resource_type');
   }
-  public set resourceType(value: string | undefined) {
+  public set resourceType(value: string) {
     this._resourceType = value;
   }
   public resetResourceType() {
@@ -306,15 +349,15 @@ export class ConfigRemediationConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceTypeInput() {
-    return this._resourceType
+    return this._resourceType;
   }
 
   // retry_attempt_seconds - computed: false, optional: true, required: false
-  private _retryAttemptSeconds?: number | undefined; 
+  private _retryAttemptSeconds?: number; 
   public get retryAttemptSeconds() {
     return this.getNumberAttribute('retry_attempt_seconds');
   }
-  public set retryAttemptSeconds(value: number | undefined) {
+  public set retryAttemptSeconds(value: number) {
     this._retryAttemptSeconds = value;
   }
   public resetRetryAttemptSeconds() {
@@ -322,7 +365,7 @@ export class ConfigRemediationConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get retryAttemptSecondsInput() {
-    return this._retryAttemptSeconds
+    return this._retryAttemptSeconds;
   }
 
   // target_id - computed: false, optional: false, required: true
@@ -335,7 +378,7 @@ export class ConfigRemediationConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetIdInput() {
-    return this._targetId
+    return this._targetId;
   }
 
   // target_type - computed: false, optional: false, required: true
@@ -348,15 +391,15 @@ export class ConfigRemediationConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetTypeInput() {
-    return this._targetType
+    return this._targetType;
   }
 
   // target_version - computed: false, optional: true, required: false
-  private _targetVersion?: string | undefined; 
+  private _targetVersion?: string; 
   public get targetVersion() {
     return this.getStringAttribute('target_version');
   }
-  public set targetVersion(value: string | undefined) {
+  public set targetVersion(value: string) {
     this._targetVersion = value;
   }
   public resetTargetVersion() {
@@ -364,33 +407,32 @@ export class ConfigRemediationConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetVersionInput() {
-    return this._targetVersion
+    return this._targetVersion;
   }
 
   // execution_controls - computed: false, optional: true, required: false
-  private _executionControls?: ConfigRemediationConfigurationExecutionControls | undefined; 
-  private __executionControlsOutput = new ConfigRemediationConfigurationExecutionControlsOutputReference(this as any, "execution_controls", true);
+  private _executionControls = new ConfigRemediationConfigurationExecutionControlsOutputReference(this as any, "execution_controls", true);
   public get executionControls() {
-    return this.__executionControlsOutput;
+    return this._executionControls;
   }
-  public putExecutionControls(value: ConfigRemediationConfigurationExecutionControls | undefined) {
-    this._executionControls = value;
+  public putExecutionControls(value: ConfigRemediationConfigurationExecutionControls) {
+    this._executionControls.internalValue = value;
   }
   public resetExecutionControls() {
-    this._executionControls = undefined;
+    this._executionControls.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get executionControlsInput() {
-    return this._executionControls
+    return this._executionControls.internalValue;
   }
 
   // parameter - computed: false, optional: true, required: false
-  private _parameter?: ConfigRemediationConfigurationParameter[] | undefined; 
+  private _parameter?: ConfigRemediationConfigurationParameter[]; 
   public get parameter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('parameter') as any;
   }
-  public set parameter(value: ConfigRemediationConfigurationParameter[] | undefined) {
+  public set parameter(value: ConfigRemediationConfigurationParameter[]) {
     this._parameter = value;
   }
   public resetParameter() {
@@ -398,7 +440,7 @@ export class ConfigRemediationConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parameterInput() {
-    return this._parameter
+    return this._parameter;
   }
 
   // =========
@@ -415,7 +457,7 @@ export class ConfigRemediationConfiguration extends cdktf.TerraformResource {
       target_id: cdktf.stringToTerraform(this._targetId),
       target_type: cdktf.stringToTerraform(this._targetType),
       target_version: cdktf.stringToTerraform(this._targetVersion),
-      execution_controls: configRemediationConfigurationExecutionControlsToTerraform(this._executionControls),
+      execution_controls: configRemediationConfigurationExecutionControlsToTerraform(this._executionControls.internalValue),
       parameter: cdktf.listMapper(configRemediationConfigurationParameterToTerraform)(this._parameter),
     };
   }

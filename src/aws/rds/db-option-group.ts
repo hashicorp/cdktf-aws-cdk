@@ -141,12 +141,31 @@ export class DbOptionGroupTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DbOptionGroupTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DbOptionGroupTimeouts | undefined) {
+    if (value === undefined) {
+      this._delete = undefined;
+    }
+    else {
+      this._delete = value.delete;
+    }
+  }
+
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -154,7 +173,7 @@ export class DbOptionGroupTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -198,7 +217,7 @@ export class DbOptionGroup extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._option = config.option;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -220,7 +239,7 @@ export class DbOptionGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineNameInput() {
-    return this._engineName
+    return this._engineName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -238,15 +257,15 @@ export class DbOptionGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get majorEngineVersionInput() {
-    return this._majorEngineVersion
+    return this._majorEngineVersion;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -254,15 +273,15 @@ export class DbOptionGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_prefix - computed: true, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -270,15 +289,15 @@ export class DbOptionGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // option_group_description - computed: false, optional: true, required: false
-  private _optionGroupDescription?: string | undefined; 
+  private _optionGroupDescription?: string; 
   public get optionGroupDescription() {
     return this.getStringAttribute('option_group_description');
   }
-  public set optionGroupDescription(value: string | undefined) {
+  public set optionGroupDescription(value: string) {
     this._optionGroupDescription = value;
   }
   public resetOptionGroupDescription() {
@@ -286,16 +305,16 @@ export class DbOptionGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get optionGroupDescriptionInput() {
-    return this._optionGroupDescription
+    return this._optionGroupDescription;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -303,16 +322,16 @@ export class DbOptionGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -320,16 +339,16 @@ export class DbOptionGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // option - computed: false, optional: true, required: false
-  private _option?: DbOptionGroupOption[] | undefined; 
+  private _option?: DbOptionGroupOption[]; 
   public get option() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('option') as any;
   }
-  public set option(value: DbOptionGroupOption[] | undefined) {
+  public set option(value: DbOptionGroupOption[]) {
     this._option = value;
   }
   public resetOption() {
@@ -337,24 +356,23 @@ export class DbOptionGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get optionInput() {
-    return this._option
+    return this._option;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DbOptionGroupTimeouts | undefined; 
-  private __timeoutsOutput = new DbOptionGroupTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DbOptionGroupTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DbOptionGroupTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DbOptionGroupTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -371,7 +389,7 @@ export class DbOptionGroup extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       option: cdktf.listMapper(dbOptionGroupOptionToTerraform)(this._option),
-      timeouts: dbOptionGroupTimeoutsToTerraform(this._timeouts),
+      timeouts: dbOptionGroupTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

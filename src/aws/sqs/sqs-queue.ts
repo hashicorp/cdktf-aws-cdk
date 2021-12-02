@@ -138,11 +138,11 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
 
   // content_based_deduplication - computed: false, optional: true, required: false
-  private _contentBasedDeduplication?: boolean | cdktf.IResolvable | undefined; 
+  private _contentBasedDeduplication?: boolean | cdktf.IResolvable; 
   public get contentBasedDeduplication() {
     return this.getBooleanAttribute('content_based_deduplication') as any;
   }
-  public set contentBasedDeduplication(value: boolean | cdktf.IResolvable | undefined) {
+  public set contentBasedDeduplication(value: boolean | cdktf.IResolvable) {
     this._contentBasedDeduplication = value;
   }
   public resetContentBasedDeduplication() {
@@ -150,15 +150,15 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get contentBasedDeduplicationInput() {
-    return this._contentBasedDeduplication
+    return this._contentBasedDeduplication;
   }
 
   // deduplication_scope - computed: true, optional: true, required: false
-  private _deduplicationScope?: string | undefined; 
+  private _deduplicationScope?: string; 
   public get deduplicationScope() {
     return this.getStringAttribute('deduplication_scope');
   }
-  public set deduplicationScope(value: string | undefined) {
+  public set deduplicationScope(value: string) {
     this._deduplicationScope = value;
   }
   public resetDeduplicationScope() {
@@ -166,15 +166,15 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deduplicationScopeInput() {
-    return this._deduplicationScope
+    return this._deduplicationScope;
   }
 
   // delay_seconds - computed: false, optional: true, required: false
-  private _delaySeconds?: number | undefined; 
+  private _delaySeconds?: number; 
   public get delaySeconds() {
     return this.getNumberAttribute('delay_seconds');
   }
-  public set delaySeconds(value: number | undefined) {
+  public set delaySeconds(value: number) {
     this._delaySeconds = value;
   }
   public resetDelaySeconds() {
@@ -182,15 +182,15 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get delaySecondsInput() {
-    return this._delaySeconds
+    return this._delaySeconds;
   }
 
   // fifo_queue - computed: false, optional: true, required: false
-  private _fifoQueue?: boolean | cdktf.IResolvable | undefined; 
+  private _fifoQueue?: boolean | cdktf.IResolvable; 
   public get fifoQueue() {
     return this.getBooleanAttribute('fifo_queue') as any;
   }
-  public set fifoQueue(value: boolean | cdktf.IResolvable | undefined) {
+  public set fifoQueue(value: boolean | cdktf.IResolvable) {
     this._fifoQueue = value;
   }
   public resetFifoQueue() {
@@ -198,15 +198,15 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fifoQueueInput() {
-    return this._fifoQueue
+    return this._fifoQueue;
   }
 
   // fifo_throughput_limit - computed: true, optional: true, required: false
-  private _fifoThroughputLimit?: string | undefined; 
+  private _fifoThroughputLimit?: string; 
   public get fifoThroughputLimit() {
     return this.getStringAttribute('fifo_throughput_limit');
   }
-  public set fifoThroughputLimit(value: string | undefined) {
+  public set fifoThroughputLimit(value: string) {
     this._fifoThroughputLimit = value;
   }
   public resetFifoThroughputLimit() {
@@ -214,7 +214,7 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fifoThroughputLimitInput() {
-    return this._fifoThroughputLimit
+    return this._fifoThroughputLimit;
   }
 
   // id - computed: true, optional: true, required: false
@@ -223,11 +223,11 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
 
   // kms_data_key_reuse_period_seconds - computed: true, optional: true, required: false
-  private _kmsDataKeyReusePeriodSeconds?: number | undefined; 
+  private _kmsDataKeyReusePeriodSeconds?: number; 
   public get kmsDataKeyReusePeriodSeconds() {
     return this.getNumberAttribute('kms_data_key_reuse_period_seconds');
   }
-  public set kmsDataKeyReusePeriodSeconds(value: number | undefined) {
+  public set kmsDataKeyReusePeriodSeconds(value: number) {
     this._kmsDataKeyReusePeriodSeconds = value;
   }
   public resetKmsDataKeyReusePeriodSeconds() {
@@ -235,15 +235,15 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsDataKeyReusePeriodSecondsInput() {
-    return this._kmsDataKeyReusePeriodSeconds
+    return this._kmsDataKeyReusePeriodSeconds;
   }
 
   // kms_master_key_id - computed: false, optional: true, required: false
-  private _kmsMasterKeyId?: string | undefined; 
+  private _kmsMasterKeyId?: string; 
   public get kmsMasterKeyId() {
     return this.getStringAttribute('kms_master_key_id');
   }
-  public set kmsMasterKeyId(value: string | undefined) {
+  public set kmsMasterKeyId(value: string) {
     this._kmsMasterKeyId = value;
   }
   public resetKmsMasterKeyId() {
@@ -251,15 +251,15 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsMasterKeyIdInput() {
-    return this._kmsMasterKeyId
+    return this._kmsMasterKeyId;
   }
 
   // max_message_size - computed: false, optional: true, required: false
-  private _maxMessageSize?: number | undefined; 
+  private _maxMessageSize?: number; 
   public get maxMessageSize() {
     return this.getNumberAttribute('max_message_size');
   }
-  public set maxMessageSize(value: number | undefined) {
+  public set maxMessageSize(value: number) {
     this._maxMessageSize = value;
   }
   public resetMaxMessageSize() {
@@ -267,15 +267,15 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxMessageSizeInput() {
-    return this._maxMessageSize
+    return this._maxMessageSize;
   }
 
   // message_retention_seconds - computed: false, optional: true, required: false
-  private _messageRetentionSeconds?: number | undefined; 
+  private _messageRetentionSeconds?: number; 
   public get messageRetentionSeconds() {
     return this.getNumberAttribute('message_retention_seconds');
   }
-  public set messageRetentionSeconds(value: number | undefined) {
+  public set messageRetentionSeconds(value: number) {
     this._messageRetentionSeconds = value;
   }
   public resetMessageRetentionSeconds() {
@@ -283,15 +283,15 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get messageRetentionSecondsInput() {
-    return this._messageRetentionSeconds
+    return this._messageRetentionSeconds;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -299,15 +299,15 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_prefix - computed: true, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -315,15 +315,15 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // policy - computed: true, optional: true, required: false
-  private _policy?: string | undefined; 
+  private _policy?: string; 
   public get policy() {
     return this.getStringAttribute('policy');
   }
-  public set policy(value: string | undefined) {
+  public set policy(value: string) {
     this._policy = value;
   }
   public resetPolicy() {
@@ -331,15 +331,15 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // receive_wait_time_seconds - computed: false, optional: true, required: false
-  private _receiveWaitTimeSeconds?: number | undefined; 
+  private _receiveWaitTimeSeconds?: number; 
   public get receiveWaitTimeSeconds() {
     return this.getNumberAttribute('receive_wait_time_seconds');
   }
-  public set receiveWaitTimeSeconds(value: number | undefined) {
+  public set receiveWaitTimeSeconds(value: number) {
     this._receiveWaitTimeSeconds = value;
   }
   public resetReceiveWaitTimeSeconds() {
@@ -347,15 +347,15 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get receiveWaitTimeSecondsInput() {
-    return this._receiveWaitTimeSeconds
+    return this._receiveWaitTimeSeconds;
   }
 
   // redrive_policy - computed: false, optional: true, required: false
-  private _redrivePolicy?: string | undefined; 
+  private _redrivePolicy?: string; 
   public get redrivePolicy() {
     return this.getStringAttribute('redrive_policy');
   }
-  public set redrivePolicy(value: string | undefined) {
+  public set redrivePolicy(value: string) {
     this._redrivePolicy = value;
   }
   public resetRedrivePolicy() {
@@ -363,16 +363,16 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get redrivePolicyInput() {
-    return this._redrivePolicy
+    return this._redrivePolicy;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -380,16 +380,16 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -397,7 +397,7 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // url - computed: true, optional: false, required: false
@@ -406,11 +406,11 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
 
   // visibility_timeout_seconds - computed: false, optional: true, required: false
-  private _visibilityTimeoutSeconds?: number | undefined; 
+  private _visibilityTimeoutSeconds?: number; 
   public get visibilityTimeoutSeconds() {
     return this.getNumberAttribute('visibility_timeout_seconds');
   }
-  public set visibilityTimeoutSeconds(value: number | undefined) {
+  public set visibilityTimeoutSeconds(value: number) {
     this._visibilityTimeoutSeconds = value;
   }
   public resetVisibilityTimeoutSeconds() {
@@ -418,7 +418,7 @@ export class SqsQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get visibilityTimeoutSecondsInput() {
-    return this._visibilityTimeoutSeconds
+    return this._visibilityTimeoutSeconds;
   }
 
   // =========

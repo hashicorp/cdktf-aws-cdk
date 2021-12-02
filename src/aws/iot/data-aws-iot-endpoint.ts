@@ -58,11 +58,11 @@ export class DataAwsIotEndpoint extends cdktf.TerraformDataSource {
   }
 
   // endpoint_type - computed: false, optional: true, required: false
-  private _endpointType?: string | undefined; 
+  private _endpointType?: string; 
   public get endpointType() {
     return this.getStringAttribute('endpoint_type');
   }
-  public set endpointType(value: string | undefined) {
+  public set endpointType(value: string) {
     this._endpointType = value;
   }
   public resetEndpointType() {
@@ -70,7 +70,7 @@ export class DataAwsIotEndpoint extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get endpointTypeInput() {
-    return this._endpointType
+    return this._endpointType;
   }
 
   // id - computed: true, optional: true, required: false

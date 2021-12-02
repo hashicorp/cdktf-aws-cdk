@@ -93,11 +93,11 @@ export class DataAwsIamServerCertificate extends cdktf.TerraformDataSource {
   }
 
   // latest - computed: false, optional: true, required: false
-  private _latest?: boolean | cdktf.IResolvable | undefined; 
+  private _latest?: boolean | cdktf.IResolvable; 
   public get latest() {
     return this.getBooleanAttribute('latest') as any;
   }
-  public set latest(value: boolean | cdktf.IResolvable | undefined) {
+  public set latest(value: boolean | cdktf.IResolvable) {
     this._latest = value;
   }
   public resetLatest() {
@@ -105,15 +105,15 @@ export class DataAwsIamServerCertificate extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get latestInput() {
-    return this._latest
+    return this._latest;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -121,15 +121,15 @@ export class DataAwsIamServerCertificate extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_prefix - computed: false, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -137,7 +137,7 @@ export class DataAwsIamServerCertificate extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // path - computed: true, optional: false, required: false
@@ -146,11 +146,11 @@ export class DataAwsIamServerCertificate extends cdktf.TerraformDataSource {
   }
 
   // path_prefix - computed: false, optional: true, required: false
-  private _pathPrefix?: string | undefined; 
+  private _pathPrefix?: string; 
   public get pathPrefix() {
     return this.getStringAttribute('path_prefix');
   }
-  public set pathPrefix(value: string | undefined) {
+  public set pathPrefix(value: string) {
     this._pathPrefix = value;
   }
   public resetPathPrefix() {
@@ -158,7 +158,7 @@ export class DataAwsIamServerCertificate extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get pathPrefixInput() {
-    return this._pathPrefix
+    return this._pathPrefix;
   }
 
   // upload_date - computed: true, optional: false, required: false

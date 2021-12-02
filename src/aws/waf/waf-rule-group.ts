@@ -57,6 +57,25 @@ export class WafRuleGroupActivatedRuleActionOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): WafRuleGroupActivatedRuleAction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: WafRuleGroupActivatedRuleAction | undefined) {
+    if (value === undefined) {
+      this._type = undefined;
+    }
+    else {
+      this._type = value.type;
+    }
+  }
+
   // type - computed: false, optional: false, required: true
   private _type?: string; 
   public get type() {
@@ -67,7 +86,7 @@ export class WafRuleGroupActivatedRuleActionOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 export interface WafRuleGroupActivatedRule {
@@ -168,7 +187,7 @@ export class WafRuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get metricNameInput() {
-    return this._metricName
+    return this._metricName;
   }
 
   // name - computed: false, optional: false, required: true
@@ -181,16 +200,16 @@ export class WafRuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -198,16 +217,16 @@ export class WafRuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -215,16 +234,16 @@ export class WafRuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // activated_rule - computed: false, optional: true, required: false
-  private _activatedRule?: WafRuleGroupActivatedRule[] | undefined; 
+  private _activatedRule?: WafRuleGroupActivatedRule[]; 
   public get activatedRule() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('activated_rule') as any;
   }
-  public set activatedRule(value: WafRuleGroupActivatedRule[] | undefined) {
+  public set activatedRule(value: WafRuleGroupActivatedRule[]) {
     this._activatedRule = value;
   }
   public resetActivatedRule() {
@@ -232,7 +251,7 @@ export class WafRuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get activatedRuleInput() {
-    return this._activatedRule
+    return this._activatedRule;
   }
 
   // =========

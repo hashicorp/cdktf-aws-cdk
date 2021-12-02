@@ -87,15 +87,15 @@ export class DmsCertificate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificateIdInput() {
-    return this._certificateId
+    return this._certificateId;
   }
 
   // certificate_pem - computed: false, optional: true, required: false
-  private _certificatePem?: string | undefined; 
+  private _certificatePem?: string; 
   public get certificatePem() {
     return this.getStringAttribute('certificate_pem');
   }
-  public set certificatePem(value: string | undefined) {
+  public set certificatePem(value: string) {
     this._certificatePem = value;
   }
   public resetCertificatePem() {
@@ -103,15 +103,15 @@ export class DmsCertificate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificatePemInput() {
-    return this._certificatePem
+    return this._certificatePem;
   }
 
   // certificate_wallet - computed: false, optional: true, required: false
-  private _certificateWallet?: string | undefined; 
+  private _certificateWallet?: string; 
   public get certificateWallet() {
     return this.getStringAttribute('certificate_wallet');
   }
-  public set certificateWallet(value: string | undefined) {
+  public set certificateWallet(value: string) {
     this._certificateWallet = value;
   }
   public resetCertificateWallet() {
@@ -119,7 +119,7 @@ export class DmsCertificate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificateWalletInput() {
-    return this._certificateWallet
+    return this._certificateWallet;
   }
 
   // id - computed: true, optional: true, required: false
@@ -128,12 +128,12 @@ export class DmsCertificate extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -141,16 +141,16 @@ export class DmsCertificate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -158,7 +158,7 @@ export class DmsCertificate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

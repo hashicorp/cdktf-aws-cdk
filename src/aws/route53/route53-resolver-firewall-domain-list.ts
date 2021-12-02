@@ -73,11 +73,11 @@ export class Route53ResolverFirewallDomainList extends cdktf.TerraformResource {
   }
 
   // domains - computed: false, optional: true, required: false
-  private _domains?: string[] | undefined; 
+  private _domains?: string[]; 
   public get domains() {
     return this.getListAttribute('domains');
   }
-  public set domains(value: string[] | undefined) {
+  public set domains(value: string[]) {
     this._domains = value;
   }
   public resetDomains() {
@@ -85,7 +85,7 @@ export class Route53ResolverFirewallDomainList extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainsInput() {
-    return this._domains
+    return this._domains;
   }
 
   // id - computed: true, optional: true, required: false
@@ -103,16 +103,16 @@ export class Route53ResolverFirewallDomainList extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -120,16 +120,16 @@ export class Route53ResolverFirewallDomainList extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -137,7 +137,7 @@ export class Route53ResolverFirewallDomainList extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

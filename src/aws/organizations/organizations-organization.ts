@@ -162,11 +162,11 @@ export class OrganizationsOrganization extends cdktf.TerraformResource {
   }
 
   // aws_service_access_principals - computed: false, optional: true, required: false
-  private _awsServiceAccessPrincipals?: string[] | undefined; 
+  private _awsServiceAccessPrincipals?: string[]; 
   public get awsServiceAccessPrincipals() {
     return this.getListAttribute('aws_service_access_principals');
   }
-  public set awsServiceAccessPrincipals(value: string[] | undefined) {
+  public set awsServiceAccessPrincipals(value: string[]) {
     this._awsServiceAccessPrincipals = value;
   }
   public resetAwsServiceAccessPrincipals() {
@@ -174,15 +174,15 @@ export class OrganizationsOrganization extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get awsServiceAccessPrincipalsInput() {
-    return this._awsServiceAccessPrincipals
+    return this._awsServiceAccessPrincipals;
   }
 
   // enabled_policy_types - computed: false, optional: true, required: false
-  private _enabledPolicyTypes?: string[] | undefined; 
+  private _enabledPolicyTypes?: string[]; 
   public get enabledPolicyTypes() {
     return this.getListAttribute('enabled_policy_types');
   }
-  public set enabledPolicyTypes(value: string[] | undefined) {
+  public set enabledPolicyTypes(value: string[]) {
     this._enabledPolicyTypes = value;
   }
   public resetEnabledPolicyTypes() {
@@ -190,15 +190,15 @@ export class OrganizationsOrganization extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledPolicyTypesInput() {
-    return this._enabledPolicyTypes
+    return this._enabledPolicyTypes;
   }
 
   // feature_set - computed: false, optional: true, required: false
-  private _featureSet?: string | undefined; 
+  private _featureSet?: string; 
   public get featureSet() {
     return this.getStringAttribute('feature_set');
   }
-  public set featureSet(value: string | undefined) {
+  public set featureSet(value: string) {
     this._featureSet = value;
   }
   public resetFeatureSet() {
@@ -206,7 +206,7 @@ export class OrganizationsOrganization extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get featureSetInput() {
-    return this._featureSet
+    return this._featureSet;
   }
 
   // id - computed: true, optional: true, required: false

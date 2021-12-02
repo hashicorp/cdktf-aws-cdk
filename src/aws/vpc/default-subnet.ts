@@ -74,12 +74,37 @@ export class DefaultSubnetTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DefaultSubnetTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DefaultSubnetTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -87,15 +112,15 @@ export class DefaultSubnetTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -103,7 +128,7 @@ export class DefaultSubnetTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -146,7 +171,7 @@ export class DefaultSubnet extends cdktf.TerraformResource {
     this._outpostArn = config.outpostArn;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -173,7 +198,7 @@ export class DefaultSubnet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneInput() {
-    return this._availabilityZone
+    return this._availabilityZone;
   }
 
   // availability_zone_id - computed: true, optional: false, required: false
@@ -187,11 +212,11 @@ export class DefaultSubnet extends cdktf.TerraformResource {
   }
 
   // customer_owned_ipv4_pool - computed: false, optional: true, required: false
-  private _customerOwnedIpv4Pool?: string | undefined; 
+  private _customerOwnedIpv4Pool?: string; 
   public get customerOwnedIpv4Pool() {
     return this.getStringAttribute('customer_owned_ipv4_pool');
   }
-  public set customerOwnedIpv4Pool(value: string | undefined) {
+  public set customerOwnedIpv4Pool(value: string) {
     this._customerOwnedIpv4Pool = value;
   }
   public resetCustomerOwnedIpv4Pool() {
@@ -199,7 +224,7 @@ export class DefaultSubnet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customerOwnedIpv4PoolInput() {
-    return this._customerOwnedIpv4Pool
+    return this._customerOwnedIpv4Pool;
   }
 
   // id - computed: true, optional: true, required: false
@@ -218,11 +243,11 @@ export class DefaultSubnet extends cdktf.TerraformResource {
   }
 
   // map_customer_owned_ip_on_launch - computed: false, optional: true, required: false
-  private _mapCustomerOwnedIpOnLaunch?: boolean | cdktf.IResolvable | undefined; 
+  private _mapCustomerOwnedIpOnLaunch?: boolean | cdktf.IResolvable; 
   public get mapCustomerOwnedIpOnLaunch() {
     return this.getBooleanAttribute('map_customer_owned_ip_on_launch') as any;
   }
-  public set mapCustomerOwnedIpOnLaunch(value: boolean | cdktf.IResolvable | undefined) {
+  public set mapCustomerOwnedIpOnLaunch(value: boolean | cdktf.IResolvable) {
     this._mapCustomerOwnedIpOnLaunch = value;
   }
   public resetMapCustomerOwnedIpOnLaunch() {
@@ -230,15 +255,15 @@ export class DefaultSubnet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get mapCustomerOwnedIpOnLaunchInput() {
-    return this._mapCustomerOwnedIpOnLaunch
+    return this._mapCustomerOwnedIpOnLaunch;
   }
 
   // map_public_ip_on_launch - computed: true, optional: true, required: false
-  private _mapPublicIpOnLaunch?: boolean | cdktf.IResolvable | undefined; 
+  private _mapPublicIpOnLaunch?: boolean | cdktf.IResolvable; 
   public get mapPublicIpOnLaunch() {
     return this.getBooleanAttribute('map_public_ip_on_launch') as any;
   }
-  public set mapPublicIpOnLaunch(value: boolean | cdktf.IResolvable | undefined) {
+  public set mapPublicIpOnLaunch(value: boolean | cdktf.IResolvable) {
     this._mapPublicIpOnLaunch = value;
   }
   public resetMapPublicIpOnLaunch() {
@@ -246,15 +271,15 @@ export class DefaultSubnet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get mapPublicIpOnLaunchInput() {
-    return this._mapPublicIpOnLaunch
+    return this._mapPublicIpOnLaunch;
   }
 
   // outpost_arn - computed: false, optional: true, required: false
-  private _outpostArn?: string | undefined; 
+  private _outpostArn?: string; 
   public get outpostArn() {
     return this.getStringAttribute('outpost_arn');
   }
-  public set outpostArn(value: string | undefined) {
+  public set outpostArn(value: string) {
     this._outpostArn = value;
   }
   public resetOutpostArn() {
@@ -262,7 +287,7 @@ export class DefaultSubnet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get outpostArnInput() {
-    return this._outpostArn
+    return this._outpostArn;
   }
 
   // owner_id - computed: true, optional: false, required: false
@@ -271,12 +296,12 @@ export class DefaultSubnet extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -284,16 +309,16 @@ export class DefaultSubnet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -301,7 +326,7 @@ export class DefaultSubnet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // vpc_id - computed: true, optional: false, required: false
@@ -310,20 +335,19 @@ export class DefaultSubnet extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DefaultSubnetTimeouts | undefined; 
-  private __timeoutsOutput = new DefaultSubnetTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DefaultSubnetTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DefaultSubnetTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DefaultSubnetTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -339,7 +363,7 @@ export class DefaultSubnet extends cdktf.TerraformResource {
       outpost_arn: cdktf.stringToTerraform(this._outpostArn),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      timeouts: defaultSubnetTimeoutsToTerraform(this._timeouts),
+      timeouts: defaultSubnetTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

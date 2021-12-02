@@ -98,7 +98,7 @@ export class Wafv2RuleGroup extends cdktf.TerraformResource {
     this._tagsAll = config.tagsAll;
     this._customResponseBody = config.customResponseBody;
     this._rule = config.rule;
-    this._visibilityConfig = config.visibilityConfig;
+    this._visibilityConfig.internalValue = config.visibilityConfig;
   }
 
   // ==========
@@ -120,15 +120,15 @@ export class Wafv2RuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get capacityInput() {
-    return this._capacity
+    return this._capacity;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -136,7 +136,7 @@ export class Wafv2RuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -159,7 +159,7 @@ export class Wafv2RuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // scope - computed: false, optional: false, required: true
@@ -172,16 +172,16 @@ export class Wafv2RuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scopeInput() {
-    return this._scope
+    return this._scope;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -189,16 +189,16 @@ export class Wafv2RuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -206,16 +206,16 @@ export class Wafv2RuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // custom_response_body - computed: false, optional: true, required: false
-  private _customResponseBody?: Wafv2RuleGroupCustomResponseBody[] | undefined; 
+  private _customResponseBody?: Wafv2RuleGroupCustomResponseBody[]; 
   public get customResponseBody() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('custom_response_body') as any;
   }
-  public set customResponseBody(value: Wafv2RuleGroupCustomResponseBody[] | undefined) {
+  public set customResponseBody(value: Wafv2RuleGroupCustomResponseBody[]) {
     this._customResponseBody = value;
   }
   public resetCustomResponseBody() {
@@ -223,16 +223,16 @@ export class Wafv2RuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customResponseBodyInput() {
-    return this._customResponseBody
+    return this._customResponseBody;
   }
 
   // rule - computed: false, optional: true, required: false
-  private _rule?: Wafv2RuleGroupRule[] | undefined; 
+  private _rule?: Wafv2RuleGroupRule[]; 
   public get rule() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('rule') as any;
   }
-  public set rule(value: Wafv2RuleGroupRule[] | undefined) {
+  public set rule(value: Wafv2RuleGroupRule[]) {
     this._rule = value;
   }
   public resetRule() {
@@ -240,21 +240,20 @@ export class Wafv2RuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ruleInput() {
-    return this._rule
+    return this._rule;
   }
 
   // visibility_config - computed: false, optional: false, required: true
-  private _visibilityConfig?: Wafv2RuleGroupVisibilityConfig; 
-  private __visibilityConfigOutput = new Wafv2RuleGroupVisibilityConfigOutputReference(this as any, "visibility_config", true);
+  private _visibilityConfig = new Wafv2RuleGroupVisibilityConfigOutputReference(this as any, "visibility_config", true);
   public get visibilityConfig() {
-    return this.__visibilityConfigOutput;
+    return this._visibilityConfig;
   }
   public putVisibilityConfig(value: Wafv2RuleGroupVisibilityConfig) {
-    this._visibilityConfig = value;
+    this._visibilityConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get visibilityConfigInput() {
-    return this._visibilityConfig
+    return this._visibilityConfig.internalValue;
   }
 
   // =========
@@ -271,7 +270,7 @@ export class Wafv2RuleGroup extends cdktf.TerraformResource {
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       custom_response_body: cdktf.listMapper(wafv2RuleGroupCustomResponseBodyToTerraform)(this._customResponseBody),
       rule: cdktf.listMapper(wafv2RuleGroupRuleToTerraform)(this._rule),
-      visibility_config: wafv2RuleGroupVisibilityConfigToTerraform(this._visibilityConfig),
+      visibility_config: wafv2RuleGroupVisibilityConfigToTerraform(this._visibilityConfig.internalValue),
     };
   }
 }

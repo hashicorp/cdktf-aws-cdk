@@ -73,11 +73,11 @@ export class DataAwsSsmDocument extends cdktf.TerraformDataSource {
   }
 
   // document_format - computed: false, optional: true, required: false
-  private _documentFormat?: string | undefined; 
+  private _documentFormat?: string; 
   public get documentFormat() {
     return this.getStringAttribute('document_format');
   }
-  public set documentFormat(value: string | undefined) {
+  public set documentFormat(value: string) {
     this._documentFormat = value;
   }
   public resetDocumentFormat() {
@@ -85,7 +85,7 @@ export class DataAwsSsmDocument extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get documentFormatInput() {
-    return this._documentFormat
+    return this._documentFormat;
   }
 
   // document_type - computed: true, optional: false, required: false
@@ -94,11 +94,11 @@ export class DataAwsSsmDocument extends cdktf.TerraformDataSource {
   }
 
   // document_version - computed: false, optional: true, required: false
-  private _documentVersion?: string | undefined; 
+  private _documentVersion?: string; 
   public get documentVersion() {
     return this.getStringAttribute('document_version');
   }
-  public set documentVersion(value: string | undefined) {
+  public set documentVersion(value: string) {
     this._documentVersion = value;
   }
   public resetDocumentVersion() {
@@ -106,7 +106,7 @@ export class DataAwsSsmDocument extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get documentVersionInput() {
-    return this._documentVersion
+    return this._documentVersion;
   }
 
   // id - computed: true, optional: true, required: false
@@ -124,7 +124,7 @@ export class DataAwsSsmDocument extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // =========

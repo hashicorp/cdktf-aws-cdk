@@ -67,7 +67,7 @@ export class StoragegatewayWorkingStorage extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get diskIdInput() {
-    return this._diskId
+    return this._diskId;
   }
 
   // gateway_arn - computed: false, optional: false, required: true
@@ -80,7 +80,7 @@ export class StoragegatewayWorkingStorage extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get gatewayArnInput() {
-    return this._gatewayArn
+    return this._gatewayArn;
   }
 
   // id - computed: true, optional: true, required: false

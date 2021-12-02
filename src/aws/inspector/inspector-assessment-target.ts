@@ -77,15 +77,15 @@ export class InspectorAssessmentTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // resource_group_arn - computed: false, optional: true, required: false
-  private _resourceGroupArn?: string | undefined; 
+  private _resourceGroupArn?: string; 
   public get resourceGroupArn() {
     return this.getStringAttribute('resource_group_arn');
   }
-  public set resourceGroupArn(value: string | undefined) {
+  public set resourceGroupArn(value: string) {
     this._resourceGroupArn = value;
   }
   public resetResourceGroupArn() {
@@ -93,7 +93,7 @@ export class InspectorAssessmentTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceGroupArnInput() {
-    return this._resourceGroupArn
+    return this._resourceGroupArn;
   }
 
   // =========

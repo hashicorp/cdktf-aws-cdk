@@ -393,12 +393,43 @@ export class SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationOutp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._id) {
+      hasAnyValues = true;
+      internalValueResult.id = this._id;
+    }
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._version) {
+      hasAnyValues = true;
+      internalValueResult.version = this._version;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification | undefined) {
+    if (value === undefined) {
+      this._id = undefined;
+      this._name = undefined;
+      this._version = undefined;
+    }
+    else {
+      this._id = value.id;
+      this._name = value.name;
+      this._version = value.version;
+    }
+  }
+
   // id - computed: false, optional: true, required: false
-  private _id?: string | undefined; 
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
   }
-  public set id(value: string | undefined) {
+  public set id(value: string) {
     this._id = value;
   }
   public resetId() {
@@ -406,15 +437,15 @@ export class SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationOutp
   }
   // Temporarily expose input value. Use with caution.
   public get idInput() {
-    return this._id
+    return this._id;
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -422,15 +453,15 @@ export class SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationOutp
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // version - computed: false, optional: true, required: false
-  private _version?: string | undefined; 
+  private _version?: string; 
   public get version() {
     return this.getStringAttribute('version');
   }
-  public set version(value: string | undefined) {
+  public set version(value: string) {
     this._version = value;
   }
   public resetVersion() {
@@ -438,7 +469,7 @@ export class SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationOutp
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 }
 export interface SpotFleetRequestLaunchTemplateConfigOverrides {
@@ -536,12 +567,31 @@ export class SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceOutputRef
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._replacementStrategy) {
+      hasAnyValues = true;
+      internalValueResult.replacementStrategy = this._replacementStrategy;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance | undefined) {
+    if (value === undefined) {
+      this._replacementStrategy = undefined;
+    }
+    else {
+      this._replacementStrategy = value.replacementStrategy;
+    }
+  }
+
   // replacement_strategy - computed: false, optional: true, required: false
-  private _replacementStrategy?: string | undefined; 
+  private _replacementStrategy?: string; 
   public get replacementStrategy() {
     return this.getStringAttribute('replacement_strategy');
   }
-  public set replacementStrategy(value: string | undefined) {
+  public set replacementStrategy(value: string) {
     this._replacementStrategy = value;
   }
   public resetReplacementStrategy() {
@@ -549,7 +599,7 @@ export class SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceOutputRef
   }
   // Temporarily expose input value. Use with caution.
   public get replacementStrategyInput() {
-    return this._replacementStrategy
+    return this._replacementStrategy;
   }
 }
 export interface SpotFleetRequestSpotMaintenanceStrategies {
@@ -581,21 +631,39 @@ export class SpotFleetRequestSpotMaintenanceStrategiesOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // capacity_rebalance - computed: false, optional: true, required: false
-  private _capacityRebalance?: SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance | undefined; 
-  private __capacityRebalanceOutput = new SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceOutputReference(this as any, "capacity_rebalance", true);
-  public get capacityRebalance() {
-    return this.__capacityRebalanceOutput;
+  public get internalValue(): SpotFleetRequestSpotMaintenanceStrategies | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._capacityRebalance) {
+      hasAnyValues = true;
+      internalValueResult.capacityRebalance = this._capacityRebalance?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putCapacityRebalance(value: SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance | undefined) {
-    this._capacityRebalance = value;
+
+  public set internalValue(value: SpotFleetRequestSpotMaintenanceStrategies | undefined) {
+    if (value === undefined) {
+      this._capacityRebalance.internalValue = undefined;
+    }
+    else {
+      this._capacityRebalance.internalValue = value.capacityRebalance;
+    }
+  }
+
+  // capacity_rebalance - computed: false, optional: true, required: false
+  private _capacityRebalance = new SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceOutputReference(this as any, "capacity_rebalance", true);
+  public get capacityRebalance() {
+    return this._capacityRebalance;
+  }
+  public putCapacityRebalance(value: SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance) {
+    this._capacityRebalance.internalValue = value;
   }
   public resetCapacityRebalance() {
-    this._capacityRebalance = undefined;
+    this._capacityRebalance.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get capacityRebalanceInput() {
-    return this._capacityRebalance
+    return this._capacityRebalance.internalValue;
   }
 }
 export interface SpotFleetRequestTimeouts {
@@ -630,12 +698,37 @@ export class SpotFleetRequestTimeoutsOutputReference extends cdktf.ComplexObject
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SpotFleetRequestTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SpotFleetRequestTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -643,15 +736,15 @@ export class SpotFleetRequestTimeoutsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -659,7 +752,7 @@ export class SpotFleetRequestTimeoutsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -717,8 +810,8 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
     this._waitForFulfillment = config.waitForFulfillment;
     this._launchSpecification = config.launchSpecification;
     this._launchTemplateConfig = config.launchTemplateConfig;
-    this._spotMaintenanceStrategies = config.spotMaintenanceStrategies;
-    this._timeouts = config.timeouts;
+    this._spotMaintenanceStrategies.internalValue = config.spotMaintenanceStrategies;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -726,11 +819,11 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   // ==========
 
   // allocation_strategy - computed: false, optional: true, required: false
-  private _allocationStrategy?: string | undefined; 
+  private _allocationStrategy?: string; 
   public get allocationStrategy() {
     return this.getStringAttribute('allocation_strategy');
   }
-  public set allocationStrategy(value: string | undefined) {
+  public set allocationStrategy(value: string) {
     this._allocationStrategy = value;
   }
   public resetAllocationStrategy() {
@@ -738,7 +831,7 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allocationStrategyInput() {
-    return this._allocationStrategy
+    return this._allocationStrategy;
   }
 
   // client_token - computed: true, optional: false, required: false
@@ -747,11 +840,11 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
 
   // excess_capacity_termination_policy - computed: false, optional: true, required: false
-  private _excessCapacityTerminationPolicy?: string | undefined; 
+  private _excessCapacityTerminationPolicy?: string; 
   public get excessCapacityTerminationPolicy() {
     return this.getStringAttribute('excess_capacity_termination_policy');
   }
-  public set excessCapacityTerminationPolicy(value: string | undefined) {
+  public set excessCapacityTerminationPolicy(value: string) {
     this._excessCapacityTerminationPolicy = value;
   }
   public resetExcessCapacityTerminationPolicy() {
@@ -759,15 +852,15 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get excessCapacityTerminationPolicyInput() {
-    return this._excessCapacityTerminationPolicy
+    return this._excessCapacityTerminationPolicy;
   }
 
   // fleet_type - computed: false, optional: true, required: false
-  private _fleetType?: string | undefined; 
+  private _fleetType?: string; 
   public get fleetType() {
     return this.getStringAttribute('fleet_type');
   }
-  public set fleetType(value: string | undefined) {
+  public set fleetType(value: string) {
     this._fleetType = value;
   }
   public resetFleetType() {
@@ -775,7 +868,7 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fleetTypeInput() {
-    return this._fleetType
+    return this._fleetType;
   }
 
   // iam_fleet_role - computed: false, optional: false, required: true
@@ -788,7 +881,7 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iamFleetRoleInput() {
-    return this._iamFleetRole
+    return this._iamFleetRole;
   }
 
   // id - computed: true, optional: true, required: false
@@ -797,11 +890,11 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
 
   // instance_interruption_behaviour - computed: false, optional: true, required: false
-  private _instanceInterruptionBehaviour?: string | undefined; 
+  private _instanceInterruptionBehaviour?: string; 
   public get instanceInterruptionBehaviour() {
     return this.getStringAttribute('instance_interruption_behaviour');
   }
-  public set instanceInterruptionBehaviour(value: string | undefined) {
+  public set instanceInterruptionBehaviour(value: string) {
     this._instanceInterruptionBehaviour = value;
   }
   public resetInstanceInterruptionBehaviour() {
@@ -809,15 +902,15 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceInterruptionBehaviourInput() {
-    return this._instanceInterruptionBehaviour
+    return this._instanceInterruptionBehaviour;
   }
 
   // instance_pools_to_use_count - computed: false, optional: true, required: false
-  private _instancePoolsToUseCount?: number | undefined; 
+  private _instancePoolsToUseCount?: number; 
   public get instancePoolsToUseCount() {
     return this.getNumberAttribute('instance_pools_to_use_count');
   }
-  public set instancePoolsToUseCount(value: number | undefined) {
+  public set instancePoolsToUseCount(value: number) {
     this._instancePoolsToUseCount = value;
   }
   public resetInstancePoolsToUseCount() {
@@ -825,15 +918,15 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instancePoolsToUseCountInput() {
-    return this._instancePoolsToUseCount
+    return this._instancePoolsToUseCount;
   }
 
   // load_balancers - computed: true, optional: true, required: false
-  private _loadBalancers?: string[] | undefined; 
+  private _loadBalancers?: string[]; 
   public get loadBalancers() {
     return this.getListAttribute('load_balancers');
   }
-  public set loadBalancers(value: string[] | undefined) {
+  public set loadBalancers(value: string[]) {
     this._loadBalancers = value;
   }
   public resetLoadBalancers() {
@@ -841,15 +934,15 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get loadBalancersInput() {
-    return this._loadBalancers
+    return this._loadBalancers;
   }
 
   // on_demand_allocation_strategy - computed: false, optional: true, required: false
-  private _onDemandAllocationStrategy?: string | undefined; 
+  private _onDemandAllocationStrategy?: string; 
   public get onDemandAllocationStrategy() {
     return this.getStringAttribute('on_demand_allocation_strategy');
   }
-  public set onDemandAllocationStrategy(value: string | undefined) {
+  public set onDemandAllocationStrategy(value: string) {
     this._onDemandAllocationStrategy = value;
   }
   public resetOnDemandAllocationStrategy() {
@@ -857,15 +950,15 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get onDemandAllocationStrategyInput() {
-    return this._onDemandAllocationStrategy
+    return this._onDemandAllocationStrategy;
   }
 
   // on_demand_max_total_price - computed: false, optional: true, required: false
-  private _onDemandMaxTotalPrice?: string | undefined; 
+  private _onDemandMaxTotalPrice?: string; 
   public get onDemandMaxTotalPrice() {
     return this.getStringAttribute('on_demand_max_total_price');
   }
-  public set onDemandMaxTotalPrice(value: string | undefined) {
+  public set onDemandMaxTotalPrice(value: string) {
     this._onDemandMaxTotalPrice = value;
   }
   public resetOnDemandMaxTotalPrice() {
@@ -873,15 +966,15 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get onDemandMaxTotalPriceInput() {
-    return this._onDemandMaxTotalPrice
+    return this._onDemandMaxTotalPrice;
   }
 
   // on_demand_target_capacity - computed: false, optional: true, required: false
-  private _onDemandTargetCapacity?: number | undefined; 
+  private _onDemandTargetCapacity?: number; 
   public get onDemandTargetCapacity() {
     return this.getNumberAttribute('on_demand_target_capacity');
   }
-  public set onDemandTargetCapacity(value: number | undefined) {
+  public set onDemandTargetCapacity(value: number) {
     this._onDemandTargetCapacity = value;
   }
   public resetOnDemandTargetCapacity() {
@@ -889,15 +982,15 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get onDemandTargetCapacityInput() {
-    return this._onDemandTargetCapacity
+    return this._onDemandTargetCapacity;
   }
 
   // replace_unhealthy_instances - computed: false, optional: true, required: false
-  private _replaceUnhealthyInstances?: boolean | cdktf.IResolvable | undefined; 
+  private _replaceUnhealthyInstances?: boolean | cdktf.IResolvable; 
   public get replaceUnhealthyInstances() {
     return this.getBooleanAttribute('replace_unhealthy_instances') as any;
   }
-  public set replaceUnhealthyInstances(value: boolean | cdktf.IResolvable | undefined) {
+  public set replaceUnhealthyInstances(value: boolean | cdktf.IResolvable) {
     this._replaceUnhealthyInstances = value;
   }
   public resetReplaceUnhealthyInstances() {
@@ -905,15 +998,15 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get replaceUnhealthyInstancesInput() {
-    return this._replaceUnhealthyInstances
+    return this._replaceUnhealthyInstances;
   }
 
   // spot_price - computed: false, optional: true, required: false
-  private _spotPrice?: string | undefined; 
+  private _spotPrice?: string; 
   public get spotPrice() {
     return this.getStringAttribute('spot_price');
   }
-  public set spotPrice(value: string | undefined) {
+  public set spotPrice(value: string) {
     this._spotPrice = value;
   }
   public resetSpotPrice() {
@@ -921,7 +1014,7 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get spotPriceInput() {
-    return this._spotPrice
+    return this._spotPrice;
   }
 
   // spot_request_state - computed: true, optional: false, required: false
@@ -930,12 +1023,12 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -943,16 +1036,16 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -960,7 +1053,7 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // target_capacity - computed: false, optional: false, required: true
@@ -973,15 +1066,15 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetCapacityInput() {
-    return this._targetCapacity
+    return this._targetCapacity;
   }
 
   // target_group_arns - computed: true, optional: true, required: false
-  private _targetGroupArns?: string[] | undefined; 
+  private _targetGroupArns?: string[]; 
   public get targetGroupArns() {
     return this.getListAttribute('target_group_arns');
   }
-  public set targetGroupArns(value: string[] | undefined) {
+  public set targetGroupArns(value: string[]) {
     this._targetGroupArns = value;
   }
   public resetTargetGroupArns() {
@@ -989,15 +1082,15 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetGroupArnsInput() {
-    return this._targetGroupArns
+    return this._targetGroupArns;
   }
 
   // terminate_instances_with_expiration - computed: false, optional: true, required: false
-  private _terminateInstancesWithExpiration?: boolean | cdktf.IResolvable | undefined; 
+  private _terminateInstancesWithExpiration?: boolean | cdktf.IResolvable; 
   public get terminateInstancesWithExpiration() {
     return this.getBooleanAttribute('terminate_instances_with_expiration') as any;
   }
-  public set terminateInstancesWithExpiration(value: boolean | cdktf.IResolvable | undefined) {
+  public set terminateInstancesWithExpiration(value: boolean | cdktf.IResolvable) {
     this._terminateInstancesWithExpiration = value;
   }
   public resetTerminateInstancesWithExpiration() {
@@ -1005,15 +1098,15 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get terminateInstancesWithExpirationInput() {
-    return this._terminateInstancesWithExpiration
+    return this._terminateInstancesWithExpiration;
   }
 
   // valid_from - computed: false, optional: true, required: false
-  private _validFrom?: string | undefined; 
+  private _validFrom?: string; 
   public get validFrom() {
     return this.getStringAttribute('valid_from');
   }
-  public set validFrom(value: string | undefined) {
+  public set validFrom(value: string) {
     this._validFrom = value;
   }
   public resetValidFrom() {
@@ -1021,15 +1114,15 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get validFromInput() {
-    return this._validFrom
+    return this._validFrom;
   }
 
   // valid_until - computed: false, optional: true, required: false
-  private _validUntil?: string | undefined; 
+  private _validUntil?: string; 
   public get validUntil() {
     return this.getStringAttribute('valid_until');
   }
-  public set validUntil(value: string | undefined) {
+  public set validUntil(value: string) {
     this._validUntil = value;
   }
   public resetValidUntil() {
@@ -1037,15 +1130,15 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get validUntilInput() {
-    return this._validUntil
+    return this._validUntil;
   }
 
   // wait_for_fulfillment - computed: false, optional: true, required: false
-  private _waitForFulfillment?: boolean | cdktf.IResolvable | undefined; 
+  private _waitForFulfillment?: boolean | cdktf.IResolvable; 
   public get waitForFulfillment() {
     return this.getBooleanAttribute('wait_for_fulfillment') as any;
   }
-  public set waitForFulfillment(value: boolean | cdktf.IResolvable | undefined) {
+  public set waitForFulfillment(value: boolean | cdktf.IResolvable) {
     this._waitForFulfillment = value;
   }
   public resetWaitForFulfillment() {
@@ -1053,16 +1146,16 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get waitForFulfillmentInput() {
-    return this._waitForFulfillment
+    return this._waitForFulfillment;
   }
 
   // launch_specification - computed: false, optional: true, required: false
-  private _launchSpecification?: SpotFleetRequestLaunchSpecification[] | undefined; 
+  private _launchSpecification?: SpotFleetRequestLaunchSpecification[]; 
   public get launchSpecification() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('launch_specification') as any;
   }
-  public set launchSpecification(value: SpotFleetRequestLaunchSpecification[] | undefined) {
+  public set launchSpecification(value: SpotFleetRequestLaunchSpecification[]) {
     this._launchSpecification = value;
   }
   public resetLaunchSpecification() {
@@ -1070,16 +1163,16 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get launchSpecificationInput() {
-    return this._launchSpecification
+    return this._launchSpecification;
   }
 
   // launch_template_config - computed: false, optional: true, required: false
-  private _launchTemplateConfig?: SpotFleetRequestLaunchTemplateConfig[] | undefined; 
+  private _launchTemplateConfig?: SpotFleetRequestLaunchTemplateConfig[]; 
   public get launchTemplateConfig() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('launch_template_config') as any;
   }
-  public set launchTemplateConfig(value: SpotFleetRequestLaunchTemplateConfig[] | undefined) {
+  public set launchTemplateConfig(value: SpotFleetRequestLaunchTemplateConfig[]) {
     this._launchTemplateConfig = value;
   }
   public resetLaunchTemplateConfig() {
@@ -1087,41 +1180,39 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get launchTemplateConfigInput() {
-    return this._launchTemplateConfig
+    return this._launchTemplateConfig;
   }
 
   // spot_maintenance_strategies - computed: false, optional: true, required: false
-  private _spotMaintenanceStrategies?: SpotFleetRequestSpotMaintenanceStrategies | undefined; 
-  private __spotMaintenanceStrategiesOutput = new SpotFleetRequestSpotMaintenanceStrategiesOutputReference(this as any, "spot_maintenance_strategies", true);
+  private _spotMaintenanceStrategies = new SpotFleetRequestSpotMaintenanceStrategiesOutputReference(this as any, "spot_maintenance_strategies", true);
   public get spotMaintenanceStrategies() {
-    return this.__spotMaintenanceStrategiesOutput;
+    return this._spotMaintenanceStrategies;
   }
-  public putSpotMaintenanceStrategies(value: SpotFleetRequestSpotMaintenanceStrategies | undefined) {
-    this._spotMaintenanceStrategies = value;
+  public putSpotMaintenanceStrategies(value: SpotFleetRequestSpotMaintenanceStrategies) {
+    this._spotMaintenanceStrategies.internalValue = value;
   }
   public resetSpotMaintenanceStrategies() {
-    this._spotMaintenanceStrategies = undefined;
+    this._spotMaintenanceStrategies.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get spotMaintenanceStrategiesInput() {
-    return this._spotMaintenanceStrategies
+    return this._spotMaintenanceStrategies.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: SpotFleetRequestTimeouts | undefined; 
-  private __timeoutsOutput = new SpotFleetRequestTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new SpotFleetRequestTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: SpotFleetRequestTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: SpotFleetRequestTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -1152,8 +1243,8 @@ export class SpotFleetRequest extends cdktf.TerraformResource {
       wait_for_fulfillment: cdktf.booleanToTerraform(this._waitForFulfillment),
       launch_specification: cdktf.listMapper(spotFleetRequestLaunchSpecificationToTerraform)(this._launchSpecification),
       launch_template_config: cdktf.listMapper(spotFleetRequestLaunchTemplateConfigToTerraform)(this._launchTemplateConfig),
-      spot_maintenance_strategies: spotFleetRequestSpotMaintenanceStrategiesToTerraform(this._spotMaintenanceStrategies),
-      timeouts: spotFleetRequestTimeoutsToTerraform(this._timeouts),
+      spot_maintenance_strategies: spotFleetRequestSpotMaintenanceStrategiesToTerraform(this._spotMaintenanceStrategies.internalValue),
+      timeouts: spotFleetRequestTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

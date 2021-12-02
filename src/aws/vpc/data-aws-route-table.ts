@@ -206,11 +206,11 @@ export class DataAwsRouteTable extends cdktf.TerraformDataSource {
   }
 
   // gateway_id - computed: true, optional: true, required: false
-  private _gatewayId?: string | undefined; 
+  private _gatewayId?: string; 
   public get gatewayId() {
     return this.getStringAttribute('gateway_id');
   }
-  public set gatewayId(value: string | undefined) {
+  public set gatewayId(value: string) {
     this._gatewayId = value;
   }
   public resetGatewayId() {
@@ -218,7 +218,7 @@ export class DataAwsRouteTable extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get gatewayIdInput() {
-    return this._gatewayId
+    return this._gatewayId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -232,11 +232,11 @@ export class DataAwsRouteTable extends cdktf.TerraformDataSource {
   }
 
   // route_table_id - computed: true, optional: true, required: false
-  private _routeTableId?: string | undefined; 
+  private _routeTableId?: string; 
   public get routeTableId() {
     return this.getStringAttribute('route_table_id');
   }
-  public set routeTableId(value: string | undefined) {
+  public set routeTableId(value: string) {
     this._routeTableId = value;
   }
   public resetRouteTableId() {
@@ -244,7 +244,7 @@ export class DataAwsRouteTable extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get routeTableIdInput() {
-    return this._routeTableId
+    return this._routeTableId;
   }
 
   // routes - computed: true, optional: false, required: false
@@ -253,11 +253,11 @@ export class DataAwsRouteTable extends cdktf.TerraformDataSource {
   }
 
   // subnet_id - computed: true, optional: true, required: false
-  private _subnetId?: string | undefined; 
+  private _subnetId?: string; 
   public get subnetId() {
     return this.getStringAttribute('subnet_id');
   }
-  public set subnetId(value: string | undefined) {
+  public set subnetId(value: string) {
     this._subnetId = value;
   }
   public resetSubnetId() {
@@ -265,16 +265,16 @@ export class DataAwsRouteTable extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdInput() {
-    return this._subnetId
+    return this._subnetId;
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -282,15 +282,15 @@ export class DataAwsRouteTable extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // vpc_id - computed: true, optional: true, required: false
-  private _vpcId?: string | undefined; 
+  private _vpcId?: string; 
   public get vpcId() {
     return this.getStringAttribute('vpc_id');
   }
-  public set vpcId(value: string | undefined) {
+  public set vpcId(value: string) {
     this._vpcId = value;
   }
   public resetVpcId() {
@@ -298,16 +298,16 @@ export class DataAwsRouteTable extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsRouteTableFilter[] | undefined; 
+  private _filter?: DataAwsRouteTableFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsRouteTableFilter[] | undefined) {
+  public set filter(value: DataAwsRouteTableFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -315,7 +315,7 @@ export class DataAwsRouteTable extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

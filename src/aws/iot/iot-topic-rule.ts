@@ -295,6 +295,25 @@ export class IotTopicRuleDynamodbv2PutItemOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleDynamodbv2PutItem | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._tableName) {
+      hasAnyValues = true;
+      internalValueResult.tableName = this._tableName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleDynamodbv2PutItem | undefined) {
+    if (value === undefined) {
+      this._tableName = undefined;
+    }
+    else {
+      this._tableName = value.tableName;
+    }
+  }
+
   // table_name - computed: false, optional: false, required: true
   private _tableName?: string; 
   public get tableName() {
@@ -305,7 +324,7 @@ export class IotTopicRuleDynamodbv2PutItemOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get tableNameInput() {
-    return this._tableName
+    return this._tableName;
   }
 }
 export interface IotTopicRuleDynamodbv2 {
@@ -411,6 +430,43 @@ export class IotTopicRuleErrorActionCloudwatchAlarmOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleErrorActionCloudwatchAlarm | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._alarmName) {
+      hasAnyValues = true;
+      internalValueResult.alarmName = this._alarmName;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._stateReason) {
+      hasAnyValues = true;
+      internalValueResult.stateReason = this._stateReason;
+    }
+    if (this._stateValue) {
+      hasAnyValues = true;
+      internalValueResult.stateValue = this._stateValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleErrorActionCloudwatchAlarm | undefined) {
+    if (value === undefined) {
+      this._alarmName = undefined;
+      this._roleArn = undefined;
+      this._stateReason = undefined;
+      this._stateValue = undefined;
+    }
+    else {
+      this._alarmName = value.alarmName;
+      this._roleArn = value.roleArn;
+      this._stateReason = value.stateReason;
+      this._stateValue = value.stateValue;
+    }
+  }
+
   // alarm_name - computed: false, optional: false, required: true
   private _alarmName?: string; 
   public get alarmName() {
@@ -421,7 +477,7 @@ export class IotTopicRuleErrorActionCloudwatchAlarmOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get alarmNameInput() {
-    return this._alarmName
+    return this._alarmName;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -434,7 +490,7 @@ export class IotTopicRuleErrorActionCloudwatchAlarmOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // state_reason - computed: false, optional: false, required: true
@@ -447,7 +503,7 @@ export class IotTopicRuleErrorActionCloudwatchAlarmOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get stateReasonInput() {
-    return this._stateReason
+    return this._stateReason;
   }
 
   // state_value - computed: false, optional: false, required: true
@@ -460,7 +516,7 @@ export class IotTopicRuleErrorActionCloudwatchAlarmOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get stateValueInput() {
-    return this._stateValue
+    return this._stateValue;
   }
 }
 export interface IotTopicRuleErrorActionCloudwatchMetric {
@@ -515,6 +571,55 @@ export class IotTopicRuleErrorActionCloudwatchMetricOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleErrorActionCloudwatchMetric | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._metricName) {
+      hasAnyValues = true;
+      internalValueResult.metricName = this._metricName;
+    }
+    if (this._metricNamespace) {
+      hasAnyValues = true;
+      internalValueResult.metricNamespace = this._metricNamespace;
+    }
+    if (this._metricTimestamp) {
+      hasAnyValues = true;
+      internalValueResult.metricTimestamp = this._metricTimestamp;
+    }
+    if (this._metricUnit) {
+      hasAnyValues = true;
+      internalValueResult.metricUnit = this._metricUnit;
+    }
+    if (this._metricValue) {
+      hasAnyValues = true;
+      internalValueResult.metricValue = this._metricValue;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleErrorActionCloudwatchMetric | undefined) {
+    if (value === undefined) {
+      this._metricName = undefined;
+      this._metricNamespace = undefined;
+      this._metricTimestamp = undefined;
+      this._metricUnit = undefined;
+      this._metricValue = undefined;
+      this._roleArn = undefined;
+    }
+    else {
+      this._metricName = value.metricName;
+      this._metricNamespace = value.metricNamespace;
+      this._metricTimestamp = value.metricTimestamp;
+      this._metricUnit = value.metricUnit;
+      this._metricValue = value.metricValue;
+      this._roleArn = value.roleArn;
+    }
+  }
+
   // metric_name - computed: false, optional: false, required: true
   private _metricName?: string; 
   public get metricName() {
@@ -525,7 +630,7 @@ export class IotTopicRuleErrorActionCloudwatchMetricOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get metricNameInput() {
-    return this._metricName
+    return this._metricName;
   }
 
   // metric_namespace - computed: false, optional: false, required: true
@@ -538,15 +643,15 @@ export class IotTopicRuleErrorActionCloudwatchMetricOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get metricNamespaceInput() {
-    return this._metricNamespace
+    return this._metricNamespace;
   }
 
   // metric_timestamp - computed: false, optional: true, required: false
-  private _metricTimestamp?: string | undefined; 
+  private _metricTimestamp?: string; 
   public get metricTimestamp() {
     return this.getStringAttribute('metric_timestamp');
   }
-  public set metricTimestamp(value: string | undefined) {
+  public set metricTimestamp(value: string) {
     this._metricTimestamp = value;
   }
   public resetMetricTimestamp() {
@@ -554,7 +659,7 @@ export class IotTopicRuleErrorActionCloudwatchMetricOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get metricTimestampInput() {
-    return this._metricTimestamp
+    return this._metricTimestamp;
   }
 
   // metric_unit - computed: false, optional: false, required: true
@@ -567,7 +672,7 @@ export class IotTopicRuleErrorActionCloudwatchMetricOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get metricUnitInput() {
-    return this._metricUnit
+    return this._metricUnit;
   }
 
   // metric_value - computed: false, optional: false, required: true
@@ -580,7 +685,7 @@ export class IotTopicRuleErrorActionCloudwatchMetricOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get metricValueInput() {
-    return this._metricValue
+    return this._metricValue;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -593,7 +698,7 @@ export class IotTopicRuleErrorActionCloudwatchMetricOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 }
 export interface IotTopicRuleErrorActionDynamodb {
@@ -668,6 +773,79 @@ export class IotTopicRuleErrorActionDynamodbOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleErrorActionDynamodb | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._hashKeyField) {
+      hasAnyValues = true;
+      internalValueResult.hashKeyField = this._hashKeyField;
+    }
+    if (this._hashKeyType) {
+      hasAnyValues = true;
+      internalValueResult.hashKeyType = this._hashKeyType;
+    }
+    if (this._hashKeyValue) {
+      hasAnyValues = true;
+      internalValueResult.hashKeyValue = this._hashKeyValue;
+    }
+    if (this._operation) {
+      hasAnyValues = true;
+      internalValueResult.operation = this._operation;
+    }
+    if (this._payloadField) {
+      hasAnyValues = true;
+      internalValueResult.payloadField = this._payloadField;
+    }
+    if (this._rangeKeyField) {
+      hasAnyValues = true;
+      internalValueResult.rangeKeyField = this._rangeKeyField;
+    }
+    if (this._rangeKeyType) {
+      hasAnyValues = true;
+      internalValueResult.rangeKeyType = this._rangeKeyType;
+    }
+    if (this._rangeKeyValue) {
+      hasAnyValues = true;
+      internalValueResult.rangeKeyValue = this._rangeKeyValue;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._tableName) {
+      hasAnyValues = true;
+      internalValueResult.tableName = this._tableName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleErrorActionDynamodb | undefined) {
+    if (value === undefined) {
+      this._hashKeyField = undefined;
+      this._hashKeyType = undefined;
+      this._hashKeyValue = undefined;
+      this._operation = undefined;
+      this._payloadField = undefined;
+      this._rangeKeyField = undefined;
+      this._rangeKeyType = undefined;
+      this._rangeKeyValue = undefined;
+      this._roleArn = undefined;
+      this._tableName = undefined;
+    }
+    else {
+      this._hashKeyField = value.hashKeyField;
+      this._hashKeyType = value.hashKeyType;
+      this._hashKeyValue = value.hashKeyValue;
+      this._operation = value.operation;
+      this._payloadField = value.payloadField;
+      this._rangeKeyField = value.rangeKeyField;
+      this._rangeKeyType = value.rangeKeyType;
+      this._rangeKeyValue = value.rangeKeyValue;
+      this._roleArn = value.roleArn;
+      this._tableName = value.tableName;
+    }
+  }
+
   // hash_key_field - computed: false, optional: false, required: true
   private _hashKeyField?: string; 
   public get hashKeyField() {
@@ -678,15 +856,15 @@ export class IotTopicRuleErrorActionDynamodbOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get hashKeyFieldInput() {
-    return this._hashKeyField
+    return this._hashKeyField;
   }
 
   // hash_key_type - computed: false, optional: true, required: false
-  private _hashKeyType?: string | undefined; 
+  private _hashKeyType?: string; 
   public get hashKeyType() {
     return this.getStringAttribute('hash_key_type');
   }
-  public set hashKeyType(value: string | undefined) {
+  public set hashKeyType(value: string) {
     this._hashKeyType = value;
   }
   public resetHashKeyType() {
@@ -694,7 +872,7 @@ export class IotTopicRuleErrorActionDynamodbOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get hashKeyTypeInput() {
-    return this._hashKeyType
+    return this._hashKeyType;
   }
 
   // hash_key_value - computed: false, optional: false, required: true
@@ -707,15 +885,15 @@ export class IotTopicRuleErrorActionDynamodbOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get hashKeyValueInput() {
-    return this._hashKeyValue
+    return this._hashKeyValue;
   }
 
   // operation - computed: false, optional: true, required: false
-  private _operation?: string | undefined; 
+  private _operation?: string; 
   public get operation() {
     return this.getStringAttribute('operation');
   }
-  public set operation(value: string | undefined) {
+  public set operation(value: string) {
     this._operation = value;
   }
   public resetOperation() {
@@ -723,15 +901,15 @@ export class IotTopicRuleErrorActionDynamodbOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get operationInput() {
-    return this._operation
+    return this._operation;
   }
 
   // payload_field - computed: false, optional: true, required: false
-  private _payloadField?: string | undefined; 
+  private _payloadField?: string; 
   public get payloadField() {
     return this.getStringAttribute('payload_field');
   }
-  public set payloadField(value: string | undefined) {
+  public set payloadField(value: string) {
     this._payloadField = value;
   }
   public resetPayloadField() {
@@ -739,15 +917,15 @@ export class IotTopicRuleErrorActionDynamodbOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get payloadFieldInput() {
-    return this._payloadField
+    return this._payloadField;
   }
 
   // range_key_field - computed: false, optional: true, required: false
-  private _rangeKeyField?: string | undefined; 
+  private _rangeKeyField?: string; 
   public get rangeKeyField() {
     return this.getStringAttribute('range_key_field');
   }
-  public set rangeKeyField(value: string | undefined) {
+  public set rangeKeyField(value: string) {
     this._rangeKeyField = value;
   }
   public resetRangeKeyField() {
@@ -755,15 +933,15 @@ export class IotTopicRuleErrorActionDynamodbOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get rangeKeyFieldInput() {
-    return this._rangeKeyField
+    return this._rangeKeyField;
   }
 
   // range_key_type - computed: false, optional: true, required: false
-  private _rangeKeyType?: string | undefined; 
+  private _rangeKeyType?: string; 
   public get rangeKeyType() {
     return this.getStringAttribute('range_key_type');
   }
-  public set rangeKeyType(value: string | undefined) {
+  public set rangeKeyType(value: string) {
     this._rangeKeyType = value;
   }
   public resetRangeKeyType() {
@@ -771,15 +949,15 @@ export class IotTopicRuleErrorActionDynamodbOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get rangeKeyTypeInput() {
-    return this._rangeKeyType
+    return this._rangeKeyType;
   }
 
   // range_key_value - computed: false, optional: true, required: false
-  private _rangeKeyValue?: string | undefined; 
+  private _rangeKeyValue?: string; 
   public get rangeKeyValue() {
     return this.getStringAttribute('range_key_value');
   }
-  public set rangeKeyValue(value: string | undefined) {
+  public set rangeKeyValue(value: string) {
     this._rangeKeyValue = value;
   }
   public resetRangeKeyValue() {
@@ -787,7 +965,7 @@ export class IotTopicRuleErrorActionDynamodbOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get rangeKeyValueInput() {
-    return this._rangeKeyValue
+    return this._rangeKeyValue;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -800,7 +978,7 @@ export class IotTopicRuleErrorActionDynamodbOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // table_name - computed: false, optional: false, required: true
@@ -813,7 +991,7 @@ export class IotTopicRuleErrorActionDynamodbOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get tableNameInput() {
-    return this._tableName
+    return this._tableName;
   }
 }
 export interface IotTopicRuleErrorActionDynamodbv2PutItem {
@@ -843,6 +1021,25 @@ export class IotTopicRuleErrorActionDynamodbv2PutItemOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleErrorActionDynamodbv2PutItem | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._tableName) {
+      hasAnyValues = true;
+      internalValueResult.tableName = this._tableName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleErrorActionDynamodbv2PutItem | undefined) {
+    if (value === undefined) {
+      this._tableName = undefined;
+    }
+    else {
+      this._tableName = value.tableName;
+    }
+  }
+
   // table_name - computed: false, optional: false, required: true
   private _tableName?: string; 
   public get tableName() {
@@ -853,7 +1050,7 @@ export class IotTopicRuleErrorActionDynamodbv2PutItemOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get tableNameInput() {
-    return this._tableName
+    return this._tableName;
   }
 }
 export interface IotTopicRuleErrorActionDynamodbv2 {
@@ -890,6 +1087,31 @@ export class IotTopicRuleErrorActionDynamodbv2OutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleErrorActionDynamodbv2 | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._putItem) {
+      hasAnyValues = true;
+      internalValueResult.putItem = this._putItem?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleErrorActionDynamodbv2 | undefined) {
+    if (value === undefined) {
+      this._roleArn = undefined;
+      this._putItem.internalValue = undefined;
+    }
+    else {
+      this._roleArn = value.roleArn;
+      this._putItem.internalValue = value.putItem;
+    }
+  }
+
   // role_arn - computed: false, optional: false, required: true
   private _roleArn?: string; 
   public get roleArn() {
@@ -900,24 +1122,23 @@ export class IotTopicRuleErrorActionDynamodbv2OutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // put_item - computed: false, optional: true, required: false
-  private _putItem?: IotTopicRuleErrorActionDynamodbv2PutItem | undefined; 
-  private __putItemOutput = new IotTopicRuleErrorActionDynamodbv2PutItemOutputReference(this as any, "put_item", true);
+  private _putItem = new IotTopicRuleErrorActionDynamodbv2PutItemOutputReference(this as any, "put_item", true);
   public get putItem() {
-    return this.__putItemOutput;
+    return this._putItem;
   }
-  public putPutItem(value: IotTopicRuleErrorActionDynamodbv2PutItem | undefined) {
-    this._putItem = value;
+  public putPutItem(value: IotTopicRuleErrorActionDynamodbv2PutItem) {
+    this._putItem.internalValue = value;
   }
   public resetPutItem() {
-    this._putItem = undefined;
+    this._putItem.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get putItemInput() {
-    return this._putItem
+    return this._putItem.internalValue;
   }
 }
 export interface IotTopicRuleErrorActionElasticsearch {
@@ -967,6 +1188,49 @@ export class IotTopicRuleErrorActionElasticsearchOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleErrorActionElasticsearch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._endpoint) {
+      hasAnyValues = true;
+      internalValueResult.endpoint = this._endpoint;
+    }
+    if (this._id) {
+      hasAnyValues = true;
+      internalValueResult.id = this._id;
+    }
+    if (this._index) {
+      hasAnyValues = true;
+      internalValueResult.index = this._index;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleErrorActionElasticsearch | undefined) {
+    if (value === undefined) {
+      this._endpoint = undefined;
+      this._id = undefined;
+      this._index = undefined;
+      this._roleArn = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._endpoint = value.endpoint;
+      this._id = value.id;
+      this._index = value.index;
+      this._roleArn = value.roleArn;
+      this._type = value.type;
+    }
+  }
+
   // endpoint - computed: false, optional: false, required: true
   private _endpoint?: string; 
   public get endpoint() {
@@ -977,7 +1241,7 @@ export class IotTopicRuleErrorActionElasticsearchOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get endpointInput() {
-    return this._endpoint
+    return this._endpoint;
   }
 
   // id - computed: false, optional: false, required: true
@@ -990,7 +1254,7 @@ export class IotTopicRuleErrorActionElasticsearchOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get idInput() {
-    return this._id
+    return this._id;
   }
 
   // index - computed: false, optional: false, required: true
@@ -1003,7 +1267,7 @@ export class IotTopicRuleErrorActionElasticsearchOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get indexInput() {
-    return this._index
+    return this._index;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -1016,7 +1280,7 @@ export class IotTopicRuleErrorActionElasticsearchOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // type - computed: false, optional: false, required: true
@@ -1029,7 +1293,7 @@ export class IotTopicRuleErrorActionElasticsearchOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 export interface IotTopicRuleErrorActionFirehose {
@@ -1069,6 +1333,37 @@ export class IotTopicRuleErrorActionFirehoseOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleErrorActionFirehose | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._deliveryStreamName) {
+      hasAnyValues = true;
+      internalValueResult.deliveryStreamName = this._deliveryStreamName;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._separator) {
+      hasAnyValues = true;
+      internalValueResult.separator = this._separator;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleErrorActionFirehose | undefined) {
+    if (value === undefined) {
+      this._deliveryStreamName = undefined;
+      this._roleArn = undefined;
+      this._separator = undefined;
+    }
+    else {
+      this._deliveryStreamName = value.deliveryStreamName;
+      this._roleArn = value.roleArn;
+      this._separator = value.separator;
+    }
+  }
+
   // delivery_stream_name - computed: false, optional: false, required: true
   private _deliveryStreamName?: string; 
   public get deliveryStreamName() {
@@ -1079,7 +1374,7 @@ export class IotTopicRuleErrorActionFirehoseOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get deliveryStreamNameInput() {
-    return this._deliveryStreamName
+    return this._deliveryStreamName;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -1092,15 +1387,15 @@ export class IotTopicRuleErrorActionFirehoseOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // separator - computed: false, optional: true, required: false
-  private _separator?: string | undefined; 
+  private _separator?: string; 
   public get separator() {
     return this.getStringAttribute('separator');
   }
-  public set separator(value: string | undefined) {
+  public set separator(value: string) {
     this._separator = value;
   }
   public resetSeparator() {
@@ -1108,7 +1403,7 @@ export class IotTopicRuleErrorActionFirehoseOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get separatorInput() {
-    return this._separator
+    return this._separator;
   }
 }
 export interface IotTopicRuleErrorActionIotAnalytics {
@@ -1143,6 +1438,31 @@ export class IotTopicRuleErrorActionIotAnalyticsOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleErrorActionIotAnalytics | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._channelName) {
+      hasAnyValues = true;
+      internalValueResult.channelName = this._channelName;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleErrorActionIotAnalytics | undefined) {
+    if (value === undefined) {
+      this._channelName = undefined;
+      this._roleArn = undefined;
+    }
+    else {
+      this._channelName = value.channelName;
+      this._roleArn = value.roleArn;
+    }
+  }
+
   // channel_name - computed: false, optional: false, required: true
   private _channelName?: string; 
   public get channelName() {
@@ -1153,7 +1473,7 @@ export class IotTopicRuleErrorActionIotAnalyticsOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get channelNameInput() {
-    return this._channelName
+    return this._channelName;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -1166,7 +1486,7 @@ export class IotTopicRuleErrorActionIotAnalyticsOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 }
 export interface IotTopicRuleErrorActionIotEvents {
@@ -1206,6 +1526,37 @@ export class IotTopicRuleErrorActionIotEventsOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleErrorActionIotEvents | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._inputName) {
+      hasAnyValues = true;
+      internalValueResult.inputName = this._inputName;
+    }
+    if (this._messageId) {
+      hasAnyValues = true;
+      internalValueResult.messageId = this._messageId;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleErrorActionIotEvents | undefined) {
+    if (value === undefined) {
+      this._inputName = undefined;
+      this._messageId = undefined;
+      this._roleArn = undefined;
+    }
+    else {
+      this._inputName = value.inputName;
+      this._messageId = value.messageId;
+      this._roleArn = value.roleArn;
+    }
+  }
+
   // input_name - computed: false, optional: false, required: true
   private _inputName?: string; 
   public get inputName() {
@@ -1216,15 +1567,15 @@ export class IotTopicRuleErrorActionIotEventsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get inputNameInput() {
-    return this._inputName
+    return this._inputName;
   }
 
   // message_id - computed: false, optional: true, required: false
-  private _messageId?: string | undefined; 
+  private _messageId?: string; 
   public get messageId() {
     return this.getStringAttribute('message_id');
   }
-  public set messageId(value: string | undefined) {
+  public set messageId(value: string) {
     this._messageId = value;
   }
   public resetMessageId() {
@@ -1232,7 +1583,7 @@ export class IotTopicRuleErrorActionIotEventsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get messageIdInput() {
-    return this._messageId
+    return this._messageId;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -1245,7 +1596,7 @@ export class IotTopicRuleErrorActionIotEventsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 }
 export interface IotTopicRuleErrorActionKinesis {
@@ -1285,12 +1636,43 @@ export class IotTopicRuleErrorActionKinesisOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleErrorActionKinesis | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._partitionKey) {
+      hasAnyValues = true;
+      internalValueResult.partitionKey = this._partitionKey;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._streamName) {
+      hasAnyValues = true;
+      internalValueResult.streamName = this._streamName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleErrorActionKinesis | undefined) {
+    if (value === undefined) {
+      this._partitionKey = undefined;
+      this._roleArn = undefined;
+      this._streamName = undefined;
+    }
+    else {
+      this._partitionKey = value.partitionKey;
+      this._roleArn = value.roleArn;
+      this._streamName = value.streamName;
+    }
+  }
+
   // partition_key - computed: false, optional: true, required: false
-  private _partitionKey?: string | undefined; 
+  private _partitionKey?: string; 
   public get partitionKey() {
     return this.getStringAttribute('partition_key');
   }
-  public set partitionKey(value: string | undefined) {
+  public set partitionKey(value: string) {
     this._partitionKey = value;
   }
   public resetPartitionKey() {
@@ -1298,7 +1680,7 @@ export class IotTopicRuleErrorActionKinesisOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get partitionKeyInput() {
-    return this._partitionKey
+    return this._partitionKey;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -1311,7 +1693,7 @@ export class IotTopicRuleErrorActionKinesisOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // stream_name - computed: false, optional: false, required: true
@@ -1324,7 +1706,7 @@ export class IotTopicRuleErrorActionKinesisOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get streamNameInput() {
-    return this._streamName
+    return this._streamName;
   }
 }
 export interface IotTopicRuleErrorActionLambda {
@@ -1354,6 +1736,25 @@ export class IotTopicRuleErrorActionLambdaOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleErrorActionLambda | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._functionArn) {
+      hasAnyValues = true;
+      internalValueResult.functionArn = this._functionArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleErrorActionLambda | undefined) {
+    if (value === undefined) {
+      this._functionArn = undefined;
+    }
+    else {
+      this._functionArn = value.functionArn;
+    }
+  }
+
   // function_arn - computed: false, optional: false, required: true
   private _functionArn?: string; 
   public get functionArn() {
@@ -1364,7 +1765,7 @@ export class IotTopicRuleErrorActionLambdaOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get functionArnInput() {
-    return this._functionArn
+    return this._functionArn;
   }
 }
 export interface IotTopicRuleErrorActionRepublish {
@@ -1404,12 +1805,43 @@ export class IotTopicRuleErrorActionRepublishOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleErrorActionRepublish | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._qos) {
+      hasAnyValues = true;
+      internalValueResult.qos = this._qos;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._topic) {
+      hasAnyValues = true;
+      internalValueResult.topic = this._topic;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleErrorActionRepublish | undefined) {
+    if (value === undefined) {
+      this._qos = undefined;
+      this._roleArn = undefined;
+      this._topic = undefined;
+    }
+    else {
+      this._qos = value.qos;
+      this._roleArn = value.roleArn;
+      this._topic = value.topic;
+    }
+  }
+
   // qos - computed: false, optional: true, required: false
-  private _qos?: number | undefined; 
+  private _qos?: number; 
   public get qos() {
     return this.getNumberAttribute('qos');
   }
-  public set qos(value: number | undefined) {
+  public set qos(value: number) {
     this._qos = value;
   }
   public resetQos() {
@@ -1417,7 +1849,7 @@ export class IotTopicRuleErrorActionRepublishOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get qosInput() {
-    return this._qos
+    return this._qos;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -1430,7 +1862,7 @@ export class IotTopicRuleErrorActionRepublishOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // topic - computed: false, optional: false, required: true
@@ -1443,7 +1875,7 @@ export class IotTopicRuleErrorActionRepublishOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get topicInput() {
-    return this._topic
+    return this._topic;
   }
 }
 export interface IotTopicRuleErrorActionS3 {
@@ -1483,6 +1915,37 @@ export class IotTopicRuleErrorActionS3OutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleErrorActionS3 | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucketName) {
+      hasAnyValues = true;
+      internalValueResult.bucketName = this._bucketName;
+    }
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleErrorActionS3 | undefined) {
+    if (value === undefined) {
+      this._bucketName = undefined;
+      this._key = undefined;
+      this._roleArn = undefined;
+    }
+    else {
+      this._bucketName = value.bucketName;
+      this._key = value.key;
+      this._roleArn = value.roleArn;
+    }
+  }
+
   // bucket_name - computed: false, optional: false, required: true
   private _bucketName?: string; 
   public get bucketName() {
@@ -1493,7 +1956,7 @@ export class IotTopicRuleErrorActionS3OutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get bucketNameInput() {
-    return this._bucketName
+    return this._bucketName;
   }
 
   // key - computed: false, optional: false, required: true
@@ -1506,7 +1969,7 @@ export class IotTopicRuleErrorActionS3OutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -1519,7 +1982,7 @@ export class IotTopicRuleErrorActionS3OutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 }
 export interface IotTopicRuleErrorActionSns {
@@ -1559,12 +2022,43 @@ export class IotTopicRuleErrorActionSnsOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleErrorActionSns | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._messageFormat) {
+      hasAnyValues = true;
+      internalValueResult.messageFormat = this._messageFormat;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._targetArn) {
+      hasAnyValues = true;
+      internalValueResult.targetArn = this._targetArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleErrorActionSns | undefined) {
+    if (value === undefined) {
+      this._messageFormat = undefined;
+      this._roleArn = undefined;
+      this._targetArn = undefined;
+    }
+    else {
+      this._messageFormat = value.messageFormat;
+      this._roleArn = value.roleArn;
+      this._targetArn = value.targetArn;
+    }
+  }
+
   // message_format - computed: false, optional: true, required: false
-  private _messageFormat?: string | undefined; 
+  private _messageFormat?: string; 
   public get messageFormat() {
     return this.getStringAttribute('message_format');
   }
-  public set messageFormat(value: string | undefined) {
+  public set messageFormat(value: string) {
     this._messageFormat = value;
   }
   public resetMessageFormat() {
@@ -1572,7 +2066,7 @@ export class IotTopicRuleErrorActionSnsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get messageFormatInput() {
-    return this._messageFormat
+    return this._messageFormat;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -1585,7 +2079,7 @@ export class IotTopicRuleErrorActionSnsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // target_arn - computed: false, optional: false, required: true
@@ -1598,7 +2092,7 @@ export class IotTopicRuleErrorActionSnsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get targetArnInput() {
-    return this._targetArn
+    return this._targetArn;
   }
 }
 export interface IotTopicRuleErrorActionSqs {
@@ -1638,6 +2132,37 @@ export class IotTopicRuleErrorActionSqsOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleErrorActionSqs | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._queueUrl) {
+      hasAnyValues = true;
+      internalValueResult.queueUrl = this._queueUrl;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._useBase64) {
+      hasAnyValues = true;
+      internalValueResult.useBase64 = this._useBase64;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleErrorActionSqs | undefined) {
+    if (value === undefined) {
+      this._queueUrl = undefined;
+      this._roleArn = undefined;
+      this._useBase64 = undefined;
+    }
+    else {
+      this._queueUrl = value.queueUrl;
+      this._roleArn = value.roleArn;
+      this._useBase64 = value.useBase64;
+    }
+  }
+
   // queue_url - computed: false, optional: false, required: true
   private _queueUrl?: string; 
   public get queueUrl() {
@@ -1648,7 +2173,7 @@ export class IotTopicRuleErrorActionSqsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get queueUrlInput() {
-    return this._queueUrl
+    return this._queueUrl;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -1661,7 +2186,7 @@ export class IotTopicRuleErrorActionSqsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // use_base64 - computed: false, optional: false, required: true
@@ -1674,7 +2199,7 @@ export class IotTopicRuleErrorActionSqsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get useBase64Input() {
-    return this._useBase64
+    return this._useBase64;
   }
 }
 export interface IotTopicRuleErrorActionStepFunctions {
@@ -1714,12 +2239,43 @@ export class IotTopicRuleErrorActionStepFunctionsOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotTopicRuleErrorActionStepFunctions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._executionNamePrefix) {
+      hasAnyValues = true;
+      internalValueResult.executionNamePrefix = this._executionNamePrefix;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._stateMachineName) {
+      hasAnyValues = true;
+      internalValueResult.stateMachineName = this._stateMachineName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotTopicRuleErrorActionStepFunctions | undefined) {
+    if (value === undefined) {
+      this._executionNamePrefix = undefined;
+      this._roleArn = undefined;
+      this._stateMachineName = undefined;
+    }
+    else {
+      this._executionNamePrefix = value.executionNamePrefix;
+      this._roleArn = value.roleArn;
+      this._stateMachineName = value.stateMachineName;
+    }
+  }
+
   // execution_name_prefix - computed: false, optional: true, required: false
-  private _executionNamePrefix?: string | undefined; 
+  private _executionNamePrefix?: string; 
   public get executionNamePrefix() {
     return this.getStringAttribute('execution_name_prefix');
   }
-  public set executionNamePrefix(value: string | undefined) {
+  public set executionNamePrefix(value: string) {
     this._executionNamePrefix = value;
   }
   public resetExecutionNamePrefix() {
@@ -1727,7 +2283,7 @@ export class IotTopicRuleErrorActionStepFunctionsOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get executionNamePrefixInput() {
-    return this._executionNamePrefix
+    return this._executionNamePrefix;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -1740,7 +2296,7 @@ export class IotTopicRuleErrorActionStepFunctionsOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // state_machine_name - computed: false, optional: false, required: true
@@ -1753,7 +2309,7 @@ export class IotTopicRuleErrorActionStepFunctionsOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get stateMachineNameInput() {
-    return this._stateMachineName
+    return this._stateMachineName;
   }
 }
 export interface IotTopicRuleErrorAction {
@@ -1883,259 +2439,347 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // cloudwatch_alarm - computed: false, optional: true, required: false
-  private _cloudwatchAlarm?: IotTopicRuleErrorActionCloudwatchAlarm | undefined; 
-  private __cloudwatchAlarmOutput = new IotTopicRuleErrorActionCloudwatchAlarmOutputReference(this as any, "cloudwatch_alarm", true);
-  public get cloudwatchAlarm() {
-    return this.__cloudwatchAlarmOutput;
+  public get internalValue(): IotTopicRuleErrorAction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cloudwatchAlarm) {
+      hasAnyValues = true;
+      internalValueResult.cloudwatchAlarm = this._cloudwatchAlarm?.internalValue;
+    }
+    if (this._cloudwatchMetric) {
+      hasAnyValues = true;
+      internalValueResult.cloudwatchMetric = this._cloudwatchMetric?.internalValue;
+    }
+    if (this._dynamodb) {
+      hasAnyValues = true;
+      internalValueResult.dynamodb = this._dynamodb?.internalValue;
+    }
+    if (this._dynamodbv2) {
+      hasAnyValues = true;
+      internalValueResult.dynamodbv2 = this._dynamodbv2?.internalValue;
+    }
+    if (this._elasticsearch) {
+      hasAnyValues = true;
+      internalValueResult.elasticsearch = this._elasticsearch?.internalValue;
+    }
+    if (this._firehose) {
+      hasAnyValues = true;
+      internalValueResult.firehose = this._firehose?.internalValue;
+    }
+    if (this._iotAnalytics) {
+      hasAnyValues = true;
+      internalValueResult.iotAnalytics = this._iotAnalytics?.internalValue;
+    }
+    if (this._iotEvents) {
+      hasAnyValues = true;
+      internalValueResult.iotEvents = this._iotEvents?.internalValue;
+    }
+    if (this._kinesis) {
+      hasAnyValues = true;
+      internalValueResult.kinesis = this._kinesis?.internalValue;
+    }
+    if (this._lambda) {
+      hasAnyValues = true;
+      internalValueResult.lambda = this._lambda?.internalValue;
+    }
+    if (this._republish) {
+      hasAnyValues = true;
+      internalValueResult.republish = this._republish?.internalValue;
+    }
+    if (this._s3) {
+      hasAnyValues = true;
+      internalValueResult.s3 = this._s3?.internalValue;
+    }
+    if (this._sns) {
+      hasAnyValues = true;
+      internalValueResult.sns = this._sns?.internalValue;
+    }
+    if (this._sqs) {
+      hasAnyValues = true;
+      internalValueResult.sqs = this._sqs?.internalValue;
+    }
+    if (this._stepFunctions) {
+      hasAnyValues = true;
+      internalValueResult.stepFunctions = this._stepFunctions?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putCloudwatchAlarm(value: IotTopicRuleErrorActionCloudwatchAlarm | undefined) {
-    this._cloudwatchAlarm = value;
+
+  public set internalValue(value: IotTopicRuleErrorAction | undefined) {
+    if (value === undefined) {
+      this._cloudwatchAlarm.internalValue = undefined;
+      this._cloudwatchMetric.internalValue = undefined;
+      this._dynamodb.internalValue = undefined;
+      this._dynamodbv2.internalValue = undefined;
+      this._elasticsearch.internalValue = undefined;
+      this._firehose.internalValue = undefined;
+      this._iotAnalytics.internalValue = undefined;
+      this._iotEvents.internalValue = undefined;
+      this._kinesis.internalValue = undefined;
+      this._lambda.internalValue = undefined;
+      this._republish.internalValue = undefined;
+      this._s3.internalValue = undefined;
+      this._sns.internalValue = undefined;
+      this._sqs.internalValue = undefined;
+      this._stepFunctions.internalValue = undefined;
+    }
+    else {
+      this._cloudwatchAlarm.internalValue = value.cloudwatchAlarm;
+      this._cloudwatchMetric.internalValue = value.cloudwatchMetric;
+      this._dynamodb.internalValue = value.dynamodb;
+      this._dynamodbv2.internalValue = value.dynamodbv2;
+      this._elasticsearch.internalValue = value.elasticsearch;
+      this._firehose.internalValue = value.firehose;
+      this._iotAnalytics.internalValue = value.iotAnalytics;
+      this._iotEvents.internalValue = value.iotEvents;
+      this._kinesis.internalValue = value.kinesis;
+      this._lambda.internalValue = value.lambda;
+      this._republish.internalValue = value.republish;
+      this._s3.internalValue = value.s3;
+      this._sns.internalValue = value.sns;
+      this._sqs.internalValue = value.sqs;
+      this._stepFunctions.internalValue = value.stepFunctions;
+    }
+  }
+
+  // cloudwatch_alarm - computed: false, optional: true, required: false
+  private _cloudwatchAlarm = new IotTopicRuleErrorActionCloudwatchAlarmOutputReference(this as any, "cloudwatch_alarm", true);
+  public get cloudwatchAlarm() {
+    return this._cloudwatchAlarm;
+  }
+  public putCloudwatchAlarm(value: IotTopicRuleErrorActionCloudwatchAlarm) {
+    this._cloudwatchAlarm.internalValue = value;
   }
   public resetCloudwatchAlarm() {
-    this._cloudwatchAlarm = undefined;
+    this._cloudwatchAlarm.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchAlarmInput() {
-    return this._cloudwatchAlarm
+    return this._cloudwatchAlarm.internalValue;
   }
 
   // cloudwatch_metric - computed: false, optional: true, required: false
-  private _cloudwatchMetric?: IotTopicRuleErrorActionCloudwatchMetric | undefined; 
-  private __cloudwatchMetricOutput = new IotTopicRuleErrorActionCloudwatchMetricOutputReference(this as any, "cloudwatch_metric", true);
+  private _cloudwatchMetric = new IotTopicRuleErrorActionCloudwatchMetricOutputReference(this as any, "cloudwatch_metric", true);
   public get cloudwatchMetric() {
-    return this.__cloudwatchMetricOutput;
+    return this._cloudwatchMetric;
   }
-  public putCloudwatchMetric(value: IotTopicRuleErrorActionCloudwatchMetric | undefined) {
-    this._cloudwatchMetric = value;
+  public putCloudwatchMetric(value: IotTopicRuleErrorActionCloudwatchMetric) {
+    this._cloudwatchMetric.internalValue = value;
   }
   public resetCloudwatchMetric() {
-    this._cloudwatchMetric = undefined;
+    this._cloudwatchMetric.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchMetricInput() {
-    return this._cloudwatchMetric
+    return this._cloudwatchMetric.internalValue;
   }
 
   // dynamodb - computed: false, optional: true, required: false
-  private _dynamodb?: IotTopicRuleErrorActionDynamodb | undefined; 
-  private __dynamodbOutput = new IotTopicRuleErrorActionDynamodbOutputReference(this as any, "dynamodb", true);
+  private _dynamodb = new IotTopicRuleErrorActionDynamodbOutputReference(this as any, "dynamodb", true);
   public get dynamodb() {
-    return this.__dynamodbOutput;
+    return this._dynamodb;
   }
-  public putDynamodb(value: IotTopicRuleErrorActionDynamodb | undefined) {
-    this._dynamodb = value;
+  public putDynamodb(value: IotTopicRuleErrorActionDynamodb) {
+    this._dynamodb.internalValue = value;
   }
   public resetDynamodb() {
-    this._dynamodb = undefined;
+    this._dynamodb.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get dynamodbInput() {
-    return this._dynamodb
+    return this._dynamodb.internalValue;
   }
 
   // dynamodbv2 - computed: false, optional: true, required: false
-  private _dynamodbv2?: IotTopicRuleErrorActionDynamodbv2 | undefined; 
-  private __dynamodbv2Output = new IotTopicRuleErrorActionDynamodbv2OutputReference(this as any, "dynamodbv2", true);
+  private _dynamodbv2 = new IotTopicRuleErrorActionDynamodbv2OutputReference(this as any, "dynamodbv2", true);
   public get dynamodbv2() {
-    return this.__dynamodbv2Output;
+    return this._dynamodbv2;
   }
-  public putDynamodbv2(value: IotTopicRuleErrorActionDynamodbv2 | undefined) {
-    this._dynamodbv2 = value;
+  public putDynamodbv2(value: IotTopicRuleErrorActionDynamodbv2) {
+    this._dynamodbv2.internalValue = value;
   }
   public resetDynamodbv2() {
-    this._dynamodbv2 = undefined;
+    this._dynamodbv2.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get dynamodbv2Input() {
-    return this._dynamodbv2
+    return this._dynamodbv2.internalValue;
   }
 
   // elasticsearch - computed: false, optional: true, required: false
-  private _elasticsearch?: IotTopicRuleErrorActionElasticsearch | undefined; 
-  private __elasticsearchOutput = new IotTopicRuleErrorActionElasticsearchOutputReference(this as any, "elasticsearch", true);
+  private _elasticsearch = new IotTopicRuleErrorActionElasticsearchOutputReference(this as any, "elasticsearch", true);
   public get elasticsearch() {
-    return this.__elasticsearchOutput;
+    return this._elasticsearch;
   }
-  public putElasticsearch(value: IotTopicRuleErrorActionElasticsearch | undefined) {
-    this._elasticsearch = value;
+  public putElasticsearch(value: IotTopicRuleErrorActionElasticsearch) {
+    this._elasticsearch.internalValue = value;
   }
   public resetElasticsearch() {
-    this._elasticsearch = undefined;
+    this._elasticsearch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get elasticsearchInput() {
-    return this._elasticsearch
+    return this._elasticsearch.internalValue;
   }
 
   // firehose - computed: false, optional: true, required: false
-  private _firehose?: IotTopicRuleErrorActionFirehose | undefined; 
-  private __firehoseOutput = new IotTopicRuleErrorActionFirehoseOutputReference(this as any, "firehose", true);
+  private _firehose = new IotTopicRuleErrorActionFirehoseOutputReference(this as any, "firehose", true);
   public get firehose() {
-    return this.__firehoseOutput;
+    return this._firehose;
   }
-  public putFirehose(value: IotTopicRuleErrorActionFirehose | undefined) {
-    this._firehose = value;
+  public putFirehose(value: IotTopicRuleErrorActionFirehose) {
+    this._firehose.internalValue = value;
   }
   public resetFirehose() {
-    this._firehose = undefined;
+    this._firehose.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get firehoseInput() {
-    return this._firehose
+    return this._firehose.internalValue;
   }
 
   // iot_analytics - computed: false, optional: true, required: false
-  private _iotAnalytics?: IotTopicRuleErrorActionIotAnalytics | undefined; 
-  private __iotAnalyticsOutput = new IotTopicRuleErrorActionIotAnalyticsOutputReference(this as any, "iot_analytics", true);
+  private _iotAnalytics = new IotTopicRuleErrorActionIotAnalyticsOutputReference(this as any, "iot_analytics", true);
   public get iotAnalytics() {
-    return this.__iotAnalyticsOutput;
+    return this._iotAnalytics;
   }
-  public putIotAnalytics(value: IotTopicRuleErrorActionIotAnalytics | undefined) {
-    this._iotAnalytics = value;
+  public putIotAnalytics(value: IotTopicRuleErrorActionIotAnalytics) {
+    this._iotAnalytics.internalValue = value;
   }
   public resetIotAnalytics() {
-    this._iotAnalytics = undefined;
+    this._iotAnalytics.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get iotAnalyticsInput() {
-    return this._iotAnalytics
+    return this._iotAnalytics.internalValue;
   }
 
   // iot_events - computed: false, optional: true, required: false
-  private _iotEvents?: IotTopicRuleErrorActionIotEvents | undefined; 
-  private __iotEventsOutput = new IotTopicRuleErrorActionIotEventsOutputReference(this as any, "iot_events", true);
+  private _iotEvents = new IotTopicRuleErrorActionIotEventsOutputReference(this as any, "iot_events", true);
   public get iotEvents() {
-    return this.__iotEventsOutput;
+    return this._iotEvents;
   }
-  public putIotEvents(value: IotTopicRuleErrorActionIotEvents | undefined) {
-    this._iotEvents = value;
+  public putIotEvents(value: IotTopicRuleErrorActionIotEvents) {
+    this._iotEvents.internalValue = value;
   }
   public resetIotEvents() {
-    this._iotEvents = undefined;
+    this._iotEvents.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get iotEventsInput() {
-    return this._iotEvents
+    return this._iotEvents.internalValue;
   }
 
   // kinesis - computed: false, optional: true, required: false
-  private _kinesis?: IotTopicRuleErrorActionKinesis | undefined; 
-  private __kinesisOutput = new IotTopicRuleErrorActionKinesisOutputReference(this as any, "kinesis", true);
+  private _kinesis = new IotTopicRuleErrorActionKinesisOutputReference(this as any, "kinesis", true);
   public get kinesis() {
-    return this.__kinesisOutput;
+    return this._kinesis;
   }
-  public putKinesis(value: IotTopicRuleErrorActionKinesis | undefined) {
-    this._kinesis = value;
+  public putKinesis(value: IotTopicRuleErrorActionKinesis) {
+    this._kinesis.internalValue = value;
   }
   public resetKinesis() {
-    this._kinesis = undefined;
+    this._kinesis.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get kinesisInput() {
-    return this._kinesis
+    return this._kinesis.internalValue;
   }
 
   // lambda - computed: false, optional: true, required: false
-  private _lambda?: IotTopicRuleErrorActionLambda | undefined; 
-  private __lambdaOutput = new IotTopicRuleErrorActionLambdaOutputReference(this as any, "lambda", true);
+  private _lambda = new IotTopicRuleErrorActionLambdaOutputReference(this as any, "lambda", true);
   public get lambda() {
-    return this.__lambdaOutput;
+    return this._lambda;
   }
-  public putLambda(value: IotTopicRuleErrorActionLambda | undefined) {
-    this._lambda = value;
+  public putLambda(value: IotTopicRuleErrorActionLambda) {
+    this._lambda.internalValue = value;
   }
   public resetLambda() {
-    this._lambda = undefined;
+    this._lambda.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get lambdaInput() {
-    return this._lambda
+    return this._lambda.internalValue;
   }
 
   // republish - computed: false, optional: true, required: false
-  private _republish?: IotTopicRuleErrorActionRepublish | undefined; 
-  private __republishOutput = new IotTopicRuleErrorActionRepublishOutputReference(this as any, "republish", true);
+  private _republish = new IotTopicRuleErrorActionRepublishOutputReference(this as any, "republish", true);
   public get republish() {
-    return this.__republishOutput;
+    return this._republish;
   }
-  public putRepublish(value: IotTopicRuleErrorActionRepublish | undefined) {
-    this._republish = value;
+  public putRepublish(value: IotTopicRuleErrorActionRepublish) {
+    this._republish.internalValue = value;
   }
   public resetRepublish() {
-    this._republish = undefined;
+    this._republish.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get republishInput() {
-    return this._republish
+    return this._republish.internalValue;
   }
 
   // s3 - computed: false, optional: true, required: false
-  private _s3?: IotTopicRuleErrorActionS3 | undefined; 
-  private __s3Output = new IotTopicRuleErrorActionS3OutputReference(this as any, "s3", true);
+  private _s3 = new IotTopicRuleErrorActionS3OutputReference(this as any, "s3", true);
   public get s3() {
-    return this.__s3Output;
+    return this._s3;
   }
-  public putS3(value: IotTopicRuleErrorActionS3 | undefined) {
-    this._s3 = value;
+  public putS3(value: IotTopicRuleErrorActionS3) {
+    this._s3.internalValue = value;
   }
   public resetS3() {
-    this._s3 = undefined;
+    this._s3.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get s3Input() {
-    return this._s3
+    return this._s3.internalValue;
   }
 
   // sns - computed: false, optional: true, required: false
-  private _sns?: IotTopicRuleErrorActionSns | undefined; 
-  private __snsOutput = new IotTopicRuleErrorActionSnsOutputReference(this as any, "sns", true);
+  private _sns = new IotTopicRuleErrorActionSnsOutputReference(this as any, "sns", true);
   public get sns() {
-    return this.__snsOutput;
+    return this._sns;
   }
-  public putSns(value: IotTopicRuleErrorActionSns | undefined) {
-    this._sns = value;
+  public putSns(value: IotTopicRuleErrorActionSns) {
+    this._sns.internalValue = value;
   }
   public resetSns() {
-    this._sns = undefined;
+    this._sns.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get snsInput() {
-    return this._sns
+    return this._sns.internalValue;
   }
 
   // sqs - computed: false, optional: true, required: false
-  private _sqs?: IotTopicRuleErrorActionSqs | undefined; 
-  private __sqsOutput = new IotTopicRuleErrorActionSqsOutputReference(this as any, "sqs", true);
+  private _sqs = new IotTopicRuleErrorActionSqsOutputReference(this as any, "sqs", true);
   public get sqs() {
-    return this.__sqsOutput;
+    return this._sqs;
   }
-  public putSqs(value: IotTopicRuleErrorActionSqs | undefined) {
-    this._sqs = value;
+  public putSqs(value: IotTopicRuleErrorActionSqs) {
+    this._sqs.internalValue = value;
   }
   public resetSqs() {
-    this._sqs = undefined;
+    this._sqs.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get sqsInput() {
-    return this._sqs
+    return this._sqs.internalValue;
   }
 
   // step_functions - computed: false, optional: true, required: false
-  private _stepFunctions?: IotTopicRuleErrorActionStepFunctions | undefined; 
-  private __stepFunctionsOutput = new IotTopicRuleErrorActionStepFunctionsOutputReference(this as any, "step_functions", true);
+  private _stepFunctions = new IotTopicRuleErrorActionStepFunctionsOutputReference(this as any, "step_functions", true);
   public get stepFunctions() {
-    return this.__stepFunctionsOutput;
+    return this._stepFunctions;
   }
-  public putStepFunctions(value: IotTopicRuleErrorActionStepFunctions | undefined) {
-    this._stepFunctions = value;
+  public putStepFunctions(value: IotTopicRuleErrorActionStepFunctions) {
+    this._stepFunctions.internalValue = value;
   }
   public resetStepFunctions() {
-    this._stepFunctions = undefined;
+    this._stepFunctions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get stepFunctionsInput() {
-    return this._stepFunctions
+    return this._stepFunctions.internalValue;
   }
 }
 export interface IotTopicRuleFirehose {
@@ -2438,7 +3082,7 @@ export class IotTopicRule extends cdktf.TerraformResource {
     this._dynamodb = config.dynamodb;
     this._dynamodbv2 = config.dynamodbv2;
     this._elasticsearch = config.elasticsearch;
-    this._errorAction = config.errorAction;
+    this._errorAction.internalValue = config.errorAction;
     this._firehose = config.firehose;
     this._iotAnalytics = config.iotAnalytics;
     this._iotEvents = config.iotEvents;
@@ -2461,11 +3105,11 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -2473,7 +3117,7 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // enabled - computed: false, optional: false, required: true
@@ -2486,7 +3130,7 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // id - computed: true, optional: true, required: false
@@ -2504,7 +3148,7 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // sql - computed: false, optional: false, required: true
@@ -2517,7 +3161,7 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sqlInput() {
-    return this._sql
+    return this._sql;
   }
 
   // sql_version - computed: false, optional: false, required: true
@@ -2530,16 +3174,16 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sqlVersionInput() {
-    return this._sqlVersion
+    return this._sqlVersion;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -2547,16 +3191,16 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -2564,16 +3208,16 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // cloudwatch_alarm - computed: false, optional: true, required: false
-  private _cloudwatchAlarm?: IotTopicRuleCloudwatchAlarm[] | undefined; 
+  private _cloudwatchAlarm?: IotTopicRuleCloudwatchAlarm[]; 
   public get cloudwatchAlarm() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('cloudwatch_alarm') as any;
   }
-  public set cloudwatchAlarm(value: IotTopicRuleCloudwatchAlarm[] | undefined) {
+  public set cloudwatchAlarm(value: IotTopicRuleCloudwatchAlarm[]) {
     this._cloudwatchAlarm = value;
   }
   public resetCloudwatchAlarm() {
@@ -2581,16 +3225,16 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchAlarmInput() {
-    return this._cloudwatchAlarm
+    return this._cloudwatchAlarm;
   }
 
   // cloudwatch_metric - computed: false, optional: true, required: false
-  private _cloudwatchMetric?: IotTopicRuleCloudwatchMetric[] | undefined; 
+  private _cloudwatchMetric?: IotTopicRuleCloudwatchMetric[]; 
   public get cloudwatchMetric() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('cloudwatch_metric') as any;
   }
-  public set cloudwatchMetric(value: IotTopicRuleCloudwatchMetric[] | undefined) {
+  public set cloudwatchMetric(value: IotTopicRuleCloudwatchMetric[]) {
     this._cloudwatchMetric = value;
   }
   public resetCloudwatchMetric() {
@@ -2598,16 +3242,16 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchMetricInput() {
-    return this._cloudwatchMetric
+    return this._cloudwatchMetric;
   }
 
   // dynamodb - computed: false, optional: true, required: false
-  private _dynamodb?: IotTopicRuleDynamodb[] | undefined; 
+  private _dynamodb?: IotTopicRuleDynamodb[]; 
   public get dynamodb() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('dynamodb') as any;
   }
-  public set dynamodb(value: IotTopicRuleDynamodb[] | undefined) {
+  public set dynamodb(value: IotTopicRuleDynamodb[]) {
     this._dynamodb = value;
   }
   public resetDynamodb() {
@@ -2615,16 +3259,16 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dynamodbInput() {
-    return this._dynamodb
+    return this._dynamodb;
   }
 
   // dynamodbv2 - computed: false, optional: true, required: false
-  private _dynamodbv2?: IotTopicRuleDynamodbv2[] | undefined; 
+  private _dynamodbv2?: IotTopicRuleDynamodbv2[]; 
   public get dynamodbv2() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('dynamodbv2') as any;
   }
-  public set dynamodbv2(value: IotTopicRuleDynamodbv2[] | undefined) {
+  public set dynamodbv2(value: IotTopicRuleDynamodbv2[]) {
     this._dynamodbv2 = value;
   }
   public resetDynamodbv2() {
@@ -2632,16 +3276,16 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dynamodbv2Input() {
-    return this._dynamodbv2
+    return this._dynamodbv2;
   }
 
   // elasticsearch - computed: false, optional: true, required: false
-  private _elasticsearch?: IotTopicRuleElasticsearch[] | undefined; 
+  private _elasticsearch?: IotTopicRuleElasticsearch[]; 
   public get elasticsearch() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('elasticsearch') as any;
   }
-  public set elasticsearch(value: IotTopicRuleElasticsearch[] | undefined) {
+  public set elasticsearch(value: IotTopicRuleElasticsearch[]) {
     this._elasticsearch = value;
   }
   public resetElasticsearch() {
@@ -2649,33 +3293,32 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get elasticsearchInput() {
-    return this._elasticsearch
+    return this._elasticsearch;
   }
 
   // error_action - computed: false, optional: true, required: false
-  private _errorAction?: IotTopicRuleErrorAction | undefined; 
-  private __errorActionOutput = new IotTopicRuleErrorActionOutputReference(this as any, "error_action", true);
+  private _errorAction = new IotTopicRuleErrorActionOutputReference(this as any, "error_action", true);
   public get errorAction() {
-    return this.__errorActionOutput;
+    return this._errorAction;
   }
-  public putErrorAction(value: IotTopicRuleErrorAction | undefined) {
-    this._errorAction = value;
+  public putErrorAction(value: IotTopicRuleErrorAction) {
+    this._errorAction.internalValue = value;
   }
   public resetErrorAction() {
-    this._errorAction = undefined;
+    this._errorAction.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get errorActionInput() {
-    return this._errorAction
+    return this._errorAction.internalValue;
   }
 
   // firehose - computed: false, optional: true, required: false
-  private _firehose?: IotTopicRuleFirehose[] | undefined; 
+  private _firehose?: IotTopicRuleFirehose[]; 
   public get firehose() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('firehose') as any;
   }
-  public set firehose(value: IotTopicRuleFirehose[] | undefined) {
+  public set firehose(value: IotTopicRuleFirehose[]) {
     this._firehose = value;
   }
   public resetFirehose() {
@@ -2683,16 +3326,16 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get firehoseInput() {
-    return this._firehose
+    return this._firehose;
   }
 
   // iot_analytics - computed: false, optional: true, required: false
-  private _iotAnalytics?: IotTopicRuleIotAnalytics[] | undefined; 
+  private _iotAnalytics?: IotTopicRuleIotAnalytics[]; 
   public get iotAnalytics() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('iot_analytics') as any;
   }
-  public set iotAnalytics(value: IotTopicRuleIotAnalytics[] | undefined) {
+  public set iotAnalytics(value: IotTopicRuleIotAnalytics[]) {
     this._iotAnalytics = value;
   }
   public resetIotAnalytics() {
@@ -2700,16 +3343,16 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iotAnalyticsInput() {
-    return this._iotAnalytics
+    return this._iotAnalytics;
   }
 
   // iot_events - computed: false, optional: true, required: false
-  private _iotEvents?: IotTopicRuleIotEvents[] | undefined; 
+  private _iotEvents?: IotTopicRuleIotEvents[]; 
   public get iotEvents() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('iot_events') as any;
   }
-  public set iotEvents(value: IotTopicRuleIotEvents[] | undefined) {
+  public set iotEvents(value: IotTopicRuleIotEvents[]) {
     this._iotEvents = value;
   }
   public resetIotEvents() {
@@ -2717,16 +3360,16 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iotEventsInput() {
-    return this._iotEvents
+    return this._iotEvents;
   }
 
   // kinesis - computed: false, optional: true, required: false
-  private _kinesis?: IotTopicRuleKinesis[] | undefined; 
+  private _kinesis?: IotTopicRuleKinesis[]; 
   public get kinesis() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('kinesis') as any;
   }
-  public set kinesis(value: IotTopicRuleKinesis[] | undefined) {
+  public set kinesis(value: IotTopicRuleKinesis[]) {
     this._kinesis = value;
   }
   public resetKinesis() {
@@ -2734,16 +3377,16 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kinesisInput() {
-    return this._kinesis
+    return this._kinesis;
   }
 
   // lambda - computed: false, optional: true, required: false
-  private _lambda?: IotTopicRuleLambda[] | undefined; 
+  private _lambda?: IotTopicRuleLambda[]; 
   public get lambda() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('lambda') as any;
   }
-  public set lambda(value: IotTopicRuleLambda[] | undefined) {
+  public set lambda(value: IotTopicRuleLambda[]) {
     this._lambda = value;
   }
   public resetLambda() {
@@ -2751,16 +3394,16 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get lambdaInput() {
-    return this._lambda
+    return this._lambda;
   }
 
   // republish - computed: false, optional: true, required: false
-  private _republish?: IotTopicRuleRepublish[] | undefined; 
+  private _republish?: IotTopicRuleRepublish[]; 
   public get republish() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('republish') as any;
   }
-  public set republish(value: IotTopicRuleRepublish[] | undefined) {
+  public set republish(value: IotTopicRuleRepublish[]) {
     this._republish = value;
   }
   public resetRepublish() {
@@ -2768,16 +3411,16 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get republishInput() {
-    return this._republish
+    return this._republish;
   }
 
   // s3 - computed: false, optional: true, required: false
-  private _s3?: IotTopicRuleS3[] | undefined; 
+  private _s3?: IotTopicRuleS3[]; 
   public get s3() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('s3') as any;
   }
-  public set s3(value: IotTopicRuleS3[] | undefined) {
+  public set s3(value: IotTopicRuleS3[]) {
     this._s3 = value;
   }
   public resetS3() {
@@ -2785,16 +3428,16 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3Input() {
-    return this._s3
+    return this._s3;
   }
 
   // sns - computed: false, optional: true, required: false
-  private _sns?: IotTopicRuleSns[] | undefined; 
+  private _sns?: IotTopicRuleSns[]; 
   public get sns() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('sns') as any;
   }
-  public set sns(value: IotTopicRuleSns[] | undefined) {
+  public set sns(value: IotTopicRuleSns[]) {
     this._sns = value;
   }
   public resetSns() {
@@ -2802,16 +3445,16 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get snsInput() {
-    return this._sns
+    return this._sns;
   }
 
   // sqs - computed: false, optional: true, required: false
-  private _sqs?: IotTopicRuleSqs[] | undefined; 
+  private _sqs?: IotTopicRuleSqs[]; 
   public get sqs() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('sqs') as any;
   }
-  public set sqs(value: IotTopicRuleSqs[] | undefined) {
+  public set sqs(value: IotTopicRuleSqs[]) {
     this._sqs = value;
   }
   public resetSqs() {
@@ -2819,16 +3462,16 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sqsInput() {
-    return this._sqs
+    return this._sqs;
   }
 
   // step_functions - computed: false, optional: true, required: false
-  private _stepFunctions?: IotTopicRuleStepFunctions[] | undefined; 
+  private _stepFunctions?: IotTopicRuleStepFunctions[]; 
   public get stepFunctions() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('step_functions') as any;
   }
-  public set stepFunctions(value: IotTopicRuleStepFunctions[] | undefined) {
+  public set stepFunctions(value: IotTopicRuleStepFunctions[]) {
     this._stepFunctions = value;
   }
   public resetStepFunctions() {
@@ -2836,7 +3479,7 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stepFunctionsInput() {
-    return this._stepFunctions
+    return this._stepFunctions;
   }
 
   // =========
@@ -2857,7 +3500,7 @@ export class IotTopicRule extends cdktf.TerraformResource {
       dynamodb: cdktf.listMapper(iotTopicRuleDynamodbToTerraform)(this._dynamodb),
       dynamodbv2: cdktf.listMapper(iotTopicRuleDynamodbv2ToTerraform)(this._dynamodbv2),
       elasticsearch: cdktf.listMapper(iotTopicRuleElasticsearchToTerraform)(this._elasticsearch),
-      error_action: iotTopicRuleErrorActionToTerraform(this._errorAction),
+      error_action: iotTopicRuleErrorActionToTerraform(this._errorAction.internalValue),
       firehose: cdktf.listMapper(iotTopicRuleFirehoseToTerraform)(this._firehose),
       iot_analytics: cdktf.listMapper(iotTopicRuleIotAnalyticsToTerraform)(this._iotAnalytics),
       iot_events: cdktf.listMapper(iotTopicRuleIotEventsToTerraform)(this._iotEvents),

@@ -87,12 +87,12 @@ export class DataAwsEc2InstanceTypes extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsEc2InstanceTypesFilter[] | undefined; 
+  private _filter?: DataAwsEc2InstanceTypesFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsEc2InstanceTypesFilter[] | undefined) {
+  public set filter(value: DataAwsEc2InstanceTypesFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -100,7 +100,7 @@ export class DataAwsEc2InstanceTypes extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

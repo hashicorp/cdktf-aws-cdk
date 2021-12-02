@@ -94,6 +94,67 @@ export class EksIdentityProviderConfigOidcOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EksIdentityProviderConfigOidc | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._clientId) {
+      hasAnyValues = true;
+      internalValueResult.clientId = this._clientId;
+    }
+    if (this._groupsClaim) {
+      hasAnyValues = true;
+      internalValueResult.groupsClaim = this._groupsClaim;
+    }
+    if (this._groupsPrefix) {
+      hasAnyValues = true;
+      internalValueResult.groupsPrefix = this._groupsPrefix;
+    }
+    if (this._identityProviderConfigName) {
+      hasAnyValues = true;
+      internalValueResult.identityProviderConfigName = this._identityProviderConfigName;
+    }
+    if (this._issuerUrl) {
+      hasAnyValues = true;
+      internalValueResult.issuerUrl = this._issuerUrl;
+    }
+    if (this._requiredClaims) {
+      hasAnyValues = true;
+      internalValueResult.requiredClaims = this._requiredClaims;
+    }
+    if (this._usernameClaim) {
+      hasAnyValues = true;
+      internalValueResult.usernameClaim = this._usernameClaim;
+    }
+    if (this._usernamePrefix) {
+      hasAnyValues = true;
+      internalValueResult.usernamePrefix = this._usernamePrefix;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EksIdentityProviderConfigOidc | undefined) {
+    if (value === undefined) {
+      this._clientId = undefined;
+      this._groupsClaim = undefined;
+      this._groupsPrefix = undefined;
+      this._identityProviderConfigName = undefined;
+      this._issuerUrl = undefined;
+      this._requiredClaims = undefined;
+      this._usernameClaim = undefined;
+      this._usernamePrefix = undefined;
+    }
+    else {
+      this._clientId = value.clientId;
+      this._groupsClaim = value.groupsClaim;
+      this._groupsPrefix = value.groupsPrefix;
+      this._identityProviderConfigName = value.identityProviderConfigName;
+      this._issuerUrl = value.issuerUrl;
+      this._requiredClaims = value.requiredClaims;
+      this._usernameClaim = value.usernameClaim;
+      this._usernamePrefix = value.usernamePrefix;
+    }
+  }
+
   // client_id - computed: false, optional: false, required: true
   private _clientId?: string; 
   public get clientId() {
@@ -104,15 +165,15 @@ export class EksIdentityProviderConfigOidcOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get clientIdInput() {
-    return this._clientId
+    return this._clientId;
   }
 
   // groups_claim - computed: false, optional: true, required: false
-  private _groupsClaim?: string | undefined; 
+  private _groupsClaim?: string; 
   public get groupsClaim() {
     return this.getStringAttribute('groups_claim');
   }
-  public set groupsClaim(value: string | undefined) {
+  public set groupsClaim(value: string) {
     this._groupsClaim = value;
   }
   public resetGroupsClaim() {
@@ -120,15 +181,15 @@ export class EksIdentityProviderConfigOidcOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get groupsClaimInput() {
-    return this._groupsClaim
+    return this._groupsClaim;
   }
 
   // groups_prefix - computed: false, optional: true, required: false
-  private _groupsPrefix?: string | undefined; 
+  private _groupsPrefix?: string; 
   public get groupsPrefix() {
     return this.getStringAttribute('groups_prefix');
   }
-  public set groupsPrefix(value: string | undefined) {
+  public set groupsPrefix(value: string) {
     this._groupsPrefix = value;
   }
   public resetGroupsPrefix() {
@@ -136,7 +197,7 @@ export class EksIdentityProviderConfigOidcOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get groupsPrefixInput() {
-    return this._groupsPrefix
+    return this._groupsPrefix;
   }
 
   // identity_provider_config_name - computed: false, optional: false, required: true
@@ -149,7 +210,7 @@ export class EksIdentityProviderConfigOidcOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get identityProviderConfigNameInput() {
-    return this._identityProviderConfigName
+    return this._identityProviderConfigName;
   }
 
   // issuer_url - computed: false, optional: false, required: true
@@ -162,16 +223,16 @@ export class EksIdentityProviderConfigOidcOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get issuerUrlInput() {
-    return this._issuerUrl
+    return this._issuerUrl;
   }
 
   // required_claims - computed: false, optional: true, required: false
-  private _requiredClaims?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _requiredClaims?: { [key: string]: string } | cdktf.IResolvable; 
   public get requiredClaims() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('required_claims') as any;
   }
-  public set requiredClaims(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set requiredClaims(value: { [key: string]: string } | cdktf.IResolvable) {
     this._requiredClaims = value;
   }
   public resetRequiredClaims() {
@@ -179,15 +240,15 @@ export class EksIdentityProviderConfigOidcOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get requiredClaimsInput() {
-    return this._requiredClaims
+    return this._requiredClaims;
   }
 
   // username_claim - computed: false, optional: true, required: false
-  private _usernameClaim?: string | undefined; 
+  private _usernameClaim?: string; 
   public get usernameClaim() {
     return this.getStringAttribute('username_claim');
   }
-  public set usernameClaim(value: string | undefined) {
+  public set usernameClaim(value: string) {
     this._usernameClaim = value;
   }
   public resetUsernameClaim() {
@@ -195,15 +256,15 @@ export class EksIdentityProviderConfigOidcOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get usernameClaimInput() {
-    return this._usernameClaim
+    return this._usernameClaim;
   }
 
   // username_prefix - computed: false, optional: true, required: false
-  private _usernamePrefix?: string | undefined; 
+  private _usernamePrefix?: string; 
   public get usernamePrefix() {
     return this.getStringAttribute('username_prefix');
   }
-  public set usernamePrefix(value: string | undefined) {
+  public set usernamePrefix(value: string) {
     this._usernamePrefix = value;
   }
   public resetUsernamePrefix() {
@@ -211,7 +272,7 @@ export class EksIdentityProviderConfigOidcOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get usernamePrefixInput() {
-    return this._usernamePrefix
+    return this._usernamePrefix;
   }
 }
 export interface EksIdentityProviderConfigTimeouts {
@@ -246,12 +307,37 @@ export class EksIdentityProviderConfigTimeoutsOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EksIdentityProviderConfigTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EksIdentityProviderConfigTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -259,15 +345,15 @@ export class EksIdentityProviderConfigTimeoutsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -275,7 +361,7 @@ export class EksIdentityProviderConfigTimeoutsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -314,8 +400,8 @@ export class EksIdentityProviderConfig extends cdktf.TerraformResource {
     this._clusterName = config.clusterName;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._oidc = config.oidc;
-    this._timeouts = config.timeouts;
+    this._oidc.internalValue = config.oidc;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -337,7 +423,7 @@ export class EksIdentityProviderConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterNameInput() {
-    return this._clusterName
+    return this._clusterName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -351,12 +437,12 @@ export class EksIdentityProviderConfig extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -364,16 +450,16 @@ export class EksIdentityProviderConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -381,38 +467,36 @@ export class EksIdentityProviderConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // oidc - computed: false, optional: false, required: true
-  private _oidc?: EksIdentityProviderConfigOidc; 
-  private __oidcOutput = new EksIdentityProviderConfigOidcOutputReference(this as any, "oidc", true);
+  private _oidc = new EksIdentityProviderConfigOidcOutputReference(this as any, "oidc", true);
   public get oidc() {
-    return this.__oidcOutput;
+    return this._oidc;
   }
   public putOidc(value: EksIdentityProviderConfigOidc) {
-    this._oidc = value;
+    this._oidc.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get oidcInput() {
-    return this._oidc
+    return this._oidc.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: EksIdentityProviderConfigTimeouts | undefined; 
-  private __timeoutsOutput = new EksIdentityProviderConfigTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new EksIdentityProviderConfigTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: EksIdentityProviderConfigTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: EksIdentityProviderConfigTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -424,8 +508,8 @@ export class EksIdentityProviderConfig extends cdktf.TerraformResource {
       cluster_name: cdktf.stringToTerraform(this._clusterName),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      oidc: eksIdentityProviderConfigOidcToTerraform(this._oidc),
-      timeouts: eksIdentityProviderConfigTimeoutsToTerraform(this._timeouts),
+      oidc: eksIdentityProviderConfigOidcToTerraform(this._oidc.internalValue),
+      timeouts: eksIdentityProviderConfigTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

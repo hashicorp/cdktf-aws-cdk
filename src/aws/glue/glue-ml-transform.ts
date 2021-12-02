@@ -150,12 +150,49 @@ export class GlueMlTransformParametersFindMatchesParametersOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueMlTransformParametersFindMatchesParameters | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._accuracyCostTradeOff) {
+      hasAnyValues = true;
+      internalValueResult.accuracyCostTradeOff = this._accuracyCostTradeOff;
+    }
+    if (this._enforceProvidedLabels) {
+      hasAnyValues = true;
+      internalValueResult.enforceProvidedLabels = this._enforceProvidedLabels;
+    }
+    if (this._precisionRecallTradeOff) {
+      hasAnyValues = true;
+      internalValueResult.precisionRecallTradeOff = this._precisionRecallTradeOff;
+    }
+    if (this._primaryKeyColumnName) {
+      hasAnyValues = true;
+      internalValueResult.primaryKeyColumnName = this._primaryKeyColumnName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueMlTransformParametersFindMatchesParameters | undefined) {
+    if (value === undefined) {
+      this._accuracyCostTradeOff = undefined;
+      this._enforceProvidedLabels = undefined;
+      this._precisionRecallTradeOff = undefined;
+      this._primaryKeyColumnName = undefined;
+    }
+    else {
+      this._accuracyCostTradeOff = value.accuracyCostTradeOff;
+      this._enforceProvidedLabels = value.enforceProvidedLabels;
+      this._precisionRecallTradeOff = value.precisionRecallTradeOff;
+      this._primaryKeyColumnName = value.primaryKeyColumnName;
+    }
+  }
+
   // accuracy_cost_trade_off - computed: false, optional: true, required: false
-  private _accuracyCostTradeOff?: number | undefined; 
+  private _accuracyCostTradeOff?: number; 
   public get accuracyCostTradeOff() {
     return this.getNumberAttribute('accuracy_cost_trade_off');
   }
-  public set accuracyCostTradeOff(value: number | undefined) {
+  public set accuracyCostTradeOff(value: number) {
     this._accuracyCostTradeOff = value;
   }
   public resetAccuracyCostTradeOff() {
@@ -163,15 +200,15 @@ export class GlueMlTransformParametersFindMatchesParametersOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get accuracyCostTradeOffInput() {
-    return this._accuracyCostTradeOff
+    return this._accuracyCostTradeOff;
   }
 
   // enforce_provided_labels - computed: false, optional: true, required: false
-  private _enforceProvidedLabels?: boolean | cdktf.IResolvable | undefined; 
+  private _enforceProvidedLabels?: boolean | cdktf.IResolvable; 
   public get enforceProvidedLabels() {
     return this.getBooleanAttribute('enforce_provided_labels') as any;
   }
-  public set enforceProvidedLabels(value: boolean | cdktf.IResolvable | undefined) {
+  public set enforceProvidedLabels(value: boolean | cdktf.IResolvable) {
     this._enforceProvidedLabels = value;
   }
   public resetEnforceProvidedLabels() {
@@ -179,15 +216,15 @@ export class GlueMlTransformParametersFindMatchesParametersOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get enforceProvidedLabelsInput() {
-    return this._enforceProvidedLabels
+    return this._enforceProvidedLabels;
   }
 
   // precision_recall_trade_off - computed: false, optional: true, required: false
-  private _precisionRecallTradeOff?: number | undefined; 
+  private _precisionRecallTradeOff?: number; 
   public get precisionRecallTradeOff() {
     return this.getNumberAttribute('precision_recall_trade_off');
   }
-  public set precisionRecallTradeOff(value: number | undefined) {
+  public set precisionRecallTradeOff(value: number) {
     this._precisionRecallTradeOff = value;
   }
   public resetPrecisionRecallTradeOff() {
@@ -195,15 +232,15 @@ export class GlueMlTransformParametersFindMatchesParametersOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get precisionRecallTradeOffInput() {
-    return this._precisionRecallTradeOff
+    return this._precisionRecallTradeOff;
   }
 
   // primary_key_column_name - computed: false, optional: true, required: false
-  private _primaryKeyColumnName?: string | undefined; 
+  private _primaryKeyColumnName?: string; 
   public get primaryKeyColumnName() {
     return this.getStringAttribute('primary_key_column_name');
   }
-  public set primaryKeyColumnName(value: string | undefined) {
+  public set primaryKeyColumnName(value: string) {
     this._primaryKeyColumnName = value;
   }
   public resetPrimaryKeyColumnName() {
@@ -211,7 +248,7 @@ export class GlueMlTransformParametersFindMatchesParametersOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get primaryKeyColumnNameInput() {
-    return this._primaryKeyColumnName
+    return this._primaryKeyColumnName;
   }
 }
 export interface GlueMlTransformParameters {
@@ -248,6 +285,31 @@ export class GlueMlTransformParametersOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueMlTransformParameters | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._transformType) {
+      hasAnyValues = true;
+      internalValueResult.transformType = this._transformType;
+    }
+    if (this._findMatchesParameters) {
+      hasAnyValues = true;
+      internalValueResult.findMatchesParameters = this._findMatchesParameters?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueMlTransformParameters | undefined) {
+    if (value === undefined) {
+      this._transformType = undefined;
+      this._findMatchesParameters.internalValue = undefined;
+    }
+    else {
+      this._transformType = value.transformType;
+      this._findMatchesParameters.internalValue = value.findMatchesParameters;
+    }
+  }
+
   // transform_type - computed: false, optional: false, required: true
   private _transformType?: string; 
   public get transformType() {
@@ -258,21 +320,20 @@ export class GlueMlTransformParametersOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get transformTypeInput() {
-    return this._transformType
+    return this._transformType;
   }
 
   // find_matches_parameters - computed: false, optional: false, required: true
-  private _findMatchesParameters?: GlueMlTransformParametersFindMatchesParameters; 
-  private __findMatchesParametersOutput = new GlueMlTransformParametersFindMatchesParametersOutputReference(this as any, "find_matches_parameters", true);
+  private _findMatchesParameters = new GlueMlTransformParametersFindMatchesParametersOutputReference(this as any, "find_matches_parameters", true);
   public get findMatchesParameters() {
-    return this.__findMatchesParametersOutput;
+    return this._findMatchesParameters;
   }
   public putFindMatchesParameters(value: GlueMlTransformParametersFindMatchesParameters) {
-    this._findMatchesParameters = value;
+    this._findMatchesParameters.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get findMatchesParametersInput() {
-    return this._findMatchesParameters
+    return this._findMatchesParameters.internalValue;
   }
 }
 
@@ -320,7 +381,7 @@ export class GlueMlTransform extends cdktf.TerraformResource {
     this._timeout = config.timeout;
     this._workerType = config.workerType;
     this._inputRecordTables = config.inputRecordTables;
-    this._parameters = config.parameters;
+    this._parameters.internalValue = config.parameters;
   }
 
   // ==========
@@ -333,11 +394,11 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -345,15 +406,15 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // glue_version - computed: true, optional: true, required: false
-  private _glueVersion?: string | undefined; 
+  private _glueVersion?: string; 
   public get glueVersion() {
     return this.getStringAttribute('glue_version');
   }
-  public set glueVersion(value: string | undefined) {
+  public set glueVersion(value: string) {
     this._glueVersion = value;
   }
   public resetGlueVersion() {
@@ -361,7 +422,7 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get glueVersionInput() {
-    return this._glueVersion
+    return this._glueVersion;
   }
 
   // id - computed: true, optional: true, required: false
@@ -375,11 +436,11 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
 
   // max_capacity - computed: true, optional: true, required: false
-  private _maxCapacity?: number | undefined; 
+  private _maxCapacity?: number; 
   public get maxCapacity() {
     return this.getNumberAttribute('max_capacity');
   }
-  public set maxCapacity(value: number | undefined) {
+  public set maxCapacity(value: number) {
     this._maxCapacity = value;
   }
   public resetMaxCapacity() {
@@ -387,15 +448,15 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxCapacityInput() {
-    return this._maxCapacity
+    return this._maxCapacity;
   }
 
   // max_retries - computed: false, optional: true, required: false
-  private _maxRetries?: number | undefined; 
+  private _maxRetries?: number; 
   public get maxRetries() {
     return this.getNumberAttribute('max_retries');
   }
-  public set maxRetries(value: number | undefined) {
+  public set maxRetries(value: number) {
     this._maxRetries = value;
   }
   public resetMaxRetries() {
@@ -403,7 +464,7 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxRetriesInput() {
-    return this._maxRetries
+    return this._maxRetries;
   }
 
   // name - computed: false, optional: false, required: true
@@ -416,15 +477,15 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // number_of_workers - computed: false, optional: true, required: false
-  private _numberOfWorkers?: number | undefined; 
+  private _numberOfWorkers?: number; 
   public get numberOfWorkers() {
     return this.getNumberAttribute('number_of_workers');
   }
-  public set numberOfWorkers(value: number | undefined) {
+  public set numberOfWorkers(value: number) {
     this._numberOfWorkers = value;
   }
   public resetNumberOfWorkers() {
@@ -432,7 +493,7 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get numberOfWorkersInput() {
-    return this._numberOfWorkers
+    return this._numberOfWorkers;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -445,7 +506,7 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // schema - computed: true, optional: false, required: false
@@ -454,12 +515,12 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -467,16 +528,16 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -484,15 +545,15 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // timeout - computed: false, optional: true, required: false
-  private _timeout?: number | undefined; 
+  private _timeout?: number; 
   public get timeout() {
     return this.getNumberAttribute('timeout');
   }
-  public set timeout(value: number | undefined) {
+  public set timeout(value: number) {
     this._timeout = value;
   }
   public resetTimeout() {
@@ -500,15 +561,15 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutInput() {
-    return this._timeout
+    return this._timeout;
   }
 
   // worker_type - computed: false, optional: true, required: false
-  private _workerType?: string | undefined; 
+  private _workerType?: string; 
   public get workerType() {
     return this.getStringAttribute('worker_type');
   }
-  public set workerType(value: string | undefined) {
+  public set workerType(value: string) {
     this._workerType = value;
   }
   public resetWorkerType() {
@@ -516,7 +577,7 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get workerTypeInput() {
-    return this._workerType
+    return this._workerType;
   }
 
   // input_record_tables - computed: false, optional: false, required: true
@@ -530,21 +591,20 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get inputRecordTablesInput() {
-    return this._inputRecordTables
+    return this._inputRecordTables;
   }
 
   // parameters - computed: false, optional: false, required: true
-  private _parameters?: GlueMlTransformParameters; 
-  private __parametersOutput = new GlueMlTransformParametersOutputReference(this as any, "parameters", true);
+  private _parameters = new GlueMlTransformParametersOutputReference(this as any, "parameters", true);
   public get parameters() {
-    return this.__parametersOutput;
+    return this._parameters;
   }
   public putParameters(value: GlueMlTransformParameters) {
-    this._parameters = value;
+    this._parameters.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInput() {
-    return this._parameters
+    return this._parameters.internalValue;
   }
 
   // =========
@@ -565,7 +625,7 @@ export class GlueMlTransform extends cdktf.TerraformResource {
       timeout: cdktf.numberToTerraform(this._timeout),
       worker_type: cdktf.stringToTerraform(this._workerType),
       input_record_tables: cdktf.listMapper(glueMlTransformInputRecordTablesToTerraform)(this._inputRecordTables),
-      parameters: glueMlTransformParametersToTerraform(this._parameters),
+      parameters: glueMlTransformParametersToTerraform(this._parameters.internalValue),
     };
   }
 }

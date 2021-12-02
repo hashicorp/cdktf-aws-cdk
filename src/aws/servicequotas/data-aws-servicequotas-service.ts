@@ -72,7 +72,7 @@ export class DataAwsServicequotasService extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceNameInput() {
-    return this._serviceName
+    return this._serviceName;
   }
 
   // =========

@@ -193,6 +193,31 @@ export class EcsServiceDeploymentCircuitBreakerOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcsServiceDeploymentCircuitBreaker | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enable) {
+      hasAnyValues = true;
+      internalValueResult.enable = this._enable;
+    }
+    if (this._rollback) {
+      hasAnyValues = true;
+      internalValueResult.rollback = this._rollback;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcsServiceDeploymentCircuitBreaker | undefined) {
+    if (value === undefined) {
+      this._enable = undefined;
+      this._rollback = undefined;
+    }
+    else {
+      this._enable = value.enable;
+      this._rollback = value.rollback;
+    }
+  }
+
   // enable - computed: false, optional: false, required: true
   private _enable?: boolean | cdktf.IResolvable; 
   public get enable() {
@@ -203,7 +228,7 @@ export class EcsServiceDeploymentCircuitBreakerOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get enableInput() {
-    return this._enable
+    return this._enable;
   }
 
   // rollback - computed: false, optional: false, required: true
@@ -216,7 +241,7 @@ export class EcsServiceDeploymentCircuitBreakerOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get rollbackInput() {
-    return this._rollback
+    return this._rollback;
   }
 }
 export interface EcsServiceDeploymentController {
@@ -246,12 +271,31 @@ export class EcsServiceDeploymentControllerOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcsServiceDeploymentController | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcsServiceDeploymentController | undefined) {
+    if (value === undefined) {
+      this._type = undefined;
+    }
+    else {
+      this._type = value.type;
+    }
+  }
+
   // type - computed: false, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -259,7 +303,7 @@ export class EcsServiceDeploymentControllerOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 export interface EcsServiceLoadBalancer {
@@ -331,12 +375,43 @@ export class EcsServiceNetworkConfigurationOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcsServiceNetworkConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._assignPublicIp) {
+      hasAnyValues = true;
+      internalValueResult.assignPublicIp = this._assignPublicIp;
+    }
+    if (this._securityGroups) {
+      hasAnyValues = true;
+      internalValueResult.securityGroups = this._securityGroups;
+    }
+    if (this._subnets) {
+      hasAnyValues = true;
+      internalValueResult.subnets = this._subnets;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcsServiceNetworkConfiguration | undefined) {
+    if (value === undefined) {
+      this._assignPublicIp = undefined;
+      this._securityGroups = undefined;
+      this._subnets = undefined;
+    }
+    else {
+      this._assignPublicIp = value.assignPublicIp;
+      this._securityGroups = value.securityGroups;
+      this._subnets = value.subnets;
+    }
+  }
+
   // assign_public_ip - computed: false, optional: true, required: false
-  private _assignPublicIp?: boolean | cdktf.IResolvable | undefined; 
+  private _assignPublicIp?: boolean | cdktf.IResolvable; 
   public get assignPublicIp() {
     return this.getBooleanAttribute('assign_public_ip') as any;
   }
-  public set assignPublicIp(value: boolean | cdktf.IResolvable | undefined) {
+  public set assignPublicIp(value: boolean | cdktf.IResolvable) {
     this._assignPublicIp = value;
   }
   public resetAssignPublicIp() {
@@ -344,15 +419,15 @@ export class EcsServiceNetworkConfigurationOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get assignPublicIpInput() {
-    return this._assignPublicIp
+    return this._assignPublicIp;
   }
 
   // security_groups - computed: false, optional: true, required: false
-  private _securityGroups?: string[] | undefined; 
+  private _securityGroups?: string[]; 
   public get securityGroups() {
     return this.getListAttribute('security_groups');
   }
-  public set securityGroups(value: string[] | undefined) {
+  public set securityGroups(value: string[]) {
     this._securityGroups = value;
   }
   public resetSecurityGroups() {
@@ -360,7 +435,7 @@ export class EcsServiceNetworkConfigurationOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupsInput() {
-    return this._securityGroups
+    return this._securityGroups;
   }
 
   // subnets - computed: false, optional: false, required: true
@@ -373,7 +448,7 @@ export class EcsServiceNetworkConfigurationOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get subnetsInput() {
-    return this._subnets
+    return this._subnets;
   }
 }
 export interface EcsServiceOrderedPlacementStrategy {
@@ -462,12 +537,49 @@ export class EcsServiceServiceRegistriesOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcsServiceServiceRegistries | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._containerName) {
+      hasAnyValues = true;
+      internalValueResult.containerName = this._containerName;
+    }
+    if (this._containerPort) {
+      hasAnyValues = true;
+      internalValueResult.containerPort = this._containerPort;
+    }
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    if (this._registryArn) {
+      hasAnyValues = true;
+      internalValueResult.registryArn = this._registryArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcsServiceServiceRegistries | undefined) {
+    if (value === undefined) {
+      this._containerName = undefined;
+      this._containerPort = undefined;
+      this._port = undefined;
+      this._registryArn = undefined;
+    }
+    else {
+      this._containerName = value.containerName;
+      this._containerPort = value.containerPort;
+      this._port = value.port;
+      this._registryArn = value.registryArn;
+    }
+  }
+
   // container_name - computed: false, optional: true, required: false
-  private _containerName?: string | undefined; 
+  private _containerName?: string; 
   public get containerName() {
     return this.getStringAttribute('container_name');
   }
-  public set containerName(value: string | undefined) {
+  public set containerName(value: string) {
     this._containerName = value;
   }
   public resetContainerName() {
@@ -475,15 +587,15 @@ export class EcsServiceServiceRegistriesOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get containerNameInput() {
-    return this._containerName
+    return this._containerName;
   }
 
   // container_port - computed: false, optional: true, required: false
-  private _containerPort?: number | undefined; 
+  private _containerPort?: number; 
   public get containerPort() {
     return this.getNumberAttribute('container_port');
   }
-  public set containerPort(value: number | undefined) {
+  public set containerPort(value: number) {
     this._containerPort = value;
   }
   public resetContainerPort() {
@@ -491,15 +603,15 @@ export class EcsServiceServiceRegistriesOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get containerPortInput() {
-    return this._containerPort
+    return this._containerPort;
   }
 
   // port - computed: false, optional: true, required: false
-  private _port?: number | undefined; 
+  private _port?: number; 
   public get port() {
     return this.getNumberAttribute('port');
   }
-  public set port(value: number | undefined) {
+  public set port(value: number) {
     this._port = value;
   }
   public resetPort() {
@@ -507,7 +619,7 @@ export class EcsServiceServiceRegistriesOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 
   // registry_arn - computed: false, optional: false, required: true
@@ -520,7 +632,7 @@ export class EcsServiceServiceRegistriesOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get registryArnInput() {
-    return this._registryArn
+    return this._registryArn;
   }
 }
 export interface EcsServiceTimeouts {
@@ -550,12 +662,31 @@ export class EcsServiceTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcsServiceTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcsServiceTimeouts | undefined) {
+    if (value === undefined) {
+      this._delete = undefined;
+    }
+    else {
+      this._delete = value.delete;
+    }
+  }
+
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -563,7 +694,7 @@ export class EcsServiceTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -618,14 +749,14 @@ export class EcsService extends cdktf.TerraformResource {
     this._taskDefinition = config.taskDefinition;
     this._waitForSteadyState = config.waitForSteadyState;
     this._capacityProviderStrategy = config.capacityProviderStrategy;
-    this._deploymentCircuitBreaker = config.deploymentCircuitBreaker;
-    this._deploymentController = config.deploymentController;
+    this._deploymentCircuitBreaker.internalValue = config.deploymentCircuitBreaker;
+    this._deploymentController.internalValue = config.deploymentController;
     this._loadBalancer = config.loadBalancer;
-    this._networkConfiguration = config.networkConfiguration;
+    this._networkConfiguration.internalValue = config.networkConfiguration;
     this._orderedPlacementStrategy = config.orderedPlacementStrategy;
     this._placementConstraints = config.placementConstraints;
-    this._serviceRegistries = config.serviceRegistries;
-    this._timeouts = config.timeouts;
+    this._serviceRegistries.internalValue = config.serviceRegistries;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -633,11 +764,11 @@ export class EcsService extends cdktf.TerraformResource {
   // ==========
 
   // cluster - computed: true, optional: true, required: false
-  private _cluster?: string | undefined; 
+  private _cluster?: string; 
   public get cluster() {
     return this.getStringAttribute('cluster');
   }
-  public set cluster(value: string | undefined) {
+  public set cluster(value: string) {
     this._cluster = value;
   }
   public resetCluster() {
@@ -645,15 +776,15 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterInput() {
-    return this._cluster
+    return this._cluster;
   }
 
   // deployment_maximum_percent - computed: false, optional: true, required: false
-  private _deploymentMaximumPercent?: number | undefined; 
+  private _deploymentMaximumPercent?: number; 
   public get deploymentMaximumPercent() {
     return this.getNumberAttribute('deployment_maximum_percent');
   }
-  public set deploymentMaximumPercent(value: number | undefined) {
+  public set deploymentMaximumPercent(value: number) {
     this._deploymentMaximumPercent = value;
   }
   public resetDeploymentMaximumPercent() {
@@ -661,15 +792,15 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentMaximumPercentInput() {
-    return this._deploymentMaximumPercent
+    return this._deploymentMaximumPercent;
   }
 
   // deployment_minimum_healthy_percent - computed: false, optional: true, required: false
-  private _deploymentMinimumHealthyPercent?: number | undefined; 
+  private _deploymentMinimumHealthyPercent?: number; 
   public get deploymentMinimumHealthyPercent() {
     return this.getNumberAttribute('deployment_minimum_healthy_percent');
   }
-  public set deploymentMinimumHealthyPercent(value: number | undefined) {
+  public set deploymentMinimumHealthyPercent(value: number) {
     this._deploymentMinimumHealthyPercent = value;
   }
   public resetDeploymentMinimumHealthyPercent() {
@@ -677,15 +808,15 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentMinimumHealthyPercentInput() {
-    return this._deploymentMinimumHealthyPercent
+    return this._deploymentMinimumHealthyPercent;
   }
 
   // desired_count - computed: false, optional: true, required: false
-  private _desiredCount?: number | undefined; 
+  private _desiredCount?: number; 
   public get desiredCount() {
     return this.getNumberAttribute('desired_count');
   }
-  public set desiredCount(value: number | undefined) {
+  public set desiredCount(value: number) {
     this._desiredCount = value;
   }
   public resetDesiredCount() {
@@ -693,15 +824,15 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get desiredCountInput() {
-    return this._desiredCount
+    return this._desiredCount;
   }
 
   // enable_ecs_managed_tags - computed: false, optional: true, required: false
-  private _enableEcsManagedTags?: boolean | cdktf.IResolvable | undefined; 
+  private _enableEcsManagedTags?: boolean | cdktf.IResolvable; 
   public get enableEcsManagedTags() {
     return this.getBooleanAttribute('enable_ecs_managed_tags') as any;
   }
-  public set enableEcsManagedTags(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableEcsManagedTags(value: boolean | cdktf.IResolvable) {
     this._enableEcsManagedTags = value;
   }
   public resetEnableEcsManagedTags() {
@@ -709,15 +840,15 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableEcsManagedTagsInput() {
-    return this._enableEcsManagedTags
+    return this._enableEcsManagedTags;
   }
 
   // enable_execute_command - computed: false, optional: true, required: false
-  private _enableExecuteCommand?: boolean | cdktf.IResolvable | undefined; 
+  private _enableExecuteCommand?: boolean | cdktf.IResolvable; 
   public get enableExecuteCommand() {
     return this.getBooleanAttribute('enable_execute_command') as any;
   }
-  public set enableExecuteCommand(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableExecuteCommand(value: boolean | cdktf.IResolvable) {
     this._enableExecuteCommand = value;
   }
   public resetEnableExecuteCommand() {
@@ -725,15 +856,15 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableExecuteCommandInput() {
-    return this._enableExecuteCommand
+    return this._enableExecuteCommand;
   }
 
   // force_new_deployment - computed: false, optional: true, required: false
-  private _forceNewDeployment?: boolean | cdktf.IResolvable | undefined; 
+  private _forceNewDeployment?: boolean | cdktf.IResolvable; 
   public get forceNewDeployment() {
     return this.getBooleanAttribute('force_new_deployment') as any;
   }
-  public set forceNewDeployment(value: boolean | cdktf.IResolvable | undefined) {
+  public set forceNewDeployment(value: boolean | cdktf.IResolvable) {
     this._forceNewDeployment = value;
   }
   public resetForceNewDeployment() {
@@ -741,15 +872,15 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get forceNewDeploymentInput() {
-    return this._forceNewDeployment
+    return this._forceNewDeployment;
   }
 
   // health_check_grace_period_seconds - computed: false, optional: true, required: false
-  private _healthCheckGracePeriodSeconds?: number | undefined; 
+  private _healthCheckGracePeriodSeconds?: number; 
   public get healthCheckGracePeriodSeconds() {
     return this.getNumberAttribute('health_check_grace_period_seconds');
   }
-  public set healthCheckGracePeriodSeconds(value: number | undefined) {
+  public set healthCheckGracePeriodSeconds(value: number) {
     this._healthCheckGracePeriodSeconds = value;
   }
   public resetHealthCheckGracePeriodSeconds() {
@@ -757,15 +888,15 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get healthCheckGracePeriodSecondsInput() {
-    return this._healthCheckGracePeriodSeconds
+    return this._healthCheckGracePeriodSeconds;
   }
 
   // iam_role - computed: true, optional: true, required: false
-  private _iamRole?: string | undefined; 
+  private _iamRole?: string; 
   public get iamRole() {
     return this.getStringAttribute('iam_role');
   }
-  public set iamRole(value: string | undefined) {
+  public set iamRole(value: string) {
     this._iamRole = value;
   }
   public resetIamRole() {
@@ -773,7 +904,7 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iamRoleInput() {
-    return this._iamRole
+    return this._iamRole;
   }
 
   // id - computed: true, optional: true, required: false
@@ -782,11 +913,11 @@ export class EcsService extends cdktf.TerraformResource {
   }
 
   // launch_type - computed: true, optional: true, required: false
-  private _launchType?: string | undefined; 
+  private _launchType?: string; 
   public get launchType() {
     return this.getStringAttribute('launch_type');
   }
-  public set launchType(value: string | undefined) {
+  public set launchType(value: string) {
     this._launchType = value;
   }
   public resetLaunchType() {
@@ -794,7 +925,7 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get launchTypeInput() {
-    return this._launchType
+    return this._launchType;
   }
 
   // name - computed: false, optional: false, required: true
@@ -807,15 +938,15 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // platform_version - computed: true, optional: true, required: false
-  private _platformVersion?: string | undefined; 
+  private _platformVersion?: string; 
   public get platformVersion() {
     return this.getStringAttribute('platform_version');
   }
-  public set platformVersion(value: string | undefined) {
+  public set platformVersion(value: string) {
     this._platformVersion = value;
   }
   public resetPlatformVersion() {
@@ -823,15 +954,15 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get platformVersionInput() {
-    return this._platformVersion
+    return this._platformVersion;
   }
 
   // propagate_tags - computed: false, optional: true, required: false
-  private _propagateTags?: string | undefined; 
+  private _propagateTags?: string; 
   public get propagateTags() {
     return this.getStringAttribute('propagate_tags');
   }
-  public set propagateTags(value: string | undefined) {
+  public set propagateTags(value: string) {
     this._propagateTags = value;
   }
   public resetPropagateTags() {
@@ -839,15 +970,15 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get propagateTagsInput() {
-    return this._propagateTags
+    return this._propagateTags;
   }
 
   // scheduling_strategy - computed: false, optional: true, required: false
-  private _schedulingStrategy?: string | undefined; 
+  private _schedulingStrategy?: string; 
   public get schedulingStrategy() {
     return this.getStringAttribute('scheduling_strategy');
   }
-  public set schedulingStrategy(value: string | undefined) {
+  public set schedulingStrategy(value: string) {
     this._schedulingStrategy = value;
   }
   public resetSchedulingStrategy() {
@@ -855,16 +986,16 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get schedulingStrategyInput() {
-    return this._schedulingStrategy
+    return this._schedulingStrategy;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -872,16 +1003,16 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -889,15 +1020,15 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // task_definition - computed: false, optional: true, required: false
-  private _taskDefinition?: string | undefined; 
+  private _taskDefinition?: string; 
   public get taskDefinition() {
     return this.getStringAttribute('task_definition');
   }
-  public set taskDefinition(value: string | undefined) {
+  public set taskDefinition(value: string) {
     this._taskDefinition = value;
   }
   public resetTaskDefinition() {
@@ -905,15 +1036,15 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get taskDefinitionInput() {
-    return this._taskDefinition
+    return this._taskDefinition;
   }
 
   // wait_for_steady_state - computed: false, optional: true, required: false
-  private _waitForSteadyState?: boolean | cdktf.IResolvable | undefined; 
+  private _waitForSteadyState?: boolean | cdktf.IResolvable; 
   public get waitForSteadyState() {
     return this.getBooleanAttribute('wait_for_steady_state') as any;
   }
-  public set waitForSteadyState(value: boolean | cdktf.IResolvable | undefined) {
+  public set waitForSteadyState(value: boolean | cdktf.IResolvable) {
     this._waitForSteadyState = value;
   }
   public resetWaitForSteadyState() {
@@ -921,16 +1052,16 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get waitForSteadyStateInput() {
-    return this._waitForSteadyState
+    return this._waitForSteadyState;
   }
 
   // capacity_provider_strategy - computed: false, optional: true, required: false
-  private _capacityProviderStrategy?: EcsServiceCapacityProviderStrategy[] | undefined; 
+  private _capacityProviderStrategy?: EcsServiceCapacityProviderStrategy[]; 
   public get capacityProviderStrategy() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('capacity_provider_strategy') as any;
   }
-  public set capacityProviderStrategy(value: EcsServiceCapacityProviderStrategy[] | undefined) {
+  public set capacityProviderStrategy(value: EcsServiceCapacityProviderStrategy[]) {
     this._capacityProviderStrategy = value;
   }
   public resetCapacityProviderStrategy() {
@@ -938,50 +1069,48 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get capacityProviderStrategyInput() {
-    return this._capacityProviderStrategy
+    return this._capacityProviderStrategy;
   }
 
   // deployment_circuit_breaker - computed: false, optional: true, required: false
-  private _deploymentCircuitBreaker?: EcsServiceDeploymentCircuitBreaker | undefined; 
-  private __deploymentCircuitBreakerOutput = new EcsServiceDeploymentCircuitBreakerOutputReference(this as any, "deployment_circuit_breaker", true);
+  private _deploymentCircuitBreaker = new EcsServiceDeploymentCircuitBreakerOutputReference(this as any, "deployment_circuit_breaker", true);
   public get deploymentCircuitBreaker() {
-    return this.__deploymentCircuitBreakerOutput;
+    return this._deploymentCircuitBreaker;
   }
-  public putDeploymentCircuitBreaker(value: EcsServiceDeploymentCircuitBreaker | undefined) {
-    this._deploymentCircuitBreaker = value;
+  public putDeploymentCircuitBreaker(value: EcsServiceDeploymentCircuitBreaker) {
+    this._deploymentCircuitBreaker.internalValue = value;
   }
   public resetDeploymentCircuitBreaker() {
-    this._deploymentCircuitBreaker = undefined;
+    this._deploymentCircuitBreaker.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentCircuitBreakerInput() {
-    return this._deploymentCircuitBreaker
+    return this._deploymentCircuitBreaker.internalValue;
   }
 
   // deployment_controller - computed: false, optional: true, required: false
-  private _deploymentController?: EcsServiceDeploymentController | undefined; 
-  private __deploymentControllerOutput = new EcsServiceDeploymentControllerOutputReference(this as any, "deployment_controller", true);
+  private _deploymentController = new EcsServiceDeploymentControllerOutputReference(this as any, "deployment_controller", true);
   public get deploymentController() {
-    return this.__deploymentControllerOutput;
+    return this._deploymentController;
   }
-  public putDeploymentController(value: EcsServiceDeploymentController | undefined) {
-    this._deploymentController = value;
+  public putDeploymentController(value: EcsServiceDeploymentController) {
+    this._deploymentController.internalValue = value;
   }
   public resetDeploymentController() {
-    this._deploymentController = undefined;
+    this._deploymentController.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentControllerInput() {
-    return this._deploymentController
+    return this._deploymentController.internalValue;
   }
 
   // load_balancer - computed: false, optional: true, required: false
-  private _loadBalancer?: EcsServiceLoadBalancer[] | undefined; 
+  private _loadBalancer?: EcsServiceLoadBalancer[]; 
   public get loadBalancer() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('load_balancer') as any;
   }
-  public set loadBalancer(value: EcsServiceLoadBalancer[] | undefined) {
+  public set loadBalancer(value: EcsServiceLoadBalancer[]) {
     this._loadBalancer = value;
   }
   public resetLoadBalancer() {
@@ -989,33 +1118,32 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get loadBalancerInput() {
-    return this._loadBalancer
+    return this._loadBalancer;
   }
 
   // network_configuration - computed: false, optional: true, required: false
-  private _networkConfiguration?: EcsServiceNetworkConfiguration | undefined; 
-  private __networkConfigurationOutput = new EcsServiceNetworkConfigurationOutputReference(this as any, "network_configuration", true);
+  private _networkConfiguration = new EcsServiceNetworkConfigurationOutputReference(this as any, "network_configuration", true);
   public get networkConfiguration() {
-    return this.__networkConfigurationOutput;
+    return this._networkConfiguration;
   }
-  public putNetworkConfiguration(value: EcsServiceNetworkConfiguration | undefined) {
-    this._networkConfiguration = value;
+  public putNetworkConfiguration(value: EcsServiceNetworkConfiguration) {
+    this._networkConfiguration.internalValue = value;
   }
   public resetNetworkConfiguration() {
-    this._networkConfiguration = undefined;
+    this._networkConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get networkConfigurationInput() {
-    return this._networkConfiguration
+    return this._networkConfiguration.internalValue;
   }
 
   // ordered_placement_strategy - computed: false, optional: true, required: false
-  private _orderedPlacementStrategy?: EcsServiceOrderedPlacementStrategy[] | undefined; 
+  private _orderedPlacementStrategy?: EcsServiceOrderedPlacementStrategy[]; 
   public get orderedPlacementStrategy() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ordered_placement_strategy') as any;
   }
-  public set orderedPlacementStrategy(value: EcsServiceOrderedPlacementStrategy[] | undefined) {
+  public set orderedPlacementStrategy(value: EcsServiceOrderedPlacementStrategy[]) {
     this._orderedPlacementStrategy = value;
   }
   public resetOrderedPlacementStrategy() {
@@ -1023,16 +1151,16 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get orderedPlacementStrategyInput() {
-    return this._orderedPlacementStrategy
+    return this._orderedPlacementStrategy;
   }
 
   // placement_constraints - computed: false, optional: true, required: false
-  private _placementConstraints?: EcsServicePlacementConstraints[] | undefined; 
+  private _placementConstraints?: EcsServicePlacementConstraints[]; 
   public get placementConstraints() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('placement_constraints') as any;
   }
-  public set placementConstraints(value: EcsServicePlacementConstraints[] | undefined) {
+  public set placementConstraints(value: EcsServicePlacementConstraints[]) {
     this._placementConstraints = value;
   }
   public resetPlacementConstraints() {
@@ -1040,41 +1168,39 @@ export class EcsService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get placementConstraintsInput() {
-    return this._placementConstraints
+    return this._placementConstraints;
   }
 
   // service_registries - computed: false, optional: true, required: false
-  private _serviceRegistries?: EcsServiceServiceRegistries | undefined; 
-  private __serviceRegistriesOutput = new EcsServiceServiceRegistriesOutputReference(this as any, "service_registries", true);
+  private _serviceRegistries = new EcsServiceServiceRegistriesOutputReference(this as any, "service_registries", true);
   public get serviceRegistries() {
-    return this.__serviceRegistriesOutput;
+    return this._serviceRegistries;
   }
-  public putServiceRegistries(value: EcsServiceServiceRegistries | undefined) {
-    this._serviceRegistries = value;
+  public putServiceRegistries(value: EcsServiceServiceRegistries) {
+    this._serviceRegistries.internalValue = value;
   }
   public resetServiceRegistries() {
-    this._serviceRegistries = undefined;
+    this._serviceRegistries.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get serviceRegistriesInput() {
-    return this._serviceRegistries
+    return this._serviceRegistries.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: EcsServiceTimeouts | undefined; 
-  private __timeoutsOutput = new EcsServiceTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new EcsServiceTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: EcsServiceTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: EcsServiceTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -1102,14 +1228,14 @@ export class EcsService extends cdktf.TerraformResource {
       task_definition: cdktf.stringToTerraform(this._taskDefinition),
       wait_for_steady_state: cdktf.booleanToTerraform(this._waitForSteadyState),
       capacity_provider_strategy: cdktf.listMapper(ecsServiceCapacityProviderStrategyToTerraform)(this._capacityProviderStrategy),
-      deployment_circuit_breaker: ecsServiceDeploymentCircuitBreakerToTerraform(this._deploymentCircuitBreaker),
-      deployment_controller: ecsServiceDeploymentControllerToTerraform(this._deploymentController),
+      deployment_circuit_breaker: ecsServiceDeploymentCircuitBreakerToTerraform(this._deploymentCircuitBreaker.internalValue),
+      deployment_controller: ecsServiceDeploymentControllerToTerraform(this._deploymentController.internalValue),
       load_balancer: cdktf.listMapper(ecsServiceLoadBalancerToTerraform)(this._loadBalancer),
-      network_configuration: ecsServiceNetworkConfigurationToTerraform(this._networkConfiguration),
+      network_configuration: ecsServiceNetworkConfigurationToTerraform(this._networkConfiguration.internalValue),
       ordered_placement_strategy: cdktf.listMapper(ecsServiceOrderedPlacementStrategyToTerraform)(this._orderedPlacementStrategy),
       placement_constraints: cdktf.listMapper(ecsServicePlacementConstraintsToTerraform)(this._placementConstraints),
-      service_registries: ecsServiceServiceRegistriesToTerraform(this._serviceRegistries),
-      timeouts: ecsServiceTimeoutsToTerraform(this._timeouts),
+      service_registries: ecsServiceServiceRegistriesToTerraform(this._serviceRegistries.internalValue),
+      timeouts: ecsServiceTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

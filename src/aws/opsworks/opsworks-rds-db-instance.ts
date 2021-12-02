@@ -77,7 +77,7 @@ export class OpsworksRdsDbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dbPasswordInput() {
-    return this._dbPassword
+    return this._dbPassword;
   }
 
   // db_user - computed: false, optional: false, required: true
@@ -90,7 +90,7 @@ export class OpsworksRdsDbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dbUserInput() {
-    return this._dbUser
+    return this._dbUser;
   }
 
   // id - computed: true, optional: true, required: false
@@ -108,7 +108,7 @@ export class OpsworksRdsDbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rdsDbInstanceArnInput() {
-    return this._rdsDbInstanceArn
+    return this._rdsDbInstanceArn;
   }
 
   // stack_id - computed: false, optional: false, required: true
@@ -121,7 +121,7 @@ export class OpsworksRdsDbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stackIdInput() {
-    return this._stackId
+    return this._stackId;
   }
 
   // =========

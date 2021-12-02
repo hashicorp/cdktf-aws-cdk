@@ -95,11 +95,11 @@ export class DataAwsServicecatalogPortfolioConstraints extends cdktf.TerraformDa
   // ==========
 
   // accept_language - computed: false, optional: true, required: false
-  private _acceptLanguage?: string | undefined; 
+  private _acceptLanguage?: string; 
   public get acceptLanguage() {
     return this.getStringAttribute('accept_language');
   }
-  public set acceptLanguage(value: string | undefined) {
+  public set acceptLanguage(value: string) {
     this._acceptLanguage = value;
   }
   public resetAcceptLanguage() {
@@ -107,7 +107,7 @@ export class DataAwsServicecatalogPortfolioConstraints extends cdktf.TerraformDa
   }
   // Temporarily expose input value. Use with caution.
   public get acceptLanguageInput() {
-    return this._acceptLanguage
+    return this._acceptLanguage;
   }
 
   // details - computed: true, optional: false, required: false
@@ -130,15 +130,15 @@ export class DataAwsServicecatalogPortfolioConstraints extends cdktf.TerraformDa
   }
   // Temporarily expose input value. Use with caution.
   public get portfolioIdInput() {
-    return this._portfolioId
+    return this._portfolioId;
   }
 
   // product_id - computed: false, optional: true, required: false
-  private _productId?: string | undefined; 
+  private _productId?: string; 
   public get productId() {
     return this.getStringAttribute('product_id');
   }
-  public set productId(value: string | undefined) {
+  public set productId(value: string) {
     this._productId = value;
   }
   public resetProductId() {
@@ -146,7 +146,7 @@ export class DataAwsServicecatalogPortfolioConstraints extends cdktf.TerraformDa
   }
   // Temporarily expose input value. Use with caution.
   public get productIdInput() {
-    return this._productId
+    return this._productId;
   }
 
   // =========

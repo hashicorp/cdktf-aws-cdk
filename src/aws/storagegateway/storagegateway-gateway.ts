@@ -143,12 +143,61 @@ export class StoragegatewayGatewaySmbActiveDirectorySettingsOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): StoragegatewayGatewaySmbActiveDirectorySettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._domainControllers) {
+      hasAnyValues = true;
+      internalValueResult.domainControllers = this._domainControllers;
+    }
+    if (this._domainName) {
+      hasAnyValues = true;
+      internalValueResult.domainName = this._domainName;
+    }
+    if (this._organizationalUnit) {
+      hasAnyValues = true;
+      internalValueResult.organizationalUnit = this._organizationalUnit;
+    }
+    if (this._password) {
+      hasAnyValues = true;
+      internalValueResult.password = this._password;
+    }
+    if (this._timeoutInSeconds) {
+      hasAnyValues = true;
+      internalValueResult.timeoutInSeconds = this._timeoutInSeconds;
+    }
+    if (this._username) {
+      hasAnyValues = true;
+      internalValueResult.username = this._username;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: StoragegatewayGatewaySmbActiveDirectorySettings | undefined) {
+    if (value === undefined) {
+      this._domainControllers = undefined;
+      this._domainName = undefined;
+      this._organizationalUnit = undefined;
+      this._password = undefined;
+      this._timeoutInSeconds = undefined;
+      this._username = undefined;
+    }
+    else {
+      this._domainControllers = value.domainControllers;
+      this._domainName = value.domainName;
+      this._organizationalUnit = value.organizationalUnit;
+      this._password = value.password;
+      this._timeoutInSeconds = value.timeoutInSeconds;
+      this._username = value.username;
+    }
+  }
+
   // domain_controllers - computed: false, optional: true, required: false
-  private _domainControllers?: string[] | undefined; 
+  private _domainControllers?: string[]; 
   public get domainControllers() {
     return this.getListAttribute('domain_controllers');
   }
-  public set domainControllers(value: string[] | undefined) {
+  public set domainControllers(value: string[]) {
     this._domainControllers = value;
   }
   public resetDomainControllers() {
@@ -156,7 +205,7 @@ export class StoragegatewayGatewaySmbActiveDirectorySettingsOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get domainControllersInput() {
-    return this._domainControllers
+    return this._domainControllers;
   }
 
   // domain_name - computed: false, optional: false, required: true
@@ -169,15 +218,15 @@ export class StoragegatewayGatewaySmbActiveDirectorySettingsOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get domainNameInput() {
-    return this._domainName
+    return this._domainName;
   }
 
   // organizational_unit - computed: false, optional: true, required: false
-  private _organizationalUnit?: string | undefined; 
+  private _organizationalUnit?: string; 
   public get organizationalUnit() {
     return this.getStringAttribute('organizational_unit');
   }
-  public set organizationalUnit(value: string | undefined) {
+  public set organizationalUnit(value: string) {
     this._organizationalUnit = value;
   }
   public resetOrganizationalUnit() {
@@ -185,7 +234,7 @@ export class StoragegatewayGatewaySmbActiveDirectorySettingsOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get organizationalUnitInput() {
-    return this._organizationalUnit
+    return this._organizationalUnit;
   }
 
   // password - computed: false, optional: false, required: true
@@ -198,15 +247,15 @@ export class StoragegatewayGatewaySmbActiveDirectorySettingsOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get passwordInput() {
-    return this._password
+    return this._password;
   }
 
   // timeout_in_seconds - computed: false, optional: true, required: false
-  private _timeoutInSeconds?: number | undefined; 
+  private _timeoutInSeconds?: number; 
   public get timeoutInSeconds() {
     return this.getNumberAttribute('timeout_in_seconds');
   }
-  public set timeoutInSeconds(value: number | undefined) {
+  public set timeoutInSeconds(value: number) {
     this._timeoutInSeconds = value;
   }
   public resetTimeoutInSeconds() {
@@ -214,7 +263,7 @@ export class StoragegatewayGatewaySmbActiveDirectorySettingsOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutInSecondsInput() {
-    return this._timeoutInSeconds
+    return this._timeoutInSeconds;
   }
 
   // username - computed: false, optional: false, required: true
@@ -227,7 +276,7 @@ export class StoragegatewayGatewaySmbActiveDirectorySettingsOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get usernameInput() {
-    return this._username
+    return this._username;
   }
 }
 export interface StoragegatewayGatewayTimeouts {
@@ -257,12 +306,31 @@ export class StoragegatewayGatewayTimeoutsOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): StoragegatewayGatewayTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: StoragegatewayGatewayTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+    }
+    else {
+      this._create = value.create;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -270,7 +338,7 @@ export class StoragegatewayGatewayTimeoutsOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 }
 
@@ -322,8 +390,8 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._tapeDriveType = config.tapeDriveType;
-    this._smbActiveDirectorySettings = config.smbActiveDirectorySettings;
-    this._timeouts = config.timeouts;
+    this._smbActiveDirectorySettings.internalValue = config.smbActiveDirectorySettings;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -331,11 +399,11 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   // ==========
 
   // activation_key - computed: true, optional: true, required: false
-  private _activationKey?: string | undefined; 
+  private _activationKey?: string; 
   public get activationKey() {
     return this.getStringAttribute('activation_key');
   }
-  public set activationKey(value: string | undefined) {
+  public set activationKey(value: string) {
     this._activationKey = value;
   }
   public resetActivationKey() {
@@ -343,7 +411,7 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get activationKeyInput() {
-    return this._activationKey
+    return this._activationKey;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -352,11 +420,11 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
 
   // average_download_rate_limit_in_bits_per_sec - computed: false, optional: true, required: false
-  private _averageDownloadRateLimitInBitsPerSec?: number | undefined; 
+  private _averageDownloadRateLimitInBitsPerSec?: number; 
   public get averageDownloadRateLimitInBitsPerSec() {
     return this.getNumberAttribute('average_download_rate_limit_in_bits_per_sec');
   }
-  public set averageDownloadRateLimitInBitsPerSec(value: number | undefined) {
+  public set averageDownloadRateLimitInBitsPerSec(value: number) {
     this._averageDownloadRateLimitInBitsPerSec = value;
   }
   public resetAverageDownloadRateLimitInBitsPerSec() {
@@ -364,15 +432,15 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get averageDownloadRateLimitInBitsPerSecInput() {
-    return this._averageDownloadRateLimitInBitsPerSec
+    return this._averageDownloadRateLimitInBitsPerSec;
   }
 
   // average_upload_rate_limit_in_bits_per_sec - computed: false, optional: true, required: false
-  private _averageUploadRateLimitInBitsPerSec?: number | undefined; 
+  private _averageUploadRateLimitInBitsPerSec?: number; 
   public get averageUploadRateLimitInBitsPerSec() {
     return this.getNumberAttribute('average_upload_rate_limit_in_bits_per_sec');
   }
-  public set averageUploadRateLimitInBitsPerSec(value: number | undefined) {
+  public set averageUploadRateLimitInBitsPerSec(value: number) {
     this._averageUploadRateLimitInBitsPerSec = value;
   }
   public resetAverageUploadRateLimitInBitsPerSec() {
@@ -380,15 +448,15 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get averageUploadRateLimitInBitsPerSecInput() {
-    return this._averageUploadRateLimitInBitsPerSec
+    return this._averageUploadRateLimitInBitsPerSec;
   }
 
   // cloudwatch_log_group_arn - computed: false, optional: true, required: false
-  private _cloudwatchLogGroupArn?: string | undefined; 
+  private _cloudwatchLogGroupArn?: string; 
   public get cloudwatchLogGroupArn() {
     return this.getStringAttribute('cloudwatch_log_group_arn');
   }
-  public set cloudwatchLogGroupArn(value: string | undefined) {
+  public set cloudwatchLogGroupArn(value: string) {
     this._cloudwatchLogGroupArn = value;
   }
   public resetCloudwatchLogGroupArn() {
@@ -396,7 +464,7 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchLogGroupArnInput() {
-    return this._cloudwatchLogGroupArn
+    return this._cloudwatchLogGroupArn;
   }
 
   // ec2_instance_id - computed: true, optional: false, required: false
@@ -415,11 +483,11 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
 
   // gateway_ip_address - computed: true, optional: true, required: false
-  private _gatewayIpAddress?: string | undefined; 
+  private _gatewayIpAddress?: string; 
   public get gatewayIpAddress() {
     return this.getStringAttribute('gateway_ip_address');
   }
-  public set gatewayIpAddress(value: string | undefined) {
+  public set gatewayIpAddress(value: string) {
     this._gatewayIpAddress = value;
   }
   public resetGatewayIpAddress() {
@@ -427,7 +495,7 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get gatewayIpAddressInput() {
-    return this._gatewayIpAddress
+    return this._gatewayIpAddress;
   }
 
   // gateway_name - computed: false, optional: false, required: true
@@ -440,7 +508,7 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get gatewayNameInput() {
-    return this._gatewayName
+    return this._gatewayName;
   }
 
   // gateway_network_interface - computed: true, optional: false, required: false
@@ -458,15 +526,15 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get gatewayTimezoneInput() {
-    return this._gatewayTimezone
+    return this._gatewayTimezone;
   }
 
   // gateway_type - computed: false, optional: true, required: false
-  private _gatewayType?: string | undefined; 
+  private _gatewayType?: string; 
   public get gatewayType() {
     return this.getStringAttribute('gateway_type');
   }
-  public set gatewayType(value: string | undefined) {
+  public set gatewayType(value: string) {
     this._gatewayType = value;
   }
   public resetGatewayType() {
@@ -474,15 +542,15 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get gatewayTypeInput() {
-    return this._gatewayType
+    return this._gatewayType;
   }
 
   // gateway_vpc_endpoint - computed: false, optional: true, required: false
-  private _gatewayVpcEndpoint?: string | undefined; 
+  private _gatewayVpcEndpoint?: string; 
   public get gatewayVpcEndpoint() {
     return this.getStringAttribute('gateway_vpc_endpoint');
   }
-  public set gatewayVpcEndpoint(value: string | undefined) {
+  public set gatewayVpcEndpoint(value: string) {
     this._gatewayVpcEndpoint = value;
   }
   public resetGatewayVpcEndpoint() {
@@ -490,7 +558,7 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get gatewayVpcEndpointInput() {
-    return this._gatewayVpcEndpoint
+    return this._gatewayVpcEndpoint;
   }
 
   // host_environment - computed: true, optional: false, required: false
@@ -504,11 +572,11 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
 
   // medium_changer_type - computed: false, optional: true, required: false
-  private _mediumChangerType?: string | undefined; 
+  private _mediumChangerType?: string; 
   public get mediumChangerType() {
     return this.getStringAttribute('medium_changer_type');
   }
-  public set mediumChangerType(value: string | undefined) {
+  public set mediumChangerType(value: string) {
     this._mediumChangerType = value;
   }
   public resetMediumChangerType() {
@@ -516,15 +584,15 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get mediumChangerTypeInput() {
-    return this._mediumChangerType
+    return this._mediumChangerType;
   }
 
   // smb_file_share_visibility - computed: false, optional: true, required: false
-  private _smbFileShareVisibility?: boolean | cdktf.IResolvable | undefined; 
+  private _smbFileShareVisibility?: boolean | cdktf.IResolvable; 
   public get smbFileShareVisibility() {
     return this.getBooleanAttribute('smb_file_share_visibility') as any;
   }
-  public set smbFileShareVisibility(value: boolean | cdktf.IResolvable | undefined) {
+  public set smbFileShareVisibility(value: boolean | cdktf.IResolvable) {
     this._smbFileShareVisibility = value;
   }
   public resetSmbFileShareVisibility() {
@@ -532,15 +600,15 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get smbFileShareVisibilityInput() {
-    return this._smbFileShareVisibility
+    return this._smbFileShareVisibility;
   }
 
   // smb_guest_password - computed: false, optional: true, required: false
-  private _smbGuestPassword?: string | undefined; 
+  private _smbGuestPassword?: string; 
   public get smbGuestPassword() {
     return this.getStringAttribute('smb_guest_password');
   }
-  public set smbGuestPassword(value: string | undefined) {
+  public set smbGuestPassword(value: string) {
     this._smbGuestPassword = value;
   }
   public resetSmbGuestPassword() {
@@ -548,15 +616,15 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get smbGuestPasswordInput() {
-    return this._smbGuestPassword
+    return this._smbGuestPassword;
   }
 
   // smb_security_strategy - computed: true, optional: true, required: false
-  private _smbSecurityStrategy?: string | undefined; 
+  private _smbSecurityStrategy?: string; 
   public get smbSecurityStrategy() {
     return this.getStringAttribute('smb_security_strategy');
   }
-  public set smbSecurityStrategy(value: string | undefined) {
+  public set smbSecurityStrategy(value: string) {
     this._smbSecurityStrategy = value;
   }
   public resetSmbSecurityStrategy() {
@@ -564,16 +632,16 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get smbSecurityStrategyInput() {
-    return this._smbSecurityStrategy
+    return this._smbSecurityStrategy;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -581,16 +649,16 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -598,15 +666,15 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // tape_drive_type - computed: false, optional: true, required: false
-  private _tapeDriveType?: string | undefined; 
+  private _tapeDriveType?: string; 
   public get tapeDriveType() {
     return this.getStringAttribute('tape_drive_type');
   }
-  public set tapeDriveType(value: string | undefined) {
+  public set tapeDriveType(value: string) {
     this._tapeDriveType = value;
   }
   public resetTapeDriveType() {
@@ -614,41 +682,39 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tapeDriveTypeInput() {
-    return this._tapeDriveType
+    return this._tapeDriveType;
   }
 
   // smb_active_directory_settings - computed: false, optional: true, required: false
-  private _smbActiveDirectorySettings?: StoragegatewayGatewaySmbActiveDirectorySettings | undefined; 
-  private __smbActiveDirectorySettingsOutput = new StoragegatewayGatewaySmbActiveDirectorySettingsOutputReference(this as any, "smb_active_directory_settings", true);
+  private _smbActiveDirectorySettings = new StoragegatewayGatewaySmbActiveDirectorySettingsOutputReference(this as any, "smb_active_directory_settings", true);
   public get smbActiveDirectorySettings() {
-    return this.__smbActiveDirectorySettingsOutput;
+    return this._smbActiveDirectorySettings;
   }
-  public putSmbActiveDirectorySettings(value: StoragegatewayGatewaySmbActiveDirectorySettings | undefined) {
-    this._smbActiveDirectorySettings = value;
+  public putSmbActiveDirectorySettings(value: StoragegatewayGatewaySmbActiveDirectorySettings) {
+    this._smbActiveDirectorySettings.internalValue = value;
   }
   public resetSmbActiveDirectorySettings() {
-    this._smbActiveDirectorySettings = undefined;
+    this._smbActiveDirectorySettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get smbActiveDirectorySettingsInput() {
-    return this._smbActiveDirectorySettings
+    return this._smbActiveDirectorySettings.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: StoragegatewayGatewayTimeouts | undefined; 
-  private __timeoutsOutput = new StoragegatewayGatewayTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new StoragegatewayGatewayTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: StoragegatewayGatewayTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: StoragegatewayGatewayTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -673,8 +739,8 @@ export class StoragegatewayGateway extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       tape_drive_type: cdktf.stringToTerraform(this._tapeDriveType),
-      smb_active_directory_settings: storagegatewayGatewaySmbActiveDirectorySettingsToTerraform(this._smbActiveDirectorySettings),
-      timeouts: storagegatewayGatewayTimeoutsToTerraform(this._timeouts),
+      smb_active_directory_settings: storagegatewayGatewaySmbActiveDirectorySettingsToTerraform(this._smbActiveDirectorySettings.internalValue),
+      timeouts: storagegatewayGatewayTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

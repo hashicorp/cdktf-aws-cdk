@@ -61,12 +61,31 @@ export class ConfigDeliveryChannelSnapshotDeliveryPropertiesOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ConfigDeliveryChannelSnapshotDeliveryProperties | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._deliveryFrequency) {
+      hasAnyValues = true;
+      internalValueResult.deliveryFrequency = this._deliveryFrequency;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ConfigDeliveryChannelSnapshotDeliveryProperties | undefined) {
+    if (value === undefined) {
+      this._deliveryFrequency = undefined;
+    }
+    else {
+      this._deliveryFrequency = value.deliveryFrequency;
+    }
+  }
+
   // delivery_frequency - computed: false, optional: true, required: false
-  private _deliveryFrequency?: string | undefined; 
+  private _deliveryFrequency?: string; 
   public get deliveryFrequency() {
     return this.getStringAttribute('delivery_frequency');
   }
-  public set deliveryFrequency(value: string | undefined) {
+  public set deliveryFrequency(value: string) {
     this._deliveryFrequency = value;
   }
   public resetDeliveryFrequency() {
@@ -74,7 +93,7 @@ export class ConfigDeliveryChannelSnapshotDeliveryPropertiesOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get deliveryFrequencyInput() {
-    return this._deliveryFrequency
+    return this._deliveryFrequency;
   }
 }
 
@@ -115,7 +134,7 @@ export class ConfigDeliveryChannel extends cdktf.TerraformResource {
     this._s3KeyPrefix = config.s3KeyPrefix;
     this._s3KmsKeyArn = config.s3KmsKeyArn;
     this._snsTopicArn = config.snsTopicArn;
-    this._snapshotDeliveryProperties = config.snapshotDeliveryProperties;
+    this._snapshotDeliveryProperties.internalValue = config.snapshotDeliveryProperties;
   }
 
   // ==========
@@ -128,11 +147,11 @@ export class ConfigDeliveryChannel extends cdktf.TerraformResource {
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -140,7 +159,7 @@ export class ConfigDeliveryChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // s3_bucket_name - computed: false, optional: false, required: true
@@ -153,15 +172,15 @@ export class ConfigDeliveryChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3BucketNameInput() {
-    return this._s3BucketName
+    return this._s3BucketName;
   }
 
   // s3_key_prefix - computed: false, optional: true, required: false
-  private _s3KeyPrefix?: string | undefined; 
+  private _s3KeyPrefix?: string; 
   public get s3KeyPrefix() {
     return this.getStringAttribute('s3_key_prefix');
   }
-  public set s3KeyPrefix(value: string | undefined) {
+  public set s3KeyPrefix(value: string) {
     this._s3KeyPrefix = value;
   }
   public resetS3KeyPrefix() {
@@ -169,15 +188,15 @@ export class ConfigDeliveryChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3KeyPrefixInput() {
-    return this._s3KeyPrefix
+    return this._s3KeyPrefix;
   }
 
   // s3_kms_key_arn - computed: false, optional: true, required: false
-  private _s3KmsKeyArn?: string | undefined; 
+  private _s3KmsKeyArn?: string; 
   public get s3KmsKeyArn() {
     return this.getStringAttribute('s3_kms_key_arn');
   }
-  public set s3KmsKeyArn(value: string | undefined) {
+  public set s3KmsKeyArn(value: string) {
     this._s3KmsKeyArn = value;
   }
   public resetS3KmsKeyArn() {
@@ -185,15 +204,15 @@ export class ConfigDeliveryChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3KmsKeyArnInput() {
-    return this._s3KmsKeyArn
+    return this._s3KmsKeyArn;
   }
 
   // sns_topic_arn - computed: false, optional: true, required: false
-  private _snsTopicArn?: string | undefined; 
+  private _snsTopicArn?: string; 
   public get snsTopicArn() {
     return this.getStringAttribute('sns_topic_arn');
   }
-  public set snsTopicArn(value: string | undefined) {
+  public set snsTopicArn(value: string) {
     this._snsTopicArn = value;
   }
   public resetSnsTopicArn() {
@@ -201,24 +220,23 @@ export class ConfigDeliveryChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get snsTopicArnInput() {
-    return this._snsTopicArn
+    return this._snsTopicArn;
   }
 
   // snapshot_delivery_properties - computed: false, optional: true, required: false
-  private _snapshotDeliveryProperties?: ConfigDeliveryChannelSnapshotDeliveryProperties | undefined; 
-  private __snapshotDeliveryPropertiesOutput = new ConfigDeliveryChannelSnapshotDeliveryPropertiesOutputReference(this as any, "snapshot_delivery_properties", true);
+  private _snapshotDeliveryProperties = new ConfigDeliveryChannelSnapshotDeliveryPropertiesOutputReference(this as any, "snapshot_delivery_properties", true);
   public get snapshotDeliveryProperties() {
-    return this.__snapshotDeliveryPropertiesOutput;
+    return this._snapshotDeliveryProperties;
   }
-  public putSnapshotDeliveryProperties(value: ConfigDeliveryChannelSnapshotDeliveryProperties | undefined) {
-    this._snapshotDeliveryProperties = value;
+  public putSnapshotDeliveryProperties(value: ConfigDeliveryChannelSnapshotDeliveryProperties) {
+    this._snapshotDeliveryProperties.internalValue = value;
   }
   public resetSnapshotDeliveryProperties() {
-    this._snapshotDeliveryProperties = undefined;
+    this._snapshotDeliveryProperties.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotDeliveryPropertiesInput() {
-    return this._snapshotDeliveryProperties
+    return this._snapshotDeliveryProperties.internalValue;
   }
 
   // =========
@@ -232,7 +250,7 @@ export class ConfigDeliveryChannel extends cdktf.TerraformResource {
       s3_key_prefix: cdktf.stringToTerraform(this._s3KeyPrefix),
       s3_kms_key_arn: cdktf.stringToTerraform(this._s3KmsKeyArn),
       sns_topic_arn: cdktf.stringToTerraform(this._snsTopicArn),
-      snapshot_delivery_properties: configDeliveryChannelSnapshotDeliveryPropertiesToTerraform(this._snapshotDeliveryProperties),
+      snapshot_delivery_properties: configDeliveryChannelSnapshotDeliveryPropertiesToTerraform(this._snapshotDeliveryProperties.internalValue),
     };
   }
 }

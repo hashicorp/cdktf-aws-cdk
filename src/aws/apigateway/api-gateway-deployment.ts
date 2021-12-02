@@ -83,11 +83,11 @@ export class ApiGatewayDeployment extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -95,7 +95,7 @@ export class ApiGatewayDeployment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // execution_arn - computed: true, optional: false, required: false
@@ -123,15 +123,15 @@ export class ApiGatewayDeployment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get restApiIdInput() {
-    return this._restApiId
+    return this._restApiId;
   }
 
   // stage_description - computed: false, optional: true, required: false
-  private _stageDescription?: string | undefined; 
+  private _stageDescription?: string; 
   public get stageDescription() {
     return this.getStringAttribute('stage_description');
   }
-  public set stageDescription(value: string | undefined) {
+  public set stageDescription(value: string) {
     this._stageDescription = value;
   }
   public resetStageDescription() {
@@ -139,15 +139,15 @@ export class ApiGatewayDeployment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stageDescriptionInput() {
-    return this._stageDescription
+    return this._stageDescription;
   }
 
   // stage_name - computed: false, optional: true, required: false
-  private _stageName?: string | undefined; 
+  private _stageName?: string; 
   public get stageName() {
     return this.getStringAttribute('stage_name');
   }
-  public set stageName(value: string | undefined) {
+  public set stageName(value: string) {
     this._stageName = value;
   }
   public resetStageName() {
@@ -155,16 +155,16 @@ export class ApiGatewayDeployment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stageNameInput() {
-    return this._stageName
+    return this._stageName;
   }
 
   // triggers - computed: false, optional: true, required: false
-  private _triggers?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _triggers?: { [key: string]: string } | cdktf.IResolvable; 
   public get triggers() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('triggers') as any;
   }
-  public set triggers(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set triggers(value: { [key: string]: string } | cdktf.IResolvable) {
     this._triggers = value;
   }
   public resetTriggers() {
@@ -172,16 +172,16 @@ export class ApiGatewayDeployment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get triggersInput() {
-    return this._triggers
+    return this._triggers;
   }
 
   // variables - computed: false, optional: true, required: false
-  private _variables?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _variables?: { [key: string]: string } | cdktf.IResolvable; 
   public get variables() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('variables') as any;
   }
-  public set variables(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set variables(value: { [key: string]: string } | cdktf.IResolvable) {
     this._variables = value;
   }
   public resetVariables() {
@@ -189,7 +189,7 @@ export class ApiGatewayDeployment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get variablesInput() {
-    return this._variables
+    return this._variables;
   }
 
   // =========

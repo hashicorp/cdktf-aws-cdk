@@ -89,12 +89,43 @@ export class GlobalacceleratorAcceleratorAttributesOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlobalacceleratorAcceleratorAttributes | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._flowLogsEnabled) {
+      hasAnyValues = true;
+      internalValueResult.flowLogsEnabled = this._flowLogsEnabled;
+    }
+    if (this._flowLogsS3Bucket) {
+      hasAnyValues = true;
+      internalValueResult.flowLogsS3Bucket = this._flowLogsS3Bucket;
+    }
+    if (this._flowLogsS3Prefix) {
+      hasAnyValues = true;
+      internalValueResult.flowLogsS3Prefix = this._flowLogsS3Prefix;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlobalacceleratorAcceleratorAttributes | undefined) {
+    if (value === undefined) {
+      this._flowLogsEnabled = undefined;
+      this._flowLogsS3Bucket = undefined;
+      this._flowLogsS3Prefix = undefined;
+    }
+    else {
+      this._flowLogsEnabled = value.flowLogsEnabled;
+      this._flowLogsS3Bucket = value.flowLogsS3Bucket;
+      this._flowLogsS3Prefix = value.flowLogsS3Prefix;
+    }
+  }
+
   // flow_logs_enabled - computed: false, optional: true, required: false
-  private _flowLogsEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _flowLogsEnabled?: boolean | cdktf.IResolvable; 
   public get flowLogsEnabled() {
     return this.getBooleanAttribute('flow_logs_enabled') as any;
   }
-  public set flowLogsEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set flowLogsEnabled(value: boolean | cdktf.IResolvable) {
     this._flowLogsEnabled = value;
   }
   public resetFlowLogsEnabled() {
@@ -102,15 +133,15 @@ export class GlobalacceleratorAcceleratorAttributesOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get flowLogsEnabledInput() {
-    return this._flowLogsEnabled
+    return this._flowLogsEnabled;
   }
 
   // flow_logs_s3_bucket - computed: false, optional: true, required: false
-  private _flowLogsS3Bucket?: string | undefined; 
+  private _flowLogsS3Bucket?: string; 
   public get flowLogsS3Bucket() {
     return this.getStringAttribute('flow_logs_s3_bucket');
   }
-  public set flowLogsS3Bucket(value: string | undefined) {
+  public set flowLogsS3Bucket(value: string) {
     this._flowLogsS3Bucket = value;
   }
   public resetFlowLogsS3Bucket() {
@@ -118,15 +149,15 @@ export class GlobalacceleratorAcceleratorAttributesOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get flowLogsS3BucketInput() {
-    return this._flowLogsS3Bucket
+    return this._flowLogsS3Bucket;
   }
 
   // flow_logs_s3_prefix - computed: false, optional: true, required: false
-  private _flowLogsS3Prefix?: string | undefined; 
+  private _flowLogsS3Prefix?: string; 
   public get flowLogsS3Prefix() {
     return this.getStringAttribute('flow_logs_s3_prefix');
   }
-  public set flowLogsS3Prefix(value: string | undefined) {
+  public set flowLogsS3Prefix(value: string) {
     this._flowLogsS3Prefix = value;
   }
   public resetFlowLogsS3Prefix() {
@@ -134,7 +165,7 @@ export class GlobalacceleratorAcceleratorAttributesOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get flowLogsS3PrefixInput() {
-    return this._flowLogsS3Prefix
+    return this._flowLogsS3Prefix;
   }
 }
 export interface GlobalacceleratorAcceleratorTimeouts {
@@ -169,12 +200,37 @@ export class GlobalacceleratorAcceleratorTimeoutsOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlobalacceleratorAcceleratorTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlobalacceleratorAcceleratorTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -182,15 +238,15 @@ export class GlobalacceleratorAcceleratorTimeoutsOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -198,7 +254,7 @@ export class GlobalacceleratorAcceleratorTimeoutsOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -239,8 +295,8 @@ export class GlobalacceleratorAccelerator extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._attributes = config.attributes;
-    this._timeouts = config.timeouts;
+    this._attributes.internalValue = config.attributes;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -253,11 +309,11 @@ export class GlobalacceleratorAccelerator extends cdktf.TerraformResource {
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -265,7 +321,7 @@ export class GlobalacceleratorAccelerator extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // hosted_zone_id - computed: true, optional: false, required: false
@@ -279,11 +335,11 @@ export class GlobalacceleratorAccelerator extends cdktf.TerraformResource {
   }
 
   // ip_address_type - computed: false, optional: true, required: false
-  private _ipAddressType?: string | undefined; 
+  private _ipAddressType?: string; 
   public get ipAddressType() {
     return this.getStringAttribute('ip_address_type');
   }
-  public set ipAddressType(value: string | undefined) {
+  public set ipAddressType(value: string) {
     this._ipAddressType = value;
   }
   public resetIpAddressType() {
@@ -291,7 +347,7 @@ export class GlobalacceleratorAccelerator extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipAddressTypeInput() {
-    return this._ipAddressType
+    return this._ipAddressType;
   }
 
   // ip_sets - computed: true, optional: false, required: false
@@ -309,16 +365,16 @@ export class GlobalacceleratorAccelerator extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -326,16 +382,16 @@ export class GlobalacceleratorAccelerator extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -343,41 +399,39 @@ export class GlobalacceleratorAccelerator extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // attributes - computed: false, optional: true, required: false
-  private _attributes?: GlobalacceleratorAcceleratorAttributes | undefined; 
-  private __attributesOutput = new GlobalacceleratorAcceleratorAttributesOutputReference(this as any, "attributes", true);
+  private _attributes = new GlobalacceleratorAcceleratorAttributesOutputReference(this as any, "attributes", true);
   public get attributes() {
-    return this.__attributesOutput;
+    return this._attributes;
   }
-  public putAttributes(value: GlobalacceleratorAcceleratorAttributes | undefined) {
-    this._attributes = value;
+  public putAttributes(value: GlobalacceleratorAcceleratorAttributes) {
+    this._attributes.internalValue = value;
   }
   public resetAttributes() {
-    this._attributes = undefined;
+    this._attributes.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get attributesInput() {
-    return this._attributes
+    return this._attributes.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: GlobalacceleratorAcceleratorTimeouts | undefined; 
-  private __timeoutsOutput = new GlobalacceleratorAcceleratorTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new GlobalacceleratorAcceleratorTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: GlobalacceleratorAcceleratorTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: GlobalacceleratorAcceleratorTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -391,8 +445,8 @@ export class GlobalacceleratorAccelerator extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      attributes: globalacceleratorAcceleratorAttributesToTerraform(this._attributes),
-      timeouts: globalacceleratorAcceleratorTimeoutsToTerraform(this._timeouts),
+      attributes: globalacceleratorAcceleratorAttributesToTerraform(this._attributes.internalValue),
+      timeouts: globalacceleratorAcceleratorTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

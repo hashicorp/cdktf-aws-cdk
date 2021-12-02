@@ -189,11 +189,11 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
 
   // default_cores - computed: true, optional: true, required: false
-  private _defaultCores?: number | undefined; 
+  private _defaultCores?: number; 
   public get defaultCores() {
     return this.getNumberAttribute('default_cores');
   }
-  public set defaultCores(value: number | undefined) {
+  public set defaultCores(value: number) {
     this._defaultCores = value;
   }
   public resetDefaultCores() {
@@ -201,15 +201,15 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultCoresInput() {
-    return this._defaultCores
+    return this._defaultCores;
   }
 
   // default_threads_per_core - computed: true, optional: true, required: false
-  private _defaultThreadsPerCore?: number | undefined; 
+  private _defaultThreadsPerCore?: number; 
   public get defaultThreadsPerCore() {
     return this.getNumberAttribute('default_threads_per_core');
   }
-  public set defaultThreadsPerCore(value: number | undefined) {
+  public set defaultThreadsPerCore(value: number) {
     this._defaultThreadsPerCore = value;
   }
   public resetDefaultThreadsPerCore() {
@@ -217,7 +217,7 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultThreadsPerCoreInput() {
-    return this._defaultThreadsPerCore
+    return this._defaultThreadsPerCore;
   }
 
   // default_vcpus - computed: true, optional: false, required: false
@@ -296,11 +296,11 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
 
   // hypervisor - computed: true, optional: true, required: false
-  private _hypervisor?: string | undefined; 
+  private _hypervisor?: string; 
   public get hypervisor() {
     return this.getStringAttribute('hypervisor');
   }
-  public set hypervisor(value: string | undefined) {
+  public set hypervisor(value: string) {
     this._hypervisor = value;
   }
   public resetHypervisor() {
@@ -308,7 +308,7 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get hypervisorInput() {
-    return this._hypervisor
+    return this._hypervisor;
   }
 
   // id - computed: true, optional: true, required: false
@@ -331,7 +331,7 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // ipv6_supported - computed: true, optional: false, required: false
@@ -345,11 +345,11 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
 
   // maximum_ipv6_addresses_per_interface - computed: true, optional: true, required: false
-  private _maximumIpv6AddressesPerInterface?: number | undefined; 
+  private _maximumIpv6AddressesPerInterface?: number; 
   public get maximumIpv6AddressesPerInterface() {
     return this.getNumberAttribute('maximum_ipv6_addresses_per_interface');
   }
-  public set maximumIpv6AddressesPerInterface(value: number | undefined) {
+  public set maximumIpv6AddressesPerInterface(value: number) {
     this._maximumIpv6AddressesPerInterface = value;
   }
   public resetMaximumIpv6AddressesPerInterface() {
@@ -357,7 +357,7 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get maximumIpv6AddressesPerInterfaceInput() {
-    return this._maximumIpv6AddressesPerInterface
+    return this._maximumIpv6AddressesPerInterface;
   }
 
   // maximum_network_interfaces - computed: true, optional: false, required: false
@@ -406,11 +406,11 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
 
   // total_fpga_memory - computed: true, optional: true, required: false
-  private _totalFpgaMemory?: number | undefined; 
+  private _totalFpgaMemory?: number; 
   public get totalFpgaMemory() {
     return this.getNumberAttribute('total_fpga_memory');
   }
-  public set totalFpgaMemory(value: number | undefined) {
+  public set totalFpgaMemory(value: number) {
     this._totalFpgaMemory = value;
   }
   public resetTotalFpgaMemory() {
@@ -418,15 +418,15 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get totalFpgaMemoryInput() {
-    return this._totalFpgaMemory
+    return this._totalFpgaMemory;
   }
 
   // total_gpu_memory - computed: true, optional: true, required: false
-  private _totalGpuMemory?: number | undefined; 
+  private _totalGpuMemory?: number; 
   public get totalGpuMemory() {
     return this.getNumberAttribute('total_gpu_memory');
   }
-  public set totalGpuMemory(value: number | undefined) {
+  public set totalGpuMemory(value: number) {
     this._totalGpuMemory = value;
   }
   public resetTotalGpuMemory() {
@@ -434,15 +434,15 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get totalGpuMemoryInput() {
-    return this._totalGpuMemory
+    return this._totalGpuMemory;
   }
 
   // total_instance_storage - computed: true, optional: true, required: false
-  private _totalInstanceStorage?: number | undefined; 
+  private _totalInstanceStorage?: number; 
   public get totalInstanceStorage() {
     return this.getNumberAttribute('total_instance_storage');
   }
-  public set totalInstanceStorage(value: number | undefined) {
+  public set totalInstanceStorage(value: number) {
     this._totalInstanceStorage = value;
   }
   public resetTotalInstanceStorage() {
@@ -450,7 +450,7 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get totalInstanceStorageInput() {
-    return this._totalInstanceStorage
+    return this._totalInstanceStorage;
   }
 
   // valid_cores - computed: true, optional: false, required: false
@@ -466,12 +466,12 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
 
   // fpgas - computed: false, optional: true, required: false
-  private _fpgas?: DataAwsEc2InstanceTypeFpgas[] | undefined; 
+  private _fpgas?: DataAwsEc2InstanceTypeFpgas[]; 
   public get fpgas() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('fpgas') as any;
   }
-  public set fpgas(value: DataAwsEc2InstanceTypeFpgas[] | undefined) {
+  public set fpgas(value: DataAwsEc2InstanceTypeFpgas[]) {
     this._fpgas = value;
   }
   public resetFpgas() {
@@ -479,16 +479,16 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get fpgasInput() {
-    return this._fpgas
+    return this._fpgas;
   }
 
   // gpus - computed: false, optional: true, required: false
-  private _gpus?: DataAwsEc2InstanceTypeGpus[] | undefined; 
+  private _gpus?: DataAwsEc2InstanceTypeGpus[]; 
   public get gpus() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('gpus') as any;
   }
-  public set gpus(value: DataAwsEc2InstanceTypeGpus[] | undefined) {
+  public set gpus(value: DataAwsEc2InstanceTypeGpus[]) {
     this._gpus = value;
   }
   public resetGpus() {
@@ -496,16 +496,16 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get gpusInput() {
-    return this._gpus
+    return this._gpus;
   }
 
   // inference_accelerators - computed: false, optional: true, required: false
-  private _inferenceAccelerators?: DataAwsEc2InstanceTypeInferenceAccelerators[] | undefined; 
+  private _inferenceAccelerators?: DataAwsEc2InstanceTypeInferenceAccelerators[]; 
   public get inferenceAccelerators() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('inference_accelerators') as any;
   }
-  public set inferenceAccelerators(value: DataAwsEc2InstanceTypeInferenceAccelerators[] | undefined) {
+  public set inferenceAccelerators(value: DataAwsEc2InstanceTypeInferenceAccelerators[]) {
     this._inferenceAccelerators = value;
   }
   public resetInferenceAccelerators() {
@@ -513,16 +513,16 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get inferenceAcceleratorsInput() {
-    return this._inferenceAccelerators
+    return this._inferenceAccelerators;
   }
 
   // instance_disks - computed: false, optional: true, required: false
-  private _instanceDisks?: DataAwsEc2InstanceTypeInstanceDisks[] | undefined; 
+  private _instanceDisks?: DataAwsEc2InstanceTypeInstanceDisks[]; 
   public get instanceDisks() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('instance_disks') as any;
   }
-  public set instanceDisks(value: DataAwsEc2InstanceTypeInstanceDisks[] | undefined) {
+  public set instanceDisks(value: DataAwsEc2InstanceTypeInstanceDisks[]) {
     this._instanceDisks = value;
   }
   public resetInstanceDisks() {
@@ -530,7 +530,7 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceDisksInput() {
-    return this._instanceDisks
+    return this._instanceDisks;
   }
 
   // =========

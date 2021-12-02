@@ -74,7 +74,7 @@ export class DataAwsOrganizationsDelegatedServices extends cdktf.TerraformDataSo
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdInput() {
-    return this._accountId
+    return this._accountId;
   }
 
   // delegated_services - computed: true, optional: false, required: false

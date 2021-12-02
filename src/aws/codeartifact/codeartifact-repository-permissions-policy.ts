@@ -82,15 +82,15 @@ export class CodeartifactRepositoryPermissionsPolicy extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get domainInput() {
-    return this._domain
+    return this._domain;
   }
 
   // domain_owner - computed: true, optional: true, required: false
-  private _domainOwner?: string | undefined; 
+  private _domainOwner?: string; 
   public get domainOwner() {
     return this.getStringAttribute('domain_owner');
   }
-  public set domainOwner(value: string | undefined) {
+  public set domainOwner(value: string) {
     this._domainOwner = value;
   }
   public resetDomainOwner() {
@@ -98,7 +98,7 @@ export class CodeartifactRepositoryPermissionsPolicy extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get domainOwnerInput() {
-    return this._domainOwner
+    return this._domainOwner;
   }
 
   // id - computed: true, optional: true, required: false
@@ -116,15 +116,15 @@ export class CodeartifactRepositoryPermissionsPolicy extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get policyDocumentInput() {
-    return this._policyDocument
+    return this._policyDocument;
   }
 
   // policy_revision - computed: true, optional: true, required: false
-  private _policyRevision?: string | undefined; 
+  private _policyRevision?: string; 
   public get policyRevision() {
     return this.getStringAttribute('policy_revision');
   }
-  public set policyRevision(value: string | undefined) {
+  public set policyRevision(value: string) {
     this._policyRevision = value;
   }
   public resetPolicyRevision() {
@@ -132,7 +132,7 @@ export class CodeartifactRepositoryPermissionsPolicy extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get policyRevisionInput() {
-    return this._policyRevision
+    return this._policyRevision;
   }
 
   // repository - computed: false, optional: false, required: true
@@ -145,7 +145,7 @@ export class CodeartifactRepositoryPermissionsPolicy extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get repositoryInput() {
-    return this._repository
+    return this._repository;
   }
 
   // resource_arn - computed: true, optional: false, required: false

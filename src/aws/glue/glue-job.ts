@@ -123,12 +123,43 @@ export class GlueJobCommandOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueJobCommand | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._pythonVersion) {
+      hasAnyValues = true;
+      internalValueResult.pythonVersion = this._pythonVersion;
+    }
+    if (this._scriptLocation) {
+      hasAnyValues = true;
+      internalValueResult.scriptLocation = this._scriptLocation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueJobCommand | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+      this._pythonVersion = undefined;
+      this._scriptLocation = undefined;
+    }
+    else {
+      this._name = value.name;
+      this._pythonVersion = value.pythonVersion;
+      this._scriptLocation = value.scriptLocation;
+    }
+  }
+
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -136,15 +167,15 @@ export class GlueJobCommandOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // python_version - computed: true, optional: true, required: false
-  private _pythonVersion?: string | undefined; 
+  private _pythonVersion?: string; 
   public get pythonVersion() {
     return this.getStringAttribute('python_version');
   }
-  public set pythonVersion(value: string | undefined) {
+  public set pythonVersion(value: string) {
     this._pythonVersion = value;
   }
   public resetPythonVersion() {
@@ -152,7 +183,7 @@ export class GlueJobCommandOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get pythonVersionInput() {
-    return this._pythonVersion
+    return this._pythonVersion;
   }
 
   // script_location - computed: false, optional: false, required: true
@@ -165,7 +196,7 @@ export class GlueJobCommandOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get scriptLocationInput() {
-    return this._scriptLocation
+    return this._scriptLocation;
   }
 }
 export interface GlueJobExecutionProperty {
@@ -195,12 +226,31 @@ export class GlueJobExecutionPropertyOutputReference extends cdktf.ComplexObject
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueJobExecutionProperty | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._maxConcurrentRuns) {
+      hasAnyValues = true;
+      internalValueResult.maxConcurrentRuns = this._maxConcurrentRuns;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueJobExecutionProperty | undefined) {
+    if (value === undefined) {
+      this._maxConcurrentRuns = undefined;
+    }
+    else {
+      this._maxConcurrentRuns = value.maxConcurrentRuns;
+    }
+  }
+
   // max_concurrent_runs - computed: false, optional: true, required: false
-  private _maxConcurrentRuns?: number | undefined; 
+  private _maxConcurrentRuns?: number; 
   public get maxConcurrentRuns() {
     return this.getNumberAttribute('max_concurrent_runs');
   }
-  public set maxConcurrentRuns(value: number | undefined) {
+  public set maxConcurrentRuns(value: number) {
     this._maxConcurrentRuns = value;
   }
   public resetMaxConcurrentRuns() {
@@ -208,7 +258,7 @@ export class GlueJobExecutionPropertyOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get maxConcurrentRunsInput() {
-    return this._maxConcurrentRuns
+    return this._maxConcurrentRuns;
   }
 }
 export interface GlueJobNotificationProperty {
@@ -238,12 +288,31 @@ export class GlueJobNotificationPropertyOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueJobNotificationProperty | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._notifyDelayAfter) {
+      hasAnyValues = true;
+      internalValueResult.notifyDelayAfter = this._notifyDelayAfter;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueJobNotificationProperty | undefined) {
+    if (value === undefined) {
+      this._notifyDelayAfter = undefined;
+    }
+    else {
+      this._notifyDelayAfter = value.notifyDelayAfter;
+    }
+  }
+
   // notify_delay_after - computed: false, optional: true, required: false
-  private _notifyDelayAfter?: number | undefined; 
+  private _notifyDelayAfter?: number; 
   public get notifyDelayAfter() {
     return this.getNumberAttribute('notify_delay_after');
   }
-  public set notifyDelayAfter(value: number | undefined) {
+  public set notifyDelayAfter(value: number) {
     this._notifyDelayAfter = value;
   }
   public resetNotifyDelayAfter() {
@@ -251,7 +320,7 @@ export class GlueJobNotificationPropertyOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get notifyDelayAfterInput() {
-    return this._notifyDelayAfter
+    return this._notifyDelayAfter;
   }
 }
 
@@ -302,9 +371,9 @@ export class GlueJob extends cdktf.TerraformResource {
     this._tagsAll = config.tagsAll;
     this._timeout = config.timeout;
     this._workerType = config.workerType;
-    this._command = config.command;
-    this._executionProperty = config.executionProperty;
-    this._notificationProperty = config.notificationProperty;
+    this._command.internalValue = config.command;
+    this._executionProperty.internalValue = config.executionProperty;
+    this._notificationProperty.internalValue = config.notificationProperty;
   }
 
   // ==========
@@ -317,11 +386,11 @@ export class GlueJob extends cdktf.TerraformResource {
   }
 
   // connections - computed: false, optional: true, required: false
-  private _connections?: string[] | undefined; 
+  private _connections?: string[]; 
   public get connections() {
     return this.getListAttribute('connections');
   }
-  public set connections(value: string[] | undefined) {
+  public set connections(value: string[]) {
     this._connections = value;
   }
   public resetConnections() {
@@ -329,16 +398,16 @@ export class GlueJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get connectionsInput() {
-    return this._connections
+    return this._connections;
   }
 
   // default_arguments - computed: false, optional: true, required: false
-  private _defaultArguments?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _defaultArguments?: { [key: string]: string } | cdktf.IResolvable; 
   public get defaultArguments() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('default_arguments') as any;
   }
-  public set defaultArguments(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set defaultArguments(value: { [key: string]: string } | cdktf.IResolvable) {
     this._defaultArguments = value;
   }
   public resetDefaultArguments() {
@@ -346,15 +415,15 @@ export class GlueJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultArgumentsInput() {
-    return this._defaultArguments
+    return this._defaultArguments;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -362,15 +431,15 @@ export class GlueJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // glue_version - computed: true, optional: true, required: false
-  private _glueVersion?: string | undefined; 
+  private _glueVersion?: string; 
   public get glueVersion() {
     return this.getStringAttribute('glue_version');
   }
-  public set glueVersion(value: string | undefined) {
+  public set glueVersion(value: string) {
     this._glueVersion = value;
   }
   public resetGlueVersion() {
@@ -378,7 +447,7 @@ export class GlueJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get glueVersionInput() {
-    return this._glueVersion
+    return this._glueVersion;
   }
 
   // id - computed: true, optional: true, required: false
@@ -387,11 +456,11 @@ export class GlueJob extends cdktf.TerraformResource {
   }
 
   // max_capacity - computed: true, optional: true, required: false
-  private _maxCapacity?: number | undefined; 
+  private _maxCapacity?: number; 
   public get maxCapacity() {
     return this.getNumberAttribute('max_capacity');
   }
-  public set maxCapacity(value: number | undefined) {
+  public set maxCapacity(value: number) {
     this._maxCapacity = value;
   }
   public resetMaxCapacity() {
@@ -399,15 +468,15 @@ export class GlueJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxCapacityInput() {
-    return this._maxCapacity
+    return this._maxCapacity;
   }
 
   // max_retries - computed: false, optional: true, required: false
-  private _maxRetries?: number | undefined; 
+  private _maxRetries?: number; 
   public get maxRetries() {
     return this.getNumberAttribute('max_retries');
   }
-  public set maxRetries(value: number | undefined) {
+  public set maxRetries(value: number) {
     this._maxRetries = value;
   }
   public resetMaxRetries() {
@@ -415,7 +484,7 @@ export class GlueJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxRetriesInput() {
-    return this._maxRetries
+    return this._maxRetries;
   }
 
   // name - computed: false, optional: false, required: true
@@ -428,16 +497,16 @@ export class GlueJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // non_overridable_arguments - computed: false, optional: true, required: false
-  private _nonOverridableArguments?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _nonOverridableArguments?: { [key: string]: string } | cdktf.IResolvable; 
   public get nonOverridableArguments() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('non_overridable_arguments') as any;
   }
-  public set nonOverridableArguments(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set nonOverridableArguments(value: { [key: string]: string } | cdktf.IResolvable) {
     this._nonOverridableArguments = value;
   }
   public resetNonOverridableArguments() {
@@ -445,15 +514,15 @@ export class GlueJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nonOverridableArgumentsInput() {
-    return this._nonOverridableArguments
+    return this._nonOverridableArguments;
   }
 
   // number_of_workers - computed: false, optional: true, required: false
-  private _numberOfWorkers?: number | undefined; 
+  private _numberOfWorkers?: number; 
   public get numberOfWorkers() {
     return this.getNumberAttribute('number_of_workers');
   }
-  public set numberOfWorkers(value: number | undefined) {
+  public set numberOfWorkers(value: number) {
     this._numberOfWorkers = value;
   }
   public resetNumberOfWorkers() {
@@ -461,7 +530,7 @@ export class GlueJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get numberOfWorkersInput() {
-    return this._numberOfWorkers
+    return this._numberOfWorkers;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -474,15 +543,15 @@ export class GlueJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // security_configuration - computed: false, optional: true, required: false
-  private _securityConfiguration?: string | undefined; 
+  private _securityConfiguration?: string; 
   public get securityConfiguration() {
     return this.getStringAttribute('security_configuration');
   }
-  public set securityConfiguration(value: string | undefined) {
+  public set securityConfiguration(value: string) {
     this._securityConfiguration = value;
   }
   public resetSecurityConfiguration() {
@@ -490,16 +559,16 @@ export class GlueJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityConfigurationInput() {
-    return this._securityConfiguration
+    return this._securityConfiguration;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -507,16 +576,16 @@ export class GlueJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -524,15 +593,15 @@ export class GlueJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // timeout - computed: false, optional: true, required: false
-  private _timeout?: number | undefined; 
+  private _timeout?: number; 
   public get timeout() {
     return this.getNumberAttribute('timeout');
   }
-  public set timeout(value: number | undefined) {
+  public set timeout(value: number) {
     this._timeout = value;
   }
   public resetTimeout() {
@@ -540,15 +609,15 @@ export class GlueJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutInput() {
-    return this._timeout
+    return this._timeout;
   }
 
   // worker_type - computed: false, optional: true, required: false
-  private _workerType?: string | undefined; 
+  private _workerType?: string; 
   public get workerType() {
     return this.getStringAttribute('worker_type');
   }
-  public set workerType(value: string | undefined) {
+  public set workerType(value: string) {
     this._workerType = value;
   }
   public resetWorkerType() {
@@ -556,55 +625,52 @@ export class GlueJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get workerTypeInput() {
-    return this._workerType
+    return this._workerType;
   }
 
   // command - computed: false, optional: false, required: true
-  private _command?: GlueJobCommand; 
-  private __commandOutput = new GlueJobCommandOutputReference(this as any, "command", true);
+  private _command = new GlueJobCommandOutputReference(this as any, "command", true);
   public get command() {
-    return this.__commandOutput;
+    return this._command;
   }
   public putCommand(value: GlueJobCommand) {
-    this._command = value;
+    this._command.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get commandInput() {
-    return this._command
+    return this._command.internalValue;
   }
 
   // execution_property - computed: false, optional: true, required: false
-  private _executionProperty?: GlueJobExecutionProperty | undefined; 
-  private __executionPropertyOutput = new GlueJobExecutionPropertyOutputReference(this as any, "execution_property", true);
+  private _executionProperty = new GlueJobExecutionPropertyOutputReference(this as any, "execution_property", true);
   public get executionProperty() {
-    return this.__executionPropertyOutput;
+    return this._executionProperty;
   }
-  public putExecutionProperty(value: GlueJobExecutionProperty | undefined) {
-    this._executionProperty = value;
+  public putExecutionProperty(value: GlueJobExecutionProperty) {
+    this._executionProperty.internalValue = value;
   }
   public resetExecutionProperty() {
-    this._executionProperty = undefined;
+    this._executionProperty.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get executionPropertyInput() {
-    return this._executionProperty
+    return this._executionProperty.internalValue;
   }
 
   // notification_property - computed: false, optional: true, required: false
-  private _notificationProperty?: GlueJobNotificationProperty | undefined; 
-  private __notificationPropertyOutput = new GlueJobNotificationPropertyOutputReference(this as any, "notification_property", true);
+  private _notificationProperty = new GlueJobNotificationPropertyOutputReference(this as any, "notification_property", true);
   public get notificationProperty() {
-    return this.__notificationPropertyOutput;
+    return this._notificationProperty;
   }
-  public putNotificationProperty(value: GlueJobNotificationProperty | undefined) {
-    this._notificationProperty = value;
+  public putNotificationProperty(value: GlueJobNotificationProperty) {
+    this._notificationProperty.internalValue = value;
   }
   public resetNotificationProperty() {
-    this._notificationProperty = undefined;
+    this._notificationProperty.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get notificationPropertyInput() {
-    return this._notificationProperty
+    return this._notificationProperty.internalValue;
   }
 
   // =========
@@ -628,9 +694,9 @@ export class GlueJob extends cdktf.TerraformResource {
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       timeout: cdktf.numberToTerraform(this._timeout),
       worker_type: cdktf.stringToTerraform(this._workerType),
-      command: glueJobCommandToTerraform(this._command),
-      execution_property: glueJobExecutionPropertyToTerraform(this._executionProperty),
-      notification_property: glueJobNotificationPropertyToTerraform(this._notificationProperty),
+      command: glueJobCommandToTerraform(this._command.internalValue),
+      execution_property: glueJobExecutionPropertyToTerraform(this._executionProperty.internalValue),
+      notification_property: glueJobNotificationPropertyToTerraform(this._notificationProperty.internalValue),
     };
   }
 }

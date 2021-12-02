@@ -111,7 +111,7 @@ export class BackupSelection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iamRoleArnInput() {
-    return this._iamRoleArn
+    return this._iamRoleArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -129,7 +129,7 @@ export class BackupSelection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // plan_id - computed: false, optional: false, required: true
@@ -142,15 +142,15 @@ export class BackupSelection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get planIdInput() {
-    return this._planId
+    return this._planId;
   }
 
   // resources - computed: false, optional: true, required: false
-  private _resources?: string[] | undefined; 
+  private _resources?: string[]; 
   public get resources() {
     return this.getListAttribute('resources');
   }
-  public set resources(value: string[] | undefined) {
+  public set resources(value: string[]) {
     this._resources = value;
   }
   public resetResources() {
@@ -158,16 +158,16 @@ export class BackupSelection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourcesInput() {
-    return this._resources
+    return this._resources;
   }
 
   // selection_tag - computed: false, optional: true, required: false
-  private _selectionTag?: BackupSelectionSelectionTag[] | undefined; 
+  private _selectionTag?: BackupSelectionSelectionTag[]; 
   public get selectionTag() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('selection_tag') as any;
   }
-  public set selectionTag(value: BackupSelectionSelectionTag[] | undefined) {
+  public set selectionTag(value: BackupSelectionSelectionTag[]) {
     this._selectionTag = value;
   }
   public resetSelectionTag() {
@@ -175,7 +175,7 @@ export class BackupSelection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get selectionTagInput() {
-    return this._selectionTag
+    return this._selectionTag;
   }
 
   // =========

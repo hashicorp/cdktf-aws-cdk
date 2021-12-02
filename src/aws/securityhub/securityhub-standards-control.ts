@@ -77,7 +77,7 @@ export class SecurityhubStandardsControl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get controlStatusInput() {
-    return this._controlStatus
+    return this._controlStatus;
   }
 
   // control_status_updated_at - computed: true, optional: false, required: false
@@ -91,11 +91,11 @@ export class SecurityhubStandardsControl extends cdktf.TerraformResource {
   }
 
   // disabled_reason - computed: true, optional: true, required: false
-  private _disabledReason?: string | undefined; 
+  private _disabledReason?: string; 
   public get disabledReason() {
     return this.getStringAttribute('disabled_reason');
   }
-  public set disabledReason(value: string | undefined) {
+  public set disabledReason(value: string) {
     this._disabledReason = value;
   }
   public resetDisabledReason() {
@@ -103,7 +103,7 @@ export class SecurityhubStandardsControl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get disabledReasonInput() {
-    return this._disabledReason
+    return this._disabledReason;
   }
 
   // id - computed: true, optional: true, required: false
@@ -136,7 +136,7 @@ export class SecurityhubStandardsControl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get standardsControlArnInput() {
-    return this._standardsControlArn
+    return this._standardsControlArn;
   }
 
   // title - computed: true, optional: false, required: false
