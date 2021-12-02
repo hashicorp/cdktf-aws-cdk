@@ -22,17 +22,17 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "2.0.0-rc.17",
+      "version": "2.0.0",
       "type": "build"
     },
     {
       "name": "cdktf-cli",
-      "version": "0.8.0-pre.2",
+      "version": "0.8.0",
       "type": "build"
     },
     {
       "name": "cdktf",
-      "version": "0.8.0-pre.2",
+      "version": "0.8.0",
       "type": "build"
     },
     {
@@ -105,12 +105,12 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "^2.0.0-rc.17",
+      "version": "^2.0.0",
       "type": "peer"
     },
     {
       "name": "cdktf",
-      "version": "^0.8.0-pre.2",
+      "version": "^0.8.0",
       "type": "peer"
     },
     {
