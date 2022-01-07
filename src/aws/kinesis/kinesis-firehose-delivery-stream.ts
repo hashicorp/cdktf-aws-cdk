@@ -2621,6 +2621,10 @@ export interface KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupCon
   */
   readonly compressionFormat?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/kinesis_firehose_delivery_stream.html#error_output_prefix KinesisFirehoseDeliveryStream#error_output_prefix}
+  */
+  readonly errorOutputPrefix?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/kinesis_firehose_delivery_stream.html#kms_key_arn KinesisFirehoseDeliveryStream#kms_key_arn}
   */
   readonly kmsKeyArn?: string;
@@ -2650,6 +2654,7 @@ export function kinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConf
     buffer_interval: cdktf.numberToTerraform(struct!.bufferInterval),
     buffer_size: cdktf.numberToTerraform(struct!.bufferSize),
     compression_format: cdktf.stringToTerraform(struct!.compressionFormat),
+    error_output_prefix: cdktf.stringToTerraform(struct!.errorOutputPrefix),
     kms_key_arn: cdktf.stringToTerraform(struct!.kmsKeyArn),
     prefix: cdktf.stringToTerraform(struct!.prefix),
     role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -2686,6 +2691,10 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigu
       hasAnyValues = true;
       internalValueResult.compressionFormat = this._compressionFormat;
     }
+    if (this._errorOutputPrefix) {
+      hasAnyValues = true;
+      internalValueResult.errorOutputPrefix = this._errorOutputPrefix;
+    }
     if (this._kmsKeyArn) {
       hasAnyValues = true;
       internalValueResult.kmsKeyArn = this._kmsKeyArn;
@@ -2711,6 +2720,7 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigu
       this._bufferInterval = undefined;
       this._bufferSize = undefined;
       this._compressionFormat = undefined;
+      this._errorOutputPrefix = undefined;
       this._kmsKeyArn = undefined;
       this._prefix = undefined;
       this._roleArn = undefined;
@@ -2721,6 +2731,7 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigu
       this._bufferInterval = value.bufferInterval;
       this._bufferSize = value.bufferSize;
       this._compressionFormat = value.compressionFormat;
+      this._errorOutputPrefix = value.errorOutputPrefix;
       this._kmsKeyArn = value.kmsKeyArn;
       this._prefix = value.prefix;
       this._roleArn = value.roleArn;
@@ -2787,6 +2798,22 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigu
   // Temporarily expose input value. Use with caution.
   public get compressionFormatInput() {
     return this._compressionFormat;
+  }
+
+  // error_output_prefix - computed: false, optional: true, required: false
+  private _errorOutputPrefix?: string; 
+  public get errorOutputPrefix() {
+    return this.getStringAttribute('error_output_prefix');
+  }
+  public set errorOutputPrefix(value: string) {
+    this._errorOutputPrefix = value;
+  }
+  public resetErrorOutputPrefix() {
+    this._errorOutputPrefix = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get errorOutputPrefixInput() {
+    return this._errorOutputPrefix;
   }
 
   // kms_key_arn - computed: false, optional: true, required: false
@@ -4441,6 +4468,10 @@ export interface KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfi
   */
   readonly compressionFormat?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/kinesis_firehose_delivery_stream.html#error_output_prefix KinesisFirehoseDeliveryStream#error_output_prefix}
+  */
+  readonly errorOutputPrefix?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/kinesis_firehose_delivery_stream.html#kms_key_arn KinesisFirehoseDeliveryStream#kms_key_arn}
   */
   readonly kmsKeyArn?: string;
@@ -4470,6 +4501,7 @@ export function kinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfig
     buffer_interval: cdktf.numberToTerraform(struct!.bufferInterval),
     buffer_size: cdktf.numberToTerraform(struct!.bufferSize),
     compression_format: cdktf.stringToTerraform(struct!.compressionFormat),
+    error_output_prefix: cdktf.stringToTerraform(struct!.errorOutputPrefix),
     kms_key_arn: cdktf.stringToTerraform(struct!.kmsKeyArn),
     prefix: cdktf.stringToTerraform(struct!.prefix),
     role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -4506,6 +4538,10 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigura
       hasAnyValues = true;
       internalValueResult.compressionFormat = this._compressionFormat;
     }
+    if (this._errorOutputPrefix) {
+      hasAnyValues = true;
+      internalValueResult.errorOutputPrefix = this._errorOutputPrefix;
+    }
     if (this._kmsKeyArn) {
       hasAnyValues = true;
       internalValueResult.kmsKeyArn = this._kmsKeyArn;
@@ -4531,6 +4567,7 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigura
       this._bufferInterval = undefined;
       this._bufferSize = undefined;
       this._compressionFormat = undefined;
+      this._errorOutputPrefix = undefined;
       this._kmsKeyArn = undefined;
       this._prefix = undefined;
       this._roleArn = undefined;
@@ -4541,6 +4578,7 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigura
       this._bufferInterval = value.bufferInterval;
       this._bufferSize = value.bufferSize;
       this._compressionFormat = value.compressionFormat;
+      this._errorOutputPrefix = value.errorOutputPrefix;
       this._kmsKeyArn = value.kmsKeyArn;
       this._prefix = value.prefix;
       this._roleArn = value.roleArn;
@@ -4607,6 +4645,22 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigura
   // Temporarily expose input value. Use with caution.
   public get compressionFormatInput() {
     return this._compressionFormat;
+  }
+
+  // error_output_prefix - computed: false, optional: true, required: false
+  private _errorOutputPrefix?: string; 
+  public get errorOutputPrefix() {
+    return this.getStringAttribute('error_output_prefix');
+  }
+  public set errorOutputPrefix(value: string) {
+    this._errorOutputPrefix = value;
+  }
+  public resetErrorOutputPrefix() {
+    this._errorOutputPrefix = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get errorOutputPrefixInput() {
+    return this._errorOutputPrefix;
   }
 
   // kms_key_arn - computed: false, optional: true, required: false
@@ -5154,6 +5208,10 @@ export interface KinesisFirehoseDeliveryStreamS3Configuration {
   */
   readonly compressionFormat?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/kinesis_firehose_delivery_stream.html#error_output_prefix KinesisFirehoseDeliveryStream#error_output_prefix}
+  */
+  readonly errorOutputPrefix?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/kinesis_firehose_delivery_stream.html#kms_key_arn KinesisFirehoseDeliveryStream#kms_key_arn}
   */
   readonly kmsKeyArn?: string;
@@ -5183,6 +5241,7 @@ export function kinesisFirehoseDeliveryStreamS3ConfigurationToTerraform(struct?:
     buffer_interval: cdktf.numberToTerraform(struct!.bufferInterval),
     buffer_size: cdktf.numberToTerraform(struct!.bufferSize),
     compression_format: cdktf.stringToTerraform(struct!.compressionFormat),
+    error_output_prefix: cdktf.stringToTerraform(struct!.errorOutputPrefix),
     kms_key_arn: cdktf.stringToTerraform(struct!.kmsKeyArn),
     prefix: cdktf.stringToTerraform(struct!.prefix),
     role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -5219,6 +5278,10 @@ export class KinesisFirehoseDeliveryStreamS3ConfigurationOutputReference extends
       hasAnyValues = true;
       internalValueResult.compressionFormat = this._compressionFormat;
     }
+    if (this._errorOutputPrefix) {
+      hasAnyValues = true;
+      internalValueResult.errorOutputPrefix = this._errorOutputPrefix;
+    }
     if (this._kmsKeyArn) {
       hasAnyValues = true;
       internalValueResult.kmsKeyArn = this._kmsKeyArn;
@@ -5244,6 +5307,7 @@ export class KinesisFirehoseDeliveryStreamS3ConfigurationOutputReference extends
       this._bufferInterval = undefined;
       this._bufferSize = undefined;
       this._compressionFormat = undefined;
+      this._errorOutputPrefix = undefined;
       this._kmsKeyArn = undefined;
       this._prefix = undefined;
       this._roleArn = undefined;
@@ -5254,6 +5318,7 @@ export class KinesisFirehoseDeliveryStreamS3ConfigurationOutputReference extends
       this._bufferInterval = value.bufferInterval;
       this._bufferSize = value.bufferSize;
       this._compressionFormat = value.compressionFormat;
+      this._errorOutputPrefix = value.errorOutputPrefix;
       this._kmsKeyArn = value.kmsKeyArn;
       this._prefix = value.prefix;
       this._roleArn = value.roleArn;
@@ -5320,6 +5385,22 @@ export class KinesisFirehoseDeliveryStreamS3ConfigurationOutputReference extends
   // Temporarily expose input value. Use with caution.
   public get compressionFormatInput() {
     return this._compressionFormat;
+  }
+
+  // error_output_prefix - computed: false, optional: true, required: false
+  private _errorOutputPrefix?: string; 
+  public get errorOutputPrefix() {
+    return this.getStringAttribute('error_output_prefix');
+  }
+  public set errorOutputPrefix(value: string) {
+    this._errorOutputPrefix = value;
+  }
+  public resetErrorOutputPrefix() {
+    this._errorOutputPrefix = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get errorOutputPrefixInput() {
+    return this._errorOutputPrefix;
   }
 
   // kms_key_arn - computed: false, optional: true, required: false

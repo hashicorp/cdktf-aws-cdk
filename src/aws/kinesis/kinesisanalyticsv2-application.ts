@@ -51,6 +51,12 @@ export interface Kinesisanalyticsv2ApplicationConfig extends cdktf.TerraformMeta
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/kinesisanalyticsv2_application.html#cloudwatch_logging_options Kinesisanalyticsv2Application#cloudwatch_logging_options}
   */
   readonly cloudwatchLoggingOptions?: Kinesisanalyticsv2ApplicationCloudwatchLoggingOptions;
+  /**
+  * timeouts block
+  * 
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/kinesisanalyticsv2_application.html#timeouts Kinesisanalyticsv2Application#timeouts}
+  */
+  readonly timeouts?: Kinesisanalyticsv2ApplicationTimeouts;
 }
 export interface Kinesisanalyticsv2ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation {
   /**
@@ -3690,6 +3696,122 @@ export class Kinesisanalyticsv2ApplicationCloudwatchLoggingOptionsOutputReferenc
     return this._logStreamArn;
   }
 }
+export interface Kinesisanalyticsv2ApplicationTimeouts {
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/kinesisanalyticsv2_application.html#create Kinesisanalyticsv2Application#create}
+  */
+  readonly create?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/kinesisanalyticsv2_application.html#delete Kinesisanalyticsv2Application#delete}
+  */
+  readonly delete?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/kinesisanalyticsv2_application.html#update Kinesisanalyticsv2Application#update}
+  */
+  readonly update?: string;
+}
+
+export function kinesisanalyticsv2ApplicationTimeoutsToTerraform(struct?: Kinesisanalyticsv2ApplicationTimeoutsOutputReference | Kinesisanalyticsv2ApplicationTimeouts): any {
+  if (!cdktf.canInspect(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  return {
+    create: cdktf.stringToTerraform(struct!.create),
+    delete: cdktf.stringToTerraform(struct!.delete),
+    update: cdktf.stringToTerraform(struct!.update),
+  }
+}
+
+export class Kinesisanalyticsv2ApplicationTimeoutsOutputReference extends cdktf.ComplexObject {
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param isSingleItem True if this is a block, false if it's a list
+  */
+  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+    super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Kinesisanalyticsv2ApplicationTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Kinesisanalyticsv2ApplicationTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
+  // create - computed: false, optional: true, required: false
+  private _create?: string; 
+  public get create() {
+    return this.getStringAttribute('create');
+  }
+  public set create(value: string) {
+    this._create = value;
+  }
+  public resetCreate() {
+    this._create = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get createInput() {
+    return this._create;
+  }
+
+  // delete - computed: false, optional: true, required: false
+  private _delete?: string; 
+  public get delete() {
+    return this.getStringAttribute('delete');
+  }
+  public set delete(value: string) {
+    this._delete = value;
+  }
+  public resetDelete() {
+    this._delete = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get deleteInput() {
+    return this._delete;
+  }
+
+  // update - computed: false, optional: true, required: false
+  private _update?: string; 
+  public get update() {
+    return this.getStringAttribute('update');
+  }
+  public set update(value: string) {
+    this._update = value;
+  }
+  public resetUpdate() {
+    this._update = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get updateInput() {
+    return this._update;
+  }
+}
 
 /**
 * Represents a {@link https://www.terraform.io/docs/providers/aws/r/kinesisanalyticsv2_application.html aws_kinesisanalyticsv2_application}
@@ -3733,6 +3855,7 @@ export class Kinesisanalyticsv2Application extends cdktf.TerraformResource {
     this._tagsAll = config.tagsAll;
     this._applicationConfiguration.internalValue = config.applicationConfiguration;
     this._cloudwatchLoggingOptions.internalValue = config.cloudwatchLoggingOptions;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -3922,6 +4045,22 @@ export class Kinesisanalyticsv2Application extends cdktf.TerraformResource {
     return this._cloudwatchLoggingOptions.internalValue;
   }
 
+  // timeouts - computed: false, optional: true, required: false
+  private _timeouts = new Kinesisanalyticsv2ApplicationTimeoutsOutputReference(this as any, "timeouts", true);
+  public get timeouts() {
+    return this._timeouts;
+  }
+  public putTimeouts(value: Kinesisanalyticsv2ApplicationTimeouts) {
+    this._timeouts.internalValue = value;
+  }
+  public resetTimeouts() {
+    this._timeouts.internalValue = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get timeoutsInput() {
+    return this._timeouts.internalValue;
+  }
+
   // =========
   // SYNTHESIS
   // =========
@@ -3938,6 +4077,7 @@ export class Kinesisanalyticsv2Application extends cdktf.TerraformResource {
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       application_configuration: kinesisanalyticsv2ApplicationApplicationConfigurationToTerraform(this._applicationConfiguration.internalValue),
       cloudwatch_logging_options: kinesisanalyticsv2ApplicationCloudwatchLoggingOptionsToTerraform(this._cloudwatchLoggingOptions.internalValue),
+      timeouts: kinesisanalyticsv2ApplicationTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }
