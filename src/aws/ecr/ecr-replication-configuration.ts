@@ -36,6 +36,28 @@ export function ecrReplicationConfigurationReplicationConfigurationRuleDestinati
   }
 }
 
+export interface EcrReplicationConfigurationReplicationConfigurationRuleRepositoryFilter {
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_replication_configuration.html#filter EcrReplicationConfiguration#filter}
+  */
+  readonly filter: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_replication_configuration.html#filter_type EcrReplicationConfiguration#filter_type}
+  */
+  readonly filterType: string;
+}
+
+export function ecrReplicationConfigurationReplicationConfigurationRuleRepositoryFilterToTerraform(struct?: EcrReplicationConfigurationReplicationConfigurationRuleRepositoryFilter): any {
+  if (!cdktf.canInspect(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  return {
+    filter: cdktf.stringToTerraform(struct!.filter),
+    filter_type: cdktf.stringToTerraform(struct!.filterType),
+  }
+}
+
 export interface EcrReplicationConfigurationReplicationConfigurationRule {
   /**
   * destination block
@@ -43,68 +65,32 @@ export interface EcrReplicationConfigurationReplicationConfigurationRule {
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_replication_configuration.html#destination EcrReplicationConfiguration#destination}
   */
   readonly destination: EcrReplicationConfigurationReplicationConfigurationRuleDestination[];
+  /**
+  * repository_filter block
+  * 
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_replication_configuration.html#repository_filter EcrReplicationConfiguration#repository_filter}
+  */
+  readonly repositoryFilter?: EcrReplicationConfigurationReplicationConfigurationRuleRepositoryFilter[];
 }
 
-export function ecrReplicationConfigurationReplicationConfigurationRuleToTerraform(struct?: EcrReplicationConfigurationReplicationConfigurationRuleOutputReference | EcrReplicationConfigurationReplicationConfigurationRule): any {
+export function ecrReplicationConfigurationReplicationConfigurationRuleToTerraform(struct?: EcrReplicationConfigurationReplicationConfigurationRule): any {
   if (!cdktf.canInspect(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
     destination: cdktf.listMapper(ecrReplicationConfigurationReplicationConfigurationRuleDestinationToTerraform)(struct!.destination),
+    repository_filter: cdktf.listMapper(ecrReplicationConfigurationReplicationConfigurationRuleRepositoryFilterToTerraform)(struct!.repositoryFilter),
   }
 }
 
-export class EcrReplicationConfigurationReplicationConfigurationRuleOutputReference extends cdktf.ComplexObject {
-  /**
-  * @param terraformResource The parent resource
-  * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
-  */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
-  }
-
-  public get internalValue(): EcrReplicationConfigurationReplicationConfigurationRule | undefined {
-    let hasAnyValues = false;
-    const internalValueResult: any = {};
-    if (this._destination) {
-      hasAnyValues = true;
-      internalValueResult.destination = this._destination;
-    }
-    return hasAnyValues ? internalValueResult : undefined;
-  }
-
-  public set internalValue(value: EcrReplicationConfigurationReplicationConfigurationRule | undefined) {
-    if (value === undefined) {
-      this._destination = undefined;
-    }
-    else {
-      this._destination = value.destination;
-    }
-  }
-
-  // destination - computed: false, optional: false, required: true
-  private _destination?: EcrReplicationConfigurationReplicationConfigurationRuleDestination[]; 
-  public get destination() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('destination') as any;
-  }
-  public set destination(value: EcrReplicationConfigurationReplicationConfigurationRuleDestination[]) {
-    this._destination = value;
-  }
-  // Temporarily expose input value. Use with caution.
-  public get destinationInput() {
-    return this._destination;
-  }
-}
 export interface EcrReplicationConfigurationReplicationConfiguration {
   /**
   * rule block
   * 
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_replication_configuration.html#rule EcrReplicationConfiguration#rule}
   */
-  readonly rule: EcrReplicationConfigurationReplicationConfigurationRule;
+  readonly rule: EcrReplicationConfigurationReplicationConfigurationRule[];
 }
 
 export function ecrReplicationConfigurationReplicationConfigurationToTerraform(struct?: EcrReplicationConfigurationReplicationConfigurationOutputReference | EcrReplicationConfigurationReplicationConfiguration): any {
@@ -113,7 +99,7 @@ export function ecrReplicationConfigurationReplicationConfigurationToTerraform(s
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    rule: ecrReplicationConfigurationReplicationConfigurationRuleToTerraform(struct!.rule),
+    rule: cdktf.listMapper(ecrReplicationConfigurationReplicationConfigurationRuleToTerraform)(struct!.rule),
   }
 }
 
@@ -132,31 +118,32 @@ export class EcrReplicationConfigurationReplicationConfigurationOutputReference 
     const internalValueResult: any = {};
     if (this._rule) {
       hasAnyValues = true;
-      internalValueResult.rule = this._rule?.internalValue;
+      internalValueResult.rule = this._rule;
     }
     return hasAnyValues ? internalValueResult : undefined;
   }
 
   public set internalValue(value: EcrReplicationConfigurationReplicationConfiguration | undefined) {
     if (value === undefined) {
-      this._rule.internalValue = undefined;
+      this._rule = undefined;
     }
     else {
-      this._rule.internalValue = value.rule;
+      this._rule = value.rule;
     }
   }
 
   // rule - computed: false, optional: false, required: true
-  private _rule = new EcrReplicationConfigurationReplicationConfigurationRuleOutputReference(this as any, "rule", true);
+  private _rule?: EcrReplicationConfigurationReplicationConfigurationRule[]; 
   public get rule() {
-    return this._rule;
+    // Getting the computed value is not yet implemented
+    return this.interpolationForAttribute('rule') as any;
   }
-  public putRule(value: EcrReplicationConfigurationReplicationConfigurationRule) {
-    this._rule.internalValue = value;
+  public set rule(value: EcrReplicationConfigurationReplicationConfigurationRule[]) {
+    this._rule = value;
   }
   // Temporarily expose input value. Use with caution.
   public get ruleInput() {
-    return this._rule.internalValue;
+    return this._rule;
   }
 }
 

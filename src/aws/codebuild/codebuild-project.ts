@@ -32,9 +32,17 @@ export interface CodebuildProjectConfig extends cdktf.TerraformMetaArguments {
   */
   readonly name: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#project_visibility CodebuildProject#project_visibility}
+  */
+  readonly projectVisibility?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#queued_timeout CodebuildProject#queued_timeout}
   */
   readonly queuedTimeout?: number;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#resource_access_role CodebuildProject#resource_access_role}
+  */
+  readonly resourceAccessRole?: string;
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#service_role CodebuildProject#service_role}
   */
@@ -94,6 +102,12 @@ export interface CodebuildProjectConfig extends cdktf.TerraformMetaArguments {
   */
   readonly secondaryArtifacts?: CodebuildProjectSecondaryArtifacts[];
   /**
+  * secondary_source_version block
+  * 
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#secondary_source_version CodebuildProject#secondary_source_version}
+  */
+  readonly secondarySourceVersion?: CodebuildProjectSecondarySourceVersion[];
+  /**
   * secondary_sources block
   * 
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#secondary_sources CodebuildProject#secondary_sources}
@@ -117,6 +131,10 @@ export interface CodebuildProjectArtifacts {
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#artifact_identifier CodebuildProject#artifact_identifier}
   */
   readonly artifactIdentifier?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#bucket_owner_access CodebuildProject#bucket_owner_access}
+  */
+  readonly bucketOwnerAccess?: string;
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#encryption_disabled CodebuildProject#encryption_disabled}
   */
@@ -158,6 +176,7 @@ export function codebuildProjectArtifactsToTerraform(struct?: CodebuildProjectAr
   }
   return {
     artifact_identifier: cdktf.stringToTerraform(struct!.artifactIdentifier),
+    bucket_owner_access: cdktf.stringToTerraform(struct!.bucketOwnerAccess),
     encryption_disabled: cdktf.booleanToTerraform(struct!.encryptionDisabled),
     location: cdktf.stringToTerraform(struct!.location),
     name: cdktf.stringToTerraform(struct!.name),
@@ -185,6 +204,10 @@ export class CodebuildProjectArtifactsOutputReference extends cdktf.ComplexObjec
     if (this._artifactIdentifier) {
       hasAnyValues = true;
       internalValueResult.artifactIdentifier = this._artifactIdentifier;
+    }
+    if (this._bucketOwnerAccess) {
+      hasAnyValues = true;
+      internalValueResult.bucketOwnerAccess = this._bucketOwnerAccess;
     }
     if (this._encryptionDisabled) {
       hasAnyValues = true;
@@ -224,6 +247,7 @@ export class CodebuildProjectArtifactsOutputReference extends cdktf.ComplexObjec
   public set internalValue(value: CodebuildProjectArtifacts | undefined) {
     if (value === undefined) {
       this._artifactIdentifier = undefined;
+      this._bucketOwnerAccess = undefined;
       this._encryptionDisabled = undefined;
       this._location = undefined;
       this._name = undefined;
@@ -235,6 +259,7 @@ export class CodebuildProjectArtifactsOutputReference extends cdktf.ComplexObjec
     }
     else {
       this._artifactIdentifier = value.artifactIdentifier;
+      this._bucketOwnerAccess = value.bucketOwnerAccess;
       this._encryptionDisabled = value.encryptionDisabled;
       this._location = value.location;
       this._name = value.name;
@@ -260,6 +285,22 @@ export class CodebuildProjectArtifactsOutputReference extends cdktf.ComplexObjec
   // Temporarily expose input value. Use with caution.
   public get artifactIdentifierInput() {
     return this._artifactIdentifier;
+  }
+
+  // bucket_owner_access - computed: false, optional: true, required: false
+  private _bucketOwnerAccess?: string; 
+  public get bucketOwnerAccess() {
+    return this.getStringAttribute('bucket_owner_access');
+  }
+  public set bucketOwnerAccess(value: string) {
+    this._bucketOwnerAccess = value;
+  }
+  public resetBucketOwnerAccess() {
+    this._bucketOwnerAccess = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get bucketOwnerAccessInput() {
+    return this._bucketOwnerAccess;
   }
 
   // encryption_disabled - computed: false, optional: true, required: false
@@ -1246,6 +1287,10 @@ export class CodebuildProjectLogsConfigCloudwatchLogsOutputReference extends cdk
 }
 export interface CodebuildProjectLogsConfigS3Logs {
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#bucket_owner_access CodebuildProject#bucket_owner_access}
+  */
+  readonly bucketOwnerAccess?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#encryption_disabled CodebuildProject#encryption_disabled}
   */
   readonly encryptionDisabled?: boolean | cdktf.IResolvable;
@@ -1265,6 +1310,7 @@ export function codebuildProjectLogsConfigS3LogsToTerraform(struct?: CodebuildPr
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
+    bucket_owner_access: cdktf.stringToTerraform(struct!.bucketOwnerAccess),
     encryption_disabled: cdktf.booleanToTerraform(struct!.encryptionDisabled),
     location: cdktf.stringToTerraform(struct!.location),
     status: cdktf.stringToTerraform(struct!.status),
@@ -1284,6 +1330,10 @@ export class CodebuildProjectLogsConfigS3LogsOutputReference extends cdktf.Compl
   public get internalValue(): CodebuildProjectLogsConfigS3Logs | undefined {
     let hasAnyValues = false;
     const internalValueResult: any = {};
+    if (this._bucketOwnerAccess) {
+      hasAnyValues = true;
+      internalValueResult.bucketOwnerAccess = this._bucketOwnerAccess;
+    }
     if (this._encryptionDisabled) {
       hasAnyValues = true;
       internalValueResult.encryptionDisabled = this._encryptionDisabled;
@@ -1301,15 +1351,33 @@ export class CodebuildProjectLogsConfigS3LogsOutputReference extends cdktf.Compl
 
   public set internalValue(value: CodebuildProjectLogsConfigS3Logs | undefined) {
     if (value === undefined) {
+      this._bucketOwnerAccess = undefined;
       this._encryptionDisabled = undefined;
       this._location = undefined;
       this._status = undefined;
     }
     else {
+      this._bucketOwnerAccess = value.bucketOwnerAccess;
       this._encryptionDisabled = value.encryptionDisabled;
       this._location = value.location;
       this._status = value.status;
     }
+  }
+
+  // bucket_owner_access - computed: false, optional: true, required: false
+  private _bucketOwnerAccess?: string; 
+  public get bucketOwnerAccess() {
+    return this.getStringAttribute('bucket_owner_access');
+  }
+  public set bucketOwnerAccess(value: string) {
+    this._bucketOwnerAccess = value;
+  }
+  public resetBucketOwnerAccess() {
+    this._bucketOwnerAccess = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get bucketOwnerAccessInput() {
+    return this._bucketOwnerAccess;
   }
 
   // encryption_disabled - computed: false, optional: true, required: false
@@ -1459,6 +1527,10 @@ export interface CodebuildProjectSecondaryArtifacts {
   */
   readonly artifactIdentifier: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#bucket_owner_access CodebuildProject#bucket_owner_access}
+  */
+  readonly bucketOwnerAccess?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#encryption_disabled CodebuildProject#encryption_disabled}
   */
   readonly encryptionDisabled?: boolean | cdktf.IResolvable;
@@ -1499,6 +1571,7 @@ export function codebuildProjectSecondaryArtifactsToTerraform(struct?: Codebuild
   }
   return {
     artifact_identifier: cdktf.stringToTerraform(struct!.artifactIdentifier),
+    bucket_owner_access: cdktf.stringToTerraform(struct!.bucketOwnerAccess),
     encryption_disabled: cdktf.booleanToTerraform(struct!.encryptionDisabled),
     location: cdktf.stringToTerraform(struct!.location),
     name: cdktf.stringToTerraform(struct!.name),
@@ -1507,6 +1580,28 @@ export function codebuildProjectSecondaryArtifactsToTerraform(struct?: Codebuild
     packaging: cdktf.stringToTerraform(struct!.packaging),
     path: cdktf.stringToTerraform(struct!.path),
     type: cdktf.stringToTerraform(struct!.type),
+  }
+}
+
+export interface CodebuildProjectSecondarySourceVersion {
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#source_identifier CodebuildProject#source_identifier}
+  */
+  readonly sourceIdentifier: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#source_version CodebuildProject#source_version}
+  */
+  readonly sourceVersion: string;
+}
+
+export function codebuildProjectSecondarySourceVersionToTerraform(struct?: CodebuildProjectSecondarySourceVersion): any {
+  if (!cdktf.canInspect(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  return {
+    source_identifier: cdktf.stringToTerraform(struct!.sourceIdentifier),
+    source_version: cdktf.stringToTerraform(struct!.sourceVersion),
   }
 }
 
@@ -2473,7 +2568,9 @@ export class CodebuildProject extends cdktf.TerraformResource {
     this._description = config.description;
     this._encryptionKey = config.encryptionKey;
     this._name = config.name;
+    this._projectVisibility = config.projectVisibility;
     this._queuedTimeout = config.queuedTimeout;
+    this._resourceAccessRole = config.resourceAccessRole;
     this._serviceRole = config.serviceRole;
     this._sourceVersion = config.sourceVersion;
     this._tags = config.tags;
@@ -2485,6 +2582,7 @@ export class CodebuildProject extends cdktf.TerraformResource {
     this._fileSystemLocations = config.fileSystemLocations;
     this._logsConfig.internalValue = config.logsConfig;
     this._secondaryArtifacts = config.secondaryArtifacts;
+    this._secondarySourceVersion = config.secondarySourceVersion;
     this._secondarySources = config.secondarySources;
     this._source.internalValue = config.source;
     this._vpcConfig.internalValue = config.vpcConfig;
@@ -2602,6 +2700,27 @@ export class CodebuildProject extends cdktf.TerraformResource {
     return this._name;
   }
 
+  // project_visibility - computed: false, optional: true, required: false
+  private _projectVisibility?: string; 
+  public get projectVisibility() {
+    return this.getStringAttribute('project_visibility');
+  }
+  public set projectVisibility(value: string) {
+    this._projectVisibility = value;
+  }
+  public resetProjectVisibility() {
+    this._projectVisibility = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get projectVisibilityInput() {
+    return this._projectVisibility;
+  }
+
+  // public_project_alias - computed: true, optional: false, required: false
+  public get publicProjectAlias() {
+    return this.getStringAttribute('public_project_alias');
+  }
+
   // queued_timeout - computed: false, optional: true, required: false
   private _queuedTimeout?: number; 
   public get queuedTimeout() {
@@ -2616,6 +2735,22 @@ export class CodebuildProject extends cdktf.TerraformResource {
   // Temporarily expose input value. Use with caution.
   public get queuedTimeoutInput() {
     return this._queuedTimeout;
+  }
+
+  // resource_access_role - computed: false, optional: true, required: false
+  private _resourceAccessRole?: string; 
+  public get resourceAccessRole() {
+    return this.getStringAttribute('resource_access_role');
+  }
+  public set resourceAccessRole(value: string) {
+    this._resourceAccessRole = value;
+  }
+  public resetResourceAccessRole() {
+    this._resourceAccessRole = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get resourceAccessRoleInput() {
+    return this._resourceAccessRole;
   }
 
   // service_role - computed: false, optional: false, required: true
@@ -2789,6 +2924,23 @@ export class CodebuildProject extends cdktf.TerraformResource {
     return this._secondaryArtifacts;
   }
 
+  // secondary_source_version - computed: false, optional: true, required: false
+  private _secondarySourceVersion?: CodebuildProjectSecondarySourceVersion[]; 
+  public get secondarySourceVersion() {
+    // Getting the computed value is not yet implemented
+    return this.interpolationForAttribute('secondary_source_version') as any;
+  }
+  public set secondarySourceVersion(value: CodebuildProjectSecondarySourceVersion[]) {
+    this._secondarySourceVersion = value;
+  }
+  public resetSecondarySourceVersion() {
+    this._secondarySourceVersion = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get secondarySourceVersionInput() {
+    return this._secondarySourceVersion;
+  }
+
   // secondary_sources - computed: false, optional: true, required: false
   private _secondarySources?: CodebuildProjectSecondarySources[]; 
   public get secondarySources() {
@@ -2847,7 +2999,9 @@ export class CodebuildProject extends cdktf.TerraformResource {
       description: cdktf.stringToTerraform(this._description),
       encryption_key: cdktf.stringToTerraform(this._encryptionKey),
       name: cdktf.stringToTerraform(this._name),
+      project_visibility: cdktf.stringToTerraform(this._projectVisibility),
       queued_timeout: cdktf.numberToTerraform(this._queuedTimeout),
+      resource_access_role: cdktf.stringToTerraform(this._resourceAccessRole),
       service_role: cdktf.stringToTerraform(this._serviceRole),
       source_version: cdktf.stringToTerraform(this._sourceVersion),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
@@ -2859,6 +3013,7 @@ export class CodebuildProject extends cdktf.TerraformResource {
       file_system_locations: cdktf.listMapper(codebuildProjectFileSystemLocationsToTerraform)(this._fileSystemLocations),
       logs_config: codebuildProjectLogsConfigToTerraform(this._logsConfig.internalValue),
       secondary_artifacts: cdktf.listMapper(codebuildProjectSecondaryArtifactsToTerraform)(this._secondaryArtifacts),
+      secondary_source_version: cdktf.listMapper(codebuildProjectSecondarySourceVersionToTerraform)(this._secondarySourceVersion),
       secondary_sources: cdktf.listMapper(codebuildProjectSecondarySourcesToTerraform)(this._secondarySources),
       source: codebuildProjectSourceToTerraform(this._source.internalValue),
       vpc_config: codebuildProjectVpcConfigToTerraform(this._vpcConfig.internalValue),
