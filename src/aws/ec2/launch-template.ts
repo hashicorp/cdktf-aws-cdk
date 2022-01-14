@@ -1346,6 +1346,10 @@ export interface LaunchTemplateMetadataOptions {
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#http_tokens LaunchTemplate#http_tokens}
   */
   readonly httpTokens?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#instance_metadata_tags LaunchTemplate#instance_metadata_tags}
+  */
+  readonly instanceMetadataTags?: string;
 }
 
 export function launchTemplateMetadataOptionsToTerraform(struct?: LaunchTemplateMetadataOptionsOutputReference | LaunchTemplateMetadataOptions): any {
@@ -1358,6 +1362,7 @@ export function launchTemplateMetadataOptionsToTerraform(struct?: LaunchTemplate
     http_protocol_ipv6: cdktf.stringToTerraform(struct!.httpProtocolIpv6),
     http_put_response_hop_limit: cdktf.numberToTerraform(struct!.httpPutResponseHopLimit),
     http_tokens: cdktf.stringToTerraform(struct!.httpTokens),
+    instance_metadata_tags: cdktf.stringToTerraform(struct!.instanceMetadataTags),
   }
 }
 
@@ -1390,6 +1395,10 @@ export class LaunchTemplateMetadataOptionsOutputReference extends cdktf.ComplexO
       hasAnyValues = true;
       internalValueResult.httpTokens = this._httpTokens;
     }
+    if (this._instanceMetadataTags) {
+      hasAnyValues = true;
+      internalValueResult.instanceMetadataTags = this._instanceMetadataTags;
+    }
     return hasAnyValues ? internalValueResult : undefined;
   }
 
@@ -1399,12 +1408,14 @@ export class LaunchTemplateMetadataOptionsOutputReference extends cdktf.ComplexO
       this._httpProtocolIpv6 = undefined;
       this._httpPutResponseHopLimit = undefined;
       this._httpTokens = undefined;
+      this._instanceMetadataTags = undefined;
     }
     else {
       this._httpEndpoint = value.httpEndpoint;
       this._httpProtocolIpv6 = value.httpProtocolIpv6;
       this._httpPutResponseHopLimit = value.httpPutResponseHopLimit;
       this._httpTokens = value.httpTokens;
+      this._instanceMetadataTags = value.instanceMetadataTags;
     }
   }
 
@@ -1470,6 +1481,22 @@ export class LaunchTemplateMetadataOptionsOutputReference extends cdktf.ComplexO
   // Temporarily expose input value. Use with caution.
   public get httpTokensInput() {
     return this._httpTokens;
+  }
+
+  // instance_metadata_tags - computed: false, optional: true, required: false
+  private _instanceMetadataTags?: string; 
+  public get instanceMetadataTags() {
+    return this.getStringAttribute('instance_metadata_tags');
+  }
+  public set instanceMetadataTags(value: string) {
+    this._instanceMetadataTags = value;
+  }
+  public resetInstanceMetadataTags() {
+    this._instanceMetadataTags = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get instanceMetadataTagsInput() {
+    return this._instanceMetadataTags;
   }
 }
 export interface LaunchTemplateMonitoring {
