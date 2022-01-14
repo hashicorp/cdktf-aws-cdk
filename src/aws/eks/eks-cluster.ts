@@ -224,6 +224,10 @@ export class EksClusterEncryptionConfigOutputReference extends cdktf.ComplexObje
 }
 export interface EksClusterKubernetesNetworkConfig {
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_cluster.html#ip_family EksCluster#ip_family}
+  */
+  readonly ipFamily?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_cluster.html#service_ipv4_cidr EksCluster#service_ipv4_cidr}
   */
   readonly serviceIpv4Cidr?: string;
@@ -235,6 +239,7 @@ export function eksClusterKubernetesNetworkConfigToTerraform(struct?: EksCluster
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
+    ip_family: cdktf.stringToTerraform(struct!.ipFamily),
     service_ipv4_cidr: cdktf.stringToTerraform(struct!.serviceIpv4Cidr),
   }
 }
@@ -252,6 +257,10 @@ export class EksClusterKubernetesNetworkConfigOutputReference extends cdktf.Comp
   public get internalValue(): EksClusterKubernetesNetworkConfig | undefined {
     let hasAnyValues = false;
     const internalValueResult: any = {};
+    if (this._ipFamily) {
+      hasAnyValues = true;
+      internalValueResult.ipFamily = this._ipFamily;
+    }
     if (this._serviceIpv4Cidr) {
       hasAnyValues = true;
       internalValueResult.serviceIpv4Cidr = this._serviceIpv4Cidr;
@@ -261,11 +270,29 @@ export class EksClusterKubernetesNetworkConfigOutputReference extends cdktf.Comp
 
   public set internalValue(value: EksClusterKubernetesNetworkConfig | undefined) {
     if (value === undefined) {
+      this._ipFamily = undefined;
       this._serviceIpv4Cidr = undefined;
     }
     else {
+      this._ipFamily = value.ipFamily;
       this._serviceIpv4Cidr = value.serviceIpv4Cidr;
     }
+  }
+
+  // ip_family - computed: true, optional: true, required: false
+  private _ipFamily?: string; 
+  public get ipFamily() {
+    return this.getStringAttribute('ip_family');
+  }
+  public set ipFamily(value: string) {
+    this._ipFamily = value;
+  }
+  public resetIpFamily() {
+    this._ipFamily = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get ipFamilyInput() {
+    return this._ipFamily;
   }
 
   // service_ipv4_cidr - computed: true, optional: true, required: false
