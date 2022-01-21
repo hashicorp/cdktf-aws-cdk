@@ -92,11 +92,176 @@ export interface OpsworksStaticWebLayerConfig extends cdktf.TerraformMetaArgumen
   */
   readonly useEbsOptimizedInstances?: boolean | cdktf.IResolvable;
   /**
+  * cloudwatch_configuration block
+  * 
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_static_web_layer.html#cloudwatch_configuration OpsworksStaticWebLayer#cloudwatch_configuration}
+  */
+  readonly cloudwatchConfiguration?: OpsworksStaticWebLayerCloudwatchConfiguration;
+  /**
   * ebs_volume block
   * 
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_static_web_layer.html#ebs_volume OpsworksStaticWebLayer#ebs_volume}
   */
   readonly ebsVolume?: OpsworksStaticWebLayerEbsVolume[];
+}
+export interface OpsworksStaticWebLayerCloudwatchConfigurationLogStreams {
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_static_web_layer.html#batch_count OpsworksStaticWebLayer#batch_count}
+  */
+  readonly batchCount?: number;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_static_web_layer.html#batch_size OpsworksStaticWebLayer#batch_size}
+  */
+  readonly batchSize?: number;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_static_web_layer.html#buffer_duration OpsworksStaticWebLayer#buffer_duration}
+  */
+  readonly bufferDuration?: number;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_static_web_layer.html#datetime_format OpsworksStaticWebLayer#datetime_format}
+  */
+  readonly datetimeFormat?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_static_web_layer.html#encoding OpsworksStaticWebLayer#encoding}
+  */
+  readonly encoding?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_static_web_layer.html#file OpsworksStaticWebLayer#file}
+  */
+  readonly file: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_static_web_layer.html#file_fingerprint_lines OpsworksStaticWebLayer#file_fingerprint_lines}
+  */
+  readonly fileFingerprintLines?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_static_web_layer.html#initial_position OpsworksStaticWebLayer#initial_position}
+  */
+  readonly initialPosition?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_static_web_layer.html#log_group_name OpsworksStaticWebLayer#log_group_name}
+  */
+  readonly logGroupName: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_static_web_layer.html#multiline_start_pattern OpsworksStaticWebLayer#multiline_start_pattern}
+  */
+  readonly multilineStartPattern?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_static_web_layer.html#time_zone OpsworksStaticWebLayer#time_zone}
+  */
+  readonly timeZone?: string;
+}
+
+export function opsworksStaticWebLayerCloudwatchConfigurationLogStreamsToTerraform(struct?: OpsworksStaticWebLayerCloudwatchConfigurationLogStreams): any {
+  if (!cdktf.canInspect(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  return {
+    batch_count: cdktf.numberToTerraform(struct!.batchCount),
+    batch_size: cdktf.numberToTerraform(struct!.batchSize),
+    buffer_duration: cdktf.numberToTerraform(struct!.bufferDuration),
+    datetime_format: cdktf.stringToTerraform(struct!.datetimeFormat),
+    encoding: cdktf.stringToTerraform(struct!.encoding),
+    file: cdktf.stringToTerraform(struct!.file),
+    file_fingerprint_lines: cdktf.stringToTerraform(struct!.fileFingerprintLines),
+    initial_position: cdktf.stringToTerraform(struct!.initialPosition),
+    log_group_name: cdktf.stringToTerraform(struct!.logGroupName),
+    multiline_start_pattern: cdktf.stringToTerraform(struct!.multilineStartPattern),
+    time_zone: cdktf.stringToTerraform(struct!.timeZone),
+  }
+}
+
+export interface OpsworksStaticWebLayerCloudwatchConfiguration {
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_static_web_layer.html#enabled OpsworksStaticWebLayer#enabled}
+  */
+  readonly enabled?: boolean | cdktf.IResolvable;
+  /**
+  * log_streams block
+  * 
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_static_web_layer.html#log_streams OpsworksStaticWebLayer#log_streams}
+  */
+  readonly logStreams?: OpsworksStaticWebLayerCloudwatchConfigurationLogStreams[];
+}
+
+export function opsworksStaticWebLayerCloudwatchConfigurationToTerraform(struct?: OpsworksStaticWebLayerCloudwatchConfigurationOutputReference | OpsworksStaticWebLayerCloudwatchConfiguration): any {
+  if (!cdktf.canInspect(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  return {
+    enabled: cdktf.booleanToTerraform(struct!.enabled),
+    log_streams: cdktf.listMapper(opsworksStaticWebLayerCloudwatchConfigurationLogStreamsToTerraform)(struct!.logStreams),
+  }
+}
+
+export class OpsworksStaticWebLayerCloudwatchConfigurationOutputReference extends cdktf.ComplexObject {
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param isSingleItem True if this is a block, false if it's a list
+  */
+  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+    super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): OpsworksStaticWebLayerCloudwatchConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logStreams) {
+      hasAnyValues = true;
+      internalValueResult.logStreams = this._logStreams;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: OpsworksStaticWebLayerCloudwatchConfiguration | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._logStreams = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._logStreams = value.logStreams;
+    }
+  }
+
+  // enabled - computed: false, optional: true, required: false
+  private _enabled?: boolean | cdktf.IResolvable; 
+  public get enabled() {
+    return this.getBooleanAttribute('enabled') as any;
+  }
+  public set enabled(value: boolean | cdktf.IResolvable) {
+    this._enabled = value;
+  }
+  public resetEnabled() {
+    this._enabled = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get enabledInput() {
+    return this._enabled;
+  }
+
+  // log_streams - computed: false, optional: true, required: false
+  private _logStreams?: OpsworksStaticWebLayerCloudwatchConfigurationLogStreams[]; 
+  public get logStreams() {
+    // Getting the computed value is not yet implemented
+    return this.interpolationForAttribute('log_streams') as any;
+  }
+  public set logStreams(value: OpsworksStaticWebLayerCloudwatchConfigurationLogStreams[]) {
+    this._logStreams = value;
+  }
+  public resetLogStreams() {
+    this._logStreams = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get logStreamsInput() {
+    return this._logStreams;
+  }
 }
 export interface OpsworksStaticWebLayerEbsVolume {
   /**
@@ -199,6 +364,7 @@ export class OpsworksStaticWebLayer extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._useEbsOptimizedInstances = config.useEbsOptimizedInstances;
+    this._cloudwatchConfiguration.internalValue = config.cloudwatchConfiguration;
     this._ebsVolume = config.ebsVolume;
   }
 
@@ -551,6 +717,22 @@ export class OpsworksStaticWebLayer extends cdktf.TerraformResource {
     return this._useEbsOptimizedInstances;
   }
 
+  // cloudwatch_configuration - computed: false, optional: true, required: false
+  private _cloudwatchConfiguration = new OpsworksStaticWebLayerCloudwatchConfigurationOutputReference(this as any, "cloudwatch_configuration", true);
+  public get cloudwatchConfiguration() {
+    return this._cloudwatchConfiguration;
+  }
+  public putCloudwatchConfiguration(value: OpsworksStaticWebLayerCloudwatchConfiguration) {
+    this._cloudwatchConfiguration.internalValue = value;
+  }
+  public resetCloudwatchConfiguration() {
+    this._cloudwatchConfiguration.internalValue = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get cloudwatchConfigurationInput() {
+    return this._cloudwatchConfiguration.internalValue;
+  }
+
   // ebs_volume - computed: false, optional: true, required: false
   private _ebsVolume?: OpsworksStaticWebLayerEbsVolume[]; 
   public get ebsVolume() {
@@ -595,6 +777,7 @@ export class OpsworksStaticWebLayer extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       use_ebs_optimized_instances: cdktf.booleanToTerraform(this._useEbsOptimizedInstances),
+      cloudwatch_configuration: opsworksStaticWebLayerCloudwatchConfigurationToTerraform(this._cloudwatchConfiguration.internalValue),
       ebs_volume: cdktf.listMapper(opsworksStaticWebLayerEbsVolumeToTerraform)(this._ebsVolume),
     };
   }
