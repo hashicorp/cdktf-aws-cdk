@@ -104,11 +104,176 @@ export interface OpsworksGangliaLayerConfig extends cdktf.TerraformMetaArguments
   */
   readonly username?: string;
   /**
+  * cloudwatch_configuration block
+  * 
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_ganglia_layer.html#cloudwatch_configuration OpsworksGangliaLayer#cloudwatch_configuration}
+  */
+  readonly cloudwatchConfiguration?: OpsworksGangliaLayerCloudwatchConfiguration;
+  /**
   * ebs_volume block
   * 
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_ganglia_layer.html#ebs_volume OpsworksGangliaLayer#ebs_volume}
   */
   readonly ebsVolume?: OpsworksGangliaLayerEbsVolume[];
+}
+export interface OpsworksGangliaLayerCloudwatchConfigurationLogStreams {
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_ganglia_layer.html#batch_count OpsworksGangliaLayer#batch_count}
+  */
+  readonly batchCount?: number;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_ganglia_layer.html#batch_size OpsworksGangliaLayer#batch_size}
+  */
+  readonly batchSize?: number;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_ganglia_layer.html#buffer_duration OpsworksGangliaLayer#buffer_duration}
+  */
+  readonly bufferDuration?: number;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_ganglia_layer.html#datetime_format OpsworksGangliaLayer#datetime_format}
+  */
+  readonly datetimeFormat?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_ganglia_layer.html#encoding OpsworksGangliaLayer#encoding}
+  */
+  readonly encoding?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_ganglia_layer.html#file OpsworksGangliaLayer#file}
+  */
+  readonly file: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_ganglia_layer.html#file_fingerprint_lines OpsworksGangliaLayer#file_fingerprint_lines}
+  */
+  readonly fileFingerprintLines?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_ganglia_layer.html#initial_position OpsworksGangliaLayer#initial_position}
+  */
+  readonly initialPosition?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_ganglia_layer.html#log_group_name OpsworksGangliaLayer#log_group_name}
+  */
+  readonly logGroupName: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_ganglia_layer.html#multiline_start_pattern OpsworksGangliaLayer#multiline_start_pattern}
+  */
+  readonly multilineStartPattern?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_ganglia_layer.html#time_zone OpsworksGangliaLayer#time_zone}
+  */
+  readonly timeZone?: string;
+}
+
+export function opsworksGangliaLayerCloudwatchConfigurationLogStreamsToTerraform(struct?: OpsworksGangliaLayerCloudwatchConfigurationLogStreams): any {
+  if (!cdktf.canInspect(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  return {
+    batch_count: cdktf.numberToTerraform(struct!.batchCount),
+    batch_size: cdktf.numberToTerraform(struct!.batchSize),
+    buffer_duration: cdktf.numberToTerraform(struct!.bufferDuration),
+    datetime_format: cdktf.stringToTerraform(struct!.datetimeFormat),
+    encoding: cdktf.stringToTerraform(struct!.encoding),
+    file: cdktf.stringToTerraform(struct!.file),
+    file_fingerprint_lines: cdktf.stringToTerraform(struct!.fileFingerprintLines),
+    initial_position: cdktf.stringToTerraform(struct!.initialPosition),
+    log_group_name: cdktf.stringToTerraform(struct!.logGroupName),
+    multiline_start_pattern: cdktf.stringToTerraform(struct!.multilineStartPattern),
+    time_zone: cdktf.stringToTerraform(struct!.timeZone),
+  }
+}
+
+export interface OpsworksGangliaLayerCloudwatchConfiguration {
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_ganglia_layer.html#enabled OpsworksGangliaLayer#enabled}
+  */
+  readonly enabled?: boolean | cdktf.IResolvable;
+  /**
+  * log_streams block
+  * 
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_ganglia_layer.html#log_streams OpsworksGangliaLayer#log_streams}
+  */
+  readonly logStreams?: OpsworksGangliaLayerCloudwatchConfigurationLogStreams[];
+}
+
+export function opsworksGangliaLayerCloudwatchConfigurationToTerraform(struct?: OpsworksGangliaLayerCloudwatchConfigurationOutputReference | OpsworksGangliaLayerCloudwatchConfiguration): any {
+  if (!cdktf.canInspect(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  return {
+    enabled: cdktf.booleanToTerraform(struct!.enabled),
+    log_streams: cdktf.listMapper(opsworksGangliaLayerCloudwatchConfigurationLogStreamsToTerraform)(struct!.logStreams),
+  }
+}
+
+export class OpsworksGangliaLayerCloudwatchConfigurationOutputReference extends cdktf.ComplexObject {
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param isSingleItem True if this is a block, false if it's a list
+  */
+  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+    super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): OpsworksGangliaLayerCloudwatchConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logStreams) {
+      hasAnyValues = true;
+      internalValueResult.logStreams = this._logStreams;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: OpsworksGangliaLayerCloudwatchConfiguration | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._logStreams = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._logStreams = value.logStreams;
+    }
+  }
+
+  // enabled - computed: false, optional: true, required: false
+  private _enabled?: boolean | cdktf.IResolvable; 
+  public get enabled() {
+    return this.getBooleanAttribute('enabled') as any;
+  }
+  public set enabled(value: boolean | cdktf.IResolvable) {
+    this._enabled = value;
+  }
+  public resetEnabled() {
+    this._enabled = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get enabledInput() {
+    return this._enabled;
+  }
+
+  // log_streams - computed: false, optional: true, required: false
+  private _logStreams?: OpsworksGangliaLayerCloudwatchConfigurationLogStreams[]; 
+  public get logStreams() {
+    // Getting the computed value is not yet implemented
+    return this.interpolationForAttribute('log_streams') as any;
+  }
+  public set logStreams(value: OpsworksGangliaLayerCloudwatchConfigurationLogStreams[]) {
+    this._logStreams = value;
+  }
+  public resetLogStreams() {
+    this._logStreams = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get logStreamsInput() {
+    return this._logStreams;
+  }
 }
 export interface OpsworksGangliaLayerEbsVolume {
   /**
@@ -214,6 +379,7 @@ export class OpsworksGangliaLayer extends cdktf.TerraformResource {
     this._url = config.url;
     this._useEbsOptimizedInstances = config.useEbsOptimizedInstances;
     this._username = config.username;
+    this._cloudwatchConfiguration.internalValue = config.cloudwatchConfiguration;
     this._ebsVolume = config.ebsVolume;
   }
 
@@ -611,6 +777,22 @@ export class OpsworksGangliaLayer extends cdktf.TerraformResource {
     return this._username;
   }
 
+  // cloudwatch_configuration - computed: false, optional: true, required: false
+  private _cloudwatchConfiguration = new OpsworksGangliaLayerCloudwatchConfigurationOutputReference(this as any, "cloudwatch_configuration", true);
+  public get cloudwatchConfiguration() {
+    return this._cloudwatchConfiguration;
+  }
+  public putCloudwatchConfiguration(value: OpsworksGangliaLayerCloudwatchConfiguration) {
+    this._cloudwatchConfiguration.internalValue = value;
+  }
+  public resetCloudwatchConfiguration() {
+    this._cloudwatchConfiguration.internalValue = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get cloudwatchConfigurationInput() {
+    return this._cloudwatchConfiguration.internalValue;
+  }
+
   // ebs_volume - computed: false, optional: true, required: false
   private _ebsVolume?: OpsworksGangliaLayerEbsVolume[]; 
   public get ebsVolume() {
@@ -658,6 +840,7 @@ export class OpsworksGangliaLayer extends cdktf.TerraformResource {
       url: cdktf.stringToTerraform(this._url),
       use_ebs_optimized_instances: cdktf.booleanToTerraform(this._useEbsOptimizedInstances),
       username: cdktf.stringToTerraform(this._username),
+      cloudwatch_configuration: opsworksGangliaLayerCloudwatchConfigurationToTerraform(this._cloudwatchConfiguration.internalValue),
       ebs_volume: cdktf.listMapper(opsworksGangliaLayerEbsVolumeToTerraform)(this._ebsVolume),
     };
   }
