@@ -162,11 +162,11 @@ class TerraformHost extends Construct {
         );
       }
 
-      res.count = conditional(
+      res.count = Token.asNumber(conditional(
         this.getConditionTerraformLocal(conditionId),
         1,
         0
-      );
+      ));
     }
 
     const keys = Object.keys(props).filter((k) => props[k] !== undefined);
@@ -415,7 +415,7 @@ class TerraformHost extends Construct {
           const varValue = this.processIntrinsics(rawVarValue);
 
           resultString = Fn.replace(
-            resultString,
+            Token.asString(resultString),
             Fn.rawString("${" + varName + "}"),
             varValue
           );
