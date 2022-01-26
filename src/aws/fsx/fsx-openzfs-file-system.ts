@@ -8,97 +8,97 @@ import * as cdktf from 'cdktf';
 */
 export interface FsxOpenzfsFileSystemConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#automatic_backup_retention_days FsxOpenzfsFileSystem#automatic_backup_retention_days}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#automatic_backup_retention_days FsxOpenzfsFileSystem#automatic_backup_retention_days}
   */
   readonly automaticBackupRetentionDays?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#backup_id FsxOpenzfsFileSystem#backup_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#backup_id FsxOpenzfsFileSystem#backup_id}
   */
   readonly backupId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#copy_tags_to_backups FsxOpenzfsFileSystem#copy_tags_to_backups}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#copy_tags_to_backups FsxOpenzfsFileSystem#copy_tags_to_backups}
   */
   readonly copyTagsToBackups?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#copy_tags_to_volumes FsxOpenzfsFileSystem#copy_tags_to_volumes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#copy_tags_to_volumes FsxOpenzfsFileSystem#copy_tags_to_volumes}
   */
   readonly copyTagsToVolumes?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#daily_automatic_backup_start_time FsxOpenzfsFileSystem#daily_automatic_backup_start_time}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#daily_automatic_backup_start_time FsxOpenzfsFileSystem#daily_automatic_backup_start_time}
   */
   readonly dailyAutomaticBackupStartTime?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#deployment_type FsxOpenzfsFileSystem#deployment_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#deployment_type FsxOpenzfsFileSystem#deployment_type}
   */
   readonly deploymentType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#kms_key_id FsxOpenzfsFileSystem#kms_key_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#kms_key_id FsxOpenzfsFileSystem#kms_key_id}
   */
   readonly kmsKeyId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#security_group_ids FsxOpenzfsFileSystem#security_group_ids}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#security_group_ids FsxOpenzfsFileSystem#security_group_ids}
   */
   readonly securityGroupIds?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#storage_capacity FsxOpenzfsFileSystem#storage_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#storage_capacity FsxOpenzfsFileSystem#storage_capacity}
   */
   readonly storageCapacity?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#storage_type FsxOpenzfsFileSystem#storage_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#storage_type FsxOpenzfsFileSystem#storage_type}
   */
   readonly storageType?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#subnet_ids FsxOpenzfsFileSystem#subnet_ids}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#subnet_ids FsxOpenzfsFileSystem#subnet_ids}
   */
   readonly subnetIds: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#tags FsxOpenzfsFileSystem#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#tags FsxOpenzfsFileSystem#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#tags_all FsxOpenzfsFileSystem#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#tags_all FsxOpenzfsFileSystem#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#throughput_capacity FsxOpenzfsFileSystem#throughput_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#throughput_capacity FsxOpenzfsFileSystem#throughput_capacity}
   */
   readonly throughputCapacity: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#weekly_maintenance_start_time FsxOpenzfsFileSystem#weekly_maintenance_start_time}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#weekly_maintenance_start_time FsxOpenzfsFileSystem#weekly_maintenance_start_time}
   */
   readonly weeklyMaintenanceStartTime?: string;
   /**
   * disk_iops_configuration block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#disk_iops_configuration FsxOpenzfsFileSystem#disk_iops_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#disk_iops_configuration FsxOpenzfsFileSystem#disk_iops_configuration}
   */
   readonly diskIopsConfiguration?: FsxOpenzfsFileSystemDiskIopsConfiguration;
   /**
   * root_volume_configuration block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#root_volume_configuration FsxOpenzfsFileSystem#root_volume_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#root_volume_configuration FsxOpenzfsFileSystem#root_volume_configuration}
   */
   readonly rootVolumeConfiguration?: FsxOpenzfsFileSystemRootVolumeConfiguration;
   /**
   * timeouts block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#timeouts FsxOpenzfsFileSystem#timeouts}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#timeouts FsxOpenzfsFileSystem#timeouts}
   */
   readonly timeouts?: FsxOpenzfsFileSystemTimeouts;
 }
 export interface FsxOpenzfsFileSystemDiskIopsConfiguration {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#iops FsxOpenzfsFileSystem#iops}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#iops FsxOpenzfsFileSystem#iops}
   */
   readonly iops?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#mode FsxOpenzfsFileSystem#mode}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#mode FsxOpenzfsFileSystem#mode}
   */
   readonly mode?: string;
 }
 
 export function fsxOpenzfsFileSystemDiskIopsConfigurationToTerraform(struct?: FsxOpenzfsFileSystemDiskIopsConfigurationOutputReference | FsxOpenzfsFileSystemDiskIopsConfiguration): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -109,23 +109,25 @@ export function fsxOpenzfsFileSystemDiskIopsConfigurationToTerraform(struct?: Fs
 }
 
 export class FsxOpenzfsFileSystemDiskIopsConfigurationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): FsxOpenzfsFileSystemDiskIopsConfiguration | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._iops) {
+    if (this._iops !== undefined) {
       hasAnyValues = true;
       internalValueResult.iops = this._iops;
     }
-    if (this._mode) {
+    if (this._mode !== undefined) {
       hasAnyValues = true;
       internalValueResult.mode = this._mode;
     }
@@ -134,10 +136,12 @@ export class FsxOpenzfsFileSystemDiskIopsConfigurationOutputReference extends cd
 
   public set internalValue(value: FsxOpenzfsFileSystemDiskIopsConfiguration | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._iops = undefined;
       this._mode = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._iops = value.iops;
       this._mode = value.mode;
     }
@@ -177,17 +181,17 @@ export class FsxOpenzfsFileSystemDiskIopsConfigurationOutputReference extends cd
 }
 export interface FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsClientConfigurations {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#clients FsxOpenzfsFileSystem#clients}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#clients FsxOpenzfsFileSystem#clients}
   */
   readonly clients: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#options FsxOpenzfsFileSystem#options}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#options FsxOpenzfsFileSystem#options}
   */
   readonly options: string[];
 }
 
-export function fsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsClientConfigurationsToTerraform(struct?: FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsClientConfigurations): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function fsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsClientConfigurationsToTerraform(struct?: FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsClientConfigurations | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -201,13 +205,13 @@ export interface FsxOpenzfsFileSystemRootVolumeConfigurationNfsExports {
   /**
   * client_configurations block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#client_configurations FsxOpenzfsFileSystem#client_configurations}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#client_configurations FsxOpenzfsFileSystem#client_configurations}
   */
-  readonly clientConfigurations: FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsClientConfigurations[];
+  readonly clientConfigurations: FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsClientConfigurations[] | cdktf.IResolvable;
 }
 
 export function fsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsToTerraform(struct?: FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsOutputReference | FsxOpenzfsFileSystemRootVolumeConfigurationNfsExports): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -217,19 +221,21 @@ export function fsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsToTerraform
 }
 
 export class FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): FsxOpenzfsFileSystemRootVolumeConfigurationNfsExports | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._clientConfigurations) {
+    if (this._clientConfigurations !== undefined) {
       hasAnyValues = true;
       internalValueResult.clientConfigurations = this._clientConfigurations;
     }
@@ -238,20 +244,22 @@ export class FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsOutputReferenc
 
   public set internalValue(value: FsxOpenzfsFileSystemRootVolumeConfigurationNfsExports | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._clientConfigurations = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._clientConfigurations = value.clientConfigurations;
     }
   }
 
   // client_configurations - computed: false, optional: false, required: true
-  private _clientConfigurations?: FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsClientConfigurations[]; 
+  private _clientConfigurations?: FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsClientConfigurations[] | cdktf.IResolvable; 
   public get clientConfigurations() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('client_configurations') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('client_configurations')));
   }
-  public set clientConfigurations(value: FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsClientConfigurations[]) {
+  public set clientConfigurations(value: FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsClientConfigurations[] | cdktf.IResolvable) {
     this._clientConfigurations = value;
   }
   // Temporarily expose input value. Use with caution.
@@ -261,21 +269,21 @@ export class FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsOutputReferenc
 }
 export interface FsxOpenzfsFileSystemRootVolumeConfigurationUserAndGroupQuotas {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#id FsxOpenzfsFileSystem#id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#id FsxOpenzfsFileSystem#id}
   */
   readonly id: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#storage_capacity_quota_gib FsxOpenzfsFileSystem#storage_capacity_quota_gib}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#storage_capacity_quota_gib FsxOpenzfsFileSystem#storage_capacity_quota_gib}
   */
   readonly storageCapacityQuotaGib: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#type FsxOpenzfsFileSystem#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#type FsxOpenzfsFileSystem#type}
   */
   readonly type: string;
 }
 
-export function fsxOpenzfsFileSystemRootVolumeConfigurationUserAndGroupQuotasToTerraform(struct?: FsxOpenzfsFileSystemRootVolumeConfigurationUserAndGroupQuotas): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function fsxOpenzfsFileSystemRootVolumeConfigurationUserAndGroupQuotasToTerraform(struct?: FsxOpenzfsFileSystemRootVolumeConfigurationUserAndGroupQuotas | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -288,33 +296,33 @@ export function fsxOpenzfsFileSystemRootVolumeConfigurationUserAndGroupQuotasToT
 
 export interface FsxOpenzfsFileSystemRootVolumeConfiguration {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#copy_tags_to_snapshots FsxOpenzfsFileSystem#copy_tags_to_snapshots}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#copy_tags_to_snapshots FsxOpenzfsFileSystem#copy_tags_to_snapshots}
   */
   readonly copyTagsToSnapshots?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#data_compression_type FsxOpenzfsFileSystem#data_compression_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#data_compression_type FsxOpenzfsFileSystem#data_compression_type}
   */
   readonly dataCompressionType?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#read_only FsxOpenzfsFileSystem#read_only}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#read_only FsxOpenzfsFileSystem#read_only}
   */
   readonly readOnly?: boolean | cdktf.IResolvable;
   /**
   * nfs_exports block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#nfs_exports FsxOpenzfsFileSystem#nfs_exports}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#nfs_exports FsxOpenzfsFileSystem#nfs_exports}
   */
   readonly nfsExports?: FsxOpenzfsFileSystemRootVolumeConfigurationNfsExports;
   /**
   * user_and_group_quotas block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#user_and_group_quotas FsxOpenzfsFileSystem#user_and_group_quotas}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#user_and_group_quotas FsxOpenzfsFileSystem#user_and_group_quotas}
   */
-  readonly userAndGroupQuotas?: FsxOpenzfsFileSystemRootVolumeConfigurationUserAndGroupQuotas[];
+  readonly userAndGroupQuotas?: FsxOpenzfsFileSystemRootVolumeConfigurationUserAndGroupQuotas[] | cdktf.IResolvable;
 }
 
 export function fsxOpenzfsFileSystemRootVolumeConfigurationToTerraform(struct?: FsxOpenzfsFileSystemRootVolumeConfigurationOutputReference | FsxOpenzfsFileSystemRootVolumeConfiguration): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -328,35 +336,37 @@ export function fsxOpenzfsFileSystemRootVolumeConfigurationToTerraform(struct?: 
 }
 
 export class FsxOpenzfsFileSystemRootVolumeConfigurationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): FsxOpenzfsFileSystemRootVolumeConfiguration | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._copyTagsToSnapshots) {
+    if (this._copyTagsToSnapshots !== undefined) {
       hasAnyValues = true;
       internalValueResult.copyTagsToSnapshots = this._copyTagsToSnapshots;
     }
-    if (this._dataCompressionType) {
+    if (this._dataCompressionType !== undefined) {
       hasAnyValues = true;
       internalValueResult.dataCompressionType = this._dataCompressionType;
     }
-    if (this._readOnly) {
+    if (this._readOnly !== undefined) {
       hasAnyValues = true;
       internalValueResult.readOnly = this._readOnly;
     }
-    if (this._nfsExports) {
+    if (this._nfsExports?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.nfsExports = this._nfsExports?.internalValue;
     }
-    if (this._userAndGroupQuotas) {
+    if (this._userAndGroupQuotas !== undefined) {
       hasAnyValues = true;
       internalValueResult.userAndGroupQuotas = this._userAndGroupQuotas;
     }
@@ -365,6 +375,7 @@ export class FsxOpenzfsFileSystemRootVolumeConfigurationOutputReference extends 
 
   public set internalValue(value: FsxOpenzfsFileSystemRootVolumeConfiguration | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._copyTagsToSnapshots = undefined;
       this._dataCompressionType = undefined;
       this._readOnly = undefined;
@@ -372,6 +383,7 @@ export class FsxOpenzfsFileSystemRootVolumeConfigurationOutputReference extends 
       this._userAndGroupQuotas = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._copyTagsToSnapshots = value.copyTagsToSnapshots;
       this._dataCompressionType = value.dataCompressionType;
       this._readOnly = value.readOnly;
@@ -383,7 +395,7 @@ export class FsxOpenzfsFileSystemRootVolumeConfigurationOutputReference extends 
   // copy_tags_to_snapshots - computed: false, optional: true, required: false
   private _copyTagsToSnapshots?: boolean | cdktf.IResolvable; 
   public get copyTagsToSnapshots() {
-    return this.getBooleanAttribute('copy_tags_to_snapshots') as any;
+    return this.getBooleanAttribute('copy_tags_to_snapshots');
   }
   public set copyTagsToSnapshots(value: boolean | cdktf.IResolvable) {
     this._copyTagsToSnapshots = value;
@@ -415,7 +427,7 @@ export class FsxOpenzfsFileSystemRootVolumeConfigurationOutputReference extends 
   // read_only - computed: true, optional: true, required: false
   private _readOnly?: boolean | cdktf.IResolvable; 
   public get readOnly() {
-    return this.getBooleanAttribute('read_only') as any;
+    return this.getBooleanAttribute('read_only');
   }
   public set readOnly(value: boolean | cdktf.IResolvable) {
     this._readOnly = value;
@@ -429,7 +441,7 @@ export class FsxOpenzfsFileSystemRootVolumeConfigurationOutputReference extends 
   }
 
   // nfs_exports - computed: false, optional: true, required: false
-  private _nfsExports = new FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsOutputReference(this as any, "nfs_exports", true);
+  private _nfsExports = new FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsOutputReference(this, "nfs_exports", true);
   public get nfsExports() {
     return this._nfsExports;
   }
@@ -445,12 +457,12 @@ export class FsxOpenzfsFileSystemRootVolumeConfigurationOutputReference extends 
   }
 
   // user_and_group_quotas - computed: false, optional: true, required: false
-  private _userAndGroupQuotas?: FsxOpenzfsFileSystemRootVolumeConfigurationUserAndGroupQuotas[]; 
+  private _userAndGroupQuotas?: FsxOpenzfsFileSystemRootVolumeConfigurationUserAndGroupQuotas[] | cdktf.IResolvable; 
   public get userAndGroupQuotas() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('user_and_group_quotas') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('user_and_group_quotas')));
   }
-  public set userAndGroupQuotas(value: FsxOpenzfsFileSystemRootVolumeConfigurationUserAndGroupQuotas[]) {
+  public set userAndGroupQuotas(value: FsxOpenzfsFileSystemRootVolumeConfigurationUserAndGroupQuotas[] | cdktf.IResolvable) {
     this._userAndGroupQuotas = value;
   }
   public resetUserAndGroupQuotas() {
@@ -463,21 +475,21 @@ export class FsxOpenzfsFileSystemRootVolumeConfigurationOutputReference extends 
 }
 export interface FsxOpenzfsFileSystemTimeouts {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#create FsxOpenzfsFileSystem#create}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#create FsxOpenzfsFileSystem#create}
   */
   readonly create?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#delete FsxOpenzfsFileSystem#delete}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#delete FsxOpenzfsFileSystem#delete}
   */
   readonly delete?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html#update FsxOpenzfsFileSystem#update}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system#update FsxOpenzfsFileSystem#update}
   */
   readonly update?: string;
 }
 
-export function fsxOpenzfsFileSystemTimeoutsToTerraform(struct?: FsxOpenzfsFileSystemTimeoutsOutputReference | FsxOpenzfsFileSystemTimeouts): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function fsxOpenzfsFileSystemTimeoutsToTerraform(struct?: FsxOpenzfsFileSystemTimeoutsOutputReference | FsxOpenzfsFileSystemTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -489,27 +501,29 @@ export function fsxOpenzfsFileSystemTimeoutsToTerraform(struct?: FsxOpenzfsFileS
 }
 
 export class FsxOpenzfsFileSystemTimeoutsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): FsxOpenzfsFileSystemTimeouts | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._create) {
+    if (this._create !== undefined) {
       hasAnyValues = true;
       internalValueResult.create = this._create;
     }
-    if (this._delete) {
+    if (this._delete !== undefined) {
       hasAnyValues = true;
       internalValueResult.delete = this._delete;
     }
-    if (this._update) {
+    if (this._update !== undefined) {
       hasAnyValues = true;
       internalValueResult.update = this._update;
     }
@@ -518,11 +532,13 @@ export class FsxOpenzfsFileSystemTimeoutsOutputReference extends cdktf.ComplexOb
 
   public set internalValue(value: FsxOpenzfsFileSystemTimeouts | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._create = undefined;
       this._delete = undefined;
       this._update = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._create = value.create;
       this._delete = value.delete;
       this._update = value.update;
@@ -579,7 +595,7 @@ export class FsxOpenzfsFileSystemTimeoutsOutputReference extends cdktf.ComplexOb
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html aws_fsx_openzfs_file_system}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system aws_fsx_openzfs_file_system}
 */
 export class FsxOpenzfsFileSystem extends cdktf.TerraformResource {
 
@@ -593,7 +609,7 @@ export class FsxOpenzfsFileSystem extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system.html aws_fsx_openzfs_file_system} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_file_system aws_fsx_openzfs_file_system} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -674,7 +690,7 @@ export class FsxOpenzfsFileSystem extends cdktf.TerraformResource {
   // copy_tags_to_backups - computed: false, optional: true, required: false
   private _copyTagsToBackups?: boolean | cdktf.IResolvable; 
   public get copyTagsToBackups() {
-    return this.getBooleanAttribute('copy_tags_to_backups') as any;
+    return this.getBooleanAttribute('copy_tags_to_backups');
   }
   public set copyTagsToBackups(value: boolean | cdktf.IResolvable) {
     this._copyTagsToBackups = value;
@@ -690,7 +706,7 @@ export class FsxOpenzfsFileSystem extends cdktf.TerraformResource {
   // copy_tags_to_volumes - computed: false, optional: true, required: false
   private _copyTagsToVolumes?: boolean | cdktf.IResolvable; 
   public get copyTagsToVolumes() {
-    return this.getBooleanAttribute('copy_tags_to_volumes') as any;
+    return this.getBooleanAttribute('copy_tags_to_volumes');
   }
   public set copyTagsToVolumes(value: boolean | cdktf.IResolvable) {
     this._copyTagsToVolumes = value;
@@ -776,7 +792,7 @@ export class FsxOpenzfsFileSystem extends cdktf.TerraformResource {
   // security_group_ids - computed: false, optional: true, required: false
   private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
-    return this.getListAttribute('security_group_ids');
+    return cdktf.Fn.tolist(this.getListAttribute('security_group_ids'));
   }
   public set securityGroupIds(value: string[]) {
     this._securityGroupIds = value;
@@ -835,12 +851,11 @@ export class FsxOpenzfsFileSystem extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -852,12 +867,11 @@ export class FsxOpenzfsFileSystem extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -903,7 +917,7 @@ export class FsxOpenzfsFileSystem extends cdktf.TerraformResource {
   }
 
   // disk_iops_configuration - computed: false, optional: true, required: false
-  private _diskIopsConfiguration = new FsxOpenzfsFileSystemDiskIopsConfigurationOutputReference(this as any, "disk_iops_configuration", true);
+  private _diskIopsConfiguration = new FsxOpenzfsFileSystemDiskIopsConfigurationOutputReference(this, "disk_iops_configuration", true);
   public get diskIopsConfiguration() {
     return this._diskIopsConfiguration;
   }
@@ -919,7 +933,7 @@ export class FsxOpenzfsFileSystem extends cdktf.TerraformResource {
   }
 
   // root_volume_configuration - computed: false, optional: true, required: false
-  private _rootVolumeConfiguration = new FsxOpenzfsFileSystemRootVolumeConfigurationOutputReference(this as any, "root_volume_configuration", true);
+  private _rootVolumeConfiguration = new FsxOpenzfsFileSystemRootVolumeConfigurationOutputReference(this, "root_volume_configuration", true);
   public get rootVolumeConfiguration() {
     return this._rootVolumeConfiguration;
   }
@@ -935,7 +949,7 @@ export class FsxOpenzfsFileSystem extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts = new FsxOpenzfsFileSystemTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new FsxOpenzfsFileSystemTimeoutsOutputReference(this, "timeouts", true);
   public get timeouts() {
     return this._timeouts;
   }
@@ -967,8 +981,8 @@ export class FsxOpenzfsFileSystem extends cdktf.TerraformResource {
       storage_capacity: cdktf.numberToTerraform(this._storageCapacity),
       storage_type: cdktf.stringToTerraform(this._storageType),
       subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._subnetIds),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       throughput_capacity: cdktf.numberToTerraform(this._throughputCapacity),
       weekly_maintenance_start_time: cdktf.stringToTerraform(this._weeklyMaintenanceStartTime),
       disk_iops_configuration: fsxOpenzfsFileSystemDiskIopsConfigurationToTerraform(this._diskIopsConfiguration.internalValue),

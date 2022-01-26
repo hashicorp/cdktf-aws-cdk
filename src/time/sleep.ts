@@ -1,4 +1,4 @@
-// https://www.terraform.io/docs/providers/time/r/sleep.html
+// https://www.terraform.io/docs/providers/time/r/sleep
 // generated from terraform resource schema
 
 import { Construct } from 'constructs';
@@ -8,21 +8,21 @@ import * as cdktf from 'cdktf';
 
 export interface SleepConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/sleep.html#create_duration Sleep#create_duration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/sleep#create_duration Sleep#create_duration}
   */
   readonly createDuration?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/sleep.html#destroy_duration Sleep#destroy_duration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/sleep#destroy_duration Sleep#destroy_duration}
   */
   readonly destroyDuration?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/sleep.html#triggers Sleep#triggers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/sleep#triggers Sleep#triggers}
   */
-  readonly triggers?: { [key: string]: string } | cdktf.IResolvable;
+  readonly triggers?: { [key: string]: string };
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/time/r/sleep.html time_sleep}
+* Represents a {@link https://www.terraform.io/docs/providers/time/r/sleep time_sleep}
 */
 export class Sleep extends cdktf.TerraformResource {
 
@@ -36,7 +36,7 @@ export class Sleep extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/time/r/sleep.html time_sleep} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/time/r/sleep time_sleep} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -100,12 +100,11 @@ export class Sleep extends cdktf.TerraformResource {
   }
 
   // triggers - computed: false, optional: true, required: false
-  private _triggers?: { [key: string]: string } | cdktf.IResolvable; 
+  private _triggers?: { [key: string]: string }; 
   public get triggers() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('triggers') as any;
+    return this.getStringMapAttribute('triggers');
   }
-  public set triggers(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set triggers(value: { [key: string]: string }) {
     this._triggers = value;
   }
   public resetTriggers() {
@@ -124,7 +123,7 @@ export class Sleep extends cdktf.TerraformResource {
     return {
       create_duration: cdktf.stringToTerraform(this._createDuration),
       destroy_duration: cdktf.stringToTerraform(this._destroyDuration),
-      triggers: cdktf.hashMapper(cdktf.anyToTerraform)(this._triggers),
+      triggers: cdktf.hashMapper(cdktf.stringToTerraform)(this._triggers),
     };
   }
 }

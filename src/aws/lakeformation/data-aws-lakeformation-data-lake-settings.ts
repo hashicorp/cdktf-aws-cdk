@@ -8,7 +8,7 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsLakeformationDataLakeSettingsConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/lakeformation_data_lake_settings.html#catalog_id DataAwsLakeformationDataLakeSettings#catalog_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/lakeformation_data_lake_settings#catalog_id DataAwsLakeformationDataLakeSettings#catalog_id}
   */
   readonly catalogId?: string;
 }
@@ -16,7 +16,7 @@ export class DataAwsLakeformationDataLakeSettingsCreateDatabaseDefaultPermission
 
   // permissions - computed: true, optional: false, required: false
   public get permissions() {
-    return this.getListAttribute('permissions');
+    return cdktf.Fn.tolist(this.getListAttribute('permissions'));
   }
 
   // principal - computed: true, optional: false, required: false
@@ -28,7 +28,7 @@ export class DataAwsLakeformationDataLakeSettingsCreateTableDefaultPermissions e
 
   // permissions - computed: true, optional: false, required: false
   public get permissions() {
-    return this.getListAttribute('permissions');
+    return cdktf.Fn.tolist(this.getListAttribute('permissions'));
   }
 
   // principal - computed: true, optional: false, required: false
@@ -38,7 +38,7 @@ export class DataAwsLakeformationDataLakeSettingsCreateTableDefaultPermissions e
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/lakeformation_data_lake_settings.html aws_lakeformation_data_lake_settings}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/lakeformation_data_lake_settings aws_lakeformation_data_lake_settings}
 */
 export class DataAwsLakeformationDataLakeSettings extends cdktf.TerraformDataSource {
 
@@ -52,7 +52,7 @@ export class DataAwsLakeformationDataLakeSettings extends cdktf.TerraformDataSou
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/lakeformation_data_lake_settings.html aws_lakeformation_data_lake_settings} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/lakeformation_data_lake_settings aws_lakeformation_data_lake_settings} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -78,7 +78,7 @@ export class DataAwsLakeformationDataLakeSettings extends cdktf.TerraformDataSou
 
   // admins - computed: true, optional: false, required: false
   public get admins() {
-    return this.getListAttribute('admins');
+    return cdktf.Fn.tolist(this.getListAttribute('admins'));
   }
 
   // catalog_id - computed: false, optional: true, required: false
@@ -99,12 +99,12 @@ export class DataAwsLakeformationDataLakeSettings extends cdktf.TerraformDataSou
 
   // create_database_default_permissions - computed: true, optional: false, required: false
   public createDatabaseDefaultPermissions(index: string) {
-    return new DataAwsLakeformationDataLakeSettingsCreateDatabaseDefaultPermissions(this, 'create_database_default_permissions', index);
+    return new DataAwsLakeformationDataLakeSettingsCreateDatabaseDefaultPermissions(this, 'create_database_default_permissions', index, false);
   }
 
   // create_table_default_permissions - computed: true, optional: false, required: false
   public createTableDefaultPermissions(index: string) {
-    return new DataAwsLakeformationDataLakeSettingsCreateTableDefaultPermissions(this, 'create_table_default_permissions', index);
+    return new DataAwsLakeformationDataLakeSettingsCreateTableDefaultPermissions(this, 'create_table_default_permissions', index, false);
   }
 
   // id - computed: true, optional: true, required: false

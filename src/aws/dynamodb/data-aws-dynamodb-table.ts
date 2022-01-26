@@ -8,17 +8,17 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsDynamodbTableConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/dynamodb_table.html#name DataAwsDynamodbTable#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/dynamodb_table#name DataAwsDynamodbTable#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/dynamodb_table.html#tags DataAwsDynamodbTable#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/dynamodb_table#tags DataAwsDynamodbTable#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
   * server_side_encryption block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/dynamodb_table.html#server_side_encryption DataAwsDynamodbTable#server_side_encryption}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/dynamodb_table#server_side_encryption DataAwsDynamodbTable#server_side_encryption}
   */
   readonly serverSideEncryption?: DataAwsDynamodbTableServerSideEncryption;
 }
@@ -97,7 +97,7 @@ export class DataAwsDynamodbTablePointInTimeRecovery extends cdktf.ComplexComput
 
   // enabled - computed: true, optional: false, required: false
   public get enabled() {
-    return this.getBooleanAttribute('enabled') as any;
+    return this.getBooleanAttribute('enabled');
   }
 }
 export class DataAwsDynamodbTableReplica extends cdktf.ComplexComputedList {
@@ -121,14 +121,14 @@ export class DataAwsDynamodbTableTtl extends cdktf.ComplexComputedList {
 
   // enabled - computed: true, optional: false, required: false
   public get enabled() {
-    return this.getBooleanAttribute('enabled') as any;
+    return this.getBooleanAttribute('enabled');
   }
 }
 export interface DataAwsDynamodbTableServerSideEncryption {
 }
 
 export function dataAwsDynamodbTableServerSideEncryptionToTerraform(struct?: DataAwsDynamodbTableServerSideEncryptionOutputReference | DataAwsDynamodbTableServerSideEncryption): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -137,31 +137,45 @@ export function dataAwsDynamodbTableServerSideEncryptionToTerraform(struct?: Dat
 }
 
 export class DataAwsDynamodbTableServerSideEncryptionOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): DataAwsDynamodbTableServerSideEncryption | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
     return hasAnyValues ? internalValueResult : undefined;
   }
 
   public set internalValue(value: DataAwsDynamodbTableServerSideEncryption | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
     }
+  }
+
+  // enabled - computed: true, optional: false, required: false
+  public get enabled() {
+    return this.getBooleanAttribute('enabled');
+  }
+
+  // kms_key_arn - computed: true, optional: false, required: false
+  public get kmsKeyArn() {
+    return this.getStringAttribute('kms_key_arn');
   }
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/dynamodb_table.html aws_dynamodb_table}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/dynamodb_table aws_dynamodb_table}
 */
 export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
 
@@ -175,7 +189,7 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/dynamodb_table.html aws_dynamodb_table} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/dynamodb_table aws_dynamodb_table} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -208,7 +222,7 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
 
   // attribute - computed: true, optional: false, required: false
   public attribute(index: string) {
-    return new DataAwsDynamodbTableAttribute(this, 'attribute', index);
+    return new DataAwsDynamodbTableAttribute(this, 'attribute', index, true);
   }
 
   // billing_mode - computed: true, optional: false, required: false
@@ -218,7 +232,7 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
 
   // global_secondary_index - computed: true, optional: false, required: false
   public globalSecondaryIndex(index: string) {
-    return new DataAwsDynamodbTableGlobalSecondaryIndex(this, 'global_secondary_index', index);
+    return new DataAwsDynamodbTableGlobalSecondaryIndex(this, 'global_secondary_index', index, true);
   }
 
   // hash_key - computed: true, optional: false, required: false
@@ -233,7 +247,7 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
 
   // local_secondary_index - computed: true, optional: false, required: false
   public localSecondaryIndex(index: string) {
-    return new DataAwsDynamodbTableLocalSecondaryIndex(this, 'local_secondary_index', index);
+    return new DataAwsDynamodbTableLocalSecondaryIndex(this, 'local_secondary_index', index, true);
   }
 
   // name - computed: false, optional: false, required: true
@@ -251,7 +265,7 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
 
   // point_in_time_recovery - computed: true, optional: false, required: false
   public pointInTimeRecovery(index: string) {
-    return new DataAwsDynamodbTablePointInTimeRecovery(this, 'point_in_time_recovery', index);
+    return new DataAwsDynamodbTablePointInTimeRecovery(this, 'point_in_time_recovery', index, false);
   }
 
   // range_key - computed: true, optional: false, required: false
@@ -266,7 +280,7 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
 
   // replica - computed: true, optional: false, required: false
   public replica(index: string) {
-    return new DataAwsDynamodbTableReplica(this, 'replica', index);
+    return new DataAwsDynamodbTableReplica(this, 'replica', index, true);
   }
 
   // stream_arn - computed: true, optional: false, required: false
@@ -276,7 +290,7 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
 
   // stream_enabled - computed: true, optional: false, required: false
   public get streamEnabled() {
-    return this.getBooleanAttribute('stream_enabled') as any;
+    return this.getBooleanAttribute('stream_enabled');
   }
 
   // stream_label - computed: true, optional: false, required: false
@@ -295,12 +309,11 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -313,7 +326,7 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
 
   // ttl - computed: true, optional: false, required: false
   public ttl(index: string) {
-    return new DataAwsDynamodbTableTtl(this, 'ttl', index);
+    return new DataAwsDynamodbTableTtl(this, 'ttl', index, true);
   }
 
   // write_capacity - computed: true, optional: false, required: false
@@ -322,7 +335,7 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
   }
 
   // server_side_encryption - computed: false, optional: true, required: false
-  private _serverSideEncryption = new DataAwsDynamodbTableServerSideEncryptionOutputReference(this as any, "server_side_encryption", true);
+  private _serverSideEncryption = new DataAwsDynamodbTableServerSideEncryptionOutputReference(this, "server_side_encryption", true);
   public get serverSideEncryption() {
     return this._serverSideEncryption;
   }
@@ -344,7 +357,7 @@ export class DataAwsDynamodbTable extends cdktf.TerraformDataSource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       name: cdktf.stringToTerraform(this._name),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       server_side_encryption: dataAwsDynamodbTableServerSideEncryptionToTerraform(this._serverSideEncryption.internalValue),
     };
   }

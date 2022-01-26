@@ -8,21 +8,21 @@ import * as cdktf from 'cdktf';
 */
 export interface VpcIpamPreviewNextCidrConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_preview_next_cidr.html#disallowed_cidrs VpcIpamPreviewNextCidr#disallowed_cidrs}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_preview_next_cidr#disallowed_cidrs VpcIpamPreviewNextCidr#disallowed_cidrs}
   */
   readonly disallowedCidrs?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_preview_next_cidr.html#ipam_pool_id VpcIpamPreviewNextCidr#ipam_pool_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_preview_next_cidr#ipam_pool_id VpcIpamPreviewNextCidr#ipam_pool_id}
   */
   readonly ipamPoolId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_preview_next_cidr.html#netmask_length VpcIpamPreviewNextCidr#netmask_length}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_preview_next_cidr#netmask_length VpcIpamPreviewNextCidr#netmask_length}
   */
   readonly netmaskLength?: number;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_preview_next_cidr.html aws_vpc_ipam_preview_next_cidr}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_preview_next_cidr aws_vpc_ipam_preview_next_cidr}
 */
 export class VpcIpamPreviewNextCidr extends cdktf.TerraformResource {
 
@@ -36,7 +36,7 @@ export class VpcIpamPreviewNextCidr extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_preview_next_cidr.html aws_vpc_ipam_preview_next_cidr} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_preview_next_cidr aws_vpc_ipam_preview_next_cidr} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -70,7 +70,7 @@ export class VpcIpamPreviewNextCidr extends cdktf.TerraformResource {
   // disallowed_cidrs - computed: false, optional: true, required: false
   private _disallowedCidrs?: string[]; 
   public get disallowedCidrs() {
-    return this.getListAttribute('disallowed_cidrs');
+    return cdktf.Fn.tolist(this.getListAttribute('disallowed_cidrs'));
   }
   public set disallowedCidrs(value: string[]) {
     this._disallowedCidrs = value;

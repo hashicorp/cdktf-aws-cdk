@@ -1,4 +1,4 @@
-// https://www.terraform.io/docs/providers/time/r/offset.html
+// https://www.terraform.io/docs/providers/time/r/offset
 // generated from terraform resource schema
 
 import { Construct } from 'constructs';
@@ -8,41 +8,41 @@ import * as cdktf from 'cdktf';
 
 export interface OffsetConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/offset.html#base_rfc3339 Offset#base_rfc3339}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/offset#base_rfc3339 Offset#base_rfc3339}
   */
   readonly baseRfc3339?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/offset.html#offset_days Offset#offset_days}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/offset#offset_days Offset#offset_days}
   */
   readonly offsetDays?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/offset.html#offset_hours Offset#offset_hours}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/offset#offset_hours Offset#offset_hours}
   */
   readonly offsetHours?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/offset.html#offset_minutes Offset#offset_minutes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/offset#offset_minutes Offset#offset_minutes}
   */
   readonly offsetMinutes?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/offset.html#offset_months Offset#offset_months}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/offset#offset_months Offset#offset_months}
   */
   readonly offsetMonths?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/offset.html#offset_seconds Offset#offset_seconds}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/offset#offset_seconds Offset#offset_seconds}
   */
   readonly offsetSeconds?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/offset.html#offset_years Offset#offset_years}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/offset#offset_years Offset#offset_years}
   */
   readonly offsetYears?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/offset.html#triggers Offset#triggers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/offset#triggers Offset#triggers}
   */
-  readonly triggers?: { [key: string]: string } | cdktf.IResolvable;
+  readonly triggers?: { [key: string]: string };
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/time/r/offset.html time_offset}
+* Represents a {@link https://www.terraform.io/docs/providers/time/r/offset time_offset}
 */
 export class Offset extends cdktf.TerraformResource {
 
@@ -56,7 +56,7 @@ export class Offset extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/time/r/offset.html time_offset} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/time/r/offset time_offset} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -235,12 +235,11 @@ export class Offset extends cdktf.TerraformResource {
   }
 
   // triggers - computed: false, optional: true, required: false
-  private _triggers?: { [key: string]: string } | cdktf.IResolvable; 
+  private _triggers?: { [key: string]: string }; 
   public get triggers() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('triggers') as any;
+    return this.getStringMapAttribute('triggers');
   }
-  public set triggers(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set triggers(value: { [key: string]: string }) {
     this._triggers = value;
   }
   public resetTriggers() {
@@ -274,7 +273,7 @@ export class Offset extends cdktf.TerraformResource {
       offset_months: cdktf.numberToTerraform(this._offsetMonths),
       offset_seconds: cdktf.numberToTerraform(this._offsetSeconds),
       offset_years: cdktf.numberToTerraform(this._offsetYears),
-      triggers: cdktf.hashMapper(cdktf.anyToTerraform)(this._triggers),
+      triggers: cdktf.hashMapper(cdktf.stringToTerraform)(this._triggers),
     };
   }
 }

@@ -8,13 +8,13 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsBatchSchedulingPolicyConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/batch_scheduling_policy.html#arn DataAwsBatchSchedulingPolicy#arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/batch_scheduling_policy#arn DataAwsBatchSchedulingPolicy#arn}
   */
   readonly arn: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/batch_scheduling_policy.html#tags DataAwsBatchSchedulingPolicy#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/batch_scheduling_policy#tags DataAwsBatchSchedulingPolicy#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
 }
 export class DataAwsBatchSchedulingPolicyFairSharePolicyShareDistribution extends cdktf.ComplexComputedList {
 
@@ -43,12 +43,12 @@ export class DataAwsBatchSchedulingPolicyFairSharePolicy extends cdktf.ComplexCo
   // share_distribution - computed: true, optional: false, required: false
   public get shareDistribution() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('share_distribution') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('share_distribution')));
   }
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/batch_scheduling_policy.html aws_batch_scheduling_policy}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/batch_scheduling_policy aws_batch_scheduling_policy}
 */
 export class DataAwsBatchSchedulingPolicy extends cdktf.TerraformDataSource {
 
@@ -62,7 +62,7 @@ export class DataAwsBatchSchedulingPolicy extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/batch_scheduling_policy.html aws_batch_scheduling_policy} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/batch_scheduling_policy aws_batch_scheduling_policy} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -102,7 +102,7 @@ export class DataAwsBatchSchedulingPolicy extends cdktf.TerraformDataSource {
 
   // fair_share_policy - computed: true, optional: false, required: false
   public fairSharePolicy(index: string) {
-    return new DataAwsBatchSchedulingPolicyFairSharePolicy(this, 'fair_share_policy', index);
+    return new DataAwsBatchSchedulingPolicyFairSharePolicy(this, 'fair_share_policy', index, false);
   }
 
   // id - computed: true, optional: true, required: false
@@ -116,12 +116,11 @@ export class DataAwsBatchSchedulingPolicy extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -139,7 +138,7 @@ export class DataAwsBatchSchedulingPolicy extends cdktf.TerraformDataSource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       arn: cdktf.stringToTerraform(this._arn),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
     };
   }
 }

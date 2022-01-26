@@ -8,7 +8,7 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsSecretsmanagerSecretRotationConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret_rotation.html#secret_id DataAwsSecretsmanagerSecretRotation#secret_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret_rotation#secret_id DataAwsSecretsmanagerSecretRotation#secret_id}
   */
   readonly secretId: string;
 }
@@ -21,7 +21,7 @@ export class DataAwsSecretsmanagerSecretRotationRotationRules extends cdktf.Comp
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret_rotation.html aws_secretsmanager_secret_rotation}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret_rotation aws_secretsmanager_secret_rotation}
 */
 export class DataAwsSecretsmanagerSecretRotation extends cdktf.TerraformDataSource {
 
@@ -35,7 +35,7 @@ export class DataAwsSecretsmanagerSecretRotation extends cdktf.TerraformDataSour
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret_rotation.html aws_secretsmanager_secret_rotation} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret_rotation aws_secretsmanager_secret_rotation} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -66,7 +66,7 @@ export class DataAwsSecretsmanagerSecretRotation extends cdktf.TerraformDataSour
 
   // rotation_enabled - computed: true, optional: false, required: false
   public get rotationEnabled() {
-    return this.getBooleanAttribute('rotation_enabled') as any;
+    return this.getBooleanAttribute('rotation_enabled');
   }
 
   // rotation_lambda_arn - computed: true, optional: false, required: false
@@ -76,7 +76,7 @@ export class DataAwsSecretsmanagerSecretRotation extends cdktf.TerraformDataSour
 
   // rotation_rules - computed: true, optional: false, required: false
   public rotationRules(index: string) {
-    return new DataAwsSecretsmanagerSecretRotationRotationRules(this, 'rotation_rules', index);
+    return new DataAwsSecretsmanagerSecretRotationRotationRules(this, 'rotation_rules', index, false);
   }
 
   // secret_id - computed: false, optional: false, required: true

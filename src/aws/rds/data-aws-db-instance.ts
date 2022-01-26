@@ -8,17 +8,17 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsDbInstanceConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/db_instance.html#db_instance_identifier DataAwsDbInstance#db_instance_identifier}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/db_instance#db_instance_identifier DataAwsDbInstance#db_instance_identifier}
   */
   readonly dbInstanceIdentifier: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/db_instance.html#tags DataAwsDbInstance#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/db_instance#tags DataAwsDbInstance#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/db_instance.html aws_db_instance}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/db_instance aws_db_instance}
 */
 export class DataAwsDbInstance extends cdktf.TerraformDataSource {
 
@@ -32,7 +32,7 @@ export class DataAwsDbInstance extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/db_instance.html aws_db_instance} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/db_instance aws_db_instance} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -69,7 +69,7 @@ export class DataAwsDbInstance extends cdktf.TerraformDataSource {
 
   // auto_minor_version_upgrade - computed: true, optional: false, required: false
   public get autoMinorVersionUpgrade() {
-    return this.getBooleanAttribute('auto_minor_version_upgrade') as any;
+    return this.getBooleanAttribute('auto_minor_version_upgrade');
   }
 
   // availability_zone - computed: true, optional: false, required: false
@@ -202,7 +202,7 @@ export class DataAwsDbInstance extends cdktf.TerraformDataSource {
 
   // multi_az - computed: true, optional: false, required: false
   public get multiAz() {
-    return this.getBooleanAttribute('multi_az') as any;
+    return this.getBooleanAttribute('multi_az');
   }
 
   // option_group_memberships - computed: true, optional: false, required: false
@@ -227,7 +227,7 @@ export class DataAwsDbInstance extends cdktf.TerraformDataSource {
 
   // publicly_accessible - computed: true, optional: false, required: false
   public get publiclyAccessible() {
-    return this.getBooleanAttribute('publicly_accessible') as any;
+    return this.getBooleanAttribute('publicly_accessible');
   }
 
   // replicate_source_db - computed: true, optional: false, required: false
@@ -242,7 +242,7 @@ export class DataAwsDbInstance extends cdktf.TerraformDataSource {
 
   // storage_encrypted - computed: true, optional: false, required: false
   public get storageEncrypted() {
-    return this.getBooleanAttribute('storage_encrypted') as any;
+    return this.getBooleanAttribute('storage_encrypted');
   }
 
   // storage_type - computed: true, optional: false, required: false
@@ -251,12 +251,11 @@ export class DataAwsDbInstance extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -284,7 +283,7 @@ export class DataAwsDbInstance extends cdktf.TerraformDataSource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       db_instance_identifier: cdktf.stringToTerraform(this._dbInstanceIdentifier),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
     };
   }
 }

@@ -8,45 +8,45 @@ import * as cdktf from 'cdktf';
 */
 export interface IamAccountPasswordPolicyConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy.html#allow_users_to_change_password IamAccountPasswordPolicy#allow_users_to_change_password}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy#allow_users_to_change_password IamAccountPasswordPolicy#allow_users_to_change_password}
   */
   readonly allowUsersToChangePassword?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy.html#hard_expiry IamAccountPasswordPolicy#hard_expiry}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy#hard_expiry IamAccountPasswordPolicy#hard_expiry}
   */
   readonly hardExpiry?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy.html#max_password_age IamAccountPasswordPolicy#max_password_age}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy#max_password_age IamAccountPasswordPolicy#max_password_age}
   */
   readonly maxPasswordAge?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy.html#minimum_password_length IamAccountPasswordPolicy#minimum_password_length}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy#minimum_password_length IamAccountPasswordPolicy#minimum_password_length}
   */
   readonly minimumPasswordLength?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy.html#password_reuse_prevention IamAccountPasswordPolicy#password_reuse_prevention}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy#password_reuse_prevention IamAccountPasswordPolicy#password_reuse_prevention}
   */
   readonly passwordReusePrevention?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy.html#require_lowercase_characters IamAccountPasswordPolicy#require_lowercase_characters}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy#require_lowercase_characters IamAccountPasswordPolicy#require_lowercase_characters}
   */
   readonly requireLowercaseCharacters?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy.html#require_numbers IamAccountPasswordPolicy#require_numbers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy#require_numbers IamAccountPasswordPolicy#require_numbers}
   */
   readonly requireNumbers?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy.html#require_symbols IamAccountPasswordPolicy#require_symbols}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy#require_symbols IamAccountPasswordPolicy#require_symbols}
   */
   readonly requireSymbols?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy.html#require_uppercase_characters IamAccountPasswordPolicy#require_uppercase_characters}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy#require_uppercase_characters IamAccountPasswordPolicy#require_uppercase_characters}
   */
   readonly requireUppercaseCharacters?: boolean | cdktf.IResolvable;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy.html aws_iam_account_password_policy}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy aws_iam_account_password_policy}
 */
 export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
 
@@ -60,7 +60,7 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy.html aws_iam_account_password_policy} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/iam_account_password_policy aws_iam_account_password_policy} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -95,7 +95,7 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   // allow_users_to_change_password - computed: false, optional: true, required: false
   private _allowUsersToChangePassword?: boolean | cdktf.IResolvable; 
   public get allowUsersToChangePassword() {
-    return this.getBooleanAttribute('allow_users_to_change_password') as any;
+    return this.getBooleanAttribute('allow_users_to_change_password');
   }
   public set allowUsersToChangePassword(value: boolean | cdktf.IResolvable) {
     this._allowUsersToChangePassword = value;
@@ -110,13 +110,13 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
 
   // expire_passwords - computed: true, optional: false, required: false
   public get expirePasswords() {
-    return this.getBooleanAttribute('expire_passwords') as any;
+    return this.getBooleanAttribute('expire_passwords');
   }
 
   // hard_expiry - computed: true, optional: true, required: false
   private _hardExpiry?: boolean | cdktf.IResolvable; 
   public get hardExpiry() {
-    return this.getBooleanAttribute('hard_expiry') as any;
+    return this.getBooleanAttribute('hard_expiry');
   }
   public set hardExpiry(value: boolean | cdktf.IResolvable) {
     this._hardExpiry = value;
@@ -185,7 +185,7 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   // require_lowercase_characters - computed: true, optional: true, required: false
   private _requireLowercaseCharacters?: boolean | cdktf.IResolvable; 
   public get requireLowercaseCharacters() {
-    return this.getBooleanAttribute('require_lowercase_characters') as any;
+    return this.getBooleanAttribute('require_lowercase_characters');
   }
   public set requireLowercaseCharacters(value: boolean | cdktf.IResolvable) {
     this._requireLowercaseCharacters = value;
@@ -201,7 +201,7 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   // require_numbers - computed: true, optional: true, required: false
   private _requireNumbers?: boolean | cdktf.IResolvable; 
   public get requireNumbers() {
-    return this.getBooleanAttribute('require_numbers') as any;
+    return this.getBooleanAttribute('require_numbers');
   }
   public set requireNumbers(value: boolean | cdktf.IResolvable) {
     this._requireNumbers = value;
@@ -217,7 +217,7 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   // require_symbols - computed: true, optional: true, required: false
   private _requireSymbols?: boolean | cdktf.IResolvable; 
   public get requireSymbols() {
-    return this.getBooleanAttribute('require_symbols') as any;
+    return this.getBooleanAttribute('require_symbols');
   }
   public set requireSymbols(value: boolean | cdktf.IResolvable) {
     this._requireSymbols = value;
@@ -233,7 +233,7 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   // require_uppercase_characters - computed: true, optional: true, required: false
   private _requireUppercaseCharacters?: boolean | cdktf.IResolvable; 
   public get requireUppercaseCharacters() {
-    return this.getBooleanAttribute('require_uppercase_characters') as any;
+    return this.getBooleanAttribute('require_uppercase_characters');
   }
   public set requireUppercaseCharacters(value: boolean | cdktf.IResolvable) {
     this._requireUppercaseCharacters = value;

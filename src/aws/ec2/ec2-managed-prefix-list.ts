@@ -8,45 +8,45 @@ import * as cdktf from 'cdktf';
 */
 export interface Ec2ManagedPrefixListConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list.html#address_family Ec2ManagedPrefixList#address_family}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list#address_family Ec2ManagedPrefixList#address_family}
   */
   readonly addressFamily: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list.html#max_entries Ec2ManagedPrefixList#max_entries}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list#max_entries Ec2ManagedPrefixList#max_entries}
   */
   readonly maxEntries: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list.html#name Ec2ManagedPrefixList#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list#name Ec2ManagedPrefixList#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list.html#tags Ec2ManagedPrefixList#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list#tags Ec2ManagedPrefixList#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list.html#tags_all Ec2ManagedPrefixList#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list#tags_all Ec2ManagedPrefixList#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * entry block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list.html#entry Ec2ManagedPrefixList#entry}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list#entry Ec2ManagedPrefixList#entry}
   */
-  readonly entry?: Ec2ManagedPrefixListEntry[];
+  readonly entry?: Ec2ManagedPrefixListEntry[] | cdktf.IResolvable;
 }
 export interface Ec2ManagedPrefixListEntry {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list.html#cidr Ec2ManagedPrefixList#cidr}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list#cidr Ec2ManagedPrefixList#cidr}
   */
   readonly cidr: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list.html#description Ec2ManagedPrefixList#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list#description Ec2ManagedPrefixList#description}
   */
   readonly description?: string;
 }
 
-export function ec2ManagedPrefixListEntryToTerraform(struct?: Ec2ManagedPrefixListEntry): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function ec2ManagedPrefixListEntryToTerraform(struct?: Ec2ManagedPrefixListEntry | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -58,7 +58,7 @@ export function ec2ManagedPrefixListEntryToTerraform(struct?: Ec2ManagedPrefixLi
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list.html aws_ec2_managed_prefix_list}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list aws_ec2_managed_prefix_list}
 */
 export class Ec2ManagedPrefixList extends cdktf.TerraformResource {
 
@@ -72,7 +72,7 @@ export class Ec2ManagedPrefixList extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list.html aws_ec2_managed_prefix_list} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/ec2_managed_prefix_list aws_ec2_managed_prefix_list} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -156,12 +156,11 @@ export class Ec2ManagedPrefixList extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -173,12 +172,11 @@ export class Ec2ManagedPrefixList extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -195,12 +193,12 @@ export class Ec2ManagedPrefixList extends cdktf.TerraformResource {
   }
 
   // entry - computed: false, optional: true, required: false
-  private _entry?: Ec2ManagedPrefixListEntry[]; 
+  private _entry?: Ec2ManagedPrefixListEntry[] | cdktf.IResolvable; 
   public get entry() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('entry') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('entry')));
   }
-  public set entry(value: Ec2ManagedPrefixListEntry[]) {
+  public set entry(value: Ec2ManagedPrefixListEntry[] | cdktf.IResolvable) {
     this._entry = value;
   }
   public resetEntry() {
@@ -220,8 +218,8 @@ export class Ec2ManagedPrefixList extends cdktf.TerraformResource {
       address_family: cdktf.stringToTerraform(this._addressFamily),
       max_entries: cdktf.numberToTerraform(this._maxEntries),
       name: cdktf.stringToTerraform(this._name),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       entry: cdktf.listMapper(ec2ManagedPrefixListEntryToTerraform)(this._entry),
     };
   }

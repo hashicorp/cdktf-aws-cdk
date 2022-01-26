@@ -8,69 +8,69 @@ import * as cdktf from 'cdktf';
 */
 export interface IamRoleConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role.html#assume_role_policy IamRole#assume_role_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role#assume_role_policy IamRole#assume_role_policy}
   */
   readonly assumeRolePolicy: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role.html#description IamRole#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role#description IamRole#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role.html#force_detach_policies IamRole#force_detach_policies}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role#force_detach_policies IamRole#force_detach_policies}
   */
   readonly forceDetachPolicies?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role.html#managed_policy_arns IamRole#managed_policy_arns}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role#managed_policy_arns IamRole#managed_policy_arns}
   */
   readonly managedPolicyArns?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role.html#max_session_duration IamRole#max_session_duration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role#max_session_duration IamRole#max_session_duration}
   */
   readonly maxSessionDuration?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role.html#name IamRole#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role#name IamRole#name}
   */
   readonly name?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role.html#name_prefix IamRole#name_prefix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role#name_prefix IamRole#name_prefix}
   */
   readonly namePrefix?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role.html#path IamRole#path}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role#path IamRole#path}
   */
   readonly path?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role.html#permissions_boundary IamRole#permissions_boundary}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role#permissions_boundary IamRole#permissions_boundary}
   */
   readonly permissionsBoundary?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role.html#tags IamRole#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role#tags IamRole#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role.html#tags_all IamRole#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role#tags_all IamRole#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * inline_policy block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role.html#inline_policy IamRole#inline_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role#inline_policy IamRole#inline_policy}
   */
-  readonly inlinePolicy?: IamRoleInlinePolicy[];
+  readonly inlinePolicy?: IamRoleInlinePolicy[] | cdktf.IResolvable;
 }
 export interface IamRoleInlinePolicy {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role.html#name IamRole#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role#name IamRole#name}
   */
   readonly name?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role.html#policy IamRole#policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iam_role#policy IamRole#policy}
   */
   readonly policy?: string;
 }
 
-export function iamRoleInlinePolicyToTerraform(struct?: IamRoleInlinePolicy): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function iamRoleInlinePolicyToTerraform(struct?: IamRoleInlinePolicy | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -82,7 +82,7 @@ export function iamRoleInlinePolicyToTerraform(struct?: IamRoleInlinePolicy): an
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/iam_role.html aws_iam_role}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/iam_role aws_iam_role}
 */
 export class IamRole extends cdktf.TerraformResource {
 
@@ -96,7 +96,7 @@ export class IamRole extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/iam_role.html aws_iam_role} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/iam_role aws_iam_role} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -173,7 +173,7 @@ export class IamRole extends cdktf.TerraformResource {
   // force_detach_policies - computed: false, optional: true, required: false
   private _forceDetachPolicies?: boolean | cdktf.IResolvable; 
   public get forceDetachPolicies() {
-    return this.getBooleanAttribute('force_detach_policies') as any;
+    return this.getBooleanAttribute('force_detach_policies');
   }
   public set forceDetachPolicies(value: boolean | cdktf.IResolvable) {
     this._forceDetachPolicies = value;
@@ -194,7 +194,7 @@ export class IamRole extends cdktf.TerraformResource {
   // managed_policy_arns - computed: true, optional: true, required: false
   private _managedPolicyArns?: string[]; 
   public get managedPolicyArns() {
-    return this.getListAttribute('managed_policy_arns');
+    return cdktf.Fn.tolist(this.getListAttribute('managed_policy_arns'));
   }
   public set managedPolicyArns(value: string[]) {
     this._managedPolicyArns = value;
@@ -288,12 +288,11 @@ export class IamRole extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -305,12 +304,11 @@ export class IamRole extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -327,12 +325,12 @@ export class IamRole extends cdktf.TerraformResource {
   }
 
   // inline_policy - computed: false, optional: true, required: false
-  private _inlinePolicy?: IamRoleInlinePolicy[]; 
+  private _inlinePolicy?: IamRoleInlinePolicy[] | cdktf.IResolvable; 
   public get inlinePolicy() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('inline_policy') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('inline_policy')));
   }
-  public set inlinePolicy(value: IamRoleInlinePolicy[]) {
+  public set inlinePolicy(value: IamRoleInlinePolicy[] | cdktf.IResolvable) {
     this._inlinePolicy = value;
   }
   public resetInlinePolicy() {
@@ -358,8 +356,8 @@ export class IamRole extends cdktf.TerraformResource {
       name_prefix: cdktf.stringToTerraform(this._namePrefix),
       path: cdktf.stringToTerraform(this._path),
       permissions_boundary: cdktf.stringToTerraform(this._permissionsBoundary),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       inline_policy: cdktf.listMapper(iamRoleInlinePolicyToTerraform)(this._inlinePolicy),
     };
   }

@@ -8,53 +8,53 @@ import * as cdktf from 'cdktf';
 */
 export interface AppsyncFunctionConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function.html#api_id AppsyncFunction#api_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function#api_id AppsyncFunction#api_id}
   */
   readonly apiId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function.html#data_source AppsyncFunction#data_source}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function#data_source AppsyncFunction#data_source}
   */
   readonly dataSource: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function.html#description AppsyncFunction#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function#description AppsyncFunction#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function.html#function_version AppsyncFunction#function_version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function#function_version AppsyncFunction#function_version}
   */
   readonly functionVersion?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function.html#max_batch_size AppsyncFunction#max_batch_size}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function#max_batch_size AppsyncFunction#max_batch_size}
   */
   readonly maxBatchSize?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function.html#name AppsyncFunction#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function#name AppsyncFunction#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function.html#request_mapping_template AppsyncFunction#request_mapping_template}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function#request_mapping_template AppsyncFunction#request_mapping_template}
   */
   readonly requestMappingTemplate: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function.html#response_mapping_template AppsyncFunction#response_mapping_template}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function#response_mapping_template AppsyncFunction#response_mapping_template}
   */
   readonly responseMappingTemplate: string;
   /**
   * sync_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function.html#sync_config AppsyncFunction#sync_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function#sync_config AppsyncFunction#sync_config}
   */
   readonly syncConfig?: AppsyncFunctionSyncConfig;
 }
 export interface AppsyncFunctionSyncConfigLambdaConflictHandlerConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function.html#lambda_conflict_handler_arn AppsyncFunction#lambda_conflict_handler_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function#lambda_conflict_handler_arn AppsyncFunction#lambda_conflict_handler_arn}
   */
   readonly lambdaConflictHandlerArn?: string;
 }
 
 export function appsyncFunctionSyncConfigLambdaConflictHandlerConfigToTerraform(struct?: AppsyncFunctionSyncConfigLambdaConflictHandlerConfigOutputReference | AppsyncFunctionSyncConfigLambdaConflictHandlerConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -64,19 +64,21 @@ export function appsyncFunctionSyncConfigLambdaConflictHandlerConfigToTerraform(
 }
 
 export class AppsyncFunctionSyncConfigLambdaConflictHandlerConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppsyncFunctionSyncConfigLambdaConflictHandlerConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._lambdaConflictHandlerArn) {
+    if (this._lambdaConflictHandlerArn !== undefined) {
       hasAnyValues = true;
       internalValueResult.lambdaConflictHandlerArn = this._lambdaConflictHandlerArn;
     }
@@ -85,9 +87,11 @@ export class AppsyncFunctionSyncConfigLambdaConflictHandlerConfigOutputReference
 
   public set internalValue(value: AppsyncFunctionSyncConfigLambdaConflictHandlerConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._lambdaConflictHandlerArn = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._lambdaConflictHandlerArn = value.lambdaConflictHandlerArn;
     }
   }
@@ -110,23 +114,23 @@ export class AppsyncFunctionSyncConfigLambdaConflictHandlerConfigOutputReference
 }
 export interface AppsyncFunctionSyncConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function.html#conflict_detection AppsyncFunction#conflict_detection}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function#conflict_detection AppsyncFunction#conflict_detection}
   */
   readonly conflictDetection?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function.html#conflict_handler AppsyncFunction#conflict_handler}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function#conflict_handler AppsyncFunction#conflict_handler}
   */
   readonly conflictHandler?: string;
   /**
   * lambda_conflict_handler_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function.html#lambda_conflict_handler_config AppsyncFunction#lambda_conflict_handler_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_function#lambda_conflict_handler_config AppsyncFunction#lambda_conflict_handler_config}
   */
   readonly lambdaConflictHandlerConfig?: AppsyncFunctionSyncConfigLambdaConflictHandlerConfig;
 }
 
 export function appsyncFunctionSyncConfigToTerraform(struct?: AppsyncFunctionSyncConfigOutputReference | AppsyncFunctionSyncConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -138,27 +142,29 @@ export function appsyncFunctionSyncConfigToTerraform(struct?: AppsyncFunctionSyn
 }
 
 export class AppsyncFunctionSyncConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppsyncFunctionSyncConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._conflictDetection) {
+    if (this._conflictDetection !== undefined) {
       hasAnyValues = true;
       internalValueResult.conflictDetection = this._conflictDetection;
     }
-    if (this._conflictHandler) {
+    if (this._conflictHandler !== undefined) {
       hasAnyValues = true;
       internalValueResult.conflictHandler = this._conflictHandler;
     }
-    if (this._lambdaConflictHandlerConfig) {
+    if (this._lambdaConflictHandlerConfig?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.lambdaConflictHandlerConfig = this._lambdaConflictHandlerConfig?.internalValue;
     }
@@ -167,11 +173,13 @@ export class AppsyncFunctionSyncConfigOutputReference extends cdktf.ComplexObjec
 
   public set internalValue(value: AppsyncFunctionSyncConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._conflictDetection = undefined;
       this._conflictHandler = undefined;
       this._lambdaConflictHandlerConfig.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._conflictDetection = value.conflictDetection;
       this._conflictHandler = value.conflictHandler;
       this._lambdaConflictHandlerConfig.internalValue = value.lambdaConflictHandlerConfig;
@@ -211,7 +219,7 @@ export class AppsyncFunctionSyncConfigOutputReference extends cdktf.ComplexObjec
   }
 
   // lambda_conflict_handler_config - computed: false, optional: true, required: false
-  private _lambdaConflictHandlerConfig = new AppsyncFunctionSyncConfigLambdaConflictHandlerConfigOutputReference(this as any, "lambda_conflict_handler_config", true);
+  private _lambdaConflictHandlerConfig = new AppsyncFunctionSyncConfigLambdaConflictHandlerConfigOutputReference(this, "lambda_conflict_handler_config", true);
   public get lambdaConflictHandlerConfig() {
     return this._lambdaConflictHandlerConfig;
   }
@@ -228,7 +236,7 @@ export class AppsyncFunctionSyncConfigOutputReference extends cdktf.ComplexObjec
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/appsync_function.html aws_appsync_function}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/appsync_function aws_appsync_function}
 */
 export class AppsyncFunction extends cdktf.TerraformResource {
 
@@ -242,7 +250,7 @@ export class AppsyncFunction extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/appsync_function.html aws_appsync_function} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/appsync_function aws_appsync_function} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -403,7 +411,7 @@ export class AppsyncFunction extends cdktf.TerraformResource {
   }
 
   // sync_config - computed: false, optional: true, required: false
-  private _syncConfig = new AppsyncFunctionSyncConfigOutputReference(this as any, "sync_config", true);
+  private _syncConfig = new AppsyncFunctionSyncConfigOutputReference(this, "sync_config", true);
   public get syncConfig() {
     return this._syncConfig;
   }

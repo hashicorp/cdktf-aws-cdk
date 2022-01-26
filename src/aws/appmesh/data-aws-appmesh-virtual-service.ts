@@ -8,21 +8,21 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsAppmeshVirtualServiceConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/appmesh_virtual_service.html#mesh_name DataAwsAppmeshVirtualService#mesh_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/appmesh_virtual_service#mesh_name DataAwsAppmeshVirtualService#mesh_name}
   */
   readonly meshName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/appmesh_virtual_service.html#mesh_owner DataAwsAppmeshVirtualService#mesh_owner}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/appmesh_virtual_service#mesh_owner DataAwsAppmeshVirtualService#mesh_owner}
   */
   readonly meshOwner?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/appmesh_virtual_service.html#name DataAwsAppmeshVirtualService#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/appmesh_virtual_service#name DataAwsAppmeshVirtualService#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/appmesh_virtual_service.html#tags DataAwsAppmeshVirtualService#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/appmesh_virtual_service#tags DataAwsAppmeshVirtualService#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
 }
 export class DataAwsAppmeshVirtualServiceSpecProviderVirtualNode extends cdktf.ComplexComputedList {
 
@@ -43,13 +43,13 @@ export class DataAwsAppmeshVirtualServiceSpecProvider extends cdktf.ComplexCompu
   // virtual_node - computed: true, optional: false, required: false
   public get virtualNode() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('virtual_node') as any;
+    return this.interpolationForAttribute('virtual_node');
   }
 
   // virtual_router - computed: true, optional: false, required: false
   public get virtualRouter() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('virtual_router') as any;
+    return this.interpolationForAttribute('virtual_router');
   }
 }
 export class DataAwsAppmeshVirtualServiceSpec extends cdktf.ComplexComputedList {
@@ -57,12 +57,12 @@ export class DataAwsAppmeshVirtualServiceSpec extends cdktf.ComplexComputedList 
   // provider - computed: true, optional: false, required: false
   public get provider() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('provider') as any;
+    return this.interpolationForAttribute('provider');
   }
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/appmesh_virtual_service.html aws_appmesh_virtual_service}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/appmesh_virtual_service aws_appmesh_virtual_service}
 */
 export class DataAwsAppmeshVirtualService extends cdktf.TerraformDataSource {
 
@@ -76,7 +76,7 @@ export class DataAwsAppmeshVirtualService extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/appmesh_virtual_service.html aws_appmesh_virtual_service} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/appmesh_virtual_service aws_appmesh_virtual_service} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -172,16 +172,15 @@ export class DataAwsAppmeshVirtualService extends cdktf.TerraformDataSource {
 
   // spec - computed: true, optional: false, required: false
   public spec(index: string) {
-    return new DataAwsAppmeshVirtualServiceSpec(this, 'spec', index);
+    return new DataAwsAppmeshVirtualServiceSpec(this, 'spec', index, false);
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -201,7 +200,7 @@ export class DataAwsAppmeshVirtualService extends cdktf.TerraformDataSource {
       mesh_name: cdktf.stringToTerraform(this._meshName),
       mesh_owner: cdktf.stringToTerraform(this._meshOwner),
       name: cdktf.stringToTerraform(this._name),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
     };
   }
 }

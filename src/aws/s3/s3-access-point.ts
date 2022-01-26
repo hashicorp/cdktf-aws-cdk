@@ -8,55 +8,55 @@ import * as cdktf from 'cdktf';
 */
 export interface S3AccessPointConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point.html#account_id S3AccessPoint#account_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point#account_id S3AccessPoint#account_id}
   */
   readonly accountId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point.html#bucket S3AccessPoint#bucket}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point#bucket S3AccessPoint#bucket}
   */
   readonly bucket: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point.html#name S3AccessPoint#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point#name S3AccessPoint#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point.html#policy S3AccessPoint#policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point#policy S3AccessPoint#policy}
   */
   readonly policy?: string;
   /**
   * public_access_block_configuration block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point.html#public_access_block_configuration S3AccessPoint#public_access_block_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point#public_access_block_configuration S3AccessPoint#public_access_block_configuration}
   */
   readonly publicAccessBlockConfiguration?: S3AccessPointPublicAccessBlockConfiguration;
   /**
   * vpc_configuration block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point.html#vpc_configuration S3AccessPoint#vpc_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point#vpc_configuration S3AccessPoint#vpc_configuration}
   */
   readonly vpcConfiguration?: S3AccessPointVpcConfiguration;
 }
 export interface S3AccessPointPublicAccessBlockConfiguration {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point.html#block_public_acls S3AccessPoint#block_public_acls}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point#block_public_acls S3AccessPoint#block_public_acls}
   */
   readonly blockPublicAcls?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point.html#block_public_policy S3AccessPoint#block_public_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point#block_public_policy S3AccessPoint#block_public_policy}
   */
   readonly blockPublicPolicy?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point.html#ignore_public_acls S3AccessPoint#ignore_public_acls}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point#ignore_public_acls S3AccessPoint#ignore_public_acls}
   */
   readonly ignorePublicAcls?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point.html#restrict_public_buckets S3AccessPoint#restrict_public_buckets}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point#restrict_public_buckets S3AccessPoint#restrict_public_buckets}
   */
   readonly restrictPublicBuckets?: boolean | cdktf.IResolvable;
 }
 
 export function s3AccessPointPublicAccessBlockConfigurationToTerraform(struct?: S3AccessPointPublicAccessBlockConfigurationOutputReference | S3AccessPointPublicAccessBlockConfiguration): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -69,31 +69,33 @@ export function s3AccessPointPublicAccessBlockConfigurationToTerraform(struct?: 
 }
 
 export class S3AccessPointPublicAccessBlockConfigurationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): S3AccessPointPublicAccessBlockConfiguration | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._blockPublicAcls) {
+    if (this._blockPublicAcls !== undefined) {
       hasAnyValues = true;
       internalValueResult.blockPublicAcls = this._blockPublicAcls;
     }
-    if (this._blockPublicPolicy) {
+    if (this._blockPublicPolicy !== undefined) {
       hasAnyValues = true;
       internalValueResult.blockPublicPolicy = this._blockPublicPolicy;
     }
-    if (this._ignorePublicAcls) {
+    if (this._ignorePublicAcls !== undefined) {
       hasAnyValues = true;
       internalValueResult.ignorePublicAcls = this._ignorePublicAcls;
     }
-    if (this._restrictPublicBuckets) {
+    if (this._restrictPublicBuckets !== undefined) {
       hasAnyValues = true;
       internalValueResult.restrictPublicBuckets = this._restrictPublicBuckets;
     }
@@ -102,12 +104,14 @@ export class S3AccessPointPublicAccessBlockConfigurationOutputReference extends 
 
   public set internalValue(value: S3AccessPointPublicAccessBlockConfiguration | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._blockPublicAcls = undefined;
       this._blockPublicPolicy = undefined;
       this._ignorePublicAcls = undefined;
       this._restrictPublicBuckets = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._blockPublicAcls = value.blockPublicAcls;
       this._blockPublicPolicy = value.blockPublicPolicy;
       this._ignorePublicAcls = value.ignorePublicAcls;
@@ -118,7 +122,7 @@ export class S3AccessPointPublicAccessBlockConfigurationOutputReference extends 
   // block_public_acls - computed: false, optional: true, required: false
   private _blockPublicAcls?: boolean | cdktf.IResolvable; 
   public get blockPublicAcls() {
-    return this.getBooleanAttribute('block_public_acls') as any;
+    return this.getBooleanAttribute('block_public_acls');
   }
   public set blockPublicAcls(value: boolean | cdktf.IResolvable) {
     this._blockPublicAcls = value;
@@ -134,7 +138,7 @@ export class S3AccessPointPublicAccessBlockConfigurationOutputReference extends 
   // block_public_policy - computed: false, optional: true, required: false
   private _blockPublicPolicy?: boolean | cdktf.IResolvable; 
   public get blockPublicPolicy() {
-    return this.getBooleanAttribute('block_public_policy') as any;
+    return this.getBooleanAttribute('block_public_policy');
   }
   public set blockPublicPolicy(value: boolean | cdktf.IResolvable) {
     this._blockPublicPolicy = value;
@@ -150,7 +154,7 @@ export class S3AccessPointPublicAccessBlockConfigurationOutputReference extends 
   // ignore_public_acls - computed: false, optional: true, required: false
   private _ignorePublicAcls?: boolean | cdktf.IResolvable; 
   public get ignorePublicAcls() {
-    return this.getBooleanAttribute('ignore_public_acls') as any;
+    return this.getBooleanAttribute('ignore_public_acls');
   }
   public set ignorePublicAcls(value: boolean | cdktf.IResolvable) {
     this._ignorePublicAcls = value;
@@ -166,7 +170,7 @@ export class S3AccessPointPublicAccessBlockConfigurationOutputReference extends 
   // restrict_public_buckets - computed: false, optional: true, required: false
   private _restrictPublicBuckets?: boolean | cdktf.IResolvable; 
   public get restrictPublicBuckets() {
-    return this.getBooleanAttribute('restrict_public_buckets') as any;
+    return this.getBooleanAttribute('restrict_public_buckets');
   }
   public set restrictPublicBuckets(value: boolean | cdktf.IResolvable) {
     this._restrictPublicBuckets = value;
@@ -181,13 +185,13 @@ export class S3AccessPointPublicAccessBlockConfigurationOutputReference extends 
 }
 export interface S3AccessPointVpcConfiguration {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point.html#vpc_id S3AccessPoint#vpc_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point#vpc_id S3AccessPoint#vpc_id}
   */
   readonly vpcId: string;
 }
 
 export function s3AccessPointVpcConfigurationToTerraform(struct?: S3AccessPointVpcConfigurationOutputReference | S3AccessPointVpcConfiguration): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -197,19 +201,21 @@ export function s3AccessPointVpcConfigurationToTerraform(struct?: S3AccessPointV
 }
 
 export class S3AccessPointVpcConfigurationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): S3AccessPointVpcConfiguration | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._vpcId) {
+    if (this._vpcId !== undefined) {
       hasAnyValues = true;
       internalValueResult.vpcId = this._vpcId;
     }
@@ -218,9 +224,11 @@ export class S3AccessPointVpcConfigurationOutputReference extends cdktf.ComplexO
 
   public set internalValue(value: S3AccessPointVpcConfiguration | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._vpcId = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._vpcId = value.vpcId;
     }
   }
@@ -240,7 +248,7 @@ export class S3AccessPointVpcConfigurationOutputReference extends cdktf.ComplexO
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point.html aws_s3_access_point}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point aws_s3_access_point}
 */
 export class S3AccessPoint extends cdktf.TerraformResource {
 
@@ -254,7 +262,7 @@ export class S3AccessPoint extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point.html aws_s3_access_point} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/s3_access_point aws_s3_access_point} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -328,13 +336,13 @@ export class S3AccessPoint extends cdktf.TerraformResource {
   }
 
   // endpoints - computed: true, optional: false, required: false
-  public endpoints(key: string): string {
+  public endpoints(key: string): string | cdktf.IResolvable {
     return new cdktf.StringMap(this, 'endpoints').lookup(key);
   }
 
   // has_public_access_policy - computed: true, optional: false, required: false
   public get hasPublicAccessPolicy() {
-    return this.getBooleanAttribute('has_public_access_policy') as any;
+    return this.getBooleanAttribute('has_public_access_policy');
   }
 
   // id - computed: true, optional: true, required: false
@@ -377,7 +385,7 @@ export class S3AccessPoint extends cdktf.TerraformResource {
   }
 
   // public_access_block_configuration - computed: false, optional: true, required: false
-  private _publicAccessBlockConfiguration = new S3AccessPointPublicAccessBlockConfigurationOutputReference(this as any, "public_access_block_configuration", true);
+  private _publicAccessBlockConfiguration = new S3AccessPointPublicAccessBlockConfigurationOutputReference(this, "public_access_block_configuration", true);
   public get publicAccessBlockConfiguration() {
     return this._publicAccessBlockConfiguration;
   }
@@ -393,7 +401,7 @@ export class S3AccessPoint extends cdktf.TerraformResource {
   }
 
   // vpc_configuration - computed: false, optional: true, required: false
-  private _vpcConfiguration = new S3AccessPointVpcConfigurationOutputReference(this as any, "vpc_configuration", true);
+  private _vpcConfiguration = new S3AccessPointVpcConfigurationOutputReference(this, "vpc_configuration", true);
   public get vpcConfiguration() {
     return this._vpcConfiguration;
   }

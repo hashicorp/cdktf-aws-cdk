@@ -8,17 +8,17 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsEksNodeGroupConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/eks_node_group.html#cluster_name DataAwsEksNodeGroup#cluster_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/eks_node_group#cluster_name DataAwsEksNodeGroup#cluster_name}
   */
   readonly clusterName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/eks_node_group.html#node_group_name DataAwsEksNodeGroup#node_group_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/eks_node_group#node_group_name DataAwsEksNodeGroup#node_group_name}
   */
   readonly nodeGroupName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/eks_node_group.html#tags DataAwsEksNodeGroup#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/eks_node_group#tags DataAwsEksNodeGroup#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
 }
 export class DataAwsEksNodeGroupRemoteAccess extends cdktf.ComplexComputedList {
 
@@ -29,7 +29,7 @@ export class DataAwsEksNodeGroupRemoteAccess extends cdktf.ComplexComputedList {
 
   // source_security_group_ids - computed: true, optional: false, required: false
   public get sourceSecurityGroupIds() {
-    return this.getListAttribute('source_security_group_ids');
+    return cdktf.Fn.tolist(this.getListAttribute('source_security_group_ids'));
   }
 }
 export class DataAwsEksNodeGroupResourcesAutoscalingGroups extends cdktf.ComplexComputedList {
@@ -44,7 +44,7 @@ export class DataAwsEksNodeGroupResources extends cdktf.ComplexComputedList {
   // autoscaling_groups - computed: true, optional: false, required: false
   public get autoscalingGroups() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('autoscaling_groups') as any;
+    return this.interpolationForAttribute('autoscaling_groups');
   }
 
   // remote_access_security_group_id - computed: true, optional: false, required: false
@@ -71,7 +71,7 @@ export class DataAwsEksNodeGroupScalingConfig extends cdktf.ComplexComputedList 
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/eks_node_group.html aws_eks_node_group}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/eks_node_group aws_eks_node_group}
 */
 export class DataAwsEksNodeGroup extends cdktf.TerraformDataSource {
 
@@ -85,7 +85,7 @@ export class DataAwsEksNodeGroup extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/eks_node_group.html aws_eks_node_group} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/eks_node_group aws_eks_node_group} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -150,7 +150,7 @@ export class DataAwsEksNodeGroup extends cdktf.TerraformDataSource {
   }
 
   // labels - computed: true, optional: false, required: false
-  public labels(key: string): string {
+  public labels(key: string): string | cdktf.IResolvable {
     return new cdktf.StringMap(this, 'labels').lookup(key);
   }
 
@@ -179,17 +179,17 @@ export class DataAwsEksNodeGroup extends cdktf.TerraformDataSource {
 
   // remote_access - computed: true, optional: false, required: false
   public remoteAccess(index: string) {
-    return new DataAwsEksNodeGroupRemoteAccess(this, 'remote_access', index);
+    return new DataAwsEksNodeGroupRemoteAccess(this, 'remote_access', index, false);
   }
 
   // resources - computed: true, optional: false, required: false
   public resources(index: string) {
-    return new DataAwsEksNodeGroupResources(this, 'resources', index);
+    return new DataAwsEksNodeGroupResources(this, 'resources', index, false);
   }
 
   // scaling_config - computed: true, optional: false, required: false
   public scalingConfig(index: string) {
-    return new DataAwsEksNodeGroupScalingConfig(this, 'scaling_config', index);
+    return new DataAwsEksNodeGroupScalingConfig(this, 'scaling_config', index, false);
   }
 
   // status - computed: true, optional: false, required: false
@@ -199,16 +199,15 @@ export class DataAwsEksNodeGroup extends cdktf.TerraformDataSource {
 
   // subnet_ids - computed: true, optional: false, required: false
   public get subnetIds() {
-    return this.getListAttribute('subnet_ids');
+    return cdktf.Fn.tolist(this.getListAttribute('subnet_ids'));
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -232,7 +231,7 @@ export class DataAwsEksNodeGroup extends cdktf.TerraformDataSource {
     return {
       cluster_name: cdktf.stringToTerraform(this._clusterName),
       node_group_name: cdktf.stringToTerraform(this._nodeGroupName),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
     };
   }
 }

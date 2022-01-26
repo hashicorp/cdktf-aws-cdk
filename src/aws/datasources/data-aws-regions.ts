@@ -8,29 +8,29 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsRegionsConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/regions.html#all_regions DataAwsRegions#all_regions}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/regions#all_regions DataAwsRegions#all_regions}
   */
   readonly allRegions?: boolean | cdktf.IResolvable;
   /**
   * filter block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/regions.html#filter DataAwsRegions#filter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/regions#filter DataAwsRegions#filter}
   */
-  readonly filter?: DataAwsRegionsFilter[];
+  readonly filter?: DataAwsRegionsFilter[] | cdktf.IResolvable;
 }
 export interface DataAwsRegionsFilter {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/regions.html#name DataAwsRegions#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/regions#name DataAwsRegions#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/regions.html#values DataAwsRegions#values}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/regions#values DataAwsRegions#values}
   */
   readonly values: string[];
 }
 
-export function dataAwsRegionsFilterToTerraform(struct?: DataAwsRegionsFilter): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function dataAwsRegionsFilterToTerraform(struct?: DataAwsRegionsFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -42,7 +42,7 @@ export function dataAwsRegionsFilterToTerraform(struct?: DataAwsRegionsFilter): 
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/regions.html aws_regions}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/regions aws_regions}
 */
 export class DataAwsRegions extends cdktf.TerraformDataSource {
 
@@ -56,7 +56,7 @@ export class DataAwsRegions extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/regions.html aws_regions} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/regions aws_regions} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -84,7 +84,7 @@ export class DataAwsRegions extends cdktf.TerraformDataSource {
   // all_regions - computed: false, optional: true, required: false
   private _allRegions?: boolean | cdktf.IResolvable; 
   public get allRegions() {
-    return this.getBooleanAttribute('all_regions') as any;
+    return this.getBooleanAttribute('all_regions');
   }
   public set allRegions(value: boolean | cdktf.IResolvable) {
     this._allRegions = value;
@@ -104,16 +104,16 @@ export class DataAwsRegions extends cdktf.TerraformDataSource {
 
   // names - computed: true, optional: false, required: false
   public get names() {
-    return this.getListAttribute('names');
+    return cdktf.Fn.tolist(this.getListAttribute('names'));
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsRegionsFilter[]; 
+  private _filter?: DataAwsRegionsFilter[] | cdktf.IResolvable; 
   public get filter() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('filter') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('filter')));
   }
-  public set filter(value: DataAwsRegionsFilter[]) {
+  public set filter(value: DataAwsRegionsFilter[] | cdktf.IResolvable) {
     this._filter = value;
   }
   public resetFilter() {

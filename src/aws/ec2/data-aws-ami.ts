@@ -8,31 +8,31 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsAmiConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami.html#executable_users DataAwsAmi#executable_users}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami#executable_users DataAwsAmi#executable_users}
   */
   readonly executableUsers?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami.html#most_recent DataAwsAmi#most_recent}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami#most_recent DataAwsAmi#most_recent}
   */
   readonly mostRecent?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami.html#name_regex DataAwsAmi#name_regex}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami#name_regex DataAwsAmi#name_regex}
   */
   readonly nameRegex?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami.html#owners DataAwsAmi#owners}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami#owners DataAwsAmi#owners}
   */
   readonly owners: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami.html#tags DataAwsAmi#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami#tags DataAwsAmi#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
   * filter block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami.html#filter DataAwsAmi#filter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami#filter DataAwsAmi#filter}
   */
-  readonly filter?: DataAwsAmiFilter[];
+  readonly filter?: DataAwsAmiFilter[] | cdktf.IResolvable;
 }
 export class DataAwsAmiBlockDeviceMappings extends cdktf.ComplexComputedList {
 
@@ -43,8 +43,7 @@ export class DataAwsAmiBlockDeviceMappings extends cdktf.ComplexComputedList {
 
   // ebs - computed: true, optional: false, required: false
   public get ebs() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('ebs') as any;
+    return this.getStringMapAttribute('ebs');
   }
 
   // no_device - computed: true, optional: false, required: false
@@ -71,17 +70,17 @@ export class DataAwsAmiProductCodes extends cdktf.ComplexComputedList {
 }
 export interface DataAwsAmiFilter {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami.html#name DataAwsAmi#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami#name DataAwsAmi#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami.html#values DataAwsAmi#values}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami#values DataAwsAmi#values}
   */
   readonly values: string[];
 }
 
-export function dataAwsAmiFilterToTerraform(struct?: DataAwsAmiFilter): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function dataAwsAmiFilterToTerraform(struct?: DataAwsAmiFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -93,7 +92,7 @@ export function dataAwsAmiFilterToTerraform(struct?: DataAwsAmiFilter): any {
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/ami.html aws_ami}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/ami aws_ami}
 */
 export class DataAwsAmi extends cdktf.TerraformDataSource {
 
@@ -107,7 +106,7 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/ami.html aws_ami} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/ami aws_ami} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -148,7 +147,7 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
 
   // block_device_mappings - computed: true, optional: false, required: false
   public blockDeviceMappings(index: string) {
-    return new DataAwsAmiBlockDeviceMappings(this, 'block_device_mappings', index);
+    return new DataAwsAmiBlockDeviceMappings(this, 'block_device_mappings', index, true);
   }
 
   // creation_date - computed: true, optional: false, required: false
@@ -163,7 +162,7 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
 
   // ena_support - computed: true, optional: false, required: false
   public get enaSupport() {
-    return this.getBooleanAttribute('ena_support') as any;
+    return this.getBooleanAttribute('ena_support');
   }
 
   // executable_users - computed: false, optional: true, required: false
@@ -220,7 +219,7 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
   // most_recent - computed: false, optional: true, required: false
   private _mostRecent?: boolean | cdktf.IResolvable; 
   public get mostRecent() {
-    return this.getBooleanAttribute('most_recent') as any;
+    return this.getBooleanAttribute('most_recent');
   }
   public set mostRecent(value: boolean | cdktf.IResolvable) {
     this._mostRecent = value;
@@ -284,12 +283,12 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
 
   // product_codes - computed: true, optional: false, required: false
   public productCodes(index: string) {
-    return new DataAwsAmiProductCodes(this, 'product_codes', index);
+    return new DataAwsAmiProductCodes(this, 'product_codes', index, true);
   }
 
   // public - computed: true, optional: false, required: false
   public get public() {
-    return this.getBooleanAttribute('public') as any;
+    return this.getBooleanAttribute('public');
   }
 
   // ramdisk_id - computed: true, optional: false, required: false
@@ -323,17 +322,16 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
   }
 
   // state_reason - computed: true, optional: false, required: false
-  public stateReason(key: string): string {
+  public stateReason(key: string): string | cdktf.IResolvable {
     return new cdktf.StringMap(this, 'state_reason').lookup(key);
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -355,12 +353,12 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsAmiFilter[]; 
+  private _filter?: DataAwsAmiFilter[] | cdktf.IResolvable; 
   public get filter() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('filter') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('filter')));
   }
-  public set filter(value: DataAwsAmiFilter[]) {
+  public set filter(value: DataAwsAmiFilter[] | cdktf.IResolvable) {
     this._filter = value;
   }
   public resetFilter() {
@@ -381,7 +379,7 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
       most_recent: cdktf.booleanToTerraform(this._mostRecent),
       name_regex: cdktf.stringToTerraform(this._nameRegex),
       owners: cdktf.listMapper(cdktf.stringToTerraform)(this._owners),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       filter: cdktf.listMapper(dataAwsAmiFilterToTerraform)(this._filter),
     };
   }

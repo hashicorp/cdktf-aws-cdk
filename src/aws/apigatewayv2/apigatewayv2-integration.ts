@@ -8,113 +8,113 @@ import * as cdktf from 'cdktf';
 */
 export interface Apigatewayv2IntegrationConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#api_id Apigatewayv2Integration#api_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#api_id Apigatewayv2Integration#api_id}
   */
   readonly apiId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#connection_id Apigatewayv2Integration#connection_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#connection_id Apigatewayv2Integration#connection_id}
   */
   readonly connectionId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#connection_type Apigatewayv2Integration#connection_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#connection_type Apigatewayv2Integration#connection_type}
   */
   readonly connectionType?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#content_handling_strategy Apigatewayv2Integration#content_handling_strategy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#content_handling_strategy Apigatewayv2Integration#content_handling_strategy}
   */
   readonly contentHandlingStrategy?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#credentials_arn Apigatewayv2Integration#credentials_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#credentials_arn Apigatewayv2Integration#credentials_arn}
   */
   readonly credentialsArn?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#description Apigatewayv2Integration#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#description Apigatewayv2Integration#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#integration_method Apigatewayv2Integration#integration_method}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#integration_method Apigatewayv2Integration#integration_method}
   */
   readonly integrationMethod?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#integration_subtype Apigatewayv2Integration#integration_subtype}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#integration_subtype Apigatewayv2Integration#integration_subtype}
   */
   readonly integrationSubtype?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#integration_type Apigatewayv2Integration#integration_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#integration_type Apigatewayv2Integration#integration_type}
   */
   readonly integrationType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#integration_uri Apigatewayv2Integration#integration_uri}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#integration_uri Apigatewayv2Integration#integration_uri}
   */
   readonly integrationUri?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#passthrough_behavior Apigatewayv2Integration#passthrough_behavior}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#passthrough_behavior Apigatewayv2Integration#passthrough_behavior}
   */
   readonly passthroughBehavior?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#payload_format_version Apigatewayv2Integration#payload_format_version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#payload_format_version Apigatewayv2Integration#payload_format_version}
   */
   readonly payloadFormatVersion?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#request_parameters Apigatewayv2Integration#request_parameters}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#request_parameters Apigatewayv2Integration#request_parameters}
   */
-  readonly requestParameters?: { [key: string]: string } | cdktf.IResolvable;
+  readonly requestParameters?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#request_templates Apigatewayv2Integration#request_templates}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#request_templates Apigatewayv2Integration#request_templates}
   */
-  readonly requestTemplates?: { [key: string]: string } | cdktf.IResolvable;
+  readonly requestTemplates?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#template_selection_expression Apigatewayv2Integration#template_selection_expression}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#template_selection_expression Apigatewayv2Integration#template_selection_expression}
   */
   readonly templateSelectionExpression?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#timeout_milliseconds Apigatewayv2Integration#timeout_milliseconds}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#timeout_milliseconds Apigatewayv2Integration#timeout_milliseconds}
   */
   readonly timeoutMilliseconds?: number;
   /**
   * response_parameters block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#response_parameters Apigatewayv2Integration#response_parameters}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#response_parameters Apigatewayv2Integration#response_parameters}
   */
-  readonly responseParameters?: Apigatewayv2IntegrationResponseParameters[];
+  readonly responseParameters?: Apigatewayv2IntegrationResponseParameters[] | cdktf.IResolvable;
   /**
   * tls_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#tls_config Apigatewayv2Integration#tls_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#tls_config Apigatewayv2Integration#tls_config}
   */
   readonly tlsConfig?: Apigatewayv2IntegrationTlsConfig;
 }
 export interface Apigatewayv2IntegrationResponseParameters {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#mappings Apigatewayv2Integration#mappings}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#mappings Apigatewayv2Integration#mappings}
   */
-  readonly mappings: { [key: string]: string } | cdktf.IResolvable;
+  readonly mappings: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#status_code Apigatewayv2Integration#status_code}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#status_code Apigatewayv2Integration#status_code}
   */
   readonly statusCode: string;
 }
 
-export function apigatewayv2IntegrationResponseParametersToTerraform(struct?: Apigatewayv2IntegrationResponseParameters): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function apigatewayv2IntegrationResponseParametersToTerraform(struct?: Apigatewayv2IntegrationResponseParameters | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    mappings: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.mappings),
+    mappings: cdktf.hashMapper(cdktf.stringToTerraform)(struct!.mappings),
     status_code: cdktf.stringToTerraform(struct!.statusCode),
   }
 }
 
 export interface Apigatewayv2IntegrationTlsConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html#server_name_to_verify Apigatewayv2Integration#server_name_to_verify}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration#server_name_to_verify Apigatewayv2Integration#server_name_to_verify}
   */
   readonly serverNameToVerify?: string;
 }
 
 export function apigatewayv2IntegrationTlsConfigToTerraform(struct?: Apigatewayv2IntegrationTlsConfigOutputReference | Apigatewayv2IntegrationTlsConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -124,19 +124,21 @@ export function apigatewayv2IntegrationTlsConfigToTerraform(struct?: Apigatewayv
 }
 
 export class Apigatewayv2IntegrationTlsConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): Apigatewayv2IntegrationTlsConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._serverNameToVerify) {
+    if (this._serverNameToVerify !== undefined) {
       hasAnyValues = true;
       internalValueResult.serverNameToVerify = this._serverNameToVerify;
     }
@@ -145,9 +147,11 @@ export class Apigatewayv2IntegrationTlsConfigOutputReference extends cdktf.Compl
 
   public set internalValue(value: Apigatewayv2IntegrationTlsConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._serverNameToVerify = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._serverNameToVerify = value.serverNameToVerify;
     }
   }
@@ -170,7 +174,7 @@ export class Apigatewayv2IntegrationTlsConfigOutputReference extends cdktf.Compl
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html aws_apigatewayv2_integration}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration aws_apigatewayv2_integration}
 */
 export class Apigatewayv2Integration extends cdktf.TerraformResource {
 
@@ -184,7 +188,7 @@ export class Apigatewayv2Integration extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration.html aws_apigatewayv2_integration} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_integration aws_apigatewayv2_integration} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -422,12 +426,11 @@ export class Apigatewayv2Integration extends cdktf.TerraformResource {
   }
 
   // request_parameters - computed: false, optional: true, required: false
-  private _requestParameters?: { [key: string]: string } | cdktf.IResolvable; 
+  private _requestParameters?: { [key: string]: string }; 
   public get requestParameters() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('request_parameters') as any;
+    return this.getStringMapAttribute('request_parameters');
   }
-  public set requestParameters(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set requestParameters(value: { [key: string]: string }) {
     this._requestParameters = value;
   }
   public resetRequestParameters() {
@@ -439,12 +442,11 @@ export class Apigatewayv2Integration extends cdktf.TerraformResource {
   }
 
   // request_templates - computed: false, optional: true, required: false
-  private _requestTemplates?: { [key: string]: string } | cdktf.IResolvable; 
+  private _requestTemplates?: { [key: string]: string }; 
   public get requestTemplates() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('request_templates') as any;
+    return this.getStringMapAttribute('request_templates');
   }
-  public set requestTemplates(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set requestTemplates(value: { [key: string]: string }) {
     this._requestTemplates = value;
   }
   public resetRequestTemplates() {
@@ -488,12 +490,12 @@ export class Apigatewayv2Integration extends cdktf.TerraformResource {
   }
 
   // response_parameters - computed: false, optional: true, required: false
-  private _responseParameters?: Apigatewayv2IntegrationResponseParameters[]; 
+  private _responseParameters?: Apigatewayv2IntegrationResponseParameters[] | cdktf.IResolvable; 
   public get responseParameters() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('response_parameters') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('response_parameters')));
   }
-  public set responseParameters(value: Apigatewayv2IntegrationResponseParameters[]) {
+  public set responseParameters(value: Apigatewayv2IntegrationResponseParameters[] | cdktf.IResolvable) {
     this._responseParameters = value;
   }
   public resetResponseParameters() {
@@ -505,7 +507,7 @@ export class Apigatewayv2Integration extends cdktf.TerraformResource {
   }
 
   // tls_config - computed: false, optional: true, required: false
-  private _tlsConfig = new Apigatewayv2IntegrationTlsConfigOutputReference(this as any, "tls_config", true);
+  private _tlsConfig = new Apigatewayv2IntegrationTlsConfigOutputReference(this, "tls_config", true);
   public get tlsConfig() {
     return this._tlsConfig;
   }
@@ -538,8 +540,8 @@ export class Apigatewayv2Integration extends cdktf.TerraformResource {
       integration_uri: cdktf.stringToTerraform(this._integrationUri),
       passthrough_behavior: cdktf.stringToTerraform(this._passthroughBehavior),
       payload_format_version: cdktf.stringToTerraform(this._payloadFormatVersion),
-      request_parameters: cdktf.hashMapper(cdktf.anyToTerraform)(this._requestParameters),
-      request_templates: cdktf.hashMapper(cdktf.anyToTerraform)(this._requestTemplates),
+      request_parameters: cdktf.hashMapper(cdktf.stringToTerraform)(this._requestParameters),
+      request_templates: cdktf.hashMapper(cdktf.stringToTerraform)(this._requestTemplates),
       template_selection_expression: cdktf.stringToTerraform(this._templateSelectionExpression),
       timeout_milliseconds: cdktf.numberToTerraform(this._timeoutMilliseconds),
       response_parameters: cdktf.listMapper(apigatewayv2IntegrationResponseParametersToTerraform)(this._responseParameters),

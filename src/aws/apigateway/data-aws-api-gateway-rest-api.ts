@@ -8,13 +8,13 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsApiGatewayRestApiConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_rest_api.html#name DataAwsApiGatewayRestApi#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_rest_api#name DataAwsApiGatewayRestApi#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_rest_api.html#tags DataAwsApiGatewayRestApi#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_rest_api#tags DataAwsApiGatewayRestApi#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
 }
 export class DataAwsApiGatewayRestApiEndpointConfiguration extends cdktf.ComplexComputedList {
 
@@ -25,12 +25,12 @@ export class DataAwsApiGatewayRestApiEndpointConfiguration extends cdktf.Complex
 
   // vpc_endpoint_ids - computed: true, optional: false, required: false
   public get vpcEndpointIds() {
-    return this.getListAttribute('vpc_endpoint_ids');
+    return cdktf.Fn.tolist(this.getListAttribute('vpc_endpoint_ids'));
   }
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_rest_api.html aws_api_gateway_rest_api}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_rest_api aws_api_gateway_rest_api}
 */
 export class DataAwsApiGatewayRestApi extends cdktf.TerraformDataSource {
 
@@ -44,7 +44,7 @@ export class DataAwsApiGatewayRestApi extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_rest_api.html aws_api_gateway_rest_api} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_rest_api aws_api_gateway_rest_api} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -91,7 +91,7 @@ export class DataAwsApiGatewayRestApi extends cdktf.TerraformDataSource {
 
   // endpoint_configuration - computed: true, optional: false, required: false
   public endpointConfiguration(index: string) {
-    return new DataAwsApiGatewayRestApiEndpointConfiguration(this, 'endpoint_configuration', index);
+    return new DataAwsApiGatewayRestApiEndpointConfiguration(this, 'endpoint_configuration', index, false);
   }
 
   // execution_arn - computed: true, optional: false, required: false
@@ -133,12 +133,11 @@ export class DataAwsApiGatewayRestApi extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -156,7 +155,7 @@ export class DataAwsApiGatewayRestApi extends cdktf.TerraformDataSource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       name: cdktf.stringToTerraform(this._name),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
     };
   }
 }

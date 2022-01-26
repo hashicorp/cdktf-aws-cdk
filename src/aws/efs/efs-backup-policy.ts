@@ -8,25 +8,25 @@ import * as cdktf from 'cdktf';
 */
 export interface EfsBackupPolicyConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/efs_backup_policy.html#file_system_id EfsBackupPolicy#file_system_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/efs_backup_policy#file_system_id EfsBackupPolicy#file_system_id}
   */
   readonly fileSystemId: string;
   /**
   * backup_policy block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/efs_backup_policy.html#backup_policy EfsBackupPolicy#backup_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/efs_backup_policy#backup_policy EfsBackupPolicy#backup_policy}
   */
   readonly backupPolicy: EfsBackupPolicyBackupPolicy;
 }
 export interface EfsBackupPolicyBackupPolicy {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/efs_backup_policy.html#status EfsBackupPolicy#status}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/efs_backup_policy#status EfsBackupPolicy#status}
   */
   readonly status: string;
 }
 
 export function efsBackupPolicyBackupPolicyToTerraform(struct?: EfsBackupPolicyBackupPolicyOutputReference | EfsBackupPolicyBackupPolicy): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -36,19 +36,21 @@ export function efsBackupPolicyBackupPolicyToTerraform(struct?: EfsBackupPolicyB
 }
 
 export class EfsBackupPolicyBackupPolicyOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): EfsBackupPolicyBackupPolicy | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._status) {
+    if (this._status !== undefined) {
       hasAnyValues = true;
       internalValueResult.status = this._status;
     }
@@ -57,9 +59,11 @@ export class EfsBackupPolicyBackupPolicyOutputReference extends cdktf.ComplexObj
 
   public set internalValue(value: EfsBackupPolicyBackupPolicy | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._status = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._status = value.status;
     }
   }
@@ -79,7 +83,7 @@ export class EfsBackupPolicyBackupPolicyOutputReference extends cdktf.ComplexObj
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/efs_backup_policy.html aws_efs_backup_policy}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/efs_backup_policy aws_efs_backup_policy}
 */
 export class EfsBackupPolicy extends cdktf.TerraformResource {
 
@@ -93,7 +97,7 @@ export class EfsBackupPolicy extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/efs_backup_policy.html aws_efs_backup_policy} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/efs_backup_policy aws_efs_backup_policy} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -137,7 +141,7 @@ export class EfsBackupPolicy extends cdktf.TerraformResource {
   }
 
   // backup_policy - computed: false, optional: false, required: true
-  private _backupPolicy = new EfsBackupPolicyBackupPolicyOutputReference(this as any, "backup_policy", true);
+  private _backupPolicy = new EfsBackupPolicyBackupPolicyOutputReference(this, "backup_policy", true);
   public get backupPolicy() {
     return this._backupPolicy;
   }

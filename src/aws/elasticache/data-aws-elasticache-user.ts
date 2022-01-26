@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsElasticacheUserConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/elasticache_user.html#access_string DataAwsElasticacheUser#access_string}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/elasticache_user#access_string DataAwsElasticacheUser#access_string}
   */
   readonly accessString?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/elasticache_user.html#engine DataAwsElasticacheUser#engine}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/elasticache_user#engine DataAwsElasticacheUser#engine}
   */
   readonly engine?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/elasticache_user.html#no_password_required DataAwsElasticacheUser#no_password_required}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/elasticache_user#no_password_required DataAwsElasticacheUser#no_password_required}
   */
   readonly noPasswordRequired?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/elasticache_user.html#passwords DataAwsElasticacheUser#passwords}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/elasticache_user#passwords DataAwsElasticacheUser#passwords}
   */
   readonly passwords?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/elasticache_user.html#user_id DataAwsElasticacheUser#user_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/elasticache_user#user_id DataAwsElasticacheUser#user_id}
   */
   readonly userId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/elasticache_user.html#user_name DataAwsElasticacheUser#user_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/elasticache_user#user_name DataAwsElasticacheUser#user_name}
   */
   readonly userName?: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/elasticache_user.html aws_elasticache_user}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/elasticache_user aws_elasticache_user}
 */
 export class DataAwsElasticacheUser extends cdktf.TerraformDataSource {
 
@@ -48,7 +48,7 @@ export class DataAwsElasticacheUser extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/elasticache_user.html aws_elasticache_user} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/elasticache_user aws_elasticache_user} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -117,7 +117,7 @@ export class DataAwsElasticacheUser extends cdktf.TerraformDataSource {
   // no_password_required - computed: false, optional: true, required: false
   private _noPasswordRequired?: boolean | cdktf.IResolvable; 
   public get noPasswordRequired() {
-    return this.getBooleanAttribute('no_password_required') as any;
+    return this.getBooleanAttribute('no_password_required');
   }
   public set noPasswordRequired(value: boolean | cdktf.IResolvable) {
     this._noPasswordRequired = value;
@@ -133,7 +133,7 @@ export class DataAwsElasticacheUser extends cdktf.TerraformDataSource {
   // passwords - computed: false, optional: true, required: false
   private _passwords?: string[]; 
   public get passwords() {
-    return this.getListAttribute('passwords');
+    return cdktf.Fn.tolist(this.getListAttribute('passwords'));
   }
   public set passwords(value: string[]) {
     this._passwords = value;

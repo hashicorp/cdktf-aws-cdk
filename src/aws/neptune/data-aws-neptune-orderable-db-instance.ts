@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsNeptuneOrderableDbInstanceConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/neptune_orderable_db_instance.html#engine DataAwsNeptuneOrderableDbInstance#engine}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/neptune_orderable_db_instance#engine DataAwsNeptuneOrderableDbInstance#engine}
   */
   readonly engine?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/neptune_orderable_db_instance.html#engine_version DataAwsNeptuneOrderableDbInstance#engine_version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/neptune_orderable_db_instance#engine_version DataAwsNeptuneOrderableDbInstance#engine_version}
   */
   readonly engineVersion?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/neptune_orderable_db_instance.html#instance_class DataAwsNeptuneOrderableDbInstance#instance_class}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/neptune_orderable_db_instance#instance_class DataAwsNeptuneOrderableDbInstance#instance_class}
   */
   readonly instanceClass?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/neptune_orderable_db_instance.html#license_model DataAwsNeptuneOrderableDbInstance#license_model}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/neptune_orderable_db_instance#license_model DataAwsNeptuneOrderableDbInstance#license_model}
   */
   readonly licenseModel?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/neptune_orderable_db_instance.html#preferred_instance_classes DataAwsNeptuneOrderableDbInstance#preferred_instance_classes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/neptune_orderable_db_instance#preferred_instance_classes DataAwsNeptuneOrderableDbInstance#preferred_instance_classes}
   */
   readonly preferredInstanceClasses?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/neptune_orderable_db_instance.html#vpc DataAwsNeptuneOrderableDbInstance#vpc}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/neptune_orderable_db_instance#vpc DataAwsNeptuneOrderableDbInstance#vpc}
   */
   readonly vpc?: boolean | cdktf.IResolvable;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/neptune_orderable_db_instance.html aws_neptune_orderable_db_instance}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/neptune_orderable_db_instance aws_neptune_orderable_db_instance}
 */
 export class DataAwsNeptuneOrderableDbInstance extends cdktf.TerraformDataSource {
 
@@ -48,7 +48,7 @@ export class DataAwsNeptuneOrderableDbInstance extends cdktf.TerraformDataSource
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/neptune_orderable_db_instance.html aws_neptune_orderable_db_instance} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/neptune_orderable_db_instance aws_neptune_orderable_db_instance} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -183,7 +183,7 @@ export class DataAwsNeptuneOrderableDbInstance extends cdktf.TerraformDataSource
 
   // multi_az_capable - computed: true, optional: false, required: false
   public get multiAzCapable() {
-    return this.getBooleanAttribute('multi_az_capable') as any;
+    return this.getBooleanAttribute('multi_az_capable');
   }
 
   // preferred_instance_classes - computed: false, optional: true, required: false
@@ -204,7 +204,7 @@ export class DataAwsNeptuneOrderableDbInstance extends cdktf.TerraformDataSource
 
   // read_replica_capable - computed: true, optional: false, required: false
   public get readReplicaCapable() {
-    return this.getBooleanAttribute('read_replica_capable') as any;
+    return this.getBooleanAttribute('read_replica_capable');
   }
 
   // storage_type - computed: true, optional: false, required: false
@@ -214,33 +214,33 @@ export class DataAwsNeptuneOrderableDbInstance extends cdktf.TerraformDataSource
 
   // supports_enhanced_monitoring - computed: true, optional: false, required: false
   public get supportsEnhancedMonitoring() {
-    return this.getBooleanAttribute('supports_enhanced_monitoring') as any;
+    return this.getBooleanAttribute('supports_enhanced_monitoring');
   }
 
   // supports_iam_database_authentication - computed: true, optional: false, required: false
   public get supportsIamDatabaseAuthentication() {
-    return this.getBooleanAttribute('supports_iam_database_authentication') as any;
+    return this.getBooleanAttribute('supports_iam_database_authentication');
   }
 
   // supports_iops - computed: true, optional: false, required: false
   public get supportsIops() {
-    return this.getBooleanAttribute('supports_iops') as any;
+    return this.getBooleanAttribute('supports_iops');
   }
 
   // supports_performance_insights - computed: true, optional: false, required: false
   public get supportsPerformanceInsights() {
-    return this.getBooleanAttribute('supports_performance_insights') as any;
+    return this.getBooleanAttribute('supports_performance_insights');
   }
 
   // supports_storage_encryption - computed: true, optional: false, required: false
   public get supportsStorageEncryption() {
-    return this.getBooleanAttribute('supports_storage_encryption') as any;
+    return this.getBooleanAttribute('supports_storage_encryption');
   }
 
   // vpc - computed: true, optional: true, required: false
   private _vpc?: boolean | cdktf.IResolvable; 
   public get vpc() {
-    return this.getBooleanAttribute('vpc') as any;
+    return this.getBooleanAttribute('vpc');
   }
   public set vpc(value: boolean | cdktf.IResolvable) {
     this._vpc = value;

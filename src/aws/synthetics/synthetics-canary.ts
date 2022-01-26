@@ -8,83 +8,83 @@ import * as cdktf from 'cdktf';
 */
 export interface SyntheticsCanaryConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#artifact_s3_location SyntheticsCanary#artifact_s3_location}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#artifact_s3_location SyntheticsCanary#artifact_s3_location}
   */
   readonly artifactS3Location: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#execution_role_arn SyntheticsCanary#execution_role_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#execution_role_arn SyntheticsCanary#execution_role_arn}
   */
   readonly executionRoleArn: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#failure_retention_period SyntheticsCanary#failure_retention_period}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#failure_retention_period SyntheticsCanary#failure_retention_period}
   */
   readonly failureRetentionPeriod?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#handler SyntheticsCanary#handler}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#handler SyntheticsCanary#handler}
   */
   readonly handler: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#name SyntheticsCanary#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#name SyntheticsCanary#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#runtime_version SyntheticsCanary#runtime_version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#runtime_version SyntheticsCanary#runtime_version}
   */
   readonly runtimeVersion: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#s3_bucket SyntheticsCanary#s3_bucket}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#s3_bucket SyntheticsCanary#s3_bucket}
   */
   readonly s3Bucket?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#s3_key SyntheticsCanary#s3_key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#s3_key SyntheticsCanary#s3_key}
   */
   readonly s3Key?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#s3_version SyntheticsCanary#s3_version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#s3_version SyntheticsCanary#s3_version}
   */
   readonly s3Version?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#start_canary SyntheticsCanary#start_canary}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#start_canary SyntheticsCanary#start_canary}
   */
   readonly startCanary?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#success_retention_period SyntheticsCanary#success_retention_period}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#success_retention_period SyntheticsCanary#success_retention_period}
   */
   readonly successRetentionPeriod?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#tags SyntheticsCanary#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#tags SyntheticsCanary#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#tags_all SyntheticsCanary#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#tags_all SyntheticsCanary#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#zip_file SyntheticsCanary#zip_file}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#zip_file SyntheticsCanary#zip_file}
   */
   readonly zipFile?: string;
   /**
   * artifact_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#artifact_config SyntheticsCanary#artifact_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#artifact_config SyntheticsCanary#artifact_config}
   */
   readonly artifactConfig?: SyntheticsCanaryArtifactConfig;
   /**
   * run_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#run_config SyntheticsCanary#run_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#run_config SyntheticsCanary#run_config}
   */
   readonly runConfig?: SyntheticsCanaryRunConfig;
   /**
   * schedule block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#schedule SyntheticsCanary#schedule}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#schedule SyntheticsCanary#schedule}
   */
   readonly schedule: SyntheticsCanarySchedule;
   /**
   * vpc_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#vpc_config SyntheticsCanary#vpc_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#vpc_config SyntheticsCanary#vpc_config}
   */
   readonly vpcConfig?: SyntheticsCanaryVpcConfig;
 }
@@ -112,17 +112,17 @@ export class SyntheticsCanaryTimeline extends cdktf.ComplexComputedList {
 }
 export interface SyntheticsCanaryArtifactConfigS3Encryption {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#encryption_mode SyntheticsCanary#encryption_mode}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#encryption_mode SyntheticsCanary#encryption_mode}
   */
   readonly encryptionMode?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#kms_key_arn SyntheticsCanary#kms_key_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#kms_key_arn SyntheticsCanary#kms_key_arn}
   */
   readonly kmsKeyArn?: string;
 }
 
 export function syntheticsCanaryArtifactConfigS3EncryptionToTerraform(struct?: SyntheticsCanaryArtifactConfigS3EncryptionOutputReference | SyntheticsCanaryArtifactConfigS3Encryption): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -133,23 +133,25 @@ export function syntheticsCanaryArtifactConfigS3EncryptionToTerraform(struct?: S
 }
 
 export class SyntheticsCanaryArtifactConfigS3EncryptionOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SyntheticsCanaryArtifactConfigS3Encryption | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._encryptionMode) {
+    if (this._encryptionMode !== undefined) {
       hasAnyValues = true;
       internalValueResult.encryptionMode = this._encryptionMode;
     }
-    if (this._kmsKeyArn) {
+    if (this._kmsKeyArn !== undefined) {
       hasAnyValues = true;
       internalValueResult.kmsKeyArn = this._kmsKeyArn;
     }
@@ -158,10 +160,12 @@ export class SyntheticsCanaryArtifactConfigS3EncryptionOutputReference extends c
 
   public set internalValue(value: SyntheticsCanaryArtifactConfigS3Encryption | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._encryptionMode = undefined;
       this._kmsKeyArn = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._encryptionMode = value.encryptionMode;
       this._kmsKeyArn = value.kmsKeyArn;
     }
@@ -203,13 +207,13 @@ export interface SyntheticsCanaryArtifactConfig {
   /**
   * s3_encryption block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#s3_encryption SyntheticsCanary#s3_encryption}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#s3_encryption SyntheticsCanary#s3_encryption}
   */
   readonly s3Encryption?: SyntheticsCanaryArtifactConfigS3Encryption;
 }
 
 export function syntheticsCanaryArtifactConfigToTerraform(struct?: SyntheticsCanaryArtifactConfigOutputReference | SyntheticsCanaryArtifactConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -219,19 +223,21 @@ export function syntheticsCanaryArtifactConfigToTerraform(struct?: SyntheticsCan
 }
 
 export class SyntheticsCanaryArtifactConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SyntheticsCanaryArtifactConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._s3Encryption) {
+    if (this._s3Encryption?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.s3Encryption = this._s3Encryption?.internalValue;
     }
@@ -240,15 +246,17 @@ export class SyntheticsCanaryArtifactConfigOutputReference extends cdktf.Complex
 
   public set internalValue(value: SyntheticsCanaryArtifactConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._s3Encryption.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._s3Encryption.internalValue = value.s3Encryption;
     }
   }
 
   // s3_encryption - computed: false, optional: true, required: false
-  private _s3Encryption = new SyntheticsCanaryArtifactConfigS3EncryptionOutputReference(this as any, "s3_encryption", true);
+  private _s3Encryption = new SyntheticsCanaryArtifactConfigS3EncryptionOutputReference(this, "s3_encryption", true);
   public get s3Encryption() {
     return this._s3Encryption;
   }
@@ -265,21 +273,21 @@ export class SyntheticsCanaryArtifactConfigOutputReference extends cdktf.Complex
 }
 export interface SyntheticsCanaryRunConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#active_tracing SyntheticsCanary#active_tracing}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#active_tracing SyntheticsCanary#active_tracing}
   */
   readonly activeTracing?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#memory_in_mb SyntheticsCanary#memory_in_mb}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#memory_in_mb SyntheticsCanary#memory_in_mb}
   */
   readonly memoryInMb?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#timeout_in_seconds SyntheticsCanary#timeout_in_seconds}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#timeout_in_seconds SyntheticsCanary#timeout_in_seconds}
   */
   readonly timeoutInSeconds?: number;
 }
 
 export function syntheticsCanaryRunConfigToTerraform(struct?: SyntheticsCanaryRunConfigOutputReference | SyntheticsCanaryRunConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -291,27 +299,29 @@ export function syntheticsCanaryRunConfigToTerraform(struct?: SyntheticsCanaryRu
 }
 
 export class SyntheticsCanaryRunConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SyntheticsCanaryRunConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._activeTracing) {
+    if (this._activeTracing !== undefined) {
       hasAnyValues = true;
       internalValueResult.activeTracing = this._activeTracing;
     }
-    if (this._memoryInMb) {
+    if (this._memoryInMb !== undefined) {
       hasAnyValues = true;
       internalValueResult.memoryInMb = this._memoryInMb;
     }
-    if (this._timeoutInSeconds) {
+    if (this._timeoutInSeconds !== undefined) {
       hasAnyValues = true;
       internalValueResult.timeoutInSeconds = this._timeoutInSeconds;
     }
@@ -320,11 +330,13 @@ export class SyntheticsCanaryRunConfigOutputReference extends cdktf.ComplexObjec
 
   public set internalValue(value: SyntheticsCanaryRunConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._activeTracing = undefined;
       this._memoryInMb = undefined;
       this._timeoutInSeconds = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._activeTracing = value.activeTracing;
       this._memoryInMb = value.memoryInMb;
       this._timeoutInSeconds = value.timeoutInSeconds;
@@ -334,7 +346,7 @@ export class SyntheticsCanaryRunConfigOutputReference extends cdktf.ComplexObjec
   // active_tracing - computed: false, optional: true, required: false
   private _activeTracing?: boolean | cdktf.IResolvable; 
   public get activeTracing() {
-    return this.getBooleanAttribute('active_tracing') as any;
+    return this.getBooleanAttribute('active_tracing');
   }
   public set activeTracing(value: boolean | cdktf.IResolvable) {
     this._activeTracing = value;
@@ -381,17 +393,17 @@ export class SyntheticsCanaryRunConfigOutputReference extends cdktf.ComplexObjec
 }
 export interface SyntheticsCanarySchedule {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#duration_in_seconds SyntheticsCanary#duration_in_seconds}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#duration_in_seconds SyntheticsCanary#duration_in_seconds}
   */
   readonly durationInSeconds?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#expression SyntheticsCanary#expression}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#expression SyntheticsCanary#expression}
   */
   readonly expression: string;
 }
 
 export function syntheticsCanaryScheduleToTerraform(struct?: SyntheticsCanaryScheduleOutputReference | SyntheticsCanarySchedule): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -402,23 +414,25 @@ export function syntheticsCanaryScheduleToTerraform(struct?: SyntheticsCanarySch
 }
 
 export class SyntheticsCanaryScheduleOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SyntheticsCanarySchedule | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._durationInSeconds) {
+    if (this._durationInSeconds !== undefined) {
       hasAnyValues = true;
       internalValueResult.durationInSeconds = this._durationInSeconds;
     }
-    if (this._expression) {
+    if (this._expression !== undefined) {
       hasAnyValues = true;
       internalValueResult.expression = this._expression;
     }
@@ -427,10 +441,12 @@ export class SyntheticsCanaryScheduleOutputReference extends cdktf.ComplexObject
 
   public set internalValue(value: SyntheticsCanarySchedule | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._durationInSeconds = undefined;
       this._expression = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._durationInSeconds = value.durationInSeconds;
       this._expression = value.expression;
     }
@@ -467,17 +483,17 @@ export class SyntheticsCanaryScheduleOutputReference extends cdktf.ComplexObject
 }
 export interface SyntheticsCanaryVpcConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#security_group_ids SyntheticsCanary#security_group_ids}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#security_group_ids SyntheticsCanary#security_group_ids}
   */
   readonly securityGroupIds?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#subnet_ids SyntheticsCanary#subnet_ids}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary#subnet_ids SyntheticsCanary#subnet_ids}
   */
   readonly subnetIds?: string[];
 }
 
 export function syntheticsCanaryVpcConfigToTerraform(struct?: SyntheticsCanaryVpcConfigOutputReference | SyntheticsCanaryVpcConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -488,23 +504,25 @@ export function syntheticsCanaryVpcConfigToTerraform(struct?: SyntheticsCanaryVp
 }
 
 export class SyntheticsCanaryVpcConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SyntheticsCanaryVpcConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._securityGroupIds) {
+    if (this._securityGroupIds !== undefined) {
       hasAnyValues = true;
       internalValueResult.securityGroupIds = this._securityGroupIds;
     }
-    if (this._subnetIds) {
+    if (this._subnetIds !== undefined) {
       hasAnyValues = true;
       internalValueResult.subnetIds = this._subnetIds;
     }
@@ -513,10 +531,12 @@ export class SyntheticsCanaryVpcConfigOutputReference extends cdktf.ComplexObjec
 
   public set internalValue(value: SyntheticsCanaryVpcConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._securityGroupIds = undefined;
       this._subnetIds = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._securityGroupIds = value.securityGroupIds;
       this._subnetIds = value.subnetIds;
     }
@@ -525,7 +545,7 @@ export class SyntheticsCanaryVpcConfigOutputReference extends cdktf.ComplexObjec
   // security_group_ids - computed: false, optional: true, required: false
   private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
-    return this.getListAttribute('security_group_ids');
+    return cdktf.Fn.tolist(this.getListAttribute('security_group_ids'));
   }
   public set securityGroupIds(value: string[]) {
     this._securityGroupIds = value;
@@ -541,7 +561,7 @@ export class SyntheticsCanaryVpcConfigOutputReference extends cdktf.ComplexObjec
   // subnet_ids - computed: false, optional: true, required: false
   private _subnetIds?: string[]; 
   public get subnetIds() {
-    return this.getListAttribute('subnet_ids');
+    return cdktf.Fn.tolist(this.getListAttribute('subnet_ids'));
   }
   public set subnetIds(value: string[]) {
     this._subnetIds = value;
@@ -553,10 +573,15 @@ export class SyntheticsCanaryVpcConfigOutputReference extends cdktf.ComplexObjec
   public get subnetIdsInput() {
     return this._subnetIds;
   }
+
+  // vpc_id - computed: true, optional: false, required: false
+  public get vpcId() {
+    return this.getStringAttribute('vpc_id');
+  }
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html aws_synthetics_canary}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary aws_synthetics_canary}
 */
 export class SyntheticsCanary extends cdktf.TerraformResource {
 
@@ -570,7 +595,7 @@ export class SyntheticsCanary extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html aws_synthetics_canary} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary aws_synthetics_canary} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -763,7 +788,7 @@ export class SyntheticsCanary extends cdktf.TerraformResource {
   // start_canary - computed: false, optional: true, required: false
   private _startCanary?: boolean | cdktf.IResolvable; 
   public get startCanary() {
-    return this.getBooleanAttribute('start_canary') as any;
+    return this.getBooleanAttribute('start_canary');
   }
   public set startCanary(value: boolean | cdktf.IResolvable) {
     this._startCanary = value;
@@ -798,12 +823,11 @@ export class SyntheticsCanary extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -815,12 +839,11 @@ export class SyntheticsCanary extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -833,7 +856,7 @@ export class SyntheticsCanary extends cdktf.TerraformResource {
 
   // timeline - computed: true, optional: false, required: false
   public timeline(index: string) {
-    return new SyntheticsCanaryTimeline(this, 'timeline', index);
+    return new SyntheticsCanaryTimeline(this, 'timeline', index, false);
   }
 
   // zip_file - computed: false, optional: true, required: false
@@ -853,7 +876,7 @@ export class SyntheticsCanary extends cdktf.TerraformResource {
   }
 
   // artifact_config - computed: false, optional: true, required: false
-  private _artifactConfig = new SyntheticsCanaryArtifactConfigOutputReference(this as any, "artifact_config", true);
+  private _artifactConfig = new SyntheticsCanaryArtifactConfigOutputReference(this, "artifact_config", true);
   public get artifactConfig() {
     return this._artifactConfig;
   }
@@ -869,7 +892,7 @@ export class SyntheticsCanary extends cdktf.TerraformResource {
   }
 
   // run_config - computed: false, optional: true, required: false
-  private _runConfig = new SyntheticsCanaryRunConfigOutputReference(this as any, "run_config", true);
+  private _runConfig = new SyntheticsCanaryRunConfigOutputReference(this, "run_config", true);
   public get runConfig() {
     return this._runConfig;
   }
@@ -885,7 +908,7 @@ export class SyntheticsCanary extends cdktf.TerraformResource {
   }
 
   // schedule - computed: false, optional: false, required: true
-  private _schedule = new SyntheticsCanaryScheduleOutputReference(this as any, "schedule", true);
+  private _schedule = new SyntheticsCanaryScheduleOutputReference(this, "schedule", true);
   public get schedule() {
     return this._schedule;
   }
@@ -898,7 +921,7 @@ export class SyntheticsCanary extends cdktf.TerraformResource {
   }
 
   // vpc_config - computed: false, optional: true, required: false
-  private _vpcConfig = new SyntheticsCanaryVpcConfigOutputReference(this as any, "vpc_config", true);
+  private _vpcConfig = new SyntheticsCanaryVpcConfigOutputReference(this, "vpc_config", true);
   public get vpcConfig() {
     return this._vpcConfig;
   }
@@ -930,8 +953,8 @@ export class SyntheticsCanary extends cdktf.TerraformResource {
       s3_version: cdktf.stringToTerraform(this._s3Version),
       start_canary: cdktf.booleanToTerraform(this._startCanary),
       success_retention_period: cdktf.numberToTerraform(this._successRetentionPeriod),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       zip_file: cdktf.stringToTerraform(this._zipFile),
       artifact_config: syntheticsCanaryArtifactConfigToTerraform(this._artifactConfig.internalValue),
       run_config: syntheticsCanaryRunConfigToTerraform(this._runConfig.internalValue),

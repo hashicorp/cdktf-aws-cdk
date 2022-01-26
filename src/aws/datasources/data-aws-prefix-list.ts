@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsPrefixListConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/prefix_list.html#name DataAwsPrefixList#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/prefix_list#name DataAwsPrefixList#name}
   */
   readonly name?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/prefix_list.html#prefix_list_id DataAwsPrefixList#prefix_list_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/prefix_list#prefix_list_id DataAwsPrefixList#prefix_list_id}
   */
   readonly prefixListId?: string;
   /**
   * filter block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/prefix_list.html#filter DataAwsPrefixList#filter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/prefix_list#filter DataAwsPrefixList#filter}
   */
-  readonly filter?: DataAwsPrefixListFilter[];
+  readonly filter?: DataAwsPrefixListFilter[] | cdktf.IResolvable;
 }
 export interface DataAwsPrefixListFilter {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/prefix_list.html#name DataAwsPrefixList#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/prefix_list#name DataAwsPrefixList#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/prefix_list.html#values DataAwsPrefixList#values}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/prefix_list#values DataAwsPrefixList#values}
   */
   readonly values: string[];
 }
 
-export function dataAwsPrefixListFilterToTerraform(struct?: DataAwsPrefixListFilter): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function dataAwsPrefixListFilterToTerraform(struct?: DataAwsPrefixListFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -46,7 +46,7 @@ export function dataAwsPrefixListFilterToTerraform(struct?: DataAwsPrefixListFil
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/prefix_list.html aws_prefix_list}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/prefix_list aws_prefix_list}
 */
 export class DataAwsPrefixList extends cdktf.TerraformDataSource {
 
@@ -60,7 +60,7 @@ export class DataAwsPrefixList extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/prefix_list.html aws_prefix_list} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/prefix_list aws_prefix_list} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -129,12 +129,12 @@ export class DataAwsPrefixList extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsPrefixListFilter[]; 
+  private _filter?: DataAwsPrefixListFilter[] | cdktf.IResolvable; 
   public get filter() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('filter') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('filter')));
   }
-  public set filter(value: DataAwsPrefixListFilter[]) {
+  public set filter(value: DataAwsPrefixListFilter[] | cdktf.IResolvable) {
     this._filter = value;
   }
   public resetFilter() {

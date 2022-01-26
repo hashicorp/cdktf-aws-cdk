@@ -8,51 +8,51 @@ import * as cdktf from 'cdktf';
 */
 export interface CodeartifactRepositoryConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository.html#description CodeartifactRepository#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository#description CodeartifactRepository#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository.html#domain CodeartifactRepository#domain}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository#domain CodeartifactRepository#domain}
   */
   readonly domain: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository.html#domain_owner CodeartifactRepository#domain_owner}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository#domain_owner CodeartifactRepository#domain_owner}
   */
   readonly domainOwner?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository.html#repository CodeartifactRepository#repository}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository#repository CodeartifactRepository#repository}
   */
   readonly repository: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository.html#tags CodeartifactRepository#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository#tags CodeartifactRepository#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository.html#tags_all CodeartifactRepository#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository#tags_all CodeartifactRepository#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * external_connections block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository.html#external_connections CodeartifactRepository#external_connections}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository#external_connections CodeartifactRepository#external_connections}
   */
   readonly externalConnections?: CodeartifactRepositoryExternalConnections;
   /**
   * upstream block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository.html#upstream CodeartifactRepository#upstream}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository#upstream CodeartifactRepository#upstream}
   */
-  readonly upstream?: CodeartifactRepositoryUpstream[];
+  readonly upstream?: CodeartifactRepositoryUpstream[] | cdktf.IResolvable;
 }
 export interface CodeartifactRepositoryExternalConnections {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository.html#external_connection_name CodeartifactRepository#external_connection_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository#external_connection_name CodeartifactRepository#external_connection_name}
   */
   readonly externalConnectionName: string;
 }
 
 export function codeartifactRepositoryExternalConnectionsToTerraform(struct?: CodeartifactRepositoryExternalConnectionsOutputReference | CodeartifactRepositoryExternalConnections): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -62,19 +62,21 @@ export function codeartifactRepositoryExternalConnectionsToTerraform(struct?: Co
 }
 
 export class CodeartifactRepositoryExternalConnectionsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): CodeartifactRepositoryExternalConnections | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._externalConnectionName) {
+    if (this._externalConnectionName !== undefined) {
       hasAnyValues = true;
       internalValueResult.externalConnectionName = this._externalConnectionName;
     }
@@ -83,9 +85,11 @@ export class CodeartifactRepositoryExternalConnectionsOutputReference extends cd
 
   public set internalValue(value: CodeartifactRepositoryExternalConnections | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._externalConnectionName = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._externalConnectionName = value.externalConnectionName;
     }
   }
@@ -102,16 +106,26 @@ export class CodeartifactRepositoryExternalConnectionsOutputReference extends cd
   public get externalConnectionNameInput() {
     return this._externalConnectionName;
   }
+
+  // package_format - computed: true, optional: false, required: false
+  public get packageFormat() {
+    return this.getStringAttribute('package_format');
+  }
+
+  // status - computed: true, optional: false, required: false
+  public get status() {
+    return this.getStringAttribute('status');
+  }
 }
 export interface CodeartifactRepositoryUpstream {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository.html#repository_name CodeartifactRepository#repository_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository#repository_name CodeartifactRepository#repository_name}
   */
   readonly repositoryName: string;
 }
 
-export function codeartifactRepositoryUpstreamToTerraform(struct?: CodeartifactRepositoryUpstream): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function codeartifactRepositoryUpstreamToTerraform(struct?: CodeartifactRepositoryUpstream | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -122,7 +136,7 @@ export function codeartifactRepositoryUpstreamToTerraform(struct?: CodeartifactR
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository.html aws_codeartifact_repository}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository aws_codeartifact_repository}
 */
 export class CodeartifactRepository extends cdktf.TerraformResource {
 
@@ -136,7 +150,7 @@ export class CodeartifactRepository extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository.html aws_codeartifact_repository} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository aws_codeartifact_repository} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -241,12 +255,11 @@ export class CodeartifactRepository extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -258,12 +271,11 @@ export class CodeartifactRepository extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -275,7 +287,7 @@ export class CodeartifactRepository extends cdktf.TerraformResource {
   }
 
   // external_connections - computed: false, optional: true, required: false
-  private _externalConnections = new CodeartifactRepositoryExternalConnectionsOutputReference(this as any, "external_connections", true);
+  private _externalConnections = new CodeartifactRepositoryExternalConnectionsOutputReference(this, "external_connections", true);
   public get externalConnections() {
     return this._externalConnections;
   }
@@ -291,12 +303,12 @@ export class CodeartifactRepository extends cdktf.TerraformResource {
   }
 
   // upstream - computed: false, optional: true, required: false
-  private _upstream?: CodeartifactRepositoryUpstream[]; 
+  private _upstream?: CodeartifactRepositoryUpstream[] | cdktf.IResolvable; 
   public get upstream() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('upstream') as any;
+    return this.interpolationForAttribute('upstream');
   }
-  public set upstream(value: CodeartifactRepositoryUpstream[]) {
+  public set upstream(value: CodeartifactRepositoryUpstream[] | cdktf.IResolvable) {
     this._upstream = value;
   }
   public resetUpstream() {
@@ -317,8 +329,8 @@ export class CodeartifactRepository extends cdktf.TerraformResource {
       domain: cdktf.stringToTerraform(this._domain),
       domain_owner: cdktf.stringToTerraform(this._domainOwner),
       repository: cdktf.stringToTerraform(this._repository),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       external_connections: codeartifactRepositoryExternalConnectionsToTerraform(this._externalConnections.internalValue),
       upstream: cdktf.listMapper(codeartifactRepositoryUpstreamToTerraform)(this._upstream),
     };

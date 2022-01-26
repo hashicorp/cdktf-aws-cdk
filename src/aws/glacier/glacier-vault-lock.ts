@@ -8,25 +8,25 @@ import * as cdktf from 'cdktf';
 */
 export interface GlacierVaultLockConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glacier_vault_lock.html#complete_lock GlacierVaultLock#complete_lock}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glacier_vault_lock#complete_lock GlacierVaultLock#complete_lock}
   */
   readonly completeLock: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glacier_vault_lock.html#ignore_deletion_error GlacierVaultLock#ignore_deletion_error}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glacier_vault_lock#ignore_deletion_error GlacierVaultLock#ignore_deletion_error}
   */
   readonly ignoreDeletionError?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glacier_vault_lock.html#policy GlacierVaultLock#policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glacier_vault_lock#policy GlacierVaultLock#policy}
   */
   readonly policy: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glacier_vault_lock.html#vault_name GlacierVaultLock#vault_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glacier_vault_lock#vault_name GlacierVaultLock#vault_name}
   */
   readonly vaultName: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/glacier_vault_lock.html aws_glacier_vault_lock}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/glacier_vault_lock aws_glacier_vault_lock}
 */
 export class GlacierVaultLock extends cdktf.TerraformResource {
 
@@ -40,7 +40,7 @@ export class GlacierVaultLock extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/glacier_vault_lock.html aws_glacier_vault_lock} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/glacier_vault_lock aws_glacier_vault_lock} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -70,7 +70,7 @@ export class GlacierVaultLock extends cdktf.TerraformResource {
   // complete_lock - computed: false, optional: false, required: true
   private _completeLock?: boolean | cdktf.IResolvable; 
   public get completeLock() {
-    return this.getBooleanAttribute('complete_lock') as any;
+    return this.getBooleanAttribute('complete_lock');
   }
   public set completeLock(value: boolean | cdktf.IResolvable) {
     this._completeLock = value;
@@ -88,7 +88,7 @@ export class GlacierVaultLock extends cdktf.TerraformResource {
   // ignore_deletion_error - computed: false, optional: true, required: false
   private _ignoreDeletionError?: boolean | cdktf.IResolvable; 
   public get ignoreDeletionError() {
-    return this.getBooleanAttribute('ignore_deletion_error') as any;
+    return this.getBooleanAttribute('ignore_deletion_error');
   }
   public set ignoreDeletionError(value: boolean | cdktf.IResolvable) {
     this._ignoreDeletionError = value;

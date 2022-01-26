@@ -8,13 +8,13 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsGlueConnectionConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/glue_connection.html#id DataAwsGlueConnection#id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/glue_connection#id DataAwsGlueConnection#id}
   */
   readonly id: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/glue_connection.html#tags DataAwsGlueConnection#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/glue_connection#tags DataAwsGlueConnection#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
 }
 export class DataAwsGlueConnectionPhysicalConnectionRequirements extends cdktf.ComplexComputedList {
 
@@ -25,7 +25,7 @@ export class DataAwsGlueConnectionPhysicalConnectionRequirements extends cdktf.C
 
   // security_group_id_list - computed: true, optional: false, required: false
   public get securityGroupIdList() {
-    return this.getListAttribute('security_group_id_list');
+    return cdktf.Fn.tolist(this.getListAttribute('security_group_id_list'));
   }
 
   // subnet_id - computed: true, optional: false, required: false
@@ -35,7 +35,7 @@ export class DataAwsGlueConnectionPhysicalConnectionRequirements extends cdktf.C
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/glue_connection.html aws_glue_connection}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/glue_connection aws_glue_connection}
 */
 export class DataAwsGlueConnection extends cdktf.TerraformDataSource {
 
@@ -49,7 +49,7 @@ export class DataAwsGlueConnection extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/glue_connection.html aws_glue_connection} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/glue_connection aws_glue_connection} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -85,7 +85,7 @@ export class DataAwsGlueConnection extends cdktf.TerraformDataSource {
   }
 
   // connection_properties - computed: true, optional: false, required: false
-  public connectionProperties(key: string): string {
+  public connectionProperties(key: string): string | cdktf.IResolvable {
     return new cdktf.StringMap(this, 'connection_properties').lookup(key);
   }
 
@@ -124,16 +124,15 @@ export class DataAwsGlueConnection extends cdktf.TerraformDataSource {
 
   // physical_connection_requirements - computed: true, optional: false, required: false
   public physicalConnectionRequirements(index: string) {
-    return new DataAwsGlueConnectionPhysicalConnectionRequirements(this, 'physical_connection_requirements', index);
+    return new DataAwsGlueConnectionPhysicalConnectionRequirements(this, 'physical_connection_requirements', index, false);
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -151,7 +150,7 @@ export class DataAwsGlueConnection extends cdktf.TerraformDataSource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       id: cdktf.stringToTerraform(this._id),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
     };
   }
 }

@@ -1,4 +1,4 @@
-// https://www.terraform.io/docs/providers/aws/d/identitystore_user.html
+// https://www.terraform.io/docs/providers/aws/d/identitystore_user
 // generated from terraform resource schema
 
 import { Construct } from 'constructs';
@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 
 export interface DataAwsIdentitystoreUserConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/identitystore_user.html#identity_store_id DataAwsIdentitystoreUser#identity_store_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/identitystore_user#identity_store_id DataAwsIdentitystoreUser#identity_store_id}
   */
   readonly identityStoreId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/identitystore_user.html#user_id DataAwsIdentitystoreUser#user_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/identitystore_user#user_id DataAwsIdentitystoreUser#user_id}
   */
   readonly userId?: string;
   /**
   * filter block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/identitystore_user.html#filter DataAwsIdentitystoreUser#filter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/identitystore_user#filter DataAwsIdentitystoreUser#filter}
   */
-  readonly filter: DataAwsIdentitystoreUserFilter[];
+  readonly filter: DataAwsIdentitystoreUserFilter[] | cdktf.IResolvable;
 }
 export interface DataAwsIdentitystoreUserFilter {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/identitystore_user.html#attribute_path DataAwsIdentitystoreUser#attribute_path}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/identitystore_user#attribute_path DataAwsIdentitystoreUser#attribute_path}
   */
   readonly attributePath: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/identitystore_user.html#attribute_value DataAwsIdentitystoreUser#attribute_value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/identitystore_user#attribute_value DataAwsIdentitystoreUser#attribute_value}
   */
   readonly attributeValue: string;
 }
 
-export function dataAwsIdentitystoreUserFilterToTerraform(struct?: DataAwsIdentitystoreUserFilter): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function dataAwsIdentitystoreUserFilterToTerraform(struct?: DataAwsIdentitystoreUserFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -46,7 +46,7 @@ export function dataAwsIdentitystoreUserFilterToTerraform(struct?: DataAwsIdenti
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/identitystore_user.html aws_identitystore_user}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/identitystore_user aws_identitystore_user}
 */
 export class DataAwsIdentitystoreUser extends cdktf.TerraformDataSource {
 
@@ -60,7 +60,7 @@ export class DataAwsIdentitystoreUser extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/identitystore_user.html aws_identitystore_user} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/identitystore_user aws_identitystore_user} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -126,12 +126,12 @@ export class DataAwsIdentitystoreUser extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: false, required: true
-  private _filter?: DataAwsIdentitystoreUserFilter[]; 
+  private _filter?: DataAwsIdentitystoreUserFilter[] | cdktf.IResolvable; 
   public get filter() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('filter') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('filter')));
   }
-  public set filter(value: DataAwsIdentitystoreUserFilter[]) {
+  public set filter(value: DataAwsIdentitystoreUserFilter[] | cdktf.IResolvable) {
     this._filter = value;
   }
   // Temporarily expose input value. Use with caution.

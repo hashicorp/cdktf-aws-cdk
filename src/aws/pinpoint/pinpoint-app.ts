@@ -8,57 +8,57 @@ import * as cdktf from 'cdktf';
 */
 export interface PinpointAppConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#name PinpointApp#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app#name PinpointApp#name}
   */
   readonly name?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#name_prefix PinpointApp#name_prefix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app#name_prefix PinpointApp#name_prefix}
   */
   readonly namePrefix?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#tags PinpointApp#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app#tags PinpointApp#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#tags_all PinpointApp#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app#tags_all PinpointApp#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * campaign_hook block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#campaign_hook PinpointApp#campaign_hook}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app#campaign_hook PinpointApp#campaign_hook}
   */
   readonly campaignHook?: PinpointAppCampaignHook;
   /**
   * limits block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#limits PinpointApp#limits}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app#limits PinpointApp#limits}
   */
   readonly limits?: PinpointAppLimits;
   /**
   * quiet_time block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#quiet_time PinpointApp#quiet_time}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app#quiet_time PinpointApp#quiet_time}
   */
   readonly quietTime?: PinpointAppQuietTime;
 }
 export interface PinpointAppCampaignHook {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#lambda_function_name PinpointApp#lambda_function_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app#lambda_function_name PinpointApp#lambda_function_name}
   */
   readonly lambdaFunctionName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#mode PinpointApp#mode}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app#mode PinpointApp#mode}
   */
   readonly mode?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#web_url PinpointApp#web_url}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app#web_url PinpointApp#web_url}
   */
   readonly webUrl?: string;
 }
 
 export function pinpointAppCampaignHookToTerraform(struct?: PinpointAppCampaignHookOutputReference | PinpointAppCampaignHook): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -70,27 +70,29 @@ export function pinpointAppCampaignHookToTerraform(struct?: PinpointAppCampaignH
 }
 
 export class PinpointAppCampaignHookOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): PinpointAppCampaignHook | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._lambdaFunctionName) {
+    if (this._lambdaFunctionName !== undefined) {
       hasAnyValues = true;
       internalValueResult.lambdaFunctionName = this._lambdaFunctionName;
     }
-    if (this._mode) {
+    if (this._mode !== undefined) {
       hasAnyValues = true;
       internalValueResult.mode = this._mode;
     }
-    if (this._webUrl) {
+    if (this._webUrl !== undefined) {
       hasAnyValues = true;
       internalValueResult.webUrl = this._webUrl;
     }
@@ -99,11 +101,13 @@ export class PinpointAppCampaignHookOutputReference extends cdktf.ComplexObject 
 
   public set internalValue(value: PinpointAppCampaignHook | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._lambdaFunctionName = undefined;
       this._mode = undefined;
       this._webUrl = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._lambdaFunctionName = value.lambdaFunctionName;
       this._mode = value.mode;
       this._webUrl = value.webUrl;
@@ -160,25 +164,25 @@ export class PinpointAppCampaignHookOutputReference extends cdktf.ComplexObject 
 }
 export interface PinpointAppLimits {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#daily PinpointApp#daily}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app#daily PinpointApp#daily}
   */
   readonly daily?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#maximum_duration PinpointApp#maximum_duration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app#maximum_duration PinpointApp#maximum_duration}
   */
   readonly maximumDuration?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#messages_per_second PinpointApp#messages_per_second}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app#messages_per_second PinpointApp#messages_per_second}
   */
   readonly messagesPerSecond?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#total PinpointApp#total}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app#total PinpointApp#total}
   */
   readonly total?: number;
 }
 
 export function pinpointAppLimitsToTerraform(struct?: PinpointAppLimitsOutputReference | PinpointAppLimits): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -191,31 +195,33 @@ export function pinpointAppLimitsToTerraform(struct?: PinpointAppLimitsOutputRef
 }
 
 export class PinpointAppLimitsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): PinpointAppLimits | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._daily) {
+    if (this._daily !== undefined) {
       hasAnyValues = true;
       internalValueResult.daily = this._daily;
     }
-    if (this._maximumDuration) {
+    if (this._maximumDuration !== undefined) {
       hasAnyValues = true;
       internalValueResult.maximumDuration = this._maximumDuration;
     }
-    if (this._messagesPerSecond) {
+    if (this._messagesPerSecond !== undefined) {
       hasAnyValues = true;
       internalValueResult.messagesPerSecond = this._messagesPerSecond;
     }
-    if (this._total) {
+    if (this._total !== undefined) {
       hasAnyValues = true;
       internalValueResult.total = this._total;
     }
@@ -224,12 +230,14 @@ export class PinpointAppLimitsOutputReference extends cdktf.ComplexObject {
 
   public set internalValue(value: PinpointAppLimits | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._daily = undefined;
       this._maximumDuration = undefined;
       this._messagesPerSecond = undefined;
       this._total = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._daily = value.daily;
       this._maximumDuration = value.maximumDuration;
       this._messagesPerSecond = value.messagesPerSecond;
@@ -303,17 +311,17 @@ export class PinpointAppLimitsOutputReference extends cdktf.ComplexObject {
 }
 export interface PinpointAppQuietTime {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#end PinpointApp#end}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app#end PinpointApp#end}
   */
   readonly end?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#start PinpointApp#start}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app#start PinpointApp#start}
   */
   readonly start?: string;
 }
 
 export function pinpointAppQuietTimeToTerraform(struct?: PinpointAppQuietTimeOutputReference | PinpointAppQuietTime): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -324,23 +332,25 @@ export function pinpointAppQuietTimeToTerraform(struct?: PinpointAppQuietTimeOut
 }
 
 export class PinpointAppQuietTimeOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): PinpointAppQuietTime | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._end) {
+    if (this._end !== undefined) {
       hasAnyValues = true;
       internalValueResult.end = this._end;
     }
-    if (this._start) {
+    if (this._start !== undefined) {
       hasAnyValues = true;
       internalValueResult.start = this._start;
     }
@@ -349,10 +359,12 @@ export class PinpointAppQuietTimeOutputReference extends cdktf.ComplexObject {
 
   public set internalValue(value: PinpointAppQuietTime | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._end = undefined;
       this._start = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._end = value.end;
       this._start = value.start;
     }
@@ -392,7 +404,7 @@ export class PinpointAppQuietTimeOutputReference extends cdktf.ComplexObject {
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html aws_pinpoint_app}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app aws_pinpoint_app}
 */
 export class PinpointApp extends cdktf.TerraformResource {
 
@@ -406,7 +418,7 @@ export class PinpointApp extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html aws_pinpoint_app} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app aws_pinpoint_app} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -484,12 +496,11 @@ export class PinpointApp extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -501,12 +512,11 @@ export class PinpointApp extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -518,7 +528,7 @@ export class PinpointApp extends cdktf.TerraformResource {
   }
 
   // campaign_hook - computed: false, optional: true, required: false
-  private _campaignHook = new PinpointAppCampaignHookOutputReference(this as any, "campaign_hook", true);
+  private _campaignHook = new PinpointAppCampaignHookOutputReference(this, "campaign_hook", true);
   public get campaignHook() {
     return this._campaignHook;
   }
@@ -534,7 +544,7 @@ export class PinpointApp extends cdktf.TerraformResource {
   }
 
   // limits - computed: false, optional: true, required: false
-  private _limits = new PinpointAppLimitsOutputReference(this as any, "limits", true);
+  private _limits = new PinpointAppLimitsOutputReference(this, "limits", true);
   public get limits() {
     return this._limits;
   }
@@ -550,7 +560,7 @@ export class PinpointApp extends cdktf.TerraformResource {
   }
 
   // quiet_time - computed: false, optional: true, required: false
-  private _quietTime = new PinpointAppQuietTimeOutputReference(this as any, "quiet_time", true);
+  private _quietTime = new PinpointAppQuietTimeOutputReference(this, "quiet_time", true);
   public get quietTime() {
     return this._quietTime;
   }
@@ -573,8 +583,8 @@ export class PinpointApp extends cdktf.TerraformResource {
     return {
       name: cdktf.stringToTerraform(this._name),
       name_prefix: cdktf.stringToTerraform(this._namePrefix),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       campaign_hook: pinpointAppCampaignHookToTerraform(this._campaignHook.internalValue),
       limits: pinpointAppLimitsToTerraform(this._limits.internalValue),
       quiet_time: pinpointAppQuietTimeToTerraform(this._quietTime.internalValue),

@@ -10,36 +10,36 @@ export interface DataAwsKmsSecretConfig extends cdktf.TerraformMetaArguments {
   /**
   * secret block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/kms_secret.html#secret DataAwsKmsSecret#secret}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/kms_secret#secret DataAwsKmsSecret#secret}
   */
-  readonly secret: DataAwsKmsSecretSecret[];
+  readonly secret: DataAwsKmsSecretSecret[] | cdktf.IResolvable;
 }
 export interface DataAwsKmsSecretSecret {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/kms_secret.html#context DataAwsKmsSecret#context}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/kms_secret#context DataAwsKmsSecret#context}
   */
-  readonly context?: { [key: string]: string } | cdktf.IResolvable;
+  readonly context?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/kms_secret.html#grant_tokens DataAwsKmsSecret#grant_tokens}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/kms_secret#grant_tokens DataAwsKmsSecret#grant_tokens}
   */
   readonly grantTokens?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/kms_secret.html#name DataAwsKmsSecret#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/kms_secret#name DataAwsKmsSecret#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/kms_secret.html#payload DataAwsKmsSecret#payload}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/kms_secret#payload DataAwsKmsSecret#payload}
   */
   readonly payload: string;
 }
 
-export function dataAwsKmsSecretSecretToTerraform(struct?: DataAwsKmsSecretSecret): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function dataAwsKmsSecretSecretToTerraform(struct?: DataAwsKmsSecretSecret | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    context: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.context),
+    context: cdktf.hashMapper(cdktf.stringToTerraform)(struct!.context),
     grant_tokens: cdktf.listMapper(cdktf.stringToTerraform)(struct!.grantTokens),
     name: cdktf.stringToTerraform(struct!.name),
     payload: cdktf.stringToTerraform(struct!.payload),
@@ -48,7 +48,7 @@ export function dataAwsKmsSecretSecretToTerraform(struct?: DataAwsKmsSecretSecre
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/kms_secret.html aws_kms_secret}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/kms_secret aws_kms_secret}
 */
 export class DataAwsKmsSecret extends cdktf.TerraformDataSource {
 
@@ -62,7 +62,7 @@ export class DataAwsKmsSecret extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/kms_secret.html aws_kms_secret} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/kms_secret aws_kms_secret} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -92,12 +92,12 @@ export class DataAwsKmsSecret extends cdktf.TerraformDataSource {
   }
 
   // secret - computed: false, optional: false, required: true
-  private _secret?: DataAwsKmsSecretSecret[]; 
+  private _secret?: DataAwsKmsSecretSecret[] | cdktf.IResolvable; 
   public get secret() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('secret') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('secret')));
   }
-  public set secret(value: DataAwsKmsSecretSecret[]) {
+  public set secret(value: DataAwsKmsSecretSecret[] | cdktf.IResolvable) {
     this._secret = value;
   }
   // Temporarily expose input value. Use with caution.

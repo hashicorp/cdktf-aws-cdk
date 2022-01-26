@@ -8,59 +8,59 @@ import * as cdktf from 'cdktf';
 */
 export interface FsxDataRepositoryAssociationConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#batch_import_meta_data_on_create FsxDataRepositoryAssociation#batch_import_meta_data_on_create}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#batch_import_meta_data_on_create FsxDataRepositoryAssociation#batch_import_meta_data_on_create}
   */
   readonly batchImportMetaDataOnCreate?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#data_repository_path FsxDataRepositoryAssociation#data_repository_path}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#data_repository_path FsxDataRepositoryAssociation#data_repository_path}
   */
   readonly dataRepositoryPath: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#delete_data_in_filesystem FsxDataRepositoryAssociation#delete_data_in_filesystem}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#delete_data_in_filesystem FsxDataRepositoryAssociation#delete_data_in_filesystem}
   */
   readonly deleteDataInFilesystem?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#file_system_id FsxDataRepositoryAssociation#file_system_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#file_system_id FsxDataRepositoryAssociation#file_system_id}
   */
   readonly fileSystemId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#file_system_path FsxDataRepositoryAssociation#file_system_path}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#file_system_path FsxDataRepositoryAssociation#file_system_path}
   */
   readonly fileSystemPath: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#imported_file_chunk_size FsxDataRepositoryAssociation#imported_file_chunk_size}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#imported_file_chunk_size FsxDataRepositoryAssociation#imported_file_chunk_size}
   */
   readonly importedFileChunkSize?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#tags FsxDataRepositoryAssociation#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#tags FsxDataRepositoryAssociation#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#tags_all FsxDataRepositoryAssociation#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#tags_all FsxDataRepositoryAssociation#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * s3 block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#s3 FsxDataRepositoryAssociation#s3}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#s3 FsxDataRepositoryAssociation#s3}
   */
   readonly s3?: FsxDataRepositoryAssociationS3;
   /**
   * timeouts block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#timeouts FsxDataRepositoryAssociation#timeouts}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#timeouts FsxDataRepositoryAssociation#timeouts}
   */
   readonly timeouts?: FsxDataRepositoryAssociationTimeouts;
 }
 export interface FsxDataRepositoryAssociationS3AutoExportPolicy {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#events FsxDataRepositoryAssociation#events}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#events FsxDataRepositoryAssociation#events}
   */
   readonly events?: string[];
 }
 
 export function fsxDataRepositoryAssociationS3AutoExportPolicyToTerraform(struct?: FsxDataRepositoryAssociationS3AutoExportPolicyOutputReference | FsxDataRepositoryAssociationS3AutoExportPolicy): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -70,19 +70,21 @@ export function fsxDataRepositoryAssociationS3AutoExportPolicyToTerraform(struct
 }
 
 export class FsxDataRepositoryAssociationS3AutoExportPolicyOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): FsxDataRepositoryAssociationS3AutoExportPolicy | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._events) {
+    if (this._events !== undefined) {
       hasAnyValues = true;
       internalValueResult.events = this._events;
     }
@@ -91,9 +93,11 @@ export class FsxDataRepositoryAssociationS3AutoExportPolicyOutputReference exten
 
   public set internalValue(value: FsxDataRepositoryAssociationS3AutoExportPolicy | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._events = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._events = value.events;
     }
   }
@@ -116,13 +120,13 @@ export class FsxDataRepositoryAssociationS3AutoExportPolicyOutputReference exten
 }
 export interface FsxDataRepositoryAssociationS3AutoImportPolicy {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#events FsxDataRepositoryAssociation#events}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#events FsxDataRepositoryAssociation#events}
   */
   readonly events?: string[];
 }
 
 export function fsxDataRepositoryAssociationS3AutoImportPolicyToTerraform(struct?: FsxDataRepositoryAssociationS3AutoImportPolicyOutputReference | FsxDataRepositoryAssociationS3AutoImportPolicy): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -132,19 +136,21 @@ export function fsxDataRepositoryAssociationS3AutoImportPolicyToTerraform(struct
 }
 
 export class FsxDataRepositoryAssociationS3AutoImportPolicyOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): FsxDataRepositoryAssociationS3AutoImportPolicy | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._events) {
+    if (this._events !== undefined) {
       hasAnyValues = true;
       internalValueResult.events = this._events;
     }
@@ -153,9 +159,11 @@ export class FsxDataRepositoryAssociationS3AutoImportPolicyOutputReference exten
 
   public set internalValue(value: FsxDataRepositoryAssociationS3AutoImportPolicy | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._events = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._events = value.events;
     }
   }
@@ -180,19 +188,19 @@ export interface FsxDataRepositoryAssociationS3 {
   /**
   * auto_export_policy block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#auto_export_policy FsxDataRepositoryAssociation#auto_export_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#auto_export_policy FsxDataRepositoryAssociation#auto_export_policy}
   */
   readonly autoExportPolicy?: FsxDataRepositoryAssociationS3AutoExportPolicy;
   /**
   * auto_import_policy block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#auto_import_policy FsxDataRepositoryAssociation#auto_import_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#auto_import_policy FsxDataRepositoryAssociation#auto_import_policy}
   */
   readonly autoImportPolicy?: FsxDataRepositoryAssociationS3AutoImportPolicy;
 }
 
 export function fsxDataRepositoryAssociationS3ToTerraform(struct?: FsxDataRepositoryAssociationS3OutputReference | FsxDataRepositoryAssociationS3): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -203,23 +211,25 @@ export function fsxDataRepositoryAssociationS3ToTerraform(struct?: FsxDataReposi
 }
 
 export class FsxDataRepositoryAssociationS3OutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): FsxDataRepositoryAssociationS3 | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._autoExportPolicy) {
+    if (this._autoExportPolicy?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.autoExportPolicy = this._autoExportPolicy?.internalValue;
     }
-    if (this._autoImportPolicy) {
+    if (this._autoImportPolicy?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.autoImportPolicy = this._autoImportPolicy?.internalValue;
     }
@@ -228,17 +238,19 @@ export class FsxDataRepositoryAssociationS3OutputReference extends cdktf.Complex
 
   public set internalValue(value: FsxDataRepositoryAssociationS3 | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._autoExportPolicy.internalValue = undefined;
       this._autoImportPolicy.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._autoExportPolicy.internalValue = value.autoExportPolicy;
       this._autoImportPolicy.internalValue = value.autoImportPolicy;
     }
   }
 
   // auto_export_policy - computed: false, optional: true, required: false
-  private _autoExportPolicy = new FsxDataRepositoryAssociationS3AutoExportPolicyOutputReference(this as any, "auto_export_policy", true);
+  private _autoExportPolicy = new FsxDataRepositoryAssociationS3AutoExportPolicyOutputReference(this, "auto_export_policy", true);
   public get autoExportPolicy() {
     return this._autoExportPolicy;
   }
@@ -254,7 +266,7 @@ export class FsxDataRepositoryAssociationS3OutputReference extends cdktf.Complex
   }
 
   // auto_import_policy - computed: false, optional: true, required: false
-  private _autoImportPolicy = new FsxDataRepositoryAssociationS3AutoImportPolicyOutputReference(this as any, "auto_import_policy", true);
+  private _autoImportPolicy = new FsxDataRepositoryAssociationS3AutoImportPolicyOutputReference(this, "auto_import_policy", true);
   public get autoImportPolicy() {
     return this._autoImportPolicy;
   }
@@ -271,21 +283,21 @@ export class FsxDataRepositoryAssociationS3OutputReference extends cdktf.Complex
 }
 export interface FsxDataRepositoryAssociationTimeouts {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#create FsxDataRepositoryAssociation#create}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#create FsxDataRepositoryAssociation#create}
   */
   readonly create?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#delete FsxDataRepositoryAssociation#delete}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#delete FsxDataRepositoryAssociation#delete}
   */
   readonly delete?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html#update FsxDataRepositoryAssociation#update}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association#update FsxDataRepositoryAssociation#update}
   */
   readonly update?: string;
 }
 
-export function fsxDataRepositoryAssociationTimeoutsToTerraform(struct?: FsxDataRepositoryAssociationTimeoutsOutputReference | FsxDataRepositoryAssociationTimeouts): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function fsxDataRepositoryAssociationTimeoutsToTerraform(struct?: FsxDataRepositoryAssociationTimeoutsOutputReference | FsxDataRepositoryAssociationTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -297,27 +309,29 @@ export function fsxDataRepositoryAssociationTimeoutsToTerraform(struct?: FsxData
 }
 
 export class FsxDataRepositoryAssociationTimeoutsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): FsxDataRepositoryAssociationTimeouts | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._create) {
+    if (this._create !== undefined) {
       hasAnyValues = true;
       internalValueResult.create = this._create;
     }
-    if (this._delete) {
+    if (this._delete !== undefined) {
       hasAnyValues = true;
       internalValueResult.delete = this._delete;
     }
-    if (this._update) {
+    if (this._update !== undefined) {
       hasAnyValues = true;
       internalValueResult.update = this._update;
     }
@@ -326,11 +340,13 @@ export class FsxDataRepositoryAssociationTimeoutsOutputReference extends cdktf.C
 
   public set internalValue(value: FsxDataRepositoryAssociationTimeouts | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._create = undefined;
       this._delete = undefined;
       this._update = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._create = value.create;
       this._delete = value.delete;
       this._update = value.update;
@@ -387,7 +403,7 @@ export class FsxDataRepositoryAssociationTimeoutsOutputReference extends cdktf.C
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html aws_fsx_data_repository_association}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association aws_fsx_data_repository_association}
 */
 export class FsxDataRepositoryAssociation extends cdktf.TerraformResource {
 
@@ -401,7 +417,7 @@ export class FsxDataRepositoryAssociation extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association.html aws_fsx_data_repository_association} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/fsx_data_repository_association aws_fsx_data_repository_association} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -447,7 +463,7 @@ export class FsxDataRepositoryAssociation extends cdktf.TerraformResource {
   // batch_import_meta_data_on_create - computed: false, optional: true, required: false
   private _batchImportMetaDataOnCreate?: boolean | cdktf.IResolvable; 
   public get batchImportMetaDataOnCreate() {
-    return this.getBooleanAttribute('batch_import_meta_data_on_create') as any;
+    return this.getBooleanAttribute('batch_import_meta_data_on_create');
   }
   public set batchImportMetaDataOnCreate(value: boolean | cdktf.IResolvable) {
     this._batchImportMetaDataOnCreate = value;
@@ -476,7 +492,7 @@ export class FsxDataRepositoryAssociation extends cdktf.TerraformResource {
   // delete_data_in_filesystem - computed: false, optional: true, required: false
   private _deleteDataInFilesystem?: boolean | cdktf.IResolvable; 
   public get deleteDataInFilesystem() {
-    return this.getBooleanAttribute('delete_data_in_filesystem') as any;
+    return this.getBooleanAttribute('delete_data_in_filesystem');
   }
   public set deleteDataInFilesystem(value: boolean | cdktf.IResolvable) {
     this._deleteDataInFilesystem = value;
@@ -537,12 +553,11 @@ export class FsxDataRepositoryAssociation extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -554,12 +569,11 @@ export class FsxDataRepositoryAssociation extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -571,7 +585,7 @@ export class FsxDataRepositoryAssociation extends cdktf.TerraformResource {
   }
 
   // s3 - computed: false, optional: true, required: false
-  private _s3 = new FsxDataRepositoryAssociationS3OutputReference(this as any, "s3", true);
+  private _s3 = new FsxDataRepositoryAssociationS3OutputReference(this, "s3", true);
   public get s3() {
     return this._s3;
   }
@@ -587,7 +601,7 @@ export class FsxDataRepositoryAssociation extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts = new FsxDataRepositoryAssociationTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new FsxDataRepositoryAssociationTimeoutsOutputReference(this, "timeouts", true);
   public get timeouts() {
     return this._timeouts;
   }
@@ -614,8 +628,8 @@ export class FsxDataRepositoryAssociation extends cdktf.TerraformResource {
       file_system_id: cdktf.stringToTerraform(this._fileSystemId),
       file_system_path: cdktf.stringToTerraform(this._fileSystemPath),
       imported_file_chunk_size: cdktf.numberToTerraform(this._importedFileChunkSize),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       s3: fsxDataRepositoryAssociationS3ToTerraform(this._s3.internalValue),
       timeouts: fsxDataRepositoryAssociationTimeoutsToTerraform(this._timeouts.internalValue),
     };

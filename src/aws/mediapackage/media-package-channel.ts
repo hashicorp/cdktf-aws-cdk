@@ -8,21 +8,21 @@ import * as cdktf from 'cdktf';
 */
 export interface MediaPackageChannelConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/media_package_channel.html#channel_id MediaPackageChannel#channel_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/media_package_channel#channel_id MediaPackageChannel#channel_id}
   */
   readonly channelId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/media_package_channel.html#description MediaPackageChannel#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/media_package_channel#description MediaPackageChannel#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/media_package_channel.html#tags MediaPackageChannel#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/media_package_channel#tags MediaPackageChannel#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/media_package_channel.html#tags_all MediaPackageChannel#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/media_package_channel#tags_all MediaPackageChannel#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
 }
 export class MediaPackageChannelHlsIngestIngestEndpoints extends cdktf.ComplexComputedList {
 
@@ -46,12 +46,12 @@ export class MediaPackageChannelHlsIngest extends cdktf.ComplexComputedList {
   // ingest_endpoints - computed: true, optional: false, required: false
   public get ingestEndpoints() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('ingest_endpoints') as any;
+    return this.interpolationForAttribute('ingest_endpoints');
   }
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/media_package_channel.html aws_media_package_channel}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/media_package_channel aws_media_package_channel}
 */
 export class MediaPackageChannel extends cdktf.TerraformResource {
 
@@ -65,7 +65,7 @@ export class MediaPackageChannel extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/media_package_channel.html aws_media_package_channel} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/media_package_channel aws_media_package_channel} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -128,7 +128,7 @@ export class MediaPackageChannel extends cdktf.TerraformResource {
 
   // hls_ingest - computed: true, optional: false, required: false
   public hlsIngest(index: string) {
-    return new MediaPackageChannelHlsIngest(this, 'hls_ingest', index);
+    return new MediaPackageChannelHlsIngest(this, 'hls_ingest', index, false);
   }
 
   // id - computed: true, optional: true, required: false
@@ -137,12 +137,11 @@ export class MediaPackageChannel extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -154,12 +153,11 @@ export class MediaPackageChannel extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -178,8 +176,8 @@ export class MediaPackageChannel extends cdktf.TerraformResource {
     return {
       channel_id: cdktf.stringToTerraform(this._channelId),
       description: cdktf.stringToTerraform(this._description),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
     };
   }
 }

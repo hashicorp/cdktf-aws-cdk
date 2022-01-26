@@ -10,23 +10,23 @@ export interface DataAwsEc2InstanceTypesConfig extends cdktf.TerraformMetaArgume
   /**
   * filter block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ec2_instance_types.html#filter DataAwsEc2InstanceTypes#filter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ec2_instance_types#filter DataAwsEc2InstanceTypes#filter}
   */
-  readonly filter?: DataAwsEc2InstanceTypesFilter[];
+  readonly filter?: DataAwsEc2InstanceTypesFilter[] | cdktf.IResolvable;
 }
 export interface DataAwsEc2InstanceTypesFilter {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ec2_instance_types.html#name DataAwsEc2InstanceTypes#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ec2_instance_types#name DataAwsEc2InstanceTypes#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ec2_instance_types.html#values DataAwsEc2InstanceTypes#values}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ec2_instance_types#values DataAwsEc2InstanceTypes#values}
   */
   readonly values: string[];
 }
 
-export function dataAwsEc2InstanceTypesFilterToTerraform(struct?: DataAwsEc2InstanceTypesFilter): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function dataAwsEc2InstanceTypesFilterToTerraform(struct?: DataAwsEc2InstanceTypesFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -38,7 +38,7 @@ export function dataAwsEc2InstanceTypesFilterToTerraform(struct?: DataAwsEc2Inst
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/ec2_instance_types.html aws_ec2_instance_types}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/ec2_instance_types aws_ec2_instance_types}
 */
 export class DataAwsEc2InstanceTypes extends cdktf.TerraformDataSource {
 
@@ -52,7 +52,7 @@ export class DataAwsEc2InstanceTypes extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/ec2_instance_types.html aws_ec2_instance_types} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/ec2_instance_types aws_ec2_instance_types} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -87,12 +87,12 @@ export class DataAwsEc2InstanceTypes extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsEc2InstanceTypesFilter[]; 
+  private _filter?: DataAwsEc2InstanceTypesFilter[] | cdktf.IResolvable; 
   public get filter() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('filter') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('filter')));
   }
-  public set filter(value: DataAwsEc2InstanceTypesFilter[]) {
+  public set filter(value: DataAwsEc2InstanceTypesFilter[] | cdktf.IResolvable) {
     this._filter = value;
   }
   public resetFilter() {

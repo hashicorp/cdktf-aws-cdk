@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 */
 export interface S3ControlObjectLambdaAccessPointConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point.html#account_id S3ControlObjectLambdaAccessPoint#account_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point#account_id S3ControlObjectLambdaAccessPoint#account_id}
   */
   readonly accountId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point.html#name S3ControlObjectLambdaAccessPoint#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point#name S3ControlObjectLambdaAccessPoint#name}
   */
   readonly name: string;
   /**
   * configuration block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point.html#configuration S3ControlObjectLambdaAccessPoint#configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point#configuration S3ControlObjectLambdaAccessPoint#configuration}
   */
   readonly configuration: S3ControlObjectLambdaAccessPointConfiguration;
 }
 export interface S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point.html#function_arn S3ControlObjectLambdaAccessPoint#function_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point#function_arn S3ControlObjectLambdaAccessPoint#function_arn}
   */
   readonly functionArn: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point.html#function_payload S3ControlObjectLambdaAccessPoint#function_payload}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point#function_payload S3ControlObjectLambdaAccessPoint#function_payload}
   */
   readonly functionPayload?: string;
 }
 
 export function s3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambdaToTerraform(struct?: S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambdaOutputReference | S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -45,23 +45,25 @@ export function s3ControlObjectLambdaAccessPointConfigurationTransformationConfi
 }
 
 export class S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambdaOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._functionArn) {
+    if (this._functionArn !== undefined) {
       hasAnyValues = true;
       internalValueResult.functionArn = this._functionArn;
     }
-    if (this._functionPayload) {
+    if (this._functionPayload !== undefined) {
       hasAnyValues = true;
       internalValueResult.functionPayload = this._functionPayload;
     }
@@ -70,10 +72,12 @@ export class S3ControlObjectLambdaAccessPointConfigurationTransformationConfigur
 
   public set internalValue(value: S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._functionArn = undefined;
       this._functionPayload = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._functionArn = value.functionArn;
       this._functionPayload = value.functionPayload;
     }
@@ -112,13 +116,13 @@ export interface S3ControlObjectLambdaAccessPointConfigurationTransformationConf
   /**
   * aws_lambda block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point.html#aws_lambda S3ControlObjectLambdaAccessPoint#aws_lambda}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point#aws_lambda S3ControlObjectLambdaAccessPoint#aws_lambda}
   */
   readonly awsLambda: S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda;
 }
 
 export function s3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationToTerraform(struct?: S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationOutputReference | S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -128,19 +132,21 @@ export function s3ControlObjectLambdaAccessPointConfigurationTransformationConfi
 }
 
 export class S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._awsLambda) {
+    if (this._awsLambda?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.awsLambda = this._awsLambda?.internalValue;
     }
@@ -149,15 +155,17 @@ export class S3ControlObjectLambdaAccessPointConfigurationTransformationConfigur
 
   public set internalValue(value: S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._awsLambda.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._awsLambda.internalValue = value.awsLambda;
     }
   }
 
   // aws_lambda - computed: false, optional: false, required: true
-  private _awsLambda = new S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambdaOutputReference(this as any, "aws_lambda", true);
+  private _awsLambda = new S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambdaOutputReference(this, "aws_lambda", true);
   public get awsLambda() {
     return this._awsLambda;
   }
@@ -171,19 +179,19 @@ export class S3ControlObjectLambdaAccessPointConfigurationTransformationConfigur
 }
 export interface S3ControlObjectLambdaAccessPointConfigurationTransformationConfiguration {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point.html#actions S3ControlObjectLambdaAccessPoint#actions}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point#actions S3ControlObjectLambdaAccessPoint#actions}
   */
   readonly actions: string[];
   /**
   * content_transformation block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point.html#content_transformation S3ControlObjectLambdaAccessPoint#content_transformation}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point#content_transformation S3ControlObjectLambdaAccessPoint#content_transformation}
   */
   readonly contentTransformation: S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation;
 }
 
-export function s3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationToTerraform(struct?: S3ControlObjectLambdaAccessPointConfigurationTransformationConfiguration): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function s3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationToTerraform(struct?: S3ControlObjectLambdaAccessPointConfigurationTransformationConfiguration | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -195,27 +203,27 @@ export function s3ControlObjectLambdaAccessPointConfigurationTransformationConfi
 
 export interface S3ControlObjectLambdaAccessPointConfiguration {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point.html#allowed_features S3ControlObjectLambdaAccessPoint#allowed_features}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point#allowed_features S3ControlObjectLambdaAccessPoint#allowed_features}
   */
   readonly allowedFeatures?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point.html#cloud_watch_metrics_enabled S3ControlObjectLambdaAccessPoint#cloud_watch_metrics_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point#cloud_watch_metrics_enabled S3ControlObjectLambdaAccessPoint#cloud_watch_metrics_enabled}
   */
   readonly cloudWatchMetricsEnabled?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point.html#supporting_access_point S3ControlObjectLambdaAccessPoint#supporting_access_point}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point#supporting_access_point S3ControlObjectLambdaAccessPoint#supporting_access_point}
   */
   readonly supportingAccessPoint: string;
   /**
   * transformation_configuration block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point.html#transformation_configuration S3ControlObjectLambdaAccessPoint#transformation_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point#transformation_configuration S3ControlObjectLambdaAccessPoint#transformation_configuration}
   */
-  readonly transformationConfiguration: S3ControlObjectLambdaAccessPointConfigurationTransformationConfiguration[];
+  readonly transformationConfiguration: S3ControlObjectLambdaAccessPointConfigurationTransformationConfiguration[] | cdktf.IResolvable;
 }
 
 export function s3ControlObjectLambdaAccessPointConfigurationToTerraform(struct?: S3ControlObjectLambdaAccessPointConfigurationOutputReference | S3ControlObjectLambdaAccessPointConfiguration): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -228,31 +236,33 @@ export function s3ControlObjectLambdaAccessPointConfigurationToTerraform(struct?
 }
 
 export class S3ControlObjectLambdaAccessPointConfigurationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): S3ControlObjectLambdaAccessPointConfiguration | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._allowedFeatures) {
+    if (this._allowedFeatures !== undefined) {
       hasAnyValues = true;
       internalValueResult.allowedFeatures = this._allowedFeatures;
     }
-    if (this._cloudWatchMetricsEnabled) {
+    if (this._cloudWatchMetricsEnabled !== undefined) {
       hasAnyValues = true;
       internalValueResult.cloudWatchMetricsEnabled = this._cloudWatchMetricsEnabled;
     }
-    if (this._supportingAccessPoint) {
+    if (this._supportingAccessPoint !== undefined) {
       hasAnyValues = true;
       internalValueResult.supportingAccessPoint = this._supportingAccessPoint;
     }
-    if (this._transformationConfiguration) {
+    if (this._transformationConfiguration !== undefined) {
       hasAnyValues = true;
       internalValueResult.transformationConfiguration = this._transformationConfiguration;
     }
@@ -261,12 +271,14 @@ export class S3ControlObjectLambdaAccessPointConfigurationOutputReference extend
 
   public set internalValue(value: S3ControlObjectLambdaAccessPointConfiguration | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._allowedFeatures = undefined;
       this._cloudWatchMetricsEnabled = undefined;
       this._supportingAccessPoint = undefined;
       this._transformationConfiguration = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._allowedFeatures = value.allowedFeatures;
       this._cloudWatchMetricsEnabled = value.cloudWatchMetricsEnabled;
       this._supportingAccessPoint = value.supportingAccessPoint;
@@ -277,7 +289,7 @@ export class S3ControlObjectLambdaAccessPointConfigurationOutputReference extend
   // allowed_features - computed: false, optional: true, required: false
   private _allowedFeatures?: string[]; 
   public get allowedFeatures() {
-    return this.getListAttribute('allowed_features');
+    return cdktf.Fn.tolist(this.getListAttribute('allowed_features'));
   }
   public set allowedFeatures(value: string[]) {
     this._allowedFeatures = value;
@@ -293,7 +305,7 @@ export class S3ControlObjectLambdaAccessPointConfigurationOutputReference extend
   // cloud_watch_metrics_enabled - computed: false, optional: true, required: false
   private _cloudWatchMetricsEnabled?: boolean | cdktf.IResolvable; 
   public get cloudWatchMetricsEnabled() {
-    return this.getBooleanAttribute('cloud_watch_metrics_enabled') as any;
+    return this.getBooleanAttribute('cloud_watch_metrics_enabled');
   }
   public set cloudWatchMetricsEnabled(value: boolean | cdktf.IResolvable) {
     this._cloudWatchMetricsEnabled = value;
@@ -320,12 +332,12 @@ export class S3ControlObjectLambdaAccessPointConfigurationOutputReference extend
   }
 
   // transformation_configuration - computed: false, optional: false, required: true
-  private _transformationConfiguration?: S3ControlObjectLambdaAccessPointConfigurationTransformationConfiguration[]; 
+  private _transformationConfiguration?: S3ControlObjectLambdaAccessPointConfigurationTransformationConfiguration[] | cdktf.IResolvable; 
   public get transformationConfiguration() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('transformation_configuration') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('transformation_configuration')));
   }
-  public set transformationConfiguration(value: S3ControlObjectLambdaAccessPointConfigurationTransformationConfiguration[]) {
+  public set transformationConfiguration(value: S3ControlObjectLambdaAccessPointConfigurationTransformationConfiguration[] | cdktf.IResolvable) {
     this._transformationConfiguration = value;
   }
   // Temporarily expose input value. Use with caution.
@@ -335,7 +347,7 @@ export class S3ControlObjectLambdaAccessPointConfigurationOutputReference extend
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point.html aws_s3control_object_lambda_access_point}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point aws_s3control_object_lambda_access_point}
 */
 export class S3ControlObjectLambdaAccessPoint extends cdktf.TerraformResource {
 
@@ -349,7 +361,7 @@ export class S3ControlObjectLambdaAccessPoint extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point.html aws_s3control_object_lambda_access_point} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/s3control_object_lambda_access_point aws_s3control_object_lambda_access_point} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -415,7 +427,7 @@ export class S3ControlObjectLambdaAccessPoint extends cdktf.TerraformResource {
   }
 
   // configuration - computed: false, optional: false, required: true
-  private _configuration = new S3ControlObjectLambdaAccessPointConfigurationOutputReference(this as any, "configuration", true);
+  private _configuration = new S3ControlObjectLambdaAccessPointConfigurationOutputReference(this, "configuration", true);
   public get configuration() {
     return this._configuration;
   }

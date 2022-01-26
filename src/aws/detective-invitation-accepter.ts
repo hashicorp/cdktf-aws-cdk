@@ -1,4 +1,4 @@
-// https://www.terraform.io/docs/providers/aws/r/detective_invitation_accepter.html
+// https://www.terraform.io/docs/providers/aws/r/detective_invitation_accepter
 // generated from terraform resource schema
 
 import { Construct } from 'constructs';
@@ -8,13 +8,13 @@ import * as cdktf from 'cdktf';
 
 export interface DetectiveInvitationAccepterConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/detective_invitation_accepter.html#graph_arn DetectiveInvitationAccepter#graph_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/detective_invitation_accepter#graph_arn DetectiveInvitationAccepter#graph_arn}
   */
   readonly graphArn: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/detective_invitation_accepter.html aws_detective_invitation_accepter}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/detective_invitation_accepter aws_detective_invitation_accepter}
 */
 export class DetectiveInvitationAccepter extends cdktf.TerraformResource {
 
@@ -28,7 +28,7 @@ export class DetectiveInvitationAccepter extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/detective_invitation_accepter.html aws_detective_invitation_accepter} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/detective_invitation_accepter aws_detective_invitation_accepter} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope

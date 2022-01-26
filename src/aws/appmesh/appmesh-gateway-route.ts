@@ -8,45 +8,45 @@ import * as cdktf from 'cdktf';
 */
 export interface AppmeshGatewayRouteConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#mesh_name AppmeshGatewayRoute#mesh_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#mesh_name AppmeshGatewayRoute#mesh_name}
   */
   readonly meshName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#mesh_owner AppmeshGatewayRoute#mesh_owner}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#mesh_owner AppmeshGatewayRoute#mesh_owner}
   */
   readonly meshOwner?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#name AppmeshGatewayRoute#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#name AppmeshGatewayRoute#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#tags AppmeshGatewayRoute#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#tags AppmeshGatewayRoute#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#tags_all AppmeshGatewayRoute#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#tags_all AppmeshGatewayRoute#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#virtual_gateway_name AppmeshGatewayRoute#virtual_gateway_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#virtual_gateway_name AppmeshGatewayRoute#virtual_gateway_name}
   */
   readonly virtualGatewayName: string;
   /**
   * spec block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#spec AppmeshGatewayRoute#spec}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#spec AppmeshGatewayRoute#spec}
   */
   readonly spec: AppmeshGatewayRouteSpec;
 }
 export interface AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualService {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#virtual_service_name AppmeshGatewayRoute#virtual_service_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#virtual_service_name AppmeshGatewayRoute#virtual_service_name}
   */
   readonly virtualServiceName: string;
 }
 
 export function appmeshGatewayRouteSpecGrpcRouteActionTargetVirtualServiceToTerraform(struct?: AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualServiceOutputReference | AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualService): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -56,19 +56,21 @@ export function appmeshGatewayRouteSpecGrpcRouteActionTargetVirtualServiceToTerr
 }
 
 export class AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualServiceOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualService | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._virtualServiceName) {
+    if (this._virtualServiceName !== undefined) {
       hasAnyValues = true;
       internalValueResult.virtualServiceName = this._virtualServiceName;
     }
@@ -77,9 +79,11 @@ export class AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualServiceOutputRef
 
   public set internalValue(value: AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualService | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._virtualServiceName = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._virtualServiceName = value.virtualServiceName;
     }
   }
@@ -101,13 +105,13 @@ export interface AppmeshGatewayRouteSpecGrpcRouteActionTarget {
   /**
   * virtual_service block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#virtual_service AppmeshGatewayRoute#virtual_service}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#virtual_service AppmeshGatewayRoute#virtual_service}
   */
   readonly virtualService: AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualService;
 }
 
 export function appmeshGatewayRouteSpecGrpcRouteActionTargetToTerraform(struct?: AppmeshGatewayRouteSpecGrpcRouteActionTargetOutputReference | AppmeshGatewayRouteSpecGrpcRouteActionTarget): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -117,19 +121,21 @@ export function appmeshGatewayRouteSpecGrpcRouteActionTargetToTerraform(struct?:
 }
 
 export class AppmeshGatewayRouteSpecGrpcRouteActionTargetOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshGatewayRouteSpecGrpcRouteActionTarget | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._virtualService) {
+    if (this._virtualService?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.virtualService = this._virtualService?.internalValue;
     }
@@ -138,15 +144,17 @@ export class AppmeshGatewayRouteSpecGrpcRouteActionTargetOutputReference extends
 
   public set internalValue(value: AppmeshGatewayRouteSpecGrpcRouteActionTarget | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._virtualService.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._virtualService.internalValue = value.virtualService;
     }
   }
 
   // virtual_service - computed: false, optional: false, required: true
-  private _virtualService = new AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualServiceOutputReference(this as any, "virtual_service", true);
+  private _virtualService = new AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualServiceOutputReference(this, "virtual_service", true);
   public get virtualService() {
     return this._virtualService;
   }
@@ -162,13 +170,13 @@ export interface AppmeshGatewayRouteSpecGrpcRouteAction {
   /**
   * target block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#target AppmeshGatewayRoute#target}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#target AppmeshGatewayRoute#target}
   */
   readonly target: AppmeshGatewayRouteSpecGrpcRouteActionTarget;
 }
 
 export function appmeshGatewayRouteSpecGrpcRouteActionToTerraform(struct?: AppmeshGatewayRouteSpecGrpcRouteActionOutputReference | AppmeshGatewayRouteSpecGrpcRouteAction): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -178,19 +186,21 @@ export function appmeshGatewayRouteSpecGrpcRouteActionToTerraform(struct?: Appme
 }
 
 export class AppmeshGatewayRouteSpecGrpcRouteActionOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshGatewayRouteSpecGrpcRouteAction | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._target) {
+    if (this._target?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.target = this._target?.internalValue;
     }
@@ -199,15 +209,17 @@ export class AppmeshGatewayRouteSpecGrpcRouteActionOutputReference extends cdktf
 
   public set internalValue(value: AppmeshGatewayRouteSpecGrpcRouteAction | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._target.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._target.internalValue = value.target;
     }
   }
 
   // target - computed: false, optional: false, required: true
-  private _target = new AppmeshGatewayRouteSpecGrpcRouteActionTargetOutputReference(this as any, "target", true);
+  private _target = new AppmeshGatewayRouteSpecGrpcRouteActionTargetOutputReference(this, "target", true);
   public get target() {
     return this._target;
   }
@@ -221,13 +233,13 @@ export class AppmeshGatewayRouteSpecGrpcRouteActionOutputReference extends cdktf
 }
 export interface AppmeshGatewayRouteSpecGrpcRouteMatch {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#service_name AppmeshGatewayRoute#service_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#service_name AppmeshGatewayRoute#service_name}
   */
   readonly serviceName: string;
 }
 
 export function appmeshGatewayRouteSpecGrpcRouteMatchToTerraform(struct?: AppmeshGatewayRouteSpecGrpcRouteMatchOutputReference | AppmeshGatewayRouteSpecGrpcRouteMatch): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -237,19 +249,21 @@ export function appmeshGatewayRouteSpecGrpcRouteMatchToTerraform(struct?: Appmes
 }
 
 export class AppmeshGatewayRouteSpecGrpcRouteMatchOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshGatewayRouteSpecGrpcRouteMatch | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._serviceName) {
+    if (this._serviceName !== undefined) {
       hasAnyValues = true;
       internalValueResult.serviceName = this._serviceName;
     }
@@ -258,9 +272,11 @@ export class AppmeshGatewayRouteSpecGrpcRouteMatchOutputReference extends cdktf.
 
   public set internalValue(value: AppmeshGatewayRouteSpecGrpcRouteMatch | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._serviceName = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._serviceName = value.serviceName;
     }
   }
@@ -282,19 +298,19 @@ export interface AppmeshGatewayRouteSpecGrpcRoute {
   /**
   * action block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#action AppmeshGatewayRoute#action}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#action AppmeshGatewayRoute#action}
   */
   readonly action: AppmeshGatewayRouteSpecGrpcRouteAction;
   /**
   * match block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#match AppmeshGatewayRoute#match}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#match AppmeshGatewayRoute#match}
   */
   readonly match: AppmeshGatewayRouteSpecGrpcRouteMatch;
 }
 
 export function appmeshGatewayRouteSpecGrpcRouteToTerraform(struct?: AppmeshGatewayRouteSpecGrpcRouteOutputReference | AppmeshGatewayRouteSpecGrpcRoute): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -305,23 +321,25 @@ export function appmeshGatewayRouteSpecGrpcRouteToTerraform(struct?: AppmeshGate
 }
 
 export class AppmeshGatewayRouteSpecGrpcRouteOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshGatewayRouteSpecGrpcRoute | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._action) {
+    if (this._action?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.action = this._action?.internalValue;
     }
-    if (this._match) {
+    if (this._match?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.match = this._match?.internalValue;
     }
@@ -330,17 +348,19 @@ export class AppmeshGatewayRouteSpecGrpcRouteOutputReference extends cdktf.Compl
 
   public set internalValue(value: AppmeshGatewayRouteSpecGrpcRoute | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._action.internalValue = undefined;
       this._match.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._action.internalValue = value.action;
       this._match.internalValue = value.match;
     }
   }
 
   // action - computed: false, optional: false, required: true
-  private _action = new AppmeshGatewayRouteSpecGrpcRouteActionOutputReference(this as any, "action", true);
+  private _action = new AppmeshGatewayRouteSpecGrpcRouteActionOutputReference(this, "action", true);
   public get action() {
     return this._action;
   }
@@ -353,7 +373,7 @@ export class AppmeshGatewayRouteSpecGrpcRouteOutputReference extends cdktf.Compl
   }
 
   // match - computed: false, optional: false, required: true
-  private _match = new AppmeshGatewayRouteSpecGrpcRouteMatchOutputReference(this as any, "match", true);
+  private _match = new AppmeshGatewayRouteSpecGrpcRouteMatchOutputReference(this, "match", true);
   public get match() {
     return this._match;
   }
@@ -367,13 +387,13 @@ export class AppmeshGatewayRouteSpecGrpcRouteOutputReference extends cdktf.Compl
 }
 export interface AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualService {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#virtual_service_name AppmeshGatewayRoute#virtual_service_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#virtual_service_name AppmeshGatewayRoute#virtual_service_name}
   */
   readonly virtualServiceName: string;
 }
 
 export function appmeshGatewayRouteSpecHttp2RouteActionTargetVirtualServiceToTerraform(struct?: AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualServiceOutputReference | AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualService): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -383,19 +403,21 @@ export function appmeshGatewayRouteSpecHttp2RouteActionTargetVirtualServiceToTer
 }
 
 export class AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualServiceOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualService | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._virtualServiceName) {
+    if (this._virtualServiceName !== undefined) {
       hasAnyValues = true;
       internalValueResult.virtualServiceName = this._virtualServiceName;
     }
@@ -404,9 +426,11 @@ export class AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualServiceOutputRe
 
   public set internalValue(value: AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualService | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._virtualServiceName = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._virtualServiceName = value.virtualServiceName;
     }
   }
@@ -428,13 +452,13 @@ export interface AppmeshGatewayRouteSpecHttp2RouteActionTarget {
   /**
   * virtual_service block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#virtual_service AppmeshGatewayRoute#virtual_service}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#virtual_service AppmeshGatewayRoute#virtual_service}
   */
   readonly virtualService: AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualService;
 }
 
 export function appmeshGatewayRouteSpecHttp2RouteActionTargetToTerraform(struct?: AppmeshGatewayRouteSpecHttp2RouteActionTargetOutputReference | AppmeshGatewayRouteSpecHttp2RouteActionTarget): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -444,19 +468,21 @@ export function appmeshGatewayRouteSpecHttp2RouteActionTargetToTerraform(struct?
 }
 
 export class AppmeshGatewayRouteSpecHttp2RouteActionTargetOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshGatewayRouteSpecHttp2RouteActionTarget | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._virtualService) {
+    if (this._virtualService?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.virtualService = this._virtualService?.internalValue;
     }
@@ -465,15 +491,17 @@ export class AppmeshGatewayRouteSpecHttp2RouteActionTargetOutputReference extend
 
   public set internalValue(value: AppmeshGatewayRouteSpecHttp2RouteActionTarget | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._virtualService.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._virtualService.internalValue = value.virtualService;
     }
   }
 
   // virtual_service - computed: false, optional: false, required: true
-  private _virtualService = new AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualServiceOutputReference(this as any, "virtual_service", true);
+  private _virtualService = new AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualServiceOutputReference(this, "virtual_service", true);
   public get virtualService() {
     return this._virtualService;
   }
@@ -489,13 +517,13 @@ export interface AppmeshGatewayRouteSpecHttp2RouteAction {
   /**
   * target block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#target AppmeshGatewayRoute#target}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#target AppmeshGatewayRoute#target}
   */
   readonly target: AppmeshGatewayRouteSpecHttp2RouteActionTarget;
 }
 
 export function appmeshGatewayRouteSpecHttp2RouteActionToTerraform(struct?: AppmeshGatewayRouteSpecHttp2RouteActionOutputReference | AppmeshGatewayRouteSpecHttp2RouteAction): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -505,19 +533,21 @@ export function appmeshGatewayRouteSpecHttp2RouteActionToTerraform(struct?: Appm
 }
 
 export class AppmeshGatewayRouteSpecHttp2RouteActionOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshGatewayRouteSpecHttp2RouteAction | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._target) {
+    if (this._target?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.target = this._target?.internalValue;
     }
@@ -526,15 +556,17 @@ export class AppmeshGatewayRouteSpecHttp2RouteActionOutputReference extends cdkt
 
   public set internalValue(value: AppmeshGatewayRouteSpecHttp2RouteAction | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._target.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._target.internalValue = value.target;
     }
   }
 
   // target - computed: false, optional: false, required: true
-  private _target = new AppmeshGatewayRouteSpecHttp2RouteActionTargetOutputReference(this as any, "target", true);
+  private _target = new AppmeshGatewayRouteSpecHttp2RouteActionTargetOutputReference(this, "target", true);
   public get target() {
     return this._target;
   }
@@ -548,13 +580,13 @@ export class AppmeshGatewayRouteSpecHttp2RouteActionOutputReference extends cdkt
 }
 export interface AppmeshGatewayRouteSpecHttp2RouteMatch {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#prefix AppmeshGatewayRoute#prefix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#prefix AppmeshGatewayRoute#prefix}
   */
   readonly prefix: string;
 }
 
 export function appmeshGatewayRouteSpecHttp2RouteMatchToTerraform(struct?: AppmeshGatewayRouteSpecHttp2RouteMatchOutputReference | AppmeshGatewayRouteSpecHttp2RouteMatch): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -564,19 +596,21 @@ export function appmeshGatewayRouteSpecHttp2RouteMatchToTerraform(struct?: Appme
 }
 
 export class AppmeshGatewayRouteSpecHttp2RouteMatchOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshGatewayRouteSpecHttp2RouteMatch | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._prefix) {
+    if (this._prefix !== undefined) {
       hasAnyValues = true;
       internalValueResult.prefix = this._prefix;
     }
@@ -585,9 +619,11 @@ export class AppmeshGatewayRouteSpecHttp2RouteMatchOutputReference extends cdktf
 
   public set internalValue(value: AppmeshGatewayRouteSpecHttp2RouteMatch | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._prefix = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._prefix = value.prefix;
     }
   }
@@ -609,19 +645,19 @@ export interface AppmeshGatewayRouteSpecHttp2Route {
   /**
   * action block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#action AppmeshGatewayRoute#action}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#action AppmeshGatewayRoute#action}
   */
   readonly action: AppmeshGatewayRouteSpecHttp2RouteAction;
   /**
   * match block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#match AppmeshGatewayRoute#match}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#match AppmeshGatewayRoute#match}
   */
   readonly match: AppmeshGatewayRouteSpecHttp2RouteMatch;
 }
 
 export function appmeshGatewayRouteSpecHttp2RouteToTerraform(struct?: AppmeshGatewayRouteSpecHttp2RouteOutputReference | AppmeshGatewayRouteSpecHttp2Route): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -632,23 +668,25 @@ export function appmeshGatewayRouteSpecHttp2RouteToTerraform(struct?: AppmeshGat
 }
 
 export class AppmeshGatewayRouteSpecHttp2RouteOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshGatewayRouteSpecHttp2Route | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._action) {
+    if (this._action?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.action = this._action?.internalValue;
     }
-    if (this._match) {
+    if (this._match?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.match = this._match?.internalValue;
     }
@@ -657,17 +695,19 @@ export class AppmeshGatewayRouteSpecHttp2RouteOutputReference extends cdktf.Comp
 
   public set internalValue(value: AppmeshGatewayRouteSpecHttp2Route | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._action.internalValue = undefined;
       this._match.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._action.internalValue = value.action;
       this._match.internalValue = value.match;
     }
   }
 
   // action - computed: false, optional: false, required: true
-  private _action = new AppmeshGatewayRouteSpecHttp2RouteActionOutputReference(this as any, "action", true);
+  private _action = new AppmeshGatewayRouteSpecHttp2RouteActionOutputReference(this, "action", true);
   public get action() {
     return this._action;
   }
@@ -680,7 +720,7 @@ export class AppmeshGatewayRouteSpecHttp2RouteOutputReference extends cdktf.Comp
   }
 
   // match - computed: false, optional: false, required: true
-  private _match = new AppmeshGatewayRouteSpecHttp2RouteMatchOutputReference(this as any, "match", true);
+  private _match = new AppmeshGatewayRouteSpecHttp2RouteMatchOutputReference(this, "match", true);
   public get match() {
     return this._match;
   }
@@ -694,13 +734,13 @@ export class AppmeshGatewayRouteSpecHttp2RouteOutputReference extends cdktf.Comp
 }
 export interface AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualService {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#virtual_service_name AppmeshGatewayRoute#virtual_service_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#virtual_service_name AppmeshGatewayRoute#virtual_service_name}
   */
   readonly virtualServiceName: string;
 }
 
 export function appmeshGatewayRouteSpecHttpRouteActionTargetVirtualServiceToTerraform(struct?: AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualServiceOutputReference | AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualService): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -710,19 +750,21 @@ export function appmeshGatewayRouteSpecHttpRouteActionTargetVirtualServiceToTerr
 }
 
 export class AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualServiceOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualService | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._virtualServiceName) {
+    if (this._virtualServiceName !== undefined) {
       hasAnyValues = true;
       internalValueResult.virtualServiceName = this._virtualServiceName;
     }
@@ -731,9 +773,11 @@ export class AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualServiceOutputRef
 
   public set internalValue(value: AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualService | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._virtualServiceName = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._virtualServiceName = value.virtualServiceName;
     }
   }
@@ -755,13 +799,13 @@ export interface AppmeshGatewayRouteSpecHttpRouteActionTarget {
   /**
   * virtual_service block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#virtual_service AppmeshGatewayRoute#virtual_service}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#virtual_service AppmeshGatewayRoute#virtual_service}
   */
   readonly virtualService: AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualService;
 }
 
 export function appmeshGatewayRouteSpecHttpRouteActionTargetToTerraform(struct?: AppmeshGatewayRouteSpecHttpRouteActionTargetOutputReference | AppmeshGatewayRouteSpecHttpRouteActionTarget): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -771,19 +815,21 @@ export function appmeshGatewayRouteSpecHttpRouteActionTargetToTerraform(struct?:
 }
 
 export class AppmeshGatewayRouteSpecHttpRouteActionTargetOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshGatewayRouteSpecHttpRouteActionTarget | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._virtualService) {
+    if (this._virtualService?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.virtualService = this._virtualService?.internalValue;
     }
@@ -792,15 +838,17 @@ export class AppmeshGatewayRouteSpecHttpRouteActionTargetOutputReference extends
 
   public set internalValue(value: AppmeshGatewayRouteSpecHttpRouteActionTarget | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._virtualService.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._virtualService.internalValue = value.virtualService;
     }
   }
 
   // virtual_service - computed: false, optional: false, required: true
-  private _virtualService = new AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualServiceOutputReference(this as any, "virtual_service", true);
+  private _virtualService = new AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualServiceOutputReference(this, "virtual_service", true);
   public get virtualService() {
     return this._virtualService;
   }
@@ -816,13 +864,13 @@ export interface AppmeshGatewayRouteSpecHttpRouteAction {
   /**
   * target block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#target AppmeshGatewayRoute#target}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#target AppmeshGatewayRoute#target}
   */
   readonly target: AppmeshGatewayRouteSpecHttpRouteActionTarget;
 }
 
 export function appmeshGatewayRouteSpecHttpRouteActionToTerraform(struct?: AppmeshGatewayRouteSpecHttpRouteActionOutputReference | AppmeshGatewayRouteSpecHttpRouteAction): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -832,19 +880,21 @@ export function appmeshGatewayRouteSpecHttpRouteActionToTerraform(struct?: Appme
 }
 
 export class AppmeshGatewayRouteSpecHttpRouteActionOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshGatewayRouteSpecHttpRouteAction | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._target) {
+    if (this._target?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.target = this._target?.internalValue;
     }
@@ -853,15 +903,17 @@ export class AppmeshGatewayRouteSpecHttpRouteActionOutputReference extends cdktf
 
   public set internalValue(value: AppmeshGatewayRouteSpecHttpRouteAction | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._target.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._target.internalValue = value.target;
     }
   }
 
   // target - computed: false, optional: false, required: true
-  private _target = new AppmeshGatewayRouteSpecHttpRouteActionTargetOutputReference(this as any, "target", true);
+  private _target = new AppmeshGatewayRouteSpecHttpRouteActionTargetOutputReference(this, "target", true);
   public get target() {
     return this._target;
   }
@@ -875,13 +927,13 @@ export class AppmeshGatewayRouteSpecHttpRouteActionOutputReference extends cdktf
 }
 export interface AppmeshGatewayRouteSpecHttpRouteMatch {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#prefix AppmeshGatewayRoute#prefix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#prefix AppmeshGatewayRoute#prefix}
   */
   readonly prefix: string;
 }
 
 export function appmeshGatewayRouteSpecHttpRouteMatchToTerraform(struct?: AppmeshGatewayRouteSpecHttpRouteMatchOutputReference | AppmeshGatewayRouteSpecHttpRouteMatch): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -891,19 +943,21 @@ export function appmeshGatewayRouteSpecHttpRouteMatchToTerraform(struct?: Appmes
 }
 
 export class AppmeshGatewayRouteSpecHttpRouteMatchOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshGatewayRouteSpecHttpRouteMatch | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._prefix) {
+    if (this._prefix !== undefined) {
       hasAnyValues = true;
       internalValueResult.prefix = this._prefix;
     }
@@ -912,9 +966,11 @@ export class AppmeshGatewayRouteSpecHttpRouteMatchOutputReference extends cdktf.
 
   public set internalValue(value: AppmeshGatewayRouteSpecHttpRouteMatch | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._prefix = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._prefix = value.prefix;
     }
   }
@@ -936,19 +992,19 @@ export interface AppmeshGatewayRouteSpecHttpRoute {
   /**
   * action block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#action AppmeshGatewayRoute#action}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#action AppmeshGatewayRoute#action}
   */
   readonly action: AppmeshGatewayRouteSpecHttpRouteAction;
   /**
   * match block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#match AppmeshGatewayRoute#match}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#match AppmeshGatewayRoute#match}
   */
   readonly match: AppmeshGatewayRouteSpecHttpRouteMatch;
 }
 
 export function appmeshGatewayRouteSpecHttpRouteToTerraform(struct?: AppmeshGatewayRouteSpecHttpRouteOutputReference | AppmeshGatewayRouteSpecHttpRoute): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -959,23 +1015,25 @@ export function appmeshGatewayRouteSpecHttpRouteToTerraform(struct?: AppmeshGate
 }
 
 export class AppmeshGatewayRouteSpecHttpRouteOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshGatewayRouteSpecHttpRoute | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._action) {
+    if (this._action?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.action = this._action?.internalValue;
     }
-    if (this._match) {
+    if (this._match?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.match = this._match?.internalValue;
     }
@@ -984,17 +1042,19 @@ export class AppmeshGatewayRouteSpecHttpRouteOutputReference extends cdktf.Compl
 
   public set internalValue(value: AppmeshGatewayRouteSpecHttpRoute | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._action.internalValue = undefined;
       this._match.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._action.internalValue = value.action;
       this._match.internalValue = value.match;
     }
   }
 
   // action - computed: false, optional: false, required: true
-  private _action = new AppmeshGatewayRouteSpecHttpRouteActionOutputReference(this as any, "action", true);
+  private _action = new AppmeshGatewayRouteSpecHttpRouteActionOutputReference(this, "action", true);
   public get action() {
     return this._action;
   }
@@ -1007,7 +1067,7 @@ export class AppmeshGatewayRouteSpecHttpRouteOutputReference extends cdktf.Compl
   }
 
   // match - computed: false, optional: false, required: true
-  private _match = new AppmeshGatewayRouteSpecHttpRouteMatchOutputReference(this as any, "match", true);
+  private _match = new AppmeshGatewayRouteSpecHttpRouteMatchOutputReference(this, "match", true);
   public get match() {
     return this._match;
   }
@@ -1023,25 +1083,25 @@ export interface AppmeshGatewayRouteSpec {
   /**
   * grpc_route block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#grpc_route AppmeshGatewayRoute#grpc_route}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#grpc_route AppmeshGatewayRoute#grpc_route}
   */
   readonly grpcRoute?: AppmeshGatewayRouteSpecGrpcRoute;
   /**
   * http2_route block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#http2_route AppmeshGatewayRoute#http2_route}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#http2_route AppmeshGatewayRoute#http2_route}
   */
   readonly http2Route?: AppmeshGatewayRouteSpecHttp2Route;
   /**
   * http_route block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html#http_route AppmeshGatewayRoute#http_route}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route#http_route AppmeshGatewayRoute#http_route}
   */
   readonly httpRoute?: AppmeshGatewayRouteSpecHttpRoute;
 }
 
 export function appmeshGatewayRouteSpecToTerraform(struct?: AppmeshGatewayRouteSpecOutputReference | AppmeshGatewayRouteSpec): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1053,27 +1113,29 @@ export function appmeshGatewayRouteSpecToTerraform(struct?: AppmeshGatewayRouteS
 }
 
 export class AppmeshGatewayRouteSpecOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshGatewayRouteSpec | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._grpcRoute) {
+    if (this._grpcRoute?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.grpcRoute = this._grpcRoute?.internalValue;
     }
-    if (this._http2Route) {
+    if (this._http2Route?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.http2Route = this._http2Route?.internalValue;
     }
-    if (this._httpRoute) {
+    if (this._httpRoute?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.httpRoute = this._httpRoute?.internalValue;
     }
@@ -1082,11 +1144,13 @@ export class AppmeshGatewayRouteSpecOutputReference extends cdktf.ComplexObject 
 
   public set internalValue(value: AppmeshGatewayRouteSpec | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._grpcRoute.internalValue = undefined;
       this._http2Route.internalValue = undefined;
       this._httpRoute.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._grpcRoute.internalValue = value.grpcRoute;
       this._http2Route.internalValue = value.http2Route;
       this._httpRoute.internalValue = value.httpRoute;
@@ -1094,7 +1158,7 @@ export class AppmeshGatewayRouteSpecOutputReference extends cdktf.ComplexObject 
   }
 
   // grpc_route - computed: false, optional: true, required: false
-  private _grpcRoute = new AppmeshGatewayRouteSpecGrpcRouteOutputReference(this as any, "grpc_route", true);
+  private _grpcRoute = new AppmeshGatewayRouteSpecGrpcRouteOutputReference(this, "grpc_route", true);
   public get grpcRoute() {
     return this._grpcRoute;
   }
@@ -1110,7 +1174,7 @@ export class AppmeshGatewayRouteSpecOutputReference extends cdktf.ComplexObject 
   }
 
   // http2_route - computed: false, optional: true, required: false
-  private _http2Route = new AppmeshGatewayRouteSpecHttp2RouteOutputReference(this as any, "http2_route", true);
+  private _http2Route = new AppmeshGatewayRouteSpecHttp2RouteOutputReference(this, "http2_route", true);
   public get http2Route() {
     return this._http2Route;
   }
@@ -1126,7 +1190,7 @@ export class AppmeshGatewayRouteSpecOutputReference extends cdktf.ComplexObject 
   }
 
   // http_route - computed: false, optional: true, required: false
-  private _httpRoute = new AppmeshGatewayRouteSpecHttpRouteOutputReference(this as any, "http_route", true);
+  private _httpRoute = new AppmeshGatewayRouteSpecHttpRouteOutputReference(this, "http_route", true);
   public get httpRoute() {
     return this._httpRoute;
   }
@@ -1143,7 +1207,7 @@ export class AppmeshGatewayRouteSpecOutputReference extends cdktf.ComplexObject 
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html aws_appmesh_gateway_route}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route aws_appmesh_gateway_route}
 */
 export class AppmeshGatewayRoute extends cdktf.TerraformResource {
 
@@ -1157,7 +1221,7 @@ export class AppmeshGatewayRoute extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route.html aws_appmesh_gateway_route} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/appmesh_gateway_route aws_appmesh_gateway_route} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -1255,12 +1319,11 @@ export class AppmeshGatewayRoute extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -1272,12 +1335,11 @@ export class AppmeshGatewayRoute extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -1302,7 +1364,7 @@ export class AppmeshGatewayRoute extends cdktf.TerraformResource {
   }
 
   // spec - computed: false, optional: false, required: true
-  private _spec = new AppmeshGatewayRouteSpecOutputReference(this as any, "spec", true);
+  private _spec = new AppmeshGatewayRouteSpecOutputReference(this, "spec", true);
   public get spec() {
     return this._spec;
   }
@@ -1323,8 +1385,8 @@ export class AppmeshGatewayRoute extends cdktf.TerraformResource {
       mesh_name: cdktf.stringToTerraform(this._meshName),
       mesh_owner: cdktf.stringToTerraform(this._meshOwner),
       name: cdktf.stringToTerraform(this._name),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       virtual_gateway_name: cdktf.stringToTerraform(this._virtualGatewayName),
       spec: appmeshGatewayRouteSpecToTerraform(this._spec.internalValue),
     };

@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 */
 export interface ServicecatalogPortfolioShareConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio_share.html#accept_language ServicecatalogPortfolioShare#accept_language}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio_share#accept_language ServicecatalogPortfolioShare#accept_language}
   */
   readonly acceptLanguage?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio_share.html#portfolio_id ServicecatalogPortfolioShare#portfolio_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio_share#portfolio_id ServicecatalogPortfolioShare#portfolio_id}
   */
   readonly portfolioId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio_share.html#principal_id ServicecatalogPortfolioShare#principal_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio_share#principal_id ServicecatalogPortfolioShare#principal_id}
   */
   readonly principalId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio_share.html#share_tag_options ServicecatalogPortfolioShare#share_tag_options}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio_share#share_tag_options ServicecatalogPortfolioShare#share_tag_options}
   */
   readonly shareTagOptions?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio_share.html#type ServicecatalogPortfolioShare#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio_share#type ServicecatalogPortfolioShare#type}
   */
   readonly type: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio_share.html#wait_for_acceptance ServicecatalogPortfolioShare#wait_for_acceptance}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio_share#wait_for_acceptance ServicecatalogPortfolioShare#wait_for_acceptance}
   */
   readonly waitForAcceptance?: boolean | cdktf.IResolvable;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio_share.html aws_servicecatalog_portfolio_share}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio_share aws_servicecatalog_portfolio_share}
 */
 export class ServicecatalogPortfolioShare extends cdktf.TerraformResource {
 
@@ -48,7 +48,7 @@ export class ServicecatalogPortfolioShare extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio_share.html aws_servicecatalog_portfolio_share} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio_share aws_servicecatalog_portfolio_share} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -95,7 +95,7 @@ export class ServicecatalogPortfolioShare extends cdktf.TerraformResource {
 
   // accepted - computed: true, optional: false, required: false
   public get accepted() {
-    return this.getBooleanAttribute('accepted') as any;
+    return this.getBooleanAttribute('accepted');
   }
 
   // id - computed: true, optional: true, required: false
@@ -132,7 +132,7 @@ export class ServicecatalogPortfolioShare extends cdktf.TerraformResource {
   // share_tag_options - computed: false, optional: true, required: false
   private _shareTagOptions?: boolean | cdktf.IResolvable; 
   public get shareTagOptions() {
-    return this.getBooleanAttribute('share_tag_options') as any;
+    return this.getBooleanAttribute('share_tag_options');
   }
   public set shareTagOptions(value: boolean | cdktf.IResolvable) {
     this._shareTagOptions = value;
@@ -161,7 +161,7 @@ export class ServicecatalogPortfolioShare extends cdktf.TerraformResource {
   // wait_for_acceptance - computed: false, optional: true, required: false
   private _waitForAcceptance?: boolean | cdktf.IResolvable; 
   public get waitForAcceptance() {
-    return this.getBooleanAttribute('wait_for_acceptance') as any;
+    return this.getBooleanAttribute('wait_for_acceptance');
   }
   public set waitForAcceptance(value: boolean | cdktf.IResolvable) {
     this._waitForAcceptance = value;

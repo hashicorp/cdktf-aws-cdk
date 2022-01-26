@@ -8,117 +8,117 @@ import * as cdktf from 'cdktf';
 */
 export interface GlueCrawlerConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#classifiers GlueCrawler#classifiers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#classifiers GlueCrawler#classifiers}
   */
   readonly classifiers?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#configuration GlueCrawler#configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#configuration GlueCrawler#configuration}
   */
   readonly configuration?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#database_name GlueCrawler#database_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#database_name GlueCrawler#database_name}
   */
   readonly databaseName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#description GlueCrawler#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#description GlueCrawler#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#name GlueCrawler#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#name GlueCrawler#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#role GlueCrawler#role}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#role GlueCrawler#role}
   */
   readonly role: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#schedule GlueCrawler#schedule}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#schedule GlueCrawler#schedule}
   */
   readonly schedule?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#security_configuration GlueCrawler#security_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#security_configuration GlueCrawler#security_configuration}
   */
   readonly securityConfiguration?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#table_prefix GlueCrawler#table_prefix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#table_prefix GlueCrawler#table_prefix}
   */
   readonly tablePrefix?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#tags GlueCrawler#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#tags GlueCrawler#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#tags_all GlueCrawler#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#tags_all GlueCrawler#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * catalog_target block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#catalog_target GlueCrawler#catalog_target}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#catalog_target GlueCrawler#catalog_target}
   */
-  readonly catalogTarget?: GlueCrawlerCatalogTarget[];
+  readonly catalogTarget?: GlueCrawlerCatalogTarget[] | cdktf.IResolvable;
   /**
   * delta_target block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#delta_target GlueCrawler#delta_target}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#delta_target GlueCrawler#delta_target}
   */
-  readonly deltaTarget?: GlueCrawlerDeltaTarget[];
+  readonly deltaTarget?: GlueCrawlerDeltaTarget[] | cdktf.IResolvable;
   /**
   * dynamodb_target block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#dynamodb_target GlueCrawler#dynamodb_target}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#dynamodb_target GlueCrawler#dynamodb_target}
   */
-  readonly dynamodbTarget?: GlueCrawlerDynamodbTarget[];
+  readonly dynamodbTarget?: GlueCrawlerDynamodbTarget[] | cdktf.IResolvable;
   /**
   * jdbc_target block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#jdbc_target GlueCrawler#jdbc_target}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#jdbc_target GlueCrawler#jdbc_target}
   */
-  readonly jdbcTarget?: GlueCrawlerJdbcTarget[];
+  readonly jdbcTarget?: GlueCrawlerJdbcTarget[] | cdktf.IResolvable;
   /**
   * lineage_configuration block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#lineage_configuration GlueCrawler#lineage_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#lineage_configuration GlueCrawler#lineage_configuration}
   */
   readonly lineageConfiguration?: GlueCrawlerLineageConfiguration;
   /**
   * mongodb_target block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#mongodb_target GlueCrawler#mongodb_target}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#mongodb_target GlueCrawler#mongodb_target}
   */
-  readonly mongodbTarget?: GlueCrawlerMongodbTarget[];
+  readonly mongodbTarget?: GlueCrawlerMongodbTarget[] | cdktf.IResolvable;
   /**
   * recrawl_policy block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#recrawl_policy GlueCrawler#recrawl_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#recrawl_policy GlueCrawler#recrawl_policy}
   */
   readonly recrawlPolicy?: GlueCrawlerRecrawlPolicy;
   /**
   * s3_target block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#s3_target GlueCrawler#s3_target}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#s3_target GlueCrawler#s3_target}
   */
-  readonly s3Target?: GlueCrawlerS3Target[];
+  readonly s3Target?: GlueCrawlerS3Target[] | cdktf.IResolvable;
   /**
   * schema_change_policy block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#schema_change_policy GlueCrawler#schema_change_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#schema_change_policy GlueCrawler#schema_change_policy}
   */
   readonly schemaChangePolicy?: GlueCrawlerSchemaChangePolicy;
 }
 export interface GlueCrawlerCatalogTarget {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#database_name GlueCrawler#database_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#database_name GlueCrawler#database_name}
   */
   readonly databaseName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#tables GlueCrawler#tables}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#tables GlueCrawler#tables}
   */
   readonly tables: string[];
 }
 
-export function glueCrawlerCatalogTargetToTerraform(struct?: GlueCrawlerCatalogTarget): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function glueCrawlerCatalogTargetToTerraform(struct?: GlueCrawlerCatalogTarget | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -130,21 +130,21 @@ export function glueCrawlerCatalogTargetToTerraform(struct?: GlueCrawlerCatalogT
 
 export interface GlueCrawlerDeltaTarget {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#connection_name GlueCrawler#connection_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#connection_name GlueCrawler#connection_name}
   */
   readonly connectionName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#delta_tables GlueCrawler#delta_tables}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#delta_tables GlueCrawler#delta_tables}
   */
   readonly deltaTables: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#write_manifest GlueCrawler#write_manifest}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#write_manifest GlueCrawler#write_manifest}
   */
   readonly writeManifest: boolean | cdktf.IResolvable;
 }
 
-export function glueCrawlerDeltaTargetToTerraform(struct?: GlueCrawlerDeltaTarget): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function glueCrawlerDeltaTargetToTerraform(struct?: GlueCrawlerDeltaTarget | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -157,21 +157,21 @@ export function glueCrawlerDeltaTargetToTerraform(struct?: GlueCrawlerDeltaTarge
 
 export interface GlueCrawlerDynamodbTarget {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#path GlueCrawler#path}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#path GlueCrawler#path}
   */
   readonly path: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#scan_all GlueCrawler#scan_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#scan_all GlueCrawler#scan_all}
   */
   readonly scanAll?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#scan_rate GlueCrawler#scan_rate}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#scan_rate GlueCrawler#scan_rate}
   */
   readonly scanRate?: number;
 }
 
-export function glueCrawlerDynamodbTargetToTerraform(struct?: GlueCrawlerDynamodbTarget): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function glueCrawlerDynamodbTargetToTerraform(struct?: GlueCrawlerDynamodbTarget | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -184,21 +184,21 @@ export function glueCrawlerDynamodbTargetToTerraform(struct?: GlueCrawlerDynamod
 
 export interface GlueCrawlerJdbcTarget {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#connection_name GlueCrawler#connection_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#connection_name GlueCrawler#connection_name}
   */
   readonly connectionName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#exclusions GlueCrawler#exclusions}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#exclusions GlueCrawler#exclusions}
   */
   readonly exclusions?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#path GlueCrawler#path}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#path GlueCrawler#path}
   */
   readonly path: string;
 }
 
-export function glueCrawlerJdbcTargetToTerraform(struct?: GlueCrawlerJdbcTarget): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function glueCrawlerJdbcTargetToTerraform(struct?: GlueCrawlerJdbcTarget | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -211,13 +211,13 @@ export function glueCrawlerJdbcTargetToTerraform(struct?: GlueCrawlerJdbcTarget)
 
 export interface GlueCrawlerLineageConfiguration {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#crawler_lineage_settings GlueCrawler#crawler_lineage_settings}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#crawler_lineage_settings GlueCrawler#crawler_lineage_settings}
   */
   readonly crawlerLineageSettings?: string;
 }
 
 export function glueCrawlerLineageConfigurationToTerraform(struct?: GlueCrawlerLineageConfigurationOutputReference | GlueCrawlerLineageConfiguration): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -227,19 +227,21 @@ export function glueCrawlerLineageConfigurationToTerraform(struct?: GlueCrawlerL
 }
 
 export class GlueCrawlerLineageConfigurationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): GlueCrawlerLineageConfiguration | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._crawlerLineageSettings) {
+    if (this._crawlerLineageSettings !== undefined) {
       hasAnyValues = true;
       internalValueResult.crawlerLineageSettings = this._crawlerLineageSettings;
     }
@@ -248,9 +250,11 @@ export class GlueCrawlerLineageConfigurationOutputReference extends cdktf.Comple
 
   public set internalValue(value: GlueCrawlerLineageConfiguration | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._crawlerLineageSettings = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._crawlerLineageSettings = value.crawlerLineageSettings;
     }
   }
@@ -273,21 +277,21 @@ export class GlueCrawlerLineageConfigurationOutputReference extends cdktf.Comple
 }
 export interface GlueCrawlerMongodbTarget {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#connection_name GlueCrawler#connection_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#connection_name GlueCrawler#connection_name}
   */
   readonly connectionName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#path GlueCrawler#path}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#path GlueCrawler#path}
   */
   readonly path: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#scan_all GlueCrawler#scan_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#scan_all GlueCrawler#scan_all}
   */
   readonly scanAll?: boolean | cdktf.IResolvable;
 }
 
-export function glueCrawlerMongodbTargetToTerraform(struct?: GlueCrawlerMongodbTarget): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function glueCrawlerMongodbTargetToTerraform(struct?: GlueCrawlerMongodbTarget | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -300,13 +304,13 @@ export function glueCrawlerMongodbTargetToTerraform(struct?: GlueCrawlerMongodbT
 
 export interface GlueCrawlerRecrawlPolicy {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#recrawl_behavior GlueCrawler#recrawl_behavior}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#recrawl_behavior GlueCrawler#recrawl_behavior}
   */
   readonly recrawlBehavior?: string;
 }
 
 export function glueCrawlerRecrawlPolicyToTerraform(struct?: GlueCrawlerRecrawlPolicyOutputReference | GlueCrawlerRecrawlPolicy): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -316,19 +320,21 @@ export function glueCrawlerRecrawlPolicyToTerraform(struct?: GlueCrawlerRecrawlP
 }
 
 export class GlueCrawlerRecrawlPolicyOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): GlueCrawlerRecrawlPolicy | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._recrawlBehavior) {
+    if (this._recrawlBehavior !== undefined) {
       hasAnyValues = true;
       internalValueResult.recrawlBehavior = this._recrawlBehavior;
     }
@@ -337,9 +343,11 @@ export class GlueCrawlerRecrawlPolicyOutputReference extends cdktf.ComplexObject
 
   public set internalValue(value: GlueCrawlerRecrawlPolicy | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._recrawlBehavior = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._recrawlBehavior = value.recrawlBehavior;
     }
   }
@@ -362,33 +370,33 @@ export class GlueCrawlerRecrawlPolicyOutputReference extends cdktf.ComplexObject
 }
 export interface GlueCrawlerS3Target {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#connection_name GlueCrawler#connection_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#connection_name GlueCrawler#connection_name}
   */
   readonly connectionName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#dlq_event_queue_arn GlueCrawler#dlq_event_queue_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#dlq_event_queue_arn GlueCrawler#dlq_event_queue_arn}
   */
   readonly dlqEventQueueArn?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#event_queue_arn GlueCrawler#event_queue_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#event_queue_arn GlueCrawler#event_queue_arn}
   */
   readonly eventQueueArn?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#exclusions GlueCrawler#exclusions}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#exclusions GlueCrawler#exclusions}
   */
   readonly exclusions?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#path GlueCrawler#path}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#path GlueCrawler#path}
   */
   readonly path: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#sample_size GlueCrawler#sample_size}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#sample_size GlueCrawler#sample_size}
   */
   readonly sampleSize?: number;
 }
 
-export function glueCrawlerS3TargetToTerraform(struct?: GlueCrawlerS3Target): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function glueCrawlerS3TargetToTerraform(struct?: GlueCrawlerS3Target | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -404,17 +412,17 @@ export function glueCrawlerS3TargetToTerraform(struct?: GlueCrawlerS3Target): an
 
 export interface GlueCrawlerSchemaChangePolicy {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#delete_behavior GlueCrawler#delete_behavior}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#delete_behavior GlueCrawler#delete_behavior}
   */
   readonly deleteBehavior?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#update_behavior GlueCrawler#update_behavior}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler#update_behavior GlueCrawler#update_behavior}
   */
   readonly updateBehavior?: string;
 }
 
 export function glueCrawlerSchemaChangePolicyToTerraform(struct?: GlueCrawlerSchemaChangePolicyOutputReference | GlueCrawlerSchemaChangePolicy): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -425,23 +433,25 @@ export function glueCrawlerSchemaChangePolicyToTerraform(struct?: GlueCrawlerSch
 }
 
 export class GlueCrawlerSchemaChangePolicyOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): GlueCrawlerSchemaChangePolicy | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._deleteBehavior) {
+    if (this._deleteBehavior !== undefined) {
       hasAnyValues = true;
       internalValueResult.deleteBehavior = this._deleteBehavior;
     }
-    if (this._updateBehavior) {
+    if (this._updateBehavior !== undefined) {
       hasAnyValues = true;
       internalValueResult.updateBehavior = this._updateBehavior;
     }
@@ -450,10 +460,12 @@ export class GlueCrawlerSchemaChangePolicyOutputReference extends cdktf.ComplexO
 
   public set internalValue(value: GlueCrawlerSchemaChangePolicy | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._deleteBehavior = undefined;
       this._updateBehavior = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._deleteBehavior = value.deleteBehavior;
       this._updateBehavior = value.updateBehavior;
     }
@@ -493,7 +505,7 @@ export class GlueCrawlerSchemaChangePolicyOutputReference extends cdktf.ComplexO
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html aws_glue_crawler}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler aws_glue_crawler}
 */
 export class GlueCrawler extends cdktf.TerraformResource {
 
@@ -507,7 +519,7 @@ export class GlueCrawler extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html aws_glue_crawler} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler aws_glue_crawler} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -696,12 +708,11 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -713,12 +724,11 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -730,12 +740,12 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
 
   // catalog_target - computed: false, optional: true, required: false
-  private _catalogTarget?: GlueCrawlerCatalogTarget[]; 
+  private _catalogTarget?: GlueCrawlerCatalogTarget[] | cdktf.IResolvable; 
   public get catalogTarget() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('catalog_target') as any;
+    return this.interpolationForAttribute('catalog_target');
   }
-  public set catalogTarget(value: GlueCrawlerCatalogTarget[]) {
+  public set catalogTarget(value: GlueCrawlerCatalogTarget[] | cdktf.IResolvable) {
     this._catalogTarget = value;
   }
   public resetCatalogTarget() {
@@ -747,12 +757,12 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
 
   // delta_target - computed: false, optional: true, required: false
-  private _deltaTarget?: GlueCrawlerDeltaTarget[]; 
+  private _deltaTarget?: GlueCrawlerDeltaTarget[] | cdktf.IResolvable; 
   public get deltaTarget() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('delta_target') as any;
+    return this.interpolationForAttribute('delta_target');
   }
-  public set deltaTarget(value: GlueCrawlerDeltaTarget[]) {
+  public set deltaTarget(value: GlueCrawlerDeltaTarget[] | cdktf.IResolvable) {
     this._deltaTarget = value;
   }
   public resetDeltaTarget() {
@@ -764,12 +774,12 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
 
   // dynamodb_target - computed: false, optional: true, required: false
-  private _dynamodbTarget?: GlueCrawlerDynamodbTarget[]; 
+  private _dynamodbTarget?: GlueCrawlerDynamodbTarget[] | cdktf.IResolvable; 
   public get dynamodbTarget() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('dynamodb_target') as any;
+    return this.interpolationForAttribute('dynamodb_target');
   }
-  public set dynamodbTarget(value: GlueCrawlerDynamodbTarget[]) {
+  public set dynamodbTarget(value: GlueCrawlerDynamodbTarget[] | cdktf.IResolvable) {
     this._dynamodbTarget = value;
   }
   public resetDynamodbTarget() {
@@ -781,12 +791,12 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
 
   // jdbc_target - computed: false, optional: true, required: false
-  private _jdbcTarget?: GlueCrawlerJdbcTarget[]; 
+  private _jdbcTarget?: GlueCrawlerJdbcTarget[] | cdktf.IResolvable; 
   public get jdbcTarget() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('jdbc_target') as any;
+    return this.interpolationForAttribute('jdbc_target');
   }
-  public set jdbcTarget(value: GlueCrawlerJdbcTarget[]) {
+  public set jdbcTarget(value: GlueCrawlerJdbcTarget[] | cdktf.IResolvable) {
     this._jdbcTarget = value;
   }
   public resetJdbcTarget() {
@@ -798,7 +808,7 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
 
   // lineage_configuration - computed: false, optional: true, required: false
-  private _lineageConfiguration = new GlueCrawlerLineageConfigurationOutputReference(this as any, "lineage_configuration", true);
+  private _lineageConfiguration = new GlueCrawlerLineageConfigurationOutputReference(this, "lineage_configuration", true);
   public get lineageConfiguration() {
     return this._lineageConfiguration;
   }
@@ -814,12 +824,12 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
 
   // mongodb_target - computed: false, optional: true, required: false
-  private _mongodbTarget?: GlueCrawlerMongodbTarget[]; 
+  private _mongodbTarget?: GlueCrawlerMongodbTarget[] | cdktf.IResolvable; 
   public get mongodbTarget() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('mongodb_target') as any;
+    return this.interpolationForAttribute('mongodb_target');
   }
-  public set mongodbTarget(value: GlueCrawlerMongodbTarget[]) {
+  public set mongodbTarget(value: GlueCrawlerMongodbTarget[] | cdktf.IResolvable) {
     this._mongodbTarget = value;
   }
   public resetMongodbTarget() {
@@ -831,7 +841,7 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
 
   // recrawl_policy - computed: false, optional: true, required: false
-  private _recrawlPolicy = new GlueCrawlerRecrawlPolicyOutputReference(this as any, "recrawl_policy", true);
+  private _recrawlPolicy = new GlueCrawlerRecrawlPolicyOutputReference(this, "recrawl_policy", true);
   public get recrawlPolicy() {
     return this._recrawlPolicy;
   }
@@ -847,12 +857,12 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
 
   // s3_target - computed: false, optional: true, required: false
-  private _s3Target?: GlueCrawlerS3Target[]; 
+  private _s3Target?: GlueCrawlerS3Target[] | cdktf.IResolvable; 
   public get s3Target() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('s3_target') as any;
+    return this.interpolationForAttribute('s3_target');
   }
-  public set s3Target(value: GlueCrawlerS3Target[]) {
+  public set s3Target(value: GlueCrawlerS3Target[] | cdktf.IResolvable) {
     this._s3Target = value;
   }
   public resetS3Target() {
@@ -864,7 +874,7 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
 
   // schema_change_policy - computed: false, optional: true, required: false
-  private _schemaChangePolicy = new GlueCrawlerSchemaChangePolicyOutputReference(this as any, "schema_change_policy", true);
+  private _schemaChangePolicy = new GlueCrawlerSchemaChangePolicyOutputReference(this, "schema_change_policy", true);
   public get schemaChangePolicy() {
     return this._schemaChangePolicy;
   }
@@ -894,8 +904,8 @@ export class GlueCrawler extends cdktf.TerraformResource {
       schedule: cdktf.stringToTerraform(this._schedule),
       security_configuration: cdktf.stringToTerraform(this._securityConfiguration),
       table_prefix: cdktf.stringToTerraform(this._tablePrefix),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       catalog_target: cdktf.listMapper(glueCrawlerCatalogTargetToTerraform)(this._catalogTarget),
       delta_target: cdktf.listMapper(glueCrawlerDeltaTargetToTerraform)(this._deltaTarget),
       dynamodb_target: cdktf.listMapper(glueCrawlerDynamodbTargetToTerraform)(this._dynamodbTarget),

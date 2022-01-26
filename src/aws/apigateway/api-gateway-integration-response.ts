@@ -8,41 +8,41 @@ import * as cdktf from 'cdktf';
 */
 export interface ApiGatewayIntegrationResponseConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response.html#content_handling ApiGatewayIntegrationResponse#content_handling}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response#content_handling ApiGatewayIntegrationResponse#content_handling}
   */
   readonly contentHandling?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response.html#http_method ApiGatewayIntegrationResponse#http_method}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response#http_method ApiGatewayIntegrationResponse#http_method}
   */
   readonly httpMethod: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response.html#resource_id ApiGatewayIntegrationResponse#resource_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response#resource_id ApiGatewayIntegrationResponse#resource_id}
   */
   readonly resourceId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response.html#response_parameters ApiGatewayIntegrationResponse#response_parameters}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response#response_parameters ApiGatewayIntegrationResponse#response_parameters}
   */
-  readonly responseParameters?: { [key: string]: string } | cdktf.IResolvable;
+  readonly responseParameters?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response.html#response_templates ApiGatewayIntegrationResponse#response_templates}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response#response_templates ApiGatewayIntegrationResponse#response_templates}
   */
-  readonly responseTemplates?: { [key: string]: string } | cdktf.IResolvable;
+  readonly responseTemplates?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response.html#rest_api_id ApiGatewayIntegrationResponse#rest_api_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response#rest_api_id ApiGatewayIntegrationResponse#rest_api_id}
   */
   readonly restApiId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response.html#selection_pattern ApiGatewayIntegrationResponse#selection_pattern}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response#selection_pattern ApiGatewayIntegrationResponse#selection_pattern}
   */
   readonly selectionPattern?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response.html#status_code ApiGatewayIntegrationResponse#status_code}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response#status_code ApiGatewayIntegrationResponse#status_code}
   */
   readonly statusCode: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response.html aws_api_gateway_integration_response}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response aws_api_gateway_integration_response}
 */
 export class ApiGatewayIntegrationResponse extends cdktf.TerraformResource {
 
@@ -56,7 +56,7 @@ export class ApiGatewayIntegrationResponse extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response.html aws_api_gateway_integration_response} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration_response aws_api_gateway_integration_response} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -135,12 +135,11 @@ export class ApiGatewayIntegrationResponse extends cdktf.TerraformResource {
   }
 
   // response_parameters - computed: false, optional: true, required: false
-  private _responseParameters?: { [key: string]: string } | cdktf.IResolvable; 
+  private _responseParameters?: { [key: string]: string }; 
   public get responseParameters() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('response_parameters') as any;
+    return this.getStringMapAttribute('response_parameters');
   }
-  public set responseParameters(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set responseParameters(value: { [key: string]: string }) {
     this._responseParameters = value;
   }
   public resetResponseParameters() {
@@ -152,12 +151,11 @@ export class ApiGatewayIntegrationResponse extends cdktf.TerraformResource {
   }
 
   // response_templates - computed: false, optional: true, required: false
-  private _responseTemplates?: { [key: string]: string } | cdktf.IResolvable; 
+  private _responseTemplates?: { [key: string]: string }; 
   public get responseTemplates() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('response_templates') as any;
+    return this.getStringMapAttribute('response_templates');
   }
-  public set responseTemplates(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set responseTemplates(value: { [key: string]: string }) {
     this._responseTemplates = value;
   }
   public resetResponseTemplates() {
@@ -219,8 +217,8 @@ export class ApiGatewayIntegrationResponse extends cdktf.TerraformResource {
       content_handling: cdktf.stringToTerraform(this._contentHandling),
       http_method: cdktf.stringToTerraform(this._httpMethod),
       resource_id: cdktf.stringToTerraform(this._resourceId),
-      response_parameters: cdktf.hashMapper(cdktf.anyToTerraform)(this._responseParameters),
-      response_templates: cdktf.hashMapper(cdktf.anyToTerraform)(this._responseTemplates),
+      response_parameters: cdktf.hashMapper(cdktf.stringToTerraform)(this._responseParameters),
+      response_templates: cdktf.hashMapper(cdktf.stringToTerraform)(this._responseTemplates),
       rest_api_id: cdktf.stringToTerraform(this._restApiId),
       selection_pattern: cdktf.stringToTerraform(this._selectionPattern),
       status_code: cdktf.stringToTerraform(this._statusCode),

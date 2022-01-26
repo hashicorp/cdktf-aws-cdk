@@ -8,7 +8,7 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsGlueDataCatalogEncryptionSettingsConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/glue_data_catalog_encryption_settings.html#catalog_id DataAwsGlueDataCatalogEncryptionSettings#catalog_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/glue_data_catalog_encryption_settings#catalog_id DataAwsGlueDataCatalogEncryptionSettings#catalog_id}
   */
   readonly catalogId: string;
 }
@@ -21,7 +21,7 @@ export class DataAwsGlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettin
 
   // return_connection_password_encrypted - computed: true, optional: false, required: false
   public get returnConnectionPasswordEncrypted() {
-    return this.getBooleanAttribute('return_connection_password_encrypted') as any;
+    return this.getBooleanAttribute('return_connection_password_encrypted');
   }
 }
 export class DataAwsGlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest extends cdktf.ComplexComputedList {
@@ -41,18 +41,18 @@ export class DataAwsGlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettin
   // connection_password_encryption - computed: true, optional: false, required: false
   public get connectionPasswordEncryption() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('connection_password_encryption') as any;
+    return this.interpolationForAttribute('connection_password_encryption');
   }
 
   // encryption_at_rest - computed: true, optional: false, required: false
   public get encryptionAtRest() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('encryption_at_rest') as any;
+    return this.interpolationForAttribute('encryption_at_rest');
   }
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/glue_data_catalog_encryption_settings.html aws_glue_data_catalog_encryption_settings}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/glue_data_catalog_encryption_settings aws_glue_data_catalog_encryption_settings}
 */
 export class DataAwsGlueDataCatalogEncryptionSettings extends cdktf.TerraformDataSource {
 
@@ -66,7 +66,7 @@ export class DataAwsGlueDataCatalogEncryptionSettings extends cdktf.TerraformDat
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/glue_data_catalog_encryption_settings.html aws_glue_data_catalog_encryption_settings} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/glue_data_catalog_encryption_settings aws_glue_data_catalog_encryption_settings} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -105,7 +105,7 @@ export class DataAwsGlueDataCatalogEncryptionSettings extends cdktf.TerraformDat
 
   // data_catalog_encryption_settings - computed: true, optional: false, required: false
   public dataCatalogEncryptionSettings(index: string) {
-    return new DataAwsGlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettings(this, 'data_catalog_encryption_settings', index);
+    return new DataAwsGlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettings(this, 'data_catalog_encryption_settings', index, false);
   }
 
   // id - computed: true, optional: true, required: false

@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 */
 export interface AppsyncApiCacheConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_api_cache.html#api_caching_behavior AppsyncApiCache#api_caching_behavior}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_api_cache#api_caching_behavior AppsyncApiCache#api_caching_behavior}
   */
   readonly apiCachingBehavior: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_api_cache.html#api_id AppsyncApiCache#api_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_api_cache#api_id AppsyncApiCache#api_id}
   */
   readonly apiId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_api_cache.html#at_rest_encryption_enabled AppsyncApiCache#at_rest_encryption_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_api_cache#at_rest_encryption_enabled AppsyncApiCache#at_rest_encryption_enabled}
   */
   readonly atRestEncryptionEnabled?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_api_cache.html#transit_encryption_enabled AppsyncApiCache#transit_encryption_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_api_cache#transit_encryption_enabled AppsyncApiCache#transit_encryption_enabled}
   */
   readonly transitEncryptionEnabled?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_api_cache.html#ttl AppsyncApiCache#ttl}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_api_cache#ttl AppsyncApiCache#ttl}
   */
   readonly ttl: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_api_cache.html#type AppsyncApiCache#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_api_cache#type AppsyncApiCache#type}
   */
   readonly type: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/appsync_api_cache.html aws_appsync_api_cache}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/appsync_api_cache aws_appsync_api_cache}
 */
 export class AppsyncApiCache extends cdktf.TerraformResource {
 
@@ -48,7 +48,7 @@ export class AppsyncApiCache extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/appsync_api_cache.html aws_appsync_api_cache} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/appsync_api_cache aws_appsync_api_cache} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -106,7 +106,7 @@ export class AppsyncApiCache extends cdktf.TerraformResource {
   // at_rest_encryption_enabled - computed: false, optional: true, required: false
   private _atRestEncryptionEnabled?: boolean | cdktf.IResolvable; 
   public get atRestEncryptionEnabled() {
-    return this.getBooleanAttribute('at_rest_encryption_enabled') as any;
+    return this.getBooleanAttribute('at_rest_encryption_enabled');
   }
   public set atRestEncryptionEnabled(value: boolean | cdktf.IResolvable) {
     this._atRestEncryptionEnabled = value;
@@ -127,7 +127,7 @@ export class AppsyncApiCache extends cdktf.TerraformResource {
   // transit_encryption_enabled - computed: false, optional: true, required: false
   private _transitEncryptionEnabled?: boolean | cdktf.IResolvable; 
   public get transitEncryptionEnabled() {
-    return this.getBooleanAttribute('transit_encryption_enabled') as any;
+    return this.getBooleanAttribute('transit_encryption_enabled');
   }
   public set transitEncryptionEnabled(value: boolean | cdktf.IResolvable) {
     this._transitEncryptionEnabled = value;

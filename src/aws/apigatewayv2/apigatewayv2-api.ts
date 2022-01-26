@@ -8,97 +8,97 @@ import * as cdktf from 'cdktf';
 */
 export interface Apigatewayv2ApiConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#api_key_selection_expression Apigatewayv2Api#api_key_selection_expression}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#api_key_selection_expression Apigatewayv2Api#api_key_selection_expression}
   */
   readonly apiKeySelectionExpression?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#body Apigatewayv2Api#body}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#body Apigatewayv2Api#body}
   */
   readonly body?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#credentials_arn Apigatewayv2Api#credentials_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#credentials_arn Apigatewayv2Api#credentials_arn}
   */
   readonly credentialsArn?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#description Apigatewayv2Api#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#description Apigatewayv2Api#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#disable_execute_api_endpoint Apigatewayv2Api#disable_execute_api_endpoint}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#disable_execute_api_endpoint Apigatewayv2Api#disable_execute_api_endpoint}
   */
   readonly disableExecuteApiEndpoint?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#fail_on_warnings Apigatewayv2Api#fail_on_warnings}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#fail_on_warnings Apigatewayv2Api#fail_on_warnings}
   */
   readonly failOnWarnings?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#name Apigatewayv2Api#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#name Apigatewayv2Api#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#protocol_type Apigatewayv2Api#protocol_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#protocol_type Apigatewayv2Api#protocol_type}
   */
   readonly protocolType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#route_key Apigatewayv2Api#route_key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#route_key Apigatewayv2Api#route_key}
   */
   readonly routeKey?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#route_selection_expression Apigatewayv2Api#route_selection_expression}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#route_selection_expression Apigatewayv2Api#route_selection_expression}
   */
   readonly routeSelectionExpression?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#tags Apigatewayv2Api#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#tags Apigatewayv2Api#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#tags_all Apigatewayv2Api#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#tags_all Apigatewayv2Api#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#target Apigatewayv2Api#target}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#target Apigatewayv2Api#target}
   */
   readonly target?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#version Apigatewayv2Api#version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#version Apigatewayv2Api#version}
   */
   readonly version?: string;
   /**
   * cors_configuration block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#cors_configuration Apigatewayv2Api#cors_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#cors_configuration Apigatewayv2Api#cors_configuration}
   */
   readonly corsConfiguration?: Apigatewayv2ApiCorsConfiguration;
 }
 export interface Apigatewayv2ApiCorsConfiguration {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#allow_credentials Apigatewayv2Api#allow_credentials}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#allow_credentials Apigatewayv2Api#allow_credentials}
   */
   readonly allowCredentials?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#allow_headers Apigatewayv2Api#allow_headers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#allow_headers Apigatewayv2Api#allow_headers}
   */
   readonly allowHeaders?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#allow_methods Apigatewayv2Api#allow_methods}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#allow_methods Apigatewayv2Api#allow_methods}
   */
   readonly allowMethods?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#allow_origins Apigatewayv2Api#allow_origins}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#allow_origins Apigatewayv2Api#allow_origins}
   */
   readonly allowOrigins?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#expose_headers Apigatewayv2Api#expose_headers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#expose_headers Apigatewayv2Api#expose_headers}
   */
   readonly exposeHeaders?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html#max_age Apigatewayv2Api#max_age}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api#max_age Apigatewayv2Api#max_age}
   */
   readonly maxAge?: number;
 }
 
 export function apigatewayv2ApiCorsConfigurationToTerraform(struct?: Apigatewayv2ApiCorsConfigurationOutputReference | Apigatewayv2ApiCorsConfiguration): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -113,39 +113,41 @@ export function apigatewayv2ApiCorsConfigurationToTerraform(struct?: Apigatewayv
 }
 
 export class Apigatewayv2ApiCorsConfigurationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): Apigatewayv2ApiCorsConfiguration | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._allowCredentials) {
+    if (this._allowCredentials !== undefined) {
       hasAnyValues = true;
       internalValueResult.allowCredentials = this._allowCredentials;
     }
-    if (this._allowHeaders) {
+    if (this._allowHeaders !== undefined) {
       hasAnyValues = true;
       internalValueResult.allowHeaders = this._allowHeaders;
     }
-    if (this._allowMethods) {
+    if (this._allowMethods !== undefined) {
       hasAnyValues = true;
       internalValueResult.allowMethods = this._allowMethods;
     }
-    if (this._allowOrigins) {
+    if (this._allowOrigins !== undefined) {
       hasAnyValues = true;
       internalValueResult.allowOrigins = this._allowOrigins;
     }
-    if (this._exposeHeaders) {
+    if (this._exposeHeaders !== undefined) {
       hasAnyValues = true;
       internalValueResult.exposeHeaders = this._exposeHeaders;
     }
-    if (this._maxAge) {
+    if (this._maxAge !== undefined) {
       hasAnyValues = true;
       internalValueResult.maxAge = this._maxAge;
     }
@@ -154,6 +156,7 @@ export class Apigatewayv2ApiCorsConfigurationOutputReference extends cdktf.Compl
 
   public set internalValue(value: Apigatewayv2ApiCorsConfiguration | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._allowCredentials = undefined;
       this._allowHeaders = undefined;
       this._allowMethods = undefined;
@@ -162,6 +165,7 @@ export class Apigatewayv2ApiCorsConfigurationOutputReference extends cdktf.Compl
       this._maxAge = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._allowCredentials = value.allowCredentials;
       this._allowHeaders = value.allowHeaders;
       this._allowMethods = value.allowMethods;
@@ -174,7 +178,7 @@ export class Apigatewayv2ApiCorsConfigurationOutputReference extends cdktf.Compl
   // allow_credentials - computed: false, optional: true, required: false
   private _allowCredentials?: boolean | cdktf.IResolvable; 
   public get allowCredentials() {
-    return this.getBooleanAttribute('allow_credentials') as any;
+    return this.getBooleanAttribute('allow_credentials');
   }
   public set allowCredentials(value: boolean | cdktf.IResolvable) {
     this._allowCredentials = value;
@@ -190,7 +194,7 @@ export class Apigatewayv2ApiCorsConfigurationOutputReference extends cdktf.Compl
   // allow_headers - computed: false, optional: true, required: false
   private _allowHeaders?: string[]; 
   public get allowHeaders() {
-    return this.getListAttribute('allow_headers');
+    return cdktf.Fn.tolist(this.getListAttribute('allow_headers'));
   }
   public set allowHeaders(value: string[]) {
     this._allowHeaders = value;
@@ -206,7 +210,7 @@ export class Apigatewayv2ApiCorsConfigurationOutputReference extends cdktf.Compl
   // allow_methods - computed: false, optional: true, required: false
   private _allowMethods?: string[]; 
   public get allowMethods() {
-    return this.getListAttribute('allow_methods');
+    return cdktf.Fn.tolist(this.getListAttribute('allow_methods'));
   }
   public set allowMethods(value: string[]) {
     this._allowMethods = value;
@@ -222,7 +226,7 @@ export class Apigatewayv2ApiCorsConfigurationOutputReference extends cdktf.Compl
   // allow_origins - computed: false, optional: true, required: false
   private _allowOrigins?: string[]; 
   public get allowOrigins() {
-    return this.getListAttribute('allow_origins');
+    return cdktf.Fn.tolist(this.getListAttribute('allow_origins'));
   }
   public set allowOrigins(value: string[]) {
     this._allowOrigins = value;
@@ -238,7 +242,7 @@ export class Apigatewayv2ApiCorsConfigurationOutputReference extends cdktf.Compl
   // expose_headers - computed: false, optional: true, required: false
   private _exposeHeaders?: string[]; 
   public get exposeHeaders() {
-    return this.getListAttribute('expose_headers');
+    return cdktf.Fn.tolist(this.getListAttribute('expose_headers'));
   }
   public set exposeHeaders(value: string[]) {
     this._exposeHeaders = value;
@@ -269,7 +273,7 @@ export class Apigatewayv2ApiCorsConfigurationOutputReference extends cdktf.Compl
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html aws_apigatewayv2_api}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api aws_apigatewayv2_api}
 */
 export class Apigatewayv2Api extends cdktf.TerraformResource {
 
@@ -283,7 +287,7 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html aws_apigatewayv2_api} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api aws_apigatewayv2_api} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -398,7 +402,7 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   // disable_execute_api_endpoint - computed: false, optional: true, required: false
   private _disableExecuteApiEndpoint?: boolean | cdktf.IResolvable; 
   public get disableExecuteApiEndpoint() {
-    return this.getBooleanAttribute('disable_execute_api_endpoint') as any;
+    return this.getBooleanAttribute('disable_execute_api_endpoint');
   }
   public set disableExecuteApiEndpoint(value: boolean | cdktf.IResolvable) {
     this._disableExecuteApiEndpoint = value;
@@ -419,7 +423,7 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   // fail_on_warnings - computed: false, optional: true, required: false
   private _failOnWarnings?: boolean | cdktf.IResolvable; 
   public get failOnWarnings() {
-    return this.getBooleanAttribute('fail_on_warnings') as any;
+    return this.getBooleanAttribute('fail_on_warnings');
   }
   public set failOnWarnings(value: boolean | cdktf.IResolvable) {
     this._failOnWarnings = value;
@@ -496,12 +500,11 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -513,12 +516,11 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -562,7 +564,7 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
 
   // cors_configuration - computed: false, optional: true, required: false
-  private _corsConfiguration = new Apigatewayv2ApiCorsConfigurationOutputReference(this as any, "cors_configuration", true);
+  private _corsConfiguration = new Apigatewayv2ApiCorsConfigurationOutputReference(this, "cors_configuration", true);
   public get corsConfiguration() {
     return this._corsConfiguration;
   }
@@ -593,8 +595,8 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
       protocol_type: cdktf.stringToTerraform(this._protocolType),
       route_key: cdktf.stringToTerraform(this._routeKey),
       route_selection_expression: cdktf.stringToTerraform(this._routeSelectionExpression),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       target: cdktf.stringToTerraform(this._target),
       version: cdktf.stringToTerraform(this._version),
       cors_configuration: apigatewayv2ApiCorsConfigurationToTerraform(this._corsConfiguration.internalValue),

@@ -8,13 +8,13 @@ import * as cdktf from 'cdktf';
 */
 export interface BackupGlobalSettingsConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_global_settings.html#global_settings BackupGlobalSettings#global_settings}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_global_settings#global_settings BackupGlobalSettings#global_settings}
   */
-  readonly globalSettings: { [key: string]: string } | cdktf.IResolvable;
+  readonly globalSettings: { [key: string]: string };
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/backup_global_settings.html aws_backup_global_settings}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/backup_global_settings aws_backup_global_settings}
 */
 export class BackupGlobalSettings extends cdktf.TerraformResource {
 
@@ -28,7 +28,7 @@ export class BackupGlobalSettings extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/backup_global_settings.html aws_backup_global_settings} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/backup_global_settings aws_backup_global_settings} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -53,12 +53,11 @@ export class BackupGlobalSettings extends cdktf.TerraformResource {
   // ==========
 
   // global_settings - computed: false, optional: false, required: true
-  private _globalSettings?: { [key: string]: string } | cdktf.IResolvable; 
+  private _globalSettings?: { [key: string]: string }; 
   public get globalSettings() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('global_settings') as any;
+    return this.getStringMapAttribute('global_settings');
   }
-  public set globalSettings(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set globalSettings(value: { [key: string]: string }) {
     this._globalSettings = value;
   }
   // Temporarily expose input value. Use with caution.
@@ -77,7 +76,7 @@ export class BackupGlobalSettings extends cdktf.TerraformResource {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
-      global_settings: cdktf.hashMapper(cdktf.anyToTerraform)(this._globalSettings),
+      global_settings: cdktf.hashMapper(cdktf.stringToTerraform)(this._globalSettings),
     };
   }
 }

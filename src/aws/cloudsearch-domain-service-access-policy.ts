@@ -1,4 +1,4 @@
-// https://www.terraform.io/docs/providers/aws/r/cloudsearch_domain_service_access_policy.html
+// https://www.terraform.io/docs/providers/aws/r/cloudsearch_domain_service_access_policy
 // generated from terraform resource schema
 
 import { Construct } from 'constructs';
@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 
 export interface CloudsearchDomainServiceAccessPolicyConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudsearch_domain_service_access_policy.html#access_policy CloudsearchDomainServiceAccessPolicy#access_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudsearch_domain_service_access_policy#access_policy CloudsearchDomainServiceAccessPolicy#access_policy}
   */
   readonly accessPolicy: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudsearch_domain_service_access_policy.html#domain_name CloudsearchDomainServiceAccessPolicy#domain_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudsearch_domain_service_access_policy#domain_name CloudsearchDomainServiceAccessPolicy#domain_name}
   */
   readonly domainName: string;
   /**
   * timeouts block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudsearch_domain_service_access_policy.html#timeouts CloudsearchDomainServiceAccessPolicy#timeouts}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudsearch_domain_service_access_policy#timeouts CloudsearchDomainServiceAccessPolicy#timeouts}
   */
   readonly timeouts?: CloudsearchDomainServiceAccessPolicyTimeouts;
 }
 export interface CloudsearchDomainServiceAccessPolicyTimeouts {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudsearch_domain_service_access_policy.html#delete CloudsearchDomainServiceAccessPolicy#delete}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudsearch_domain_service_access_policy#delete CloudsearchDomainServiceAccessPolicy#delete}
   */
   readonly delete?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudsearch_domain_service_access_policy.html#update CloudsearchDomainServiceAccessPolicy#update}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudsearch_domain_service_access_policy#update CloudsearchDomainServiceAccessPolicy#update}
   */
   readonly update?: string;
 }
 
-export function cloudsearchDomainServiceAccessPolicyTimeoutsToTerraform(struct?: CloudsearchDomainServiceAccessPolicyTimeoutsOutputReference | CloudsearchDomainServiceAccessPolicyTimeouts): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function cloudsearchDomainServiceAccessPolicyTimeoutsToTerraform(struct?: CloudsearchDomainServiceAccessPolicyTimeoutsOutputReference | CloudsearchDomainServiceAccessPolicyTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -45,23 +45,25 @@ export function cloudsearchDomainServiceAccessPolicyTimeoutsToTerraform(struct?:
 }
 
 export class CloudsearchDomainServiceAccessPolicyTimeoutsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): CloudsearchDomainServiceAccessPolicyTimeouts | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._delete) {
+    if (this._delete !== undefined) {
       hasAnyValues = true;
       internalValueResult.delete = this._delete;
     }
-    if (this._update) {
+    if (this._update !== undefined) {
       hasAnyValues = true;
       internalValueResult.update = this._update;
     }
@@ -70,10 +72,12 @@ export class CloudsearchDomainServiceAccessPolicyTimeoutsOutputReference extends
 
   public set internalValue(value: CloudsearchDomainServiceAccessPolicyTimeouts | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._delete = undefined;
       this._update = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._delete = value.delete;
       this._update = value.update;
     }
@@ -113,7 +117,7 @@ export class CloudsearchDomainServiceAccessPolicyTimeoutsOutputReference extends
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/cloudsearch_domain_service_access_policy.html aws_cloudsearch_domain_service_access_policy}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/cloudsearch_domain_service_access_policy aws_cloudsearch_domain_service_access_policy}
 */
 export class CloudsearchDomainServiceAccessPolicy extends cdktf.TerraformResource {
 
@@ -127,7 +131,7 @@ export class CloudsearchDomainServiceAccessPolicy extends cdktf.TerraformResourc
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/cloudsearch_domain_service_access_policy.html aws_cloudsearch_domain_service_access_policy} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/cloudsearch_domain_service_access_policy aws_cloudsearch_domain_service_access_policy} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -185,7 +189,7 @@ export class CloudsearchDomainServiceAccessPolicy extends cdktf.TerraformResourc
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts = new CloudsearchDomainServiceAccessPolicyTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new CloudsearchDomainServiceAccessPolicyTimeoutsOutputReference(this, "timeouts", true);
   public get timeouts() {
     return this._timeouts;
   }

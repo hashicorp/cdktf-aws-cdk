@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 */
 export interface AppstreamDirectoryConfigConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_directory_config.html#directory_name AppstreamDirectoryConfig#directory_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_directory_config#directory_name AppstreamDirectoryConfig#directory_name}
   */
   readonly directoryName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_directory_config.html#organizational_unit_distinguished_names AppstreamDirectoryConfig#organizational_unit_distinguished_names}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_directory_config#organizational_unit_distinguished_names AppstreamDirectoryConfig#organizational_unit_distinguished_names}
   */
   readonly organizationalUnitDistinguishedNames: string[];
   /**
   * service_account_credentials block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_directory_config.html#service_account_credentials AppstreamDirectoryConfig#service_account_credentials}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_directory_config#service_account_credentials AppstreamDirectoryConfig#service_account_credentials}
   */
   readonly serviceAccountCredentials: AppstreamDirectoryConfigServiceAccountCredentials;
 }
 export interface AppstreamDirectoryConfigServiceAccountCredentials {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_directory_config.html#account_name AppstreamDirectoryConfig#account_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_directory_config#account_name AppstreamDirectoryConfig#account_name}
   */
   readonly accountName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_directory_config.html#account_password AppstreamDirectoryConfig#account_password}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_directory_config#account_password AppstreamDirectoryConfig#account_password}
   */
   readonly accountPassword: string;
 }
 
 export function appstreamDirectoryConfigServiceAccountCredentialsToTerraform(struct?: AppstreamDirectoryConfigServiceAccountCredentialsOutputReference | AppstreamDirectoryConfigServiceAccountCredentials): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -45,23 +45,25 @@ export function appstreamDirectoryConfigServiceAccountCredentialsToTerraform(str
 }
 
 export class AppstreamDirectoryConfigServiceAccountCredentialsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppstreamDirectoryConfigServiceAccountCredentials | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._accountName) {
+    if (this._accountName !== undefined) {
       hasAnyValues = true;
       internalValueResult.accountName = this._accountName;
     }
-    if (this._accountPassword) {
+    if (this._accountPassword !== undefined) {
       hasAnyValues = true;
       internalValueResult.accountPassword = this._accountPassword;
     }
@@ -70,10 +72,12 @@ export class AppstreamDirectoryConfigServiceAccountCredentialsOutputReference ex
 
   public set internalValue(value: AppstreamDirectoryConfigServiceAccountCredentials | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._accountName = undefined;
       this._accountPassword = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._accountName = value.accountName;
       this._accountPassword = value.accountPassword;
     }
@@ -107,7 +111,7 @@ export class AppstreamDirectoryConfigServiceAccountCredentialsOutputReference ex
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/appstream_directory_config.html aws_appstream_directory_config}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/appstream_directory_config aws_appstream_directory_config}
 */
 export class AppstreamDirectoryConfig extends cdktf.TerraformResource {
 
@@ -121,7 +125,7 @@ export class AppstreamDirectoryConfig extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/appstream_directory_config.html aws_appstream_directory_config} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/appstream_directory_config aws_appstream_directory_config} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -173,7 +177,7 @@ export class AppstreamDirectoryConfig extends cdktf.TerraformResource {
   // organizational_unit_distinguished_names - computed: false, optional: false, required: true
   private _organizationalUnitDistinguishedNames?: string[]; 
   public get organizationalUnitDistinguishedNames() {
-    return this.getListAttribute('organizational_unit_distinguished_names');
+    return cdktf.Fn.tolist(this.getListAttribute('organizational_unit_distinguished_names'));
   }
   public set organizationalUnitDistinguishedNames(value: string[]) {
     this._organizationalUnitDistinguishedNames = value;
@@ -184,7 +188,7 @@ export class AppstreamDirectoryConfig extends cdktf.TerraformResource {
   }
 
   // service_account_credentials - computed: false, optional: false, required: true
-  private _serviceAccountCredentials = new AppstreamDirectoryConfigServiceAccountCredentialsOutputReference(this as any, "service_account_credentials", true);
+  private _serviceAccountCredentials = new AppstreamDirectoryConfigServiceAccountCredentialsOutputReference(this, "service_account_credentials", true);
   public get serviceAccountCredentials() {
     return this._serviceAccountCredentials;
   }

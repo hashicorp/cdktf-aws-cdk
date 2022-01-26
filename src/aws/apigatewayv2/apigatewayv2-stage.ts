@@ -8,73 +8,73 @@ import * as cdktf from 'cdktf';
 */
 export interface Apigatewayv2StageConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#api_id Apigatewayv2Stage#api_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#api_id Apigatewayv2Stage#api_id}
   */
   readonly apiId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#auto_deploy Apigatewayv2Stage#auto_deploy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#auto_deploy Apigatewayv2Stage#auto_deploy}
   */
   readonly autoDeploy?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#client_certificate_id Apigatewayv2Stage#client_certificate_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#client_certificate_id Apigatewayv2Stage#client_certificate_id}
   */
   readonly clientCertificateId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#deployment_id Apigatewayv2Stage#deployment_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#deployment_id Apigatewayv2Stage#deployment_id}
   */
   readonly deploymentId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#description Apigatewayv2Stage#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#description Apigatewayv2Stage#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#name Apigatewayv2Stage#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#name Apigatewayv2Stage#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#stage_variables Apigatewayv2Stage#stage_variables}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#stage_variables Apigatewayv2Stage#stage_variables}
   */
-  readonly stageVariables?: { [key: string]: string } | cdktf.IResolvable;
+  readonly stageVariables?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#tags Apigatewayv2Stage#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#tags Apigatewayv2Stage#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#tags_all Apigatewayv2Stage#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#tags_all Apigatewayv2Stage#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * access_log_settings block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#access_log_settings Apigatewayv2Stage#access_log_settings}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#access_log_settings Apigatewayv2Stage#access_log_settings}
   */
   readonly accessLogSettings?: Apigatewayv2StageAccessLogSettings;
   /**
   * default_route_settings block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#default_route_settings Apigatewayv2Stage#default_route_settings}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#default_route_settings Apigatewayv2Stage#default_route_settings}
   */
   readonly defaultRouteSettings?: Apigatewayv2StageDefaultRouteSettings;
   /**
   * route_settings block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#route_settings Apigatewayv2Stage#route_settings}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#route_settings Apigatewayv2Stage#route_settings}
   */
-  readonly routeSettings?: Apigatewayv2StageRouteSettings[];
+  readonly routeSettings?: Apigatewayv2StageRouteSettings[] | cdktf.IResolvable;
 }
 export interface Apigatewayv2StageAccessLogSettings {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#destination_arn Apigatewayv2Stage#destination_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#destination_arn Apigatewayv2Stage#destination_arn}
   */
   readonly destinationArn: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#format Apigatewayv2Stage#format}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#format Apigatewayv2Stage#format}
   */
   readonly format: string;
 }
 
 export function apigatewayv2StageAccessLogSettingsToTerraform(struct?: Apigatewayv2StageAccessLogSettingsOutputReference | Apigatewayv2StageAccessLogSettings): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -85,23 +85,25 @@ export function apigatewayv2StageAccessLogSettingsToTerraform(struct?: Apigatewa
 }
 
 export class Apigatewayv2StageAccessLogSettingsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): Apigatewayv2StageAccessLogSettings | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._destinationArn) {
+    if (this._destinationArn !== undefined) {
       hasAnyValues = true;
       internalValueResult.destinationArn = this._destinationArn;
     }
-    if (this._format) {
+    if (this._format !== undefined) {
       hasAnyValues = true;
       internalValueResult.format = this._format;
     }
@@ -110,10 +112,12 @@ export class Apigatewayv2StageAccessLogSettingsOutputReference extends cdktf.Com
 
   public set internalValue(value: Apigatewayv2StageAccessLogSettings | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._destinationArn = undefined;
       this._format = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._destinationArn = value.destinationArn;
       this._format = value.format;
     }
@@ -147,29 +151,29 @@ export class Apigatewayv2StageAccessLogSettingsOutputReference extends cdktf.Com
 }
 export interface Apigatewayv2StageDefaultRouteSettings {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#data_trace_enabled Apigatewayv2Stage#data_trace_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#data_trace_enabled Apigatewayv2Stage#data_trace_enabled}
   */
   readonly dataTraceEnabled?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#detailed_metrics_enabled Apigatewayv2Stage#detailed_metrics_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#detailed_metrics_enabled Apigatewayv2Stage#detailed_metrics_enabled}
   */
   readonly detailedMetricsEnabled?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#logging_level Apigatewayv2Stage#logging_level}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#logging_level Apigatewayv2Stage#logging_level}
   */
   readonly loggingLevel?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#throttling_burst_limit Apigatewayv2Stage#throttling_burst_limit}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#throttling_burst_limit Apigatewayv2Stage#throttling_burst_limit}
   */
   readonly throttlingBurstLimit?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#throttling_rate_limit Apigatewayv2Stage#throttling_rate_limit}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#throttling_rate_limit Apigatewayv2Stage#throttling_rate_limit}
   */
   readonly throttlingRateLimit?: number;
 }
 
 export function apigatewayv2StageDefaultRouteSettingsToTerraform(struct?: Apigatewayv2StageDefaultRouteSettingsOutputReference | Apigatewayv2StageDefaultRouteSettings): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -183,35 +187,37 @@ export function apigatewayv2StageDefaultRouteSettingsToTerraform(struct?: Apigat
 }
 
 export class Apigatewayv2StageDefaultRouteSettingsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): Apigatewayv2StageDefaultRouteSettings | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._dataTraceEnabled) {
+    if (this._dataTraceEnabled !== undefined) {
       hasAnyValues = true;
       internalValueResult.dataTraceEnabled = this._dataTraceEnabled;
     }
-    if (this._detailedMetricsEnabled) {
+    if (this._detailedMetricsEnabled !== undefined) {
       hasAnyValues = true;
       internalValueResult.detailedMetricsEnabled = this._detailedMetricsEnabled;
     }
-    if (this._loggingLevel) {
+    if (this._loggingLevel !== undefined) {
       hasAnyValues = true;
       internalValueResult.loggingLevel = this._loggingLevel;
     }
-    if (this._throttlingBurstLimit) {
+    if (this._throttlingBurstLimit !== undefined) {
       hasAnyValues = true;
       internalValueResult.throttlingBurstLimit = this._throttlingBurstLimit;
     }
-    if (this._throttlingRateLimit) {
+    if (this._throttlingRateLimit !== undefined) {
       hasAnyValues = true;
       internalValueResult.throttlingRateLimit = this._throttlingRateLimit;
     }
@@ -220,6 +226,7 @@ export class Apigatewayv2StageDefaultRouteSettingsOutputReference extends cdktf.
 
   public set internalValue(value: Apigatewayv2StageDefaultRouteSettings | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._dataTraceEnabled = undefined;
       this._detailedMetricsEnabled = undefined;
       this._loggingLevel = undefined;
@@ -227,6 +234,7 @@ export class Apigatewayv2StageDefaultRouteSettingsOutputReference extends cdktf.
       this._throttlingRateLimit = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._dataTraceEnabled = value.dataTraceEnabled;
       this._detailedMetricsEnabled = value.detailedMetricsEnabled;
       this._loggingLevel = value.loggingLevel;
@@ -238,7 +246,7 @@ export class Apigatewayv2StageDefaultRouteSettingsOutputReference extends cdktf.
   // data_trace_enabled - computed: false, optional: true, required: false
   private _dataTraceEnabled?: boolean | cdktf.IResolvable; 
   public get dataTraceEnabled() {
-    return this.getBooleanAttribute('data_trace_enabled') as any;
+    return this.getBooleanAttribute('data_trace_enabled');
   }
   public set dataTraceEnabled(value: boolean | cdktf.IResolvable) {
     this._dataTraceEnabled = value;
@@ -254,7 +262,7 @@ export class Apigatewayv2StageDefaultRouteSettingsOutputReference extends cdktf.
   // detailed_metrics_enabled - computed: false, optional: true, required: false
   private _detailedMetricsEnabled?: boolean | cdktf.IResolvable; 
   public get detailedMetricsEnabled() {
-    return this.getBooleanAttribute('detailed_metrics_enabled') as any;
+    return this.getBooleanAttribute('detailed_metrics_enabled');
   }
   public set detailedMetricsEnabled(value: boolean | cdktf.IResolvable) {
     this._detailedMetricsEnabled = value;
@@ -317,33 +325,33 @@ export class Apigatewayv2StageDefaultRouteSettingsOutputReference extends cdktf.
 }
 export interface Apigatewayv2StageRouteSettings {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#data_trace_enabled Apigatewayv2Stage#data_trace_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#data_trace_enabled Apigatewayv2Stage#data_trace_enabled}
   */
   readonly dataTraceEnabled?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#detailed_metrics_enabled Apigatewayv2Stage#detailed_metrics_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#detailed_metrics_enabled Apigatewayv2Stage#detailed_metrics_enabled}
   */
   readonly detailedMetricsEnabled?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#logging_level Apigatewayv2Stage#logging_level}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#logging_level Apigatewayv2Stage#logging_level}
   */
   readonly loggingLevel?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#route_key Apigatewayv2Stage#route_key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#route_key Apigatewayv2Stage#route_key}
   */
   readonly routeKey: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#throttling_burst_limit Apigatewayv2Stage#throttling_burst_limit}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#throttling_burst_limit Apigatewayv2Stage#throttling_burst_limit}
   */
   readonly throttlingBurstLimit?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html#throttling_rate_limit Apigatewayv2Stage#throttling_rate_limit}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage#throttling_rate_limit Apigatewayv2Stage#throttling_rate_limit}
   */
   readonly throttlingRateLimit?: number;
 }
 
-export function apigatewayv2StageRouteSettingsToTerraform(struct?: Apigatewayv2StageRouteSettings): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function apigatewayv2StageRouteSettingsToTerraform(struct?: Apigatewayv2StageRouteSettings | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -359,7 +367,7 @@ export function apigatewayv2StageRouteSettingsToTerraform(struct?: Apigatewayv2S
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html aws_apigatewayv2_stage}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage aws_apigatewayv2_stage}
 */
 export class Apigatewayv2Stage extends cdktf.TerraformResource {
 
@@ -373,7 +381,7 @@ export class Apigatewayv2Stage extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage.html aws_apigatewayv2_stage} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_stage aws_apigatewayv2_stage} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -429,7 +437,7 @@ export class Apigatewayv2Stage extends cdktf.TerraformResource {
   // auto_deploy - computed: false, optional: true, required: false
   private _autoDeploy?: boolean | cdktf.IResolvable; 
   public get autoDeploy() {
-    return this.getBooleanAttribute('auto_deploy') as any;
+    return this.getBooleanAttribute('auto_deploy');
   }
   public set autoDeploy(value: boolean | cdktf.IResolvable) {
     this._autoDeploy = value;
@@ -519,12 +527,11 @@ export class Apigatewayv2Stage extends cdktf.TerraformResource {
   }
 
   // stage_variables - computed: false, optional: true, required: false
-  private _stageVariables?: { [key: string]: string } | cdktf.IResolvable; 
+  private _stageVariables?: { [key: string]: string }; 
   public get stageVariables() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('stage_variables') as any;
+    return this.getStringMapAttribute('stage_variables');
   }
-  public set stageVariables(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set stageVariables(value: { [key: string]: string }) {
     this._stageVariables = value;
   }
   public resetStageVariables() {
@@ -536,12 +543,11 @@ export class Apigatewayv2Stage extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -553,12 +559,11 @@ export class Apigatewayv2Stage extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -570,7 +575,7 @@ export class Apigatewayv2Stage extends cdktf.TerraformResource {
   }
 
   // access_log_settings - computed: false, optional: true, required: false
-  private _accessLogSettings = new Apigatewayv2StageAccessLogSettingsOutputReference(this as any, "access_log_settings", true);
+  private _accessLogSettings = new Apigatewayv2StageAccessLogSettingsOutputReference(this, "access_log_settings", true);
   public get accessLogSettings() {
     return this._accessLogSettings;
   }
@@ -586,7 +591,7 @@ export class Apigatewayv2Stage extends cdktf.TerraformResource {
   }
 
   // default_route_settings - computed: false, optional: true, required: false
-  private _defaultRouteSettings = new Apigatewayv2StageDefaultRouteSettingsOutputReference(this as any, "default_route_settings", true);
+  private _defaultRouteSettings = new Apigatewayv2StageDefaultRouteSettingsOutputReference(this, "default_route_settings", true);
   public get defaultRouteSettings() {
     return this._defaultRouteSettings;
   }
@@ -602,12 +607,12 @@ export class Apigatewayv2Stage extends cdktf.TerraformResource {
   }
 
   // route_settings - computed: false, optional: true, required: false
-  private _routeSettings?: Apigatewayv2StageRouteSettings[]; 
+  private _routeSettings?: Apigatewayv2StageRouteSettings[] | cdktf.IResolvable; 
   public get routeSettings() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('route_settings') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('route_settings')));
   }
-  public set routeSettings(value: Apigatewayv2StageRouteSettings[]) {
+  public set routeSettings(value: Apigatewayv2StageRouteSettings[] | cdktf.IResolvable) {
     this._routeSettings = value;
   }
   public resetRouteSettings() {
@@ -630,9 +635,9 @@ export class Apigatewayv2Stage extends cdktf.TerraformResource {
       deployment_id: cdktf.stringToTerraform(this._deploymentId),
       description: cdktf.stringToTerraform(this._description),
       name: cdktf.stringToTerraform(this._name),
-      stage_variables: cdktf.hashMapper(cdktf.anyToTerraform)(this._stageVariables),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      stage_variables: cdktf.hashMapper(cdktf.stringToTerraform)(this._stageVariables),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       access_log_settings: apigatewayv2StageAccessLogSettingsToTerraform(this._accessLogSettings.internalValue),
       default_route_settings: apigatewayv2StageDefaultRouteSettingsToTerraform(this._defaultRouteSettings.internalValue),
       route_settings: cdktf.listMapper(apigatewayv2StageRouteSettingsToTerraform)(this._routeSettings),

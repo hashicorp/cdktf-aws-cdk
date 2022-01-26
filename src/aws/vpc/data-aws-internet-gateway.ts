@@ -8,19 +8,19 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsInternetGatewayConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/internet_gateway.html#internet_gateway_id DataAwsInternetGateway#internet_gateway_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/internet_gateway#internet_gateway_id DataAwsInternetGateway#internet_gateway_id}
   */
   readonly internetGatewayId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/internet_gateway.html#tags DataAwsInternetGateway#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/internet_gateway#tags DataAwsInternetGateway#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
   * filter block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/internet_gateway.html#filter DataAwsInternetGateway#filter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/internet_gateway#filter DataAwsInternetGateway#filter}
   */
-  readonly filter?: DataAwsInternetGatewayFilter[];
+  readonly filter?: DataAwsInternetGatewayFilter[] | cdktf.IResolvable;
 }
 export class DataAwsInternetGatewayAttachments extends cdktf.ComplexComputedList {
 
@@ -36,17 +36,17 @@ export class DataAwsInternetGatewayAttachments extends cdktf.ComplexComputedList
 }
 export interface DataAwsInternetGatewayFilter {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/internet_gateway.html#name DataAwsInternetGateway#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/internet_gateway#name DataAwsInternetGateway#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/internet_gateway.html#values DataAwsInternetGateway#values}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/internet_gateway#values DataAwsInternetGateway#values}
   */
   readonly values: string[];
 }
 
-export function dataAwsInternetGatewayFilterToTerraform(struct?: DataAwsInternetGatewayFilter): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function dataAwsInternetGatewayFilterToTerraform(struct?: DataAwsInternetGatewayFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -58,7 +58,7 @@ export function dataAwsInternetGatewayFilterToTerraform(struct?: DataAwsInternet
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/internet_gateway.html aws_internet_gateway}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/internet_gateway aws_internet_gateway}
 */
 export class DataAwsInternetGateway extends cdktf.TerraformDataSource {
 
@@ -72,7 +72,7 @@ export class DataAwsInternetGateway extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/internet_gateway.html aws_internet_gateway} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/internet_gateway aws_internet_gateway} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -105,7 +105,7 @@ export class DataAwsInternetGateway extends cdktf.TerraformDataSource {
 
   // attachments - computed: true, optional: false, required: false
   public attachments(index: string) {
-    return new DataAwsInternetGatewayAttachments(this, 'attachments', index);
+    return new DataAwsInternetGatewayAttachments(this, 'attachments', index, false);
   }
 
   // id - computed: true, optional: true, required: false
@@ -135,12 +135,11 @@ export class DataAwsInternetGateway extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -152,12 +151,12 @@ export class DataAwsInternetGateway extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsInternetGatewayFilter[]; 
+  private _filter?: DataAwsInternetGatewayFilter[] | cdktf.IResolvable; 
   public get filter() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('filter') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('filter')));
   }
-  public set filter(value: DataAwsInternetGatewayFilter[]) {
+  public set filter(value: DataAwsInternetGatewayFilter[] | cdktf.IResolvable) {
     this._filter = value;
   }
   public resetFilter() {
@@ -175,7 +174,7 @@ export class DataAwsInternetGateway extends cdktf.TerraformDataSource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       internet_gateway_id: cdktf.stringToTerraform(this._internetGatewayId),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       filter: cdktf.listMapper(dataAwsInternetGatewayFilterToTerraform)(this._filter),
     };
   }

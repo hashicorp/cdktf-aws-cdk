@@ -8,21 +8,21 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsSsmParametersByPathConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ssm_parameters_by_path.html#path DataAwsSsmParametersByPath#path}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ssm_parameters_by_path#path DataAwsSsmParametersByPath#path}
   */
   readonly path: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ssm_parameters_by_path.html#recursive DataAwsSsmParametersByPath#recursive}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ssm_parameters_by_path#recursive DataAwsSsmParametersByPath#recursive}
   */
   readonly recursive?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ssm_parameters_by_path.html#with_decryption DataAwsSsmParametersByPath#with_decryption}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ssm_parameters_by_path#with_decryption DataAwsSsmParametersByPath#with_decryption}
   */
   readonly withDecryption?: boolean | cdktf.IResolvable;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/ssm_parameters_by_path.html aws_ssm_parameters_by_path}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/ssm_parameters_by_path aws_ssm_parameters_by_path}
 */
 export class DataAwsSsmParametersByPath extends cdktf.TerraformDataSource {
 
@@ -36,7 +36,7 @@ export class DataAwsSsmParametersByPath extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/ssm_parameters_by_path.html aws_ssm_parameters_by_path} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/ssm_parameters_by_path aws_ssm_parameters_by_path} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -93,7 +93,7 @@ export class DataAwsSsmParametersByPath extends cdktf.TerraformDataSource {
   // recursive - computed: false, optional: true, required: false
   private _recursive?: boolean | cdktf.IResolvable; 
   public get recursive() {
-    return this.getBooleanAttribute('recursive') as any;
+    return this.getBooleanAttribute('recursive');
   }
   public set recursive(value: boolean | cdktf.IResolvable) {
     this._recursive = value;
@@ -119,7 +119,7 @@ export class DataAwsSsmParametersByPath extends cdktf.TerraformDataSource {
   // with_decryption - computed: false, optional: true, required: false
   private _withDecryption?: boolean | cdktf.IResolvable; 
   public get withDecryption() {
-    return this.getBooleanAttribute('with_decryption') as any;
+    return this.getBooleanAttribute('with_decryption');
   }
   public set withDecryption(value: boolean | cdktf.IResolvable) {
     this._withDecryption = value;

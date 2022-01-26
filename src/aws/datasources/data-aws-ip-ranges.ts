@@ -8,21 +8,21 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsIpRangesConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ip_ranges.html#regions DataAwsIpRanges#regions}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ip_ranges#regions DataAwsIpRanges#regions}
   */
   readonly regions?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ip_ranges.html#services DataAwsIpRanges#services}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ip_ranges#services DataAwsIpRanges#services}
   */
   readonly services: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ip_ranges.html#url DataAwsIpRanges#url}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ip_ranges#url DataAwsIpRanges#url}
   */
   readonly url?: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/ip_ranges.html aws_ip_ranges}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/ip_ranges aws_ip_ranges}
 */
 export class DataAwsIpRanges extends cdktf.TerraformDataSource {
 
@@ -36,7 +36,7 @@ export class DataAwsIpRanges extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/ip_ranges.html aws_ip_ranges} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/ip_ranges aws_ip_ranges} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -85,7 +85,7 @@ export class DataAwsIpRanges extends cdktf.TerraformDataSource {
   // regions - computed: false, optional: true, required: false
   private _regions?: string[]; 
   public get regions() {
-    return this.getListAttribute('regions');
+    return cdktf.Fn.tolist(this.getListAttribute('regions'));
   }
   public set regions(value: string[]) {
     this._regions = value;
@@ -101,7 +101,7 @@ export class DataAwsIpRanges extends cdktf.TerraformDataSource {
   // services - computed: false, optional: false, required: true
   private _services?: string[]; 
   public get services() {
-    return this.getListAttribute('services');
+    return cdktf.Fn.tolist(this.getListAttribute('services'));
   }
   public set services(value: string[]) {
     this._services = value;

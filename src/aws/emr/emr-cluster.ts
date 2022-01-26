@@ -8,159 +8,159 @@ import * as cdktf from 'cdktf';
 */
 export interface EmrClusterConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#additional_info EmrCluster#additional_info}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#additional_info EmrCluster#additional_info}
   */
   readonly additionalInfo?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#applications EmrCluster#applications}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#applications EmrCluster#applications}
   */
   readonly applications?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#autoscaling_role EmrCluster#autoscaling_role}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#autoscaling_role EmrCluster#autoscaling_role}
   */
   readonly autoscalingRole?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#configurations EmrCluster#configurations}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#configurations EmrCluster#configurations}
   */
   readonly configurations?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#configurations_json EmrCluster#configurations_json}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#configurations_json EmrCluster#configurations_json}
   */
   readonly configurationsJson?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#custom_ami_id EmrCluster#custom_ami_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#custom_ami_id EmrCluster#custom_ami_id}
   */
   readonly customAmiId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#ebs_root_volume_size EmrCluster#ebs_root_volume_size}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#ebs_root_volume_size EmrCluster#ebs_root_volume_size}
   */
   readonly ebsRootVolumeSize?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#keep_job_flow_alive_when_no_steps EmrCluster#keep_job_flow_alive_when_no_steps}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#keep_job_flow_alive_when_no_steps EmrCluster#keep_job_flow_alive_when_no_steps}
   */
   readonly keepJobFlowAliveWhenNoSteps?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#log_encryption_kms_key_id EmrCluster#log_encryption_kms_key_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#log_encryption_kms_key_id EmrCluster#log_encryption_kms_key_id}
   */
   readonly logEncryptionKmsKeyId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#log_uri EmrCluster#log_uri}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#log_uri EmrCluster#log_uri}
   */
   readonly logUri?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#name EmrCluster#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#name EmrCluster#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#release_label EmrCluster#release_label}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#release_label EmrCluster#release_label}
   */
   readonly releaseLabel: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#scale_down_behavior EmrCluster#scale_down_behavior}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#scale_down_behavior EmrCluster#scale_down_behavior}
   */
   readonly scaleDownBehavior?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#security_configuration EmrCluster#security_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#security_configuration EmrCluster#security_configuration}
   */
   readonly securityConfiguration?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#service_role EmrCluster#service_role}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#service_role EmrCluster#service_role}
   */
   readonly serviceRole: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#step EmrCluster#step}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#step EmrCluster#step}
   */
-  readonly step?: EmrClusterStep[];
+  readonly step?: EmrClusterStep[] | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#step_concurrency_level EmrCluster#step_concurrency_level}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#step_concurrency_level EmrCluster#step_concurrency_level}
   */
   readonly stepConcurrencyLevel?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#tags EmrCluster#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#tags EmrCluster#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#tags_all EmrCluster#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#tags_all EmrCluster#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#termination_protection EmrCluster#termination_protection}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#termination_protection EmrCluster#termination_protection}
   */
   readonly terminationProtection?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#visible_to_all_users EmrCluster#visible_to_all_users}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#visible_to_all_users EmrCluster#visible_to_all_users}
   */
   readonly visibleToAllUsers?: boolean | cdktf.IResolvable;
   /**
   * auto_termination_policy block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#auto_termination_policy EmrCluster#auto_termination_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#auto_termination_policy EmrCluster#auto_termination_policy}
   */
   readonly autoTerminationPolicy?: EmrClusterAutoTerminationPolicy;
   /**
   * bootstrap_action block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#bootstrap_action EmrCluster#bootstrap_action}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#bootstrap_action EmrCluster#bootstrap_action}
   */
-  readonly bootstrapAction?: EmrClusterBootstrapAction[];
+  readonly bootstrapAction?: EmrClusterBootstrapAction[] | cdktf.IResolvable;
   /**
   * core_instance_fleet block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#core_instance_fleet EmrCluster#core_instance_fleet}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#core_instance_fleet EmrCluster#core_instance_fleet}
   */
   readonly coreInstanceFleet?: EmrClusterCoreInstanceFleet;
   /**
   * core_instance_group block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#core_instance_group EmrCluster#core_instance_group}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#core_instance_group EmrCluster#core_instance_group}
   */
   readonly coreInstanceGroup?: EmrClusterCoreInstanceGroup;
   /**
   * ec2_attributes block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#ec2_attributes EmrCluster#ec2_attributes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#ec2_attributes EmrCluster#ec2_attributes}
   */
   readonly ec2Attributes?: EmrClusterEc2Attributes;
   /**
   * kerberos_attributes block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#kerberos_attributes EmrCluster#kerberos_attributes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#kerberos_attributes EmrCluster#kerberos_attributes}
   */
   readonly kerberosAttributes?: EmrClusterKerberosAttributes;
   /**
   * master_instance_fleet block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#master_instance_fleet EmrCluster#master_instance_fleet}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#master_instance_fleet EmrCluster#master_instance_fleet}
   */
   readonly masterInstanceFleet?: EmrClusterMasterInstanceFleet;
   /**
   * master_instance_group block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#master_instance_group EmrCluster#master_instance_group}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#master_instance_group EmrCluster#master_instance_group}
   */
   readonly masterInstanceGroup?: EmrClusterMasterInstanceGroup;
 }
 export interface EmrClusterStepHadoopJarStep {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#args EmrCluster#args}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#args EmrCluster#args}
   */
   readonly args?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#jar EmrCluster#jar}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#jar EmrCluster#jar}
   */
   readonly jar?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#main_class EmrCluster#main_class}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#main_class EmrCluster#main_class}
   */
   readonly mainClass?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#properties EmrCluster#properties}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#properties EmrCluster#properties}
   */
-  readonly properties?: { [key: string]: string } | cdktf.IResolvable;
+  readonly properties?: { [key: string]: string };
 }
 
-export function emrClusterStepHadoopJarStepToTerraform(struct?: EmrClusterStepHadoopJarStep): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function emrClusterStepHadoopJarStepToTerraform(struct?: EmrClusterStepHadoopJarStep | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -168,27 +168,27 @@ export function emrClusterStepHadoopJarStepToTerraform(struct?: EmrClusterStepHa
     args: struct!.args === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform)(struct!.args),
     jar: struct!.jar === undefined ? null : cdktf.stringToTerraform(struct!.jar),
     main_class: struct!.mainClass === undefined ? null : cdktf.stringToTerraform(struct!.mainClass),
-    properties: struct!.properties === undefined ? null : cdktf.hashMapper(cdktf.anyToTerraform)(struct!.properties),
+    properties: struct!.properties === undefined ? null : cdktf.hashMapper(cdktf.stringToTerraform)(struct!.properties),
   }
 }
 
 export interface EmrClusterStep {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#action_on_failure EmrCluster#action_on_failure}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#action_on_failure EmrCluster#action_on_failure}
   */
   readonly actionOnFailure?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#hadoop_jar_step EmrCluster#hadoop_jar_step}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#hadoop_jar_step EmrCluster#hadoop_jar_step}
   */
-  readonly hadoopJarStep?: EmrClusterStepHadoopJarStep[];
+  readonly hadoopJarStep?: EmrClusterStepHadoopJarStep[] | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#name EmrCluster#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#name EmrCluster#name}
   */
   readonly name?: string;
 }
 
-export function emrClusterStepToTerraform(struct?: EmrClusterStep): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function emrClusterStepToTerraform(struct?: EmrClusterStep | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -201,13 +201,13 @@ export function emrClusterStepToTerraform(struct?: EmrClusterStep): any {
 
 export interface EmrClusterAutoTerminationPolicy {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#idle_timeout EmrCluster#idle_timeout}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#idle_timeout EmrCluster#idle_timeout}
   */
   readonly idleTimeout?: number;
 }
 
 export function emrClusterAutoTerminationPolicyToTerraform(struct?: EmrClusterAutoTerminationPolicyOutputReference | EmrClusterAutoTerminationPolicy): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -217,19 +217,21 @@ export function emrClusterAutoTerminationPolicyToTerraform(struct?: EmrClusterAu
 }
 
 export class EmrClusterAutoTerminationPolicyOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): EmrClusterAutoTerminationPolicy | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._idleTimeout) {
+    if (this._idleTimeout !== undefined) {
       hasAnyValues = true;
       internalValueResult.idleTimeout = this._idleTimeout;
     }
@@ -238,9 +240,11 @@ export class EmrClusterAutoTerminationPolicyOutputReference extends cdktf.Comple
 
   public set internalValue(value: EmrClusterAutoTerminationPolicy | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._idleTimeout = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._idleTimeout = value.idleTimeout;
     }
   }
@@ -263,21 +267,21 @@ export class EmrClusterAutoTerminationPolicyOutputReference extends cdktf.Comple
 }
 export interface EmrClusterBootstrapAction {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#args EmrCluster#args}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#args EmrCluster#args}
   */
   readonly args?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#name EmrCluster#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#name EmrCluster#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#path EmrCluster#path}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#path EmrCluster#path}
   */
   readonly path: string;
 }
 
-export function emrClusterBootstrapActionToTerraform(struct?: EmrClusterBootstrapAction): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function emrClusterBootstrapActionToTerraform(struct?: EmrClusterBootstrapAction | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -290,47 +294,47 @@ export function emrClusterBootstrapActionToTerraform(struct?: EmrClusterBootstra
 
 export interface EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#classification EmrCluster#classification}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#classification EmrCluster#classification}
   */
   readonly classification?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#properties EmrCluster#properties}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#properties EmrCluster#properties}
   */
-  readonly properties?: { [key: string]: string } | cdktf.IResolvable;
+  readonly properties?: { [key: string]: string };
 }
 
-export function emrClusterCoreInstanceFleetInstanceTypeConfigsConfigurationsToTerraform(struct?: EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function emrClusterCoreInstanceFleetInstanceTypeConfigsConfigurationsToTerraform(struct?: EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
     classification: cdktf.stringToTerraform(struct!.classification),
-    properties: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.properties),
+    properties: cdktf.hashMapper(cdktf.stringToTerraform)(struct!.properties),
   }
 }
 
 export interface EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#iops EmrCluster#iops}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#iops EmrCluster#iops}
   */
   readonly iops?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#size EmrCluster#size}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#size EmrCluster#size}
   */
   readonly size: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#type EmrCluster#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#type EmrCluster#type}
   */
   readonly type: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#volumes_per_instance EmrCluster#volumes_per_instance}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#volumes_per_instance EmrCluster#volumes_per_instance}
   */
   readonly volumesPerInstance?: number;
 }
 
-export function emrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfigToTerraform(struct?: EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function emrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfigToTerraform(struct?: EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -344,37 +348,37 @@ export function emrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfigToTerrafo
 
 export interface EmrClusterCoreInstanceFleetInstanceTypeConfigs {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#bid_price EmrCluster#bid_price}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#bid_price EmrCluster#bid_price}
   */
   readonly bidPrice?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#bid_price_as_percentage_of_on_demand_price EmrCluster#bid_price_as_percentage_of_on_demand_price}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#bid_price_as_percentage_of_on_demand_price EmrCluster#bid_price_as_percentage_of_on_demand_price}
   */
   readonly bidPriceAsPercentageOfOnDemandPrice?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#instance_type EmrCluster#instance_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#instance_type EmrCluster#instance_type}
   */
   readonly instanceType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#weighted_capacity EmrCluster#weighted_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#weighted_capacity EmrCluster#weighted_capacity}
   */
   readonly weightedCapacity?: number;
   /**
   * configurations block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#configurations EmrCluster#configurations}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#configurations EmrCluster#configurations}
   */
-  readonly configurations?: EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations[];
+  readonly configurations?: EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations[] | cdktf.IResolvable;
   /**
   * ebs_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#ebs_config EmrCluster#ebs_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#ebs_config EmrCluster#ebs_config}
   */
-  readonly ebsConfig?: EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig[];
+  readonly ebsConfig?: EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig[] | cdktf.IResolvable;
 }
 
-export function emrClusterCoreInstanceFleetInstanceTypeConfigsToTerraform(struct?: EmrClusterCoreInstanceFleetInstanceTypeConfigs): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function emrClusterCoreInstanceFleetInstanceTypeConfigsToTerraform(struct?: EmrClusterCoreInstanceFleetInstanceTypeConfigs | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -390,13 +394,13 @@ export function emrClusterCoreInstanceFleetInstanceTypeConfigsToTerraform(struct
 
 export interface EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#allocation_strategy EmrCluster#allocation_strategy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#allocation_strategy EmrCluster#allocation_strategy}
   */
   readonly allocationStrategy: string;
 }
 
-export function emrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecificationToTerraform(struct?: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function emrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecificationToTerraform(struct?: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -407,25 +411,25 @@ export function emrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecifica
 
 export interface EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#allocation_strategy EmrCluster#allocation_strategy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#allocation_strategy EmrCluster#allocation_strategy}
   */
   readonly allocationStrategy: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#block_duration_minutes EmrCluster#block_duration_minutes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#block_duration_minutes EmrCluster#block_duration_minutes}
   */
   readonly blockDurationMinutes?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#timeout_action EmrCluster#timeout_action}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#timeout_action EmrCluster#timeout_action}
   */
   readonly timeoutAction: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#timeout_duration_minutes EmrCluster#timeout_duration_minutes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#timeout_duration_minutes EmrCluster#timeout_duration_minutes}
   */
   readonly timeoutDurationMinutes: number;
 }
 
-export function emrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecificationToTerraform(struct?: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function emrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecificationToTerraform(struct?: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -441,19 +445,19 @@ export interface EmrClusterCoreInstanceFleetLaunchSpecifications {
   /**
   * on_demand_specification block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#on_demand_specification EmrCluster#on_demand_specification}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#on_demand_specification EmrCluster#on_demand_specification}
   */
-  readonly onDemandSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification[];
+  readonly onDemandSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification[] | cdktf.IResolvable;
   /**
   * spot_specification block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#spot_specification EmrCluster#spot_specification}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#spot_specification EmrCluster#spot_specification}
   */
-  readonly spotSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification[];
+  readonly spotSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification[] | cdktf.IResolvable;
 }
 
 export function emrClusterCoreInstanceFleetLaunchSpecificationsToTerraform(struct?: EmrClusterCoreInstanceFleetLaunchSpecificationsOutputReference | EmrClusterCoreInstanceFleetLaunchSpecifications): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -464,23 +468,25 @@ export function emrClusterCoreInstanceFleetLaunchSpecificationsToTerraform(struc
 }
 
 export class EmrClusterCoreInstanceFleetLaunchSpecificationsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): EmrClusterCoreInstanceFleetLaunchSpecifications | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._onDemandSpecification) {
+    if (this._onDemandSpecification !== undefined) {
       hasAnyValues = true;
       internalValueResult.onDemandSpecification = this._onDemandSpecification;
     }
-    if (this._spotSpecification) {
+    if (this._spotSpecification !== undefined) {
       hasAnyValues = true;
       internalValueResult.spotSpecification = this._spotSpecification;
     }
@@ -489,22 +495,24 @@ export class EmrClusterCoreInstanceFleetLaunchSpecificationsOutputReference exte
 
   public set internalValue(value: EmrClusterCoreInstanceFleetLaunchSpecifications | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._onDemandSpecification = undefined;
       this._spotSpecification = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._onDemandSpecification = value.onDemandSpecification;
       this._spotSpecification = value.spotSpecification;
     }
   }
 
   // on_demand_specification - computed: false, optional: true, required: false
-  private _onDemandSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification[]; 
+  private _onDemandSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification[] | cdktf.IResolvable; 
   public get onDemandSpecification() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('on_demand_specification') as any;
+    return this.interpolationForAttribute('on_demand_specification');
   }
-  public set onDemandSpecification(value: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification[]) {
+  public set onDemandSpecification(value: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification[] | cdktf.IResolvable) {
     this._onDemandSpecification = value;
   }
   public resetOnDemandSpecification() {
@@ -516,12 +524,12 @@ export class EmrClusterCoreInstanceFleetLaunchSpecificationsOutputReference exte
   }
 
   // spot_specification - computed: false, optional: true, required: false
-  private _spotSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification[]; 
+  private _spotSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification[] | cdktf.IResolvable; 
   public get spotSpecification() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('spot_specification') as any;
+    return this.interpolationForAttribute('spot_specification');
   }
-  public set spotSpecification(value: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification[]) {
+  public set spotSpecification(value: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification[] | cdktf.IResolvable) {
     this._spotSpecification = value;
   }
   public resetSpotSpecification() {
@@ -534,33 +542,33 @@ export class EmrClusterCoreInstanceFleetLaunchSpecificationsOutputReference exte
 }
 export interface EmrClusterCoreInstanceFleet {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#name EmrCluster#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#name EmrCluster#name}
   */
   readonly name?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#target_on_demand_capacity EmrCluster#target_on_demand_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#target_on_demand_capacity EmrCluster#target_on_demand_capacity}
   */
   readonly targetOnDemandCapacity?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#target_spot_capacity EmrCluster#target_spot_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#target_spot_capacity EmrCluster#target_spot_capacity}
   */
   readonly targetSpotCapacity?: number;
   /**
   * instance_type_configs block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#instance_type_configs EmrCluster#instance_type_configs}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#instance_type_configs EmrCluster#instance_type_configs}
   */
-  readonly instanceTypeConfigs?: EmrClusterCoreInstanceFleetInstanceTypeConfigs[];
+  readonly instanceTypeConfigs?: EmrClusterCoreInstanceFleetInstanceTypeConfigs[] | cdktf.IResolvable;
   /**
   * launch_specifications block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#launch_specifications EmrCluster#launch_specifications}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#launch_specifications EmrCluster#launch_specifications}
   */
   readonly launchSpecifications?: EmrClusterCoreInstanceFleetLaunchSpecifications;
 }
 
 export function emrClusterCoreInstanceFleetToTerraform(struct?: EmrClusterCoreInstanceFleetOutputReference | EmrClusterCoreInstanceFleet): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -574,35 +582,37 @@ export function emrClusterCoreInstanceFleetToTerraform(struct?: EmrClusterCoreIn
 }
 
 export class EmrClusterCoreInstanceFleetOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): EmrClusterCoreInstanceFleet | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._name) {
+    if (this._name !== undefined) {
       hasAnyValues = true;
       internalValueResult.name = this._name;
     }
-    if (this._targetOnDemandCapacity) {
+    if (this._targetOnDemandCapacity !== undefined) {
       hasAnyValues = true;
       internalValueResult.targetOnDemandCapacity = this._targetOnDemandCapacity;
     }
-    if (this._targetSpotCapacity) {
+    if (this._targetSpotCapacity !== undefined) {
       hasAnyValues = true;
       internalValueResult.targetSpotCapacity = this._targetSpotCapacity;
     }
-    if (this._instanceTypeConfigs) {
+    if (this._instanceTypeConfigs !== undefined) {
       hasAnyValues = true;
       internalValueResult.instanceTypeConfigs = this._instanceTypeConfigs;
     }
-    if (this._launchSpecifications) {
+    if (this._launchSpecifications?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.launchSpecifications = this._launchSpecifications?.internalValue;
     }
@@ -611,6 +621,7 @@ export class EmrClusterCoreInstanceFleetOutputReference extends cdktf.ComplexObj
 
   public set internalValue(value: EmrClusterCoreInstanceFleet | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._name = undefined;
       this._targetOnDemandCapacity = undefined;
       this._targetSpotCapacity = undefined;
@@ -618,12 +629,18 @@ export class EmrClusterCoreInstanceFleetOutputReference extends cdktf.ComplexObj
       this._launchSpecifications.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._name = value.name;
       this._targetOnDemandCapacity = value.targetOnDemandCapacity;
       this._targetSpotCapacity = value.targetSpotCapacity;
       this._instanceTypeConfigs = value.instanceTypeConfigs;
       this._launchSpecifications.internalValue = value.launchSpecifications;
     }
+  }
+
+  // id - computed: true, optional: false, required: false
+  public get id() {
+    return this.getStringAttribute('id');
   }
 
   // name - computed: false, optional: true, required: false
@@ -640,6 +657,16 @@ export class EmrClusterCoreInstanceFleetOutputReference extends cdktf.ComplexObj
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
     return this._name;
+  }
+
+  // provisioned_on_demand_capacity - computed: true, optional: false, required: false
+  public get provisionedOnDemandCapacity() {
+    return this.getNumberAttribute('provisioned_on_demand_capacity');
+  }
+
+  // provisioned_spot_capacity - computed: true, optional: false, required: false
+  public get provisionedSpotCapacity() {
+    return this.getNumberAttribute('provisioned_spot_capacity');
   }
 
   // target_on_demand_capacity - computed: false, optional: true, required: false
@@ -675,12 +702,12 @@ export class EmrClusterCoreInstanceFleetOutputReference extends cdktf.ComplexObj
   }
 
   // instance_type_configs - computed: false, optional: true, required: false
-  private _instanceTypeConfigs?: EmrClusterCoreInstanceFleetInstanceTypeConfigs[]; 
+  private _instanceTypeConfigs?: EmrClusterCoreInstanceFleetInstanceTypeConfigs[] | cdktf.IResolvable; 
   public get instanceTypeConfigs() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('instance_type_configs') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('instance_type_configs')));
   }
-  public set instanceTypeConfigs(value: EmrClusterCoreInstanceFleetInstanceTypeConfigs[]) {
+  public set instanceTypeConfigs(value: EmrClusterCoreInstanceFleetInstanceTypeConfigs[] | cdktf.IResolvable) {
     this._instanceTypeConfigs = value;
   }
   public resetInstanceTypeConfigs() {
@@ -692,7 +719,7 @@ export class EmrClusterCoreInstanceFleetOutputReference extends cdktf.ComplexObj
   }
 
   // launch_specifications - computed: false, optional: true, required: false
-  private _launchSpecifications = new EmrClusterCoreInstanceFleetLaunchSpecificationsOutputReference(this as any, "launch_specifications", true);
+  private _launchSpecifications = new EmrClusterCoreInstanceFleetLaunchSpecificationsOutputReference(this, "launch_specifications", true);
   public get launchSpecifications() {
     return this._launchSpecifications;
   }
@@ -709,25 +736,25 @@ export class EmrClusterCoreInstanceFleetOutputReference extends cdktf.ComplexObj
 }
 export interface EmrClusterCoreInstanceGroupEbsConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#iops EmrCluster#iops}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#iops EmrCluster#iops}
   */
   readonly iops?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#size EmrCluster#size}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#size EmrCluster#size}
   */
   readonly size: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#type EmrCluster#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#type EmrCluster#type}
   */
   readonly type: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#volumes_per_instance EmrCluster#volumes_per_instance}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#volumes_per_instance EmrCluster#volumes_per_instance}
   */
   readonly volumesPerInstance?: number;
 }
 
-export function emrClusterCoreInstanceGroupEbsConfigToTerraform(struct?: EmrClusterCoreInstanceGroupEbsConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function emrClusterCoreInstanceGroupEbsConfigToTerraform(struct?: EmrClusterCoreInstanceGroupEbsConfig | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -741,35 +768,35 @@ export function emrClusterCoreInstanceGroupEbsConfigToTerraform(struct?: EmrClus
 
 export interface EmrClusterCoreInstanceGroup {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#autoscaling_policy EmrCluster#autoscaling_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#autoscaling_policy EmrCluster#autoscaling_policy}
   */
   readonly autoscalingPolicy?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#bid_price EmrCluster#bid_price}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#bid_price EmrCluster#bid_price}
   */
   readonly bidPrice?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#instance_count EmrCluster#instance_count}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#instance_count EmrCluster#instance_count}
   */
   readonly instanceCount?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#instance_type EmrCluster#instance_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#instance_type EmrCluster#instance_type}
   */
   readonly instanceType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#name EmrCluster#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#name EmrCluster#name}
   */
   readonly name?: string;
   /**
   * ebs_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#ebs_config EmrCluster#ebs_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#ebs_config EmrCluster#ebs_config}
   */
-  readonly ebsConfig?: EmrClusterCoreInstanceGroupEbsConfig[];
+  readonly ebsConfig?: EmrClusterCoreInstanceGroupEbsConfig[] | cdktf.IResolvable;
 }
 
 export function emrClusterCoreInstanceGroupToTerraform(struct?: EmrClusterCoreInstanceGroupOutputReference | EmrClusterCoreInstanceGroup): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -784,39 +811,41 @@ export function emrClusterCoreInstanceGroupToTerraform(struct?: EmrClusterCoreIn
 }
 
 export class EmrClusterCoreInstanceGroupOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): EmrClusterCoreInstanceGroup | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._autoscalingPolicy) {
+    if (this._autoscalingPolicy !== undefined) {
       hasAnyValues = true;
       internalValueResult.autoscalingPolicy = this._autoscalingPolicy;
     }
-    if (this._bidPrice) {
+    if (this._bidPrice !== undefined) {
       hasAnyValues = true;
       internalValueResult.bidPrice = this._bidPrice;
     }
-    if (this._instanceCount) {
+    if (this._instanceCount !== undefined) {
       hasAnyValues = true;
       internalValueResult.instanceCount = this._instanceCount;
     }
-    if (this._instanceType) {
+    if (this._instanceType !== undefined) {
       hasAnyValues = true;
       internalValueResult.instanceType = this._instanceType;
     }
-    if (this._name) {
+    if (this._name !== undefined) {
       hasAnyValues = true;
       internalValueResult.name = this._name;
     }
-    if (this._ebsConfig) {
+    if (this._ebsConfig !== undefined) {
       hasAnyValues = true;
       internalValueResult.ebsConfig = this._ebsConfig;
     }
@@ -825,6 +854,7 @@ export class EmrClusterCoreInstanceGroupOutputReference extends cdktf.ComplexObj
 
   public set internalValue(value: EmrClusterCoreInstanceGroup | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._autoscalingPolicy = undefined;
       this._bidPrice = undefined;
       this._instanceCount = undefined;
@@ -833,6 +863,7 @@ export class EmrClusterCoreInstanceGroupOutputReference extends cdktf.ComplexObj
       this._ebsConfig = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._autoscalingPolicy = value.autoscalingPolicy;
       this._bidPrice = value.bidPrice;
       this._instanceCount = value.instanceCount;
@@ -872,6 +903,11 @@ export class EmrClusterCoreInstanceGroupOutputReference extends cdktf.ComplexObj
   // Temporarily expose input value. Use with caution.
   public get bidPriceInput() {
     return this._bidPrice;
+  }
+
+  // id - computed: true, optional: false, required: false
+  public get id() {
+    return this.getStringAttribute('id');
   }
 
   // instance_count - computed: false, optional: true, required: false
@@ -920,12 +956,12 @@ export class EmrClusterCoreInstanceGroupOutputReference extends cdktf.ComplexObj
   }
 
   // ebs_config - computed: false, optional: true, required: false
-  private _ebsConfig?: EmrClusterCoreInstanceGroupEbsConfig[]; 
+  private _ebsConfig?: EmrClusterCoreInstanceGroupEbsConfig[] | cdktf.IResolvable; 
   public get ebsConfig() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('ebs_config') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('ebs_config')));
   }
-  public set ebsConfig(value: EmrClusterCoreInstanceGroupEbsConfig[]) {
+  public set ebsConfig(value: EmrClusterCoreInstanceGroupEbsConfig[] | cdktf.IResolvable) {
     this._ebsConfig = value;
   }
   public resetEbsConfig() {
@@ -938,45 +974,45 @@ export class EmrClusterCoreInstanceGroupOutputReference extends cdktf.ComplexObj
 }
 export interface EmrClusterEc2Attributes {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#additional_master_security_groups EmrCluster#additional_master_security_groups}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#additional_master_security_groups EmrCluster#additional_master_security_groups}
   */
   readonly additionalMasterSecurityGroups?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#additional_slave_security_groups EmrCluster#additional_slave_security_groups}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#additional_slave_security_groups EmrCluster#additional_slave_security_groups}
   */
   readonly additionalSlaveSecurityGroups?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#emr_managed_master_security_group EmrCluster#emr_managed_master_security_group}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#emr_managed_master_security_group EmrCluster#emr_managed_master_security_group}
   */
   readonly emrManagedMasterSecurityGroup?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#emr_managed_slave_security_group EmrCluster#emr_managed_slave_security_group}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#emr_managed_slave_security_group EmrCluster#emr_managed_slave_security_group}
   */
   readonly emrManagedSlaveSecurityGroup?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#instance_profile EmrCluster#instance_profile}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#instance_profile EmrCluster#instance_profile}
   */
   readonly instanceProfile: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#key_name EmrCluster#key_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#key_name EmrCluster#key_name}
   */
   readonly keyName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#service_access_security_group EmrCluster#service_access_security_group}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#service_access_security_group EmrCluster#service_access_security_group}
   */
   readonly serviceAccessSecurityGroup?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#subnet_id EmrCluster#subnet_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#subnet_id EmrCluster#subnet_id}
   */
   readonly subnetId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#subnet_ids EmrCluster#subnet_ids}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#subnet_ids EmrCluster#subnet_ids}
   */
   readonly subnetIds?: string[];
 }
 
 export function emrClusterEc2AttributesToTerraform(struct?: EmrClusterEc2AttributesOutputReference | EmrClusterEc2Attributes): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -994,51 +1030,53 @@ export function emrClusterEc2AttributesToTerraform(struct?: EmrClusterEc2Attribu
 }
 
 export class EmrClusterEc2AttributesOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): EmrClusterEc2Attributes | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._additionalMasterSecurityGroups) {
+    if (this._additionalMasterSecurityGroups !== undefined) {
       hasAnyValues = true;
       internalValueResult.additionalMasterSecurityGroups = this._additionalMasterSecurityGroups;
     }
-    if (this._additionalSlaveSecurityGroups) {
+    if (this._additionalSlaveSecurityGroups !== undefined) {
       hasAnyValues = true;
       internalValueResult.additionalSlaveSecurityGroups = this._additionalSlaveSecurityGroups;
     }
-    if (this._emrManagedMasterSecurityGroup) {
+    if (this._emrManagedMasterSecurityGroup !== undefined) {
       hasAnyValues = true;
       internalValueResult.emrManagedMasterSecurityGroup = this._emrManagedMasterSecurityGroup;
     }
-    if (this._emrManagedSlaveSecurityGroup) {
+    if (this._emrManagedSlaveSecurityGroup !== undefined) {
       hasAnyValues = true;
       internalValueResult.emrManagedSlaveSecurityGroup = this._emrManagedSlaveSecurityGroup;
     }
-    if (this._instanceProfile) {
+    if (this._instanceProfile !== undefined) {
       hasAnyValues = true;
       internalValueResult.instanceProfile = this._instanceProfile;
     }
-    if (this._keyName) {
+    if (this._keyName !== undefined) {
       hasAnyValues = true;
       internalValueResult.keyName = this._keyName;
     }
-    if (this._serviceAccessSecurityGroup) {
+    if (this._serviceAccessSecurityGroup !== undefined) {
       hasAnyValues = true;
       internalValueResult.serviceAccessSecurityGroup = this._serviceAccessSecurityGroup;
     }
-    if (this._subnetId) {
+    if (this._subnetId !== undefined) {
       hasAnyValues = true;
       internalValueResult.subnetId = this._subnetId;
     }
-    if (this._subnetIds) {
+    if (this._subnetIds !== undefined) {
       hasAnyValues = true;
       internalValueResult.subnetIds = this._subnetIds;
     }
@@ -1047,6 +1085,7 @@ export class EmrClusterEc2AttributesOutputReference extends cdktf.ComplexObject 
 
   public set internalValue(value: EmrClusterEc2Attributes | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._additionalMasterSecurityGroups = undefined;
       this._additionalSlaveSecurityGroups = undefined;
       this._emrManagedMasterSecurityGroup = undefined;
@@ -1058,6 +1097,7 @@ export class EmrClusterEc2AttributesOutputReference extends cdktf.ComplexObject 
       this._subnetIds = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._additionalMasterSecurityGroups = value.additionalMasterSecurityGroups;
       this._additionalSlaveSecurityGroups = value.additionalSlaveSecurityGroups;
       this._emrManagedMasterSecurityGroup = value.emrManagedMasterSecurityGroup;
@@ -1198,7 +1238,7 @@ export class EmrClusterEc2AttributesOutputReference extends cdktf.ComplexObject 
   // subnet_ids - computed: true, optional: true, required: false
   private _subnetIds?: string[]; 
   public get subnetIds() {
-    return this.getListAttribute('subnet_ids');
+    return cdktf.Fn.tolist(this.getListAttribute('subnet_ids'));
   }
   public set subnetIds(value: string[]) {
     this._subnetIds = value;
@@ -1213,29 +1253,29 @@ export class EmrClusterEc2AttributesOutputReference extends cdktf.ComplexObject 
 }
 export interface EmrClusterKerberosAttributes {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#ad_domain_join_password EmrCluster#ad_domain_join_password}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#ad_domain_join_password EmrCluster#ad_domain_join_password}
   */
   readonly adDomainJoinPassword?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#ad_domain_join_user EmrCluster#ad_domain_join_user}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#ad_domain_join_user EmrCluster#ad_domain_join_user}
   */
   readonly adDomainJoinUser?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#cross_realm_trust_principal_password EmrCluster#cross_realm_trust_principal_password}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#cross_realm_trust_principal_password EmrCluster#cross_realm_trust_principal_password}
   */
   readonly crossRealmTrustPrincipalPassword?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#kdc_admin_password EmrCluster#kdc_admin_password}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#kdc_admin_password EmrCluster#kdc_admin_password}
   */
   readonly kdcAdminPassword: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#realm EmrCluster#realm}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#realm EmrCluster#realm}
   */
   readonly realm: string;
 }
 
 export function emrClusterKerberosAttributesToTerraform(struct?: EmrClusterKerberosAttributesOutputReference | EmrClusterKerberosAttributes): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1249,35 +1289,37 @@ export function emrClusterKerberosAttributesToTerraform(struct?: EmrClusterKerbe
 }
 
 export class EmrClusterKerberosAttributesOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): EmrClusterKerberosAttributes | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._adDomainJoinPassword) {
+    if (this._adDomainJoinPassword !== undefined) {
       hasAnyValues = true;
       internalValueResult.adDomainJoinPassword = this._adDomainJoinPassword;
     }
-    if (this._adDomainJoinUser) {
+    if (this._adDomainJoinUser !== undefined) {
       hasAnyValues = true;
       internalValueResult.adDomainJoinUser = this._adDomainJoinUser;
     }
-    if (this._crossRealmTrustPrincipalPassword) {
+    if (this._crossRealmTrustPrincipalPassword !== undefined) {
       hasAnyValues = true;
       internalValueResult.crossRealmTrustPrincipalPassword = this._crossRealmTrustPrincipalPassword;
     }
-    if (this._kdcAdminPassword) {
+    if (this._kdcAdminPassword !== undefined) {
       hasAnyValues = true;
       internalValueResult.kdcAdminPassword = this._kdcAdminPassword;
     }
-    if (this._realm) {
+    if (this._realm !== undefined) {
       hasAnyValues = true;
       internalValueResult.realm = this._realm;
     }
@@ -1286,6 +1328,7 @@ export class EmrClusterKerberosAttributesOutputReference extends cdktf.ComplexOb
 
   public set internalValue(value: EmrClusterKerberosAttributes | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._adDomainJoinPassword = undefined;
       this._adDomainJoinUser = undefined;
       this._crossRealmTrustPrincipalPassword = undefined;
@@ -1293,6 +1336,7 @@ export class EmrClusterKerberosAttributesOutputReference extends cdktf.ComplexOb
       this._realm = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._adDomainJoinPassword = value.adDomainJoinPassword;
       this._adDomainJoinUser = value.adDomainJoinUser;
       this._crossRealmTrustPrincipalPassword = value.crossRealmTrustPrincipalPassword;
@@ -1377,47 +1421,47 @@ export class EmrClusterKerberosAttributesOutputReference extends cdktf.ComplexOb
 }
 export interface EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#classification EmrCluster#classification}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#classification EmrCluster#classification}
   */
   readonly classification?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#properties EmrCluster#properties}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#properties EmrCluster#properties}
   */
-  readonly properties?: { [key: string]: string } | cdktf.IResolvable;
+  readonly properties?: { [key: string]: string };
 }
 
-export function emrClusterMasterInstanceFleetInstanceTypeConfigsConfigurationsToTerraform(struct?: EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function emrClusterMasterInstanceFleetInstanceTypeConfigsConfigurationsToTerraform(struct?: EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
     classification: cdktf.stringToTerraform(struct!.classification),
-    properties: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.properties),
+    properties: cdktf.hashMapper(cdktf.stringToTerraform)(struct!.properties),
   }
 }
 
 export interface EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#iops EmrCluster#iops}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#iops EmrCluster#iops}
   */
   readonly iops?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#size EmrCluster#size}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#size EmrCluster#size}
   */
   readonly size: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#type EmrCluster#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#type EmrCluster#type}
   */
   readonly type: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#volumes_per_instance EmrCluster#volumes_per_instance}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#volumes_per_instance EmrCluster#volumes_per_instance}
   */
   readonly volumesPerInstance?: number;
 }
 
-export function emrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfigToTerraform(struct?: EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function emrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfigToTerraform(struct?: EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1431,37 +1475,37 @@ export function emrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfigToTerra
 
 export interface EmrClusterMasterInstanceFleetInstanceTypeConfigs {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#bid_price EmrCluster#bid_price}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#bid_price EmrCluster#bid_price}
   */
   readonly bidPrice?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#bid_price_as_percentage_of_on_demand_price EmrCluster#bid_price_as_percentage_of_on_demand_price}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#bid_price_as_percentage_of_on_demand_price EmrCluster#bid_price_as_percentage_of_on_demand_price}
   */
   readonly bidPriceAsPercentageOfOnDemandPrice?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#instance_type EmrCluster#instance_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#instance_type EmrCluster#instance_type}
   */
   readonly instanceType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#weighted_capacity EmrCluster#weighted_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#weighted_capacity EmrCluster#weighted_capacity}
   */
   readonly weightedCapacity?: number;
   /**
   * configurations block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#configurations EmrCluster#configurations}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#configurations EmrCluster#configurations}
   */
-  readonly configurations?: EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations[];
+  readonly configurations?: EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations[] | cdktf.IResolvable;
   /**
   * ebs_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#ebs_config EmrCluster#ebs_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#ebs_config EmrCluster#ebs_config}
   */
-  readonly ebsConfig?: EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig[];
+  readonly ebsConfig?: EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig[] | cdktf.IResolvable;
 }
 
-export function emrClusterMasterInstanceFleetInstanceTypeConfigsToTerraform(struct?: EmrClusterMasterInstanceFleetInstanceTypeConfigs): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function emrClusterMasterInstanceFleetInstanceTypeConfigsToTerraform(struct?: EmrClusterMasterInstanceFleetInstanceTypeConfigs | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1477,13 +1521,13 @@ export function emrClusterMasterInstanceFleetInstanceTypeConfigsToTerraform(stru
 
 export interface EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#allocation_strategy EmrCluster#allocation_strategy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#allocation_strategy EmrCluster#allocation_strategy}
   */
   readonly allocationStrategy: string;
 }
 
-export function emrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecificationToTerraform(struct?: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function emrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecificationToTerraform(struct?: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1494,25 +1538,25 @@ export function emrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecifi
 
 export interface EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#allocation_strategy EmrCluster#allocation_strategy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#allocation_strategy EmrCluster#allocation_strategy}
   */
   readonly allocationStrategy: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#block_duration_minutes EmrCluster#block_duration_minutes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#block_duration_minutes EmrCluster#block_duration_minutes}
   */
   readonly blockDurationMinutes?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#timeout_action EmrCluster#timeout_action}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#timeout_action EmrCluster#timeout_action}
   */
   readonly timeoutAction: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#timeout_duration_minutes EmrCluster#timeout_duration_minutes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#timeout_duration_minutes EmrCluster#timeout_duration_minutes}
   */
   readonly timeoutDurationMinutes: number;
 }
 
-export function emrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecificationToTerraform(struct?: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function emrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecificationToTerraform(struct?: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1528,19 +1572,19 @@ export interface EmrClusterMasterInstanceFleetLaunchSpecifications {
   /**
   * on_demand_specification block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#on_demand_specification EmrCluster#on_demand_specification}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#on_demand_specification EmrCluster#on_demand_specification}
   */
-  readonly onDemandSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification[];
+  readonly onDemandSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification[] | cdktf.IResolvable;
   /**
   * spot_specification block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#spot_specification EmrCluster#spot_specification}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#spot_specification EmrCluster#spot_specification}
   */
-  readonly spotSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification[];
+  readonly spotSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification[] | cdktf.IResolvable;
 }
 
 export function emrClusterMasterInstanceFleetLaunchSpecificationsToTerraform(struct?: EmrClusterMasterInstanceFleetLaunchSpecificationsOutputReference | EmrClusterMasterInstanceFleetLaunchSpecifications): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1551,23 +1595,25 @@ export function emrClusterMasterInstanceFleetLaunchSpecificationsToTerraform(str
 }
 
 export class EmrClusterMasterInstanceFleetLaunchSpecificationsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): EmrClusterMasterInstanceFleetLaunchSpecifications | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._onDemandSpecification) {
+    if (this._onDemandSpecification !== undefined) {
       hasAnyValues = true;
       internalValueResult.onDemandSpecification = this._onDemandSpecification;
     }
-    if (this._spotSpecification) {
+    if (this._spotSpecification !== undefined) {
       hasAnyValues = true;
       internalValueResult.spotSpecification = this._spotSpecification;
     }
@@ -1576,22 +1622,24 @@ export class EmrClusterMasterInstanceFleetLaunchSpecificationsOutputReference ex
 
   public set internalValue(value: EmrClusterMasterInstanceFleetLaunchSpecifications | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._onDemandSpecification = undefined;
       this._spotSpecification = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._onDemandSpecification = value.onDemandSpecification;
       this._spotSpecification = value.spotSpecification;
     }
   }
 
   // on_demand_specification - computed: false, optional: true, required: false
-  private _onDemandSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification[]; 
+  private _onDemandSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification[] | cdktf.IResolvable; 
   public get onDemandSpecification() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('on_demand_specification') as any;
+    return this.interpolationForAttribute('on_demand_specification');
   }
-  public set onDemandSpecification(value: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification[]) {
+  public set onDemandSpecification(value: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification[] | cdktf.IResolvable) {
     this._onDemandSpecification = value;
   }
   public resetOnDemandSpecification() {
@@ -1603,12 +1651,12 @@ export class EmrClusterMasterInstanceFleetLaunchSpecificationsOutputReference ex
   }
 
   // spot_specification - computed: false, optional: true, required: false
-  private _spotSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification[]; 
+  private _spotSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification[] | cdktf.IResolvable; 
   public get spotSpecification() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('spot_specification') as any;
+    return this.interpolationForAttribute('spot_specification');
   }
-  public set spotSpecification(value: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification[]) {
+  public set spotSpecification(value: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification[] | cdktf.IResolvable) {
     this._spotSpecification = value;
   }
   public resetSpotSpecification() {
@@ -1621,33 +1669,33 @@ export class EmrClusterMasterInstanceFleetLaunchSpecificationsOutputReference ex
 }
 export interface EmrClusterMasterInstanceFleet {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#name EmrCluster#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#name EmrCluster#name}
   */
   readonly name?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#target_on_demand_capacity EmrCluster#target_on_demand_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#target_on_demand_capacity EmrCluster#target_on_demand_capacity}
   */
   readonly targetOnDemandCapacity?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#target_spot_capacity EmrCluster#target_spot_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#target_spot_capacity EmrCluster#target_spot_capacity}
   */
   readonly targetSpotCapacity?: number;
   /**
   * instance_type_configs block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#instance_type_configs EmrCluster#instance_type_configs}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#instance_type_configs EmrCluster#instance_type_configs}
   */
-  readonly instanceTypeConfigs?: EmrClusterMasterInstanceFleetInstanceTypeConfigs[];
+  readonly instanceTypeConfigs?: EmrClusterMasterInstanceFleetInstanceTypeConfigs[] | cdktf.IResolvable;
   /**
   * launch_specifications block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#launch_specifications EmrCluster#launch_specifications}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#launch_specifications EmrCluster#launch_specifications}
   */
   readonly launchSpecifications?: EmrClusterMasterInstanceFleetLaunchSpecifications;
 }
 
 export function emrClusterMasterInstanceFleetToTerraform(struct?: EmrClusterMasterInstanceFleetOutputReference | EmrClusterMasterInstanceFleet): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1661,35 +1709,37 @@ export function emrClusterMasterInstanceFleetToTerraform(struct?: EmrClusterMast
 }
 
 export class EmrClusterMasterInstanceFleetOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): EmrClusterMasterInstanceFleet | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._name) {
+    if (this._name !== undefined) {
       hasAnyValues = true;
       internalValueResult.name = this._name;
     }
-    if (this._targetOnDemandCapacity) {
+    if (this._targetOnDemandCapacity !== undefined) {
       hasAnyValues = true;
       internalValueResult.targetOnDemandCapacity = this._targetOnDemandCapacity;
     }
-    if (this._targetSpotCapacity) {
+    if (this._targetSpotCapacity !== undefined) {
       hasAnyValues = true;
       internalValueResult.targetSpotCapacity = this._targetSpotCapacity;
     }
-    if (this._instanceTypeConfigs) {
+    if (this._instanceTypeConfigs !== undefined) {
       hasAnyValues = true;
       internalValueResult.instanceTypeConfigs = this._instanceTypeConfigs;
     }
-    if (this._launchSpecifications) {
+    if (this._launchSpecifications?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.launchSpecifications = this._launchSpecifications?.internalValue;
     }
@@ -1698,6 +1748,7 @@ export class EmrClusterMasterInstanceFleetOutputReference extends cdktf.ComplexO
 
   public set internalValue(value: EmrClusterMasterInstanceFleet | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._name = undefined;
       this._targetOnDemandCapacity = undefined;
       this._targetSpotCapacity = undefined;
@@ -1705,12 +1756,18 @@ export class EmrClusterMasterInstanceFleetOutputReference extends cdktf.ComplexO
       this._launchSpecifications.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._name = value.name;
       this._targetOnDemandCapacity = value.targetOnDemandCapacity;
       this._targetSpotCapacity = value.targetSpotCapacity;
       this._instanceTypeConfigs = value.instanceTypeConfigs;
       this._launchSpecifications.internalValue = value.launchSpecifications;
     }
+  }
+
+  // id - computed: true, optional: false, required: false
+  public get id() {
+    return this.getStringAttribute('id');
   }
 
   // name - computed: false, optional: true, required: false
@@ -1727,6 +1784,16 @@ export class EmrClusterMasterInstanceFleetOutputReference extends cdktf.ComplexO
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
     return this._name;
+  }
+
+  // provisioned_on_demand_capacity - computed: true, optional: false, required: false
+  public get provisionedOnDemandCapacity() {
+    return this.getNumberAttribute('provisioned_on_demand_capacity');
+  }
+
+  // provisioned_spot_capacity - computed: true, optional: false, required: false
+  public get provisionedSpotCapacity() {
+    return this.getNumberAttribute('provisioned_spot_capacity');
   }
 
   // target_on_demand_capacity - computed: false, optional: true, required: false
@@ -1762,12 +1829,12 @@ export class EmrClusterMasterInstanceFleetOutputReference extends cdktf.ComplexO
   }
 
   // instance_type_configs - computed: false, optional: true, required: false
-  private _instanceTypeConfigs?: EmrClusterMasterInstanceFleetInstanceTypeConfigs[]; 
+  private _instanceTypeConfigs?: EmrClusterMasterInstanceFleetInstanceTypeConfigs[] | cdktf.IResolvable; 
   public get instanceTypeConfigs() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('instance_type_configs') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('instance_type_configs')));
   }
-  public set instanceTypeConfigs(value: EmrClusterMasterInstanceFleetInstanceTypeConfigs[]) {
+  public set instanceTypeConfigs(value: EmrClusterMasterInstanceFleetInstanceTypeConfigs[] | cdktf.IResolvable) {
     this._instanceTypeConfigs = value;
   }
   public resetInstanceTypeConfigs() {
@@ -1779,7 +1846,7 @@ export class EmrClusterMasterInstanceFleetOutputReference extends cdktf.ComplexO
   }
 
   // launch_specifications - computed: false, optional: true, required: false
-  private _launchSpecifications = new EmrClusterMasterInstanceFleetLaunchSpecificationsOutputReference(this as any, "launch_specifications", true);
+  private _launchSpecifications = new EmrClusterMasterInstanceFleetLaunchSpecificationsOutputReference(this, "launch_specifications", true);
   public get launchSpecifications() {
     return this._launchSpecifications;
   }
@@ -1796,25 +1863,25 @@ export class EmrClusterMasterInstanceFleetOutputReference extends cdktf.ComplexO
 }
 export interface EmrClusterMasterInstanceGroupEbsConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#iops EmrCluster#iops}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#iops EmrCluster#iops}
   */
   readonly iops?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#size EmrCluster#size}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#size EmrCluster#size}
   */
   readonly size: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#type EmrCluster#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#type EmrCluster#type}
   */
   readonly type: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#volumes_per_instance EmrCluster#volumes_per_instance}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#volumes_per_instance EmrCluster#volumes_per_instance}
   */
   readonly volumesPerInstance?: number;
 }
 
-export function emrClusterMasterInstanceGroupEbsConfigToTerraform(struct?: EmrClusterMasterInstanceGroupEbsConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function emrClusterMasterInstanceGroupEbsConfigToTerraform(struct?: EmrClusterMasterInstanceGroupEbsConfig | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1828,31 +1895,31 @@ export function emrClusterMasterInstanceGroupEbsConfigToTerraform(struct?: EmrCl
 
 export interface EmrClusterMasterInstanceGroup {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#bid_price EmrCluster#bid_price}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#bid_price EmrCluster#bid_price}
   */
   readonly bidPrice?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#instance_count EmrCluster#instance_count}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#instance_count EmrCluster#instance_count}
   */
   readonly instanceCount?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#instance_type EmrCluster#instance_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#instance_type EmrCluster#instance_type}
   */
   readonly instanceType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#name EmrCluster#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#name EmrCluster#name}
   */
   readonly name?: string;
   /**
   * ebs_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#ebs_config EmrCluster#ebs_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster#ebs_config EmrCluster#ebs_config}
   */
-  readonly ebsConfig?: EmrClusterMasterInstanceGroupEbsConfig[];
+  readonly ebsConfig?: EmrClusterMasterInstanceGroupEbsConfig[] | cdktf.IResolvable;
 }
 
 export function emrClusterMasterInstanceGroupToTerraform(struct?: EmrClusterMasterInstanceGroupOutputReference | EmrClusterMasterInstanceGroup): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1866,35 +1933,37 @@ export function emrClusterMasterInstanceGroupToTerraform(struct?: EmrClusterMast
 }
 
 export class EmrClusterMasterInstanceGroupOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): EmrClusterMasterInstanceGroup | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._bidPrice) {
+    if (this._bidPrice !== undefined) {
       hasAnyValues = true;
       internalValueResult.bidPrice = this._bidPrice;
     }
-    if (this._instanceCount) {
+    if (this._instanceCount !== undefined) {
       hasAnyValues = true;
       internalValueResult.instanceCount = this._instanceCount;
     }
-    if (this._instanceType) {
+    if (this._instanceType !== undefined) {
       hasAnyValues = true;
       internalValueResult.instanceType = this._instanceType;
     }
-    if (this._name) {
+    if (this._name !== undefined) {
       hasAnyValues = true;
       internalValueResult.name = this._name;
     }
-    if (this._ebsConfig) {
+    if (this._ebsConfig !== undefined) {
       hasAnyValues = true;
       internalValueResult.ebsConfig = this._ebsConfig;
     }
@@ -1903,6 +1972,7 @@ export class EmrClusterMasterInstanceGroupOutputReference extends cdktf.ComplexO
 
   public set internalValue(value: EmrClusterMasterInstanceGroup | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._bidPrice = undefined;
       this._instanceCount = undefined;
       this._instanceType = undefined;
@@ -1910,6 +1980,7 @@ export class EmrClusterMasterInstanceGroupOutputReference extends cdktf.ComplexO
       this._ebsConfig = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._bidPrice = value.bidPrice;
       this._instanceCount = value.instanceCount;
       this._instanceType = value.instanceType;
@@ -1932,6 +2003,11 @@ export class EmrClusterMasterInstanceGroupOutputReference extends cdktf.ComplexO
   // Temporarily expose input value. Use with caution.
   public get bidPriceInput() {
     return this._bidPrice;
+  }
+
+  // id - computed: true, optional: false, required: false
+  public get id() {
+    return this.getStringAttribute('id');
   }
 
   // instance_count - computed: false, optional: true, required: false
@@ -1980,12 +2056,12 @@ export class EmrClusterMasterInstanceGroupOutputReference extends cdktf.ComplexO
   }
 
   // ebs_config - computed: false, optional: true, required: false
-  private _ebsConfig?: EmrClusterMasterInstanceGroupEbsConfig[]; 
+  private _ebsConfig?: EmrClusterMasterInstanceGroupEbsConfig[] | cdktf.IResolvable; 
   public get ebsConfig() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('ebs_config') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('ebs_config')));
   }
-  public set ebsConfig(value: EmrClusterMasterInstanceGroupEbsConfig[]) {
+  public set ebsConfig(value: EmrClusterMasterInstanceGroupEbsConfig[] | cdktf.IResolvable) {
     this._ebsConfig = value;
   }
   public resetEbsConfig() {
@@ -1998,7 +2074,7 @@ export class EmrClusterMasterInstanceGroupOutputReference extends cdktf.ComplexO
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html aws_emr_cluster}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster aws_emr_cluster}
 */
 export class EmrCluster extends cdktf.TerraformResource {
 
@@ -2012,7 +2088,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html aws_emr_cluster} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster aws_emr_cluster} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -2083,7 +2159,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   // applications - computed: false, optional: true, required: false
   private _applications?: string[]; 
   public get applications() {
-    return this.getListAttribute('applications');
+    return cdktf.Fn.tolist(this.getListAttribute('applications'));
   }
   public set applications(value: string[]) {
     this._applications = value;
@@ -2194,7 +2270,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   // keep_job_flow_alive_when_no_steps - computed: true, optional: true, required: false
   private _keepJobFlowAliveWhenNoSteps?: boolean | cdktf.IResolvable; 
   public get keepJobFlowAliveWhenNoSteps() {
-    return this.getBooleanAttribute('keep_job_flow_alive_when_no_steps') as any;
+    return this.getBooleanAttribute('keep_job_flow_alive_when_no_steps');
   }
   public set keepJobFlowAliveWhenNoSteps(value: boolean | cdktf.IResolvable) {
     this._keepJobFlowAliveWhenNoSteps = value;
@@ -2316,12 +2392,12 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
 
   // step - computed: true, optional: true, required: false
-  private _step?: EmrClusterStep[]; 
+  private _step?: EmrClusterStep[] | cdktf.IResolvable; 
   public get step() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('step') as any;
+    return this.interpolationForAttribute('step');
   }
-  public set step(value: EmrClusterStep[]) {
+  public set step(value: EmrClusterStep[] | cdktf.IResolvable) {
     this._step = value;
   }
   public resetStep() {
@@ -2349,12 +2425,11 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -2366,12 +2441,11 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -2385,7 +2459,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   // termination_protection - computed: true, optional: true, required: false
   private _terminationProtection?: boolean | cdktf.IResolvable; 
   public get terminationProtection() {
-    return this.getBooleanAttribute('termination_protection') as any;
+    return this.getBooleanAttribute('termination_protection');
   }
   public set terminationProtection(value: boolean | cdktf.IResolvable) {
     this._terminationProtection = value;
@@ -2401,7 +2475,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   // visible_to_all_users - computed: false, optional: true, required: false
   private _visibleToAllUsers?: boolean | cdktf.IResolvable; 
   public get visibleToAllUsers() {
-    return this.getBooleanAttribute('visible_to_all_users') as any;
+    return this.getBooleanAttribute('visible_to_all_users');
   }
   public set visibleToAllUsers(value: boolean | cdktf.IResolvable) {
     this._visibleToAllUsers = value;
@@ -2415,7 +2489,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
 
   // auto_termination_policy - computed: false, optional: true, required: false
-  private _autoTerminationPolicy = new EmrClusterAutoTerminationPolicyOutputReference(this as any, "auto_termination_policy", true);
+  private _autoTerminationPolicy = new EmrClusterAutoTerminationPolicyOutputReference(this, "auto_termination_policy", true);
   public get autoTerminationPolicy() {
     return this._autoTerminationPolicy;
   }
@@ -2431,12 +2505,12 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
 
   // bootstrap_action - computed: false, optional: true, required: false
-  private _bootstrapAction?: EmrClusterBootstrapAction[]; 
+  private _bootstrapAction?: EmrClusterBootstrapAction[] | cdktf.IResolvable; 
   public get bootstrapAction() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('bootstrap_action') as any;
+    return this.interpolationForAttribute('bootstrap_action');
   }
-  public set bootstrapAction(value: EmrClusterBootstrapAction[]) {
+  public set bootstrapAction(value: EmrClusterBootstrapAction[] | cdktf.IResolvable) {
     this._bootstrapAction = value;
   }
   public resetBootstrapAction() {
@@ -2448,7 +2522,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
 
   // core_instance_fleet - computed: false, optional: true, required: false
-  private _coreInstanceFleet = new EmrClusterCoreInstanceFleetOutputReference(this as any, "core_instance_fleet", true);
+  private _coreInstanceFleet = new EmrClusterCoreInstanceFleetOutputReference(this, "core_instance_fleet", true);
   public get coreInstanceFleet() {
     return this._coreInstanceFleet;
   }
@@ -2464,7 +2538,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
 
   // core_instance_group - computed: false, optional: true, required: false
-  private _coreInstanceGroup = new EmrClusterCoreInstanceGroupOutputReference(this as any, "core_instance_group", true);
+  private _coreInstanceGroup = new EmrClusterCoreInstanceGroupOutputReference(this, "core_instance_group", true);
   public get coreInstanceGroup() {
     return this._coreInstanceGroup;
   }
@@ -2480,7 +2554,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
 
   // ec2_attributes - computed: false, optional: true, required: false
-  private _ec2Attributes = new EmrClusterEc2AttributesOutputReference(this as any, "ec2_attributes", true);
+  private _ec2Attributes = new EmrClusterEc2AttributesOutputReference(this, "ec2_attributes", true);
   public get ec2Attributes() {
     return this._ec2Attributes;
   }
@@ -2496,7 +2570,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
 
   // kerberos_attributes - computed: false, optional: true, required: false
-  private _kerberosAttributes = new EmrClusterKerberosAttributesOutputReference(this as any, "kerberos_attributes", true);
+  private _kerberosAttributes = new EmrClusterKerberosAttributesOutputReference(this, "kerberos_attributes", true);
   public get kerberosAttributes() {
     return this._kerberosAttributes;
   }
@@ -2512,7 +2586,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
 
   // master_instance_fleet - computed: false, optional: true, required: false
-  private _masterInstanceFleet = new EmrClusterMasterInstanceFleetOutputReference(this as any, "master_instance_fleet", true);
+  private _masterInstanceFleet = new EmrClusterMasterInstanceFleetOutputReference(this, "master_instance_fleet", true);
   public get masterInstanceFleet() {
     return this._masterInstanceFleet;
   }
@@ -2528,7 +2602,7 @@ export class EmrCluster extends cdktf.TerraformResource {
   }
 
   // master_instance_group - computed: false, optional: true, required: false
-  private _masterInstanceGroup = new EmrClusterMasterInstanceGroupOutputReference(this as any, "master_instance_group", true);
+  private _masterInstanceGroup = new EmrClusterMasterInstanceGroupOutputReference(this, "master_instance_group", true);
   public get masterInstanceGroup() {
     return this._masterInstanceGroup;
   }
@@ -2566,8 +2640,8 @@ export class EmrCluster extends cdktf.TerraformResource {
       service_role: cdktf.stringToTerraform(this._serviceRole),
       step: cdktf.listMapper(emrClusterStepToTerraform)(this._step),
       step_concurrency_level: cdktf.numberToTerraform(this._stepConcurrencyLevel),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       termination_protection: cdktf.booleanToTerraform(this._terminationProtection),
       visible_to_all_users: cdktf.booleanToTerraform(this._visibleToAllUsers),
       auto_termination_policy: emrClusterAutoTerminationPolicyToTerraform(this._autoTerminationPolicy.internalValue),

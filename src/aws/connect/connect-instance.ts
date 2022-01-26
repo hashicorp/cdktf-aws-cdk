@@ -8,61 +8,61 @@ import * as cdktf from 'cdktf';
 */
 export interface ConnectInstanceConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance.html#auto_resolve_best_voices_enabled ConnectInstance#auto_resolve_best_voices_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance#auto_resolve_best_voices_enabled ConnectInstance#auto_resolve_best_voices_enabled}
   */
   readonly autoResolveBestVoicesEnabled?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance.html#contact_flow_logs_enabled ConnectInstance#contact_flow_logs_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance#contact_flow_logs_enabled ConnectInstance#contact_flow_logs_enabled}
   */
   readonly contactFlowLogsEnabled?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance.html#contact_lens_enabled ConnectInstance#contact_lens_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance#contact_lens_enabled ConnectInstance#contact_lens_enabled}
   */
   readonly contactLensEnabled?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance.html#directory_id ConnectInstance#directory_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance#directory_id ConnectInstance#directory_id}
   */
   readonly directoryId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance.html#early_media_enabled ConnectInstance#early_media_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance#early_media_enabled ConnectInstance#early_media_enabled}
   */
   readonly earlyMediaEnabled?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance.html#identity_management_type ConnectInstance#identity_management_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance#identity_management_type ConnectInstance#identity_management_type}
   */
   readonly identityManagementType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance.html#inbound_calls_enabled ConnectInstance#inbound_calls_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance#inbound_calls_enabled ConnectInstance#inbound_calls_enabled}
   */
   readonly inboundCallsEnabled: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance.html#instance_alias ConnectInstance#instance_alias}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance#instance_alias ConnectInstance#instance_alias}
   */
   readonly instanceAlias?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance.html#outbound_calls_enabled ConnectInstance#outbound_calls_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance#outbound_calls_enabled ConnectInstance#outbound_calls_enabled}
   */
   readonly outboundCallsEnabled: boolean | cdktf.IResolvable;
   /**
   * timeouts block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance.html#timeouts ConnectInstance#timeouts}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance#timeouts ConnectInstance#timeouts}
   */
   readonly timeouts?: ConnectInstanceTimeouts;
 }
 export interface ConnectInstanceTimeouts {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance.html#create ConnectInstance#create}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance#create ConnectInstance#create}
   */
   readonly create?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance.html#delete ConnectInstance#delete}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_instance#delete ConnectInstance#delete}
   */
   readonly delete?: string;
 }
 
-export function connectInstanceTimeoutsToTerraform(struct?: ConnectInstanceTimeoutsOutputReference | ConnectInstanceTimeouts): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function connectInstanceTimeoutsToTerraform(struct?: ConnectInstanceTimeoutsOutputReference | ConnectInstanceTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -73,23 +73,25 @@ export function connectInstanceTimeoutsToTerraform(struct?: ConnectInstanceTimeo
 }
 
 export class ConnectInstanceTimeoutsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): ConnectInstanceTimeouts | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._create) {
+    if (this._create !== undefined) {
       hasAnyValues = true;
       internalValueResult.create = this._create;
     }
-    if (this._delete) {
+    if (this._delete !== undefined) {
       hasAnyValues = true;
       internalValueResult.delete = this._delete;
     }
@@ -98,10 +100,12 @@ export class ConnectInstanceTimeoutsOutputReference extends cdktf.ComplexObject 
 
   public set internalValue(value: ConnectInstanceTimeouts | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._create = undefined;
       this._delete = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._create = value.create;
       this._delete = value.delete;
     }
@@ -141,7 +145,7 @@ export class ConnectInstanceTimeoutsOutputReference extends cdktf.ComplexObject 
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/connect_instance.html aws_connect_instance}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/connect_instance aws_connect_instance}
 */
 export class ConnectInstance extends cdktf.TerraformResource {
 
@@ -155,7 +159,7 @@ export class ConnectInstance extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/connect_instance.html aws_connect_instance} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/connect_instance aws_connect_instance} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -196,7 +200,7 @@ export class ConnectInstance extends cdktf.TerraformResource {
   // auto_resolve_best_voices_enabled - computed: false, optional: true, required: false
   private _autoResolveBestVoicesEnabled?: boolean | cdktf.IResolvable; 
   public get autoResolveBestVoicesEnabled() {
-    return this.getBooleanAttribute('auto_resolve_best_voices_enabled') as any;
+    return this.getBooleanAttribute('auto_resolve_best_voices_enabled');
   }
   public set autoResolveBestVoicesEnabled(value: boolean | cdktf.IResolvable) {
     this._autoResolveBestVoicesEnabled = value;
@@ -212,7 +216,7 @@ export class ConnectInstance extends cdktf.TerraformResource {
   // contact_flow_logs_enabled - computed: false, optional: true, required: false
   private _contactFlowLogsEnabled?: boolean | cdktf.IResolvable; 
   public get contactFlowLogsEnabled() {
-    return this.getBooleanAttribute('contact_flow_logs_enabled') as any;
+    return this.getBooleanAttribute('contact_flow_logs_enabled');
   }
   public set contactFlowLogsEnabled(value: boolean | cdktf.IResolvable) {
     this._contactFlowLogsEnabled = value;
@@ -228,7 +232,7 @@ export class ConnectInstance extends cdktf.TerraformResource {
   // contact_lens_enabled - computed: false, optional: true, required: false
   private _contactLensEnabled?: boolean | cdktf.IResolvable; 
   public get contactLensEnabled() {
-    return this.getBooleanAttribute('contact_lens_enabled') as any;
+    return this.getBooleanAttribute('contact_lens_enabled');
   }
   public set contactLensEnabled(value: boolean | cdktf.IResolvable) {
     this._contactLensEnabled = value;
@@ -265,7 +269,7 @@ export class ConnectInstance extends cdktf.TerraformResource {
   // early_media_enabled - computed: false, optional: true, required: false
   private _earlyMediaEnabled?: boolean | cdktf.IResolvable; 
   public get earlyMediaEnabled() {
-    return this.getBooleanAttribute('early_media_enabled') as any;
+    return this.getBooleanAttribute('early_media_enabled');
   }
   public set earlyMediaEnabled(value: boolean | cdktf.IResolvable) {
     this._earlyMediaEnabled = value;
@@ -299,7 +303,7 @@ export class ConnectInstance extends cdktf.TerraformResource {
   // inbound_calls_enabled - computed: false, optional: false, required: true
   private _inboundCallsEnabled?: boolean | cdktf.IResolvable; 
   public get inboundCallsEnabled() {
-    return this.getBooleanAttribute('inbound_calls_enabled') as any;
+    return this.getBooleanAttribute('inbound_calls_enabled');
   }
   public set inboundCallsEnabled(value: boolean | cdktf.IResolvable) {
     this._inboundCallsEnabled = value;
@@ -328,7 +332,7 @@ export class ConnectInstance extends cdktf.TerraformResource {
   // outbound_calls_enabled - computed: false, optional: false, required: true
   private _outboundCallsEnabled?: boolean | cdktf.IResolvable; 
   public get outboundCallsEnabled() {
-    return this.getBooleanAttribute('outbound_calls_enabled') as any;
+    return this.getBooleanAttribute('outbound_calls_enabled');
   }
   public set outboundCallsEnabled(value: boolean | cdktf.IResolvable) {
     this._outboundCallsEnabled = value;
@@ -349,7 +353,7 @@ export class ConnectInstance extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts = new ConnectInstanceTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new ConnectInstanceTimeoutsOutputReference(this, "timeouts", true);
   public get timeouts() {
     return this._timeouts;
   }

@@ -8,41 +8,41 @@ import * as cdktf from 'cdktf';
 */
 export interface CloudfrontOriginRequestPolicyConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy.html#comment CloudfrontOriginRequestPolicy#comment}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy#comment CloudfrontOriginRequestPolicy#comment}
   */
   readonly comment?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy.html#name CloudfrontOriginRequestPolicy#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy#name CloudfrontOriginRequestPolicy#name}
   */
   readonly name: string;
   /**
   * cookies_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy.html#cookies_config CloudfrontOriginRequestPolicy#cookies_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy#cookies_config CloudfrontOriginRequestPolicy#cookies_config}
   */
   readonly cookiesConfig: CloudfrontOriginRequestPolicyCookiesConfig;
   /**
   * headers_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy.html#headers_config CloudfrontOriginRequestPolicy#headers_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy#headers_config CloudfrontOriginRequestPolicy#headers_config}
   */
   readonly headersConfig: CloudfrontOriginRequestPolicyHeadersConfig;
   /**
   * query_strings_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy.html#query_strings_config CloudfrontOriginRequestPolicy#query_strings_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy#query_strings_config CloudfrontOriginRequestPolicy#query_strings_config}
   */
   readonly queryStringsConfig: CloudfrontOriginRequestPolicyQueryStringsConfig;
 }
 export interface CloudfrontOriginRequestPolicyCookiesConfigCookies {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy.html#items CloudfrontOriginRequestPolicy#items}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy#items CloudfrontOriginRequestPolicy#items}
   */
   readonly items?: string[];
 }
 
 export function cloudfrontOriginRequestPolicyCookiesConfigCookiesToTerraform(struct?: CloudfrontOriginRequestPolicyCookiesConfigCookiesOutputReference | CloudfrontOriginRequestPolicyCookiesConfigCookies): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -52,19 +52,21 @@ export function cloudfrontOriginRequestPolicyCookiesConfigCookiesToTerraform(str
 }
 
 export class CloudfrontOriginRequestPolicyCookiesConfigCookiesOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): CloudfrontOriginRequestPolicyCookiesConfigCookies | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._items) {
+    if (this._items !== undefined) {
       hasAnyValues = true;
       internalValueResult.items = this._items;
     }
@@ -73,9 +75,11 @@ export class CloudfrontOriginRequestPolicyCookiesConfigCookiesOutputReference ex
 
   public set internalValue(value: CloudfrontOriginRequestPolicyCookiesConfigCookies | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._items = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._items = value.items;
     }
   }
@@ -83,7 +87,7 @@ export class CloudfrontOriginRequestPolicyCookiesConfigCookiesOutputReference ex
   // items - computed: false, optional: true, required: false
   private _items?: string[]; 
   public get items() {
-    return this.getListAttribute('items');
+    return cdktf.Fn.tolist(this.getListAttribute('items'));
   }
   public set items(value: string[]) {
     this._items = value;
@@ -98,19 +102,19 @@ export class CloudfrontOriginRequestPolicyCookiesConfigCookiesOutputReference ex
 }
 export interface CloudfrontOriginRequestPolicyCookiesConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy.html#cookie_behavior CloudfrontOriginRequestPolicy#cookie_behavior}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy#cookie_behavior CloudfrontOriginRequestPolicy#cookie_behavior}
   */
   readonly cookieBehavior: string;
   /**
   * cookies block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy.html#cookies CloudfrontOriginRequestPolicy#cookies}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy#cookies CloudfrontOriginRequestPolicy#cookies}
   */
   readonly cookies?: CloudfrontOriginRequestPolicyCookiesConfigCookies;
 }
 
 export function cloudfrontOriginRequestPolicyCookiesConfigToTerraform(struct?: CloudfrontOriginRequestPolicyCookiesConfigOutputReference | CloudfrontOriginRequestPolicyCookiesConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -121,23 +125,25 @@ export function cloudfrontOriginRequestPolicyCookiesConfigToTerraform(struct?: C
 }
 
 export class CloudfrontOriginRequestPolicyCookiesConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): CloudfrontOriginRequestPolicyCookiesConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._cookieBehavior) {
+    if (this._cookieBehavior !== undefined) {
       hasAnyValues = true;
       internalValueResult.cookieBehavior = this._cookieBehavior;
     }
-    if (this._cookies) {
+    if (this._cookies?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.cookies = this._cookies?.internalValue;
     }
@@ -146,10 +152,12 @@ export class CloudfrontOriginRequestPolicyCookiesConfigOutputReference extends c
 
   public set internalValue(value: CloudfrontOriginRequestPolicyCookiesConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._cookieBehavior = undefined;
       this._cookies.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._cookieBehavior = value.cookieBehavior;
       this._cookies.internalValue = value.cookies;
     }
@@ -169,7 +177,7 @@ export class CloudfrontOriginRequestPolicyCookiesConfigOutputReference extends c
   }
 
   // cookies - computed: false, optional: true, required: false
-  private _cookies = new CloudfrontOriginRequestPolicyCookiesConfigCookiesOutputReference(this as any, "cookies", true);
+  private _cookies = new CloudfrontOriginRequestPolicyCookiesConfigCookiesOutputReference(this, "cookies", true);
   public get cookies() {
     return this._cookies;
   }
@@ -186,13 +194,13 @@ export class CloudfrontOriginRequestPolicyCookiesConfigOutputReference extends c
 }
 export interface CloudfrontOriginRequestPolicyHeadersConfigHeaders {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy.html#items CloudfrontOriginRequestPolicy#items}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy#items CloudfrontOriginRequestPolicy#items}
   */
   readonly items?: string[];
 }
 
 export function cloudfrontOriginRequestPolicyHeadersConfigHeadersToTerraform(struct?: CloudfrontOriginRequestPolicyHeadersConfigHeadersOutputReference | CloudfrontOriginRequestPolicyHeadersConfigHeaders): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -202,19 +210,21 @@ export function cloudfrontOriginRequestPolicyHeadersConfigHeadersToTerraform(str
 }
 
 export class CloudfrontOriginRequestPolicyHeadersConfigHeadersOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): CloudfrontOriginRequestPolicyHeadersConfigHeaders | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._items) {
+    if (this._items !== undefined) {
       hasAnyValues = true;
       internalValueResult.items = this._items;
     }
@@ -223,9 +233,11 @@ export class CloudfrontOriginRequestPolicyHeadersConfigHeadersOutputReference ex
 
   public set internalValue(value: CloudfrontOriginRequestPolicyHeadersConfigHeaders | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._items = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._items = value.items;
     }
   }
@@ -233,7 +245,7 @@ export class CloudfrontOriginRequestPolicyHeadersConfigHeadersOutputReference ex
   // items - computed: false, optional: true, required: false
   private _items?: string[]; 
   public get items() {
-    return this.getListAttribute('items');
+    return cdktf.Fn.tolist(this.getListAttribute('items'));
   }
   public set items(value: string[]) {
     this._items = value;
@@ -248,19 +260,19 @@ export class CloudfrontOriginRequestPolicyHeadersConfigHeadersOutputReference ex
 }
 export interface CloudfrontOriginRequestPolicyHeadersConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy.html#header_behavior CloudfrontOriginRequestPolicy#header_behavior}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy#header_behavior CloudfrontOriginRequestPolicy#header_behavior}
   */
   readonly headerBehavior?: string;
   /**
   * headers block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy.html#headers CloudfrontOriginRequestPolicy#headers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy#headers CloudfrontOriginRequestPolicy#headers}
   */
   readonly headers?: CloudfrontOriginRequestPolicyHeadersConfigHeaders;
 }
 
 export function cloudfrontOriginRequestPolicyHeadersConfigToTerraform(struct?: CloudfrontOriginRequestPolicyHeadersConfigOutputReference | CloudfrontOriginRequestPolicyHeadersConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -271,23 +283,25 @@ export function cloudfrontOriginRequestPolicyHeadersConfigToTerraform(struct?: C
 }
 
 export class CloudfrontOriginRequestPolicyHeadersConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): CloudfrontOriginRequestPolicyHeadersConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._headerBehavior) {
+    if (this._headerBehavior !== undefined) {
       hasAnyValues = true;
       internalValueResult.headerBehavior = this._headerBehavior;
     }
-    if (this._headers) {
+    if (this._headers?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.headers = this._headers?.internalValue;
     }
@@ -296,10 +310,12 @@ export class CloudfrontOriginRequestPolicyHeadersConfigOutputReference extends c
 
   public set internalValue(value: CloudfrontOriginRequestPolicyHeadersConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._headerBehavior = undefined;
       this._headers.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._headerBehavior = value.headerBehavior;
       this._headers.internalValue = value.headers;
     }
@@ -322,7 +338,7 @@ export class CloudfrontOriginRequestPolicyHeadersConfigOutputReference extends c
   }
 
   // headers - computed: false, optional: true, required: false
-  private _headers = new CloudfrontOriginRequestPolicyHeadersConfigHeadersOutputReference(this as any, "headers", true);
+  private _headers = new CloudfrontOriginRequestPolicyHeadersConfigHeadersOutputReference(this, "headers", true);
   public get headers() {
     return this._headers;
   }
@@ -339,13 +355,13 @@ export class CloudfrontOriginRequestPolicyHeadersConfigOutputReference extends c
 }
 export interface CloudfrontOriginRequestPolicyQueryStringsConfigQueryStrings {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy.html#items CloudfrontOriginRequestPolicy#items}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy#items CloudfrontOriginRequestPolicy#items}
   */
   readonly items?: string[];
 }
 
 export function cloudfrontOriginRequestPolicyQueryStringsConfigQueryStringsToTerraform(struct?: CloudfrontOriginRequestPolicyQueryStringsConfigQueryStringsOutputReference | CloudfrontOriginRequestPolicyQueryStringsConfigQueryStrings): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -355,19 +371,21 @@ export function cloudfrontOriginRequestPolicyQueryStringsConfigQueryStringsToTer
 }
 
 export class CloudfrontOriginRequestPolicyQueryStringsConfigQueryStringsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): CloudfrontOriginRequestPolicyQueryStringsConfigQueryStrings | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._items) {
+    if (this._items !== undefined) {
       hasAnyValues = true;
       internalValueResult.items = this._items;
     }
@@ -376,9 +394,11 @@ export class CloudfrontOriginRequestPolicyQueryStringsConfigQueryStringsOutputRe
 
   public set internalValue(value: CloudfrontOriginRequestPolicyQueryStringsConfigQueryStrings | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._items = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._items = value.items;
     }
   }
@@ -386,7 +406,7 @@ export class CloudfrontOriginRequestPolicyQueryStringsConfigQueryStringsOutputRe
   // items - computed: false, optional: true, required: false
   private _items?: string[]; 
   public get items() {
-    return this.getListAttribute('items');
+    return cdktf.Fn.tolist(this.getListAttribute('items'));
   }
   public set items(value: string[]) {
     this._items = value;
@@ -401,19 +421,19 @@ export class CloudfrontOriginRequestPolicyQueryStringsConfigQueryStringsOutputRe
 }
 export interface CloudfrontOriginRequestPolicyQueryStringsConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy.html#query_string_behavior CloudfrontOriginRequestPolicy#query_string_behavior}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy#query_string_behavior CloudfrontOriginRequestPolicy#query_string_behavior}
   */
   readonly queryStringBehavior: string;
   /**
   * query_strings block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy.html#query_strings CloudfrontOriginRequestPolicy#query_strings}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy#query_strings CloudfrontOriginRequestPolicy#query_strings}
   */
   readonly queryStrings?: CloudfrontOriginRequestPolicyQueryStringsConfigQueryStrings;
 }
 
 export function cloudfrontOriginRequestPolicyQueryStringsConfigToTerraform(struct?: CloudfrontOriginRequestPolicyQueryStringsConfigOutputReference | CloudfrontOriginRequestPolicyQueryStringsConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -424,23 +444,25 @@ export function cloudfrontOriginRequestPolicyQueryStringsConfigToTerraform(struc
 }
 
 export class CloudfrontOriginRequestPolicyQueryStringsConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): CloudfrontOriginRequestPolicyQueryStringsConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._queryStringBehavior) {
+    if (this._queryStringBehavior !== undefined) {
       hasAnyValues = true;
       internalValueResult.queryStringBehavior = this._queryStringBehavior;
     }
-    if (this._queryStrings) {
+    if (this._queryStrings?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.queryStrings = this._queryStrings?.internalValue;
     }
@@ -449,10 +471,12 @@ export class CloudfrontOriginRequestPolicyQueryStringsConfigOutputReference exte
 
   public set internalValue(value: CloudfrontOriginRequestPolicyQueryStringsConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._queryStringBehavior = undefined;
       this._queryStrings.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._queryStringBehavior = value.queryStringBehavior;
       this._queryStrings.internalValue = value.queryStrings;
     }
@@ -472,7 +496,7 @@ export class CloudfrontOriginRequestPolicyQueryStringsConfigOutputReference exte
   }
 
   // query_strings - computed: false, optional: true, required: false
-  private _queryStrings = new CloudfrontOriginRequestPolicyQueryStringsConfigQueryStringsOutputReference(this as any, "query_strings", true);
+  private _queryStrings = new CloudfrontOriginRequestPolicyQueryStringsConfigQueryStringsOutputReference(this, "query_strings", true);
   public get queryStrings() {
     return this._queryStrings;
   }
@@ -489,7 +513,7 @@ export class CloudfrontOriginRequestPolicyQueryStringsConfigOutputReference exte
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy.html aws_cloudfront_origin_request_policy}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy aws_cloudfront_origin_request_policy}
 */
 export class CloudfrontOriginRequestPolicy extends cdktf.TerraformResource {
 
@@ -503,7 +527,7 @@ export class CloudfrontOriginRequestPolicy extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy.html aws_cloudfront_origin_request_policy} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/cloudfront_origin_request_policy aws_cloudfront_origin_request_policy} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -571,7 +595,7 @@ export class CloudfrontOriginRequestPolicy extends cdktf.TerraformResource {
   }
 
   // cookies_config - computed: false, optional: false, required: true
-  private _cookiesConfig = new CloudfrontOriginRequestPolicyCookiesConfigOutputReference(this as any, "cookies_config", true);
+  private _cookiesConfig = new CloudfrontOriginRequestPolicyCookiesConfigOutputReference(this, "cookies_config", true);
   public get cookiesConfig() {
     return this._cookiesConfig;
   }
@@ -584,7 +608,7 @@ export class CloudfrontOriginRequestPolicy extends cdktf.TerraformResource {
   }
 
   // headers_config - computed: false, optional: false, required: true
-  private _headersConfig = new CloudfrontOriginRequestPolicyHeadersConfigOutputReference(this as any, "headers_config", true);
+  private _headersConfig = new CloudfrontOriginRequestPolicyHeadersConfigOutputReference(this, "headers_config", true);
   public get headersConfig() {
     return this._headersConfig;
   }
@@ -597,7 +621,7 @@ export class CloudfrontOriginRequestPolicy extends cdktf.TerraformResource {
   }
 
   // query_strings_config - computed: false, optional: false, required: true
-  private _queryStringsConfig = new CloudfrontOriginRequestPolicyQueryStringsConfigOutputReference(this as any, "query_strings_config", true);
+  private _queryStringsConfig = new CloudfrontOriginRequestPolicyQueryStringsConfigOutputReference(this, "query_strings_config", true);
   public get queryStringsConfig() {
     return this._queryStringsConfig;
   }

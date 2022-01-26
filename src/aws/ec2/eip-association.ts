@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 */
 export interface EipAssociationConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eip_association.html#allocation_id EipAssociation#allocation_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eip_association#allocation_id EipAssociation#allocation_id}
   */
   readonly allocationId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eip_association.html#allow_reassociation EipAssociation#allow_reassociation}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eip_association#allow_reassociation EipAssociation#allow_reassociation}
   */
   readonly allowReassociation?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eip_association.html#instance_id EipAssociation#instance_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eip_association#instance_id EipAssociation#instance_id}
   */
   readonly instanceId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eip_association.html#network_interface_id EipAssociation#network_interface_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eip_association#network_interface_id EipAssociation#network_interface_id}
   */
   readonly networkInterfaceId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eip_association.html#private_ip_address EipAssociation#private_ip_address}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eip_association#private_ip_address EipAssociation#private_ip_address}
   */
   readonly privateIpAddress?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eip_association.html#public_ip EipAssociation#public_ip}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eip_association#public_ip EipAssociation#public_ip}
   */
   readonly publicIp?: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/eip_association.html aws_eip_association}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/eip_association aws_eip_association}
 */
 export class EipAssociation extends cdktf.TerraformResource {
 
@@ -48,7 +48,7 @@ export class EipAssociation extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/eip_association.html aws_eip_association} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/eip_association aws_eip_association} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -96,7 +96,7 @@ export class EipAssociation extends cdktf.TerraformResource {
   // allow_reassociation - computed: false, optional: true, required: false
   private _allowReassociation?: boolean | cdktf.IResolvable; 
   public get allowReassociation() {
-    return this.getBooleanAttribute('allow_reassociation') as any;
+    return this.getBooleanAttribute('allow_reassociation');
   }
   public set allowReassociation(value: boolean | cdktf.IResolvable) {
     this._allowReassociation = value;

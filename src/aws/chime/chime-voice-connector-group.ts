@@ -8,29 +8,29 @@ import * as cdktf from 'cdktf';
 */
 export interface ChimeVoiceConnectorGroupConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_group.html#name ChimeVoiceConnectorGroup#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_group#name ChimeVoiceConnectorGroup#name}
   */
   readonly name: string;
   /**
   * connector block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_group.html#connector ChimeVoiceConnectorGroup#connector}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_group#connector ChimeVoiceConnectorGroup#connector}
   */
-  readonly connector?: ChimeVoiceConnectorGroupConnector[];
+  readonly connector?: ChimeVoiceConnectorGroupConnector[] | cdktf.IResolvable;
 }
 export interface ChimeVoiceConnectorGroupConnector {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_group.html#priority ChimeVoiceConnectorGroup#priority}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_group#priority ChimeVoiceConnectorGroup#priority}
   */
   readonly priority: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_group.html#voice_connector_id ChimeVoiceConnectorGroup#voice_connector_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_group#voice_connector_id ChimeVoiceConnectorGroup#voice_connector_id}
   */
   readonly voiceConnectorId: string;
 }
 
-export function chimeVoiceConnectorGroupConnectorToTerraform(struct?: ChimeVoiceConnectorGroupConnector): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function chimeVoiceConnectorGroupConnectorToTerraform(struct?: ChimeVoiceConnectorGroupConnector | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -42,7 +42,7 @@ export function chimeVoiceConnectorGroupConnectorToTerraform(struct?: ChimeVoice
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_group.html aws_chime_voice_connector_group}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_group aws_chime_voice_connector_group}
 */
 export class ChimeVoiceConnectorGroup extends cdktf.TerraformResource {
 
@@ -56,7 +56,7 @@ export class ChimeVoiceConnectorGroup extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_group.html aws_chime_voice_connector_group} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_group aws_chime_voice_connector_group} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -100,12 +100,12 @@ export class ChimeVoiceConnectorGroup extends cdktf.TerraformResource {
   }
 
   // connector - computed: false, optional: true, required: false
-  private _connector?: ChimeVoiceConnectorGroupConnector[]; 
+  private _connector?: ChimeVoiceConnectorGroupConnector[] | cdktf.IResolvable; 
   public get connector() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('connector') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('connector')));
   }
-  public set connector(value: ChimeVoiceConnectorGroupConnector[]) {
+  public set connector(value: ChimeVoiceConnectorGroupConnector[] | cdktf.IResolvable) {
     this._connector = value;
   }
   public resetConnector() {

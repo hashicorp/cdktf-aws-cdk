@@ -8,49 +8,49 @@ import * as cdktf from 'cdktf';
 */
 export interface RedshiftScheduledActionConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#description RedshiftScheduledAction#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#description RedshiftScheduledAction#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#enable RedshiftScheduledAction#enable}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#enable RedshiftScheduledAction#enable}
   */
   readonly enable?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#end_time RedshiftScheduledAction#end_time}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#end_time RedshiftScheduledAction#end_time}
   */
   readonly endTime?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#iam_role RedshiftScheduledAction#iam_role}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#iam_role RedshiftScheduledAction#iam_role}
   */
   readonly iamRole: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#name RedshiftScheduledAction#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#name RedshiftScheduledAction#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#schedule RedshiftScheduledAction#schedule}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#schedule RedshiftScheduledAction#schedule}
   */
   readonly schedule: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#start_time RedshiftScheduledAction#start_time}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#start_time RedshiftScheduledAction#start_time}
   */
   readonly startTime?: string;
   /**
   * target_action block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#target_action RedshiftScheduledAction#target_action}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#target_action RedshiftScheduledAction#target_action}
   */
   readonly targetAction: RedshiftScheduledActionTargetAction;
 }
 export interface RedshiftScheduledActionTargetActionPauseCluster {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#cluster_identifier RedshiftScheduledAction#cluster_identifier}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#cluster_identifier RedshiftScheduledAction#cluster_identifier}
   */
   readonly clusterIdentifier: string;
 }
 
 export function redshiftScheduledActionTargetActionPauseClusterToTerraform(struct?: RedshiftScheduledActionTargetActionPauseClusterOutputReference | RedshiftScheduledActionTargetActionPauseCluster): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -60,19 +60,21 @@ export function redshiftScheduledActionTargetActionPauseClusterToTerraform(struc
 }
 
 export class RedshiftScheduledActionTargetActionPauseClusterOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): RedshiftScheduledActionTargetActionPauseCluster | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._clusterIdentifier) {
+    if (this._clusterIdentifier !== undefined) {
       hasAnyValues = true;
       internalValueResult.clusterIdentifier = this._clusterIdentifier;
     }
@@ -81,9 +83,11 @@ export class RedshiftScheduledActionTargetActionPauseClusterOutputReference exte
 
   public set internalValue(value: RedshiftScheduledActionTargetActionPauseCluster | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._clusterIdentifier = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._clusterIdentifier = value.clusterIdentifier;
     }
   }
@@ -103,29 +107,29 @@ export class RedshiftScheduledActionTargetActionPauseClusterOutputReference exte
 }
 export interface RedshiftScheduledActionTargetActionResizeCluster {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#classic RedshiftScheduledAction#classic}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#classic RedshiftScheduledAction#classic}
   */
   readonly classic?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#cluster_identifier RedshiftScheduledAction#cluster_identifier}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#cluster_identifier RedshiftScheduledAction#cluster_identifier}
   */
   readonly clusterIdentifier: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#cluster_type RedshiftScheduledAction#cluster_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#cluster_type RedshiftScheduledAction#cluster_type}
   */
   readonly clusterType?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#node_type RedshiftScheduledAction#node_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#node_type RedshiftScheduledAction#node_type}
   */
   readonly nodeType?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#number_of_nodes RedshiftScheduledAction#number_of_nodes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#number_of_nodes RedshiftScheduledAction#number_of_nodes}
   */
   readonly numberOfNodes?: number;
 }
 
 export function redshiftScheduledActionTargetActionResizeClusterToTerraform(struct?: RedshiftScheduledActionTargetActionResizeClusterOutputReference | RedshiftScheduledActionTargetActionResizeCluster): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -139,35 +143,37 @@ export function redshiftScheduledActionTargetActionResizeClusterToTerraform(stru
 }
 
 export class RedshiftScheduledActionTargetActionResizeClusterOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): RedshiftScheduledActionTargetActionResizeCluster | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._classic) {
+    if (this._classic !== undefined) {
       hasAnyValues = true;
       internalValueResult.classic = this._classic;
     }
-    if (this._clusterIdentifier) {
+    if (this._clusterIdentifier !== undefined) {
       hasAnyValues = true;
       internalValueResult.clusterIdentifier = this._clusterIdentifier;
     }
-    if (this._clusterType) {
+    if (this._clusterType !== undefined) {
       hasAnyValues = true;
       internalValueResult.clusterType = this._clusterType;
     }
-    if (this._nodeType) {
+    if (this._nodeType !== undefined) {
       hasAnyValues = true;
       internalValueResult.nodeType = this._nodeType;
     }
-    if (this._numberOfNodes) {
+    if (this._numberOfNodes !== undefined) {
       hasAnyValues = true;
       internalValueResult.numberOfNodes = this._numberOfNodes;
     }
@@ -176,6 +182,7 @@ export class RedshiftScheduledActionTargetActionResizeClusterOutputReference ext
 
   public set internalValue(value: RedshiftScheduledActionTargetActionResizeCluster | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._classic = undefined;
       this._clusterIdentifier = undefined;
       this._clusterType = undefined;
@@ -183,6 +190,7 @@ export class RedshiftScheduledActionTargetActionResizeClusterOutputReference ext
       this._numberOfNodes = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._classic = value.classic;
       this._clusterIdentifier = value.clusterIdentifier;
       this._clusterType = value.clusterType;
@@ -194,7 +202,7 @@ export class RedshiftScheduledActionTargetActionResizeClusterOutputReference ext
   // classic - computed: false, optional: true, required: false
   private _classic?: boolean | cdktf.IResolvable; 
   public get classic() {
-    return this.getBooleanAttribute('classic') as any;
+    return this.getBooleanAttribute('classic');
   }
   public set classic(value: boolean | cdktf.IResolvable) {
     this._classic = value;
@@ -270,13 +278,13 @@ export class RedshiftScheduledActionTargetActionResizeClusterOutputReference ext
 }
 export interface RedshiftScheduledActionTargetActionResumeCluster {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#cluster_identifier RedshiftScheduledAction#cluster_identifier}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#cluster_identifier RedshiftScheduledAction#cluster_identifier}
   */
   readonly clusterIdentifier: string;
 }
 
 export function redshiftScheduledActionTargetActionResumeClusterToTerraform(struct?: RedshiftScheduledActionTargetActionResumeClusterOutputReference | RedshiftScheduledActionTargetActionResumeCluster): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -286,19 +294,21 @@ export function redshiftScheduledActionTargetActionResumeClusterToTerraform(stru
 }
 
 export class RedshiftScheduledActionTargetActionResumeClusterOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): RedshiftScheduledActionTargetActionResumeCluster | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._clusterIdentifier) {
+    if (this._clusterIdentifier !== undefined) {
       hasAnyValues = true;
       internalValueResult.clusterIdentifier = this._clusterIdentifier;
     }
@@ -307,9 +317,11 @@ export class RedshiftScheduledActionTargetActionResumeClusterOutputReference ext
 
   public set internalValue(value: RedshiftScheduledActionTargetActionResumeCluster | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._clusterIdentifier = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._clusterIdentifier = value.clusterIdentifier;
     }
   }
@@ -331,25 +343,25 @@ export interface RedshiftScheduledActionTargetAction {
   /**
   * pause_cluster block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#pause_cluster RedshiftScheduledAction#pause_cluster}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#pause_cluster RedshiftScheduledAction#pause_cluster}
   */
   readonly pauseCluster?: RedshiftScheduledActionTargetActionPauseCluster;
   /**
   * resize_cluster block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#resize_cluster RedshiftScheduledAction#resize_cluster}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#resize_cluster RedshiftScheduledAction#resize_cluster}
   */
   readonly resizeCluster?: RedshiftScheduledActionTargetActionResizeCluster;
   /**
   * resume_cluster block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html#resume_cluster RedshiftScheduledAction#resume_cluster}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action#resume_cluster RedshiftScheduledAction#resume_cluster}
   */
   readonly resumeCluster?: RedshiftScheduledActionTargetActionResumeCluster;
 }
 
 export function redshiftScheduledActionTargetActionToTerraform(struct?: RedshiftScheduledActionTargetActionOutputReference | RedshiftScheduledActionTargetAction): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -361,27 +373,29 @@ export function redshiftScheduledActionTargetActionToTerraform(struct?: Redshift
 }
 
 export class RedshiftScheduledActionTargetActionOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): RedshiftScheduledActionTargetAction | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._pauseCluster) {
+    if (this._pauseCluster?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.pauseCluster = this._pauseCluster?.internalValue;
     }
-    if (this._resizeCluster) {
+    if (this._resizeCluster?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.resizeCluster = this._resizeCluster?.internalValue;
     }
-    if (this._resumeCluster) {
+    if (this._resumeCluster?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.resumeCluster = this._resumeCluster?.internalValue;
     }
@@ -390,11 +404,13 @@ export class RedshiftScheduledActionTargetActionOutputReference extends cdktf.Co
 
   public set internalValue(value: RedshiftScheduledActionTargetAction | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._pauseCluster.internalValue = undefined;
       this._resizeCluster.internalValue = undefined;
       this._resumeCluster.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._pauseCluster.internalValue = value.pauseCluster;
       this._resizeCluster.internalValue = value.resizeCluster;
       this._resumeCluster.internalValue = value.resumeCluster;
@@ -402,7 +418,7 @@ export class RedshiftScheduledActionTargetActionOutputReference extends cdktf.Co
   }
 
   // pause_cluster - computed: false, optional: true, required: false
-  private _pauseCluster = new RedshiftScheduledActionTargetActionPauseClusterOutputReference(this as any, "pause_cluster", true);
+  private _pauseCluster = new RedshiftScheduledActionTargetActionPauseClusterOutputReference(this, "pause_cluster", true);
   public get pauseCluster() {
     return this._pauseCluster;
   }
@@ -418,7 +434,7 @@ export class RedshiftScheduledActionTargetActionOutputReference extends cdktf.Co
   }
 
   // resize_cluster - computed: false, optional: true, required: false
-  private _resizeCluster = new RedshiftScheduledActionTargetActionResizeClusterOutputReference(this as any, "resize_cluster", true);
+  private _resizeCluster = new RedshiftScheduledActionTargetActionResizeClusterOutputReference(this, "resize_cluster", true);
   public get resizeCluster() {
     return this._resizeCluster;
   }
@@ -434,7 +450,7 @@ export class RedshiftScheduledActionTargetActionOutputReference extends cdktf.Co
   }
 
   // resume_cluster - computed: false, optional: true, required: false
-  private _resumeCluster = new RedshiftScheduledActionTargetActionResumeClusterOutputReference(this as any, "resume_cluster", true);
+  private _resumeCluster = new RedshiftScheduledActionTargetActionResumeClusterOutputReference(this, "resume_cluster", true);
   public get resumeCluster() {
     return this._resumeCluster;
   }
@@ -451,7 +467,7 @@ export class RedshiftScheduledActionTargetActionOutputReference extends cdktf.Co
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html aws_redshift_scheduled_action}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action aws_redshift_scheduled_action}
 */
 export class RedshiftScheduledAction extends cdktf.TerraformResource {
 
@@ -465,7 +481,7 @@ export class RedshiftScheduledAction extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action.html aws_redshift_scheduled_action} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/redshift_scheduled_action aws_redshift_scheduled_action} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -515,7 +531,7 @@ export class RedshiftScheduledAction extends cdktf.TerraformResource {
   // enable - computed: false, optional: true, required: false
   private _enable?: boolean | cdktf.IResolvable; 
   public get enable() {
-    return this.getBooleanAttribute('enable') as any;
+    return this.getBooleanAttribute('enable');
   }
   public set enable(value: boolean | cdktf.IResolvable) {
     this._enable = value;
@@ -605,7 +621,7 @@ export class RedshiftScheduledAction extends cdktf.TerraformResource {
   }
 
   // target_action - computed: false, optional: false, required: true
-  private _targetAction = new RedshiftScheduledActionTargetActionOutputReference(this as any, "target_action", true);
+  private _targetAction = new RedshiftScheduledActionTargetActionOutputReference(this, "target_action", true);
   public get targetAction() {
     return this._targetAction;
   }

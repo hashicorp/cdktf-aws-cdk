@@ -8,41 +8,41 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsAmiIdsConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami_ids.html#executable_users DataAwsAmiIds#executable_users}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami_ids#executable_users DataAwsAmiIds#executable_users}
   */
   readonly executableUsers?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami_ids.html#name_regex DataAwsAmiIds#name_regex}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami_ids#name_regex DataAwsAmiIds#name_regex}
   */
   readonly nameRegex?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami_ids.html#owners DataAwsAmiIds#owners}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami_ids#owners DataAwsAmiIds#owners}
   */
   readonly owners: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami_ids.html#sort_ascending DataAwsAmiIds#sort_ascending}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami_ids#sort_ascending DataAwsAmiIds#sort_ascending}
   */
   readonly sortAscending?: boolean | cdktf.IResolvable;
   /**
   * filter block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami_ids.html#filter DataAwsAmiIds#filter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami_ids#filter DataAwsAmiIds#filter}
   */
-  readonly filter?: DataAwsAmiIdsFilter[];
+  readonly filter?: DataAwsAmiIdsFilter[] | cdktf.IResolvable;
 }
 export interface DataAwsAmiIdsFilter {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami_ids.html#name DataAwsAmiIds#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami_ids#name DataAwsAmiIds#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami_ids.html#values DataAwsAmiIds#values}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ami_ids#values DataAwsAmiIds#values}
   */
   readonly values: string[];
 }
 
-export function dataAwsAmiIdsFilterToTerraform(struct?: DataAwsAmiIdsFilter): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function dataAwsAmiIdsFilterToTerraform(struct?: DataAwsAmiIdsFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -54,7 +54,7 @@ export function dataAwsAmiIdsFilterToTerraform(struct?: DataAwsAmiIdsFilter): an
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/ami_ids.html aws_ami_ids}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/ami_ids aws_ami_ids}
 */
 export class DataAwsAmiIds extends cdktf.TerraformDataSource {
 
@@ -68,7 +68,7 @@ export class DataAwsAmiIds extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/ami_ids.html aws_ami_ids} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/ami_ids aws_ami_ids} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -154,7 +154,7 @@ export class DataAwsAmiIds extends cdktf.TerraformDataSource {
   // sort_ascending - computed: false, optional: true, required: false
   private _sortAscending?: boolean | cdktf.IResolvable; 
   public get sortAscending() {
-    return this.getBooleanAttribute('sort_ascending') as any;
+    return this.getBooleanAttribute('sort_ascending');
   }
   public set sortAscending(value: boolean | cdktf.IResolvable) {
     this._sortAscending = value;
@@ -168,12 +168,12 @@ export class DataAwsAmiIds extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsAmiIdsFilter[]; 
+  private _filter?: DataAwsAmiIdsFilter[] | cdktf.IResolvable; 
   public get filter() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('filter') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('filter')));
   }
-  public set filter(value: DataAwsAmiIdsFilter[]) {
+  public set filter(value: DataAwsAmiIdsFilter[] | cdktf.IResolvable) {
     this._filter = value;
   }
   public resetFilter() {

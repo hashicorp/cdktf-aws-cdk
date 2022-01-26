@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 */
 export interface CognitoIdentityProviderConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cognito_identity_provider.html#attribute_mapping CognitoIdentityProvider#attribute_mapping}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cognito_identity_provider#attribute_mapping CognitoIdentityProvider#attribute_mapping}
   */
-  readonly attributeMapping?: { [key: string]: string } | cdktf.IResolvable;
+  readonly attributeMapping?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cognito_identity_provider.html#idp_identifiers CognitoIdentityProvider#idp_identifiers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cognito_identity_provider#idp_identifiers CognitoIdentityProvider#idp_identifiers}
   */
   readonly idpIdentifiers?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cognito_identity_provider.html#provider_details CognitoIdentityProvider#provider_details}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cognito_identity_provider#provider_details CognitoIdentityProvider#provider_details}
   */
-  readonly providerDetails: { [key: string]: string } | cdktf.IResolvable;
+  readonly providerDetails: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cognito_identity_provider.html#provider_name CognitoIdentityProvider#provider_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cognito_identity_provider#provider_name CognitoIdentityProvider#provider_name}
   */
   readonly providerName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cognito_identity_provider.html#provider_type CognitoIdentityProvider#provider_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cognito_identity_provider#provider_type CognitoIdentityProvider#provider_type}
   */
   readonly providerType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cognito_identity_provider.html#user_pool_id CognitoIdentityProvider#user_pool_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cognito_identity_provider#user_pool_id CognitoIdentityProvider#user_pool_id}
   */
   readonly userPoolId: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/cognito_identity_provider.html aws_cognito_identity_provider}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/cognito_identity_provider aws_cognito_identity_provider}
 */
 export class CognitoIdentityProvider extends cdktf.TerraformResource {
 
@@ -48,7 +48,7 @@ export class CognitoIdentityProvider extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/cognito_identity_provider.html aws_cognito_identity_provider} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/cognito_identity_provider aws_cognito_identity_provider} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -78,12 +78,11 @@ export class CognitoIdentityProvider extends cdktf.TerraformResource {
   // ==========
 
   // attribute_mapping - computed: true, optional: true, required: false
-  private _attributeMapping?: { [key: string]: string } | cdktf.IResolvable; 
+  private _attributeMapping?: { [key: string]: string }; 
   public get attributeMapping() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('attribute_mapping') as any;
+    return this.getStringMapAttribute('attribute_mapping');
   }
-  public set attributeMapping(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set attributeMapping(value: { [key: string]: string }) {
     this._attributeMapping = value;
   }
   public resetAttributeMapping() {
@@ -116,12 +115,11 @@ export class CognitoIdentityProvider extends cdktf.TerraformResource {
   }
 
   // provider_details - computed: false, optional: false, required: true
-  private _providerDetails?: { [key: string]: string } | cdktf.IResolvable; 
+  private _providerDetails?: { [key: string]: string }; 
   public get providerDetails() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('provider_details') as any;
+    return this.getStringMapAttribute('provider_details');
   }
-  public set providerDetails(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set providerDetails(value: { [key: string]: string }) {
     this._providerDetails = value;
   }
   // Temporarily expose input value. Use with caution.
@@ -174,9 +172,9 @@ export class CognitoIdentityProvider extends cdktf.TerraformResource {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
-      attribute_mapping: cdktf.hashMapper(cdktf.anyToTerraform)(this._attributeMapping),
+      attribute_mapping: cdktf.hashMapper(cdktf.stringToTerraform)(this._attributeMapping),
       idp_identifiers: cdktf.listMapper(cdktf.stringToTerraform)(this._idpIdentifiers),
-      provider_details: cdktf.hashMapper(cdktf.anyToTerraform)(this._providerDetails),
+      provider_details: cdktf.hashMapper(cdktf.stringToTerraform)(this._providerDetails),
       provider_name: cdktf.stringToTerraform(this._providerName),
       provider_type: cdktf.stringToTerraform(this._providerType),
       user_pool_id: cdktf.stringToTerraform(this._userPoolId),

@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 */
 export interface DaxParameterGroupConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dax_parameter_group.html#description DaxParameterGroup#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dax_parameter_group#description DaxParameterGroup#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dax_parameter_group.html#name DaxParameterGroup#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dax_parameter_group#name DaxParameterGroup#name}
   */
   readonly name: string;
   /**
   * parameters block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dax_parameter_group.html#parameters DaxParameterGroup#parameters}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dax_parameter_group#parameters DaxParameterGroup#parameters}
   */
-  readonly parameters?: DaxParameterGroupParameters[];
+  readonly parameters?: DaxParameterGroupParameters[] | cdktf.IResolvable;
 }
 export interface DaxParameterGroupParameters {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dax_parameter_group.html#name DaxParameterGroup#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dax_parameter_group#name DaxParameterGroup#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dax_parameter_group.html#value DaxParameterGroup#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dax_parameter_group#value DaxParameterGroup#value}
   */
   readonly value: string;
 }
 
-export function daxParameterGroupParametersToTerraform(struct?: DaxParameterGroupParameters): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function daxParameterGroupParametersToTerraform(struct?: DaxParameterGroupParameters | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -46,7 +46,7 @@ export function daxParameterGroupParametersToTerraform(struct?: DaxParameterGrou
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/dax_parameter_group.html aws_dax_parameter_group}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/dax_parameter_group aws_dax_parameter_group}
 */
 export class DaxParameterGroup extends cdktf.TerraformResource {
 
@@ -60,7 +60,7 @@ export class DaxParameterGroup extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/dax_parameter_group.html aws_dax_parameter_group} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/dax_parameter_group aws_dax_parameter_group} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -121,12 +121,12 @@ export class DaxParameterGroup extends cdktf.TerraformResource {
   }
 
   // parameters - computed: false, optional: true, required: false
-  private _parameters?: DaxParameterGroupParameters[]; 
+  private _parameters?: DaxParameterGroupParameters[] | cdktf.IResolvable; 
   public get parameters() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('parameters') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('parameters')));
   }
-  public set parameters(value: DaxParameterGroupParameters[]) {
+  public set parameters(value: DaxParameterGroupParameters[] | cdktf.IResolvable) {
     this._parameters = value;
   }
   public resetParameters() {

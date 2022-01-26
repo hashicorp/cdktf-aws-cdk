@@ -8,81 +8,81 @@ import * as cdktf from 'cdktf';
 */
 export interface ElastictranscoderPresetConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#container ElastictranscoderPreset#container}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#container ElastictranscoderPreset#container}
   */
   readonly container: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#description ElastictranscoderPreset#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#description ElastictranscoderPreset#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#name ElastictranscoderPreset#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#name ElastictranscoderPreset#name}
   */
   readonly name?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#type ElastictranscoderPreset#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#type ElastictranscoderPreset#type}
   */
   readonly type?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#video_codec_options ElastictranscoderPreset#video_codec_options}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#video_codec_options ElastictranscoderPreset#video_codec_options}
   */
-  readonly videoCodecOptions?: { [key: string]: string } | cdktf.IResolvable;
+  readonly videoCodecOptions?: { [key: string]: string };
   /**
   * audio block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#audio ElastictranscoderPreset#audio}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#audio ElastictranscoderPreset#audio}
   */
   readonly audio?: ElastictranscoderPresetAudio;
   /**
   * audio_codec_options block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#audio_codec_options ElastictranscoderPreset#audio_codec_options}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#audio_codec_options ElastictranscoderPreset#audio_codec_options}
   */
   readonly audioCodecOptions?: ElastictranscoderPresetAudioCodecOptions;
   /**
   * thumbnails block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#thumbnails ElastictranscoderPreset#thumbnails}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#thumbnails ElastictranscoderPreset#thumbnails}
   */
   readonly thumbnails?: ElastictranscoderPresetThumbnails;
   /**
   * video block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#video ElastictranscoderPreset#video}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#video ElastictranscoderPreset#video}
   */
   readonly video?: ElastictranscoderPresetVideo;
   /**
   * video_watermarks block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#video_watermarks ElastictranscoderPreset#video_watermarks}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#video_watermarks ElastictranscoderPreset#video_watermarks}
   */
-  readonly videoWatermarks?: ElastictranscoderPresetVideoWatermarks[];
+  readonly videoWatermarks?: ElastictranscoderPresetVideoWatermarks[] | cdktf.IResolvable;
 }
 export interface ElastictranscoderPresetAudio {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#audio_packing_mode ElastictranscoderPreset#audio_packing_mode}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#audio_packing_mode ElastictranscoderPreset#audio_packing_mode}
   */
   readonly audioPackingMode?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#bit_rate ElastictranscoderPreset#bit_rate}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#bit_rate ElastictranscoderPreset#bit_rate}
   */
   readonly bitRate?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#channels ElastictranscoderPreset#channels}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#channels ElastictranscoderPreset#channels}
   */
   readonly channels?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#codec ElastictranscoderPreset#codec}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#codec ElastictranscoderPreset#codec}
   */
   readonly codec?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#sample_rate ElastictranscoderPreset#sample_rate}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#sample_rate ElastictranscoderPreset#sample_rate}
   */
   readonly sampleRate?: string;
 }
 
 export function elastictranscoderPresetAudioToTerraform(struct?: ElastictranscoderPresetAudioOutputReference | ElastictranscoderPresetAudio): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -96,35 +96,37 @@ export function elastictranscoderPresetAudioToTerraform(struct?: Elastictranscod
 }
 
 export class ElastictranscoderPresetAudioOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): ElastictranscoderPresetAudio | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._audioPackingMode) {
+    if (this._audioPackingMode !== undefined) {
       hasAnyValues = true;
       internalValueResult.audioPackingMode = this._audioPackingMode;
     }
-    if (this._bitRate) {
+    if (this._bitRate !== undefined) {
       hasAnyValues = true;
       internalValueResult.bitRate = this._bitRate;
     }
-    if (this._channels) {
+    if (this._channels !== undefined) {
       hasAnyValues = true;
       internalValueResult.channels = this._channels;
     }
-    if (this._codec) {
+    if (this._codec !== undefined) {
       hasAnyValues = true;
       internalValueResult.codec = this._codec;
     }
-    if (this._sampleRate) {
+    if (this._sampleRate !== undefined) {
       hasAnyValues = true;
       internalValueResult.sampleRate = this._sampleRate;
     }
@@ -133,6 +135,7 @@ export class ElastictranscoderPresetAudioOutputReference extends cdktf.ComplexOb
 
   public set internalValue(value: ElastictranscoderPresetAudio | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._audioPackingMode = undefined;
       this._bitRate = undefined;
       this._channels = undefined;
@@ -140,6 +143,7 @@ export class ElastictranscoderPresetAudioOutputReference extends cdktf.ComplexOb
       this._sampleRate = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._audioPackingMode = value.audioPackingMode;
       this._bitRate = value.bitRate;
       this._channels = value.channels;
@@ -230,25 +234,25 @@ export class ElastictranscoderPresetAudioOutputReference extends cdktf.ComplexOb
 }
 export interface ElastictranscoderPresetAudioCodecOptions {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#bit_depth ElastictranscoderPreset#bit_depth}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#bit_depth ElastictranscoderPreset#bit_depth}
   */
   readonly bitDepth?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#bit_order ElastictranscoderPreset#bit_order}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#bit_order ElastictranscoderPreset#bit_order}
   */
   readonly bitOrder?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#profile ElastictranscoderPreset#profile}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#profile ElastictranscoderPreset#profile}
   */
   readonly profile?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#signed ElastictranscoderPreset#signed}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#signed ElastictranscoderPreset#signed}
   */
   readonly signed?: string;
 }
 
 export function elastictranscoderPresetAudioCodecOptionsToTerraform(struct?: ElastictranscoderPresetAudioCodecOptionsOutputReference | ElastictranscoderPresetAudioCodecOptions): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -261,31 +265,33 @@ export function elastictranscoderPresetAudioCodecOptionsToTerraform(struct?: Ela
 }
 
 export class ElastictranscoderPresetAudioCodecOptionsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): ElastictranscoderPresetAudioCodecOptions | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._bitDepth) {
+    if (this._bitDepth !== undefined) {
       hasAnyValues = true;
       internalValueResult.bitDepth = this._bitDepth;
     }
-    if (this._bitOrder) {
+    if (this._bitOrder !== undefined) {
       hasAnyValues = true;
       internalValueResult.bitOrder = this._bitOrder;
     }
-    if (this._profile) {
+    if (this._profile !== undefined) {
       hasAnyValues = true;
       internalValueResult.profile = this._profile;
     }
-    if (this._signed) {
+    if (this._signed !== undefined) {
       hasAnyValues = true;
       internalValueResult.signed = this._signed;
     }
@@ -294,12 +300,14 @@ export class ElastictranscoderPresetAudioCodecOptionsOutputReference extends cdk
 
   public set internalValue(value: ElastictranscoderPresetAudioCodecOptions | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._bitDepth = undefined;
       this._bitOrder = undefined;
       this._profile = undefined;
       this._signed = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._bitDepth = value.bitDepth;
       this._bitOrder = value.bitOrder;
       this._profile = value.profile;
@@ -373,41 +381,41 @@ export class ElastictranscoderPresetAudioCodecOptionsOutputReference extends cdk
 }
 export interface ElastictranscoderPresetThumbnails {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#aspect_ratio ElastictranscoderPreset#aspect_ratio}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#aspect_ratio ElastictranscoderPreset#aspect_ratio}
   */
   readonly aspectRatio?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#format ElastictranscoderPreset#format}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#format ElastictranscoderPreset#format}
   */
   readonly format?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#interval ElastictranscoderPreset#interval}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#interval ElastictranscoderPreset#interval}
   */
   readonly interval?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#max_height ElastictranscoderPreset#max_height}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#max_height ElastictranscoderPreset#max_height}
   */
   readonly maxHeight?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#max_width ElastictranscoderPreset#max_width}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#max_width ElastictranscoderPreset#max_width}
   */
   readonly maxWidth?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#padding_policy ElastictranscoderPreset#padding_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#padding_policy ElastictranscoderPreset#padding_policy}
   */
   readonly paddingPolicy?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#resolution ElastictranscoderPreset#resolution}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#resolution ElastictranscoderPreset#resolution}
   */
   readonly resolution?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#sizing_policy ElastictranscoderPreset#sizing_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#sizing_policy ElastictranscoderPreset#sizing_policy}
   */
   readonly sizingPolicy?: string;
 }
 
 export function elastictranscoderPresetThumbnailsToTerraform(struct?: ElastictranscoderPresetThumbnailsOutputReference | ElastictranscoderPresetThumbnails): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -424,47 +432,49 @@ export function elastictranscoderPresetThumbnailsToTerraform(struct?: Elastictra
 }
 
 export class ElastictranscoderPresetThumbnailsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): ElastictranscoderPresetThumbnails | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._aspectRatio) {
+    if (this._aspectRatio !== undefined) {
       hasAnyValues = true;
       internalValueResult.aspectRatio = this._aspectRatio;
     }
-    if (this._format) {
+    if (this._format !== undefined) {
       hasAnyValues = true;
       internalValueResult.format = this._format;
     }
-    if (this._interval) {
+    if (this._interval !== undefined) {
       hasAnyValues = true;
       internalValueResult.interval = this._interval;
     }
-    if (this._maxHeight) {
+    if (this._maxHeight !== undefined) {
       hasAnyValues = true;
       internalValueResult.maxHeight = this._maxHeight;
     }
-    if (this._maxWidth) {
+    if (this._maxWidth !== undefined) {
       hasAnyValues = true;
       internalValueResult.maxWidth = this._maxWidth;
     }
-    if (this._paddingPolicy) {
+    if (this._paddingPolicy !== undefined) {
       hasAnyValues = true;
       internalValueResult.paddingPolicy = this._paddingPolicy;
     }
-    if (this._resolution) {
+    if (this._resolution !== undefined) {
       hasAnyValues = true;
       internalValueResult.resolution = this._resolution;
     }
-    if (this._sizingPolicy) {
+    if (this._sizingPolicy !== undefined) {
       hasAnyValues = true;
       internalValueResult.sizingPolicy = this._sizingPolicy;
     }
@@ -473,6 +483,7 @@ export class ElastictranscoderPresetThumbnailsOutputReference extends cdktf.Comp
 
   public set internalValue(value: ElastictranscoderPresetThumbnails | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._aspectRatio = undefined;
       this._format = undefined;
       this._interval = undefined;
@@ -483,6 +494,7 @@ export class ElastictranscoderPresetThumbnailsOutputReference extends cdktf.Comp
       this._sizingPolicy = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._aspectRatio = value.aspectRatio;
       this._format = value.format;
       this._interval = value.interval;
@@ -624,61 +636,61 @@ export class ElastictranscoderPresetThumbnailsOutputReference extends cdktf.Comp
 }
 export interface ElastictranscoderPresetVideo {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#aspect_ratio ElastictranscoderPreset#aspect_ratio}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#aspect_ratio ElastictranscoderPreset#aspect_ratio}
   */
   readonly aspectRatio?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#bit_rate ElastictranscoderPreset#bit_rate}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#bit_rate ElastictranscoderPreset#bit_rate}
   */
   readonly bitRate?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#codec ElastictranscoderPreset#codec}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#codec ElastictranscoderPreset#codec}
   */
   readonly codec?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#display_aspect_ratio ElastictranscoderPreset#display_aspect_ratio}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#display_aspect_ratio ElastictranscoderPreset#display_aspect_ratio}
   */
   readonly displayAspectRatio?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#fixed_gop ElastictranscoderPreset#fixed_gop}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#fixed_gop ElastictranscoderPreset#fixed_gop}
   */
   readonly fixedGop?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#frame_rate ElastictranscoderPreset#frame_rate}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#frame_rate ElastictranscoderPreset#frame_rate}
   */
   readonly frameRate?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#keyframes_max_dist ElastictranscoderPreset#keyframes_max_dist}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#keyframes_max_dist ElastictranscoderPreset#keyframes_max_dist}
   */
   readonly keyframesMaxDist?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#max_frame_rate ElastictranscoderPreset#max_frame_rate}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#max_frame_rate ElastictranscoderPreset#max_frame_rate}
   */
   readonly maxFrameRate?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#max_height ElastictranscoderPreset#max_height}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#max_height ElastictranscoderPreset#max_height}
   */
   readonly maxHeight?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#max_width ElastictranscoderPreset#max_width}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#max_width ElastictranscoderPreset#max_width}
   */
   readonly maxWidth?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#padding_policy ElastictranscoderPreset#padding_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#padding_policy ElastictranscoderPreset#padding_policy}
   */
   readonly paddingPolicy?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#resolution ElastictranscoderPreset#resolution}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#resolution ElastictranscoderPreset#resolution}
   */
   readonly resolution?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#sizing_policy ElastictranscoderPreset#sizing_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#sizing_policy ElastictranscoderPreset#sizing_policy}
   */
   readonly sizingPolicy?: string;
 }
 
 export function elastictranscoderPresetVideoToTerraform(struct?: ElastictranscoderPresetVideoOutputReference | ElastictranscoderPresetVideo): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -700,67 +712,69 @@ export function elastictranscoderPresetVideoToTerraform(struct?: Elastictranscod
 }
 
 export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): ElastictranscoderPresetVideo | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._aspectRatio) {
+    if (this._aspectRatio !== undefined) {
       hasAnyValues = true;
       internalValueResult.aspectRatio = this._aspectRatio;
     }
-    if (this._bitRate) {
+    if (this._bitRate !== undefined) {
       hasAnyValues = true;
       internalValueResult.bitRate = this._bitRate;
     }
-    if (this._codec) {
+    if (this._codec !== undefined) {
       hasAnyValues = true;
       internalValueResult.codec = this._codec;
     }
-    if (this._displayAspectRatio) {
+    if (this._displayAspectRatio !== undefined) {
       hasAnyValues = true;
       internalValueResult.displayAspectRatio = this._displayAspectRatio;
     }
-    if (this._fixedGop) {
+    if (this._fixedGop !== undefined) {
       hasAnyValues = true;
       internalValueResult.fixedGop = this._fixedGop;
     }
-    if (this._frameRate) {
+    if (this._frameRate !== undefined) {
       hasAnyValues = true;
       internalValueResult.frameRate = this._frameRate;
     }
-    if (this._keyframesMaxDist) {
+    if (this._keyframesMaxDist !== undefined) {
       hasAnyValues = true;
       internalValueResult.keyframesMaxDist = this._keyframesMaxDist;
     }
-    if (this._maxFrameRate) {
+    if (this._maxFrameRate !== undefined) {
       hasAnyValues = true;
       internalValueResult.maxFrameRate = this._maxFrameRate;
     }
-    if (this._maxHeight) {
+    if (this._maxHeight !== undefined) {
       hasAnyValues = true;
       internalValueResult.maxHeight = this._maxHeight;
     }
-    if (this._maxWidth) {
+    if (this._maxWidth !== undefined) {
       hasAnyValues = true;
       internalValueResult.maxWidth = this._maxWidth;
     }
-    if (this._paddingPolicy) {
+    if (this._paddingPolicy !== undefined) {
       hasAnyValues = true;
       internalValueResult.paddingPolicy = this._paddingPolicy;
     }
-    if (this._resolution) {
+    if (this._resolution !== undefined) {
       hasAnyValues = true;
       internalValueResult.resolution = this._resolution;
     }
-    if (this._sizingPolicy) {
+    if (this._sizingPolicy !== undefined) {
       hasAnyValues = true;
       internalValueResult.sizingPolicy = this._sizingPolicy;
     }
@@ -769,6 +783,7 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
 
   public set internalValue(value: ElastictranscoderPresetVideo | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._aspectRatio = undefined;
       this._bitRate = undefined;
       this._codec = undefined;
@@ -784,6 +799,7 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
       this._sizingPolicy = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._aspectRatio = value.aspectRatio;
       this._bitRate = value.bitRate;
       this._codec = value.codec;
@@ -1010,49 +1026,49 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
 }
 export interface ElastictranscoderPresetVideoWatermarks {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#horizontal_align ElastictranscoderPreset#horizontal_align}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#horizontal_align ElastictranscoderPreset#horizontal_align}
   */
   readonly horizontalAlign?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#horizontal_offset ElastictranscoderPreset#horizontal_offset}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#horizontal_offset ElastictranscoderPreset#horizontal_offset}
   */
   readonly horizontalOffset?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#id ElastictranscoderPreset#id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#id ElastictranscoderPreset#id}
   */
   readonly id?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#max_height ElastictranscoderPreset#max_height}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#max_height ElastictranscoderPreset#max_height}
   */
   readonly maxHeight?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#max_width ElastictranscoderPreset#max_width}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#max_width ElastictranscoderPreset#max_width}
   */
   readonly maxWidth?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#opacity ElastictranscoderPreset#opacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#opacity ElastictranscoderPreset#opacity}
   */
   readonly opacity?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#sizing_policy ElastictranscoderPreset#sizing_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#sizing_policy ElastictranscoderPreset#sizing_policy}
   */
   readonly sizingPolicy?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#target ElastictranscoderPreset#target}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#target ElastictranscoderPreset#target}
   */
   readonly target?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#vertical_align ElastictranscoderPreset#vertical_align}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#vertical_align ElastictranscoderPreset#vertical_align}
   */
   readonly verticalAlign?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html#vertical_offset ElastictranscoderPreset#vertical_offset}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset#vertical_offset ElastictranscoderPreset#vertical_offset}
   */
   readonly verticalOffset?: string;
 }
 
-export function elastictranscoderPresetVideoWatermarksToTerraform(struct?: ElastictranscoderPresetVideoWatermarks): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function elastictranscoderPresetVideoWatermarksToTerraform(struct?: ElastictranscoderPresetVideoWatermarks | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1072,7 +1088,7 @@ export function elastictranscoderPresetVideoWatermarksToTerraform(struct?: Elast
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html aws_elastictranscoder_preset}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset aws_elastictranscoder_preset}
 */
 export class ElastictranscoderPreset extends cdktf.TerraformResource {
 
@@ -1086,7 +1102,7 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset.html aws_elastictranscoder_preset} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/elastictranscoder_preset aws_elastictranscoder_preset} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -1191,12 +1207,11 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
   }
 
   // video_codec_options - computed: false, optional: true, required: false
-  private _videoCodecOptions?: { [key: string]: string } | cdktf.IResolvable; 
+  private _videoCodecOptions?: { [key: string]: string }; 
   public get videoCodecOptions() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('video_codec_options') as any;
+    return this.getStringMapAttribute('video_codec_options');
   }
-  public set videoCodecOptions(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set videoCodecOptions(value: { [key: string]: string }) {
     this._videoCodecOptions = value;
   }
   public resetVideoCodecOptions() {
@@ -1208,7 +1223,7 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
   }
 
   // audio - computed: false, optional: true, required: false
-  private _audio = new ElastictranscoderPresetAudioOutputReference(this as any, "audio", true);
+  private _audio = new ElastictranscoderPresetAudioOutputReference(this, "audio", true);
   public get audio() {
     return this._audio;
   }
@@ -1224,7 +1239,7 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
   }
 
   // audio_codec_options - computed: false, optional: true, required: false
-  private _audioCodecOptions = new ElastictranscoderPresetAudioCodecOptionsOutputReference(this as any, "audio_codec_options", true);
+  private _audioCodecOptions = new ElastictranscoderPresetAudioCodecOptionsOutputReference(this, "audio_codec_options", true);
   public get audioCodecOptions() {
     return this._audioCodecOptions;
   }
@@ -1240,7 +1255,7 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
   }
 
   // thumbnails - computed: false, optional: true, required: false
-  private _thumbnails = new ElastictranscoderPresetThumbnailsOutputReference(this as any, "thumbnails", true);
+  private _thumbnails = new ElastictranscoderPresetThumbnailsOutputReference(this, "thumbnails", true);
   public get thumbnails() {
     return this._thumbnails;
   }
@@ -1256,7 +1271,7 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
   }
 
   // video - computed: false, optional: true, required: false
-  private _video = new ElastictranscoderPresetVideoOutputReference(this as any, "video", true);
+  private _video = new ElastictranscoderPresetVideoOutputReference(this, "video", true);
   public get video() {
     return this._video;
   }
@@ -1272,12 +1287,12 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
   }
 
   // video_watermarks - computed: false, optional: true, required: false
-  private _videoWatermarks?: ElastictranscoderPresetVideoWatermarks[]; 
+  private _videoWatermarks?: ElastictranscoderPresetVideoWatermarks[] | cdktf.IResolvable; 
   public get videoWatermarks() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('video_watermarks') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('video_watermarks')));
   }
-  public set videoWatermarks(value: ElastictranscoderPresetVideoWatermarks[]) {
+  public set videoWatermarks(value: ElastictranscoderPresetVideoWatermarks[] | cdktf.IResolvable) {
     this._videoWatermarks = value;
   }
   public resetVideoWatermarks() {
@@ -1298,7 +1313,7 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
       description: cdktf.stringToTerraform(this._description),
       name: cdktf.stringToTerraform(this._name),
       type: cdktf.stringToTerraform(this._type),
-      video_codec_options: cdktf.hashMapper(cdktf.anyToTerraform)(this._videoCodecOptions),
+      video_codec_options: cdktf.hashMapper(cdktf.stringToTerraform)(this._videoCodecOptions),
       audio: elastictranscoderPresetAudioToTerraform(this._audio.internalValue),
       audio_codec_options: elastictranscoderPresetAudioCodecOptionsToTerraform(this._audioCodecOptions.internalValue),
       thumbnails: elastictranscoderPresetThumbnailsToTerraform(this._thumbnails.internalValue),

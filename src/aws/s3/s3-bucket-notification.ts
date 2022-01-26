@@ -8,53 +8,53 @@ import * as cdktf from 'cdktf';
 */
 export interface S3BucketNotificationConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#bucket S3BucketNotification#bucket}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#bucket S3BucketNotification#bucket}
   */
   readonly bucket: string;
   /**
   * lambda_function block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#lambda_function S3BucketNotification#lambda_function}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#lambda_function S3BucketNotification#lambda_function}
   */
-  readonly lambdaFunction?: S3BucketNotificationLambdaFunction[];
+  readonly lambdaFunction?: S3BucketNotificationLambdaFunction[] | cdktf.IResolvable;
   /**
   * queue block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#queue S3BucketNotification#queue}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#queue S3BucketNotification#queue}
   */
-  readonly queue?: S3BucketNotificationQueue[];
+  readonly queue?: S3BucketNotificationQueue[] | cdktf.IResolvable;
   /**
   * topic block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#topic S3BucketNotification#topic}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#topic S3BucketNotification#topic}
   */
-  readonly topic?: S3BucketNotificationTopic[];
+  readonly topic?: S3BucketNotificationTopic[] | cdktf.IResolvable;
 }
 export interface S3BucketNotificationLambdaFunction {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#events S3BucketNotification#events}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#events S3BucketNotification#events}
   */
   readonly events: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#filter_prefix S3BucketNotification#filter_prefix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#filter_prefix S3BucketNotification#filter_prefix}
   */
   readonly filterPrefix?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#filter_suffix S3BucketNotification#filter_suffix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#filter_suffix S3BucketNotification#filter_suffix}
   */
   readonly filterSuffix?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#id S3BucketNotification#id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#id S3BucketNotification#id}
   */
   readonly id?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#lambda_function_arn S3BucketNotification#lambda_function_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#lambda_function_arn S3BucketNotification#lambda_function_arn}
   */
   readonly lambdaFunctionArn?: string;
 }
 
-export function s3BucketNotificationLambdaFunctionToTerraform(struct?: S3BucketNotificationLambdaFunction): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function s3BucketNotificationLambdaFunctionToTerraform(struct?: S3BucketNotificationLambdaFunction | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -68,29 +68,29 @@ export function s3BucketNotificationLambdaFunctionToTerraform(struct?: S3BucketN
 
 export interface S3BucketNotificationQueue {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#events S3BucketNotification#events}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#events S3BucketNotification#events}
   */
   readonly events: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#filter_prefix S3BucketNotification#filter_prefix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#filter_prefix S3BucketNotification#filter_prefix}
   */
   readonly filterPrefix?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#filter_suffix S3BucketNotification#filter_suffix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#filter_suffix S3BucketNotification#filter_suffix}
   */
   readonly filterSuffix?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#id S3BucketNotification#id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#id S3BucketNotification#id}
   */
   readonly id?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#queue_arn S3BucketNotification#queue_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#queue_arn S3BucketNotification#queue_arn}
   */
   readonly queueArn: string;
 }
 
-export function s3BucketNotificationQueueToTerraform(struct?: S3BucketNotificationQueue): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function s3BucketNotificationQueueToTerraform(struct?: S3BucketNotificationQueue | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -104,29 +104,29 @@ export function s3BucketNotificationQueueToTerraform(struct?: S3BucketNotificati
 
 export interface S3BucketNotificationTopic {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#events S3BucketNotification#events}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#events S3BucketNotification#events}
   */
   readonly events: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#filter_prefix S3BucketNotification#filter_prefix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#filter_prefix S3BucketNotification#filter_prefix}
   */
   readonly filterPrefix?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#filter_suffix S3BucketNotification#filter_suffix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#filter_suffix S3BucketNotification#filter_suffix}
   */
   readonly filterSuffix?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#id S3BucketNotification#id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#id S3BucketNotification#id}
   */
   readonly id?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#topic_arn S3BucketNotification#topic_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#topic_arn S3BucketNotification#topic_arn}
   */
   readonly topicArn: string;
 }
 
-export function s3BucketNotificationTopicToTerraform(struct?: S3BucketNotificationTopic): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function s3BucketNotificationTopicToTerraform(struct?: S3BucketNotificationTopic | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -140,7 +140,7 @@ export function s3BucketNotificationTopicToTerraform(struct?: S3BucketNotificati
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html aws_s3_bucket_notification}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification aws_s3_bucket_notification}
 */
 export class S3BucketNotification extends cdktf.TerraformResource {
 
@@ -154,7 +154,7 @@ export class S3BucketNotification extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html aws_s3_bucket_notification} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification aws_s3_bucket_notification} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -200,12 +200,12 @@ export class S3BucketNotification extends cdktf.TerraformResource {
   }
 
   // lambda_function - computed: false, optional: true, required: false
-  private _lambdaFunction?: S3BucketNotificationLambdaFunction[]; 
+  private _lambdaFunction?: S3BucketNotificationLambdaFunction[] | cdktf.IResolvable; 
   public get lambdaFunction() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('lambda_function') as any;
+    return this.interpolationForAttribute('lambda_function');
   }
-  public set lambdaFunction(value: S3BucketNotificationLambdaFunction[]) {
+  public set lambdaFunction(value: S3BucketNotificationLambdaFunction[] | cdktf.IResolvable) {
     this._lambdaFunction = value;
   }
   public resetLambdaFunction() {
@@ -217,12 +217,12 @@ export class S3BucketNotification extends cdktf.TerraformResource {
   }
 
   // queue - computed: false, optional: true, required: false
-  private _queue?: S3BucketNotificationQueue[]; 
+  private _queue?: S3BucketNotificationQueue[] | cdktf.IResolvable; 
   public get queue() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('queue') as any;
+    return this.interpolationForAttribute('queue');
   }
-  public set queue(value: S3BucketNotificationQueue[]) {
+  public set queue(value: S3BucketNotificationQueue[] | cdktf.IResolvable) {
     this._queue = value;
   }
   public resetQueue() {
@@ -234,12 +234,12 @@ export class S3BucketNotification extends cdktf.TerraformResource {
   }
 
   // topic - computed: false, optional: true, required: false
-  private _topic?: S3BucketNotificationTopic[]; 
+  private _topic?: S3BucketNotificationTopic[] | cdktf.IResolvable; 
   public get topic() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('topic') as any;
+    return this.interpolationForAttribute('topic');
   }
-  public set topic(value: S3BucketNotificationTopic[]) {
+  public set topic(value: S3BucketNotificationTopic[] | cdktf.IResolvable) {
     this._topic = value;
   }
   public resetTopic() {

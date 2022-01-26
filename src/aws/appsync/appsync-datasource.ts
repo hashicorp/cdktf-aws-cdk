@@ -8,73 +8,73 @@ import * as cdktf from 'cdktf';
 */
 export interface AppsyncDatasourceConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#api_id AppsyncDatasource#api_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#api_id AppsyncDatasource#api_id}
   */
   readonly apiId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#description AppsyncDatasource#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#description AppsyncDatasource#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#name AppsyncDatasource#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#name AppsyncDatasource#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#service_role_arn AppsyncDatasource#service_role_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#service_role_arn AppsyncDatasource#service_role_arn}
   */
   readonly serviceRoleArn?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#type AppsyncDatasource#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#type AppsyncDatasource#type}
   */
   readonly type: string;
   /**
   * dynamodb_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#dynamodb_config AppsyncDatasource#dynamodb_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#dynamodb_config AppsyncDatasource#dynamodb_config}
   */
   readonly dynamodbConfig?: AppsyncDatasourceDynamodbConfig;
   /**
   * elasticsearch_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#elasticsearch_config AppsyncDatasource#elasticsearch_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#elasticsearch_config AppsyncDatasource#elasticsearch_config}
   */
   readonly elasticsearchConfig?: AppsyncDatasourceElasticsearchConfig;
   /**
   * http_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#http_config AppsyncDatasource#http_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#http_config AppsyncDatasource#http_config}
   */
   readonly httpConfig?: AppsyncDatasourceHttpConfig;
   /**
   * lambda_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#lambda_config AppsyncDatasource#lambda_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#lambda_config AppsyncDatasource#lambda_config}
   */
   readonly lambdaConfig?: AppsyncDatasourceLambdaConfig;
   /**
   * relational_database_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#relational_database_config AppsyncDatasource#relational_database_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#relational_database_config AppsyncDatasource#relational_database_config}
   */
   readonly relationalDatabaseConfig?: AppsyncDatasourceRelationalDatabaseConfig;
 }
 export interface AppsyncDatasourceDynamodbConfigDeltaSyncConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#base_table_ttl AppsyncDatasource#base_table_ttl}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#base_table_ttl AppsyncDatasource#base_table_ttl}
   */
   readonly baseTableTtl?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#delta_sync_table_name AppsyncDatasource#delta_sync_table_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#delta_sync_table_name AppsyncDatasource#delta_sync_table_name}
   */
   readonly deltaSyncTableName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#delta_sync_table_ttl AppsyncDatasource#delta_sync_table_ttl}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#delta_sync_table_ttl AppsyncDatasource#delta_sync_table_ttl}
   */
   readonly deltaSyncTableTtl?: number;
 }
 
 export function appsyncDatasourceDynamodbConfigDeltaSyncConfigToTerraform(struct?: AppsyncDatasourceDynamodbConfigDeltaSyncConfigOutputReference | AppsyncDatasourceDynamodbConfigDeltaSyncConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -86,27 +86,29 @@ export function appsyncDatasourceDynamodbConfigDeltaSyncConfigToTerraform(struct
 }
 
 export class AppsyncDatasourceDynamodbConfigDeltaSyncConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppsyncDatasourceDynamodbConfigDeltaSyncConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._baseTableTtl) {
+    if (this._baseTableTtl !== undefined) {
       hasAnyValues = true;
       internalValueResult.baseTableTtl = this._baseTableTtl;
     }
-    if (this._deltaSyncTableName) {
+    if (this._deltaSyncTableName !== undefined) {
       hasAnyValues = true;
       internalValueResult.deltaSyncTableName = this._deltaSyncTableName;
     }
-    if (this._deltaSyncTableTtl) {
+    if (this._deltaSyncTableTtl !== undefined) {
       hasAnyValues = true;
       internalValueResult.deltaSyncTableTtl = this._deltaSyncTableTtl;
     }
@@ -115,11 +117,13 @@ export class AppsyncDatasourceDynamodbConfigDeltaSyncConfigOutputReference exten
 
   public set internalValue(value: AppsyncDatasourceDynamodbConfigDeltaSyncConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._baseTableTtl = undefined;
       this._deltaSyncTableName = undefined;
       this._deltaSyncTableTtl = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._baseTableTtl = value.baseTableTtl;
       this._deltaSyncTableName = value.deltaSyncTableName;
       this._deltaSyncTableTtl = value.deltaSyncTableTtl;
@@ -173,31 +177,31 @@ export class AppsyncDatasourceDynamodbConfigDeltaSyncConfigOutputReference exten
 }
 export interface AppsyncDatasourceDynamodbConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#region AppsyncDatasource#region}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#region AppsyncDatasource#region}
   */
   readonly region?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#table_name AppsyncDatasource#table_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#table_name AppsyncDatasource#table_name}
   */
   readonly tableName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#use_caller_credentials AppsyncDatasource#use_caller_credentials}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#use_caller_credentials AppsyncDatasource#use_caller_credentials}
   */
   readonly useCallerCredentials?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#versioned AppsyncDatasource#versioned}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#versioned AppsyncDatasource#versioned}
   */
   readonly versioned?: boolean | cdktf.IResolvable;
   /**
   * delta_sync_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#delta_sync_config AppsyncDatasource#delta_sync_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#delta_sync_config AppsyncDatasource#delta_sync_config}
   */
   readonly deltaSyncConfig?: AppsyncDatasourceDynamodbConfigDeltaSyncConfig;
 }
 
 export function appsyncDatasourceDynamodbConfigToTerraform(struct?: AppsyncDatasourceDynamodbConfigOutputReference | AppsyncDatasourceDynamodbConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -211,35 +215,37 @@ export function appsyncDatasourceDynamodbConfigToTerraform(struct?: AppsyncDatas
 }
 
 export class AppsyncDatasourceDynamodbConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppsyncDatasourceDynamodbConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._region) {
+    if (this._region !== undefined) {
       hasAnyValues = true;
       internalValueResult.region = this._region;
     }
-    if (this._tableName) {
+    if (this._tableName !== undefined) {
       hasAnyValues = true;
       internalValueResult.tableName = this._tableName;
     }
-    if (this._useCallerCredentials) {
+    if (this._useCallerCredentials !== undefined) {
       hasAnyValues = true;
       internalValueResult.useCallerCredentials = this._useCallerCredentials;
     }
-    if (this._versioned) {
+    if (this._versioned !== undefined) {
       hasAnyValues = true;
       internalValueResult.versioned = this._versioned;
     }
-    if (this._deltaSyncConfig) {
+    if (this._deltaSyncConfig?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.deltaSyncConfig = this._deltaSyncConfig?.internalValue;
     }
@@ -248,6 +254,7 @@ export class AppsyncDatasourceDynamodbConfigOutputReference extends cdktf.Comple
 
   public set internalValue(value: AppsyncDatasourceDynamodbConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._region = undefined;
       this._tableName = undefined;
       this._useCallerCredentials = undefined;
@@ -255,6 +262,7 @@ export class AppsyncDatasourceDynamodbConfigOutputReference extends cdktf.Comple
       this._deltaSyncConfig.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._region = value.region;
       this._tableName = value.tableName;
       this._useCallerCredentials = value.useCallerCredentials;
@@ -295,7 +303,7 @@ export class AppsyncDatasourceDynamodbConfigOutputReference extends cdktf.Comple
   // use_caller_credentials - computed: false, optional: true, required: false
   private _useCallerCredentials?: boolean | cdktf.IResolvable; 
   public get useCallerCredentials() {
-    return this.getBooleanAttribute('use_caller_credentials') as any;
+    return this.getBooleanAttribute('use_caller_credentials');
   }
   public set useCallerCredentials(value: boolean | cdktf.IResolvable) {
     this._useCallerCredentials = value;
@@ -311,7 +319,7 @@ export class AppsyncDatasourceDynamodbConfigOutputReference extends cdktf.Comple
   // versioned - computed: false, optional: true, required: false
   private _versioned?: boolean | cdktf.IResolvable; 
   public get versioned() {
-    return this.getBooleanAttribute('versioned') as any;
+    return this.getBooleanAttribute('versioned');
   }
   public set versioned(value: boolean | cdktf.IResolvable) {
     this._versioned = value;
@@ -325,7 +333,7 @@ export class AppsyncDatasourceDynamodbConfigOutputReference extends cdktf.Comple
   }
 
   // delta_sync_config - computed: false, optional: true, required: false
-  private _deltaSyncConfig = new AppsyncDatasourceDynamodbConfigDeltaSyncConfigOutputReference(this as any, "delta_sync_config", true);
+  private _deltaSyncConfig = new AppsyncDatasourceDynamodbConfigDeltaSyncConfigOutputReference(this, "delta_sync_config", true);
   public get deltaSyncConfig() {
     return this._deltaSyncConfig;
   }
@@ -342,17 +350,17 @@ export class AppsyncDatasourceDynamodbConfigOutputReference extends cdktf.Comple
 }
 export interface AppsyncDatasourceElasticsearchConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#endpoint AppsyncDatasource#endpoint}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#endpoint AppsyncDatasource#endpoint}
   */
   readonly endpoint: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#region AppsyncDatasource#region}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#region AppsyncDatasource#region}
   */
   readonly region?: string;
 }
 
 export function appsyncDatasourceElasticsearchConfigToTerraform(struct?: AppsyncDatasourceElasticsearchConfigOutputReference | AppsyncDatasourceElasticsearchConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -363,23 +371,25 @@ export function appsyncDatasourceElasticsearchConfigToTerraform(struct?: Appsync
 }
 
 export class AppsyncDatasourceElasticsearchConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppsyncDatasourceElasticsearchConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._endpoint) {
+    if (this._endpoint !== undefined) {
       hasAnyValues = true;
       internalValueResult.endpoint = this._endpoint;
     }
-    if (this._region) {
+    if (this._region !== undefined) {
       hasAnyValues = true;
       internalValueResult.region = this._region;
     }
@@ -388,10 +398,12 @@ export class AppsyncDatasourceElasticsearchConfigOutputReference extends cdktf.C
 
   public set internalValue(value: AppsyncDatasourceElasticsearchConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._endpoint = undefined;
       this._region = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._endpoint = value.endpoint;
       this._region = value.region;
     }
@@ -428,17 +440,17 @@ export class AppsyncDatasourceElasticsearchConfigOutputReference extends cdktf.C
 }
 export interface AppsyncDatasourceHttpConfigAuthorizationConfigAwsIamConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#signing_region AppsyncDatasource#signing_region}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#signing_region AppsyncDatasource#signing_region}
   */
   readonly signingRegion?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#signing_service_name AppsyncDatasource#signing_service_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#signing_service_name AppsyncDatasource#signing_service_name}
   */
   readonly signingServiceName?: string;
 }
 
 export function appsyncDatasourceHttpConfigAuthorizationConfigAwsIamConfigToTerraform(struct?: AppsyncDatasourceHttpConfigAuthorizationConfigAwsIamConfigOutputReference | AppsyncDatasourceHttpConfigAuthorizationConfigAwsIamConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -449,23 +461,25 @@ export function appsyncDatasourceHttpConfigAuthorizationConfigAwsIamConfigToTerr
 }
 
 export class AppsyncDatasourceHttpConfigAuthorizationConfigAwsIamConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppsyncDatasourceHttpConfigAuthorizationConfigAwsIamConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._signingRegion) {
+    if (this._signingRegion !== undefined) {
       hasAnyValues = true;
       internalValueResult.signingRegion = this._signingRegion;
     }
-    if (this._signingServiceName) {
+    if (this._signingServiceName !== undefined) {
       hasAnyValues = true;
       internalValueResult.signingServiceName = this._signingServiceName;
     }
@@ -474,10 +488,12 @@ export class AppsyncDatasourceHttpConfigAuthorizationConfigAwsIamConfigOutputRef
 
   public set internalValue(value: AppsyncDatasourceHttpConfigAuthorizationConfigAwsIamConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._signingRegion = undefined;
       this._signingServiceName = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._signingRegion = value.signingRegion;
       this._signingServiceName = value.signingServiceName;
     }
@@ -517,19 +533,19 @@ export class AppsyncDatasourceHttpConfigAuthorizationConfigAwsIamConfigOutputRef
 }
 export interface AppsyncDatasourceHttpConfigAuthorizationConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#authorization_type AppsyncDatasource#authorization_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#authorization_type AppsyncDatasource#authorization_type}
   */
   readonly authorizationType?: string;
   /**
   * aws_iam_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#aws_iam_config AppsyncDatasource#aws_iam_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#aws_iam_config AppsyncDatasource#aws_iam_config}
   */
   readonly awsIamConfig?: AppsyncDatasourceHttpConfigAuthorizationConfigAwsIamConfig;
 }
 
 export function appsyncDatasourceHttpConfigAuthorizationConfigToTerraform(struct?: AppsyncDatasourceHttpConfigAuthorizationConfigOutputReference | AppsyncDatasourceHttpConfigAuthorizationConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -540,23 +556,25 @@ export function appsyncDatasourceHttpConfigAuthorizationConfigToTerraform(struct
 }
 
 export class AppsyncDatasourceHttpConfigAuthorizationConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppsyncDatasourceHttpConfigAuthorizationConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._authorizationType) {
+    if (this._authorizationType !== undefined) {
       hasAnyValues = true;
       internalValueResult.authorizationType = this._authorizationType;
     }
-    if (this._awsIamConfig) {
+    if (this._awsIamConfig?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.awsIamConfig = this._awsIamConfig?.internalValue;
     }
@@ -565,10 +583,12 @@ export class AppsyncDatasourceHttpConfigAuthorizationConfigOutputReference exten
 
   public set internalValue(value: AppsyncDatasourceHttpConfigAuthorizationConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._authorizationType = undefined;
       this._awsIamConfig.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._authorizationType = value.authorizationType;
       this._awsIamConfig.internalValue = value.awsIamConfig;
     }
@@ -591,7 +611,7 @@ export class AppsyncDatasourceHttpConfigAuthorizationConfigOutputReference exten
   }
 
   // aws_iam_config - computed: false, optional: true, required: false
-  private _awsIamConfig = new AppsyncDatasourceHttpConfigAuthorizationConfigAwsIamConfigOutputReference(this as any, "aws_iam_config", true);
+  private _awsIamConfig = new AppsyncDatasourceHttpConfigAuthorizationConfigAwsIamConfigOutputReference(this, "aws_iam_config", true);
   public get awsIamConfig() {
     return this._awsIamConfig;
   }
@@ -608,19 +628,19 @@ export class AppsyncDatasourceHttpConfigAuthorizationConfigOutputReference exten
 }
 export interface AppsyncDatasourceHttpConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#endpoint AppsyncDatasource#endpoint}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#endpoint AppsyncDatasource#endpoint}
   */
   readonly endpoint: string;
   /**
   * authorization_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#authorization_config AppsyncDatasource#authorization_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#authorization_config AppsyncDatasource#authorization_config}
   */
   readonly authorizationConfig?: AppsyncDatasourceHttpConfigAuthorizationConfig;
 }
 
 export function appsyncDatasourceHttpConfigToTerraform(struct?: AppsyncDatasourceHttpConfigOutputReference | AppsyncDatasourceHttpConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -631,23 +651,25 @@ export function appsyncDatasourceHttpConfigToTerraform(struct?: AppsyncDatasourc
 }
 
 export class AppsyncDatasourceHttpConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppsyncDatasourceHttpConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._endpoint) {
+    if (this._endpoint !== undefined) {
       hasAnyValues = true;
       internalValueResult.endpoint = this._endpoint;
     }
-    if (this._authorizationConfig) {
+    if (this._authorizationConfig?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.authorizationConfig = this._authorizationConfig?.internalValue;
     }
@@ -656,10 +678,12 @@ export class AppsyncDatasourceHttpConfigOutputReference extends cdktf.ComplexObj
 
   public set internalValue(value: AppsyncDatasourceHttpConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._endpoint = undefined;
       this._authorizationConfig.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._endpoint = value.endpoint;
       this._authorizationConfig.internalValue = value.authorizationConfig;
     }
@@ -679,7 +703,7 @@ export class AppsyncDatasourceHttpConfigOutputReference extends cdktf.ComplexObj
   }
 
   // authorization_config - computed: false, optional: true, required: false
-  private _authorizationConfig = new AppsyncDatasourceHttpConfigAuthorizationConfigOutputReference(this as any, "authorization_config", true);
+  private _authorizationConfig = new AppsyncDatasourceHttpConfigAuthorizationConfigOutputReference(this, "authorization_config", true);
   public get authorizationConfig() {
     return this._authorizationConfig;
   }
@@ -696,13 +720,13 @@ export class AppsyncDatasourceHttpConfigOutputReference extends cdktf.ComplexObj
 }
 export interface AppsyncDatasourceLambdaConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#function_arn AppsyncDatasource#function_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#function_arn AppsyncDatasource#function_arn}
   */
   readonly functionArn: string;
 }
 
 export function appsyncDatasourceLambdaConfigToTerraform(struct?: AppsyncDatasourceLambdaConfigOutputReference | AppsyncDatasourceLambdaConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -712,19 +736,21 @@ export function appsyncDatasourceLambdaConfigToTerraform(struct?: AppsyncDatasou
 }
 
 export class AppsyncDatasourceLambdaConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppsyncDatasourceLambdaConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._functionArn) {
+    if (this._functionArn !== undefined) {
       hasAnyValues = true;
       internalValueResult.functionArn = this._functionArn;
     }
@@ -733,9 +759,11 @@ export class AppsyncDatasourceLambdaConfigOutputReference extends cdktf.ComplexO
 
   public set internalValue(value: AppsyncDatasourceLambdaConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._functionArn = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._functionArn = value.functionArn;
     }
   }
@@ -755,29 +783,29 @@ export class AppsyncDatasourceLambdaConfigOutputReference extends cdktf.ComplexO
 }
 export interface AppsyncDatasourceRelationalDatabaseConfigHttpEndpointConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#aws_secret_store_arn AppsyncDatasource#aws_secret_store_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#aws_secret_store_arn AppsyncDatasource#aws_secret_store_arn}
   */
   readonly awsSecretStoreArn: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#database_name AppsyncDatasource#database_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#database_name AppsyncDatasource#database_name}
   */
   readonly databaseName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#db_cluster_identifier AppsyncDatasource#db_cluster_identifier}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#db_cluster_identifier AppsyncDatasource#db_cluster_identifier}
   */
   readonly dbClusterIdentifier: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#region AppsyncDatasource#region}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#region AppsyncDatasource#region}
   */
   readonly region?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#schema AppsyncDatasource#schema}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#schema AppsyncDatasource#schema}
   */
   readonly schema?: string;
 }
 
 export function appsyncDatasourceRelationalDatabaseConfigHttpEndpointConfigToTerraform(struct?: AppsyncDatasourceRelationalDatabaseConfigHttpEndpointConfigOutputReference | AppsyncDatasourceRelationalDatabaseConfigHttpEndpointConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -791,35 +819,37 @@ export function appsyncDatasourceRelationalDatabaseConfigHttpEndpointConfigToTer
 }
 
 export class AppsyncDatasourceRelationalDatabaseConfigHttpEndpointConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppsyncDatasourceRelationalDatabaseConfigHttpEndpointConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._awsSecretStoreArn) {
+    if (this._awsSecretStoreArn !== undefined) {
       hasAnyValues = true;
       internalValueResult.awsSecretStoreArn = this._awsSecretStoreArn;
     }
-    if (this._databaseName) {
+    if (this._databaseName !== undefined) {
       hasAnyValues = true;
       internalValueResult.databaseName = this._databaseName;
     }
-    if (this._dbClusterIdentifier) {
+    if (this._dbClusterIdentifier !== undefined) {
       hasAnyValues = true;
       internalValueResult.dbClusterIdentifier = this._dbClusterIdentifier;
     }
-    if (this._region) {
+    if (this._region !== undefined) {
       hasAnyValues = true;
       internalValueResult.region = this._region;
     }
-    if (this._schema) {
+    if (this._schema !== undefined) {
       hasAnyValues = true;
       internalValueResult.schema = this._schema;
     }
@@ -828,6 +858,7 @@ export class AppsyncDatasourceRelationalDatabaseConfigHttpEndpointConfigOutputRe
 
   public set internalValue(value: AppsyncDatasourceRelationalDatabaseConfigHttpEndpointConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._awsSecretStoreArn = undefined;
       this._databaseName = undefined;
       this._dbClusterIdentifier = undefined;
@@ -835,6 +866,7 @@ export class AppsyncDatasourceRelationalDatabaseConfigHttpEndpointConfigOutputRe
       this._schema = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._awsSecretStoreArn = value.awsSecretStoreArn;
       this._databaseName = value.databaseName;
       this._dbClusterIdentifier = value.dbClusterIdentifier;
@@ -919,19 +951,19 @@ export class AppsyncDatasourceRelationalDatabaseConfigHttpEndpointConfigOutputRe
 }
 export interface AppsyncDatasourceRelationalDatabaseConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#source_type AppsyncDatasource#source_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#source_type AppsyncDatasource#source_type}
   */
   readonly sourceType?: string;
   /**
   * http_endpoint_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#http_endpoint_config AppsyncDatasource#http_endpoint_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource#http_endpoint_config AppsyncDatasource#http_endpoint_config}
   */
   readonly httpEndpointConfig?: AppsyncDatasourceRelationalDatabaseConfigHttpEndpointConfig;
 }
 
 export function appsyncDatasourceRelationalDatabaseConfigToTerraform(struct?: AppsyncDatasourceRelationalDatabaseConfigOutputReference | AppsyncDatasourceRelationalDatabaseConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -942,23 +974,25 @@ export function appsyncDatasourceRelationalDatabaseConfigToTerraform(struct?: Ap
 }
 
 export class AppsyncDatasourceRelationalDatabaseConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppsyncDatasourceRelationalDatabaseConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._sourceType) {
+    if (this._sourceType !== undefined) {
       hasAnyValues = true;
       internalValueResult.sourceType = this._sourceType;
     }
-    if (this._httpEndpointConfig) {
+    if (this._httpEndpointConfig?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.httpEndpointConfig = this._httpEndpointConfig?.internalValue;
     }
@@ -967,10 +1001,12 @@ export class AppsyncDatasourceRelationalDatabaseConfigOutputReference extends cd
 
   public set internalValue(value: AppsyncDatasourceRelationalDatabaseConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._sourceType = undefined;
       this._httpEndpointConfig.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._sourceType = value.sourceType;
       this._httpEndpointConfig.internalValue = value.httpEndpointConfig;
     }
@@ -993,7 +1029,7 @@ export class AppsyncDatasourceRelationalDatabaseConfigOutputReference extends cd
   }
 
   // http_endpoint_config - computed: false, optional: true, required: false
-  private _httpEndpointConfig = new AppsyncDatasourceRelationalDatabaseConfigHttpEndpointConfigOutputReference(this as any, "http_endpoint_config", true);
+  private _httpEndpointConfig = new AppsyncDatasourceRelationalDatabaseConfigHttpEndpointConfigOutputReference(this, "http_endpoint_config", true);
   public get httpEndpointConfig() {
     return this._httpEndpointConfig;
   }
@@ -1010,7 +1046,7 @@ export class AppsyncDatasourceRelationalDatabaseConfigOutputReference extends cd
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html aws_appsync_datasource}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource aws_appsync_datasource}
 */
 export class AppsyncDatasource extends cdktf.TerraformResource {
 
@@ -1024,7 +1060,7 @@ export class AppsyncDatasource extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html aws_appsync_datasource} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource aws_appsync_datasource} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -1139,7 +1175,7 @@ export class AppsyncDatasource extends cdktf.TerraformResource {
   }
 
   // dynamodb_config - computed: false, optional: true, required: false
-  private _dynamodbConfig = new AppsyncDatasourceDynamodbConfigOutputReference(this as any, "dynamodb_config", true);
+  private _dynamodbConfig = new AppsyncDatasourceDynamodbConfigOutputReference(this, "dynamodb_config", true);
   public get dynamodbConfig() {
     return this._dynamodbConfig;
   }
@@ -1155,7 +1191,7 @@ export class AppsyncDatasource extends cdktf.TerraformResource {
   }
 
   // elasticsearch_config - computed: false, optional: true, required: false
-  private _elasticsearchConfig = new AppsyncDatasourceElasticsearchConfigOutputReference(this as any, "elasticsearch_config", true);
+  private _elasticsearchConfig = new AppsyncDatasourceElasticsearchConfigOutputReference(this, "elasticsearch_config", true);
   public get elasticsearchConfig() {
     return this._elasticsearchConfig;
   }
@@ -1171,7 +1207,7 @@ export class AppsyncDatasource extends cdktf.TerraformResource {
   }
 
   // http_config - computed: false, optional: true, required: false
-  private _httpConfig = new AppsyncDatasourceHttpConfigOutputReference(this as any, "http_config", true);
+  private _httpConfig = new AppsyncDatasourceHttpConfigOutputReference(this, "http_config", true);
   public get httpConfig() {
     return this._httpConfig;
   }
@@ -1187,7 +1223,7 @@ export class AppsyncDatasource extends cdktf.TerraformResource {
   }
 
   // lambda_config - computed: false, optional: true, required: false
-  private _lambdaConfig = new AppsyncDatasourceLambdaConfigOutputReference(this as any, "lambda_config", true);
+  private _lambdaConfig = new AppsyncDatasourceLambdaConfigOutputReference(this, "lambda_config", true);
   public get lambdaConfig() {
     return this._lambdaConfig;
   }
@@ -1203,7 +1239,7 @@ export class AppsyncDatasource extends cdktf.TerraformResource {
   }
 
   // relational_database_config - computed: false, optional: true, required: false
-  private _relationalDatabaseConfig = new AppsyncDatasourceRelationalDatabaseConfigOutputReference(this as any, "relational_database_config", true);
+  private _relationalDatabaseConfig = new AppsyncDatasourceRelationalDatabaseConfigOutputReference(this, "relational_database_config", true);
   public get relationalDatabaseConfig() {
     return this._relationalDatabaseConfig;
   }
