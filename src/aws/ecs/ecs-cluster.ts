@@ -494,7 +494,7 @@ export class EcsCluster extends cdktf.TerraformResource {
     return this.getStringAttribute('arn');
   }
 
-  // capacity_providers - computed: false, optional: true, required: false
+  // capacity_providers - computed: true, optional: true, required: false
   private _capacityProviders?: string[]; 
   public get capacityProviders() {
     return this.getListAttribute('capacity_providers');
