@@ -12,10 +12,10 @@ interface EventualConsistencyWorkaroundAspectOptions {
 
 /**
  * This Aspect serves as a workaround for eventually consistent resources (e.g. IAM resources)
- * It has to be added to the root (i.e. the Terraform Stack) so that it is invoked 
+ * It has to be added to the root (i.e. the Terraform Stack) so that it is invoked
  * on all resources that might reference the `eventualConsistentTarget` which is passed when
  * instantiating an `EventualConsistencyWorkaroundAspect`.
- * 
+ *
  * How does it work?
  * - The `visit` function will be invoked for every resource in e.g. the TerraformStack
  * - Whenever a visited resource contains a reference to a property of the `eventualConsistentTarget`
@@ -106,6 +106,11 @@ function dependsOn(
   // which includes the target "aws_iam_role.typescriptcronlambda_adapter_lambdaServiceRole494E4CA6_233C76C0"
   return tokens.some((token) => {
     const resolved = resolve(TerraformStack.of(source), token) as any;
-    return typeof resolved === "string" && resolved.includes(target.fqn);
+    const resolvedFqn = resolve(TerraformStack.of(source), target.fqn) as any; // still wrapped in "${}"
+    const resolvedFqnRaw =
+      typeof resolvedFqn === "string"
+        ? resolvedFqn.replace(/^\$\{/, "").replace(/\}$/, "")
+        : resolvedFqn;
+    return typeof resolved === "string" && resolved.includes(resolvedFqnRaw);
   });
 }

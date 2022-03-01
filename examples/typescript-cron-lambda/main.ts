@@ -34,8 +34,6 @@ export class CronLambdaStack extends TerraformStack {
     });
 
     rule.addTarget(new aws_events_targets.LambdaFunction(lambdaFn));
-
-    new TerraformVariable(this, "variable", {});
   }
 }
 
