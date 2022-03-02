@@ -8,25 +8,25 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsApiGatewaySdkConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_sdk.html#parameters DataAwsApiGatewaySdk#parameters}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_sdk#parameters DataAwsApiGatewaySdk#parameters}
   */
-  readonly parameters?: { [key: string]: string } | cdktf.IResolvable;
+  readonly parameters?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_sdk.html#rest_api_id DataAwsApiGatewaySdk#rest_api_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_sdk#rest_api_id DataAwsApiGatewaySdk#rest_api_id}
   */
   readonly restApiId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_sdk.html#sdk_type DataAwsApiGatewaySdk#sdk_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_sdk#sdk_type DataAwsApiGatewaySdk#sdk_type}
   */
   readonly sdkType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_sdk.html#stage_name DataAwsApiGatewaySdk#stage_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_sdk#stage_name DataAwsApiGatewaySdk#stage_name}
   */
   readonly stageName: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_sdk.html aws_api_gateway_sdk}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_sdk aws_api_gateway_sdk}
 */
 export class DataAwsApiGatewaySdk extends cdktf.TerraformDataSource {
 
@@ -40,7 +40,7 @@ export class DataAwsApiGatewaySdk extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_sdk.html aws_api_gateway_sdk} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_sdk aws_api_gateway_sdk} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -88,12 +88,11 @@ export class DataAwsApiGatewaySdk extends cdktf.TerraformDataSource {
   }
 
   // parameters - computed: false, optional: true, required: false
-  private _parameters?: { [key: string]: string } | cdktf.IResolvable; 
+  private _parameters?: { [key: string]: string }; 
   public get parameters() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('parameters') as any;
+    return this.getStringMapAttribute('parameters');
   }
-  public set parameters(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set parameters(value: { [key: string]: string }) {
     this._parameters = value;
   }
   public resetParameters() {
@@ -149,7 +148,7 @@ export class DataAwsApiGatewaySdk extends cdktf.TerraformDataSource {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
-      parameters: cdktf.hashMapper(cdktf.anyToTerraform)(this._parameters),
+      parameters: cdktf.hashMapper(cdktf.stringToTerraform)(this._parameters),
       rest_api_id: cdktf.stringToTerraform(this._restApiId),
       sdk_type: cdktf.stringToTerraform(this._sdkType),
       stage_name: cdktf.stringToTerraform(this._stageName),

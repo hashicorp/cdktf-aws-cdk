@@ -8,65 +8,65 @@ import * as cdktf from 'cdktf';
 */
 export interface ConnectQueueConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue.html#description ConnectQueue#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue#description ConnectQueue#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue.html#hours_of_operation_id ConnectQueue#hours_of_operation_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue#hours_of_operation_id ConnectQueue#hours_of_operation_id}
   */
   readonly hoursOfOperationId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue.html#instance_id ConnectQueue#instance_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue#instance_id ConnectQueue#instance_id}
   */
   readonly instanceId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue.html#max_contacts ConnectQueue#max_contacts}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue#max_contacts ConnectQueue#max_contacts}
   */
   readonly maxContacts?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue.html#name ConnectQueue#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue#name ConnectQueue#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue.html#quick_connect_ids ConnectQueue#quick_connect_ids}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue#quick_connect_ids ConnectQueue#quick_connect_ids}
   */
   readonly quickConnectIds?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue.html#status ConnectQueue#status}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue#status ConnectQueue#status}
   */
   readonly status?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue.html#tags ConnectQueue#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue#tags ConnectQueue#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue.html#tags_all ConnectQueue#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue#tags_all ConnectQueue#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * outbound_caller_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue.html#outbound_caller_config ConnectQueue#outbound_caller_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue#outbound_caller_config ConnectQueue#outbound_caller_config}
   */
   readonly outboundCallerConfig?: ConnectQueueOutboundCallerConfig;
 }
 export interface ConnectQueueOutboundCallerConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue.html#outbound_caller_id_name ConnectQueue#outbound_caller_id_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue#outbound_caller_id_name ConnectQueue#outbound_caller_id_name}
   */
   readonly outboundCallerIdName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue.html#outbound_caller_id_number_id ConnectQueue#outbound_caller_id_number_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue#outbound_caller_id_number_id ConnectQueue#outbound_caller_id_number_id}
   */
   readonly outboundCallerIdNumberId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue.html#outbound_flow_id ConnectQueue#outbound_flow_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_queue#outbound_flow_id ConnectQueue#outbound_flow_id}
   */
   readonly outboundFlowId?: string;
 }
 
 export function connectQueueOutboundCallerConfigToTerraform(struct?: ConnectQueueOutboundCallerConfigOutputReference | ConnectQueueOutboundCallerConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -78,27 +78,29 @@ export function connectQueueOutboundCallerConfigToTerraform(struct?: ConnectQueu
 }
 
 export class ConnectQueueOutboundCallerConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): ConnectQueueOutboundCallerConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._outboundCallerIdName) {
+    if (this._outboundCallerIdName !== undefined) {
       hasAnyValues = true;
       internalValueResult.outboundCallerIdName = this._outboundCallerIdName;
     }
-    if (this._outboundCallerIdNumberId) {
+    if (this._outboundCallerIdNumberId !== undefined) {
       hasAnyValues = true;
       internalValueResult.outboundCallerIdNumberId = this._outboundCallerIdNumberId;
     }
-    if (this._outboundFlowId) {
+    if (this._outboundFlowId !== undefined) {
       hasAnyValues = true;
       internalValueResult.outboundFlowId = this._outboundFlowId;
     }
@@ -107,11 +109,13 @@ export class ConnectQueueOutboundCallerConfigOutputReference extends cdktf.Compl
 
   public set internalValue(value: ConnectQueueOutboundCallerConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._outboundCallerIdName = undefined;
       this._outboundCallerIdNumberId = undefined;
       this._outboundFlowId = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._outboundCallerIdName = value.outboundCallerIdName;
       this._outboundCallerIdNumberId = value.outboundCallerIdNumberId;
       this._outboundFlowId = value.outboundFlowId;
@@ -168,7 +172,7 @@ export class ConnectQueueOutboundCallerConfigOutputReference extends cdktf.Compl
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/connect_queue.html aws_connect_queue}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/connect_queue aws_connect_queue}
 */
 export class ConnectQueue extends cdktf.TerraformResource {
 
@@ -182,7 +186,7 @@ export class ConnectQueue extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/connect_queue.html aws_connect_queue} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/connect_queue aws_connect_queue} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -304,7 +308,7 @@ export class ConnectQueue extends cdktf.TerraformResource {
   // quick_connect_ids - computed: false, optional: true, required: false
   private _quickConnectIds?: string[]; 
   public get quickConnectIds() {
-    return this.getListAttribute('quick_connect_ids');
+    return cdktf.Fn.tolist(this.getListAttribute('quick_connect_ids'));
   }
   public set quickConnectIds(value: string[]) {
     this._quickConnectIds = value;
@@ -334,12 +338,11 @@ export class ConnectQueue extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -351,12 +354,11 @@ export class ConnectQueue extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -368,7 +370,7 @@ export class ConnectQueue extends cdktf.TerraformResource {
   }
 
   // outbound_caller_config - computed: false, optional: true, required: false
-  private _outboundCallerConfig = new ConnectQueueOutboundCallerConfigOutputReference(this as any, "outbound_caller_config", true);
+  private _outboundCallerConfig = new ConnectQueueOutboundCallerConfigOutputReference(this, "outbound_caller_config", true);
   public get outboundCallerConfig() {
     return this._outboundCallerConfig;
   }
@@ -396,8 +398,8 @@ export class ConnectQueue extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       quick_connect_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._quickConnectIds),
       status: cdktf.stringToTerraform(this._status),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       outbound_caller_config: connectQueueOutboundCallerConfigToTerraform(this._outboundCallerConfig.internalValue),
     };
   }

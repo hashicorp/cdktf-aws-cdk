@@ -8,25 +8,25 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsConnectContactFlowModuleConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_contact_flow_module.html#contact_flow_module_id DataAwsConnectContactFlowModule#contact_flow_module_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_contact_flow_module#contact_flow_module_id DataAwsConnectContactFlowModule#contact_flow_module_id}
   */
   readonly contactFlowModuleId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_contact_flow_module.html#instance_id DataAwsConnectContactFlowModule#instance_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_contact_flow_module#instance_id DataAwsConnectContactFlowModule#instance_id}
   */
   readonly instanceId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_contact_flow_module.html#name DataAwsConnectContactFlowModule#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_contact_flow_module#name DataAwsConnectContactFlowModule#name}
   */
   readonly name?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_contact_flow_module.html#tags DataAwsConnectContactFlowModule#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_contact_flow_module#tags DataAwsConnectContactFlowModule#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/connect_contact_flow_module.html aws_connect_contact_flow_module}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/connect_contact_flow_module aws_connect_contact_flow_module}
 */
 export class DataAwsConnectContactFlowModule extends cdktf.TerraformDataSource {
 
@@ -40,7 +40,7 @@ export class DataAwsConnectContactFlowModule extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/connect_contact_flow_module.html aws_connect_contact_flow_module} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/connect_contact_flow_module aws_connect_contact_flow_module} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -143,12 +143,11 @@ export class DataAwsConnectContactFlowModule extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -168,7 +167,7 @@ export class DataAwsConnectContactFlowModule extends cdktf.TerraformDataSource {
       contact_flow_module_id: cdktf.stringToTerraform(this._contactFlowModuleId),
       instance_id: cdktf.stringToTerraform(this._instanceId),
       name: cdktf.stringToTerraform(this._name),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
     };
   }
 }

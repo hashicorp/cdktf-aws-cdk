@@ -8,21 +8,21 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsConnectQuickConnectConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_quick_connect.html#instance_id DataAwsConnectQuickConnect#instance_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_quick_connect#instance_id DataAwsConnectQuickConnect#instance_id}
   */
   readonly instanceId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_quick_connect.html#name DataAwsConnectQuickConnect#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_quick_connect#name DataAwsConnectQuickConnect#name}
   */
   readonly name?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_quick_connect.html#quick_connect_id DataAwsConnectQuickConnect#quick_connect_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_quick_connect#quick_connect_id DataAwsConnectQuickConnect#quick_connect_id}
   */
   readonly quickConnectId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_quick_connect.html#tags DataAwsConnectQuickConnect#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_quick_connect#tags DataAwsConnectQuickConnect#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
 }
 export class DataAwsConnectQuickConnectQuickConnectConfigPhoneConfig extends cdktf.ComplexComputedList {
 
@@ -60,13 +60,13 @@ export class DataAwsConnectQuickConnectQuickConnectConfig extends cdktf.ComplexC
   // phone_config - computed: true, optional: false, required: false
   public get phoneConfig() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('phone_config') as any;
+    return this.interpolationForAttribute('phone_config');
   }
 
   // queue_config - computed: true, optional: false, required: false
   public get queueConfig() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('queue_config') as any;
+    return this.interpolationForAttribute('queue_config');
   }
 
   // quick_connect_type - computed: true, optional: false, required: false
@@ -77,12 +77,12 @@ export class DataAwsConnectQuickConnectQuickConnectConfig extends cdktf.ComplexC
   // user_config - computed: true, optional: false, required: false
   public get userConfig() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('user_config') as any;
+    return this.interpolationForAttribute('user_config');
   }
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/connect_quick_connect.html aws_connect_quick_connect}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/connect_quick_connect aws_connect_quick_connect}
 */
 export class DataAwsConnectQuickConnect extends cdktf.TerraformDataSource {
 
@@ -96,7 +96,7 @@ export class DataAwsConnectQuickConnect extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/connect_quick_connect.html aws_connect_quick_connect} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/connect_quick_connect aws_connect_quick_connect} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -169,7 +169,7 @@ export class DataAwsConnectQuickConnect extends cdktf.TerraformDataSource {
 
   // quick_connect_config - computed: true, optional: false, required: false
   public quickConnectConfig(index: string) {
-    return new DataAwsConnectQuickConnectQuickConnectConfig(this, 'quick_connect_config', index);
+    return new DataAwsConnectQuickConnectQuickConnectConfig(this, 'quick_connect_config', index, false);
   }
 
   // quick_connect_id - computed: true, optional: true, required: false
@@ -189,12 +189,11 @@ export class DataAwsConnectQuickConnect extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -214,7 +213,7 @@ export class DataAwsConnectQuickConnect extends cdktf.TerraformDataSource {
       instance_id: cdktf.stringToTerraform(this._instanceId),
       name: cdktf.stringToTerraform(this._name),
       quick_connect_id: cdktf.stringToTerraform(this._quickConnectId),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
     };
   }
 }

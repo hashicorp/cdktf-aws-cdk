@@ -8,41 +8,41 @@ import * as cdktf from 'cdktf';
 */
 export interface DatapipelinePipelineDefinitionConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html#pipeline_id DatapipelinePipelineDefinition#pipeline_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition#pipeline_id DatapipelinePipelineDefinition#pipeline_id}
   */
   readonly pipelineId: string;
   /**
   * parameter_object block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html#parameter_object DatapipelinePipelineDefinition#parameter_object}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition#parameter_object DatapipelinePipelineDefinition#parameter_object}
   */
-  readonly parameterObject?: DatapipelinePipelineDefinitionParameterObject[];
+  readonly parameterObject?: DatapipelinePipelineDefinitionParameterObject[] | cdktf.IResolvable;
   /**
   * parameter_value block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html#parameter_value DatapipelinePipelineDefinition#parameter_value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition#parameter_value DatapipelinePipelineDefinition#parameter_value}
   */
-  readonly parameterValue?: DatapipelinePipelineDefinitionParameterValue[];
+  readonly parameterValue?: DatapipelinePipelineDefinitionParameterValue[] | cdktf.IResolvable;
   /**
   * pipeline_object block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html#pipeline_object DatapipelinePipelineDefinition#pipeline_object}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition#pipeline_object DatapipelinePipelineDefinition#pipeline_object}
   */
-  readonly pipelineObject: DatapipelinePipelineDefinitionPipelineObject[];
+  readonly pipelineObject: DatapipelinePipelineDefinitionPipelineObject[] | cdktf.IResolvable;
 }
 export interface DatapipelinePipelineDefinitionParameterObjectAttribute {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html#key DatapipelinePipelineDefinition#key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition#key DatapipelinePipelineDefinition#key}
   */
   readonly key: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html#string_value DatapipelinePipelineDefinition#string_value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition#string_value DatapipelinePipelineDefinition#string_value}
   */
   readonly stringValue: string;
 }
 
-export function datapipelinePipelineDefinitionParameterObjectAttributeToTerraform(struct?: DatapipelinePipelineDefinitionParameterObjectAttribute): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function datapipelinePipelineDefinitionParameterObjectAttributeToTerraform(struct?: DatapipelinePipelineDefinitionParameterObjectAttribute | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -54,19 +54,19 @@ export function datapipelinePipelineDefinitionParameterObjectAttributeToTerrafor
 
 export interface DatapipelinePipelineDefinitionParameterObject {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html#id DatapipelinePipelineDefinition#id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition#id DatapipelinePipelineDefinition#id}
   */
   readonly id: string;
   /**
   * attribute block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html#attribute DatapipelinePipelineDefinition#attribute}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition#attribute DatapipelinePipelineDefinition#attribute}
   */
-  readonly attribute?: DatapipelinePipelineDefinitionParameterObjectAttribute[];
+  readonly attribute?: DatapipelinePipelineDefinitionParameterObjectAttribute[] | cdktf.IResolvable;
 }
 
-export function datapipelinePipelineDefinitionParameterObjectToTerraform(struct?: DatapipelinePipelineDefinitionParameterObject): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function datapipelinePipelineDefinitionParameterObjectToTerraform(struct?: DatapipelinePipelineDefinitionParameterObject | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -78,17 +78,17 @@ export function datapipelinePipelineDefinitionParameterObjectToTerraform(struct?
 
 export interface DatapipelinePipelineDefinitionParameterValue {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html#id DatapipelinePipelineDefinition#id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition#id DatapipelinePipelineDefinition#id}
   */
   readonly id: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html#string_value DatapipelinePipelineDefinition#string_value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition#string_value DatapipelinePipelineDefinition#string_value}
   */
   readonly stringValue: string;
 }
 
-export function datapipelinePipelineDefinitionParameterValueToTerraform(struct?: DatapipelinePipelineDefinitionParameterValue): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function datapipelinePipelineDefinitionParameterValueToTerraform(struct?: DatapipelinePipelineDefinitionParameterValue | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -100,21 +100,21 @@ export function datapipelinePipelineDefinitionParameterValueToTerraform(struct?:
 
 export interface DatapipelinePipelineDefinitionPipelineObjectField {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html#key DatapipelinePipelineDefinition#key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition#key DatapipelinePipelineDefinition#key}
   */
   readonly key: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html#ref_value DatapipelinePipelineDefinition#ref_value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition#ref_value DatapipelinePipelineDefinition#ref_value}
   */
   readonly refValue?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html#string_value DatapipelinePipelineDefinition#string_value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition#string_value DatapipelinePipelineDefinition#string_value}
   */
   readonly stringValue?: string;
 }
 
-export function datapipelinePipelineDefinitionPipelineObjectFieldToTerraform(struct?: DatapipelinePipelineDefinitionPipelineObjectField): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function datapipelinePipelineDefinitionPipelineObjectFieldToTerraform(struct?: DatapipelinePipelineDefinitionPipelineObjectField | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -127,23 +127,23 @@ export function datapipelinePipelineDefinitionPipelineObjectFieldToTerraform(str
 
 export interface DatapipelinePipelineDefinitionPipelineObject {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html#id DatapipelinePipelineDefinition#id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition#id DatapipelinePipelineDefinition#id}
   */
   readonly id: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html#name DatapipelinePipelineDefinition#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition#name DatapipelinePipelineDefinition#name}
   */
   readonly name: string;
   /**
   * field block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html#field DatapipelinePipelineDefinition#field}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition#field DatapipelinePipelineDefinition#field}
   */
-  readonly field?: DatapipelinePipelineDefinitionPipelineObjectField[];
+  readonly field?: DatapipelinePipelineDefinitionPipelineObjectField[] | cdktf.IResolvable;
 }
 
-export function datapipelinePipelineDefinitionPipelineObjectToTerraform(struct?: DatapipelinePipelineDefinitionPipelineObject): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function datapipelinePipelineDefinitionPipelineObjectToTerraform(struct?: DatapipelinePipelineDefinitionPipelineObject | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -156,7 +156,7 @@ export function datapipelinePipelineDefinitionPipelineObjectToTerraform(struct?:
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html aws_datapipeline_pipeline_definition}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition aws_datapipeline_pipeline_definition}
 */
 export class DatapipelinePipelineDefinition extends cdktf.TerraformResource {
 
@@ -170,7 +170,7 @@ export class DatapipelinePipelineDefinition extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition.html aws_datapipeline_pipeline_definition} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/datapipeline_pipeline_definition aws_datapipeline_pipeline_definition} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -216,12 +216,12 @@ export class DatapipelinePipelineDefinition extends cdktf.TerraformResource {
   }
 
   // parameter_object - computed: false, optional: true, required: false
-  private _parameterObject?: DatapipelinePipelineDefinitionParameterObject[]; 
+  private _parameterObject?: DatapipelinePipelineDefinitionParameterObject[] | cdktf.IResolvable; 
   public get parameterObject() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('parameter_object') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('parameter_object')));
   }
-  public set parameterObject(value: DatapipelinePipelineDefinitionParameterObject[]) {
+  public set parameterObject(value: DatapipelinePipelineDefinitionParameterObject[] | cdktf.IResolvable) {
     this._parameterObject = value;
   }
   public resetParameterObject() {
@@ -233,12 +233,12 @@ export class DatapipelinePipelineDefinition extends cdktf.TerraformResource {
   }
 
   // parameter_value - computed: false, optional: true, required: false
-  private _parameterValue?: DatapipelinePipelineDefinitionParameterValue[]; 
+  private _parameterValue?: DatapipelinePipelineDefinitionParameterValue[] | cdktf.IResolvable; 
   public get parameterValue() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('parameter_value') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('parameter_value')));
   }
-  public set parameterValue(value: DatapipelinePipelineDefinitionParameterValue[]) {
+  public set parameterValue(value: DatapipelinePipelineDefinitionParameterValue[] | cdktf.IResolvable) {
     this._parameterValue = value;
   }
   public resetParameterValue() {
@@ -250,12 +250,12 @@ export class DatapipelinePipelineDefinition extends cdktf.TerraformResource {
   }
 
   // pipeline_object - computed: false, optional: false, required: true
-  private _pipelineObject?: DatapipelinePipelineDefinitionPipelineObject[]; 
+  private _pipelineObject?: DatapipelinePipelineDefinitionPipelineObject[] | cdktf.IResolvable; 
   public get pipelineObject() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('pipeline_object') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('pipeline_object')));
   }
-  public set pipelineObject(value: DatapipelinePipelineDefinitionPipelineObject[]) {
+  public set pipelineObject(value: DatapipelinePipelineDefinitionPipelineObject[] | cdktf.IResolvable) {
     this._pipelineObject = value;
   }
   // Temporarily expose input value. Use with caution.

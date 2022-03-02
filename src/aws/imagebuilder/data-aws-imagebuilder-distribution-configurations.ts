@@ -10,23 +10,23 @@ export interface DataAwsImagebuilderDistributionConfigurationsConfig extends cdk
   /**
   * filter block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_distribution_configurations.html#filter DataAwsImagebuilderDistributionConfigurations#filter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_distribution_configurations#filter DataAwsImagebuilderDistributionConfigurations#filter}
   */
-  readonly filter?: DataAwsImagebuilderDistributionConfigurationsFilter[];
+  readonly filter?: DataAwsImagebuilderDistributionConfigurationsFilter[] | cdktf.IResolvable;
 }
 export interface DataAwsImagebuilderDistributionConfigurationsFilter {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_distribution_configurations.html#name DataAwsImagebuilderDistributionConfigurations#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_distribution_configurations#name DataAwsImagebuilderDistributionConfigurations#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_distribution_configurations.html#values DataAwsImagebuilderDistributionConfigurations#values}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_distribution_configurations#values DataAwsImagebuilderDistributionConfigurations#values}
   */
   readonly values: string[];
 }
 
-export function dataAwsImagebuilderDistributionConfigurationsFilterToTerraform(struct?: DataAwsImagebuilderDistributionConfigurationsFilter): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function dataAwsImagebuilderDistributionConfigurationsFilterToTerraform(struct?: DataAwsImagebuilderDistributionConfigurationsFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -38,7 +38,7 @@ export function dataAwsImagebuilderDistributionConfigurationsFilterToTerraform(s
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_distribution_configurations.html aws_imagebuilder_distribution_configurations}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_distribution_configurations aws_imagebuilder_distribution_configurations}
 */
 export class DataAwsImagebuilderDistributionConfigurations extends cdktf.TerraformDataSource {
 
@@ -52,7 +52,7 @@ export class DataAwsImagebuilderDistributionConfigurations extends cdktf.Terrafo
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_distribution_configurations.html aws_imagebuilder_distribution_configurations} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_distribution_configurations aws_imagebuilder_distribution_configurations} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -78,7 +78,7 @@ export class DataAwsImagebuilderDistributionConfigurations extends cdktf.Terrafo
 
   // arns - computed: true, optional: false, required: false
   public get arns() {
-    return this.getListAttribute('arns');
+    return cdktf.Fn.tolist(this.getListAttribute('arns'));
   }
 
   // id - computed: true, optional: true, required: false
@@ -88,16 +88,16 @@ export class DataAwsImagebuilderDistributionConfigurations extends cdktf.Terrafo
 
   // names - computed: true, optional: false, required: false
   public get names() {
-    return this.getListAttribute('names');
+    return cdktf.Fn.tolist(this.getListAttribute('names'));
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsImagebuilderDistributionConfigurationsFilter[]; 
+  private _filter?: DataAwsImagebuilderDistributionConfigurationsFilter[] | cdktf.IResolvable; 
   public get filter() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('filter') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('filter')));
   }
-  public set filter(value: DataAwsImagebuilderDistributionConfigurationsFilter[]) {
+  public set filter(value: DataAwsImagebuilderDistributionConfigurationsFilter[] | cdktf.IResolvable) {
     this._filter = value;
   }
   public resetFilter() {

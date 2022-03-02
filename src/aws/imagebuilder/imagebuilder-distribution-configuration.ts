@@ -328,17 +328,17 @@ export class ImagebuilderDistributionConfigurationDistributionAmiDistributionCon
 }
 export interface ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration.html#repository_name ImagebuilderDistributionConfiguration#repository_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration#repository_name ImagebuilderDistributionConfiguration#repository_name}
   */
   readonly repositoryName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration.html#service ImagebuilderDistributionConfiguration#service}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration#service ImagebuilderDistributionConfiguration#service}
   */
   readonly service: string;
 }
 
 export function imagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepositoryToTerraform(struct?: ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepositoryOutputReference | ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -349,23 +349,25 @@ export function imagebuilderDistributionConfigurationDistributionContainerDistri
 }
 
 export class ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepositoryOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._repositoryName) {
+    if (this._repositoryName !== undefined) {
       hasAnyValues = true;
       internalValueResult.repositoryName = this._repositoryName;
     }
-    if (this._service) {
+    if (this._service !== undefined) {
       hasAnyValues = true;
       internalValueResult.service = this._service;
     }
@@ -374,10 +376,12 @@ export class ImagebuilderDistributionConfigurationDistributionContainerDistribut
 
   public set internalValue(value: ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._repositoryName = undefined;
       this._service = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._repositoryName = value.repositoryName;
       this._service = value.service;
     }
@@ -411,23 +415,23 @@ export class ImagebuilderDistributionConfigurationDistributionContainerDistribut
 }
 export interface ImagebuilderDistributionConfigurationDistributionContainerDistributionConfiguration {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration.html#container_tags ImagebuilderDistributionConfiguration#container_tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration#container_tags ImagebuilderDistributionConfiguration#container_tags}
   */
   readonly containerTags?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration.html#description ImagebuilderDistributionConfiguration#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration#description ImagebuilderDistributionConfiguration#description}
   */
   readonly description?: string;
   /**
   * target_repository block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration.html#target_repository ImagebuilderDistributionConfiguration#target_repository}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration#target_repository ImagebuilderDistributionConfiguration#target_repository}
   */
   readonly targetRepository: ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository;
 }
 
 export function imagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationToTerraform(struct?: ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationOutputReference | ImagebuilderDistributionConfigurationDistributionContainerDistributionConfiguration): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -439,27 +443,29 @@ export function imagebuilderDistributionConfigurationDistributionContainerDistri
 }
 
 export class ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): ImagebuilderDistributionConfigurationDistributionContainerDistributionConfiguration | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._containerTags) {
+    if (this._containerTags !== undefined) {
       hasAnyValues = true;
       internalValueResult.containerTags = this._containerTags;
     }
-    if (this._description) {
+    if (this._description !== undefined) {
       hasAnyValues = true;
       internalValueResult.description = this._description;
     }
-    if (this._targetRepository) {
+    if (this._targetRepository?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.targetRepository = this._targetRepository?.internalValue;
     }
@@ -468,11 +474,13 @@ export class ImagebuilderDistributionConfigurationDistributionContainerDistribut
 
   public set internalValue(value: ImagebuilderDistributionConfigurationDistributionContainerDistributionConfiguration | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._containerTags = undefined;
       this._description = undefined;
       this._targetRepository.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._containerTags = value.containerTags;
       this._description = value.description;
       this._targetRepository.internalValue = value.targetRepository;
@@ -482,7 +490,7 @@ export class ImagebuilderDistributionConfigurationDistributionContainerDistribut
   // container_tags - computed: false, optional: true, required: false
   private _containerTags?: string[]; 
   public get containerTags() {
-    return this.getListAttribute('container_tags');
+    return cdktf.Fn.tolist(this.getListAttribute('container_tags'));
   }
   public set containerTags(value: string[]) {
     this._containerTags = value;
@@ -512,7 +520,7 @@ export class ImagebuilderDistributionConfigurationDistributionContainerDistribut
   }
 
   // target_repository - computed: false, optional: false, required: true
-  private _targetRepository = new ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepositoryOutputReference(this as any, "target_repository", true);
+  private _targetRepository = new ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepositoryOutputReference(this, "target_repository", true);
   public get targetRepository() {
     return this._targetRepository;
   }
@@ -542,7 +550,7 @@ export interface ImagebuilderDistributionConfigurationDistribution {
   /**
   * container_distribution_configuration block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration.html#container_distribution_configuration ImagebuilderDistributionConfiguration#container_distribution_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration#container_distribution_configuration ImagebuilderDistributionConfiguration#container_distribution_configuration}
   */
   readonly containerDistributionConfiguration?: ImagebuilderDistributionConfigurationDistributionContainerDistributionConfiguration;
 }

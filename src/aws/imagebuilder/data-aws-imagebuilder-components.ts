@@ -8,29 +8,29 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsImagebuilderComponentsConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_components.html#owner DataAwsImagebuilderComponents#owner}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_components#owner DataAwsImagebuilderComponents#owner}
   */
   readonly owner?: string;
   /**
   * filter block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_components.html#filter DataAwsImagebuilderComponents#filter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_components#filter DataAwsImagebuilderComponents#filter}
   */
-  readonly filter?: DataAwsImagebuilderComponentsFilter[];
+  readonly filter?: DataAwsImagebuilderComponentsFilter[] | cdktf.IResolvable;
 }
 export interface DataAwsImagebuilderComponentsFilter {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_components.html#name DataAwsImagebuilderComponents#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_components#name DataAwsImagebuilderComponents#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_components.html#values DataAwsImagebuilderComponents#values}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_components#values DataAwsImagebuilderComponents#values}
   */
   readonly values: string[];
 }
 
-export function dataAwsImagebuilderComponentsFilterToTerraform(struct?: DataAwsImagebuilderComponentsFilter): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function dataAwsImagebuilderComponentsFilterToTerraform(struct?: DataAwsImagebuilderComponentsFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -42,7 +42,7 @@ export function dataAwsImagebuilderComponentsFilterToTerraform(struct?: DataAwsI
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_components.html aws_imagebuilder_components}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_components aws_imagebuilder_components}
 */
 export class DataAwsImagebuilderComponents extends cdktf.TerraformDataSource {
 
@@ -56,7 +56,7 @@ export class DataAwsImagebuilderComponents extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_components.html aws_imagebuilder_components} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/imagebuilder_components aws_imagebuilder_components} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -83,7 +83,7 @@ export class DataAwsImagebuilderComponents extends cdktf.TerraformDataSource {
 
   // arns - computed: true, optional: false, required: false
   public get arns() {
-    return this.getListAttribute('arns');
+    return cdktf.Fn.tolist(this.getListAttribute('arns'));
   }
 
   // id - computed: true, optional: true, required: false
@@ -93,7 +93,7 @@ export class DataAwsImagebuilderComponents extends cdktf.TerraformDataSource {
 
   // names - computed: true, optional: false, required: false
   public get names() {
-    return this.getListAttribute('names');
+    return cdktf.Fn.tolist(this.getListAttribute('names'));
   }
 
   // owner - computed: false, optional: true, required: false
@@ -113,12 +113,12 @@ export class DataAwsImagebuilderComponents extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsImagebuilderComponentsFilter[]; 
+  private _filter?: DataAwsImagebuilderComponentsFilter[] | cdktf.IResolvable; 
   public get filter() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('filter') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('filter')));
   }
-  public set filter(value: DataAwsImagebuilderComponentsFilter[]) {
+  public set filter(value: DataAwsImagebuilderComponentsFilter[] | cdktf.IResolvable) {
     this._filter = value;
   }
   public resetFilter() {

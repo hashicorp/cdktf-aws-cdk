@@ -8,45 +8,45 @@ import * as cdktf from 'cdktf';
 */
 export interface DevicefarmTestGridProjectConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project.html#description DevicefarmTestGridProject#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project#description DevicefarmTestGridProject#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project.html#name DevicefarmTestGridProject#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project#name DevicefarmTestGridProject#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project.html#tags DevicefarmTestGridProject#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project#tags DevicefarmTestGridProject#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project.html#tags_all DevicefarmTestGridProject#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project#tags_all DevicefarmTestGridProject#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * vpc_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project.html#vpc_config DevicefarmTestGridProject#vpc_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project#vpc_config DevicefarmTestGridProject#vpc_config}
   */
   readonly vpcConfig?: DevicefarmTestGridProjectVpcConfig;
 }
 export interface DevicefarmTestGridProjectVpcConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project.html#security_group_ids DevicefarmTestGridProject#security_group_ids}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project#security_group_ids DevicefarmTestGridProject#security_group_ids}
   */
   readonly securityGroupIds: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project.html#subnet_ids DevicefarmTestGridProject#subnet_ids}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project#subnet_ids DevicefarmTestGridProject#subnet_ids}
   */
   readonly subnetIds: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project.html#vpc_id DevicefarmTestGridProject#vpc_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project#vpc_id DevicefarmTestGridProject#vpc_id}
   */
   readonly vpcId: string;
 }
 
 export function devicefarmTestGridProjectVpcConfigToTerraform(struct?: DevicefarmTestGridProjectVpcConfigOutputReference | DevicefarmTestGridProjectVpcConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -58,27 +58,29 @@ export function devicefarmTestGridProjectVpcConfigToTerraform(struct?: Devicefar
 }
 
 export class DevicefarmTestGridProjectVpcConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): DevicefarmTestGridProjectVpcConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._securityGroupIds) {
+    if (this._securityGroupIds !== undefined) {
       hasAnyValues = true;
       internalValueResult.securityGroupIds = this._securityGroupIds;
     }
-    if (this._subnetIds) {
+    if (this._subnetIds !== undefined) {
       hasAnyValues = true;
       internalValueResult.subnetIds = this._subnetIds;
     }
-    if (this._vpcId) {
+    if (this._vpcId !== undefined) {
       hasAnyValues = true;
       internalValueResult.vpcId = this._vpcId;
     }
@@ -87,11 +89,13 @@ export class DevicefarmTestGridProjectVpcConfigOutputReference extends cdktf.Com
 
   public set internalValue(value: DevicefarmTestGridProjectVpcConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._securityGroupIds = undefined;
       this._subnetIds = undefined;
       this._vpcId = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._securityGroupIds = value.securityGroupIds;
       this._subnetIds = value.subnetIds;
       this._vpcId = value.vpcId;
@@ -101,7 +105,7 @@ export class DevicefarmTestGridProjectVpcConfigOutputReference extends cdktf.Com
   // security_group_ids - computed: false, optional: false, required: true
   private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
-    return this.getListAttribute('security_group_ids');
+    return cdktf.Fn.tolist(this.getListAttribute('security_group_ids'));
   }
   public set securityGroupIds(value: string[]) {
     this._securityGroupIds = value;
@@ -114,7 +118,7 @@ export class DevicefarmTestGridProjectVpcConfigOutputReference extends cdktf.Com
   // subnet_ids - computed: false, optional: false, required: true
   private _subnetIds?: string[]; 
   public get subnetIds() {
-    return this.getListAttribute('subnet_ids');
+    return cdktf.Fn.tolist(this.getListAttribute('subnet_ids'));
   }
   public set subnetIds(value: string[]) {
     this._subnetIds = value;
@@ -139,7 +143,7 @@ export class DevicefarmTestGridProjectVpcConfigOutputReference extends cdktf.Com
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project.html aws_devicefarm_test_grid_project}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project aws_devicefarm_test_grid_project}
 */
 export class DevicefarmTestGridProject extends cdktf.TerraformResource {
 
@@ -153,7 +157,7 @@ export class DevicefarmTestGridProject extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project.html aws_devicefarm_test_grid_project} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/devicefarm_test_grid_project aws_devicefarm_test_grid_project} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -221,12 +225,11 @@ export class DevicefarmTestGridProject extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -238,12 +241,11 @@ export class DevicefarmTestGridProject extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -255,7 +257,7 @@ export class DevicefarmTestGridProject extends cdktf.TerraformResource {
   }
 
   // vpc_config - computed: false, optional: true, required: false
-  private _vpcConfig = new DevicefarmTestGridProjectVpcConfigOutputReference(this as any, "vpc_config", true);
+  private _vpcConfig = new DevicefarmTestGridProjectVpcConfigOutputReference(this, "vpc_config", true);
   public get vpcConfig() {
     return this._vpcConfig;
   }
@@ -278,8 +280,8 @@ export class DevicefarmTestGridProject extends cdktf.TerraformResource {
     return {
       description: cdktf.stringToTerraform(this._description),
       name: cdktf.stringToTerraform(this._name),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       vpc_config: devicefarmTestGridProjectVpcConfigToTerraform(this._vpcConfig.internalValue),
     };
   }

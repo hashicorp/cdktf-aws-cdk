@@ -132,7 +132,7 @@ export interface ElasticacheReplicationGroupConfig extends cdktf.TerraformMetaAr
   */
   readonly transitEncryptionEnabled?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elasticache_replication_group.html#user_group_ids ElasticacheReplicationGroup#user_group_ids}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elasticache_replication_group#user_group_ids ElasticacheReplicationGroup#user_group_ids}
   */
   readonly userGroupIds?: string[];
   /**
@@ -964,7 +964,7 @@ export class ElasticacheReplicationGroup extends cdktf.TerraformResource {
   // user_group_ids - computed: false, optional: true, required: false
   private _userGroupIds?: string[]; 
   public get userGroupIds() {
-    return this.getListAttribute('user_group_ids');
+    return cdktf.Fn.tolist(this.getListAttribute('user_group_ids'));
   }
   public set userGroupIds(value: string[]) {
     this._userGroupIds = value;
