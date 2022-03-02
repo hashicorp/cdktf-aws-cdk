@@ -8,41 +8,41 @@ import * as cdktf from 'cdktf';
 */
 export interface SagemakerProjectConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project.html#project_description SagemakerProject#project_description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project#project_description SagemakerProject#project_description}
   */
   readonly projectDescription?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project.html#project_name SagemakerProject#project_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project#project_name SagemakerProject#project_name}
   */
   readonly projectName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project.html#tags SagemakerProject#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project#tags SagemakerProject#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project.html#tags_all SagemakerProject#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project#tags_all SagemakerProject#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * service_catalog_provisioning_details block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project.html#service_catalog_provisioning_details SagemakerProject#service_catalog_provisioning_details}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project#service_catalog_provisioning_details SagemakerProject#service_catalog_provisioning_details}
   */
   readonly serviceCatalogProvisioningDetails: SagemakerProjectServiceCatalogProvisioningDetails;
 }
 export interface SagemakerProjectServiceCatalogProvisioningDetailsProvisioningParameter {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project.html#key SagemakerProject#key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project#key SagemakerProject#key}
   */
   readonly key: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project.html#value SagemakerProject#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project#value SagemakerProject#value}
   */
   readonly value?: string;
 }
 
-export function sagemakerProjectServiceCatalogProvisioningDetailsProvisioningParameterToTerraform(struct?: SagemakerProjectServiceCatalogProvisioningDetailsProvisioningParameter): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function sagemakerProjectServiceCatalogProvisioningDetailsProvisioningParameterToTerraform(struct?: SagemakerProjectServiceCatalogProvisioningDetailsProvisioningParameter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -54,27 +54,27 @@ export function sagemakerProjectServiceCatalogProvisioningDetailsProvisioningPar
 
 export interface SagemakerProjectServiceCatalogProvisioningDetails {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project.html#path_id SagemakerProject#path_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project#path_id SagemakerProject#path_id}
   */
   readonly pathId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project.html#product_id SagemakerProject#product_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project#product_id SagemakerProject#product_id}
   */
   readonly productId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project.html#provisioning_artifact_id SagemakerProject#provisioning_artifact_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project#provisioning_artifact_id SagemakerProject#provisioning_artifact_id}
   */
   readonly provisioningArtifactId?: string;
   /**
   * provisioning_parameter block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project.html#provisioning_parameter SagemakerProject#provisioning_parameter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project#provisioning_parameter SagemakerProject#provisioning_parameter}
   */
-  readonly provisioningParameter?: SagemakerProjectServiceCatalogProvisioningDetailsProvisioningParameter[];
+  readonly provisioningParameter?: SagemakerProjectServiceCatalogProvisioningDetailsProvisioningParameter[] | cdktf.IResolvable;
 }
 
 export function sagemakerProjectServiceCatalogProvisioningDetailsToTerraform(struct?: SagemakerProjectServiceCatalogProvisioningDetailsOutputReference | SagemakerProjectServiceCatalogProvisioningDetails): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -87,31 +87,33 @@ export function sagemakerProjectServiceCatalogProvisioningDetailsToTerraform(str
 }
 
 export class SagemakerProjectServiceCatalogProvisioningDetailsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SagemakerProjectServiceCatalogProvisioningDetails | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._pathId) {
+    if (this._pathId !== undefined) {
       hasAnyValues = true;
       internalValueResult.pathId = this._pathId;
     }
-    if (this._productId) {
+    if (this._productId !== undefined) {
       hasAnyValues = true;
       internalValueResult.productId = this._productId;
     }
-    if (this._provisioningArtifactId) {
+    if (this._provisioningArtifactId !== undefined) {
       hasAnyValues = true;
       internalValueResult.provisioningArtifactId = this._provisioningArtifactId;
     }
-    if (this._provisioningParameter) {
+    if (this._provisioningParameter !== undefined) {
       hasAnyValues = true;
       internalValueResult.provisioningParameter = this._provisioningParameter;
     }
@@ -120,12 +122,14 @@ export class SagemakerProjectServiceCatalogProvisioningDetailsOutputReference ex
 
   public set internalValue(value: SagemakerProjectServiceCatalogProvisioningDetails | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._pathId = undefined;
       this._productId = undefined;
       this._provisioningArtifactId = undefined;
       this._provisioningParameter = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._pathId = value.pathId;
       this._productId = value.productId;
       this._provisioningArtifactId = value.provisioningArtifactId;
@@ -179,12 +183,12 @@ export class SagemakerProjectServiceCatalogProvisioningDetailsOutputReference ex
   }
 
   // provisioning_parameter - computed: false, optional: true, required: false
-  private _provisioningParameter?: SagemakerProjectServiceCatalogProvisioningDetailsProvisioningParameter[]; 
+  private _provisioningParameter?: SagemakerProjectServiceCatalogProvisioningDetailsProvisioningParameter[] | cdktf.IResolvable; 
   public get provisioningParameter() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('provisioning_parameter') as any;
+    return this.interpolationForAttribute('provisioning_parameter');
   }
-  public set provisioningParameter(value: SagemakerProjectServiceCatalogProvisioningDetailsProvisioningParameter[]) {
+  public set provisioningParameter(value: SagemakerProjectServiceCatalogProvisioningDetailsProvisioningParameter[] | cdktf.IResolvable) {
     this._provisioningParameter = value;
   }
   public resetProvisioningParameter() {
@@ -197,7 +201,7 @@ export class SagemakerProjectServiceCatalogProvisioningDetailsOutputReference ex
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project.html aws_sagemaker_project}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project aws_sagemaker_project}
 */
 export class SagemakerProject extends cdktf.TerraformResource {
 
@@ -211,7 +215,7 @@ export class SagemakerProject extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project.html aws_sagemaker_project} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_project aws_sagemaker_project} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -284,12 +288,11 @@ export class SagemakerProject extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -301,12 +304,11 @@ export class SagemakerProject extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -318,7 +320,7 @@ export class SagemakerProject extends cdktf.TerraformResource {
   }
 
   // service_catalog_provisioning_details - computed: false, optional: false, required: true
-  private _serviceCatalogProvisioningDetails = new SagemakerProjectServiceCatalogProvisioningDetailsOutputReference(this as any, "service_catalog_provisioning_details", true);
+  private _serviceCatalogProvisioningDetails = new SagemakerProjectServiceCatalogProvisioningDetailsOutputReference(this, "service_catalog_provisioning_details", true);
   public get serviceCatalogProvisioningDetails() {
     return this._serviceCatalogProvisioningDetails;
   }
@@ -338,8 +340,8 @@ export class SagemakerProject extends cdktf.TerraformResource {
     return {
       project_description: cdktf.stringToTerraform(this._projectDescription),
       project_name: cdktf.stringToTerraform(this._projectName),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       service_catalog_provisioning_details: sagemakerProjectServiceCatalogProvisioningDetailsToTerraform(this._serviceCatalogProvisioningDetails.internalValue),
     };
   }

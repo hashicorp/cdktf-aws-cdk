@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsApigatewayv2ExportConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/apigatewayv2_export.html#api_id DataAwsApigatewayv2Export#api_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/apigatewayv2_export#api_id DataAwsApigatewayv2Export#api_id}
   */
   readonly apiId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/apigatewayv2_export.html#export_version DataAwsApigatewayv2Export#export_version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/apigatewayv2_export#export_version DataAwsApigatewayv2Export#export_version}
   */
   readonly exportVersion?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/apigatewayv2_export.html#include_extensions DataAwsApigatewayv2Export#include_extensions}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/apigatewayv2_export#include_extensions DataAwsApigatewayv2Export#include_extensions}
   */
   readonly includeExtensions?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/apigatewayv2_export.html#output_type DataAwsApigatewayv2Export#output_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/apigatewayv2_export#output_type DataAwsApigatewayv2Export#output_type}
   */
   readonly outputType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/apigatewayv2_export.html#specification DataAwsApigatewayv2Export#specification}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/apigatewayv2_export#specification DataAwsApigatewayv2Export#specification}
   */
   readonly specification: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/apigatewayv2_export.html#stage_name DataAwsApigatewayv2Export#stage_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/apigatewayv2_export#stage_name DataAwsApigatewayv2Export#stage_name}
   */
   readonly stageName?: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/apigatewayv2_export.html aws_apigatewayv2_export}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/apigatewayv2_export aws_apigatewayv2_export}
 */
 export class DataAwsApigatewayv2Export extends cdktf.TerraformDataSource {
 
@@ -48,7 +48,7 @@ export class DataAwsApigatewayv2Export extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/apigatewayv2_export.html aws_apigatewayv2_export} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/apigatewayv2_export aws_apigatewayv2_export} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -119,7 +119,7 @@ export class DataAwsApigatewayv2Export extends cdktf.TerraformDataSource {
   // include_extensions - computed: false, optional: true, required: false
   private _includeExtensions?: boolean | cdktf.IResolvable; 
   public get includeExtensions() {
-    return this.getBooleanAttribute('include_extensions') as any;
+    return this.getBooleanAttribute('include_extensions');
   }
   public set includeExtensions(value: boolean | cdktf.IResolvable) {
     this._includeExtensions = value;

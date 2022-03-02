@@ -8,37 +8,37 @@ import * as cdktf from 'cdktf';
 */
 export interface EcsClusterCapacityProvidersConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster_capacity_providers.html#capacity_providers EcsClusterCapacityProviders#capacity_providers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster_capacity_providers#capacity_providers EcsClusterCapacityProviders#capacity_providers}
   */
   readonly capacityProviders?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster_capacity_providers.html#cluster_name EcsClusterCapacityProviders#cluster_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster_capacity_providers#cluster_name EcsClusterCapacityProviders#cluster_name}
   */
   readonly clusterName: string;
   /**
   * default_capacity_provider_strategy block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster_capacity_providers.html#default_capacity_provider_strategy EcsClusterCapacityProviders#default_capacity_provider_strategy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster_capacity_providers#default_capacity_provider_strategy EcsClusterCapacityProviders#default_capacity_provider_strategy}
   */
-  readonly defaultCapacityProviderStrategy?: EcsClusterCapacityProvidersDefaultCapacityProviderStrategy[];
+  readonly defaultCapacityProviderStrategy?: EcsClusterCapacityProvidersDefaultCapacityProviderStrategy[] | cdktf.IResolvable;
 }
 export interface EcsClusterCapacityProvidersDefaultCapacityProviderStrategy {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster_capacity_providers.html#base EcsClusterCapacityProviders#base}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster_capacity_providers#base EcsClusterCapacityProviders#base}
   */
   readonly base?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster_capacity_providers.html#capacity_provider EcsClusterCapacityProviders#capacity_provider}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster_capacity_providers#capacity_provider EcsClusterCapacityProviders#capacity_provider}
   */
   readonly capacityProvider: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster_capacity_providers.html#weight EcsClusterCapacityProviders#weight}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster_capacity_providers#weight EcsClusterCapacityProviders#weight}
   */
   readonly weight?: number;
 }
 
-export function ecsClusterCapacityProvidersDefaultCapacityProviderStrategyToTerraform(struct?: EcsClusterCapacityProvidersDefaultCapacityProviderStrategy): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function ecsClusterCapacityProvidersDefaultCapacityProviderStrategyToTerraform(struct?: EcsClusterCapacityProvidersDefaultCapacityProviderStrategy | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -51,7 +51,7 @@ export function ecsClusterCapacityProvidersDefaultCapacityProviderStrategyToTerr
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster_capacity_providers.html aws_ecs_cluster_capacity_providers}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster_capacity_providers aws_ecs_cluster_capacity_providers}
 */
 export class EcsClusterCapacityProviders extends cdktf.TerraformResource {
 
@@ -65,7 +65,7 @@ export class EcsClusterCapacityProviders extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster_capacity_providers.html aws_ecs_cluster_capacity_providers} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster_capacity_providers aws_ecs_cluster_capacity_providers} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -94,7 +94,7 @@ export class EcsClusterCapacityProviders extends cdktf.TerraformResource {
   // capacity_providers - computed: false, optional: true, required: false
   private _capacityProviders?: string[]; 
   public get capacityProviders() {
-    return this.getListAttribute('capacity_providers');
+    return cdktf.Fn.tolist(this.getListAttribute('capacity_providers'));
   }
   public set capacityProviders(value: string[]) {
     this._capacityProviders = value;
@@ -126,12 +126,12 @@ export class EcsClusterCapacityProviders extends cdktf.TerraformResource {
   }
 
   // default_capacity_provider_strategy - computed: false, optional: true, required: false
-  private _defaultCapacityProviderStrategy?: EcsClusterCapacityProvidersDefaultCapacityProviderStrategy[]; 
+  private _defaultCapacityProviderStrategy?: EcsClusterCapacityProvidersDefaultCapacityProviderStrategy[] | cdktf.IResolvable; 
   public get defaultCapacityProviderStrategy() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('default_capacity_provider_strategy') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('default_capacity_provider_strategy')));
   }
-  public set defaultCapacityProviderStrategy(value: EcsClusterCapacityProvidersDefaultCapacityProviderStrategy[]) {
+  public set defaultCapacityProviderStrategy(value: EcsClusterCapacityProvidersDefaultCapacityProviderStrategy[] | cdktf.IResolvable) {
     this._defaultCapacityProviderStrategy = value;
   }
   public resetDefaultCapacityProviderStrategy() {

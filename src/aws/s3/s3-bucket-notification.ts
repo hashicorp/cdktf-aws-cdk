@@ -12,7 +12,7 @@ export interface S3BucketNotificationConfig extends cdktf.TerraformMetaArguments
   */
   readonly bucket: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#eventbridge S3BucketNotification#eventbridge}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification#eventbridge S3BucketNotification#eventbridge}
   */
   readonly eventbridge?: boolean | cdktf.IResolvable;
   /**
@@ -202,7 +202,7 @@ export class S3BucketNotification extends cdktf.TerraformResource {
   // eventbridge - computed: false, optional: true, required: false
   private _eventbridge?: boolean | cdktf.IResolvable; 
   public get eventbridge() {
-    return this.getBooleanAttribute('eventbridge') as any;
+    return this.getBooleanAttribute('eventbridge');
   }
   public set eventbridge(value: boolean | cdktf.IResolvable) {
     this._eventbridge = value;

@@ -8,29 +8,29 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsApiGatewayExportConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_export.html#accepts DataAwsApiGatewayExport#accepts}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_export#accepts DataAwsApiGatewayExport#accepts}
   */
   readonly accepts?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_export.html#export_type DataAwsApiGatewayExport#export_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_export#export_type DataAwsApiGatewayExport#export_type}
   */
   readonly exportType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_export.html#parameters DataAwsApiGatewayExport#parameters}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_export#parameters DataAwsApiGatewayExport#parameters}
   */
-  readonly parameters?: { [key: string]: string } | cdktf.IResolvable;
+  readonly parameters?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_export.html#rest_api_id DataAwsApiGatewayExport#rest_api_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_export#rest_api_id DataAwsApiGatewayExport#rest_api_id}
   */
   readonly restApiId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_export.html#stage_name DataAwsApiGatewayExport#stage_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_export#stage_name DataAwsApiGatewayExport#stage_name}
   */
   readonly stageName: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_export.html aws_api_gateway_export}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_export aws_api_gateway_export}
 */
 export class DataAwsApiGatewayExport extends cdktf.TerraformDataSource {
 
@@ -44,7 +44,7 @@ export class DataAwsApiGatewayExport extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_export.html aws_api_gateway_export} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/api_gateway_export aws_api_gateway_export} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -122,12 +122,11 @@ export class DataAwsApiGatewayExport extends cdktf.TerraformDataSource {
   }
 
   // parameters - computed: false, optional: true, required: false
-  private _parameters?: { [key: string]: string } | cdktf.IResolvable; 
+  private _parameters?: { [key: string]: string }; 
   public get parameters() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('parameters') as any;
+    return this.getStringMapAttribute('parameters');
   }
-  public set parameters(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set parameters(value: { [key: string]: string }) {
     this._parameters = value;
   }
   public resetParameters() {
@@ -172,7 +171,7 @@ export class DataAwsApiGatewayExport extends cdktf.TerraformDataSource {
     return {
       accepts: cdktf.stringToTerraform(this._accepts),
       export_type: cdktf.stringToTerraform(this._exportType),
-      parameters: cdktf.hashMapper(cdktf.anyToTerraform)(this._parameters),
+      parameters: cdktf.hashMapper(cdktf.stringToTerraform)(this._parameters),
       rest_api_id: cdktf.stringToTerraform(this._restApiId),
       stage_name: cdktf.stringToTerraform(this._stageName),
     };

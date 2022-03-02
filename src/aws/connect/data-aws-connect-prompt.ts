@@ -8,17 +8,17 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsConnectPromptConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_prompt.html#instance_id DataAwsConnectPrompt#instance_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_prompt#instance_id DataAwsConnectPrompt#instance_id}
   */
   readonly instanceId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_prompt.html#name DataAwsConnectPrompt#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/connect_prompt#name DataAwsConnectPrompt#name}
   */
   readonly name: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/connect_prompt.html aws_connect_prompt}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/connect_prompt aws_connect_prompt}
 */
 export class DataAwsConnectPrompt extends cdktf.TerraformDataSource {
 
@@ -32,7 +32,7 @@ export class DataAwsConnectPrompt extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/connect_prompt.html aws_connect_prompt} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/connect_prompt aws_connect_prompt} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope

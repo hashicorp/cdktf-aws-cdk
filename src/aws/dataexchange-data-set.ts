@@ -1,4 +1,4 @@
-// https://www.terraform.io/docs/providers/aws/r/dataexchange_data_set.html
+// https://www.terraform.io/docs/providers/aws/r/dataexchange_data_set
 // generated from terraform resource schema
 
 import { Construct } from 'constructs';
@@ -8,29 +8,29 @@ import * as cdktf from 'cdktf';
 
 export interface DataexchangeDataSetConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dataexchange_data_set.html#asset_type DataexchangeDataSet#asset_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dataexchange_data_set#asset_type DataexchangeDataSet#asset_type}
   */
   readonly assetType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dataexchange_data_set.html#description DataexchangeDataSet#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dataexchange_data_set#description DataexchangeDataSet#description}
   */
   readonly description: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dataexchange_data_set.html#name DataexchangeDataSet#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dataexchange_data_set#name DataexchangeDataSet#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dataexchange_data_set.html#tags DataexchangeDataSet#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dataexchange_data_set#tags DataexchangeDataSet#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dataexchange_data_set.html#tags_all DataexchangeDataSet#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dataexchange_data_set#tags_all DataexchangeDataSet#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/dataexchange_data_set.html aws_dataexchange_data_set}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/dataexchange_data_set aws_dataexchange_data_set}
 */
 export class DataexchangeDataSet extends cdktf.TerraformResource {
 
@@ -44,7 +44,7 @@ export class DataexchangeDataSet extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/dataexchange_data_set.html aws_dataexchange_data_set} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/dataexchange_data_set aws_dataexchange_data_set} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -122,12 +122,11 @@ export class DataexchangeDataSet extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -139,12 +138,11 @@ export class DataexchangeDataSet extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -164,8 +162,8 @@ export class DataexchangeDataSet extends cdktf.TerraformResource {
       asset_type: cdktf.stringToTerraform(this._assetType),
       description: cdktf.stringToTerraform(this._description),
       name: cdktf.stringToTerraform(this._name),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
     };
   }
 }
