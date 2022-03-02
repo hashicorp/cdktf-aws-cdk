@@ -8,31 +8,31 @@ import * as cdktf from 'cdktf';
 */
 export interface LambdaCodeSigningConfigConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config.html#description LambdaCodeSigningConfig#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config#description LambdaCodeSigningConfig#description}
   */
   readonly description?: string;
   /**
   * allowed_publishers block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config.html#allowed_publishers LambdaCodeSigningConfig#allowed_publishers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config#allowed_publishers LambdaCodeSigningConfig#allowed_publishers}
   */
   readonly allowedPublishers: LambdaCodeSigningConfigAllowedPublishers;
   /**
   * policies block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config.html#policies LambdaCodeSigningConfig#policies}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config#policies LambdaCodeSigningConfig#policies}
   */
   readonly policies?: LambdaCodeSigningConfigPolicies;
 }
 export interface LambdaCodeSigningConfigAllowedPublishers {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config.html#signing_profile_version_arns LambdaCodeSigningConfig#signing_profile_version_arns}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config#signing_profile_version_arns LambdaCodeSigningConfig#signing_profile_version_arns}
   */
   readonly signingProfileVersionArns: string[];
 }
 
 export function lambdaCodeSigningConfigAllowedPublishersToTerraform(struct?: LambdaCodeSigningConfigAllowedPublishersOutputReference | LambdaCodeSigningConfigAllowedPublishers): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -42,19 +42,21 @@ export function lambdaCodeSigningConfigAllowedPublishersToTerraform(struct?: Lam
 }
 
 export class LambdaCodeSigningConfigAllowedPublishersOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): LambdaCodeSigningConfigAllowedPublishers | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._signingProfileVersionArns) {
+    if (this._signingProfileVersionArns !== undefined) {
       hasAnyValues = true;
       internalValueResult.signingProfileVersionArns = this._signingProfileVersionArns;
     }
@@ -63,9 +65,11 @@ export class LambdaCodeSigningConfigAllowedPublishersOutputReference extends cdk
 
   public set internalValue(value: LambdaCodeSigningConfigAllowedPublishers | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._signingProfileVersionArns = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._signingProfileVersionArns = value.signingProfileVersionArns;
     }
   }
@@ -73,7 +77,7 @@ export class LambdaCodeSigningConfigAllowedPublishersOutputReference extends cdk
   // signing_profile_version_arns - computed: false, optional: false, required: true
   private _signingProfileVersionArns?: string[]; 
   public get signingProfileVersionArns() {
-    return this.getListAttribute('signing_profile_version_arns');
+    return cdktf.Fn.tolist(this.getListAttribute('signing_profile_version_arns'));
   }
   public set signingProfileVersionArns(value: string[]) {
     this._signingProfileVersionArns = value;
@@ -85,13 +89,13 @@ export class LambdaCodeSigningConfigAllowedPublishersOutputReference extends cdk
 }
 export interface LambdaCodeSigningConfigPolicies {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config.html#untrusted_artifact_on_deployment LambdaCodeSigningConfig#untrusted_artifact_on_deployment}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config#untrusted_artifact_on_deployment LambdaCodeSigningConfig#untrusted_artifact_on_deployment}
   */
   readonly untrustedArtifactOnDeployment: string;
 }
 
 export function lambdaCodeSigningConfigPoliciesToTerraform(struct?: LambdaCodeSigningConfigPoliciesOutputReference | LambdaCodeSigningConfigPolicies): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -101,19 +105,21 @@ export function lambdaCodeSigningConfigPoliciesToTerraform(struct?: LambdaCodeSi
 }
 
 export class LambdaCodeSigningConfigPoliciesOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): LambdaCodeSigningConfigPolicies | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._untrustedArtifactOnDeployment) {
+    if (this._untrustedArtifactOnDeployment !== undefined) {
       hasAnyValues = true;
       internalValueResult.untrustedArtifactOnDeployment = this._untrustedArtifactOnDeployment;
     }
@@ -122,9 +128,11 @@ export class LambdaCodeSigningConfigPoliciesOutputReference extends cdktf.Comple
 
   public set internalValue(value: LambdaCodeSigningConfigPolicies | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._untrustedArtifactOnDeployment = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._untrustedArtifactOnDeployment = value.untrustedArtifactOnDeployment;
     }
   }
@@ -144,7 +152,7 @@ export class LambdaCodeSigningConfigPoliciesOutputReference extends cdktf.Comple
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config.html aws_lambda_code_signing_config}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config aws_lambda_code_signing_config}
 */
 export class LambdaCodeSigningConfig extends cdktf.TerraformResource {
 
@@ -158,7 +166,7 @@ export class LambdaCodeSigningConfig extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config.html aws_lambda_code_signing_config} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config aws_lambda_code_signing_config} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -221,7 +229,7 @@ export class LambdaCodeSigningConfig extends cdktf.TerraformResource {
   }
 
   // allowed_publishers - computed: false, optional: false, required: true
-  private _allowedPublishers = new LambdaCodeSigningConfigAllowedPublishersOutputReference(this as any, "allowed_publishers", true);
+  private _allowedPublishers = new LambdaCodeSigningConfigAllowedPublishersOutputReference(this, "allowed_publishers", true);
   public get allowedPublishers() {
     return this._allowedPublishers;
   }
@@ -234,7 +242,7 @@ export class LambdaCodeSigningConfig extends cdktf.TerraformResource {
   }
 
   // policies - computed: false, optional: true, required: false
-  private _policies = new LambdaCodeSigningConfigPoliciesOutputReference(this as any, "policies", true);
+  private _policies = new LambdaCodeSigningConfigPoliciesOutputReference(this, "policies", true);
   public get policies() {
     return this._policies;
   }

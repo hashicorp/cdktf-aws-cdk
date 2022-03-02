@@ -8,13 +8,13 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsCurReportDefinitionConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/cur_report_definition.html#report_name DataAwsCurReportDefinition#report_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/cur_report_definition#report_name DataAwsCurReportDefinition#report_name}
   */
   readonly reportName: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/cur_report_definition.html aws_cur_report_definition}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/cur_report_definition aws_cur_report_definition}
 */
 export class DataAwsCurReportDefinition extends cdktf.TerraformDataSource {
 
@@ -28,7 +28,7 @@ export class DataAwsCurReportDefinition extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/cur_report_definition.html aws_cur_report_definition} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/cur_report_definition aws_cur_report_definition} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -54,12 +54,12 @@ export class DataAwsCurReportDefinition extends cdktf.TerraformDataSource {
 
   // additional_artifacts - computed: true, optional: false, required: false
   public get additionalArtifacts() {
-    return this.getListAttribute('additional_artifacts');
+    return cdktf.Fn.tolist(this.getListAttribute('additional_artifacts'));
   }
 
   // additional_schema_elements - computed: true, optional: false, required: false
   public get additionalSchemaElements() {
-    return this.getListAttribute('additional_schema_elements');
+    return cdktf.Fn.tolist(this.getListAttribute('additional_schema_elements'));
   }
 
   // compression - computed: true, optional: false, required: false
@@ -79,7 +79,7 @@ export class DataAwsCurReportDefinition extends cdktf.TerraformDataSource {
 
   // refresh_closed_reports - computed: true, optional: false, required: false
   public get refreshClosedReports() {
-    return this.getBooleanAttribute('refresh_closed_reports') as any;
+    return this.getBooleanAttribute('refresh_closed_reports');
   }
 
   // report_name - computed: false, optional: false, required: true

@@ -8,92 +8,92 @@ import * as cdktf from 'cdktf';
 */
 export interface LbListenerConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#alpn_policy LbListener#alpn_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#alpn_policy LbListener#alpn_policy}
   */
   readonly alpnPolicy?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#certificate_arn LbListener#certificate_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#certificate_arn LbListener#certificate_arn}
   */
   readonly certificateArn?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#load_balancer_arn LbListener#load_balancer_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#load_balancer_arn LbListener#load_balancer_arn}
   */
   readonly loadBalancerArn: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#port LbListener#port}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#port LbListener#port}
   */
   readonly port?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#protocol LbListener#protocol}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#protocol LbListener#protocol}
   */
   readonly protocol?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#ssl_policy LbListener#ssl_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#ssl_policy LbListener#ssl_policy}
   */
   readonly sslPolicy?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#tags LbListener#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#tags LbListener#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#tags_all LbListener#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#tags_all LbListener#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * default_action block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#default_action LbListener#default_action}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#default_action LbListener#default_action}
   */
-  readonly defaultAction: LbListenerDefaultAction[];
+  readonly defaultAction: LbListenerDefaultAction[] | cdktf.IResolvable;
   /**
   * timeouts block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#timeouts LbListener#timeouts}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#timeouts LbListener#timeouts}
   */
   readonly timeouts?: LbListenerTimeouts;
 }
 export interface LbListenerDefaultActionAuthenticateCognito {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#authentication_request_extra_params LbListener#authentication_request_extra_params}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#authentication_request_extra_params LbListener#authentication_request_extra_params}
   */
-  readonly authenticationRequestExtraParams?: { [key: string]: string } | cdktf.IResolvable;
+  readonly authenticationRequestExtraParams?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#on_unauthenticated_request LbListener#on_unauthenticated_request}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#on_unauthenticated_request LbListener#on_unauthenticated_request}
   */
   readonly onUnauthenticatedRequest?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#scope LbListener#scope}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#scope LbListener#scope}
   */
   readonly scope?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#session_cookie_name LbListener#session_cookie_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#session_cookie_name LbListener#session_cookie_name}
   */
   readonly sessionCookieName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#session_timeout LbListener#session_timeout}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#session_timeout LbListener#session_timeout}
   */
   readonly sessionTimeout?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#user_pool_arn LbListener#user_pool_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#user_pool_arn LbListener#user_pool_arn}
   */
   readonly userPoolArn: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#user_pool_client_id LbListener#user_pool_client_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#user_pool_client_id LbListener#user_pool_client_id}
   */
   readonly userPoolClientId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#user_pool_domain LbListener#user_pool_domain}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#user_pool_domain LbListener#user_pool_domain}
   */
   readonly userPoolDomain: string;
 }
 
 export function lbListenerDefaultActionAuthenticateCognitoToTerraform(struct?: LbListenerDefaultActionAuthenticateCognitoOutputReference | LbListenerDefaultActionAuthenticateCognito): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    authentication_request_extra_params: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.authenticationRequestExtraParams),
+    authentication_request_extra_params: cdktf.hashMapper(cdktf.stringToTerraform)(struct!.authenticationRequestExtraParams),
     on_unauthenticated_request: cdktf.stringToTerraform(struct!.onUnauthenticatedRequest),
     scope: cdktf.stringToTerraform(struct!.scope),
     session_cookie_name: cdktf.stringToTerraform(struct!.sessionCookieName),
@@ -105,47 +105,49 @@ export function lbListenerDefaultActionAuthenticateCognitoToTerraform(struct?: L
 }
 
 export class LbListenerDefaultActionAuthenticateCognitoOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): LbListenerDefaultActionAuthenticateCognito | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._authenticationRequestExtraParams) {
+    if (this._authenticationRequestExtraParams !== undefined) {
       hasAnyValues = true;
       internalValueResult.authenticationRequestExtraParams = this._authenticationRequestExtraParams;
     }
-    if (this._onUnauthenticatedRequest) {
+    if (this._onUnauthenticatedRequest !== undefined) {
       hasAnyValues = true;
       internalValueResult.onUnauthenticatedRequest = this._onUnauthenticatedRequest;
     }
-    if (this._scope) {
+    if (this._scope !== undefined) {
       hasAnyValues = true;
       internalValueResult.scope = this._scope;
     }
-    if (this._sessionCookieName) {
+    if (this._sessionCookieName !== undefined) {
       hasAnyValues = true;
       internalValueResult.sessionCookieName = this._sessionCookieName;
     }
-    if (this._sessionTimeout) {
+    if (this._sessionTimeout !== undefined) {
       hasAnyValues = true;
       internalValueResult.sessionTimeout = this._sessionTimeout;
     }
-    if (this._userPoolArn) {
+    if (this._userPoolArn !== undefined) {
       hasAnyValues = true;
       internalValueResult.userPoolArn = this._userPoolArn;
     }
-    if (this._userPoolClientId) {
+    if (this._userPoolClientId !== undefined) {
       hasAnyValues = true;
       internalValueResult.userPoolClientId = this._userPoolClientId;
     }
-    if (this._userPoolDomain) {
+    if (this._userPoolDomain !== undefined) {
       hasAnyValues = true;
       internalValueResult.userPoolDomain = this._userPoolDomain;
     }
@@ -154,6 +156,7 @@ export class LbListenerDefaultActionAuthenticateCognitoOutputReference extends c
 
   public set internalValue(value: LbListenerDefaultActionAuthenticateCognito | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._authenticationRequestExtraParams = undefined;
       this._onUnauthenticatedRequest = undefined;
       this._scope = undefined;
@@ -164,6 +167,7 @@ export class LbListenerDefaultActionAuthenticateCognitoOutputReference extends c
       this._userPoolDomain = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._authenticationRequestExtraParams = value.authenticationRequestExtraParams;
       this._onUnauthenticatedRequest = value.onUnauthenticatedRequest;
       this._scope = value.scope;
@@ -176,12 +180,11 @@ export class LbListenerDefaultActionAuthenticateCognitoOutputReference extends c
   }
 
   // authentication_request_extra_params - computed: false, optional: true, required: false
-  private _authenticationRequestExtraParams?: { [key: string]: string } | cdktf.IResolvable; 
+  private _authenticationRequestExtraParams?: { [key: string]: string }; 
   public get authenticationRequestExtraParams() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('authentication_request_extra_params') as any;
+    return this.getStringMapAttribute('authentication_request_extra_params');
   }
-  public set authenticationRequestExtraParams(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set authenticationRequestExtraParams(value: { [key: string]: string }) {
     this._authenticationRequestExtraParams = value;
   }
   public resetAuthenticationRequestExtraParams() {
@@ -297,58 +300,58 @@ export class LbListenerDefaultActionAuthenticateCognitoOutputReference extends c
 }
 export interface LbListenerDefaultActionAuthenticateOidc {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#authentication_request_extra_params LbListener#authentication_request_extra_params}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#authentication_request_extra_params LbListener#authentication_request_extra_params}
   */
-  readonly authenticationRequestExtraParams?: { [key: string]: string } | cdktf.IResolvable;
+  readonly authenticationRequestExtraParams?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#authorization_endpoint LbListener#authorization_endpoint}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#authorization_endpoint LbListener#authorization_endpoint}
   */
   readonly authorizationEndpoint: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#client_id LbListener#client_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#client_id LbListener#client_id}
   */
   readonly clientId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#client_secret LbListener#client_secret}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#client_secret LbListener#client_secret}
   */
   readonly clientSecret: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#issuer LbListener#issuer}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#issuer LbListener#issuer}
   */
   readonly issuer: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#on_unauthenticated_request LbListener#on_unauthenticated_request}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#on_unauthenticated_request LbListener#on_unauthenticated_request}
   */
   readonly onUnauthenticatedRequest?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#scope LbListener#scope}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#scope LbListener#scope}
   */
   readonly scope?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#session_cookie_name LbListener#session_cookie_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#session_cookie_name LbListener#session_cookie_name}
   */
   readonly sessionCookieName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#session_timeout LbListener#session_timeout}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#session_timeout LbListener#session_timeout}
   */
   readonly sessionTimeout?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#token_endpoint LbListener#token_endpoint}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#token_endpoint LbListener#token_endpoint}
   */
   readonly tokenEndpoint: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#user_info_endpoint LbListener#user_info_endpoint}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#user_info_endpoint LbListener#user_info_endpoint}
   */
   readonly userInfoEndpoint: string;
 }
 
 export function lbListenerDefaultActionAuthenticateOidcToTerraform(struct?: LbListenerDefaultActionAuthenticateOidcOutputReference | LbListenerDefaultActionAuthenticateOidc): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    authentication_request_extra_params: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.authenticationRequestExtraParams),
+    authentication_request_extra_params: cdktf.hashMapper(cdktf.stringToTerraform)(struct!.authenticationRequestExtraParams),
     authorization_endpoint: cdktf.stringToTerraform(struct!.authorizationEndpoint),
     client_id: cdktf.stringToTerraform(struct!.clientId),
     client_secret: cdktf.stringToTerraform(struct!.clientSecret),
@@ -363,59 +366,61 @@ export function lbListenerDefaultActionAuthenticateOidcToTerraform(struct?: LbLi
 }
 
 export class LbListenerDefaultActionAuthenticateOidcOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): LbListenerDefaultActionAuthenticateOidc | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._authenticationRequestExtraParams) {
+    if (this._authenticationRequestExtraParams !== undefined) {
       hasAnyValues = true;
       internalValueResult.authenticationRequestExtraParams = this._authenticationRequestExtraParams;
     }
-    if (this._authorizationEndpoint) {
+    if (this._authorizationEndpoint !== undefined) {
       hasAnyValues = true;
       internalValueResult.authorizationEndpoint = this._authorizationEndpoint;
     }
-    if (this._clientId) {
+    if (this._clientId !== undefined) {
       hasAnyValues = true;
       internalValueResult.clientId = this._clientId;
     }
-    if (this._clientSecret) {
+    if (this._clientSecret !== undefined) {
       hasAnyValues = true;
       internalValueResult.clientSecret = this._clientSecret;
     }
-    if (this._issuer) {
+    if (this._issuer !== undefined) {
       hasAnyValues = true;
       internalValueResult.issuer = this._issuer;
     }
-    if (this._onUnauthenticatedRequest) {
+    if (this._onUnauthenticatedRequest !== undefined) {
       hasAnyValues = true;
       internalValueResult.onUnauthenticatedRequest = this._onUnauthenticatedRequest;
     }
-    if (this._scope) {
+    if (this._scope !== undefined) {
       hasAnyValues = true;
       internalValueResult.scope = this._scope;
     }
-    if (this._sessionCookieName) {
+    if (this._sessionCookieName !== undefined) {
       hasAnyValues = true;
       internalValueResult.sessionCookieName = this._sessionCookieName;
     }
-    if (this._sessionTimeout) {
+    if (this._sessionTimeout !== undefined) {
       hasAnyValues = true;
       internalValueResult.sessionTimeout = this._sessionTimeout;
     }
-    if (this._tokenEndpoint) {
+    if (this._tokenEndpoint !== undefined) {
       hasAnyValues = true;
       internalValueResult.tokenEndpoint = this._tokenEndpoint;
     }
-    if (this._userInfoEndpoint) {
+    if (this._userInfoEndpoint !== undefined) {
       hasAnyValues = true;
       internalValueResult.userInfoEndpoint = this._userInfoEndpoint;
     }
@@ -424,6 +429,7 @@ export class LbListenerDefaultActionAuthenticateOidcOutputReference extends cdkt
 
   public set internalValue(value: LbListenerDefaultActionAuthenticateOidc | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._authenticationRequestExtraParams = undefined;
       this._authorizationEndpoint = undefined;
       this._clientId = undefined;
@@ -437,6 +443,7 @@ export class LbListenerDefaultActionAuthenticateOidcOutputReference extends cdkt
       this._userInfoEndpoint = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._authenticationRequestExtraParams = value.authenticationRequestExtraParams;
       this._authorizationEndpoint = value.authorizationEndpoint;
       this._clientId = value.clientId;
@@ -452,12 +459,11 @@ export class LbListenerDefaultActionAuthenticateOidcOutputReference extends cdkt
   }
 
   // authentication_request_extra_params - computed: false, optional: true, required: false
-  private _authenticationRequestExtraParams?: { [key: string]: string } | cdktf.IResolvable; 
+  private _authenticationRequestExtraParams?: { [key: string]: string }; 
   public get authenticationRequestExtraParams() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('authentication_request_extra_params') as any;
+    return this.getStringMapAttribute('authentication_request_extra_params');
   }
-  public set authenticationRequestExtraParams(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set authenticationRequestExtraParams(value: { [key: string]: string }) {
     this._authenticationRequestExtraParams = value;
   }
   public resetAuthenticationRequestExtraParams() {
@@ -612,21 +618,21 @@ export class LbListenerDefaultActionAuthenticateOidcOutputReference extends cdkt
 }
 export interface LbListenerDefaultActionFixedResponse {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#content_type LbListener#content_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#content_type LbListener#content_type}
   */
   readonly contentType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#message_body LbListener#message_body}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#message_body LbListener#message_body}
   */
   readonly messageBody?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#status_code LbListener#status_code}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#status_code LbListener#status_code}
   */
   readonly statusCode?: string;
 }
 
 export function lbListenerDefaultActionFixedResponseToTerraform(struct?: LbListenerDefaultActionFixedResponseOutputReference | LbListenerDefaultActionFixedResponse): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -638,27 +644,29 @@ export function lbListenerDefaultActionFixedResponseToTerraform(struct?: LbListe
 }
 
 export class LbListenerDefaultActionFixedResponseOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): LbListenerDefaultActionFixedResponse | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._contentType) {
+    if (this._contentType !== undefined) {
       hasAnyValues = true;
       internalValueResult.contentType = this._contentType;
     }
-    if (this._messageBody) {
+    if (this._messageBody !== undefined) {
       hasAnyValues = true;
       internalValueResult.messageBody = this._messageBody;
     }
-    if (this._statusCode) {
+    if (this._statusCode !== undefined) {
       hasAnyValues = true;
       internalValueResult.statusCode = this._statusCode;
     }
@@ -667,11 +675,13 @@ export class LbListenerDefaultActionFixedResponseOutputReference extends cdktf.C
 
   public set internalValue(value: LbListenerDefaultActionFixedResponse | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._contentType = undefined;
       this._messageBody = undefined;
       this._statusCode = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._contentType = value.contentType;
       this._messageBody = value.messageBody;
       this._statusCode = value.statusCode;
@@ -725,17 +735,17 @@ export class LbListenerDefaultActionFixedResponseOutputReference extends cdktf.C
 }
 export interface LbListenerDefaultActionForwardStickiness {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#duration LbListener#duration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#duration LbListener#duration}
   */
   readonly duration: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#enabled LbListener#enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#enabled LbListener#enabled}
   */
   readonly enabled?: boolean | cdktf.IResolvable;
 }
 
 export function lbListenerDefaultActionForwardStickinessToTerraform(struct?: LbListenerDefaultActionForwardStickinessOutputReference | LbListenerDefaultActionForwardStickiness): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -746,23 +756,25 @@ export function lbListenerDefaultActionForwardStickinessToTerraform(struct?: LbL
 }
 
 export class LbListenerDefaultActionForwardStickinessOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): LbListenerDefaultActionForwardStickiness | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._duration) {
+    if (this._duration !== undefined) {
       hasAnyValues = true;
       internalValueResult.duration = this._duration;
     }
-    if (this._enabled) {
+    if (this._enabled !== undefined) {
       hasAnyValues = true;
       internalValueResult.enabled = this._enabled;
     }
@@ -771,10 +783,12 @@ export class LbListenerDefaultActionForwardStickinessOutputReference extends cdk
 
   public set internalValue(value: LbListenerDefaultActionForwardStickiness | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._duration = undefined;
       this._enabled = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._duration = value.duration;
       this._enabled = value.enabled;
     }
@@ -796,7 +810,7 @@ export class LbListenerDefaultActionForwardStickinessOutputReference extends cdk
   // enabled - computed: false, optional: true, required: false
   private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
-    return this.getBooleanAttribute('enabled') as any;
+    return this.getBooleanAttribute('enabled');
   }
   public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
@@ -811,17 +825,17 @@ export class LbListenerDefaultActionForwardStickinessOutputReference extends cdk
 }
 export interface LbListenerDefaultActionForwardTargetGroup {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#arn LbListener#arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#arn LbListener#arn}
   */
   readonly arn: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#weight LbListener#weight}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#weight LbListener#weight}
   */
   readonly weight?: number;
 }
 
-export function lbListenerDefaultActionForwardTargetGroupToTerraform(struct?: LbListenerDefaultActionForwardTargetGroup): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function lbListenerDefaultActionForwardTargetGroupToTerraform(struct?: LbListenerDefaultActionForwardTargetGroup | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -835,19 +849,19 @@ export interface LbListenerDefaultActionForward {
   /**
   * stickiness block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#stickiness LbListener#stickiness}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#stickiness LbListener#stickiness}
   */
   readonly stickiness?: LbListenerDefaultActionForwardStickiness;
   /**
   * target_group block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#target_group LbListener#target_group}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#target_group LbListener#target_group}
   */
-  readonly targetGroup: LbListenerDefaultActionForwardTargetGroup[];
+  readonly targetGroup: LbListenerDefaultActionForwardTargetGroup[] | cdktf.IResolvable;
 }
 
 export function lbListenerDefaultActionForwardToTerraform(struct?: LbListenerDefaultActionForwardOutputReference | LbListenerDefaultActionForward): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -858,23 +872,25 @@ export function lbListenerDefaultActionForwardToTerraform(struct?: LbListenerDef
 }
 
 export class LbListenerDefaultActionForwardOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): LbListenerDefaultActionForward | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._stickiness) {
+    if (this._stickiness?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.stickiness = this._stickiness?.internalValue;
     }
-    if (this._targetGroup) {
+    if (this._targetGroup !== undefined) {
       hasAnyValues = true;
       internalValueResult.targetGroup = this._targetGroup;
     }
@@ -883,17 +899,19 @@ export class LbListenerDefaultActionForwardOutputReference extends cdktf.Complex
 
   public set internalValue(value: LbListenerDefaultActionForward | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._stickiness.internalValue = undefined;
       this._targetGroup = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._stickiness.internalValue = value.stickiness;
       this._targetGroup = value.targetGroup;
     }
   }
 
   // stickiness - computed: false, optional: true, required: false
-  private _stickiness = new LbListenerDefaultActionForwardStickinessOutputReference(this as any, "stickiness", true);
+  private _stickiness = new LbListenerDefaultActionForwardStickinessOutputReference(this, "stickiness", true);
   public get stickiness() {
     return this._stickiness;
   }
@@ -909,12 +927,12 @@ export class LbListenerDefaultActionForwardOutputReference extends cdktf.Complex
   }
 
   // target_group - computed: false, optional: false, required: true
-  private _targetGroup?: LbListenerDefaultActionForwardTargetGroup[]; 
+  private _targetGroup?: LbListenerDefaultActionForwardTargetGroup[] | cdktf.IResolvable; 
   public get targetGroup() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('target_group') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('target_group')));
   }
-  public set targetGroup(value: LbListenerDefaultActionForwardTargetGroup[]) {
+  public set targetGroup(value: LbListenerDefaultActionForwardTargetGroup[] | cdktf.IResolvable) {
     this._targetGroup = value;
   }
   // Temporarily expose input value. Use with caution.
@@ -924,33 +942,33 @@ export class LbListenerDefaultActionForwardOutputReference extends cdktf.Complex
 }
 export interface LbListenerDefaultActionRedirect {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#host LbListener#host}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#host LbListener#host}
   */
   readonly host?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#path LbListener#path}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#path LbListener#path}
   */
   readonly path?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#port LbListener#port}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#port LbListener#port}
   */
   readonly port?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#protocol LbListener#protocol}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#protocol LbListener#protocol}
   */
   readonly protocol?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#query LbListener#query}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#query LbListener#query}
   */
   readonly query?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#status_code LbListener#status_code}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#status_code LbListener#status_code}
   */
   readonly statusCode: string;
 }
 
 export function lbListenerDefaultActionRedirectToTerraform(struct?: LbListenerDefaultActionRedirectOutputReference | LbListenerDefaultActionRedirect): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -965,39 +983,41 @@ export function lbListenerDefaultActionRedirectToTerraform(struct?: LbListenerDe
 }
 
 export class LbListenerDefaultActionRedirectOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): LbListenerDefaultActionRedirect | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._host) {
+    if (this._host !== undefined) {
       hasAnyValues = true;
       internalValueResult.host = this._host;
     }
-    if (this._path) {
+    if (this._path !== undefined) {
       hasAnyValues = true;
       internalValueResult.path = this._path;
     }
-    if (this._port) {
+    if (this._port !== undefined) {
       hasAnyValues = true;
       internalValueResult.port = this._port;
     }
-    if (this._protocol) {
+    if (this._protocol !== undefined) {
       hasAnyValues = true;
       internalValueResult.protocol = this._protocol;
     }
-    if (this._query) {
+    if (this._query !== undefined) {
       hasAnyValues = true;
       internalValueResult.query = this._query;
     }
-    if (this._statusCode) {
+    if (this._statusCode !== undefined) {
       hasAnyValues = true;
       internalValueResult.statusCode = this._statusCode;
     }
@@ -1006,6 +1026,7 @@ export class LbListenerDefaultActionRedirectOutputReference extends cdktf.Comple
 
   public set internalValue(value: LbListenerDefaultActionRedirect | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._host = undefined;
       this._path = undefined;
       this._port = undefined;
@@ -1014,6 +1035,7 @@ export class LbListenerDefaultActionRedirectOutputReference extends cdktf.Comple
       this._statusCode = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._host = value.host;
       this._path = value.path;
       this._port = value.port;
@@ -1118,51 +1140,51 @@ export class LbListenerDefaultActionRedirectOutputReference extends cdktf.Comple
 }
 export interface LbListenerDefaultAction {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#order LbListener#order}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#order LbListener#order}
   */
   readonly order?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#target_group_arn LbListener#target_group_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#target_group_arn LbListener#target_group_arn}
   */
   readonly targetGroupArn?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#type LbListener#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#type LbListener#type}
   */
   readonly type: string;
   /**
   * authenticate_cognito block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#authenticate_cognito LbListener#authenticate_cognito}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#authenticate_cognito LbListener#authenticate_cognito}
   */
   readonly authenticateCognito?: LbListenerDefaultActionAuthenticateCognito;
   /**
   * authenticate_oidc block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#authenticate_oidc LbListener#authenticate_oidc}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#authenticate_oidc LbListener#authenticate_oidc}
   */
   readonly authenticateOidc?: LbListenerDefaultActionAuthenticateOidc;
   /**
   * fixed_response block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#fixed_response LbListener#fixed_response}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#fixed_response LbListener#fixed_response}
   */
   readonly fixedResponse?: LbListenerDefaultActionFixedResponse;
   /**
   * forward block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#forward LbListener#forward}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#forward LbListener#forward}
   */
   readonly forward?: LbListenerDefaultActionForward;
   /**
   * redirect block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#redirect LbListener#redirect}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#redirect LbListener#redirect}
   */
   readonly redirect?: LbListenerDefaultActionRedirect;
 }
 
-export function lbListenerDefaultActionToTerraform(struct?: LbListenerDefaultAction): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function lbListenerDefaultActionToTerraform(struct?: LbListenerDefaultAction | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1180,13 +1202,13 @@ export function lbListenerDefaultActionToTerraform(struct?: LbListenerDefaultAct
 
 export interface LbListenerTimeouts {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#read LbListener#read}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener#read LbListener#read}
   */
   readonly read?: string;
 }
 
-export function lbListenerTimeoutsToTerraform(struct?: LbListenerTimeoutsOutputReference | LbListenerTimeouts): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function lbListenerTimeoutsToTerraform(struct?: LbListenerTimeoutsOutputReference | LbListenerTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1196,19 +1218,21 @@ export function lbListenerTimeoutsToTerraform(struct?: LbListenerTimeoutsOutputR
 }
 
 export class LbListenerTimeoutsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): LbListenerTimeouts | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._read) {
+    if (this._read !== undefined) {
       hasAnyValues = true;
       internalValueResult.read = this._read;
     }
@@ -1217,9 +1241,11 @@ export class LbListenerTimeoutsOutputReference extends cdktf.ComplexObject {
 
   public set internalValue(value: LbListenerTimeouts | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._read = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._read = value.read;
     }
   }
@@ -1242,7 +1268,7 @@ export class LbListenerTimeoutsOutputReference extends cdktf.ComplexObject {
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html aws_lb_listener}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/lb_listener aws_lb_listener}
 */
 export class LbListener extends cdktf.TerraformResource {
 
@@ -1256,7 +1282,7 @@ export class LbListener extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html aws_lb_listener} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/lb_listener aws_lb_listener} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -1393,12 +1419,11 @@ export class LbListener extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -1410,12 +1435,11 @@ export class LbListener extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -1427,12 +1451,12 @@ export class LbListener extends cdktf.TerraformResource {
   }
 
   // default_action - computed: false, optional: false, required: true
-  private _defaultAction?: LbListenerDefaultAction[]; 
+  private _defaultAction?: LbListenerDefaultAction[] | cdktf.IResolvable; 
   public get defaultAction() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('default_action') as any;
+    return this.interpolationForAttribute('default_action');
   }
-  public set defaultAction(value: LbListenerDefaultAction[]) {
+  public set defaultAction(value: LbListenerDefaultAction[] | cdktf.IResolvable) {
     this._defaultAction = value;
   }
   // Temporarily expose input value. Use with caution.
@@ -1441,7 +1465,7 @@ export class LbListener extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts = new LbListenerTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new LbListenerTimeoutsOutputReference(this, "timeouts", true);
   public get timeouts() {
     return this._timeouts;
   }
@@ -1468,8 +1492,8 @@ export class LbListener extends cdktf.TerraformResource {
       port: cdktf.numberToTerraform(this._port),
       protocol: cdktf.stringToTerraform(this._protocol),
       ssl_policy: cdktf.stringToTerraform(this._sslPolicy),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       default_action: cdktf.listMapper(lbListenerDefaultActionToTerraform)(this._defaultAction),
       timeouts: lbListenerTimeoutsToTerraform(this._timeouts.internalValue),
     };

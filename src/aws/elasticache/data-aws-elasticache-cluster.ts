@@ -8,13 +8,13 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsElasticacheClusterConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/elasticache_cluster.html#cluster_id DataAwsElasticacheCluster#cluster_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/elasticache_cluster#cluster_id DataAwsElasticacheCluster#cluster_id}
   */
   readonly clusterId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/elasticache_cluster.html#tags DataAwsElasticacheCluster#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/elasticache_cluster#tags DataAwsElasticacheCluster#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
 }
 export class DataAwsElasticacheClusterCacheNodes extends cdktf.ComplexComputedList {
 
@@ -40,7 +40,7 @@ export class DataAwsElasticacheClusterCacheNodes extends cdktf.ComplexComputedLi
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/elasticache_cluster.html aws_elasticache_cluster}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/elasticache_cluster aws_elasticache_cluster}
 */
 export class DataAwsElasticacheCluster extends cdktf.TerraformDataSource {
 
@@ -54,7 +54,7 @@ export class DataAwsElasticacheCluster extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/elasticache_cluster.html aws_elasticache_cluster} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/elasticache_cluster aws_elasticache_cluster} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -91,7 +91,7 @@ export class DataAwsElasticacheCluster extends cdktf.TerraformDataSource {
 
   // cache_nodes - computed: true, optional: false, required: false
   public cacheNodes(index: string) {
-    return new DataAwsElasticacheClusterCacheNodes(this, 'cache_nodes', index);
+    return new DataAwsElasticacheClusterCacheNodes(this, 'cache_nodes', index, false);
   }
 
   // cluster_address - computed: true, optional: false, required: false
@@ -169,12 +169,12 @@ export class DataAwsElasticacheCluster extends cdktf.TerraformDataSource {
 
   // security_group_ids - computed: true, optional: false, required: false
   public get securityGroupIds() {
-    return this.getListAttribute('security_group_ids');
+    return cdktf.Fn.tolist(this.getListAttribute('security_group_ids'));
   }
 
   // security_group_names - computed: true, optional: false, required: false
   public get securityGroupNames() {
-    return this.getListAttribute('security_group_names');
+    return cdktf.Fn.tolist(this.getListAttribute('security_group_names'));
   }
 
   // snapshot_retention_limit - computed: true, optional: false, required: false
@@ -193,12 +193,11 @@ export class DataAwsElasticacheCluster extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -216,7 +215,7 @@ export class DataAwsElasticacheCluster extends cdktf.TerraformDataSource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       cluster_id: cdktf.stringToTerraform(this._clusterId),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
     };
   }
 }

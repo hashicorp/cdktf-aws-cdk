@@ -8,61 +8,61 @@ import * as cdktf from 'cdktf';
 */
 export interface BudgetsBudgetActionConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#account_id BudgetsBudgetAction#account_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#account_id BudgetsBudgetAction#account_id}
   */
   readonly accountId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#action_type BudgetsBudgetAction#action_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#action_type BudgetsBudgetAction#action_type}
   */
   readonly actionType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#approval_model BudgetsBudgetAction#approval_model}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#approval_model BudgetsBudgetAction#approval_model}
   */
   readonly approvalModel: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#budget_name BudgetsBudgetAction#budget_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#budget_name BudgetsBudgetAction#budget_name}
   */
   readonly budgetName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#execution_role_arn BudgetsBudgetAction#execution_role_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#execution_role_arn BudgetsBudgetAction#execution_role_arn}
   */
   readonly executionRoleArn: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#notification_type BudgetsBudgetAction#notification_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#notification_type BudgetsBudgetAction#notification_type}
   */
   readonly notificationType: string;
   /**
   * action_threshold block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#action_threshold BudgetsBudgetAction#action_threshold}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#action_threshold BudgetsBudgetAction#action_threshold}
   */
   readonly actionThreshold: BudgetsBudgetActionActionThreshold;
   /**
   * definition block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#definition BudgetsBudgetAction#definition}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#definition BudgetsBudgetAction#definition}
   */
   readonly definition: BudgetsBudgetActionDefinition;
   /**
   * subscriber block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#subscriber BudgetsBudgetAction#subscriber}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#subscriber BudgetsBudgetAction#subscriber}
   */
-  readonly subscriber: BudgetsBudgetActionSubscriber[];
+  readonly subscriber: BudgetsBudgetActionSubscriber[] | cdktf.IResolvable;
 }
 export interface BudgetsBudgetActionActionThreshold {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#action_threshold_type BudgetsBudgetAction#action_threshold_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#action_threshold_type BudgetsBudgetAction#action_threshold_type}
   */
   readonly actionThresholdType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#action_threshold_value BudgetsBudgetAction#action_threshold_value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#action_threshold_value BudgetsBudgetAction#action_threshold_value}
   */
   readonly actionThresholdValue: number;
 }
 
 export function budgetsBudgetActionActionThresholdToTerraform(struct?: BudgetsBudgetActionActionThresholdOutputReference | BudgetsBudgetActionActionThreshold): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -73,23 +73,25 @@ export function budgetsBudgetActionActionThresholdToTerraform(struct?: BudgetsBu
 }
 
 export class BudgetsBudgetActionActionThresholdOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): BudgetsBudgetActionActionThreshold | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._actionThresholdType) {
+    if (this._actionThresholdType !== undefined) {
       hasAnyValues = true;
       internalValueResult.actionThresholdType = this._actionThresholdType;
     }
-    if (this._actionThresholdValue) {
+    if (this._actionThresholdValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.actionThresholdValue = this._actionThresholdValue;
     }
@@ -98,10 +100,12 @@ export class BudgetsBudgetActionActionThresholdOutputReference extends cdktf.Com
 
   public set internalValue(value: BudgetsBudgetActionActionThreshold | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._actionThresholdType = undefined;
       this._actionThresholdValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._actionThresholdType = value.actionThresholdType;
       this._actionThresholdValue = value.actionThresholdValue;
     }
@@ -135,25 +139,25 @@ export class BudgetsBudgetActionActionThresholdOutputReference extends cdktf.Com
 }
 export interface BudgetsBudgetActionDefinitionIamActionDefinition {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#groups BudgetsBudgetAction#groups}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#groups BudgetsBudgetAction#groups}
   */
   readonly groups?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#policy_arn BudgetsBudgetAction#policy_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#policy_arn BudgetsBudgetAction#policy_arn}
   */
   readonly policyArn: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#roles BudgetsBudgetAction#roles}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#roles BudgetsBudgetAction#roles}
   */
   readonly roles?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#users BudgetsBudgetAction#users}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#users BudgetsBudgetAction#users}
   */
   readonly users?: string[];
 }
 
 export function budgetsBudgetActionDefinitionIamActionDefinitionToTerraform(struct?: BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference | BudgetsBudgetActionDefinitionIamActionDefinition): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -166,31 +170,33 @@ export function budgetsBudgetActionDefinitionIamActionDefinitionToTerraform(stru
 }
 
 export class BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): BudgetsBudgetActionDefinitionIamActionDefinition | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._groups) {
+    if (this._groups !== undefined) {
       hasAnyValues = true;
       internalValueResult.groups = this._groups;
     }
-    if (this._policyArn) {
+    if (this._policyArn !== undefined) {
       hasAnyValues = true;
       internalValueResult.policyArn = this._policyArn;
     }
-    if (this._roles) {
+    if (this._roles !== undefined) {
       hasAnyValues = true;
       internalValueResult.roles = this._roles;
     }
-    if (this._users) {
+    if (this._users !== undefined) {
       hasAnyValues = true;
       internalValueResult.users = this._users;
     }
@@ -199,12 +205,14 @@ export class BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference ext
 
   public set internalValue(value: BudgetsBudgetActionDefinitionIamActionDefinition | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._groups = undefined;
       this._policyArn = undefined;
       this._roles = undefined;
       this._users = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._groups = value.groups;
       this._policyArn = value.policyArn;
       this._roles = value.roles;
@@ -215,7 +223,7 @@ export class BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference ext
   // groups - computed: false, optional: true, required: false
   private _groups?: string[]; 
   public get groups() {
-    return this.getListAttribute('groups');
+    return cdktf.Fn.tolist(this.getListAttribute('groups'));
   }
   public set groups(value: string[]) {
     this._groups = value;
@@ -244,7 +252,7 @@ export class BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference ext
   // roles - computed: false, optional: true, required: false
   private _roles?: string[]; 
   public get roles() {
-    return this.getListAttribute('roles');
+    return cdktf.Fn.tolist(this.getListAttribute('roles'));
   }
   public set roles(value: string[]) {
     this._roles = value;
@@ -260,7 +268,7 @@ export class BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference ext
   // users - computed: false, optional: true, required: false
   private _users?: string[]; 
   public get users() {
-    return this.getListAttribute('users');
+    return cdktf.Fn.tolist(this.getListAttribute('users'));
   }
   public set users(value: string[]) {
     this._users = value;
@@ -275,17 +283,17 @@ export class BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference ext
 }
 export interface BudgetsBudgetActionDefinitionScpActionDefinition {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#policy_id BudgetsBudgetAction#policy_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#policy_id BudgetsBudgetAction#policy_id}
   */
   readonly policyId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#target_ids BudgetsBudgetAction#target_ids}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#target_ids BudgetsBudgetAction#target_ids}
   */
   readonly targetIds: string[];
 }
 
 export function budgetsBudgetActionDefinitionScpActionDefinitionToTerraform(struct?: BudgetsBudgetActionDefinitionScpActionDefinitionOutputReference | BudgetsBudgetActionDefinitionScpActionDefinition): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -296,23 +304,25 @@ export function budgetsBudgetActionDefinitionScpActionDefinitionToTerraform(stru
 }
 
 export class BudgetsBudgetActionDefinitionScpActionDefinitionOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): BudgetsBudgetActionDefinitionScpActionDefinition | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._policyId) {
+    if (this._policyId !== undefined) {
       hasAnyValues = true;
       internalValueResult.policyId = this._policyId;
     }
-    if (this._targetIds) {
+    if (this._targetIds !== undefined) {
       hasAnyValues = true;
       internalValueResult.targetIds = this._targetIds;
     }
@@ -321,10 +331,12 @@ export class BudgetsBudgetActionDefinitionScpActionDefinitionOutputReference ext
 
   public set internalValue(value: BudgetsBudgetActionDefinitionScpActionDefinition | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._policyId = undefined;
       this._targetIds = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._policyId = value.policyId;
       this._targetIds = value.targetIds;
     }
@@ -346,7 +358,7 @@ export class BudgetsBudgetActionDefinitionScpActionDefinitionOutputReference ext
   // target_ids - computed: false, optional: false, required: true
   private _targetIds?: string[]; 
   public get targetIds() {
-    return this.getListAttribute('target_ids');
+    return cdktf.Fn.tolist(this.getListAttribute('target_ids'));
   }
   public set targetIds(value: string[]) {
     this._targetIds = value;
@@ -358,21 +370,21 @@ export class BudgetsBudgetActionDefinitionScpActionDefinitionOutputReference ext
 }
 export interface BudgetsBudgetActionDefinitionSsmActionDefinition {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#action_sub_type BudgetsBudgetAction#action_sub_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#action_sub_type BudgetsBudgetAction#action_sub_type}
   */
   readonly actionSubType: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#instance_ids BudgetsBudgetAction#instance_ids}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#instance_ids BudgetsBudgetAction#instance_ids}
   */
   readonly instanceIds: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#region BudgetsBudgetAction#region}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#region BudgetsBudgetAction#region}
   */
   readonly region: string;
 }
 
 export function budgetsBudgetActionDefinitionSsmActionDefinitionToTerraform(struct?: BudgetsBudgetActionDefinitionSsmActionDefinitionOutputReference | BudgetsBudgetActionDefinitionSsmActionDefinition): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -384,27 +396,29 @@ export function budgetsBudgetActionDefinitionSsmActionDefinitionToTerraform(stru
 }
 
 export class BudgetsBudgetActionDefinitionSsmActionDefinitionOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): BudgetsBudgetActionDefinitionSsmActionDefinition | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._actionSubType) {
+    if (this._actionSubType !== undefined) {
       hasAnyValues = true;
       internalValueResult.actionSubType = this._actionSubType;
     }
-    if (this._instanceIds) {
+    if (this._instanceIds !== undefined) {
       hasAnyValues = true;
       internalValueResult.instanceIds = this._instanceIds;
     }
-    if (this._region) {
+    if (this._region !== undefined) {
       hasAnyValues = true;
       internalValueResult.region = this._region;
     }
@@ -413,11 +427,13 @@ export class BudgetsBudgetActionDefinitionSsmActionDefinitionOutputReference ext
 
   public set internalValue(value: BudgetsBudgetActionDefinitionSsmActionDefinition | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._actionSubType = undefined;
       this._instanceIds = undefined;
       this._region = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._actionSubType = value.actionSubType;
       this._instanceIds = value.instanceIds;
       this._region = value.region;
@@ -440,7 +456,7 @@ export class BudgetsBudgetActionDefinitionSsmActionDefinitionOutputReference ext
   // instance_ids - computed: false, optional: false, required: true
   private _instanceIds?: string[]; 
   public get instanceIds() {
-    return this.getListAttribute('instance_ids');
+    return cdktf.Fn.tolist(this.getListAttribute('instance_ids'));
   }
   public set instanceIds(value: string[]) {
     this._instanceIds = value;
@@ -467,25 +483,25 @@ export interface BudgetsBudgetActionDefinition {
   /**
   * iam_action_definition block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#iam_action_definition BudgetsBudgetAction#iam_action_definition}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#iam_action_definition BudgetsBudgetAction#iam_action_definition}
   */
   readonly iamActionDefinition?: BudgetsBudgetActionDefinitionIamActionDefinition;
   /**
   * scp_action_definition block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#scp_action_definition BudgetsBudgetAction#scp_action_definition}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#scp_action_definition BudgetsBudgetAction#scp_action_definition}
   */
   readonly scpActionDefinition?: BudgetsBudgetActionDefinitionScpActionDefinition;
   /**
   * ssm_action_definition block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#ssm_action_definition BudgetsBudgetAction#ssm_action_definition}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#ssm_action_definition BudgetsBudgetAction#ssm_action_definition}
   */
   readonly ssmActionDefinition?: BudgetsBudgetActionDefinitionSsmActionDefinition;
 }
 
 export function budgetsBudgetActionDefinitionToTerraform(struct?: BudgetsBudgetActionDefinitionOutputReference | BudgetsBudgetActionDefinition): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -497,27 +513,29 @@ export function budgetsBudgetActionDefinitionToTerraform(struct?: BudgetsBudgetA
 }
 
 export class BudgetsBudgetActionDefinitionOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): BudgetsBudgetActionDefinition | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._iamActionDefinition) {
+    if (this._iamActionDefinition?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.iamActionDefinition = this._iamActionDefinition?.internalValue;
     }
-    if (this._scpActionDefinition) {
+    if (this._scpActionDefinition?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.scpActionDefinition = this._scpActionDefinition?.internalValue;
     }
-    if (this._ssmActionDefinition) {
+    if (this._ssmActionDefinition?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.ssmActionDefinition = this._ssmActionDefinition?.internalValue;
     }
@@ -526,11 +544,13 @@ export class BudgetsBudgetActionDefinitionOutputReference extends cdktf.ComplexO
 
   public set internalValue(value: BudgetsBudgetActionDefinition | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._iamActionDefinition.internalValue = undefined;
       this._scpActionDefinition.internalValue = undefined;
       this._ssmActionDefinition.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._iamActionDefinition.internalValue = value.iamActionDefinition;
       this._scpActionDefinition.internalValue = value.scpActionDefinition;
       this._ssmActionDefinition.internalValue = value.ssmActionDefinition;
@@ -538,7 +558,7 @@ export class BudgetsBudgetActionDefinitionOutputReference extends cdktf.ComplexO
   }
 
   // iam_action_definition - computed: false, optional: true, required: false
-  private _iamActionDefinition = new BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference(this as any, "iam_action_definition", true);
+  private _iamActionDefinition = new BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference(this, "iam_action_definition", true);
   public get iamActionDefinition() {
     return this._iamActionDefinition;
   }
@@ -554,7 +574,7 @@ export class BudgetsBudgetActionDefinitionOutputReference extends cdktf.ComplexO
   }
 
   // scp_action_definition - computed: false, optional: true, required: false
-  private _scpActionDefinition = new BudgetsBudgetActionDefinitionScpActionDefinitionOutputReference(this as any, "scp_action_definition", true);
+  private _scpActionDefinition = new BudgetsBudgetActionDefinitionScpActionDefinitionOutputReference(this, "scp_action_definition", true);
   public get scpActionDefinition() {
     return this._scpActionDefinition;
   }
@@ -570,7 +590,7 @@ export class BudgetsBudgetActionDefinitionOutputReference extends cdktf.ComplexO
   }
 
   // ssm_action_definition - computed: false, optional: true, required: false
-  private _ssmActionDefinition = new BudgetsBudgetActionDefinitionSsmActionDefinitionOutputReference(this as any, "ssm_action_definition", true);
+  private _ssmActionDefinition = new BudgetsBudgetActionDefinitionSsmActionDefinitionOutputReference(this, "ssm_action_definition", true);
   public get ssmActionDefinition() {
     return this._ssmActionDefinition;
   }
@@ -587,17 +607,17 @@ export class BudgetsBudgetActionDefinitionOutputReference extends cdktf.ComplexO
 }
 export interface BudgetsBudgetActionSubscriber {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#address BudgetsBudgetAction#address}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#address BudgetsBudgetAction#address}
   */
   readonly address: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#subscription_type BudgetsBudgetAction#subscription_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action#subscription_type BudgetsBudgetAction#subscription_type}
   */
   readonly subscriptionType: string;
 }
 
-export function budgetsBudgetActionSubscriberToTerraform(struct?: BudgetsBudgetActionSubscriber): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function budgetsBudgetActionSubscriberToTerraform(struct?: BudgetsBudgetActionSubscriber | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -609,7 +629,7 @@ export function budgetsBudgetActionSubscriberToTerraform(struct?: BudgetsBudgetA
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html aws_budgets_budget_action}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action aws_budgets_budget_action}
 */
 export class BudgetsBudgetAction extends cdktf.TerraformResource {
 
@@ -623,7 +643,7 @@ export class BudgetsBudgetAction extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html aws_budgets_budget_action} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action aws_budgets_budget_action} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -757,7 +777,7 @@ export class BudgetsBudgetAction extends cdktf.TerraformResource {
   }
 
   // action_threshold - computed: false, optional: false, required: true
-  private _actionThreshold = new BudgetsBudgetActionActionThresholdOutputReference(this as any, "action_threshold", true);
+  private _actionThreshold = new BudgetsBudgetActionActionThresholdOutputReference(this, "action_threshold", true);
   public get actionThreshold() {
     return this._actionThreshold;
   }
@@ -770,7 +790,7 @@ export class BudgetsBudgetAction extends cdktf.TerraformResource {
   }
 
   // definition - computed: false, optional: false, required: true
-  private _definition = new BudgetsBudgetActionDefinitionOutputReference(this as any, "definition", true);
+  private _definition = new BudgetsBudgetActionDefinitionOutputReference(this, "definition", true);
   public get definition() {
     return this._definition;
   }
@@ -783,12 +803,12 @@ export class BudgetsBudgetAction extends cdktf.TerraformResource {
   }
 
   // subscriber - computed: false, optional: false, required: true
-  private _subscriber?: BudgetsBudgetActionSubscriber[]; 
+  private _subscriber?: BudgetsBudgetActionSubscriber[] | cdktf.IResolvable; 
   public get subscriber() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('subscriber') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('subscriber')));
   }
-  public set subscriber(value: BudgetsBudgetActionSubscriber[]) {
+  public set subscriber(value: BudgetsBudgetActionSubscriber[] | cdktf.IResolvable) {
     this._subscriber = value;
   }
   // Temporarily expose input value. Use with caution.

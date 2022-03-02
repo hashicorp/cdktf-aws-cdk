@@ -1,4 +1,4 @@
-// https://www.terraform.io/docs/providers/aws/r/memorydb_user.html
+// https://www.terraform.io/docs/providers/aws/r/memorydb_user
 // generated from terraform resource schema
 
 import { Construct } from 'constructs';
@@ -8,41 +8,41 @@ import * as cdktf from 'cdktf';
 
 export interface MemorydbUserConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user.html#access_string MemorydbUser#access_string}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user#access_string MemorydbUser#access_string}
   */
   readonly accessString: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user.html#tags MemorydbUser#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user#tags MemorydbUser#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user.html#tags_all MemorydbUser#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user#tags_all MemorydbUser#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user.html#user_name MemorydbUser#user_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user#user_name MemorydbUser#user_name}
   */
   readonly userName: string;
   /**
   * authentication_mode block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user.html#authentication_mode MemorydbUser#authentication_mode}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user#authentication_mode MemorydbUser#authentication_mode}
   */
   readonly authenticationMode: MemorydbUserAuthenticationMode;
 }
 export interface MemorydbUserAuthenticationMode {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user.html#passwords MemorydbUser#passwords}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user#passwords MemorydbUser#passwords}
   */
   readonly passwords: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user.html#type MemorydbUser#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user#type MemorydbUser#type}
   */
   readonly type: string;
 }
 
 export function memorydbUserAuthenticationModeToTerraform(struct?: MemorydbUserAuthenticationModeOutputReference | MemorydbUserAuthenticationMode): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -53,23 +53,25 @@ export function memorydbUserAuthenticationModeToTerraform(struct?: MemorydbUserA
 }
 
 export class MemorydbUserAuthenticationModeOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): MemorydbUserAuthenticationMode | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._passwords) {
+    if (this._passwords !== undefined) {
       hasAnyValues = true;
       internalValueResult.passwords = this._passwords;
     }
-    if (this._type) {
+    if (this._type !== undefined) {
       hasAnyValues = true;
       internalValueResult.type = this._type;
     }
@@ -78,19 +80,26 @@ export class MemorydbUserAuthenticationModeOutputReference extends cdktf.Complex
 
   public set internalValue(value: MemorydbUserAuthenticationMode | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._passwords = undefined;
       this._type = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._passwords = value.passwords;
       this._type = value.type;
     }
   }
 
+  // password_count - computed: true, optional: false, required: false
+  public get passwordCount() {
+    return this.getNumberAttribute('password_count');
+  }
+
   // passwords - computed: false, optional: false, required: true
   private _passwords?: string[]; 
   public get passwords() {
-    return this.getListAttribute('passwords');
+    return cdktf.Fn.tolist(this.getListAttribute('passwords'));
   }
   public set passwords(value: string[]) {
     this._passwords = value;
@@ -115,7 +124,7 @@ export class MemorydbUserAuthenticationModeOutputReference extends cdktf.Complex
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user.html aws_memorydb_user}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user aws_memorydb_user}
 */
 export class MemorydbUser extends cdktf.TerraformResource {
 
@@ -129,7 +138,7 @@ export class MemorydbUser extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user.html aws_memorydb_user} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/memorydb_user aws_memorydb_user} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -186,12 +195,11 @@ export class MemorydbUser extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -203,12 +211,11 @@ export class MemorydbUser extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -233,7 +240,7 @@ export class MemorydbUser extends cdktf.TerraformResource {
   }
 
   // authentication_mode - computed: false, optional: false, required: true
-  private _authenticationMode = new MemorydbUserAuthenticationModeOutputReference(this as any, "authentication_mode", true);
+  private _authenticationMode = new MemorydbUserAuthenticationModeOutputReference(this, "authentication_mode", true);
   public get authenticationMode() {
     return this._authenticationMode;
   }
@@ -252,8 +259,8 @@ export class MemorydbUser extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       access_string: cdktf.stringToTerraform(this._accessString),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       user_name: cdktf.stringToTerraform(this._userName),
       authentication_mode: memorydbUserAuthenticationModeToTerraform(this._authenticationMode.internalValue),
     };

@@ -8,15 +8,15 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsCloudformationTypeConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/cloudformation_type.html#type DataAwsCloudformationType#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/cloudformation_type#type DataAwsCloudformationType#type}
   */
   readonly type?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/cloudformation_type.html#type_name DataAwsCloudformationType#type_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/cloudformation_type#type_name DataAwsCloudformationType#type_name}
   */
   readonly typeName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/cloudformation_type.html#version_id DataAwsCloudformationType#version_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/cloudformation_type#version_id DataAwsCloudformationType#version_id}
   */
   readonly versionId?: string;
 }
@@ -34,7 +34,7 @@ export class DataAwsCloudformationTypeLoggingConfig extends cdktf.ComplexCompute
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/cloudformation_type.html aws_cloudformation_type}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/cloudformation_type aws_cloudformation_type}
 */
 export class DataAwsCloudformationType extends cdktf.TerraformDataSource {
 
@@ -48,7 +48,7 @@ export class DataAwsCloudformationType extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/cloudformation_type.html aws_cloudformation_type} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/cloudformation_type aws_cloudformation_type} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -111,12 +111,12 @@ export class DataAwsCloudformationType extends cdktf.TerraformDataSource {
 
   // is_default_version - computed: true, optional: false, required: false
   public get isDefaultVersion() {
-    return this.getBooleanAttribute('is_default_version') as any;
+    return this.getBooleanAttribute('is_default_version');
   }
 
   // logging_config - computed: true, optional: false, required: false
   public loggingConfig(index: string) {
-    return new DataAwsCloudformationTypeLoggingConfig(this, 'logging_config', index);
+    return new DataAwsCloudformationTypeLoggingConfig(this, 'logging_config', index, false);
   }
 
   // provisioning_type - computed: true, optional: false, required: false

@@ -8,17 +8,17 @@ import * as cdktf from 'cdktf';
 */
 export interface ShieldProtectionHealthCheckAssociationConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/shield_protection_health_check_association.html#health_check_arn ShieldProtectionHealthCheckAssociation#health_check_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/shield_protection_health_check_association#health_check_arn ShieldProtectionHealthCheckAssociation#health_check_arn}
   */
   readonly healthCheckArn: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/shield_protection_health_check_association.html#shield_protection_id ShieldProtectionHealthCheckAssociation#shield_protection_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/shield_protection_health_check_association#shield_protection_id ShieldProtectionHealthCheckAssociation#shield_protection_id}
   */
   readonly shieldProtectionId: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/shield_protection_health_check_association.html aws_shield_protection_health_check_association}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/shield_protection_health_check_association aws_shield_protection_health_check_association}
 */
 export class ShieldProtectionHealthCheckAssociation extends cdktf.TerraformResource {
 
@@ -32,7 +32,7 @@ export class ShieldProtectionHealthCheckAssociation extends cdktf.TerraformResou
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/shield_protection_health_check_association.html aws_shield_protection_health_check_association} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/shield_protection_health_check_association aws_shield_protection_health_check_association} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope

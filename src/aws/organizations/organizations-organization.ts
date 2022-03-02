@@ -8,15 +8,15 @@ import * as cdktf from 'cdktf';
 */
 export interface OrganizationsOrganizationConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/organizations_organization.html#aws_service_access_principals OrganizationsOrganization#aws_service_access_principals}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/organizations_organization#aws_service_access_principals OrganizationsOrganization#aws_service_access_principals}
   */
   readonly awsServiceAccessPrincipals?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/organizations_organization.html#enabled_policy_types OrganizationsOrganization#enabled_policy_types}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/organizations_organization#enabled_policy_types OrganizationsOrganization#enabled_policy_types}
   */
   readonly enabledPolicyTypes?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/organizations_organization.html#feature_set OrganizationsOrganization#feature_set}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/organizations_organization#feature_set OrganizationsOrganization#feature_set}
   */
   readonly featureSet?: string;
 }
@@ -106,12 +106,12 @@ export class OrganizationsOrganizationRoots extends cdktf.ComplexComputedList {
   // policy_types - computed: true, optional: false, required: false
   public get policyTypes() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('policy_types') as any;
+    return this.interpolationForAttribute('policy_types');
   }
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/organizations_organization.html aws_organizations_organization}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/organizations_organization aws_organizations_organization}
 */
 export class OrganizationsOrganization extends cdktf.TerraformResource {
 
@@ -125,7 +125,7 @@ export class OrganizationsOrganization extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/organizations_organization.html aws_organizations_organization} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/organizations_organization aws_organizations_organization} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -153,7 +153,7 @@ export class OrganizationsOrganization extends cdktf.TerraformResource {
 
   // accounts - computed: true, optional: false, required: false
   public accounts(index: string) {
-    return new OrganizationsOrganizationAccounts(this, 'accounts', index);
+    return new OrganizationsOrganizationAccounts(this, 'accounts', index, false);
   }
 
   // arn - computed: true, optional: false, required: false
@@ -164,7 +164,7 @@ export class OrganizationsOrganization extends cdktf.TerraformResource {
   // aws_service_access_principals - computed: false, optional: true, required: false
   private _awsServiceAccessPrincipals?: string[]; 
   public get awsServiceAccessPrincipals() {
-    return this.getListAttribute('aws_service_access_principals');
+    return cdktf.Fn.tolist(this.getListAttribute('aws_service_access_principals'));
   }
   public set awsServiceAccessPrincipals(value: string[]) {
     this._awsServiceAccessPrincipals = value;
@@ -180,7 +180,7 @@ export class OrganizationsOrganization extends cdktf.TerraformResource {
   // enabled_policy_types - computed: false, optional: true, required: false
   private _enabledPolicyTypes?: string[]; 
   public get enabledPolicyTypes() {
-    return this.getListAttribute('enabled_policy_types');
+    return cdktf.Fn.tolist(this.getListAttribute('enabled_policy_types'));
   }
   public set enabledPolicyTypes(value: string[]) {
     this._enabledPolicyTypes = value;
@@ -231,12 +231,12 @@ export class OrganizationsOrganization extends cdktf.TerraformResource {
 
   // non_master_accounts - computed: true, optional: false, required: false
   public nonMasterAccounts(index: string) {
-    return new OrganizationsOrganizationNonMasterAccounts(this, 'non_master_accounts', index);
+    return new OrganizationsOrganizationNonMasterAccounts(this, 'non_master_accounts', index, false);
   }
 
   // roots - computed: true, optional: false, required: false
   public roots(index: string) {
-    return new OrganizationsOrganizationRoots(this, 'roots', index);
+    return new OrganizationsOrganizationRoots(this, 'roots', index, false);
   }
 
   // =========

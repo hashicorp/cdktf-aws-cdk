@@ -8,25 +8,25 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsDocdbEngineVersionConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/docdb_engine_version.html#engine DataAwsDocdbEngineVersion#engine}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/docdb_engine_version#engine DataAwsDocdbEngineVersion#engine}
   */
   readonly engine?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/docdb_engine_version.html#parameter_group_family DataAwsDocdbEngineVersion#parameter_group_family}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/docdb_engine_version#parameter_group_family DataAwsDocdbEngineVersion#parameter_group_family}
   */
   readonly parameterGroupFamily?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/docdb_engine_version.html#preferred_versions DataAwsDocdbEngineVersion#preferred_versions}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/docdb_engine_version#preferred_versions DataAwsDocdbEngineVersion#preferred_versions}
   */
   readonly preferredVersions?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/docdb_engine_version.html#version DataAwsDocdbEngineVersion#version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/docdb_engine_version#version DataAwsDocdbEngineVersion#version}
   */
   readonly version?: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/docdb_engine_version.html aws_docdb_engine_version}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/docdb_engine_version aws_docdb_engine_version}
 */
 export class DataAwsDocdbEngineVersion extends cdktf.TerraformDataSource {
 
@@ -40,7 +40,7 @@ export class DataAwsDocdbEngineVersion extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/docdb_engine_version.html aws_docdb_engine_version} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/docdb_engine_version aws_docdb_engine_version} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -90,7 +90,7 @@ export class DataAwsDocdbEngineVersion extends cdktf.TerraformDataSource {
 
   // exportable_log_types - computed: true, optional: false, required: false
   public get exportableLogTypes() {
-    return this.getListAttribute('exportable_log_types');
+    return cdktf.Fn.tolist(this.getListAttribute('exportable_log_types'));
   }
 
   // id - computed: true, optional: true, required: false
@@ -132,12 +132,12 @@ export class DataAwsDocdbEngineVersion extends cdktf.TerraformDataSource {
 
   // supports_log_exports_to_cloudwatch - computed: true, optional: false, required: false
   public get supportsLogExportsToCloudwatch() {
-    return this.getBooleanAttribute('supports_log_exports_to_cloudwatch') as any;
+    return this.getBooleanAttribute('supports_log_exports_to_cloudwatch');
   }
 
   // valid_upgrade_targets - computed: true, optional: false, required: false
   public get validUpgradeTargets() {
-    return this.getListAttribute('valid_upgrade_targets');
+    return cdktf.Fn.tolist(this.getListAttribute('valid_upgrade_targets'));
   }
 
   // version - computed: true, optional: true, required: false

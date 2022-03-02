@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 */
 export interface VolumeAttachmentConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/volume_attachment.html#device_name VolumeAttachment#device_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/volume_attachment#device_name VolumeAttachment#device_name}
   */
   readonly deviceName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/volume_attachment.html#force_detach VolumeAttachment#force_detach}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/volume_attachment#force_detach VolumeAttachment#force_detach}
   */
   readonly forceDetach?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/volume_attachment.html#instance_id VolumeAttachment#instance_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/volume_attachment#instance_id VolumeAttachment#instance_id}
   */
   readonly instanceId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/volume_attachment.html#skip_destroy VolumeAttachment#skip_destroy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/volume_attachment#skip_destroy VolumeAttachment#skip_destroy}
   */
   readonly skipDestroy?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/volume_attachment.html#stop_instance_before_detaching VolumeAttachment#stop_instance_before_detaching}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/volume_attachment#stop_instance_before_detaching VolumeAttachment#stop_instance_before_detaching}
   */
   readonly stopInstanceBeforeDetaching?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/volume_attachment.html#volume_id VolumeAttachment#volume_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/volume_attachment#volume_id VolumeAttachment#volume_id}
   */
   readonly volumeId: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/volume_attachment.html aws_volume_attachment}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/volume_attachment aws_volume_attachment}
 */
 export class VolumeAttachment extends cdktf.TerraformResource {
 
@@ -48,7 +48,7 @@ export class VolumeAttachment extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/volume_attachment.html aws_volume_attachment} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/volume_attachment aws_volume_attachment} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -93,7 +93,7 @@ export class VolumeAttachment extends cdktf.TerraformResource {
   // force_detach - computed: false, optional: true, required: false
   private _forceDetach?: boolean | cdktf.IResolvable; 
   public get forceDetach() {
-    return this.getBooleanAttribute('force_detach') as any;
+    return this.getBooleanAttribute('force_detach');
   }
   public set forceDetach(value: boolean | cdktf.IResolvable) {
     this._forceDetach = value;
@@ -127,7 +127,7 @@ export class VolumeAttachment extends cdktf.TerraformResource {
   // skip_destroy - computed: false, optional: true, required: false
   private _skipDestroy?: boolean | cdktf.IResolvable; 
   public get skipDestroy() {
-    return this.getBooleanAttribute('skip_destroy') as any;
+    return this.getBooleanAttribute('skip_destroy');
   }
   public set skipDestroy(value: boolean | cdktf.IResolvable) {
     this._skipDestroy = value;
@@ -143,7 +143,7 @@ export class VolumeAttachment extends cdktf.TerraformResource {
   // stop_instance_before_detaching - computed: false, optional: true, required: false
   private _stopInstanceBeforeDetaching?: boolean | cdktf.IResolvable; 
   public get stopInstanceBeforeDetaching() {
-    return this.getBooleanAttribute('stop_instance_before_detaching') as any;
+    return this.getBooleanAttribute('stop_instance_before_detaching');
   }
   public set stopInstanceBeforeDetaching(value: boolean | cdktf.IResolvable) {
     this._stopInstanceBeforeDetaching = value;

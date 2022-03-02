@@ -10,7 +10,7 @@ export interface DataAwsDxLocationsConfig extends cdktf.TerraformMetaArguments {
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/dx_locations.html aws_dx_locations}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/dx_locations aws_dx_locations}
 */
 export class DataAwsDxLocations extends cdktf.TerraformDataSource {
 
@@ -24,7 +24,7 @@ export class DataAwsDxLocations extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/dx_locations.html aws_dx_locations} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/dx_locations aws_dx_locations} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -54,7 +54,7 @@ export class DataAwsDxLocations extends cdktf.TerraformDataSource {
 
   // location_codes - computed: true, optional: false, required: false
   public get locationCodes() {
-    return this.getListAttribute('location_codes');
+    return cdktf.Fn.tolist(this.getListAttribute('location_codes'));
   }
 
   // =========

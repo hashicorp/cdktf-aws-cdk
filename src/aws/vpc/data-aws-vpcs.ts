@@ -8,29 +8,29 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsVpcsConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpcs.html#tags DataAwsVpcs#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpcs#tags DataAwsVpcs#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
   * filter block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpcs.html#filter DataAwsVpcs#filter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpcs#filter DataAwsVpcs#filter}
   */
-  readonly filter?: DataAwsVpcsFilter[];
+  readonly filter?: DataAwsVpcsFilter[] | cdktf.IResolvable;
 }
 export interface DataAwsVpcsFilter {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpcs.html#name DataAwsVpcs#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpcs#name DataAwsVpcs#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpcs.html#values DataAwsVpcs#values}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpcs#values DataAwsVpcs#values}
   */
   readonly values: string[];
 }
 
-export function dataAwsVpcsFilterToTerraform(struct?: DataAwsVpcsFilter): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function dataAwsVpcsFilterToTerraform(struct?: DataAwsVpcsFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -42,7 +42,7 @@ export function dataAwsVpcsFilterToTerraform(struct?: DataAwsVpcsFilter): any {
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/vpcs.html aws_vpcs}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/vpcs aws_vpcs}
 */
 export class DataAwsVpcs extends cdktf.TerraformDataSource {
 
@@ -56,7 +56,7 @@ export class DataAwsVpcs extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/vpcs.html aws_vpcs} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/vpcs aws_vpcs} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -88,16 +88,15 @@ export class DataAwsVpcs extends cdktf.TerraformDataSource {
 
   // ids - computed: true, optional: false, required: false
   public get ids() {
-    return this.getListAttribute('ids');
+    return cdktf.Fn.tolist(this.getListAttribute('ids'));
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -109,12 +108,12 @@ export class DataAwsVpcs extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsVpcsFilter[]; 
+  private _filter?: DataAwsVpcsFilter[] | cdktf.IResolvable; 
   public get filter() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('filter') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('filter')));
   }
-  public set filter(value: DataAwsVpcsFilter[]) {
+  public set filter(value: DataAwsVpcsFilter[] | cdktf.IResolvable) {
     this._filter = value;
   }
   public resetFilter() {
@@ -131,7 +130,7 @@ export class DataAwsVpcs extends cdktf.TerraformDataSource {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       filter: cdktf.listMapper(dataAwsVpcsFilterToTerraform)(this._filter),
     };
   }

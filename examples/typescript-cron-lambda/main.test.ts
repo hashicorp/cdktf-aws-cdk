@@ -12,7 +12,8 @@ describe("typescript-cron-lambda", () => {
       "{
         \\"data\\": {
           \\"aws_partition\\": {
-            \\"adapter_aws-partition_5B16AD9D\\": {}
+            \\"adapter_aws-partition_5B16AD9D\\": {
+            }
           }
         },
         \\"provider\\": {
@@ -26,7 +27,7 @@ describe("typescript-cron-lambda", () => {
           \\"aws_cloudcontrolapi_resource\\": {
             \\"adapter_lambda8B5974B5_06304D76\\": {
               \\"depends_on\\": [
-                \\"time_sleep.adapter_lambdaServiceRole494E4CA6_sleep_lambdaServiceRole494E4CA6_73847BDD\\"
+                \\"\${time_sleep.adapter_lambdaServiceRole494E4CA6_sleep_lambdaServiceRole494E4CA6_73847BDD}\\"
               ],
               \\"desired_state\\": \\"\${jsonencode({Code = {ZipFile = \\\\\\"def main(event, context):\\\\\\\\n    print(\\\\\\\\\\\\\\"I'm running!\\\\\\\\\\\\\\")\\\\\\"}, Role = aws_iam_role.adapter_lambdaServiceRole494E4CA6_7D4D29EC.arn, Handler = \\\\\\"index.main\\\\\\", Runtime = \\\\\\"python3.6\\\\\\", Timeout = 300})}\\",
               \\"type_name\\": \\"AWS::Lambda::Function\\"

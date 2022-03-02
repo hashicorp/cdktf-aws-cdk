@@ -8,21 +8,21 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsVpcIpamPreviewNextCidrConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_ipam_preview_next_cidr.html#disallowed_cidrs DataAwsVpcIpamPreviewNextCidr#disallowed_cidrs}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_ipam_preview_next_cidr#disallowed_cidrs DataAwsVpcIpamPreviewNextCidr#disallowed_cidrs}
   */
   readonly disallowedCidrs?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_ipam_preview_next_cidr.html#ipam_pool_id DataAwsVpcIpamPreviewNextCidr#ipam_pool_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_ipam_preview_next_cidr#ipam_pool_id DataAwsVpcIpamPreviewNextCidr#ipam_pool_id}
   */
   readonly ipamPoolId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_ipam_preview_next_cidr.html#netmask_length DataAwsVpcIpamPreviewNextCidr#netmask_length}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_ipam_preview_next_cidr#netmask_length DataAwsVpcIpamPreviewNextCidr#netmask_length}
   */
   readonly netmaskLength?: number;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/vpc_ipam_preview_next_cidr.html aws_vpc_ipam_preview_next_cidr}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/vpc_ipam_preview_next_cidr aws_vpc_ipam_preview_next_cidr}
 */
 export class DataAwsVpcIpamPreviewNextCidr extends cdktf.TerraformDataSource {
 
@@ -36,7 +36,7 @@ export class DataAwsVpcIpamPreviewNextCidr extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/vpc_ipam_preview_next_cidr.html aws_vpc_ipam_preview_next_cidr} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/vpc_ipam_preview_next_cidr aws_vpc_ipam_preview_next_cidr} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -70,7 +70,7 @@ export class DataAwsVpcIpamPreviewNextCidr extends cdktf.TerraformDataSource {
   // disallowed_cidrs - computed: false, optional: true, required: false
   private _disallowedCidrs?: string[]; 
   public get disallowedCidrs() {
-    return this.getListAttribute('disallowed_cidrs');
+    return cdktf.Fn.tolist(this.getListAttribute('disallowed_cidrs'));
   }
   public set disallowedCidrs(value: string[]) {
     this._disallowedCidrs = value;

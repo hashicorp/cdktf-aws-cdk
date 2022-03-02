@@ -8,65 +8,65 @@ import * as cdktf from 'cdktf';
 */
 export interface VpcIpamPoolConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool.html#address_family VpcIpamPool#address_family}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool#address_family VpcIpamPool#address_family}
   */
   readonly addressFamily: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool.html#allocation_default_netmask_length VpcIpamPool#allocation_default_netmask_length}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool#allocation_default_netmask_length VpcIpamPool#allocation_default_netmask_length}
   */
   readonly allocationDefaultNetmaskLength?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool.html#allocation_max_netmask_length VpcIpamPool#allocation_max_netmask_length}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool#allocation_max_netmask_length VpcIpamPool#allocation_max_netmask_length}
   */
   readonly allocationMaxNetmaskLength?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool.html#allocation_min_netmask_length VpcIpamPool#allocation_min_netmask_length}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool#allocation_min_netmask_length VpcIpamPool#allocation_min_netmask_length}
   */
   readonly allocationMinNetmaskLength?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool.html#allocation_resource_tags VpcIpamPool#allocation_resource_tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool#allocation_resource_tags VpcIpamPool#allocation_resource_tags}
   */
-  readonly allocationResourceTags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly allocationResourceTags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool.html#auto_import VpcIpamPool#auto_import}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool#auto_import VpcIpamPool#auto_import}
   */
   readonly autoImport?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool.html#aws_service VpcIpamPool#aws_service}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool#aws_service VpcIpamPool#aws_service}
   */
   readonly awsService?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool.html#description VpcIpamPool#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool#description VpcIpamPool#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool.html#ipam_scope_id VpcIpamPool#ipam_scope_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool#ipam_scope_id VpcIpamPool#ipam_scope_id}
   */
   readonly ipamScopeId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool.html#locale VpcIpamPool#locale}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool#locale VpcIpamPool#locale}
   */
   readonly locale?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool.html#publicly_advertisable VpcIpamPool#publicly_advertisable}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool#publicly_advertisable VpcIpamPool#publicly_advertisable}
   */
   readonly publiclyAdvertisable?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool.html#source_ipam_pool_id VpcIpamPool#source_ipam_pool_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool#source_ipam_pool_id VpcIpamPool#source_ipam_pool_id}
   */
   readonly sourceIpamPoolId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool.html#tags VpcIpamPool#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool#tags VpcIpamPool#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool.html#tags_all VpcIpamPool#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool#tags_all VpcIpamPool#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool.html aws_vpc_ipam_pool}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool aws_vpc_ipam_pool}
 */
 export class VpcIpamPool extends cdktf.TerraformResource {
 
@@ -80,7 +80,7 @@ export class VpcIpamPool extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool.html aws_vpc_ipam_pool} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipam_pool aws_vpc_ipam_pool} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -179,12 +179,11 @@ export class VpcIpamPool extends cdktf.TerraformResource {
   }
 
   // allocation_resource_tags - computed: false, optional: true, required: false
-  private _allocationResourceTags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _allocationResourceTags?: { [key: string]: string }; 
   public get allocationResourceTags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('allocation_resource_tags') as any;
+    return this.getStringMapAttribute('allocation_resource_tags');
   }
-  public set allocationResourceTags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set allocationResourceTags(value: { [key: string]: string }) {
     this._allocationResourceTags = value;
   }
   public resetAllocationResourceTags() {
@@ -203,7 +202,7 @@ export class VpcIpamPool extends cdktf.TerraformResource {
   // auto_import - computed: false, optional: true, required: false
   private _autoImport?: boolean | cdktf.IResolvable; 
   public get autoImport() {
-    return this.getBooleanAttribute('auto_import') as any;
+    return this.getBooleanAttribute('auto_import');
   }
   public set autoImport(value: boolean | cdktf.IResolvable) {
     this._autoImport = value;
@@ -295,7 +294,7 @@ export class VpcIpamPool extends cdktf.TerraformResource {
   // publicly_advertisable - computed: false, optional: true, required: false
   private _publiclyAdvertisable?: boolean | cdktf.IResolvable; 
   public get publiclyAdvertisable() {
-    return this.getBooleanAttribute('publicly_advertisable') as any;
+    return this.getBooleanAttribute('publicly_advertisable');
   }
   public set publiclyAdvertisable(value: boolean | cdktf.IResolvable) {
     this._publiclyAdvertisable = value;
@@ -330,12 +329,11 @@ export class VpcIpamPool extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -347,12 +345,11 @@ export class VpcIpamPool extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -373,7 +370,7 @@ export class VpcIpamPool extends cdktf.TerraformResource {
       allocation_default_netmask_length: cdktf.numberToTerraform(this._allocationDefaultNetmaskLength),
       allocation_max_netmask_length: cdktf.numberToTerraform(this._allocationMaxNetmaskLength),
       allocation_min_netmask_length: cdktf.numberToTerraform(this._allocationMinNetmaskLength),
-      allocation_resource_tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._allocationResourceTags),
+      allocation_resource_tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._allocationResourceTags),
       auto_import: cdktf.booleanToTerraform(this._autoImport),
       aws_service: cdktf.stringToTerraform(this._awsService),
       description: cdktf.stringToTerraform(this._description),
@@ -381,8 +378,8 @@ export class VpcIpamPool extends cdktf.TerraformResource {
       locale: cdktf.stringToTerraform(this._locale),
       publicly_advertisable: cdktf.booleanToTerraform(this._publiclyAdvertisable),
       source_ipam_pool_id: cdktf.stringToTerraform(this._sourceIpamPoolId),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
     };
   }
 }

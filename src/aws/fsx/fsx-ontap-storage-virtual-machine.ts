@@ -8,39 +8,39 @@ import * as cdktf from 'cdktf';
 */
 export interface FsxOntapStorageVirtualMachineConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#file_system_id FsxOntapStorageVirtualMachine#file_system_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#file_system_id FsxOntapStorageVirtualMachine#file_system_id}
   */
   readonly fileSystemId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#name FsxOntapStorageVirtualMachine#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#name FsxOntapStorageVirtualMachine#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#root_volume_security_style FsxOntapStorageVirtualMachine#root_volume_security_style}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#root_volume_security_style FsxOntapStorageVirtualMachine#root_volume_security_style}
   */
   readonly rootVolumeSecurityStyle?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#svm_admin_password FsxOntapStorageVirtualMachine#svm_admin_password}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#svm_admin_password FsxOntapStorageVirtualMachine#svm_admin_password}
   */
   readonly svmAdminPassword?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#tags FsxOntapStorageVirtualMachine#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#tags FsxOntapStorageVirtualMachine#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#tags_all FsxOntapStorageVirtualMachine#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#tags_all FsxOntapStorageVirtualMachine#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * active_directory_configuration block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#active_directory_configuration FsxOntapStorageVirtualMachine#active_directory_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#active_directory_configuration FsxOntapStorageVirtualMachine#active_directory_configuration}
   */
   readonly activeDirectoryConfiguration?: FsxOntapStorageVirtualMachineActiveDirectoryConfiguration;
   /**
   * timeouts block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#timeouts FsxOntapStorageVirtualMachine#timeouts}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#timeouts FsxOntapStorageVirtualMachine#timeouts}
   */
   readonly timeouts?: FsxOntapStorageVirtualMachineTimeouts;
 }
@@ -53,7 +53,7 @@ export class FsxOntapStorageVirtualMachineEndpointsIscsi extends cdktf.ComplexCo
 
   // ip_addresses - computed: true, optional: false, required: false
   public get ipAddresses() {
-    return this.getListAttribute('ip_addresses');
+    return cdktf.Fn.tolist(this.getListAttribute('ip_addresses'));
   }
 }
 export class FsxOntapStorageVirtualMachineEndpointsManagement extends cdktf.ComplexComputedList {
@@ -65,7 +65,7 @@ export class FsxOntapStorageVirtualMachineEndpointsManagement extends cdktf.Comp
 
   // ip_addresses - computed: true, optional: false, required: false
   public get ipAddresses() {
-    return this.getListAttribute('ip_addresses');
+    return cdktf.Fn.tolist(this.getListAttribute('ip_addresses'));
   }
 }
 export class FsxOntapStorageVirtualMachineEndpointsNfs extends cdktf.ComplexComputedList {
@@ -77,7 +77,7 @@ export class FsxOntapStorageVirtualMachineEndpointsNfs extends cdktf.ComplexComp
 
   // ip_addresses - computed: true, optional: false, required: false
   public get ipAddresses() {
-    return this.getListAttribute('ip_addresses');
+    return cdktf.Fn.tolist(this.getListAttribute('ip_addresses'));
   }
 }
 export class FsxOntapStorageVirtualMachineEndpointsSmb extends cdktf.ComplexComputedList {
@@ -89,7 +89,7 @@ export class FsxOntapStorageVirtualMachineEndpointsSmb extends cdktf.ComplexComp
 
   // ip_addresses - computed: true, optional: false, required: false
   public get ipAddresses() {
-    return this.getListAttribute('ip_addresses');
+    return cdktf.Fn.tolist(this.getListAttribute('ip_addresses'));
   }
 }
 export class FsxOntapStorageVirtualMachineEndpoints extends cdktf.ComplexComputedList {
@@ -97,60 +97,60 @@ export class FsxOntapStorageVirtualMachineEndpoints extends cdktf.ComplexCompute
   // iscsi - computed: true, optional: false, required: false
   public get iscsi() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('iscsi') as any;
+    return this.interpolationForAttribute('iscsi');
   }
 
   // management - computed: true, optional: false, required: false
   public get management() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('management') as any;
+    return this.interpolationForAttribute('management');
   }
 
   // nfs - computed: true, optional: false, required: false
   public get nfs() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('nfs') as any;
+    return this.interpolationForAttribute('nfs');
   }
 
   // smb - computed: true, optional: false, required: false
   public get smb() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('smb') as any;
+    return this.interpolationForAttribute('smb');
   }
 }
 export interface FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#dns_ips FsxOntapStorageVirtualMachine#dns_ips}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#dns_ips FsxOntapStorageVirtualMachine#dns_ips}
   */
   readonly dnsIps: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#domain_name FsxOntapStorageVirtualMachine#domain_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#domain_name FsxOntapStorageVirtualMachine#domain_name}
   */
   readonly domainName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#file_system_administrators_group FsxOntapStorageVirtualMachine#file_system_administrators_group}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#file_system_administrators_group FsxOntapStorageVirtualMachine#file_system_administrators_group}
   */
   readonly fileSystemAdministratorsGroup?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#organizational_unit_distinguidshed_name FsxOntapStorageVirtualMachine#organizational_unit_distinguidshed_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#organizational_unit_distinguidshed_name FsxOntapStorageVirtualMachine#organizational_unit_distinguidshed_name}
   */
   readonly organizationalUnitDistinguidshedName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#organizational_unit_distinguished_name FsxOntapStorageVirtualMachine#organizational_unit_distinguished_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#organizational_unit_distinguished_name FsxOntapStorageVirtualMachine#organizational_unit_distinguished_name}
   */
   readonly organizationalUnitDistinguishedName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#password FsxOntapStorageVirtualMachine#password}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#password FsxOntapStorageVirtualMachine#password}
   */
   readonly password: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#username FsxOntapStorageVirtualMachine#username}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#username FsxOntapStorageVirtualMachine#username}
   */
   readonly username: string;
 }
 
 export function fsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationToTerraform(struct?: FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationOutputReference | FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -166,43 +166,45 @@ export function fsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfMan
 }
 
 export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._dnsIps) {
+    if (this._dnsIps !== undefined) {
       hasAnyValues = true;
       internalValueResult.dnsIps = this._dnsIps;
     }
-    if (this._domainName) {
+    if (this._domainName !== undefined) {
       hasAnyValues = true;
       internalValueResult.domainName = this._domainName;
     }
-    if (this._fileSystemAdministratorsGroup) {
+    if (this._fileSystemAdministratorsGroup !== undefined) {
       hasAnyValues = true;
       internalValueResult.fileSystemAdministratorsGroup = this._fileSystemAdministratorsGroup;
     }
-    if (this._organizationalUnitDistinguidshedName) {
+    if (this._organizationalUnitDistinguidshedName !== undefined) {
       hasAnyValues = true;
       internalValueResult.organizationalUnitDistinguidshedName = this._organizationalUnitDistinguidshedName;
     }
-    if (this._organizationalUnitDistinguishedName) {
+    if (this._organizationalUnitDistinguishedName !== undefined) {
       hasAnyValues = true;
       internalValueResult.organizationalUnitDistinguishedName = this._organizationalUnitDistinguishedName;
     }
-    if (this._password) {
+    if (this._password !== undefined) {
       hasAnyValues = true;
       internalValueResult.password = this._password;
     }
-    if (this._username) {
+    if (this._username !== undefined) {
       hasAnyValues = true;
       internalValueResult.username = this._username;
     }
@@ -211,6 +213,7 @@ export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManage
 
   public set internalValue(value: FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._dnsIps = undefined;
       this._domainName = undefined;
       this._fileSystemAdministratorsGroup = undefined;
@@ -220,6 +223,7 @@ export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManage
       this._username = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._dnsIps = value.dnsIps;
       this._domainName = value.domainName;
       this._fileSystemAdministratorsGroup = value.fileSystemAdministratorsGroup;
@@ -233,7 +237,7 @@ export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManage
   // dns_ips - computed: false, optional: false, required: true
   private _dnsIps?: string[]; 
   public get dnsIps() {
-    return this.getListAttribute('dns_ips');
+    return cdktf.Fn.tolist(this.getListAttribute('dns_ips'));
   }
   public set dnsIps(value: string[]) {
     this._dnsIps = value;
@@ -332,19 +336,19 @@ export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManage
 }
 export interface FsxOntapStorageVirtualMachineActiveDirectoryConfiguration {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#netbios_name FsxOntapStorageVirtualMachine#netbios_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#netbios_name FsxOntapStorageVirtualMachine#netbios_name}
   */
   readonly netbiosName?: string;
   /**
   * self_managed_active_directory_configuration block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#self_managed_active_directory_configuration FsxOntapStorageVirtualMachine#self_managed_active_directory_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#self_managed_active_directory_configuration FsxOntapStorageVirtualMachine#self_managed_active_directory_configuration}
   */
   readonly selfManagedActiveDirectoryConfiguration?: FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration;
 }
 
 export function fsxOntapStorageVirtualMachineActiveDirectoryConfigurationToTerraform(struct?: FsxOntapStorageVirtualMachineActiveDirectoryConfigurationOutputReference | FsxOntapStorageVirtualMachineActiveDirectoryConfiguration): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -355,23 +359,25 @@ export function fsxOntapStorageVirtualMachineActiveDirectoryConfigurationToTerra
 }
 
 export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): FsxOntapStorageVirtualMachineActiveDirectoryConfiguration | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._netbiosName) {
+    if (this._netbiosName !== undefined) {
       hasAnyValues = true;
       internalValueResult.netbiosName = this._netbiosName;
     }
-    if (this._selfManagedActiveDirectoryConfiguration) {
+    if (this._selfManagedActiveDirectoryConfiguration?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.selfManagedActiveDirectoryConfiguration = this._selfManagedActiveDirectoryConfiguration?.internalValue;
     }
@@ -380,10 +386,12 @@ export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationOutputRefe
 
   public set internalValue(value: FsxOntapStorageVirtualMachineActiveDirectoryConfiguration | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._netbiosName = undefined;
       this._selfManagedActiveDirectoryConfiguration.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._netbiosName = value.netbiosName;
       this._selfManagedActiveDirectoryConfiguration.internalValue = value.selfManagedActiveDirectoryConfiguration;
     }
@@ -406,7 +414,7 @@ export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationOutputRefe
   }
 
   // self_managed_active_directory_configuration - computed: false, optional: true, required: false
-  private _selfManagedActiveDirectoryConfiguration = new FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationOutputReference(this as any, "self_managed_active_directory_configuration", true);
+  private _selfManagedActiveDirectoryConfiguration = new FsxOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationOutputReference(this, "self_managed_active_directory_configuration", true);
   public get selfManagedActiveDirectoryConfiguration() {
     return this._selfManagedActiveDirectoryConfiguration;
   }
@@ -423,21 +431,21 @@ export class FsxOntapStorageVirtualMachineActiveDirectoryConfigurationOutputRefe
 }
 export interface FsxOntapStorageVirtualMachineTimeouts {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#create FsxOntapStorageVirtualMachine#create}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#create FsxOntapStorageVirtualMachine#create}
   */
   readonly create?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#delete FsxOntapStorageVirtualMachine#delete}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#delete FsxOntapStorageVirtualMachine#delete}
   */
   readonly delete?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html#update FsxOntapStorageVirtualMachine#update}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine#update FsxOntapStorageVirtualMachine#update}
   */
   readonly update?: string;
 }
 
-export function fsxOntapStorageVirtualMachineTimeoutsToTerraform(struct?: FsxOntapStorageVirtualMachineTimeoutsOutputReference | FsxOntapStorageVirtualMachineTimeouts): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function fsxOntapStorageVirtualMachineTimeoutsToTerraform(struct?: FsxOntapStorageVirtualMachineTimeoutsOutputReference | FsxOntapStorageVirtualMachineTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -449,27 +457,29 @@ export function fsxOntapStorageVirtualMachineTimeoutsToTerraform(struct?: FsxOnt
 }
 
 export class FsxOntapStorageVirtualMachineTimeoutsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): FsxOntapStorageVirtualMachineTimeouts | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._create) {
+    if (this._create !== undefined) {
       hasAnyValues = true;
       internalValueResult.create = this._create;
     }
-    if (this._delete) {
+    if (this._delete !== undefined) {
       hasAnyValues = true;
       internalValueResult.delete = this._delete;
     }
-    if (this._update) {
+    if (this._update !== undefined) {
       hasAnyValues = true;
       internalValueResult.update = this._update;
     }
@@ -478,11 +488,13 @@ export class FsxOntapStorageVirtualMachineTimeoutsOutputReference extends cdktf.
 
   public set internalValue(value: FsxOntapStorageVirtualMachineTimeouts | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._create = undefined;
       this._delete = undefined;
       this._update = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._create = value.create;
       this._delete = value.delete;
       this._update = value.update;
@@ -539,7 +551,7 @@ export class FsxOntapStorageVirtualMachineTimeoutsOutputReference extends cdktf.
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html aws_fsx_ontap_storage_virtual_machine}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine aws_fsx_ontap_storage_virtual_machine}
 */
 export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
 
@@ -553,7 +565,7 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine.html aws_fsx_ontap_storage_virtual_machine} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_storage_virtual_machine aws_fsx_ontap_storage_virtual_machine} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -591,7 +603,7 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
 
   // endpoints - computed: true, optional: false, required: false
   public endpoints(index: string) {
-    return new FsxOntapStorageVirtualMachineEndpoints(this, 'endpoints', index);
+    return new FsxOntapStorageVirtualMachineEndpoints(this, 'endpoints', index, false);
   }
 
   // file_system_id - computed: false, optional: false, required: true
@@ -663,12 +675,11 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -680,12 +691,11 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -702,7 +712,7 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
   }
 
   // active_directory_configuration - computed: false, optional: true, required: false
-  private _activeDirectoryConfiguration = new FsxOntapStorageVirtualMachineActiveDirectoryConfigurationOutputReference(this as any, "active_directory_configuration", true);
+  private _activeDirectoryConfiguration = new FsxOntapStorageVirtualMachineActiveDirectoryConfigurationOutputReference(this, "active_directory_configuration", true);
   public get activeDirectoryConfiguration() {
     return this._activeDirectoryConfiguration;
   }
@@ -718,7 +728,7 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts = new FsxOntapStorageVirtualMachineTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new FsxOntapStorageVirtualMachineTimeoutsOutputReference(this, "timeouts", true);
   public get timeouts() {
     return this._timeouts;
   }
@@ -743,8 +753,8 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       root_volume_security_style: cdktf.stringToTerraform(this._rootVolumeSecurityStyle),
       svm_admin_password: cdktf.stringToTerraform(this._svmAdminPassword),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       active_directory_configuration: fsxOntapStorageVirtualMachineActiveDirectoryConfigurationToTerraform(this._activeDirectoryConfiguration.internalValue),
       timeouts: fsxOntapStorageVirtualMachineTimeoutsToTerraform(this._timeouts.internalValue),
     };

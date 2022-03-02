@@ -8,63 +8,63 @@ import * as cdktf from 'cdktf';
 */
 export interface ConfigConfigRuleConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#description ConfigConfigRule#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#description ConfigConfigRule#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#input_parameters ConfigConfigRule#input_parameters}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#input_parameters ConfigConfigRule#input_parameters}
   */
   readonly inputParameters?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#maximum_execution_frequency ConfigConfigRule#maximum_execution_frequency}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#maximum_execution_frequency ConfigConfigRule#maximum_execution_frequency}
   */
   readonly maximumExecutionFrequency?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#name ConfigConfigRule#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#name ConfigConfigRule#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#tags ConfigConfigRule#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#tags ConfigConfigRule#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#tags_all ConfigConfigRule#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#tags_all ConfigConfigRule#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * scope block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#scope ConfigConfigRule#scope}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#scope ConfigConfigRule#scope}
   */
   readonly scope?: ConfigConfigRuleScope;
   /**
   * source block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#source ConfigConfigRule#source}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#source ConfigConfigRule#source}
   */
   readonly source: ConfigConfigRuleSource;
 }
 export interface ConfigConfigRuleScope {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#compliance_resource_id ConfigConfigRule#compliance_resource_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#compliance_resource_id ConfigConfigRule#compliance_resource_id}
   */
   readonly complianceResourceId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#compliance_resource_types ConfigConfigRule#compliance_resource_types}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#compliance_resource_types ConfigConfigRule#compliance_resource_types}
   */
   readonly complianceResourceTypes?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#tag_key ConfigConfigRule#tag_key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#tag_key ConfigConfigRule#tag_key}
   */
   readonly tagKey?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#tag_value ConfigConfigRule#tag_value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#tag_value ConfigConfigRule#tag_value}
   */
   readonly tagValue?: string;
 }
 
 export function configConfigRuleScopeToTerraform(struct?: ConfigConfigRuleScopeOutputReference | ConfigConfigRuleScope): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -77,31 +77,33 @@ export function configConfigRuleScopeToTerraform(struct?: ConfigConfigRuleScopeO
 }
 
 export class ConfigConfigRuleScopeOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): ConfigConfigRuleScope | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._complianceResourceId) {
+    if (this._complianceResourceId !== undefined) {
       hasAnyValues = true;
       internalValueResult.complianceResourceId = this._complianceResourceId;
     }
-    if (this._complianceResourceTypes) {
+    if (this._complianceResourceTypes !== undefined) {
       hasAnyValues = true;
       internalValueResult.complianceResourceTypes = this._complianceResourceTypes;
     }
-    if (this._tagKey) {
+    if (this._tagKey !== undefined) {
       hasAnyValues = true;
       internalValueResult.tagKey = this._tagKey;
     }
-    if (this._tagValue) {
+    if (this._tagValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.tagValue = this._tagValue;
     }
@@ -110,12 +112,14 @@ export class ConfigConfigRuleScopeOutputReference extends cdktf.ComplexObject {
 
   public set internalValue(value: ConfigConfigRuleScope | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._complianceResourceId = undefined;
       this._complianceResourceTypes = undefined;
       this._tagKey = undefined;
       this._tagValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._complianceResourceId = value.complianceResourceId;
       this._complianceResourceTypes = value.complianceResourceTypes;
       this._tagKey = value.tagKey;
@@ -142,7 +146,7 @@ export class ConfigConfigRuleScopeOutputReference extends cdktf.ComplexObject {
   // compliance_resource_types - computed: false, optional: true, required: false
   private _complianceResourceTypes?: string[]; 
   public get complianceResourceTypes() {
-    return this.getListAttribute('compliance_resource_types');
+    return cdktf.Fn.tolist(this.getListAttribute('compliance_resource_types'));
   }
   public set complianceResourceTypes(value: string[]) {
     this._complianceResourceTypes = value;
@@ -189,21 +193,21 @@ export class ConfigConfigRuleScopeOutputReference extends cdktf.ComplexObject {
 }
 export interface ConfigConfigRuleSourceSourceDetail {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#event_source ConfigConfigRule#event_source}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#event_source ConfigConfigRule#event_source}
   */
   readonly eventSource?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#maximum_execution_frequency ConfigConfigRule#maximum_execution_frequency}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#maximum_execution_frequency ConfigConfigRule#maximum_execution_frequency}
   */
   readonly maximumExecutionFrequency?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#message_type ConfigConfigRule#message_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#message_type ConfigConfigRule#message_type}
   */
   readonly messageType?: string;
 }
 
-export function configConfigRuleSourceSourceDetailToTerraform(struct?: ConfigConfigRuleSourceSourceDetail): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function configConfigRuleSourceSourceDetailToTerraform(struct?: ConfigConfigRuleSourceSourceDetail | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -216,23 +220,23 @@ export function configConfigRuleSourceSourceDetailToTerraform(struct?: ConfigCon
 
 export interface ConfigConfigRuleSource {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#owner ConfigConfigRule#owner}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#owner ConfigConfigRule#owner}
   */
   readonly owner: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#source_identifier ConfigConfigRule#source_identifier}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#source_identifier ConfigConfigRule#source_identifier}
   */
   readonly sourceIdentifier: string;
   /**
   * source_detail block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#source_detail ConfigConfigRule#source_detail}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule#source_detail ConfigConfigRule#source_detail}
   */
-  readonly sourceDetail?: ConfigConfigRuleSourceSourceDetail[];
+  readonly sourceDetail?: ConfigConfigRuleSourceSourceDetail[] | cdktf.IResolvable;
 }
 
 export function configConfigRuleSourceToTerraform(struct?: ConfigConfigRuleSourceOutputReference | ConfigConfigRuleSource): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -244,27 +248,29 @@ export function configConfigRuleSourceToTerraform(struct?: ConfigConfigRuleSourc
 }
 
 export class ConfigConfigRuleSourceOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): ConfigConfigRuleSource | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._owner) {
+    if (this._owner !== undefined) {
       hasAnyValues = true;
       internalValueResult.owner = this._owner;
     }
-    if (this._sourceIdentifier) {
+    if (this._sourceIdentifier !== undefined) {
       hasAnyValues = true;
       internalValueResult.sourceIdentifier = this._sourceIdentifier;
     }
-    if (this._sourceDetail) {
+    if (this._sourceDetail !== undefined) {
       hasAnyValues = true;
       internalValueResult.sourceDetail = this._sourceDetail;
     }
@@ -273,11 +279,13 @@ export class ConfigConfigRuleSourceOutputReference extends cdktf.ComplexObject {
 
   public set internalValue(value: ConfigConfigRuleSource | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._owner = undefined;
       this._sourceIdentifier = undefined;
       this._sourceDetail = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._owner = value.owner;
       this._sourceIdentifier = value.sourceIdentifier;
       this._sourceDetail = value.sourceDetail;
@@ -311,12 +319,12 @@ export class ConfigConfigRuleSourceOutputReference extends cdktf.ComplexObject {
   }
 
   // source_detail - computed: false, optional: true, required: false
-  private _sourceDetail?: ConfigConfigRuleSourceSourceDetail[]; 
+  private _sourceDetail?: ConfigConfigRuleSourceSourceDetail[] | cdktf.IResolvable; 
   public get sourceDetail() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('source_detail') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('source_detail')));
   }
-  public set sourceDetail(value: ConfigConfigRuleSourceSourceDetail[]) {
+  public set sourceDetail(value: ConfigConfigRuleSourceSourceDetail[] | cdktf.IResolvable) {
     this._sourceDetail = value;
   }
   public resetSourceDetail() {
@@ -329,7 +337,7 @@ export class ConfigConfigRuleSourceOutputReference extends cdktf.ComplexObject {
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html aws_config_config_rule}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule aws_config_config_rule}
 */
 export class ConfigConfigRule extends cdktf.TerraformResource {
 
@@ -343,7 +351,7 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html aws_config_config_rule} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule aws_config_config_rule} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -451,12 +459,11 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -468,12 +475,11 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -485,7 +491,7 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
   }
 
   // scope - computed: false, optional: true, required: false
-  private _scope = new ConfigConfigRuleScopeOutputReference(this as any, "scope", true);
+  private _scope = new ConfigConfigRuleScopeOutputReference(this, "scope", true);
   public get scope() {
     return this._scope;
   }
@@ -501,7 +507,7 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
   }
 
   // source - computed: false, optional: false, required: true
-  private _source = new ConfigConfigRuleSourceOutputReference(this as any, "source", true);
+  private _source = new ConfigConfigRuleSourceOutputReference(this, "source", true);
   public get source() {
     return this._source;
   }
@@ -523,8 +529,8 @@ export class ConfigConfigRule extends cdktf.TerraformResource {
       input_parameters: cdktf.stringToTerraform(this._inputParameters),
       maximum_execution_frequency: cdktf.stringToTerraform(this._maximumExecutionFrequency),
       name: cdktf.stringToTerraform(this._name),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       scope: configConfigRuleScopeToTerraform(this._scope.internalValue),
       source: configConfigRuleSourceToTerraform(this._source.internalValue),
     };

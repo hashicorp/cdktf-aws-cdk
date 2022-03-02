@@ -8,29 +8,29 @@ import * as cdktf from 'cdktf';
 */
 export interface WafIpsetConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/waf_ipset.html#name WafIpset#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/waf_ipset#name WafIpset#name}
   */
   readonly name: string;
   /**
   * ip_set_descriptors block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/waf_ipset.html#ip_set_descriptors WafIpset#ip_set_descriptors}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/waf_ipset#ip_set_descriptors WafIpset#ip_set_descriptors}
   */
-  readonly ipSetDescriptors?: WafIpsetIpSetDescriptors[];
+  readonly ipSetDescriptors?: WafIpsetIpSetDescriptors[] | cdktf.IResolvable;
 }
 export interface WafIpsetIpSetDescriptors {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/waf_ipset.html#type WafIpset#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/waf_ipset#type WafIpset#type}
   */
   readonly type: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/waf_ipset.html#value WafIpset#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/waf_ipset#value WafIpset#value}
   */
   readonly value: string;
 }
 
-export function wafIpsetIpSetDescriptorsToTerraform(struct?: WafIpsetIpSetDescriptors): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function wafIpsetIpSetDescriptorsToTerraform(struct?: WafIpsetIpSetDescriptors | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -42,7 +42,7 @@ export function wafIpsetIpSetDescriptorsToTerraform(struct?: WafIpsetIpSetDescri
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/waf_ipset.html aws_waf_ipset}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/waf_ipset aws_waf_ipset}
 */
 export class WafIpset extends cdktf.TerraformResource {
 
@@ -56,7 +56,7 @@ export class WafIpset extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/waf_ipset.html aws_waf_ipset} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/waf_ipset aws_waf_ipset} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -105,12 +105,12 @@ export class WafIpset extends cdktf.TerraformResource {
   }
 
   // ip_set_descriptors - computed: false, optional: true, required: false
-  private _ipSetDescriptors?: WafIpsetIpSetDescriptors[]; 
+  private _ipSetDescriptors?: WafIpsetIpSetDescriptors[] | cdktf.IResolvable; 
   public get ipSetDescriptors() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('ip_set_descriptors') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('ip_set_descriptors')));
   }
-  public set ipSetDescriptors(value: WafIpsetIpSetDescriptors[]) {
+  public set ipSetDescriptors(value: WafIpsetIpSetDescriptors[] | cdktf.IResolvable) {
     this._ipSetDescriptors = value;
   }
   public resetIpSetDescriptors() {

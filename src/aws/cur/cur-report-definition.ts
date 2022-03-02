@@ -8,53 +8,53 @@ import * as cdktf from 'cdktf';
 */
 export interface CurReportDefinitionConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition.html#additional_artifacts CurReportDefinition#additional_artifacts}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition#additional_artifacts CurReportDefinition#additional_artifacts}
   */
   readonly additionalArtifacts?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition.html#additional_schema_elements CurReportDefinition#additional_schema_elements}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition#additional_schema_elements CurReportDefinition#additional_schema_elements}
   */
   readonly additionalSchemaElements: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition.html#compression CurReportDefinition#compression}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition#compression CurReportDefinition#compression}
   */
   readonly compression: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition.html#format CurReportDefinition#format}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition#format CurReportDefinition#format}
   */
   readonly format: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition.html#refresh_closed_reports CurReportDefinition#refresh_closed_reports}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition#refresh_closed_reports CurReportDefinition#refresh_closed_reports}
   */
   readonly refreshClosedReports?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition.html#report_name CurReportDefinition#report_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition#report_name CurReportDefinition#report_name}
   */
   readonly reportName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition.html#report_versioning CurReportDefinition#report_versioning}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition#report_versioning CurReportDefinition#report_versioning}
   */
   readonly reportVersioning?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition.html#s3_bucket CurReportDefinition#s3_bucket}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition#s3_bucket CurReportDefinition#s3_bucket}
   */
   readonly s3Bucket: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition.html#s3_prefix CurReportDefinition#s3_prefix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition#s3_prefix CurReportDefinition#s3_prefix}
   */
   readonly s3Prefix?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition.html#s3_region CurReportDefinition#s3_region}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition#s3_region CurReportDefinition#s3_region}
   */
   readonly s3Region: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition.html#time_unit CurReportDefinition#time_unit}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition#time_unit CurReportDefinition#time_unit}
   */
   readonly timeUnit: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition.html aws_cur_report_definition}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition aws_cur_report_definition}
 */
 export class CurReportDefinition extends cdktf.TerraformResource {
 
@@ -68,7 +68,7 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition.html aws_cur_report_definition} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/cur_report_definition aws_cur_report_definition} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -105,7 +105,7 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   // additional_artifacts - computed: false, optional: true, required: false
   private _additionalArtifacts?: string[]; 
   public get additionalArtifacts() {
-    return this.getListAttribute('additional_artifacts');
+    return cdktf.Fn.tolist(this.getListAttribute('additional_artifacts'));
   }
   public set additionalArtifacts(value: string[]) {
     this._additionalArtifacts = value;
@@ -121,7 +121,7 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   // additional_schema_elements - computed: false, optional: false, required: true
   private _additionalSchemaElements?: string[]; 
   public get additionalSchemaElements() {
-    return this.getListAttribute('additional_schema_elements');
+    return cdktf.Fn.tolist(this.getListAttribute('additional_schema_elements'));
   }
   public set additionalSchemaElements(value: string[]) {
     this._additionalSchemaElements = value;
@@ -170,7 +170,7 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   // refresh_closed_reports - computed: false, optional: true, required: false
   private _refreshClosedReports?: boolean | cdktf.IResolvable; 
   public get refreshClosedReports() {
-    return this.getBooleanAttribute('refresh_closed_reports') as any;
+    return this.getBooleanAttribute('refresh_closed_reports');
   }
   public set refreshClosedReports(value: boolean | cdktf.IResolvable) {
     this._refreshClosedReports = value;

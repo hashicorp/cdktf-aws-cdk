@@ -8,17 +8,17 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsEfsFileSystemConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/efs_file_system.html#creation_token DataAwsEfsFileSystem#creation_token}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/efs_file_system#creation_token DataAwsEfsFileSystem#creation_token}
   */
   readonly creationToken?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/efs_file_system.html#file_system_id DataAwsEfsFileSystem#file_system_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/efs_file_system#file_system_id DataAwsEfsFileSystem#file_system_id}
   */
   readonly fileSystemId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/efs_file_system.html#tags DataAwsEfsFileSystem#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/efs_file_system#tags DataAwsEfsFileSystem#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
 }
 export class DataAwsEfsFileSystemLifecyclePolicy extends cdktf.ComplexComputedList {
 
@@ -34,7 +34,7 @@ export class DataAwsEfsFileSystemLifecyclePolicy extends cdktf.ComplexComputedLi
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/efs_file_system.html aws_efs_file_system}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/efs_file_system aws_efs_file_system}
 */
 export class DataAwsEfsFileSystem extends cdktf.TerraformDataSource {
 
@@ -48,7 +48,7 @@ export class DataAwsEfsFileSystem extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/efs_file_system.html aws_efs_file_system} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/efs_file_system aws_efs_file_system} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -112,7 +112,7 @@ export class DataAwsEfsFileSystem extends cdktf.TerraformDataSource {
 
   // encrypted - computed: true, optional: false, required: false
   public get encrypted() {
-    return this.getBooleanAttribute('encrypted') as any;
+    return this.getBooleanAttribute('encrypted');
   }
 
   // file_system_id - computed: true, optional: true, required: false
@@ -143,7 +143,7 @@ export class DataAwsEfsFileSystem extends cdktf.TerraformDataSource {
 
   // lifecycle_policy - computed: true, optional: false, required: false
   public lifecyclePolicy(index: string) {
-    return new DataAwsEfsFileSystemLifecyclePolicy(this, 'lifecycle_policy', index);
+    return new DataAwsEfsFileSystemLifecyclePolicy(this, 'lifecycle_policy', index, false);
   }
 
   // performance_mode - computed: true, optional: false, required: false
@@ -162,12 +162,11 @@ export class DataAwsEfsFileSystem extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -191,7 +190,7 @@ export class DataAwsEfsFileSystem extends cdktf.TerraformDataSource {
     return {
       creation_token: cdktf.stringToTerraform(this._creationToken),
       file_system_id: cdktf.stringToTerraform(this._fileSystemId),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
     };
   }
 }

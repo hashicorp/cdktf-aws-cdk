@@ -8,155 +8,155 @@ import * as cdktf from 'cdktf';
 */
 export interface OpsworksCustomLayerConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#auto_assign_elastic_ips OpsworksCustomLayer#auto_assign_elastic_ips}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#auto_assign_elastic_ips OpsworksCustomLayer#auto_assign_elastic_ips}
   */
   readonly autoAssignElasticIps?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#auto_assign_public_ips OpsworksCustomLayer#auto_assign_public_ips}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#auto_assign_public_ips OpsworksCustomLayer#auto_assign_public_ips}
   */
   readonly autoAssignPublicIps?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#auto_healing OpsworksCustomLayer#auto_healing}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#auto_healing OpsworksCustomLayer#auto_healing}
   */
   readonly autoHealing?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#custom_configure_recipes OpsworksCustomLayer#custom_configure_recipes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#custom_configure_recipes OpsworksCustomLayer#custom_configure_recipes}
   */
   readonly customConfigureRecipes?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#custom_deploy_recipes OpsworksCustomLayer#custom_deploy_recipes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#custom_deploy_recipes OpsworksCustomLayer#custom_deploy_recipes}
   */
   readonly customDeployRecipes?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#custom_instance_profile_arn OpsworksCustomLayer#custom_instance_profile_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#custom_instance_profile_arn OpsworksCustomLayer#custom_instance_profile_arn}
   */
   readonly customInstanceProfileArn?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#custom_json OpsworksCustomLayer#custom_json}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#custom_json OpsworksCustomLayer#custom_json}
   */
   readonly customJson?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#custom_security_group_ids OpsworksCustomLayer#custom_security_group_ids}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#custom_security_group_ids OpsworksCustomLayer#custom_security_group_ids}
   */
   readonly customSecurityGroupIds?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#custom_setup_recipes OpsworksCustomLayer#custom_setup_recipes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#custom_setup_recipes OpsworksCustomLayer#custom_setup_recipes}
   */
   readonly customSetupRecipes?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#custom_shutdown_recipes OpsworksCustomLayer#custom_shutdown_recipes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#custom_shutdown_recipes OpsworksCustomLayer#custom_shutdown_recipes}
   */
   readonly customShutdownRecipes?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#custom_undeploy_recipes OpsworksCustomLayer#custom_undeploy_recipes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#custom_undeploy_recipes OpsworksCustomLayer#custom_undeploy_recipes}
   */
   readonly customUndeployRecipes?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#drain_elb_on_shutdown OpsworksCustomLayer#drain_elb_on_shutdown}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#drain_elb_on_shutdown OpsworksCustomLayer#drain_elb_on_shutdown}
   */
   readonly drainElbOnShutdown?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#elastic_load_balancer OpsworksCustomLayer#elastic_load_balancer}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#elastic_load_balancer OpsworksCustomLayer#elastic_load_balancer}
   */
   readonly elasticLoadBalancer?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#install_updates_on_boot OpsworksCustomLayer#install_updates_on_boot}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#install_updates_on_boot OpsworksCustomLayer#install_updates_on_boot}
   */
   readonly installUpdatesOnBoot?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#instance_shutdown_timeout OpsworksCustomLayer#instance_shutdown_timeout}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#instance_shutdown_timeout OpsworksCustomLayer#instance_shutdown_timeout}
   */
   readonly instanceShutdownTimeout?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#name OpsworksCustomLayer#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#name OpsworksCustomLayer#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#short_name OpsworksCustomLayer#short_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#short_name OpsworksCustomLayer#short_name}
   */
   readonly shortName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#stack_id OpsworksCustomLayer#stack_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#stack_id OpsworksCustomLayer#stack_id}
   */
   readonly stackId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#system_packages OpsworksCustomLayer#system_packages}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#system_packages OpsworksCustomLayer#system_packages}
   */
   readonly systemPackages?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#tags OpsworksCustomLayer#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#tags OpsworksCustomLayer#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#tags_all OpsworksCustomLayer#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#tags_all OpsworksCustomLayer#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#use_ebs_optimized_instances OpsworksCustomLayer#use_ebs_optimized_instances}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#use_ebs_optimized_instances OpsworksCustomLayer#use_ebs_optimized_instances}
   */
   readonly useEbsOptimizedInstances?: boolean | cdktf.IResolvable;
   /**
   * cloudwatch_configuration block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#cloudwatch_configuration OpsworksCustomLayer#cloudwatch_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#cloudwatch_configuration OpsworksCustomLayer#cloudwatch_configuration}
   */
   readonly cloudwatchConfiguration?: OpsworksCustomLayerCloudwatchConfiguration;
   /**
   * ebs_volume block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#ebs_volume OpsworksCustomLayer#ebs_volume}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#ebs_volume OpsworksCustomLayer#ebs_volume}
   */
-  readonly ebsVolume?: OpsworksCustomLayerEbsVolume[];
+  readonly ebsVolume?: OpsworksCustomLayerEbsVolume[] | cdktf.IResolvable;
 }
 export interface OpsworksCustomLayerCloudwatchConfigurationLogStreams {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#batch_count OpsworksCustomLayer#batch_count}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#batch_count OpsworksCustomLayer#batch_count}
   */
   readonly batchCount?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#batch_size OpsworksCustomLayer#batch_size}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#batch_size OpsworksCustomLayer#batch_size}
   */
   readonly batchSize?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#buffer_duration OpsworksCustomLayer#buffer_duration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#buffer_duration OpsworksCustomLayer#buffer_duration}
   */
   readonly bufferDuration?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#datetime_format OpsworksCustomLayer#datetime_format}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#datetime_format OpsworksCustomLayer#datetime_format}
   */
   readonly datetimeFormat?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#encoding OpsworksCustomLayer#encoding}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#encoding OpsworksCustomLayer#encoding}
   */
   readonly encoding?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#file OpsworksCustomLayer#file}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#file OpsworksCustomLayer#file}
   */
   readonly file: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#file_fingerprint_lines OpsworksCustomLayer#file_fingerprint_lines}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#file_fingerprint_lines OpsworksCustomLayer#file_fingerprint_lines}
   */
   readonly fileFingerprintLines?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#initial_position OpsworksCustomLayer#initial_position}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#initial_position OpsworksCustomLayer#initial_position}
   */
   readonly initialPosition?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#log_group_name OpsworksCustomLayer#log_group_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#log_group_name OpsworksCustomLayer#log_group_name}
   */
   readonly logGroupName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#multiline_start_pattern OpsworksCustomLayer#multiline_start_pattern}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#multiline_start_pattern OpsworksCustomLayer#multiline_start_pattern}
   */
   readonly multilineStartPattern?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#time_zone OpsworksCustomLayer#time_zone}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#time_zone OpsworksCustomLayer#time_zone}
   */
   readonly timeZone?: string;
 }
 
-export function opsworksCustomLayerCloudwatchConfigurationLogStreamsToTerraform(struct?: OpsworksCustomLayerCloudwatchConfigurationLogStreams): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function opsworksCustomLayerCloudwatchConfigurationLogStreamsToTerraform(struct?: OpsworksCustomLayerCloudwatchConfigurationLogStreams | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -177,19 +177,19 @@ export function opsworksCustomLayerCloudwatchConfigurationLogStreamsToTerraform(
 
 export interface OpsworksCustomLayerCloudwatchConfiguration {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#enabled OpsworksCustomLayer#enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#enabled OpsworksCustomLayer#enabled}
   */
   readonly enabled?: boolean | cdktf.IResolvable;
   /**
   * log_streams block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#log_streams OpsworksCustomLayer#log_streams}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#log_streams OpsworksCustomLayer#log_streams}
   */
-  readonly logStreams?: OpsworksCustomLayerCloudwatchConfigurationLogStreams[];
+  readonly logStreams?: OpsworksCustomLayerCloudwatchConfigurationLogStreams[] | cdktf.IResolvable;
 }
 
 export function opsworksCustomLayerCloudwatchConfigurationToTerraform(struct?: OpsworksCustomLayerCloudwatchConfigurationOutputReference | OpsworksCustomLayerCloudwatchConfiguration): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -200,23 +200,25 @@ export function opsworksCustomLayerCloudwatchConfigurationToTerraform(struct?: O
 }
 
 export class OpsworksCustomLayerCloudwatchConfigurationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): OpsworksCustomLayerCloudwatchConfiguration | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._enabled) {
+    if (this._enabled !== undefined) {
       hasAnyValues = true;
       internalValueResult.enabled = this._enabled;
     }
-    if (this._logStreams) {
+    if (this._logStreams !== undefined) {
       hasAnyValues = true;
       internalValueResult.logStreams = this._logStreams;
     }
@@ -225,10 +227,12 @@ export class OpsworksCustomLayerCloudwatchConfigurationOutputReference extends c
 
   public set internalValue(value: OpsworksCustomLayerCloudwatchConfiguration | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._enabled = undefined;
       this._logStreams = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._enabled = value.enabled;
       this._logStreams = value.logStreams;
     }
@@ -237,7 +241,7 @@ export class OpsworksCustomLayerCloudwatchConfigurationOutputReference extends c
   // enabled - computed: false, optional: true, required: false
   private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
-    return this.getBooleanAttribute('enabled') as any;
+    return this.getBooleanAttribute('enabled');
   }
   public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
@@ -251,12 +255,12 @@ export class OpsworksCustomLayerCloudwatchConfigurationOutputReference extends c
   }
 
   // log_streams - computed: false, optional: true, required: false
-  private _logStreams?: OpsworksCustomLayerCloudwatchConfigurationLogStreams[]; 
+  private _logStreams?: OpsworksCustomLayerCloudwatchConfigurationLogStreams[] | cdktf.IResolvable; 
   public get logStreams() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('log_streams') as any;
+    return this.interpolationForAttribute('log_streams');
   }
-  public set logStreams(value: OpsworksCustomLayerCloudwatchConfigurationLogStreams[]) {
+  public set logStreams(value: OpsworksCustomLayerCloudwatchConfigurationLogStreams[] | cdktf.IResolvable) {
     this._logStreams = value;
   }
   public resetLogStreams() {
@@ -269,37 +273,37 @@ export class OpsworksCustomLayerCloudwatchConfigurationOutputReference extends c
 }
 export interface OpsworksCustomLayerEbsVolume {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#encrypted OpsworksCustomLayer#encrypted}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#encrypted OpsworksCustomLayer#encrypted}
   */
   readonly encrypted?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#iops OpsworksCustomLayer#iops}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#iops OpsworksCustomLayer#iops}
   */
   readonly iops?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#mount_point OpsworksCustomLayer#mount_point}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#mount_point OpsworksCustomLayer#mount_point}
   */
   readonly mountPoint: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#number_of_disks OpsworksCustomLayer#number_of_disks}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#number_of_disks OpsworksCustomLayer#number_of_disks}
   */
   readonly numberOfDisks: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#raid_level OpsworksCustomLayer#raid_level}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#raid_level OpsworksCustomLayer#raid_level}
   */
   readonly raidLevel?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#size OpsworksCustomLayer#size}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#size OpsworksCustomLayer#size}
   */
   readonly size: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html#type OpsworksCustomLayer#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer#type OpsworksCustomLayer#type}
   */
   readonly type?: string;
 }
 
-export function opsworksCustomLayerEbsVolumeToTerraform(struct?: OpsworksCustomLayerEbsVolume): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function opsworksCustomLayerEbsVolumeToTerraform(struct?: OpsworksCustomLayerEbsVolume | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -316,7 +320,7 @@ export function opsworksCustomLayerEbsVolumeToTerraform(struct?: OpsworksCustomL
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html aws_opsworks_custom_layer}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer aws_opsworks_custom_layer}
 */
 export class OpsworksCustomLayer extends cdktf.TerraformResource {
 
@@ -330,7 +334,7 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer.html aws_opsworks_custom_layer} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/opsworks_custom_layer aws_opsworks_custom_layer} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -385,7 +389,7 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   // auto_assign_elastic_ips - computed: false, optional: true, required: false
   private _autoAssignElasticIps?: boolean | cdktf.IResolvable; 
   public get autoAssignElasticIps() {
-    return this.getBooleanAttribute('auto_assign_elastic_ips') as any;
+    return this.getBooleanAttribute('auto_assign_elastic_ips');
   }
   public set autoAssignElasticIps(value: boolean | cdktf.IResolvable) {
     this._autoAssignElasticIps = value;
@@ -401,7 +405,7 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   // auto_assign_public_ips - computed: false, optional: true, required: false
   private _autoAssignPublicIps?: boolean | cdktf.IResolvable; 
   public get autoAssignPublicIps() {
-    return this.getBooleanAttribute('auto_assign_public_ips') as any;
+    return this.getBooleanAttribute('auto_assign_public_ips');
   }
   public set autoAssignPublicIps(value: boolean | cdktf.IResolvable) {
     this._autoAssignPublicIps = value;
@@ -417,7 +421,7 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   // auto_healing - computed: false, optional: true, required: false
   private _autoHealing?: boolean | cdktf.IResolvable; 
   public get autoHealing() {
-    return this.getBooleanAttribute('auto_healing') as any;
+    return this.getBooleanAttribute('auto_healing');
   }
   public set autoHealing(value: boolean | cdktf.IResolvable) {
     this._autoHealing = value;
@@ -497,7 +501,7 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   // custom_security_group_ids - computed: false, optional: true, required: false
   private _customSecurityGroupIds?: string[]; 
   public get customSecurityGroupIds() {
-    return this.getListAttribute('custom_security_group_ids');
+    return cdktf.Fn.tolist(this.getListAttribute('custom_security_group_ids'));
   }
   public set customSecurityGroupIds(value: string[]) {
     this._customSecurityGroupIds = value;
@@ -561,7 +565,7 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   // drain_elb_on_shutdown - computed: false, optional: true, required: false
   private _drainElbOnShutdown?: boolean | cdktf.IResolvable; 
   public get drainElbOnShutdown() {
-    return this.getBooleanAttribute('drain_elb_on_shutdown') as any;
+    return this.getBooleanAttribute('drain_elb_on_shutdown');
   }
   public set drainElbOnShutdown(value: boolean | cdktf.IResolvable) {
     this._drainElbOnShutdown = value;
@@ -598,7 +602,7 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   // install_updates_on_boot - computed: false, optional: true, required: false
   private _installUpdatesOnBoot?: boolean | cdktf.IResolvable; 
   public get installUpdatesOnBoot() {
-    return this.getBooleanAttribute('install_updates_on_boot') as any;
+    return this.getBooleanAttribute('install_updates_on_boot');
   }
   public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable) {
     this._installUpdatesOnBoot = value;
@@ -669,7 +673,7 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   // system_packages - computed: false, optional: true, required: false
   private _systemPackages?: string[]; 
   public get systemPackages() {
-    return this.getListAttribute('system_packages');
+    return cdktf.Fn.tolist(this.getListAttribute('system_packages'));
   }
   public set systemPackages(value: string[]) {
     this._systemPackages = value;
@@ -683,12 +687,11 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -700,12 +703,11 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -719,7 +721,7 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   // use_ebs_optimized_instances - computed: false, optional: true, required: false
   private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable; 
   public get useEbsOptimizedInstances() {
-    return this.getBooleanAttribute('use_ebs_optimized_instances') as any;
+    return this.getBooleanAttribute('use_ebs_optimized_instances');
   }
   public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable) {
     this._useEbsOptimizedInstances = value;
@@ -733,7 +735,7 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
 
   // cloudwatch_configuration - computed: false, optional: true, required: false
-  private _cloudwatchConfiguration = new OpsworksCustomLayerCloudwatchConfigurationOutputReference(this as any, "cloudwatch_configuration", true);
+  private _cloudwatchConfiguration = new OpsworksCustomLayerCloudwatchConfigurationOutputReference(this, "cloudwatch_configuration", true);
   public get cloudwatchConfiguration() {
     return this._cloudwatchConfiguration;
   }
@@ -749,12 +751,12 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
   }
 
   // ebs_volume - computed: false, optional: true, required: false
-  private _ebsVolume?: OpsworksCustomLayerEbsVolume[]; 
+  private _ebsVolume?: OpsworksCustomLayerEbsVolume[] | cdktf.IResolvable; 
   public get ebsVolume() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('ebs_volume') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('ebs_volume')));
   }
-  public set ebsVolume(value: OpsworksCustomLayerEbsVolume[]) {
+  public set ebsVolume(value: OpsworksCustomLayerEbsVolume[] | cdktf.IResolvable) {
     this._ebsVolume = value;
   }
   public resetEbsVolume() {
@@ -790,8 +792,8 @@ export class OpsworksCustomLayer extends cdktf.TerraformResource {
       short_name: cdktf.stringToTerraform(this._shortName),
       stack_id: cdktf.stringToTerraform(this._stackId),
       system_packages: cdktf.listMapper(cdktf.stringToTerraform)(this._systemPackages),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       use_ebs_optimized_instances: cdktf.booleanToTerraform(this._useEbsOptimizedInstances),
       cloudwatch_configuration: opsworksCustomLayerCloudwatchConfigurationToTerraform(this._cloudwatchConfiguration.internalValue),
       ebs_volume: cdktf.listMapper(opsworksCustomLayerEbsVolumeToTerraform)(this._ebsVolume),

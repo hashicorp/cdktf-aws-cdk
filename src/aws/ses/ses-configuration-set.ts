@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 */
 export interface SesConfigurationSetConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ses_configuration_set.html#name SesConfigurationSet#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ses_configuration_set#name SesConfigurationSet#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ses_configuration_set.html#reputation_metrics_enabled SesConfigurationSet#reputation_metrics_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ses_configuration_set#reputation_metrics_enabled SesConfigurationSet#reputation_metrics_enabled}
   */
   readonly reputationMetricsEnabled?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ses_configuration_set.html#sending_enabled SesConfigurationSet#sending_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ses_configuration_set#sending_enabled SesConfigurationSet#sending_enabled}
   */
   readonly sendingEnabled?: boolean | cdktf.IResolvable;
   /**
   * delivery_options block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ses_configuration_set.html#delivery_options SesConfigurationSet#delivery_options}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ses_configuration_set#delivery_options SesConfigurationSet#delivery_options}
   */
   readonly deliveryOptions?: SesConfigurationSetDeliveryOptions;
 }
 export interface SesConfigurationSetDeliveryOptions {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ses_configuration_set.html#tls_policy SesConfigurationSet#tls_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ses_configuration_set#tls_policy SesConfigurationSet#tls_policy}
   */
   readonly tlsPolicy?: string;
 }
 
 export function sesConfigurationSetDeliveryOptionsToTerraform(struct?: SesConfigurationSetDeliveryOptionsOutputReference | SesConfigurationSetDeliveryOptions): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -44,19 +44,21 @@ export function sesConfigurationSetDeliveryOptionsToTerraform(struct?: SesConfig
 }
 
 export class SesConfigurationSetDeliveryOptionsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SesConfigurationSetDeliveryOptions | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._tlsPolicy) {
+    if (this._tlsPolicy !== undefined) {
       hasAnyValues = true;
       internalValueResult.tlsPolicy = this._tlsPolicy;
     }
@@ -65,9 +67,11 @@ export class SesConfigurationSetDeliveryOptionsOutputReference extends cdktf.Com
 
   public set internalValue(value: SesConfigurationSetDeliveryOptions | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._tlsPolicy = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._tlsPolicy = value.tlsPolicy;
     }
   }
@@ -90,7 +94,7 @@ export class SesConfigurationSetDeliveryOptionsOutputReference extends cdktf.Com
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/ses_configuration_set.html aws_ses_configuration_set}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/ses_configuration_set aws_ses_configuration_set}
 */
 export class SesConfigurationSet extends cdktf.TerraformResource {
 
@@ -104,7 +108,7 @@ export class SesConfigurationSet extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/ses_configuration_set.html aws_ses_configuration_set} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/ses_configuration_set aws_ses_configuration_set} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -162,7 +166,7 @@ export class SesConfigurationSet extends cdktf.TerraformResource {
   // reputation_metrics_enabled - computed: false, optional: true, required: false
   private _reputationMetricsEnabled?: boolean | cdktf.IResolvable; 
   public get reputationMetricsEnabled() {
-    return this.getBooleanAttribute('reputation_metrics_enabled') as any;
+    return this.getBooleanAttribute('reputation_metrics_enabled');
   }
   public set reputationMetricsEnabled(value: boolean | cdktf.IResolvable) {
     this._reputationMetricsEnabled = value;
@@ -178,7 +182,7 @@ export class SesConfigurationSet extends cdktf.TerraformResource {
   // sending_enabled - computed: false, optional: true, required: false
   private _sendingEnabled?: boolean | cdktf.IResolvable; 
   public get sendingEnabled() {
-    return this.getBooleanAttribute('sending_enabled') as any;
+    return this.getBooleanAttribute('sending_enabled');
   }
   public set sendingEnabled(value: boolean | cdktf.IResolvable) {
     this._sendingEnabled = value;
@@ -192,7 +196,7 @@ export class SesConfigurationSet extends cdktf.TerraformResource {
   }
 
   // delivery_options - computed: false, optional: true, required: false
-  private _deliveryOptions = new SesConfigurationSetDeliveryOptionsOutputReference(this as any, "delivery_options", true);
+  private _deliveryOptions = new SesConfigurationSetDeliveryOptionsOutputReference(this, "delivery_options", true);
   public get deliveryOptions() {
     return this._deliveryOptions;
   }

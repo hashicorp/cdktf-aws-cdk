@@ -8,7 +8,7 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsSecretsmanagerSecretConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret.html#name DataAwsSecretsmanagerSecret#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret#name DataAwsSecretsmanagerSecret#name}
   */
   readonly name?: string;
 }
@@ -21,7 +21,7 @@ export class DataAwsSecretsmanagerSecretRotationRules extends cdktf.ComplexCompu
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret.html aws_secretsmanager_secret}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret aws_secretsmanager_secret}
 */
 export class DataAwsSecretsmanagerSecret extends cdktf.TerraformDataSource {
 
@@ -35,7 +35,7 @@ export class DataAwsSecretsmanagerSecret extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret.html aws_secretsmanager_secret} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret aws_secretsmanager_secret} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -102,7 +102,7 @@ export class DataAwsSecretsmanagerSecret extends cdktf.TerraformDataSource {
 
   // rotation_enabled - computed: true, optional: false, required: false
   public get rotationEnabled() {
-    return this.getBooleanAttribute('rotation_enabled') as any;
+    return this.getBooleanAttribute('rotation_enabled');
   }
 
   // rotation_lambda_arn - computed: true, optional: false, required: false
@@ -112,11 +112,11 @@ export class DataAwsSecretsmanagerSecret extends cdktf.TerraformDataSource {
 
   // rotation_rules - computed: true, optional: false, required: false
   public rotationRules(index: string) {
-    return new DataAwsSecretsmanagerSecretRotationRules(this, 'rotation_rules', index);
+    return new DataAwsSecretsmanagerSecretRotationRules(this, 'rotation_rules', index, false);
   }
 
   // tags - computed: true, optional: false, required: false
-  public tags(key: string): string {
+  public tags(key: string): string | cdktf.IResolvable {
     return new cdktf.StringMap(this, 'tags').lookup(key);
   }
 

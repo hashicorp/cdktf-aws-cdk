@@ -8,51 +8,51 @@ import * as cdktf from 'cdktf';
 */
 export interface BackupSelectionConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#iam_role_arn BackupSelection#iam_role_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#iam_role_arn BackupSelection#iam_role_arn}
   */
   readonly iamRoleArn: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#name BackupSelection#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#name BackupSelection#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#not_resources BackupSelection#not_resources}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#not_resources BackupSelection#not_resources}
   */
   readonly notResources?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#plan_id BackupSelection#plan_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#plan_id BackupSelection#plan_id}
   */
   readonly planId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#resources BackupSelection#resources}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#resources BackupSelection#resources}
   */
   readonly resources?: string[];
   /**
   * condition block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#condition BackupSelection#condition}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#condition BackupSelection#condition}
   */
-  readonly condition?: BackupSelectionCondition[];
+  readonly condition?: BackupSelectionCondition[] | cdktf.IResolvable;
   /**
   * selection_tag block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#selection_tag BackupSelection#selection_tag}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#selection_tag BackupSelection#selection_tag}
   */
-  readonly selectionTag?: BackupSelectionSelectionTag[];
+  readonly selectionTag?: BackupSelectionSelectionTag[] | cdktf.IResolvable;
 }
 export interface BackupSelectionConditionStringEquals {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#key BackupSelection#key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#key BackupSelection#key}
   */
   readonly key: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#value BackupSelection#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#value BackupSelection#value}
   */
   readonly value: string;
 }
 
-export function backupSelectionConditionStringEqualsToTerraform(struct?: BackupSelectionConditionStringEquals): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function backupSelectionConditionStringEqualsToTerraform(struct?: BackupSelectionConditionStringEquals | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -64,17 +64,17 @@ export function backupSelectionConditionStringEqualsToTerraform(struct?: BackupS
 
 export interface BackupSelectionConditionStringLike {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#key BackupSelection#key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#key BackupSelection#key}
   */
   readonly key: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#value BackupSelection#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#value BackupSelection#value}
   */
   readonly value: string;
 }
 
-export function backupSelectionConditionStringLikeToTerraform(struct?: BackupSelectionConditionStringLike): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function backupSelectionConditionStringLikeToTerraform(struct?: BackupSelectionConditionStringLike | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -86,17 +86,17 @@ export function backupSelectionConditionStringLikeToTerraform(struct?: BackupSel
 
 export interface BackupSelectionConditionStringNotEquals {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#key BackupSelection#key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#key BackupSelection#key}
   */
   readonly key: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#value BackupSelection#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#value BackupSelection#value}
   */
   readonly value: string;
 }
 
-export function backupSelectionConditionStringNotEqualsToTerraform(struct?: BackupSelectionConditionStringNotEquals): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function backupSelectionConditionStringNotEqualsToTerraform(struct?: BackupSelectionConditionStringNotEquals | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -108,17 +108,17 @@ export function backupSelectionConditionStringNotEqualsToTerraform(struct?: Back
 
 export interface BackupSelectionConditionStringNotLike {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#key BackupSelection#key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#key BackupSelection#key}
   */
   readonly key: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#value BackupSelection#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#value BackupSelection#value}
   */
   readonly value: string;
 }
 
-export function backupSelectionConditionStringNotLikeToTerraform(struct?: BackupSelectionConditionStringNotLike): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function backupSelectionConditionStringNotLikeToTerraform(struct?: BackupSelectionConditionStringNotLike | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -132,31 +132,31 @@ export interface BackupSelectionCondition {
   /**
   * string_equals block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#string_equals BackupSelection#string_equals}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#string_equals BackupSelection#string_equals}
   */
-  readonly stringEquals?: BackupSelectionConditionStringEquals[];
+  readonly stringEquals?: BackupSelectionConditionStringEquals[] | cdktf.IResolvable;
   /**
   * string_like block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#string_like BackupSelection#string_like}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#string_like BackupSelection#string_like}
   */
-  readonly stringLike?: BackupSelectionConditionStringLike[];
+  readonly stringLike?: BackupSelectionConditionStringLike[] | cdktf.IResolvable;
   /**
   * string_not_equals block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#string_not_equals BackupSelection#string_not_equals}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#string_not_equals BackupSelection#string_not_equals}
   */
-  readonly stringNotEquals?: BackupSelectionConditionStringNotEquals[];
+  readonly stringNotEquals?: BackupSelectionConditionStringNotEquals[] | cdktf.IResolvable;
   /**
   * string_not_like block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#string_not_like BackupSelection#string_not_like}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#string_not_like BackupSelection#string_not_like}
   */
-  readonly stringNotLike?: BackupSelectionConditionStringNotLike[];
+  readonly stringNotLike?: BackupSelectionConditionStringNotLike[] | cdktf.IResolvable;
 }
 
-export function backupSelectionConditionToTerraform(struct?: BackupSelectionCondition): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function backupSelectionConditionToTerraform(struct?: BackupSelectionCondition | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -170,21 +170,21 @@ export function backupSelectionConditionToTerraform(struct?: BackupSelectionCond
 
 export interface BackupSelectionSelectionTag {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#key BackupSelection#key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#key BackupSelection#key}
   */
   readonly key: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#type BackupSelection#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#type BackupSelection#type}
   */
   readonly type: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html#value BackupSelection#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_selection#value BackupSelection#value}
   */
   readonly value: string;
 }
 
-export function backupSelectionSelectionTagToTerraform(struct?: BackupSelectionSelectionTag): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function backupSelectionSelectionTagToTerraform(struct?: BackupSelectionSelectionTag | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -197,7 +197,7 @@ export function backupSelectionSelectionTagToTerraform(struct?: BackupSelectionS
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html aws_backup_selection}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/backup_selection aws_backup_selection}
 */
 export class BackupSelection extends cdktf.TerraformResource {
 
@@ -211,7 +211,7 @@ export class BackupSelection extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/backup_selection.html aws_backup_selection} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/backup_selection aws_backup_selection} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -275,7 +275,7 @@ export class BackupSelection extends cdktf.TerraformResource {
   // not_resources - computed: true, optional: true, required: false
   private _notResources?: string[]; 
   public get notResources() {
-    return this.getListAttribute('not_resources');
+    return cdktf.Fn.tolist(this.getListAttribute('not_resources'));
   }
   public set notResources(value: string[]) {
     this._notResources = value;
@@ -304,7 +304,7 @@ export class BackupSelection extends cdktf.TerraformResource {
   // resources - computed: false, optional: true, required: false
   private _resources?: string[]; 
   public get resources() {
-    return this.getListAttribute('resources');
+    return cdktf.Fn.tolist(this.getListAttribute('resources'));
   }
   public set resources(value: string[]) {
     this._resources = value;
@@ -318,12 +318,12 @@ export class BackupSelection extends cdktf.TerraformResource {
   }
 
   // condition - computed: false, optional: true, required: false
-  private _condition?: BackupSelectionCondition[]; 
+  private _condition?: BackupSelectionCondition[] | cdktf.IResolvable; 
   public get condition() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('condition') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('condition')));
   }
-  public set condition(value: BackupSelectionCondition[]) {
+  public set condition(value: BackupSelectionCondition[] | cdktf.IResolvable) {
     this._condition = value;
   }
   public resetCondition() {
@@ -335,12 +335,12 @@ export class BackupSelection extends cdktf.TerraformResource {
   }
 
   // selection_tag - computed: false, optional: true, required: false
-  private _selectionTag?: BackupSelectionSelectionTag[]; 
+  private _selectionTag?: BackupSelectionSelectionTag[] | cdktf.IResolvable; 
   public get selectionTag() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('selection_tag') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('selection_tag')));
   }
-  public set selectionTag(value: BackupSelectionSelectionTag[]) {
+  public set selectionTag(value: BackupSelectionSelectionTag[] | cdktf.IResolvable) {
     this._selectionTag = value;
   }
   public resetSelectionTag() {

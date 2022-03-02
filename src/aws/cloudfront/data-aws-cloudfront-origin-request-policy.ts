@@ -8,11 +8,11 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsCloudfrontOriginRequestPolicyConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/cloudfront_origin_request_policy.html#id DataAwsCloudfrontOriginRequestPolicy#id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/cloudfront_origin_request_policy#id DataAwsCloudfrontOriginRequestPolicy#id}
   */
   readonly id?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/cloudfront_origin_request_policy.html#name DataAwsCloudfrontOriginRequestPolicy#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/cloudfront_origin_request_policy#name DataAwsCloudfrontOriginRequestPolicy#name}
   */
   readonly name?: string;
 }
@@ -20,7 +20,7 @@ export class DataAwsCloudfrontOriginRequestPolicyCookiesConfigCookies extends cd
 
   // items - computed: true, optional: false, required: false
   public get items() {
-    return this.getListAttribute('items');
+    return cdktf.Fn.tolist(this.getListAttribute('items'));
   }
 }
 export class DataAwsCloudfrontOriginRequestPolicyCookiesConfig extends cdktf.ComplexComputedList {
@@ -33,14 +33,14 @@ export class DataAwsCloudfrontOriginRequestPolicyCookiesConfig extends cdktf.Com
   // cookies - computed: true, optional: false, required: false
   public get cookies() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('cookies') as any;
+    return this.interpolationForAttribute('cookies');
   }
 }
 export class DataAwsCloudfrontOriginRequestPolicyHeadersConfigHeaders extends cdktf.ComplexComputedList {
 
   // items - computed: true, optional: false, required: false
   public get items() {
-    return this.getListAttribute('items');
+    return cdktf.Fn.tolist(this.getListAttribute('items'));
   }
 }
 export class DataAwsCloudfrontOriginRequestPolicyHeadersConfig extends cdktf.ComplexComputedList {
@@ -53,14 +53,14 @@ export class DataAwsCloudfrontOriginRequestPolicyHeadersConfig extends cdktf.Com
   // headers - computed: true, optional: false, required: false
   public get headers() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('headers') as any;
+    return this.interpolationForAttribute('headers');
   }
 }
 export class DataAwsCloudfrontOriginRequestPolicyQueryStringsConfigQueryStrings extends cdktf.ComplexComputedList {
 
   // items - computed: true, optional: false, required: false
   public get items() {
-    return this.getListAttribute('items');
+    return cdktf.Fn.tolist(this.getListAttribute('items'));
   }
 }
 export class DataAwsCloudfrontOriginRequestPolicyQueryStringsConfig extends cdktf.ComplexComputedList {
@@ -73,12 +73,12 @@ export class DataAwsCloudfrontOriginRequestPolicyQueryStringsConfig extends cdkt
   // query_strings - computed: true, optional: false, required: false
   public get queryStrings() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('query_strings') as any;
+    return this.interpolationForAttribute('query_strings');
   }
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/cloudfront_origin_request_policy.html aws_cloudfront_origin_request_policy}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/cloudfront_origin_request_policy aws_cloudfront_origin_request_policy}
 */
 export class DataAwsCloudfrontOriginRequestPolicy extends cdktf.TerraformDataSource {
 
@@ -92,7 +92,7 @@ export class DataAwsCloudfrontOriginRequestPolicy extends cdktf.TerraformDataSou
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/cloudfront_origin_request_policy.html aws_cloudfront_origin_request_policy} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/cloudfront_origin_request_policy aws_cloudfront_origin_request_policy} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -124,7 +124,7 @@ export class DataAwsCloudfrontOriginRequestPolicy extends cdktf.TerraformDataSou
 
   // cookies_config - computed: true, optional: false, required: false
   public cookiesConfig(index: string) {
-    return new DataAwsCloudfrontOriginRequestPolicyCookiesConfig(this, 'cookies_config', index);
+    return new DataAwsCloudfrontOriginRequestPolicyCookiesConfig(this, 'cookies_config', index, false);
   }
 
   // etag - computed: true, optional: false, required: false
@@ -134,7 +134,7 @@ export class DataAwsCloudfrontOriginRequestPolicy extends cdktf.TerraformDataSou
 
   // headers_config - computed: true, optional: false, required: false
   public headersConfig(index: string) {
-    return new DataAwsCloudfrontOriginRequestPolicyHeadersConfig(this, 'headers_config', index);
+    return new DataAwsCloudfrontOriginRequestPolicyHeadersConfig(this, 'headers_config', index, false);
   }
 
   // id - computed: false, optional: true, required: false
@@ -171,7 +171,7 @@ export class DataAwsCloudfrontOriginRequestPolicy extends cdktf.TerraformDataSou
 
   // query_strings_config - computed: true, optional: false, required: false
   public queryStringsConfig(index: string) {
-    return new DataAwsCloudfrontOriginRequestPolicyQueryStringsConfig(this, 'query_strings_config', index);
+    return new DataAwsCloudfrontOriginRequestPolicyQueryStringsConfig(this, 'query_strings_config', index, false);
   }
 
   // =========

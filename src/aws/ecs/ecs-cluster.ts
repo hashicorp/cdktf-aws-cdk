@@ -8,65 +8,65 @@ import * as cdktf from 'cdktf';
 */
 export interface EcsClusterConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#capacity_providers EcsCluster#capacity_providers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#capacity_providers EcsCluster#capacity_providers}
   */
   readonly capacityProviders?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#name EcsCluster#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#name EcsCluster#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#tags EcsCluster#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#tags EcsCluster#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#tags_all EcsCluster#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#tags_all EcsCluster#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * configuration block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#configuration EcsCluster#configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#configuration EcsCluster#configuration}
   */
   readonly configuration?: EcsClusterConfiguration;
   /**
   * default_capacity_provider_strategy block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#default_capacity_provider_strategy EcsCluster#default_capacity_provider_strategy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#default_capacity_provider_strategy EcsCluster#default_capacity_provider_strategy}
   */
-  readonly defaultCapacityProviderStrategy?: EcsClusterDefaultCapacityProviderStrategy[];
+  readonly defaultCapacityProviderStrategy?: EcsClusterDefaultCapacityProviderStrategy[] | cdktf.IResolvable;
   /**
   * setting block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#setting EcsCluster#setting}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#setting EcsCluster#setting}
   */
-  readonly setting?: EcsClusterSetting[];
+  readonly setting?: EcsClusterSetting[] | cdktf.IResolvable;
 }
 export interface EcsClusterConfigurationExecuteCommandConfigurationLogConfiguration {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#cloud_watch_encryption_enabled EcsCluster#cloud_watch_encryption_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#cloud_watch_encryption_enabled EcsCluster#cloud_watch_encryption_enabled}
   */
   readonly cloudWatchEncryptionEnabled?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#cloud_watch_log_group_name EcsCluster#cloud_watch_log_group_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#cloud_watch_log_group_name EcsCluster#cloud_watch_log_group_name}
   */
   readonly cloudWatchLogGroupName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#s3_bucket_encryption_enabled EcsCluster#s3_bucket_encryption_enabled}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#s3_bucket_encryption_enabled EcsCluster#s3_bucket_encryption_enabled}
   */
   readonly s3BucketEncryptionEnabled?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#s3_bucket_name EcsCluster#s3_bucket_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#s3_bucket_name EcsCluster#s3_bucket_name}
   */
   readonly s3BucketName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#s3_key_prefix EcsCluster#s3_key_prefix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#s3_key_prefix EcsCluster#s3_key_prefix}
   */
   readonly s3KeyPrefix?: string;
 }
 
 export function ecsClusterConfigurationExecuteCommandConfigurationLogConfigurationToTerraform(struct?: EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationOutputReference | EcsClusterConfigurationExecuteCommandConfigurationLogConfiguration): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -80,35 +80,37 @@ export function ecsClusterConfigurationExecuteCommandConfigurationLogConfigurati
 }
 
 export class EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): EcsClusterConfigurationExecuteCommandConfigurationLogConfiguration | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._cloudWatchEncryptionEnabled) {
+    if (this._cloudWatchEncryptionEnabled !== undefined) {
       hasAnyValues = true;
       internalValueResult.cloudWatchEncryptionEnabled = this._cloudWatchEncryptionEnabled;
     }
-    if (this._cloudWatchLogGroupName) {
+    if (this._cloudWatchLogGroupName !== undefined) {
       hasAnyValues = true;
       internalValueResult.cloudWatchLogGroupName = this._cloudWatchLogGroupName;
     }
-    if (this._s3BucketEncryptionEnabled) {
+    if (this._s3BucketEncryptionEnabled !== undefined) {
       hasAnyValues = true;
       internalValueResult.s3BucketEncryptionEnabled = this._s3BucketEncryptionEnabled;
     }
-    if (this._s3BucketName) {
+    if (this._s3BucketName !== undefined) {
       hasAnyValues = true;
       internalValueResult.s3BucketName = this._s3BucketName;
     }
-    if (this._s3KeyPrefix) {
+    if (this._s3KeyPrefix !== undefined) {
       hasAnyValues = true;
       internalValueResult.s3KeyPrefix = this._s3KeyPrefix;
     }
@@ -117,6 +119,7 @@ export class EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationO
 
   public set internalValue(value: EcsClusterConfigurationExecuteCommandConfigurationLogConfiguration | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._cloudWatchEncryptionEnabled = undefined;
       this._cloudWatchLogGroupName = undefined;
       this._s3BucketEncryptionEnabled = undefined;
@@ -124,6 +127,7 @@ export class EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationO
       this._s3KeyPrefix = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._cloudWatchEncryptionEnabled = value.cloudWatchEncryptionEnabled;
       this._cloudWatchLogGroupName = value.cloudWatchLogGroupName;
       this._s3BucketEncryptionEnabled = value.s3BucketEncryptionEnabled;
@@ -135,7 +139,7 @@ export class EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationO
   // cloud_watch_encryption_enabled - computed: false, optional: true, required: false
   private _cloudWatchEncryptionEnabled?: boolean | cdktf.IResolvable; 
   public get cloudWatchEncryptionEnabled() {
-    return this.getBooleanAttribute('cloud_watch_encryption_enabled') as any;
+    return this.getBooleanAttribute('cloud_watch_encryption_enabled');
   }
   public set cloudWatchEncryptionEnabled(value: boolean | cdktf.IResolvable) {
     this._cloudWatchEncryptionEnabled = value;
@@ -167,7 +171,7 @@ export class EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationO
   // s3_bucket_encryption_enabled - computed: false, optional: true, required: false
   private _s3BucketEncryptionEnabled?: boolean | cdktf.IResolvable; 
   public get s3BucketEncryptionEnabled() {
-    return this.getBooleanAttribute('s3_bucket_encryption_enabled') as any;
+    return this.getBooleanAttribute('s3_bucket_encryption_enabled');
   }
   public set s3BucketEncryptionEnabled(value: boolean | cdktf.IResolvable) {
     this._s3BucketEncryptionEnabled = value;
@@ -214,23 +218,23 @@ export class EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationO
 }
 export interface EcsClusterConfigurationExecuteCommandConfiguration {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#kms_key_id EcsCluster#kms_key_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#kms_key_id EcsCluster#kms_key_id}
   */
   readonly kmsKeyId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#logging EcsCluster#logging}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#logging EcsCluster#logging}
   */
   readonly logging?: string;
   /**
   * log_configuration block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#log_configuration EcsCluster#log_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#log_configuration EcsCluster#log_configuration}
   */
   readonly logConfiguration?: EcsClusterConfigurationExecuteCommandConfigurationLogConfiguration;
 }
 
 export function ecsClusterConfigurationExecuteCommandConfigurationToTerraform(struct?: EcsClusterConfigurationExecuteCommandConfigurationOutputReference | EcsClusterConfigurationExecuteCommandConfiguration): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -242,27 +246,29 @@ export function ecsClusterConfigurationExecuteCommandConfigurationToTerraform(st
 }
 
 export class EcsClusterConfigurationExecuteCommandConfigurationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): EcsClusterConfigurationExecuteCommandConfiguration | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._kmsKeyId) {
+    if (this._kmsKeyId !== undefined) {
       hasAnyValues = true;
       internalValueResult.kmsKeyId = this._kmsKeyId;
     }
-    if (this._logging) {
+    if (this._logging !== undefined) {
       hasAnyValues = true;
       internalValueResult.logging = this._logging;
     }
-    if (this._logConfiguration) {
+    if (this._logConfiguration?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.logConfiguration = this._logConfiguration?.internalValue;
     }
@@ -271,11 +277,13 @@ export class EcsClusterConfigurationExecuteCommandConfigurationOutputReference e
 
   public set internalValue(value: EcsClusterConfigurationExecuteCommandConfiguration | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._kmsKeyId = undefined;
       this._logging = undefined;
       this._logConfiguration.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._kmsKeyId = value.kmsKeyId;
       this._logging = value.logging;
       this._logConfiguration.internalValue = value.logConfiguration;
@@ -315,7 +323,7 @@ export class EcsClusterConfigurationExecuteCommandConfigurationOutputReference e
   }
 
   // log_configuration - computed: false, optional: true, required: false
-  private _logConfiguration = new EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationOutputReference(this as any, "log_configuration", true);
+  private _logConfiguration = new EcsClusterConfigurationExecuteCommandConfigurationLogConfigurationOutputReference(this, "log_configuration", true);
   public get logConfiguration() {
     return this._logConfiguration;
   }
@@ -334,13 +342,13 @@ export interface EcsClusterConfiguration {
   /**
   * execute_command_configuration block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#execute_command_configuration EcsCluster#execute_command_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#execute_command_configuration EcsCluster#execute_command_configuration}
   */
   readonly executeCommandConfiguration?: EcsClusterConfigurationExecuteCommandConfiguration;
 }
 
 export function ecsClusterConfigurationToTerraform(struct?: EcsClusterConfigurationOutputReference | EcsClusterConfiguration): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -350,19 +358,21 @@ export function ecsClusterConfigurationToTerraform(struct?: EcsClusterConfigurat
 }
 
 export class EcsClusterConfigurationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): EcsClusterConfiguration | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._executeCommandConfiguration) {
+    if (this._executeCommandConfiguration?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.executeCommandConfiguration = this._executeCommandConfiguration?.internalValue;
     }
@@ -371,15 +381,17 @@ export class EcsClusterConfigurationOutputReference extends cdktf.ComplexObject 
 
   public set internalValue(value: EcsClusterConfiguration | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._executeCommandConfiguration.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._executeCommandConfiguration.internalValue = value.executeCommandConfiguration;
     }
   }
 
   // execute_command_configuration - computed: false, optional: true, required: false
-  private _executeCommandConfiguration = new EcsClusterConfigurationExecuteCommandConfigurationOutputReference(this as any, "execute_command_configuration", true);
+  private _executeCommandConfiguration = new EcsClusterConfigurationExecuteCommandConfigurationOutputReference(this, "execute_command_configuration", true);
   public get executeCommandConfiguration() {
     return this._executeCommandConfiguration;
   }
@@ -396,21 +408,21 @@ export class EcsClusterConfigurationOutputReference extends cdktf.ComplexObject 
 }
 export interface EcsClusterDefaultCapacityProviderStrategy {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#base EcsCluster#base}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#base EcsCluster#base}
   */
   readonly base?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#capacity_provider EcsCluster#capacity_provider}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#capacity_provider EcsCluster#capacity_provider}
   */
   readonly capacityProvider: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#weight EcsCluster#weight}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#weight EcsCluster#weight}
   */
   readonly weight?: number;
 }
 
-export function ecsClusterDefaultCapacityProviderStrategyToTerraform(struct?: EcsClusterDefaultCapacityProviderStrategy): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function ecsClusterDefaultCapacityProviderStrategyToTerraform(struct?: EcsClusterDefaultCapacityProviderStrategy | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -423,17 +435,17 @@ export function ecsClusterDefaultCapacityProviderStrategyToTerraform(struct?: Ec
 
 export interface EcsClusterSetting {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#name EcsCluster#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#name EcsCluster#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html#value EcsCluster#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster#value EcsCluster#value}
   */
   readonly value: string;
 }
 
-export function ecsClusterSettingToTerraform(struct?: EcsClusterSetting): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function ecsClusterSettingToTerraform(struct?: EcsClusterSetting | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -445,7 +457,7 @@ export function ecsClusterSettingToTerraform(struct?: EcsClusterSetting): any {
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html aws_ecs_cluster}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster aws_ecs_cluster}
 */
 export class EcsCluster extends cdktf.TerraformResource {
 
@@ -459,7 +471,7 @@ export class EcsCluster extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html aws_ecs_cluster} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/ecs_cluster aws_ecs_cluster} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -497,7 +509,7 @@ export class EcsCluster extends cdktf.TerraformResource {
   // capacity_providers - computed: true, optional: true, required: false
   private _capacityProviders?: string[]; 
   public get capacityProviders() {
-    return this.getListAttribute('capacity_providers');
+    return cdktf.Fn.tolist(this.getListAttribute('capacity_providers'));
   }
   public set capacityProviders(value: string[]) {
     this._capacityProviders = value;
@@ -529,12 +541,11 @@ export class EcsCluster extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -546,12 +557,11 @@ export class EcsCluster extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -563,7 +573,7 @@ export class EcsCluster extends cdktf.TerraformResource {
   }
 
   // configuration - computed: false, optional: true, required: false
-  private _configuration = new EcsClusterConfigurationOutputReference(this as any, "configuration", true);
+  private _configuration = new EcsClusterConfigurationOutputReference(this, "configuration", true);
   public get configuration() {
     return this._configuration;
   }
@@ -579,12 +589,12 @@ export class EcsCluster extends cdktf.TerraformResource {
   }
 
   // default_capacity_provider_strategy - computed: false, optional: true, required: false
-  private _defaultCapacityProviderStrategy?: EcsClusterDefaultCapacityProviderStrategy[]; 
+  private _defaultCapacityProviderStrategy?: EcsClusterDefaultCapacityProviderStrategy[] | cdktf.IResolvable; 
   public get defaultCapacityProviderStrategy() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('default_capacity_provider_strategy') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('default_capacity_provider_strategy')));
   }
-  public set defaultCapacityProviderStrategy(value: EcsClusterDefaultCapacityProviderStrategy[]) {
+  public set defaultCapacityProviderStrategy(value: EcsClusterDefaultCapacityProviderStrategy[] | cdktf.IResolvable) {
     this._defaultCapacityProviderStrategy = value;
   }
   public resetDefaultCapacityProviderStrategy() {
@@ -596,12 +606,12 @@ export class EcsCluster extends cdktf.TerraformResource {
   }
 
   // setting - computed: false, optional: true, required: false
-  private _setting?: EcsClusterSetting[]; 
+  private _setting?: EcsClusterSetting[] | cdktf.IResolvable; 
   public get setting() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('setting') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('setting')));
   }
-  public set setting(value: EcsClusterSetting[]) {
+  public set setting(value: EcsClusterSetting[] | cdktf.IResolvable) {
     this._setting = value;
   }
   public resetSetting() {
@@ -620,8 +630,8 @@ export class EcsCluster extends cdktf.TerraformResource {
     return {
       capacity_providers: cdktf.listMapper(cdktf.stringToTerraform)(this._capacityProviders),
       name: cdktf.stringToTerraform(this._name),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       configuration: ecsClusterConfigurationToTerraform(this._configuration.internalValue),
       default_capacity_provider_strategy: cdktf.listMapper(ecsClusterDefaultCapacityProviderStrategyToTerraform)(this._defaultCapacityProviderStrategy),
       setting: cdktf.listMapper(ecsClusterSettingToTerraform)(this._setting),

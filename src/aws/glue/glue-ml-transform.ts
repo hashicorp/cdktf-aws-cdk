@@ -8,59 +8,59 @@ import * as cdktf from 'cdktf';
 */
 export interface GlueMlTransformConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#description GlueMlTransform#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#description GlueMlTransform#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#glue_version GlueMlTransform#glue_version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#glue_version GlueMlTransform#glue_version}
   */
   readonly glueVersion?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#max_capacity GlueMlTransform#max_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#max_capacity GlueMlTransform#max_capacity}
   */
   readonly maxCapacity?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#max_retries GlueMlTransform#max_retries}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#max_retries GlueMlTransform#max_retries}
   */
   readonly maxRetries?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#name GlueMlTransform#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#name GlueMlTransform#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#number_of_workers GlueMlTransform#number_of_workers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#number_of_workers GlueMlTransform#number_of_workers}
   */
   readonly numberOfWorkers?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#role_arn GlueMlTransform#role_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#role_arn GlueMlTransform#role_arn}
   */
   readonly roleArn: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#tags GlueMlTransform#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#tags GlueMlTransform#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#tags_all GlueMlTransform#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#tags_all GlueMlTransform#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#timeout GlueMlTransform#timeout}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#timeout GlueMlTransform#timeout}
   */
   readonly timeout?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#worker_type GlueMlTransform#worker_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#worker_type GlueMlTransform#worker_type}
   */
   readonly workerType?: string;
   /**
   * input_record_tables block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#input_record_tables GlueMlTransform#input_record_tables}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#input_record_tables GlueMlTransform#input_record_tables}
   */
-  readonly inputRecordTables: GlueMlTransformInputRecordTables[];
+  readonly inputRecordTables: GlueMlTransformInputRecordTables[] | cdktf.IResolvable;
   /**
   * parameters block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#parameters GlueMlTransform#parameters}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#parameters GlueMlTransform#parameters}
   */
   readonly parameters: GlueMlTransformParameters;
 }
@@ -78,25 +78,25 @@ export class GlueMlTransformSchema extends cdktf.ComplexComputedList {
 }
 export interface GlueMlTransformInputRecordTables {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#catalog_id GlueMlTransform#catalog_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#catalog_id GlueMlTransform#catalog_id}
   */
   readonly catalogId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#connection_name GlueMlTransform#connection_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#connection_name GlueMlTransform#connection_name}
   */
   readonly connectionName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#database_name GlueMlTransform#database_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#database_name GlueMlTransform#database_name}
   */
   readonly databaseName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#table_name GlueMlTransform#table_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#table_name GlueMlTransform#table_name}
   */
   readonly tableName: string;
 }
 
-export function glueMlTransformInputRecordTablesToTerraform(struct?: GlueMlTransformInputRecordTables): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function glueMlTransformInputRecordTablesToTerraform(struct?: GlueMlTransformInputRecordTables | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -110,25 +110,25 @@ export function glueMlTransformInputRecordTablesToTerraform(struct?: GlueMlTrans
 
 export interface GlueMlTransformParametersFindMatchesParameters {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#accuracy_cost_trade_off GlueMlTransform#accuracy_cost_trade_off}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#accuracy_cost_trade_off GlueMlTransform#accuracy_cost_trade_off}
   */
   readonly accuracyCostTradeOff?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#enforce_provided_labels GlueMlTransform#enforce_provided_labels}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#enforce_provided_labels GlueMlTransform#enforce_provided_labels}
   */
   readonly enforceProvidedLabels?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#precision_recall_trade_off GlueMlTransform#precision_recall_trade_off}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#precision_recall_trade_off GlueMlTransform#precision_recall_trade_off}
   */
   readonly precisionRecallTradeOff?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#primary_key_column_name GlueMlTransform#primary_key_column_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#primary_key_column_name GlueMlTransform#primary_key_column_name}
   */
   readonly primaryKeyColumnName?: string;
 }
 
 export function glueMlTransformParametersFindMatchesParametersToTerraform(struct?: GlueMlTransformParametersFindMatchesParametersOutputReference | GlueMlTransformParametersFindMatchesParameters): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -141,31 +141,33 @@ export function glueMlTransformParametersFindMatchesParametersToTerraform(struct
 }
 
 export class GlueMlTransformParametersFindMatchesParametersOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): GlueMlTransformParametersFindMatchesParameters | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._accuracyCostTradeOff) {
+    if (this._accuracyCostTradeOff !== undefined) {
       hasAnyValues = true;
       internalValueResult.accuracyCostTradeOff = this._accuracyCostTradeOff;
     }
-    if (this._enforceProvidedLabels) {
+    if (this._enforceProvidedLabels !== undefined) {
       hasAnyValues = true;
       internalValueResult.enforceProvidedLabels = this._enforceProvidedLabels;
     }
-    if (this._precisionRecallTradeOff) {
+    if (this._precisionRecallTradeOff !== undefined) {
       hasAnyValues = true;
       internalValueResult.precisionRecallTradeOff = this._precisionRecallTradeOff;
     }
-    if (this._primaryKeyColumnName) {
+    if (this._primaryKeyColumnName !== undefined) {
       hasAnyValues = true;
       internalValueResult.primaryKeyColumnName = this._primaryKeyColumnName;
     }
@@ -174,12 +176,14 @@ export class GlueMlTransformParametersFindMatchesParametersOutputReference exten
 
   public set internalValue(value: GlueMlTransformParametersFindMatchesParameters | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._accuracyCostTradeOff = undefined;
       this._enforceProvidedLabels = undefined;
       this._precisionRecallTradeOff = undefined;
       this._primaryKeyColumnName = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._accuracyCostTradeOff = value.accuracyCostTradeOff;
       this._enforceProvidedLabels = value.enforceProvidedLabels;
       this._precisionRecallTradeOff = value.precisionRecallTradeOff;
@@ -206,7 +210,7 @@ export class GlueMlTransformParametersFindMatchesParametersOutputReference exten
   // enforce_provided_labels - computed: false, optional: true, required: false
   private _enforceProvidedLabels?: boolean | cdktf.IResolvable; 
   public get enforceProvidedLabels() {
-    return this.getBooleanAttribute('enforce_provided_labels') as any;
+    return this.getBooleanAttribute('enforce_provided_labels');
   }
   public set enforceProvidedLabels(value: boolean | cdktf.IResolvable) {
     this._enforceProvidedLabels = value;
@@ -253,19 +257,19 @@ export class GlueMlTransformParametersFindMatchesParametersOutputReference exten
 }
 export interface GlueMlTransformParameters {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#transform_type GlueMlTransform#transform_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#transform_type GlueMlTransform#transform_type}
   */
   readonly transformType: string;
   /**
   * find_matches_parameters block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#find_matches_parameters GlueMlTransform#find_matches_parameters}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform#find_matches_parameters GlueMlTransform#find_matches_parameters}
   */
   readonly findMatchesParameters: GlueMlTransformParametersFindMatchesParameters;
 }
 
 export function glueMlTransformParametersToTerraform(struct?: GlueMlTransformParametersOutputReference | GlueMlTransformParameters): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -276,23 +280,25 @@ export function glueMlTransformParametersToTerraform(struct?: GlueMlTransformPar
 }
 
 export class GlueMlTransformParametersOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): GlueMlTransformParameters | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._transformType) {
+    if (this._transformType !== undefined) {
       hasAnyValues = true;
       internalValueResult.transformType = this._transformType;
     }
-    if (this._findMatchesParameters) {
+    if (this._findMatchesParameters?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.findMatchesParameters = this._findMatchesParameters?.internalValue;
     }
@@ -301,10 +307,12 @@ export class GlueMlTransformParametersOutputReference extends cdktf.ComplexObjec
 
   public set internalValue(value: GlueMlTransformParameters | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._transformType = undefined;
       this._findMatchesParameters.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._transformType = value.transformType;
       this._findMatchesParameters.internalValue = value.findMatchesParameters;
     }
@@ -324,7 +332,7 @@ export class GlueMlTransformParametersOutputReference extends cdktf.ComplexObjec
   }
 
   // find_matches_parameters - computed: false, optional: false, required: true
-  private _findMatchesParameters = new GlueMlTransformParametersFindMatchesParametersOutputReference(this as any, "find_matches_parameters", true);
+  private _findMatchesParameters = new GlueMlTransformParametersFindMatchesParametersOutputReference(this, "find_matches_parameters", true);
   public get findMatchesParameters() {
     return this._findMatchesParameters;
   }
@@ -338,7 +346,7 @@ export class GlueMlTransformParametersOutputReference extends cdktf.ComplexObjec
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html aws_glue_ml_transform}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform aws_glue_ml_transform}
 */
 export class GlueMlTransform extends cdktf.TerraformResource {
 
@@ -352,7 +360,7 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html aws_glue_ml_transform} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform aws_glue_ml_transform} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -511,16 +519,15 @@ export class GlueMlTransform extends cdktf.TerraformResource {
 
   // schema - computed: true, optional: false, required: false
   public schema(index: string) {
-    return new GlueMlTransformSchema(this, 'schema', index);
+    return new GlueMlTransformSchema(this, 'schema', index, false);
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -532,12 +539,11 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -581,12 +587,12 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
 
   // input_record_tables - computed: false, optional: false, required: true
-  private _inputRecordTables?: GlueMlTransformInputRecordTables[]; 
+  private _inputRecordTables?: GlueMlTransformInputRecordTables[] | cdktf.IResolvable; 
   public get inputRecordTables() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('input_record_tables') as any;
+    return this.interpolationForAttribute('input_record_tables');
   }
-  public set inputRecordTables(value: GlueMlTransformInputRecordTables[]) {
+  public set inputRecordTables(value: GlueMlTransformInputRecordTables[] | cdktf.IResolvable) {
     this._inputRecordTables = value;
   }
   // Temporarily expose input value. Use with caution.
@@ -595,7 +601,7 @@ export class GlueMlTransform extends cdktf.TerraformResource {
   }
 
   // parameters - computed: false, optional: false, required: true
-  private _parameters = new GlueMlTransformParametersOutputReference(this as any, "parameters", true);
+  private _parameters = new GlueMlTransformParametersOutputReference(this, "parameters", true);
   public get parameters() {
     return this._parameters;
   }
@@ -620,8 +626,8 @@ export class GlueMlTransform extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       number_of_workers: cdktf.numberToTerraform(this._numberOfWorkers),
       role_arn: cdktf.stringToTerraform(this._roleArn),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       timeout: cdktf.numberToTerraform(this._timeout),
       worker_type: cdktf.stringToTerraform(this._workerType),
       input_record_tables: cdktf.listMapper(glueMlTransformInputRecordTablesToTerraform)(this._inputRecordTables),

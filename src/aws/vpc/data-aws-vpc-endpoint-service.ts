@@ -8,41 +8,41 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsVpcEndpointServiceConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service.html#service DataAwsVpcEndpointService#service}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service#service DataAwsVpcEndpointService#service}
   */
   readonly service?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service.html#service_name DataAwsVpcEndpointService#service_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service#service_name DataAwsVpcEndpointService#service_name}
   */
   readonly serviceName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service.html#service_type DataAwsVpcEndpointService#service_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service#service_type DataAwsVpcEndpointService#service_type}
   */
   readonly serviceType?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service.html#tags DataAwsVpcEndpointService#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service#tags DataAwsVpcEndpointService#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
   * filter block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service.html#filter DataAwsVpcEndpointService#filter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service#filter DataAwsVpcEndpointService#filter}
   */
-  readonly filter?: DataAwsVpcEndpointServiceFilter[];
+  readonly filter?: DataAwsVpcEndpointServiceFilter[] | cdktf.IResolvable;
 }
 export interface DataAwsVpcEndpointServiceFilter {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service.html#name DataAwsVpcEndpointService#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service#name DataAwsVpcEndpointService#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service.html#values DataAwsVpcEndpointService#values}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service#values DataAwsVpcEndpointService#values}
   */
   readonly values: string[];
 }
 
-export function dataAwsVpcEndpointServiceFilterToTerraform(struct?: DataAwsVpcEndpointServiceFilter): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function dataAwsVpcEndpointServiceFilterToTerraform(struct?: DataAwsVpcEndpointServiceFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -54,7 +54,7 @@ export function dataAwsVpcEndpointServiceFilterToTerraform(struct?: DataAwsVpcEn
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service.html aws_vpc_endpoint_service}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service aws_vpc_endpoint_service}
 */
 export class DataAwsVpcEndpointService extends cdktf.TerraformDataSource {
 
@@ -68,7 +68,7 @@ export class DataAwsVpcEndpointService extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service.html aws_vpc_endpoint_service} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/vpc_endpoint_service aws_vpc_endpoint_service} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -98,7 +98,7 @@ export class DataAwsVpcEndpointService extends cdktf.TerraformDataSource {
 
   // acceptance_required - computed: true, optional: false, required: false
   public get acceptanceRequired() {
-    return this.getBooleanAttribute('acceptance_required') as any;
+    return this.getBooleanAttribute('acceptance_required');
   }
 
   // arn - computed: true, optional: false, required: false
@@ -108,12 +108,12 @@ export class DataAwsVpcEndpointService extends cdktf.TerraformDataSource {
 
   // availability_zones - computed: true, optional: false, required: false
   public get availabilityZones() {
-    return this.getListAttribute('availability_zones');
+    return cdktf.Fn.tolist(this.getListAttribute('availability_zones'));
   }
 
   // base_endpoint_dns_names - computed: true, optional: false, required: false
   public get baseEndpointDnsNames() {
-    return this.getListAttribute('base_endpoint_dns_names');
+    return cdktf.Fn.tolist(this.getListAttribute('base_endpoint_dns_names'));
   }
 
   // id - computed: true, optional: true, required: false
@@ -123,7 +123,7 @@ export class DataAwsVpcEndpointService extends cdktf.TerraformDataSource {
 
   // manages_vpc_endpoints - computed: true, optional: false, required: false
   public get managesVpcEndpoints() {
-    return this.getBooleanAttribute('manages_vpc_endpoints') as any;
+    return this.getBooleanAttribute('manages_vpc_endpoints');
   }
 
   // owner - computed: true, optional: false, required: false
@@ -190,12 +190,11 @@ export class DataAwsVpcEndpointService extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -208,16 +207,16 @@ export class DataAwsVpcEndpointService extends cdktf.TerraformDataSource {
 
   // vpc_endpoint_policy_supported - computed: true, optional: false, required: false
   public get vpcEndpointPolicySupported() {
-    return this.getBooleanAttribute('vpc_endpoint_policy_supported') as any;
+    return this.getBooleanAttribute('vpc_endpoint_policy_supported');
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsVpcEndpointServiceFilter[]; 
+  private _filter?: DataAwsVpcEndpointServiceFilter[] | cdktf.IResolvable; 
   public get filter() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('filter') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('filter')));
   }
-  public set filter(value: DataAwsVpcEndpointServiceFilter[]) {
+  public set filter(value: DataAwsVpcEndpointServiceFilter[] | cdktf.IResolvable) {
     this._filter = value;
   }
   public resetFilter() {
@@ -237,7 +236,7 @@ export class DataAwsVpcEndpointService extends cdktf.TerraformDataSource {
       service: cdktf.stringToTerraform(this._service),
       service_name: cdktf.stringToTerraform(this._serviceName),
       service_type: cdktf.stringToTerraform(this._serviceType),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       filter: cdktf.listMapper(dataAwsVpcEndpointServiceFilterToTerraform)(this._filter),
     };
   }

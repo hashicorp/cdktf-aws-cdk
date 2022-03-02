@@ -8,69 +8,69 @@ import * as cdktf from 'cdktf';
 */
 export interface VpcConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#assign_generated_ipv6_cidr_block Vpc#assign_generated_ipv6_cidr_block}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc#assign_generated_ipv6_cidr_block Vpc#assign_generated_ipv6_cidr_block}
   */
   readonly assignGeneratedIpv6CidrBlock?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#cidr_block Vpc#cidr_block}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc#cidr_block Vpc#cidr_block}
   */
   readonly cidrBlock?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#enable_classiclink Vpc#enable_classiclink}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc#enable_classiclink Vpc#enable_classiclink}
   */
   readonly enableClassiclink?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#enable_classiclink_dns_support Vpc#enable_classiclink_dns_support}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc#enable_classiclink_dns_support Vpc#enable_classiclink_dns_support}
   */
   readonly enableClassiclinkDnsSupport?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#enable_dns_hostnames Vpc#enable_dns_hostnames}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc#enable_dns_hostnames Vpc#enable_dns_hostnames}
   */
   readonly enableDnsHostnames?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#enable_dns_support Vpc#enable_dns_support}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc#enable_dns_support Vpc#enable_dns_support}
   */
   readonly enableDnsSupport?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#instance_tenancy Vpc#instance_tenancy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc#instance_tenancy Vpc#instance_tenancy}
   */
   readonly instanceTenancy?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#ipv4_ipam_pool_id Vpc#ipv4_ipam_pool_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc#ipv4_ipam_pool_id Vpc#ipv4_ipam_pool_id}
   */
   readonly ipv4IpamPoolId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#ipv4_netmask_length Vpc#ipv4_netmask_length}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc#ipv4_netmask_length Vpc#ipv4_netmask_length}
   */
   readonly ipv4NetmaskLength?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#ipv6_cidr_block Vpc#ipv6_cidr_block}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc#ipv6_cidr_block Vpc#ipv6_cidr_block}
   */
   readonly ipv6CidrBlock?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#ipv6_cidr_block_network_border_group Vpc#ipv6_cidr_block_network_border_group}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc#ipv6_cidr_block_network_border_group Vpc#ipv6_cidr_block_network_border_group}
   */
   readonly ipv6CidrBlockNetworkBorderGroup?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#ipv6_ipam_pool_id Vpc#ipv6_ipam_pool_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc#ipv6_ipam_pool_id Vpc#ipv6_ipam_pool_id}
   */
   readonly ipv6IpamPoolId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#ipv6_netmask_length Vpc#ipv6_netmask_length}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc#ipv6_netmask_length Vpc#ipv6_netmask_length}
   */
   readonly ipv6NetmaskLength?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#tags Vpc#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc#tags Vpc#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc.html#tags_all Vpc#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc#tags_all Vpc#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/vpc.html aws_vpc}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/vpc aws_vpc}
 */
 export class Vpc extends cdktf.TerraformResource {
 
@@ -84,7 +84,7 @@ export class Vpc extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/vpc.html aws_vpc} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/vpc aws_vpc} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -130,7 +130,7 @@ export class Vpc extends cdktf.TerraformResource {
   // assign_generated_ipv6_cidr_block - computed: false, optional: true, required: false
   private _assignGeneratedIpv6CidrBlock?: boolean | cdktf.IResolvable; 
   public get assignGeneratedIpv6CidrBlock() {
-    return this.getBooleanAttribute('assign_generated_ipv6_cidr_block') as any;
+    return this.getBooleanAttribute('assign_generated_ipv6_cidr_block');
   }
   public set assignGeneratedIpv6CidrBlock(value: boolean | cdktf.IResolvable) {
     this._assignGeneratedIpv6CidrBlock = value;
@@ -182,7 +182,7 @@ export class Vpc extends cdktf.TerraformResource {
   // enable_classiclink - computed: true, optional: true, required: false
   private _enableClassiclink?: boolean | cdktf.IResolvable; 
   public get enableClassiclink() {
-    return this.getBooleanAttribute('enable_classiclink') as any;
+    return this.getBooleanAttribute('enable_classiclink');
   }
   public set enableClassiclink(value: boolean | cdktf.IResolvable) {
     this._enableClassiclink = value;
@@ -198,7 +198,7 @@ export class Vpc extends cdktf.TerraformResource {
   // enable_classiclink_dns_support - computed: true, optional: true, required: false
   private _enableClassiclinkDnsSupport?: boolean | cdktf.IResolvable; 
   public get enableClassiclinkDnsSupport() {
-    return this.getBooleanAttribute('enable_classiclink_dns_support') as any;
+    return this.getBooleanAttribute('enable_classiclink_dns_support');
   }
   public set enableClassiclinkDnsSupport(value: boolean | cdktf.IResolvable) {
     this._enableClassiclinkDnsSupport = value;
@@ -214,7 +214,7 @@ export class Vpc extends cdktf.TerraformResource {
   // enable_dns_hostnames - computed: true, optional: true, required: false
   private _enableDnsHostnames?: boolean | cdktf.IResolvable; 
   public get enableDnsHostnames() {
-    return this.getBooleanAttribute('enable_dns_hostnames') as any;
+    return this.getBooleanAttribute('enable_dns_hostnames');
   }
   public set enableDnsHostnames(value: boolean | cdktf.IResolvable) {
     this._enableDnsHostnames = value;
@@ -230,7 +230,7 @@ export class Vpc extends cdktf.TerraformResource {
   // enable_dns_support - computed: false, optional: true, required: false
   private _enableDnsSupport?: boolean | cdktf.IResolvable; 
   public get enableDnsSupport() {
-    return this.getBooleanAttribute('enable_dns_support') as any;
+    return this.getBooleanAttribute('enable_dns_support');
   }
   public set enableDnsSupport(value: boolean | cdktf.IResolvable) {
     this._enableDnsSupport = value;
@@ -376,12 +376,11 @@ export class Vpc extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -393,12 +392,11 @@ export class Vpc extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -428,8 +426,8 @@ export class Vpc extends cdktf.TerraformResource {
       ipv6_cidr_block_network_border_group: cdktf.stringToTerraform(this._ipv6CidrBlockNetworkBorderGroup),
       ipv6_ipam_pool_id: cdktf.stringToTerraform(this._ipv6IpamPoolId),
       ipv6_netmask_length: cdktf.numberToTerraform(this._ipv6NetmaskLength),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
     };
   }
 }

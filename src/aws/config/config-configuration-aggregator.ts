@@ -8,47 +8,47 @@ import * as cdktf from 'cdktf';
 */
 export interface ConfigConfigurationAggregatorConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html#name ConfigConfigurationAggregator#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator#name ConfigConfigurationAggregator#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html#tags ConfigConfigurationAggregator#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator#tags ConfigConfigurationAggregator#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html#tags_all ConfigConfigurationAggregator#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator#tags_all ConfigConfigurationAggregator#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * account_aggregation_source block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html#account_aggregation_source ConfigConfigurationAggregator#account_aggregation_source}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator#account_aggregation_source ConfigConfigurationAggregator#account_aggregation_source}
   */
   readonly accountAggregationSource?: ConfigConfigurationAggregatorAccountAggregationSource;
   /**
   * organization_aggregation_source block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html#organization_aggregation_source ConfigConfigurationAggregator#organization_aggregation_source}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator#organization_aggregation_source ConfigConfigurationAggregator#organization_aggregation_source}
   */
   readonly organizationAggregationSource?: ConfigConfigurationAggregatorOrganizationAggregationSource;
 }
 export interface ConfigConfigurationAggregatorAccountAggregationSource {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html#account_ids ConfigConfigurationAggregator#account_ids}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator#account_ids ConfigConfigurationAggregator#account_ids}
   */
   readonly accountIds: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html#all_regions ConfigConfigurationAggregator#all_regions}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator#all_regions ConfigConfigurationAggregator#all_regions}
   */
   readonly allRegions?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html#regions ConfigConfigurationAggregator#regions}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator#regions ConfigConfigurationAggregator#regions}
   */
   readonly regions?: string[];
 }
 
 export function configConfigurationAggregatorAccountAggregationSourceToTerraform(struct?: ConfigConfigurationAggregatorAccountAggregationSourceOutputReference | ConfigConfigurationAggregatorAccountAggregationSource): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -60,27 +60,29 @@ export function configConfigurationAggregatorAccountAggregationSourceToTerraform
 }
 
 export class ConfigConfigurationAggregatorAccountAggregationSourceOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): ConfigConfigurationAggregatorAccountAggregationSource | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._accountIds) {
+    if (this._accountIds !== undefined) {
       hasAnyValues = true;
       internalValueResult.accountIds = this._accountIds;
     }
-    if (this._allRegions) {
+    if (this._allRegions !== undefined) {
       hasAnyValues = true;
       internalValueResult.allRegions = this._allRegions;
     }
-    if (this._regions) {
+    if (this._regions !== undefined) {
       hasAnyValues = true;
       internalValueResult.regions = this._regions;
     }
@@ -89,11 +91,13 @@ export class ConfigConfigurationAggregatorAccountAggregationSourceOutputReferenc
 
   public set internalValue(value: ConfigConfigurationAggregatorAccountAggregationSource | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._accountIds = undefined;
       this._allRegions = undefined;
       this._regions = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._accountIds = value.accountIds;
       this._allRegions = value.allRegions;
       this._regions = value.regions;
@@ -116,7 +120,7 @@ export class ConfigConfigurationAggregatorAccountAggregationSourceOutputReferenc
   // all_regions - computed: false, optional: true, required: false
   private _allRegions?: boolean | cdktf.IResolvable; 
   public get allRegions() {
-    return this.getBooleanAttribute('all_regions') as any;
+    return this.getBooleanAttribute('all_regions');
   }
   public set allRegions(value: boolean | cdktf.IResolvable) {
     this._allRegions = value;
@@ -147,21 +151,21 @@ export class ConfigConfigurationAggregatorAccountAggregationSourceOutputReferenc
 }
 export interface ConfigConfigurationAggregatorOrganizationAggregationSource {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html#all_regions ConfigConfigurationAggregator#all_regions}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator#all_regions ConfigConfigurationAggregator#all_regions}
   */
   readonly allRegions?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html#regions ConfigConfigurationAggregator#regions}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator#regions ConfigConfigurationAggregator#regions}
   */
   readonly regions?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html#role_arn ConfigConfigurationAggregator#role_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator#role_arn ConfigConfigurationAggregator#role_arn}
   */
   readonly roleArn: string;
 }
 
 export function configConfigurationAggregatorOrganizationAggregationSourceToTerraform(struct?: ConfigConfigurationAggregatorOrganizationAggregationSourceOutputReference | ConfigConfigurationAggregatorOrganizationAggregationSource): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -173,27 +177,29 @@ export function configConfigurationAggregatorOrganizationAggregationSourceToTerr
 }
 
 export class ConfigConfigurationAggregatorOrganizationAggregationSourceOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): ConfigConfigurationAggregatorOrganizationAggregationSource | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._allRegions) {
+    if (this._allRegions !== undefined) {
       hasAnyValues = true;
       internalValueResult.allRegions = this._allRegions;
     }
-    if (this._regions) {
+    if (this._regions !== undefined) {
       hasAnyValues = true;
       internalValueResult.regions = this._regions;
     }
-    if (this._roleArn) {
+    if (this._roleArn !== undefined) {
       hasAnyValues = true;
       internalValueResult.roleArn = this._roleArn;
     }
@@ -202,11 +208,13 @@ export class ConfigConfigurationAggregatorOrganizationAggregationSourceOutputRef
 
   public set internalValue(value: ConfigConfigurationAggregatorOrganizationAggregationSource | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._allRegions = undefined;
       this._regions = undefined;
       this._roleArn = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._allRegions = value.allRegions;
       this._regions = value.regions;
       this._roleArn = value.roleArn;
@@ -216,7 +224,7 @@ export class ConfigConfigurationAggregatorOrganizationAggregationSourceOutputRef
   // all_regions - computed: false, optional: true, required: false
   private _allRegions?: boolean | cdktf.IResolvable; 
   public get allRegions() {
-    return this.getBooleanAttribute('all_regions') as any;
+    return this.getBooleanAttribute('all_regions');
   }
   public set allRegions(value: boolean | cdktf.IResolvable) {
     this._allRegions = value;
@@ -260,7 +268,7 @@ export class ConfigConfigurationAggregatorOrganizationAggregationSourceOutputRef
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html aws_config_configuration_aggregator}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator aws_config_configuration_aggregator}
 */
 export class ConfigConfigurationAggregator extends cdktf.TerraformResource {
 
@@ -274,7 +282,7 @@ export class ConfigConfigurationAggregator extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html aws_config_configuration_aggregator} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator aws_config_configuration_aggregator} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -326,12 +334,11 @@ export class ConfigConfigurationAggregator extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -343,12 +350,11 @@ export class ConfigConfigurationAggregator extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -360,7 +366,7 @@ export class ConfigConfigurationAggregator extends cdktf.TerraformResource {
   }
 
   // account_aggregation_source - computed: false, optional: true, required: false
-  private _accountAggregationSource = new ConfigConfigurationAggregatorAccountAggregationSourceOutputReference(this as any, "account_aggregation_source", true);
+  private _accountAggregationSource = new ConfigConfigurationAggregatorAccountAggregationSourceOutputReference(this, "account_aggregation_source", true);
   public get accountAggregationSource() {
     return this._accountAggregationSource;
   }
@@ -376,7 +382,7 @@ export class ConfigConfigurationAggregator extends cdktf.TerraformResource {
   }
 
   // organization_aggregation_source - computed: false, optional: true, required: false
-  private _organizationAggregationSource = new ConfigConfigurationAggregatorOrganizationAggregationSourceOutputReference(this as any, "organization_aggregation_source", true);
+  private _organizationAggregationSource = new ConfigConfigurationAggregatorOrganizationAggregationSourceOutputReference(this, "organization_aggregation_source", true);
   public get organizationAggregationSource() {
     return this._organizationAggregationSource;
   }
@@ -398,8 +404,8 @@ export class ConfigConfigurationAggregator extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       name: cdktf.stringToTerraform(this._name),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       account_aggregation_source: configConfigurationAggregatorAccountAggregationSourceToTerraform(this._accountAggregationSource.internalValue),
       organization_aggregation_source: configConfigurationAggregatorOrganizationAggregationSourceToTerraform(this._organizationAggregationSource.internalValue),
     };

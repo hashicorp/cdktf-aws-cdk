@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 */
 export interface SecurityhubInsightConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#group_by_attribute SecurityhubInsight#group_by_attribute}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#group_by_attribute SecurityhubInsight#group_by_attribute}
   */
   readonly groupByAttribute: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#name SecurityhubInsight#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#name SecurityhubInsight#name}
   */
   readonly name: string;
   /**
   * filters block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#filters SecurityhubInsight#filters}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#filters SecurityhubInsight#filters}
   */
   readonly filters: SecurityhubInsightFilters;
 }
 export interface SecurityhubInsightFiltersAwsAccountId {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersAwsAccountIdToTerraform(struct?: SecurityhubInsightFiltersAwsAccountId): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersAwsAccountIdToTerraform(struct?: SecurityhubInsightFiltersAwsAccountId | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -46,17 +46,17 @@ export function securityhubInsightFiltersAwsAccountIdToTerraform(struct?: Securi
 
 export interface SecurityhubInsightFiltersCompanyName {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersCompanyNameToTerraform(struct?: SecurityhubInsightFiltersCompanyName): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersCompanyNameToTerraform(struct?: SecurityhubInsightFiltersCompanyName | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -68,17 +68,17 @@ export function securityhubInsightFiltersCompanyNameToTerraform(struct?: Securit
 
 export interface SecurityhubInsightFiltersComplianceStatus {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersComplianceStatusToTerraform(struct?: SecurityhubInsightFiltersComplianceStatus): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersComplianceStatusToTerraform(struct?: SecurityhubInsightFiltersComplianceStatus | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -90,21 +90,21 @@ export function securityhubInsightFiltersComplianceStatusToTerraform(struct?: Se
 
 export interface SecurityhubInsightFiltersConfidence {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#eq SecurityhubInsight#eq}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#eq SecurityhubInsight#eq}
   */
   readonly eq?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#gte SecurityhubInsight#gte}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#gte SecurityhubInsight#gte}
   */
   readonly gte?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#lte SecurityhubInsight#lte}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#lte SecurityhubInsight#lte}
   */
   readonly lte?: string;
 }
 
-export function securityhubInsightFiltersConfidenceToTerraform(struct?: SecurityhubInsightFiltersConfidence): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersConfidenceToTerraform(struct?: SecurityhubInsightFiltersConfidence | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -117,17 +117,17 @@ export function securityhubInsightFiltersConfidenceToTerraform(struct?: Security
 
 export interface SecurityhubInsightFiltersCreatedAtDateRange {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#unit SecurityhubInsight#unit}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#unit SecurityhubInsight#unit}
   */
   readonly unit: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: number;
 }
 
 export function securityhubInsightFiltersCreatedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersCreatedAtDateRangeOutputReference | SecurityhubInsightFiltersCreatedAtDateRange): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -138,23 +138,25 @@ export function securityhubInsightFiltersCreatedAtDateRangeToTerraform(struct?: 
 }
 
 export class SecurityhubInsightFiltersCreatedAtDateRangeOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SecurityhubInsightFiltersCreatedAtDateRange | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._unit) {
+    if (this._unit !== undefined) {
       hasAnyValues = true;
       internalValueResult.unit = this._unit;
     }
-    if (this._value) {
+    if (this._value !== undefined) {
       hasAnyValues = true;
       internalValueResult.value = this._value;
     }
@@ -163,10 +165,12 @@ export class SecurityhubInsightFiltersCreatedAtDateRangeOutputReference extends 
 
   public set internalValue(value: SecurityhubInsightFiltersCreatedAtDateRange | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._unit = undefined;
       this._value = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._unit = value.unit;
       this._value = value.value;
     }
@@ -200,23 +204,23 @@ export class SecurityhubInsightFiltersCreatedAtDateRangeOutputReference extends 
 }
 export interface SecurityhubInsightFiltersCreatedAt {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#end SecurityhubInsight#end}
   */
   readonly end?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#start SecurityhubInsight#start}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#start SecurityhubInsight#start}
   */
   readonly start?: string;
   /**
   * date_range block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#date_range SecurityhubInsight#date_range}
   */
   readonly dateRange?: SecurityhubInsightFiltersCreatedAtDateRange;
 }
 
-export function securityhubInsightFiltersCreatedAtToTerraform(struct?: SecurityhubInsightFiltersCreatedAt): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersCreatedAtToTerraform(struct?: SecurityhubInsightFiltersCreatedAt | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -229,21 +233,21 @@ export function securityhubInsightFiltersCreatedAtToTerraform(struct?: Securityh
 
 export interface SecurityhubInsightFiltersCriticality {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#eq SecurityhubInsight#eq}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#eq SecurityhubInsight#eq}
   */
   readonly eq?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#gte SecurityhubInsight#gte}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#gte SecurityhubInsight#gte}
   */
   readonly gte?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#lte SecurityhubInsight#lte}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#lte SecurityhubInsight#lte}
   */
   readonly lte?: string;
 }
 
-export function securityhubInsightFiltersCriticalityToTerraform(struct?: SecurityhubInsightFiltersCriticality): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersCriticalityToTerraform(struct?: SecurityhubInsightFiltersCriticality | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -256,17 +260,17 @@ export function securityhubInsightFiltersCriticalityToTerraform(struct?: Securit
 
 export interface SecurityhubInsightFiltersDescription {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersDescriptionToTerraform(struct?: SecurityhubInsightFiltersDescription): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersDescriptionToTerraform(struct?: SecurityhubInsightFiltersDescription | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -278,21 +282,21 @@ export function securityhubInsightFiltersDescriptionToTerraform(struct?: Securit
 
 export interface SecurityhubInsightFiltersFindingProviderFieldsConfidence {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#eq SecurityhubInsight#eq}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#eq SecurityhubInsight#eq}
   */
   readonly eq?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#gte SecurityhubInsight#gte}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#gte SecurityhubInsight#gte}
   */
   readonly gte?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#lte SecurityhubInsight#lte}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#lte SecurityhubInsight#lte}
   */
   readonly lte?: string;
 }
 
-export function securityhubInsightFiltersFindingProviderFieldsConfidenceToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsConfidence): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersFindingProviderFieldsConfidenceToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsConfidence | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -305,21 +309,21 @@ export function securityhubInsightFiltersFindingProviderFieldsConfidenceToTerraf
 
 export interface SecurityhubInsightFiltersFindingProviderFieldsCriticality {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#eq SecurityhubInsight#eq}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#eq SecurityhubInsight#eq}
   */
   readonly eq?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#gte SecurityhubInsight#gte}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#gte SecurityhubInsight#gte}
   */
   readonly gte?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#lte SecurityhubInsight#lte}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#lte SecurityhubInsight#lte}
   */
   readonly lte?: string;
 }
 
-export function securityhubInsightFiltersFindingProviderFieldsCriticalityToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsCriticality): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersFindingProviderFieldsCriticalityToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsCriticality | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -332,17 +336,17 @@ export function securityhubInsightFiltersFindingProviderFieldsCriticalityToTerra
 
 export interface SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsId {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersFindingProviderFieldsRelatedFindingsIdToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsId): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersFindingProviderFieldsRelatedFindingsIdToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsId | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -354,17 +358,17 @@ export function securityhubInsightFiltersFindingProviderFieldsRelatedFindingsIdT
 
 export interface SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArn {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArnToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArn): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArnToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArn | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -376,17 +380,17 @@ export function securityhubInsightFiltersFindingProviderFieldsRelatedFindingsPro
 
 export interface SecurityhubInsightFiltersFindingProviderFieldsSeverityLabel {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersFindingProviderFieldsSeverityLabelToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsSeverityLabel): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersFindingProviderFieldsSeverityLabelToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsSeverityLabel | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -398,17 +402,17 @@ export function securityhubInsightFiltersFindingProviderFieldsSeverityLabelToTer
 
 export interface SecurityhubInsightFiltersFindingProviderFieldsSeverityOriginal {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersFindingProviderFieldsSeverityOriginalToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsSeverityOriginal): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersFindingProviderFieldsSeverityOriginalToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsSeverityOriginal | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -420,17 +424,17 @@ export function securityhubInsightFiltersFindingProviderFieldsSeverityOriginalTo
 
 export interface SecurityhubInsightFiltersFindingProviderFieldsTypes {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersFindingProviderFieldsTypesToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsTypes): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersFindingProviderFieldsTypesToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsTypes | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -442,17 +446,17 @@ export function securityhubInsightFiltersFindingProviderFieldsTypesToTerraform(s
 
 export interface SecurityhubInsightFiltersFirstObservedAtDateRange {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#unit SecurityhubInsight#unit}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#unit SecurityhubInsight#unit}
   */
   readonly unit: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: number;
 }
 
 export function securityhubInsightFiltersFirstObservedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersFirstObservedAtDateRangeOutputReference | SecurityhubInsightFiltersFirstObservedAtDateRange): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -463,23 +467,25 @@ export function securityhubInsightFiltersFirstObservedAtDateRangeToTerraform(str
 }
 
 export class SecurityhubInsightFiltersFirstObservedAtDateRangeOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SecurityhubInsightFiltersFirstObservedAtDateRange | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._unit) {
+    if (this._unit !== undefined) {
       hasAnyValues = true;
       internalValueResult.unit = this._unit;
     }
-    if (this._value) {
+    if (this._value !== undefined) {
       hasAnyValues = true;
       internalValueResult.value = this._value;
     }
@@ -488,10 +494,12 @@ export class SecurityhubInsightFiltersFirstObservedAtDateRangeOutputReference ex
 
   public set internalValue(value: SecurityhubInsightFiltersFirstObservedAtDateRange | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._unit = undefined;
       this._value = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._unit = value.unit;
       this._value = value.value;
     }
@@ -525,23 +533,23 @@ export class SecurityhubInsightFiltersFirstObservedAtDateRangeOutputReference ex
 }
 export interface SecurityhubInsightFiltersFirstObservedAt {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#end SecurityhubInsight#end}
   */
   readonly end?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#start SecurityhubInsight#start}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#start SecurityhubInsight#start}
   */
   readonly start?: string;
   /**
   * date_range block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#date_range SecurityhubInsight#date_range}
   */
   readonly dateRange?: SecurityhubInsightFiltersFirstObservedAtDateRange;
 }
 
-export function securityhubInsightFiltersFirstObservedAtToTerraform(struct?: SecurityhubInsightFiltersFirstObservedAt): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersFirstObservedAtToTerraform(struct?: SecurityhubInsightFiltersFirstObservedAt | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -554,17 +562,17 @@ export function securityhubInsightFiltersFirstObservedAtToTerraform(struct?: Sec
 
 export interface SecurityhubInsightFiltersGeneratorId {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersGeneratorIdToTerraform(struct?: SecurityhubInsightFiltersGeneratorId): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersGeneratorIdToTerraform(struct?: SecurityhubInsightFiltersGeneratorId | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -576,17 +584,17 @@ export function securityhubInsightFiltersGeneratorIdToTerraform(struct?: Securit
 
 export interface SecurityhubInsightFiltersId {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersIdToTerraform(struct?: SecurityhubInsightFiltersId): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersIdToTerraform(struct?: SecurityhubInsightFiltersId | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -598,13 +606,13 @@ export function securityhubInsightFiltersIdToTerraform(struct?: SecurityhubInsig
 
 export interface SecurityhubInsightFiltersKeyword {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersKeywordToTerraform(struct?: SecurityhubInsightFiltersKeyword): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersKeywordToTerraform(struct?: SecurityhubInsightFiltersKeyword | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -615,17 +623,17 @@ export function securityhubInsightFiltersKeywordToTerraform(struct?: Securityhub
 
 export interface SecurityhubInsightFiltersLastObservedAtDateRange {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#unit SecurityhubInsight#unit}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#unit SecurityhubInsight#unit}
   */
   readonly unit: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: number;
 }
 
 export function securityhubInsightFiltersLastObservedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersLastObservedAtDateRangeOutputReference | SecurityhubInsightFiltersLastObservedAtDateRange): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -636,23 +644,25 @@ export function securityhubInsightFiltersLastObservedAtDateRangeToTerraform(stru
 }
 
 export class SecurityhubInsightFiltersLastObservedAtDateRangeOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SecurityhubInsightFiltersLastObservedAtDateRange | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._unit) {
+    if (this._unit !== undefined) {
       hasAnyValues = true;
       internalValueResult.unit = this._unit;
     }
-    if (this._value) {
+    if (this._value !== undefined) {
       hasAnyValues = true;
       internalValueResult.value = this._value;
     }
@@ -661,10 +671,12 @@ export class SecurityhubInsightFiltersLastObservedAtDateRangeOutputReference ext
 
   public set internalValue(value: SecurityhubInsightFiltersLastObservedAtDateRange | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._unit = undefined;
       this._value = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._unit = value.unit;
       this._value = value.value;
     }
@@ -698,23 +710,23 @@ export class SecurityhubInsightFiltersLastObservedAtDateRangeOutputReference ext
 }
 export interface SecurityhubInsightFiltersLastObservedAt {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#end SecurityhubInsight#end}
   */
   readonly end?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#start SecurityhubInsight#start}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#start SecurityhubInsight#start}
   */
   readonly start?: string;
   /**
   * date_range block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#date_range SecurityhubInsight#date_range}
   */
   readonly dateRange?: SecurityhubInsightFiltersLastObservedAtDateRange;
 }
 
-export function securityhubInsightFiltersLastObservedAtToTerraform(struct?: SecurityhubInsightFiltersLastObservedAt): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersLastObservedAtToTerraform(struct?: SecurityhubInsightFiltersLastObservedAt | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -727,17 +739,17 @@ export function securityhubInsightFiltersLastObservedAtToTerraform(struct?: Secu
 
 export interface SecurityhubInsightFiltersMalwareName {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersMalwareNameToTerraform(struct?: SecurityhubInsightFiltersMalwareName): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersMalwareNameToTerraform(struct?: SecurityhubInsightFiltersMalwareName | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -749,17 +761,17 @@ export function securityhubInsightFiltersMalwareNameToTerraform(struct?: Securit
 
 export interface SecurityhubInsightFiltersMalwarePath {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersMalwarePathToTerraform(struct?: SecurityhubInsightFiltersMalwarePath): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersMalwarePathToTerraform(struct?: SecurityhubInsightFiltersMalwarePath | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -771,17 +783,17 @@ export function securityhubInsightFiltersMalwarePathToTerraform(struct?: Securit
 
 export interface SecurityhubInsightFiltersMalwareState {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersMalwareStateToTerraform(struct?: SecurityhubInsightFiltersMalwareState): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersMalwareStateToTerraform(struct?: SecurityhubInsightFiltersMalwareState | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -793,17 +805,17 @@ export function securityhubInsightFiltersMalwareStateToTerraform(struct?: Securi
 
 export interface SecurityhubInsightFiltersMalwareType {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersMalwareTypeToTerraform(struct?: SecurityhubInsightFiltersMalwareType): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersMalwareTypeToTerraform(struct?: SecurityhubInsightFiltersMalwareType | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -815,17 +827,17 @@ export function securityhubInsightFiltersMalwareTypeToTerraform(struct?: Securit
 
 export interface SecurityhubInsightFiltersNetworkDestinationDomain {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersNetworkDestinationDomainToTerraform(struct?: SecurityhubInsightFiltersNetworkDestinationDomain): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersNetworkDestinationDomainToTerraform(struct?: SecurityhubInsightFiltersNetworkDestinationDomain | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -837,13 +849,13 @@ export function securityhubInsightFiltersNetworkDestinationDomainToTerraform(str
 
 export interface SecurityhubInsightFiltersNetworkDestinationIpv4 {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#cidr SecurityhubInsight#cidr}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#cidr SecurityhubInsight#cidr}
   */
   readonly cidr: string;
 }
 
-export function securityhubInsightFiltersNetworkDestinationIpv4ToTerraform(struct?: SecurityhubInsightFiltersNetworkDestinationIpv4): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersNetworkDestinationIpv4ToTerraform(struct?: SecurityhubInsightFiltersNetworkDestinationIpv4 | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -854,13 +866,13 @@ export function securityhubInsightFiltersNetworkDestinationIpv4ToTerraform(struc
 
 export interface SecurityhubInsightFiltersNetworkDestinationIpv6 {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#cidr SecurityhubInsight#cidr}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#cidr SecurityhubInsight#cidr}
   */
   readonly cidr: string;
 }
 
-export function securityhubInsightFiltersNetworkDestinationIpv6ToTerraform(struct?: SecurityhubInsightFiltersNetworkDestinationIpv6): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersNetworkDestinationIpv6ToTerraform(struct?: SecurityhubInsightFiltersNetworkDestinationIpv6 | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -871,21 +883,21 @@ export function securityhubInsightFiltersNetworkDestinationIpv6ToTerraform(struc
 
 export interface SecurityhubInsightFiltersNetworkDestinationPort {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#eq SecurityhubInsight#eq}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#eq SecurityhubInsight#eq}
   */
   readonly eq?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#gte SecurityhubInsight#gte}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#gte SecurityhubInsight#gte}
   */
   readonly gte?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#lte SecurityhubInsight#lte}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#lte SecurityhubInsight#lte}
   */
   readonly lte?: string;
 }
 
-export function securityhubInsightFiltersNetworkDestinationPortToTerraform(struct?: SecurityhubInsightFiltersNetworkDestinationPort): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersNetworkDestinationPortToTerraform(struct?: SecurityhubInsightFiltersNetworkDestinationPort | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -898,17 +910,17 @@ export function securityhubInsightFiltersNetworkDestinationPortToTerraform(struc
 
 export interface SecurityhubInsightFiltersNetworkDirection {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersNetworkDirectionToTerraform(struct?: SecurityhubInsightFiltersNetworkDirection): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersNetworkDirectionToTerraform(struct?: SecurityhubInsightFiltersNetworkDirection | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -920,17 +932,17 @@ export function securityhubInsightFiltersNetworkDirectionToTerraform(struct?: Se
 
 export interface SecurityhubInsightFiltersNetworkProtocol {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersNetworkProtocolToTerraform(struct?: SecurityhubInsightFiltersNetworkProtocol): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersNetworkProtocolToTerraform(struct?: SecurityhubInsightFiltersNetworkProtocol | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -942,17 +954,17 @@ export function securityhubInsightFiltersNetworkProtocolToTerraform(struct?: Sec
 
 export interface SecurityhubInsightFiltersNetworkSourceDomain {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersNetworkSourceDomainToTerraform(struct?: SecurityhubInsightFiltersNetworkSourceDomain): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersNetworkSourceDomainToTerraform(struct?: SecurityhubInsightFiltersNetworkSourceDomain | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -964,13 +976,13 @@ export function securityhubInsightFiltersNetworkSourceDomainToTerraform(struct?:
 
 export interface SecurityhubInsightFiltersNetworkSourceIpv4 {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#cidr SecurityhubInsight#cidr}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#cidr SecurityhubInsight#cidr}
   */
   readonly cidr: string;
 }
 
-export function securityhubInsightFiltersNetworkSourceIpv4ToTerraform(struct?: SecurityhubInsightFiltersNetworkSourceIpv4): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersNetworkSourceIpv4ToTerraform(struct?: SecurityhubInsightFiltersNetworkSourceIpv4 | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -981,13 +993,13 @@ export function securityhubInsightFiltersNetworkSourceIpv4ToTerraform(struct?: S
 
 export interface SecurityhubInsightFiltersNetworkSourceIpv6 {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#cidr SecurityhubInsight#cidr}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#cidr SecurityhubInsight#cidr}
   */
   readonly cidr: string;
 }
 
-export function securityhubInsightFiltersNetworkSourceIpv6ToTerraform(struct?: SecurityhubInsightFiltersNetworkSourceIpv6): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersNetworkSourceIpv6ToTerraform(struct?: SecurityhubInsightFiltersNetworkSourceIpv6 | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -998,17 +1010,17 @@ export function securityhubInsightFiltersNetworkSourceIpv6ToTerraform(struct?: S
 
 export interface SecurityhubInsightFiltersNetworkSourceMac {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersNetworkSourceMacToTerraform(struct?: SecurityhubInsightFiltersNetworkSourceMac): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersNetworkSourceMacToTerraform(struct?: SecurityhubInsightFiltersNetworkSourceMac | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1020,21 +1032,21 @@ export function securityhubInsightFiltersNetworkSourceMacToTerraform(struct?: Se
 
 export interface SecurityhubInsightFiltersNetworkSourcePort {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#eq SecurityhubInsight#eq}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#eq SecurityhubInsight#eq}
   */
   readonly eq?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#gte SecurityhubInsight#gte}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#gte SecurityhubInsight#gte}
   */
   readonly gte?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#lte SecurityhubInsight#lte}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#lte SecurityhubInsight#lte}
   */
   readonly lte?: string;
 }
 
-export function securityhubInsightFiltersNetworkSourcePortToTerraform(struct?: SecurityhubInsightFiltersNetworkSourcePort): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersNetworkSourcePortToTerraform(struct?: SecurityhubInsightFiltersNetworkSourcePort | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1047,17 +1059,17 @@ export function securityhubInsightFiltersNetworkSourcePortToTerraform(struct?: S
 
 export interface SecurityhubInsightFiltersNoteText {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersNoteTextToTerraform(struct?: SecurityhubInsightFiltersNoteText): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersNoteTextToTerraform(struct?: SecurityhubInsightFiltersNoteText | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1069,17 +1081,17 @@ export function securityhubInsightFiltersNoteTextToTerraform(struct?: Securityhu
 
 export interface SecurityhubInsightFiltersNoteUpdatedAtDateRange {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#unit SecurityhubInsight#unit}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#unit SecurityhubInsight#unit}
   */
   readonly unit: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: number;
 }
 
 export function securityhubInsightFiltersNoteUpdatedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersNoteUpdatedAtDateRangeOutputReference | SecurityhubInsightFiltersNoteUpdatedAtDateRange): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1090,23 +1102,25 @@ export function securityhubInsightFiltersNoteUpdatedAtDateRangeToTerraform(struc
 }
 
 export class SecurityhubInsightFiltersNoteUpdatedAtDateRangeOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SecurityhubInsightFiltersNoteUpdatedAtDateRange | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._unit) {
+    if (this._unit !== undefined) {
       hasAnyValues = true;
       internalValueResult.unit = this._unit;
     }
-    if (this._value) {
+    if (this._value !== undefined) {
       hasAnyValues = true;
       internalValueResult.value = this._value;
     }
@@ -1115,10 +1129,12 @@ export class SecurityhubInsightFiltersNoteUpdatedAtDateRangeOutputReference exte
 
   public set internalValue(value: SecurityhubInsightFiltersNoteUpdatedAtDateRange | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._unit = undefined;
       this._value = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._unit = value.unit;
       this._value = value.value;
     }
@@ -1152,23 +1168,23 @@ export class SecurityhubInsightFiltersNoteUpdatedAtDateRangeOutputReference exte
 }
 export interface SecurityhubInsightFiltersNoteUpdatedAt {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#end SecurityhubInsight#end}
   */
   readonly end?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#start SecurityhubInsight#start}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#start SecurityhubInsight#start}
   */
   readonly start?: string;
   /**
   * date_range block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#date_range SecurityhubInsight#date_range}
   */
   readonly dateRange?: SecurityhubInsightFiltersNoteUpdatedAtDateRange;
 }
 
-export function securityhubInsightFiltersNoteUpdatedAtToTerraform(struct?: SecurityhubInsightFiltersNoteUpdatedAt): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersNoteUpdatedAtToTerraform(struct?: SecurityhubInsightFiltersNoteUpdatedAt | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1181,17 +1197,17 @@ export function securityhubInsightFiltersNoteUpdatedAtToTerraform(struct?: Secur
 
 export interface SecurityhubInsightFiltersNoteUpdatedBy {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersNoteUpdatedByToTerraform(struct?: SecurityhubInsightFiltersNoteUpdatedBy): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersNoteUpdatedByToTerraform(struct?: SecurityhubInsightFiltersNoteUpdatedBy | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1203,17 +1219,17 @@ export function securityhubInsightFiltersNoteUpdatedByToTerraform(struct?: Secur
 
 export interface SecurityhubInsightFiltersProcessLaunchedAtDateRange {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#unit SecurityhubInsight#unit}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#unit SecurityhubInsight#unit}
   */
   readonly unit: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: number;
 }
 
 export function securityhubInsightFiltersProcessLaunchedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersProcessLaunchedAtDateRangeOutputReference | SecurityhubInsightFiltersProcessLaunchedAtDateRange): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1224,23 +1240,25 @@ export function securityhubInsightFiltersProcessLaunchedAtDateRangeToTerraform(s
 }
 
 export class SecurityhubInsightFiltersProcessLaunchedAtDateRangeOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SecurityhubInsightFiltersProcessLaunchedAtDateRange | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._unit) {
+    if (this._unit !== undefined) {
       hasAnyValues = true;
       internalValueResult.unit = this._unit;
     }
-    if (this._value) {
+    if (this._value !== undefined) {
       hasAnyValues = true;
       internalValueResult.value = this._value;
     }
@@ -1249,10 +1267,12 @@ export class SecurityhubInsightFiltersProcessLaunchedAtDateRangeOutputReference 
 
   public set internalValue(value: SecurityhubInsightFiltersProcessLaunchedAtDateRange | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._unit = undefined;
       this._value = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._unit = value.unit;
       this._value = value.value;
     }
@@ -1286,23 +1306,23 @@ export class SecurityhubInsightFiltersProcessLaunchedAtDateRangeOutputReference 
 }
 export interface SecurityhubInsightFiltersProcessLaunchedAt {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#end SecurityhubInsight#end}
   */
   readonly end?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#start SecurityhubInsight#start}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#start SecurityhubInsight#start}
   */
   readonly start?: string;
   /**
   * date_range block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#date_range SecurityhubInsight#date_range}
   */
   readonly dateRange?: SecurityhubInsightFiltersProcessLaunchedAtDateRange;
 }
 
-export function securityhubInsightFiltersProcessLaunchedAtToTerraform(struct?: SecurityhubInsightFiltersProcessLaunchedAt): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersProcessLaunchedAtToTerraform(struct?: SecurityhubInsightFiltersProcessLaunchedAt | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1315,17 +1335,17 @@ export function securityhubInsightFiltersProcessLaunchedAtToTerraform(struct?: S
 
 export interface SecurityhubInsightFiltersProcessName {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersProcessNameToTerraform(struct?: SecurityhubInsightFiltersProcessName): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersProcessNameToTerraform(struct?: SecurityhubInsightFiltersProcessName | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1337,21 +1357,21 @@ export function securityhubInsightFiltersProcessNameToTerraform(struct?: Securit
 
 export interface SecurityhubInsightFiltersProcessParentPid {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#eq SecurityhubInsight#eq}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#eq SecurityhubInsight#eq}
   */
   readonly eq?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#gte SecurityhubInsight#gte}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#gte SecurityhubInsight#gte}
   */
   readonly gte?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#lte SecurityhubInsight#lte}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#lte SecurityhubInsight#lte}
   */
   readonly lte?: string;
 }
 
-export function securityhubInsightFiltersProcessParentPidToTerraform(struct?: SecurityhubInsightFiltersProcessParentPid): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersProcessParentPidToTerraform(struct?: SecurityhubInsightFiltersProcessParentPid | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1364,17 +1384,17 @@ export function securityhubInsightFiltersProcessParentPidToTerraform(struct?: Se
 
 export interface SecurityhubInsightFiltersProcessPath {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersProcessPathToTerraform(struct?: SecurityhubInsightFiltersProcessPath): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersProcessPathToTerraform(struct?: SecurityhubInsightFiltersProcessPath | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1386,21 +1406,21 @@ export function securityhubInsightFiltersProcessPathToTerraform(struct?: Securit
 
 export interface SecurityhubInsightFiltersProcessPid {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#eq SecurityhubInsight#eq}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#eq SecurityhubInsight#eq}
   */
   readonly eq?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#gte SecurityhubInsight#gte}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#gte SecurityhubInsight#gte}
   */
   readonly gte?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#lte SecurityhubInsight#lte}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#lte SecurityhubInsight#lte}
   */
   readonly lte?: string;
 }
 
-export function securityhubInsightFiltersProcessPidToTerraform(struct?: SecurityhubInsightFiltersProcessPid): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersProcessPidToTerraform(struct?: SecurityhubInsightFiltersProcessPid | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1413,17 +1433,17 @@ export function securityhubInsightFiltersProcessPidToTerraform(struct?: Security
 
 export interface SecurityhubInsightFiltersProcessTerminatedAtDateRange {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#unit SecurityhubInsight#unit}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#unit SecurityhubInsight#unit}
   */
   readonly unit: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: number;
 }
 
 export function securityhubInsightFiltersProcessTerminatedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersProcessTerminatedAtDateRangeOutputReference | SecurityhubInsightFiltersProcessTerminatedAtDateRange): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1434,23 +1454,25 @@ export function securityhubInsightFiltersProcessTerminatedAtDateRangeToTerraform
 }
 
 export class SecurityhubInsightFiltersProcessTerminatedAtDateRangeOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SecurityhubInsightFiltersProcessTerminatedAtDateRange | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._unit) {
+    if (this._unit !== undefined) {
       hasAnyValues = true;
       internalValueResult.unit = this._unit;
     }
-    if (this._value) {
+    if (this._value !== undefined) {
       hasAnyValues = true;
       internalValueResult.value = this._value;
     }
@@ -1459,10 +1481,12 @@ export class SecurityhubInsightFiltersProcessTerminatedAtDateRangeOutputReferenc
 
   public set internalValue(value: SecurityhubInsightFiltersProcessTerminatedAtDateRange | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._unit = undefined;
       this._value = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._unit = value.unit;
       this._value = value.value;
     }
@@ -1496,23 +1520,23 @@ export class SecurityhubInsightFiltersProcessTerminatedAtDateRangeOutputReferenc
 }
 export interface SecurityhubInsightFiltersProcessTerminatedAt {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#end SecurityhubInsight#end}
   */
   readonly end?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#start SecurityhubInsight#start}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#start SecurityhubInsight#start}
   */
   readonly start?: string;
   /**
   * date_range block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#date_range SecurityhubInsight#date_range}
   */
   readonly dateRange?: SecurityhubInsightFiltersProcessTerminatedAtDateRange;
 }
 
-export function securityhubInsightFiltersProcessTerminatedAtToTerraform(struct?: SecurityhubInsightFiltersProcessTerminatedAt): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersProcessTerminatedAtToTerraform(struct?: SecurityhubInsightFiltersProcessTerminatedAt | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1525,17 +1549,17 @@ export function securityhubInsightFiltersProcessTerminatedAtToTerraform(struct?:
 
 export interface SecurityhubInsightFiltersProductArn {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersProductArnToTerraform(struct?: SecurityhubInsightFiltersProductArn): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersProductArnToTerraform(struct?: SecurityhubInsightFiltersProductArn | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1547,21 +1571,21 @@ export function securityhubInsightFiltersProductArnToTerraform(struct?: Security
 
 export interface SecurityhubInsightFiltersProductFields {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#key SecurityhubInsight#key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#key SecurityhubInsight#key}
   */
   readonly key: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersProductFieldsToTerraform(struct?: SecurityhubInsightFiltersProductFields): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersProductFieldsToTerraform(struct?: SecurityhubInsightFiltersProductFields | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1574,17 +1598,17 @@ export function securityhubInsightFiltersProductFieldsToTerraform(struct?: Secur
 
 export interface SecurityhubInsightFiltersProductName {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersProductNameToTerraform(struct?: SecurityhubInsightFiltersProductName): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersProductNameToTerraform(struct?: SecurityhubInsightFiltersProductName | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1596,17 +1620,17 @@ export function securityhubInsightFiltersProductNameToTerraform(struct?: Securit
 
 export interface SecurityhubInsightFiltersRecommendationText {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersRecommendationTextToTerraform(struct?: SecurityhubInsightFiltersRecommendationText): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersRecommendationTextToTerraform(struct?: SecurityhubInsightFiltersRecommendationText | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1618,17 +1642,17 @@ export function securityhubInsightFiltersRecommendationTextToTerraform(struct?: 
 
 export interface SecurityhubInsightFiltersRecordState {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersRecordStateToTerraform(struct?: SecurityhubInsightFiltersRecordState): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersRecordStateToTerraform(struct?: SecurityhubInsightFiltersRecordState | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1640,17 +1664,17 @@ export function securityhubInsightFiltersRecordStateToTerraform(struct?: Securit
 
 export interface SecurityhubInsightFiltersRelatedFindingsId {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersRelatedFindingsIdToTerraform(struct?: SecurityhubInsightFiltersRelatedFindingsId): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersRelatedFindingsIdToTerraform(struct?: SecurityhubInsightFiltersRelatedFindingsId | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1662,17 +1686,17 @@ export function securityhubInsightFiltersRelatedFindingsIdToTerraform(struct?: S
 
 export interface SecurityhubInsightFiltersRelatedFindingsProductArn {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersRelatedFindingsProductArnToTerraform(struct?: SecurityhubInsightFiltersRelatedFindingsProductArn): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersRelatedFindingsProductArnToTerraform(struct?: SecurityhubInsightFiltersRelatedFindingsProductArn | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1684,17 +1708,17 @@ export function securityhubInsightFiltersRelatedFindingsProductArnToTerraform(st
 
 export interface SecurityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArnToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArnToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1706,17 +1730,17 @@ export function securityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfil
 
 export interface SecurityhubInsightFiltersResourceAwsEc2InstanceImageId {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceAwsEc2InstanceImageIdToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceImageId): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceAwsEc2InstanceImageIdToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceImageId | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1728,13 +1752,13 @@ export function securityhubInsightFiltersResourceAwsEc2InstanceImageIdToTerrafor
 
 export interface SecurityhubInsightFiltersResourceAwsEc2InstanceIpv4Addresses {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#cidr SecurityhubInsight#cidr}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#cidr SecurityhubInsight#cidr}
   */
   readonly cidr: string;
 }
 
-export function securityhubInsightFiltersResourceAwsEc2InstanceIpv4AddressesToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv4Addresses): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceAwsEc2InstanceIpv4AddressesToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv4Addresses | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1745,13 +1769,13 @@ export function securityhubInsightFiltersResourceAwsEc2InstanceIpv4AddressesToTe
 
 export interface SecurityhubInsightFiltersResourceAwsEc2InstanceIpv6Addresses {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#cidr SecurityhubInsight#cidr}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#cidr SecurityhubInsight#cidr}
   */
   readonly cidr: string;
 }
 
-export function securityhubInsightFiltersResourceAwsEc2InstanceIpv6AddressesToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv6Addresses): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceAwsEc2InstanceIpv6AddressesToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv6Addresses | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1762,17 +1786,17 @@ export function securityhubInsightFiltersResourceAwsEc2InstanceIpv6AddressesToTe
 
 export interface SecurityhubInsightFiltersResourceAwsEc2InstanceKeyName {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceAwsEc2InstanceKeyNameToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceKeyName): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceAwsEc2InstanceKeyNameToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceKeyName | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1784,17 +1808,17 @@ export function securityhubInsightFiltersResourceAwsEc2InstanceKeyNameToTerrafor
 
 export interface SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#unit SecurityhubInsight#unit}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#unit SecurityhubInsight#unit}
   */
   readonly unit: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: number;
 }
 
 export function securityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRangeOutputReference | SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1805,23 +1829,25 @@ export function securityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRan
 }
 
 export class SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRangeOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._unit) {
+    if (this._unit !== undefined) {
       hasAnyValues = true;
       internalValueResult.unit = this._unit;
     }
-    if (this._value) {
+    if (this._value !== undefined) {
       hasAnyValues = true;
       internalValueResult.value = this._value;
     }
@@ -1830,10 +1856,12 @@ export class SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRangeO
 
   public set internalValue(value: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._unit = undefined;
       this._value = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._unit = value.unit;
       this._value = value.value;
     }
@@ -1867,23 +1895,23 @@ export class SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRangeO
 }
 export interface SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#end SecurityhubInsight#end}
   */
   readonly end?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#start SecurityhubInsight#start}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#start SecurityhubInsight#start}
   */
   readonly start?: string;
   /**
   * date_range block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#date_range SecurityhubInsight#date_range}
   */
   readonly dateRange?: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange;
 }
 
-export function securityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1896,17 +1924,17 @@ export function securityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtToTerra
 
 export interface SecurityhubInsightFiltersResourceAwsEc2InstanceSubnetId {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceAwsEc2InstanceSubnetIdToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceSubnetId): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceAwsEc2InstanceSubnetIdToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceSubnetId | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1918,17 +1946,17 @@ export function securityhubInsightFiltersResourceAwsEc2InstanceSubnetIdToTerrafo
 
 export interface SecurityhubInsightFiltersResourceAwsEc2InstanceType {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceAwsEc2InstanceTypeToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceType): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceAwsEc2InstanceTypeToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceType | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1940,17 +1968,17 @@ export function securityhubInsightFiltersResourceAwsEc2InstanceTypeToTerraform(s
 
 export interface SecurityhubInsightFiltersResourceAwsEc2InstanceVpcId {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceAwsEc2InstanceVpcIdToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceVpcId): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceAwsEc2InstanceVpcIdToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceVpcId | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1962,17 +1990,17 @@ export function securityhubInsightFiltersResourceAwsEc2InstanceVpcIdToTerraform(
 
 export interface SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRange {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#unit SecurityhubInsight#unit}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#unit SecurityhubInsight#unit}
   */
   readonly unit: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: number;
 }
 
 export function securityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRangeOutputReference | SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRange): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1983,23 +2011,25 @@ export function securityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRan
 }
 
 export class SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRangeOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRange | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._unit) {
+    if (this._unit !== undefined) {
       hasAnyValues = true;
       internalValueResult.unit = this._unit;
     }
-    if (this._value) {
+    if (this._value !== undefined) {
       hasAnyValues = true;
       internalValueResult.value = this._value;
     }
@@ -2008,10 +2038,12 @@ export class SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRangeO
 
   public set internalValue(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRange | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._unit = undefined;
       this._value = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._unit = value.unit;
       this._value = value.value;
     }
@@ -2045,23 +2077,23 @@ export class SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRangeO
 }
 export interface SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#end SecurityhubInsight#end}
   */
   readonly end?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#start SecurityhubInsight#start}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#start SecurityhubInsight#start}
   */
   readonly start?: string;
   /**
   * date_range block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#date_range SecurityhubInsight#date_range}
   */
   readonly dateRange?: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRange;
 }
 
-export function securityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtToTerraform(struct?: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtToTerraform(struct?: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2074,17 +2106,17 @@ export function securityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtToTerra
 
 export interface SecurityhubInsightFiltersResourceAwsIamAccessKeyStatus {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceAwsIamAccessKeyStatusToTerraform(struct?: SecurityhubInsightFiltersResourceAwsIamAccessKeyStatus): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceAwsIamAccessKeyStatusToTerraform(struct?: SecurityhubInsightFiltersResourceAwsIamAccessKeyStatus | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2096,17 +2128,17 @@ export function securityhubInsightFiltersResourceAwsIamAccessKeyStatusToTerrafor
 
 export interface SecurityhubInsightFiltersResourceAwsIamAccessKeyUserName {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceAwsIamAccessKeyUserNameToTerraform(struct?: SecurityhubInsightFiltersResourceAwsIamAccessKeyUserName): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceAwsIamAccessKeyUserNameToTerraform(struct?: SecurityhubInsightFiltersResourceAwsIamAccessKeyUserName | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2118,17 +2150,17 @@ export function securityhubInsightFiltersResourceAwsIamAccessKeyUserNameToTerraf
 
 export interface SecurityhubInsightFiltersResourceAwsS3BucketOwnerId {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceAwsS3BucketOwnerIdToTerraform(struct?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerId): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceAwsS3BucketOwnerIdToTerraform(struct?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerId | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2140,17 +2172,17 @@ export function securityhubInsightFiltersResourceAwsS3BucketOwnerIdToTerraform(s
 
 export interface SecurityhubInsightFiltersResourceAwsS3BucketOwnerName {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceAwsS3BucketOwnerNameToTerraform(struct?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerName): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceAwsS3BucketOwnerNameToTerraform(struct?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerName | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2162,17 +2194,17 @@ export function securityhubInsightFiltersResourceAwsS3BucketOwnerNameToTerraform
 
 export interface SecurityhubInsightFiltersResourceContainerImageId {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceContainerImageIdToTerraform(struct?: SecurityhubInsightFiltersResourceContainerImageId): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceContainerImageIdToTerraform(struct?: SecurityhubInsightFiltersResourceContainerImageId | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2184,17 +2216,17 @@ export function securityhubInsightFiltersResourceContainerImageIdToTerraform(str
 
 export interface SecurityhubInsightFiltersResourceContainerImageName {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceContainerImageNameToTerraform(struct?: SecurityhubInsightFiltersResourceContainerImageName): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceContainerImageNameToTerraform(struct?: SecurityhubInsightFiltersResourceContainerImageName | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2206,17 +2238,17 @@ export function securityhubInsightFiltersResourceContainerImageNameToTerraform(s
 
 export interface SecurityhubInsightFiltersResourceContainerLaunchedAtDateRange {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#unit SecurityhubInsight#unit}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#unit SecurityhubInsight#unit}
   */
   readonly unit: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: number;
 }
 
 export function securityhubInsightFiltersResourceContainerLaunchedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersResourceContainerLaunchedAtDateRangeOutputReference | SecurityhubInsightFiltersResourceContainerLaunchedAtDateRange): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2227,23 +2259,25 @@ export function securityhubInsightFiltersResourceContainerLaunchedAtDateRangeToT
 }
 
 export class SecurityhubInsightFiltersResourceContainerLaunchedAtDateRangeOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SecurityhubInsightFiltersResourceContainerLaunchedAtDateRange | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._unit) {
+    if (this._unit !== undefined) {
       hasAnyValues = true;
       internalValueResult.unit = this._unit;
     }
-    if (this._value) {
+    if (this._value !== undefined) {
       hasAnyValues = true;
       internalValueResult.value = this._value;
     }
@@ -2252,10 +2286,12 @@ export class SecurityhubInsightFiltersResourceContainerLaunchedAtDateRangeOutput
 
   public set internalValue(value: SecurityhubInsightFiltersResourceContainerLaunchedAtDateRange | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._unit = undefined;
       this._value = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._unit = value.unit;
       this._value = value.value;
     }
@@ -2289,23 +2325,23 @@ export class SecurityhubInsightFiltersResourceContainerLaunchedAtDateRangeOutput
 }
 export interface SecurityhubInsightFiltersResourceContainerLaunchedAt {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#end SecurityhubInsight#end}
   */
   readonly end?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#start SecurityhubInsight#start}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#start SecurityhubInsight#start}
   */
   readonly start?: string;
   /**
   * date_range block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#date_range SecurityhubInsight#date_range}
   */
   readonly dateRange?: SecurityhubInsightFiltersResourceContainerLaunchedAtDateRange;
 }
 
-export function securityhubInsightFiltersResourceContainerLaunchedAtToTerraform(struct?: SecurityhubInsightFiltersResourceContainerLaunchedAt): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceContainerLaunchedAtToTerraform(struct?: SecurityhubInsightFiltersResourceContainerLaunchedAt | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2318,17 +2354,17 @@ export function securityhubInsightFiltersResourceContainerLaunchedAtToTerraform(
 
 export interface SecurityhubInsightFiltersResourceContainerName {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceContainerNameToTerraform(struct?: SecurityhubInsightFiltersResourceContainerName): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceContainerNameToTerraform(struct?: SecurityhubInsightFiltersResourceContainerName | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2340,21 +2376,21 @@ export function securityhubInsightFiltersResourceContainerNameToTerraform(struct
 
 export interface SecurityhubInsightFiltersResourceDetailsOther {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#key SecurityhubInsight#key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#key SecurityhubInsight#key}
   */
   readonly key: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceDetailsOtherToTerraform(struct?: SecurityhubInsightFiltersResourceDetailsOther): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceDetailsOtherToTerraform(struct?: SecurityhubInsightFiltersResourceDetailsOther | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2367,17 +2403,17 @@ export function securityhubInsightFiltersResourceDetailsOtherToTerraform(struct?
 
 export interface SecurityhubInsightFiltersResourceId {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceIdToTerraform(struct?: SecurityhubInsightFiltersResourceId): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceIdToTerraform(struct?: SecurityhubInsightFiltersResourceId | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2389,17 +2425,17 @@ export function securityhubInsightFiltersResourceIdToTerraform(struct?: Security
 
 export interface SecurityhubInsightFiltersResourcePartition {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourcePartitionToTerraform(struct?: SecurityhubInsightFiltersResourcePartition): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourcePartitionToTerraform(struct?: SecurityhubInsightFiltersResourcePartition | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2411,17 +2447,17 @@ export function securityhubInsightFiltersResourcePartitionToTerraform(struct?: S
 
 export interface SecurityhubInsightFiltersResourceRegion {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceRegionToTerraform(struct?: SecurityhubInsightFiltersResourceRegion): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceRegionToTerraform(struct?: SecurityhubInsightFiltersResourceRegion | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2433,21 +2469,21 @@ export function securityhubInsightFiltersResourceRegionToTerraform(struct?: Secu
 
 export interface SecurityhubInsightFiltersResourceTags {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#key SecurityhubInsight#key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#key SecurityhubInsight#key}
   */
   readonly key: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceTagsToTerraform(struct?: SecurityhubInsightFiltersResourceTags): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceTagsToTerraform(struct?: SecurityhubInsightFiltersResourceTags | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2460,17 +2496,17 @@ export function securityhubInsightFiltersResourceTagsToTerraform(struct?: Securi
 
 export interface SecurityhubInsightFiltersResourceType {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersResourceTypeToTerraform(struct?: SecurityhubInsightFiltersResourceType): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersResourceTypeToTerraform(struct?: SecurityhubInsightFiltersResourceType | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2482,17 +2518,17 @@ export function securityhubInsightFiltersResourceTypeToTerraform(struct?: Securi
 
 export interface SecurityhubInsightFiltersSeverityLabel {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersSeverityLabelToTerraform(struct?: SecurityhubInsightFiltersSeverityLabel): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersSeverityLabelToTerraform(struct?: SecurityhubInsightFiltersSeverityLabel | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2504,17 +2540,17 @@ export function securityhubInsightFiltersSeverityLabelToTerraform(struct?: Secur
 
 export interface SecurityhubInsightFiltersSourceUrl {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersSourceUrlToTerraform(struct?: SecurityhubInsightFiltersSourceUrl): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersSourceUrlToTerraform(struct?: SecurityhubInsightFiltersSourceUrl | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2526,17 +2562,17 @@ export function securityhubInsightFiltersSourceUrlToTerraform(struct?: Securityh
 
 export interface SecurityhubInsightFiltersThreatIntelIndicatorCategory {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersThreatIntelIndicatorCategoryToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorCategory): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersThreatIntelIndicatorCategoryToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorCategory | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2548,17 +2584,17 @@ export function securityhubInsightFiltersThreatIntelIndicatorCategoryToTerraform
 
 export interface SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRange {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#unit SecurityhubInsight#unit}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#unit SecurityhubInsight#unit}
   */
   readonly unit: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: number;
 }
 
 export function securityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRangeOutputReference | SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRange): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2569,23 +2605,25 @@ export function securityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateR
 }
 
 export class SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRangeOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRange | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._unit) {
+    if (this._unit !== undefined) {
       hasAnyValues = true;
       internalValueResult.unit = this._unit;
     }
-    if (this._value) {
+    if (this._value !== undefined) {
       hasAnyValues = true;
       internalValueResult.value = this._value;
     }
@@ -2594,10 +2632,12 @@ export class SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRang
 
   public set internalValue(value: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRange | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._unit = undefined;
       this._value = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._unit = value.unit;
       this._value = value.value;
     }
@@ -2631,23 +2671,23 @@ export class SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRang
 }
 export interface SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#end SecurityhubInsight#end}
   */
   readonly end?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#start SecurityhubInsight#start}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#start SecurityhubInsight#start}
   */
   readonly start?: string;
   /**
   * date_range block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#date_range SecurityhubInsight#date_range}
   */
   readonly dateRange?: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRange;
 }
 
-export function securityhubInsightFiltersThreatIntelIndicatorLastObservedAtToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersThreatIntelIndicatorLastObservedAtToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2660,17 +2700,17 @@ export function securityhubInsightFiltersThreatIntelIndicatorLastObservedAtToTer
 
 export interface SecurityhubInsightFiltersThreatIntelIndicatorSource {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersThreatIntelIndicatorSourceToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorSource): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersThreatIntelIndicatorSourceToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorSource | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2682,17 +2722,17 @@ export function securityhubInsightFiltersThreatIntelIndicatorSourceToTerraform(s
 
 export interface SecurityhubInsightFiltersThreatIntelIndicatorSourceUrl {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersThreatIntelIndicatorSourceUrlToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorSourceUrl): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersThreatIntelIndicatorSourceUrlToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorSourceUrl | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2704,17 +2744,17 @@ export function securityhubInsightFiltersThreatIntelIndicatorSourceUrlToTerrafor
 
 export interface SecurityhubInsightFiltersThreatIntelIndicatorType {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersThreatIntelIndicatorTypeToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorType): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersThreatIntelIndicatorTypeToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorType | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2726,17 +2766,17 @@ export function securityhubInsightFiltersThreatIntelIndicatorTypeToTerraform(str
 
 export interface SecurityhubInsightFiltersThreatIntelIndicatorValue {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersThreatIntelIndicatorValueToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorValue): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersThreatIntelIndicatorValueToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorValue | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2748,17 +2788,17 @@ export function securityhubInsightFiltersThreatIntelIndicatorValueToTerraform(st
 
 export interface SecurityhubInsightFiltersTitle {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersTitleToTerraform(struct?: SecurityhubInsightFiltersTitle): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersTitleToTerraform(struct?: SecurityhubInsightFiltersTitle | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2770,17 +2810,17 @@ export function securityhubInsightFiltersTitleToTerraform(struct?: SecurityhubIn
 
 export interface SecurityhubInsightFiltersType {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersTypeToTerraform(struct?: SecurityhubInsightFiltersType): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersTypeToTerraform(struct?: SecurityhubInsightFiltersType | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2792,17 +2832,17 @@ export function securityhubInsightFiltersTypeToTerraform(struct?: SecurityhubIns
 
 export interface SecurityhubInsightFiltersUpdatedAtDateRange {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#unit SecurityhubInsight#unit}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#unit SecurityhubInsight#unit}
   */
   readonly unit: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: number;
 }
 
 export function securityhubInsightFiltersUpdatedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersUpdatedAtDateRangeOutputReference | SecurityhubInsightFiltersUpdatedAtDateRange): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2813,23 +2853,25 @@ export function securityhubInsightFiltersUpdatedAtDateRangeToTerraform(struct?: 
 }
 
 export class SecurityhubInsightFiltersUpdatedAtDateRangeOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SecurityhubInsightFiltersUpdatedAtDateRange | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._unit) {
+    if (this._unit !== undefined) {
       hasAnyValues = true;
       internalValueResult.unit = this._unit;
     }
-    if (this._value) {
+    if (this._value !== undefined) {
       hasAnyValues = true;
       internalValueResult.value = this._value;
     }
@@ -2838,10 +2880,12 @@ export class SecurityhubInsightFiltersUpdatedAtDateRangeOutputReference extends 
 
   public set internalValue(value: SecurityhubInsightFiltersUpdatedAtDateRange | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._unit = undefined;
       this._value = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._unit = value.unit;
       this._value = value.value;
     }
@@ -2875,23 +2919,23 @@ export class SecurityhubInsightFiltersUpdatedAtDateRangeOutputReference extends 
 }
 export interface SecurityhubInsightFiltersUpdatedAt {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#end SecurityhubInsight#end}
   */
   readonly end?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#start SecurityhubInsight#start}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#start SecurityhubInsight#start}
   */
   readonly start?: string;
   /**
   * date_range block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#date_range SecurityhubInsight#date_range}
   */
   readonly dateRange?: SecurityhubInsightFiltersUpdatedAtDateRange;
 }
 
-export function securityhubInsightFiltersUpdatedAtToTerraform(struct?: SecurityhubInsightFiltersUpdatedAt): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersUpdatedAtToTerraform(struct?: SecurityhubInsightFiltersUpdatedAt | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2904,21 +2948,21 @@ export function securityhubInsightFiltersUpdatedAtToTerraform(struct?: Securityh
 
 export interface SecurityhubInsightFiltersUserDefinedValues {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#key SecurityhubInsight#key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#key SecurityhubInsight#key}
   */
   readonly key: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersUserDefinedValuesToTerraform(struct?: SecurityhubInsightFiltersUserDefinedValues): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersUserDefinedValuesToTerraform(struct?: SecurityhubInsightFiltersUserDefinedValues | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2931,17 +2975,17 @@ export function securityhubInsightFiltersUserDefinedValuesToTerraform(struct?: S
 
 export interface SecurityhubInsightFiltersVerificationState {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersVerificationStateToTerraform(struct?: SecurityhubInsightFiltersVerificationState): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersVerificationStateToTerraform(struct?: SecurityhubInsightFiltersVerificationState | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2953,17 +2997,17 @@ export function securityhubInsightFiltersVerificationStateToTerraform(struct?: S
 
 export interface SecurityhubInsightFiltersWorkflowStatus {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#comparison SecurityhubInsight#comparison}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#comparison SecurityhubInsight#comparison}
   */
   readonly comparison: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#value SecurityhubInsight#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#value SecurityhubInsight#value}
   */
   readonly value: string;
 }
 
-export function securityhubInsightFiltersWorkflowStatusToTerraform(struct?: SecurityhubInsightFiltersWorkflowStatus): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function securityhubInsightFiltersWorkflowStatusToTerraform(struct?: SecurityhubInsightFiltersWorkflowStatus | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2977,535 +3021,535 @@ export interface SecurityhubInsightFilters {
   /**
   * aws_account_id block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#aws_account_id SecurityhubInsight#aws_account_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#aws_account_id SecurityhubInsight#aws_account_id}
   */
-  readonly awsAccountId?: SecurityhubInsightFiltersAwsAccountId[];
+  readonly awsAccountId?: SecurityhubInsightFiltersAwsAccountId[] | cdktf.IResolvable;
   /**
   * company_name block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#company_name SecurityhubInsight#company_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#company_name SecurityhubInsight#company_name}
   */
-  readonly companyName?: SecurityhubInsightFiltersCompanyName[];
+  readonly companyName?: SecurityhubInsightFiltersCompanyName[] | cdktf.IResolvable;
   /**
   * compliance_status block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#compliance_status SecurityhubInsight#compliance_status}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#compliance_status SecurityhubInsight#compliance_status}
   */
-  readonly complianceStatus?: SecurityhubInsightFiltersComplianceStatus[];
+  readonly complianceStatus?: SecurityhubInsightFiltersComplianceStatus[] | cdktf.IResolvable;
   /**
   * confidence block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#confidence SecurityhubInsight#confidence}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#confidence SecurityhubInsight#confidence}
   */
-  readonly confidence?: SecurityhubInsightFiltersConfidence[];
+  readonly confidence?: SecurityhubInsightFiltersConfidence[] | cdktf.IResolvable;
   /**
   * created_at block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#created_at SecurityhubInsight#created_at}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#created_at SecurityhubInsight#created_at}
   */
-  readonly createdAt?: SecurityhubInsightFiltersCreatedAt[];
+  readonly createdAt?: SecurityhubInsightFiltersCreatedAt[] | cdktf.IResolvable;
   /**
   * criticality block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#criticality SecurityhubInsight#criticality}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#criticality SecurityhubInsight#criticality}
   */
-  readonly criticality?: SecurityhubInsightFiltersCriticality[];
+  readonly criticality?: SecurityhubInsightFiltersCriticality[] | cdktf.IResolvable;
   /**
   * description block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#description SecurityhubInsight#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#description SecurityhubInsight#description}
   */
-  readonly description?: SecurityhubInsightFiltersDescription[];
+  readonly description?: SecurityhubInsightFiltersDescription[] | cdktf.IResolvable;
   /**
   * finding_provider_fields_confidence block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#finding_provider_fields_confidence SecurityhubInsight#finding_provider_fields_confidence}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#finding_provider_fields_confidence SecurityhubInsight#finding_provider_fields_confidence}
   */
-  readonly findingProviderFieldsConfidence?: SecurityhubInsightFiltersFindingProviderFieldsConfidence[];
+  readonly findingProviderFieldsConfidence?: SecurityhubInsightFiltersFindingProviderFieldsConfidence[] | cdktf.IResolvable;
   /**
   * finding_provider_fields_criticality block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#finding_provider_fields_criticality SecurityhubInsight#finding_provider_fields_criticality}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#finding_provider_fields_criticality SecurityhubInsight#finding_provider_fields_criticality}
   */
-  readonly findingProviderFieldsCriticality?: SecurityhubInsightFiltersFindingProviderFieldsCriticality[];
+  readonly findingProviderFieldsCriticality?: SecurityhubInsightFiltersFindingProviderFieldsCriticality[] | cdktf.IResolvable;
   /**
   * finding_provider_fields_related_findings_id block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#finding_provider_fields_related_findings_id SecurityhubInsight#finding_provider_fields_related_findings_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#finding_provider_fields_related_findings_id SecurityhubInsight#finding_provider_fields_related_findings_id}
   */
-  readonly findingProviderFieldsRelatedFindingsId?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsId[];
+  readonly findingProviderFieldsRelatedFindingsId?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsId[] | cdktf.IResolvable;
   /**
   * finding_provider_fields_related_findings_product_arn block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#finding_provider_fields_related_findings_product_arn SecurityhubInsight#finding_provider_fields_related_findings_product_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#finding_provider_fields_related_findings_product_arn SecurityhubInsight#finding_provider_fields_related_findings_product_arn}
   */
-  readonly findingProviderFieldsRelatedFindingsProductArn?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArn[];
+  readonly findingProviderFieldsRelatedFindingsProductArn?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArn[] | cdktf.IResolvable;
   /**
   * finding_provider_fields_severity_label block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#finding_provider_fields_severity_label SecurityhubInsight#finding_provider_fields_severity_label}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#finding_provider_fields_severity_label SecurityhubInsight#finding_provider_fields_severity_label}
   */
-  readonly findingProviderFieldsSeverityLabel?: SecurityhubInsightFiltersFindingProviderFieldsSeverityLabel[];
+  readonly findingProviderFieldsSeverityLabel?: SecurityhubInsightFiltersFindingProviderFieldsSeverityLabel[] | cdktf.IResolvable;
   /**
   * finding_provider_fields_severity_original block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#finding_provider_fields_severity_original SecurityhubInsight#finding_provider_fields_severity_original}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#finding_provider_fields_severity_original SecurityhubInsight#finding_provider_fields_severity_original}
   */
-  readonly findingProviderFieldsSeverityOriginal?: SecurityhubInsightFiltersFindingProviderFieldsSeverityOriginal[];
+  readonly findingProviderFieldsSeverityOriginal?: SecurityhubInsightFiltersFindingProviderFieldsSeverityOriginal[] | cdktf.IResolvable;
   /**
   * finding_provider_fields_types block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#finding_provider_fields_types SecurityhubInsight#finding_provider_fields_types}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#finding_provider_fields_types SecurityhubInsight#finding_provider_fields_types}
   */
-  readonly findingProviderFieldsTypes?: SecurityhubInsightFiltersFindingProviderFieldsTypes[];
+  readonly findingProviderFieldsTypes?: SecurityhubInsightFiltersFindingProviderFieldsTypes[] | cdktf.IResolvable;
   /**
   * first_observed_at block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#first_observed_at SecurityhubInsight#first_observed_at}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#first_observed_at SecurityhubInsight#first_observed_at}
   */
-  readonly firstObservedAt?: SecurityhubInsightFiltersFirstObservedAt[];
+  readonly firstObservedAt?: SecurityhubInsightFiltersFirstObservedAt[] | cdktf.IResolvable;
   /**
   * generator_id block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#generator_id SecurityhubInsight#generator_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#generator_id SecurityhubInsight#generator_id}
   */
-  readonly generatorId?: SecurityhubInsightFiltersGeneratorId[];
+  readonly generatorId?: SecurityhubInsightFiltersGeneratorId[] | cdktf.IResolvable;
   /**
   * id block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#id SecurityhubInsight#id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#id SecurityhubInsight#id}
   */
-  readonly id?: SecurityhubInsightFiltersId[];
+  readonly id?: SecurityhubInsightFiltersId[] | cdktf.IResolvable;
   /**
   * keyword block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#keyword SecurityhubInsight#keyword}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#keyword SecurityhubInsight#keyword}
   */
-  readonly keyword?: SecurityhubInsightFiltersKeyword[];
+  readonly keyword?: SecurityhubInsightFiltersKeyword[] | cdktf.IResolvable;
   /**
   * last_observed_at block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#last_observed_at SecurityhubInsight#last_observed_at}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#last_observed_at SecurityhubInsight#last_observed_at}
   */
-  readonly lastObservedAt?: SecurityhubInsightFiltersLastObservedAt[];
+  readonly lastObservedAt?: SecurityhubInsightFiltersLastObservedAt[] | cdktf.IResolvable;
   /**
   * malware_name block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#malware_name SecurityhubInsight#malware_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#malware_name SecurityhubInsight#malware_name}
   */
-  readonly malwareName?: SecurityhubInsightFiltersMalwareName[];
+  readonly malwareName?: SecurityhubInsightFiltersMalwareName[] | cdktf.IResolvable;
   /**
   * malware_path block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#malware_path SecurityhubInsight#malware_path}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#malware_path SecurityhubInsight#malware_path}
   */
-  readonly malwarePath?: SecurityhubInsightFiltersMalwarePath[];
+  readonly malwarePath?: SecurityhubInsightFiltersMalwarePath[] | cdktf.IResolvable;
   /**
   * malware_state block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#malware_state SecurityhubInsight#malware_state}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#malware_state SecurityhubInsight#malware_state}
   */
-  readonly malwareState?: SecurityhubInsightFiltersMalwareState[];
+  readonly malwareState?: SecurityhubInsightFiltersMalwareState[] | cdktf.IResolvable;
   /**
   * malware_type block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#malware_type SecurityhubInsight#malware_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#malware_type SecurityhubInsight#malware_type}
   */
-  readonly malwareType?: SecurityhubInsightFiltersMalwareType[];
+  readonly malwareType?: SecurityhubInsightFiltersMalwareType[] | cdktf.IResolvable;
   /**
   * network_destination_domain block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#network_destination_domain SecurityhubInsight#network_destination_domain}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#network_destination_domain SecurityhubInsight#network_destination_domain}
   */
-  readonly networkDestinationDomain?: SecurityhubInsightFiltersNetworkDestinationDomain[];
+  readonly networkDestinationDomain?: SecurityhubInsightFiltersNetworkDestinationDomain[] | cdktf.IResolvable;
   /**
   * network_destination_ipv4 block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#network_destination_ipv4 SecurityhubInsight#network_destination_ipv4}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#network_destination_ipv4 SecurityhubInsight#network_destination_ipv4}
   */
-  readonly networkDestinationIpv4?: SecurityhubInsightFiltersNetworkDestinationIpv4[];
+  readonly networkDestinationIpv4?: SecurityhubInsightFiltersNetworkDestinationIpv4[] | cdktf.IResolvable;
   /**
   * network_destination_ipv6 block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#network_destination_ipv6 SecurityhubInsight#network_destination_ipv6}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#network_destination_ipv6 SecurityhubInsight#network_destination_ipv6}
   */
-  readonly networkDestinationIpv6?: SecurityhubInsightFiltersNetworkDestinationIpv6[];
+  readonly networkDestinationIpv6?: SecurityhubInsightFiltersNetworkDestinationIpv6[] | cdktf.IResolvable;
   /**
   * network_destination_port block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#network_destination_port SecurityhubInsight#network_destination_port}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#network_destination_port SecurityhubInsight#network_destination_port}
   */
-  readonly networkDestinationPort?: SecurityhubInsightFiltersNetworkDestinationPort[];
+  readonly networkDestinationPort?: SecurityhubInsightFiltersNetworkDestinationPort[] | cdktf.IResolvable;
   /**
   * network_direction block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#network_direction SecurityhubInsight#network_direction}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#network_direction SecurityhubInsight#network_direction}
   */
-  readonly networkDirection?: SecurityhubInsightFiltersNetworkDirection[];
+  readonly networkDirection?: SecurityhubInsightFiltersNetworkDirection[] | cdktf.IResolvable;
   /**
   * network_protocol block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#network_protocol SecurityhubInsight#network_protocol}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#network_protocol SecurityhubInsight#network_protocol}
   */
-  readonly networkProtocol?: SecurityhubInsightFiltersNetworkProtocol[];
+  readonly networkProtocol?: SecurityhubInsightFiltersNetworkProtocol[] | cdktf.IResolvable;
   /**
   * network_source_domain block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#network_source_domain SecurityhubInsight#network_source_domain}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#network_source_domain SecurityhubInsight#network_source_domain}
   */
-  readonly networkSourceDomain?: SecurityhubInsightFiltersNetworkSourceDomain[];
+  readonly networkSourceDomain?: SecurityhubInsightFiltersNetworkSourceDomain[] | cdktf.IResolvable;
   /**
   * network_source_ipv4 block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#network_source_ipv4 SecurityhubInsight#network_source_ipv4}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#network_source_ipv4 SecurityhubInsight#network_source_ipv4}
   */
-  readonly networkSourceIpv4?: SecurityhubInsightFiltersNetworkSourceIpv4[];
+  readonly networkSourceIpv4?: SecurityhubInsightFiltersNetworkSourceIpv4[] | cdktf.IResolvable;
   /**
   * network_source_ipv6 block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#network_source_ipv6 SecurityhubInsight#network_source_ipv6}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#network_source_ipv6 SecurityhubInsight#network_source_ipv6}
   */
-  readonly networkSourceIpv6?: SecurityhubInsightFiltersNetworkSourceIpv6[];
+  readonly networkSourceIpv6?: SecurityhubInsightFiltersNetworkSourceIpv6[] | cdktf.IResolvable;
   /**
   * network_source_mac block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#network_source_mac SecurityhubInsight#network_source_mac}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#network_source_mac SecurityhubInsight#network_source_mac}
   */
-  readonly networkSourceMac?: SecurityhubInsightFiltersNetworkSourceMac[];
+  readonly networkSourceMac?: SecurityhubInsightFiltersNetworkSourceMac[] | cdktf.IResolvable;
   /**
   * network_source_port block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#network_source_port SecurityhubInsight#network_source_port}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#network_source_port SecurityhubInsight#network_source_port}
   */
-  readonly networkSourcePort?: SecurityhubInsightFiltersNetworkSourcePort[];
+  readonly networkSourcePort?: SecurityhubInsightFiltersNetworkSourcePort[] | cdktf.IResolvable;
   /**
   * note_text block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#note_text SecurityhubInsight#note_text}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#note_text SecurityhubInsight#note_text}
   */
-  readonly noteText?: SecurityhubInsightFiltersNoteText[];
+  readonly noteText?: SecurityhubInsightFiltersNoteText[] | cdktf.IResolvable;
   /**
   * note_updated_at block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#note_updated_at SecurityhubInsight#note_updated_at}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#note_updated_at SecurityhubInsight#note_updated_at}
   */
-  readonly noteUpdatedAt?: SecurityhubInsightFiltersNoteUpdatedAt[];
+  readonly noteUpdatedAt?: SecurityhubInsightFiltersNoteUpdatedAt[] | cdktf.IResolvable;
   /**
   * note_updated_by block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#note_updated_by SecurityhubInsight#note_updated_by}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#note_updated_by SecurityhubInsight#note_updated_by}
   */
-  readonly noteUpdatedBy?: SecurityhubInsightFiltersNoteUpdatedBy[];
+  readonly noteUpdatedBy?: SecurityhubInsightFiltersNoteUpdatedBy[] | cdktf.IResolvable;
   /**
   * process_launched_at block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#process_launched_at SecurityhubInsight#process_launched_at}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#process_launched_at SecurityhubInsight#process_launched_at}
   */
-  readonly processLaunchedAt?: SecurityhubInsightFiltersProcessLaunchedAt[];
+  readonly processLaunchedAt?: SecurityhubInsightFiltersProcessLaunchedAt[] | cdktf.IResolvable;
   /**
   * process_name block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#process_name SecurityhubInsight#process_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#process_name SecurityhubInsight#process_name}
   */
-  readonly processName?: SecurityhubInsightFiltersProcessName[];
+  readonly processName?: SecurityhubInsightFiltersProcessName[] | cdktf.IResolvable;
   /**
   * process_parent_pid block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#process_parent_pid SecurityhubInsight#process_parent_pid}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#process_parent_pid SecurityhubInsight#process_parent_pid}
   */
-  readonly processParentPid?: SecurityhubInsightFiltersProcessParentPid[];
+  readonly processParentPid?: SecurityhubInsightFiltersProcessParentPid[] | cdktf.IResolvable;
   /**
   * process_path block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#process_path SecurityhubInsight#process_path}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#process_path SecurityhubInsight#process_path}
   */
-  readonly processPath?: SecurityhubInsightFiltersProcessPath[];
+  readonly processPath?: SecurityhubInsightFiltersProcessPath[] | cdktf.IResolvable;
   /**
   * process_pid block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#process_pid SecurityhubInsight#process_pid}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#process_pid SecurityhubInsight#process_pid}
   */
-  readonly processPid?: SecurityhubInsightFiltersProcessPid[];
+  readonly processPid?: SecurityhubInsightFiltersProcessPid[] | cdktf.IResolvable;
   /**
   * process_terminated_at block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#process_terminated_at SecurityhubInsight#process_terminated_at}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#process_terminated_at SecurityhubInsight#process_terminated_at}
   */
-  readonly processTerminatedAt?: SecurityhubInsightFiltersProcessTerminatedAt[];
+  readonly processTerminatedAt?: SecurityhubInsightFiltersProcessTerminatedAt[] | cdktf.IResolvable;
   /**
   * product_arn block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#product_arn SecurityhubInsight#product_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#product_arn SecurityhubInsight#product_arn}
   */
-  readonly productArn?: SecurityhubInsightFiltersProductArn[];
+  readonly productArn?: SecurityhubInsightFiltersProductArn[] | cdktf.IResolvable;
   /**
   * product_fields block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#product_fields SecurityhubInsight#product_fields}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#product_fields SecurityhubInsight#product_fields}
   */
-  readonly productFields?: SecurityhubInsightFiltersProductFields[];
+  readonly productFields?: SecurityhubInsightFiltersProductFields[] | cdktf.IResolvable;
   /**
   * product_name block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#product_name SecurityhubInsight#product_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#product_name SecurityhubInsight#product_name}
   */
-  readonly productName?: SecurityhubInsightFiltersProductName[];
+  readonly productName?: SecurityhubInsightFiltersProductName[] | cdktf.IResolvable;
   /**
   * recommendation_text block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#recommendation_text SecurityhubInsight#recommendation_text}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#recommendation_text SecurityhubInsight#recommendation_text}
   */
-  readonly recommendationText?: SecurityhubInsightFiltersRecommendationText[];
+  readonly recommendationText?: SecurityhubInsightFiltersRecommendationText[] | cdktf.IResolvable;
   /**
   * record_state block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#record_state SecurityhubInsight#record_state}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#record_state SecurityhubInsight#record_state}
   */
-  readonly recordState?: SecurityhubInsightFiltersRecordState[];
+  readonly recordState?: SecurityhubInsightFiltersRecordState[] | cdktf.IResolvable;
   /**
   * related_findings_id block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#related_findings_id SecurityhubInsight#related_findings_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#related_findings_id SecurityhubInsight#related_findings_id}
   */
-  readonly relatedFindingsId?: SecurityhubInsightFiltersRelatedFindingsId[];
+  readonly relatedFindingsId?: SecurityhubInsightFiltersRelatedFindingsId[] | cdktf.IResolvable;
   /**
   * related_findings_product_arn block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#related_findings_product_arn SecurityhubInsight#related_findings_product_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#related_findings_product_arn SecurityhubInsight#related_findings_product_arn}
   */
-  readonly relatedFindingsProductArn?: SecurityhubInsightFiltersRelatedFindingsProductArn[];
+  readonly relatedFindingsProductArn?: SecurityhubInsightFiltersRelatedFindingsProductArn[] | cdktf.IResolvable;
   /**
   * resource_aws_ec2_instance_iam_instance_profile_arn block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_aws_ec2_instance_iam_instance_profile_arn SecurityhubInsight#resource_aws_ec2_instance_iam_instance_profile_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_aws_ec2_instance_iam_instance_profile_arn SecurityhubInsight#resource_aws_ec2_instance_iam_instance_profile_arn}
   */
-  readonly resourceAwsEc2InstanceIamInstanceProfileArn?: SecurityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn[];
+  readonly resourceAwsEc2InstanceIamInstanceProfileArn?: SecurityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn[] | cdktf.IResolvable;
   /**
   * resource_aws_ec2_instance_image_id block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_aws_ec2_instance_image_id SecurityhubInsight#resource_aws_ec2_instance_image_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_aws_ec2_instance_image_id SecurityhubInsight#resource_aws_ec2_instance_image_id}
   */
-  readonly resourceAwsEc2InstanceImageId?: SecurityhubInsightFiltersResourceAwsEc2InstanceImageId[];
+  readonly resourceAwsEc2InstanceImageId?: SecurityhubInsightFiltersResourceAwsEc2InstanceImageId[] | cdktf.IResolvable;
   /**
   * resource_aws_ec2_instance_ipv4_addresses block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_aws_ec2_instance_ipv4_addresses SecurityhubInsight#resource_aws_ec2_instance_ipv4_addresses}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_aws_ec2_instance_ipv4_addresses SecurityhubInsight#resource_aws_ec2_instance_ipv4_addresses}
   */
-  readonly resourceAwsEc2InstanceIpv4Addresses?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv4Addresses[];
+  readonly resourceAwsEc2InstanceIpv4Addresses?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv4Addresses[] | cdktf.IResolvable;
   /**
   * resource_aws_ec2_instance_ipv6_addresses block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_aws_ec2_instance_ipv6_addresses SecurityhubInsight#resource_aws_ec2_instance_ipv6_addresses}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_aws_ec2_instance_ipv6_addresses SecurityhubInsight#resource_aws_ec2_instance_ipv6_addresses}
   */
-  readonly resourceAwsEc2InstanceIpv6Addresses?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv6Addresses[];
+  readonly resourceAwsEc2InstanceIpv6Addresses?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv6Addresses[] | cdktf.IResolvable;
   /**
   * resource_aws_ec2_instance_key_name block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_aws_ec2_instance_key_name SecurityhubInsight#resource_aws_ec2_instance_key_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_aws_ec2_instance_key_name SecurityhubInsight#resource_aws_ec2_instance_key_name}
   */
-  readonly resourceAwsEc2InstanceKeyName?: SecurityhubInsightFiltersResourceAwsEc2InstanceKeyName[];
+  readonly resourceAwsEc2InstanceKeyName?: SecurityhubInsightFiltersResourceAwsEc2InstanceKeyName[] | cdktf.IResolvable;
   /**
   * resource_aws_ec2_instance_launched_at block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_aws_ec2_instance_launched_at SecurityhubInsight#resource_aws_ec2_instance_launched_at}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_aws_ec2_instance_launched_at SecurityhubInsight#resource_aws_ec2_instance_launched_at}
   */
-  readonly resourceAwsEc2InstanceLaunchedAt?: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt[];
+  readonly resourceAwsEc2InstanceLaunchedAt?: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt[] | cdktf.IResolvable;
   /**
   * resource_aws_ec2_instance_subnet_id block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_aws_ec2_instance_subnet_id SecurityhubInsight#resource_aws_ec2_instance_subnet_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_aws_ec2_instance_subnet_id SecurityhubInsight#resource_aws_ec2_instance_subnet_id}
   */
-  readonly resourceAwsEc2InstanceSubnetId?: SecurityhubInsightFiltersResourceAwsEc2InstanceSubnetId[];
+  readonly resourceAwsEc2InstanceSubnetId?: SecurityhubInsightFiltersResourceAwsEc2InstanceSubnetId[] | cdktf.IResolvable;
   /**
   * resource_aws_ec2_instance_type block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_aws_ec2_instance_type SecurityhubInsight#resource_aws_ec2_instance_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_aws_ec2_instance_type SecurityhubInsight#resource_aws_ec2_instance_type}
   */
-  readonly resourceAwsEc2InstanceType?: SecurityhubInsightFiltersResourceAwsEc2InstanceType[];
+  readonly resourceAwsEc2InstanceType?: SecurityhubInsightFiltersResourceAwsEc2InstanceType[] | cdktf.IResolvable;
   /**
   * resource_aws_ec2_instance_vpc_id block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_aws_ec2_instance_vpc_id SecurityhubInsight#resource_aws_ec2_instance_vpc_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_aws_ec2_instance_vpc_id SecurityhubInsight#resource_aws_ec2_instance_vpc_id}
   */
-  readonly resourceAwsEc2InstanceVpcId?: SecurityhubInsightFiltersResourceAwsEc2InstanceVpcId[];
+  readonly resourceAwsEc2InstanceVpcId?: SecurityhubInsightFiltersResourceAwsEc2InstanceVpcId[] | cdktf.IResolvable;
   /**
   * resource_aws_iam_access_key_created_at block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_aws_iam_access_key_created_at SecurityhubInsight#resource_aws_iam_access_key_created_at}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_aws_iam_access_key_created_at SecurityhubInsight#resource_aws_iam_access_key_created_at}
   */
-  readonly resourceAwsIamAccessKeyCreatedAt?: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt[];
+  readonly resourceAwsIamAccessKeyCreatedAt?: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt[] | cdktf.IResolvable;
   /**
   * resource_aws_iam_access_key_status block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_aws_iam_access_key_status SecurityhubInsight#resource_aws_iam_access_key_status}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_aws_iam_access_key_status SecurityhubInsight#resource_aws_iam_access_key_status}
   */
-  readonly resourceAwsIamAccessKeyStatus?: SecurityhubInsightFiltersResourceAwsIamAccessKeyStatus[];
+  readonly resourceAwsIamAccessKeyStatus?: SecurityhubInsightFiltersResourceAwsIamAccessKeyStatus[] | cdktf.IResolvable;
   /**
   * resource_aws_iam_access_key_user_name block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_aws_iam_access_key_user_name SecurityhubInsight#resource_aws_iam_access_key_user_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_aws_iam_access_key_user_name SecurityhubInsight#resource_aws_iam_access_key_user_name}
   */
-  readonly resourceAwsIamAccessKeyUserName?: SecurityhubInsightFiltersResourceAwsIamAccessKeyUserName[];
+  readonly resourceAwsIamAccessKeyUserName?: SecurityhubInsightFiltersResourceAwsIamAccessKeyUserName[] | cdktf.IResolvable;
   /**
   * resource_aws_s3_bucket_owner_id block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_aws_s3_bucket_owner_id SecurityhubInsight#resource_aws_s3_bucket_owner_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_aws_s3_bucket_owner_id SecurityhubInsight#resource_aws_s3_bucket_owner_id}
   */
-  readonly resourceAwsS3BucketOwnerId?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerId[];
+  readonly resourceAwsS3BucketOwnerId?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerId[] | cdktf.IResolvable;
   /**
   * resource_aws_s3_bucket_owner_name block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_aws_s3_bucket_owner_name SecurityhubInsight#resource_aws_s3_bucket_owner_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_aws_s3_bucket_owner_name SecurityhubInsight#resource_aws_s3_bucket_owner_name}
   */
-  readonly resourceAwsS3BucketOwnerName?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerName[];
+  readonly resourceAwsS3BucketOwnerName?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerName[] | cdktf.IResolvable;
   /**
   * resource_container_image_id block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_container_image_id SecurityhubInsight#resource_container_image_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_container_image_id SecurityhubInsight#resource_container_image_id}
   */
-  readonly resourceContainerImageId?: SecurityhubInsightFiltersResourceContainerImageId[];
+  readonly resourceContainerImageId?: SecurityhubInsightFiltersResourceContainerImageId[] | cdktf.IResolvable;
   /**
   * resource_container_image_name block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_container_image_name SecurityhubInsight#resource_container_image_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_container_image_name SecurityhubInsight#resource_container_image_name}
   */
-  readonly resourceContainerImageName?: SecurityhubInsightFiltersResourceContainerImageName[];
+  readonly resourceContainerImageName?: SecurityhubInsightFiltersResourceContainerImageName[] | cdktf.IResolvable;
   /**
   * resource_container_launched_at block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_container_launched_at SecurityhubInsight#resource_container_launched_at}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_container_launched_at SecurityhubInsight#resource_container_launched_at}
   */
-  readonly resourceContainerLaunchedAt?: SecurityhubInsightFiltersResourceContainerLaunchedAt[];
+  readonly resourceContainerLaunchedAt?: SecurityhubInsightFiltersResourceContainerLaunchedAt[] | cdktf.IResolvable;
   /**
   * resource_container_name block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_container_name SecurityhubInsight#resource_container_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_container_name SecurityhubInsight#resource_container_name}
   */
-  readonly resourceContainerName?: SecurityhubInsightFiltersResourceContainerName[];
+  readonly resourceContainerName?: SecurityhubInsightFiltersResourceContainerName[] | cdktf.IResolvable;
   /**
   * resource_details_other block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_details_other SecurityhubInsight#resource_details_other}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_details_other SecurityhubInsight#resource_details_other}
   */
-  readonly resourceDetailsOther?: SecurityhubInsightFiltersResourceDetailsOther[];
+  readonly resourceDetailsOther?: SecurityhubInsightFiltersResourceDetailsOther[] | cdktf.IResolvable;
   /**
   * resource_id block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_id SecurityhubInsight#resource_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_id SecurityhubInsight#resource_id}
   */
-  readonly resourceId?: SecurityhubInsightFiltersResourceId[];
+  readonly resourceId?: SecurityhubInsightFiltersResourceId[] | cdktf.IResolvable;
   /**
   * resource_partition block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_partition SecurityhubInsight#resource_partition}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_partition SecurityhubInsight#resource_partition}
   */
-  readonly resourcePartition?: SecurityhubInsightFiltersResourcePartition[];
+  readonly resourcePartition?: SecurityhubInsightFiltersResourcePartition[] | cdktf.IResolvable;
   /**
   * resource_region block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_region SecurityhubInsight#resource_region}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_region SecurityhubInsight#resource_region}
   */
-  readonly resourceRegion?: SecurityhubInsightFiltersResourceRegion[];
+  readonly resourceRegion?: SecurityhubInsightFiltersResourceRegion[] | cdktf.IResolvable;
   /**
   * resource_tags block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_tags SecurityhubInsight#resource_tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_tags SecurityhubInsight#resource_tags}
   */
-  readonly resourceTags?: SecurityhubInsightFiltersResourceTags[];
+  readonly resourceTags?: SecurityhubInsightFiltersResourceTags[] | cdktf.IResolvable;
   /**
   * resource_type block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#resource_type SecurityhubInsight#resource_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#resource_type SecurityhubInsight#resource_type}
   */
-  readonly resourceType?: SecurityhubInsightFiltersResourceType[];
+  readonly resourceType?: SecurityhubInsightFiltersResourceType[] | cdktf.IResolvable;
   /**
   * severity_label block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#severity_label SecurityhubInsight#severity_label}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#severity_label SecurityhubInsight#severity_label}
   */
-  readonly severityLabel?: SecurityhubInsightFiltersSeverityLabel[];
+  readonly severityLabel?: SecurityhubInsightFiltersSeverityLabel[] | cdktf.IResolvable;
   /**
   * source_url block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#source_url SecurityhubInsight#source_url}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#source_url SecurityhubInsight#source_url}
   */
-  readonly sourceUrl?: SecurityhubInsightFiltersSourceUrl[];
+  readonly sourceUrl?: SecurityhubInsightFiltersSourceUrl[] | cdktf.IResolvable;
   /**
   * threat_intel_indicator_category block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#threat_intel_indicator_category SecurityhubInsight#threat_intel_indicator_category}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#threat_intel_indicator_category SecurityhubInsight#threat_intel_indicator_category}
   */
-  readonly threatIntelIndicatorCategory?: SecurityhubInsightFiltersThreatIntelIndicatorCategory[];
+  readonly threatIntelIndicatorCategory?: SecurityhubInsightFiltersThreatIntelIndicatorCategory[] | cdktf.IResolvable;
   /**
   * threat_intel_indicator_last_observed_at block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#threat_intel_indicator_last_observed_at SecurityhubInsight#threat_intel_indicator_last_observed_at}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#threat_intel_indicator_last_observed_at SecurityhubInsight#threat_intel_indicator_last_observed_at}
   */
-  readonly threatIntelIndicatorLastObservedAt?: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt[];
+  readonly threatIntelIndicatorLastObservedAt?: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt[] | cdktf.IResolvable;
   /**
   * threat_intel_indicator_source block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#threat_intel_indicator_source SecurityhubInsight#threat_intel_indicator_source}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#threat_intel_indicator_source SecurityhubInsight#threat_intel_indicator_source}
   */
-  readonly threatIntelIndicatorSource?: SecurityhubInsightFiltersThreatIntelIndicatorSource[];
+  readonly threatIntelIndicatorSource?: SecurityhubInsightFiltersThreatIntelIndicatorSource[] | cdktf.IResolvable;
   /**
   * threat_intel_indicator_source_url block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#threat_intel_indicator_source_url SecurityhubInsight#threat_intel_indicator_source_url}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#threat_intel_indicator_source_url SecurityhubInsight#threat_intel_indicator_source_url}
   */
-  readonly threatIntelIndicatorSourceUrl?: SecurityhubInsightFiltersThreatIntelIndicatorSourceUrl[];
+  readonly threatIntelIndicatorSourceUrl?: SecurityhubInsightFiltersThreatIntelIndicatorSourceUrl[] | cdktf.IResolvable;
   /**
   * threat_intel_indicator_type block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#threat_intel_indicator_type SecurityhubInsight#threat_intel_indicator_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#threat_intel_indicator_type SecurityhubInsight#threat_intel_indicator_type}
   */
-  readonly threatIntelIndicatorType?: SecurityhubInsightFiltersThreatIntelIndicatorType[];
+  readonly threatIntelIndicatorType?: SecurityhubInsightFiltersThreatIntelIndicatorType[] | cdktf.IResolvable;
   /**
   * threat_intel_indicator_value block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#threat_intel_indicator_value SecurityhubInsight#threat_intel_indicator_value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#threat_intel_indicator_value SecurityhubInsight#threat_intel_indicator_value}
   */
-  readonly threatIntelIndicatorValue?: SecurityhubInsightFiltersThreatIntelIndicatorValue[];
+  readonly threatIntelIndicatorValue?: SecurityhubInsightFiltersThreatIntelIndicatorValue[] | cdktf.IResolvable;
   /**
   * title block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#title SecurityhubInsight#title}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#title SecurityhubInsight#title}
   */
-  readonly title?: SecurityhubInsightFiltersTitle[];
+  readonly title?: SecurityhubInsightFiltersTitle[] | cdktf.IResolvable;
   /**
   * type block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#type SecurityhubInsight#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#type SecurityhubInsight#type}
   */
-  readonly type?: SecurityhubInsightFiltersType[];
+  readonly type?: SecurityhubInsightFiltersType[] | cdktf.IResolvable;
   /**
   * updated_at block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#updated_at SecurityhubInsight#updated_at}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#updated_at SecurityhubInsight#updated_at}
   */
-  readonly updatedAt?: SecurityhubInsightFiltersUpdatedAt[];
+  readonly updatedAt?: SecurityhubInsightFiltersUpdatedAt[] | cdktf.IResolvable;
   /**
   * user_defined_values block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#user_defined_values SecurityhubInsight#user_defined_values}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#user_defined_values SecurityhubInsight#user_defined_values}
   */
-  readonly userDefinedValues?: SecurityhubInsightFiltersUserDefinedValues[];
+  readonly userDefinedValues?: SecurityhubInsightFiltersUserDefinedValues[] | cdktf.IResolvable;
   /**
   * verification_state block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#verification_state SecurityhubInsight#verification_state}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#verification_state SecurityhubInsight#verification_state}
   */
-  readonly verificationState?: SecurityhubInsightFiltersVerificationState[];
+  readonly verificationState?: SecurityhubInsightFiltersVerificationState[] | cdktf.IResolvable;
   /**
   * workflow_status block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#workflow_status SecurityhubInsight#workflow_status}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight#workflow_status SecurityhubInsight#workflow_status}
   */
-  readonly workflowStatus?: SecurityhubInsightFiltersWorkflowStatus[];
+  readonly workflowStatus?: SecurityhubInsightFiltersWorkflowStatus[] | cdktf.IResolvable;
 }
 
 export function securityhubInsightFiltersToTerraform(struct?: SecurityhubInsightFiltersOutputReference | SecurityhubInsightFilters): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -3602,367 +3646,369 @@ export function securityhubInsightFiltersToTerraform(struct?: SecurityhubInsight
 }
 
 export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SecurityhubInsightFilters | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._awsAccountId) {
+    if (this._awsAccountId !== undefined) {
       hasAnyValues = true;
       internalValueResult.awsAccountId = this._awsAccountId;
     }
-    if (this._companyName) {
+    if (this._companyName !== undefined) {
       hasAnyValues = true;
       internalValueResult.companyName = this._companyName;
     }
-    if (this._complianceStatus) {
+    if (this._complianceStatus !== undefined) {
       hasAnyValues = true;
       internalValueResult.complianceStatus = this._complianceStatus;
     }
-    if (this._confidence) {
+    if (this._confidence !== undefined) {
       hasAnyValues = true;
       internalValueResult.confidence = this._confidence;
     }
-    if (this._createdAt) {
+    if (this._createdAt !== undefined) {
       hasAnyValues = true;
       internalValueResult.createdAt = this._createdAt;
     }
-    if (this._criticality) {
+    if (this._criticality !== undefined) {
       hasAnyValues = true;
       internalValueResult.criticality = this._criticality;
     }
-    if (this._description) {
+    if (this._description !== undefined) {
       hasAnyValues = true;
       internalValueResult.description = this._description;
     }
-    if (this._findingProviderFieldsConfidence) {
+    if (this._findingProviderFieldsConfidence !== undefined) {
       hasAnyValues = true;
       internalValueResult.findingProviderFieldsConfidence = this._findingProviderFieldsConfidence;
     }
-    if (this._findingProviderFieldsCriticality) {
+    if (this._findingProviderFieldsCriticality !== undefined) {
       hasAnyValues = true;
       internalValueResult.findingProviderFieldsCriticality = this._findingProviderFieldsCriticality;
     }
-    if (this._findingProviderFieldsRelatedFindingsId) {
+    if (this._findingProviderFieldsRelatedFindingsId !== undefined) {
       hasAnyValues = true;
       internalValueResult.findingProviderFieldsRelatedFindingsId = this._findingProviderFieldsRelatedFindingsId;
     }
-    if (this._findingProviderFieldsRelatedFindingsProductArn) {
+    if (this._findingProviderFieldsRelatedFindingsProductArn !== undefined) {
       hasAnyValues = true;
       internalValueResult.findingProviderFieldsRelatedFindingsProductArn = this._findingProviderFieldsRelatedFindingsProductArn;
     }
-    if (this._findingProviderFieldsSeverityLabel) {
+    if (this._findingProviderFieldsSeverityLabel !== undefined) {
       hasAnyValues = true;
       internalValueResult.findingProviderFieldsSeverityLabel = this._findingProviderFieldsSeverityLabel;
     }
-    if (this._findingProviderFieldsSeverityOriginal) {
+    if (this._findingProviderFieldsSeverityOriginal !== undefined) {
       hasAnyValues = true;
       internalValueResult.findingProviderFieldsSeverityOriginal = this._findingProviderFieldsSeverityOriginal;
     }
-    if (this._findingProviderFieldsTypes) {
+    if (this._findingProviderFieldsTypes !== undefined) {
       hasAnyValues = true;
       internalValueResult.findingProviderFieldsTypes = this._findingProviderFieldsTypes;
     }
-    if (this._firstObservedAt) {
+    if (this._firstObservedAt !== undefined) {
       hasAnyValues = true;
       internalValueResult.firstObservedAt = this._firstObservedAt;
     }
-    if (this._generatorId) {
+    if (this._generatorId !== undefined) {
       hasAnyValues = true;
       internalValueResult.generatorId = this._generatorId;
     }
-    if (this._id) {
+    if (this._id !== undefined) {
       hasAnyValues = true;
       internalValueResult.id = this._id;
     }
-    if (this._keyword) {
+    if (this._keyword !== undefined) {
       hasAnyValues = true;
       internalValueResult.keyword = this._keyword;
     }
-    if (this._lastObservedAt) {
+    if (this._lastObservedAt !== undefined) {
       hasAnyValues = true;
       internalValueResult.lastObservedAt = this._lastObservedAt;
     }
-    if (this._malwareName) {
+    if (this._malwareName !== undefined) {
       hasAnyValues = true;
       internalValueResult.malwareName = this._malwareName;
     }
-    if (this._malwarePath) {
+    if (this._malwarePath !== undefined) {
       hasAnyValues = true;
       internalValueResult.malwarePath = this._malwarePath;
     }
-    if (this._malwareState) {
+    if (this._malwareState !== undefined) {
       hasAnyValues = true;
       internalValueResult.malwareState = this._malwareState;
     }
-    if (this._malwareType) {
+    if (this._malwareType !== undefined) {
       hasAnyValues = true;
       internalValueResult.malwareType = this._malwareType;
     }
-    if (this._networkDestinationDomain) {
+    if (this._networkDestinationDomain !== undefined) {
       hasAnyValues = true;
       internalValueResult.networkDestinationDomain = this._networkDestinationDomain;
     }
-    if (this._networkDestinationIpv4) {
+    if (this._networkDestinationIpv4 !== undefined) {
       hasAnyValues = true;
       internalValueResult.networkDestinationIpv4 = this._networkDestinationIpv4;
     }
-    if (this._networkDestinationIpv6) {
+    if (this._networkDestinationIpv6 !== undefined) {
       hasAnyValues = true;
       internalValueResult.networkDestinationIpv6 = this._networkDestinationIpv6;
     }
-    if (this._networkDestinationPort) {
+    if (this._networkDestinationPort !== undefined) {
       hasAnyValues = true;
       internalValueResult.networkDestinationPort = this._networkDestinationPort;
     }
-    if (this._networkDirection) {
+    if (this._networkDirection !== undefined) {
       hasAnyValues = true;
       internalValueResult.networkDirection = this._networkDirection;
     }
-    if (this._networkProtocol) {
+    if (this._networkProtocol !== undefined) {
       hasAnyValues = true;
       internalValueResult.networkProtocol = this._networkProtocol;
     }
-    if (this._networkSourceDomain) {
+    if (this._networkSourceDomain !== undefined) {
       hasAnyValues = true;
       internalValueResult.networkSourceDomain = this._networkSourceDomain;
     }
-    if (this._networkSourceIpv4) {
+    if (this._networkSourceIpv4 !== undefined) {
       hasAnyValues = true;
       internalValueResult.networkSourceIpv4 = this._networkSourceIpv4;
     }
-    if (this._networkSourceIpv6) {
+    if (this._networkSourceIpv6 !== undefined) {
       hasAnyValues = true;
       internalValueResult.networkSourceIpv6 = this._networkSourceIpv6;
     }
-    if (this._networkSourceMac) {
+    if (this._networkSourceMac !== undefined) {
       hasAnyValues = true;
       internalValueResult.networkSourceMac = this._networkSourceMac;
     }
-    if (this._networkSourcePort) {
+    if (this._networkSourcePort !== undefined) {
       hasAnyValues = true;
       internalValueResult.networkSourcePort = this._networkSourcePort;
     }
-    if (this._noteText) {
+    if (this._noteText !== undefined) {
       hasAnyValues = true;
       internalValueResult.noteText = this._noteText;
     }
-    if (this._noteUpdatedAt) {
+    if (this._noteUpdatedAt !== undefined) {
       hasAnyValues = true;
       internalValueResult.noteUpdatedAt = this._noteUpdatedAt;
     }
-    if (this._noteUpdatedBy) {
+    if (this._noteUpdatedBy !== undefined) {
       hasAnyValues = true;
       internalValueResult.noteUpdatedBy = this._noteUpdatedBy;
     }
-    if (this._processLaunchedAt) {
+    if (this._processLaunchedAt !== undefined) {
       hasAnyValues = true;
       internalValueResult.processLaunchedAt = this._processLaunchedAt;
     }
-    if (this._processName) {
+    if (this._processName !== undefined) {
       hasAnyValues = true;
       internalValueResult.processName = this._processName;
     }
-    if (this._processParentPid) {
+    if (this._processParentPid !== undefined) {
       hasAnyValues = true;
       internalValueResult.processParentPid = this._processParentPid;
     }
-    if (this._processPath) {
+    if (this._processPath !== undefined) {
       hasAnyValues = true;
       internalValueResult.processPath = this._processPath;
     }
-    if (this._processPid) {
+    if (this._processPid !== undefined) {
       hasAnyValues = true;
       internalValueResult.processPid = this._processPid;
     }
-    if (this._processTerminatedAt) {
+    if (this._processTerminatedAt !== undefined) {
       hasAnyValues = true;
       internalValueResult.processTerminatedAt = this._processTerminatedAt;
     }
-    if (this._productArn) {
+    if (this._productArn !== undefined) {
       hasAnyValues = true;
       internalValueResult.productArn = this._productArn;
     }
-    if (this._productFields) {
+    if (this._productFields !== undefined) {
       hasAnyValues = true;
       internalValueResult.productFields = this._productFields;
     }
-    if (this._productName) {
+    if (this._productName !== undefined) {
       hasAnyValues = true;
       internalValueResult.productName = this._productName;
     }
-    if (this._recommendationText) {
+    if (this._recommendationText !== undefined) {
       hasAnyValues = true;
       internalValueResult.recommendationText = this._recommendationText;
     }
-    if (this._recordState) {
+    if (this._recordState !== undefined) {
       hasAnyValues = true;
       internalValueResult.recordState = this._recordState;
     }
-    if (this._relatedFindingsId) {
+    if (this._relatedFindingsId !== undefined) {
       hasAnyValues = true;
       internalValueResult.relatedFindingsId = this._relatedFindingsId;
     }
-    if (this._relatedFindingsProductArn) {
+    if (this._relatedFindingsProductArn !== undefined) {
       hasAnyValues = true;
       internalValueResult.relatedFindingsProductArn = this._relatedFindingsProductArn;
     }
-    if (this._resourceAwsEc2InstanceIamInstanceProfileArn) {
+    if (this._resourceAwsEc2InstanceIamInstanceProfileArn !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceAwsEc2InstanceIamInstanceProfileArn = this._resourceAwsEc2InstanceIamInstanceProfileArn;
     }
-    if (this._resourceAwsEc2InstanceImageId) {
+    if (this._resourceAwsEc2InstanceImageId !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceAwsEc2InstanceImageId = this._resourceAwsEc2InstanceImageId;
     }
-    if (this._resourceAwsEc2InstanceIpv4Addresses) {
+    if (this._resourceAwsEc2InstanceIpv4Addresses !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceAwsEc2InstanceIpv4Addresses = this._resourceAwsEc2InstanceIpv4Addresses;
     }
-    if (this._resourceAwsEc2InstanceIpv6Addresses) {
+    if (this._resourceAwsEc2InstanceIpv6Addresses !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceAwsEc2InstanceIpv6Addresses = this._resourceAwsEc2InstanceIpv6Addresses;
     }
-    if (this._resourceAwsEc2InstanceKeyName) {
+    if (this._resourceAwsEc2InstanceKeyName !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceAwsEc2InstanceKeyName = this._resourceAwsEc2InstanceKeyName;
     }
-    if (this._resourceAwsEc2InstanceLaunchedAt) {
+    if (this._resourceAwsEc2InstanceLaunchedAt !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceAwsEc2InstanceLaunchedAt = this._resourceAwsEc2InstanceLaunchedAt;
     }
-    if (this._resourceAwsEc2InstanceSubnetId) {
+    if (this._resourceAwsEc2InstanceSubnetId !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceAwsEc2InstanceSubnetId = this._resourceAwsEc2InstanceSubnetId;
     }
-    if (this._resourceAwsEc2InstanceType) {
+    if (this._resourceAwsEc2InstanceType !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceAwsEc2InstanceType = this._resourceAwsEc2InstanceType;
     }
-    if (this._resourceAwsEc2InstanceVpcId) {
+    if (this._resourceAwsEc2InstanceVpcId !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceAwsEc2InstanceVpcId = this._resourceAwsEc2InstanceVpcId;
     }
-    if (this._resourceAwsIamAccessKeyCreatedAt) {
+    if (this._resourceAwsIamAccessKeyCreatedAt !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceAwsIamAccessKeyCreatedAt = this._resourceAwsIamAccessKeyCreatedAt;
     }
-    if (this._resourceAwsIamAccessKeyStatus) {
+    if (this._resourceAwsIamAccessKeyStatus !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceAwsIamAccessKeyStatus = this._resourceAwsIamAccessKeyStatus;
     }
-    if (this._resourceAwsIamAccessKeyUserName) {
+    if (this._resourceAwsIamAccessKeyUserName !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceAwsIamAccessKeyUserName = this._resourceAwsIamAccessKeyUserName;
     }
-    if (this._resourceAwsS3BucketOwnerId) {
+    if (this._resourceAwsS3BucketOwnerId !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceAwsS3BucketOwnerId = this._resourceAwsS3BucketOwnerId;
     }
-    if (this._resourceAwsS3BucketOwnerName) {
+    if (this._resourceAwsS3BucketOwnerName !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceAwsS3BucketOwnerName = this._resourceAwsS3BucketOwnerName;
     }
-    if (this._resourceContainerImageId) {
+    if (this._resourceContainerImageId !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceContainerImageId = this._resourceContainerImageId;
     }
-    if (this._resourceContainerImageName) {
+    if (this._resourceContainerImageName !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceContainerImageName = this._resourceContainerImageName;
     }
-    if (this._resourceContainerLaunchedAt) {
+    if (this._resourceContainerLaunchedAt !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceContainerLaunchedAt = this._resourceContainerLaunchedAt;
     }
-    if (this._resourceContainerName) {
+    if (this._resourceContainerName !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceContainerName = this._resourceContainerName;
     }
-    if (this._resourceDetailsOther) {
+    if (this._resourceDetailsOther !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceDetailsOther = this._resourceDetailsOther;
     }
-    if (this._resourceId) {
+    if (this._resourceId !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceId = this._resourceId;
     }
-    if (this._resourcePartition) {
+    if (this._resourcePartition !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourcePartition = this._resourcePartition;
     }
-    if (this._resourceRegion) {
+    if (this._resourceRegion !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceRegion = this._resourceRegion;
     }
-    if (this._resourceTags) {
+    if (this._resourceTags !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceTags = this._resourceTags;
     }
-    if (this._resourceType) {
+    if (this._resourceType !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceType = this._resourceType;
     }
-    if (this._severityLabel) {
+    if (this._severityLabel !== undefined) {
       hasAnyValues = true;
       internalValueResult.severityLabel = this._severityLabel;
     }
-    if (this._sourceUrl) {
+    if (this._sourceUrl !== undefined) {
       hasAnyValues = true;
       internalValueResult.sourceUrl = this._sourceUrl;
     }
-    if (this._threatIntelIndicatorCategory) {
+    if (this._threatIntelIndicatorCategory !== undefined) {
       hasAnyValues = true;
       internalValueResult.threatIntelIndicatorCategory = this._threatIntelIndicatorCategory;
     }
-    if (this._threatIntelIndicatorLastObservedAt) {
+    if (this._threatIntelIndicatorLastObservedAt !== undefined) {
       hasAnyValues = true;
       internalValueResult.threatIntelIndicatorLastObservedAt = this._threatIntelIndicatorLastObservedAt;
     }
-    if (this._threatIntelIndicatorSource) {
+    if (this._threatIntelIndicatorSource !== undefined) {
       hasAnyValues = true;
       internalValueResult.threatIntelIndicatorSource = this._threatIntelIndicatorSource;
     }
-    if (this._threatIntelIndicatorSourceUrl) {
+    if (this._threatIntelIndicatorSourceUrl !== undefined) {
       hasAnyValues = true;
       internalValueResult.threatIntelIndicatorSourceUrl = this._threatIntelIndicatorSourceUrl;
     }
-    if (this._threatIntelIndicatorType) {
+    if (this._threatIntelIndicatorType !== undefined) {
       hasAnyValues = true;
       internalValueResult.threatIntelIndicatorType = this._threatIntelIndicatorType;
     }
-    if (this._threatIntelIndicatorValue) {
+    if (this._threatIntelIndicatorValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.threatIntelIndicatorValue = this._threatIntelIndicatorValue;
     }
-    if (this._title) {
+    if (this._title !== undefined) {
       hasAnyValues = true;
       internalValueResult.title = this._title;
     }
-    if (this._type) {
+    if (this._type !== undefined) {
       hasAnyValues = true;
       internalValueResult.type = this._type;
     }
-    if (this._updatedAt) {
+    if (this._updatedAt !== undefined) {
       hasAnyValues = true;
       internalValueResult.updatedAt = this._updatedAt;
     }
-    if (this._userDefinedValues) {
+    if (this._userDefinedValues !== undefined) {
       hasAnyValues = true;
       internalValueResult.userDefinedValues = this._userDefinedValues;
     }
-    if (this._verificationState) {
+    if (this._verificationState !== undefined) {
       hasAnyValues = true;
       internalValueResult.verificationState = this._verificationState;
     }
-    if (this._workflowStatus) {
+    if (this._workflowStatus !== undefined) {
       hasAnyValues = true;
       internalValueResult.workflowStatus = this._workflowStatus;
     }
@@ -3971,6 +4017,7 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
 
   public set internalValue(value: SecurityhubInsightFilters | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._awsAccountId = undefined;
       this._companyName = undefined;
       this._complianceStatus = undefined;
@@ -4061,6 +4108,7 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
       this._workflowStatus = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._awsAccountId = value.awsAccountId;
       this._companyName = value.companyName;
       this._complianceStatus = value.complianceStatus;
@@ -4153,12 +4201,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // aws_account_id - computed: false, optional: true, required: false
-  private _awsAccountId?: SecurityhubInsightFiltersAwsAccountId[]; 
+  private _awsAccountId?: SecurityhubInsightFiltersAwsAccountId[] | cdktf.IResolvable; 
   public get awsAccountId() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('aws_account_id') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('aws_account_id')));
   }
-  public set awsAccountId(value: SecurityhubInsightFiltersAwsAccountId[]) {
+  public set awsAccountId(value: SecurityhubInsightFiltersAwsAccountId[] | cdktf.IResolvable) {
     this._awsAccountId = value;
   }
   public resetAwsAccountId() {
@@ -4170,12 +4218,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // company_name - computed: false, optional: true, required: false
-  private _companyName?: SecurityhubInsightFiltersCompanyName[]; 
+  private _companyName?: SecurityhubInsightFiltersCompanyName[] | cdktf.IResolvable; 
   public get companyName() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('company_name') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('company_name')));
   }
-  public set companyName(value: SecurityhubInsightFiltersCompanyName[]) {
+  public set companyName(value: SecurityhubInsightFiltersCompanyName[] | cdktf.IResolvable) {
     this._companyName = value;
   }
   public resetCompanyName() {
@@ -4187,12 +4235,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // compliance_status - computed: false, optional: true, required: false
-  private _complianceStatus?: SecurityhubInsightFiltersComplianceStatus[]; 
+  private _complianceStatus?: SecurityhubInsightFiltersComplianceStatus[] | cdktf.IResolvable; 
   public get complianceStatus() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('compliance_status') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('compliance_status')));
   }
-  public set complianceStatus(value: SecurityhubInsightFiltersComplianceStatus[]) {
+  public set complianceStatus(value: SecurityhubInsightFiltersComplianceStatus[] | cdktf.IResolvable) {
     this._complianceStatus = value;
   }
   public resetComplianceStatus() {
@@ -4204,12 +4252,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // confidence - computed: false, optional: true, required: false
-  private _confidence?: SecurityhubInsightFiltersConfidence[]; 
+  private _confidence?: SecurityhubInsightFiltersConfidence[] | cdktf.IResolvable; 
   public get confidence() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('confidence') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('confidence')));
   }
-  public set confidence(value: SecurityhubInsightFiltersConfidence[]) {
+  public set confidence(value: SecurityhubInsightFiltersConfidence[] | cdktf.IResolvable) {
     this._confidence = value;
   }
   public resetConfidence() {
@@ -4221,12 +4269,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // created_at - computed: false, optional: true, required: false
-  private _createdAt?: SecurityhubInsightFiltersCreatedAt[]; 
+  private _createdAt?: SecurityhubInsightFiltersCreatedAt[] | cdktf.IResolvable; 
   public get createdAt() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('created_at') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('created_at')));
   }
-  public set createdAt(value: SecurityhubInsightFiltersCreatedAt[]) {
+  public set createdAt(value: SecurityhubInsightFiltersCreatedAt[] | cdktf.IResolvable) {
     this._createdAt = value;
   }
   public resetCreatedAt() {
@@ -4238,12 +4286,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // criticality - computed: false, optional: true, required: false
-  private _criticality?: SecurityhubInsightFiltersCriticality[]; 
+  private _criticality?: SecurityhubInsightFiltersCriticality[] | cdktf.IResolvable; 
   public get criticality() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('criticality') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('criticality')));
   }
-  public set criticality(value: SecurityhubInsightFiltersCriticality[]) {
+  public set criticality(value: SecurityhubInsightFiltersCriticality[] | cdktf.IResolvable) {
     this._criticality = value;
   }
   public resetCriticality() {
@@ -4255,12 +4303,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: SecurityhubInsightFiltersDescription[]; 
+  private _description?: SecurityhubInsightFiltersDescription[] | cdktf.IResolvable; 
   public get description() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('description') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('description')));
   }
-  public set description(value: SecurityhubInsightFiltersDescription[]) {
+  public set description(value: SecurityhubInsightFiltersDescription[] | cdktf.IResolvable) {
     this._description = value;
   }
   public resetDescription() {
@@ -4272,12 +4320,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // finding_provider_fields_confidence - computed: false, optional: true, required: false
-  private _findingProviderFieldsConfidence?: SecurityhubInsightFiltersFindingProviderFieldsConfidence[]; 
+  private _findingProviderFieldsConfidence?: SecurityhubInsightFiltersFindingProviderFieldsConfidence[] | cdktf.IResolvable; 
   public get findingProviderFieldsConfidence() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('finding_provider_fields_confidence') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('finding_provider_fields_confidence')));
   }
-  public set findingProviderFieldsConfidence(value: SecurityhubInsightFiltersFindingProviderFieldsConfidence[]) {
+  public set findingProviderFieldsConfidence(value: SecurityhubInsightFiltersFindingProviderFieldsConfidence[] | cdktf.IResolvable) {
     this._findingProviderFieldsConfidence = value;
   }
   public resetFindingProviderFieldsConfidence() {
@@ -4289,12 +4337,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // finding_provider_fields_criticality - computed: false, optional: true, required: false
-  private _findingProviderFieldsCriticality?: SecurityhubInsightFiltersFindingProviderFieldsCriticality[]; 
+  private _findingProviderFieldsCriticality?: SecurityhubInsightFiltersFindingProviderFieldsCriticality[] | cdktf.IResolvable; 
   public get findingProviderFieldsCriticality() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('finding_provider_fields_criticality') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('finding_provider_fields_criticality')));
   }
-  public set findingProviderFieldsCriticality(value: SecurityhubInsightFiltersFindingProviderFieldsCriticality[]) {
+  public set findingProviderFieldsCriticality(value: SecurityhubInsightFiltersFindingProviderFieldsCriticality[] | cdktf.IResolvable) {
     this._findingProviderFieldsCriticality = value;
   }
   public resetFindingProviderFieldsCriticality() {
@@ -4306,12 +4354,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // finding_provider_fields_related_findings_id - computed: false, optional: true, required: false
-  private _findingProviderFieldsRelatedFindingsId?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsId[]; 
+  private _findingProviderFieldsRelatedFindingsId?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsId[] | cdktf.IResolvable; 
   public get findingProviderFieldsRelatedFindingsId() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('finding_provider_fields_related_findings_id') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('finding_provider_fields_related_findings_id')));
   }
-  public set findingProviderFieldsRelatedFindingsId(value: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsId[]) {
+  public set findingProviderFieldsRelatedFindingsId(value: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsId[] | cdktf.IResolvable) {
     this._findingProviderFieldsRelatedFindingsId = value;
   }
   public resetFindingProviderFieldsRelatedFindingsId() {
@@ -4323,12 +4371,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // finding_provider_fields_related_findings_product_arn - computed: false, optional: true, required: false
-  private _findingProviderFieldsRelatedFindingsProductArn?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArn[]; 
+  private _findingProviderFieldsRelatedFindingsProductArn?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArn[] | cdktf.IResolvable; 
   public get findingProviderFieldsRelatedFindingsProductArn() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('finding_provider_fields_related_findings_product_arn') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('finding_provider_fields_related_findings_product_arn')));
   }
-  public set findingProviderFieldsRelatedFindingsProductArn(value: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArn[]) {
+  public set findingProviderFieldsRelatedFindingsProductArn(value: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArn[] | cdktf.IResolvable) {
     this._findingProviderFieldsRelatedFindingsProductArn = value;
   }
   public resetFindingProviderFieldsRelatedFindingsProductArn() {
@@ -4340,12 +4388,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // finding_provider_fields_severity_label - computed: false, optional: true, required: false
-  private _findingProviderFieldsSeverityLabel?: SecurityhubInsightFiltersFindingProviderFieldsSeverityLabel[]; 
+  private _findingProviderFieldsSeverityLabel?: SecurityhubInsightFiltersFindingProviderFieldsSeverityLabel[] | cdktf.IResolvable; 
   public get findingProviderFieldsSeverityLabel() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('finding_provider_fields_severity_label') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('finding_provider_fields_severity_label')));
   }
-  public set findingProviderFieldsSeverityLabel(value: SecurityhubInsightFiltersFindingProviderFieldsSeverityLabel[]) {
+  public set findingProviderFieldsSeverityLabel(value: SecurityhubInsightFiltersFindingProviderFieldsSeverityLabel[] | cdktf.IResolvable) {
     this._findingProviderFieldsSeverityLabel = value;
   }
   public resetFindingProviderFieldsSeverityLabel() {
@@ -4357,12 +4405,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // finding_provider_fields_severity_original - computed: false, optional: true, required: false
-  private _findingProviderFieldsSeverityOriginal?: SecurityhubInsightFiltersFindingProviderFieldsSeverityOriginal[]; 
+  private _findingProviderFieldsSeverityOriginal?: SecurityhubInsightFiltersFindingProviderFieldsSeverityOriginal[] | cdktf.IResolvable; 
   public get findingProviderFieldsSeverityOriginal() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('finding_provider_fields_severity_original') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('finding_provider_fields_severity_original')));
   }
-  public set findingProviderFieldsSeverityOriginal(value: SecurityhubInsightFiltersFindingProviderFieldsSeverityOriginal[]) {
+  public set findingProviderFieldsSeverityOriginal(value: SecurityhubInsightFiltersFindingProviderFieldsSeverityOriginal[] | cdktf.IResolvable) {
     this._findingProviderFieldsSeverityOriginal = value;
   }
   public resetFindingProviderFieldsSeverityOriginal() {
@@ -4374,12 +4422,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // finding_provider_fields_types - computed: false, optional: true, required: false
-  private _findingProviderFieldsTypes?: SecurityhubInsightFiltersFindingProviderFieldsTypes[]; 
+  private _findingProviderFieldsTypes?: SecurityhubInsightFiltersFindingProviderFieldsTypes[] | cdktf.IResolvable; 
   public get findingProviderFieldsTypes() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('finding_provider_fields_types') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('finding_provider_fields_types')));
   }
-  public set findingProviderFieldsTypes(value: SecurityhubInsightFiltersFindingProviderFieldsTypes[]) {
+  public set findingProviderFieldsTypes(value: SecurityhubInsightFiltersFindingProviderFieldsTypes[] | cdktf.IResolvable) {
     this._findingProviderFieldsTypes = value;
   }
   public resetFindingProviderFieldsTypes() {
@@ -4391,12 +4439,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // first_observed_at - computed: false, optional: true, required: false
-  private _firstObservedAt?: SecurityhubInsightFiltersFirstObservedAt[]; 
+  private _firstObservedAt?: SecurityhubInsightFiltersFirstObservedAt[] | cdktf.IResolvable; 
   public get firstObservedAt() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('first_observed_at') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('first_observed_at')));
   }
-  public set firstObservedAt(value: SecurityhubInsightFiltersFirstObservedAt[]) {
+  public set firstObservedAt(value: SecurityhubInsightFiltersFirstObservedAt[] | cdktf.IResolvable) {
     this._firstObservedAt = value;
   }
   public resetFirstObservedAt() {
@@ -4408,12 +4456,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // generator_id - computed: false, optional: true, required: false
-  private _generatorId?: SecurityhubInsightFiltersGeneratorId[]; 
+  private _generatorId?: SecurityhubInsightFiltersGeneratorId[] | cdktf.IResolvable; 
   public get generatorId() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('generator_id') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('generator_id')));
   }
-  public set generatorId(value: SecurityhubInsightFiltersGeneratorId[]) {
+  public set generatorId(value: SecurityhubInsightFiltersGeneratorId[] | cdktf.IResolvable) {
     this._generatorId = value;
   }
   public resetGeneratorId() {
@@ -4425,12 +4473,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // id - computed: false, optional: true, required: false
-  private _id?: SecurityhubInsightFiltersId[]; 
+  private _id?: SecurityhubInsightFiltersId[] | cdktf.IResolvable; 
   public get id() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('id') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('id')));
   }
-  public set id(value: SecurityhubInsightFiltersId[]) {
+  public set id(value: SecurityhubInsightFiltersId[] | cdktf.IResolvable) {
     this._id = value;
   }
   public resetId() {
@@ -4442,12 +4490,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // keyword - computed: false, optional: true, required: false
-  private _keyword?: SecurityhubInsightFiltersKeyword[]; 
+  private _keyword?: SecurityhubInsightFiltersKeyword[] | cdktf.IResolvable; 
   public get keyword() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('keyword') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('keyword')));
   }
-  public set keyword(value: SecurityhubInsightFiltersKeyword[]) {
+  public set keyword(value: SecurityhubInsightFiltersKeyword[] | cdktf.IResolvable) {
     this._keyword = value;
   }
   public resetKeyword() {
@@ -4459,12 +4507,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // last_observed_at - computed: false, optional: true, required: false
-  private _lastObservedAt?: SecurityhubInsightFiltersLastObservedAt[]; 
+  private _lastObservedAt?: SecurityhubInsightFiltersLastObservedAt[] | cdktf.IResolvable; 
   public get lastObservedAt() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('last_observed_at') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('last_observed_at')));
   }
-  public set lastObservedAt(value: SecurityhubInsightFiltersLastObservedAt[]) {
+  public set lastObservedAt(value: SecurityhubInsightFiltersLastObservedAt[] | cdktf.IResolvable) {
     this._lastObservedAt = value;
   }
   public resetLastObservedAt() {
@@ -4476,12 +4524,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // malware_name - computed: false, optional: true, required: false
-  private _malwareName?: SecurityhubInsightFiltersMalwareName[]; 
+  private _malwareName?: SecurityhubInsightFiltersMalwareName[] | cdktf.IResolvable; 
   public get malwareName() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('malware_name') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('malware_name')));
   }
-  public set malwareName(value: SecurityhubInsightFiltersMalwareName[]) {
+  public set malwareName(value: SecurityhubInsightFiltersMalwareName[] | cdktf.IResolvable) {
     this._malwareName = value;
   }
   public resetMalwareName() {
@@ -4493,12 +4541,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // malware_path - computed: false, optional: true, required: false
-  private _malwarePath?: SecurityhubInsightFiltersMalwarePath[]; 
+  private _malwarePath?: SecurityhubInsightFiltersMalwarePath[] | cdktf.IResolvable; 
   public get malwarePath() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('malware_path') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('malware_path')));
   }
-  public set malwarePath(value: SecurityhubInsightFiltersMalwarePath[]) {
+  public set malwarePath(value: SecurityhubInsightFiltersMalwarePath[] | cdktf.IResolvable) {
     this._malwarePath = value;
   }
   public resetMalwarePath() {
@@ -4510,12 +4558,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // malware_state - computed: false, optional: true, required: false
-  private _malwareState?: SecurityhubInsightFiltersMalwareState[]; 
+  private _malwareState?: SecurityhubInsightFiltersMalwareState[] | cdktf.IResolvable; 
   public get malwareState() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('malware_state') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('malware_state')));
   }
-  public set malwareState(value: SecurityhubInsightFiltersMalwareState[]) {
+  public set malwareState(value: SecurityhubInsightFiltersMalwareState[] | cdktf.IResolvable) {
     this._malwareState = value;
   }
   public resetMalwareState() {
@@ -4527,12 +4575,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // malware_type - computed: false, optional: true, required: false
-  private _malwareType?: SecurityhubInsightFiltersMalwareType[]; 
+  private _malwareType?: SecurityhubInsightFiltersMalwareType[] | cdktf.IResolvable; 
   public get malwareType() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('malware_type') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('malware_type')));
   }
-  public set malwareType(value: SecurityhubInsightFiltersMalwareType[]) {
+  public set malwareType(value: SecurityhubInsightFiltersMalwareType[] | cdktf.IResolvable) {
     this._malwareType = value;
   }
   public resetMalwareType() {
@@ -4544,12 +4592,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // network_destination_domain - computed: false, optional: true, required: false
-  private _networkDestinationDomain?: SecurityhubInsightFiltersNetworkDestinationDomain[]; 
+  private _networkDestinationDomain?: SecurityhubInsightFiltersNetworkDestinationDomain[] | cdktf.IResolvable; 
   public get networkDestinationDomain() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('network_destination_domain') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('network_destination_domain')));
   }
-  public set networkDestinationDomain(value: SecurityhubInsightFiltersNetworkDestinationDomain[]) {
+  public set networkDestinationDomain(value: SecurityhubInsightFiltersNetworkDestinationDomain[] | cdktf.IResolvable) {
     this._networkDestinationDomain = value;
   }
   public resetNetworkDestinationDomain() {
@@ -4561,12 +4609,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // network_destination_ipv4 - computed: false, optional: true, required: false
-  private _networkDestinationIpv4?: SecurityhubInsightFiltersNetworkDestinationIpv4[]; 
+  private _networkDestinationIpv4?: SecurityhubInsightFiltersNetworkDestinationIpv4[] | cdktf.IResolvable; 
   public get networkDestinationIpv4() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('network_destination_ipv4') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('network_destination_ipv4')));
   }
-  public set networkDestinationIpv4(value: SecurityhubInsightFiltersNetworkDestinationIpv4[]) {
+  public set networkDestinationIpv4(value: SecurityhubInsightFiltersNetworkDestinationIpv4[] | cdktf.IResolvable) {
     this._networkDestinationIpv4 = value;
   }
   public resetNetworkDestinationIpv4() {
@@ -4578,12 +4626,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // network_destination_ipv6 - computed: false, optional: true, required: false
-  private _networkDestinationIpv6?: SecurityhubInsightFiltersNetworkDestinationIpv6[]; 
+  private _networkDestinationIpv6?: SecurityhubInsightFiltersNetworkDestinationIpv6[] | cdktf.IResolvable; 
   public get networkDestinationIpv6() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('network_destination_ipv6') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('network_destination_ipv6')));
   }
-  public set networkDestinationIpv6(value: SecurityhubInsightFiltersNetworkDestinationIpv6[]) {
+  public set networkDestinationIpv6(value: SecurityhubInsightFiltersNetworkDestinationIpv6[] | cdktf.IResolvable) {
     this._networkDestinationIpv6 = value;
   }
   public resetNetworkDestinationIpv6() {
@@ -4595,12 +4643,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // network_destination_port - computed: false, optional: true, required: false
-  private _networkDestinationPort?: SecurityhubInsightFiltersNetworkDestinationPort[]; 
+  private _networkDestinationPort?: SecurityhubInsightFiltersNetworkDestinationPort[] | cdktf.IResolvable; 
   public get networkDestinationPort() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('network_destination_port') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('network_destination_port')));
   }
-  public set networkDestinationPort(value: SecurityhubInsightFiltersNetworkDestinationPort[]) {
+  public set networkDestinationPort(value: SecurityhubInsightFiltersNetworkDestinationPort[] | cdktf.IResolvable) {
     this._networkDestinationPort = value;
   }
   public resetNetworkDestinationPort() {
@@ -4612,12 +4660,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // network_direction - computed: false, optional: true, required: false
-  private _networkDirection?: SecurityhubInsightFiltersNetworkDirection[]; 
+  private _networkDirection?: SecurityhubInsightFiltersNetworkDirection[] | cdktf.IResolvable; 
   public get networkDirection() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('network_direction') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('network_direction')));
   }
-  public set networkDirection(value: SecurityhubInsightFiltersNetworkDirection[]) {
+  public set networkDirection(value: SecurityhubInsightFiltersNetworkDirection[] | cdktf.IResolvable) {
     this._networkDirection = value;
   }
   public resetNetworkDirection() {
@@ -4629,12 +4677,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // network_protocol - computed: false, optional: true, required: false
-  private _networkProtocol?: SecurityhubInsightFiltersNetworkProtocol[]; 
+  private _networkProtocol?: SecurityhubInsightFiltersNetworkProtocol[] | cdktf.IResolvable; 
   public get networkProtocol() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('network_protocol') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('network_protocol')));
   }
-  public set networkProtocol(value: SecurityhubInsightFiltersNetworkProtocol[]) {
+  public set networkProtocol(value: SecurityhubInsightFiltersNetworkProtocol[] | cdktf.IResolvable) {
     this._networkProtocol = value;
   }
   public resetNetworkProtocol() {
@@ -4646,12 +4694,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // network_source_domain - computed: false, optional: true, required: false
-  private _networkSourceDomain?: SecurityhubInsightFiltersNetworkSourceDomain[]; 
+  private _networkSourceDomain?: SecurityhubInsightFiltersNetworkSourceDomain[] | cdktf.IResolvable; 
   public get networkSourceDomain() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('network_source_domain') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('network_source_domain')));
   }
-  public set networkSourceDomain(value: SecurityhubInsightFiltersNetworkSourceDomain[]) {
+  public set networkSourceDomain(value: SecurityhubInsightFiltersNetworkSourceDomain[] | cdktf.IResolvable) {
     this._networkSourceDomain = value;
   }
   public resetNetworkSourceDomain() {
@@ -4663,12 +4711,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // network_source_ipv4 - computed: false, optional: true, required: false
-  private _networkSourceIpv4?: SecurityhubInsightFiltersNetworkSourceIpv4[]; 
+  private _networkSourceIpv4?: SecurityhubInsightFiltersNetworkSourceIpv4[] | cdktf.IResolvable; 
   public get networkSourceIpv4() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('network_source_ipv4') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('network_source_ipv4')));
   }
-  public set networkSourceIpv4(value: SecurityhubInsightFiltersNetworkSourceIpv4[]) {
+  public set networkSourceIpv4(value: SecurityhubInsightFiltersNetworkSourceIpv4[] | cdktf.IResolvable) {
     this._networkSourceIpv4 = value;
   }
   public resetNetworkSourceIpv4() {
@@ -4680,12 +4728,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // network_source_ipv6 - computed: false, optional: true, required: false
-  private _networkSourceIpv6?: SecurityhubInsightFiltersNetworkSourceIpv6[]; 
+  private _networkSourceIpv6?: SecurityhubInsightFiltersNetworkSourceIpv6[] | cdktf.IResolvable; 
   public get networkSourceIpv6() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('network_source_ipv6') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('network_source_ipv6')));
   }
-  public set networkSourceIpv6(value: SecurityhubInsightFiltersNetworkSourceIpv6[]) {
+  public set networkSourceIpv6(value: SecurityhubInsightFiltersNetworkSourceIpv6[] | cdktf.IResolvable) {
     this._networkSourceIpv6 = value;
   }
   public resetNetworkSourceIpv6() {
@@ -4697,12 +4745,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // network_source_mac - computed: false, optional: true, required: false
-  private _networkSourceMac?: SecurityhubInsightFiltersNetworkSourceMac[]; 
+  private _networkSourceMac?: SecurityhubInsightFiltersNetworkSourceMac[] | cdktf.IResolvable; 
   public get networkSourceMac() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('network_source_mac') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('network_source_mac')));
   }
-  public set networkSourceMac(value: SecurityhubInsightFiltersNetworkSourceMac[]) {
+  public set networkSourceMac(value: SecurityhubInsightFiltersNetworkSourceMac[] | cdktf.IResolvable) {
     this._networkSourceMac = value;
   }
   public resetNetworkSourceMac() {
@@ -4714,12 +4762,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // network_source_port - computed: false, optional: true, required: false
-  private _networkSourcePort?: SecurityhubInsightFiltersNetworkSourcePort[]; 
+  private _networkSourcePort?: SecurityhubInsightFiltersNetworkSourcePort[] | cdktf.IResolvable; 
   public get networkSourcePort() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('network_source_port') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('network_source_port')));
   }
-  public set networkSourcePort(value: SecurityhubInsightFiltersNetworkSourcePort[]) {
+  public set networkSourcePort(value: SecurityhubInsightFiltersNetworkSourcePort[] | cdktf.IResolvable) {
     this._networkSourcePort = value;
   }
   public resetNetworkSourcePort() {
@@ -4731,12 +4779,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // note_text - computed: false, optional: true, required: false
-  private _noteText?: SecurityhubInsightFiltersNoteText[]; 
+  private _noteText?: SecurityhubInsightFiltersNoteText[] | cdktf.IResolvable; 
   public get noteText() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('note_text') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('note_text')));
   }
-  public set noteText(value: SecurityhubInsightFiltersNoteText[]) {
+  public set noteText(value: SecurityhubInsightFiltersNoteText[] | cdktf.IResolvable) {
     this._noteText = value;
   }
   public resetNoteText() {
@@ -4748,12 +4796,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // note_updated_at - computed: false, optional: true, required: false
-  private _noteUpdatedAt?: SecurityhubInsightFiltersNoteUpdatedAt[]; 
+  private _noteUpdatedAt?: SecurityhubInsightFiltersNoteUpdatedAt[] | cdktf.IResolvable; 
   public get noteUpdatedAt() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('note_updated_at') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('note_updated_at')));
   }
-  public set noteUpdatedAt(value: SecurityhubInsightFiltersNoteUpdatedAt[]) {
+  public set noteUpdatedAt(value: SecurityhubInsightFiltersNoteUpdatedAt[] | cdktf.IResolvable) {
     this._noteUpdatedAt = value;
   }
   public resetNoteUpdatedAt() {
@@ -4765,12 +4813,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // note_updated_by - computed: false, optional: true, required: false
-  private _noteUpdatedBy?: SecurityhubInsightFiltersNoteUpdatedBy[]; 
+  private _noteUpdatedBy?: SecurityhubInsightFiltersNoteUpdatedBy[] | cdktf.IResolvable; 
   public get noteUpdatedBy() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('note_updated_by') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('note_updated_by')));
   }
-  public set noteUpdatedBy(value: SecurityhubInsightFiltersNoteUpdatedBy[]) {
+  public set noteUpdatedBy(value: SecurityhubInsightFiltersNoteUpdatedBy[] | cdktf.IResolvable) {
     this._noteUpdatedBy = value;
   }
   public resetNoteUpdatedBy() {
@@ -4782,12 +4830,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // process_launched_at - computed: false, optional: true, required: false
-  private _processLaunchedAt?: SecurityhubInsightFiltersProcessLaunchedAt[]; 
+  private _processLaunchedAt?: SecurityhubInsightFiltersProcessLaunchedAt[] | cdktf.IResolvable; 
   public get processLaunchedAt() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('process_launched_at') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('process_launched_at')));
   }
-  public set processLaunchedAt(value: SecurityhubInsightFiltersProcessLaunchedAt[]) {
+  public set processLaunchedAt(value: SecurityhubInsightFiltersProcessLaunchedAt[] | cdktf.IResolvable) {
     this._processLaunchedAt = value;
   }
   public resetProcessLaunchedAt() {
@@ -4799,12 +4847,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // process_name - computed: false, optional: true, required: false
-  private _processName?: SecurityhubInsightFiltersProcessName[]; 
+  private _processName?: SecurityhubInsightFiltersProcessName[] | cdktf.IResolvable; 
   public get processName() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('process_name') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('process_name')));
   }
-  public set processName(value: SecurityhubInsightFiltersProcessName[]) {
+  public set processName(value: SecurityhubInsightFiltersProcessName[] | cdktf.IResolvable) {
     this._processName = value;
   }
   public resetProcessName() {
@@ -4816,12 +4864,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // process_parent_pid - computed: false, optional: true, required: false
-  private _processParentPid?: SecurityhubInsightFiltersProcessParentPid[]; 
+  private _processParentPid?: SecurityhubInsightFiltersProcessParentPid[] | cdktf.IResolvable; 
   public get processParentPid() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('process_parent_pid') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('process_parent_pid')));
   }
-  public set processParentPid(value: SecurityhubInsightFiltersProcessParentPid[]) {
+  public set processParentPid(value: SecurityhubInsightFiltersProcessParentPid[] | cdktf.IResolvable) {
     this._processParentPid = value;
   }
   public resetProcessParentPid() {
@@ -4833,12 +4881,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // process_path - computed: false, optional: true, required: false
-  private _processPath?: SecurityhubInsightFiltersProcessPath[]; 
+  private _processPath?: SecurityhubInsightFiltersProcessPath[] | cdktf.IResolvable; 
   public get processPath() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('process_path') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('process_path')));
   }
-  public set processPath(value: SecurityhubInsightFiltersProcessPath[]) {
+  public set processPath(value: SecurityhubInsightFiltersProcessPath[] | cdktf.IResolvable) {
     this._processPath = value;
   }
   public resetProcessPath() {
@@ -4850,12 +4898,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // process_pid - computed: false, optional: true, required: false
-  private _processPid?: SecurityhubInsightFiltersProcessPid[]; 
+  private _processPid?: SecurityhubInsightFiltersProcessPid[] | cdktf.IResolvable; 
   public get processPid() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('process_pid') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('process_pid')));
   }
-  public set processPid(value: SecurityhubInsightFiltersProcessPid[]) {
+  public set processPid(value: SecurityhubInsightFiltersProcessPid[] | cdktf.IResolvable) {
     this._processPid = value;
   }
   public resetProcessPid() {
@@ -4867,12 +4915,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // process_terminated_at - computed: false, optional: true, required: false
-  private _processTerminatedAt?: SecurityhubInsightFiltersProcessTerminatedAt[]; 
+  private _processTerminatedAt?: SecurityhubInsightFiltersProcessTerminatedAt[] | cdktf.IResolvable; 
   public get processTerminatedAt() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('process_terminated_at') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('process_terminated_at')));
   }
-  public set processTerminatedAt(value: SecurityhubInsightFiltersProcessTerminatedAt[]) {
+  public set processTerminatedAt(value: SecurityhubInsightFiltersProcessTerminatedAt[] | cdktf.IResolvable) {
     this._processTerminatedAt = value;
   }
   public resetProcessTerminatedAt() {
@@ -4884,12 +4932,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // product_arn - computed: false, optional: true, required: false
-  private _productArn?: SecurityhubInsightFiltersProductArn[]; 
+  private _productArn?: SecurityhubInsightFiltersProductArn[] | cdktf.IResolvable; 
   public get productArn() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('product_arn') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('product_arn')));
   }
-  public set productArn(value: SecurityhubInsightFiltersProductArn[]) {
+  public set productArn(value: SecurityhubInsightFiltersProductArn[] | cdktf.IResolvable) {
     this._productArn = value;
   }
   public resetProductArn() {
@@ -4901,12 +4949,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // product_fields - computed: false, optional: true, required: false
-  private _productFields?: SecurityhubInsightFiltersProductFields[]; 
+  private _productFields?: SecurityhubInsightFiltersProductFields[] | cdktf.IResolvable; 
   public get productFields() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('product_fields') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('product_fields')));
   }
-  public set productFields(value: SecurityhubInsightFiltersProductFields[]) {
+  public set productFields(value: SecurityhubInsightFiltersProductFields[] | cdktf.IResolvable) {
     this._productFields = value;
   }
   public resetProductFields() {
@@ -4918,12 +4966,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // product_name - computed: false, optional: true, required: false
-  private _productName?: SecurityhubInsightFiltersProductName[]; 
+  private _productName?: SecurityhubInsightFiltersProductName[] | cdktf.IResolvable; 
   public get productName() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('product_name') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('product_name')));
   }
-  public set productName(value: SecurityhubInsightFiltersProductName[]) {
+  public set productName(value: SecurityhubInsightFiltersProductName[] | cdktf.IResolvable) {
     this._productName = value;
   }
   public resetProductName() {
@@ -4935,12 +4983,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // recommendation_text - computed: false, optional: true, required: false
-  private _recommendationText?: SecurityhubInsightFiltersRecommendationText[]; 
+  private _recommendationText?: SecurityhubInsightFiltersRecommendationText[] | cdktf.IResolvable; 
   public get recommendationText() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('recommendation_text') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('recommendation_text')));
   }
-  public set recommendationText(value: SecurityhubInsightFiltersRecommendationText[]) {
+  public set recommendationText(value: SecurityhubInsightFiltersRecommendationText[] | cdktf.IResolvable) {
     this._recommendationText = value;
   }
   public resetRecommendationText() {
@@ -4952,12 +5000,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // record_state - computed: false, optional: true, required: false
-  private _recordState?: SecurityhubInsightFiltersRecordState[]; 
+  private _recordState?: SecurityhubInsightFiltersRecordState[] | cdktf.IResolvable; 
   public get recordState() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('record_state') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('record_state')));
   }
-  public set recordState(value: SecurityhubInsightFiltersRecordState[]) {
+  public set recordState(value: SecurityhubInsightFiltersRecordState[] | cdktf.IResolvable) {
     this._recordState = value;
   }
   public resetRecordState() {
@@ -4969,12 +5017,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // related_findings_id - computed: false, optional: true, required: false
-  private _relatedFindingsId?: SecurityhubInsightFiltersRelatedFindingsId[]; 
+  private _relatedFindingsId?: SecurityhubInsightFiltersRelatedFindingsId[] | cdktf.IResolvable; 
   public get relatedFindingsId() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('related_findings_id') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('related_findings_id')));
   }
-  public set relatedFindingsId(value: SecurityhubInsightFiltersRelatedFindingsId[]) {
+  public set relatedFindingsId(value: SecurityhubInsightFiltersRelatedFindingsId[] | cdktf.IResolvable) {
     this._relatedFindingsId = value;
   }
   public resetRelatedFindingsId() {
@@ -4986,12 +5034,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // related_findings_product_arn - computed: false, optional: true, required: false
-  private _relatedFindingsProductArn?: SecurityhubInsightFiltersRelatedFindingsProductArn[]; 
+  private _relatedFindingsProductArn?: SecurityhubInsightFiltersRelatedFindingsProductArn[] | cdktf.IResolvable; 
   public get relatedFindingsProductArn() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('related_findings_product_arn') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('related_findings_product_arn')));
   }
-  public set relatedFindingsProductArn(value: SecurityhubInsightFiltersRelatedFindingsProductArn[]) {
+  public set relatedFindingsProductArn(value: SecurityhubInsightFiltersRelatedFindingsProductArn[] | cdktf.IResolvable) {
     this._relatedFindingsProductArn = value;
   }
   public resetRelatedFindingsProductArn() {
@@ -5003,12 +5051,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_aws_ec2_instance_iam_instance_profile_arn - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceIamInstanceProfileArn?: SecurityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn[]; 
+  private _resourceAwsEc2InstanceIamInstanceProfileArn?: SecurityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn[] | cdktf.IResolvable; 
   public get resourceAwsEc2InstanceIamInstanceProfileArn() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_aws_ec2_instance_iam_instance_profile_arn') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_aws_ec2_instance_iam_instance_profile_arn')));
   }
-  public set resourceAwsEc2InstanceIamInstanceProfileArn(value: SecurityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn[]) {
+  public set resourceAwsEc2InstanceIamInstanceProfileArn(value: SecurityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn[] | cdktf.IResolvable) {
     this._resourceAwsEc2InstanceIamInstanceProfileArn = value;
   }
   public resetResourceAwsEc2InstanceIamInstanceProfileArn() {
@@ -5020,12 +5068,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_aws_ec2_instance_image_id - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceImageId?: SecurityhubInsightFiltersResourceAwsEc2InstanceImageId[]; 
+  private _resourceAwsEc2InstanceImageId?: SecurityhubInsightFiltersResourceAwsEc2InstanceImageId[] | cdktf.IResolvable; 
   public get resourceAwsEc2InstanceImageId() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_aws_ec2_instance_image_id') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_aws_ec2_instance_image_id')));
   }
-  public set resourceAwsEc2InstanceImageId(value: SecurityhubInsightFiltersResourceAwsEc2InstanceImageId[]) {
+  public set resourceAwsEc2InstanceImageId(value: SecurityhubInsightFiltersResourceAwsEc2InstanceImageId[] | cdktf.IResolvable) {
     this._resourceAwsEc2InstanceImageId = value;
   }
   public resetResourceAwsEc2InstanceImageId() {
@@ -5037,12 +5085,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_aws_ec2_instance_ipv4_addresses - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceIpv4Addresses?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv4Addresses[]; 
+  private _resourceAwsEc2InstanceIpv4Addresses?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv4Addresses[] | cdktf.IResolvable; 
   public get resourceAwsEc2InstanceIpv4Addresses() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_aws_ec2_instance_ipv4_addresses') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_aws_ec2_instance_ipv4_addresses')));
   }
-  public set resourceAwsEc2InstanceIpv4Addresses(value: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv4Addresses[]) {
+  public set resourceAwsEc2InstanceIpv4Addresses(value: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv4Addresses[] | cdktf.IResolvable) {
     this._resourceAwsEc2InstanceIpv4Addresses = value;
   }
   public resetResourceAwsEc2InstanceIpv4Addresses() {
@@ -5054,12 +5102,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_aws_ec2_instance_ipv6_addresses - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceIpv6Addresses?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv6Addresses[]; 
+  private _resourceAwsEc2InstanceIpv6Addresses?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv6Addresses[] | cdktf.IResolvable; 
   public get resourceAwsEc2InstanceIpv6Addresses() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_aws_ec2_instance_ipv6_addresses') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_aws_ec2_instance_ipv6_addresses')));
   }
-  public set resourceAwsEc2InstanceIpv6Addresses(value: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv6Addresses[]) {
+  public set resourceAwsEc2InstanceIpv6Addresses(value: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv6Addresses[] | cdktf.IResolvable) {
     this._resourceAwsEc2InstanceIpv6Addresses = value;
   }
   public resetResourceAwsEc2InstanceIpv6Addresses() {
@@ -5071,12 +5119,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_aws_ec2_instance_key_name - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceKeyName?: SecurityhubInsightFiltersResourceAwsEc2InstanceKeyName[]; 
+  private _resourceAwsEc2InstanceKeyName?: SecurityhubInsightFiltersResourceAwsEc2InstanceKeyName[] | cdktf.IResolvable; 
   public get resourceAwsEc2InstanceKeyName() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_aws_ec2_instance_key_name') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_aws_ec2_instance_key_name')));
   }
-  public set resourceAwsEc2InstanceKeyName(value: SecurityhubInsightFiltersResourceAwsEc2InstanceKeyName[]) {
+  public set resourceAwsEc2InstanceKeyName(value: SecurityhubInsightFiltersResourceAwsEc2InstanceKeyName[] | cdktf.IResolvable) {
     this._resourceAwsEc2InstanceKeyName = value;
   }
   public resetResourceAwsEc2InstanceKeyName() {
@@ -5088,12 +5136,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_aws_ec2_instance_launched_at - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceLaunchedAt?: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt[]; 
+  private _resourceAwsEc2InstanceLaunchedAt?: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt[] | cdktf.IResolvable; 
   public get resourceAwsEc2InstanceLaunchedAt() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_aws_ec2_instance_launched_at') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_aws_ec2_instance_launched_at')));
   }
-  public set resourceAwsEc2InstanceLaunchedAt(value: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt[]) {
+  public set resourceAwsEc2InstanceLaunchedAt(value: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt[] | cdktf.IResolvable) {
     this._resourceAwsEc2InstanceLaunchedAt = value;
   }
   public resetResourceAwsEc2InstanceLaunchedAt() {
@@ -5105,12 +5153,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_aws_ec2_instance_subnet_id - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceSubnetId?: SecurityhubInsightFiltersResourceAwsEc2InstanceSubnetId[]; 
+  private _resourceAwsEc2InstanceSubnetId?: SecurityhubInsightFiltersResourceAwsEc2InstanceSubnetId[] | cdktf.IResolvable; 
   public get resourceAwsEc2InstanceSubnetId() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_aws_ec2_instance_subnet_id') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_aws_ec2_instance_subnet_id')));
   }
-  public set resourceAwsEc2InstanceSubnetId(value: SecurityhubInsightFiltersResourceAwsEc2InstanceSubnetId[]) {
+  public set resourceAwsEc2InstanceSubnetId(value: SecurityhubInsightFiltersResourceAwsEc2InstanceSubnetId[] | cdktf.IResolvable) {
     this._resourceAwsEc2InstanceSubnetId = value;
   }
   public resetResourceAwsEc2InstanceSubnetId() {
@@ -5122,12 +5170,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_aws_ec2_instance_type - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceType?: SecurityhubInsightFiltersResourceAwsEc2InstanceType[]; 
+  private _resourceAwsEc2InstanceType?: SecurityhubInsightFiltersResourceAwsEc2InstanceType[] | cdktf.IResolvable; 
   public get resourceAwsEc2InstanceType() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_aws_ec2_instance_type') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_aws_ec2_instance_type')));
   }
-  public set resourceAwsEc2InstanceType(value: SecurityhubInsightFiltersResourceAwsEc2InstanceType[]) {
+  public set resourceAwsEc2InstanceType(value: SecurityhubInsightFiltersResourceAwsEc2InstanceType[] | cdktf.IResolvable) {
     this._resourceAwsEc2InstanceType = value;
   }
   public resetResourceAwsEc2InstanceType() {
@@ -5139,12 +5187,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_aws_ec2_instance_vpc_id - computed: false, optional: true, required: false
-  private _resourceAwsEc2InstanceVpcId?: SecurityhubInsightFiltersResourceAwsEc2InstanceVpcId[]; 
+  private _resourceAwsEc2InstanceVpcId?: SecurityhubInsightFiltersResourceAwsEc2InstanceVpcId[] | cdktf.IResolvable; 
   public get resourceAwsEc2InstanceVpcId() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_aws_ec2_instance_vpc_id') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_aws_ec2_instance_vpc_id')));
   }
-  public set resourceAwsEc2InstanceVpcId(value: SecurityhubInsightFiltersResourceAwsEc2InstanceVpcId[]) {
+  public set resourceAwsEc2InstanceVpcId(value: SecurityhubInsightFiltersResourceAwsEc2InstanceVpcId[] | cdktf.IResolvable) {
     this._resourceAwsEc2InstanceVpcId = value;
   }
   public resetResourceAwsEc2InstanceVpcId() {
@@ -5156,12 +5204,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_aws_iam_access_key_created_at - computed: false, optional: true, required: false
-  private _resourceAwsIamAccessKeyCreatedAt?: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt[]; 
+  private _resourceAwsIamAccessKeyCreatedAt?: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt[] | cdktf.IResolvable; 
   public get resourceAwsIamAccessKeyCreatedAt() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_aws_iam_access_key_created_at') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_aws_iam_access_key_created_at')));
   }
-  public set resourceAwsIamAccessKeyCreatedAt(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt[]) {
+  public set resourceAwsIamAccessKeyCreatedAt(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt[] | cdktf.IResolvable) {
     this._resourceAwsIamAccessKeyCreatedAt = value;
   }
   public resetResourceAwsIamAccessKeyCreatedAt() {
@@ -5173,12 +5221,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_aws_iam_access_key_status - computed: false, optional: true, required: false
-  private _resourceAwsIamAccessKeyStatus?: SecurityhubInsightFiltersResourceAwsIamAccessKeyStatus[]; 
+  private _resourceAwsIamAccessKeyStatus?: SecurityhubInsightFiltersResourceAwsIamAccessKeyStatus[] | cdktf.IResolvable; 
   public get resourceAwsIamAccessKeyStatus() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_aws_iam_access_key_status') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_aws_iam_access_key_status')));
   }
-  public set resourceAwsIamAccessKeyStatus(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyStatus[]) {
+  public set resourceAwsIamAccessKeyStatus(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyStatus[] | cdktf.IResolvable) {
     this._resourceAwsIamAccessKeyStatus = value;
   }
   public resetResourceAwsIamAccessKeyStatus() {
@@ -5190,12 +5238,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_aws_iam_access_key_user_name - computed: false, optional: true, required: false
-  private _resourceAwsIamAccessKeyUserName?: SecurityhubInsightFiltersResourceAwsIamAccessKeyUserName[]; 
+  private _resourceAwsIamAccessKeyUserName?: SecurityhubInsightFiltersResourceAwsIamAccessKeyUserName[] | cdktf.IResolvable; 
   public get resourceAwsIamAccessKeyUserName() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_aws_iam_access_key_user_name') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_aws_iam_access_key_user_name')));
   }
-  public set resourceAwsIamAccessKeyUserName(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyUserName[]) {
+  public set resourceAwsIamAccessKeyUserName(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyUserName[] | cdktf.IResolvable) {
     this._resourceAwsIamAccessKeyUserName = value;
   }
   public resetResourceAwsIamAccessKeyUserName() {
@@ -5207,12 +5255,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_aws_s3_bucket_owner_id - computed: false, optional: true, required: false
-  private _resourceAwsS3BucketOwnerId?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerId[]; 
+  private _resourceAwsS3BucketOwnerId?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerId[] | cdktf.IResolvable; 
   public get resourceAwsS3BucketOwnerId() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_aws_s3_bucket_owner_id') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_aws_s3_bucket_owner_id')));
   }
-  public set resourceAwsS3BucketOwnerId(value: SecurityhubInsightFiltersResourceAwsS3BucketOwnerId[]) {
+  public set resourceAwsS3BucketOwnerId(value: SecurityhubInsightFiltersResourceAwsS3BucketOwnerId[] | cdktf.IResolvable) {
     this._resourceAwsS3BucketOwnerId = value;
   }
   public resetResourceAwsS3BucketOwnerId() {
@@ -5224,12 +5272,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_aws_s3_bucket_owner_name - computed: false, optional: true, required: false
-  private _resourceAwsS3BucketOwnerName?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerName[]; 
+  private _resourceAwsS3BucketOwnerName?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerName[] | cdktf.IResolvable; 
   public get resourceAwsS3BucketOwnerName() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_aws_s3_bucket_owner_name') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_aws_s3_bucket_owner_name')));
   }
-  public set resourceAwsS3BucketOwnerName(value: SecurityhubInsightFiltersResourceAwsS3BucketOwnerName[]) {
+  public set resourceAwsS3BucketOwnerName(value: SecurityhubInsightFiltersResourceAwsS3BucketOwnerName[] | cdktf.IResolvable) {
     this._resourceAwsS3BucketOwnerName = value;
   }
   public resetResourceAwsS3BucketOwnerName() {
@@ -5241,12 +5289,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_container_image_id - computed: false, optional: true, required: false
-  private _resourceContainerImageId?: SecurityhubInsightFiltersResourceContainerImageId[]; 
+  private _resourceContainerImageId?: SecurityhubInsightFiltersResourceContainerImageId[] | cdktf.IResolvable; 
   public get resourceContainerImageId() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_container_image_id') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_container_image_id')));
   }
-  public set resourceContainerImageId(value: SecurityhubInsightFiltersResourceContainerImageId[]) {
+  public set resourceContainerImageId(value: SecurityhubInsightFiltersResourceContainerImageId[] | cdktf.IResolvable) {
     this._resourceContainerImageId = value;
   }
   public resetResourceContainerImageId() {
@@ -5258,12 +5306,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_container_image_name - computed: false, optional: true, required: false
-  private _resourceContainerImageName?: SecurityhubInsightFiltersResourceContainerImageName[]; 
+  private _resourceContainerImageName?: SecurityhubInsightFiltersResourceContainerImageName[] | cdktf.IResolvable; 
   public get resourceContainerImageName() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_container_image_name') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_container_image_name')));
   }
-  public set resourceContainerImageName(value: SecurityhubInsightFiltersResourceContainerImageName[]) {
+  public set resourceContainerImageName(value: SecurityhubInsightFiltersResourceContainerImageName[] | cdktf.IResolvable) {
     this._resourceContainerImageName = value;
   }
   public resetResourceContainerImageName() {
@@ -5275,12 +5323,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_container_launched_at - computed: false, optional: true, required: false
-  private _resourceContainerLaunchedAt?: SecurityhubInsightFiltersResourceContainerLaunchedAt[]; 
+  private _resourceContainerLaunchedAt?: SecurityhubInsightFiltersResourceContainerLaunchedAt[] | cdktf.IResolvable; 
   public get resourceContainerLaunchedAt() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_container_launched_at') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_container_launched_at')));
   }
-  public set resourceContainerLaunchedAt(value: SecurityhubInsightFiltersResourceContainerLaunchedAt[]) {
+  public set resourceContainerLaunchedAt(value: SecurityhubInsightFiltersResourceContainerLaunchedAt[] | cdktf.IResolvable) {
     this._resourceContainerLaunchedAt = value;
   }
   public resetResourceContainerLaunchedAt() {
@@ -5292,12 +5340,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_container_name - computed: false, optional: true, required: false
-  private _resourceContainerName?: SecurityhubInsightFiltersResourceContainerName[]; 
+  private _resourceContainerName?: SecurityhubInsightFiltersResourceContainerName[] | cdktf.IResolvable; 
   public get resourceContainerName() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_container_name') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_container_name')));
   }
-  public set resourceContainerName(value: SecurityhubInsightFiltersResourceContainerName[]) {
+  public set resourceContainerName(value: SecurityhubInsightFiltersResourceContainerName[] | cdktf.IResolvable) {
     this._resourceContainerName = value;
   }
   public resetResourceContainerName() {
@@ -5309,12 +5357,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_details_other - computed: false, optional: true, required: false
-  private _resourceDetailsOther?: SecurityhubInsightFiltersResourceDetailsOther[]; 
+  private _resourceDetailsOther?: SecurityhubInsightFiltersResourceDetailsOther[] | cdktf.IResolvable; 
   public get resourceDetailsOther() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_details_other') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_details_other')));
   }
-  public set resourceDetailsOther(value: SecurityhubInsightFiltersResourceDetailsOther[]) {
+  public set resourceDetailsOther(value: SecurityhubInsightFiltersResourceDetailsOther[] | cdktf.IResolvable) {
     this._resourceDetailsOther = value;
   }
   public resetResourceDetailsOther() {
@@ -5326,12 +5374,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_id - computed: false, optional: true, required: false
-  private _resourceId?: SecurityhubInsightFiltersResourceId[]; 
+  private _resourceId?: SecurityhubInsightFiltersResourceId[] | cdktf.IResolvable; 
   public get resourceId() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_id') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_id')));
   }
-  public set resourceId(value: SecurityhubInsightFiltersResourceId[]) {
+  public set resourceId(value: SecurityhubInsightFiltersResourceId[] | cdktf.IResolvable) {
     this._resourceId = value;
   }
   public resetResourceId() {
@@ -5343,12 +5391,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_partition - computed: false, optional: true, required: false
-  private _resourcePartition?: SecurityhubInsightFiltersResourcePartition[]; 
+  private _resourcePartition?: SecurityhubInsightFiltersResourcePartition[] | cdktf.IResolvable; 
   public get resourcePartition() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_partition') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_partition')));
   }
-  public set resourcePartition(value: SecurityhubInsightFiltersResourcePartition[]) {
+  public set resourcePartition(value: SecurityhubInsightFiltersResourcePartition[] | cdktf.IResolvable) {
     this._resourcePartition = value;
   }
   public resetResourcePartition() {
@@ -5360,12 +5408,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_region - computed: false, optional: true, required: false
-  private _resourceRegion?: SecurityhubInsightFiltersResourceRegion[]; 
+  private _resourceRegion?: SecurityhubInsightFiltersResourceRegion[] | cdktf.IResolvable; 
   public get resourceRegion() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_region') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_region')));
   }
-  public set resourceRegion(value: SecurityhubInsightFiltersResourceRegion[]) {
+  public set resourceRegion(value: SecurityhubInsightFiltersResourceRegion[] | cdktf.IResolvable) {
     this._resourceRegion = value;
   }
   public resetResourceRegion() {
@@ -5377,12 +5425,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_tags - computed: false, optional: true, required: false
-  private _resourceTags?: SecurityhubInsightFiltersResourceTags[]; 
+  private _resourceTags?: SecurityhubInsightFiltersResourceTags[] | cdktf.IResolvable; 
   public get resourceTags() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_tags') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_tags')));
   }
-  public set resourceTags(value: SecurityhubInsightFiltersResourceTags[]) {
+  public set resourceTags(value: SecurityhubInsightFiltersResourceTags[] | cdktf.IResolvable) {
     this._resourceTags = value;
   }
   public resetResourceTags() {
@@ -5394,12 +5442,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // resource_type - computed: false, optional: true, required: false
-  private _resourceType?: SecurityhubInsightFiltersResourceType[]; 
+  private _resourceType?: SecurityhubInsightFiltersResourceType[] | cdktf.IResolvable; 
   public get resourceType() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('resource_type') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('resource_type')));
   }
-  public set resourceType(value: SecurityhubInsightFiltersResourceType[]) {
+  public set resourceType(value: SecurityhubInsightFiltersResourceType[] | cdktf.IResolvable) {
     this._resourceType = value;
   }
   public resetResourceType() {
@@ -5411,12 +5459,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // severity_label - computed: false, optional: true, required: false
-  private _severityLabel?: SecurityhubInsightFiltersSeverityLabel[]; 
+  private _severityLabel?: SecurityhubInsightFiltersSeverityLabel[] | cdktf.IResolvable; 
   public get severityLabel() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('severity_label') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('severity_label')));
   }
-  public set severityLabel(value: SecurityhubInsightFiltersSeverityLabel[]) {
+  public set severityLabel(value: SecurityhubInsightFiltersSeverityLabel[] | cdktf.IResolvable) {
     this._severityLabel = value;
   }
   public resetSeverityLabel() {
@@ -5428,12 +5476,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // source_url - computed: false, optional: true, required: false
-  private _sourceUrl?: SecurityhubInsightFiltersSourceUrl[]; 
+  private _sourceUrl?: SecurityhubInsightFiltersSourceUrl[] | cdktf.IResolvable; 
   public get sourceUrl() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('source_url') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('source_url')));
   }
-  public set sourceUrl(value: SecurityhubInsightFiltersSourceUrl[]) {
+  public set sourceUrl(value: SecurityhubInsightFiltersSourceUrl[] | cdktf.IResolvable) {
     this._sourceUrl = value;
   }
   public resetSourceUrl() {
@@ -5445,12 +5493,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // threat_intel_indicator_category - computed: false, optional: true, required: false
-  private _threatIntelIndicatorCategory?: SecurityhubInsightFiltersThreatIntelIndicatorCategory[]; 
+  private _threatIntelIndicatorCategory?: SecurityhubInsightFiltersThreatIntelIndicatorCategory[] | cdktf.IResolvable; 
   public get threatIntelIndicatorCategory() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('threat_intel_indicator_category') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('threat_intel_indicator_category')));
   }
-  public set threatIntelIndicatorCategory(value: SecurityhubInsightFiltersThreatIntelIndicatorCategory[]) {
+  public set threatIntelIndicatorCategory(value: SecurityhubInsightFiltersThreatIntelIndicatorCategory[] | cdktf.IResolvable) {
     this._threatIntelIndicatorCategory = value;
   }
   public resetThreatIntelIndicatorCategory() {
@@ -5462,12 +5510,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // threat_intel_indicator_last_observed_at - computed: false, optional: true, required: false
-  private _threatIntelIndicatorLastObservedAt?: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt[]; 
+  private _threatIntelIndicatorLastObservedAt?: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt[] | cdktf.IResolvable; 
   public get threatIntelIndicatorLastObservedAt() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('threat_intel_indicator_last_observed_at') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('threat_intel_indicator_last_observed_at')));
   }
-  public set threatIntelIndicatorLastObservedAt(value: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt[]) {
+  public set threatIntelIndicatorLastObservedAt(value: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt[] | cdktf.IResolvable) {
     this._threatIntelIndicatorLastObservedAt = value;
   }
   public resetThreatIntelIndicatorLastObservedAt() {
@@ -5479,12 +5527,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // threat_intel_indicator_source - computed: false, optional: true, required: false
-  private _threatIntelIndicatorSource?: SecurityhubInsightFiltersThreatIntelIndicatorSource[]; 
+  private _threatIntelIndicatorSource?: SecurityhubInsightFiltersThreatIntelIndicatorSource[] | cdktf.IResolvable; 
   public get threatIntelIndicatorSource() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('threat_intel_indicator_source') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('threat_intel_indicator_source')));
   }
-  public set threatIntelIndicatorSource(value: SecurityhubInsightFiltersThreatIntelIndicatorSource[]) {
+  public set threatIntelIndicatorSource(value: SecurityhubInsightFiltersThreatIntelIndicatorSource[] | cdktf.IResolvable) {
     this._threatIntelIndicatorSource = value;
   }
   public resetThreatIntelIndicatorSource() {
@@ -5496,12 +5544,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // threat_intel_indicator_source_url - computed: false, optional: true, required: false
-  private _threatIntelIndicatorSourceUrl?: SecurityhubInsightFiltersThreatIntelIndicatorSourceUrl[]; 
+  private _threatIntelIndicatorSourceUrl?: SecurityhubInsightFiltersThreatIntelIndicatorSourceUrl[] | cdktf.IResolvable; 
   public get threatIntelIndicatorSourceUrl() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('threat_intel_indicator_source_url') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('threat_intel_indicator_source_url')));
   }
-  public set threatIntelIndicatorSourceUrl(value: SecurityhubInsightFiltersThreatIntelIndicatorSourceUrl[]) {
+  public set threatIntelIndicatorSourceUrl(value: SecurityhubInsightFiltersThreatIntelIndicatorSourceUrl[] | cdktf.IResolvable) {
     this._threatIntelIndicatorSourceUrl = value;
   }
   public resetThreatIntelIndicatorSourceUrl() {
@@ -5513,12 +5561,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // threat_intel_indicator_type - computed: false, optional: true, required: false
-  private _threatIntelIndicatorType?: SecurityhubInsightFiltersThreatIntelIndicatorType[]; 
+  private _threatIntelIndicatorType?: SecurityhubInsightFiltersThreatIntelIndicatorType[] | cdktf.IResolvable; 
   public get threatIntelIndicatorType() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('threat_intel_indicator_type') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('threat_intel_indicator_type')));
   }
-  public set threatIntelIndicatorType(value: SecurityhubInsightFiltersThreatIntelIndicatorType[]) {
+  public set threatIntelIndicatorType(value: SecurityhubInsightFiltersThreatIntelIndicatorType[] | cdktf.IResolvable) {
     this._threatIntelIndicatorType = value;
   }
   public resetThreatIntelIndicatorType() {
@@ -5530,12 +5578,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // threat_intel_indicator_value - computed: false, optional: true, required: false
-  private _threatIntelIndicatorValue?: SecurityhubInsightFiltersThreatIntelIndicatorValue[]; 
+  private _threatIntelIndicatorValue?: SecurityhubInsightFiltersThreatIntelIndicatorValue[] | cdktf.IResolvable; 
   public get threatIntelIndicatorValue() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('threat_intel_indicator_value') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('threat_intel_indicator_value')));
   }
-  public set threatIntelIndicatorValue(value: SecurityhubInsightFiltersThreatIntelIndicatorValue[]) {
+  public set threatIntelIndicatorValue(value: SecurityhubInsightFiltersThreatIntelIndicatorValue[] | cdktf.IResolvable) {
     this._threatIntelIndicatorValue = value;
   }
   public resetThreatIntelIndicatorValue() {
@@ -5547,12 +5595,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // title - computed: false, optional: true, required: false
-  private _title?: SecurityhubInsightFiltersTitle[]; 
+  private _title?: SecurityhubInsightFiltersTitle[] | cdktf.IResolvable; 
   public get title() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('title') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('title')));
   }
-  public set title(value: SecurityhubInsightFiltersTitle[]) {
+  public set title(value: SecurityhubInsightFiltersTitle[] | cdktf.IResolvable) {
     this._title = value;
   }
   public resetTitle() {
@@ -5564,12 +5612,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // type - computed: false, optional: true, required: false
-  private _type?: SecurityhubInsightFiltersType[]; 
+  private _type?: SecurityhubInsightFiltersType[] | cdktf.IResolvable; 
   public get type() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('type') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('type')));
   }
-  public set type(value: SecurityhubInsightFiltersType[]) {
+  public set type(value: SecurityhubInsightFiltersType[] | cdktf.IResolvable) {
     this._type = value;
   }
   public resetType() {
@@ -5581,12 +5629,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // updated_at - computed: false, optional: true, required: false
-  private _updatedAt?: SecurityhubInsightFiltersUpdatedAt[]; 
+  private _updatedAt?: SecurityhubInsightFiltersUpdatedAt[] | cdktf.IResolvable; 
   public get updatedAt() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('updated_at') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('updated_at')));
   }
-  public set updatedAt(value: SecurityhubInsightFiltersUpdatedAt[]) {
+  public set updatedAt(value: SecurityhubInsightFiltersUpdatedAt[] | cdktf.IResolvable) {
     this._updatedAt = value;
   }
   public resetUpdatedAt() {
@@ -5598,12 +5646,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // user_defined_values - computed: false, optional: true, required: false
-  private _userDefinedValues?: SecurityhubInsightFiltersUserDefinedValues[]; 
+  private _userDefinedValues?: SecurityhubInsightFiltersUserDefinedValues[] | cdktf.IResolvable; 
   public get userDefinedValues() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('user_defined_values') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('user_defined_values')));
   }
-  public set userDefinedValues(value: SecurityhubInsightFiltersUserDefinedValues[]) {
+  public set userDefinedValues(value: SecurityhubInsightFiltersUserDefinedValues[] | cdktf.IResolvable) {
     this._userDefinedValues = value;
   }
   public resetUserDefinedValues() {
@@ -5615,12 +5663,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // verification_state - computed: false, optional: true, required: false
-  private _verificationState?: SecurityhubInsightFiltersVerificationState[]; 
+  private _verificationState?: SecurityhubInsightFiltersVerificationState[] | cdktf.IResolvable; 
   public get verificationState() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('verification_state') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('verification_state')));
   }
-  public set verificationState(value: SecurityhubInsightFiltersVerificationState[]) {
+  public set verificationState(value: SecurityhubInsightFiltersVerificationState[] | cdktf.IResolvable) {
     this._verificationState = value;
   }
   public resetVerificationState() {
@@ -5632,12 +5680,12 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
   }
 
   // workflow_status - computed: false, optional: true, required: false
-  private _workflowStatus?: SecurityhubInsightFiltersWorkflowStatus[]; 
+  private _workflowStatus?: SecurityhubInsightFiltersWorkflowStatus[] | cdktf.IResolvable; 
   public get workflowStatus() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('workflow_status') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('workflow_status')));
   }
-  public set workflowStatus(value: SecurityhubInsightFiltersWorkflowStatus[]) {
+  public set workflowStatus(value: SecurityhubInsightFiltersWorkflowStatus[] | cdktf.IResolvable) {
     this._workflowStatus = value;
   }
   public resetWorkflowStatus() {
@@ -5650,7 +5698,7 @@ export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObjec
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html aws_securityhub_insight}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight aws_securityhub_insight}
 */
 export class SecurityhubInsight extends cdktf.TerraformResource {
 
@@ -5664,7 +5712,7 @@ export class SecurityhubInsight extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html aws_securityhub_insight} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight aws_securityhub_insight} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -5727,7 +5775,7 @@ export class SecurityhubInsight extends cdktf.TerraformResource {
   }
 
   // filters - computed: false, optional: false, required: true
-  private _filters = new SecurityhubInsightFiltersOutputReference(this as any, "filters", true);
+  private _filters = new SecurityhubInsightFiltersOutputReference(this, "filters", true);
   public get filters() {
     return this._filters;
   }

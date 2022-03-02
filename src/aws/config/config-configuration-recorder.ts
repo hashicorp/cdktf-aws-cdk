@@ -8,37 +8,37 @@ import * as cdktf from 'cdktf';
 */
 export interface ConfigConfigurationRecorderConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder.html#name ConfigConfigurationRecorder#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder#name ConfigConfigurationRecorder#name}
   */
   readonly name?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder.html#role_arn ConfigConfigurationRecorder#role_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder#role_arn ConfigConfigurationRecorder#role_arn}
   */
   readonly roleArn: string;
   /**
   * recording_group block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder.html#recording_group ConfigConfigurationRecorder#recording_group}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder#recording_group ConfigConfigurationRecorder#recording_group}
   */
   readonly recordingGroup?: ConfigConfigurationRecorderRecordingGroup;
 }
 export interface ConfigConfigurationRecorderRecordingGroup {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder.html#all_supported ConfigConfigurationRecorder#all_supported}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder#all_supported ConfigConfigurationRecorder#all_supported}
   */
   readonly allSupported?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder.html#include_global_resource_types ConfigConfigurationRecorder#include_global_resource_types}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder#include_global_resource_types ConfigConfigurationRecorder#include_global_resource_types}
   */
   readonly includeGlobalResourceTypes?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder.html#resource_types ConfigConfigurationRecorder#resource_types}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder#resource_types ConfigConfigurationRecorder#resource_types}
   */
   readonly resourceTypes?: string[];
 }
 
 export function configConfigurationRecorderRecordingGroupToTerraform(struct?: ConfigConfigurationRecorderRecordingGroupOutputReference | ConfigConfigurationRecorderRecordingGroup): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -50,27 +50,29 @@ export function configConfigurationRecorderRecordingGroupToTerraform(struct?: Co
 }
 
 export class ConfigConfigurationRecorderRecordingGroupOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): ConfigConfigurationRecorderRecordingGroup | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._allSupported) {
+    if (this._allSupported !== undefined) {
       hasAnyValues = true;
       internalValueResult.allSupported = this._allSupported;
     }
-    if (this._includeGlobalResourceTypes) {
+    if (this._includeGlobalResourceTypes !== undefined) {
       hasAnyValues = true;
       internalValueResult.includeGlobalResourceTypes = this._includeGlobalResourceTypes;
     }
-    if (this._resourceTypes) {
+    if (this._resourceTypes !== undefined) {
       hasAnyValues = true;
       internalValueResult.resourceTypes = this._resourceTypes;
     }
@@ -79,11 +81,13 @@ export class ConfigConfigurationRecorderRecordingGroupOutputReference extends cd
 
   public set internalValue(value: ConfigConfigurationRecorderRecordingGroup | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._allSupported = undefined;
       this._includeGlobalResourceTypes = undefined;
       this._resourceTypes = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._allSupported = value.allSupported;
       this._includeGlobalResourceTypes = value.includeGlobalResourceTypes;
       this._resourceTypes = value.resourceTypes;
@@ -93,7 +97,7 @@ export class ConfigConfigurationRecorderRecordingGroupOutputReference extends cd
   // all_supported - computed: false, optional: true, required: false
   private _allSupported?: boolean | cdktf.IResolvable; 
   public get allSupported() {
-    return this.getBooleanAttribute('all_supported') as any;
+    return this.getBooleanAttribute('all_supported');
   }
   public set allSupported(value: boolean | cdktf.IResolvable) {
     this._allSupported = value;
@@ -109,7 +113,7 @@ export class ConfigConfigurationRecorderRecordingGroupOutputReference extends cd
   // include_global_resource_types - computed: false, optional: true, required: false
   private _includeGlobalResourceTypes?: boolean | cdktf.IResolvable; 
   public get includeGlobalResourceTypes() {
-    return this.getBooleanAttribute('include_global_resource_types') as any;
+    return this.getBooleanAttribute('include_global_resource_types');
   }
   public set includeGlobalResourceTypes(value: boolean | cdktf.IResolvable) {
     this._includeGlobalResourceTypes = value;
@@ -125,7 +129,7 @@ export class ConfigConfigurationRecorderRecordingGroupOutputReference extends cd
   // resource_types - computed: false, optional: true, required: false
   private _resourceTypes?: string[]; 
   public get resourceTypes() {
-    return this.getListAttribute('resource_types');
+    return cdktf.Fn.tolist(this.getListAttribute('resource_types'));
   }
   public set resourceTypes(value: string[]) {
     this._resourceTypes = value;
@@ -140,7 +144,7 @@ export class ConfigConfigurationRecorderRecordingGroupOutputReference extends cd
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder.html aws_config_configuration_recorder}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder aws_config_configuration_recorder}
 */
 export class ConfigConfigurationRecorder extends cdktf.TerraformResource {
 
@@ -154,7 +158,7 @@ export class ConfigConfigurationRecorder extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder.html aws_config_configuration_recorder} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder aws_config_configuration_recorder} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -215,7 +219,7 @@ export class ConfigConfigurationRecorder extends cdktf.TerraformResource {
   }
 
   // recording_group - computed: false, optional: true, required: false
-  private _recordingGroup = new ConfigConfigurationRecorderRecordingGroupOutputReference(this as any, "recording_group", true);
+  private _recordingGroup = new ConfigConfigurationRecorderRecordingGroupOutputReference(this, "recording_group", true);
   public get recordingGroup() {
     return this._recordingGroup;
   }

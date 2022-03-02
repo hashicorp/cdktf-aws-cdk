@@ -8,101 +8,101 @@ import * as cdktf from 'cdktf';
 */
 export interface GlueJobConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#connections GlueJob#connections}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#connections GlueJob#connections}
   */
   readonly connections?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#default_arguments GlueJob#default_arguments}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#default_arguments GlueJob#default_arguments}
   */
-  readonly defaultArguments?: { [key: string]: string } | cdktf.IResolvable;
+  readonly defaultArguments?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#description GlueJob#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#description GlueJob#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#glue_version GlueJob#glue_version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#glue_version GlueJob#glue_version}
   */
   readonly glueVersion?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#max_capacity GlueJob#max_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#max_capacity GlueJob#max_capacity}
   */
   readonly maxCapacity?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#max_retries GlueJob#max_retries}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#max_retries GlueJob#max_retries}
   */
   readonly maxRetries?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#name GlueJob#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#name GlueJob#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#non_overridable_arguments GlueJob#non_overridable_arguments}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#non_overridable_arguments GlueJob#non_overridable_arguments}
   */
-  readonly nonOverridableArguments?: { [key: string]: string } | cdktf.IResolvable;
+  readonly nonOverridableArguments?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#number_of_workers GlueJob#number_of_workers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#number_of_workers GlueJob#number_of_workers}
   */
   readonly numberOfWorkers?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#role_arn GlueJob#role_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#role_arn GlueJob#role_arn}
   */
   readonly roleArn: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#security_configuration GlueJob#security_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#security_configuration GlueJob#security_configuration}
   */
   readonly securityConfiguration?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#tags GlueJob#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#tags GlueJob#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#tags_all GlueJob#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#tags_all GlueJob#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#timeout GlueJob#timeout}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#timeout GlueJob#timeout}
   */
   readonly timeout?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#worker_type GlueJob#worker_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#worker_type GlueJob#worker_type}
   */
   readonly workerType?: string;
   /**
   * command block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#command GlueJob#command}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#command GlueJob#command}
   */
   readonly command: GlueJobCommand;
   /**
   * execution_property block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#execution_property GlueJob#execution_property}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#execution_property GlueJob#execution_property}
   */
   readonly executionProperty?: GlueJobExecutionProperty;
   /**
   * notification_property block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#notification_property GlueJob#notification_property}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#notification_property GlueJob#notification_property}
   */
   readonly notificationProperty?: GlueJobNotificationProperty;
 }
 export interface GlueJobCommand {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#name GlueJob#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#name GlueJob#name}
   */
   readonly name?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#python_version GlueJob#python_version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#python_version GlueJob#python_version}
   */
   readonly pythonVersion?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#script_location GlueJob#script_location}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#script_location GlueJob#script_location}
   */
   readonly scriptLocation: string;
 }
 
 export function glueJobCommandToTerraform(struct?: GlueJobCommandOutputReference | GlueJobCommand): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -114,27 +114,29 @@ export function glueJobCommandToTerraform(struct?: GlueJobCommandOutputReference
 }
 
 export class GlueJobCommandOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): GlueJobCommand | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._name) {
+    if (this._name !== undefined) {
       hasAnyValues = true;
       internalValueResult.name = this._name;
     }
-    if (this._pythonVersion) {
+    if (this._pythonVersion !== undefined) {
       hasAnyValues = true;
       internalValueResult.pythonVersion = this._pythonVersion;
     }
-    if (this._scriptLocation) {
+    if (this._scriptLocation !== undefined) {
       hasAnyValues = true;
       internalValueResult.scriptLocation = this._scriptLocation;
     }
@@ -143,11 +145,13 @@ export class GlueJobCommandOutputReference extends cdktf.ComplexObject {
 
   public set internalValue(value: GlueJobCommand | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._name = undefined;
       this._pythonVersion = undefined;
       this._scriptLocation = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._name = value.name;
       this._pythonVersion = value.pythonVersion;
       this._scriptLocation = value.scriptLocation;
@@ -201,13 +205,13 @@ export class GlueJobCommandOutputReference extends cdktf.ComplexObject {
 }
 export interface GlueJobExecutionProperty {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#max_concurrent_runs GlueJob#max_concurrent_runs}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#max_concurrent_runs GlueJob#max_concurrent_runs}
   */
   readonly maxConcurrentRuns?: number;
 }
 
 export function glueJobExecutionPropertyToTerraform(struct?: GlueJobExecutionPropertyOutputReference | GlueJobExecutionProperty): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -217,19 +221,21 @@ export function glueJobExecutionPropertyToTerraform(struct?: GlueJobExecutionPro
 }
 
 export class GlueJobExecutionPropertyOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): GlueJobExecutionProperty | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._maxConcurrentRuns) {
+    if (this._maxConcurrentRuns !== undefined) {
       hasAnyValues = true;
       internalValueResult.maxConcurrentRuns = this._maxConcurrentRuns;
     }
@@ -238,9 +244,11 @@ export class GlueJobExecutionPropertyOutputReference extends cdktf.ComplexObject
 
   public set internalValue(value: GlueJobExecutionProperty | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._maxConcurrentRuns = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._maxConcurrentRuns = value.maxConcurrentRuns;
     }
   }
@@ -263,13 +271,13 @@ export class GlueJobExecutionPropertyOutputReference extends cdktf.ComplexObject
 }
 export interface GlueJobNotificationProperty {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#notify_delay_after GlueJob#notify_delay_after}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job#notify_delay_after GlueJob#notify_delay_after}
   */
   readonly notifyDelayAfter?: number;
 }
 
 export function glueJobNotificationPropertyToTerraform(struct?: GlueJobNotificationPropertyOutputReference | GlueJobNotificationProperty): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -279,19 +287,21 @@ export function glueJobNotificationPropertyToTerraform(struct?: GlueJobNotificat
 }
 
 export class GlueJobNotificationPropertyOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): GlueJobNotificationProperty | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._notifyDelayAfter) {
+    if (this._notifyDelayAfter !== undefined) {
       hasAnyValues = true;
       internalValueResult.notifyDelayAfter = this._notifyDelayAfter;
     }
@@ -300,9 +310,11 @@ export class GlueJobNotificationPropertyOutputReference extends cdktf.ComplexObj
 
   public set internalValue(value: GlueJobNotificationProperty | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._notifyDelayAfter = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._notifyDelayAfter = value.notifyDelayAfter;
     }
   }
@@ -325,7 +337,7 @@ export class GlueJobNotificationPropertyOutputReference extends cdktf.ComplexObj
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html aws_glue_job}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_job aws_glue_job}
 */
 export class GlueJob extends cdktf.TerraformResource {
 
@@ -339,7 +351,7 @@ export class GlueJob extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html aws_glue_job} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/glue_job aws_glue_job} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -402,12 +414,11 @@ export class GlueJob extends cdktf.TerraformResource {
   }
 
   // default_arguments - computed: false, optional: true, required: false
-  private _defaultArguments?: { [key: string]: string } | cdktf.IResolvable; 
+  private _defaultArguments?: { [key: string]: string }; 
   public get defaultArguments() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('default_arguments') as any;
+    return this.getStringMapAttribute('default_arguments');
   }
-  public set defaultArguments(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set defaultArguments(value: { [key: string]: string }) {
     this._defaultArguments = value;
   }
   public resetDefaultArguments() {
@@ -501,12 +512,11 @@ export class GlueJob extends cdktf.TerraformResource {
   }
 
   // non_overridable_arguments - computed: false, optional: true, required: false
-  private _nonOverridableArguments?: { [key: string]: string } | cdktf.IResolvable; 
+  private _nonOverridableArguments?: { [key: string]: string }; 
   public get nonOverridableArguments() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('non_overridable_arguments') as any;
+    return this.getStringMapAttribute('non_overridable_arguments');
   }
-  public set nonOverridableArguments(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set nonOverridableArguments(value: { [key: string]: string }) {
     this._nonOverridableArguments = value;
   }
   public resetNonOverridableArguments() {
@@ -563,12 +573,11 @@ export class GlueJob extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -580,12 +589,11 @@ export class GlueJob extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -629,7 +637,7 @@ export class GlueJob extends cdktf.TerraformResource {
   }
 
   // command - computed: false, optional: false, required: true
-  private _command = new GlueJobCommandOutputReference(this as any, "command", true);
+  private _command = new GlueJobCommandOutputReference(this, "command", true);
   public get command() {
     return this._command;
   }
@@ -642,7 +650,7 @@ export class GlueJob extends cdktf.TerraformResource {
   }
 
   // execution_property - computed: false, optional: true, required: false
-  private _executionProperty = new GlueJobExecutionPropertyOutputReference(this as any, "execution_property", true);
+  private _executionProperty = new GlueJobExecutionPropertyOutputReference(this, "execution_property", true);
   public get executionProperty() {
     return this._executionProperty;
   }
@@ -658,7 +666,7 @@ export class GlueJob extends cdktf.TerraformResource {
   }
 
   // notification_property - computed: false, optional: true, required: false
-  private _notificationProperty = new GlueJobNotificationPropertyOutputReference(this as any, "notification_property", true);
+  private _notificationProperty = new GlueJobNotificationPropertyOutputReference(this, "notification_property", true);
   public get notificationProperty() {
     return this._notificationProperty;
   }
@@ -680,18 +688,18 @@ export class GlueJob extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       connections: cdktf.listMapper(cdktf.stringToTerraform)(this._connections),
-      default_arguments: cdktf.hashMapper(cdktf.anyToTerraform)(this._defaultArguments),
+      default_arguments: cdktf.hashMapper(cdktf.stringToTerraform)(this._defaultArguments),
       description: cdktf.stringToTerraform(this._description),
       glue_version: cdktf.stringToTerraform(this._glueVersion),
       max_capacity: cdktf.numberToTerraform(this._maxCapacity),
       max_retries: cdktf.numberToTerraform(this._maxRetries),
       name: cdktf.stringToTerraform(this._name),
-      non_overridable_arguments: cdktf.hashMapper(cdktf.anyToTerraform)(this._nonOverridableArguments),
+      non_overridable_arguments: cdktf.hashMapper(cdktf.stringToTerraform)(this._nonOverridableArguments),
       number_of_workers: cdktf.numberToTerraform(this._numberOfWorkers),
       role_arn: cdktf.stringToTerraform(this._roleArn),
       security_configuration: cdktf.stringToTerraform(this._securityConfiguration),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       timeout: cdktf.numberToTerraform(this._timeout),
       worker_type: cdktf.stringToTerraform(this._workerType),
       command: glueJobCommandToTerraform(this._command.internalValue),

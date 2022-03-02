@@ -1,4 +1,4 @@
-// https://www.terraform.io/docs/providers/time/r/rotating.html
+// https://www.terraform.io/docs/providers/time/r/rotating
 // generated from terraform resource schema
 
 import { Construct } from 'constructs';
@@ -8,41 +8,41 @@ import * as cdktf from 'cdktf';
 
 export interface RotatingConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/rotating.html#rfc3339 Rotating#rfc3339}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/rotating#rfc3339 Rotating#rfc3339}
   */
   readonly rfc3339?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/rotating.html#rotation_days Rotating#rotation_days}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/rotating#rotation_days Rotating#rotation_days}
   */
   readonly rotationDays?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/rotating.html#rotation_hours Rotating#rotation_hours}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/rotating#rotation_hours Rotating#rotation_hours}
   */
   readonly rotationHours?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/rotating.html#rotation_minutes Rotating#rotation_minutes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/rotating#rotation_minutes Rotating#rotation_minutes}
   */
   readonly rotationMinutes?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/rotating.html#rotation_months Rotating#rotation_months}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/rotating#rotation_months Rotating#rotation_months}
   */
   readonly rotationMonths?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/rotating.html#rotation_rfc3339 Rotating#rotation_rfc3339}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/rotating#rotation_rfc3339 Rotating#rotation_rfc3339}
   */
   readonly rotationRfc3339?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/rotating.html#rotation_years Rotating#rotation_years}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/rotating#rotation_years Rotating#rotation_years}
   */
   readonly rotationYears?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/rotating.html#triggers Rotating#triggers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/rotating#triggers Rotating#triggers}
   */
-  readonly triggers?: { [key: string]: string } | cdktf.IResolvable;
+  readonly triggers?: { [key: string]: string };
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/time/r/rotating.html time_rotating}
+* Represents a {@link https://www.terraform.io/docs/providers/time/r/rotating time_rotating}
 */
 export class Rotating extends cdktf.TerraformResource {
 
@@ -56,7 +56,7 @@ export class Rotating extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/time/r/rotating.html time_rotating} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/time/r/rotating time_rotating} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -230,12 +230,11 @@ export class Rotating extends cdktf.TerraformResource {
   }
 
   // triggers - computed: false, optional: true, required: false
-  private _triggers?: { [key: string]: string } | cdktf.IResolvable; 
+  private _triggers?: { [key: string]: string }; 
   public get triggers() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('triggers') as any;
+    return this.getStringMapAttribute('triggers');
   }
-  public set triggers(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set triggers(value: { [key: string]: string }) {
     this._triggers = value;
   }
   public resetTriggers() {
@@ -269,7 +268,7 @@ export class Rotating extends cdktf.TerraformResource {
       rotation_months: cdktf.numberToTerraform(this._rotationMonths),
       rotation_rfc3339: cdktf.stringToTerraform(this._rotationRfc3339),
       rotation_years: cdktf.numberToTerraform(this._rotationYears),
-      triggers: cdktf.hashMapper(cdktf.anyToTerraform)(this._triggers),
+      triggers: cdktf.hashMapper(cdktf.stringToTerraform)(this._triggers),
     };
   }
 }

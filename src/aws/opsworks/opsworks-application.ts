@@ -8,109 +8,109 @@ import * as cdktf from 'cdktf';
 */
 export interface OpsworksApplicationConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#auto_bundle_on_deploy OpsworksApplication#auto_bundle_on_deploy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#auto_bundle_on_deploy OpsworksApplication#auto_bundle_on_deploy}
   */
   readonly autoBundleOnDeploy?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#aws_flow_ruby_settings OpsworksApplication#aws_flow_ruby_settings}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#aws_flow_ruby_settings OpsworksApplication#aws_flow_ruby_settings}
   */
   readonly awsFlowRubySettings?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#data_source_arn OpsworksApplication#data_source_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#data_source_arn OpsworksApplication#data_source_arn}
   */
   readonly dataSourceArn?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#data_source_database_name OpsworksApplication#data_source_database_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#data_source_database_name OpsworksApplication#data_source_database_name}
   */
   readonly dataSourceDatabaseName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#data_source_type OpsworksApplication#data_source_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#data_source_type OpsworksApplication#data_source_type}
   */
   readonly dataSourceType?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#description OpsworksApplication#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#description OpsworksApplication#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#document_root OpsworksApplication#document_root}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#document_root OpsworksApplication#document_root}
   */
   readonly documentRoot?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#domains OpsworksApplication#domains}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#domains OpsworksApplication#domains}
   */
   readonly domains?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#enable_ssl OpsworksApplication#enable_ssl}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#enable_ssl OpsworksApplication#enable_ssl}
   */
   readonly enableSsl?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#name OpsworksApplication#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#name OpsworksApplication#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#rails_env OpsworksApplication#rails_env}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#rails_env OpsworksApplication#rails_env}
   */
   readonly railsEnv?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#short_name OpsworksApplication#short_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#short_name OpsworksApplication#short_name}
   */
   readonly shortName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#stack_id OpsworksApplication#stack_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#stack_id OpsworksApplication#stack_id}
   */
   readonly stackId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#type OpsworksApplication#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#type OpsworksApplication#type}
   */
   readonly type: string;
   /**
   * app_source block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#app_source OpsworksApplication#app_source}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#app_source OpsworksApplication#app_source}
   */
-  readonly appSource?: OpsworksApplicationAppSource[];
+  readonly appSource?: OpsworksApplicationAppSource[] | cdktf.IResolvable;
   /**
   * environment block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#environment OpsworksApplication#environment}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#environment OpsworksApplication#environment}
   */
-  readonly environment?: OpsworksApplicationEnvironment[];
+  readonly environment?: OpsworksApplicationEnvironment[] | cdktf.IResolvable;
   /**
   * ssl_configuration block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#ssl_configuration OpsworksApplication#ssl_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#ssl_configuration OpsworksApplication#ssl_configuration}
   */
-  readonly sslConfiguration?: OpsworksApplicationSslConfiguration[];
+  readonly sslConfiguration?: OpsworksApplicationSslConfiguration[] | cdktf.IResolvable;
 }
 export interface OpsworksApplicationAppSource {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#password OpsworksApplication#password}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#password OpsworksApplication#password}
   */
   readonly password?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#revision OpsworksApplication#revision}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#revision OpsworksApplication#revision}
   */
   readonly revision?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#ssh_key OpsworksApplication#ssh_key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#ssh_key OpsworksApplication#ssh_key}
   */
   readonly sshKey?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#type OpsworksApplication#type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#type OpsworksApplication#type}
   */
   readonly type: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#url OpsworksApplication#url}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#url OpsworksApplication#url}
   */
   readonly url?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#username OpsworksApplication#username}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#username OpsworksApplication#username}
   */
   readonly username?: string;
 }
 
-export function opsworksApplicationAppSourceToTerraform(struct?: OpsworksApplicationAppSource): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function opsworksApplicationAppSourceToTerraform(struct?: OpsworksApplicationAppSource | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -126,21 +126,21 @@ export function opsworksApplicationAppSourceToTerraform(struct?: OpsworksApplica
 
 export interface OpsworksApplicationEnvironment {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#key OpsworksApplication#key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#key OpsworksApplication#key}
   */
   readonly key: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#secure OpsworksApplication#secure}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#secure OpsworksApplication#secure}
   */
   readonly secure?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#value OpsworksApplication#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#value OpsworksApplication#value}
   */
   readonly value: string;
 }
 
-export function opsworksApplicationEnvironmentToTerraform(struct?: OpsworksApplicationEnvironment): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function opsworksApplicationEnvironmentToTerraform(struct?: OpsworksApplicationEnvironment | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -153,21 +153,21 @@ export function opsworksApplicationEnvironmentToTerraform(struct?: OpsworksAppli
 
 export interface OpsworksApplicationSslConfiguration {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#certificate OpsworksApplication#certificate}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#certificate OpsworksApplication#certificate}
   */
   readonly certificate: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#chain OpsworksApplication#chain}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#chain OpsworksApplication#chain}
   */
   readonly chain?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html#private_key OpsworksApplication#private_key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application#private_key OpsworksApplication#private_key}
   */
   readonly privateKey: string;
 }
 
-export function opsworksApplicationSslConfigurationToTerraform(struct?: OpsworksApplicationSslConfiguration): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function opsworksApplicationSslConfigurationToTerraform(struct?: OpsworksApplicationSslConfiguration | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -180,7 +180,7 @@ export function opsworksApplicationSslConfigurationToTerraform(struct?: Opsworks
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html aws_opsworks_application}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application aws_opsworks_application}
 */
 export class OpsworksApplication extends cdktf.TerraformResource {
 
@@ -194,7 +194,7 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application.html aws_opsworks_application} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/opsworks_application aws_opsworks_application} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -365,7 +365,7 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   // enable_ssl - computed: false, optional: true, required: false
   private _enableSsl?: boolean | cdktf.IResolvable; 
   public get enableSsl() {
-    return this.getBooleanAttribute('enable_ssl') as any;
+    return this.getBooleanAttribute('enable_ssl');
   }
   public set enableSsl(value: boolean | cdktf.IResolvable) {
     this._enableSsl = value;
@@ -455,12 +455,12 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
 
   // app_source - computed: false, optional: true, required: false
-  private _appSource?: OpsworksApplicationAppSource[]; 
+  private _appSource?: OpsworksApplicationAppSource[] | cdktf.IResolvable; 
   public get appSource() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('app_source') as any;
+    return this.interpolationForAttribute('app_source');
   }
-  public set appSource(value: OpsworksApplicationAppSource[]) {
+  public set appSource(value: OpsworksApplicationAppSource[] | cdktf.IResolvable) {
     this._appSource = value;
   }
   public resetAppSource() {
@@ -472,12 +472,12 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
 
   // environment - computed: false, optional: true, required: false
-  private _environment?: OpsworksApplicationEnvironment[]; 
+  private _environment?: OpsworksApplicationEnvironment[] | cdktf.IResolvable; 
   public get environment() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('environment') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('environment')));
   }
-  public set environment(value: OpsworksApplicationEnvironment[]) {
+  public set environment(value: OpsworksApplicationEnvironment[] | cdktf.IResolvable) {
     this._environment = value;
   }
   public resetEnvironment() {
@@ -489,12 +489,12 @@ export class OpsworksApplication extends cdktf.TerraformResource {
   }
 
   // ssl_configuration - computed: false, optional: true, required: false
-  private _sslConfiguration?: OpsworksApplicationSslConfiguration[]; 
+  private _sslConfiguration?: OpsworksApplicationSslConfiguration[] | cdktf.IResolvable; 
   public get sslConfiguration() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('ssl_configuration') as any;
+    return this.interpolationForAttribute('ssl_configuration');
   }
-  public set sslConfiguration(value: OpsworksApplicationSslConfiguration[]) {
+  public set sslConfiguration(value: OpsworksApplicationSslConfiguration[] | cdktf.IResolvable) {
     this._sslConfiguration = value;
   }
   public resetSslConfiguration() {

@@ -8,33 +8,33 @@ import * as cdktf from 'cdktf';
 */
 export interface VpcEndpointServiceConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service.html#acceptance_required VpcEndpointService#acceptance_required}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service#acceptance_required VpcEndpointService#acceptance_required}
   */
   readonly acceptanceRequired: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service.html#allowed_principals VpcEndpointService#allowed_principals}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service#allowed_principals VpcEndpointService#allowed_principals}
   */
   readonly allowedPrincipals?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service.html#gateway_load_balancer_arns VpcEndpointService#gateway_load_balancer_arns}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service#gateway_load_balancer_arns VpcEndpointService#gateway_load_balancer_arns}
   */
   readonly gatewayLoadBalancerArns?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service.html#network_load_balancer_arns VpcEndpointService#network_load_balancer_arns}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service#network_load_balancer_arns VpcEndpointService#network_load_balancer_arns}
   */
   readonly networkLoadBalancerArns?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service.html#private_dns_name VpcEndpointService#private_dns_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service#private_dns_name VpcEndpointService#private_dns_name}
   */
   readonly privateDnsName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service.html#tags VpcEndpointService#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service#tags VpcEndpointService#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service.html#tags_all VpcEndpointService#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service#tags_all VpcEndpointService#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
 }
 export class VpcEndpointServicePrivateDnsNameConfiguration extends cdktf.ComplexComputedList {
 
@@ -60,7 +60,7 @@ export class VpcEndpointServicePrivateDnsNameConfiguration extends cdktf.Complex
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service.html aws_vpc_endpoint_service}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service aws_vpc_endpoint_service}
 */
 export class VpcEndpointService extends cdktf.TerraformResource {
 
@@ -74,7 +74,7 @@ export class VpcEndpointService extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service.html aws_vpc_endpoint_service} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_service aws_vpc_endpoint_service} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -107,7 +107,7 @@ export class VpcEndpointService extends cdktf.TerraformResource {
   // acceptance_required - computed: false, optional: false, required: true
   private _acceptanceRequired?: boolean | cdktf.IResolvable; 
   public get acceptanceRequired() {
-    return this.getBooleanAttribute('acceptance_required') as any;
+    return this.getBooleanAttribute('acceptance_required');
   }
   public set acceptanceRequired(value: boolean | cdktf.IResolvable) {
     this._acceptanceRequired = value;
@@ -120,7 +120,7 @@ export class VpcEndpointService extends cdktf.TerraformResource {
   // allowed_principals - computed: true, optional: true, required: false
   private _allowedPrincipals?: string[]; 
   public get allowedPrincipals() {
-    return this.getListAttribute('allowed_principals');
+    return cdktf.Fn.tolist(this.getListAttribute('allowed_principals'));
   }
   public set allowedPrincipals(value: string[]) {
     this._allowedPrincipals = value;
@@ -140,18 +140,18 @@ export class VpcEndpointService extends cdktf.TerraformResource {
 
   // availability_zones - computed: true, optional: false, required: false
   public get availabilityZones() {
-    return this.getListAttribute('availability_zones');
+    return cdktf.Fn.tolist(this.getListAttribute('availability_zones'));
   }
 
   // base_endpoint_dns_names - computed: true, optional: false, required: false
   public get baseEndpointDnsNames() {
-    return this.getListAttribute('base_endpoint_dns_names');
+    return cdktf.Fn.tolist(this.getListAttribute('base_endpoint_dns_names'));
   }
 
   // gateway_load_balancer_arns - computed: false, optional: true, required: false
   private _gatewayLoadBalancerArns?: string[]; 
   public get gatewayLoadBalancerArns() {
-    return this.getListAttribute('gateway_load_balancer_arns');
+    return cdktf.Fn.tolist(this.getListAttribute('gateway_load_balancer_arns'));
   }
   public set gatewayLoadBalancerArns(value: string[]) {
     this._gatewayLoadBalancerArns = value;
@@ -171,13 +171,13 @@ export class VpcEndpointService extends cdktf.TerraformResource {
 
   // manages_vpc_endpoints - computed: true, optional: false, required: false
   public get managesVpcEndpoints() {
-    return this.getBooleanAttribute('manages_vpc_endpoints') as any;
+    return this.getBooleanAttribute('manages_vpc_endpoints');
   }
 
   // network_load_balancer_arns - computed: false, optional: true, required: false
   private _networkLoadBalancerArns?: string[]; 
   public get networkLoadBalancerArns() {
-    return this.getListAttribute('network_load_balancer_arns');
+    return cdktf.Fn.tolist(this.getListAttribute('network_load_balancer_arns'));
   }
   public set networkLoadBalancerArns(value: string[]) {
     this._networkLoadBalancerArns = value;
@@ -208,7 +208,7 @@ export class VpcEndpointService extends cdktf.TerraformResource {
 
   // private_dns_name_configuration - computed: true, optional: false, required: false
   public privateDnsNameConfiguration(index: string) {
-    return new VpcEndpointServicePrivateDnsNameConfiguration(this, 'private_dns_name_configuration', index);
+    return new VpcEndpointServicePrivateDnsNameConfiguration(this, 'private_dns_name_configuration', index, false);
   }
 
   // service_name - computed: true, optional: false, required: false
@@ -227,12 +227,11 @@ export class VpcEndpointService extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -244,12 +243,11 @@ export class VpcEndpointService extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -271,8 +269,8 @@ export class VpcEndpointService extends cdktf.TerraformResource {
       gateway_load_balancer_arns: cdktf.listMapper(cdktf.stringToTerraform)(this._gatewayLoadBalancerArns),
       network_load_balancer_arns: cdktf.listMapper(cdktf.stringToTerraform)(this._networkLoadBalancerArns),
       private_dns_name: cdktf.stringToTerraform(this._privateDnsName),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
     };
   }
 }

@@ -8,11 +8,11 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsKmsKeyConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/kms_key.html#grant_tokens DataAwsKmsKey#grant_tokens}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/kms_key#grant_tokens DataAwsKmsKey#grant_tokens}
   */
   readonly grantTokens?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/kms_key.html#key_id DataAwsKmsKey#key_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/kms_key#key_id DataAwsKmsKey#key_id}
   */
   readonly keyId: string;
 }
@@ -50,18 +50,18 @@ export class DataAwsKmsKeyMultiRegionConfiguration extends cdktf.ComplexComputed
   // primary_key - computed: true, optional: false, required: false
   public get primaryKey() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('primary_key') as any;
+    return this.interpolationForAttribute('primary_key');
   }
 
   // replica_keys - computed: true, optional: false, required: false
   public get replicaKeys() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('replica_keys') as any;
+    return this.interpolationForAttribute('replica_keys');
   }
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/kms_key.html aws_kms_key}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/kms_key aws_kms_key}
 */
 export class DataAwsKmsKey extends cdktf.TerraformDataSource {
 
@@ -75,7 +75,7 @@ export class DataAwsKmsKey extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/kms_key.html aws_kms_key} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/kms_key aws_kms_key} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -132,7 +132,7 @@ export class DataAwsKmsKey extends cdktf.TerraformDataSource {
 
   // enabled - computed: true, optional: false, required: false
   public get enabled() {
-    return this.getBooleanAttribute('enabled') as any;
+    return this.getBooleanAttribute('enabled');
   }
 
   // expiration_model - computed: true, optional: false, required: false
@@ -191,12 +191,12 @@ export class DataAwsKmsKey extends cdktf.TerraformDataSource {
 
   // multi_region - computed: true, optional: false, required: false
   public get multiRegion() {
-    return this.getBooleanAttribute('multi_region') as any;
+    return this.getBooleanAttribute('multi_region');
   }
 
   // multi_region_configuration - computed: true, optional: false, required: false
   public multiRegionConfiguration(index: string) {
-    return new DataAwsKmsKeyMultiRegionConfiguration(this, 'multi_region_configuration', index);
+    return new DataAwsKmsKeyMultiRegionConfiguration(this, 'multi_region_configuration', index, false);
   }
 
   // origin - computed: true, optional: false, required: false

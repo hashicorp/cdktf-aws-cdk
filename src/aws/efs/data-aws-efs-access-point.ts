@@ -8,13 +8,13 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsEfsAccessPointConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/efs_access_point.html#access_point_id DataAwsEfsAccessPoint#access_point_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/efs_access_point#access_point_id DataAwsEfsAccessPoint#access_point_id}
   */
   readonly accessPointId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/efs_access_point.html#tags DataAwsEfsAccessPoint#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/efs_access_point#tags DataAwsEfsAccessPoint#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
 }
 export class DataAwsEfsAccessPointPosixUser extends cdktf.ComplexComputedList {
 
@@ -25,8 +25,7 @@ export class DataAwsEfsAccessPointPosixUser extends cdktf.ComplexComputedList {
 
   // secondary_gids - computed: true, optional: false, required: false
   public get secondaryGids() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('secondary_gids') as any;
+    return cdktf.Token.asNumberList(cdktf.Fn.tolist(this.getNumberListAttribute('secondary_gids')));
   }
 
   // uid - computed: true, optional: false, required: false
@@ -56,7 +55,7 @@ export class DataAwsEfsAccessPointRootDirectory extends cdktf.ComplexComputedLis
   // creation_info - computed: true, optional: false, required: false
   public get creationInfo() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('creation_info') as any;
+    return this.interpolationForAttribute('creation_info');
   }
 
   // path - computed: true, optional: false, required: false
@@ -66,7 +65,7 @@ export class DataAwsEfsAccessPointRootDirectory extends cdktf.ComplexComputedLis
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/efs_access_point.html aws_efs_access_point}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/efs_access_point aws_efs_access_point}
 */
 export class DataAwsEfsAccessPoint extends cdktf.TerraformDataSource {
 
@@ -80,7 +79,7 @@ export class DataAwsEfsAccessPoint extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/efs_access_point.html aws_efs_access_point} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/efs_access_point aws_efs_access_point} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -145,21 +144,20 @@ export class DataAwsEfsAccessPoint extends cdktf.TerraformDataSource {
 
   // posix_user - computed: true, optional: false, required: false
   public posixUser(index: string) {
-    return new DataAwsEfsAccessPointPosixUser(this, 'posix_user', index);
+    return new DataAwsEfsAccessPointPosixUser(this, 'posix_user', index, false);
   }
 
   // root_directory - computed: true, optional: false, required: false
   public rootDirectory(index: string) {
-    return new DataAwsEfsAccessPointRootDirectory(this, 'root_directory', index);
+    return new DataAwsEfsAccessPointRootDirectory(this, 'root_directory', index, false);
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -177,7 +175,7 @@ export class DataAwsEfsAccessPoint extends cdktf.TerraformDataSource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       access_point_id: cdktf.stringToTerraform(this._accessPointId),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
     };
   }
 }

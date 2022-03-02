@@ -8,17 +8,17 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsIamRolesConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/iam_roles.html#name_regex DataAwsIamRoles#name_regex}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/iam_roles#name_regex DataAwsIamRoles#name_regex}
   */
   readonly nameRegex?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/iam_roles.html#path_prefix DataAwsIamRoles#path_prefix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/iam_roles#path_prefix DataAwsIamRoles#path_prefix}
   */
   readonly pathPrefix?: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/iam_roles.html aws_iam_roles}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/iam_roles aws_iam_roles}
 */
 export class DataAwsIamRoles extends cdktf.TerraformDataSource {
 
@@ -32,7 +32,7 @@ export class DataAwsIamRoles extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/iam_roles.html aws_iam_roles} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/iam_roles aws_iam_roles} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -59,7 +59,7 @@ export class DataAwsIamRoles extends cdktf.TerraformDataSource {
 
   // arns - computed: true, optional: false, required: false
   public get arns() {
-    return this.getListAttribute('arns');
+    return cdktf.Fn.tolist(this.getListAttribute('arns'));
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class DataAwsIamRoles extends cdktf.TerraformDataSource {
 
   // names - computed: true, optional: false, required: false
   public get names() {
-    return this.getListAttribute('names');
+    return cdktf.Fn.tolist(this.getListAttribute('names'));
   }
 
   // path_prefix - computed: false, optional: true, required: false

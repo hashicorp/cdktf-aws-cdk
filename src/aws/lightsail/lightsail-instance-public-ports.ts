@@ -8,37 +8,37 @@ import * as cdktf from 'cdktf';
 */
 export interface LightsailInstancePublicPortsConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lightsail_instance_public_ports.html#instance_name LightsailInstancePublicPorts#instance_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lightsail_instance_public_ports#instance_name LightsailInstancePublicPorts#instance_name}
   */
   readonly instanceName: string;
   /**
   * port_info block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lightsail_instance_public_ports.html#port_info LightsailInstancePublicPorts#port_info}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lightsail_instance_public_ports#port_info LightsailInstancePublicPorts#port_info}
   */
-  readonly portInfo: LightsailInstancePublicPortsPortInfo[];
+  readonly portInfo: LightsailInstancePublicPortsPortInfo[] | cdktf.IResolvable;
 }
 export interface LightsailInstancePublicPortsPortInfo {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lightsail_instance_public_ports.html#cidrs LightsailInstancePublicPorts#cidrs}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lightsail_instance_public_ports#cidrs LightsailInstancePublicPorts#cidrs}
   */
   readonly cidrs?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lightsail_instance_public_ports.html#from_port LightsailInstancePublicPorts#from_port}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lightsail_instance_public_ports#from_port LightsailInstancePublicPorts#from_port}
   */
   readonly fromPort: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lightsail_instance_public_ports.html#protocol LightsailInstancePublicPorts#protocol}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lightsail_instance_public_ports#protocol LightsailInstancePublicPorts#protocol}
   */
   readonly protocol: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lightsail_instance_public_ports.html#to_port LightsailInstancePublicPorts#to_port}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lightsail_instance_public_ports#to_port LightsailInstancePublicPorts#to_port}
   */
   readonly toPort: number;
 }
 
-export function lightsailInstancePublicPortsPortInfoToTerraform(struct?: LightsailInstancePublicPortsPortInfo): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function lightsailInstancePublicPortsPortInfoToTerraform(struct?: LightsailInstancePublicPortsPortInfo | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -52,7 +52,7 @@ export function lightsailInstancePublicPortsPortInfoToTerraform(struct?: Lightsa
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/lightsail_instance_public_ports.html aws_lightsail_instance_public_ports}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/lightsail_instance_public_ports aws_lightsail_instance_public_ports}
 */
 export class LightsailInstancePublicPorts extends cdktf.TerraformResource {
 
@@ -66,7 +66,7 @@ export class LightsailInstancePublicPorts extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/lightsail_instance_public_ports.html aws_lightsail_instance_public_ports} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/lightsail_instance_public_ports aws_lightsail_instance_public_ports} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -110,12 +110,12 @@ export class LightsailInstancePublicPorts extends cdktf.TerraformResource {
   }
 
   // port_info - computed: false, optional: false, required: true
-  private _portInfo?: LightsailInstancePublicPortsPortInfo[]; 
+  private _portInfo?: LightsailInstancePublicPortsPortInfo[] | cdktf.IResolvable; 
   public get portInfo() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('port_info') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('port_info')));
   }
-  public set portInfo(value: LightsailInstancePublicPortsPortInfo[]) {
+  public set portInfo(value: LightsailInstancePublicPortsPortInfo[] | cdktf.IResolvable) {
     this._portInfo = value;
   }
   // Temporarily expose input value. Use with caution.

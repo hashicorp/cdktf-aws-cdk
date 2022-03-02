@@ -8,29 +8,29 @@ import * as cdktf from 'cdktf';
 */
 export interface EcrRegistryScanningConfigurationConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_registry_scanning_configuration.html#scan_type EcrRegistryScanningConfiguration#scan_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_registry_scanning_configuration#scan_type EcrRegistryScanningConfiguration#scan_type}
   */
   readonly scanType: string;
   /**
   * rule block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_registry_scanning_configuration.html#rule EcrRegistryScanningConfiguration#rule}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_registry_scanning_configuration#rule EcrRegistryScanningConfiguration#rule}
   */
-  readonly rule?: EcrRegistryScanningConfigurationRule[];
+  readonly rule?: EcrRegistryScanningConfigurationRule[] | cdktf.IResolvable;
 }
 export interface EcrRegistryScanningConfigurationRuleRepositoryFilter {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_registry_scanning_configuration.html#filter EcrRegistryScanningConfiguration#filter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_registry_scanning_configuration#filter EcrRegistryScanningConfiguration#filter}
   */
   readonly filter: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_registry_scanning_configuration.html#filter_type EcrRegistryScanningConfiguration#filter_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_registry_scanning_configuration#filter_type EcrRegistryScanningConfiguration#filter_type}
   */
   readonly filterType: string;
 }
 
-export function ecrRegistryScanningConfigurationRuleRepositoryFilterToTerraform(struct?: EcrRegistryScanningConfigurationRuleRepositoryFilter): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function ecrRegistryScanningConfigurationRuleRepositoryFilterToTerraform(struct?: EcrRegistryScanningConfigurationRuleRepositoryFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -42,19 +42,19 @@ export function ecrRegistryScanningConfigurationRuleRepositoryFilterToTerraform(
 
 export interface EcrRegistryScanningConfigurationRule {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_registry_scanning_configuration.html#scan_frequency EcrRegistryScanningConfiguration#scan_frequency}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_registry_scanning_configuration#scan_frequency EcrRegistryScanningConfiguration#scan_frequency}
   */
   readonly scanFrequency: string;
   /**
   * repository_filter block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_registry_scanning_configuration.html#repository_filter EcrRegistryScanningConfiguration#repository_filter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_registry_scanning_configuration#repository_filter EcrRegistryScanningConfiguration#repository_filter}
   */
-  readonly repositoryFilter: EcrRegistryScanningConfigurationRuleRepositoryFilter[];
+  readonly repositoryFilter: EcrRegistryScanningConfigurationRuleRepositoryFilter[] | cdktf.IResolvable;
 }
 
-export function ecrRegistryScanningConfigurationRuleToTerraform(struct?: EcrRegistryScanningConfigurationRule): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function ecrRegistryScanningConfigurationRuleToTerraform(struct?: EcrRegistryScanningConfigurationRule | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -66,7 +66,7 @@ export function ecrRegistryScanningConfigurationRuleToTerraform(struct?: EcrRegi
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/ecr_registry_scanning_configuration.html aws_ecr_registry_scanning_configuration}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/ecr_registry_scanning_configuration aws_ecr_registry_scanning_configuration}
 */
 export class EcrRegistryScanningConfiguration extends cdktf.TerraformResource {
 
@@ -80,7 +80,7 @@ export class EcrRegistryScanningConfiguration extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/ecr_registry_scanning_configuration.html aws_ecr_registry_scanning_configuration} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/ecr_registry_scanning_configuration aws_ecr_registry_scanning_configuration} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -129,12 +129,12 @@ export class EcrRegistryScanningConfiguration extends cdktf.TerraformResource {
   }
 
   // rule - computed: false, optional: true, required: false
-  private _rule?: EcrRegistryScanningConfigurationRule[]; 
+  private _rule?: EcrRegistryScanningConfigurationRule[] | cdktf.IResolvable; 
   public get rule() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('rule') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('rule')));
   }
-  public set rule(value: EcrRegistryScanningConfigurationRule[]) {
+  public set rule(value: EcrRegistryScanningConfigurationRule[] | cdktf.IResolvable) {
     this._rule = value;
   }
   public resetRule() {

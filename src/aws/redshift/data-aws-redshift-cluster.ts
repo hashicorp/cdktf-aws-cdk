@@ -8,17 +8,17 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsRedshiftClusterConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/redshift_cluster.html#cluster_identifier DataAwsRedshiftCluster#cluster_identifier}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/redshift_cluster#cluster_identifier DataAwsRedshiftCluster#cluster_identifier}
   */
   readonly clusterIdentifier: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/redshift_cluster.html#tags DataAwsRedshiftCluster#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/redshift_cluster#tags DataAwsRedshiftCluster#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/redshift_cluster.html aws_redshift_cluster}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/redshift_cluster aws_redshift_cluster}
 */
 export class DataAwsRedshiftCluster extends cdktf.TerraformDataSource {
 
@@ -32,7 +32,7 @@ export class DataAwsRedshiftCluster extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/redshift_cluster.html aws_redshift_cluster} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/redshift_cluster aws_redshift_cluster} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -59,7 +59,7 @@ export class DataAwsRedshiftCluster extends cdktf.TerraformDataSource {
 
   // allow_version_upgrade - computed: true, optional: false, required: false
   public get allowVersionUpgrade() {
-    return this.getBooleanAttribute('allow_version_upgrade') as any;
+    return this.getBooleanAttribute('allow_version_upgrade');
   }
 
   // automated_snapshot_retention_period - computed: true, optional: false, required: false
@@ -137,12 +137,12 @@ export class DataAwsRedshiftCluster extends cdktf.TerraformDataSource {
 
   // enable_logging - computed: true, optional: false, required: false
   public get enableLogging() {
-    return this.getBooleanAttribute('enable_logging') as any;
+    return this.getBooleanAttribute('enable_logging');
   }
 
   // encrypted - computed: true, optional: false, required: false
   public get encrypted() {
-    return this.getBooleanAttribute('encrypted') as any;
+    return this.getBooleanAttribute('encrypted');
   }
 
   // endpoint - computed: true, optional: false, required: false
@@ -152,7 +152,7 @@ export class DataAwsRedshiftCluster extends cdktf.TerraformDataSource {
 
   // enhanced_vpc_routing - computed: true, optional: false, required: false
   public get enhancedVpcRouting() {
-    return this.getBooleanAttribute('enhanced_vpc_routing') as any;
+    return this.getBooleanAttribute('enhanced_vpc_routing');
   }
 
   // iam_roles - computed: true, optional: false, required: false
@@ -197,7 +197,7 @@ export class DataAwsRedshiftCluster extends cdktf.TerraformDataSource {
 
   // publicly_accessible - computed: true, optional: false, required: false
   public get publiclyAccessible() {
-    return this.getBooleanAttribute('publicly_accessible') as any;
+    return this.getBooleanAttribute('publicly_accessible');
   }
 
   // s3_key_prefix - computed: true, optional: false, required: false
@@ -206,12 +206,11 @@ export class DataAwsRedshiftCluster extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -239,7 +238,7 @@ export class DataAwsRedshiftCluster extends cdktf.TerraformDataSource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       cluster_identifier: cdktf.stringToTerraform(this._clusterIdentifier),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
     };
   }
 }

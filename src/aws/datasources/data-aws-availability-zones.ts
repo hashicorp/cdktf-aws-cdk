@@ -8,41 +8,41 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsAvailabilityZonesConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/availability_zones.html#all_availability_zones DataAwsAvailabilityZones#all_availability_zones}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/availability_zones#all_availability_zones DataAwsAvailabilityZones#all_availability_zones}
   */
   readonly allAvailabilityZones?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/availability_zones.html#exclude_names DataAwsAvailabilityZones#exclude_names}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/availability_zones#exclude_names DataAwsAvailabilityZones#exclude_names}
   */
   readonly excludeNames?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/availability_zones.html#exclude_zone_ids DataAwsAvailabilityZones#exclude_zone_ids}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/availability_zones#exclude_zone_ids DataAwsAvailabilityZones#exclude_zone_ids}
   */
   readonly excludeZoneIds?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/availability_zones.html#state DataAwsAvailabilityZones#state}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/availability_zones#state DataAwsAvailabilityZones#state}
   */
   readonly state?: string;
   /**
   * filter block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/availability_zones.html#filter DataAwsAvailabilityZones#filter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/availability_zones#filter DataAwsAvailabilityZones#filter}
   */
-  readonly filter?: DataAwsAvailabilityZonesFilter[];
+  readonly filter?: DataAwsAvailabilityZonesFilter[] | cdktf.IResolvable;
 }
 export interface DataAwsAvailabilityZonesFilter {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/availability_zones.html#name DataAwsAvailabilityZones#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/availability_zones#name DataAwsAvailabilityZones#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/availability_zones.html#values DataAwsAvailabilityZones#values}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/availability_zones#values DataAwsAvailabilityZones#values}
   */
   readonly values: string[];
 }
 
-export function dataAwsAvailabilityZonesFilterToTerraform(struct?: DataAwsAvailabilityZonesFilter): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function dataAwsAvailabilityZonesFilterToTerraform(struct?: DataAwsAvailabilityZonesFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -54,7 +54,7 @@ export function dataAwsAvailabilityZonesFilterToTerraform(struct?: DataAwsAvaila
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/availability_zones.html aws_availability_zones}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/availability_zones aws_availability_zones}
 */
 export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
 
@@ -68,7 +68,7 @@ export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/availability_zones.html aws_availability_zones} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/availability_zones aws_availability_zones} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -99,7 +99,7 @@ export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
   // all_availability_zones - computed: false, optional: true, required: false
   private _allAvailabilityZones?: boolean | cdktf.IResolvable; 
   public get allAvailabilityZones() {
-    return this.getBooleanAttribute('all_availability_zones') as any;
+    return this.getBooleanAttribute('all_availability_zones');
   }
   public set allAvailabilityZones(value: boolean | cdktf.IResolvable) {
     this._allAvailabilityZones = value;
@@ -115,7 +115,7 @@ export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
   // exclude_names - computed: false, optional: true, required: false
   private _excludeNames?: string[]; 
   public get excludeNames() {
-    return this.getListAttribute('exclude_names');
+    return cdktf.Fn.tolist(this.getListAttribute('exclude_names'));
   }
   public set excludeNames(value: string[]) {
     this._excludeNames = value;
@@ -131,7 +131,7 @@ export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
   // exclude_zone_ids - computed: false, optional: true, required: false
   private _excludeZoneIds?: string[]; 
   public get excludeZoneIds() {
-    return this.getListAttribute('exclude_zone_ids');
+    return cdktf.Fn.tolist(this.getListAttribute('exclude_zone_ids'));
   }
   public set excludeZoneIds(value: string[]) {
     this._excludeZoneIds = value;
@@ -146,7 +146,7 @@ export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
 
   // group_names - computed: true, optional: false, required: false
   public get groupNames() {
-    return this.getListAttribute('group_names');
+    return cdktf.Fn.tolist(this.getListAttribute('group_names'));
   }
 
   // id - computed: true, optional: true, required: false
@@ -181,12 +181,12 @@ export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsAvailabilityZonesFilter[]; 
+  private _filter?: DataAwsAvailabilityZonesFilter[] | cdktf.IResolvable; 
   public get filter() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('filter') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('filter')));
   }
-  public set filter(value: DataAwsAvailabilityZonesFilter[]) {
+  public set filter(value: DataAwsAvailabilityZonesFilter[] | cdktf.IResolvable) {
     this._filter = value;
   }
   public resetFilter() {

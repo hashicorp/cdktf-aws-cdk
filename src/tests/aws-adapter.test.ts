@@ -37,7 +37,8 @@ describe("AwsTerraformAdapter", () => {
         "{
           \\"resource\\": {
             \\"test\\": {
-              \\"adapter_another_C86ABFE2\\": {},
+              \\"adapter_another_C86ABFE2\\": {
+              },
               \\"adapter_subject_24E89D84\\": {
                 \\"value\\": \\"\${test.adapter_another_C86ABFE2.list}\\"
               }
@@ -72,7 +73,8 @@ describe("AwsTerraformAdapter", () => {
         "{
           \\"resource\\": {
             \\"test\\": {
-              \\"adapter_another_C86ABFE2\\": {},
+              \\"adapter_another_C86ABFE2\\": {
+              },
               \\"adapter_subject_24E89D84\\": {
                 \\"value\\": \\"\${join(\\\\\\",\\\\\\", [\\\\\\"one\\\\\\", \\\\\\"two\\\\\\", test.adapter_another_C86ABFE2.string])}\\"
               }
@@ -104,7 +106,8 @@ describe("AwsTerraformAdapter", () => {
         "{
           \\"resource\\": {
             \\"test\\": {
-              \\"adapter_another_C86ABFE2\\": {},
+              \\"adapter_another_C86ABFE2\\": {
+              },
               \\"adapter_subject_24E89D84\\": {
                 \\"value\\": \\"\${element(test.adapter_another_C86ABFE2.list, 1)}\\"
               }
@@ -134,7 +137,8 @@ describe("AwsTerraformAdapter", () => {
         "{
           \\"data\\": {
             \\"aws_availability_zones\\": {
-              \\"adapter_aws_azs_default_region_9CD033CD\\": {},
+              \\"adapter_aws_azs_default_region_9CD033CD\\": {
+              },
               \\"adapter_aws_azs_eu_central_1_B40FEB09\\": {
                 \\"provider\\": \\"aws.eu_central_1\\"
               }
@@ -189,7 +193,8 @@ describe("AwsTerraformAdapter", () => {
         "{
           \\"resource\\": {
             \\"test\\": {
-              \\"adapter_another_C86ABFE2\\": {},
+              \\"adapter_another_C86ABFE2\\": {
+              },
               \\"adapter_subject_24E89D84\\": {
                 \\"value\\": \\"\${base64encode(test.adapter_another_C86ABFE2.string)}\\"
               }
@@ -254,7 +259,8 @@ describe("AwsTerraformAdapter", () => {
         "{
           \\"resource\\": {
             \\"test\\": {
-              \\"adapter_another_C86ABFE2\\": {},
+              \\"adapter_another_C86ABFE2\\": {
+              },
               \\"adapter_subject_24E89D84\\": {
                 \\"value\\": \\"\${test.adapter_another_C86ABFE2.map[\\\\\\"keyA\\\\\\"][test.adapter_another_C86ABFE2.string]}\\"
               }
@@ -288,7 +294,8 @@ describe("AwsTerraformAdapter", () => {
         "{
           \\"resource\\": {
             \\"test\\": {
-              \\"adapter_another_C86ABFE2\\": {},
+              \\"adapter_another_C86ABFE2\\": {
+              },
               \\"adapter_subject_24E89D84\\": {
                 \\"value\\": \\"\${replace(replace(\\\\\\"this is the $\${TEMPLATE} string. This will not be $\${!REPLACED} but end up without the exclamation mark\\\\\\", \\\\\\"$\${TEMPLATE}\\\\\\", test.adapter_another_C86ABFE2.string), \\\\\\"/\\\\\\\\\\\\\\\\$\\\\\\\\\\\\\\\\{!(\\\\\\\\\\\\\\\\w+)\\\\\\\\\\\\\\\\}/\\\\\\", \\\\\\"$\${$1}\\\\\\")}\\"
               }
@@ -319,7 +326,8 @@ describe("AwsTerraformAdapter", () => {
         "{
           \\"resource\\": {
             \\"test\\": {
-              \\"adapter_another_C86ABFE2\\": {},
+              \\"adapter_another_C86ABFE2\\": {
+              },
               \\"adapter_subject_24E89D84\\": {
                 \\"value\\": \\"\${split(\\\\\\",\\\\\\", test.adapter_another_C86ABFE2.string)}\\"
               }

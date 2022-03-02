@@ -8,93 +8,93 @@ import * as cdktf from 'cdktf';
 */
 export interface SubnetConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#assign_ipv6_address_on_creation Subnet#assign_ipv6_address_on_creation}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#assign_ipv6_address_on_creation Subnet#assign_ipv6_address_on_creation}
   */
   readonly assignIpv6AddressOnCreation?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#availability_zone Subnet#availability_zone}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#availability_zone Subnet#availability_zone}
   */
   readonly availabilityZone?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#availability_zone_id Subnet#availability_zone_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#availability_zone_id Subnet#availability_zone_id}
   */
   readonly availabilityZoneId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#cidr_block Subnet#cidr_block}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#cidr_block Subnet#cidr_block}
   */
   readonly cidrBlock?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#customer_owned_ipv4_pool Subnet#customer_owned_ipv4_pool}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#customer_owned_ipv4_pool Subnet#customer_owned_ipv4_pool}
   */
   readonly customerOwnedIpv4Pool?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#enable_dns64 Subnet#enable_dns64}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#enable_dns64 Subnet#enable_dns64}
   */
   readonly enableDns64?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#enable_resource_name_dns_a_record_on_launch Subnet#enable_resource_name_dns_a_record_on_launch}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#enable_resource_name_dns_a_record_on_launch Subnet#enable_resource_name_dns_a_record_on_launch}
   */
   readonly enableResourceNameDnsARecordOnLaunch?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#enable_resource_name_dns_aaaa_record_on_launch Subnet#enable_resource_name_dns_aaaa_record_on_launch}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#enable_resource_name_dns_aaaa_record_on_launch Subnet#enable_resource_name_dns_aaaa_record_on_launch}
   */
   readonly enableResourceNameDnsAaaaRecordOnLaunch?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#ipv6_cidr_block Subnet#ipv6_cidr_block}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#ipv6_cidr_block Subnet#ipv6_cidr_block}
   */
   readonly ipv6CidrBlock?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#ipv6_native Subnet#ipv6_native}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#ipv6_native Subnet#ipv6_native}
   */
   readonly ipv6Native?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#map_customer_owned_ip_on_launch Subnet#map_customer_owned_ip_on_launch}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#map_customer_owned_ip_on_launch Subnet#map_customer_owned_ip_on_launch}
   */
   readonly mapCustomerOwnedIpOnLaunch?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#map_public_ip_on_launch Subnet#map_public_ip_on_launch}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#map_public_ip_on_launch Subnet#map_public_ip_on_launch}
   */
   readonly mapPublicIpOnLaunch?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#outpost_arn Subnet#outpost_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#outpost_arn Subnet#outpost_arn}
   */
   readonly outpostArn?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#private_dns_hostname_type_on_launch Subnet#private_dns_hostname_type_on_launch}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#private_dns_hostname_type_on_launch Subnet#private_dns_hostname_type_on_launch}
   */
   readonly privateDnsHostnameTypeOnLaunch?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#tags Subnet#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#tags Subnet#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#tags_all Subnet#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#tags_all Subnet#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#vpc_id Subnet#vpc_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#vpc_id Subnet#vpc_id}
   */
   readonly vpcId: string;
   /**
   * timeouts block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#timeouts Subnet#timeouts}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#timeouts Subnet#timeouts}
   */
   readonly timeouts?: SubnetTimeouts;
 }
 export interface SubnetTimeouts {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#create Subnet#create}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#create Subnet#create}
   */
   readonly create?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet.html#delete Subnet#delete}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/subnet#delete Subnet#delete}
   */
   readonly delete?: string;
 }
 
-export function subnetTimeoutsToTerraform(struct?: SubnetTimeoutsOutputReference | SubnetTimeouts): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function subnetTimeoutsToTerraform(struct?: SubnetTimeoutsOutputReference | SubnetTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -105,23 +105,25 @@ export function subnetTimeoutsToTerraform(struct?: SubnetTimeoutsOutputReference
 }
 
 export class SubnetTimeoutsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SubnetTimeouts | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._create) {
+    if (this._create !== undefined) {
       hasAnyValues = true;
       internalValueResult.create = this._create;
     }
-    if (this._delete) {
+    if (this._delete !== undefined) {
       hasAnyValues = true;
       internalValueResult.delete = this._delete;
     }
@@ -130,10 +132,12 @@ export class SubnetTimeoutsOutputReference extends cdktf.ComplexObject {
 
   public set internalValue(value: SubnetTimeouts | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._create = undefined;
       this._delete = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._create = value.create;
       this._delete = value.delete;
     }
@@ -173,7 +177,7 @@ export class SubnetTimeoutsOutputReference extends cdktf.ComplexObject {
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/subnet.html aws_subnet}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/subnet aws_subnet}
 */
 export class Subnet extends cdktf.TerraformResource {
 
@@ -187,7 +191,7 @@ export class Subnet extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/subnet.html aws_subnet} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/subnet aws_subnet} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -236,7 +240,7 @@ export class Subnet extends cdktf.TerraformResource {
   // assign_ipv6_address_on_creation - computed: false, optional: true, required: false
   private _assignIpv6AddressOnCreation?: boolean | cdktf.IResolvable; 
   public get assignIpv6AddressOnCreation() {
-    return this.getBooleanAttribute('assign_ipv6_address_on_creation') as any;
+    return this.getBooleanAttribute('assign_ipv6_address_on_creation');
   }
   public set assignIpv6AddressOnCreation(value: boolean | cdktf.IResolvable) {
     this._assignIpv6AddressOnCreation = value;
@@ -316,7 +320,7 @@ export class Subnet extends cdktf.TerraformResource {
   // enable_dns64 - computed: false, optional: true, required: false
   private _enableDns64?: boolean | cdktf.IResolvable; 
   public get enableDns64() {
-    return this.getBooleanAttribute('enable_dns64') as any;
+    return this.getBooleanAttribute('enable_dns64');
   }
   public set enableDns64(value: boolean | cdktf.IResolvable) {
     this._enableDns64 = value;
@@ -332,7 +336,7 @@ export class Subnet extends cdktf.TerraformResource {
   // enable_resource_name_dns_a_record_on_launch - computed: false, optional: true, required: false
   private _enableResourceNameDnsARecordOnLaunch?: boolean | cdktf.IResolvable; 
   public get enableResourceNameDnsARecordOnLaunch() {
-    return this.getBooleanAttribute('enable_resource_name_dns_a_record_on_launch') as any;
+    return this.getBooleanAttribute('enable_resource_name_dns_a_record_on_launch');
   }
   public set enableResourceNameDnsARecordOnLaunch(value: boolean | cdktf.IResolvable) {
     this._enableResourceNameDnsARecordOnLaunch = value;
@@ -348,7 +352,7 @@ export class Subnet extends cdktf.TerraformResource {
   // enable_resource_name_dns_aaaa_record_on_launch - computed: false, optional: true, required: false
   private _enableResourceNameDnsAaaaRecordOnLaunch?: boolean | cdktf.IResolvable; 
   public get enableResourceNameDnsAaaaRecordOnLaunch() {
-    return this.getBooleanAttribute('enable_resource_name_dns_aaaa_record_on_launch') as any;
+    return this.getBooleanAttribute('enable_resource_name_dns_aaaa_record_on_launch');
   }
   public set enableResourceNameDnsAaaaRecordOnLaunch(value: boolean | cdktf.IResolvable) {
     this._enableResourceNameDnsAaaaRecordOnLaunch = value;
@@ -390,7 +394,7 @@ export class Subnet extends cdktf.TerraformResource {
   // ipv6_native - computed: false, optional: true, required: false
   private _ipv6Native?: boolean | cdktf.IResolvable; 
   public get ipv6Native() {
-    return this.getBooleanAttribute('ipv6_native') as any;
+    return this.getBooleanAttribute('ipv6_native');
   }
   public set ipv6Native(value: boolean | cdktf.IResolvable) {
     this._ipv6Native = value;
@@ -406,7 +410,7 @@ export class Subnet extends cdktf.TerraformResource {
   // map_customer_owned_ip_on_launch - computed: false, optional: true, required: false
   private _mapCustomerOwnedIpOnLaunch?: boolean | cdktf.IResolvable; 
   public get mapCustomerOwnedIpOnLaunch() {
-    return this.getBooleanAttribute('map_customer_owned_ip_on_launch') as any;
+    return this.getBooleanAttribute('map_customer_owned_ip_on_launch');
   }
   public set mapCustomerOwnedIpOnLaunch(value: boolean | cdktf.IResolvable) {
     this._mapCustomerOwnedIpOnLaunch = value;
@@ -422,7 +426,7 @@ export class Subnet extends cdktf.TerraformResource {
   // map_public_ip_on_launch - computed: false, optional: true, required: false
   private _mapPublicIpOnLaunch?: boolean | cdktf.IResolvable; 
   public get mapPublicIpOnLaunch() {
-    return this.getBooleanAttribute('map_public_ip_on_launch') as any;
+    return this.getBooleanAttribute('map_public_ip_on_launch');
   }
   public set mapPublicIpOnLaunch(value: boolean | cdktf.IResolvable) {
     this._mapPublicIpOnLaunch = value;
@@ -473,12 +477,11 @@ export class Subnet extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -490,12 +493,11 @@ export class Subnet extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -520,7 +522,7 @@ export class Subnet extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts = new SubnetTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new SubnetTimeoutsOutputReference(this, "timeouts", true);
   public get timeouts() {
     return this._timeouts;
   }
@@ -555,8 +557,8 @@ export class Subnet extends cdktf.TerraformResource {
       map_public_ip_on_launch: cdktf.booleanToTerraform(this._mapPublicIpOnLaunch),
       outpost_arn: cdktf.stringToTerraform(this._outpostArn),
       private_dns_hostname_type_on_launch: cdktf.stringToTerraform(this._privateDnsHostnameTypeOnLaunch),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       vpc_id: cdktf.stringToTerraform(this._vpcId),
       timeouts: subnetTimeoutsToTerraform(this._timeouts.internalValue),
     };

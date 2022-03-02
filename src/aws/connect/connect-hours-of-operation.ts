@@ -8,55 +8,55 @@ import * as cdktf from 'cdktf';
 */
 export interface ConnectHoursOfOperationConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#description ConnectHoursOfOperation#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#description ConnectHoursOfOperation#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#instance_id ConnectHoursOfOperation#instance_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#instance_id ConnectHoursOfOperation#instance_id}
   */
   readonly instanceId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#name ConnectHoursOfOperation#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#name ConnectHoursOfOperation#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#tags ConnectHoursOfOperation#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#tags ConnectHoursOfOperation#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#tags_all ConnectHoursOfOperation#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#tags_all ConnectHoursOfOperation#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#time_zone ConnectHoursOfOperation#time_zone}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#time_zone ConnectHoursOfOperation#time_zone}
   */
   readonly timeZone: string;
   /**
   * config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#config ConnectHoursOfOperation#config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#config ConnectHoursOfOperation#config}
   */
-  readonly config: ConnectHoursOfOperationConfigA[];
+  readonly config: ConnectHoursOfOperationConfigA[] | cdktf.IResolvable;
   /**
   * timeouts block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#timeouts ConnectHoursOfOperation#timeouts}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#timeouts ConnectHoursOfOperation#timeouts}
   */
   readonly timeouts?: ConnectHoursOfOperationTimeouts;
 }
 export interface ConnectHoursOfOperationConfigEndTime {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#hours ConnectHoursOfOperation#hours}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#hours ConnectHoursOfOperation#hours}
   */
   readonly hours: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#minutes ConnectHoursOfOperation#minutes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#minutes ConnectHoursOfOperation#minutes}
   */
   readonly minutes: number;
 }
 
 export function connectHoursOfOperationConfigEndTimeToTerraform(struct?: ConnectHoursOfOperationConfigEndTimeOutputReference | ConnectHoursOfOperationConfigEndTime): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -67,23 +67,25 @@ export function connectHoursOfOperationConfigEndTimeToTerraform(struct?: Connect
 }
 
 export class ConnectHoursOfOperationConfigEndTimeOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): ConnectHoursOfOperationConfigEndTime | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._hours) {
+    if (this._hours !== undefined) {
       hasAnyValues = true;
       internalValueResult.hours = this._hours;
     }
-    if (this._minutes) {
+    if (this._minutes !== undefined) {
       hasAnyValues = true;
       internalValueResult.minutes = this._minutes;
     }
@@ -92,10 +94,12 @@ export class ConnectHoursOfOperationConfigEndTimeOutputReference extends cdktf.C
 
   public set internalValue(value: ConnectHoursOfOperationConfigEndTime | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._hours = undefined;
       this._minutes = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._hours = value.hours;
       this._minutes = value.minutes;
     }
@@ -129,17 +133,17 @@ export class ConnectHoursOfOperationConfigEndTimeOutputReference extends cdktf.C
 }
 export interface ConnectHoursOfOperationConfigStartTime {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#hours ConnectHoursOfOperation#hours}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#hours ConnectHoursOfOperation#hours}
   */
   readonly hours: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#minutes ConnectHoursOfOperation#minutes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#minutes ConnectHoursOfOperation#minutes}
   */
   readonly minutes: number;
 }
 
 export function connectHoursOfOperationConfigStartTimeToTerraform(struct?: ConnectHoursOfOperationConfigStartTimeOutputReference | ConnectHoursOfOperationConfigStartTime): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -150,23 +154,25 @@ export function connectHoursOfOperationConfigStartTimeToTerraform(struct?: Conne
 }
 
 export class ConnectHoursOfOperationConfigStartTimeOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): ConnectHoursOfOperationConfigStartTime | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._hours) {
+    if (this._hours !== undefined) {
       hasAnyValues = true;
       internalValueResult.hours = this._hours;
     }
-    if (this._minutes) {
+    if (this._minutes !== undefined) {
       hasAnyValues = true;
       internalValueResult.minutes = this._minutes;
     }
@@ -175,10 +181,12 @@ export class ConnectHoursOfOperationConfigStartTimeOutputReference extends cdktf
 
   public set internalValue(value: ConnectHoursOfOperationConfigStartTime | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._hours = undefined;
       this._minutes = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._hours = value.hours;
       this._minutes = value.minutes;
     }
@@ -212,25 +220,25 @@ export class ConnectHoursOfOperationConfigStartTimeOutputReference extends cdktf
 }
 export interface ConnectHoursOfOperationConfigA {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#day ConnectHoursOfOperation#day}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#day ConnectHoursOfOperation#day}
   */
   readonly day: string;
   /**
   * end_time block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#end_time ConnectHoursOfOperation#end_time}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#end_time ConnectHoursOfOperation#end_time}
   */
   readonly endTime: ConnectHoursOfOperationConfigEndTime;
   /**
   * start_time block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#start_time ConnectHoursOfOperation#start_time}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#start_time ConnectHoursOfOperation#start_time}
   */
   readonly startTime: ConnectHoursOfOperationConfigStartTime;
 }
 
-export function connectHoursOfOperationConfigAToTerraform(struct?: ConnectHoursOfOperationConfigA): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function connectHoursOfOperationConfigAToTerraform(struct?: ConnectHoursOfOperationConfigA | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -243,17 +251,17 @@ export function connectHoursOfOperationConfigAToTerraform(struct?: ConnectHoursO
 
 export interface ConnectHoursOfOperationTimeouts {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#create ConnectHoursOfOperation#create}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#create ConnectHoursOfOperation#create}
   */
   readonly create?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html#delete ConnectHoursOfOperation#delete}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation#delete ConnectHoursOfOperation#delete}
   */
   readonly delete?: string;
 }
 
-export function connectHoursOfOperationTimeoutsToTerraform(struct?: ConnectHoursOfOperationTimeoutsOutputReference | ConnectHoursOfOperationTimeouts): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function connectHoursOfOperationTimeoutsToTerraform(struct?: ConnectHoursOfOperationTimeoutsOutputReference | ConnectHoursOfOperationTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -264,23 +272,25 @@ export function connectHoursOfOperationTimeoutsToTerraform(struct?: ConnectHours
 }
 
 export class ConnectHoursOfOperationTimeoutsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): ConnectHoursOfOperationTimeouts | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._create) {
+    if (this._create !== undefined) {
       hasAnyValues = true;
       internalValueResult.create = this._create;
     }
-    if (this._delete) {
+    if (this._delete !== undefined) {
       hasAnyValues = true;
       internalValueResult.delete = this._delete;
     }
@@ -289,10 +299,12 @@ export class ConnectHoursOfOperationTimeoutsOutputReference extends cdktf.Comple
 
   public set internalValue(value: ConnectHoursOfOperationTimeouts | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._create = undefined;
       this._delete = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._create = value.create;
       this._delete = value.delete;
     }
@@ -332,7 +344,7 @@ export class ConnectHoursOfOperationTimeoutsOutputReference extends cdktf.Comple
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html aws_connect_hours_of_operation}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation aws_connect_hours_of_operation}
 */
 export class ConnectHoursOfOperation extends cdktf.TerraformResource {
 
@@ -346,7 +358,7 @@ export class ConnectHoursOfOperation extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation.html aws_connect_hours_of_operation} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/connect_hours_of_operation aws_connect_hours_of_operation} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -435,12 +447,11 @@ export class ConnectHoursOfOperation extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -452,12 +463,11 @@ export class ConnectHoursOfOperation extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -482,12 +492,12 @@ export class ConnectHoursOfOperation extends cdktf.TerraformResource {
   }
 
   // config - computed: false, optional: false, required: true
-  private _config?: ConnectHoursOfOperationConfigA[]; 
+  private _config?: ConnectHoursOfOperationConfigA[] | cdktf.IResolvable; 
   public get config() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('config') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('config')));
   }
-  public set config(value: ConnectHoursOfOperationConfigA[]) {
+  public set config(value: ConnectHoursOfOperationConfigA[] | cdktf.IResolvable) {
     this._config = value;
   }
   // Temporarily expose input value. Use with caution.
@@ -496,7 +506,7 @@ export class ConnectHoursOfOperation extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts = new ConnectHoursOfOperationTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new ConnectHoursOfOperationTimeoutsOutputReference(this, "timeouts", true);
   public get timeouts() {
     return this._timeouts;
   }
@@ -520,8 +530,8 @@ export class ConnectHoursOfOperation extends cdktf.TerraformResource {
       description: cdktf.stringToTerraform(this._description),
       instance_id: cdktf.stringToTerraform(this._instanceId),
       name: cdktf.stringToTerraform(this._name),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       time_zone: cdktf.stringToTerraform(this._timeZone),
       config: cdktf.listMapper(connectHoursOfOperationConfigAToTerraform)(this._config),
       timeouts: connectHoursOfOperationTimeoutsToTerraform(this._timeouts.internalValue),

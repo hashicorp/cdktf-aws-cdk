@@ -8,105 +8,89 @@ import * as cdktf from 'cdktf';
 */
 export interface NetworkInterfaceConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#description NetworkInterface#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#description NetworkInterface#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#interface_type NetworkInterface#interface_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#interface_type NetworkInterface#interface_type}
   */
   readonly interfaceType?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#ipv4_prefix_count NetworkInterface#ipv4_prefix_count}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#ipv4_prefix_count NetworkInterface#ipv4_prefix_count}
   */
   readonly ipv4PrefixCount?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#ipv4_prefixes NetworkInterface#ipv4_prefixes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#ipv4_prefixes NetworkInterface#ipv4_prefixes}
   */
   readonly ipv4Prefixes?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#ipv6_address_count NetworkInterface#ipv6_address_count}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#ipv6_address_count NetworkInterface#ipv6_address_count}
   */
   readonly ipv6AddressCount?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#ipv6_address_list NetworkInterface#ipv6_address_list}
-  */
-  readonly ipv6AddressList?: string[];
-  /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#ipv6_address_list_enabled NetworkInterface#ipv6_address_list_enabled}
-  */
-  readonly ipv6AddressListEnabled?: boolean | cdktf.IResolvable;
-  /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#ipv6_addresses NetworkInterface#ipv6_addresses}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#ipv6_addresses NetworkInterface#ipv6_addresses}
   */
   readonly ipv6Addresses?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#ipv6_prefix_count NetworkInterface#ipv6_prefix_count}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#ipv6_prefix_count NetworkInterface#ipv6_prefix_count}
   */
   readonly ipv6PrefixCount?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#ipv6_prefixes NetworkInterface#ipv6_prefixes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#ipv6_prefixes NetworkInterface#ipv6_prefixes}
   */
   readonly ipv6Prefixes?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#private_ip NetworkInterface#private_ip}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#private_ip NetworkInterface#private_ip}
   */
   readonly privateIp?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#private_ip_list NetworkInterface#private_ip_list}
-  */
-  readonly privateIpList?: string[];
-  /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#private_ip_list_enabled NetworkInterface#private_ip_list_enabled}
-  */
-  readonly privateIpListEnabled?: boolean | cdktf.IResolvable;
-  /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#private_ips NetworkInterface#private_ips}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#private_ips NetworkInterface#private_ips}
   */
   readonly privateIps?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#private_ips_count NetworkInterface#private_ips_count}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#private_ips_count NetworkInterface#private_ips_count}
   */
   readonly privateIpsCount?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#security_groups NetworkInterface#security_groups}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#security_groups NetworkInterface#security_groups}
   */
   readonly securityGroups?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#source_dest_check NetworkInterface#source_dest_check}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#source_dest_check NetworkInterface#source_dest_check}
   */
   readonly sourceDestCheck?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#subnet_id NetworkInterface#subnet_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#subnet_id NetworkInterface#subnet_id}
   */
   readonly subnetId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#tags NetworkInterface#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#tags NetworkInterface#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#tags_all NetworkInterface#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#tags_all NetworkInterface#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * attachment block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#attachment NetworkInterface#attachment}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#attachment NetworkInterface#attachment}
   */
-  readonly attachment?: NetworkInterfaceAttachment[];
+  readonly attachment?: NetworkInterfaceAttachment[] | cdktf.IResolvable;
 }
 export interface NetworkInterfaceAttachment {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#device_index NetworkInterface#device_index}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#device_index NetworkInterface#device_index}
   */
   readonly deviceIndex: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html#instance NetworkInterface#instance}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/network_interface#instance NetworkInterface#instance}
   */
   readonly instance: string;
 }
 
-export function networkInterfaceAttachmentToTerraform(struct?: NetworkInterfaceAttachment): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function networkInterfaceAttachmentToTerraform(struct?: NetworkInterfaceAttachment | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -118,7 +102,7 @@ export function networkInterfaceAttachmentToTerraform(struct?: NetworkInterfaceA
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html aws_network_interface}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/network_interface aws_network_interface}
 */
 export class NetworkInterface extends cdktf.TerraformResource {
 
@@ -132,7 +116,7 @@ export class NetworkInterface extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/network_interface.html aws_network_interface} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/network_interface aws_network_interface} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -154,14 +138,10 @@ export class NetworkInterface extends cdktf.TerraformResource {
     this._ipv4PrefixCount = config.ipv4PrefixCount;
     this._ipv4Prefixes = config.ipv4Prefixes;
     this._ipv6AddressCount = config.ipv6AddressCount;
-    this._ipv6AddressList = config.ipv6AddressList;
-    this._ipv6AddressListEnabled = config.ipv6AddressListEnabled;
     this._ipv6Addresses = config.ipv6Addresses;
     this._ipv6PrefixCount = config.ipv6PrefixCount;
     this._ipv6Prefixes = config.ipv6Prefixes;
     this._privateIp = config.privateIp;
-    this._privateIpList = config.privateIpList;
-    this._privateIpListEnabled = config.privateIpListEnabled;
     this._privateIps = config.privateIps;
     this._privateIpsCount = config.privateIpsCount;
     this._securityGroups = config.securityGroups;
@@ -237,7 +217,7 @@ export class NetworkInterface extends cdktf.TerraformResource {
   // ipv4_prefixes - computed: true, optional: true, required: false
   private _ipv4Prefixes?: string[]; 
   public get ipv4Prefixes() {
-    return this.getListAttribute('ipv4_prefixes');
+    return cdktf.Fn.tolist(this.getListAttribute('ipv4_prefixes'));
   }
   public set ipv4Prefixes(value: string[]) {
     this._ipv4Prefixes = value;
@@ -266,42 +246,10 @@ export class NetworkInterface extends cdktf.TerraformResource {
     return this._ipv6AddressCount;
   }
 
-  // ipv6_address_list - computed: true, optional: true, required: false
-  private _ipv6AddressList?: string[]; 
-  public get ipv6AddressList() {
-    return this.getListAttribute('ipv6_address_list');
-  }
-  public set ipv6AddressList(value: string[]) {
-    this._ipv6AddressList = value;
-  }
-  public resetIpv6AddressList() {
-    this._ipv6AddressList = undefined;
-  }
-  // Temporarily expose input value. Use with caution.
-  public get ipv6AddressListInput() {
-    return this._ipv6AddressList;
-  }
-
-  // ipv6_address_list_enabled - computed: false, optional: true, required: false
-  private _ipv6AddressListEnabled?: boolean | cdktf.IResolvable; 
-  public get ipv6AddressListEnabled() {
-    return this.getBooleanAttribute('ipv6_address_list_enabled') as any;
-  }
-  public set ipv6AddressListEnabled(value: boolean | cdktf.IResolvable) {
-    this._ipv6AddressListEnabled = value;
-  }
-  public resetIpv6AddressListEnabled() {
-    this._ipv6AddressListEnabled = undefined;
-  }
-  // Temporarily expose input value. Use with caution.
-  public get ipv6AddressListEnabledInput() {
-    return this._ipv6AddressListEnabled;
-  }
-
   // ipv6_addresses - computed: true, optional: true, required: false
   private _ipv6Addresses?: string[]; 
   public get ipv6Addresses() {
-    return this.getListAttribute('ipv6_addresses');
+    return cdktf.Fn.tolist(this.getListAttribute('ipv6_addresses'));
   }
   public set ipv6Addresses(value: string[]) {
     this._ipv6Addresses = value;
@@ -333,7 +281,7 @@ export class NetworkInterface extends cdktf.TerraformResource {
   // ipv6_prefixes - computed: true, optional: true, required: false
   private _ipv6Prefixes?: string[]; 
   public get ipv6Prefixes() {
-    return this.getListAttribute('ipv6_prefixes');
+    return cdktf.Fn.tolist(this.getListAttribute('ipv6_prefixes'));
   }
   public set ipv6Prefixes(value: string[]) {
     this._ipv6Prefixes = value;
@@ -382,42 +330,10 @@ export class NetworkInterface extends cdktf.TerraformResource {
     return this._privateIp;
   }
 
-  // private_ip_list - computed: true, optional: true, required: false
-  private _privateIpList?: string[]; 
-  public get privateIpList() {
-    return this.getListAttribute('private_ip_list');
-  }
-  public set privateIpList(value: string[]) {
-    this._privateIpList = value;
-  }
-  public resetPrivateIpList() {
-    this._privateIpList = undefined;
-  }
-  // Temporarily expose input value. Use with caution.
-  public get privateIpListInput() {
-    return this._privateIpList;
-  }
-
-  // private_ip_list_enabled - computed: false, optional: true, required: false
-  private _privateIpListEnabled?: boolean | cdktf.IResolvable; 
-  public get privateIpListEnabled() {
-    return this.getBooleanAttribute('private_ip_list_enabled') as any;
-  }
-  public set privateIpListEnabled(value: boolean | cdktf.IResolvable) {
-    this._privateIpListEnabled = value;
-  }
-  public resetPrivateIpListEnabled() {
-    this._privateIpListEnabled = undefined;
-  }
-  // Temporarily expose input value. Use with caution.
-  public get privateIpListEnabledInput() {
-    return this._privateIpListEnabled;
-  }
-
   // private_ips - computed: true, optional: true, required: false
   private _privateIps?: string[]; 
   public get privateIps() {
-    return this.getListAttribute('private_ips');
+    return cdktf.Fn.tolist(this.getListAttribute('private_ips'));
   }
   public set privateIps(value: string[]) {
     this._privateIps = value;
@@ -449,7 +365,7 @@ export class NetworkInterface extends cdktf.TerraformResource {
   // security_groups - computed: true, optional: true, required: false
   private _securityGroups?: string[]; 
   public get securityGroups() {
-    return this.getListAttribute('security_groups');
+    return cdktf.Fn.tolist(this.getListAttribute('security_groups'));
   }
   public set securityGroups(value: string[]) {
     this._securityGroups = value;
@@ -465,7 +381,7 @@ export class NetworkInterface extends cdktf.TerraformResource {
   // source_dest_check - computed: false, optional: true, required: false
   private _sourceDestCheck?: boolean | cdktf.IResolvable; 
   public get sourceDestCheck() {
-    return this.getBooleanAttribute('source_dest_check') as any;
+    return this.getBooleanAttribute('source_dest_check');
   }
   public set sourceDestCheck(value: boolean | cdktf.IResolvable) {
     this._sourceDestCheck = value;
@@ -492,12 +408,11 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -509,12 +424,11 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -526,12 +440,12 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
 
   // attachment - computed: false, optional: true, required: false
-  private _attachment?: NetworkInterfaceAttachment[]; 
+  private _attachment?: NetworkInterfaceAttachment[] | cdktf.IResolvable; 
   public get attachment() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('attachment') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('attachment')));
   }
-  public set attachment(value: NetworkInterfaceAttachment[]) {
+  public set attachment(value: NetworkInterfaceAttachment[] | cdktf.IResolvable) {
     this._attachment = value;
   }
   public resetAttachment() {
@@ -553,21 +467,17 @@ export class NetworkInterface extends cdktf.TerraformResource {
       ipv4_prefix_count: cdktf.numberToTerraform(this._ipv4PrefixCount),
       ipv4_prefixes: cdktf.listMapper(cdktf.stringToTerraform)(this._ipv4Prefixes),
       ipv6_address_count: cdktf.numberToTerraform(this._ipv6AddressCount),
-      ipv6_address_list: cdktf.listMapper(cdktf.stringToTerraform)(this._ipv6AddressList),
-      ipv6_address_list_enabled: cdktf.booleanToTerraform(this._ipv6AddressListEnabled),
       ipv6_addresses: cdktf.listMapper(cdktf.stringToTerraform)(this._ipv6Addresses),
       ipv6_prefix_count: cdktf.numberToTerraform(this._ipv6PrefixCount),
       ipv6_prefixes: cdktf.listMapper(cdktf.stringToTerraform)(this._ipv6Prefixes),
       private_ip: cdktf.stringToTerraform(this._privateIp),
-      private_ip_list: cdktf.listMapper(cdktf.stringToTerraform)(this._privateIpList),
-      private_ip_list_enabled: cdktf.booleanToTerraform(this._privateIpListEnabled),
       private_ips: cdktf.listMapper(cdktf.stringToTerraform)(this._privateIps),
       private_ips_count: cdktf.numberToTerraform(this._privateIpsCount),
       security_groups: cdktf.listMapper(cdktf.stringToTerraform)(this._securityGroups),
       source_dest_check: cdktf.booleanToTerraform(this._sourceDestCheck),
       subnet_id: cdktf.stringToTerraform(this._subnetId),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       attachment: cdktf.listMapper(networkInterfaceAttachmentToTerraform)(this._attachment),
     };
   }

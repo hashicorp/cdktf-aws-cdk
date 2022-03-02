@@ -8,66 +8,68 @@ import * as cdktf from 'cdktf';
 */
 export interface S3BucketAnalyticsConfigurationConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration.html#bucket S3BucketAnalyticsConfiguration#bucket}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration#bucket S3BucketAnalyticsConfiguration#bucket}
   */
   readonly bucket: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration.html#name S3BucketAnalyticsConfiguration#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration#name S3BucketAnalyticsConfiguration#name}
   */
   readonly name: string;
   /**
   * filter block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration.html#filter S3BucketAnalyticsConfiguration#filter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration#filter S3BucketAnalyticsConfiguration#filter}
   */
   readonly filter?: S3BucketAnalyticsConfigurationFilter;
   /**
   * storage_class_analysis block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration.html#storage_class_analysis S3BucketAnalyticsConfiguration#storage_class_analysis}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration#storage_class_analysis S3BucketAnalyticsConfiguration#storage_class_analysis}
   */
   readonly storageClassAnalysis?: S3BucketAnalyticsConfigurationStorageClassAnalysis;
 }
 export interface S3BucketAnalyticsConfigurationFilter {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration.html#prefix S3BucketAnalyticsConfiguration#prefix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration#prefix S3BucketAnalyticsConfiguration#prefix}
   */
   readonly prefix?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration.html#tags S3BucketAnalyticsConfiguration#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration#tags S3BucketAnalyticsConfiguration#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
 }
 
 export function s3BucketAnalyticsConfigurationFilterToTerraform(struct?: S3BucketAnalyticsConfigurationFilterOutputReference | S3BucketAnalyticsConfigurationFilter): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
     prefix: cdktf.stringToTerraform(struct!.prefix),
-    tags: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.tags),
+    tags: cdktf.hashMapper(cdktf.stringToTerraform)(struct!.tags),
   }
 }
 
 export class S3BucketAnalyticsConfigurationFilterOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): S3BucketAnalyticsConfigurationFilter | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._prefix) {
+    if (this._prefix !== undefined) {
       hasAnyValues = true;
       internalValueResult.prefix = this._prefix;
     }
-    if (this._tags) {
+    if (this._tags !== undefined) {
       hasAnyValues = true;
       internalValueResult.tags = this._tags;
     }
@@ -76,10 +78,12 @@ export class S3BucketAnalyticsConfigurationFilterOutputReference extends cdktf.C
 
   public set internalValue(value: S3BucketAnalyticsConfigurationFilter | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._prefix = undefined;
       this._tags = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._prefix = value.prefix;
       this._tags = value.tags;
     }
@@ -102,12 +106,11 @@ export class S3BucketAnalyticsConfigurationFilterOutputReference extends cdktf.C
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -120,25 +123,25 @@ export class S3BucketAnalyticsConfigurationFilterOutputReference extends cdktf.C
 }
 export interface S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration.html#bucket_account_id S3BucketAnalyticsConfiguration#bucket_account_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration#bucket_account_id S3BucketAnalyticsConfiguration#bucket_account_id}
   */
   readonly bucketAccountId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration.html#bucket_arn S3BucketAnalyticsConfiguration#bucket_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration#bucket_arn S3BucketAnalyticsConfiguration#bucket_arn}
   */
   readonly bucketArn: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration.html#format S3BucketAnalyticsConfiguration#format}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration#format S3BucketAnalyticsConfiguration#format}
   */
   readonly format?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration.html#prefix S3BucketAnalyticsConfiguration#prefix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration#prefix S3BucketAnalyticsConfiguration#prefix}
   */
   readonly prefix?: string;
 }
 
 export function s3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationToTerraform(struct?: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationOutputReference | S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -151,31 +154,33 @@ export function s3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDest
 }
 
 export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._bucketAccountId) {
+    if (this._bucketAccountId !== undefined) {
       hasAnyValues = true;
       internalValueResult.bucketAccountId = this._bucketAccountId;
     }
-    if (this._bucketArn) {
+    if (this._bucketArn !== undefined) {
       hasAnyValues = true;
       internalValueResult.bucketArn = this._bucketArn;
     }
-    if (this._format) {
+    if (this._format !== undefined) {
       hasAnyValues = true;
       internalValueResult.format = this._format;
     }
-    if (this._prefix) {
+    if (this._prefix !== undefined) {
       hasAnyValues = true;
       internalValueResult.prefix = this._prefix;
     }
@@ -184,12 +189,14 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestina
 
   public set internalValue(value: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._bucketAccountId = undefined;
       this._bucketArn = undefined;
       this._format = undefined;
       this._prefix = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._bucketAccountId = value.bucketAccountId;
       this._bucketArn = value.bucketArn;
       this._format = value.format;
@@ -262,13 +269,13 @@ export interface S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDes
   /**
   * s3_bucket_destination block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration.html#s3_bucket_destination S3BucketAnalyticsConfiguration#s3_bucket_destination}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration#s3_bucket_destination S3BucketAnalyticsConfiguration#s3_bucket_destination}
   */
   readonly s3BucketDestination: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination;
 }
 
 export function s3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationToTerraform(struct?: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationOutputReference | S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestination): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -278,19 +285,21 @@ export function s3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDest
 }
 
 export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestination | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._s3BucketDestination) {
+    if (this._s3BucketDestination?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.s3BucketDestination = this._s3BucketDestination?.internalValue;
     }
@@ -299,15 +308,17 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestina
 
   public set internalValue(value: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestination | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._s3BucketDestination.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._s3BucketDestination.internalValue = value.s3BucketDestination;
     }
   }
 
   // s3_bucket_destination - computed: false, optional: false, required: true
-  private _s3BucketDestination = new S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationOutputReference(this as any, "s3_bucket_destination", true);
+  private _s3BucketDestination = new S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationOutputReference(this, "s3_bucket_destination", true);
   public get s3BucketDestination() {
     return this._s3BucketDestination;
   }
@@ -321,19 +332,19 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestina
 }
 export interface S3BucketAnalyticsConfigurationStorageClassAnalysisDataExport {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration.html#output_schema_version S3BucketAnalyticsConfiguration#output_schema_version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration#output_schema_version S3BucketAnalyticsConfiguration#output_schema_version}
   */
   readonly outputSchemaVersion?: string;
   /**
   * destination block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration.html#destination S3BucketAnalyticsConfiguration#destination}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration#destination S3BucketAnalyticsConfiguration#destination}
   */
   readonly destination: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestination;
 }
 
 export function s3BucketAnalyticsConfigurationStorageClassAnalysisDataExportToTerraform(struct?: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportOutputReference | S3BucketAnalyticsConfigurationStorageClassAnalysisDataExport): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -344,23 +355,25 @@ export function s3BucketAnalyticsConfigurationStorageClassAnalysisDataExportToTe
 }
 
 export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): S3BucketAnalyticsConfigurationStorageClassAnalysisDataExport | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._outputSchemaVersion) {
+    if (this._outputSchemaVersion !== undefined) {
       hasAnyValues = true;
       internalValueResult.outputSchemaVersion = this._outputSchemaVersion;
     }
-    if (this._destination) {
+    if (this._destination?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.destination = this._destination?.internalValue;
     }
@@ -369,10 +382,12 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportOutputR
 
   public set internalValue(value: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExport | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._outputSchemaVersion = undefined;
       this._destination.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._outputSchemaVersion = value.outputSchemaVersion;
       this._destination.internalValue = value.destination;
     }
@@ -395,7 +410,7 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportOutputR
   }
 
   // destination - computed: false, optional: false, required: true
-  private _destination = new S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationOutputReference(this as any, "destination", true);
+  private _destination = new S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationOutputReference(this, "destination", true);
   public get destination() {
     return this._destination;
   }
@@ -411,13 +426,13 @@ export interface S3BucketAnalyticsConfigurationStorageClassAnalysis {
   /**
   * data_export block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration.html#data_export S3BucketAnalyticsConfiguration#data_export}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration#data_export S3BucketAnalyticsConfiguration#data_export}
   */
   readonly dataExport: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExport;
 }
 
 export function s3BucketAnalyticsConfigurationStorageClassAnalysisToTerraform(struct?: S3BucketAnalyticsConfigurationStorageClassAnalysisOutputReference | S3BucketAnalyticsConfigurationStorageClassAnalysis): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -427,19 +442,21 @@ export function s3BucketAnalyticsConfigurationStorageClassAnalysisToTerraform(st
 }
 
 export class S3BucketAnalyticsConfigurationStorageClassAnalysisOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): S3BucketAnalyticsConfigurationStorageClassAnalysis | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._dataExport) {
+    if (this._dataExport?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.dataExport = this._dataExport?.internalValue;
     }
@@ -448,15 +465,17 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisOutputReference e
 
   public set internalValue(value: S3BucketAnalyticsConfigurationStorageClassAnalysis | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._dataExport.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._dataExport.internalValue = value.dataExport;
     }
   }
 
   // data_export - computed: false, optional: false, required: true
-  private _dataExport = new S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportOutputReference(this as any, "data_export", true);
+  private _dataExport = new S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportOutputReference(this, "data_export", true);
   public get dataExport() {
     return this._dataExport;
   }
@@ -470,7 +489,7 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisOutputReference e
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration.html aws_s3_bucket_analytics_configuration}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration aws_s3_bucket_analytics_configuration}
 */
 export class S3BucketAnalyticsConfiguration extends cdktf.TerraformResource {
 
@@ -484,7 +503,7 @@ export class S3BucketAnalyticsConfiguration extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration.html aws_s3_bucket_analytics_configuration} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_analytics_configuration aws_s3_bucket_analytics_configuration} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -543,7 +562,7 @@ export class S3BucketAnalyticsConfiguration extends cdktf.TerraformResource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter = new S3BucketAnalyticsConfigurationFilterOutputReference(this as any, "filter", true);
+  private _filter = new S3BucketAnalyticsConfigurationFilterOutputReference(this, "filter", true);
   public get filter() {
     return this._filter;
   }
@@ -559,7 +578,7 @@ export class S3BucketAnalyticsConfiguration extends cdktf.TerraformResource {
   }
 
   // storage_class_analysis - computed: false, optional: true, required: false
-  private _storageClassAnalysis = new S3BucketAnalyticsConfigurationStorageClassAnalysisOutputReference(this as any, "storage_class_analysis", true);
+  private _storageClassAnalysis = new S3BucketAnalyticsConfigurationStorageClassAnalysisOutputReference(this, "storage_class_analysis", true);
   public get storageClassAnalysis() {
     return this._storageClassAnalysis;
   }

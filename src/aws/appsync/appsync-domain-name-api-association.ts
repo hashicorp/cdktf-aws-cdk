@@ -8,17 +8,17 @@ import * as cdktf from 'cdktf';
 */
 export interface AppsyncDomainNameApiAssociationConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_domain_name_api_association.html#api_id AppsyncDomainNameApiAssociation#api_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_domain_name_api_association#api_id AppsyncDomainNameApiAssociation#api_id}
   */
   readonly apiId: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_domain_name_api_association.html#domain_name AppsyncDomainNameApiAssociation#domain_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_domain_name_api_association#domain_name AppsyncDomainNameApiAssociation#domain_name}
   */
   readonly domainName: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/appsync_domain_name_api_association.html aws_appsync_domain_name_api_association}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/appsync_domain_name_api_association aws_appsync_domain_name_api_association}
 */
 export class AppsyncDomainNameApiAssociation extends cdktf.TerraformResource {
 
@@ -32,7 +32,7 @@ export class AppsyncDomainNameApiAssociation extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/appsync_domain_name_api_association.html aws_appsync_domain_name_api_association} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/appsync_domain_name_api_association aws_appsync_domain_name_api_association} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope

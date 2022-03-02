@@ -8,77 +8,77 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsRdsOrderableDbInstanceConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#availability_zone_group DataAwsRdsOrderableDbInstance#availability_zone_group}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#availability_zone_group DataAwsRdsOrderableDbInstance#availability_zone_group}
   */
   readonly availabilityZoneGroup?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#engine DataAwsRdsOrderableDbInstance#engine}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#engine DataAwsRdsOrderableDbInstance#engine}
   */
   readonly engine: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#engine_version DataAwsRdsOrderableDbInstance#engine_version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#engine_version DataAwsRdsOrderableDbInstance#engine_version}
   */
   readonly engineVersion?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#instance_class DataAwsRdsOrderableDbInstance#instance_class}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#instance_class DataAwsRdsOrderableDbInstance#instance_class}
   */
   readonly instanceClass?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#license_model DataAwsRdsOrderableDbInstance#license_model}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#license_model DataAwsRdsOrderableDbInstance#license_model}
   */
   readonly licenseModel?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#preferred_engine_versions DataAwsRdsOrderableDbInstance#preferred_engine_versions}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#preferred_engine_versions DataAwsRdsOrderableDbInstance#preferred_engine_versions}
   */
   readonly preferredEngineVersions?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#preferred_instance_classes DataAwsRdsOrderableDbInstance#preferred_instance_classes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#preferred_instance_classes DataAwsRdsOrderableDbInstance#preferred_instance_classes}
   */
   readonly preferredInstanceClasses?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#storage_type DataAwsRdsOrderableDbInstance#storage_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#storage_type DataAwsRdsOrderableDbInstance#storage_type}
   */
   readonly storageType?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#supports_enhanced_monitoring DataAwsRdsOrderableDbInstance#supports_enhanced_monitoring}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#supports_enhanced_monitoring DataAwsRdsOrderableDbInstance#supports_enhanced_monitoring}
   */
   readonly supportsEnhancedMonitoring?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#supports_global_databases DataAwsRdsOrderableDbInstance#supports_global_databases}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#supports_global_databases DataAwsRdsOrderableDbInstance#supports_global_databases}
   */
   readonly supportsGlobalDatabases?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#supports_iam_database_authentication DataAwsRdsOrderableDbInstance#supports_iam_database_authentication}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#supports_iam_database_authentication DataAwsRdsOrderableDbInstance#supports_iam_database_authentication}
   */
   readonly supportsIamDatabaseAuthentication?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#supports_iops DataAwsRdsOrderableDbInstance#supports_iops}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#supports_iops DataAwsRdsOrderableDbInstance#supports_iops}
   */
   readonly supportsIops?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#supports_kerberos_authentication DataAwsRdsOrderableDbInstance#supports_kerberos_authentication}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#supports_kerberos_authentication DataAwsRdsOrderableDbInstance#supports_kerberos_authentication}
   */
   readonly supportsKerberosAuthentication?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#supports_performance_insights DataAwsRdsOrderableDbInstance#supports_performance_insights}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#supports_performance_insights DataAwsRdsOrderableDbInstance#supports_performance_insights}
   */
   readonly supportsPerformanceInsights?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#supports_storage_autoscaling DataAwsRdsOrderableDbInstance#supports_storage_autoscaling}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#supports_storage_autoscaling DataAwsRdsOrderableDbInstance#supports_storage_autoscaling}
   */
   readonly supportsStorageAutoscaling?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#supports_storage_encryption DataAwsRdsOrderableDbInstance#supports_storage_encryption}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#supports_storage_encryption DataAwsRdsOrderableDbInstance#supports_storage_encryption}
   */
   readonly supportsStorageEncryption?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html#vpc DataAwsRdsOrderableDbInstance#vpc}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance#vpc DataAwsRdsOrderableDbInstance#vpc}
   */
   readonly vpc?: boolean | cdktf.IResolvable;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html aws_rds_orderable_db_instance}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance aws_rds_orderable_db_instance}
 */
 export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
 
@@ -92,7 +92,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance.html aws_rds_orderable_db_instance} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/rds_orderable_db_instance aws_rds_orderable_db_instance} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -251,12 +251,12 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
 
   // multi_az_capable - computed: true, optional: false, required: false
   public get multiAzCapable() {
-    return this.getBooleanAttribute('multi_az_capable') as any;
+    return this.getBooleanAttribute('multi_az_capable');
   }
 
   // outpost_capable - computed: true, optional: false, required: false
   public get outpostCapable() {
-    return this.getBooleanAttribute('outpost_capable') as any;
+    return this.getBooleanAttribute('outpost_capable');
   }
 
   // preferred_engine_versions - computed: false, optional: true, required: false
@@ -293,7 +293,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
 
   // read_replica_capable - computed: true, optional: false, required: false
   public get readReplicaCapable() {
-    return this.getBooleanAttribute('read_replica_capable') as any;
+    return this.getBooleanAttribute('read_replica_capable');
   }
 
   // storage_type - computed: true, optional: true, required: false
@@ -320,7 +320,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   // supports_enhanced_monitoring - computed: true, optional: true, required: false
   private _supportsEnhancedMonitoring?: boolean | cdktf.IResolvable; 
   public get supportsEnhancedMonitoring() {
-    return this.getBooleanAttribute('supports_enhanced_monitoring') as any;
+    return this.getBooleanAttribute('supports_enhanced_monitoring');
   }
   public set supportsEnhancedMonitoring(value: boolean | cdktf.IResolvable) {
     this._supportsEnhancedMonitoring = value;
@@ -336,7 +336,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   // supports_global_databases - computed: true, optional: true, required: false
   private _supportsGlobalDatabases?: boolean | cdktf.IResolvable; 
   public get supportsGlobalDatabases() {
-    return this.getBooleanAttribute('supports_global_databases') as any;
+    return this.getBooleanAttribute('supports_global_databases');
   }
   public set supportsGlobalDatabases(value: boolean | cdktf.IResolvable) {
     this._supportsGlobalDatabases = value;
@@ -352,7 +352,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   // supports_iam_database_authentication - computed: true, optional: true, required: false
   private _supportsIamDatabaseAuthentication?: boolean | cdktf.IResolvable; 
   public get supportsIamDatabaseAuthentication() {
-    return this.getBooleanAttribute('supports_iam_database_authentication') as any;
+    return this.getBooleanAttribute('supports_iam_database_authentication');
   }
   public set supportsIamDatabaseAuthentication(value: boolean | cdktf.IResolvable) {
     this._supportsIamDatabaseAuthentication = value;
@@ -368,7 +368,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   // supports_iops - computed: true, optional: true, required: false
   private _supportsIops?: boolean | cdktf.IResolvable; 
   public get supportsIops() {
-    return this.getBooleanAttribute('supports_iops') as any;
+    return this.getBooleanAttribute('supports_iops');
   }
   public set supportsIops(value: boolean | cdktf.IResolvable) {
     this._supportsIops = value;
@@ -384,7 +384,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   // supports_kerberos_authentication - computed: true, optional: true, required: false
   private _supportsKerberosAuthentication?: boolean | cdktf.IResolvable; 
   public get supportsKerberosAuthentication() {
-    return this.getBooleanAttribute('supports_kerberos_authentication') as any;
+    return this.getBooleanAttribute('supports_kerberos_authentication');
   }
   public set supportsKerberosAuthentication(value: boolean | cdktf.IResolvable) {
     this._supportsKerberosAuthentication = value;
@@ -400,7 +400,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   // supports_performance_insights - computed: true, optional: true, required: false
   private _supportsPerformanceInsights?: boolean | cdktf.IResolvable; 
   public get supportsPerformanceInsights() {
-    return this.getBooleanAttribute('supports_performance_insights') as any;
+    return this.getBooleanAttribute('supports_performance_insights');
   }
   public set supportsPerformanceInsights(value: boolean | cdktf.IResolvable) {
     this._supportsPerformanceInsights = value;
@@ -416,7 +416,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   // supports_storage_autoscaling - computed: true, optional: true, required: false
   private _supportsStorageAutoscaling?: boolean | cdktf.IResolvable; 
   public get supportsStorageAutoscaling() {
-    return this.getBooleanAttribute('supports_storage_autoscaling') as any;
+    return this.getBooleanAttribute('supports_storage_autoscaling');
   }
   public set supportsStorageAutoscaling(value: boolean | cdktf.IResolvable) {
     this._supportsStorageAutoscaling = value;
@@ -432,7 +432,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   // supports_storage_encryption - computed: true, optional: true, required: false
   private _supportsStorageEncryption?: boolean | cdktf.IResolvable; 
   public get supportsStorageEncryption() {
-    return this.getBooleanAttribute('supports_storage_encryption') as any;
+    return this.getBooleanAttribute('supports_storage_encryption');
   }
   public set supportsStorageEncryption(value: boolean | cdktf.IResolvable) {
     this._supportsStorageEncryption = value;
@@ -448,7 +448,7 @@ export class DataAwsRdsOrderableDbInstance extends cdktf.TerraformDataSource {
   // vpc - computed: true, optional: true, required: false
   private _vpc?: boolean | cdktf.IResolvable; 
   public get vpc() {
-    return this.getBooleanAttribute('vpc') as any;
+    return this.getBooleanAttribute('vpc');
   }
   public set vpc(value: boolean | cdktf.IResolvable) {
     this._vpc = value;

@@ -8,7 +8,7 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsSignerSigningJobConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/signer_signing_job.html#job_id DataAwsSignerSigningJob#job_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/signer_signing_job#job_id DataAwsSignerSigningJob#job_id}
   */
   readonly jobId: string;
 }
@@ -46,7 +46,7 @@ export class DataAwsSignerSigningJobSignedObject extends cdktf.ComplexComputedLi
   // s3 - computed: true, optional: false, required: false
   public get s3() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('s3') as any;
+    return this.interpolationForAttribute('s3');
   }
 }
 export class DataAwsSignerSigningJobSourceS3 extends cdktf.ComplexComputedList {
@@ -71,12 +71,12 @@ export class DataAwsSignerSigningJobSource extends cdktf.ComplexComputedList {
   // s3 - computed: true, optional: false, required: false
   public get s3() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('s3') as any;
+    return this.interpolationForAttribute('s3');
   }
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/signer_signing_job.html aws_signer_signing_job}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/signer_signing_job aws_signer_signing_job}
 */
 export class DataAwsSignerSigningJob extends cdktf.TerraformDataSource {
 
@@ -90,7 +90,7 @@ export class DataAwsSignerSigningJob extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/signer_signing_job.html aws_signer_signing_job} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/signer_signing_job aws_signer_signing_job} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -179,7 +179,7 @@ export class DataAwsSignerSigningJob extends cdktf.TerraformDataSource {
 
   // revocation_record - computed: true, optional: false, required: false
   public revocationRecord(index: string) {
-    return new DataAwsSignerSigningJobRevocationRecord(this, 'revocation_record', index);
+    return new DataAwsSignerSigningJobRevocationRecord(this, 'revocation_record', index, false);
   }
 
   // signature_expires_at - computed: true, optional: false, required: false
@@ -189,12 +189,12 @@ export class DataAwsSignerSigningJob extends cdktf.TerraformDataSource {
 
   // signed_object - computed: true, optional: false, required: false
   public signedObject(index: string) {
-    return new DataAwsSignerSigningJobSignedObject(this, 'signed_object', index);
+    return new DataAwsSignerSigningJobSignedObject(this, 'signed_object', index, false);
   }
 
   // source - computed: true, optional: false, required: false
   public source(index: string) {
-    return new DataAwsSignerSigningJobSource(this, 'source', index);
+    return new DataAwsSignerSigningJobSource(this, 'source', index, false);
   }
 
   // status - computed: true, optional: false, required: false

@@ -8,59 +8,61 @@ import * as cdktf from 'cdktf';
 */
 export interface LambdaAliasConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias.html#description LambdaAlias#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias#description LambdaAlias#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias.html#function_name LambdaAlias#function_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias#function_name LambdaAlias#function_name}
   */
   readonly functionName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias.html#function_version LambdaAlias#function_version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias#function_version LambdaAlias#function_version}
   */
   readonly functionVersion: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias.html#name LambdaAlias#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias#name LambdaAlias#name}
   */
   readonly name: string;
   /**
   * routing_config block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias.html#routing_config LambdaAlias#routing_config}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias#routing_config LambdaAlias#routing_config}
   */
   readonly routingConfig?: LambdaAliasRoutingConfig;
 }
 export interface LambdaAliasRoutingConfig {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias.html#additional_version_weights LambdaAlias#additional_version_weights}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias#additional_version_weights LambdaAlias#additional_version_weights}
   */
-  readonly additionalVersionWeights?: { [key: string]: number } | cdktf.IResolvable;
+  readonly additionalVersionWeights?: { [key: string]: number };
 }
 
 export function lambdaAliasRoutingConfigToTerraform(struct?: LambdaAliasRoutingConfigOutputReference | LambdaAliasRoutingConfig): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    additional_version_weights: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.additionalVersionWeights),
+    additional_version_weights: cdktf.hashMapper(cdktf.numberToTerraform)(struct!.additionalVersionWeights),
   }
 }
 
 export class LambdaAliasRoutingConfigOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): LambdaAliasRoutingConfig | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._additionalVersionWeights) {
+    if (this._additionalVersionWeights !== undefined) {
       hasAnyValues = true;
       internalValueResult.additionalVersionWeights = this._additionalVersionWeights;
     }
@@ -69,20 +71,21 @@ export class LambdaAliasRoutingConfigOutputReference extends cdktf.ComplexObject
 
   public set internalValue(value: LambdaAliasRoutingConfig | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._additionalVersionWeights = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._additionalVersionWeights = value.additionalVersionWeights;
     }
   }
 
   // additional_version_weights - computed: false, optional: true, required: false
-  private _additionalVersionWeights?: { [key: string]: number } | cdktf.IResolvable; 
+  private _additionalVersionWeights?: { [key: string]: number }; 
   public get additionalVersionWeights() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('additional_version_weights') as any;
+    return this.getNumberMapAttribute('additional_version_weights');
   }
-  public set additionalVersionWeights(value: { [key: string]: number } | cdktf.IResolvable) {
+  public set additionalVersionWeights(value: { [key: string]: number }) {
     this._additionalVersionWeights = value;
   }
   public resetAdditionalVersionWeights() {
@@ -95,7 +98,7 @@ export class LambdaAliasRoutingConfigOutputReference extends cdktf.ComplexObject
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias.html aws_lambda_alias}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias aws_lambda_alias}
 */
 export class LambdaAlias extends cdktf.TerraformResource {
 
@@ -109,7 +112,7 @@ export class LambdaAlias extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias.html aws_lambda_alias} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias aws_lambda_alias} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -208,7 +211,7 @@ export class LambdaAlias extends cdktf.TerraformResource {
   }
 
   // routing_config - computed: false, optional: true, required: false
-  private _routingConfig = new LambdaAliasRoutingConfigOutputReference(this as any, "routing_config", true);
+  private _routingConfig = new LambdaAliasRoutingConfigOutputReference(this, "routing_config", true);
   public get routingConfig() {
     return this._routingConfig;
   }

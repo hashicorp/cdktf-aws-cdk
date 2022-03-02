@@ -8,29 +8,29 @@ import * as cdktf from 'cdktf';
 */
 export interface ChimeVoiceConnectorTerminationCredentialsConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_termination_credentials.html#voice_connector_id ChimeVoiceConnectorTerminationCredentials#voice_connector_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_termination_credentials#voice_connector_id ChimeVoiceConnectorTerminationCredentials#voice_connector_id}
   */
   readonly voiceConnectorId: string;
   /**
   * credentials block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_termination_credentials.html#credentials ChimeVoiceConnectorTerminationCredentials#credentials}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_termination_credentials#credentials ChimeVoiceConnectorTerminationCredentials#credentials}
   */
-  readonly credentials: ChimeVoiceConnectorTerminationCredentialsCredentials[];
+  readonly credentials: ChimeVoiceConnectorTerminationCredentialsCredentials[] | cdktf.IResolvable;
 }
 export interface ChimeVoiceConnectorTerminationCredentialsCredentials {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_termination_credentials.html#password ChimeVoiceConnectorTerminationCredentials#password}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_termination_credentials#password ChimeVoiceConnectorTerminationCredentials#password}
   */
   readonly password: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_termination_credentials.html#username ChimeVoiceConnectorTerminationCredentials#username}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_termination_credentials#username ChimeVoiceConnectorTerminationCredentials#username}
   */
   readonly username: string;
 }
 
-export function chimeVoiceConnectorTerminationCredentialsCredentialsToTerraform(struct?: ChimeVoiceConnectorTerminationCredentialsCredentials): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function chimeVoiceConnectorTerminationCredentialsCredentialsToTerraform(struct?: ChimeVoiceConnectorTerminationCredentialsCredentials | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -42,7 +42,7 @@ export function chimeVoiceConnectorTerminationCredentialsCredentialsToTerraform(
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_termination_credentials.html aws_chime_voice_connector_termination_credentials}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_termination_credentials aws_chime_voice_connector_termination_credentials}
 */
 export class ChimeVoiceConnectorTerminationCredentials extends cdktf.TerraformResource {
 
@@ -56,7 +56,7 @@ export class ChimeVoiceConnectorTerminationCredentials extends cdktf.TerraformRe
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_termination_credentials.html aws_chime_voice_connector_termination_credentials} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_termination_credentials aws_chime_voice_connector_termination_credentials} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -100,12 +100,12 @@ export class ChimeVoiceConnectorTerminationCredentials extends cdktf.TerraformRe
   }
 
   // credentials - computed: false, optional: false, required: true
-  private _credentials?: ChimeVoiceConnectorTerminationCredentialsCredentials[]; 
+  private _credentials?: ChimeVoiceConnectorTerminationCredentialsCredentials[] | cdktf.IResolvable; 
   public get credentials() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('credentials') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('credentials')));
   }
-  public set credentials(value: ChimeVoiceConnectorTerminationCredentialsCredentials[]) {
+  public set credentials(value: ChimeVoiceConnectorTerminationCredentialsCredentials[] | cdktf.IResolvable) {
     this._credentials = value;
   }
   // Temporarily expose input value. Use with caution.

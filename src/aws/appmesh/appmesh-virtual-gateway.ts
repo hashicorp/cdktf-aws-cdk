@@ -8,45 +8,45 @@ import * as cdktf from 'cdktf';
 */
 export interface AppmeshVirtualGatewayConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#mesh_name AppmeshVirtualGateway#mesh_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#mesh_name AppmeshVirtualGateway#mesh_name}
   */
   readonly meshName: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#mesh_owner AppmeshVirtualGateway#mesh_owner}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#mesh_owner AppmeshVirtualGateway#mesh_owner}
   */
   readonly meshOwner?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#name AppmeshVirtualGateway#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#name AppmeshVirtualGateway#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#tags AppmeshVirtualGateway#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#tags AppmeshVirtualGateway#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#tags_all AppmeshVirtualGateway#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#tags_all AppmeshVirtualGateway#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * spec block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#spec AppmeshVirtualGateway#spec}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#spec AppmeshVirtualGateway#spec}
   */
   readonly spec: AppmeshVirtualGatewaySpec;
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#certificate_chain AppmeshVirtualGateway#certificate_chain}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#certificate_chain AppmeshVirtualGateway#certificate_chain}
   */
   readonly certificateChain: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#private_key AppmeshVirtualGateway#private_key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#private_key AppmeshVirtualGateway#private_key}
   */
   readonly privateKey: string;
 }
 
 export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFileToTerraform(struct?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFileOutputReference | AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -57,23 +57,25 @@ export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertifica
 }
 
 export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFileOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._certificateChain) {
+    if (this._certificateChain !== undefined) {
       hasAnyValues = true;
       internalValueResult.certificateChain = this._certificateChain;
     }
-    if (this._privateKey) {
+    if (this._privateKey !== undefined) {
       hasAnyValues = true;
       internalValueResult.privateKey = this._privateKey;
     }
@@ -82,10 +84,12 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateF
 
   public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._certificateChain = undefined;
       this._privateKey = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._certificateChain = value.certificateChain;
       this._privateKey = value.privateKey;
     }
@@ -119,13 +123,13 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateF
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#secret_name AppmeshVirtualGateway#secret_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#secret_name AppmeshVirtualGateway#secret_name}
   */
   readonly secretName: string;
 }
 
 export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSdsToTerraform(struct?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSdsOutputReference | AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -135,19 +139,21 @@ export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertifica
 }
 
 export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSdsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._secretName) {
+    if (this._secretName !== undefined) {
       hasAnyValues = true;
       internalValueResult.secretName = this._secretName;
     }
@@ -156,9 +162,11 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateS
 
   public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._secretName = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._secretName = value.secretName;
     }
   }
@@ -180,19 +188,19 @@ export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertific
   /**
   * file block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#file AppmeshVirtualGateway#file}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#file AppmeshVirtualGateway#file}
   */
   readonly file?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile;
   /**
   * sds block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#sds AppmeshVirtualGateway#sds}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#sds AppmeshVirtualGateway#sds}
   */
   readonly sds?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds;
 }
 
 export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateToTerraform(struct?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateOutputReference | AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -203,23 +211,25 @@ export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertifica
 }
 
 export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._file) {
+    if (this._file?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.file = this._file?.internalValue;
     }
-    if (this._sds) {
+    if (this._sds?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.sds = this._sds?.internalValue;
     }
@@ -228,17 +238,19 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateO
 
   public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._file.internalValue = undefined;
       this._sds.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._file.internalValue = value.file;
       this._sds.internalValue = value.sds;
     }
   }
 
   // file - computed: false, optional: true, required: false
-  private _file = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFileOutputReference(this as any, "file", true);
+  private _file = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFileOutputReference(this, "file", true);
   public get file() {
     return this._file;
   }
@@ -254,7 +266,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateO
   }
 
   // sds - computed: false, optional: true, required: false
-  private _sds = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSdsOutputReference(this as any, "sds", true);
+  private _sds = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSdsOutputReference(this, "sds", true);
   public get sds() {
     return this._sds;
   }
@@ -271,13 +283,13 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateO
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#exact AppmeshVirtualGateway#exact}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#exact AppmeshVirtualGateway#exact}
   */
   readonly exact: string[];
 }
 
 export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatchToTerraform(struct?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatchOutputReference | AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -287,19 +299,21 @@ export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidatio
 }
 
 export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatchOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._exact) {
+    if (this._exact !== undefined) {
       hasAnyValues = true;
       internalValueResult.exact = this._exact;
     }
@@ -308,9 +322,11 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSu
 
   public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._exact = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._exact = value.exact;
     }
   }
@@ -318,7 +334,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSu
   // exact - computed: false, optional: false, required: true
   private _exact?: string[]; 
   public get exact() {
-    return this.getListAttribute('exact');
+    return cdktf.Fn.tolist(this.getListAttribute('exact'));
   }
   public set exact(value: string[]) {
     this._exact = value;
@@ -332,13 +348,13 @@ export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidati
   /**
   * match block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#match AppmeshVirtualGateway#match}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#match AppmeshVirtualGateway#match}
   */
   readonly match: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch;
 }
 
 export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesToTerraform(struct?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesOutputReference | AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -348,19 +364,21 @@ export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidatio
 }
 
 export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._match) {
+    if (this._match?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.match = this._match?.internalValue;
     }
@@ -369,15 +387,17 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSu
 
   public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._match.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._match.internalValue = value.match;
     }
   }
 
   // match - computed: false, optional: false, required: true
-  private _match = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatchOutputReference(this as any, "match", true);
+  private _match = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatchOutputReference(this, "match", true);
   public get match() {
     return this._match;
   }
@@ -391,13 +411,13 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSu
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#certificate_authority_arns AppmeshVirtualGateway#certificate_authority_arns}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#certificate_authority_arns AppmeshVirtualGateway#certificate_authority_arns}
   */
   readonly certificateAuthorityArns: string[];
 }
 
 export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmToTerraform(struct?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmOutputReference | AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -407,19 +427,21 @@ export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidatio
 }
 
 export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._certificateAuthorityArns) {
+    if (this._certificateAuthorityArns !== undefined) {
       hasAnyValues = true;
       internalValueResult.certificateAuthorityArns = this._certificateAuthorityArns;
     }
@@ -428,9 +450,11 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
 
   public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._certificateAuthorityArns = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._certificateAuthorityArns = value.certificateAuthorityArns;
     }
   }
@@ -438,7 +462,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
   // certificate_authority_arns - computed: false, optional: false, required: true
   private _certificateAuthorityArns?: string[]; 
   public get certificateAuthorityArns() {
-    return this.getListAttribute('certificate_authority_arns');
+    return cdktf.Fn.tolist(this.getListAttribute('certificate_authority_arns'));
   }
   public set certificateAuthorityArns(value: string[]) {
     this._certificateAuthorityArns = value;
@@ -450,13 +474,13 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#certificate_chain AppmeshVirtualGateway#certificate_chain}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#certificate_chain AppmeshVirtualGateway#certificate_chain}
   */
   readonly certificateChain: string;
 }
 
 export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFileToTerraform(struct?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFileOutputReference | AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -466,19 +490,21 @@ export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidatio
 }
 
 export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFileOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._certificateChain) {
+    if (this._certificateChain !== undefined) {
       hasAnyValues = true;
       internalValueResult.certificateChain = this._certificateChain;
     }
@@ -487,9 +513,11 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
 
   public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._certificateChain = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._certificateChain = value.certificateChain;
     }
   }
@@ -509,13 +537,13 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#secret_name AppmeshVirtualGateway#secret_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#secret_name AppmeshVirtualGateway#secret_name}
   */
   readonly secretName: string;
 }
 
 export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSdsToTerraform(struct?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSdsOutputReference | AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -525,19 +553,21 @@ export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidatio
 }
 
 export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSdsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._secretName) {
+    if (this._secretName !== undefined) {
       hasAnyValues = true;
       internalValueResult.secretName = this._secretName;
     }
@@ -546,9 +576,11 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
 
   public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._secretName = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._secretName = value.secretName;
     }
   }
@@ -570,25 +602,25 @@ export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidati
   /**
   * acm block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#acm AppmeshVirtualGateway#acm}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#acm AppmeshVirtualGateway#acm}
   */
   readonly acm?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm;
   /**
   * file block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#file AppmeshVirtualGateway#file}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#file AppmeshVirtualGateway#file}
   */
   readonly file?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile;
   /**
   * sds block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#sds AppmeshVirtualGateway#sds}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#sds AppmeshVirtualGateway#sds}
   */
   readonly sds?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds;
 }
 
 export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustToTerraform(struct?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustOutputReference | AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -600,27 +632,29 @@ export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidatio
 }
 
 export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._acm) {
+    if (this._acm?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.acm = this._acm?.internalValue;
     }
-    if (this._file) {
+    if (this._file?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.file = this._file?.internalValue;
     }
-    if (this._sds) {
+    if (this._sds?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.sds = this._sds?.internalValue;
     }
@@ -629,11 +663,13 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
 
   public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._acm.internalValue = undefined;
       this._file.internalValue = undefined;
       this._sds.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._acm.internalValue = value.acm;
       this._file.internalValue = value.file;
       this._sds.internalValue = value.sds;
@@ -641,7 +677,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
   }
 
   // acm - computed: false, optional: true, required: false
-  private _acm = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmOutputReference(this as any, "acm", true);
+  private _acm = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmOutputReference(this, "acm", true);
   public get acm() {
     return this._acm;
   }
@@ -657,7 +693,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
   }
 
   // file - computed: false, optional: true, required: false
-  private _file = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFileOutputReference(this as any, "file", true);
+  private _file = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFileOutputReference(this, "file", true);
   public get file() {
     return this._file;
   }
@@ -673,7 +709,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
   }
 
   // sds - computed: false, optional: true, required: false
-  private _sds = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSdsOutputReference(this as any, "sds", true);
+  private _sds = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSdsOutputReference(this, "sds", true);
   public get sds() {
     return this._sds;
   }
@@ -692,19 +728,19 @@ export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidati
   /**
   * subject_alternative_names block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#subject_alternative_names AppmeshVirtualGateway#subject_alternative_names}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#subject_alternative_names AppmeshVirtualGateway#subject_alternative_names}
   */
   readonly subjectAlternativeNames?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames;
   /**
   * trust block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#trust AppmeshVirtualGateway#trust}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#trust AppmeshVirtualGateway#trust}
   */
   readonly trust: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust;
 }
 
 export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationToTerraform(struct?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationOutputReference | AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -715,23 +751,25 @@ export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidatio
 }
 
 export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._subjectAlternativeNames) {
+    if (this._subjectAlternativeNames?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.subjectAlternativeNames = this._subjectAlternativeNames?.internalValue;
     }
-    if (this._trust) {
+    if (this._trust?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.trust = this._trust?.internalValue;
     }
@@ -740,17 +778,19 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationOu
 
   public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._subjectAlternativeNames.internalValue = undefined;
       this._trust.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._subjectAlternativeNames.internalValue = value.subjectAlternativeNames;
       this._trust.internalValue = value.trust;
     }
   }
 
   // subject_alternative_names - computed: false, optional: true, required: false
-  private _subjectAlternativeNames = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesOutputReference(this as any, "subject_alternative_names", true);
+  private _subjectAlternativeNames = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesOutputReference(this, "subject_alternative_names", true);
   public get subjectAlternativeNames() {
     return this._subjectAlternativeNames;
   }
@@ -766,7 +806,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationOu
   }
 
   // trust - computed: false, optional: false, required: true
-  private _trust = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustOutputReference(this as any, "trust", true);
+  private _trust = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustOutputReference(this, "trust", true);
   public get trust() {
     return this._trust;
   }
@@ -780,29 +820,29 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationOu
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTls {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#enforce AppmeshVirtualGateway#enforce}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#enforce AppmeshVirtualGateway#enforce}
   */
   readonly enforce?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#ports AppmeshVirtualGateway#ports}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#ports AppmeshVirtualGateway#ports}
   */
   readonly ports?: number[];
   /**
   * certificate block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#certificate AppmeshVirtualGateway#certificate}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#certificate AppmeshVirtualGateway#certificate}
   */
   readonly certificate?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate;
   /**
   * validation block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#validation AppmeshVirtualGateway#validation}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#validation AppmeshVirtualGateway#validation}
   */
   readonly validation: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation;
 }
 
 export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsToTerraform(struct?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsOutputReference | AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTls): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -815,31 +855,33 @@ export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsToTerrafo
 }
 
 export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTls | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._enforce) {
+    if (this._enforce !== undefined) {
       hasAnyValues = true;
       internalValueResult.enforce = this._enforce;
     }
-    if (this._ports) {
+    if (this._ports !== undefined) {
       hasAnyValues = true;
       internalValueResult.ports = this._ports;
     }
-    if (this._certificate) {
+    if (this._certificate?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.certificate = this._certificate?.internalValue;
     }
-    if (this._validation) {
+    if (this._validation?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.validation = this._validation?.internalValue;
     }
@@ -848,12 +890,14 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsOutputRefere
 
   public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTls | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._enforce = undefined;
       this._ports = undefined;
       this._certificate.internalValue = undefined;
       this._validation.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._enforce = value.enforce;
       this._ports = value.ports;
       this._certificate.internalValue = value.certificate;
@@ -864,7 +908,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsOutputRefere
   // enforce - computed: false, optional: true, required: false
   private _enforce?: boolean | cdktf.IResolvable; 
   public get enforce() {
-    return this.getBooleanAttribute('enforce') as any;
+    return this.getBooleanAttribute('enforce');
   }
   public set enforce(value: boolean | cdktf.IResolvable) {
     this._enforce = value;
@@ -880,8 +924,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsOutputRefere
   // ports - computed: false, optional: true, required: false
   private _ports?: number[]; 
   public get ports() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('ports') as any;
+    return cdktf.Token.asNumberList(cdktf.Fn.tolist(this.getNumberListAttribute('ports')));
   }
   public set ports(value: number[]) {
     this._ports = value;
@@ -895,7 +938,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsOutputRefere
   }
 
   // certificate - computed: false, optional: true, required: false
-  private _certificate = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateOutputReference(this as any, "certificate", true);
+  private _certificate = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateOutputReference(this, "certificate", true);
   public get certificate() {
     return this._certificate;
   }
@@ -911,7 +954,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsOutputRefere
   }
 
   // validation - computed: false, optional: false, required: true
-  private _validation = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationOutputReference(this as any, "validation", true);
+  private _validation = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationOutputReference(this, "validation", true);
   public get validation() {
     return this._validation;
   }
@@ -927,13 +970,13 @@ export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicy {
   /**
   * tls block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#tls AppmeshVirtualGateway#tls}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#tls AppmeshVirtualGateway#tls}
   */
   readonly tls?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTls;
 }
 
 export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyToTerraform(struct?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyOutputReference | AppmeshVirtualGatewaySpecBackendDefaultsClientPolicy): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -943,19 +986,21 @@ export function appmeshVirtualGatewaySpecBackendDefaultsClientPolicyToTerraform(
 }
 
 export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicy | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._tls) {
+    if (this._tls?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.tls = this._tls?.internalValue;
     }
@@ -964,15 +1009,17 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyOutputReference
 
   public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicy | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._tls.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._tls.internalValue = value.tls;
     }
   }
 
   // tls - computed: false, optional: true, required: false
-  private _tls = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsOutputReference(this as any, "tls", true);
+  private _tls = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsOutputReference(this, "tls", true);
   public get tls() {
     return this._tls;
   }
@@ -991,13 +1038,13 @@ export interface AppmeshVirtualGatewaySpecBackendDefaults {
   /**
   * client_policy block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#client_policy AppmeshVirtualGateway#client_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#client_policy AppmeshVirtualGateway#client_policy}
   */
   readonly clientPolicy?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicy;
 }
 
 export function appmeshVirtualGatewaySpecBackendDefaultsToTerraform(struct?: AppmeshVirtualGatewaySpecBackendDefaultsOutputReference | AppmeshVirtualGatewaySpecBackendDefaults): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1007,19 +1054,21 @@ export function appmeshVirtualGatewaySpecBackendDefaultsToTerraform(struct?: App
 }
 
 export class AppmeshVirtualGatewaySpecBackendDefaultsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaults | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._clientPolicy) {
+    if (this._clientPolicy?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.clientPolicy = this._clientPolicy?.internalValue;
     }
@@ -1028,15 +1077,17 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsOutputReference extends cdk
 
   public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaults | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._clientPolicy.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._clientPolicy.internalValue = value.clientPolicy;
     }
   }
 
   // client_policy - computed: false, optional: true, required: false
-  private _clientPolicy = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyOutputReference(this as any, "client_policy", true);
+  private _clientPolicy = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyOutputReference(this, "client_policy", true);
   public get clientPolicy() {
     return this._clientPolicy;
   }
@@ -1053,13 +1104,13 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsOutputReference extends cdk
 }
 export interface AppmeshVirtualGatewaySpecListenerConnectionPoolGrpc {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#max_requests AppmeshVirtualGateway#max_requests}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#max_requests AppmeshVirtualGateway#max_requests}
   */
   readonly maxRequests: number;
 }
 
 export function appmeshVirtualGatewaySpecListenerConnectionPoolGrpcToTerraform(struct?: AppmeshVirtualGatewaySpecListenerConnectionPoolGrpcOutputReference | AppmeshVirtualGatewaySpecListenerConnectionPoolGrpc): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1069,19 +1120,21 @@ export function appmeshVirtualGatewaySpecListenerConnectionPoolGrpcToTerraform(s
 }
 
 export class AppmeshVirtualGatewaySpecListenerConnectionPoolGrpcOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerConnectionPoolGrpc | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._maxRequests) {
+    if (this._maxRequests !== undefined) {
       hasAnyValues = true;
       internalValueResult.maxRequests = this._maxRequests;
     }
@@ -1090,9 +1143,11 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolGrpcOutputReference 
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerConnectionPoolGrpc | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._maxRequests = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._maxRequests = value.maxRequests;
     }
   }
@@ -1112,17 +1167,17 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolGrpcOutputReference 
 }
 export interface AppmeshVirtualGatewaySpecListenerConnectionPoolHttp {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#max_connections AppmeshVirtualGateway#max_connections}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#max_connections AppmeshVirtualGateway#max_connections}
   */
   readonly maxConnections: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#max_pending_requests AppmeshVirtualGateway#max_pending_requests}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#max_pending_requests AppmeshVirtualGateway#max_pending_requests}
   */
   readonly maxPendingRequests?: number;
 }
 
 export function appmeshVirtualGatewaySpecListenerConnectionPoolHttpToTerraform(struct?: AppmeshVirtualGatewaySpecListenerConnectionPoolHttpOutputReference | AppmeshVirtualGatewaySpecListenerConnectionPoolHttp): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1133,23 +1188,25 @@ export function appmeshVirtualGatewaySpecListenerConnectionPoolHttpToTerraform(s
 }
 
 export class AppmeshVirtualGatewaySpecListenerConnectionPoolHttpOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerConnectionPoolHttp | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._maxConnections) {
+    if (this._maxConnections !== undefined) {
       hasAnyValues = true;
       internalValueResult.maxConnections = this._maxConnections;
     }
-    if (this._maxPendingRequests) {
+    if (this._maxPendingRequests !== undefined) {
       hasAnyValues = true;
       internalValueResult.maxPendingRequests = this._maxPendingRequests;
     }
@@ -1158,10 +1215,12 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolHttpOutputReference 
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerConnectionPoolHttp | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._maxConnections = undefined;
       this._maxPendingRequests = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._maxConnections = value.maxConnections;
       this._maxPendingRequests = value.maxPendingRequests;
     }
@@ -1198,13 +1257,13 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolHttpOutputReference 
 }
 export interface AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2 {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#max_requests AppmeshVirtualGateway#max_requests}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#max_requests AppmeshVirtualGateway#max_requests}
   */
   readonly maxRequests: number;
 }
 
 export function appmeshVirtualGatewaySpecListenerConnectionPoolHttp2ToTerraform(struct?: AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2OutputReference | AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1214,19 +1273,21 @@ export function appmeshVirtualGatewaySpecListenerConnectionPoolHttp2ToTerraform(
 }
 
 export class AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2OutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2 | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._maxRequests) {
+    if (this._maxRequests !== undefined) {
       hasAnyValues = true;
       internalValueResult.maxRequests = this._maxRequests;
     }
@@ -1235,9 +1296,11 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2OutputReference
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2 | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._maxRequests = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._maxRequests = value.maxRequests;
     }
   }
@@ -1259,25 +1322,25 @@ export interface AppmeshVirtualGatewaySpecListenerConnectionPool {
   /**
   * grpc block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#grpc AppmeshVirtualGateway#grpc}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#grpc AppmeshVirtualGateway#grpc}
   */
   readonly grpc?: AppmeshVirtualGatewaySpecListenerConnectionPoolGrpc;
   /**
   * http block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#http AppmeshVirtualGateway#http}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#http AppmeshVirtualGateway#http}
   */
   readonly http?: AppmeshVirtualGatewaySpecListenerConnectionPoolHttp;
   /**
   * http2 block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#http2 AppmeshVirtualGateway#http2}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#http2 AppmeshVirtualGateway#http2}
   */
   readonly http2?: AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2;
 }
 
 export function appmeshVirtualGatewaySpecListenerConnectionPoolToTerraform(struct?: AppmeshVirtualGatewaySpecListenerConnectionPoolOutputReference | AppmeshVirtualGatewaySpecListenerConnectionPool): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1289,27 +1352,29 @@ export function appmeshVirtualGatewaySpecListenerConnectionPoolToTerraform(struc
 }
 
 export class AppmeshVirtualGatewaySpecListenerConnectionPoolOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerConnectionPool | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._grpc) {
+    if (this._grpc?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.grpc = this._grpc?.internalValue;
     }
-    if (this._http) {
+    if (this._http?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.http = this._http?.internalValue;
     }
-    if (this._http2) {
+    if (this._http2?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.http2 = this._http2?.internalValue;
     }
@@ -1318,11 +1383,13 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolOutputReference exte
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerConnectionPool | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._grpc.internalValue = undefined;
       this._http.internalValue = undefined;
       this._http2.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._grpc.internalValue = value.grpc;
       this._http.internalValue = value.http;
       this._http2.internalValue = value.http2;
@@ -1330,7 +1397,7 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolOutputReference exte
   }
 
   // grpc - computed: false, optional: true, required: false
-  private _grpc = new AppmeshVirtualGatewaySpecListenerConnectionPoolGrpcOutputReference(this as any, "grpc", true);
+  private _grpc = new AppmeshVirtualGatewaySpecListenerConnectionPoolGrpcOutputReference(this, "grpc", true);
   public get grpc() {
     return this._grpc;
   }
@@ -1346,7 +1413,7 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolOutputReference exte
   }
 
   // http - computed: false, optional: true, required: false
-  private _http = new AppmeshVirtualGatewaySpecListenerConnectionPoolHttpOutputReference(this as any, "http", true);
+  private _http = new AppmeshVirtualGatewaySpecListenerConnectionPoolHttpOutputReference(this, "http", true);
   public get http() {
     return this._http;
   }
@@ -1362,7 +1429,7 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolOutputReference exte
   }
 
   // http2 - computed: false, optional: true, required: false
-  private _http2 = new AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2OutputReference(this as any, "http2", true);
+  private _http2 = new AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2OutputReference(this, "http2", true);
   public get http2() {
     return this._http2;
   }
@@ -1379,37 +1446,37 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolOutputReference exte
 }
 export interface AppmeshVirtualGatewaySpecListenerHealthCheck {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#healthy_threshold AppmeshVirtualGateway#healthy_threshold}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#healthy_threshold AppmeshVirtualGateway#healthy_threshold}
   */
   readonly healthyThreshold: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#interval_millis AppmeshVirtualGateway#interval_millis}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#interval_millis AppmeshVirtualGateway#interval_millis}
   */
   readonly intervalMillis: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#path AppmeshVirtualGateway#path}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#path AppmeshVirtualGateway#path}
   */
   readonly path?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#port AppmeshVirtualGateway#port}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#port AppmeshVirtualGateway#port}
   */
   readonly port?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#protocol AppmeshVirtualGateway#protocol}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#protocol AppmeshVirtualGateway#protocol}
   */
   readonly protocol: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#timeout_millis AppmeshVirtualGateway#timeout_millis}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#timeout_millis AppmeshVirtualGateway#timeout_millis}
   */
   readonly timeoutMillis: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#unhealthy_threshold AppmeshVirtualGateway#unhealthy_threshold}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#unhealthy_threshold AppmeshVirtualGateway#unhealthy_threshold}
   */
   readonly unhealthyThreshold: number;
 }
 
 export function appmeshVirtualGatewaySpecListenerHealthCheckToTerraform(struct?: AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference | AppmeshVirtualGatewaySpecListenerHealthCheck): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1425,43 +1492,45 @@ export function appmeshVirtualGatewaySpecListenerHealthCheckToTerraform(struct?:
 }
 
 export class AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerHealthCheck | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._healthyThreshold) {
+    if (this._healthyThreshold !== undefined) {
       hasAnyValues = true;
       internalValueResult.healthyThreshold = this._healthyThreshold;
     }
-    if (this._intervalMillis) {
+    if (this._intervalMillis !== undefined) {
       hasAnyValues = true;
       internalValueResult.intervalMillis = this._intervalMillis;
     }
-    if (this._path) {
+    if (this._path !== undefined) {
       hasAnyValues = true;
       internalValueResult.path = this._path;
     }
-    if (this._port) {
+    if (this._port !== undefined) {
       hasAnyValues = true;
       internalValueResult.port = this._port;
     }
-    if (this._protocol) {
+    if (this._protocol !== undefined) {
       hasAnyValues = true;
       internalValueResult.protocol = this._protocol;
     }
-    if (this._timeoutMillis) {
+    if (this._timeoutMillis !== undefined) {
       hasAnyValues = true;
       internalValueResult.timeoutMillis = this._timeoutMillis;
     }
-    if (this._unhealthyThreshold) {
+    if (this._unhealthyThreshold !== undefined) {
       hasAnyValues = true;
       internalValueResult.unhealthyThreshold = this._unhealthyThreshold;
     }
@@ -1470,6 +1539,7 @@ export class AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference extends
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerHealthCheck | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._healthyThreshold = undefined;
       this._intervalMillis = undefined;
       this._path = undefined;
@@ -1479,6 +1549,7 @@ export class AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference extends
       this._unhealthyThreshold = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._healthyThreshold = value.healthyThreshold;
       this._intervalMillis = value.intervalMillis;
       this._path = value.path;
@@ -1588,17 +1659,17 @@ export class AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference extends
 }
 export interface AppmeshVirtualGatewaySpecListenerPortMapping {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#port AppmeshVirtualGateway#port}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#port AppmeshVirtualGateway#port}
   */
   readonly port: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#protocol AppmeshVirtualGateway#protocol}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#protocol AppmeshVirtualGateway#protocol}
   */
   readonly protocol: string;
 }
 
 export function appmeshVirtualGatewaySpecListenerPortMappingToTerraform(struct?: AppmeshVirtualGatewaySpecListenerPortMappingOutputReference | AppmeshVirtualGatewaySpecListenerPortMapping): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1609,23 +1680,25 @@ export function appmeshVirtualGatewaySpecListenerPortMappingToTerraform(struct?:
 }
 
 export class AppmeshVirtualGatewaySpecListenerPortMappingOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerPortMapping | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._port) {
+    if (this._port !== undefined) {
       hasAnyValues = true;
       internalValueResult.port = this._port;
     }
-    if (this._protocol) {
+    if (this._protocol !== undefined) {
       hasAnyValues = true;
       internalValueResult.protocol = this._protocol;
     }
@@ -1634,10 +1707,12 @@ export class AppmeshVirtualGatewaySpecListenerPortMappingOutputReference extends
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerPortMapping | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._port = undefined;
       this._protocol = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._port = value.port;
       this._protocol = value.protocol;
     }
@@ -1671,13 +1746,13 @@ export class AppmeshVirtualGatewaySpecListenerPortMappingOutputReference extends
 }
 export interface AppmeshVirtualGatewaySpecListenerTlsCertificateAcm {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#certificate_arn AppmeshVirtualGateway#certificate_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#certificate_arn AppmeshVirtualGateway#certificate_arn}
   */
   readonly certificateArn: string;
 }
 
 export function appmeshVirtualGatewaySpecListenerTlsCertificateAcmToTerraform(struct?: AppmeshVirtualGatewaySpecListenerTlsCertificateAcmOutputReference | AppmeshVirtualGatewaySpecListenerTlsCertificateAcm): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1687,19 +1762,21 @@ export function appmeshVirtualGatewaySpecListenerTlsCertificateAcmToTerraform(st
 }
 
 export class AppmeshVirtualGatewaySpecListenerTlsCertificateAcmOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsCertificateAcm | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._certificateArn) {
+    if (this._certificateArn !== undefined) {
       hasAnyValues = true;
       internalValueResult.certificateArn = this._certificateArn;
     }
@@ -1708,9 +1785,11 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateAcmOutputReference e
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsCertificateAcm | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._certificateArn = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._certificateArn = value.certificateArn;
     }
   }
@@ -1730,17 +1809,17 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateAcmOutputReference e
 }
 export interface AppmeshVirtualGatewaySpecListenerTlsCertificateFile {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#certificate_chain AppmeshVirtualGateway#certificate_chain}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#certificate_chain AppmeshVirtualGateway#certificate_chain}
   */
   readonly certificateChain: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#private_key AppmeshVirtualGateway#private_key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#private_key AppmeshVirtualGateway#private_key}
   */
   readonly privateKey: string;
 }
 
 export function appmeshVirtualGatewaySpecListenerTlsCertificateFileToTerraform(struct?: AppmeshVirtualGatewaySpecListenerTlsCertificateFileOutputReference | AppmeshVirtualGatewaySpecListenerTlsCertificateFile): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1751,23 +1830,25 @@ export function appmeshVirtualGatewaySpecListenerTlsCertificateFileToTerraform(s
 }
 
 export class AppmeshVirtualGatewaySpecListenerTlsCertificateFileOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsCertificateFile | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._certificateChain) {
+    if (this._certificateChain !== undefined) {
       hasAnyValues = true;
       internalValueResult.certificateChain = this._certificateChain;
     }
-    if (this._privateKey) {
+    if (this._privateKey !== undefined) {
       hasAnyValues = true;
       internalValueResult.privateKey = this._privateKey;
     }
@@ -1776,10 +1857,12 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateFileOutputReference 
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsCertificateFile | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._certificateChain = undefined;
       this._privateKey = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._certificateChain = value.certificateChain;
       this._privateKey = value.privateKey;
     }
@@ -1813,13 +1896,13 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateFileOutputReference 
 }
 export interface AppmeshVirtualGatewaySpecListenerTlsCertificateSds {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#secret_name AppmeshVirtualGateway#secret_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#secret_name AppmeshVirtualGateway#secret_name}
   */
   readonly secretName: string;
 }
 
 export function appmeshVirtualGatewaySpecListenerTlsCertificateSdsToTerraform(struct?: AppmeshVirtualGatewaySpecListenerTlsCertificateSdsOutputReference | AppmeshVirtualGatewaySpecListenerTlsCertificateSds): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1829,19 +1912,21 @@ export function appmeshVirtualGatewaySpecListenerTlsCertificateSdsToTerraform(st
 }
 
 export class AppmeshVirtualGatewaySpecListenerTlsCertificateSdsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsCertificateSds | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._secretName) {
+    if (this._secretName !== undefined) {
       hasAnyValues = true;
       internalValueResult.secretName = this._secretName;
     }
@@ -1850,9 +1935,11 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateSdsOutputReference e
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsCertificateSds | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._secretName = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._secretName = value.secretName;
     }
   }
@@ -1874,25 +1961,25 @@ export interface AppmeshVirtualGatewaySpecListenerTlsCertificate {
   /**
   * acm block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#acm AppmeshVirtualGateway#acm}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#acm AppmeshVirtualGateway#acm}
   */
   readonly acm?: AppmeshVirtualGatewaySpecListenerTlsCertificateAcm;
   /**
   * file block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#file AppmeshVirtualGateway#file}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#file AppmeshVirtualGateway#file}
   */
   readonly file?: AppmeshVirtualGatewaySpecListenerTlsCertificateFile;
   /**
   * sds block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#sds AppmeshVirtualGateway#sds}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#sds AppmeshVirtualGateway#sds}
   */
   readonly sds?: AppmeshVirtualGatewaySpecListenerTlsCertificateSds;
 }
 
 export function appmeshVirtualGatewaySpecListenerTlsCertificateToTerraform(struct?: AppmeshVirtualGatewaySpecListenerTlsCertificateOutputReference | AppmeshVirtualGatewaySpecListenerTlsCertificate): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1904,27 +1991,29 @@ export function appmeshVirtualGatewaySpecListenerTlsCertificateToTerraform(struc
 }
 
 export class AppmeshVirtualGatewaySpecListenerTlsCertificateOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsCertificate | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._acm) {
+    if (this._acm?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.acm = this._acm?.internalValue;
     }
-    if (this._file) {
+    if (this._file?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.file = this._file?.internalValue;
     }
-    if (this._sds) {
+    if (this._sds?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.sds = this._sds?.internalValue;
     }
@@ -1933,11 +2022,13 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateOutputReference exte
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsCertificate | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._acm.internalValue = undefined;
       this._file.internalValue = undefined;
       this._sds.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._acm.internalValue = value.acm;
       this._file.internalValue = value.file;
       this._sds.internalValue = value.sds;
@@ -1945,7 +2036,7 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateOutputReference exte
   }
 
   // acm - computed: false, optional: true, required: false
-  private _acm = new AppmeshVirtualGatewaySpecListenerTlsCertificateAcmOutputReference(this as any, "acm", true);
+  private _acm = new AppmeshVirtualGatewaySpecListenerTlsCertificateAcmOutputReference(this, "acm", true);
   public get acm() {
     return this._acm;
   }
@@ -1961,7 +2052,7 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateOutputReference exte
   }
 
   // file - computed: false, optional: true, required: false
-  private _file = new AppmeshVirtualGatewaySpecListenerTlsCertificateFileOutputReference(this as any, "file", true);
+  private _file = new AppmeshVirtualGatewaySpecListenerTlsCertificateFileOutputReference(this, "file", true);
   public get file() {
     return this._file;
   }
@@ -1977,7 +2068,7 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateOutputReference exte
   }
 
   // sds - computed: false, optional: true, required: false
-  private _sds = new AppmeshVirtualGatewaySpecListenerTlsCertificateSdsOutputReference(this as any, "sds", true);
+  private _sds = new AppmeshVirtualGatewaySpecListenerTlsCertificateSdsOutputReference(this, "sds", true);
   public get sds() {
     return this._sds;
   }
@@ -1994,13 +2085,13 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateOutputReference exte
 }
 export interface AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#exact AppmeshVirtualGateway#exact}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#exact AppmeshVirtualGateway#exact}
   */
   readonly exact: string[];
 }
 
 export function appmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatchToTerraform(struct?: AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatchOutputReference | AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2010,19 +2101,21 @@ export function appmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternative
 }
 
 export class AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatchOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._exact) {
+    if (this._exact !== undefined) {
       hasAnyValues = true;
       internalValueResult.exact = this._exact;
     }
@@ -2031,9 +2124,11 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNam
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._exact = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._exact = value.exact;
     }
   }
@@ -2041,7 +2136,7 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNam
   // exact - computed: false, optional: false, required: true
   private _exact?: string[]; 
   public get exact() {
-    return this.getListAttribute('exact');
+    return cdktf.Fn.tolist(this.getListAttribute('exact'));
   }
   public set exact(value: string[]) {
     this._exact = value;
@@ -2055,13 +2150,13 @@ export interface AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativ
   /**
   * match block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#match AppmeshVirtualGateway#match}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#match AppmeshVirtualGateway#match}
   */
   readonly match: AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch;
 }
 
 export function appmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesToTerraform(struct?: AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesOutputReference | AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2071,19 +2166,21 @@ export function appmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternative
 }
 
 export class AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._match) {
+    if (this._match?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.match = this._match?.internalValue;
     }
@@ -2092,15 +2189,17 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNam
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._match.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._match.internalValue = value.match;
     }
   }
 
   // match - computed: false, optional: false, required: true
-  private _match = new AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatchOutputReference(this as any, "match", true);
+  private _match = new AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatchOutputReference(this, "match", true);
   public get match() {
     return this._match;
   }
@@ -2114,13 +2213,13 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNam
 }
 export interface AppmeshVirtualGatewaySpecListenerTlsValidationTrustFile {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#certificate_chain AppmeshVirtualGateway#certificate_chain}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#certificate_chain AppmeshVirtualGateway#certificate_chain}
   */
   readonly certificateChain: string;
 }
 
 export function appmeshVirtualGatewaySpecListenerTlsValidationTrustFileToTerraform(struct?: AppmeshVirtualGatewaySpecListenerTlsValidationTrustFileOutputReference | AppmeshVirtualGatewaySpecListenerTlsValidationTrustFile): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2130,19 +2229,21 @@ export function appmeshVirtualGatewaySpecListenerTlsValidationTrustFileToTerrafo
 }
 
 export class AppmeshVirtualGatewaySpecListenerTlsValidationTrustFileOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsValidationTrustFile | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._certificateChain) {
+    if (this._certificateChain !== undefined) {
       hasAnyValues = true;
       internalValueResult.certificateChain = this._certificateChain;
     }
@@ -2151,9 +2252,11 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationTrustFileOutputRefere
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsValidationTrustFile | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._certificateChain = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._certificateChain = value.certificateChain;
     }
   }
@@ -2173,13 +2276,13 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationTrustFileOutputRefere
 }
 export interface AppmeshVirtualGatewaySpecListenerTlsValidationTrustSds {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#secret_name AppmeshVirtualGateway#secret_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#secret_name AppmeshVirtualGateway#secret_name}
   */
   readonly secretName: string;
 }
 
 export function appmeshVirtualGatewaySpecListenerTlsValidationTrustSdsToTerraform(struct?: AppmeshVirtualGatewaySpecListenerTlsValidationTrustSdsOutputReference | AppmeshVirtualGatewaySpecListenerTlsValidationTrustSds): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2189,19 +2292,21 @@ export function appmeshVirtualGatewaySpecListenerTlsValidationTrustSdsToTerrafor
 }
 
 export class AppmeshVirtualGatewaySpecListenerTlsValidationTrustSdsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsValidationTrustSds | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._secretName) {
+    if (this._secretName !== undefined) {
       hasAnyValues = true;
       internalValueResult.secretName = this._secretName;
     }
@@ -2210,9 +2315,11 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationTrustSdsOutputReferen
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsValidationTrustSds | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._secretName = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._secretName = value.secretName;
     }
   }
@@ -2234,19 +2341,19 @@ export interface AppmeshVirtualGatewaySpecListenerTlsValidationTrust {
   /**
   * file block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#file AppmeshVirtualGateway#file}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#file AppmeshVirtualGateway#file}
   */
   readonly file?: AppmeshVirtualGatewaySpecListenerTlsValidationTrustFile;
   /**
   * sds block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#sds AppmeshVirtualGateway#sds}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#sds AppmeshVirtualGateway#sds}
   */
   readonly sds?: AppmeshVirtualGatewaySpecListenerTlsValidationTrustSds;
 }
 
 export function appmeshVirtualGatewaySpecListenerTlsValidationTrustToTerraform(struct?: AppmeshVirtualGatewaySpecListenerTlsValidationTrustOutputReference | AppmeshVirtualGatewaySpecListenerTlsValidationTrust): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2257,23 +2364,25 @@ export function appmeshVirtualGatewaySpecListenerTlsValidationTrustToTerraform(s
 }
 
 export class AppmeshVirtualGatewaySpecListenerTlsValidationTrustOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsValidationTrust | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._file) {
+    if (this._file?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.file = this._file?.internalValue;
     }
-    if (this._sds) {
+    if (this._sds?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.sds = this._sds?.internalValue;
     }
@@ -2282,17 +2391,19 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationTrustOutputReference 
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsValidationTrust | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._file.internalValue = undefined;
       this._sds.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._file.internalValue = value.file;
       this._sds.internalValue = value.sds;
     }
   }
 
   // file - computed: false, optional: true, required: false
-  private _file = new AppmeshVirtualGatewaySpecListenerTlsValidationTrustFileOutputReference(this as any, "file", true);
+  private _file = new AppmeshVirtualGatewaySpecListenerTlsValidationTrustFileOutputReference(this, "file", true);
   public get file() {
     return this._file;
   }
@@ -2308,7 +2419,7 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationTrustOutputReference 
   }
 
   // sds - computed: false, optional: true, required: false
-  private _sds = new AppmeshVirtualGatewaySpecListenerTlsValidationTrustSdsOutputReference(this as any, "sds", true);
+  private _sds = new AppmeshVirtualGatewaySpecListenerTlsValidationTrustSdsOutputReference(this, "sds", true);
   public get sds() {
     return this._sds;
   }
@@ -2327,19 +2438,19 @@ export interface AppmeshVirtualGatewaySpecListenerTlsValidation {
   /**
   * subject_alternative_names block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#subject_alternative_names AppmeshVirtualGateway#subject_alternative_names}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#subject_alternative_names AppmeshVirtualGateway#subject_alternative_names}
   */
   readonly subjectAlternativeNames?: AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames;
   /**
   * trust block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#trust AppmeshVirtualGateway#trust}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#trust AppmeshVirtualGateway#trust}
   */
   readonly trust: AppmeshVirtualGatewaySpecListenerTlsValidationTrust;
 }
 
 export function appmeshVirtualGatewaySpecListenerTlsValidationToTerraform(struct?: AppmeshVirtualGatewaySpecListenerTlsValidationOutputReference | AppmeshVirtualGatewaySpecListenerTlsValidation): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2350,23 +2461,25 @@ export function appmeshVirtualGatewaySpecListenerTlsValidationToTerraform(struct
 }
 
 export class AppmeshVirtualGatewaySpecListenerTlsValidationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsValidation | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._subjectAlternativeNames) {
+    if (this._subjectAlternativeNames?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.subjectAlternativeNames = this._subjectAlternativeNames?.internalValue;
     }
-    if (this._trust) {
+    if (this._trust?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.trust = this._trust?.internalValue;
     }
@@ -2375,17 +2488,19 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationOutputReference exten
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsValidation | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._subjectAlternativeNames.internalValue = undefined;
       this._trust.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._subjectAlternativeNames.internalValue = value.subjectAlternativeNames;
       this._trust.internalValue = value.trust;
     }
   }
 
   // subject_alternative_names - computed: false, optional: true, required: false
-  private _subjectAlternativeNames = new AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesOutputReference(this as any, "subject_alternative_names", true);
+  private _subjectAlternativeNames = new AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesOutputReference(this, "subject_alternative_names", true);
   public get subjectAlternativeNames() {
     return this._subjectAlternativeNames;
   }
@@ -2401,7 +2516,7 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationOutputReference exten
   }
 
   // trust - computed: false, optional: false, required: true
-  private _trust = new AppmeshVirtualGatewaySpecListenerTlsValidationTrustOutputReference(this as any, "trust", true);
+  private _trust = new AppmeshVirtualGatewaySpecListenerTlsValidationTrustOutputReference(this, "trust", true);
   public get trust() {
     return this._trust;
   }
@@ -2415,25 +2530,25 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationOutputReference exten
 }
 export interface AppmeshVirtualGatewaySpecListenerTls {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#mode AppmeshVirtualGateway#mode}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#mode AppmeshVirtualGateway#mode}
   */
   readonly mode: string;
   /**
   * certificate block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#certificate AppmeshVirtualGateway#certificate}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#certificate AppmeshVirtualGateway#certificate}
   */
   readonly certificate: AppmeshVirtualGatewaySpecListenerTlsCertificate;
   /**
   * validation block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#validation AppmeshVirtualGateway#validation}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#validation AppmeshVirtualGateway#validation}
   */
   readonly validation?: AppmeshVirtualGatewaySpecListenerTlsValidation;
 }
 
 export function appmeshVirtualGatewaySpecListenerTlsToTerraform(struct?: AppmeshVirtualGatewaySpecListenerTlsOutputReference | AppmeshVirtualGatewaySpecListenerTls): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2445,27 +2560,29 @@ export function appmeshVirtualGatewaySpecListenerTlsToTerraform(struct?: Appmesh
 }
 
 export class AppmeshVirtualGatewaySpecListenerTlsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListenerTls | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._mode) {
+    if (this._mode !== undefined) {
       hasAnyValues = true;
       internalValueResult.mode = this._mode;
     }
-    if (this._certificate) {
+    if (this._certificate?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.certificate = this._certificate?.internalValue;
     }
-    if (this._validation) {
+    if (this._validation?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.validation = this._validation?.internalValue;
     }
@@ -2474,11 +2591,13 @@ export class AppmeshVirtualGatewaySpecListenerTlsOutputReference extends cdktf.C
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListenerTls | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._mode = undefined;
       this._certificate.internalValue = undefined;
       this._validation.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._mode = value.mode;
       this._certificate.internalValue = value.certificate;
       this._validation.internalValue = value.validation;
@@ -2499,7 +2618,7 @@ export class AppmeshVirtualGatewaySpecListenerTlsOutputReference extends cdktf.C
   }
 
   // certificate - computed: false, optional: false, required: true
-  private _certificate = new AppmeshVirtualGatewaySpecListenerTlsCertificateOutputReference(this as any, "certificate", true);
+  private _certificate = new AppmeshVirtualGatewaySpecListenerTlsCertificateOutputReference(this, "certificate", true);
   public get certificate() {
     return this._certificate;
   }
@@ -2512,7 +2631,7 @@ export class AppmeshVirtualGatewaySpecListenerTlsOutputReference extends cdktf.C
   }
 
   // validation - computed: false, optional: true, required: false
-  private _validation = new AppmeshVirtualGatewaySpecListenerTlsValidationOutputReference(this as any, "validation", true);
+  private _validation = new AppmeshVirtualGatewaySpecListenerTlsValidationOutputReference(this, "validation", true);
   public get validation() {
     return this._validation;
   }
@@ -2531,31 +2650,31 @@ export interface AppmeshVirtualGatewaySpecListener {
   /**
   * connection_pool block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#connection_pool AppmeshVirtualGateway#connection_pool}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#connection_pool AppmeshVirtualGateway#connection_pool}
   */
   readonly connectionPool?: AppmeshVirtualGatewaySpecListenerConnectionPool;
   /**
   * health_check block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#health_check AppmeshVirtualGateway#health_check}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#health_check AppmeshVirtualGateway#health_check}
   */
   readonly healthCheck?: AppmeshVirtualGatewaySpecListenerHealthCheck;
   /**
   * port_mapping block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#port_mapping AppmeshVirtualGateway#port_mapping}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#port_mapping AppmeshVirtualGateway#port_mapping}
   */
   readonly portMapping: AppmeshVirtualGatewaySpecListenerPortMapping;
   /**
   * tls block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#tls AppmeshVirtualGateway#tls}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#tls AppmeshVirtualGateway#tls}
   */
   readonly tls?: AppmeshVirtualGatewaySpecListenerTls;
 }
 
 export function appmeshVirtualGatewaySpecListenerToTerraform(struct?: AppmeshVirtualGatewaySpecListenerOutputReference | AppmeshVirtualGatewaySpecListener): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2568,31 +2687,33 @@ export function appmeshVirtualGatewaySpecListenerToTerraform(struct?: AppmeshVir
 }
 
 export class AppmeshVirtualGatewaySpecListenerOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecListener | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._connectionPool) {
+    if (this._connectionPool?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.connectionPool = this._connectionPool?.internalValue;
     }
-    if (this._healthCheck) {
+    if (this._healthCheck?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.healthCheck = this._healthCheck?.internalValue;
     }
-    if (this._portMapping) {
+    if (this._portMapping?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.portMapping = this._portMapping?.internalValue;
     }
-    if (this._tls) {
+    if (this._tls?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.tls = this._tls?.internalValue;
     }
@@ -2601,12 +2722,14 @@ export class AppmeshVirtualGatewaySpecListenerOutputReference extends cdktf.Comp
 
   public set internalValue(value: AppmeshVirtualGatewaySpecListener | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._connectionPool.internalValue = undefined;
       this._healthCheck.internalValue = undefined;
       this._portMapping.internalValue = undefined;
       this._tls.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._connectionPool.internalValue = value.connectionPool;
       this._healthCheck.internalValue = value.healthCheck;
       this._portMapping.internalValue = value.portMapping;
@@ -2615,7 +2738,7 @@ export class AppmeshVirtualGatewaySpecListenerOutputReference extends cdktf.Comp
   }
 
   // connection_pool - computed: false, optional: true, required: false
-  private _connectionPool = new AppmeshVirtualGatewaySpecListenerConnectionPoolOutputReference(this as any, "connection_pool", true);
+  private _connectionPool = new AppmeshVirtualGatewaySpecListenerConnectionPoolOutputReference(this, "connection_pool", true);
   public get connectionPool() {
     return this._connectionPool;
   }
@@ -2631,7 +2754,7 @@ export class AppmeshVirtualGatewaySpecListenerOutputReference extends cdktf.Comp
   }
 
   // health_check - computed: false, optional: true, required: false
-  private _healthCheck = new AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference(this as any, "health_check", true);
+  private _healthCheck = new AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference(this, "health_check", true);
   public get healthCheck() {
     return this._healthCheck;
   }
@@ -2647,7 +2770,7 @@ export class AppmeshVirtualGatewaySpecListenerOutputReference extends cdktf.Comp
   }
 
   // port_mapping - computed: false, optional: false, required: true
-  private _portMapping = new AppmeshVirtualGatewaySpecListenerPortMappingOutputReference(this as any, "port_mapping", true);
+  private _portMapping = new AppmeshVirtualGatewaySpecListenerPortMappingOutputReference(this, "port_mapping", true);
   public get portMapping() {
     return this._portMapping;
   }
@@ -2660,7 +2783,7 @@ export class AppmeshVirtualGatewaySpecListenerOutputReference extends cdktf.Comp
   }
 
   // tls - computed: false, optional: true, required: false
-  private _tls = new AppmeshVirtualGatewaySpecListenerTlsOutputReference(this as any, "tls", true);
+  private _tls = new AppmeshVirtualGatewaySpecListenerTlsOutputReference(this, "tls", true);
   public get tls() {
     return this._tls;
   }
@@ -2677,13 +2800,13 @@ export class AppmeshVirtualGatewaySpecListenerOutputReference extends cdktf.Comp
 }
 export interface AppmeshVirtualGatewaySpecLoggingAccessLogFile {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#path AppmeshVirtualGateway#path}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#path AppmeshVirtualGateway#path}
   */
   readonly path: string;
 }
 
 export function appmeshVirtualGatewaySpecLoggingAccessLogFileToTerraform(struct?: AppmeshVirtualGatewaySpecLoggingAccessLogFileOutputReference | AppmeshVirtualGatewaySpecLoggingAccessLogFile): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2693,19 +2816,21 @@ export function appmeshVirtualGatewaySpecLoggingAccessLogFileToTerraform(struct?
 }
 
 export class AppmeshVirtualGatewaySpecLoggingAccessLogFileOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecLoggingAccessLogFile | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._path) {
+    if (this._path !== undefined) {
       hasAnyValues = true;
       internalValueResult.path = this._path;
     }
@@ -2714,9 +2839,11 @@ export class AppmeshVirtualGatewaySpecLoggingAccessLogFileOutputReference extend
 
   public set internalValue(value: AppmeshVirtualGatewaySpecLoggingAccessLogFile | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._path = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._path = value.path;
     }
   }
@@ -2738,13 +2865,13 @@ export interface AppmeshVirtualGatewaySpecLoggingAccessLog {
   /**
   * file block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#file AppmeshVirtualGateway#file}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#file AppmeshVirtualGateway#file}
   */
   readonly file?: AppmeshVirtualGatewaySpecLoggingAccessLogFile;
 }
 
 export function appmeshVirtualGatewaySpecLoggingAccessLogToTerraform(struct?: AppmeshVirtualGatewaySpecLoggingAccessLogOutputReference | AppmeshVirtualGatewaySpecLoggingAccessLog): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2754,19 +2881,21 @@ export function appmeshVirtualGatewaySpecLoggingAccessLogToTerraform(struct?: Ap
 }
 
 export class AppmeshVirtualGatewaySpecLoggingAccessLogOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecLoggingAccessLog | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._file) {
+    if (this._file?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.file = this._file?.internalValue;
     }
@@ -2775,15 +2904,17 @@ export class AppmeshVirtualGatewaySpecLoggingAccessLogOutputReference extends cd
 
   public set internalValue(value: AppmeshVirtualGatewaySpecLoggingAccessLog | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._file.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._file.internalValue = value.file;
     }
   }
 
   // file - computed: false, optional: true, required: false
-  private _file = new AppmeshVirtualGatewaySpecLoggingAccessLogFileOutputReference(this as any, "file", true);
+  private _file = new AppmeshVirtualGatewaySpecLoggingAccessLogFileOutputReference(this, "file", true);
   public get file() {
     return this._file;
   }
@@ -2802,13 +2933,13 @@ export interface AppmeshVirtualGatewaySpecLogging {
   /**
   * access_log block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#access_log AppmeshVirtualGateway#access_log}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#access_log AppmeshVirtualGateway#access_log}
   */
   readonly accessLog?: AppmeshVirtualGatewaySpecLoggingAccessLog;
 }
 
 export function appmeshVirtualGatewaySpecLoggingToTerraform(struct?: AppmeshVirtualGatewaySpecLoggingOutputReference | AppmeshVirtualGatewaySpecLogging): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2818,19 +2949,21 @@ export function appmeshVirtualGatewaySpecLoggingToTerraform(struct?: AppmeshVirt
 }
 
 export class AppmeshVirtualGatewaySpecLoggingOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpecLogging | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._accessLog) {
+    if (this._accessLog?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.accessLog = this._accessLog?.internalValue;
     }
@@ -2839,15 +2972,17 @@ export class AppmeshVirtualGatewaySpecLoggingOutputReference extends cdktf.Compl
 
   public set internalValue(value: AppmeshVirtualGatewaySpecLogging | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._accessLog.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._accessLog.internalValue = value.accessLog;
     }
   }
 
   // access_log - computed: false, optional: true, required: false
-  private _accessLog = new AppmeshVirtualGatewaySpecLoggingAccessLogOutputReference(this as any, "access_log", true);
+  private _accessLog = new AppmeshVirtualGatewaySpecLoggingAccessLogOutputReference(this, "access_log", true);
   public get accessLog() {
     return this._accessLog;
   }
@@ -2866,25 +3001,25 @@ export interface AppmeshVirtualGatewaySpec {
   /**
   * backend_defaults block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#backend_defaults AppmeshVirtualGateway#backend_defaults}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#backend_defaults AppmeshVirtualGateway#backend_defaults}
   */
   readonly backendDefaults?: AppmeshVirtualGatewaySpecBackendDefaults;
   /**
   * listener block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#listener AppmeshVirtualGateway#listener}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#listener AppmeshVirtualGateway#listener}
   */
   readonly listener: AppmeshVirtualGatewaySpecListener;
   /**
   * logging block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html#logging AppmeshVirtualGateway#logging}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway#logging AppmeshVirtualGateway#logging}
   */
   readonly logging?: AppmeshVirtualGatewaySpecLogging;
 }
 
 export function appmeshVirtualGatewaySpecToTerraform(struct?: AppmeshVirtualGatewaySpecOutputReference | AppmeshVirtualGatewaySpec): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -2896,27 +3031,29 @@ export function appmeshVirtualGatewaySpecToTerraform(struct?: AppmeshVirtualGate
 }
 
 export class AppmeshVirtualGatewaySpecOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AppmeshVirtualGatewaySpec | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._backendDefaults) {
+    if (this._backendDefaults?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.backendDefaults = this._backendDefaults?.internalValue;
     }
-    if (this._listener) {
+    if (this._listener?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.listener = this._listener?.internalValue;
     }
-    if (this._logging) {
+    if (this._logging?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.logging = this._logging?.internalValue;
     }
@@ -2925,11 +3062,13 @@ export class AppmeshVirtualGatewaySpecOutputReference extends cdktf.ComplexObjec
 
   public set internalValue(value: AppmeshVirtualGatewaySpec | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._backendDefaults.internalValue = undefined;
       this._listener.internalValue = undefined;
       this._logging.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._backendDefaults.internalValue = value.backendDefaults;
       this._listener.internalValue = value.listener;
       this._logging.internalValue = value.logging;
@@ -2937,7 +3076,7 @@ export class AppmeshVirtualGatewaySpecOutputReference extends cdktf.ComplexObjec
   }
 
   // backend_defaults - computed: false, optional: true, required: false
-  private _backendDefaults = new AppmeshVirtualGatewaySpecBackendDefaultsOutputReference(this as any, "backend_defaults", true);
+  private _backendDefaults = new AppmeshVirtualGatewaySpecBackendDefaultsOutputReference(this, "backend_defaults", true);
   public get backendDefaults() {
     return this._backendDefaults;
   }
@@ -2953,7 +3092,7 @@ export class AppmeshVirtualGatewaySpecOutputReference extends cdktf.ComplexObjec
   }
 
   // listener - computed: false, optional: false, required: true
-  private _listener = new AppmeshVirtualGatewaySpecListenerOutputReference(this as any, "listener", true);
+  private _listener = new AppmeshVirtualGatewaySpecListenerOutputReference(this, "listener", true);
   public get listener() {
     return this._listener;
   }
@@ -2966,7 +3105,7 @@ export class AppmeshVirtualGatewaySpecOutputReference extends cdktf.ComplexObjec
   }
 
   // logging - computed: false, optional: true, required: false
-  private _logging = new AppmeshVirtualGatewaySpecLoggingOutputReference(this as any, "logging", true);
+  private _logging = new AppmeshVirtualGatewaySpecLoggingOutputReference(this, "logging", true);
   public get logging() {
     return this._logging;
   }
@@ -2983,7 +3122,7 @@ export class AppmeshVirtualGatewaySpecOutputReference extends cdktf.ComplexObjec
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html aws_appmesh_virtual_gateway}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway aws_appmesh_virtual_gateway}
 */
 export class AppmeshVirtualGateway extends cdktf.TerraformResource {
 
@@ -2997,7 +3136,7 @@ export class AppmeshVirtualGateway extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway.html aws_appmesh_virtual_gateway} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_gateway aws_appmesh_virtual_gateway} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -3094,12 +3233,11 @@ export class AppmeshVirtualGateway extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -3111,12 +3249,11 @@ export class AppmeshVirtualGateway extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -3128,7 +3265,7 @@ export class AppmeshVirtualGateway extends cdktf.TerraformResource {
   }
 
   // spec - computed: false, optional: false, required: true
-  private _spec = new AppmeshVirtualGatewaySpecOutputReference(this as any, "spec", true);
+  private _spec = new AppmeshVirtualGatewaySpecOutputReference(this, "spec", true);
   public get spec() {
     return this._spec;
   }
@@ -3149,8 +3286,8 @@ export class AppmeshVirtualGateway extends cdktf.TerraformResource {
       mesh_name: cdktf.stringToTerraform(this._meshName),
       mesh_owner: cdktf.stringToTerraform(this._meshOwner),
       name: cdktf.stringToTerraform(this._name),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       spec: appmeshVirtualGatewaySpecToTerraform(this._spec.internalValue),
     };
   }

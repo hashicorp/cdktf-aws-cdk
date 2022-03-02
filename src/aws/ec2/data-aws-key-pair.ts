@@ -8,37 +8,37 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsKeyPairConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/key_pair.html#key_name DataAwsKeyPair#key_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/key_pair#key_name DataAwsKeyPair#key_name}
   */
   readonly keyName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/key_pair.html#key_pair_id DataAwsKeyPair#key_pair_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/key_pair#key_pair_id DataAwsKeyPair#key_pair_id}
   */
   readonly keyPairId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/key_pair.html#tags DataAwsKeyPair#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/key_pair#tags DataAwsKeyPair#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
   * filter block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/key_pair.html#filter DataAwsKeyPair#filter}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/key_pair#filter DataAwsKeyPair#filter}
   */
-  readonly filter?: DataAwsKeyPairFilter[];
+  readonly filter?: DataAwsKeyPairFilter[] | cdktf.IResolvable;
 }
 export interface DataAwsKeyPairFilter {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/key_pair.html#name DataAwsKeyPair#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/key_pair#name DataAwsKeyPair#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/key_pair.html#values DataAwsKeyPair#values}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/key_pair#values DataAwsKeyPair#values}
   */
   readonly values: string[];
 }
 
-export function dataAwsKeyPairFilterToTerraform(struct?: DataAwsKeyPairFilter): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function dataAwsKeyPairFilterToTerraform(struct?: DataAwsKeyPairFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -50,7 +50,7 @@ export function dataAwsKeyPairFilterToTerraform(struct?: DataAwsKeyPairFilter): 
 
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/key_pair.html aws_key_pair}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/key_pair aws_key_pair}
 */
 export class DataAwsKeyPair extends cdktf.TerraformDataSource {
 
@@ -64,7 +64,7 @@ export class DataAwsKeyPair extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/key_pair.html aws_key_pair} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/key_pair aws_key_pair} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -139,12 +139,11 @@ export class DataAwsKeyPair extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -156,12 +155,12 @@ export class DataAwsKeyPair extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsKeyPairFilter[]; 
+  private _filter?: DataAwsKeyPairFilter[] | cdktf.IResolvable; 
   public get filter() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('filter') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('filter')));
   }
-  public set filter(value: DataAwsKeyPairFilter[]) {
+  public set filter(value: DataAwsKeyPairFilter[] | cdktf.IResolvable) {
     this._filter = value;
   }
   public resetFilter() {
@@ -180,7 +179,7 @@ export class DataAwsKeyPair extends cdktf.TerraformDataSource {
     return {
       key_name: cdktf.stringToTerraform(this._keyName),
       key_pair_id: cdktf.stringToTerraform(this._keyPairId),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       filter: cdktf.listMapper(dataAwsKeyPairFilterToTerraform)(this._filter),
     };
   }

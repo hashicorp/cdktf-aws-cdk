@@ -8,71 +8,71 @@ import * as cdktf from 'cdktf';
 */
 export interface SecretsmanagerSecretConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html#description SecretsmanagerSecret#description}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret#description SecretsmanagerSecret#description}
   */
   readonly description?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html#force_overwrite_replica_secret SecretsmanagerSecret#force_overwrite_replica_secret}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret#force_overwrite_replica_secret SecretsmanagerSecret#force_overwrite_replica_secret}
   */
   readonly forceOverwriteReplicaSecret?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html#kms_key_id SecretsmanagerSecret#kms_key_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret#kms_key_id SecretsmanagerSecret#kms_key_id}
   */
   readonly kmsKeyId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html#name SecretsmanagerSecret#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret#name SecretsmanagerSecret#name}
   */
   readonly name?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html#name_prefix SecretsmanagerSecret#name_prefix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret#name_prefix SecretsmanagerSecret#name_prefix}
   */
   readonly namePrefix?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html#policy SecretsmanagerSecret#policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret#policy SecretsmanagerSecret#policy}
   */
   readonly policy?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html#recovery_window_in_days SecretsmanagerSecret#recovery_window_in_days}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret#recovery_window_in_days SecretsmanagerSecret#recovery_window_in_days}
   */
   readonly recoveryWindowInDays?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html#rotation_lambda_arn SecretsmanagerSecret#rotation_lambda_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret#rotation_lambda_arn SecretsmanagerSecret#rotation_lambda_arn}
   */
   readonly rotationLambdaArn?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html#tags SecretsmanagerSecret#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret#tags SecretsmanagerSecret#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html#tags_all SecretsmanagerSecret#tags_all}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret#tags_all SecretsmanagerSecret#tags_all}
   */
-  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tagsAll?: { [key: string]: string };
   /**
   * replica block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html#replica SecretsmanagerSecret#replica}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret#replica SecretsmanagerSecret#replica}
   */
-  readonly replica?: SecretsmanagerSecretReplica[];
+  readonly replica?: SecretsmanagerSecretReplica[] | cdktf.IResolvable;
   /**
   * rotation_rules block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html#rotation_rules SecretsmanagerSecret#rotation_rules}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret#rotation_rules SecretsmanagerSecret#rotation_rules}
   */
   readonly rotationRules?: SecretsmanagerSecretRotationRules;
 }
 export interface SecretsmanagerSecretReplica {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html#kms_key_id SecretsmanagerSecret#kms_key_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret#kms_key_id SecretsmanagerSecret#kms_key_id}
   */
   readonly kmsKeyId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html#region SecretsmanagerSecret#region}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret#region SecretsmanagerSecret#region}
   */
   readonly region: string;
 }
 
-export function secretsmanagerSecretReplicaToTerraform(struct?: SecretsmanagerSecretReplica): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function secretsmanagerSecretReplicaToTerraform(struct?: SecretsmanagerSecretReplica | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -84,13 +84,13 @@ export function secretsmanagerSecretReplicaToTerraform(struct?: SecretsmanagerSe
 
 export interface SecretsmanagerSecretRotationRules {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html#automatically_after_days SecretsmanagerSecret#automatically_after_days}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret#automatically_after_days SecretsmanagerSecret#automatically_after_days}
   */
   readonly automaticallyAfterDays: number;
 }
 
 export function secretsmanagerSecretRotationRulesToTerraform(struct?: SecretsmanagerSecretRotationRulesOutputReference | SecretsmanagerSecretRotationRules): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -100,19 +100,21 @@ export function secretsmanagerSecretRotationRulesToTerraform(struct?: Secretsman
 }
 
 export class SecretsmanagerSecretRotationRulesOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): SecretsmanagerSecretRotationRules | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._automaticallyAfterDays) {
+    if (this._automaticallyAfterDays !== undefined) {
       hasAnyValues = true;
       internalValueResult.automaticallyAfterDays = this._automaticallyAfterDays;
     }
@@ -121,9 +123,11 @@ export class SecretsmanagerSecretRotationRulesOutputReference extends cdktf.Comp
 
   public set internalValue(value: SecretsmanagerSecretRotationRules | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._automaticallyAfterDays = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._automaticallyAfterDays = value.automaticallyAfterDays;
     }
   }
@@ -143,7 +147,7 @@ export class SecretsmanagerSecretRotationRulesOutputReference extends cdktf.Comp
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html aws_secretsmanager_secret}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret aws_secretsmanager_secret}
 */
 export class SecretsmanagerSecret extends cdktf.TerraformResource {
 
@@ -157,7 +161,7 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html aws_secretsmanager_secret} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret aws_secretsmanager_secret} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -216,7 +220,7 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   // force_overwrite_replica_secret - computed: false, optional: true, required: false
   private _forceOverwriteReplicaSecret?: boolean | cdktf.IResolvable; 
   public get forceOverwriteReplicaSecret() {
-    return this.getBooleanAttribute('force_overwrite_replica_secret') as any;
+    return this.getBooleanAttribute('force_overwrite_replica_secret');
   }
   public set forceOverwriteReplicaSecret(value: boolean | cdktf.IResolvable) {
     this._forceOverwriteReplicaSecret = value;
@@ -316,7 +320,7 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
 
   // rotation_enabled - computed: true, optional: false, required: false
   public get rotationEnabled() {
-    return this.getBooleanAttribute('rotation_enabled') as any;
+    return this.getBooleanAttribute('rotation_enabled');
   }
 
   // rotation_lambda_arn - computed: true, optional: true, required: false
@@ -336,12 +340,11 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -353,12 +356,11 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tagsAll?: { [key: string]: string }; 
   public get tagsAll() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags_all') as any;
+    return this.getStringMapAttribute('tags_all');
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tagsAll(value: { [key: string]: string }) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -370,12 +372,12 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
 
   // replica - computed: false, optional: true, required: false
-  private _replica?: SecretsmanagerSecretReplica[]; 
+  private _replica?: SecretsmanagerSecretReplica[] | cdktf.IResolvable; 
   public get replica() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('replica') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('replica')));
   }
-  public set replica(value: SecretsmanagerSecretReplica[]) {
+  public set replica(value: SecretsmanagerSecretReplica[] | cdktf.IResolvable) {
     this._replica = value;
   }
   public resetReplica() {
@@ -387,7 +389,7 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
   }
 
   // rotation_rules - computed: false, optional: true, required: false
-  private _rotationRules = new SecretsmanagerSecretRotationRulesOutputReference(this as any, "rotation_rules", true);
+  private _rotationRules = new SecretsmanagerSecretRotationRulesOutputReference(this, "rotation_rules", true);
   public get rotationRules() {
     return this._rotationRules;
   }
@@ -416,8 +418,8 @@ export class SecretsmanagerSecret extends cdktf.TerraformResource {
       policy: cdktf.stringToTerraform(this._policy),
       recovery_window_in_days: cdktf.numberToTerraform(this._recoveryWindowInDays),
       rotation_lambda_arn: cdktf.stringToTerraform(this._rotationLambdaArn),
-      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       replica: cdktf.listMapper(secretsmanagerSecretReplicaToTerraform)(this._replica),
       rotation_rules: secretsmanagerSecretRotationRulesToTerraform(this._rotationRules.internalValue),
     };

@@ -1,4 +1,4 @@
-// https://www.terraform.io/docs/providers/time/r/static.html
+// https://www.terraform.io/docs/providers/time/r/static
 // generated from terraform resource schema
 
 import { Construct } from 'constructs';
@@ -8,17 +8,17 @@ import * as cdktf from 'cdktf';
 
 export interface StaticConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/static.html#rfc3339 Static#rfc3339}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/static#rfc3339 Static#rfc3339}
   */
   readonly rfc3339?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/static.html#triggers Static#triggers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time/r/static#triggers Static#triggers}
   */
-  readonly triggers?: { [key: string]: string } | cdktf.IResolvable;
+  readonly triggers?: { [key: string]: string };
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/time/r/static.html time_static}
+* Represents a {@link https://www.terraform.io/docs/providers/time/r/static time_static}
 */
 export class Static extends cdktf.TerraformResource {
 
@@ -32,7 +32,7 @@ export class Static extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/time/r/static.html time_static} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/time/r/static time_static} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -104,12 +104,11 @@ export class Static extends cdktf.TerraformResource {
   }
 
   // triggers - computed: false, optional: true, required: false
-  private _triggers?: { [key: string]: string } | cdktf.IResolvable; 
+  private _triggers?: { [key: string]: string }; 
   public get triggers() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('triggers') as any;
+    return this.getStringMapAttribute('triggers');
   }
-  public set triggers(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set triggers(value: { [key: string]: string }) {
     this._triggers = value;
   }
   public resetTriggers() {
@@ -137,7 +136,7 @@ export class Static extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       rfc3339: cdktf.stringToTerraform(this._rfc3339),
-      triggers: cdktf.hashMapper(cdktf.anyToTerraform)(this._triggers),
+      triggers: cdktf.hashMapper(cdktf.stringToTerraform)(this._triggers),
     };
   }
 }

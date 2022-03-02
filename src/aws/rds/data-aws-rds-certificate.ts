@@ -8,13 +8,13 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsRdsCertificateConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_certificate.html#latest_valid_till DataAwsRdsCertificate#latest_valid_till}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/rds_certificate#latest_valid_till DataAwsRdsCertificate#latest_valid_till}
   */
   readonly latestValidTill?: boolean | cdktf.IResolvable;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/d/rds_certificate.html aws_rds_certificate}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/d/rds_certificate aws_rds_certificate}
 */
 export class DataAwsRdsCertificate extends cdktf.TerraformDataSource {
 
@@ -28,7 +28,7 @@ export class DataAwsRdsCertificate extends cdktf.TerraformDataSource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/rds_certificate.html aws_rds_certificate} Data Source
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/d/rds_certificate aws_rds_certificate} Data Source
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -64,7 +64,7 @@ export class DataAwsRdsCertificate extends cdktf.TerraformDataSource {
 
   // customer_override - computed: true, optional: false, required: false
   public get customerOverride() {
-    return this.getBooleanAttribute('customer_override') as any;
+    return this.getBooleanAttribute('customer_override');
   }
 
   // customer_override_valid_till - computed: true, optional: false, required: false
@@ -80,7 +80,7 @@ export class DataAwsRdsCertificate extends cdktf.TerraformDataSource {
   // latest_valid_till - computed: false, optional: true, required: false
   private _latestValidTill?: boolean | cdktf.IResolvable; 
   public get latestValidTill() {
-    return this.getBooleanAttribute('latest_valid_till') as any;
+    return this.getBooleanAttribute('latest_valid_till');
   }
   public set latestValidTill(value: boolean | cdktf.IResolvable) {
     this._latestValidTill = value;

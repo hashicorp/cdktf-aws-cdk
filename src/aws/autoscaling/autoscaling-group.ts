@@ -8,193 +8,193 @@ import * as cdktf from 'cdktf';
 */
 export interface AutoscalingGroupConfig extends cdktf.TerraformMetaArguments {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#availability_zones AutoscalingGroup#availability_zones}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#availability_zones AutoscalingGroup#availability_zones}
   */
   readonly availabilityZones?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#capacity_rebalance AutoscalingGroup#capacity_rebalance}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#capacity_rebalance AutoscalingGroup#capacity_rebalance}
   */
   readonly capacityRebalance?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#default_cooldown AutoscalingGroup#default_cooldown}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#default_cooldown AutoscalingGroup#default_cooldown}
   */
   readonly defaultCooldown?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#desired_capacity AutoscalingGroup#desired_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#desired_capacity AutoscalingGroup#desired_capacity}
   */
   readonly desiredCapacity?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#enabled_metrics AutoscalingGroup#enabled_metrics}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#enabled_metrics AutoscalingGroup#enabled_metrics}
   */
   readonly enabledMetrics?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#force_delete AutoscalingGroup#force_delete}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#force_delete AutoscalingGroup#force_delete}
   */
   readonly forceDelete?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#force_delete_warm_pool AutoscalingGroup#force_delete_warm_pool}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#force_delete_warm_pool AutoscalingGroup#force_delete_warm_pool}
   */
   readonly forceDeleteWarmPool?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#health_check_grace_period AutoscalingGroup#health_check_grace_period}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#health_check_grace_period AutoscalingGroup#health_check_grace_period}
   */
   readonly healthCheckGracePeriod?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#health_check_type AutoscalingGroup#health_check_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#health_check_type AutoscalingGroup#health_check_type}
   */
   readonly healthCheckType?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#launch_configuration AutoscalingGroup#launch_configuration}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#launch_configuration AutoscalingGroup#launch_configuration}
   */
   readonly launchConfiguration?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#load_balancers AutoscalingGroup#load_balancers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#load_balancers AutoscalingGroup#load_balancers}
   */
   readonly loadBalancers?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#max_instance_lifetime AutoscalingGroup#max_instance_lifetime}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#max_instance_lifetime AutoscalingGroup#max_instance_lifetime}
   */
   readonly maxInstanceLifetime?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#max_size AutoscalingGroup#max_size}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#max_size AutoscalingGroup#max_size}
   */
   readonly maxSize: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#metrics_granularity AutoscalingGroup#metrics_granularity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#metrics_granularity AutoscalingGroup#metrics_granularity}
   */
   readonly metricsGranularity?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#min_elb_capacity AutoscalingGroup#min_elb_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#min_elb_capacity AutoscalingGroup#min_elb_capacity}
   */
   readonly minElbCapacity?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#min_size AutoscalingGroup#min_size}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#min_size AutoscalingGroup#min_size}
   */
   readonly minSize: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#name AutoscalingGroup#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#name AutoscalingGroup#name}
   */
   readonly name?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#name_prefix AutoscalingGroup#name_prefix}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#name_prefix AutoscalingGroup#name_prefix}
   */
   readonly namePrefix?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#placement_group AutoscalingGroup#placement_group}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#placement_group AutoscalingGroup#placement_group}
   */
   readonly placementGroup?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#protect_from_scale_in AutoscalingGroup#protect_from_scale_in}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#protect_from_scale_in AutoscalingGroup#protect_from_scale_in}
   */
   readonly protectFromScaleIn?: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#service_linked_role_arn AutoscalingGroup#service_linked_role_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#service_linked_role_arn AutoscalingGroup#service_linked_role_arn}
   */
   readonly serviceLinkedRoleArn?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#suspended_processes AutoscalingGroup#suspended_processes}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#suspended_processes AutoscalingGroup#suspended_processes}
   */
   readonly suspendedProcesses?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#tags AutoscalingGroup#tags}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#tags AutoscalingGroup#tags}
   */
-  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  readonly tags?: { [key: string]: string };
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#target_group_arns AutoscalingGroup#target_group_arns}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#target_group_arns AutoscalingGroup#target_group_arns}
   */
   readonly targetGroupArns?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#termination_policies AutoscalingGroup#termination_policies}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#termination_policies AutoscalingGroup#termination_policies}
   */
   readonly terminationPolicies?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#vpc_zone_identifier AutoscalingGroup#vpc_zone_identifier}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#vpc_zone_identifier AutoscalingGroup#vpc_zone_identifier}
   */
   readonly vpcZoneIdentifier?: string[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#wait_for_capacity_timeout AutoscalingGroup#wait_for_capacity_timeout}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#wait_for_capacity_timeout AutoscalingGroup#wait_for_capacity_timeout}
   */
   readonly waitForCapacityTimeout?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#wait_for_elb_capacity AutoscalingGroup#wait_for_elb_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#wait_for_elb_capacity AutoscalingGroup#wait_for_elb_capacity}
   */
   readonly waitForElbCapacity?: number;
   /**
   * initial_lifecycle_hook block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#initial_lifecycle_hook AutoscalingGroup#initial_lifecycle_hook}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#initial_lifecycle_hook AutoscalingGroup#initial_lifecycle_hook}
   */
-  readonly initialLifecycleHook?: AutoscalingGroupInitialLifecycleHook[];
+  readonly initialLifecycleHook?: AutoscalingGroupInitialLifecycleHook[] | cdktf.IResolvable;
   /**
   * instance_refresh block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#instance_refresh AutoscalingGroup#instance_refresh}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#instance_refresh AutoscalingGroup#instance_refresh}
   */
   readonly instanceRefresh?: AutoscalingGroupInstanceRefresh;
   /**
   * launch_template block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#launch_template AutoscalingGroup#launch_template}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#launch_template AutoscalingGroup#launch_template}
   */
   readonly launchTemplate?: AutoscalingGroupLaunchTemplate;
   /**
   * mixed_instances_policy block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#mixed_instances_policy AutoscalingGroup#mixed_instances_policy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#mixed_instances_policy AutoscalingGroup#mixed_instances_policy}
   */
   readonly mixedInstancesPolicy?: AutoscalingGroupMixedInstancesPolicy;
   /**
   * tag block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#tag AutoscalingGroup#tag}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#tag AutoscalingGroup#tag}
   */
-  readonly tag?: AutoscalingGroupTag[];
+  readonly tag?: AutoscalingGroupTag[] | cdktf.IResolvable;
   /**
   * timeouts block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#timeouts AutoscalingGroup#timeouts}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#timeouts AutoscalingGroup#timeouts}
   */
   readonly timeouts?: AutoscalingGroupTimeouts;
   /**
   * warm_pool block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#warm_pool AutoscalingGroup#warm_pool}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#warm_pool AutoscalingGroup#warm_pool}
   */
   readonly warmPool?: AutoscalingGroupWarmPool;
 }
 export interface AutoscalingGroupInitialLifecycleHook {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#default_result AutoscalingGroup#default_result}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#default_result AutoscalingGroup#default_result}
   */
   readonly defaultResult?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#heartbeat_timeout AutoscalingGroup#heartbeat_timeout}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#heartbeat_timeout AutoscalingGroup#heartbeat_timeout}
   */
   readonly heartbeatTimeout?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#lifecycle_transition AutoscalingGroup#lifecycle_transition}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#lifecycle_transition AutoscalingGroup#lifecycle_transition}
   */
   readonly lifecycleTransition: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#name AutoscalingGroup#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#name AutoscalingGroup#name}
   */
   readonly name: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#notification_metadata AutoscalingGroup#notification_metadata}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#notification_metadata AutoscalingGroup#notification_metadata}
   */
   readonly notificationMetadata?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#notification_target_arn AutoscalingGroup#notification_target_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#notification_target_arn AutoscalingGroup#notification_target_arn}
   */
   readonly notificationTargetArn?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#role_arn AutoscalingGroup#role_arn}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#role_arn AutoscalingGroup#role_arn}
   */
   readonly roleArn?: string;
 }
 
-export function autoscalingGroupInitialLifecycleHookToTerraform(struct?: AutoscalingGroupInitialLifecycleHook): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function autoscalingGroupInitialLifecycleHookToTerraform(struct?: AutoscalingGroupInitialLifecycleHook | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -211,25 +211,25 @@ export function autoscalingGroupInitialLifecycleHookToTerraform(struct?: Autosca
 
 export interface AutoscalingGroupInstanceRefreshPreferences {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#checkpoint_delay AutoscalingGroup#checkpoint_delay}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#checkpoint_delay AutoscalingGroup#checkpoint_delay}
   */
   readonly checkpointDelay?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#checkpoint_percentages AutoscalingGroup#checkpoint_percentages}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#checkpoint_percentages AutoscalingGroup#checkpoint_percentages}
   */
   readonly checkpointPercentages?: number[];
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#instance_warmup AutoscalingGroup#instance_warmup}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#instance_warmup AutoscalingGroup#instance_warmup}
   */
   readonly instanceWarmup?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#min_healthy_percentage AutoscalingGroup#min_healthy_percentage}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#min_healthy_percentage AutoscalingGroup#min_healthy_percentage}
   */
   readonly minHealthyPercentage?: number;
 }
 
 export function autoscalingGroupInstanceRefreshPreferencesToTerraform(struct?: AutoscalingGroupInstanceRefreshPreferencesOutputReference | AutoscalingGroupInstanceRefreshPreferences): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -242,31 +242,33 @@ export function autoscalingGroupInstanceRefreshPreferencesToTerraform(struct?: A
 }
 
 export class AutoscalingGroupInstanceRefreshPreferencesOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AutoscalingGroupInstanceRefreshPreferences | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._checkpointDelay) {
+    if (this._checkpointDelay !== undefined) {
       hasAnyValues = true;
       internalValueResult.checkpointDelay = this._checkpointDelay;
     }
-    if (this._checkpointPercentages) {
+    if (this._checkpointPercentages !== undefined) {
       hasAnyValues = true;
       internalValueResult.checkpointPercentages = this._checkpointPercentages;
     }
-    if (this._instanceWarmup) {
+    if (this._instanceWarmup !== undefined) {
       hasAnyValues = true;
       internalValueResult.instanceWarmup = this._instanceWarmup;
     }
-    if (this._minHealthyPercentage) {
+    if (this._minHealthyPercentage !== undefined) {
       hasAnyValues = true;
       internalValueResult.minHealthyPercentage = this._minHealthyPercentage;
     }
@@ -275,12 +277,14 @@ export class AutoscalingGroupInstanceRefreshPreferencesOutputReference extends c
 
   public set internalValue(value: AutoscalingGroupInstanceRefreshPreferences | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._checkpointDelay = undefined;
       this._checkpointPercentages = undefined;
       this._instanceWarmup = undefined;
       this._minHealthyPercentage = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._checkpointDelay = value.checkpointDelay;
       this._checkpointPercentages = value.checkpointPercentages;
       this._instanceWarmup = value.instanceWarmup;
@@ -307,8 +311,7 @@ export class AutoscalingGroupInstanceRefreshPreferencesOutputReference extends c
   // checkpoint_percentages - computed: false, optional: true, required: false
   private _checkpointPercentages?: number[]; 
   public get checkpointPercentages() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('checkpoint_percentages') as any;
+    return this.getNumberListAttribute('checkpoint_percentages');
   }
   public set checkpointPercentages(value: number[]) {
     this._checkpointPercentages = value;
@@ -355,23 +358,23 @@ export class AutoscalingGroupInstanceRefreshPreferencesOutputReference extends c
 }
 export interface AutoscalingGroupInstanceRefresh {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#strategy AutoscalingGroup#strategy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#strategy AutoscalingGroup#strategy}
   */
   readonly strategy: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#triggers AutoscalingGroup#triggers}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#triggers AutoscalingGroup#triggers}
   */
   readonly triggers?: string[];
   /**
   * preferences block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#preferences AutoscalingGroup#preferences}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#preferences AutoscalingGroup#preferences}
   */
   readonly preferences?: AutoscalingGroupInstanceRefreshPreferences;
 }
 
 export function autoscalingGroupInstanceRefreshToTerraform(struct?: AutoscalingGroupInstanceRefreshOutputReference | AutoscalingGroupInstanceRefresh): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -383,27 +386,29 @@ export function autoscalingGroupInstanceRefreshToTerraform(struct?: AutoscalingG
 }
 
 export class AutoscalingGroupInstanceRefreshOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AutoscalingGroupInstanceRefresh | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._strategy) {
+    if (this._strategy !== undefined) {
       hasAnyValues = true;
       internalValueResult.strategy = this._strategy;
     }
-    if (this._triggers) {
+    if (this._triggers !== undefined) {
       hasAnyValues = true;
       internalValueResult.triggers = this._triggers;
     }
-    if (this._preferences) {
+    if (this._preferences?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.preferences = this._preferences?.internalValue;
     }
@@ -412,11 +417,13 @@ export class AutoscalingGroupInstanceRefreshOutputReference extends cdktf.Comple
 
   public set internalValue(value: AutoscalingGroupInstanceRefresh | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._strategy = undefined;
       this._triggers = undefined;
       this._preferences.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._strategy = value.strategy;
       this._triggers = value.triggers;
       this._preferences.internalValue = value.preferences;
@@ -439,7 +446,7 @@ export class AutoscalingGroupInstanceRefreshOutputReference extends cdktf.Comple
   // triggers - computed: false, optional: true, required: false
   private _triggers?: string[]; 
   public get triggers() {
-    return this.getListAttribute('triggers');
+    return cdktf.Fn.tolist(this.getListAttribute('triggers'));
   }
   public set triggers(value: string[]) {
     this._triggers = value;
@@ -453,7 +460,7 @@ export class AutoscalingGroupInstanceRefreshOutputReference extends cdktf.Comple
   }
 
   // preferences - computed: false, optional: true, required: false
-  private _preferences = new AutoscalingGroupInstanceRefreshPreferencesOutputReference(this as any, "preferences", true);
+  private _preferences = new AutoscalingGroupInstanceRefreshPreferencesOutputReference(this, "preferences", true);
   public get preferences() {
     return this._preferences;
   }
@@ -470,21 +477,21 @@ export class AutoscalingGroupInstanceRefreshOutputReference extends cdktf.Comple
 }
 export interface AutoscalingGroupLaunchTemplate {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#id AutoscalingGroup#id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#id AutoscalingGroup#id}
   */
   readonly id?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#name AutoscalingGroup#name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#name AutoscalingGroup#name}
   */
   readonly name?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#version AutoscalingGroup#version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#version AutoscalingGroup#version}
   */
   readonly version?: string;
 }
 
 export function autoscalingGroupLaunchTemplateToTerraform(struct?: AutoscalingGroupLaunchTemplateOutputReference | AutoscalingGroupLaunchTemplate): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -495,23 +502,25 @@ export function autoscalingGroupLaunchTemplateToTerraform(struct?: AutoscalingGr
 }
 
 export class AutoscalingGroupLaunchTemplateOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AutoscalingGroupLaunchTemplate | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._name) {
+    if (this._name !== undefined) {
       hasAnyValues = true;
       internalValueResult.name = this._name;
     }
-    if (this._version) {
+    if (this._version !== undefined) {
       hasAnyValues = true;
       internalValueResult.version = this._version;
     }
@@ -520,10 +529,12 @@ export class AutoscalingGroupLaunchTemplateOutputReference extends cdktf.Complex
 
   public set internalValue(value: AutoscalingGroupLaunchTemplate | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._name = undefined;
       this._version = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._name = value.name;
       this._version = value.version;
     }
@@ -568,33 +579,33 @@ export class AutoscalingGroupLaunchTemplateOutputReference extends cdktf.Complex
 }
 export interface AutoscalingGroupMixedInstancesPolicyInstancesDistribution {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#on_demand_allocation_strategy AutoscalingGroup#on_demand_allocation_strategy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#on_demand_allocation_strategy AutoscalingGroup#on_demand_allocation_strategy}
   */
   readonly onDemandAllocationStrategy?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#on_demand_base_capacity AutoscalingGroup#on_demand_base_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#on_demand_base_capacity AutoscalingGroup#on_demand_base_capacity}
   */
   readonly onDemandBaseCapacity?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#on_demand_percentage_above_base_capacity AutoscalingGroup#on_demand_percentage_above_base_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#on_demand_percentage_above_base_capacity AutoscalingGroup#on_demand_percentage_above_base_capacity}
   */
   readonly onDemandPercentageAboveBaseCapacity?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#spot_allocation_strategy AutoscalingGroup#spot_allocation_strategy}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#spot_allocation_strategy AutoscalingGroup#spot_allocation_strategy}
   */
   readonly spotAllocationStrategy?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#spot_instance_pools AutoscalingGroup#spot_instance_pools}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#spot_instance_pools AutoscalingGroup#spot_instance_pools}
   */
   readonly spotInstancePools?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#spot_max_price AutoscalingGroup#spot_max_price}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#spot_max_price AutoscalingGroup#spot_max_price}
   */
   readonly spotMaxPrice?: string;
 }
 
 export function autoscalingGroupMixedInstancesPolicyInstancesDistributionToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyInstancesDistributionOutputReference | AutoscalingGroupMixedInstancesPolicyInstancesDistribution): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -609,39 +620,41 @@ export function autoscalingGroupMixedInstancesPolicyInstancesDistributionToTerra
 }
 
 export class AutoscalingGroupMixedInstancesPolicyInstancesDistributionOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AutoscalingGroupMixedInstancesPolicyInstancesDistribution | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._onDemandAllocationStrategy) {
+    if (this._onDemandAllocationStrategy !== undefined) {
       hasAnyValues = true;
       internalValueResult.onDemandAllocationStrategy = this._onDemandAllocationStrategy;
     }
-    if (this._onDemandBaseCapacity) {
+    if (this._onDemandBaseCapacity !== undefined) {
       hasAnyValues = true;
       internalValueResult.onDemandBaseCapacity = this._onDemandBaseCapacity;
     }
-    if (this._onDemandPercentageAboveBaseCapacity) {
+    if (this._onDemandPercentageAboveBaseCapacity !== undefined) {
       hasAnyValues = true;
       internalValueResult.onDemandPercentageAboveBaseCapacity = this._onDemandPercentageAboveBaseCapacity;
     }
-    if (this._spotAllocationStrategy) {
+    if (this._spotAllocationStrategy !== undefined) {
       hasAnyValues = true;
       internalValueResult.spotAllocationStrategy = this._spotAllocationStrategy;
     }
-    if (this._spotInstancePools) {
+    if (this._spotInstancePools !== undefined) {
       hasAnyValues = true;
       internalValueResult.spotInstancePools = this._spotInstancePools;
     }
-    if (this._spotMaxPrice) {
+    if (this._spotMaxPrice !== undefined) {
       hasAnyValues = true;
       internalValueResult.spotMaxPrice = this._spotMaxPrice;
     }
@@ -650,6 +663,7 @@ export class AutoscalingGroupMixedInstancesPolicyInstancesDistributionOutputRefe
 
   public set internalValue(value: AutoscalingGroupMixedInstancesPolicyInstancesDistribution | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._onDemandAllocationStrategy = undefined;
       this._onDemandBaseCapacity = undefined;
       this._onDemandPercentageAboveBaseCapacity = undefined;
@@ -658,6 +672,7 @@ export class AutoscalingGroupMixedInstancesPolicyInstancesDistributionOutputRefe
       this._spotMaxPrice = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._onDemandAllocationStrategy = value.onDemandAllocationStrategy;
       this._onDemandBaseCapacity = value.onDemandBaseCapacity;
       this._onDemandPercentageAboveBaseCapacity = value.onDemandPercentageAboveBaseCapacity;
@@ -765,21 +780,21 @@ export class AutoscalingGroupMixedInstancesPolicyInstancesDistributionOutputRefe
 }
 export interface AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#launch_template_id AutoscalingGroup#launch_template_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#launch_template_id AutoscalingGroup#launch_template_id}
   */
   readonly launchTemplateId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#launch_template_name AutoscalingGroup#launch_template_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#launch_template_name AutoscalingGroup#launch_template_name}
   */
   readonly launchTemplateName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#version AutoscalingGroup#version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#version AutoscalingGroup#version}
   */
   readonly version?: string;
 }
 
 export function autoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationOutputReference | AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -791,27 +806,29 @@ export function autoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplate
 }
 
 export class AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._launchTemplateId) {
+    if (this._launchTemplateId !== undefined) {
       hasAnyValues = true;
       internalValueResult.launchTemplateId = this._launchTemplateId;
     }
-    if (this._launchTemplateName) {
+    if (this._launchTemplateName !== undefined) {
       hasAnyValues = true;
       internalValueResult.launchTemplateName = this._launchTemplateName;
     }
-    if (this._version) {
+    if (this._version !== undefined) {
       hasAnyValues = true;
       internalValueResult.version = this._version;
     }
@@ -820,11 +837,13 @@ export class AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpe
 
   public set internalValue(value: AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._launchTemplateId = undefined;
       this._launchTemplateName = undefined;
       this._version = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._launchTemplateId = value.launchTemplateId;
       this._launchTemplateName = value.launchTemplateName;
       this._version = value.version;
@@ -881,21 +900,21 @@ export class AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpe
 }
 export interface AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#launch_template_id AutoscalingGroup#launch_template_id}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#launch_template_id AutoscalingGroup#launch_template_id}
   */
   readonly launchTemplateId?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#launch_template_name AutoscalingGroup#launch_template_name}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#launch_template_name AutoscalingGroup#launch_template_name}
   */
   readonly launchTemplateName?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#version AutoscalingGroup#version}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#version AutoscalingGroup#version}
   */
   readonly version?: string;
 }
 
 export function autoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationOutputReference | AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -907,27 +926,29 @@ export function autoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunch
 }
 
 export class AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._launchTemplateId) {
+    if (this._launchTemplateId !== undefined) {
       hasAnyValues = true;
       internalValueResult.launchTemplateId = this._launchTemplateId;
     }
-    if (this._launchTemplateName) {
+    if (this._launchTemplateName !== undefined) {
       hasAnyValues = true;
       internalValueResult.launchTemplateName = this._launchTemplateName;
     }
-    if (this._version) {
+    if (this._version !== undefined) {
       hasAnyValues = true;
       internalValueResult.version = this._version;
     }
@@ -936,11 +957,13 @@ export class AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTem
 
   public set internalValue(value: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._launchTemplateId = undefined;
       this._launchTemplateName = undefined;
       this._version = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._launchTemplateId = value.launchTemplateId;
       this._launchTemplateName = value.launchTemplateName;
       this._version = value.version;
@@ -997,23 +1020,23 @@ export class AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTem
 }
 export interface AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#instance_type AutoscalingGroup#instance_type}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#instance_type AutoscalingGroup#instance_type}
   */
   readonly instanceType?: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#weighted_capacity AutoscalingGroup#weighted_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#weighted_capacity AutoscalingGroup#weighted_capacity}
   */
   readonly weightedCapacity?: string;
   /**
   * launch_template_specification block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#launch_template_specification AutoscalingGroup#launch_template_specification}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#launch_template_specification AutoscalingGroup#launch_template_specification}
   */
   readonly launchTemplateSpecification?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification;
 }
 
-export function autoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function autoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1028,19 +1051,19 @@ export interface AutoscalingGroupMixedInstancesPolicyLaunchTemplate {
   /**
   * launch_template_specification block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#launch_template_specification AutoscalingGroup#launch_template_specification}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#launch_template_specification AutoscalingGroup#launch_template_specification}
   */
   readonly launchTemplateSpecification: AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification;
   /**
   * override block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#override AutoscalingGroup#override}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#override AutoscalingGroup#override}
   */
-  readonly override?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride[];
+  readonly override?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride[] | cdktf.IResolvable;
 }
 
 export function autoscalingGroupMixedInstancesPolicyLaunchTemplateToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOutputReference | AutoscalingGroupMixedInstancesPolicyLaunchTemplate): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1051,23 +1074,25 @@ export function autoscalingGroupMixedInstancesPolicyLaunchTemplateToTerraform(st
 }
 
 export class AutoscalingGroupMixedInstancesPolicyLaunchTemplateOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AutoscalingGroupMixedInstancesPolicyLaunchTemplate | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._launchTemplateSpecification) {
+    if (this._launchTemplateSpecification?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.launchTemplateSpecification = this._launchTemplateSpecification?.internalValue;
     }
-    if (this._override) {
+    if (this._override !== undefined) {
       hasAnyValues = true;
       internalValueResult.override = this._override;
     }
@@ -1076,17 +1101,19 @@ export class AutoscalingGroupMixedInstancesPolicyLaunchTemplateOutputReference e
 
   public set internalValue(value: AutoscalingGroupMixedInstancesPolicyLaunchTemplate | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._launchTemplateSpecification.internalValue = undefined;
       this._override = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._launchTemplateSpecification.internalValue = value.launchTemplateSpecification;
       this._override = value.override;
     }
   }
 
   // launch_template_specification - computed: false, optional: false, required: true
-  private _launchTemplateSpecification = new AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationOutputReference(this as any, "launch_template_specification", true);
+  private _launchTemplateSpecification = new AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationOutputReference(this, "launch_template_specification", true);
   public get launchTemplateSpecification() {
     return this._launchTemplateSpecification;
   }
@@ -1099,12 +1126,12 @@ export class AutoscalingGroupMixedInstancesPolicyLaunchTemplateOutputReference e
   }
 
   // override - computed: false, optional: true, required: false
-  private _override?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride[]; 
+  private _override?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride[] | cdktf.IResolvable; 
   public get override() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('override') as any;
+    return this.interpolationForAttribute('override');
   }
-  public set override(value: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride[]) {
+  public set override(value: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride[] | cdktf.IResolvable) {
     this._override = value;
   }
   public resetOverride() {
@@ -1119,19 +1146,19 @@ export interface AutoscalingGroupMixedInstancesPolicy {
   /**
   * instances_distribution block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#instances_distribution AutoscalingGroup#instances_distribution}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#instances_distribution AutoscalingGroup#instances_distribution}
   */
   readonly instancesDistribution?: AutoscalingGroupMixedInstancesPolicyInstancesDistribution;
   /**
   * launch_template block
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#launch_template AutoscalingGroup#launch_template}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#launch_template AutoscalingGroup#launch_template}
   */
   readonly launchTemplate: AutoscalingGroupMixedInstancesPolicyLaunchTemplate;
 }
 
 export function autoscalingGroupMixedInstancesPolicyToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyOutputReference | AutoscalingGroupMixedInstancesPolicy): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1142,23 +1169,25 @@ export function autoscalingGroupMixedInstancesPolicyToTerraform(struct?: Autosca
 }
 
 export class AutoscalingGroupMixedInstancesPolicyOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AutoscalingGroupMixedInstancesPolicy | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._instancesDistribution) {
+    if (this._instancesDistribution?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.instancesDistribution = this._instancesDistribution?.internalValue;
     }
-    if (this._launchTemplate) {
+    if (this._launchTemplate?.internalValue !== undefined) {
       hasAnyValues = true;
       internalValueResult.launchTemplate = this._launchTemplate?.internalValue;
     }
@@ -1167,17 +1196,19 @@ export class AutoscalingGroupMixedInstancesPolicyOutputReference extends cdktf.C
 
   public set internalValue(value: AutoscalingGroupMixedInstancesPolicy | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._instancesDistribution.internalValue = undefined;
       this._launchTemplate.internalValue = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._instancesDistribution.internalValue = value.instancesDistribution;
       this._launchTemplate.internalValue = value.launchTemplate;
     }
   }
 
   // instances_distribution - computed: false, optional: true, required: false
-  private _instancesDistribution = new AutoscalingGroupMixedInstancesPolicyInstancesDistributionOutputReference(this as any, "instances_distribution", true);
+  private _instancesDistribution = new AutoscalingGroupMixedInstancesPolicyInstancesDistributionOutputReference(this, "instances_distribution", true);
   public get instancesDistribution() {
     return this._instancesDistribution;
   }
@@ -1193,7 +1224,7 @@ export class AutoscalingGroupMixedInstancesPolicyOutputReference extends cdktf.C
   }
 
   // launch_template - computed: false, optional: false, required: true
-  private _launchTemplate = new AutoscalingGroupMixedInstancesPolicyLaunchTemplateOutputReference(this as any, "launch_template", true);
+  private _launchTemplate = new AutoscalingGroupMixedInstancesPolicyLaunchTemplateOutputReference(this, "launch_template", true);
   public get launchTemplate() {
     return this._launchTemplate;
   }
@@ -1207,21 +1238,21 @@ export class AutoscalingGroupMixedInstancesPolicyOutputReference extends cdktf.C
 }
 export interface AutoscalingGroupTag {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#key AutoscalingGroup#key}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#key AutoscalingGroup#key}
   */
   readonly key: string;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#propagate_at_launch AutoscalingGroup#propagate_at_launch}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#propagate_at_launch AutoscalingGroup#propagate_at_launch}
   */
   readonly propagateAtLaunch: boolean | cdktf.IResolvable;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#value AutoscalingGroup#value}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#value AutoscalingGroup#value}
   */
   readonly value: string;
 }
 
-export function autoscalingGroupTagToTerraform(struct?: AutoscalingGroupTag): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function autoscalingGroupTagToTerraform(struct?: AutoscalingGroupTag | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1234,13 +1265,13 @@ export function autoscalingGroupTagToTerraform(struct?: AutoscalingGroupTag): an
 
 export interface AutoscalingGroupTimeouts {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#delete AutoscalingGroup#delete}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#delete AutoscalingGroup#delete}
   */
   readonly delete?: string;
 }
 
-export function autoscalingGroupTimeoutsToTerraform(struct?: AutoscalingGroupTimeoutsOutputReference | AutoscalingGroupTimeouts): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+export function autoscalingGroupTimeoutsToTerraform(struct?: AutoscalingGroupTimeoutsOutputReference | AutoscalingGroupTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1250,19 +1281,21 @@ export function autoscalingGroupTimeoutsToTerraform(struct?: AutoscalingGroupTim
 }
 
 export class AutoscalingGroupTimeoutsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AutoscalingGroupTimeouts | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._delete) {
+    if (this._delete !== undefined) {
       hasAnyValues = true;
       internalValueResult.delete = this._delete;
     }
@@ -1271,9 +1304,11 @@ export class AutoscalingGroupTimeoutsOutputReference extends cdktf.ComplexObject
 
   public set internalValue(value: AutoscalingGroupTimeouts | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._delete = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._delete = value.delete;
     }
   }
@@ -1296,21 +1331,21 @@ export class AutoscalingGroupTimeoutsOutputReference extends cdktf.ComplexObject
 }
 export interface AutoscalingGroupWarmPool {
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#max_group_prepared_capacity AutoscalingGroup#max_group_prepared_capacity}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#max_group_prepared_capacity AutoscalingGroup#max_group_prepared_capacity}
   */
   readonly maxGroupPreparedCapacity?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#min_size AutoscalingGroup#min_size}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#min_size AutoscalingGroup#min_size}
   */
   readonly minSize?: number;
   /**
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#pool_state AutoscalingGroup#pool_state}
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group#pool_state AutoscalingGroup#pool_state}
   */
   readonly poolState?: string;
 }
 
 export function autoscalingGroupWarmPoolToTerraform(struct?: AutoscalingGroupWarmPoolOutputReference | AutoscalingGroupWarmPool): any {
-  if (!cdktf.canInspect(struct)) { return struct; }
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
@@ -1322,27 +1357,29 @@ export function autoscalingGroupWarmPoolToTerraform(struct?: AutoscalingGroupWar
 }
 
 export class AutoscalingGroupWarmPoolOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
   * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
   public get internalValue(): AutoscalingGroupWarmPool | undefined {
-    let hasAnyValues = false;
+    let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._maxGroupPreparedCapacity) {
+    if (this._maxGroupPreparedCapacity !== undefined) {
       hasAnyValues = true;
       internalValueResult.maxGroupPreparedCapacity = this._maxGroupPreparedCapacity;
     }
-    if (this._minSize) {
+    if (this._minSize !== undefined) {
       hasAnyValues = true;
       internalValueResult.minSize = this._minSize;
     }
-    if (this._poolState) {
+    if (this._poolState !== undefined) {
       hasAnyValues = true;
       internalValueResult.poolState = this._poolState;
     }
@@ -1351,11 +1388,13 @@ export class AutoscalingGroupWarmPoolOutputReference extends cdktf.ComplexObject
 
   public set internalValue(value: AutoscalingGroupWarmPool | undefined) {
     if (value === undefined) {
+      this.isEmptyObject = false;
       this._maxGroupPreparedCapacity = undefined;
       this._minSize = undefined;
       this._poolState = undefined;
     }
     else {
+      this.isEmptyObject = Object.keys(value).length === 0;
       this._maxGroupPreparedCapacity = value.maxGroupPreparedCapacity;
       this._minSize = value.minSize;
       this._poolState = value.poolState;
@@ -1412,7 +1451,7 @@ export class AutoscalingGroupWarmPoolOutputReference extends cdktf.ComplexObject
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html aws_autoscaling_group}
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group aws_autoscaling_group}
 */
 export class AutoscalingGroup extends cdktf.TerraformResource {
 
@@ -1426,7 +1465,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html aws_autoscaling_group} Resource
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group aws_autoscaling_group} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -1492,7 +1531,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   // availability_zones - computed: true, optional: true, required: false
   private _availabilityZones?: string[]; 
   public get availabilityZones() {
-    return this.getListAttribute('availability_zones');
+    return cdktf.Fn.tolist(this.getListAttribute('availability_zones'));
   }
   public set availabilityZones(value: string[]) {
     this._availabilityZones = value;
@@ -1508,7 +1547,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   // capacity_rebalance - computed: false, optional: true, required: false
   private _capacityRebalance?: boolean | cdktf.IResolvable; 
   public get capacityRebalance() {
-    return this.getBooleanAttribute('capacity_rebalance') as any;
+    return this.getBooleanAttribute('capacity_rebalance');
   }
   public set capacityRebalance(value: boolean | cdktf.IResolvable) {
     this._capacityRebalance = value;
@@ -1556,7 +1595,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   // enabled_metrics - computed: false, optional: true, required: false
   private _enabledMetrics?: string[]; 
   public get enabledMetrics() {
-    return this.getListAttribute('enabled_metrics');
+    return cdktf.Fn.tolist(this.getListAttribute('enabled_metrics'));
   }
   public set enabledMetrics(value: string[]) {
     this._enabledMetrics = value;
@@ -1572,7 +1611,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   // force_delete - computed: false, optional: true, required: false
   private _forceDelete?: boolean | cdktf.IResolvable; 
   public get forceDelete() {
-    return this.getBooleanAttribute('force_delete') as any;
+    return this.getBooleanAttribute('force_delete');
   }
   public set forceDelete(value: boolean | cdktf.IResolvable) {
     this._forceDelete = value;
@@ -1588,7 +1627,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   // force_delete_warm_pool - computed: false, optional: true, required: false
   private _forceDeleteWarmPool?: boolean | cdktf.IResolvable; 
   public get forceDeleteWarmPool() {
-    return this.getBooleanAttribute('force_delete_warm_pool') as any;
+    return this.getBooleanAttribute('force_delete_warm_pool');
   }
   public set forceDeleteWarmPool(value: boolean | cdktf.IResolvable) {
     this._forceDeleteWarmPool = value;
@@ -1657,7 +1696,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   // load_balancers - computed: false, optional: true, required: false
   private _loadBalancers?: string[]; 
   public get loadBalancers() {
-    return this.getListAttribute('load_balancers');
+    return cdktf.Fn.tolist(this.getListAttribute('load_balancers'));
   }
   public set loadBalancers(value: string[]) {
     this._loadBalancers = value;
@@ -1795,7 +1834,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   // protect_from_scale_in - computed: false, optional: true, required: false
   private _protectFromScaleIn?: boolean | cdktf.IResolvable; 
   public get protectFromScaleIn() {
-    return this.getBooleanAttribute('protect_from_scale_in') as any;
+    return this.getBooleanAttribute('protect_from_scale_in');
   }
   public set protectFromScaleIn(value: boolean | cdktf.IResolvable) {
     this._protectFromScaleIn = value;
@@ -1827,7 +1866,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   // suspended_processes - computed: false, optional: true, required: false
   private _suspendedProcesses?: string[]; 
   public get suspendedProcesses() {
-    return this.getListAttribute('suspended_processes');
+    return cdktf.Fn.tolist(this.getListAttribute('suspended_processes'));
   }
   public set suspendedProcesses(value: string[]) {
     this._suspendedProcesses = value;
@@ -1841,12 +1880,11 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
+  private _tags?: { [key: string]: string }; 
   public get tags() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tags') as any;
+    return this.getStringMapAttribute('tags');
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+  public set tags(value: { [key: string]: string }) {
     this._tags = value;
   }
   public resetTags() {
@@ -1860,7 +1898,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   // target_group_arns - computed: false, optional: true, required: false
   private _targetGroupArns?: string[]; 
   public get targetGroupArns() {
-    return this.getListAttribute('target_group_arns');
+    return cdktf.Fn.tolist(this.getListAttribute('target_group_arns'));
   }
   public set targetGroupArns(value: string[]) {
     this._targetGroupArns = value;
@@ -1892,7 +1930,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   // vpc_zone_identifier - computed: true, optional: true, required: false
   private _vpcZoneIdentifier?: string[]; 
   public get vpcZoneIdentifier() {
-    return this.getListAttribute('vpc_zone_identifier');
+    return cdktf.Fn.tolist(this.getListAttribute('vpc_zone_identifier'));
   }
   public set vpcZoneIdentifier(value: string[]) {
     this._vpcZoneIdentifier = value;
@@ -1938,12 +1976,12 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   }
 
   // initial_lifecycle_hook - computed: false, optional: true, required: false
-  private _initialLifecycleHook?: AutoscalingGroupInitialLifecycleHook[]; 
+  private _initialLifecycleHook?: AutoscalingGroupInitialLifecycleHook[] | cdktf.IResolvable; 
   public get initialLifecycleHook() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('initial_lifecycle_hook') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('initial_lifecycle_hook')));
   }
-  public set initialLifecycleHook(value: AutoscalingGroupInitialLifecycleHook[]) {
+  public set initialLifecycleHook(value: AutoscalingGroupInitialLifecycleHook[] | cdktf.IResolvable) {
     this._initialLifecycleHook = value;
   }
   public resetInitialLifecycleHook() {
@@ -1955,7 +1993,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   }
 
   // instance_refresh - computed: false, optional: true, required: false
-  private _instanceRefresh = new AutoscalingGroupInstanceRefreshOutputReference(this as any, "instance_refresh", true);
+  private _instanceRefresh = new AutoscalingGroupInstanceRefreshOutputReference(this, "instance_refresh", true);
   public get instanceRefresh() {
     return this._instanceRefresh;
   }
@@ -1971,7 +2009,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   }
 
   // launch_template - computed: false, optional: true, required: false
-  private _launchTemplate = new AutoscalingGroupLaunchTemplateOutputReference(this as any, "launch_template", true);
+  private _launchTemplate = new AutoscalingGroupLaunchTemplateOutputReference(this, "launch_template", true);
   public get launchTemplate() {
     return this._launchTemplate;
   }
@@ -1987,7 +2025,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   }
 
   // mixed_instances_policy - computed: false, optional: true, required: false
-  private _mixedInstancesPolicy = new AutoscalingGroupMixedInstancesPolicyOutputReference(this as any, "mixed_instances_policy", true);
+  private _mixedInstancesPolicy = new AutoscalingGroupMixedInstancesPolicyOutputReference(this, "mixed_instances_policy", true);
   public get mixedInstancesPolicy() {
     return this._mixedInstancesPolicy;
   }
@@ -2003,12 +2041,12 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   }
 
   // tag - computed: false, optional: true, required: false
-  private _tag?: AutoscalingGroupTag[]; 
+  private _tag?: AutoscalingGroupTag[] | cdktf.IResolvable; 
   public get tag() {
     // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('tag') as any;
+    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('tag')));
   }
-  public set tag(value: AutoscalingGroupTag[]) {
+  public set tag(value: AutoscalingGroupTag[] | cdktf.IResolvable) {
     this._tag = value;
   }
   public resetTag() {
@@ -2020,7 +2058,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts = new AutoscalingGroupTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new AutoscalingGroupTimeoutsOutputReference(this, "timeouts", true);
   public get timeouts() {
     return this._timeouts;
   }
@@ -2036,7 +2074,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
   }
 
   // warm_pool - computed: false, optional: true, required: false
-  private _warmPool = new AutoscalingGroupWarmPoolOutputReference(this as any, "warm_pool", true);
+  private _warmPool = new AutoscalingGroupWarmPoolOutputReference(this, "warm_pool", true);
   public get warmPool() {
     return this._warmPool;
   }
@@ -2079,7 +2117,7 @@ export class AutoscalingGroup extends cdktf.TerraformResource {
       protect_from_scale_in: cdktf.booleanToTerraform(this._protectFromScaleIn),
       service_linked_role_arn: cdktf.stringToTerraform(this._serviceLinkedRoleArn),
       suspended_processes: cdktf.listMapper(cdktf.stringToTerraform)(this._suspendedProcesses),
-      tags: cdktf.listMapper(cdktf.hashMapper(cdktf.anyToTerraform))(this._tags),
+      tags: cdktf.listMapper(cdktf.hashMapper(cdktf.stringToTerraform))(this._tags),
       target_group_arns: cdktf.listMapper(cdktf.stringToTerraform)(this._targetGroupArns),
       termination_policies: cdktf.listMapper(cdktf.stringToTerraform)(this._terminationPolicies),
       vpc_zone_identifier: cdktf.listMapper(cdktf.stringToTerraform)(this._vpcZoneIdentifier),
