@@ -1,4 +1,4 @@
-import { IAspect, TerraformResource, TerraformStack } from "cdktf";
+import { IAspect, insideTfExpression, TerraformResource, TerraformStack } from "cdktf";
 import { resolve } from "cdktf/lib/_tokens";
 import { findTokens } from "cdktf/lib/tokens/private/resolve";
 import { IConstruct } from "constructs";
@@ -45,7 +45,7 @@ export class EventualConsistencyWorkaroundAspect implements IAspect {
       if (!node.dependsOn) {
         node.dependsOn = [];
       }
-      node.dependsOn.push(this.getSleepResource().fqn);
+      node.dependsOn.push(insideTfExpression(this.getSleepResource().fqn));
     }
   }
 
