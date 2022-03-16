@@ -120,6 +120,7 @@ export class CdktfAwsCdkProject extends JsiiProject {
     });
     testExamples.exec('yarn test:ci', { cwd: 'examples/typescript-manual-mapping'});
     testExamples.exec('yarn test:ci', { cwd: 'examples/typescript-step-functions'});
+    testExamples.exec('yarn test:ci', { cwd: 'examples/typescript-step-functions-mixed'});
 
     this.buildTask.spawn(testExamples);
 
