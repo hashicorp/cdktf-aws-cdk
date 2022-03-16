@@ -11,6 +11,7 @@ import {
   TerraformLocal,
   TerraformOutput,
   Token,
+  Tokenization,
 } from "cdktf";
 import {
   conditional,
@@ -162,11 +163,9 @@ class TerraformHost extends Construct {
         );
       }
 
-      res.count = Token.asNumber(conditional(
-        this.getConditionTerraformLocal(conditionId),
-        1,
-        0
-      ));
+      res.count = Token.asNumber(
+        conditional(this.getConditionTerraformLocal(conditionId), 1, 0)
+      );
     }
 
     const keys = Object.keys(props).filter((k) => props[k] !== undefined);
@@ -239,12 +238,46 @@ class TerraformHost extends Construct {
   }
 
   private processIntrinsics(obj: any): any {
-    if (typeof obj === "string" && !Token.isUnresolved(obj)) {
-      // we wrap strings if they contain stringified json (e.g. for step functions)
-      // (which contains quotes (") which need to be escaped)
-      // or if they contain `${` which needs to be escaped for Terraform strings as well
-      if (obj.includes('"') || obj.includes("${")) return Fn.rawString(obj);
-      else return obj;
+    if (typeof obj === "string") {
+      const escapeString = (str: string) => {
+        // we wrap strings if they contain stringified json (e.g. for step functions)
+        // (which contains quotes (") which need to be escaped)
+        // or if they contain `${` which needs to be escaped for Terraform strings as well
+        if (
+          !Token.isUnresolved(str) && // only if there is no token in them
+          (str.includes('"') || str.includes("${"))
+        ) {
+          return Fn.rawString(str);
+        } else {
+          return str; // e.g. a single Token in a string will be returned as is
+        }
+      };
+
+      // find tokens in string
+      const tokenizedFragments = Tokenization.reverseString(obj);
+
+      // zero or one fragments won't enter the join() function below
+      // so we directly escape the whole string
+      if (tokenizedFragments.length < 2) {
+        return escapeString(obj);
+      }
+
+      // if there are more parts, join them into an array
+      const parts = tokenizedFragments.join({
+        join: (left, right): string[] => {
+          const acc: string[] = Array.isArray(left) ? [...left] : [];
+
+          // on the initial invocation left is still a single string and not an array
+          if (!Array.isArray(left)) {
+            acc.push(escapeString(left));
+          }
+          acc.push(escapeString(right));
+
+          return acc;
+        },
+      });
+
+      return Fn.join("", parts); // we return a TF function to be able to combine rawStrings and unescaped tokens
     }
 
     if (typeof obj !== "object") {
