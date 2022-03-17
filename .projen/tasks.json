@@ -217,6 +217,10 @@
         {
           "exec": "yarn test:ci",
           "cwd": "examples/typescript-step-functions"
+        },
+        {
+          "exec": "yarn test:ci",
+          "cwd": "examples/typescript-step-functions-mixed"
         }
       ],
       "cwd": "examples/typescript-cron-lambda"

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../fn-generate-id.ts"],
+  "sourcesContent": ["const generate = () => Math.random().toString(36).substring(7);\n\nexport const handler = async () => ({ value: generate() });"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA,IAAM,WAAW,MAAM,KAAK,SAAS,SAAS,IAAI,UAAU;AAErD,IAAM,UAAU,YAAa,GAAE,OAAO;",
+  "names": []
+}
