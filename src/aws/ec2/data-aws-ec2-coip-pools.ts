@@ -49,7 +49,7 @@ export class DataAwsEc2CoipPools extends cdktf.TerraformDataSource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_ec2_coip_pools";
+  public static readonly tfResourceType = "aws_ec2_coip_pools";
 
   // ===========
   // INITIALIZER
@@ -66,7 +66,9 @@ export class DataAwsEc2CoipPools extends cdktf.TerraformDataSource {
     super(scope, id, {
       terraformResourceType: 'aws_ec2_coip_pools',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

@@ -49,7 +49,7 @@ export class Offset extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "time_offset";
+  public static readonly tfResourceType = "time_offset";
 
   // ===========
   // INITIALIZER
@@ -66,7 +66,9 @@ export class Offset extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'time_offset',
       terraformGeneratorMetadata: {
-        providerName: 'time'
+        providerName: 'time',
+        providerVersion: '0.7.2',
+        providerVersionConstraint: '~> 0.7.2'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

@@ -45,7 +45,7 @@ export class RedshiftSnapshotSchedule extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_redshift_snapshot_schedule";
+  public static readonly tfResourceType = "aws_redshift_snapshot_schedule";
 
   // ===========
   // INITIALIZER
@@ -62,7 +62,9 @@ export class RedshiftSnapshotSchedule extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_redshift_snapshot_schedule',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

@@ -87,10 +87,9 @@ export class ApiGatewayDomainNameEndpointConfigurationOutputReference extends cd
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): ApiGatewayDomainNameEndpointConfiguration | undefined {
@@ -155,10 +154,9 @@ export class ApiGatewayDomainNameMutualTlsAuthenticationOutputReference extends 
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): ApiGatewayDomainNameMutualTlsAuthentication | undefined {
@@ -226,7 +224,7 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_api_gateway_domain_name";
+  public static readonly tfResourceType = "aws_api_gateway_domain_name";
 
   // ===========
   // INITIALIZER
@@ -243,7 +241,9 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_api_gateway_domain_name',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -478,7 +478,7 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   }
 
   // endpoint_configuration - computed: false, optional: true, required: false
-  private _endpointConfiguration = new ApiGatewayDomainNameEndpointConfigurationOutputReference(this, "endpoint_configuration", true);
+  private _endpointConfiguration = new ApiGatewayDomainNameEndpointConfigurationOutputReference(this, "endpoint_configuration");
   public get endpointConfiguration() {
     return this._endpointConfiguration;
   }
@@ -494,7 +494,7 @@ export class ApiGatewayDomainName extends cdktf.TerraformResource {
   }
 
   // mutual_tls_authentication - computed: false, optional: true, required: false
-  private _mutualTlsAuthentication = new ApiGatewayDomainNameMutualTlsAuthenticationOutputReference(this, "mutual_tls_authentication", true);
+  private _mutualTlsAuthentication = new ApiGatewayDomainNameMutualTlsAuthenticationOutputReference(this, "mutual_tls_authentication");
   public get mutualTlsAuthentication() {
     return this._mutualTlsAuthentication;
   }

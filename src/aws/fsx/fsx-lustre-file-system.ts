@@ -131,10 +131,9 @@ export class FsxLustreFileSystemTimeoutsOutputReference extends cdktf.ComplexObj
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): FsxLustreFileSystemTimeouts | undefined {
@@ -227,7 +226,7 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_fsx_lustre_file_system";
+  public static readonly tfResourceType = "aws_fsx_lustre_file_system";
 
   // ===========
   // INITIALIZER
@@ -244,7 +243,9 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_fsx_lustre_file_system',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -648,7 +649,7 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts = new FsxLustreFileSystemTimeoutsOutputReference(this, "timeouts", true);
+  private _timeouts = new FsxLustreFileSystemTimeoutsOutputReference(this, "timeouts");
   public get timeouts() {
     return this._timeouts;
   }

@@ -57,7 +57,7 @@ export class DataAwsKeyPair extends cdktf.TerraformDataSource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_key_pair";
+  public static readonly tfResourceType = "aws_key_pair";
 
   // ===========
   // INITIALIZER
@@ -74,7 +74,9 @@ export class DataAwsKeyPair extends cdktf.TerraformDataSource {
     super(scope, id, {
       terraformResourceType: 'aws_key_pair',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

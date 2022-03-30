@@ -74,7 +74,7 @@ export class WafregionalRateBasedRule extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_wafregional_rate_based_rule";
+  public static readonly tfResourceType = "aws_wafregional_rate_based_rule";
 
   // ===========
   // INITIALIZER
@@ -91,7 +91,9 @@ export class WafregionalRateBasedRule extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_wafregional_rate_based_rule',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

@@ -29,7 +29,7 @@ export class DataAwsIpRanges extends cdktf.TerraformDataSource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_ip_ranges";
+  public static readonly tfResourceType = "aws_ip_ranges";
 
   // ===========
   // INITIALIZER
@@ -46,7 +46,9 @@ export class DataAwsIpRanges extends cdktf.TerraformDataSource {
     super(scope, id, {
       terraformResourceType: 'aws_ip_ranges',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

@@ -23,7 +23,7 @@ export class TimeProvider extends cdktf.TerraformProvider {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "time";
+  public static readonly tfResourceType = "time";
 
   // ===========
   // INITIALIZER
@@ -41,6 +41,7 @@ export class TimeProvider extends cdktf.TerraformProvider {
       terraformResourceType: 'time',
       terraformGeneratorMetadata: {
         providerName: 'time',
+        providerVersion: '0.7.2',
         providerVersionConstraint: '~> 0.7.2'
       },
       terraformProviderSource: 'time'

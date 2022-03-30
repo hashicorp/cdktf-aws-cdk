@@ -176,10 +176,9 @@ export class ElasticacheReplicationGroupClusterModeOutputReference extends cdktf
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): ElasticacheReplicationGroupClusterMode | undefined {
@@ -271,10 +270,9 @@ export class ElasticacheReplicationGroupTimeoutsOutputReference extends cdktf.Co
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): ElasticacheReplicationGroupTimeouts | undefined {
@@ -367,7 +365,7 @@ export class ElasticacheReplicationGroup extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_elasticache_replication_group";
+  public static readonly tfResourceType = "aws_elasticache_replication_group";
 
   // ===========
   // INITIALIZER
@@ -384,7 +382,9 @@ export class ElasticacheReplicationGroup extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_elasticache_replication_group',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -978,7 +978,7 @@ export class ElasticacheReplicationGroup extends cdktf.TerraformResource {
   }
 
   // cluster_mode - computed: false, optional: true, required: false
-  private _clusterMode = new ElasticacheReplicationGroupClusterModeOutputReference(this, "cluster_mode", true);
+  private _clusterMode = new ElasticacheReplicationGroupClusterModeOutputReference(this, "cluster_mode");
   public get clusterMode() {
     return this._clusterMode;
   }
@@ -994,7 +994,7 @@ export class ElasticacheReplicationGroup extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts = new ElasticacheReplicationGroupTimeoutsOutputReference(this, "timeouts", true);
+  private _timeouts = new ElasticacheReplicationGroupTimeoutsOutputReference(this, "timeouts");
   public get timeouts() {
     return this._timeouts;
   }

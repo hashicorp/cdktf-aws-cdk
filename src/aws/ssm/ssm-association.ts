@@ -97,10 +97,9 @@ export class SsmAssociationOutputLocationOutputReference extends cdktf.ComplexOb
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): SsmAssociationOutputLocation | undefined {
@@ -212,7 +211,7 @@ export class SsmAssociation extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_ssm_association";
+  public static readonly tfResourceType = "aws_ssm_association";
 
   // ===========
   // INITIALIZER
@@ -229,7 +228,9 @@ export class SsmAssociation extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_ssm_association',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -439,7 +440,7 @@ export class SsmAssociation extends cdktf.TerraformResource {
   }
 
   // output_location - computed: false, optional: true, required: false
-  private _outputLocation = new SsmAssociationOutputLocationOutputReference(this, "output_location", true);
+  private _outputLocation = new SsmAssociationOutputLocationOutputReference(this, "output_location");
   public get outputLocation() {
     return this._outputLocation;
   }

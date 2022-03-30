@@ -25,7 +25,7 @@ export class ServicecatalogBudgetResourceAssociation extends cdktf.TerraformReso
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_servicecatalog_budget_resource_association";
+  public static readonly tfResourceType = "aws_servicecatalog_budget_resource_association";
 
   // ===========
   // INITIALIZER
@@ -42,7 +42,9 @@ export class ServicecatalogBudgetResourceAssociation extends cdktf.TerraformReso
     super(scope, id, {
       terraformResourceType: 'aws_servicecatalog_budget_resource_association',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

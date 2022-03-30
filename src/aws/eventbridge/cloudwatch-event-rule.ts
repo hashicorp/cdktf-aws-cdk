@@ -57,7 +57,7 @@ export class CloudwatchEventRule extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_cloudwatch_event_rule";
+  public static readonly tfResourceType = "aws_cloudwatch_event_rule";
 
   // ===========
   // INITIALIZER
@@ -74,7 +74,9 @@ export class CloudwatchEventRule extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_cloudwatch_event_rule',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

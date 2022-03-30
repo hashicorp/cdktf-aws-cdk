@@ -25,7 +25,7 @@ export class DataAwsKmsPublicKey extends cdktf.TerraformDataSource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_kms_public_key";
+  public static readonly tfResourceType = "aws_kms_public_key";
 
   // ===========
   // INITIALIZER
@@ -42,7 +42,9 @@ export class DataAwsKmsPublicKey extends cdktf.TerraformDataSource {
     super(scope, id, {
       terraformResourceType: 'aws_kms_public_key',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

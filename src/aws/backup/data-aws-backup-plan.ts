@@ -25,7 +25,7 @@ export class DataAwsBackupPlan extends cdktf.TerraformDataSource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_backup_plan";
+  public static readonly tfResourceType = "aws_backup_plan";
 
   // ===========
   // INITIALIZER
@@ -42,7 +42,9 @@ export class DataAwsBackupPlan extends cdktf.TerraformDataSource {
     super(scope, id, {
       terraformResourceType: 'aws_backup_plan',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

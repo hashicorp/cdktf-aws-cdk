@@ -41,7 +41,7 @@ export class SsoadminAccountAssignment extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_ssoadmin_account_assignment";
+  public static readonly tfResourceType = "aws_ssoadmin_account_assignment";
 
   // ===========
   // INITIALIZER
@@ -58,7 +58,9 @@ export class SsoadminAccountAssignment extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_ssoadmin_account_assignment',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

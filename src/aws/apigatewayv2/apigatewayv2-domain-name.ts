@@ -71,10 +71,9 @@ export class Apigatewayv2DomainNameDomainNameConfigurationOutputReference extend
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): Apigatewayv2DomainNameDomainNameConfiguration | undefined {
@@ -187,10 +186,9 @@ export class Apigatewayv2DomainNameMutualTlsAuthenticationOutputReference extend
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): Apigatewayv2DomainNameMutualTlsAuthentication | undefined {
@@ -277,10 +275,9 @@ export class Apigatewayv2DomainNameTimeoutsOutputReference extends cdktf.Complex
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): Apigatewayv2DomainNameTimeouts | undefined {
@@ -351,7 +348,7 @@ export class Apigatewayv2DomainName extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_apigatewayv2_domain_name";
+  public static readonly tfResourceType = "aws_apigatewayv2_domain_name";
 
   // ===========
   // INITIALIZER
@@ -368,7 +365,9 @@ export class Apigatewayv2DomainName extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_apigatewayv2_domain_name',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -448,7 +447,7 @@ export class Apigatewayv2DomainName extends cdktf.TerraformResource {
   }
 
   // domain_name_configuration - computed: false, optional: false, required: true
-  private _domainNameConfiguration = new Apigatewayv2DomainNameDomainNameConfigurationOutputReference(this, "domain_name_configuration", true);
+  private _domainNameConfiguration = new Apigatewayv2DomainNameDomainNameConfigurationOutputReference(this, "domain_name_configuration");
   public get domainNameConfiguration() {
     return this._domainNameConfiguration;
   }
@@ -461,7 +460,7 @@ export class Apigatewayv2DomainName extends cdktf.TerraformResource {
   }
 
   // mutual_tls_authentication - computed: false, optional: true, required: false
-  private _mutualTlsAuthentication = new Apigatewayv2DomainNameMutualTlsAuthenticationOutputReference(this, "mutual_tls_authentication", true);
+  private _mutualTlsAuthentication = new Apigatewayv2DomainNameMutualTlsAuthenticationOutputReference(this, "mutual_tls_authentication");
   public get mutualTlsAuthentication() {
     return this._mutualTlsAuthentication;
   }
@@ -477,7 +476,7 @@ export class Apigatewayv2DomainName extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts = new Apigatewayv2DomainNameTimeoutsOutputReference(this, "timeouts", true);
+  private _timeouts = new Apigatewayv2DomainNameTimeoutsOutputReference(this, "timeouts");
   public get timeouts() {
     return this._timeouts;
   }

@@ -33,7 +33,7 @@ export class ServiceDiscoveryHttpNamespace extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_service_discovery_http_namespace";
+  public static readonly tfResourceType = "aws_service_discovery_http_namespace";
 
   // ===========
   // INITIALIZER
@@ -50,7 +50,9 @@ export class ServiceDiscoveryHttpNamespace extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_service_discovery_http_namespace',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

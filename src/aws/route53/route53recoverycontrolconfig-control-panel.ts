@@ -25,7 +25,7 @@ export class Route53RecoverycontrolconfigControlPanel extends cdktf.TerraformRes
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_route53recoverycontrolconfig_control_panel";
+  public static readonly tfResourceType = "aws_route53recoverycontrolconfig_control_panel";
 
   // ===========
   // INITIALIZER
@@ -42,7 +42,9 @@ export class Route53RecoverycontrolconfigControlPanel extends cdktf.TerraformRes
     super(scope, id, {
       terraformResourceType: 'aws_route53recoverycontrolconfig_control_panel',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

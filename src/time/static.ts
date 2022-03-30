@@ -25,7 +25,7 @@ export class Static extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "time_static";
+  public static readonly tfResourceType = "time_static";
 
   // ===========
   // INITIALIZER
@@ -42,7 +42,9 @@ export class Static extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'time_static',
       terraformGeneratorMetadata: {
-        providerName: 'time'
+        providerName: 'time',
+        providerVersion: '0.7.2',
+        providerVersionConstraint: '~> 0.7.2'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

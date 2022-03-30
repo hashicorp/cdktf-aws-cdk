@@ -33,7 +33,7 @@ export class Ec2SubnetCidrReservation extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_ec2_subnet_cidr_reservation";
+  public static readonly tfResourceType = "aws_ec2_subnet_cidr_reservation";
 
   // ===========
   // INITIALIZER
@@ -50,7 +50,9 @@ export class Ec2SubnetCidrReservation extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_ec2_subnet_cidr_reservation',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

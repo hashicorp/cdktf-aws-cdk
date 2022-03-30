@@ -25,7 +25,7 @@ export class VpcEndpointServiceAllowedPrincipal extends cdktf.TerraformResource 
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_vpc_endpoint_service_allowed_principal";
+  public static readonly tfResourceType = "aws_vpc_endpoint_service_allowed_principal";
 
   // ===========
   // INITIALIZER
@@ -42,7 +42,9 @@ export class VpcEndpointServiceAllowedPrincipal extends cdktf.TerraformResource 
     super(scope, id, {
       terraformResourceType: 'aws_vpc_endpoint_service_allowed_principal',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

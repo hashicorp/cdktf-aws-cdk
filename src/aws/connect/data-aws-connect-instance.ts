@@ -25,7 +25,7 @@ export class DataAwsConnectInstance extends cdktf.TerraformDataSource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_connect_instance";
+  public static readonly tfResourceType = "aws_connect_instance";
 
   // ===========
   // INITIALIZER
@@ -42,7 +42,9 @@ export class DataAwsConnectInstance extends cdktf.TerraformDataSource {
     super(scope, id, {
       terraformResourceType: 'aws_connect_instance',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

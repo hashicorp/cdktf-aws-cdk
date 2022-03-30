@@ -204,7 +204,7 @@ export class BackupSelection extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_backup_selection";
+  public static readonly tfResourceType = "aws_backup_selection";
 
   // ===========
   // INITIALIZER
@@ -221,7 +221,9 @@ export class BackupSelection extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_backup_selection',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

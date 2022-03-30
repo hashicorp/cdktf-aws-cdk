@@ -67,10 +67,9 @@ export class GameliftBuildStorageLocationOutputReference extends cdktf.ComplexOb
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): GameliftBuildStorageLocation | undefined {
@@ -154,7 +153,7 @@ export class GameliftBuild extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_gamelift_build";
+  public static readonly tfResourceType = "aws_gamelift_build";
 
   // ===========
   // INITIALIZER
@@ -171,7 +170,9 @@ export class GameliftBuild extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_gamelift_build',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -275,7 +276,7 @@ export class GameliftBuild extends cdktf.TerraformResource {
   }
 
   // storage_location - computed: false, optional: false, required: true
-  private _storageLocation = new GameliftBuildStorageLocationOutputReference(this, "storage_location", true);
+  private _storageLocation = new GameliftBuildStorageLocationOutputReference(this, "storage_location");
   public get storageLocation() {
     return this._storageLocation;
   }

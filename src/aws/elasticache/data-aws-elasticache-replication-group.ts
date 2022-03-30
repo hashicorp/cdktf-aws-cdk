@@ -21,7 +21,7 @@ export class DataAwsElasticacheReplicationGroup extends cdktf.TerraformDataSourc
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_elasticache_replication_group";
+  public static readonly tfResourceType = "aws_elasticache_replication_group";
 
   // ===========
   // INITIALIZER
@@ -38,7 +38,9 @@ export class DataAwsElasticacheReplicationGroup extends cdktf.TerraformDataSourc
     super(scope, id, {
       terraformResourceType: 'aws_elasticache_replication_group',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

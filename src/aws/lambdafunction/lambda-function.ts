@@ -161,10 +161,9 @@ export class LambdaFunctionDeadLetterConfigOutputReference extends cdktf.Complex
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LambdaFunctionDeadLetterConfig | undefined {
@@ -224,10 +223,9 @@ export class LambdaFunctionEnvironmentOutputReference extends cdktf.ComplexObjec
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LambdaFunctionEnvironment | undefined {
@@ -295,10 +293,9 @@ export class LambdaFunctionFileSystemConfigOutputReference extends cdktf.Complex
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LambdaFunctionFileSystemConfig | undefined {
@@ -387,10 +384,9 @@ export class LambdaFunctionImageConfigOutputReference extends cdktf.ComplexObjec
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LambdaFunctionImageConfig | undefined {
@@ -497,10 +493,9 @@ export class LambdaFunctionTimeoutsOutputReference extends cdktf.ComplexObject {
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LambdaFunctionTimeouts | undefined {
@@ -563,10 +558,9 @@ export class LambdaFunctionTracingConfigOutputReference extends cdktf.ComplexObj
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LambdaFunctionTracingConfig | undefined {
@@ -631,10 +625,9 @@ export class LambdaFunctionVpcConfigOutputReference extends cdktf.ComplexObject 
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LambdaFunctionVpcConfig | undefined {
@@ -704,7 +697,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_lambda_function";
+  public static readonly tfResourceType = "aws_lambda_function";
 
   // ===========
   // INITIALIZER
@@ -721,7 +714,9 @@ export class LambdaFunction extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_lambda_function',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -1155,7 +1150,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
 
   // dead_letter_config - computed: false, optional: true, required: false
-  private _deadLetterConfig = new LambdaFunctionDeadLetterConfigOutputReference(this, "dead_letter_config", true);
+  private _deadLetterConfig = new LambdaFunctionDeadLetterConfigOutputReference(this, "dead_letter_config");
   public get deadLetterConfig() {
     return this._deadLetterConfig;
   }
@@ -1171,7 +1166,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
 
   // environment - computed: false, optional: true, required: false
-  private _environment = new LambdaFunctionEnvironmentOutputReference(this, "environment", true);
+  private _environment = new LambdaFunctionEnvironmentOutputReference(this, "environment");
   public get environment() {
     return this._environment;
   }
@@ -1187,7 +1182,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
 
   // file_system_config - computed: false, optional: true, required: false
-  private _fileSystemConfig = new LambdaFunctionFileSystemConfigOutputReference(this, "file_system_config", true);
+  private _fileSystemConfig = new LambdaFunctionFileSystemConfigOutputReference(this, "file_system_config");
   public get fileSystemConfig() {
     return this._fileSystemConfig;
   }
@@ -1203,7 +1198,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
 
   // image_config - computed: false, optional: true, required: false
-  private _imageConfig = new LambdaFunctionImageConfigOutputReference(this, "image_config", true);
+  private _imageConfig = new LambdaFunctionImageConfigOutputReference(this, "image_config");
   public get imageConfig() {
     return this._imageConfig;
   }
@@ -1219,7 +1214,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts = new LambdaFunctionTimeoutsOutputReference(this, "timeouts", true);
+  private _timeouts = new LambdaFunctionTimeoutsOutputReference(this, "timeouts");
   public get timeouts() {
     return this._timeouts;
   }
@@ -1235,7 +1230,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
 
   // tracing_config - computed: false, optional: true, required: false
-  private _tracingConfig = new LambdaFunctionTracingConfigOutputReference(this, "tracing_config", true);
+  private _tracingConfig = new LambdaFunctionTracingConfigOutputReference(this, "tracing_config");
   public get tracingConfig() {
     return this._tracingConfig;
   }
@@ -1251,7 +1246,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
 
   // vpc_config - computed: false, optional: true, required: false
-  private _vpcConfig = new LambdaFunctionVpcConfigOutputReference(this, "vpc_config", true);
+  private _vpcConfig = new LambdaFunctionVpcConfigOutputReference(this, "vpc_config");
   public get vpcConfig() {
     return this._vpcConfig;
   }

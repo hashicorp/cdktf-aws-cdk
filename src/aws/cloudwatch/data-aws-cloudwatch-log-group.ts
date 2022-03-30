@@ -25,7 +25,7 @@ export class DataAwsCloudwatchLogGroup extends cdktf.TerraformDataSource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_cloudwatch_log_group";
+  public static readonly tfResourceType = "aws_cloudwatch_log_group";
 
   // ===========
   // INITIALIZER
@@ -42,7 +42,9 @@ export class DataAwsCloudwatchLogGroup extends cdktf.TerraformDataSource {
     super(scope, id, {
       terraformResourceType: 'aws_cloudwatch_log_group',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

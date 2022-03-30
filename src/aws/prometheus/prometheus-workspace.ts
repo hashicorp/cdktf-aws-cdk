@@ -21,7 +21,7 @@ export class PrometheusWorkspace extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_prometheus_workspace";
+  public static readonly tfResourceType = "aws_prometheus_workspace";
 
   // ===========
   // INITIALIZER
@@ -38,7 +38,9 @@ export class PrometheusWorkspace extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_prometheus_workspace',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
