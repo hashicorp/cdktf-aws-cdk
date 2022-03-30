@@ -66,7 +66,7 @@ describe("lambda function", () => {
           \\"required_providers\\": {
             \\"time\\": {
               \\"source\\": \\"time\\",
-              \\"version\\": \\"~> 0.7.2\\"
+              \\"version\\": \\"0.7.2\\"
             }
           }
         }
