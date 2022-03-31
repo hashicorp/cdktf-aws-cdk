@@ -33,7 +33,7 @@ export class DataAwsRoute53ResolverRules extends cdktf.TerraformDataSource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_route53_resolver_rules";
+  public static readonly tfResourceType = "aws_route53_resolver_rules";
 
   // ===========
   // INITIALIZER
@@ -50,7 +50,9 @@ export class DataAwsRoute53ResolverRules extends cdktf.TerraformDataSource {
     super(scope, id, {
       terraformResourceType: 'aws_route53_resolver_rules',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

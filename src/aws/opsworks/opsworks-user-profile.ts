@@ -33,7 +33,7 @@ export class OpsworksUserProfile extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_opsworks_user_profile";
+  public static readonly tfResourceType = "aws_opsworks_user_profile";
 
   // ===========
   // INITIALIZER
@@ -50,7 +50,9 @@ export class OpsworksUserProfile extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_opsworks_user_profile',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

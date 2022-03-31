@@ -54,10 +54,9 @@ export class GluePartitionIndexPartitionIndexOutputReference extends cdktf.Compl
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): GluePartitionIndexPartitionIndex | undefined {
@@ -133,7 +132,7 @@ export class GluePartitionIndex extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_glue_partition_index";
+  public static readonly tfResourceType = "aws_glue_partition_index";
 
   // ===========
   // INITIALIZER
@@ -150,7 +149,9 @@ export class GluePartitionIndex extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_glue_partition_index',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -215,7 +216,7 @@ export class GluePartitionIndex extends cdktf.TerraformResource {
   }
 
   // partition_index - computed: false, optional: false, required: true
-  private _partitionIndex = new GluePartitionIndexPartitionIndexOutputReference(this, "partition_index", true);
+  private _partitionIndex = new GluePartitionIndexPartitionIndexOutputReference(this, "partition_index");
   public get partitionIndex() {
     return this._partitionIndex;
   }

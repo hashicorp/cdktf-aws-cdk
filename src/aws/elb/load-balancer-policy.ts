@@ -57,7 +57,7 @@ export class LoadBalancerPolicy extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_load_balancer_policy";
+  public static readonly tfResourceType = "aws_load_balancer_policy";
 
   // ===========
   // INITIALIZER
@@ -74,7 +74,9 @@ export class LoadBalancerPolicy extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_load_balancer_policy',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

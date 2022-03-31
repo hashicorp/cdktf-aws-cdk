@@ -106,10 +106,9 @@ export class ServicecatalogProductProvisioningArtifactParametersOutputReference 
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): ServicecatalogProductProvisioningArtifactParameters | undefined {
@@ -268,7 +267,7 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_servicecatalog_product";
+  public static readonly tfResourceType = "aws_servicecatalog_product";
 
   // ===========
   // INITIALIZER
@@ -285,7 +284,9 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_servicecatalog_product',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -503,7 +504,7 @@ export class ServicecatalogProduct extends cdktf.TerraformResource {
   }
 
   // provisioning_artifact_parameters - computed: false, optional: false, required: true
-  private _provisioningArtifactParameters = new ServicecatalogProductProvisioningArtifactParametersOutputReference(this, "provisioning_artifact_parameters", true);
+  private _provisioningArtifactParameters = new ServicecatalogProductProvisioningArtifactParametersOutputReference(this, "provisioning_artifact_parameters");
   public get provisioningArtifactParameters() {
     return this._provisioningArtifactParameters;
   }

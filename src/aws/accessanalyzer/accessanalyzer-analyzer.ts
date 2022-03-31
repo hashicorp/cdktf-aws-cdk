@@ -33,7 +33,7 @@ export class AccessanalyzerAnalyzer extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_accessanalyzer_analyzer";
+  public static readonly tfResourceType = "aws_accessanalyzer_analyzer";
 
   // ===========
   // INITIALIZER
@@ -50,7 +50,9 @@ export class AccessanalyzerAnalyzer extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_accessanalyzer_analyzer',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

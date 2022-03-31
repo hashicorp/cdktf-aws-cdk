@@ -222,10 +222,9 @@ export class RdsClusterRestoreToPointInTimeOutputReference extends cdktf.Complex
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): RdsClusterRestoreToPointInTime | undefined {
@@ -371,10 +370,9 @@ export class RdsClusterS3ImportOutputReference extends cdktf.ComplexObject {
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): RdsClusterS3Import | undefined {
@@ -533,10 +531,9 @@ export class RdsClusterScalingConfigurationOutputReference extends cdktf.Complex
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): RdsClusterScalingConfiguration | undefined {
@@ -697,10 +694,9 @@ export class RdsClusterTimeoutsOutputReference extends cdktf.ComplexObject {
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): RdsClusterTimeouts | undefined {
@@ -793,7 +789,7 @@ export class RdsCluster extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_rds_cluster";
+  public static readonly tfResourceType = "aws_rds_cluster";
 
   // ===========
   // INITIALIZER
@@ -810,7 +806,9 @@ export class RdsCluster extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_rds_cluster',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -1509,7 +1507,7 @@ export class RdsCluster extends cdktf.TerraformResource {
   }
 
   // restore_to_point_in_time - computed: false, optional: true, required: false
-  private _restoreToPointInTime = new RdsClusterRestoreToPointInTimeOutputReference(this, "restore_to_point_in_time", true);
+  private _restoreToPointInTime = new RdsClusterRestoreToPointInTimeOutputReference(this, "restore_to_point_in_time");
   public get restoreToPointInTime() {
     return this._restoreToPointInTime;
   }
@@ -1525,7 +1523,7 @@ export class RdsCluster extends cdktf.TerraformResource {
   }
 
   // s3_import - computed: false, optional: true, required: false
-  private _s3Import = new RdsClusterS3ImportOutputReference(this, "s3_import", true);
+  private _s3Import = new RdsClusterS3ImportOutputReference(this, "s3_import");
   public get s3Import() {
     return this._s3Import;
   }
@@ -1541,7 +1539,7 @@ export class RdsCluster extends cdktf.TerraformResource {
   }
 
   // scaling_configuration - computed: false, optional: true, required: false
-  private _scalingConfiguration = new RdsClusterScalingConfigurationOutputReference(this, "scaling_configuration", true);
+  private _scalingConfiguration = new RdsClusterScalingConfigurationOutputReference(this, "scaling_configuration");
   public get scalingConfiguration() {
     return this._scalingConfiguration;
   }
@@ -1557,7 +1555,7 @@ export class RdsCluster extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts = new RdsClusterTimeoutsOutputReference(this, "timeouts", true);
+  private _timeouts = new RdsClusterTimeoutsOutputReference(this, "timeouts");
   public get timeouts() {
     return this._timeouts;
   }

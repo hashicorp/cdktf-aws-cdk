@@ -49,7 +49,7 @@ export class DataAwsEc2TransitGatewayRouteTables extends cdktf.TerraformDataSour
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_ec2_transit_gateway_route_tables";
+  public static readonly tfResourceType = "aws_ec2_transit_gateway_route_tables";
 
   // ===========
   // INITIALIZER
@@ -66,7 +66,9 @@ export class DataAwsEc2TransitGatewayRouteTables extends cdktf.TerraformDataSour
     super(scope, id, {
       terraformResourceType: 'aws_ec2_transit_gateway_route_tables',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

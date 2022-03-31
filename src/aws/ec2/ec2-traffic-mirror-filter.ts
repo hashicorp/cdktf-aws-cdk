@@ -33,7 +33,7 @@ export class Ec2TrafficMirrorFilter extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_ec2_traffic_mirror_filter";
+  public static readonly tfResourceType = "aws_ec2_traffic_mirror_filter";
 
   // ===========
   // INITIALIZER
@@ -50,7 +50,9 @@ export class Ec2TrafficMirrorFilter extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_ec2_traffic_mirror_filter',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

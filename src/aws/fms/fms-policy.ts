@@ -82,10 +82,9 @@ export class FmsPolicyExcludeMapOutputReference extends cdktf.ComplexObject {
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): FmsPolicyExcludeMap | undefined {
@@ -175,10 +174,9 @@ export class FmsPolicyIncludeMapOutputReference extends cdktf.ComplexObject {
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): FmsPolicyIncludeMap | undefined {
@@ -268,10 +266,9 @@ export class FmsPolicySecurityServicePolicyDataOutputReference extends cdktf.Com
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): FmsPolicySecurityServicePolicyData | undefined {
@@ -339,7 +336,7 @@ export class FmsPolicy extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_fms_policy";
+  public static readonly tfResourceType = "aws_fms_policy";
 
   // ===========
   // INITIALIZER
@@ -356,7 +353,9 @@ export class FmsPolicy extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_fms_policy',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -501,7 +500,7 @@ export class FmsPolicy extends cdktf.TerraformResource {
   }
 
   // exclude_map - computed: false, optional: true, required: false
-  private _excludeMap = new FmsPolicyExcludeMapOutputReference(this, "exclude_map", true);
+  private _excludeMap = new FmsPolicyExcludeMapOutputReference(this, "exclude_map");
   public get excludeMap() {
     return this._excludeMap;
   }
@@ -517,7 +516,7 @@ export class FmsPolicy extends cdktf.TerraformResource {
   }
 
   // include_map - computed: false, optional: true, required: false
-  private _includeMap = new FmsPolicyIncludeMapOutputReference(this, "include_map", true);
+  private _includeMap = new FmsPolicyIncludeMapOutputReference(this, "include_map");
   public get includeMap() {
     return this._includeMap;
   }
@@ -533,7 +532,7 @@ export class FmsPolicy extends cdktf.TerraformResource {
   }
 
   // security_service_policy_data - computed: false, optional: false, required: true
-  private _securityServicePolicyData = new FmsPolicySecurityServicePolicyDataOutputReference(this, "security_service_policy_data", true);
+  private _securityServicePolicyData = new FmsPolicySecurityServicePolicyDataOutputReference(this, "security_service_policy_data");
   public get securityServicePolicyData() {
     return this._securityServicePolicyData;
   }

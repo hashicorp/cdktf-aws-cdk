@@ -71,10 +71,9 @@ export class ApprunnerServiceEncryptionConfigurationOutputReference extends cdkt
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): ApprunnerServiceEncryptionConfiguration | undefined {
@@ -159,10 +158,9 @@ export class ApprunnerServiceHealthCheckConfigurationOutputReference extends cdk
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): ApprunnerServiceHealthCheckConfiguration | undefined {
@@ -345,10 +343,9 @@ export class ApprunnerServiceInstanceConfigurationOutputReference extends cdktf.
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): ApprunnerServiceInstanceConfiguration | undefined {
@@ -460,10 +457,9 @@ export class ApprunnerServiceSourceConfigurationAuthenticationConfigurationOutpu
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): ApprunnerServiceSourceConfigurationAuthenticationConfiguration | undefined {
@@ -568,10 +564,9 @@ export class ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationC
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues | undefined {
@@ -726,10 +721,9 @@ export class ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationO
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfiguration | undefined {
@@ -773,7 +767,7 @@ export class ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationO
   }
 
   // code_configuration_values - computed: false, optional: true, required: false
-  private _codeConfigurationValues = new ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValuesOutputReference(this, "code_configuration_values", true);
+  private _codeConfigurationValues = new ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValuesOutputReference(this, "code_configuration_values");
   public get codeConfigurationValues() {
     return this._codeConfigurationValues;
   }
@@ -816,10 +810,9 @@ export class ApprunnerServiceSourceConfigurationCodeRepositorySourceCodeVersionO
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): ApprunnerServiceSourceConfigurationCodeRepositorySourceCodeVersion | undefined {
@@ -912,10 +905,9 @@ export class ApprunnerServiceSourceConfigurationCodeRepositoryOutputReference ex
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): ApprunnerServiceSourceConfigurationCodeRepository | undefined {
@@ -965,7 +957,7 @@ export class ApprunnerServiceSourceConfigurationCodeRepositoryOutputReference ex
   }
 
   // code_configuration - computed: false, optional: true, required: false
-  private _codeConfiguration = new ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationOutputReference(this, "code_configuration", true);
+  private _codeConfiguration = new ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationOutputReference(this, "code_configuration");
   public get codeConfiguration() {
     return this._codeConfiguration;
   }
@@ -981,7 +973,7 @@ export class ApprunnerServiceSourceConfigurationCodeRepositoryOutputReference ex
   }
 
   // source_code_version - computed: false, optional: false, required: true
-  private _sourceCodeVersion = new ApprunnerServiceSourceConfigurationCodeRepositorySourceCodeVersionOutputReference(this, "source_code_version", true);
+  private _sourceCodeVersion = new ApprunnerServiceSourceConfigurationCodeRepositorySourceCodeVersionOutputReference(this, "source_code_version");
   public get sourceCodeVersion() {
     return this._sourceCodeVersion;
   }
@@ -1026,10 +1018,9 @@ export class ApprunnerServiceSourceConfigurationImageRepositoryImageConfiguratio
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): ApprunnerServiceSourceConfigurationImageRepositoryImageConfiguration | undefined {
@@ -1148,10 +1139,9 @@ export class ApprunnerServiceSourceConfigurationImageRepositoryOutputReference e
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): ApprunnerServiceSourceConfigurationImageRepository | undefined {
@@ -1214,7 +1204,7 @@ export class ApprunnerServiceSourceConfigurationImageRepositoryOutputReference e
   }
 
   // image_configuration - computed: false, optional: true, required: false
-  private _imageConfiguration = new ApprunnerServiceSourceConfigurationImageRepositoryImageConfigurationOutputReference(this, "image_configuration", true);
+  private _imageConfiguration = new ApprunnerServiceSourceConfigurationImageRepositoryImageConfigurationOutputReference(this, "image_configuration");
   public get imageConfiguration() {
     return this._imageConfiguration;
   }
@@ -1273,10 +1263,9 @@ export class ApprunnerServiceSourceConfigurationOutputReference extends cdktf.Co
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): ApprunnerServiceSourceConfiguration | undefined {
@@ -1335,7 +1324,7 @@ export class ApprunnerServiceSourceConfigurationOutputReference extends cdktf.Co
   }
 
   // authentication_configuration - computed: false, optional: true, required: false
-  private _authenticationConfiguration = new ApprunnerServiceSourceConfigurationAuthenticationConfigurationOutputReference(this, "authentication_configuration", true);
+  private _authenticationConfiguration = new ApprunnerServiceSourceConfigurationAuthenticationConfigurationOutputReference(this, "authentication_configuration");
   public get authenticationConfiguration() {
     return this._authenticationConfiguration;
   }
@@ -1351,7 +1340,7 @@ export class ApprunnerServiceSourceConfigurationOutputReference extends cdktf.Co
   }
 
   // code_repository - computed: false, optional: true, required: false
-  private _codeRepository = new ApprunnerServiceSourceConfigurationCodeRepositoryOutputReference(this, "code_repository", true);
+  private _codeRepository = new ApprunnerServiceSourceConfigurationCodeRepositoryOutputReference(this, "code_repository");
   public get codeRepository() {
     return this._codeRepository;
   }
@@ -1367,7 +1356,7 @@ export class ApprunnerServiceSourceConfigurationOutputReference extends cdktf.Co
   }
 
   // image_repository - computed: false, optional: true, required: false
-  private _imageRepository = new ApprunnerServiceSourceConfigurationImageRepositoryOutputReference(this, "image_repository", true);
+  private _imageRepository = new ApprunnerServiceSourceConfigurationImageRepositoryOutputReference(this, "image_repository");
   public get imageRepository() {
     return this._imageRepository;
   }
@@ -1391,7 +1380,7 @@ export class ApprunnerService extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_apprunner_service";
+  public static readonly tfResourceType = "aws_apprunner_service";
 
   // ===========
   // INITIALIZER
@@ -1408,7 +1397,9 @@ export class ApprunnerService extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_apprunner_service',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -1516,7 +1507,7 @@ export class ApprunnerService extends cdktf.TerraformResource {
   }
 
   // encryption_configuration - computed: false, optional: true, required: false
-  private _encryptionConfiguration = new ApprunnerServiceEncryptionConfigurationOutputReference(this, "encryption_configuration", true);
+  private _encryptionConfiguration = new ApprunnerServiceEncryptionConfigurationOutputReference(this, "encryption_configuration");
   public get encryptionConfiguration() {
     return this._encryptionConfiguration;
   }
@@ -1532,7 +1523,7 @@ export class ApprunnerService extends cdktf.TerraformResource {
   }
 
   // health_check_configuration - computed: false, optional: true, required: false
-  private _healthCheckConfiguration = new ApprunnerServiceHealthCheckConfigurationOutputReference(this, "health_check_configuration", true);
+  private _healthCheckConfiguration = new ApprunnerServiceHealthCheckConfigurationOutputReference(this, "health_check_configuration");
   public get healthCheckConfiguration() {
     return this._healthCheckConfiguration;
   }
@@ -1548,7 +1539,7 @@ export class ApprunnerService extends cdktf.TerraformResource {
   }
 
   // instance_configuration - computed: false, optional: true, required: false
-  private _instanceConfiguration = new ApprunnerServiceInstanceConfigurationOutputReference(this, "instance_configuration", true);
+  private _instanceConfiguration = new ApprunnerServiceInstanceConfigurationOutputReference(this, "instance_configuration");
   public get instanceConfiguration() {
     return this._instanceConfiguration;
   }
@@ -1564,7 +1555,7 @@ export class ApprunnerService extends cdktf.TerraformResource {
   }
 
   // source_configuration - computed: false, optional: false, required: true
-  private _sourceConfiguration = new ApprunnerServiceSourceConfigurationOutputReference(this, "source_configuration", true);
+  private _sourceConfiguration = new ApprunnerServiceSourceConfigurationOutputReference(this, "source_configuration");
   public get sourceConfiguration() {
     return this._sourceConfiguration;
   }

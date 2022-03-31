@@ -291,10 +291,9 @@ export class IotTopicRuleDynamodbv2PutItemOutputReference extends cdktf.ComplexO
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleDynamodbv2PutItem | undefined {
@@ -430,10 +429,9 @@ export class IotTopicRuleErrorActionCloudwatchAlarmOutputReference extends cdktf
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorActionCloudwatchAlarm | undefined {
@@ -575,10 +573,9 @@ export class IotTopicRuleErrorActionCloudwatchMetricOutputReference extends cdkt
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorActionCloudwatchMetric | undefined {
@@ -781,10 +778,9 @@ export class IotTopicRuleErrorActionDynamodbOutputReference extends cdktf.Comple
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorActionDynamodb | undefined {
@@ -1033,10 +1029,9 @@ export class IotTopicRuleErrorActionDynamodbv2PutItemOutputReference extends cdk
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorActionDynamodbv2PutItem | undefined {
@@ -1103,10 +1098,9 @@ export class IotTopicRuleErrorActionDynamodbv2OutputReference extends cdktf.Comp
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorActionDynamodbv2 | undefined {
@@ -1150,7 +1144,7 @@ export class IotTopicRuleErrorActionDynamodbv2OutputReference extends cdktf.Comp
   }
 
   // put_item - computed: false, optional: true, required: false
-  private _putItem = new IotTopicRuleErrorActionDynamodbv2PutItemOutputReference(this, "put_item", true);
+  private _putItem = new IotTopicRuleErrorActionDynamodbv2PutItemOutputReference(this, "put_item");
   public get putItem() {
     return this._putItem;
   }
@@ -1208,10 +1202,9 @@ export class IotTopicRuleErrorActionElasticsearchOutputReference extends cdktf.C
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorActionElasticsearch | undefined {
@@ -1357,10 +1350,9 @@ export class IotTopicRuleErrorActionFirehoseOutputReference extends cdktf.Comple
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorActionFirehose | undefined {
@@ -1466,10 +1458,9 @@ export class IotTopicRuleErrorActionIotAnalyticsOutputReference extends cdktf.Co
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorActionIotAnalytics | undefined {
@@ -1558,10 +1549,9 @@ export class IotTopicRuleErrorActionIotEventsOutputReference extends cdktf.Compl
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorActionIotEvents | undefined {
@@ -1672,10 +1662,9 @@ export class IotTopicRuleErrorActionKinesisOutputReference extends cdktf.Complex
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorActionKinesis | undefined {
@@ -1776,10 +1765,9 @@ export class IotTopicRuleErrorActionLambdaOutputReference extends cdktf.ComplexO
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorActionLambda | undefined {
@@ -1849,10 +1837,9 @@ export class IotTopicRuleErrorActionRepublishOutputReference extends cdktf.Compl
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorActionRepublish | undefined {
@@ -1963,10 +1950,9 @@ export class IotTopicRuleErrorActionS3OutputReference extends cdktf.ComplexObjec
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorActionS3 | undefined {
@@ -2074,10 +2060,9 @@ export class IotTopicRuleErrorActionSnsOutputReference extends cdktf.ComplexObje
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorActionSns | undefined {
@@ -2188,10 +2173,9 @@ export class IotTopicRuleErrorActionSqsOutputReference extends cdktf.ComplexObje
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorActionSqs | undefined {
@@ -2299,10 +2283,9 @@ export class IotTopicRuleErrorActionStepFunctionsOutputReference extends cdktf.C
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorActionStepFunctions | undefined {
@@ -2503,10 +2486,9 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): IotTopicRuleErrorAction | undefined {
@@ -2615,7 +2597,7 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
   }
 
   // cloudwatch_alarm - computed: false, optional: true, required: false
-  private _cloudwatchAlarm = new IotTopicRuleErrorActionCloudwatchAlarmOutputReference(this, "cloudwatch_alarm", true);
+  private _cloudwatchAlarm = new IotTopicRuleErrorActionCloudwatchAlarmOutputReference(this, "cloudwatch_alarm");
   public get cloudwatchAlarm() {
     return this._cloudwatchAlarm;
   }
@@ -2631,7 +2613,7 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
   }
 
   // cloudwatch_metric - computed: false, optional: true, required: false
-  private _cloudwatchMetric = new IotTopicRuleErrorActionCloudwatchMetricOutputReference(this, "cloudwatch_metric", true);
+  private _cloudwatchMetric = new IotTopicRuleErrorActionCloudwatchMetricOutputReference(this, "cloudwatch_metric");
   public get cloudwatchMetric() {
     return this._cloudwatchMetric;
   }
@@ -2647,7 +2629,7 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
   }
 
   // dynamodb - computed: false, optional: true, required: false
-  private _dynamodb = new IotTopicRuleErrorActionDynamodbOutputReference(this, "dynamodb", true);
+  private _dynamodb = new IotTopicRuleErrorActionDynamodbOutputReference(this, "dynamodb");
   public get dynamodb() {
     return this._dynamodb;
   }
@@ -2663,7 +2645,7 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
   }
 
   // dynamodbv2 - computed: false, optional: true, required: false
-  private _dynamodbv2 = new IotTopicRuleErrorActionDynamodbv2OutputReference(this, "dynamodbv2", true);
+  private _dynamodbv2 = new IotTopicRuleErrorActionDynamodbv2OutputReference(this, "dynamodbv2");
   public get dynamodbv2() {
     return this._dynamodbv2;
   }
@@ -2679,7 +2661,7 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
   }
 
   // elasticsearch - computed: false, optional: true, required: false
-  private _elasticsearch = new IotTopicRuleErrorActionElasticsearchOutputReference(this, "elasticsearch", true);
+  private _elasticsearch = new IotTopicRuleErrorActionElasticsearchOutputReference(this, "elasticsearch");
   public get elasticsearch() {
     return this._elasticsearch;
   }
@@ -2695,7 +2677,7 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
   }
 
   // firehose - computed: false, optional: true, required: false
-  private _firehose = new IotTopicRuleErrorActionFirehoseOutputReference(this, "firehose", true);
+  private _firehose = new IotTopicRuleErrorActionFirehoseOutputReference(this, "firehose");
   public get firehose() {
     return this._firehose;
   }
@@ -2711,7 +2693,7 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
   }
 
   // iot_analytics - computed: false, optional: true, required: false
-  private _iotAnalytics = new IotTopicRuleErrorActionIotAnalyticsOutputReference(this, "iot_analytics", true);
+  private _iotAnalytics = new IotTopicRuleErrorActionIotAnalyticsOutputReference(this, "iot_analytics");
   public get iotAnalytics() {
     return this._iotAnalytics;
   }
@@ -2727,7 +2709,7 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
   }
 
   // iot_events - computed: false, optional: true, required: false
-  private _iotEvents = new IotTopicRuleErrorActionIotEventsOutputReference(this, "iot_events", true);
+  private _iotEvents = new IotTopicRuleErrorActionIotEventsOutputReference(this, "iot_events");
   public get iotEvents() {
     return this._iotEvents;
   }
@@ -2743,7 +2725,7 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
   }
 
   // kinesis - computed: false, optional: true, required: false
-  private _kinesis = new IotTopicRuleErrorActionKinesisOutputReference(this, "kinesis", true);
+  private _kinesis = new IotTopicRuleErrorActionKinesisOutputReference(this, "kinesis");
   public get kinesis() {
     return this._kinesis;
   }
@@ -2759,7 +2741,7 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
   }
 
   // lambda - computed: false, optional: true, required: false
-  private _lambda = new IotTopicRuleErrorActionLambdaOutputReference(this, "lambda", true);
+  private _lambda = new IotTopicRuleErrorActionLambdaOutputReference(this, "lambda");
   public get lambda() {
     return this._lambda;
   }
@@ -2775,7 +2757,7 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
   }
 
   // republish - computed: false, optional: true, required: false
-  private _republish = new IotTopicRuleErrorActionRepublishOutputReference(this, "republish", true);
+  private _republish = new IotTopicRuleErrorActionRepublishOutputReference(this, "republish");
   public get republish() {
     return this._republish;
   }
@@ -2791,7 +2773,7 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
   }
 
   // s3 - computed: false, optional: true, required: false
-  private _s3 = new IotTopicRuleErrorActionS3OutputReference(this, "s3", true);
+  private _s3 = new IotTopicRuleErrorActionS3OutputReference(this, "s3");
   public get s3() {
     return this._s3;
   }
@@ -2807,7 +2789,7 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
   }
 
   // sns - computed: false, optional: true, required: false
-  private _sns = new IotTopicRuleErrorActionSnsOutputReference(this, "sns", true);
+  private _sns = new IotTopicRuleErrorActionSnsOutputReference(this, "sns");
   public get sns() {
     return this._sns;
   }
@@ -2823,7 +2805,7 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
   }
 
   // sqs - computed: false, optional: true, required: false
-  private _sqs = new IotTopicRuleErrorActionSqsOutputReference(this, "sqs", true);
+  private _sqs = new IotTopicRuleErrorActionSqsOutputReference(this, "sqs");
   public get sqs() {
     return this._sqs;
   }
@@ -2839,7 +2821,7 @@ export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject 
   }
 
   // step_functions - computed: false, optional: true, required: false
-  private _stepFunctions = new IotTopicRuleErrorActionStepFunctionsOutputReference(this, "step_functions", true);
+  private _stepFunctions = new IotTopicRuleErrorActionStepFunctionsOutputReference(this, "step_functions");
   public get stepFunctions() {
     return this._stepFunctions;
   }
@@ -3118,7 +3100,7 @@ export class IotTopicRule extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_iot_topic_rule";
+  public static readonly tfResourceType = "aws_iot_topic_rule";
 
   // ===========
   // INITIALIZER
@@ -3135,7 +3117,9 @@ export class IotTopicRule extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_iot_topic_rule',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -3367,7 +3351,7 @@ export class IotTopicRule extends cdktf.TerraformResource {
   }
 
   // error_action - computed: false, optional: true, required: false
-  private _errorAction = new IotTopicRuleErrorActionOutputReference(this, "error_action", true);
+  private _errorAction = new IotTopicRuleErrorActionOutputReference(this, "error_action");
   public get errorAction() {
     return this._errorAction;
   }

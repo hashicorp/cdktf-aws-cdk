@@ -49,7 +49,7 @@ export class ChimeVoiceConnectorTerminationCredentials extends cdktf.TerraformRe
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_chime_voice_connector_termination_credentials";
+  public static readonly tfResourceType = "aws_chime_voice_connector_termination_credentials";
 
   // ===========
   // INITIALIZER
@@ -66,7 +66,9 @@ export class ChimeVoiceConnectorTerminationCredentials extends cdktf.TerraformRe
     super(scope, id, {
       terraformResourceType: 'aws_chime_voice_connector_termination_credentials',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

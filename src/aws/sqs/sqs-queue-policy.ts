@@ -25,7 +25,7 @@ export class SqsQueuePolicy extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_sqs_queue_policy";
+  public static readonly tfResourceType = "aws_sqs_queue_policy";
 
   // ===========
   // INITIALIZER
@@ -42,7 +42,9 @@ export class SqsQueuePolicy extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_sqs_queue_policy',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

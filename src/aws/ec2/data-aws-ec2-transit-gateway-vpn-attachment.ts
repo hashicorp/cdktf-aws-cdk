@@ -57,7 +57,7 @@ export class DataAwsEc2TransitGatewayVpnAttachment extends cdktf.TerraformDataSo
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_ec2_transit_gateway_vpn_attachment";
+  public static readonly tfResourceType = "aws_ec2_transit_gateway_vpn_attachment";
 
   // ===========
   // INITIALIZER
@@ -74,7 +74,9 @@ export class DataAwsEc2TransitGatewayVpnAttachment extends cdktf.TerraformDataSo
     super(scope, id, {
       terraformResourceType: 'aws_ec2_transit_gateway_vpn_attachment',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

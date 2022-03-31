@@ -40,7 +40,45 @@ export interface RdsGlobalClusterConfig extends cdktf.TerraformMetaArguments {
   */
   readonly storageEncrypted?: boolean | cdktf.IResolvable;
 }
-export class RdsGlobalClusterGlobalClusterMembers extends cdktf.ComplexComputedList {
+export interface RdsGlobalClusterGlobalClusterMembers {
+}
+
+export function rdsGlobalClusterGlobalClusterMembersToTerraform(struct?: RdsGlobalClusterGlobalClusterMembers): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  return {
+  }
+}
+
+export class RdsGlobalClusterGlobalClusterMembersOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param complexObjectIndex the index of this item in the list
+  * @param complexObjectIsFromSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, complexObjectIndex: number, complexObjectIsFromSet: boolean) {
+    super(terraformResource, terraformAttribute, complexObjectIsFromSet, complexObjectIndex);
+  }
+
+  public get internalValue(): RdsGlobalClusterGlobalClusterMembers | undefined {
+    let hasAnyValues = this.isEmptyObject;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: RdsGlobalClusterGlobalClusterMembers | undefined) {
+    if (value === undefined) {
+      this.isEmptyObject = false;
+    }
+    else {
+      this.isEmptyObject = Object.keys(value).length === 0;
+    }
+  }
 
   // db_cluster_arn - computed: true, optional: false, required: false
   public get dbClusterArn() {
@@ -53,6 +91,25 @@ export class RdsGlobalClusterGlobalClusterMembers extends cdktf.ComplexComputedL
   }
 }
 
+export class RdsGlobalClusterGlobalClusterMembersList extends cdktf.ComplexList {
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param wrapsSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  constructor(protected terraformResource: cdktf.IInterpolatingParent, protected terraformAttribute: string, protected wrapsSet: boolean) {
+    super(terraformResource, terraformAttribute, wrapsSet)
+  }
+
+  /**
+  * @param index the index of the item to return
+  */
+  public get(index: number): RdsGlobalClusterGlobalClusterMembersOutputReference {
+    return new RdsGlobalClusterGlobalClusterMembersOutputReference(this.terraformResource, this.terraformAttribute, index, this.wrapsSet);
+  }
+}
+
 /**
 * Represents a {@link https://www.terraform.io/docs/providers/aws/r/rds_global_cluster aws_rds_global_cluster}
 */
@@ -61,7 +118,7 @@ export class RdsGlobalCluster extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_rds_global_cluster";
+  public static readonly tfResourceType = "aws_rds_global_cluster";
 
   // ===========
   // INITIALIZER
@@ -78,7 +135,9 @@ export class RdsGlobalCluster extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_rds_global_cluster',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -198,8 +257,9 @@ export class RdsGlobalCluster extends cdktf.TerraformResource {
   }
 
   // global_cluster_members - computed: true, optional: false, required: false
-  public globalClusterMembers(index: string) {
-    return new RdsGlobalClusterGlobalClusterMembers(this, 'global_cluster_members', index, true);
+  private _globalClusterMembers = new RdsGlobalClusterGlobalClusterMembersList(this, "global_cluster_members", true);
+  public get globalClusterMembers() {
+    return this._globalClusterMembers;
   }
 
   // global_cluster_resource_id - computed: true, optional: false, required: false

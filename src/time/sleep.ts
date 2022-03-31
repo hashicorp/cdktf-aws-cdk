@@ -29,7 +29,7 @@ export class Sleep extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "time_sleep";
+  public static readonly tfResourceType = "time_sleep";
 
   // ===========
   // INITIALIZER
@@ -46,7 +46,9 @@ export class Sleep extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'time_sleep',
       terraformGeneratorMetadata: {
-        providerName: 'time'
+        providerName: 'time',
+        providerVersion: '0.7.2',
+        providerVersionConstraint: '~> 0.7.2'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

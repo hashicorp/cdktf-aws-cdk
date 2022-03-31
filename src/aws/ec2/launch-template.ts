@@ -234,10 +234,9 @@ export class LaunchTemplateBlockDeviceMappingsEbsOutputReference extends cdktf.C
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LaunchTemplateBlockDeviceMappingsEbs | undefined {
@@ -488,10 +487,9 @@ export class LaunchTemplateCapacityReservationSpecificationCapacityReservationTa
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget | undefined {
@@ -561,10 +559,9 @@ export class LaunchTemplateCapacityReservationSpecificationOutputReference exten
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LaunchTemplateCapacityReservationSpecification | undefined {
@@ -611,7 +608,7 @@ export class LaunchTemplateCapacityReservationSpecificationOutputReference exten
   }
 
   // capacity_reservation_target - computed: false, optional: true, required: false
-  private _capacityReservationTarget = new LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetOutputReference(this, "capacity_reservation_target", true);
+  private _capacityReservationTarget = new LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetOutputReference(this, "capacity_reservation_target");
   public get capacityReservationTarget() {
     return this._capacityReservationTarget;
   }
@@ -654,10 +651,9 @@ export class LaunchTemplateCpuOptionsOutputReference extends cdktf.ComplexObject
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LaunchTemplateCpuOptions | undefined {
@@ -742,10 +738,9 @@ export class LaunchTemplateCreditSpecificationOutputReference extends cdktf.Comp
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LaunchTemplateCreditSpecification | undefined {
@@ -825,10 +820,9 @@ export class LaunchTemplateElasticInferenceAcceleratorOutputReference extends cd
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LaunchTemplateElasticInferenceAccelerator | undefined {
@@ -888,10 +882,9 @@ export class LaunchTemplateEnclaveOptionsOutputReference extends cdktf.ComplexOb
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LaunchTemplateEnclaveOptions | undefined {
@@ -954,10 +947,9 @@ export class LaunchTemplateHibernationOptionsOutputReference extends cdktf.Compl
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LaunchTemplateHibernationOptions | undefined {
@@ -1022,10 +1014,9 @@ export class LaunchTemplateIamInstanceProfileOutputReference extends cdktf.Compl
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LaunchTemplateIamInstanceProfile | undefined {
@@ -1130,10 +1121,9 @@ export class LaunchTemplateInstanceMarketOptionsSpotOptionsOutputReference exten
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LaunchTemplateInstanceMarketOptionsSpotOptions | undefined {
@@ -1291,10 +1281,9 @@ export class LaunchTemplateInstanceMarketOptionsOutputReference extends cdktf.Co
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LaunchTemplateInstanceMarketOptions | undefined {
@@ -1341,7 +1330,7 @@ export class LaunchTemplateInstanceMarketOptionsOutputReference extends cdktf.Co
   }
 
   // spot_options - computed: false, optional: true, required: false
-  private _spotOptions = new LaunchTemplateInstanceMarketOptionsSpotOptionsOutputReference(this, "spot_options", true);
+  private _spotOptions = new LaunchTemplateInstanceMarketOptionsSpotOptionsOutputReference(this, "spot_options");
   public get spotOptions() {
     return this._spotOptions;
   }
@@ -1416,10 +1405,9 @@ export class LaunchTemplateMetadataOptionsOutputReference extends cdktf.ComplexO
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LaunchTemplateMetadataOptions | undefined {
@@ -1570,10 +1558,9 @@ export class LaunchTemplateMonitoringOutputReference extends cdktf.ComplexObject
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LaunchTemplateMonitoring | undefined {
@@ -1758,10 +1745,9 @@ export class LaunchTemplatePlacementOutputReference extends cdktf.ComplexObject 
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): LaunchTemplatePlacement | undefined {
@@ -1986,7 +1972,7 @@ export class LaunchTemplate extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_launch_template";
+  public static readonly tfResourceType = "aws_launch_template";
 
   // ===========
   // INITIALIZER
@@ -2003,7 +1989,9 @@ export class LaunchTemplate extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_launch_template',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -2371,7 +2359,7 @@ export class LaunchTemplate extends cdktf.TerraformResource {
   }
 
   // capacity_reservation_specification - computed: false, optional: true, required: false
-  private _capacityReservationSpecification = new LaunchTemplateCapacityReservationSpecificationOutputReference(this, "capacity_reservation_specification", true);
+  private _capacityReservationSpecification = new LaunchTemplateCapacityReservationSpecificationOutputReference(this, "capacity_reservation_specification");
   public get capacityReservationSpecification() {
     return this._capacityReservationSpecification;
   }
@@ -2387,7 +2375,7 @@ export class LaunchTemplate extends cdktf.TerraformResource {
   }
 
   // cpu_options - computed: false, optional: true, required: false
-  private _cpuOptions = new LaunchTemplateCpuOptionsOutputReference(this, "cpu_options", true);
+  private _cpuOptions = new LaunchTemplateCpuOptionsOutputReference(this, "cpu_options");
   public get cpuOptions() {
     return this._cpuOptions;
   }
@@ -2403,7 +2391,7 @@ export class LaunchTemplate extends cdktf.TerraformResource {
   }
 
   // credit_specification - computed: false, optional: true, required: false
-  private _creditSpecification = new LaunchTemplateCreditSpecificationOutputReference(this, "credit_specification", true);
+  private _creditSpecification = new LaunchTemplateCreditSpecificationOutputReference(this, "credit_specification");
   public get creditSpecification() {
     return this._creditSpecification;
   }
@@ -2436,7 +2424,7 @@ export class LaunchTemplate extends cdktf.TerraformResource {
   }
 
   // elastic_inference_accelerator - computed: false, optional: true, required: false
-  private _elasticInferenceAccelerator = new LaunchTemplateElasticInferenceAcceleratorOutputReference(this, "elastic_inference_accelerator", true);
+  private _elasticInferenceAccelerator = new LaunchTemplateElasticInferenceAcceleratorOutputReference(this, "elastic_inference_accelerator");
   public get elasticInferenceAccelerator() {
     return this._elasticInferenceAccelerator;
   }
@@ -2452,7 +2440,7 @@ export class LaunchTemplate extends cdktf.TerraformResource {
   }
 
   // enclave_options - computed: false, optional: true, required: false
-  private _enclaveOptions = new LaunchTemplateEnclaveOptionsOutputReference(this, "enclave_options", true);
+  private _enclaveOptions = new LaunchTemplateEnclaveOptionsOutputReference(this, "enclave_options");
   public get enclaveOptions() {
     return this._enclaveOptions;
   }
@@ -2468,7 +2456,7 @@ export class LaunchTemplate extends cdktf.TerraformResource {
   }
 
   // hibernation_options - computed: false, optional: true, required: false
-  private _hibernationOptions = new LaunchTemplateHibernationOptionsOutputReference(this, "hibernation_options", true);
+  private _hibernationOptions = new LaunchTemplateHibernationOptionsOutputReference(this, "hibernation_options");
   public get hibernationOptions() {
     return this._hibernationOptions;
   }
@@ -2484,7 +2472,7 @@ export class LaunchTemplate extends cdktf.TerraformResource {
   }
 
   // iam_instance_profile - computed: false, optional: true, required: false
-  private _iamInstanceProfile = new LaunchTemplateIamInstanceProfileOutputReference(this, "iam_instance_profile", true);
+  private _iamInstanceProfile = new LaunchTemplateIamInstanceProfileOutputReference(this, "iam_instance_profile");
   public get iamInstanceProfile() {
     return this._iamInstanceProfile;
   }
@@ -2500,7 +2488,7 @@ export class LaunchTemplate extends cdktf.TerraformResource {
   }
 
   // instance_market_options - computed: false, optional: true, required: false
-  private _instanceMarketOptions = new LaunchTemplateInstanceMarketOptionsOutputReference(this, "instance_market_options", true);
+  private _instanceMarketOptions = new LaunchTemplateInstanceMarketOptionsOutputReference(this, "instance_market_options");
   public get instanceMarketOptions() {
     return this._instanceMarketOptions;
   }
@@ -2533,7 +2521,7 @@ export class LaunchTemplate extends cdktf.TerraformResource {
   }
 
   // metadata_options - computed: false, optional: true, required: false
-  private _metadataOptions = new LaunchTemplateMetadataOptionsOutputReference(this, "metadata_options", true);
+  private _metadataOptions = new LaunchTemplateMetadataOptionsOutputReference(this, "metadata_options");
   public get metadataOptions() {
     return this._metadataOptions;
   }
@@ -2549,7 +2537,7 @@ export class LaunchTemplate extends cdktf.TerraformResource {
   }
 
   // monitoring - computed: false, optional: true, required: false
-  private _monitoring = new LaunchTemplateMonitoringOutputReference(this, "monitoring", true);
+  private _monitoring = new LaunchTemplateMonitoringOutputReference(this, "monitoring");
   public get monitoring() {
     return this._monitoring;
   }
@@ -2582,7 +2570,7 @@ export class LaunchTemplate extends cdktf.TerraformResource {
   }
 
   // placement - computed: false, optional: true, required: false
-  private _placement = new LaunchTemplatePlacementOutputReference(this, "placement", true);
+  private _placement = new LaunchTemplatePlacementOutputReference(this, "placement");
   public get placement() {
     return this._placement;
   }

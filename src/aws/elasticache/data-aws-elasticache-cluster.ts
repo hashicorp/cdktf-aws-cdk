@@ -16,7 +16,45 @@ export interface DataAwsElasticacheClusterConfig extends cdktf.TerraformMetaArgu
   */
   readonly tags?: { [key: string]: string };
 }
-export class DataAwsElasticacheClusterCacheNodes extends cdktf.ComplexComputedList {
+export interface DataAwsElasticacheClusterCacheNodes {
+}
+
+export function dataAwsElasticacheClusterCacheNodesToTerraform(struct?: DataAwsElasticacheClusterCacheNodes): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  return {
+  }
+}
+
+export class DataAwsElasticacheClusterCacheNodesOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param complexObjectIndex the index of this item in the list
+  * @param complexObjectIsFromSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, complexObjectIndex: number, complexObjectIsFromSet: boolean) {
+    super(terraformResource, terraformAttribute, complexObjectIsFromSet, complexObjectIndex);
+  }
+
+  public get internalValue(): DataAwsElasticacheClusterCacheNodes | undefined {
+    let hasAnyValues = this.isEmptyObject;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DataAwsElasticacheClusterCacheNodes | undefined) {
+    if (value === undefined) {
+      this.isEmptyObject = false;
+    }
+    else {
+      this.isEmptyObject = Object.keys(value).length === 0;
+    }
+  }
 
   // address - computed: true, optional: false, required: false
   public get address() {
@@ -39,6 +77,25 @@ export class DataAwsElasticacheClusterCacheNodes extends cdktf.ComplexComputedLi
   }
 }
 
+export class DataAwsElasticacheClusterCacheNodesList extends cdktf.ComplexList {
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param wrapsSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  constructor(protected terraformResource: cdktf.IInterpolatingParent, protected terraformAttribute: string, protected wrapsSet: boolean) {
+    super(terraformResource, terraformAttribute, wrapsSet)
+  }
+
+  /**
+  * @param index the index of the item to return
+  */
+  public get(index: number): DataAwsElasticacheClusterCacheNodesOutputReference {
+    return new DataAwsElasticacheClusterCacheNodesOutputReference(this.terraformResource, this.terraformAttribute, index, this.wrapsSet);
+  }
+}
+
 /**
 * Represents a {@link https://www.terraform.io/docs/providers/aws/d/elasticache_cluster aws_elasticache_cluster}
 */
@@ -47,7 +104,7 @@ export class DataAwsElasticacheCluster extends cdktf.TerraformDataSource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_elasticache_cluster";
+  public static readonly tfResourceType = "aws_elasticache_cluster";
 
   // ===========
   // INITIALIZER
@@ -64,7 +121,9 @@ export class DataAwsElasticacheCluster extends cdktf.TerraformDataSource {
     super(scope, id, {
       terraformResourceType: 'aws_elasticache_cluster',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -90,8 +149,9 @@ export class DataAwsElasticacheCluster extends cdktf.TerraformDataSource {
   }
 
   // cache_nodes - computed: true, optional: false, required: false
-  public cacheNodes(index: string) {
-    return new DataAwsElasticacheClusterCacheNodes(this, 'cache_nodes', index, false);
+  private _cacheNodes = new DataAwsElasticacheClusterCacheNodesList(this, "cache_nodes", false);
+  public get cacheNodes() {
+    return this._cacheNodes;
   }
 
   // cluster_address - computed: true, optional: false, required: false

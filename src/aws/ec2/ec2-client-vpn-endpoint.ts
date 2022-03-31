@@ -126,10 +126,9 @@ export class Ec2ClientVpnEndpointConnectionLogOptionsOutputReference extends cdk
   /**
   * @param terraformResource The parent resource
   * @param terraformAttribute The attribute on the parent resource this class is referencing
-  * @param isSingleItem True if this is a block, false if it's a list
   */
-  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, isSingleItem: boolean) {
-    super(terraformResource, terraformAttribute, isSingleItem);
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
+    super(terraformResource, terraformAttribute, false, 0);
   }
 
   public get internalValue(): Ec2ClientVpnEndpointConnectionLogOptions | undefined {
@@ -219,7 +218,7 @@ export class Ec2ClientVpnEndpoint extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_ec2_client_vpn_endpoint";
+  public static readonly tfResourceType = "aws_ec2_client_vpn_endpoint";
 
   // ===========
   // INITIALIZER
@@ -236,7 +235,9 @@ export class Ec2ClientVpnEndpoint extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_ec2_client_vpn_endpoint',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -433,7 +434,7 @@ export class Ec2ClientVpnEndpoint extends cdktf.TerraformResource {
   }
 
   // connection_log_options - computed: false, optional: false, required: true
-  private _connectionLogOptions = new Ec2ClientVpnEndpointConnectionLogOptionsOutputReference(this, "connection_log_options", true);
+  private _connectionLogOptions = new Ec2ClientVpnEndpointConnectionLogOptionsOutputReference(this, "connection_log_options");
   public get connectionLogOptions() {
     return this._connectionLogOptions;
   }

@@ -45,7 +45,7 @@ export class SsoadminPermissionSet extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_ssoadmin_permission_set";
+  public static readonly tfResourceType = "aws_ssoadmin_permission_set";
 
   // ===========
   // INITIALIZER
@@ -62,7 +62,9 @@ export class SsoadminPermissionSet extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_ssoadmin_permission_set',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

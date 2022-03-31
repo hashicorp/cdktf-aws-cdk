@@ -153,7 +153,7 @@ export class OpsworksStack extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_opsworks_stack";
+  public static readonly tfResourceType = "aws_opsworks_stack";
 
   // ===========
   // INITIALIZER
@@ -170,7 +170,9 @@ export class OpsworksStack extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_opsworks_stack',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

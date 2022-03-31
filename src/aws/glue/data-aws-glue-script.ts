@@ -121,7 +121,7 @@ export class DataAwsGlueScript extends cdktf.TerraformDataSource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_glue_script";
+  public static readonly tfResourceType = "aws_glue_script";
 
   // ===========
   // INITIALIZER
@@ -138,7 +138,9 @@ export class DataAwsGlueScript extends cdktf.TerraformDataSource {
     super(scope, id, {
       terraformResourceType: 'aws_glue_script',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

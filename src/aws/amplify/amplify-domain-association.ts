@@ -57,7 +57,7 @@ export class AmplifyDomainAssociation extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_amplify_domain_association";
+  public static readonly tfResourceType = "aws_amplify_domain_association";
 
   // ===========
   // INITIALIZER
@@ -74,7 +74,9 @@ export class AmplifyDomainAssociation extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_amplify_domain_association',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

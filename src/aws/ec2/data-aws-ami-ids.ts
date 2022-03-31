@@ -61,7 +61,7 @@ export class DataAwsAmiIds extends cdktf.TerraformDataSource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_ami_ids";
+  public static readonly tfResourceType = "aws_ami_ids";
 
   // ===========
   // INITIALIZER
@@ -78,7 +78,9 @@ export class DataAwsAmiIds extends cdktf.TerraformDataSource {
     super(scope, id, {
       terraformResourceType: 'aws_ami_ids',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

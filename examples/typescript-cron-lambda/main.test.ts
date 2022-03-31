@@ -76,7 +76,7 @@ describe("typescript-cron-lambda", () => {
           \\"required_providers\\": {
             \\"aws\\": {
               \\"source\\": \\"aws\\",
-              \\"version\\": \\"~> 3.0\\"
+              \\"version\\": \\"3.75.1\\"
             }
           }
         }

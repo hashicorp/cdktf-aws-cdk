@@ -81,7 +81,7 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_glue_dev_endpoint";
+  public static readonly tfResourceType = "aws_glue_dev_endpoint";
 
   // ===========
   // INITIALIZER
@@ -98,7 +98,9 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
     super(scope, id, {
       terraformResourceType: 'aws_glue_dev_endpoint',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

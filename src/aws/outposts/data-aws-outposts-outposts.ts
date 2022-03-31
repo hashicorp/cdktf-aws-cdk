@@ -33,7 +33,7 @@ export class DataAwsOutpostsOutposts extends cdktf.TerraformDataSource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_outposts_outposts";
+  public static readonly tfResourceType = "aws_outposts_outposts";
 
   // ===========
   // INITIALIZER
@@ -50,7 +50,9 @@ export class DataAwsOutpostsOutposts extends cdktf.TerraformDataSource {
     super(scope, id, {
       terraformResourceType: 'aws_outposts_outposts',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

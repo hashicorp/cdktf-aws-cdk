@@ -25,7 +25,7 @@ export class DataAwsServerlessapplicationrepositoryApplication extends cdktf.Ter
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_serverlessapplicationrepository_application";
+  public static readonly tfResourceType = "aws_serverlessapplicationrepository_application";
 
   // ===========
   // INITIALIZER
@@ -42,7 +42,9 @@ export class DataAwsServerlessapplicationrepositoryApplication extends cdktf.Ter
     super(scope, id, {
       terraformResourceType: 'aws_serverlessapplicationrepository_application',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

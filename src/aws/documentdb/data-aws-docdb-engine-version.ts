@@ -33,7 +33,7 @@ export class DataAwsDocdbEngineVersion extends cdktf.TerraformDataSource {
   // =================
   // STATIC PROPERTIES
   // =================
-  public static readonly tfResourceType: string = "aws_docdb_engine_version";
+  public static readonly tfResourceType = "aws_docdb_engine_version";
 
   // ===========
   // INITIALIZER
@@ -50,7 +50,9 @@ export class DataAwsDocdbEngineVersion extends cdktf.TerraformDataSource {
     super(scope, id, {
       terraformResourceType: 'aws_docdb_engine_version',
       terraformGeneratorMetadata: {
-        providerName: 'aws'
+        providerName: 'aws',
+        providerVersion: '3.75.1',
+        providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
