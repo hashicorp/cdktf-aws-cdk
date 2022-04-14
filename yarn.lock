@@ -1991,9 +1991,9 @@ camelcase@^6.2.0, camelcase@^6.3.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001317:
-  version "1.0.30001328"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001328.tgz#0ed7a2ca65ec45872c613630201644237ba1e329"
-  integrity sha512-Ue55jHkR/s4r00FLNiX+hGMMuwml/QGqqzVeMQ5thUewznU2EdULFvI3JR7JJid6OrjJNfFvHY2G2dIjmRaDDQ==
+  version "1.0.30001331"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001331.tgz#41048f2a5cf0c3c6198f40207cd323388b3d4399"
+  integrity sha512-Y1xk6paHpUXKP/P6YjQv1xqyTbgAP05ycHBcRdQjTcyXlWol868sJJPlmk5ylOekw2BrucWes5jk+LvVd7WZ5Q==
 
 capital-case@^1.0.4:
   version "1.0.4"
@@ -2294,9 +2294,9 @@ constant-case@^3.0.4:
     upper-case "^2.0.2"
 
 constructs@^10.0.25:
-  version "10.0.112"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.0.112.tgz#8543c2125133181337987fa0c865bef1960ec119"
-  integrity sha512-IWkgVtsJpLKF/81rOrTIY12yjy+CysL6fIwbVhO6XkkUpdc068UQFdtdi2mqEJFIIwvgAnucovULYpe2eY0xXg==
+  version "10.0.113"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.0.113.tgz#1418b70d9f59b9a694d7cfa3c6afd1109a1b5dbe"
+  integrity sha512-Q2UNZz2nGiW2ZDZz7+FLOKQNyGr0LXc6mjuAvxXJ57UMwLabbhva8lKWMv3fztdsqlVbtl1DGq1vw2htbaNNJw==
 
 conventional-changelog-angular@^5.0.12:
   version "5.0.13"
@@ -4485,9 +4485,9 @@ jsii-rosetta@^1.55.1, jsii-rosetta@^1.56.0:
     yargs "^16.2.0"
 
 jsii-srcmak@^0.1.513:
-  version "0.1.528"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.528.tgz#d2cd967639858dafb124549776c7174f0abc1a48"
-  integrity sha512-91qHSlwrf+fCFEXl6tUrAXEy8YvMySt086ge0uAO+CcmylpNSNI49nKF94z+764W3f+YlNSR8MgzB6r11G1NqA==
+  version "0.1.529"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.529.tgz#5aed0bddd9cef50cfe391c8bca28825f7d2a2bba"
+  integrity sha512-ldLyakH99iz5j0A0sxwXSCIWrAbeSb2QZs13D/3JU83wKzuPNx4f5zgXj/rmjkrF3o2XAkBo4H63P057In4oCQ==
   dependencies:
     fs-extra "^9.1.0"
     jsii "^1.56.0"
@@ -5780,9 +5780,9 @@ redent@^3.0.0:
     strip-indent "^3.0.0"
 
 regexp.prototype.flags@^1.3.0:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/regexp.prototype.flags/-/regexp.prototype.flags-1.4.1.tgz#b3f4c0059af9e47eca9f3f660e51d81307e72307"
-  integrity sha512-pMR7hBVUUGI7PMA37m2ofIdQCsomVnas+Jn5UPGAHQ+/LlwKm/aTLJHdasmHRzlfeZwHiAOaRSo2rbBDm3nNUQ==
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/regexp.prototype.flags/-/regexp.prototype.flags-1.4.2.tgz#bf635117a2f4b755595ebb0c0ee2d2a49b2084db"
+  integrity sha512-Ynz8fTQW5/1elh+jWU2EDDzeoNbD0OQ0R+D1VJU5ATOkUaro4A9YEkdN2ODQl/8UQFPPpZNw91fOcLFamM7Pww==
   dependencies:
     call-bind "^1.0.2"
     define-properties "^1.1.3"
