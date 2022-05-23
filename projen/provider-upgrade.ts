@@ -1,11 +1,11 @@
-import { NodeProject } from "projen";
+import { javascript } from "projen";
 import { JobPermission } from "projen/lib/github/workflows-model";
 
 /**
  * Checks for new versions of the given provider and creates a PR with an upgrade change if there are changes.
  */
 export class ProviderUpgrade {
-  constructor(project: NodeProject) {
+  constructor(project: javascript.NodeProject) {
     const workflow = project.github?.addWorkflow("provider-upgrade");
 
     if (!workflow) throw new Error("no workflow defined");
@@ -21,7 +21,7 @@ export class ProviderUpgrade {
           CI: "true",
           CHECKPOINT_DISABLE: "1",
         },
-        runsOn: "ubuntu-latest",
+        runsOn: ["ubuntu-latest"],
         steps: [
           {
             name: "Checkout",

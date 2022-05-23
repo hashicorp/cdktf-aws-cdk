@@ -1,10 +1,10 @@
-import { NodeProject } from 'projen';
+import { javascript } from 'projen';
 
 /**
  * Checks for new versions of the given provider and creates a PR with an upgrade change if there are changes.
  */
 export class AutoMerge {
-  constructor(project: NodeProject) {
+  constructor(project: javascript.NodeProject) {
     const workflow = project.github?.addWorkflow('automerge');
 
     if (!workflow) throw new Error('no workflow defined');
@@ -33,7 +33,7 @@ export class AutoMerge {
 
     workflow.addJobs({
       automerge: {
-        runsOn: 'ubuntu-latest',
+        runsOn: ['ubuntu-latest'],
         steps: [
           {
             name: 'automerge',
