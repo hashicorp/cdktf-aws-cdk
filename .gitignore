@@ -2,7 +2,8 @@
 !/.gitattributes
 !/.projen/tasks.json
 !/.projen/deps.json
-!/.github/workflows/stale.yml
+!/.projen/files.json
+!/.github/workflows/pull-request-lint.yml
 !/package.json
 !/LICENSE
 !/.npmignore
@@ -36,6 +37,8 @@ junit.xml
 !/.github/workflows/build.yml
 /dist/changelog.md
 /dist/version.txt
+!/.github/workflows/release.yml
+!/.github/workflows/upgrade-main.yml
 !/.github/pull_request_template.md
 !/src/tests/
 !/tsconfig.dev.json
@@ -56,5 +59,3 @@ package-lock.json
 !/cdktf.json
 !/.github/workflows/provider-upgrade.yml
 !/.github/workflows/automerge.yml
-!/.github/workflows/release.yml
-!/.github/workflows/upgrade-main.yml

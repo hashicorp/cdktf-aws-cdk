@@ -1,15 +1,12 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import { pascalCase } from "change-case";
 import {
-  JsiiProject,
-  JsiiProjectOptions,
-  TypeScriptProject,
+  cdk,
 } from "projen";
 import { AutoMerge } from "./auto-merge";
 import { CdktfConfig } from "./cdktf-config";
 import { ProviderUpgrade } from "./provider-upgrade";
 
-export interface CdktfAwsCdkOptions extends Partial<JsiiProjectOptions> {
+export interface CdktfAwsCdkOptions extends Partial<cdk.JsiiProjectOptions> {
   readonly terraformProvider: string;
   readonly cdktfVersion: string;
   readonly constructsVersion: string;
@@ -20,7 +17,7 @@ const authorAddress = "https://hashicorp.com";
 const namespace = "cdktf";
 const githubNamespace = "hashicorp";
 
-export class CdktfAwsCdkProject extends JsiiProject {
+export class CdktfAwsCdkProject extends cdk.JsiiProject {
   constructor(options: CdktfAwsCdkOptions) {
     const {
       terraformProvider,
@@ -34,7 +31,7 @@ export class CdktfAwsCdkProject extends JsiiProject {
     if (!providerName) {
       throw new Error(`${terraformProvider} doesn't seem to be valid`);
     }
-    const nugetName = `HashiCorp.${pascalCase(namespace)}.AwsCdk`;
+    // const nugetName = `HashiCorp.${pascalCase(namespace)}.AwsCdk`;
 
     super({
       ...options,
@@ -103,12 +100,6 @@ export class CdktfAwsCdkProject extends JsiiProject {
       },
     });
 
-    // fix as we use es6 in this class
-    this.removeTask(TypeScriptProject.DEFAULT_TASK);
-    this.addTask(TypeScriptProject.DEFAULT_TASK, {
-      exec: `ts-node --skip-project --compiler-options '{"target":"es6"}' .projenrc.ts`,
-    });
-
     [this.compileTask, this.testTask].forEach((task) =>
       task.env("NODE_OPTIONS", "--max-old-space-size=6144")
     );
@@ -122,7 +113,7 @@ export class CdktfAwsCdkProject extends JsiiProject {
     testExamples.exec('yarn test:ci', { cwd: 'examples/typescript-step-functions'});
     testExamples.exec('yarn test:ci', { cwd: 'examples/typescript-step-functions-mixed'});
 
-    this.buildTask.spawn(testExamples);
+    this.projectBuild.testTask.spawn(testExamples);
 
     // for local developing (e.g. linking local changes to cdktf)
     this.addGitIgnore(".yalc");

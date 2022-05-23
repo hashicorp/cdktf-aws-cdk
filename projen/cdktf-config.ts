@@ -1,4 +1,4 @@
-import { JsonFile, JsiiProject } from "projen";
+import { JsonFile, cdk } from "projen";
 
 const CDKTF_JSON_FILE = "cdktf.json";
 
@@ -11,7 +11,7 @@ interface CdktfConfigOptions {
 }
 
 export class CdktfConfig {
-  constructor(project: JsiiProject, options: CdktfConfigOptions) {
+  constructor(project: cdk.JsiiProject, options: CdktfConfigOptions) {
     const { terraformProvider, providerName } = options;
 
     const cdktfVersion = options.cdktfVersion;
