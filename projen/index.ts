@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import {
-  cdk,
-} from "projen";
+import { cdk } from "projen";
 import { AutoMerge } from "./auto-merge";
 import { CdktfConfig } from "./cdktf-config";
 import { ProviderUpgrade } from "./provider-upgrade";
@@ -98,6 +96,28 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
           },
         },
       },
+      postBuildSteps: [
+        {
+          name: "Prepare Temporary Directory",
+          run: "cp -r dist .repo",
+        },
+        {
+          name: "Install Dependencies",
+          run: "cd .repo && yarn install --check-files --frozen-lockfile",
+        },
+        {
+          name: "Create js artifact",
+          run: "cd .repo && npx projen package:js",
+        },
+        {
+          name: "Run integration tests",
+          run: "cd .repo && yarn examples:test",
+        },
+        {
+          name: "Clean up",
+          run: "rm -rf .repo",
+        }
+      ],
     });
 
     [this.compileTask, this.testTask].forEach((task) =>
@@ -109,12 +129,15 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       cwd: "examples/typescript-cron-lambda",
       exec: "yarn test:ci",
     });
-    testExamples.exec('yarn test:ci', { cwd: 'examples/typescript-manual-mapping'});
-    testExamples.exec('yarn test:ci', { cwd: 'examples/typescript-step-functions'});
-    testExamples.exec('yarn test:ci', { cwd: 'examples/typescript-step-functions-mixed'});
-
-    // needs to run after package because it installs the resulting package
-    this.projectBuild.packageTask.spawn(testExamples);
+    testExamples.exec("yarn test:ci", {
+      cwd: "examples/typescript-manual-mapping",
+    });
+    testExamples.exec("yarn test:ci", {
+      cwd: "examples/typescript-step-functions",
+    });
+    testExamples.exec("yarn test:ci", {
+      cwd: "examples/typescript-step-functions-mixed",
+    });
 
     // for local developing (e.g. linking local changes to cdktf)
     this.addGitIgnore(".yalc");

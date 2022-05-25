@@ -731,6 +731,11 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-14.17.22.tgz"
   integrity sha512-6Mgu9YWd8j0dk9M8V9+5w6ktqIFCcn/fFXAVIDFk/niAOFiOiz4GeFAMWYAQjKrcsASbFqMkqR8/Y2wuVCAkNg==
 
+"@types/prettier@<2.6.0":
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.4.4.tgz#5d9b63132df54d8909fce1c3f8ca260fdd693e17"
+  integrity sha512-ReVR2rLTV1kvtlWFyuot+d1pkpG2Fw/XKE3PDAdj57rbM97ttSp9JZ2UsP+2EHTylra9cUf6JA7tGwW1INzUrA==
+
 "@types/prettier@^2.1.5":
   version "2.4.1"
   resolved "https://registry.npmjs.org/@types/prettier/-/prettier-2.4.1.tgz"
