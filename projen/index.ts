@@ -99,7 +99,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       postBuildSteps: [
         {
           name: "Prepare Temporary Directory",
-          run: "mv dist .repo",
+          run: "cp -r dist .repo",
         },
         {
           name: "Install Dependencies",
@@ -129,17 +129,6 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       cwd: "examples/typescript-cron-lambda",
       exec: "yarn test:ci",
     });
-    // const testExamples = this.addTask("examples:test", {
-    //   exec: "pwd",
-    // });
-    // testExamples.exec("ls ."); // debug
-    // testExamples.exec("ls ./dist"); // debug
-    // testExamples.exec("ls ./dist/dist/"); // debug
-    // testExamples.exec("ls ./dist/dist/js"); // debug
-    // testExamples.exec("yarn test:ci", {
-    //   cwd: "examples/typescript-cron-lambda",
-    // });
-
     testExamples.exec("yarn test:ci", {
       cwd: "examples/typescript-manual-mapping",
     });
@@ -149,14 +138,6 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     testExamples.exec("yarn test:ci", {
       cwd: "examples/typescript-step-functions-mixed",
     });
-
-    // run package:js first as this creates the package we need for integration tests
-    // this.projectBuild.packageTask.spawn(this.tasks.tryFind("package:js"));
-    // needs to run after package because it installs the resulting package
-    // this.projectBuild.packageTask.spawn(testExamples);
-
-    // console.log("build job ids", this.buildWorkflow?.buildJobIds);
-    // this.buildWorkflow
 
     // for local developing (e.g. linking local changes to cdktf)
     this.addGitIgnore(".yalc");
