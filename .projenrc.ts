@@ -2,10 +2,10 @@ import { CdktfAwsCdkProject } from "./projen";
 
 const project = new CdktfAwsCdkProject({
   terraformProvider: "aws@~> 3.0",
-  cdktfVersion: '0.10.0',
+  cdktfVersion: "0.11.0",
   constructsVersion: "^10.0.25",
   minNodeVersion: "14.17.0",
-  projenrcTs: true
+  projenrcTs: true,
 });
 
 project.synth();
