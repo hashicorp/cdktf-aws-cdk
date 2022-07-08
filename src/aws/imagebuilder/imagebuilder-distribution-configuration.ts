@@ -12,6 +12,13 @@ export interface ImagebuilderDistributionConfigurationConfig extends cdktf.Terra
   */
   readonly description?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration#id ImagebuilderDistributionConfiguration#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration#name ImagebuilderDistributionConfiguration#name}
   */
   readonly name: string;
@@ -564,6 +571,149 @@ export function imagebuilderDistributionConfigurationDistributionToTerraform(str
   }
 }
 
+export class ImagebuilderDistributionConfigurationDistributionOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param complexObjectIndex the index of this item in the list
+  * @param complexObjectIsFromSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, complexObjectIndex: number, complexObjectIsFromSet: boolean) {
+    super(terraformResource, terraformAttribute, complexObjectIsFromSet, complexObjectIndex);
+  }
+
+  public get internalValue(): ImagebuilderDistributionConfigurationDistribution | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
+    let hasAnyValues = this.isEmptyObject;
+    const internalValueResult: any = {};
+    if (this._licenseConfigurationArns !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.licenseConfigurationArns = this._licenseConfigurationArns;
+    }
+    if (this._region !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.region = this._region;
+    }
+    if (this._amiDistributionConfiguration?.internalValue !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.amiDistributionConfiguration = this._amiDistributionConfiguration?.internalValue;
+    }
+    if (this._containerDistributionConfiguration?.internalValue !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.containerDistributionConfiguration = this._containerDistributionConfiguration?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ImagebuilderDistributionConfigurationDistribution | cdktf.IResolvable | undefined) {
+    if (value === undefined) {
+      this.isEmptyObject = false;
+      this.resolvableValue = undefined;
+      this._licenseConfigurationArns = undefined;
+      this._region = undefined;
+      this._amiDistributionConfiguration.internalValue = undefined;
+      this._containerDistributionConfiguration.internalValue = undefined;
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
+    else {
+      this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
+      this._licenseConfigurationArns = value.licenseConfigurationArns;
+      this._region = value.region;
+      this._amiDistributionConfiguration.internalValue = value.amiDistributionConfiguration;
+      this._containerDistributionConfiguration.internalValue = value.containerDistributionConfiguration;
+    }
+  }
+
+  // license_configuration_arns - computed: false, optional: true, required: false
+  private _licenseConfigurationArns?: string[]; 
+  public get licenseConfigurationArns() {
+    return cdktf.Fn.tolist(this.getListAttribute('license_configuration_arns'));
+  }
+  public set licenseConfigurationArns(value: string[]) {
+    this._licenseConfigurationArns = value;
+  }
+  public resetLicenseConfigurationArns() {
+    this._licenseConfigurationArns = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get licenseConfigurationArnsInput() {
+    return this._licenseConfigurationArns;
+  }
+
+  // region - computed: false, optional: false, required: true
+  private _region?: string; 
+  public get region() {
+    return this.getStringAttribute('region');
+  }
+  public set region(value: string) {
+    this._region = value;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get regionInput() {
+    return this._region;
+  }
+
+  // ami_distribution_configuration - computed: false, optional: true, required: false
+  private _amiDistributionConfiguration = new ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationOutputReference(this, "ami_distribution_configuration");
+  public get amiDistributionConfiguration() {
+    return this._amiDistributionConfiguration;
+  }
+  public putAmiDistributionConfiguration(value: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfiguration) {
+    this._amiDistributionConfiguration.internalValue = value;
+  }
+  public resetAmiDistributionConfiguration() {
+    this._amiDistributionConfiguration.internalValue = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get amiDistributionConfigurationInput() {
+    return this._amiDistributionConfiguration.internalValue;
+  }
+
+  // container_distribution_configuration - computed: false, optional: true, required: false
+  private _containerDistributionConfiguration = new ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationOutputReference(this, "container_distribution_configuration");
+  public get containerDistributionConfiguration() {
+    return this._containerDistributionConfiguration;
+  }
+  public putContainerDistributionConfiguration(value: ImagebuilderDistributionConfigurationDistributionContainerDistributionConfiguration) {
+    this._containerDistributionConfiguration.internalValue = value;
+  }
+  public resetContainerDistributionConfiguration() {
+    this._containerDistributionConfiguration.internalValue = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get containerDistributionConfigurationInput() {
+    return this._containerDistributionConfiguration.internalValue;
+  }
+}
+
+export class ImagebuilderDistributionConfigurationDistributionList extends cdktf.ComplexList {
+  public internalValue? : ImagebuilderDistributionConfigurationDistribution[] | cdktf.IResolvable
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param wrapsSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  constructor(protected terraformResource: cdktf.IInterpolatingParent, protected terraformAttribute: string, protected wrapsSet: boolean) {
+    super(terraformResource, terraformAttribute, wrapsSet)
+  }
+
+  /**
+  * @param index the index of the item to return
+  */
+  public get(index: number): ImagebuilderDistributionConfigurationDistributionOutputReference {
+    return new ImagebuilderDistributionConfigurationDistributionOutputReference(this.terraformResource, this.terraformAttribute, index, this.wrapsSet);
+  }
+}
 
 /**
 * Represents a {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration aws_imagebuilder_distribution_configuration}
@@ -591,7 +741,7 @@ export class ImagebuilderDistributionConfiguration extends cdktf.TerraformResour
       terraformResourceType: 'aws_imagebuilder_distribution_configuration',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
@@ -600,10 +750,11 @@ export class ImagebuilderDistributionConfiguration extends cdktf.TerraformResour
       lifecycle: config.lifecycle
     });
     this._description = config.description;
+    this._id = config.id;
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._distribution = config.distribution;
+    this._distribution.internalValue = config.distribution;
   }
 
   // ==========
@@ -642,8 +793,19 @@ export class ImagebuilderDistributionConfiguration extends cdktf.TerraformResour
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // name - computed: false, optional: false, required: true
@@ -692,17 +854,16 @@ export class ImagebuilderDistributionConfiguration extends cdktf.TerraformResour
   }
 
   // distribution - computed: false, optional: false, required: true
-  private _distribution?: ImagebuilderDistributionConfigurationDistribution[] | cdktf.IResolvable; 
+  private _distribution = new ImagebuilderDistributionConfigurationDistributionList(this, "distribution", true);
   public get distribution() {
-    // Getting the computed value is not yet implemented
-    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('distribution')));
+    return this._distribution;
   }
-  public set distribution(value: ImagebuilderDistributionConfigurationDistribution[] | cdktf.IResolvable) {
-    this._distribution = value;
+  public putDistribution(value: ImagebuilderDistributionConfigurationDistribution[] | cdktf.IResolvable) {
+    this._distribution.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get distributionInput() {
-    return this._distribution;
+    return this._distribution.internalValue;
   }
 
   // =========
@@ -712,10 +873,11 @@ export class ImagebuilderDistributionConfiguration extends cdktf.TerraformResour
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       description: cdktf.stringToTerraform(this._description),
+      id: cdktf.stringToTerraform(this._id),
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
-      distribution: cdktf.listMapper(imagebuilderDistributionConfigurationDistributionToTerraform)(this._distribution),
+      distribution: cdktf.listMapper(imagebuilderDistributionConfigurationDistributionToTerraform)(this._distribution.internalValue),
     };
   }
 }

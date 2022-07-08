@@ -24,6 +24,13 @@ export interface AcmCertificateConfig extends cdktf.TerraformMetaArguments {
   */
   readonly domainName?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/acm_certificate#id AcmCertificate#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/acm_certificate#private_key AcmCertificate#private_key}
   */
   readonly privateKey?: string;
@@ -221,7 +228,7 @@ export class AcmCertificate extends cdktf.TerraformResource {
       terraformResourceType: 'aws_acm_certificate',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
@@ -233,6 +240,7 @@ export class AcmCertificate extends cdktf.TerraformResource {
     this._certificateBody = config.certificateBody;
     this._certificateChain = config.certificateChain;
     this._domainName = config.domainName;
+    this._id = config.id;
     this._privateKey = config.privateKey;
     this._subjectAlternativeNames = config.subjectAlternativeNames;
     this._tags = config.tags;
@@ -321,8 +329,19 @@ export class AcmCertificate extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // private_key - computed: false, optional: true, required: false
@@ -441,6 +460,7 @@ export class AcmCertificate extends cdktf.TerraformResource {
       certificate_body: cdktf.stringToTerraform(this._certificateBody),
       certificate_chain: cdktf.stringToTerraform(this._certificateChain),
       domain_name: cdktf.stringToTerraform(this._domainName),
+      id: cdktf.stringToTerraform(this._id),
       private_key: cdktf.stringToTerraform(this._privateKey),
       subject_alternative_names: cdktf.listMapper(cdktf.stringToTerraform)(this._subjectAlternativeNames),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
