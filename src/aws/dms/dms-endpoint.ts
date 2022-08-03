@@ -32,6 +32,13 @@ export interface DmsEndpointConfig extends cdktf.TerraformMetaArguments {
   */
   readonly extraConnectionAttributes?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dms_endpoint#id DmsEndpoint#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dms_endpoint#kms_key_arn DmsEndpoint#kms_key_arn}
   */
   readonly kmsKeyArn?: string;
@@ -1664,13 +1671,16 @@ export class DmsEndpoint extends cdktf.TerraformResource {
       terraformResourceType: 'aws_dms_endpoint',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._certificateArn = config.certificateArn;
     this._databaseName = config.databaseName;
@@ -1678,6 +1688,7 @@ export class DmsEndpoint extends cdktf.TerraformResource {
     this._endpointType = config.endpointType;
     this._engineName = config.engineName;
     this._extraConnectionAttributes = config.extraConnectionAttributes;
+    this._id = config.id;
     this._kmsKeyArn = config.kmsKeyArn;
     this._password = config.password;
     this._port = config.port;
@@ -1793,8 +1804,19 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // kms_key_arn - computed: true, optional: true, required: false
@@ -2065,6 +2087,7 @@ export class DmsEndpoint extends cdktf.TerraformResource {
       endpoint_type: cdktf.stringToTerraform(this._endpointType),
       engine_name: cdktf.stringToTerraform(this._engineName),
       extra_connection_attributes: cdktf.stringToTerraform(this._extraConnectionAttributes),
+      id: cdktf.stringToTerraform(this._id),
       kms_key_arn: cdktf.stringToTerraform(this._kmsKeyArn),
       password: cdktf.stringToTerraform(this._password),
       port: cdktf.numberToTerraform(this._port),

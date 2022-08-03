@@ -16,6 +16,13 @@ export interface VpcDhcpOptionsConfig extends cdktf.TerraformMetaArguments {
   */
   readonly domainNameServers?: string[];
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_dhcp_options#id VpcDhcpOptions#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_dhcp_options#netbios_name_servers VpcDhcpOptions#netbios_name_servers}
   */
   readonly netbiosNameServers?: string[];
@@ -63,16 +70,20 @@ export class VpcDhcpOptions extends cdktf.TerraformResource {
       terraformResourceType: 'aws_vpc_dhcp_options',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._domainName = config.domainName;
     this._domainNameServers = config.domainNameServers;
+    this._id = config.id;
     this._netbiosNameServers = config.netbiosNameServers;
     this._netbiosNodeType = config.netbiosNodeType;
     this._ntpServers = config.ntpServers;
@@ -122,8 +133,19 @@ export class VpcDhcpOptions extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // netbios_name_servers - computed: false, optional: true, required: false
@@ -218,10 +240,11 @@ export class VpcDhcpOptions extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       domain_name: cdktf.stringToTerraform(this._domainName),
-      domain_name_servers: cdktf.listMapper(cdktf.stringToTerraform)(this._domainNameServers),
-      netbios_name_servers: cdktf.listMapper(cdktf.stringToTerraform)(this._netbiosNameServers),
+      domain_name_servers: cdktf.listMapper(cdktf.stringToTerraform, false)(this._domainNameServers),
+      id: cdktf.stringToTerraform(this._id),
+      netbios_name_servers: cdktf.listMapper(cdktf.stringToTerraform, false)(this._netbiosNameServers),
       netbios_node_type: cdktf.stringToTerraform(this._netbiosNodeType),
-      ntp_servers: cdktf.listMapper(cdktf.stringToTerraform)(this._ntpServers),
+      ntp_servers: cdktf.listMapper(cdktf.stringToTerraform, false)(this._ntpServers),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
     };

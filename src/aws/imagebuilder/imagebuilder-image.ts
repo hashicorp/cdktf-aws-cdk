@@ -16,6 +16,13 @@ export interface ImagebuilderImageConfig extends cdktf.TerraformMetaArguments {
   */
   readonly enhancedImageMetadataEnabled?: boolean | cdktf.IResolvable;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_image#id ImagebuilderImage#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_image#image_recipe_arn ImagebuilderImage#image_recipe_arn}
   */
   readonly imageRecipeArn: string;
@@ -304,6 +311,7 @@ export function imagebuilderImageTimeoutsToTerraform(struct?: ImagebuilderImageT
 
 export class ImagebuilderImageTimeoutsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
 
   /**
   * @param terraformResource The parent resource
@@ -313,7 +321,10 @@ export class ImagebuilderImageTimeoutsOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, false, 0);
   }
 
-  public get internalValue(): ImagebuilderImageTimeouts | undefined {
+  public get internalValue(): ImagebuilderImageTimeouts | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
     let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
     if (this._create !== undefined) {
@@ -323,13 +334,19 @@ export class ImagebuilderImageTimeoutsOutputReference extends cdktf.ComplexObjec
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(value: ImagebuilderImageTimeouts | undefined) {
+  public set internalValue(value: ImagebuilderImageTimeouts | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
+      this.resolvableValue = undefined;
       this._create = undefined;
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
     }
     else {
       this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
       this._create = value.create;
     }
   }
@@ -377,16 +394,20 @@ export class ImagebuilderImage extends cdktf.TerraformResource {
       terraformResourceType: 'aws_imagebuilder_image',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._distributionConfigurationArn = config.distributionConfigurationArn;
     this._enhancedImageMetadataEnabled = config.enhancedImageMetadataEnabled;
+    this._id = config.id;
     this._imageRecipeArn = config.imageRecipeArn;
     this._infrastructureConfigurationArn = config.infrastructureConfigurationArn;
     this._tags = config.tags;
@@ -442,8 +463,19 @@ export class ImagebuilderImage extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // image_recipe_arn - computed: false, optional: false, required: true
@@ -570,6 +602,7 @@ export class ImagebuilderImage extends cdktf.TerraformResource {
     return {
       distribution_configuration_arn: cdktf.stringToTerraform(this._distributionConfigurationArn),
       enhanced_image_metadata_enabled: cdktf.booleanToTerraform(this._enhancedImageMetadataEnabled),
+      id: cdktf.stringToTerraform(this._id),
       image_recipe_arn: cdktf.stringToTerraform(this._imageRecipeArn),
       infrastructure_configuration_arn: cdktf.stringToTerraform(this._infrastructureConfigurationArn),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),

@@ -28,6 +28,13 @@ export interface DefaultSubnetConfig extends cdktf.TerraformMetaArguments {
   */
   readonly enableResourceNameDnsAaaaRecordOnLaunch?: boolean | cdktf.IResolvable;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/default_subnet#id DefaultSubnet#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/default_subnet#ipv6_native DefaultSubnet#ipv6_native}
   */
   readonly ipv6Native?: boolean | cdktf.IResolvable;
@@ -86,6 +93,7 @@ export function defaultSubnetTimeoutsToTerraform(struct?: DefaultSubnetTimeoutsO
 
 export class DefaultSubnetTimeoutsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
 
   /**
   * @param terraformResource The parent resource
@@ -95,7 +103,10 @@ export class DefaultSubnetTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, false, 0);
   }
 
-  public get internalValue(): DefaultSubnetTimeouts | undefined {
+  public get internalValue(): DefaultSubnetTimeouts | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
     let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
     if (this._create !== undefined) {
@@ -109,14 +120,20 @@ export class DefaultSubnetTimeoutsOutputReference extends cdktf.ComplexObject {
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(value: DefaultSubnetTimeouts | undefined) {
+  public set internalValue(value: DefaultSubnetTimeouts | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
+      this.resolvableValue = undefined;
       this._create = undefined;
       this._delete = undefined;
     }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
     else {
       this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
       this._create = value.create;
       this._delete = value.delete;
     }
@@ -181,19 +198,23 @@ export class DefaultSubnet extends cdktf.TerraformResource {
       terraformResourceType: 'aws_default_subnet',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._availabilityZone = config.availabilityZone;
     this._customerOwnedIpv4Pool = config.customerOwnedIpv4Pool;
     this._enableDns64 = config.enableDns64;
     this._enableResourceNameDnsARecordOnLaunch = config.enableResourceNameDnsARecordOnLaunch;
     this._enableResourceNameDnsAaaaRecordOnLaunch = config.enableResourceNameDnsAaaaRecordOnLaunch;
+    this._id = config.id;
     this._ipv6Native = config.ipv6Native;
     this._mapCustomerOwnedIpOnLaunch = config.mapCustomerOwnedIpOnLaunch;
     this._mapPublicIpOnLaunch = config.mapPublicIpOnLaunch;
@@ -306,8 +327,19 @@ export class DefaultSubnet extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // ipv6_cidr_block - computed: true, optional: false, required: false
@@ -469,6 +501,7 @@ export class DefaultSubnet extends cdktf.TerraformResource {
       enable_dns64: cdktf.booleanToTerraform(this._enableDns64),
       enable_resource_name_dns_a_record_on_launch: cdktf.booleanToTerraform(this._enableResourceNameDnsARecordOnLaunch),
       enable_resource_name_dns_aaaa_record_on_launch: cdktf.booleanToTerraform(this._enableResourceNameDnsAaaaRecordOnLaunch),
+      id: cdktf.stringToTerraform(this._id),
       ipv6_native: cdktf.booleanToTerraform(this._ipv6Native),
       map_customer_owned_ip_on_launch: cdktf.booleanToTerraform(this._mapCustomerOwnedIpOnLaunch),
       map_public_ip_on_launch: cdktf.booleanToTerraform(this._mapPublicIpOnLaunch),

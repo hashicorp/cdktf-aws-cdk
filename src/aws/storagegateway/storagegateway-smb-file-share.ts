@@ -48,6 +48,13 @@ export interface StoragegatewaySmbFileShareConfig extends cdktf.TerraformMetaArg
   */
   readonly guessMimeTypeEnabled?: boolean | cdktf.IResolvable;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/storagegateway_smb_file_share#id StoragegatewaySmbFileShare#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/storagegateway_smb_file_share#invalid_user_list StoragegatewaySmbFileShare#invalid_user_list}
   */
   readonly invalidUserList?: string[];
@@ -214,6 +221,7 @@ export function storagegatewaySmbFileShareTimeoutsToTerraform(struct?: Storagega
 
 export class StoragegatewaySmbFileShareTimeoutsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
 
   /**
   * @param terraformResource The parent resource
@@ -223,7 +231,10 @@ export class StoragegatewaySmbFileShareTimeoutsOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, false, 0);
   }
 
-  public get internalValue(): StoragegatewaySmbFileShareTimeouts | undefined {
+  public get internalValue(): StoragegatewaySmbFileShareTimeouts | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
     let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
     if (this._create !== undefined) {
@@ -241,15 +252,21 @@ export class StoragegatewaySmbFileShareTimeoutsOutputReference extends cdktf.Com
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(value: StoragegatewaySmbFileShareTimeouts | undefined) {
+  public set internalValue(value: StoragegatewaySmbFileShareTimeouts | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
+      this.resolvableValue = undefined;
       this._create = undefined;
       this._delete = undefined;
       this._update = undefined;
     }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
     else {
       this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
       this._create = value.create;
       this._delete = value.delete;
       this._update = value.update;
@@ -331,13 +348,16 @@ export class StoragegatewaySmbFileShare extends cdktf.TerraformResource {
       terraformResourceType: 'aws_storagegateway_smb_file_share',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._accessBasedEnumeration = config.accessBasedEnumeration;
     this._adminUserList = config.adminUserList;
@@ -349,6 +369,7 @@ export class StoragegatewaySmbFileShare extends cdktf.TerraformResource {
     this._fileShareName = config.fileShareName;
     this._gatewayArn = config.gatewayArn;
     this._guessMimeTypeEnabled = config.guessMimeTypeEnabled;
+    this._id = config.id;
     this._invalidUserList = config.invalidUserList;
     this._kmsEncrypted = config.kmsEncrypted;
     this._kmsKeyArn = config.kmsKeyArn;
@@ -540,8 +561,19 @@ export class StoragegatewaySmbFileShare extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // invalid_user_list - computed: false, optional: true, required: false
@@ -822,7 +854,7 @@ export class StoragegatewaySmbFileShare extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       access_based_enumeration: cdktf.booleanToTerraform(this._accessBasedEnumeration),
-      admin_user_list: cdktf.listMapper(cdktf.stringToTerraform)(this._adminUserList),
+      admin_user_list: cdktf.listMapper(cdktf.stringToTerraform, false)(this._adminUserList),
       audit_destination_arn: cdktf.stringToTerraform(this._auditDestinationArn),
       authentication: cdktf.stringToTerraform(this._authentication),
       bucket_region: cdktf.stringToTerraform(this._bucketRegion),
@@ -831,7 +863,8 @@ export class StoragegatewaySmbFileShare extends cdktf.TerraformResource {
       file_share_name: cdktf.stringToTerraform(this._fileShareName),
       gateway_arn: cdktf.stringToTerraform(this._gatewayArn),
       guess_mime_type_enabled: cdktf.booleanToTerraform(this._guessMimeTypeEnabled),
-      invalid_user_list: cdktf.listMapper(cdktf.stringToTerraform)(this._invalidUserList),
+      id: cdktf.stringToTerraform(this._id),
+      invalid_user_list: cdktf.listMapper(cdktf.stringToTerraform, false)(this._invalidUserList),
       kms_encrypted: cdktf.booleanToTerraform(this._kmsEncrypted),
       kms_key_arn: cdktf.stringToTerraform(this._kmsKeyArn),
       location_arn: cdktf.stringToTerraform(this._locationArn),
@@ -844,7 +877,7 @@ export class StoragegatewaySmbFileShare extends cdktf.TerraformResource {
       smb_acl_enabled: cdktf.booleanToTerraform(this._smbAclEnabled),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
-      valid_user_list: cdktf.listMapper(cdktf.stringToTerraform)(this._validUserList),
+      valid_user_list: cdktf.listMapper(cdktf.stringToTerraform, false)(this._validUserList),
       vpc_endpoint_dns_name: cdktf.stringToTerraform(this._vpcEndpointDnsName),
       cache_attributes: storagegatewaySmbFileShareCacheAttributesToTerraform(this._cacheAttributes.internalValue),
       timeouts: storagegatewaySmbFileShareTimeoutsToTerraform(this._timeouts.internalValue),

@@ -8,6 +8,13 @@ import * as cdktf from 'cdktf';
 */
 export interface SagemakerWorkforceConfig extends cdktf.TerraformMetaArguments {
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_workforce#id SagemakerWorkforce#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_workforce#workforce_name SagemakerWorkforce#workforce_name}
   */
   readonly workforceName: string;
@@ -359,7 +366,7 @@ export function sagemakerWorkforceSourceIpConfigToTerraform(struct?: SagemakerWo
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    cidrs: cdktf.listMapper(cdktf.stringToTerraform)(struct!.cidrs),
+    cidrs: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.cidrs),
   }
 }
 
@@ -435,14 +442,18 @@ export class SagemakerWorkforce extends cdktf.TerraformResource {
       terraformResourceType: 'aws_sagemaker_workforce',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
+    this._id = config.id;
     this._workforceName = config.workforceName;
     this._cognitoConfig.internalValue = config.cognitoConfig;
     this._oidcConfig.internalValue = config.oidcConfig;
@@ -459,8 +470,19 @@ export class SagemakerWorkforce extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // subdomain - computed: true, optional: false, required: false
@@ -535,6 +557,7 @@ export class SagemakerWorkforce extends cdktf.TerraformResource {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
+      id: cdktf.stringToTerraform(this._id),
       workforce_name: cdktf.stringToTerraform(this._workforceName),
       cognito_config: sagemakerWorkforceCognitoConfigToTerraform(this._cognitoConfig.internalValue),
       oidc_config: sagemakerWorkforceOidcConfigToTerraform(this._oidcConfig.internalValue),

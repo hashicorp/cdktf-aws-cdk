@@ -12,6 +12,13 @@ export interface QldbLedgerConfig extends cdktf.TerraformMetaArguments {
   */
   readonly deletionProtection?: boolean | cdktf.IResolvable;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/qldb_ledger#id QldbLedger#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/qldb_ledger#name QldbLedger#name}
   */
   readonly name?: string;
@@ -55,15 +62,19 @@ export class QldbLedger extends cdktf.TerraformResource {
       terraformResourceType: 'aws_qldb_ledger',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._deletionProtection = config.deletionProtection;
+    this._id = config.id;
     this._name = config.name;
     this._permissionsMode = config.permissionsMode;
     this._tags = config.tags;
@@ -96,8 +107,19 @@ export class QldbLedger extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // name - computed: true, optional: true, required: false
@@ -168,6 +190,7 @@ export class QldbLedger extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       deletion_protection: cdktf.booleanToTerraform(this._deletionProtection),
+      id: cdktf.stringToTerraform(this._id),
       name: cdktf.stringToTerraform(this._name),
       permissions_mode: cdktf.stringToTerraform(this._permissionsMode),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),

@@ -24,6 +24,13 @@ export interface LambdaLayerVersionConfig extends cdktf.TerraformMetaArguments {
   */
   readonly filename?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_layer_version#id LambdaLayerVersion#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_layer_version#layer_name LambdaLayerVersion#layer_name}
   */
   readonly layerName: string;
@@ -79,18 +86,22 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
       terraformResourceType: 'aws_lambda_layer_version',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._compatibleArchitectures = config.compatibleArchitectures;
     this._compatibleRuntimes = config.compatibleRuntimes;
     this._description = config.description;
     this._filename = config.filename;
+    this._id = config.id;
     this._layerName = config.layerName;
     this._licenseInfo = config.licenseInfo;
     this._s3Bucket = config.s3Bucket;
@@ -179,8 +190,19 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // layer_arn - computed: true, optional: false, required: false
@@ -323,10 +345,11 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
-      compatible_architectures: cdktf.listMapper(cdktf.stringToTerraform)(this._compatibleArchitectures),
-      compatible_runtimes: cdktf.listMapper(cdktf.stringToTerraform)(this._compatibleRuntimes),
+      compatible_architectures: cdktf.listMapper(cdktf.stringToTerraform, false)(this._compatibleArchitectures),
+      compatible_runtimes: cdktf.listMapper(cdktf.stringToTerraform, false)(this._compatibleRuntimes),
       description: cdktf.stringToTerraform(this._description),
       filename: cdktf.stringToTerraform(this._filename),
+      id: cdktf.stringToTerraform(this._id),
       layer_name: cdktf.stringToTerraform(this._layerName),
       license_info: cdktf.stringToTerraform(this._licenseInfo),
       s3_bucket: cdktf.stringToTerraform(this._s3Bucket),

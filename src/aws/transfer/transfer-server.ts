@@ -36,6 +36,13 @@ export interface TransferServerConfig extends cdktf.TerraformMetaArguments {
   */
   readonly hostKey?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/transfer_server#id TransferServer#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/transfer_server#identity_provider_type TransferServer#identity_provider_type}
   */
   readonly identityProviderType?: string;
@@ -103,9 +110,9 @@ export function transferServerEndpointDetailsToTerraform(struct?: TransferServer
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    address_allocation_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.addressAllocationIds),
-    security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroupIds),
-    subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.subnetIds),
+    address_allocation_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.addressAllocationIds),
+    security_group_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.securityGroupIds),
+    subnet_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.subnetIds),
     vpc_endpoint_id: cdktf.stringToTerraform(struct!.vpcEndpointId),
     vpc_id: cdktf.stringToTerraform(struct!.vpcId),
   }
@@ -274,13 +281,16 @@ export class TransferServer extends cdktf.TerraformResource {
       terraformResourceType: 'aws_transfer_server',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._certificate = config.certificate;
     this._directoryId = config.directoryId;
@@ -289,6 +299,7 @@ export class TransferServer extends cdktf.TerraformResource {
     this._forceDestroy = config.forceDestroy;
     this._function = config.function;
     this._hostKey = config.hostKey;
+    this._id = config.id;
     this._identityProviderType = config.identityProviderType;
     this._invocationRole = config.invocationRole;
     this._loggingRole = config.loggingRole;
@@ -432,8 +443,19 @@ export class TransferServer extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // identity_provider_type - computed: false, optional: true, required: false
@@ -593,10 +615,11 @@ export class TransferServer extends cdktf.TerraformResource {
       force_destroy: cdktf.booleanToTerraform(this._forceDestroy),
       function: cdktf.stringToTerraform(this._function),
       host_key: cdktf.stringToTerraform(this._hostKey),
+      id: cdktf.stringToTerraform(this._id),
       identity_provider_type: cdktf.stringToTerraform(this._identityProviderType),
       invocation_role: cdktf.stringToTerraform(this._invocationRole),
       logging_role: cdktf.stringToTerraform(this._loggingRole),
-      protocols: cdktf.listMapper(cdktf.stringToTerraform)(this._protocols),
+      protocols: cdktf.listMapper(cdktf.stringToTerraform, false)(this._protocols),
       security_policy_name: cdktf.stringToTerraform(this._securityPolicyName),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),

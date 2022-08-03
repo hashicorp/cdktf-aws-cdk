@@ -32,6 +32,13 @@ export interface AppconfigDeploymentConfig extends cdktf.TerraformMetaArguments 
   */
   readonly environmentId: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appconfig_deployment#id AppconfigDeployment#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appconfig_deployment#tags AppconfigDeployment#tags}
   */
   readonly tags?: { [key: string]: string };
@@ -67,13 +74,16 @@ export class AppconfigDeployment extends cdktf.TerraformResource {
       terraformResourceType: 'aws_appconfig_deployment',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._applicationId = config.applicationId;
     this._configurationProfileId = config.configurationProfileId;
@@ -81,6 +91,7 @@ export class AppconfigDeployment extends cdktf.TerraformResource {
     this._deploymentStrategyId = config.deploymentStrategyId;
     this._description = config.description;
     this._environmentId = config.environmentId;
+    this._id = config.id;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
   }
@@ -181,8 +192,19 @@ export class AppconfigDeployment extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // state - computed: true, optional: false, required: false
@@ -234,6 +256,7 @@ export class AppconfigDeployment extends cdktf.TerraformResource {
       deployment_strategy_id: cdktf.stringToTerraform(this._deploymentStrategyId),
       description: cdktf.stringToTerraform(this._description),
       environment_id: cdktf.stringToTerraform(this._environmentId),
+      id: cdktf.stringToTerraform(this._id),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
     };

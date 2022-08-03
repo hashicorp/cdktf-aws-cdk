@@ -16,6 +16,13 @@ export interface Cloud9EnvironmentEc2Config extends cdktf.TerraformMetaArguments
   */
   readonly description?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloud9_environment_ec2#id Cloud9EnvironmentEc2#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloud9_environment_ec2#instance_type Cloud9EnvironmentEc2#instance_type}
   */
   readonly instanceType: string;
@@ -67,16 +74,20 @@ export class Cloud9EnvironmentEc2 extends cdktf.TerraformResource {
       terraformResourceType: 'aws_cloud9_environment_ec2',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._automaticStopTimeMinutes = config.automaticStopTimeMinutes;
     this._description = config.description;
+    this._id = config.id;
     this._instanceType = config.instanceType;
     this._name = config.name;
     this._ownerArn = config.ownerArn;
@@ -127,8 +138,19 @@ export class Cloud9EnvironmentEc2 extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // instance_type - computed: false, optional: false, required: true
@@ -234,6 +256,7 @@ export class Cloud9EnvironmentEc2 extends cdktf.TerraformResource {
     return {
       automatic_stop_time_minutes: cdktf.numberToTerraform(this._automaticStopTimeMinutes),
       description: cdktf.stringToTerraform(this._description),
+      id: cdktf.stringToTerraform(this._id),
       instance_type: cdktf.stringToTerraform(this._instanceType),
       name: cdktf.stringToTerraform(this._name),
       owner_arn: cdktf.stringToTerraform(this._ownerArn),

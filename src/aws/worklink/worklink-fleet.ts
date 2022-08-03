@@ -20,6 +20,13 @@ export interface WorklinkFleetConfig extends cdktf.TerraformMetaArguments {
   */
   readonly displayName?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/worklink_fleet#id WorklinkFleet#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/worklink_fleet#name WorklinkFleet#name}
   */
   readonly name: string;
@@ -147,8 +154,8 @@ export function worklinkFleetNetworkToTerraform(struct?: WorklinkFleetNetworkOut
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroupIds),
-    subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.subnetIds),
+    security_group_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.securityGroupIds),
+    subnet_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.subnetIds),
     vpc_id: cdktf.stringToTerraform(struct!.vpcId),
   }
 }
@@ -263,17 +270,21 @@ export class WorklinkFleet extends cdktf.TerraformResource {
       terraformResourceType: 'aws_worklink_fleet',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._auditStreamArn = config.auditStreamArn;
     this._deviceCaCertificate = config.deviceCaCertificate;
     this._displayName = config.displayName;
+    this._id = config.id;
     this._name = config.name;
     this._optimizeForEndUserLocation = config.optimizeForEndUserLocation;
     this._identityProvider.internalValue = config.identityProvider;
@@ -348,8 +359,19 @@ export class WorklinkFleet extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // last_updated_time - computed: true, optional: false, required: false
@@ -427,6 +449,7 @@ export class WorklinkFleet extends cdktf.TerraformResource {
       audit_stream_arn: cdktf.stringToTerraform(this._auditStreamArn),
       device_ca_certificate: cdktf.stringToTerraform(this._deviceCaCertificate),
       display_name: cdktf.stringToTerraform(this._displayName),
+      id: cdktf.stringToTerraform(this._id),
       name: cdktf.stringToTerraform(this._name),
       optimize_for_end_user_location: cdktf.booleanToTerraform(this._optimizeForEndUserLocation),
       identity_provider: worklinkFleetIdentityProviderToTerraform(this._identityProvider.internalValue),

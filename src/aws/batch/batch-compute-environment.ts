@@ -16,6 +16,13 @@ export interface BatchComputeEnvironmentConfig extends cdktf.TerraformMetaArgume
   */
   readonly computeEnvironmentNamePrefix?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#id BatchComputeEnvironment#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#service_role BatchComputeEnvironment#service_role}
   */
   readonly serviceRole?: string;
@@ -336,12 +343,12 @@ export function batchComputeEnvironmentComputeResourcesToTerraform(struct?: Batc
     ec2_key_pair: cdktf.stringToTerraform(struct!.ec2KeyPair),
     image_id: cdktf.stringToTerraform(struct!.imageId),
     instance_role: cdktf.stringToTerraform(struct!.instanceRole),
-    instance_type: cdktf.listMapper(cdktf.stringToTerraform)(struct!.instanceType),
+    instance_type: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.instanceType),
     max_vcpus: cdktf.numberToTerraform(struct!.maxVcpus),
     min_vcpus: cdktf.numberToTerraform(struct!.minVcpus),
-    security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroupIds),
+    security_group_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.securityGroupIds),
     spot_iam_fleet_role: cdktf.stringToTerraform(struct!.spotIamFleetRole),
-    subnets: cdktf.listMapper(cdktf.stringToTerraform)(struct!.subnets),
+    subnets: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.subnets),
     tags: cdktf.hashMapper(cdktf.stringToTerraform)(struct!.tags),
     type: cdktf.stringToTerraform(struct!.type),
     ec2_configuration: batchComputeEnvironmentComputeResourcesEc2ConfigurationToTerraform(struct!.ec2Configuration),
@@ -742,16 +749,20 @@ export class BatchComputeEnvironment extends cdktf.TerraformResource {
       terraformResourceType: 'aws_batch_compute_environment',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._computeEnvironmentName = config.computeEnvironmentName;
     this._computeEnvironmentNamePrefix = config.computeEnvironmentNamePrefix;
+    this._id = config.id;
     this._serviceRole = config.serviceRole;
     this._state = config.state;
     this._tags = config.tags;
@@ -807,8 +818,19 @@ export class BatchComputeEnvironment extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // service_role - computed: true, optional: true, required: false
@@ -922,6 +944,7 @@ export class BatchComputeEnvironment extends cdktf.TerraformResource {
     return {
       compute_environment_name: cdktf.stringToTerraform(this._computeEnvironmentName),
       compute_environment_name_prefix: cdktf.stringToTerraform(this._computeEnvironmentNamePrefix),
+      id: cdktf.stringToTerraform(this._id),
       service_role: cdktf.stringToTerraform(this._serviceRole),
       state: cdktf.stringToTerraform(this._state),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),

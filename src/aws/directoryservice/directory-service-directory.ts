@@ -24,6 +24,13 @@ export interface DirectoryServiceDirectoryConfig extends cdktf.TerraformMetaArgu
   */
   readonly enableSso?: boolean | cdktf.IResolvable;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/directory_service_directory#id DirectoryServiceDirectory#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/directory_service_directory#name DirectoryServiceDirectory#name}
   */
   readonly name: string;
@@ -89,9 +96,9 @@ export function directoryServiceDirectoryConnectSettingsToTerraform(struct?: Dir
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    customer_dns_ips: cdktf.listMapper(cdktf.stringToTerraform)(struct!.customerDnsIps),
+    customer_dns_ips: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.customerDnsIps),
     customer_username: cdktf.stringToTerraform(struct!.customerUsername),
-    subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.subnetIds),
+    subnet_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.subnetIds),
     vpc_id: cdktf.stringToTerraform(struct!.vpcId),
   }
 }
@@ -225,7 +232,7 @@ export function directoryServiceDirectoryVpcSettingsToTerraform(struct?: Directo
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.subnetIds),
+    subnet_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.subnetIds),
     vpc_id: cdktf.stringToTerraform(struct!.vpcId),
   }
 }
@@ -326,18 +333,22 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
       terraformResourceType: 'aws_directory_service_directory',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._alias = config.alias;
     this._description = config.description;
     this._edition = config.edition;
     this._enableSso = config.enableSso;
+    this._id = config.id;
     this._name = config.name;
     this._password = config.password;
     this._shortName = config.shortName;
@@ -428,8 +439,19 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // name - computed: false, optional: false, required: true
@@ -585,6 +607,7 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
       description: cdktf.stringToTerraform(this._description),
       edition: cdktf.stringToTerraform(this._edition),
       enable_sso: cdktf.booleanToTerraform(this._enableSso),
+      id: cdktf.stringToTerraform(this._id),
       name: cdktf.stringToTerraform(this._name),
       password: cdktf.stringToTerraform(this._password),
       short_name: cdktf.stringToTerraform(this._shortName),

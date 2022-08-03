@@ -32,6 +32,13 @@ export interface LambdaFunctionConfig extends cdktf.TerraformMetaArguments {
   */
   readonly handler?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function#id LambdaFunction#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function#image_uri LambdaFunction#image_uri}
   */
   readonly imageUri?: string;
@@ -372,8 +379,8 @@ export function lambdaFunctionImageConfigToTerraform(struct?: LambdaFunctionImag
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    command: cdktf.listMapper(cdktf.stringToTerraform)(struct!.command),
-    entry_point: cdktf.listMapper(cdktf.stringToTerraform)(struct!.entryPoint),
+    command: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.command),
+    entry_point: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.entryPoint),
     working_directory: cdktf.stringToTerraform(struct!.workingDirectory),
   }
 }
@@ -489,6 +496,7 @@ export function lambdaFunctionTimeoutsToTerraform(struct?: LambdaFunctionTimeout
 
 export class LambdaFunctionTimeoutsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
 
   /**
   * @param terraformResource The parent resource
@@ -498,7 +506,10 @@ export class LambdaFunctionTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, false, 0);
   }
 
-  public get internalValue(): LambdaFunctionTimeouts | undefined {
+  public get internalValue(): LambdaFunctionTimeouts | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
     let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
     if (this._create !== undefined) {
@@ -508,13 +519,19 @@ export class LambdaFunctionTimeoutsOutputReference extends cdktf.ComplexObject {
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(value: LambdaFunctionTimeouts | undefined) {
+  public set internalValue(value: LambdaFunctionTimeouts | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
+      this.resolvableValue = undefined;
       this._create = undefined;
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
     }
     else {
       this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
       this._create = value.create;
     }
   }
@@ -614,8 +631,8 @@ export function lambdaFunctionVpcConfigToTerraform(struct?: LambdaFunctionVpcCon
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroupIds),
-    subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.subnetIds),
+    security_group_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.securityGroupIds),
+    subnet_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.subnetIds),
   }
 }
 
@@ -715,13 +732,16 @@ export class LambdaFunction extends cdktf.TerraformResource {
       terraformResourceType: 'aws_lambda_function',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._architectures = config.architectures;
     this._codeSigningConfigArn = config.codeSigningConfigArn;
@@ -729,6 +749,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
     this._filename = config.filename;
     this._functionName = config.functionName;
     this._handler = config.handler;
+    this._id = config.id;
     this._imageUri = config.imageUri;
     this._kmsKeyArn = config.kmsKeyArn;
     this._layers = config.layers;
@@ -857,8 +878,19 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // image_uri - computed: false, optional: true, required: false
@@ -1267,15 +1299,16 @@ export class LambdaFunction extends cdktf.TerraformResource {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
-      architectures: cdktf.listMapper(cdktf.stringToTerraform)(this._architectures),
+      architectures: cdktf.listMapper(cdktf.stringToTerraform, false)(this._architectures),
       code_signing_config_arn: cdktf.stringToTerraform(this._codeSigningConfigArn),
       description: cdktf.stringToTerraform(this._description),
       filename: cdktf.stringToTerraform(this._filename),
       function_name: cdktf.stringToTerraform(this._functionName),
       handler: cdktf.stringToTerraform(this._handler),
+      id: cdktf.stringToTerraform(this._id),
       image_uri: cdktf.stringToTerraform(this._imageUri),
       kms_key_arn: cdktf.stringToTerraform(this._kmsKeyArn),
-      layers: cdktf.listMapper(cdktf.stringToTerraform)(this._layers),
+      layers: cdktf.listMapper(cdktf.stringToTerraform, false)(this._layers),
       memory_size: cdktf.numberToTerraform(this._memorySize),
       package_type: cdktf.stringToTerraform(this._packageType),
       publish: cdktf.booleanToTerraform(this._publish),
