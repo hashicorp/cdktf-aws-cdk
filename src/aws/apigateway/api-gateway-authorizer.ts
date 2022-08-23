@@ -20,6 +20,13 @@ export interface ApiGatewayAuthorizerConfig extends cdktf.TerraformMetaArguments
   */
   readonly authorizerUri?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_authorizer#id ApiGatewayAuthorizer#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_authorizer#identity_source ApiGatewayAuthorizer#identity_source}
   */
   readonly identitySource?: string;
@@ -71,17 +78,21 @@ export class ApiGatewayAuthorizer extends cdktf.TerraformResource {
       terraformResourceType: 'aws_api_gateway_authorizer',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._authorizerCredentials = config.authorizerCredentials;
     this._authorizerResultTtlInSeconds = config.authorizerResultTtlInSeconds;
     this._authorizerUri = config.authorizerUri;
+    this._id = config.id;
     this._identitySource = config.identitySource;
     this._identityValidationExpression = config.identityValidationExpression;
     this._name = config.name;
@@ -143,8 +154,19 @@ export class ApiGatewayAuthorizer extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // identity_source - computed: false, optional: true, required: false
@@ -246,10 +268,11 @@ export class ApiGatewayAuthorizer extends cdktf.TerraformResource {
       authorizer_credentials: cdktf.stringToTerraform(this._authorizerCredentials),
       authorizer_result_ttl_in_seconds: cdktf.numberToTerraform(this._authorizerResultTtlInSeconds),
       authorizer_uri: cdktf.stringToTerraform(this._authorizerUri),
+      id: cdktf.stringToTerraform(this._id),
       identity_source: cdktf.stringToTerraform(this._identitySource),
       identity_validation_expression: cdktf.stringToTerraform(this._identityValidationExpression),
       name: cdktf.stringToTerraform(this._name),
-      provider_arns: cdktf.listMapper(cdktf.stringToTerraform)(this._providerArns),
+      provider_arns: cdktf.listMapper(cdktf.stringToTerraform, false)(this._providerArns),
       rest_api_id: cdktf.stringToTerraform(this._restApiId),
       type: cdktf.stringToTerraform(this._type),
     };

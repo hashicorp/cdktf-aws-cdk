@@ -8,6 +8,13 @@ import * as cdktf from 'cdktf';
 */
 export interface AppmeshVirtualNodeConfig extends cdktf.TerraformMetaArguments {
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_node#id AppmeshVirtualNode#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_node#mesh_name AppmeshVirtualNode#mesh_name}
   */
   readonly meshName: string;
@@ -291,7 +298,7 @@ export function appmeshVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValida
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    exact: cdktf.listMapper(cdktf.stringToTerraform)(struct!.exact),
+    exact: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.exact),
   }
 }
 
@@ -417,7 +424,7 @@ export function appmeshVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValida
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    certificate_authority_arns: cdktf.listMapper(cdktf.stringToTerraform)(struct!.certificateAuthorityArns),
+    certificate_authority_arns: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.certificateAuthorityArns),
   }
 }
 
@@ -838,7 +845,7 @@ export function appmeshVirtualNodeSpecBackendVirtualServiceClientPolicyTlsToTerr
   }
   return {
     enforce: cdktf.booleanToTerraform(struct!.enforce),
-    ports: cdktf.listMapper(cdktf.numberToTerraform)(struct!.ports),
+    ports: cdktf.listMapper(cdktf.numberToTerraform, false)(struct!.ports),
     certificate: appmeshVirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateToTerraform(struct!.certificate),
     validation: appmeshVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationToTerraform(struct!.validation),
   }
@@ -1132,6 +1139,83 @@ export function appmeshVirtualNodeSpecBackendToTerraform(struct?: AppmeshVirtual
   }
 }
 
+export class AppmeshVirtualNodeSpecBackendOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param complexObjectIndex the index of this item in the list
+  * @param complexObjectIsFromSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, complexObjectIndex: number, complexObjectIsFromSet: boolean) {
+    super(terraformResource, terraformAttribute, complexObjectIsFromSet, complexObjectIndex);
+  }
+
+  public get internalValue(): AppmeshVirtualNodeSpecBackend | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
+    let hasAnyValues = this.isEmptyObject;
+    const internalValueResult: any = {};
+    if (this._virtualService?.internalValue !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.virtualService = this._virtualService?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualNodeSpecBackend | cdktf.IResolvable | undefined) {
+    if (value === undefined) {
+      this.isEmptyObject = false;
+      this.resolvableValue = undefined;
+      this._virtualService.internalValue = undefined;
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
+    else {
+      this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
+      this._virtualService.internalValue = value.virtualService;
+    }
+  }
+
+  // virtual_service - computed: false, optional: false, required: true
+  private _virtualService = new AppmeshVirtualNodeSpecBackendVirtualServiceOutputReference(this, "virtual_service");
+  public get virtualService() {
+    return this._virtualService;
+  }
+  public putVirtualService(value: AppmeshVirtualNodeSpecBackendVirtualService) {
+    this._virtualService.internalValue = value;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get virtualServiceInput() {
+    return this._virtualService.internalValue;
+  }
+}
+
+export class AppmeshVirtualNodeSpecBackendList extends cdktf.ComplexList {
+  public internalValue? : AppmeshVirtualNodeSpecBackend[] | cdktf.IResolvable
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param wrapsSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  constructor(protected terraformResource: cdktf.IInterpolatingParent, protected terraformAttribute: string, protected wrapsSet: boolean) {
+    super(terraformResource, terraformAttribute, wrapsSet)
+  }
+
+  /**
+  * @param index the index of the item to return
+  */
+  public get(index: number): AppmeshVirtualNodeSpecBackendOutputReference {
+    return new AppmeshVirtualNodeSpecBackendOutputReference(this.terraformResource, this.terraformAttribute, index, this.wrapsSet);
+  }
+}
 export interface AppmeshVirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateFile {
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appmesh_virtual_node#certificate_chain AppmeshVirtualNode#certificate_chain}
@@ -1389,7 +1473,7 @@ export function appmeshVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSu
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    exact: cdktf.listMapper(cdktf.stringToTerraform)(struct!.exact),
+    exact: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.exact),
   }
 }
 
@@ -1515,7 +1599,7 @@ export function appmeshVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTr
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    certificate_authority_arns: cdktf.listMapper(cdktf.stringToTerraform)(struct!.certificateAuthorityArns),
+    certificate_authority_arns: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.certificateAuthorityArns),
   }
 }
 
@@ -1936,7 +2020,7 @@ export function appmeshVirtualNodeSpecBackendDefaultsClientPolicyTlsToTerraform(
   }
   return {
     enforce: cdktf.booleanToTerraform(struct!.enforce),
-    ports: cdktf.listMapper(cdktf.numberToTerraform)(struct!.ports),
+    ports: cdktf.listMapper(cdktf.numberToTerraform, false)(struct!.ports),
     certificate: appmeshVirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateToTerraform(struct!.certificate),
     validation: appmeshVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationToTerraform(struct!.validation),
   }
@@ -4683,7 +4767,7 @@ export function appmeshVirtualNodeSpecListenerTlsValidationSubjectAlternativeNam
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    exact: cdktf.listMapper(cdktf.stringToTerraform)(struct!.exact),
+    exact: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.exact),
   }
 }
 
@@ -5941,7 +6025,7 @@ export function appmeshVirtualNodeSpecToTerraform(struct?: AppmeshVirtualNodeSpe
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    backend: cdktf.listMapper(appmeshVirtualNodeSpecBackendToTerraform)(struct!.backend),
+    backend: cdktf.listMapper(appmeshVirtualNodeSpecBackendToTerraform, true)(struct!.backend),
     backend_defaults: appmeshVirtualNodeSpecBackendDefaultsToTerraform(struct!.backendDefaults),
     listener: appmeshVirtualNodeSpecListenerToTerraform(struct!.listener),
     logging: appmeshVirtualNodeSpecLoggingToTerraform(struct!.logging),
@@ -5963,9 +6047,9 @@ export class AppmeshVirtualNodeSpecOutputReference extends cdktf.ComplexObject {
   public get internalValue(): AppmeshVirtualNodeSpec | undefined {
     let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
-    if (this._backend !== undefined) {
+    if (this._backend?.internalValue !== undefined) {
       hasAnyValues = true;
-      internalValueResult.backend = this._backend;
+      internalValueResult.backend = this._backend?.internalValue;
     }
     if (this._backendDefaults?.internalValue !== undefined) {
       hasAnyValues = true;
@@ -5989,7 +6073,7 @@ export class AppmeshVirtualNodeSpecOutputReference extends cdktf.ComplexObject {
   public set internalValue(value: AppmeshVirtualNodeSpec | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
-      this._backend = undefined;
+      this._backend.internalValue = undefined;
       this._backendDefaults.internalValue = undefined;
       this._listener.internalValue = undefined;
       this._logging.internalValue = undefined;
@@ -5997,7 +6081,7 @@ export class AppmeshVirtualNodeSpecOutputReference extends cdktf.ComplexObject {
     }
     else {
       this.isEmptyObject = Object.keys(value).length === 0;
-      this._backend = value.backend;
+      this._backend.internalValue = value.backend;
       this._backendDefaults.internalValue = value.backendDefaults;
       this._listener.internalValue = value.listener;
       this._logging.internalValue = value.logging;
@@ -6006,20 +6090,19 @@ export class AppmeshVirtualNodeSpecOutputReference extends cdktf.ComplexObject {
   }
 
   // backend - computed: false, optional: true, required: false
-  private _backend?: AppmeshVirtualNodeSpecBackend[] | cdktf.IResolvable; 
+  private _backend = new AppmeshVirtualNodeSpecBackendList(this, "backend", true);
   public get backend() {
-    // Getting the computed value is not yet implemented
-    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('backend')));
+    return this._backend;
   }
-  public set backend(value: AppmeshVirtualNodeSpecBackend[] | cdktf.IResolvable) {
-    this._backend = value;
+  public putBackend(value: AppmeshVirtualNodeSpecBackend[] | cdktf.IResolvable) {
+    this._backend.internalValue = value;
   }
   public resetBackend() {
-    this._backend = undefined;
+    this._backend.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get backendInput() {
-    return this._backend;
+    return this._backend.internalValue;
   }
 
   // backend_defaults - computed: false, optional: true, required: false
@@ -6113,14 +6196,18 @@ export class AppmeshVirtualNode extends cdktf.TerraformResource {
       terraformResourceType: 'aws_appmesh_virtual_node',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
+    this._id = config.id;
     this._meshName = config.meshName;
     this._meshOwner = config.meshOwner;
     this._name = config.name;
@@ -6144,8 +6231,19 @@ export class AppmeshVirtualNode extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // last_updated_date - computed: true, optional: false, required: false
@@ -6251,6 +6349,7 @@ export class AppmeshVirtualNode extends cdktf.TerraformResource {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
+      id: cdktf.stringToTerraform(this._id),
       mesh_name: cdktf.stringToTerraform(this._meshName),
       mesh_owner: cdktf.stringToTerraform(this._meshOwner),
       name: cdktf.stringToTerraform(this._name),

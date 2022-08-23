@@ -12,6 +12,13 @@ export interface EksClusterConfig extends cdktf.TerraformMetaArguments {
   */
   readonly enabledClusterLogTypes?: string[];
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_cluster#id EksCluster#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_cluster#name EksCluster#name}
   */
   readonly name: string;
@@ -330,7 +337,7 @@ export function eksClusterEncryptionConfigToTerraform(struct?: EksClusterEncrypt
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    resources: cdktf.listMapper(cdktf.stringToTerraform)(struct!.resources),
+    resources: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.resources),
     provider: eksClusterEncryptionConfigProviderToTerraform(struct!.provider),
   }
 }
@@ -520,6 +527,7 @@ export function eksClusterTimeoutsToTerraform(struct?: EksClusterTimeoutsOutputR
 
 export class EksClusterTimeoutsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
 
   /**
   * @param terraformResource The parent resource
@@ -529,7 +537,10 @@ export class EksClusterTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, false, 0);
   }
 
-  public get internalValue(): EksClusterTimeouts | undefined {
+  public get internalValue(): EksClusterTimeouts | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
     let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
     if (this._create !== undefined) {
@@ -547,15 +558,21 @@ export class EksClusterTimeoutsOutputReference extends cdktf.ComplexObject {
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(value: EksClusterTimeouts | undefined) {
+  public set internalValue(value: EksClusterTimeouts | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
+      this.resolvableValue = undefined;
       this._create = undefined;
       this._delete = undefined;
       this._update = undefined;
     }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
     else {
       this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
       this._create = value.create;
       this._delete = value.delete;
       this._update = value.update;
@@ -641,9 +658,9 @@ export function eksClusterVpcConfigToTerraform(struct?: EksClusterVpcConfigOutpu
   return {
     endpoint_private_access: cdktf.booleanToTerraform(struct!.endpointPrivateAccess),
     endpoint_public_access: cdktf.booleanToTerraform(struct!.endpointPublicAccess),
-    public_access_cidrs: cdktf.listMapper(cdktf.stringToTerraform)(struct!.publicAccessCidrs),
-    security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroupIds),
-    subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.subnetIds),
+    public_access_cidrs: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.publicAccessCidrs),
+    security_group_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.securityGroupIds),
+    subnet_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.subnetIds),
   }
 }
 
@@ -817,15 +834,19 @@ export class EksCluster extends cdktf.TerraformResource {
       terraformResourceType: 'aws_eks_cluster',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._enabledClusterLogTypes = config.enabledClusterLogTypes;
+    this._id = config.id;
     this._name = config.name;
     this._roleArn = config.roleArn;
     this._tags = config.tags;
@@ -879,8 +900,19 @@ export class EksCluster extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // identity - computed: true, optional: false, required: false
@@ -1040,7 +1072,8 @@ export class EksCluster extends cdktf.TerraformResource {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
-      enabled_cluster_log_types: cdktf.listMapper(cdktf.stringToTerraform)(this._enabledClusterLogTypes),
+      enabled_cluster_log_types: cdktf.listMapper(cdktf.stringToTerraform, false)(this._enabledClusterLogTypes),
+      id: cdktf.stringToTerraform(this._id),
       name: cdktf.stringToTerraform(this._name),
       role_arn: cdktf.stringToTerraform(this._roleArn),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),

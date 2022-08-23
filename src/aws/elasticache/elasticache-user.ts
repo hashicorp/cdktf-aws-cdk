@@ -12,9 +12,20 @@ export interface ElasticacheUserConfig extends cdktf.TerraformMetaArguments {
   */
   readonly accessString: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elasticache_user#arn ElasticacheUser#arn}
+  */
+  readonly arn?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elasticache_user#engine ElasticacheUser#engine}
   */
   readonly engine: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elasticache_user#id ElasticacheUser#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elasticache_user#no_password_required ElasticacheUser#no_password_required}
   */
@@ -67,16 +78,21 @@ export class ElasticacheUser extends cdktf.TerraformResource {
       terraformResourceType: 'aws_elasticache_user',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._accessString = config.accessString;
+    this._arn = config.arn;
     this._engine = config.engine;
+    this._id = config.id;
     this._noPasswordRequired = config.noPasswordRequired;
     this._passwords = config.passwords;
     this._tags = config.tags;
@@ -103,8 +119,19 @@ export class ElasticacheUser extends cdktf.TerraformResource {
   }
 
   // arn - computed: true, optional: true, required: false
+  private _arn?: string; 
   public get arn() {
     return this.getStringAttribute('arn');
+  }
+  public set arn(value: string) {
+    this._arn = value;
+  }
+  public resetArn() {
+    this._arn = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get arnInput() {
+    return this._arn;
   }
 
   // engine - computed: false, optional: false, required: true
@@ -121,8 +148,19 @@ export class ElasticacheUser extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // no_password_required - computed: false, optional: true, required: false
@@ -222,9 +260,11 @@ export class ElasticacheUser extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       access_string: cdktf.stringToTerraform(this._accessString),
+      arn: cdktf.stringToTerraform(this._arn),
       engine: cdktf.stringToTerraform(this._engine),
+      id: cdktf.stringToTerraform(this._id),
       no_password_required: cdktf.booleanToTerraform(this._noPasswordRequired),
-      passwords: cdktf.listMapper(cdktf.stringToTerraform)(this._passwords),
+      passwords: cdktf.listMapper(cdktf.stringToTerraform, false)(this._passwords),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       user_id: cdktf.stringToTerraform(this._userId),

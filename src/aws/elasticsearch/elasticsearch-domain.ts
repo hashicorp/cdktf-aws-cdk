@@ -24,6 +24,13 @@ export interface ElasticsearchDomainConfig extends cdktf.TerraformMetaArguments 
   */
   readonly elasticsearchVersion?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elasticsearch_domain#id ElasticsearchDomain#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elasticsearch_domain#tags ElasticsearchDomain#tags}
   */
   readonly tags?: { [key: string]: string };
@@ -456,6 +463,121 @@ export function elasticsearchDomainAutoTuneOptionsMaintenanceScheduleToTerraform
   }
 }
 
+export class ElasticsearchDomainAutoTuneOptionsMaintenanceScheduleOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param complexObjectIndex the index of this item in the list
+  * @param complexObjectIsFromSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, complexObjectIndex: number, complexObjectIsFromSet: boolean) {
+    super(terraformResource, terraformAttribute, complexObjectIsFromSet, complexObjectIndex);
+  }
+
+  public get internalValue(): ElasticsearchDomainAutoTuneOptionsMaintenanceSchedule | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
+    let hasAnyValues = this.isEmptyObject;
+    const internalValueResult: any = {};
+    if (this._cronExpressionForRecurrence !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.cronExpressionForRecurrence = this._cronExpressionForRecurrence;
+    }
+    if (this._startAt !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.startAt = this._startAt;
+    }
+    if (this._duration?.internalValue !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.duration = this._duration?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticsearchDomainAutoTuneOptionsMaintenanceSchedule | cdktf.IResolvable | undefined) {
+    if (value === undefined) {
+      this.isEmptyObject = false;
+      this.resolvableValue = undefined;
+      this._cronExpressionForRecurrence = undefined;
+      this._startAt = undefined;
+      this._duration.internalValue = undefined;
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
+    else {
+      this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
+      this._cronExpressionForRecurrence = value.cronExpressionForRecurrence;
+      this._startAt = value.startAt;
+      this._duration.internalValue = value.duration;
+    }
+  }
+
+  // cron_expression_for_recurrence - computed: false, optional: false, required: true
+  private _cronExpressionForRecurrence?: string; 
+  public get cronExpressionForRecurrence() {
+    return this.getStringAttribute('cron_expression_for_recurrence');
+  }
+  public set cronExpressionForRecurrence(value: string) {
+    this._cronExpressionForRecurrence = value;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get cronExpressionForRecurrenceInput() {
+    return this._cronExpressionForRecurrence;
+  }
+
+  // start_at - computed: false, optional: false, required: true
+  private _startAt?: string; 
+  public get startAt() {
+    return this.getStringAttribute('start_at');
+  }
+  public set startAt(value: string) {
+    this._startAt = value;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get startAtInput() {
+    return this._startAt;
+  }
+
+  // duration - computed: false, optional: false, required: true
+  private _duration = new ElasticsearchDomainAutoTuneOptionsMaintenanceScheduleDurationOutputReference(this, "duration");
+  public get duration() {
+    return this._duration;
+  }
+  public putDuration(value: ElasticsearchDomainAutoTuneOptionsMaintenanceScheduleDuration) {
+    this._duration.internalValue = value;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get durationInput() {
+    return this._duration.internalValue;
+  }
+}
+
+export class ElasticsearchDomainAutoTuneOptionsMaintenanceScheduleList extends cdktf.ComplexList {
+  public internalValue? : ElasticsearchDomainAutoTuneOptionsMaintenanceSchedule[] | cdktf.IResolvable
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param wrapsSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  constructor(protected terraformResource: cdktf.IInterpolatingParent, protected terraformAttribute: string, protected wrapsSet: boolean) {
+    super(terraformResource, terraformAttribute, wrapsSet)
+  }
+
+  /**
+  * @param index the index of the item to return
+  */
+  public get(index: number): ElasticsearchDomainAutoTuneOptionsMaintenanceScheduleOutputReference {
+    return new ElasticsearchDomainAutoTuneOptionsMaintenanceScheduleOutputReference(this.terraformResource, this.terraformAttribute, index, this.wrapsSet);
+  }
+}
 export interface ElasticsearchDomainAutoTuneOptions {
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elasticsearch_domain#desired_state ElasticsearchDomain#desired_state}
@@ -481,7 +603,7 @@ export function elasticsearchDomainAutoTuneOptionsToTerraform(struct?: Elasticse
   return {
     desired_state: cdktf.stringToTerraform(struct!.desiredState),
     rollback_on_disable: cdktf.stringToTerraform(struct!.rollbackOnDisable),
-    maintenance_schedule: cdktf.listMapper(elasticsearchDomainAutoTuneOptionsMaintenanceScheduleToTerraform)(struct!.maintenanceSchedule),
+    maintenance_schedule: cdktf.listMapper(elasticsearchDomainAutoTuneOptionsMaintenanceScheduleToTerraform, true)(struct!.maintenanceSchedule),
   }
 }
 
@@ -507,9 +629,9 @@ export class ElasticsearchDomainAutoTuneOptionsOutputReference extends cdktf.Com
       hasAnyValues = true;
       internalValueResult.rollbackOnDisable = this._rollbackOnDisable;
     }
-    if (this._maintenanceSchedule !== undefined) {
+    if (this._maintenanceSchedule?.internalValue !== undefined) {
       hasAnyValues = true;
-      internalValueResult.maintenanceSchedule = this._maintenanceSchedule;
+      internalValueResult.maintenanceSchedule = this._maintenanceSchedule?.internalValue;
     }
     return hasAnyValues ? internalValueResult : undefined;
   }
@@ -519,13 +641,13 @@ export class ElasticsearchDomainAutoTuneOptionsOutputReference extends cdktf.Com
       this.isEmptyObject = false;
       this._desiredState = undefined;
       this._rollbackOnDisable = undefined;
-      this._maintenanceSchedule = undefined;
+      this._maintenanceSchedule.internalValue = undefined;
     }
     else {
       this.isEmptyObject = Object.keys(value).length === 0;
       this._desiredState = value.desiredState;
       this._rollbackOnDisable = value.rollbackOnDisable;
-      this._maintenanceSchedule = value.maintenanceSchedule;
+      this._maintenanceSchedule.internalValue = value.maintenanceSchedule;
     }
   }
 
@@ -559,20 +681,19 @@ export class ElasticsearchDomainAutoTuneOptionsOutputReference extends cdktf.Com
   }
 
   // maintenance_schedule - computed: false, optional: true, required: false
-  private _maintenanceSchedule?: ElasticsearchDomainAutoTuneOptionsMaintenanceSchedule[] | cdktf.IResolvable; 
+  private _maintenanceSchedule = new ElasticsearchDomainAutoTuneOptionsMaintenanceScheduleList(this, "maintenance_schedule", true);
   public get maintenanceSchedule() {
-    // Getting the computed value is not yet implemented
-    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('maintenance_schedule')));
+    return this._maintenanceSchedule;
   }
-  public set maintenanceSchedule(value: ElasticsearchDomainAutoTuneOptionsMaintenanceSchedule[] | cdktf.IResolvable) {
-    this._maintenanceSchedule = value;
+  public putMaintenanceSchedule(value: ElasticsearchDomainAutoTuneOptionsMaintenanceSchedule[] | cdktf.IResolvable) {
+    this._maintenanceSchedule.internalValue = value;
   }
   public resetMaintenanceSchedule() {
-    this._maintenanceSchedule = undefined;
+    this._maintenanceSchedule.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get maintenanceScheduleInput() {
-    return this._maintenanceSchedule;
+    return this._maintenanceSchedule.internalValue;
   }
 }
 export interface ElasticsearchDomainClusterConfigZoneAwarenessConfig {
@@ -1519,6 +1640,124 @@ export function elasticsearchDomainLogPublishingOptionsToTerraform(struct?: Elas
   }
 }
 
+export class ElasticsearchDomainLogPublishingOptionsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param complexObjectIndex the index of this item in the list
+  * @param complexObjectIsFromSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, complexObjectIndex: number, complexObjectIsFromSet: boolean) {
+    super(terraformResource, terraformAttribute, complexObjectIsFromSet, complexObjectIndex);
+  }
+
+  public get internalValue(): ElasticsearchDomainLogPublishingOptions | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
+    let hasAnyValues = this.isEmptyObject;
+    const internalValueResult: any = {};
+    if (this._cloudwatchLogGroupArn !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.cloudwatchLogGroupArn = this._cloudwatchLogGroupArn;
+    }
+    if (this._enabled !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logType !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.logType = this._logType;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticsearchDomainLogPublishingOptions | cdktf.IResolvable | undefined) {
+    if (value === undefined) {
+      this.isEmptyObject = false;
+      this.resolvableValue = undefined;
+      this._cloudwatchLogGroupArn = undefined;
+      this._enabled = undefined;
+      this._logType = undefined;
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
+    else {
+      this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
+      this._cloudwatchLogGroupArn = value.cloudwatchLogGroupArn;
+      this._enabled = value.enabled;
+      this._logType = value.logType;
+    }
+  }
+
+  // cloudwatch_log_group_arn - computed: false, optional: false, required: true
+  private _cloudwatchLogGroupArn?: string; 
+  public get cloudwatchLogGroupArn() {
+    return this.getStringAttribute('cloudwatch_log_group_arn');
+  }
+  public set cloudwatchLogGroupArn(value: string) {
+    this._cloudwatchLogGroupArn = value;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get cloudwatchLogGroupArnInput() {
+    return this._cloudwatchLogGroupArn;
+  }
+
+  // enabled - computed: false, optional: true, required: false
+  private _enabled?: boolean | cdktf.IResolvable; 
+  public get enabled() {
+    return this.getBooleanAttribute('enabled');
+  }
+  public set enabled(value: boolean | cdktf.IResolvable) {
+    this._enabled = value;
+  }
+  public resetEnabled() {
+    this._enabled = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get enabledInput() {
+    return this._enabled;
+  }
+
+  // log_type - computed: false, optional: false, required: true
+  private _logType?: string; 
+  public get logType() {
+    return this.getStringAttribute('log_type');
+  }
+  public set logType(value: string) {
+    this._logType = value;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get logTypeInput() {
+    return this._logType;
+  }
+}
+
+export class ElasticsearchDomainLogPublishingOptionsList extends cdktf.ComplexList {
+  public internalValue? : ElasticsearchDomainLogPublishingOptions[] | cdktf.IResolvable
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param wrapsSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  constructor(protected terraformResource: cdktf.IInterpolatingParent, protected terraformAttribute: string, protected wrapsSet: boolean) {
+    super(terraformResource, terraformAttribute, wrapsSet)
+  }
+
+  /**
+  * @param index the index of the item to return
+  */
+  public get(index: number): ElasticsearchDomainLogPublishingOptionsOutputReference {
+    return new ElasticsearchDomainLogPublishingOptionsOutputReference(this.terraformResource, this.terraformAttribute, index, this.wrapsSet);
+  }
+}
 export interface ElasticsearchDomainNodeToNodeEncryption {
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elasticsearch_domain#enabled ElasticsearchDomain#enabled}
@@ -1662,6 +1901,7 @@ export function elasticsearchDomainTimeoutsToTerraform(struct?: ElasticsearchDom
 
 export class ElasticsearchDomainTimeoutsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
 
   /**
   * @param terraformResource The parent resource
@@ -1671,7 +1911,10 @@ export class ElasticsearchDomainTimeoutsOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, false, 0);
   }
 
-  public get internalValue(): ElasticsearchDomainTimeouts | undefined {
+  public get internalValue(): ElasticsearchDomainTimeouts | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
     let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
     if (this._update !== undefined) {
@@ -1681,13 +1924,19 @@ export class ElasticsearchDomainTimeoutsOutputReference extends cdktf.ComplexObj
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(value: ElasticsearchDomainTimeouts | undefined) {
+  public set internalValue(value: ElasticsearchDomainTimeouts | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
+      this.resolvableValue = undefined;
       this._update = undefined;
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
     }
     else {
       this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
       this._update = value.update;
     }
   }
@@ -1725,8 +1974,8 @@ export function elasticsearchDomainVpcOptionsToTerraform(struct?: ElasticsearchD
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroupIds),
-    subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.subnetIds),
+    security_group_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.securityGroupIds),
+    subnet_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.subnetIds),
   }
 }
 
@@ -1837,18 +2086,22 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
       terraformResourceType: 'aws_elasticsearch_domain',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._accessPolicies = config.accessPolicies;
     this._advancedOptions = config.advancedOptions;
     this._domainName = config.domainName;
     this._elasticsearchVersion = config.elasticsearchVersion;
+    this._id = config.id;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._advancedSecurityOptions.internalValue = config.advancedSecurityOptions;
@@ -1858,7 +2111,7 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
     this._domainEndpointOptions.internalValue = config.domainEndpointOptions;
     this._ebsOptions.internalValue = config.ebsOptions;
     this._encryptAtRest.internalValue = config.encryptAtRest;
-    this._logPublishingOptions = config.logPublishingOptions;
+    this._logPublishingOptions.internalValue = config.logPublishingOptions;
     this._nodeToNodeEncryption.internalValue = config.nodeToNodeEncryption;
     this._snapshotOptions.internalValue = config.snapshotOptions;
     this._timeouts.internalValue = config.timeouts;
@@ -1946,8 +2199,19 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // kibana_endpoint - computed: true, optional: false, required: false
@@ -2100,20 +2364,19 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
   }
 
   // log_publishing_options - computed: false, optional: true, required: false
-  private _logPublishingOptions?: ElasticsearchDomainLogPublishingOptions[] | cdktf.IResolvable; 
+  private _logPublishingOptions = new ElasticsearchDomainLogPublishingOptionsList(this, "log_publishing_options", true);
   public get logPublishingOptions() {
-    // Getting the computed value is not yet implemented
-    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('log_publishing_options')));
+    return this._logPublishingOptions;
   }
-  public set logPublishingOptions(value: ElasticsearchDomainLogPublishingOptions[] | cdktf.IResolvable) {
-    this._logPublishingOptions = value;
+  public putLogPublishingOptions(value: ElasticsearchDomainLogPublishingOptions[] | cdktf.IResolvable) {
+    this._logPublishingOptions.internalValue = value;
   }
   public resetLogPublishingOptions() {
-    this._logPublishingOptions = undefined;
+    this._logPublishingOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get logPublishingOptionsInput() {
-    return this._logPublishingOptions;
+    return this._logPublishingOptions.internalValue;
   }
 
   // node_to_node_encryption - computed: false, optional: true, required: false
@@ -2190,6 +2453,7 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
       advanced_options: cdktf.hashMapper(cdktf.stringToTerraform)(this._advancedOptions),
       domain_name: cdktf.stringToTerraform(this._domainName),
       elasticsearch_version: cdktf.stringToTerraform(this._elasticsearchVersion),
+      id: cdktf.stringToTerraform(this._id),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       advanced_security_options: elasticsearchDomainAdvancedSecurityOptionsToTerraform(this._advancedSecurityOptions.internalValue),
@@ -2199,7 +2463,7 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
       domain_endpoint_options: elasticsearchDomainDomainEndpointOptionsToTerraform(this._domainEndpointOptions.internalValue),
       ebs_options: elasticsearchDomainEbsOptionsToTerraform(this._ebsOptions.internalValue),
       encrypt_at_rest: elasticsearchDomainEncryptAtRestToTerraform(this._encryptAtRest.internalValue),
-      log_publishing_options: cdktf.listMapper(elasticsearchDomainLogPublishingOptionsToTerraform)(this._logPublishingOptions),
+      log_publishing_options: cdktf.listMapper(elasticsearchDomainLogPublishingOptionsToTerraform, true)(this._logPublishingOptions.internalValue),
       node_to_node_encryption: elasticsearchDomainNodeToNodeEncryptionToTerraform(this._nodeToNodeEncryption.internalValue),
       snapshot_options: elasticsearchDomainSnapshotOptionsToTerraform(this._snapshotOptions.internalValue),
       timeouts: elasticsearchDomainTimeoutsToTerraform(this._timeouts.internalValue),

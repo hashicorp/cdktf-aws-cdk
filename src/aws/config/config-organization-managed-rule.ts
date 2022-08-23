@@ -16,6 +16,13 @@ export interface ConfigOrganizationManagedRuleConfig extends cdktf.TerraformMeta
   */
   readonly excludedAccounts?: string[];
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_organization_managed_rule#id ConfigOrganizationManagedRule#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_organization_managed_rule#input_parameters ConfigOrganizationManagedRule#input_parameters}
   */
   readonly inputParameters?: string;
@@ -83,6 +90,7 @@ export function configOrganizationManagedRuleTimeoutsToTerraform(struct?: Config
 
 export class ConfigOrganizationManagedRuleTimeoutsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
 
   /**
   * @param terraformResource The parent resource
@@ -92,7 +100,10 @@ export class ConfigOrganizationManagedRuleTimeoutsOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, false, 0);
   }
 
-  public get internalValue(): ConfigOrganizationManagedRuleTimeouts | undefined {
+  public get internalValue(): ConfigOrganizationManagedRuleTimeouts | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
     let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
     if (this._create !== undefined) {
@@ -110,15 +121,21 @@ export class ConfigOrganizationManagedRuleTimeoutsOutputReference extends cdktf.
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(value: ConfigOrganizationManagedRuleTimeouts | undefined) {
+  public set internalValue(value: ConfigOrganizationManagedRuleTimeouts | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
+      this.resolvableValue = undefined;
       this._create = undefined;
       this._delete = undefined;
       this._update = undefined;
     }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
     else {
       this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
       this._create = value.create;
       this._delete = value.delete;
       this._update = value.update;
@@ -200,16 +217,20 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
       terraformResourceType: 'aws_config_organization_managed_rule',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._description = config.description;
     this._excludedAccounts = config.excludedAccounts;
+    this._id = config.id;
     this._inputParameters = config.inputParameters;
     this._maximumExecutionFrequency = config.maximumExecutionFrequency;
     this._name = config.name;
@@ -263,8 +284,19 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // input_parameters - computed: false, optional: true, required: false
@@ -412,12 +444,13 @@ export class ConfigOrganizationManagedRule extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       description: cdktf.stringToTerraform(this._description),
-      excluded_accounts: cdktf.listMapper(cdktf.stringToTerraform)(this._excludedAccounts),
+      excluded_accounts: cdktf.listMapper(cdktf.stringToTerraform, false)(this._excludedAccounts),
+      id: cdktf.stringToTerraform(this._id),
       input_parameters: cdktf.stringToTerraform(this._inputParameters),
       maximum_execution_frequency: cdktf.stringToTerraform(this._maximumExecutionFrequency),
       name: cdktf.stringToTerraform(this._name),
       resource_id_scope: cdktf.stringToTerraform(this._resourceIdScope),
-      resource_types_scope: cdktf.listMapper(cdktf.stringToTerraform)(this._resourceTypesScope),
+      resource_types_scope: cdktf.listMapper(cdktf.stringToTerraform, false)(this._resourceTypesScope),
       rule_identifier: cdktf.stringToTerraform(this._ruleIdentifier),
       tag_key_scope: cdktf.stringToTerraform(this._tagKeyScope),
       tag_value_scope: cdktf.stringToTerraform(this._tagValueScope),

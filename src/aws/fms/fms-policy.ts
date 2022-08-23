@@ -16,6 +16,13 @@ export interface FmsPolicyConfig extends cdktf.TerraformMetaArguments {
   */
   readonly excludeResourceTags: boolean | cdktf.IResolvable;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fms_policy#id FmsPolicy#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fms_policy#name FmsPolicy#name}
   */
   readonly name: string;
@@ -71,8 +78,8 @@ export function fmsPolicyExcludeMapToTerraform(struct?: FmsPolicyExcludeMapOutpu
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    account: cdktf.listMapper(cdktf.stringToTerraform)(struct!.account),
-    orgunit: cdktf.listMapper(cdktf.stringToTerraform)(struct!.orgunit),
+    account: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.account),
+    orgunit: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.orgunit),
   }
 }
 
@@ -163,8 +170,8 @@ export function fmsPolicyIncludeMapToTerraform(struct?: FmsPolicyIncludeMapOutpu
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    account: cdktf.listMapper(cdktf.stringToTerraform)(struct!.account),
-    orgunit: cdktf.listMapper(cdktf.stringToTerraform)(struct!.orgunit),
+    account: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.account),
+    orgunit: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.orgunit),
   }
 }
 
@@ -354,16 +361,20 @@ export class FmsPolicy extends cdktf.TerraformResource {
       terraformResourceType: 'aws_fms_policy',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._deleteAllPolicyResources = config.deleteAllPolicyResources;
     this._excludeResourceTags = config.excludeResourceTags;
+    this._id = config.id;
     this._name = config.name;
     this._remediationEnabled = config.remediationEnabled;
     this._resourceTags = config.resourceTags;
@@ -413,8 +424,19 @@ export class FmsPolicy extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // name - computed: false, optional: false, required: true
@@ -552,11 +574,12 @@ export class FmsPolicy extends cdktf.TerraformResource {
     return {
       delete_all_policy_resources: cdktf.booleanToTerraform(this._deleteAllPolicyResources),
       exclude_resource_tags: cdktf.booleanToTerraform(this._excludeResourceTags),
+      id: cdktf.stringToTerraform(this._id),
       name: cdktf.stringToTerraform(this._name),
       remediation_enabled: cdktf.booleanToTerraform(this._remediationEnabled),
       resource_tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._resourceTags),
       resource_type: cdktf.stringToTerraform(this._resourceType),
-      resource_type_list: cdktf.listMapper(cdktf.stringToTerraform)(this._resourceTypeList),
+      resource_type_list: cdktf.listMapper(cdktf.stringToTerraform, false)(this._resourceTypeList),
       exclude_map: fmsPolicyExcludeMapToTerraform(this._excludeMap.internalValue),
       include_map: fmsPolicyIncludeMapToTerraform(this._includeMap.internalValue),
       security_service_policy_data: fmsPolicySecurityServicePolicyDataToTerraform(this._securityServicePolicyData.internalValue),

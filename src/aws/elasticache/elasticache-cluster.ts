@@ -36,6 +36,13 @@ export interface ElasticacheClusterConfig extends cdktf.TerraformMetaArguments {
   */
   readonly finalSnapshotIdentifier?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elasticache_cluster#id ElasticacheCluster#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elasticache_cluster#maintenance_window ElasticacheCluster#maintenance_window}
   */
   readonly maintenanceWindow?: string;
@@ -210,13 +217,16 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
       terraformResourceType: 'aws_elasticache_cluster',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._applyImmediately = config.applyImmediately;
     this._availabilityZone = config.availabilityZone;
@@ -225,6 +235,7 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
     this._engine = config.engine;
     this._engineVersion = config.engineVersion;
     this._finalSnapshotIdentifier = config.finalSnapshotIdentifier;
+    this._id = config.id;
     this._maintenanceWindow = config.maintenanceWindow;
     this._nodeType = config.nodeType;
     this._notificationTopicArn = config.notificationTopicArn;
@@ -384,8 +395,19 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // maintenance_window - computed: true, optional: true, required: false
@@ -673,17 +695,18 @@ export class ElasticacheCluster extends cdktf.TerraformResource {
       engine: cdktf.stringToTerraform(this._engine),
       engine_version: cdktf.stringToTerraform(this._engineVersion),
       final_snapshot_identifier: cdktf.stringToTerraform(this._finalSnapshotIdentifier),
+      id: cdktf.stringToTerraform(this._id),
       maintenance_window: cdktf.stringToTerraform(this._maintenanceWindow),
       node_type: cdktf.stringToTerraform(this._nodeType),
       notification_topic_arn: cdktf.stringToTerraform(this._notificationTopicArn),
       num_cache_nodes: cdktf.numberToTerraform(this._numCacheNodes),
       parameter_group_name: cdktf.stringToTerraform(this._parameterGroupName),
       port: cdktf.numberToTerraform(this._port),
-      preferred_availability_zones: cdktf.listMapper(cdktf.stringToTerraform)(this._preferredAvailabilityZones),
+      preferred_availability_zones: cdktf.listMapper(cdktf.stringToTerraform, false)(this._preferredAvailabilityZones),
       replication_group_id: cdktf.stringToTerraform(this._replicationGroupId),
-      security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._securityGroupIds),
-      security_group_names: cdktf.listMapper(cdktf.stringToTerraform)(this._securityGroupNames),
-      snapshot_arns: cdktf.listMapper(cdktf.stringToTerraform)(this._snapshotArns),
+      security_group_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(this._securityGroupIds),
+      security_group_names: cdktf.listMapper(cdktf.stringToTerraform, false)(this._securityGroupNames),
+      snapshot_arns: cdktf.listMapper(cdktf.stringToTerraform, false)(this._snapshotArns),
       snapshot_name: cdktf.stringToTerraform(this._snapshotName),
       snapshot_retention_limit: cdktf.numberToTerraform(this._snapshotRetentionLimit),
       snapshot_window: cdktf.stringToTerraform(this._snapshotWindow),

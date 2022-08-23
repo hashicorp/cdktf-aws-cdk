@@ -43,13 +43,16 @@ export class DataAwsApiGatewayVpcLink extends cdktf.TerraformDataSource {
       terraformResourceType: 'aws_api_gateway_vpc_link',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._name = config.name;
     this._tags = config.tags;

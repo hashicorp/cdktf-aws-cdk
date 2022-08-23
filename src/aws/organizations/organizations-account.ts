@@ -16,6 +16,13 @@ export interface OrganizationsAccountConfig extends cdktf.TerraformMetaArguments
   */
   readonly iamUserAccessToBilling?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/organizations_account#id OrganizationsAccount#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/organizations_account#name OrganizationsAccount#name}
   */
   readonly name: string;
@@ -63,16 +70,20 @@ export class OrganizationsAccount extends cdktf.TerraformResource {
       terraformResourceType: 'aws_organizations_account',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._email = config.email;
     this._iamUserAccessToBilling = config.iamUserAccessToBilling;
+    this._id = config.id;
     this._name = config.name;
     this._parentId = config.parentId;
     this._roleName = config.roleName;
@@ -119,8 +130,19 @@ export class OrganizationsAccount extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // joined_method - computed: true, optional: false, required: false
@@ -223,6 +245,7 @@ export class OrganizationsAccount extends cdktf.TerraformResource {
     return {
       email: cdktf.stringToTerraform(this._email),
       iam_user_access_to_billing: cdktf.stringToTerraform(this._iamUserAccessToBilling),
+      id: cdktf.stringToTerraform(this._id),
       name: cdktf.stringToTerraform(this._name),
       parent_id: cdktf.stringToTerraform(this._parentId),
       role_name: cdktf.stringToTerraform(this._roleName),

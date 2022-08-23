@@ -32,6 +32,13 @@ export interface StoragegatewayNfsFileShareConfig extends cdktf.TerraformMetaArg
   */
   readonly guessMimeTypeEnabled?: boolean | cdktf.IResolvable;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/storagegateway_nfs_file_share#id StoragegatewayNfsFileShare#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/storagegateway_nfs_file_share#kms_encrypted StoragegatewayNfsFileShare#kms_encrypted}
   */
   readonly kmsEncrypted?: boolean | cdktf.IResolvable;
@@ -334,6 +341,7 @@ export function storagegatewayNfsFileShareTimeoutsToTerraform(struct?: Storagega
 
 export class StoragegatewayNfsFileShareTimeoutsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
 
   /**
   * @param terraformResource The parent resource
@@ -343,7 +351,10 @@ export class StoragegatewayNfsFileShareTimeoutsOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, false, 0);
   }
 
-  public get internalValue(): StoragegatewayNfsFileShareTimeouts | undefined {
+  public get internalValue(): StoragegatewayNfsFileShareTimeouts | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
     let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
     if (this._create !== undefined) {
@@ -361,15 +372,21 @@ export class StoragegatewayNfsFileShareTimeoutsOutputReference extends cdktf.Com
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(value: StoragegatewayNfsFileShareTimeouts | undefined) {
+  public set internalValue(value: StoragegatewayNfsFileShareTimeouts | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
+      this.resolvableValue = undefined;
       this._create = undefined;
       this._delete = undefined;
       this._update = undefined;
     }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
     else {
       this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
       this._create = value.create;
       this._delete = value.delete;
       this._update = value.update;
@@ -451,13 +468,16 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
       terraformResourceType: 'aws_storagegateway_nfs_file_share',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._auditDestinationArn = config.auditDestinationArn;
     this._clientList = config.clientList;
@@ -465,6 +485,7 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
     this._fileShareName = config.fileShareName;
     this._gatewayArn = config.gatewayArn;
     this._guessMimeTypeEnabled = config.guessMimeTypeEnabled;
+    this._id = config.id;
     this._kmsEncrypted = config.kmsEncrypted;
     this._kmsKeyArn = config.kmsKeyArn;
     this._locationArn = config.locationArn;
@@ -586,8 +607,19 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // kms_encrypted - computed: false, optional: true, required: false
@@ -820,11 +852,12 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       audit_destination_arn: cdktf.stringToTerraform(this._auditDestinationArn),
-      client_list: cdktf.listMapper(cdktf.stringToTerraform)(this._clientList),
+      client_list: cdktf.listMapper(cdktf.stringToTerraform, false)(this._clientList),
       default_storage_class: cdktf.stringToTerraform(this._defaultStorageClass),
       file_share_name: cdktf.stringToTerraform(this._fileShareName),
       gateway_arn: cdktf.stringToTerraform(this._gatewayArn),
       guess_mime_type_enabled: cdktf.booleanToTerraform(this._guessMimeTypeEnabled),
+      id: cdktf.stringToTerraform(this._id),
       kms_encrypted: cdktf.booleanToTerraform(this._kmsEncrypted),
       kms_key_arn: cdktf.stringToTerraform(this._kmsKeyArn),
       location_arn: cdktf.stringToTerraform(this._locationArn),

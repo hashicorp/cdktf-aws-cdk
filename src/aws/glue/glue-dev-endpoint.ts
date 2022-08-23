@@ -24,6 +24,13 @@ export interface GlueDevEndpointConfig extends cdktf.TerraformMetaArguments {
   */
   readonly glueVersion?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_dev_endpoint#id GlueDevEndpoint#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_dev_endpoint#name GlueDevEndpoint#name}
   */
   readonly name: string;
@@ -99,18 +106,22 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
       terraformResourceType: 'aws_glue_dev_endpoint',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._arguments = config.arguments;
     this._extraJarsS3Path = config.extraJarsS3Path;
     this._extraPythonLibsS3Path = config.extraPythonLibsS3Path;
     this._glueVersion = config.glueVersion;
+    this._id = config.id;
     this._name = config.name;
     this._numberOfNodes = config.numberOfNodes;
     this._numberOfWorkers = config.numberOfWorkers;
@@ -209,8 +220,19 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // name - computed: false, optional: false, required: true
@@ -439,14 +461,15 @@ export class GlueDevEndpoint extends cdktf.TerraformResource {
       extra_jars_s3_path: cdktf.stringToTerraform(this._extraJarsS3Path),
       extra_python_libs_s3_path: cdktf.stringToTerraform(this._extraPythonLibsS3Path),
       glue_version: cdktf.stringToTerraform(this._glueVersion),
+      id: cdktf.stringToTerraform(this._id),
       name: cdktf.stringToTerraform(this._name),
       number_of_nodes: cdktf.numberToTerraform(this._numberOfNodes),
       number_of_workers: cdktf.numberToTerraform(this._numberOfWorkers),
       public_key: cdktf.stringToTerraform(this._publicKey),
-      public_keys: cdktf.listMapper(cdktf.stringToTerraform)(this._publicKeys),
+      public_keys: cdktf.listMapper(cdktf.stringToTerraform, false)(this._publicKeys),
       role_arn: cdktf.stringToTerraform(this._roleArn),
       security_configuration: cdktf.stringToTerraform(this._securityConfiguration),
-      security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._securityGroupIds),
+      security_group_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(this._securityGroupIds),
       subnet_id: cdktf.stringToTerraform(this._subnetId),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),

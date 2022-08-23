@@ -12,6 +12,13 @@ export interface ShieldProtectionGroupConfig extends cdktf.TerraformMetaArgument
   */
   readonly aggregation: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/shield_protection_group#id ShieldProtectionGroup#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/shield_protection_group#members ShieldProtectionGroup#members}
   */
   readonly members?: string[];
@@ -63,15 +70,19 @@ export class ShieldProtectionGroup extends cdktf.TerraformResource {
       terraformResourceType: 'aws_shield_protection_group',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._aggregation = config.aggregation;
+    this._id = config.id;
     this._members = config.members;
     this._pattern = config.pattern;
     this._protectionGroupId = config.protectionGroupId;
@@ -98,8 +109,19 @@ export class ShieldProtectionGroup extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // members - computed: false, optional: true, required: false
@@ -204,7 +226,8 @@ export class ShieldProtectionGroup extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       aggregation: cdktf.stringToTerraform(this._aggregation),
-      members: cdktf.listMapper(cdktf.stringToTerraform)(this._members),
+      id: cdktf.stringToTerraform(this._id),
+      members: cdktf.listMapper(cdktf.stringToTerraform, false)(this._members),
       pattern: cdktf.stringToTerraform(this._pattern),
       protection_group_id: cdktf.stringToTerraform(this._protectionGroupId),
       resource_type: cdktf.stringToTerraform(this._resourceType),

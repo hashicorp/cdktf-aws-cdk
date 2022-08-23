@@ -16,6 +16,13 @@ export interface TransferUserConfig extends cdktf.TerraformMetaArguments {
   */
   readonly homeDirectoryType?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/transfer_user#id TransferUser#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/transfer_user#policy TransferUser#policy}
   */
   readonly policy?: string;
@@ -74,6 +81,102 @@ export function transferUserHomeDirectoryMappingsToTerraform(struct?: TransferUs
   }
 }
 
+export class TransferUserHomeDirectoryMappingsOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param complexObjectIndex the index of this item in the list
+  * @param complexObjectIsFromSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, complexObjectIndex: number, complexObjectIsFromSet: boolean) {
+    super(terraformResource, terraformAttribute, complexObjectIsFromSet, complexObjectIndex);
+  }
+
+  public get internalValue(): TransferUserHomeDirectoryMappings | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
+    let hasAnyValues = this.isEmptyObject;
+    const internalValueResult: any = {};
+    if (this._entry !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.entry = this._entry;
+    }
+    if (this._target !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.target = this._target;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: TransferUserHomeDirectoryMappings | cdktf.IResolvable | undefined) {
+    if (value === undefined) {
+      this.isEmptyObject = false;
+      this.resolvableValue = undefined;
+      this._entry = undefined;
+      this._target = undefined;
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
+    else {
+      this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
+      this._entry = value.entry;
+      this._target = value.target;
+    }
+  }
+
+  // entry - computed: false, optional: false, required: true
+  private _entry?: string; 
+  public get entry() {
+    return this.getStringAttribute('entry');
+  }
+  public set entry(value: string) {
+    this._entry = value;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get entryInput() {
+    return this._entry;
+  }
+
+  // target - computed: false, optional: false, required: true
+  private _target?: string; 
+  public get target() {
+    return this.getStringAttribute('target');
+  }
+  public set target(value: string) {
+    this._target = value;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get targetInput() {
+    return this._target;
+  }
+}
+
+export class TransferUserHomeDirectoryMappingsList extends cdktf.ComplexList {
+  public internalValue? : TransferUserHomeDirectoryMappings[] | cdktf.IResolvable
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param wrapsSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  constructor(protected terraformResource: cdktf.IInterpolatingParent, protected terraformAttribute: string, protected wrapsSet: boolean) {
+    super(terraformResource, terraformAttribute, wrapsSet)
+  }
+
+  /**
+  * @param index the index of the item to return
+  */
+  public get(index: number): TransferUserHomeDirectoryMappingsOutputReference {
+    return new TransferUserHomeDirectoryMappingsOutputReference(this.terraformResource, this.terraformAttribute, index, this.wrapsSet);
+  }
+}
 export interface TransferUserPosixProfile {
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/transfer_user#gid TransferUser#gid}
@@ -96,7 +199,7 @@ export function transferUserPosixProfileToTerraform(struct?: TransferUserPosixPr
   }
   return {
     gid: cdktf.numberToTerraform(struct!.gid),
-    secondary_gids: cdktf.listMapper(cdktf.numberToTerraform)(struct!.secondaryGids),
+    secondary_gids: cdktf.listMapper(cdktf.numberToTerraform, false)(struct!.secondaryGids),
     uid: cdktf.numberToTerraform(struct!.uid),
   }
 }
@@ -214,23 +317,27 @@ export class TransferUser extends cdktf.TerraformResource {
       terraformResourceType: 'aws_transfer_user',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._homeDirectory = config.homeDirectory;
     this._homeDirectoryType = config.homeDirectoryType;
+    this._id = config.id;
     this._policy = config.policy;
     this._role = config.role;
     this._serverId = config.serverId;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._userName = config.userName;
-    this._homeDirectoryMappings = config.homeDirectoryMappings;
+    this._homeDirectoryMappings.internalValue = config.homeDirectoryMappings;
     this._posixProfile.internalValue = config.posixProfile;
   }
 
@@ -276,8 +383,19 @@ export class TransferUser extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // policy - computed: false, optional: true, required: false
@@ -368,20 +486,19 @@ export class TransferUser extends cdktf.TerraformResource {
   }
 
   // home_directory_mappings - computed: false, optional: true, required: false
-  private _homeDirectoryMappings?: TransferUserHomeDirectoryMappings[] | cdktf.IResolvable; 
+  private _homeDirectoryMappings = new TransferUserHomeDirectoryMappingsList(this, "home_directory_mappings", false);
   public get homeDirectoryMappings() {
-    // Getting the computed value is not yet implemented
-    return this.interpolationForAttribute('home_directory_mappings');
+    return this._homeDirectoryMappings;
   }
-  public set homeDirectoryMappings(value: TransferUserHomeDirectoryMappings[] | cdktf.IResolvable) {
-    this._homeDirectoryMappings = value;
+  public putHomeDirectoryMappings(value: TransferUserHomeDirectoryMappings[] | cdktf.IResolvable) {
+    this._homeDirectoryMappings.internalValue = value;
   }
   public resetHomeDirectoryMappings() {
-    this._homeDirectoryMappings = undefined;
+    this._homeDirectoryMappings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get homeDirectoryMappingsInput() {
-    return this._homeDirectoryMappings;
+    return this._homeDirectoryMappings.internalValue;
   }
 
   // posix_profile - computed: false, optional: true, required: false
@@ -408,13 +525,14 @@ export class TransferUser extends cdktf.TerraformResource {
     return {
       home_directory: cdktf.stringToTerraform(this._homeDirectory),
       home_directory_type: cdktf.stringToTerraform(this._homeDirectoryType),
+      id: cdktf.stringToTerraform(this._id),
       policy: cdktf.stringToTerraform(this._policy),
       role: cdktf.stringToTerraform(this._role),
       server_id: cdktf.stringToTerraform(this._serverId),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       user_name: cdktf.stringToTerraform(this._userName),
-      home_directory_mappings: cdktf.listMapper(transferUserHomeDirectoryMappingsToTerraform)(this._homeDirectoryMappings),
+      home_directory_mappings: cdktf.listMapper(transferUserHomeDirectoryMappingsToTerraform, true)(this._homeDirectoryMappings.internalValue),
       posix_profile: transferUserPosixProfileToTerraform(this._posixProfile.internalValue),
     };
   }

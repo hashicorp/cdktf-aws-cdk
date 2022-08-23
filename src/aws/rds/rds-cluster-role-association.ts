@@ -16,6 +16,13 @@ export interface RdsClusterRoleAssociationConfig extends cdktf.TerraformMetaArgu
   */
   readonly featureName: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/rds_cluster_role_association#id RdsClusterRoleAssociation#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/rds_cluster_role_association#role_arn RdsClusterRoleAssociation#role_arn}
   */
   readonly roleArn: string;
@@ -47,16 +54,20 @@ export class RdsClusterRoleAssociation extends cdktf.TerraformResource {
       terraformResourceType: 'aws_rds_cluster_role_association',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._dbClusterIdentifier = config.dbClusterIdentifier;
     this._featureName = config.featureName;
+    this._id = config.id;
     this._roleArn = config.roleArn;
   }
 
@@ -91,8 +102,19 @@ export class RdsClusterRoleAssociation extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -116,6 +138,7 @@ export class RdsClusterRoleAssociation extends cdktf.TerraformResource {
     return {
       db_cluster_identifier: cdktf.stringToTerraform(this._dbClusterIdentifier),
       feature_name: cdktf.stringToTerraform(this._featureName),
+      id: cdktf.stringToTerraform(this._id),
       role_arn: cdktf.stringToTerraform(this._roleArn),
     };
   }

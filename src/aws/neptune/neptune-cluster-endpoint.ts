@@ -24,6 +24,13 @@ export interface NeptuneClusterEndpointConfig extends cdktf.TerraformMetaArgumen
   */
   readonly excludedMembers?: string[];
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/neptune_cluster_endpoint#id NeptuneClusterEndpoint#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/neptune_cluster_endpoint#static_members NeptuneClusterEndpoint#static_members}
   */
   readonly staticMembers?: string[];
@@ -63,18 +70,22 @@ export class NeptuneClusterEndpoint extends cdktf.TerraformResource {
       terraformResourceType: 'aws_neptune_cluster_endpoint',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._clusterEndpointIdentifier = config.clusterEndpointIdentifier;
     this._clusterIdentifier = config.clusterIdentifier;
     this._endpointType = config.endpointType;
     this._excludedMembers = config.excludedMembers;
+    this._id = config.id;
     this._staticMembers = config.staticMembers;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
@@ -150,8 +161,19 @@ export class NeptuneClusterEndpoint extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // static_members - computed: false, optional: true, required: false
@@ -211,8 +233,9 @@ export class NeptuneClusterEndpoint extends cdktf.TerraformResource {
       cluster_endpoint_identifier: cdktf.stringToTerraform(this._clusterEndpointIdentifier),
       cluster_identifier: cdktf.stringToTerraform(this._clusterIdentifier),
       endpoint_type: cdktf.stringToTerraform(this._endpointType),
-      excluded_members: cdktf.listMapper(cdktf.stringToTerraform)(this._excludedMembers),
-      static_members: cdktf.listMapper(cdktf.stringToTerraform)(this._staticMembers),
+      excluded_members: cdktf.listMapper(cdktf.stringToTerraform, false)(this._excludedMembers),
+      id: cdktf.stringToTerraform(this._id),
+      static_members: cdktf.listMapper(cdktf.stringToTerraform, false)(this._staticMembers),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
     };

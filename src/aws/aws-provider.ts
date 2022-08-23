@@ -205,11 +205,11 @@ export function awsProviderAssumeRoleToTerraform(struct?: AwsProviderAssumeRole)
     duration_seconds: cdktf.numberToTerraform(struct!.durationSeconds),
     external_id: cdktf.stringToTerraform(struct!.externalId),
     policy: cdktf.stringToTerraform(struct!.policy),
-    policy_arns: cdktf.listMapper(cdktf.stringToTerraform)(struct!.policyArns),
+    policy_arns: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.policyArns),
     role_arn: cdktf.stringToTerraform(struct!.roleArn),
     session_name: cdktf.stringToTerraform(struct!.sessionName),
     tags: cdktf.hashMapper(cdktf.stringToTerraform)(struct!.tags),
-    transitive_tag_keys: cdktf.listMapper(cdktf.stringToTerraform)(struct!.transitiveTagKeys),
+    transitive_tag_keys: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.transitiveTagKeys),
   }
 }
 
@@ -2372,8 +2372,8 @@ export function awsProviderIgnoreTagsToTerraform(struct?: AwsProviderIgnoreTags)
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    key_prefixes: cdktf.listMapper(cdktf.stringToTerraform)(struct!.keyPrefixes),
-    keys: cdktf.listMapper(cdktf.stringToTerraform)(struct!.keys),
+    key_prefixes: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.keyPrefixes),
+    keys: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.keys),
   }
 }
 
@@ -2404,7 +2404,7 @@ export class AwsProvider extends cdktf.TerraformProvider {
       terraformResourceType: 'aws',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       terraformProviderSource: 'aws'
@@ -2793,8 +2793,8 @@ export class AwsProvider extends cdktf.TerraformProvider {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       access_key: cdktf.stringToTerraform(this._accessKey),
-      allowed_account_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._allowedAccountIds),
-      forbidden_account_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._forbiddenAccountIds),
+      allowed_account_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(this._allowedAccountIds),
+      forbidden_account_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(this._forbiddenAccountIds),
       http_proxy: cdktf.stringToTerraform(this._httpProxy),
       insecure: cdktf.booleanToTerraform(this._insecure),
       max_retries: cdktf.numberToTerraform(this._maxRetries),
@@ -2812,7 +2812,7 @@ export class AwsProvider extends cdktf.TerraformProvider {
       alias: cdktf.stringToTerraform(this._alias),
       assume_role: awsProviderAssumeRoleToTerraform(this._assumeRole),
       default_tags: awsProviderDefaultTagsToTerraform(this._defaultTags),
-      endpoints: cdktf.listMapper(awsProviderEndpointsToTerraform)(this._endpoints),
+      endpoints: cdktf.listMapper(awsProviderEndpointsToTerraform, true)(this._endpoints),
       ignore_tags: awsProviderIgnoreTagsToTerraform(this._ignoreTags),
     };
   }

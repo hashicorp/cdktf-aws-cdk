@@ -12,6 +12,13 @@ export interface AmiFromInstanceConfig extends cdktf.TerraformMetaArguments {
   */
   readonly description?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ami_from_instance#id AmiFromInstance#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ami_from_instance#name AmiFromInstance#name}
   */
   readonly name: string;
@@ -62,6 +69,104 @@ export function amiFromInstanceEbsBlockDeviceToTerraform(struct?: AmiFromInstanc
   }
 }
 
+export class AmiFromInstanceEbsBlockDeviceOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param complexObjectIndex the index of this item in the list
+  * @param complexObjectIsFromSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, complexObjectIndex: number, complexObjectIsFromSet: boolean) {
+    super(terraformResource, terraformAttribute, complexObjectIsFromSet, complexObjectIndex);
+  }
+
+  public get internalValue(): AmiFromInstanceEbsBlockDevice | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
+    let hasAnyValues = this.isEmptyObject;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AmiFromInstanceEbsBlockDevice | cdktf.IResolvable | undefined) {
+    if (value === undefined) {
+      this.isEmptyObject = false;
+      this.resolvableValue = undefined;
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
+    else {
+      this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
+    }
+  }
+
+  // delete_on_termination - computed: true, optional: false, required: false
+  public get deleteOnTermination() {
+    return this.getBooleanAttribute('delete_on_termination');
+  }
+
+  // device_name - computed: true, optional: false, required: false
+  public get deviceName() {
+    return this.getStringAttribute('device_name');
+  }
+
+  // encrypted - computed: true, optional: false, required: false
+  public get encrypted() {
+    return this.getBooleanAttribute('encrypted');
+  }
+
+  // iops - computed: true, optional: false, required: false
+  public get iops() {
+    return this.getNumberAttribute('iops');
+  }
+
+  // snapshot_id - computed: true, optional: false, required: false
+  public get snapshotId() {
+    return this.getStringAttribute('snapshot_id');
+  }
+
+  // throughput - computed: true, optional: false, required: false
+  public get throughput() {
+    return this.getNumberAttribute('throughput');
+  }
+
+  // volume_size - computed: true, optional: false, required: false
+  public get volumeSize() {
+    return this.getNumberAttribute('volume_size');
+  }
+
+  // volume_type - computed: true, optional: false, required: false
+  public get volumeType() {
+    return this.getStringAttribute('volume_type');
+  }
+}
+
+export class AmiFromInstanceEbsBlockDeviceList extends cdktf.ComplexList {
+  public internalValue? : AmiFromInstanceEbsBlockDevice[] | cdktf.IResolvable
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param wrapsSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  constructor(protected terraformResource: cdktf.IInterpolatingParent, protected terraformAttribute: string, protected wrapsSet: boolean) {
+    super(terraformResource, terraformAttribute, wrapsSet)
+  }
+
+  /**
+  * @param index the index of the item to return
+  */
+  public get(index: number): AmiFromInstanceEbsBlockDeviceOutputReference {
+    return new AmiFromInstanceEbsBlockDeviceOutputReference(this.terraformResource, this.terraformAttribute, index, this.wrapsSet);
+  }
+}
 export interface AmiFromInstanceEphemeralBlockDevice {
 }
 
@@ -74,6 +179,74 @@ export function amiFromInstanceEphemeralBlockDeviceToTerraform(struct?: AmiFromI
   }
 }
 
+export class AmiFromInstanceEphemeralBlockDeviceOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param complexObjectIndex the index of this item in the list
+  * @param complexObjectIsFromSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, complexObjectIndex: number, complexObjectIsFromSet: boolean) {
+    super(terraformResource, terraformAttribute, complexObjectIsFromSet, complexObjectIndex);
+  }
+
+  public get internalValue(): AmiFromInstanceEphemeralBlockDevice | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
+    let hasAnyValues = this.isEmptyObject;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AmiFromInstanceEphemeralBlockDevice | cdktf.IResolvable | undefined) {
+    if (value === undefined) {
+      this.isEmptyObject = false;
+      this.resolvableValue = undefined;
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
+    else {
+      this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
+    }
+  }
+
+  // device_name - computed: true, optional: false, required: false
+  public get deviceName() {
+    return this.getStringAttribute('device_name');
+  }
+
+  // virtual_name - computed: true, optional: false, required: false
+  public get virtualName() {
+    return this.getStringAttribute('virtual_name');
+  }
+}
+
+export class AmiFromInstanceEphemeralBlockDeviceList extends cdktf.ComplexList {
+  public internalValue? : AmiFromInstanceEphemeralBlockDevice[] | cdktf.IResolvable
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param wrapsSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  constructor(protected terraformResource: cdktf.IInterpolatingParent, protected terraformAttribute: string, protected wrapsSet: boolean) {
+    super(terraformResource, terraformAttribute, wrapsSet)
+  }
+
+  /**
+  * @param index the index of the item to return
+  */
+  public get(index: number): AmiFromInstanceEphemeralBlockDeviceOutputReference {
+    return new AmiFromInstanceEphemeralBlockDeviceOutputReference(this.terraformResource, this.terraformAttribute, index, this.wrapsSet);
+  }
+}
 export interface AmiFromInstanceTimeouts {
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ami_from_instance#create AmiFromInstance#create}
@@ -103,6 +276,7 @@ export function amiFromInstanceTimeoutsToTerraform(struct?: AmiFromInstanceTimeo
 
 export class AmiFromInstanceTimeoutsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
 
   /**
   * @param terraformResource The parent resource
@@ -112,7 +286,10 @@ export class AmiFromInstanceTimeoutsOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, false, 0);
   }
 
-  public get internalValue(): AmiFromInstanceTimeouts | undefined {
+  public get internalValue(): AmiFromInstanceTimeouts | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
     let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
     if (this._create !== undefined) {
@@ -130,15 +307,21 @@ export class AmiFromInstanceTimeoutsOutputReference extends cdktf.ComplexObject 
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(value: AmiFromInstanceTimeouts | undefined) {
+  public set internalValue(value: AmiFromInstanceTimeouts | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
+      this.resolvableValue = undefined;
       this._create = undefined;
       this._delete = undefined;
       this._update = undefined;
     }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
     else {
       this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
       this._create = value.create;
       this._delete = value.delete;
       this._update = value.update;
@@ -220,22 +403,26 @@ export class AmiFromInstance extends cdktf.TerraformResource {
       terraformResourceType: 'aws_ami_from_instance',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._description = config.description;
+    this._id = config.id;
     this._name = config.name;
     this._snapshotWithoutReboot = config.snapshotWithoutReboot;
     this._sourceInstanceId = config.sourceInstanceId;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._ebsBlockDevice = config.ebsBlockDevice;
-    this._ephemeralBlockDevice = config.ephemeralBlockDevice;
+    this._ebsBlockDevice.internalValue = config.ebsBlockDevice;
+    this._ephemeralBlockDevice.internalValue = config.ephemeralBlockDevice;
     this._timeouts.internalValue = config.timeouts;
   }
 
@@ -280,8 +467,19 @@ export class AmiFromInstance extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // image_location - computed: true, optional: false, required: false
@@ -434,37 +632,35 @@ export class AmiFromInstance extends cdktf.TerraformResource {
   }
 
   // ebs_block_device - computed: false, optional: true, required: false
-  private _ebsBlockDevice?: AmiFromInstanceEbsBlockDevice[] | cdktf.IResolvable; 
+  private _ebsBlockDevice = new AmiFromInstanceEbsBlockDeviceList(this, "ebs_block_device", true);
   public get ebsBlockDevice() {
-    // Getting the computed value is not yet implemented
-    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('ebs_block_device')));
+    return this._ebsBlockDevice;
   }
-  public set ebsBlockDevice(value: AmiFromInstanceEbsBlockDevice[] | cdktf.IResolvable) {
-    this._ebsBlockDevice = value;
+  public putEbsBlockDevice(value: AmiFromInstanceEbsBlockDevice[] | cdktf.IResolvable) {
+    this._ebsBlockDevice.internalValue = value;
   }
   public resetEbsBlockDevice() {
-    this._ebsBlockDevice = undefined;
+    this._ebsBlockDevice.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ebsBlockDeviceInput() {
-    return this._ebsBlockDevice;
+    return this._ebsBlockDevice.internalValue;
   }
 
   // ephemeral_block_device - computed: false, optional: true, required: false
-  private _ephemeralBlockDevice?: AmiFromInstanceEphemeralBlockDevice[] | cdktf.IResolvable; 
+  private _ephemeralBlockDevice = new AmiFromInstanceEphemeralBlockDeviceList(this, "ephemeral_block_device", true);
   public get ephemeralBlockDevice() {
-    // Getting the computed value is not yet implemented
-    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('ephemeral_block_device')));
+    return this._ephemeralBlockDevice;
   }
-  public set ephemeralBlockDevice(value: AmiFromInstanceEphemeralBlockDevice[] | cdktf.IResolvable) {
-    this._ephemeralBlockDevice = value;
+  public putEphemeralBlockDevice(value: AmiFromInstanceEphemeralBlockDevice[] | cdktf.IResolvable) {
+    this._ephemeralBlockDevice.internalValue = value;
   }
   public resetEphemeralBlockDevice() {
-    this._ephemeralBlockDevice = undefined;
+    this._ephemeralBlockDevice.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ephemeralBlockDeviceInput() {
-    return this._ephemeralBlockDevice;
+    return this._ephemeralBlockDevice.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
@@ -490,13 +686,14 @@ export class AmiFromInstance extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       description: cdktf.stringToTerraform(this._description),
+      id: cdktf.stringToTerraform(this._id),
       name: cdktf.stringToTerraform(this._name),
       snapshot_without_reboot: cdktf.booleanToTerraform(this._snapshotWithoutReboot),
       source_instance_id: cdktf.stringToTerraform(this._sourceInstanceId),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
-      ebs_block_device: cdktf.listMapper(amiFromInstanceEbsBlockDeviceToTerraform)(this._ebsBlockDevice),
-      ephemeral_block_device: cdktf.listMapper(amiFromInstanceEphemeralBlockDeviceToTerraform)(this._ephemeralBlockDevice),
+      ebs_block_device: cdktf.listMapper(amiFromInstanceEbsBlockDeviceToTerraform, true)(this._ebsBlockDevice.internalValue),
+      ephemeral_block_device: cdktf.listMapper(amiFromInstanceEphemeralBlockDeviceToTerraform, true)(this._ephemeralBlockDevice.internalValue),
       timeouts: amiFromInstanceTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }

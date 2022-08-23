@@ -28,6 +28,13 @@ export interface ChimeVoiceConnectorTerminationConfig extends cdktf.TerraformMet
   */
   readonly disabled?: boolean | cdktf.IResolvable;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_termination#id ChimeVoiceConnectorTermination#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/chime_voice_connector_termination#voice_connector_id ChimeVoiceConnectorTermination#voice_connector_id}
   */
   readonly voiceConnectorId: string;
@@ -59,19 +66,23 @@ export class ChimeVoiceConnectorTermination extends cdktf.TerraformResource {
       terraformResourceType: 'aws_chime_voice_connector_termination',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._callingRegions = config.callingRegions;
     this._cidrAllowList = config.cidrAllowList;
     this._cpsLimit = config.cpsLimit;
     this._defaultPhoneNumber = config.defaultPhoneNumber;
     this._disabled = config.disabled;
+    this._id = config.id;
     this._voiceConnectorId = config.voiceConnectorId;
   }
 
@@ -154,8 +165,19 @@ export class ChimeVoiceConnectorTermination extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // voice_connector_id - computed: false, optional: false, required: true
@@ -177,11 +199,12 @@ export class ChimeVoiceConnectorTermination extends cdktf.TerraformResource {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
-      calling_regions: cdktf.listMapper(cdktf.stringToTerraform)(this._callingRegions),
-      cidr_allow_list: cdktf.listMapper(cdktf.stringToTerraform)(this._cidrAllowList),
+      calling_regions: cdktf.listMapper(cdktf.stringToTerraform, false)(this._callingRegions),
+      cidr_allow_list: cdktf.listMapper(cdktf.stringToTerraform, false)(this._cidrAllowList),
       cps_limit: cdktf.numberToTerraform(this._cpsLimit),
       default_phone_number: cdktf.stringToTerraform(this._defaultPhoneNumber),
       disabled: cdktf.booleanToTerraform(this._disabled),
+      id: cdktf.stringToTerraform(this._id),
       voice_connector_id: cdktf.stringToTerraform(this._voiceConnectorId),
     };
   }

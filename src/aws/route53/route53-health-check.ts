@@ -40,6 +40,13 @@ export interface Route53HealthCheckConfig extends cdktf.TerraformMetaArguments {
   */
   readonly fqdn?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/route53_health_check#id Route53HealthCheck#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/route53_health_check#insufficient_data_health_status Route53HealthCheck#insufficient_data_health_status}
   */
   readonly insufficientDataHealthStatus?: string;
@@ -123,13 +130,16 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
       terraformResourceType: 'aws_route53_health_check',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._childHealthThreshold = config.childHealthThreshold;
     this._childHealthchecks = config.childHealthchecks;
@@ -139,6 +149,7 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
     this._enableSni = config.enableSni;
     this._failureThreshold = config.failureThreshold;
     this._fqdn = config.fqdn;
+    this._id = config.id;
     this._insufficientDataHealthStatus = config.insufficientDataHealthStatus;
     this._invertHealthcheck = config.invertHealthcheck;
     this._ipAddress = config.ipAddress;
@@ -293,8 +304,19 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // insufficient_data_health_status - computed: false, optional: true, required: false
@@ -525,20 +547,21 @@ export class Route53HealthCheck extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       child_health_threshold: cdktf.numberToTerraform(this._childHealthThreshold),
-      child_healthchecks: cdktf.listMapper(cdktf.stringToTerraform)(this._childHealthchecks),
+      child_healthchecks: cdktf.listMapper(cdktf.stringToTerraform, false)(this._childHealthchecks),
       cloudwatch_alarm_name: cdktf.stringToTerraform(this._cloudwatchAlarmName),
       cloudwatch_alarm_region: cdktf.stringToTerraform(this._cloudwatchAlarmRegion),
       disabled: cdktf.booleanToTerraform(this._disabled),
       enable_sni: cdktf.booleanToTerraform(this._enableSni),
       failure_threshold: cdktf.numberToTerraform(this._failureThreshold),
       fqdn: cdktf.stringToTerraform(this._fqdn),
+      id: cdktf.stringToTerraform(this._id),
       insufficient_data_health_status: cdktf.stringToTerraform(this._insufficientDataHealthStatus),
       invert_healthcheck: cdktf.booleanToTerraform(this._invertHealthcheck),
       ip_address: cdktf.stringToTerraform(this._ipAddress),
       measure_latency: cdktf.booleanToTerraform(this._measureLatency),
       port: cdktf.numberToTerraform(this._port),
       reference_name: cdktf.stringToTerraform(this._referenceName),
-      regions: cdktf.listMapper(cdktf.stringToTerraform)(this._regions),
+      regions: cdktf.listMapper(cdktf.stringToTerraform, false)(this._regions),
       request_interval: cdktf.numberToTerraform(this._requestInterval),
       resource_path: cdktf.stringToTerraform(this._resourcePath),
       routing_control_arn: cdktf.stringToTerraform(this._routingControlArn),

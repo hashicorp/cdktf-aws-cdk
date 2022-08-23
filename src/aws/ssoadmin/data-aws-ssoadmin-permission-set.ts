@@ -8,6 +8,17 @@ import * as cdktf from 'cdktf';
 */
 export interface DataAwsSsoadminPermissionSetConfig extends cdktf.TerraformMetaArguments {
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ssoadmin_permission_set#arn DataAwsSsoadminPermissionSet#arn}
+  */
+  readonly arn?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ssoadmin_permission_set#id DataAwsSsoadminPermissionSet#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/ssoadmin_permission_set#instance_arn DataAwsSsoadminPermissionSet#instance_arn}
   */
   readonly instanceArn: string;
@@ -47,14 +58,19 @@ export class DataAwsSsoadminPermissionSet extends cdktf.TerraformDataSource {
       terraformResourceType: 'aws_ssoadmin_permission_set',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
+    this._arn = config.arn;
+    this._id = config.id;
     this._instanceArn = config.instanceArn;
     this._name = config.name;
     this._tags = config.tags;
@@ -65,8 +81,19 @@ export class DataAwsSsoadminPermissionSet extends cdktf.TerraformDataSource {
   // ==========
 
   // arn - computed: true, optional: true, required: false
+  private _arn?: string; 
   public get arn() {
     return this.getStringAttribute('arn');
+  }
+  public set arn(value: string) {
+    this._arn = value;
+  }
+  public resetArn() {
+    this._arn = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get arnInput() {
+    return this._arn;
   }
 
   // created_date - computed: true, optional: false, required: false
@@ -80,8 +107,19 @@ export class DataAwsSsoadminPermissionSet extends cdktf.TerraformDataSource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // instance_arn - computed: false, optional: false, required: true
@@ -145,6 +183,8 @@ export class DataAwsSsoadminPermissionSet extends cdktf.TerraformDataSource {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
+      arn: cdktf.stringToTerraform(this._arn),
+      id: cdktf.stringToTerraform(this._id),
       instance_arn: cdktf.stringToTerraform(this._instanceArn),
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),

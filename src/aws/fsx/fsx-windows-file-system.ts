@@ -36,6 +36,13 @@ export interface FsxWindowsFileSystemConfig extends cdktf.TerraformMetaArguments
   */
   readonly deploymentType?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_windows_file_system#id FsxWindowsFileSystem#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_windows_file_system#kms_key_id FsxWindowsFileSystem#kms_key_id}
   */
   readonly kmsKeyId?: string;
@@ -250,7 +257,7 @@ export function fsxWindowsFileSystemSelfManagedActiveDirectoryToTerraform(struct
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    dns_ips: cdktf.listMapper(cdktf.stringToTerraform)(struct!.dnsIps),
+    dns_ips: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.dnsIps),
     domain_name: cdktf.stringToTerraform(struct!.domainName),
     file_system_administrators_group: cdktf.stringToTerraform(struct!.fileSystemAdministratorsGroup),
     organizational_unit_distinguished_name: cdktf.stringToTerraform(struct!.organizationalUnitDistinguishedName),
@@ -434,6 +441,7 @@ export function fsxWindowsFileSystemTimeoutsToTerraform(struct?: FsxWindowsFileS
 
 export class FsxWindowsFileSystemTimeoutsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
 
   /**
   * @param terraformResource The parent resource
@@ -443,7 +451,10 @@ export class FsxWindowsFileSystemTimeoutsOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, false, 0);
   }
 
-  public get internalValue(): FsxWindowsFileSystemTimeouts | undefined {
+  public get internalValue(): FsxWindowsFileSystemTimeouts | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
     let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
     if (this._create !== undefined) {
@@ -461,15 +472,21 @@ export class FsxWindowsFileSystemTimeoutsOutputReference extends cdktf.ComplexOb
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(value: FsxWindowsFileSystemTimeouts | undefined) {
+  public set internalValue(value: FsxWindowsFileSystemTimeouts | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
+      this.resolvableValue = undefined;
       this._create = undefined;
       this._delete = undefined;
       this._update = undefined;
     }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
     else {
       this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
       this._create = value.create;
       this._delete = value.delete;
       this._update = value.update;
@@ -551,13 +568,16 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
       terraformResourceType: 'aws_fsx_windows_file_system',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._activeDirectoryId = config.activeDirectoryId;
     this._aliases = config.aliases;
@@ -566,6 +586,7 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
     this._copyTagsToBackups = config.copyTagsToBackups;
     this._dailyAutomaticBackupStartTime = config.dailyAutomaticBackupStartTime;
     this._deploymentType = config.deploymentType;
+    this._id = config.id;
     this._kmsKeyId = config.kmsKeyId;
     this._preferredSubnetId = config.preferredSubnetId;
     this._securityGroupIds = config.securityGroupIds;
@@ -709,8 +730,19 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // kms_key_id - computed: true, optional: true, required: false
@@ -963,19 +995,20 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       active_directory_id: cdktf.stringToTerraform(this._activeDirectoryId),
-      aliases: cdktf.listMapper(cdktf.stringToTerraform)(this._aliases),
+      aliases: cdktf.listMapper(cdktf.stringToTerraform, false)(this._aliases),
       automatic_backup_retention_days: cdktf.numberToTerraform(this._automaticBackupRetentionDays),
       backup_id: cdktf.stringToTerraform(this._backupId),
       copy_tags_to_backups: cdktf.booleanToTerraform(this._copyTagsToBackups),
       daily_automatic_backup_start_time: cdktf.stringToTerraform(this._dailyAutomaticBackupStartTime),
       deployment_type: cdktf.stringToTerraform(this._deploymentType),
+      id: cdktf.stringToTerraform(this._id),
       kms_key_id: cdktf.stringToTerraform(this._kmsKeyId),
       preferred_subnet_id: cdktf.stringToTerraform(this._preferredSubnetId),
-      security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._securityGroupIds),
+      security_group_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(this._securityGroupIds),
       skip_final_backup: cdktf.booleanToTerraform(this._skipFinalBackup),
       storage_capacity: cdktf.numberToTerraform(this._storageCapacity),
       storage_type: cdktf.stringToTerraform(this._storageType),
-      subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._subnetIds),
+      subnet_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(this._subnetIds),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       throughput_capacity: cdktf.numberToTerraform(this._throughputCapacity),

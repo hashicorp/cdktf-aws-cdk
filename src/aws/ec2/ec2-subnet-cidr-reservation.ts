@@ -16,6 +16,13 @@ export interface Ec2SubnetCidrReservationConfig extends cdktf.TerraformMetaArgum
   */
   readonly description?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_subnet_cidr_reservation#id Ec2SubnetCidrReservation#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_subnet_cidr_reservation#reservation_type Ec2SubnetCidrReservation#reservation_type}
   */
   readonly reservationType: string;
@@ -51,16 +58,20 @@ export class Ec2SubnetCidrReservation extends cdktf.TerraformResource {
       terraformResourceType: 'aws_ec2_subnet_cidr_reservation',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._cidrBlock = config.cidrBlock;
     this._description = config.description;
+    this._id = config.id;
     this._reservationType = config.reservationType;
     this._subnetId = config.subnetId;
   }
@@ -99,8 +110,19 @@ export class Ec2SubnetCidrReservation extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // owner_id - computed: true, optional: false, required: false
@@ -142,6 +164,7 @@ export class Ec2SubnetCidrReservation extends cdktf.TerraformResource {
     return {
       cidr_block: cdktf.stringToTerraform(this._cidrBlock),
       description: cdktf.stringToTerraform(this._description),
+      id: cdktf.stringToTerraform(this._id),
       reservation_type: cdktf.stringToTerraform(this._reservationType),
       subnet_id: cdktf.stringToTerraform(this._subnetId),
     };

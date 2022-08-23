@@ -16,6 +16,13 @@ export interface SecurityGroupConfig extends cdktf.TerraformMetaArguments {
   */
   readonly egress?: SecurityGroupEgress[] | cdktf.IResolvable;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/security_group#id SecurityGroup#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/security_group#ingress SecurityGroup#ingress}
   */
   readonly ingress?: SecurityGroupIngress[] | cdktf.IResolvable;
@@ -95,18 +102,274 @@ export function securityGroupEgressToTerraform(struct?: SecurityGroupEgress | cd
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    cidr_blocks: struct!.cidrBlocks === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform)(struct!.cidrBlocks),
+    cidr_blocks: struct!.cidrBlocks === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.cidrBlocks),
     description: struct!.description === undefined ? null : cdktf.stringToTerraform(struct!.description),
     from_port: struct!.fromPort === undefined ? null : cdktf.numberToTerraform(struct!.fromPort),
-    ipv6_cidr_blocks: struct!.ipv6CidrBlocks === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform)(struct!.ipv6CidrBlocks),
-    prefix_list_ids: struct!.prefixListIds === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform)(struct!.prefixListIds),
+    ipv6_cidr_blocks: struct!.ipv6CidrBlocks === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.ipv6CidrBlocks),
+    prefix_list_ids: struct!.prefixListIds === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.prefixListIds),
     protocol: struct!.protocol === undefined ? null : cdktf.stringToTerraform(struct!.protocol),
-    security_groups: struct!.securityGroups === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroups),
+    security_groups: struct!.securityGroups === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.securityGroups),
     self: struct!.selfAttribute === undefined ? null : cdktf.booleanToTerraform(struct!.selfAttribute),
     to_port: struct!.toPort === undefined ? null : cdktf.numberToTerraform(struct!.toPort),
   }
 }
 
+export class SecurityGroupEgressOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param complexObjectIndex the index of this item in the list
+  * @param complexObjectIsFromSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, complexObjectIndex: number, complexObjectIsFromSet: boolean) {
+    super(terraformResource, terraformAttribute, complexObjectIsFromSet, complexObjectIndex);
+  }
+
+  public get internalValue(): SecurityGroupEgress | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
+    let hasAnyValues = this.isEmptyObject;
+    const internalValueResult: any = {};
+    if (this._cidrBlocks !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.cidrBlocks = this._cidrBlocks;
+    }
+    if (this._description !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.description = this._description;
+    }
+    if (this._fromPort !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.fromPort = this._fromPort;
+    }
+    if (this._ipv6CidrBlocks !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.ipv6CidrBlocks = this._ipv6CidrBlocks;
+    }
+    if (this._prefixListIds !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.prefixListIds = this._prefixListIds;
+    }
+    if (this._protocol !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.protocol = this._protocol;
+    }
+    if (this._securityGroups !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.securityGroups = this._securityGroups;
+    }
+    if (this._self !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.selfAttribute = this._self;
+    }
+    if (this._toPort !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.toPort = this._toPort;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SecurityGroupEgress | cdktf.IResolvable | undefined) {
+    if (value === undefined) {
+      this.isEmptyObject = false;
+      this.resolvableValue = undefined;
+      this._cidrBlocks = undefined;
+      this._description = undefined;
+      this._fromPort = undefined;
+      this._ipv6CidrBlocks = undefined;
+      this._prefixListIds = undefined;
+      this._protocol = undefined;
+      this._securityGroups = undefined;
+      this._self = undefined;
+      this._toPort = undefined;
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
+    else {
+      this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
+      this._cidrBlocks = value.cidrBlocks;
+      this._description = value.description;
+      this._fromPort = value.fromPort;
+      this._ipv6CidrBlocks = value.ipv6CidrBlocks;
+      this._prefixListIds = value.prefixListIds;
+      this._protocol = value.protocol;
+      this._securityGroups = value.securityGroups;
+      this._self = value.selfAttribute;
+      this._toPort = value.toPort;
+    }
+  }
+
+  // cidr_blocks - computed: true, optional: true, required: false
+  private _cidrBlocks?: string[]; 
+  public get cidrBlocks() {
+    return this.getListAttribute('cidr_blocks');
+  }
+  public set cidrBlocks(value: string[]) {
+    this._cidrBlocks = value;
+  }
+  public resetCidrBlocks() {
+    this._cidrBlocks = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get cidrBlocksInput() {
+    return this._cidrBlocks;
+  }
+
+  // description - computed: true, optional: true, required: false
+  private _description?: string; 
+  public get description() {
+    return this.getStringAttribute('description');
+  }
+  public set description(value: string) {
+    this._description = value;
+  }
+  public resetDescription() {
+    this._description = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get descriptionInput() {
+    return this._description;
+  }
+
+  // from_port - computed: true, optional: true, required: false
+  private _fromPort?: number; 
+  public get fromPort() {
+    return this.getNumberAttribute('from_port');
+  }
+  public set fromPort(value: number) {
+    this._fromPort = value;
+  }
+  public resetFromPort() {
+    this._fromPort = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get fromPortInput() {
+    return this._fromPort;
+  }
+
+  // ipv6_cidr_blocks - computed: true, optional: true, required: false
+  private _ipv6CidrBlocks?: string[]; 
+  public get ipv6CidrBlocks() {
+    return this.getListAttribute('ipv6_cidr_blocks');
+  }
+  public set ipv6CidrBlocks(value: string[]) {
+    this._ipv6CidrBlocks = value;
+  }
+  public resetIpv6CidrBlocks() {
+    this._ipv6CidrBlocks = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get ipv6CidrBlocksInput() {
+    return this._ipv6CidrBlocks;
+  }
+
+  // prefix_list_ids - computed: true, optional: true, required: false
+  private _prefixListIds?: string[]; 
+  public get prefixListIds() {
+    return this.getListAttribute('prefix_list_ids');
+  }
+  public set prefixListIds(value: string[]) {
+    this._prefixListIds = value;
+  }
+  public resetPrefixListIds() {
+    this._prefixListIds = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get prefixListIdsInput() {
+    return this._prefixListIds;
+  }
+
+  // protocol - computed: true, optional: true, required: false
+  private _protocol?: string; 
+  public get protocol() {
+    return this.getStringAttribute('protocol');
+  }
+  public set protocol(value: string) {
+    this._protocol = value;
+  }
+  public resetProtocol() {
+    this._protocol = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get protocolInput() {
+    return this._protocol;
+  }
+
+  // security_groups - computed: true, optional: true, required: false
+  private _securityGroups?: string[]; 
+  public get securityGroups() {
+    return cdktf.Fn.tolist(this.getListAttribute('security_groups'));
+  }
+  public set securityGroups(value: string[]) {
+    this._securityGroups = value;
+  }
+  public resetSecurityGroups() {
+    this._securityGroups = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get securityGroupsInput() {
+    return this._securityGroups;
+  }
+
+  // self - computed: true, optional: true, required: false
+  private _self?: boolean | cdktf.IResolvable; 
+  public get selfAttribute() {
+    return this.getBooleanAttribute('self');
+  }
+  public set selfAttribute(value: boolean | cdktf.IResolvable) {
+    this._self = value;
+  }
+  public resetSelfAttribute() {
+    this._self = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get selfAttributeInput() {
+    return this._self;
+  }
+
+  // to_port - computed: true, optional: true, required: false
+  private _toPort?: number; 
+  public get toPort() {
+    return this.getNumberAttribute('to_port');
+  }
+  public set toPort(value: number) {
+    this._toPort = value;
+  }
+  public resetToPort() {
+    this._toPort = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get toPortInput() {
+    return this._toPort;
+  }
+}
+
+export class SecurityGroupEgressList extends cdktf.ComplexList {
+  public internalValue? : SecurityGroupEgress[] | cdktf.IResolvable
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param wrapsSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  constructor(protected terraformResource: cdktf.IInterpolatingParent, protected terraformAttribute: string, protected wrapsSet: boolean) {
+    super(terraformResource, terraformAttribute, wrapsSet)
+  }
+
+  /**
+  * @param index the index of the item to return
+  */
+  public get(index: number): SecurityGroupEgressOutputReference {
+    return new SecurityGroupEgressOutputReference(this.terraformResource, this.terraformAttribute, index, this.wrapsSet);
+  }
+}
 export interface SecurityGroupIngress {
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/security_group#cidr_blocks SecurityGroup#cidr_blocks}
@@ -152,18 +415,274 @@ export function securityGroupIngressToTerraform(struct?: SecurityGroupIngress | 
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    cidr_blocks: struct!.cidrBlocks === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform)(struct!.cidrBlocks),
+    cidr_blocks: struct!.cidrBlocks === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.cidrBlocks),
     description: struct!.description === undefined ? null : cdktf.stringToTerraform(struct!.description),
     from_port: struct!.fromPort === undefined ? null : cdktf.numberToTerraform(struct!.fromPort),
-    ipv6_cidr_blocks: struct!.ipv6CidrBlocks === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform)(struct!.ipv6CidrBlocks),
-    prefix_list_ids: struct!.prefixListIds === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform)(struct!.prefixListIds),
+    ipv6_cidr_blocks: struct!.ipv6CidrBlocks === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.ipv6CidrBlocks),
+    prefix_list_ids: struct!.prefixListIds === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.prefixListIds),
     protocol: struct!.protocol === undefined ? null : cdktf.stringToTerraform(struct!.protocol),
-    security_groups: struct!.securityGroups === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroups),
+    security_groups: struct!.securityGroups === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.securityGroups),
     self: struct!.selfAttribute === undefined ? null : cdktf.booleanToTerraform(struct!.selfAttribute),
     to_port: struct!.toPort === undefined ? null : cdktf.numberToTerraform(struct!.toPort),
   }
 }
 
+export class SecurityGroupIngressOutputReference extends cdktf.ComplexObject {
+  private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param complexObjectIndex the index of this item in the list
+  * @param complexObjectIsFromSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string, complexObjectIndex: number, complexObjectIsFromSet: boolean) {
+    super(terraformResource, terraformAttribute, complexObjectIsFromSet, complexObjectIndex);
+  }
+
+  public get internalValue(): SecurityGroupIngress | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
+    let hasAnyValues = this.isEmptyObject;
+    const internalValueResult: any = {};
+    if (this._cidrBlocks !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.cidrBlocks = this._cidrBlocks;
+    }
+    if (this._description !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.description = this._description;
+    }
+    if (this._fromPort !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.fromPort = this._fromPort;
+    }
+    if (this._ipv6CidrBlocks !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.ipv6CidrBlocks = this._ipv6CidrBlocks;
+    }
+    if (this._prefixListIds !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.prefixListIds = this._prefixListIds;
+    }
+    if (this._protocol !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.protocol = this._protocol;
+    }
+    if (this._securityGroups !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.securityGroups = this._securityGroups;
+    }
+    if (this._self !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.selfAttribute = this._self;
+    }
+    if (this._toPort !== undefined) {
+      hasAnyValues = true;
+      internalValueResult.toPort = this._toPort;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SecurityGroupIngress | cdktf.IResolvable | undefined) {
+    if (value === undefined) {
+      this.isEmptyObject = false;
+      this.resolvableValue = undefined;
+      this._cidrBlocks = undefined;
+      this._description = undefined;
+      this._fromPort = undefined;
+      this._ipv6CidrBlocks = undefined;
+      this._prefixListIds = undefined;
+      this._protocol = undefined;
+      this._securityGroups = undefined;
+      this._self = undefined;
+      this._toPort = undefined;
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
+    else {
+      this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
+      this._cidrBlocks = value.cidrBlocks;
+      this._description = value.description;
+      this._fromPort = value.fromPort;
+      this._ipv6CidrBlocks = value.ipv6CidrBlocks;
+      this._prefixListIds = value.prefixListIds;
+      this._protocol = value.protocol;
+      this._securityGroups = value.securityGroups;
+      this._self = value.selfAttribute;
+      this._toPort = value.toPort;
+    }
+  }
+
+  // cidr_blocks - computed: true, optional: true, required: false
+  private _cidrBlocks?: string[]; 
+  public get cidrBlocks() {
+    return this.getListAttribute('cidr_blocks');
+  }
+  public set cidrBlocks(value: string[]) {
+    this._cidrBlocks = value;
+  }
+  public resetCidrBlocks() {
+    this._cidrBlocks = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get cidrBlocksInput() {
+    return this._cidrBlocks;
+  }
+
+  // description - computed: true, optional: true, required: false
+  private _description?: string; 
+  public get description() {
+    return this.getStringAttribute('description');
+  }
+  public set description(value: string) {
+    this._description = value;
+  }
+  public resetDescription() {
+    this._description = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get descriptionInput() {
+    return this._description;
+  }
+
+  // from_port - computed: true, optional: true, required: false
+  private _fromPort?: number; 
+  public get fromPort() {
+    return this.getNumberAttribute('from_port');
+  }
+  public set fromPort(value: number) {
+    this._fromPort = value;
+  }
+  public resetFromPort() {
+    this._fromPort = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get fromPortInput() {
+    return this._fromPort;
+  }
+
+  // ipv6_cidr_blocks - computed: true, optional: true, required: false
+  private _ipv6CidrBlocks?: string[]; 
+  public get ipv6CidrBlocks() {
+    return this.getListAttribute('ipv6_cidr_blocks');
+  }
+  public set ipv6CidrBlocks(value: string[]) {
+    this._ipv6CidrBlocks = value;
+  }
+  public resetIpv6CidrBlocks() {
+    this._ipv6CidrBlocks = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get ipv6CidrBlocksInput() {
+    return this._ipv6CidrBlocks;
+  }
+
+  // prefix_list_ids - computed: true, optional: true, required: false
+  private _prefixListIds?: string[]; 
+  public get prefixListIds() {
+    return this.getListAttribute('prefix_list_ids');
+  }
+  public set prefixListIds(value: string[]) {
+    this._prefixListIds = value;
+  }
+  public resetPrefixListIds() {
+    this._prefixListIds = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get prefixListIdsInput() {
+    return this._prefixListIds;
+  }
+
+  // protocol - computed: true, optional: true, required: false
+  private _protocol?: string; 
+  public get protocol() {
+    return this.getStringAttribute('protocol');
+  }
+  public set protocol(value: string) {
+    this._protocol = value;
+  }
+  public resetProtocol() {
+    this._protocol = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get protocolInput() {
+    return this._protocol;
+  }
+
+  // security_groups - computed: true, optional: true, required: false
+  private _securityGroups?: string[]; 
+  public get securityGroups() {
+    return cdktf.Fn.tolist(this.getListAttribute('security_groups'));
+  }
+  public set securityGroups(value: string[]) {
+    this._securityGroups = value;
+  }
+  public resetSecurityGroups() {
+    this._securityGroups = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get securityGroupsInput() {
+    return this._securityGroups;
+  }
+
+  // self - computed: true, optional: true, required: false
+  private _self?: boolean | cdktf.IResolvable; 
+  public get selfAttribute() {
+    return this.getBooleanAttribute('self');
+  }
+  public set selfAttribute(value: boolean | cdktf.IResolvable) {
+    this._self = value;
+  }
+  public resetSelfAttribute() {
+    this._self = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get selfAttributeInput() {
+    return this._self;
+  }
+
+  // to_port - computed: true, optional: true, required: false
+  private _toPort?: number; 
+  public get toPort() {
+    return this.getNumberAttribute('to_port');
+  }
+  public set toPort(value: number) {
+    this._toPort = value;
+  }
+  public resetToPort() {
+    this._toPort = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get toPortInput() {
+    return this._toPort;
+  }
+}
+
+export class SecurityGroupIngressList extends cdktf.ComplexList {
+  public internalValue? : SecurityGroupIngress[] | cdktf.IResolvable
+
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param wrapsSet whether the list is wrapping a set (will add tolist() to be able to access an item via an index)
+  */
+  constructor(protected terraformResource: cdktf.IInterpolatingParent, protected terraformAttribute: string, protected wrapsSet: boolean) {
+    super(terraformResource, terraformAttribute, wrapsSet)
+  }
+
+  /**
+  * @param index the index of the item to return
+  */
+  public get(index: number): SecurityGroupIngressOutputReference {
+    return new SecurityGroupIngressOutputReference(this.terraformResource, this.terraformAttribute, index, this.wrapsSet);
+  }
+}
 export interface SecurityGroupTimeouts {
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/security_group#create SecurityGroup#create}
@@ -188,6 +707,7 @@ export function securityGroupTimeoutsToTerraform(struct?: SecurityGroupTimeoutsO
 
 export class SecurityGroupTimeoutsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
 
   /**
   * @param terraformResource The parent resource
@@ -197,7 +717,10 @@ export class SecurityGroupTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, false, 0);
   }
 
-  public get internalValue(): SecurityGroupTimeouts | undefined {
+  public get internalValue(): SecurityGroupTimeouts | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
     let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
     if (this._create !== undefined) {
@@ -211,14 +734,20 @@ export class SecurityGroupTimeoutsOutputReference extends cdktf.ComplexObject {
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(value: SecurityGroupTimeouts | undefined) {
+  public set internalValue(value: SecurityGroupTimeouts | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
+      this.resolvableValue = undefined;
       this._create = undefined;
       this._delete = undefined;
     }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
     else {
       this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
       this._create = value.create;
       this._delete = value.delete;
     }
@@ -283,17 +812,21 @@ export class SecurityGroup extends cdktf.TerraformResource {
       terraformResourceType: 'aws_security_group',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._description = config.description;
-    this._egress = config.egress;
-    this._ingress = config.ingress;
+    this._egress.internalValue = config.egress;
+    this._id = config.id;
+    this._ingress.internalValue = config.ingress;
     this._name = config.name;
     this._namePrefix = config.namePrefix;
     this._revokeRulesOnDelete = config.revokeRulesOnDelete;
@@ -329,42 +862,51 @@ export class SecurityGroup extends cdktf.TerraformResource {
   }
 
   // egress - computed: true, optional: true, required: false
-  private _egress?: SecurityGroupEgress[] | cdktf.IResolvable; 
+  private _egress = new SecurityGroupEgressList(this, "egress", true);
   public get egress() {
-    // Getting the computed value is not yet implemented
-    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('egress')));
+    return this._egress;
   }
-  public set egress(value: SecurityGroupEgress[] | cdktf.IResolvable) {
-    this._egress = value;
+  public putEgress(value: SecurityGroupEgress[] | cdktf.IResolvable) {
+    this._egress.internalValue = value;
   }
   public resetEgress() {
-    this._egress = undefined;
+    this._egress.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get egressInput() {
-    return this._egress;
+    return this._egress.internalValue;
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
   }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
+  }
 
   // ingress - computed: true, optional: true, required: false
-  private _ingress?: SecurityGroupIngress[] | cdktf.IResolvable; 
+  private _ingress = new SecurityGroupIngressList(this, "ingress", true);
   public get ingress() {
-    // Getting the computed value is not yet implemented
-    return cdktf.Token.asAny(cdktf.Fn.tolist(this.interpolationForAttribute('ingress')));
+    return this._ingress;
   }
-  public set ingress(value: SecurityGroupIngress[] | cdktf.IResolvable) {
-    this._ingress = value;
+  public putIngress(value: SecurityGroupIngress[] | cdktf.IResolvable) {
+    this._ingress.internalValue = value;
   }
   public resetIngress() {
-    this._ingress = undefined;
+    this._ingress.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ingressInput() {
-    return this._ingress;
+    return this._ingress.internalValue;
   }
 
   // name - computed: true, optional: true, required: false
@@ -491,8 +1033,9 @@ export class SecurityGroup extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       description: cdktf.stringToTerraform(this._description),
-      egress: cdktf.listMapper(securityGroupEgressToTerraform)(this._egress),
-      ingress: cdktf.listMapper(securityGroupIngressToTerraform)(this._ingress),
+      egress: cdktf.listMapper(securityGroupEgressToTerraform, false)(this._egress.internalValue),
+      id: cdktf.stringToTerraform(this._id),
+      ingress: cdktf.listMapper(securityGroupIngressToTerraform, false)(this._ingress.internalValue),
       name: cdktf.stringToTerraform(this._name),
       name_prefix: cdktf.stringToTerraform(this._namePrefix),
       revoke_rules_on_delete: cdktf.booleanToTerraform(this._revokeRulesOnDelete),

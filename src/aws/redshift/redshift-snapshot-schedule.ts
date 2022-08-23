@@ -20,6 +20,13 @@ export interface RedshiftSnapshotScheduleConfig extends cdktf.TerraformMetaArgum
   */
   readonly forceDestroy?: boolean | cdktf.IResolvable;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_snapshot_schedule#id RedshiftSnapshotSchedule#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/redshift_snapshot_schedule#identifier RedshiftSnapshotSchedule#identifier}
   */
   readonly identifier?: string;
@@ -63,17 +70,21 @@ export class RedshiftSnapshotSchedule extends cdktf.TerraformResource {
       terraformResourceType: 'aws_redshift_snapshot_schedule',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._definitions = config.definitions;
     this._description = config.description;
     this._forceDestroy = config.forceDestroy;
+    this._id = config.id;
     this._identifier = config.identifier;
     this._identifierPrefix = config.identifierPrefix;
     this._tags = config.tags;
@@ -135,8 +146,19 @@ export class RedshiftSnapshotSchedule extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // identifier - computed: true, optional: true, required: false
@@ -209,9 +231,10 @@ export class RedshiftSnapshotSchedule extends cdktf.TerraformResource {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
-      definitions: cdktf.listMapper(cdktf.stringToTerraform)(this._definitions),
+      definitions: cdktf.listMapper(cdktf.stringToTerraform, false)(this._definitions),
       description: cdktf.stringToTerraform(this._description),
       force_destroy: cdktf.booleanToTerraform(this._forceDestroy),
+      id: cdktf.stringToTerraform(this._id),
       identifier: cdktf.stringToTerraform(this._identifier),
       identifier_prefix: cdktf.stringToTerraform(this._identifierPrefix),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),

@@ -16,6 +16,13 @@ export interface LakeformationPermissionsConfig extends cdktf.TerraformMetaArgum
   */
   readonly catalogResource?: boolean | cdktf.IResolvable;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lakeformation_permissions#id LakeformationPermissions#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lakeformation_permissions#permissions LakeformationPermissions#permissions}
   */
   readonly permissions: string[];
@@ -407,9 +414,9 @@ export function lakeformationPermissionsTableWithColumnsToTerraform(struct?: Lak
   }
   return {
     catalog_id: cdktf.stringToTerraform(struct!.catalogId),
-    column_names: cdktf.listMapper(cdktf.stringToTerraform)(struct!.columnNames),
+    column_names: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.columnNames),
     database_name: cdktf.stringToTerraform(struct!.databaseName),
-    excluded_column_names: cdktf.listMapper(cdktf.stringToTerraform)(struct!.excludedColumnNames),
+    excluded_column_names: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.excludedColumnNames),
     name: cdktf.stringToTerraform(struct!.name),
     wildcard: cdktf.booleanToTerraform(struct!.wildcard),
   }
@@ -594,16 +601,20 @@ export class LakeformationPermissions extends cdktf.TerraformResource {
       terraformResourceType: 'aws_lakeformation_permissions',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._catalogId = config.catalogId;
     this._catalogResource = config.catalogResource;
+    this._id = config.id;
     this._permissions = config.permissions;
     this._permissionsWithGrantOption = config.permissionsWithGrantOption;
     this._principal = config.principal;
@@ -650,8 +661,19 @@ export class LakeformationPermissions extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // permissions - computed: false, optional: false, required: true
@@ -768,8 +790,9 @@ export class LakeformationPermissions extends cdktf.TerraformResource {
     return {
       catalog_id: cdktf.stringToTerraform(this._catalogId),
       catalog_resource: cdktf.booleanToTerraform(this._catalogResource),
-      permissions: cdktf.listMapper(cdktf.stringToTerraform)(this._permissions),
-      permissions_with_grant_option: cdktf.listMapper(cdktf.stringToTerraform)(this._permissionsWithGrantOption),
+      id: cdktf.stringToTerraform(this._id),
+      permissions: cdktf.listMapper(cdktf.stringToTerraform, false)(this._permissions),
+      permissions_with_grant_option: cdktf.listMapper(cdktf.stringToTerraform, false)(this._permissionsWithGrantOption),
       principal: cdktf.stringToTerraform(this._principal),
       data_location: lakeformationPermissionsDataLocationToTerraform(this._dataLocation.internalValue),
       database: lakeformationPermissionsDatabaseToTerraform(this._database.internalValue),

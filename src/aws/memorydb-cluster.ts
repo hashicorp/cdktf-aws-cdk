@@ -28,6 +28,13 @@ export interface MemorydbClusterConfig extends cdktf.TerraformMetaArguments {
   */
   readonly finalSnapshotName?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/memorydb_cluster#id MemorydbCluster#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/memorydb_cluster#kms_key_arn MemorydbCluster#kms_key_arn}
   */
   readonly kmsKeyArn?: string;
@@ -437,6 +444,7 @@ export function memorydbClusterTimeoutsToTerraform(struct?: MemorydbClusterTimeo
 
 export class MemorydbClusterTimeoutsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
 
   /**
   * @param terraformResource The parent resource
@@ -446,7 +454,10 @@ export class MemorydbClusterTimeoutsOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, false, 0);
   }
 
-  public get internalValue(): MemorydbClusterTimeouts | undefined {
+  public get internalValue(): MemorydbClusterTimeouts | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
     let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
     if (this._create !== undefined) {
@@ -464,15 +475,21 @@ export class MemorydbClusterTimeoutsOutputReference extends cdktf.ComplexObject 
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(value: MemorydbClusterTimeouts | undefined) {
+  public set internalValue(value: MemorydbClusterTimeouts | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
+      this.resolvableValue = undefined;
       this._create = undefined;
       this._delete = undefined;
       this._update = undefined;
     }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
     else {
       this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
       this._create = value.create;
       this._delete = value.delete;
       this._update = value.update;
@@ -554,19 +571,23 @@ export class MemorydbCluster extends cdktf.TerraformResource {
       terraformResourceType: 'aws_memorydb_cluster',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._aclName = config.aclName;
     this._autoMinorVersionUpgrade = config.autoMinorVersionUpgrade;
     this._description = config.description;
     this._engineVersion = config.engineVersion;
     this._finalSnapshotName = config.finalSnapshotName;
+    this._id = config.id;
     this._kmsKeyArn = config.kmsKeyArn;
     this._maintenanceWindow = config.maintenanceWindow;
     this._name = config.name;
@@ -687,8 +708,19 @@ export class MemorydbCluster extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // kms_key_arn - computed: false, optional: true, required: false
@@ -1025,6 +1057,7 @@ export class MemorydbCluster extends cdktf.TerraformResource {
       description: cdktf.stringToTerraform(this._description),
       engine_version: cdktf.stringToTerraform(this._engineVersion),
       final_snapshot_name: cdktf.stringToTerraform(this._finalSnapshotName),
+      id: cdktf.stringToTerraform(this._id),
       kms_key_arn: cdktf.stringToTerraform(this._kmsKeyArn),
       maintenance_window: cdktf.stringToTerraform(this._maintenanceWindow),
       name: cdktf.stringToTerraform(this._name),
@@ -1034,8 +1067,8 @@ export class MemorydbCluster extends cdktf.TerraformResource {
       num_shards: cdktf.numberToTerraform(this._numShards),
       parameter_group_name: cdktf.stringToTerraform(this._parameterGroupName),
       port: cdktf.numberToTerraform(this._port),
-      security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._securityGroupIds),
-      snapshot_arns: cdktf.listMapper(cdktf.stringToTerraform)(this._snapshotArns),
+      security_group_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(this._securityGroupIds),
+      snapshot_arns: cdktf.listMapper(cdktf.stringToTerraform, false)(this._snapshotArns),
       snapshot_name: cdktf.stringToTerraform(this._snapshotName),
       snapshot_retention_limit: cdktf.numberToTerraform(this._snapshotRetentionLimit),
       snapshot_window: cdktf.stringToTerraform(this._snapshotWindow),

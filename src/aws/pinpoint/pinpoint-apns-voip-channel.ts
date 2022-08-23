@@ -28,6 +28,13 @@ export interface PinpointApnsVoipChannelConfig extends cdktf.TerraformMetaArgume
   */
   readonly enabled?: boolean | cdktf.IResolvable;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_apns_voip_channel#id PinpointApnsVoipChannel#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_apns_voip_channel#private_key PinpointApnsVoipChannel#private_key}
   */
   readonly privateKey?: string;
@@ -71,19 +78,23 @@ export class PinpointApnsVoipChannel extends cdktf.TerraformResource {
       terraformResourceType: 'aws_pinpoint_apns_voip_channel',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._applicationId = config.applicationId;
     this._bundleId = config.bundleId;
     this._certificate = config.certificate;
     this._defaultAuthenticationMethod = config.defaultAuthenticationMethod;
     this._enabled = config.enabled;
+    this._id = config.id;
     this._privateKey = config.privateKey;
     this._teamId = config.teamId;
     this._tokenKey = config.tokenKey;
@@ -172,8 +183,19 @@ export class PinpointApnsVoipChannel extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // private_key - computed: false, optional: true, required: false
@@ -251,6 +273,7 @@ export class PinpointApnsVoipChannel extends cdktf.TerraformResource {
       certificate: cdktf.stringToTerraform(this._certificate),
       default_authentication_method: cdktf.stringToTerraform(this._defaultAuthenticationMethod),
       enabled: cdktf.booleanToTerraform(this._enabled),
+      id: cdktf.stringToTerraform(this._id),
       private_key: cdktf.stringToTerraform(this._privateKey),
       team_id: cdktf.stringToTerraform(this._teamId),
       token_key: cdktf.stringToTerraform(this._tokenKey),

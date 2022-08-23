@@ -12,6 +12,10 @@ export interface SsmParameterConfig extends cdktf.TerraformMetaArguments {
   */
   readonly allowedPattern?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_parameter#arn SsmParameter#arn}
+  */
+  readonly arn?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_parameter#data_type SsmParameter#data_type}
   */
   readonly dataType?: string;
@@ -19,6 +23,13 @@ export interface SsmParameterConfig extends cdktf.TerraformMetaArguments {
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_parameter#description SsmParameter#description}
   */
   readonly description?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_parameter#id SsmParameter#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_parameter#key_id SsmParameter#key_id}
   */
@@ -79,17 +90,22 @@ export class SsmParameter extends cdktf.TerraformResource {
       terraformResourceType: 'aws_ssm_parameter',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._allowedPattern = config.allowedPattern;
+    this._arn = config.arn;
     this._dataType = config.dataType;
     this._description = config.description;
+    this._id = config.id;
     this._keyId = config.keyId;
     this._name = config.name;
     this._overwrite = config.overwrite;
@@ -121,8 +137,19 @@ export class SsmParameter extends cdktf.TerraformResource {
   }
 
   // arn - computed: true, optional: true, required: false
+  private _arn?: string; 
   public get arn() {
     return this.getStringAttribute('arn');
+  }
+  public set arn(value: string) {
+    this._arn = value;
+  }
+  public resetArn() {
+    this._arn = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get arnInput() {
+    return this._arn;
   }
 
   // data_type - computed: true, optional: true, required: false
@@ -158,8 +185,19 @@ export class SsmParameter extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // key_id - computed: true, optional: true, required: false
@@ -293,8 +331,10 @@ export class SsmParameter extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       allowed_pattern: cdktf.stringToTerraform(this._allowedPattern),
+      arn: cdktf.stringToTerraform(this._arn),
       data_type: cdktf.stringToTerraform(this._dataType),
       description: cdktf.stringToTerraform(this._description),
+      id: cdktf.stringToTerraform(this._id),
       key_id: cdktf.stringToTerraform(this._keyId),
       name: cdktf.stringToTerraform(this._name),
       overwrite: cdktf.booleanToTerraform(this._overwrite),

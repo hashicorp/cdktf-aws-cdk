@@ -12,6 +12,13 @@ export interface DataAwsSagemakerPrebuiltEcrImageConfig extends cdktf.TerraformM
   */
   readonly dnsSuffix?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/sagemaker_prebuilt_ecr_image#id DataAwsSagemakerPrebuiltEcrImage#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/sagemaker_prebuilt_ecr_image#image_tag DataAwsSagemakerPrebuiltEcrImage#image_tag}
   */
   readonly imageTag?: string;
@@ -51,15 +58,19 @@ export class DataAwsSagemakerPrebuiltEcrImage extends cdktf.TerraformDataSource 
       terraformResourceType: 'aws_sagemaker_prebuilt_ecr_image',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._dnsSuffix = config.dnsSuffix;
+    this._id = config.id;
     this._imageTag = config.imageTag;
     this._region = config.region;
     this._repositoryName = config.repositoryName;
@@ -86,8 +97,19 @@ export class DataAwsSagemakerPrebuiltEcrImage extends cdktf.TerraformDataSource 
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // image_tag - computed: false, optional: true, required: false
@@ -152,6 +174,7 @@ export class DataAwsSagemakerPrebuiltEcrImage extends cdktf.TerraformDataSource 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       dns_suffix: cdktf.stringToTerraform(this._dnsSuffix),
+      id: cdktf.stringToTerraform(this._id),
       image_tag: cdktf.stringToTerraform(this._imageTag),
       region: cdktf.stringToTerraform(this._region),
       repository_name: cdktf.stringToTerraform(this._repositoryName),

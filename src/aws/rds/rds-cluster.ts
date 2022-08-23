@@ -104,6 +104,13 @@ export interface RdsClusterConfig extends cdktf.TerraformMetaArguments {
   */
   readonly iamRoles?: string[];
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/rds_cluster#id RdsCluster#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/rds_cluster#kms_key_id RdsCluster#kms_key_id}
   */
   readonly kmsKeyId?: string;
@@ -690,6 +697,7 @@ export function rdsClusterTimeoutsToTerraform(struct?: RdsClusterTimeoutsOutputR
 
 export class RdsClusterTimeoutsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
 
   /**
   * @param terraformResource The parent resource
@@ -699,7 +707,10 @@ export class RdsClusterTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, false, 0);
   }
 
-  public get internalValue(): RdsClusterTimeouts | undefined {
+  public get internalValue(): RdsClusterTimeouts | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
     let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
     if (this._create !== undefined) {
@@ -717,15 +728,21 @@ export class RdsClusterTimeoutsOutputReference extends cdktf.ComplexObject {
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(value: RdsClusterTimeouts | undefined) {
+  public set internalValue(value: RdsClusterTimeouts | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
+      this.resolvableValue = undefined;
       this._create = undefined;
       this._delete = undefined;
       this._update = undefined;
     }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
+    }
     else {
       this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
       this._create = value.create;
       this._delete = value.delete;
       this._update = value.update;
@@ -807,13 +824,16 @@ export class RdsCluster extends cdktf.TerraformResource {
       terraformResourceType: 'aws_rds_cluster',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._allowMajorVersionUpgrade = config.allowMajorVersionUpgrade;
     this._applyImmediately = config.applyImmediately;
@@ -839,6 +859,7 @@ export class RdsCluster extends cdktf.TerraformResource {
     this._globalClusterIdentifier = config.globalClusterIdentifier;
     this._iamDatabaseAuthenticationEnabled = config.iamDatabaseAuthenticationEnabled;
     this._iamRoles = config.iamRoles;
+    this._id = config.id;
     this._kmsKeyId = config.kmsKeyId;
     this._masterPassword = config.masterPassword;
     this._masterUsername = config.masterUsername;
@@ -1273,8 +1294,19 @@ export class RdsCluster extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // kms_key_id - computed: true, optional: true, required: false
@@ -1578,12 +1610,12 @@ export class RdsCluster extends cdktf.TerraformResource {
     return {
       allow_major_version_upgrade: cdktf.booleanToTerraform(this._allowMajorVersionUpgrade),
       apply_immediately: cdktf.booleanToTerraform(this._applyImmediately),
-      availability_zones: cdktf.listMapper(cdktf.stringToTerraform)(this._availabilityZones),
+      availability_zones: cdktf.listMapper(cdktf.stringToTerraform, false)(this._availabilityZones),
       backtrack_window: cdktf.numberToTerraform(this._backtrackWindow),
       backup_retention_period: cdktf.numberToTerraform(this._backupRetentionPeriod),
       cluster_identifier: cdktf.stringToTerraform(this._clusterIdentifier),
       cluster_identifier_prefix: cdktf.stringToTerraform(this._clusterIdentifierPrefix),
-      cluster_members: cdktf.listMapper(cdktf.stringToTerraform)(this._clusterMembers),
+      cluster_members: cdktf.listMapper(cdktf.stringToTerraform, false)(this._clusterMembers),
       copy_tags_to_snapshot: cdktf.booleanToTerraform(this._copyTagsToSnapshot),
       database_name: cdktf.stringToTerraform(this._databaseName),
       db_cluster_parameter_group_name: cdktf.stringToTerraform(this._dbClusterParameterGroupName),
@@ -1592,14 +1624,15 @@ export class RdsCluster extends cdktf.TerraformResource {
       deletion_protection: cdktf.booleanToTerraform(this._deletionProtection),
       enable_global_write_forwarding: cdktf.booleanToTerraform(this._enableGlobalWriteForwarding),
       enable_http_endpoint: cdktf.booleanToTerraform(this._enableHttpEndpoint),
-      enabled_cloudwatch_logs_exports: cdktf.listMapper(cdktf.stringToTerraform)(this._enabledCloudwatchLogsExports),
+      enabled_cloudwatch_logs_exports: cdktf.listMapper(cdktf.stringToTerraform, false)(this._enabledCloudwatchLogsExports),
       engine: cdktf.stringToTerraform(this._engine),
       engine_mode: cdktf.stringToTerraform(this._engineMode),
       engine_version: cdktf.stringToTerraform(this._engineVersion),
       final_snapshot_identifier: cdktf.stringToTerraform(this._finalSnapshotIdentifier),
       global_cluster_identifier: cdktf.stringToTerraform(this._globalClusterIdentifier),
       iam_database_authentication_enabled: cdktf.booleanToTerraform(this._iamDatabaseAuthenticationEnabled),
-      iam_roles: cdktf.listMapper(cdktf.stringToTerraform)(this._iamRoles),
+      iam_roles: cdktf.listMapper(cdktf.stringToTerraform, false)(this._iamRoles),
+      id: cdktf.stringToTerraform(this._id),
       kms_key_id: cdktf.stringToTerraform(this._kmsKeyId),
       master_password: cdktf.stringToTerraform(this._masterPassword),
       master_username: cdktf.stringToTerraform(this._masterUsername),
@@ -1613,7 +1646,7 @@ export class RdsCluster extends cdktf.TerraformResource {
       storage_encrypted: cdktf.booleanToTerraform(this._storageEncrypted),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
-      vpc_security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._vpcSecurityGroupIds),
+      vpc_security_group_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(this._vpcSecurityGroupIds),
       restore_to_point_in_time: rdsClusterRestoreToPointInTimeToTerraform(this._restoreToPointInTime.internalValue),
       s3_import: rdsClusterS3ImportToTerraform(this._s3Import.internalValue),
       scaling_configuration: rdsClusterScalingConfigurationToTerraform(this._scalingConfiguration.internalValue),

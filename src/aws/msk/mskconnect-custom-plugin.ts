@@ -16,6 +16,13 @@ export interface MskconnectCustomPluginConfig extends cdktf.TerraformMetaArgumen
   */
   readonly description?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/mskconnect_custom_plugin#id MskconnectCustomPlugin#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/mskconnect_custom_plugin#name MskconnectCustomPlugin#name}
   */
   readonly name: string;
@@ -228,6 +235,7 @@ export function mskconnectCustomPluginTimeoutsToTerraform(struct?: MskconnectCus
 
 export class MskconnectCustomPluginTimeoutsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
+  private resolvableValue?: cdktf.IResolvable;
 
   /**
   * @param terraformResource The parent resource
@@ -237,7 +245,10 @@ export class MskconnectCustomPluginTimeoutsOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, false, 0);
   }
 
-  public get internalValue(): MskconnectCustomPluginTimeouts | undefined {
+  public get internalValue(): MskconnectCustomPluginTimeouts | cdktf.IResolvable | undefined {
+    if (this.resolvableValue) {
+      return this.resolvableValue;
+    }
     let hasAnyValues = this.isEmptyObject;
     const internalValueResult: any = {};
     if (this._create !== undefined) {
@@ -247,13 +258,19 @@ export class MskconnectCustomPluginTimeoutsOutputReference extends cdktf.Complex
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(value: MskconnectCustomPluginTimeouts | undefined) {
+  public set internalValue(value: MskconnectCustomPluginTimeouts | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
+      this.resolvableValue = undefined;
       this._create = undefined;
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
+      this.isEmptyObject = false;
+      this.resolvableValue = value;
     }
     else {
       this.isEmptyObject = Object.keys(value).length === 0;
+      this.resolvableValue = undefined;
       this._create = value.create;
     }
   }
@@ -301,16 +318,20 @@ export class MskconnectCustomPlugin extends cdktf.TerraformResource {
       terraformResourceType: 'aws_mskconnect_custom_plugin',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._contentType = config.contentType;
     this._description = config.description;
+    this._id = config.id;
     this._name = config.name;
     this._location.internalValue = config.location;
     this._timeouts.internalValue = config.timeouts;
@@ -355,8 +376,19 @@ export class MskconnectCustomPlugin extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // latest_revision - computed: true, optional: false, required: false
@@ -419,6 +451,7 @@ export class MskconnectCustomPlugin extends cdktf.TerraformResource {
     return {
       content_type: cdktf.stringToTerraform(this._contentType),
       description: cdktf.stringToTerraform(this._description),
+      id: cdktf.stringToTerraform(this._id),
       name: cdktf.stringToTerraform(this._name),
       location: mskconnectCustomPluginLocationToTerraform(this._location.internalValue),
       timeouts: mskconnectCustomPluginTimeoutsToTerraform(this._timeouts.internalValue),

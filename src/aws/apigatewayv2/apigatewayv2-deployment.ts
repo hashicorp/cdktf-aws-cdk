@@ -16,6 +16,13 @@ export interface Apigatewayv2DeploymentConfig extends cdktf.TerraformMetaArgumen
   */
   readonly description?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_deployment#id Apigatewayv2Deployment#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apigatewayv2_deployment#triggers Apigatewayv2Deployment#triggers}
   */
   readonly triggers?: { [key: string]: string };
@@ -47,16 +54,20 @@ export class Apigatewayv2Deployment extends cdktf.TerraformResource {
       terraformResourceType: 'aws_apigatewayv2_deployment',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._apiId = config.apiId;
     this._description = config.description;
+    this._id = config.id;
     this._triggers = config.triggers;
   }
 
@@ -99,8 +110,19 @@ export class Apigatewayv2Deployment extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // triggers - computed: false, optional: true, required: false
@@ -127,6 +149,7 @@ export class Apigatewayv2Deployment extends cdktf.TerraformResource {
     return {
       api_id: cdktf.stringToTerraform(this._apiId),
       description: cdktf.stringToTerraform(this._description),
+      id: cdktf.stringToTerraform(this._id),
       triggers: cdktf.hashMapper(cdktf.stringToTerraform)(this._triggers),
     };
   }

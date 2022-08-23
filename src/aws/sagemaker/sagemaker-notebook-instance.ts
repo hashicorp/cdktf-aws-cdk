@@ -20,6 +20,13 @@ export interface SagemakerNotebookInstanceConfig extends cdktf.TerraformMetaArgu
   */
   readonly directInternetAccess?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_notebook_instance#id SagemakerNotebookInstance#id}
+  *
+  * Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+  * If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+  */
+  readonly id?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sagemaker_notebook_instance#instance_type SagemakerNotebookInstance#instance_type}
   */
   readonly instanceType: string;
@@ -95,17 +102,21 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
       terraformResourceType: 'aws_sagemaker_notebook_instance',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.1',
+        providerVersion: '3.75.2',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
       count: config.count,
-      lifecycle: config.lifecycle
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
     });
     this._additionalCodeRepositories = config.additionalCodeRepositories;
     this._defaultCodeRepository = config.defaultCodeRepository;
     this._directInternetAccess = config.directInternetAccess;
+    this._id = config.id;
     this._instanceType = config.instanceType;
     this._kmsKeyId = config.kmsKeyId;
     this._lifecycleConfigName = config.lifecycleConfigName;
@@ -178,8 +189,19 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
 
   // id - computed: true, optional: true, required: false
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+  public resetId() {
+    this._id = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get idInput() {
+    return this._id;
   }
 
   // instance_type - computed: false, optional: false, required: true
@@ -381,9 +403,10 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
-      additional_code_repositories: cdktf.listMapper(cdktf.stringToTerraform)(this._additionalCodeRepositories),
+      additional_code_repositories: cdktf.listMapper(cdktf.stringToTerraform, false)(this._additionalCodeRepositories),
       default_code_repository: cdktf.stringToTerraform(this._defaultCodeRepository),
       direct_internet_access: cdktf.stringToTerraform(this._directInternetAccess),
+      id: cdktf.stringToTerraform(this._id),
       instance_type: cdktf.stringToTerraform(this._instanceType),
       kms_key_id: cdktf.stringToTerraform(this._kmsKeyId),
       lifecycle_config_name: cdktf.stringToTerraform(this._lifecycleConfigName),
@@ -391,7 +414,7 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
       platform_identifier: cdktf.stringToTerraform(this._platformIdentifier),
       role_arn: cdktf.stringToTerraform(this._roleArn),
       root_access: cdktf.stringToTerraform(this._rootAccess),
-      security_groups: cdktf.listMapper(cdktf.stringToTerraform)(this._securityGroups),
+      security_groups: cdktf.listMapper(cdktf.stringToTerraform, false)(this._securityGroups),
       subnet_id: cdktf.stringToTerraform(this._subnetId),
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
