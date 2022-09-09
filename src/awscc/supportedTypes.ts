@@ -118,6 +118,7 @@ export default new Set([
   "AWS::DeviceFarm::TestGridProject",
   "AWS::DeviceFarm::VPCEConfiguration",
   "AWS::DynamoDB::GlobalTable",
+  "AWS::DynamoDB::Table",
   "AWS::EC2::CapacityReservationFleet",
   "AWS::EC2::CarrierGateway",
   "AWS::EC2::DHCPOptions",
