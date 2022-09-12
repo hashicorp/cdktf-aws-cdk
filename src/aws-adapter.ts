@@ -354,6 +354,10 @@ class TerraformHost extends Construct {
         return this.awsCallerIdentity.accountId;
       }
 
+      case "AWS::NoValue": {
+        return undefined;
+      }
+
       default:
         throw new Error(`unable to resolve pseudo reference ${ref}`);
     }
