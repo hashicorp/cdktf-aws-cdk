@@ -73,6 +73,8 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       authorAddress,
       author,
       authorOrganization: true,
+      copyrightOwner: 'HashiCorp, Inc.',
+      copyrightPeriod: '2021',
       defaultReleaseBranch: "main",
       repositoryUrl: `https://github.com/${githubNamespace}/cdktf-aws-cdk.git`,
       mergify: false,
