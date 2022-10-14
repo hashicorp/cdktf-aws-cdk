@@ -2,6 +2,7 @@
 import { cdk } from "projen";
 import { AutoMerge } from "./auto-merge";
 import { CdktfConfig } from "./cdktf-config";
+import { CustomizedLicense } from "./customized-license";
 import { ProviderUpgrade } from "./provider-upgrade";
 
 export interface CdktfAwsCdkOptions extends Partial<cdk.JsiiProjectOptions> {
@@ -34,7 +35,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     super({
       ...options,
       workflowContainerImage,
-      license: "MPL-2.0",
+      licensed: false, // we do supply our own license file with a custom header
       releaseToNpm: true,
       minNodeVersion,
       name: `@${namespace}/aws-cdk`,
@@ -73,8 +74,6 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       authorAddress,
       author,
       authorOrganization: true,
-      copyrightOwner: 'HashiCorp, Inc.',
-      copyrightPeriod: '2021',
       defaultReleaseBranch: "main",
       repositoryUrl: `https://github.com/${githubNamespace}/cdktf-aws-cdk.git`,
       mergify: false,
@@ -168,5 +167,6 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     });
     new ProviderUpgrade(this);
     new AutoMerge(this);
+    new CustomizedLicense(this);
   }
 }
