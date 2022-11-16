@@ -86,7 +86,7 @@ export class EventualConsistencyWorkaroundAspect implements IAspect {
         }
       ));
     }
-    return EventualConsistencyWorkaroundAspect.stackTimeProviders.get(stack.node.id);
+    return EventualConsistencyWorkaroundAspect.stackTimeProviders.get(stack.node.id)!;
   }
 }
 
