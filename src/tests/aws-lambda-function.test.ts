@@ -29,7 +29,7 @@ describe("lambda function", () => {
         \\"provider\\": {
           \\"time\\": [
             {
-              \\"alias\\": \\"awsadapter_eventual_consistency_workaround_aspect\\"
+              \\"alias\\": \\"awsadapter_eventual_consistency_workaround_aspect_stack\\"
             }
           ]
         },
@@ -58,7 +58,7 @@ describe("lambda function", () => {
                 \\"aws_iam_role.adapter_lambdaServiceRole494E4CA6_7D4D29EC\\"
               ],
               \\"destroy_duration\\": \\"0s\\",
-              \\"provider\\": \\"time.awsadapter_eventual_consistency_workaround_aspect\\"
+              \\"provider\\": \\"time.awsadapter_eventual_consistency_workaround_aspect_stack\\"
             }
           }
         },
