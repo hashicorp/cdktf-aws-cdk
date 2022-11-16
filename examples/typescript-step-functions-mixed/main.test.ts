@@ -33,6 +33,11 @@ describe("typescript-state-machine", () => {
             {
               \\"region\\": \\"us-west-2\\"
             }
+          ],
+          \\"time\\": [
+            {
+              \\"alias\\": \\"awsadapter_eventual_consistency_workaround_aspect_test\\"
+            }
           ]
         },
         \\"resource\\": {
@@ -102,26 +107,34 @@ describe("typescript-state-machine", () => {
               \\"depends_on\\": [
                 \\"aws_cloudwatch_log_group.generate-id_snoop-log-group_D659273F\\"
               ],
-              \\"filename\\": \\"assets/generate-id_lambda-asset_D3DA57A3/29C871159DB99C8E6F96EDF0D540077F/archive.zip\\",
+              \\"environment\\": {
+                \\"variables\\": {
+                }
+              },
+              \\"filename\\": \\"assets/generate-id_lambda-asset_D3DA57A3/093EF965AE66D7E8C636126B6D2F4D9D/archive.zip\\",
               \\"function_name\\": \\"generate-id-c8e9be4a2f33ecc14e138a018899daed079e618acb\\",
               \\"handler\\": \\"fn-generate-id.handler\\",
               \\"memory_size\\": 512,
               \\"role\\": \\"\${aws_iam_role.generate-id_server-role_62418FA4.arn}\\",
               \\"runtime\\": \\"nodejs14.x\\",
-              \\"source_code_hash\\": \\"29C871159DB99C8E6F96EDF0D540077F\\",
+              \\"source_code_hash\\": \\"093EF965AE66D7E8C636126B6D2F4D9D\\",
               \\"timeout\\": 15
             },
             \\"reverse-id_fn_A44557C2\\": {
               \\"depends_on\\": [
                 \\"aws_cloudwatch_log_group.reverse-id_snoop-log-group_FAF8FFFD\\"
               ],
-              \\"filename\\": \\"assets/reverse-id_lambda-asset_4139ACFF/29C871159DB99C8E6F96EDF0D540077F/archive.zip\\",
+              \\"environment\\": {
+                \\"variables\\": {
+                }
+              },
+              \\"filename\\": \\"assets/reverse-id_lambda-asset_4139ACFF/093EF965AE66D7E8C636126B6D2F4D9D/archive.zip\\",
               \\"function_name\\": \\"reverse-id-c80e28e7990db1dae069bd131f26434d1b4d867e38\\",
               \\"handler\\": \\"fn-reverse-id.handler\\",
               \\"memory_size\\": 512,
               \\"role\\": \\"\${aws_iam_role.reverse-id_server-role_3C5E949B.arn}\\",
               \\"runtime\\": \\"nodejs14.x\\",
-              \\"source_code_hash\\": \\"29C871159DB99C8E6F96EDF0D540077F\\",
+              \\"source_code_hash\\": \\"093EF965AE66D7E8C636126B6D2F4D9D\\",
               \\"timeout\\": 15
             }
           },
@@ -132,7 +145,7 @@ describe("typescript-state-machine", () => {
                 \\"aws_iam_role.adapter_StateMachineRoleB840431D_34E24F0D\\"
               ],
               \\"destroy_duration\\": \\"0s\\",
-              \\"provider\\": \\"time.awsadapter_eventual_consistency_workaround_aspect\\"
+              \\"provider\\": \\"time.awsadapter_eventual_consistency_workaround_aspect_test\\"
             }
           }
         },
@@ -141,6 +154,10 @@ describe("typescript-state-machine", () => {
             \\"aws\\": {
               \\"source\\": \\"aws\\",
               \\"version\\": \\"3.75.2\\"
+            },
+            \\"time\\": {
+              \\"source\\": \\"time\\",
+              \\"version\\": \\"0.7.2\\"
             }
           }
         }

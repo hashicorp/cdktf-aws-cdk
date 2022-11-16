@@ -140,6 +140,20 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       cwd: "examples/typescript-step-functions-mixed",
     });
 
+    const updateExampleTests = this.addTask("examples:test:update", {
+      cwd: "examples/typescript-cron-lambda",
+      exec: "yarn test:ci -u",
+    });
+    updateExampleTests.exec("yarn test:ci -u", {
+      cwd: "examples/typescript-manual-mapping",
+    });
+    updateExampleTests.exec("yarn test:ci -u", {
+      cwd: "examples/typescript-step-functions",
+    });
+    updateExampleTests.exec("yarn test:ci -u", {
+      cwd: "examples/typescript-step-functions-mixed",
+    });
+
     // for local developing (e.g. linking local changes to cdktf)
     this.addGitIgnore(".yalc");
     this.addGitIgnore("yalc.lock");

@@ -26,6 +26,8 @@ interface EventualConsistencyWorkaroundAspectOptions {
  *   to deploy
  */
 export class EventualConsistencyWorkaroundAspect implements IAspect {
+  private static stackTimeProviders = new Map<string, TimeProvider>();
+
   private sleepResource?: Sleep;
 
   constructor(
@@ -74,18 +76,17 @@ export class EventualConsistencyWorkaroundAspect implements IAspect {
   // The CDK for Terraform currently requires providers to be configured even if they don't have
   // any config. As we cannot know whether the stack already contains a time provider, we create
   // an aliased one for usage within this Aspect
-  private static timeProvider?: TimeProvider;
   private static getTimeProvider(stack: TerraformStack): TimeProvider {
-    if (!EventualConsistencyWorkaroundAspect.timeProvider) {
-      EventualConsistencyWorkaroundAspect.timeProvider = new TimeProvider(
+    if (!EventualConsistencyWorkaroundAspect.stackTimeProviders.has(stack.node.id)) {
+      EventualConsistencyWorkaroundAspect.stackTimeProviders.set(stack.node.id, new TimeProvider(
         stack,
         "eventual_consistency_workaround_aspect",
         {
-          alias: "awsadapter_eventual_consistency_workaround_aspect",
+          alias: `awsadapter_eventual_consistency_workaround_aspect_${stack.node.id}`,
         }
-      );
+      ));
     }
-    return EventualConsistencyWorkaroundAspect.timeProvider;
+    return EventualConsistencyWorkaroundAspect.stackTimeProviders.get(stack.node.id)!;
   }
 }
 

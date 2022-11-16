@@ -15,6 +15,7 @@
     "docgen": "npx projen docgen",
     "eject": "npx projen eject",
     "examples:test": "npx projen examples:test",
+    "examples:test:update": "npx projen examples:test:update",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
     "package:js": "npx projen package:js",
