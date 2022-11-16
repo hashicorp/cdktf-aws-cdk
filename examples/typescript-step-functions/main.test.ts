@@ -25,6 +25,11 @@ describe("typescript-state-machine", () => {
             {
               \\"region\\": \\"us-west-2\\"
             }
+          ],
+          \\"time\\": [
+            {
+              \\"alias\\": \\"awsadapter_eventual_consistency_workaround_aspect_test\\"
+            }
           ]
         },
         \\"resource\\": {
@@ -86,7 +91,7 @@ describe("typescript-state-machine", () => {
                 \\"aws_iam_role.adapter_GenerateIDServiceRoleF74DC5CE_608D8F11\\"
               ],
               \\"destroy_duration\\": \\"0s\\",
-              \\"provider\\": \\"time.awsadapter_eventual_consistency_workaround_aspect\\"
+              \\"provider\\": \\"time.awsadapter_eventual_consistency_workaround_aspect_test\\"
             },
             \\"adapter_ReverseIDServiceRole83F2457F_sleep_ReverseIDServiceRole83F2457F_CDD6B2BC\\": {
               \\"create_duration\\": \\"20s\\",
@@ -94,7 +99,7 @@ describe("typescript-state-machine", () => {
                 \\"aws_iam_role.adapter_ReverseIDServiceRole83F2457F_A64F905C\\"
               ],
               \\"destroy_duration\\": \\"0s\\",
-              \\"provider\\": \\"time.awsadapter_eventual_consistency_workaround_aspect\\"
+              \\"provider\\": \\"time.awsadapter_eventual_consistency_workaround_aspect_test\\"
             },
             \\"adapter_StateMachineRoleB840431D_sleep_StateMachineRoleB840431D_89BC4BE8\\": {
               \\"create_duration\\": \\"20s\\",
@@ -102,7 +107,7 @@ describe("typescript-state-machine", () => {
                 \\"aws_iam_role.adapter_StateMachineRoleB840431D_34E24F0D\\"
               ],
               \\"destroy_duration\\": \\"0s\\",
-              \\"provider\\": \\"time.awsadapter_eventual_consistency_workaround_aspect\\"
+              \\"provider\\": \\"time.awsadapter_eventual_consistency_workaround_aspect_test\\"
             }
           }
         },
@@ -111,6 +116,10 @@ describe("typescript-state-machine", () => {
             \\"aws\\": {
               \\"source\\": \\"aws\\",
               \\"version\\": \\"3.75.2\\"
+            },
+            \\"time\\": {
+              \\"source\\": \\"time\\",
+              \\"version\\": \\"0.7.2\\"
             }
           }
         }

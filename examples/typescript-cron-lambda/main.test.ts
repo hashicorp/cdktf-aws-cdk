@@ -21,6 +21,11 @@ describe("typescript-cron-lambda", () => {
             {
               \\"region\\": \\"us-west-2\\"
             }
+          ],
+          \\"time\\": [
+            {
+              \\"alias\\": \\"awsadapter_eventual_consistency_workaround_aspect_test\\"
+            }
           ]
         },
         \\"resource\\": {
@@ -68,7 +73,7 @@ describe("typescript-cron-lambda", () => {
                 \\"aws_iam_role.adapter_lambdaServiceRole494E4CA6_7D4D29EC\\"
               ],
               \\"destroy_duration\\": \\"0s\\",
-              \\"provider\\": \\"time.awsadapter_eventual_consistency_workaround_aspect\\"
+              \\"provider\\": \\"time.awsadapter_eventual_consistency_workaround_aspect_test\\"
             }
           }
         },
@@ -77,6 +82,10 @@ describe("typescript-cron-lambda", () => {
             \\"aws\\": {
               \\"source\\": \\"aws\\",
               \\"version\\": \\"3.75.2\\"
+            },
+            \\"time\\": {
+              \\"source\\": \\"time\\",
+              \\"version\\": \\"0.7.2\\"
             }
           }
         }

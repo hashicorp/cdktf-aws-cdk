@@ -145,6 +145,27 @@
       ],
       "cwd": "examples/typescript-cron-lambda"
     },
+    "examples:test:update": {
+      "name": "examples:test:update",
+      "steps": [
+        {
+          "exec": "yarn test:ci -u"
+        },
+        {
+          "exec": "yarn test:ci -u",
+          "cwd": "examples/typescript-manual-mapping"
+        },
+        {
+          "exec": "yarn test:ci -u",
+          "cwd": "examples/typescript-step-functions"
+        },
+        {
+          "exec": "yarn test:ci -u",
+          "cwd": "examples/typescript-step-functions-mixed"
+        }
+      ],
+      "cwd": "examples/typescript-cron-lambda"
+    },
     "package": {
       "name": "package",
       "description": "Creates the distribution package",
