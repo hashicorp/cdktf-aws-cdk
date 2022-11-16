@@ -10,7 +10,7 @@ import * as aws_cdk from "aws-cdk-lib";
 import * as path from "path";
 
 import { AwsTerraformAdapter, AwsProvider } from "@cdktf/aws-cdk";
-import { NodejsFunction } from "@cdktf-plus/aws";
+import { NodejsFunction } from "./cdktf-plus/nodejs-function";
 
 export class StepFunctionsStack extends TerraformStack {
   constructor(scope: Construct, name: string) {

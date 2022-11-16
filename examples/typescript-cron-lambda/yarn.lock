@@ -1502,6 +1502,8 @@
   "version" "1.0.3"
 
 "crc-32@^1.2.0":
+  "integrity" "sha512-ROmzCKrTnOwybPcJApAA6WBWij23HVfGVNKqqrZpuyZOHqK2CwHSvpGuyt/UNNvaIjEd8X5IFGp4Mh+Ie1IHJQ=="
+  "resolved" "https://registry.npmjs.org/crc-32/-/crc-32-1.2.2.tgz"
   "version" "1.2.2"
 
 "crc32-stream@^4.0.2":
@@ -3324,6 +3326,8 @@
     "util-deprecate" "^1.0.1"
 
 "readdir-glob@^1.0.0":
+  "integrity" "sha512-6RLVvwJtVwEDfPdn6X6Ille4/lxGl0ATOY4FN/B9nxQcgOazvvI0nodiD19ScKq0PvA/29VpaOQML36o5IzZWA=="
+  "resolved" "https://registry.npmjs.org/readdir-glob/-/readdir-glob-1.1.2.tgz"
   "version" "1.1.2"
   dependencies:
     "minimatch" "^5.1.0"
