@@ -1,0 +1,12 @@
+# We use this for automatic PR review assignment within Github.
+# We don't intent to gatekeep certain parts of the codebase and
+# won't use it in branch protection rules.
+# If individual users are specified in this file, this is mainly to
+# inform them of certain PRs and we don't require a review from them
+# to be able to merge PRs.
+
+# These owners will be the default owners for everything in
+# the repo. Unless a later match takes precedence, 
+# they will be requested for review when someone opens a 
+# pull request.
+*       @hashicorp/cdktf
