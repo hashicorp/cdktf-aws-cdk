@@ -1,8 +1,10 @@
 // source: https://github.com/cdktf-plus/cdktf-plus/blob/586aabad3ab2fb2a2e93e05ed33f94474ebe9397/packages/%40cdktf-plus/aws/lib/aws-iam/index.ts
 import { PolicyStatement } from 'iam-floyd';
 import { Construct } from 'constructs';
-import { Resource, Lazy, IResolveContext } from 'cdktf';
-import { IamRole, IamPolicy, IamRolePolicyAttachment } from '@cdktf/aws-cdk/lib/aws/iam';
+import { Lazy, IResolveContext } from 'cdktf';
+import { IamRole } from '@cdktf/aws-cdk/lib/aws/iam-role';
+import { IamPolicy } from '@cdktf/aws-cdk/lib/aws/iam-policy';
+import { IamRolePolicyAttachment } from '@cdktf/aws-cdk/lib/aws/iam-role-policy-attachment';
 import * as iam from 'iam-floyd';
 
 export class Policy {
@@ -20,7 +22,7 @@ export interface AwsServiceRoleOptions {
   readonly policyStatements: iam.PolicyStatement[]
 }
 
-export class AwsServiceRole extends Resource {
+export class AwsServiceRole extends Construct {
   public readonly role: IamRole
   private readonly policyStatements: iam.PolicyStatement[] = [];
 
