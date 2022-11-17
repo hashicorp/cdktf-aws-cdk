@@ -2,8 +2,9 @@ import { dependable, IAspect, TerraformResource, TerraformStack } from "cdktf";
 import { resolve } from "cdktf/lib/_tokens";
 import { findTokens } from "cdktf/lib/tokens/private/resolve";
 import { IConstruct } from "constructs";
-import { Sleep, TimeProvider } from "../time";
-import { CloudcontrolapiResource } from "../aws";
+import { TimeProvider } from "../time/provider";
+import { Sleep } from "../time/sleep";
+import { CloudcontrolapiResource } from "../aws/cloudcontrolapi-resource";
 
 interface EventualConsistencyWorkaroundAspectOptions {
   createDurationSeconds: number;

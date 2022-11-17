@@ -1,79 +1,90 @@
 import { registerMapping } from "../index";
-import { vpc, ec2, elb } from "../../aws";
+import { Vpc } from "../../aws/vpc";
+import { Subnet } from "../../aws/subnet";
+import { Route } from "../../aws/route";
+import { RouteTable } from "../../aws/route-table";
+import { Eip } from "../../aws/eip";
+import { NatGateway } from "../../aws/nat-gateway";
+import { InternetGateway } from "../../aws/internet-gateway";
+import { Lb } from "../../aws/lb";
+import { SecurityGroup } from "../../aws/security-group";
+import { SecurityGroupRule } from "../../aws/security-group-rule";
+import { LbTargetGroup } from "../../aws/lb-target-group";
+import { RouteTableAssociation } from "../../aws/route-table-association";
 import { createGuessingResourceMapper } from "../helper";
 import { Aspects } from "cdktf";
 
 registerMapping("AWS::EC2::VPC", {
-  resource: createGuessingResourceMapper(vpc.Vpc),
+  resource: createGuessingResourceMapper(Vpc),
   attributes: {
     // TODO: make attributes optional!
-    Arn: (vpc: vpc.Vpc) => vpc.arn,
-    Ref: (vpc: vpc.Vpc) => vpc.id,
+    Arn: (vpc: Vpc) => vpc.arn,
+    Ref: (vpc: Vpc) => vpc.id,
   },
 });
 
 registerMapping("AWS::EC2::Subnet", {
-  resource: createGuessingResourceMapper(vpc.Subnet),
+  resource: createGuessingResourceMapper(Subnet),
   attributes: {
-    Arn: (subnet: vpc.Subnet) => subnet.arn,
-    Ref: (subnet: vpc.Subnet) => subnet.id,
+    Arn: (subnet: Subnet) => subnet.arn,
+    Ref: (subnet: Subnet) => subnet.id,
   },
 });
 
 registerMapping("AWS::EC2::Route", {
-  resource: createGuessingResourceMapper(vpc.Route),
+  resource: createGuessingResourceMapper(Route),
   attributes: {
     Arn: () => {
       throw new Error("Route resource does not have an arn");
     },
-    Ref: (route: vpc.Route) => route.id,
+    Ref: (route: Route) => route.id,
   },
 });
 
 registerMapping("AWS::EC2::RouteTable", {
-  resource: createGuessingResourceMapper(vpc.RouteTable),
+  resource: createGuessingResourceMapper(RouteTable),
   attributes: {
-    Arn: (table: vpc.RouteTable) => table.arn,
-    Ref: (table: vpc.RouteTable) => table.id,
+    Arn: (table: RouteTable) => table.arn,
+    Ref: (table: RouteTable) => table.id,
   },
 });
 
 registerMapping("AWS::EC2::SubnetRouteTableAssociation", {
-  resource: createGuessingResourceMapper(vpc.RouteTableAssociation),
+  resource: createGuessingResourceMapper(RouteTableAssociation),
   attributes: {
     Arn: () => {
       throw new Error("RouteTableAssociation resource does not have an arn");
     },
-    Ref: (a: vpc.RouteTableAssociation) => a.id,
+    Ref: (a: RouteTableAssociation) => a.id,
   },
 });
 
 registerMapping("AWS::EC2::EIP", {
-  resource: createGuessingResourceMapper(ec2.Eip),
+  resource: createGuessingResourceMapper(Eip),
   attributes: {
     Arn: () => {
       throw new Error("Eip resource does not have an arn");
     },
-    Ref: (e: ec2.Eip) => e.id,
-    AllocationId: (e: ec2.Eip) => e.allocationId,
+    Ref: (e: Eip) => e.id,
+    AllocationId: (e: Eip) => e.allocationId,
   },
 });
 
 registerMapping("AWS::EC2::NatGateway", {
-  resource: createGuessingResourceMapper(vpc.NatGateway),
+  resource: createGuessingResourceMapper(NatGateway),
   attributes: {
     Arn: () => {
       throw new Error("NatGateway resource does not have an arn");
     },
-    Ref: (gateway: vpc.NatGateway) => gateway.id,
+    Ref: (gateway: NatGateway) => gateway.id,
   },
 });
 
 registerMapping("AWS::EC2::InternetGateway", {
-  resource: createGuessingResourceMapper(vpc.InternetGateway),
+  resource: createGuessingResourceMapper(InternetGateway),
   attributes: {
-    Arn: (gateway: vpc.InternetGateway) => gateway.arn,
-    Ref: (gateway: vpc.InternetGateway) => gateway.id,
+    Arn: (gateway: InternetGateway) => gateway.arn,
+    Ref: (gateway: InternetGateway) => gateway.id,
   },
 });
 
@@ -89,7 +100,7 @@ registerMapping("AWS::EC2::VPCGatewayAttachment", {
       visit: (node) => {
         // FIXME: move this into some creation function or similar
         // TODO: this has the shortcoming of changing all internet gateways
-        if (node instanceof vpc.InternetGateway) {
+        if (node instanceof InternetGateway) {
           // TODO: check the node.id and try to resolve that token somehow to find out the targetted internet gateway (note.id will be a Lazy that resolves to some TF resource)
           node.vpcId = vpcId;
         }
@@ -114,47 +125,47 @@ registerMapping("AWS::EC2::VPCGatewayAttachment", {
 });
 
 registerMapping("AWS::ElasticLoadBalancingV2::LoadBalancer", {
-  resource: createGuessingResourceMapper(elb.Lb),
+  resource: createGuessingResourceMapper(Lb),
   attributes: {
-    Arn: (elb: elb.Lb) => elb.arn,
-    Ref: (elb: elb.Lb) => elb.id,
-    DNSName: (elb: elb.Lb) => elb.dnsName,
+    Arn: (elb: Lb) => elb.arn,
+    Ref: (elb: Lb) => elb.id,
+    DNSName: (elb: Lb) => elb.dnsName,
   },
 });
 
 registerMapping("AWS::EC2::SecurityGroup", {
-  resource: createGuessingResourceMapper(vpc.SecurityGroup), // FIXME: create rules via SecurityGroupRule resource?
+  resource: createGuessingResourceMapper(SecurityGroup), // FIXME: create rules via SecurityGroupRule resource?
   attributes: {
-    Arn: (sg: vpc.SecurityGroup) => sg.arn,
-    Ref: (sg: vpc.SecurityGroup) => sg.id,
-    GroupId: (sg: vpc.SecurityGroup) => sg.id,
+    Arn: (sg: SecurityGroup) => sg.arn,
+    Ref: (sg: SecurityGroup) => sg.id,
+    GroupId: (sg: SecurityGroup) => sg.id,
   },
 });
 
 registerMapping("AWS::EC2::SecurityGroupEgress", {
-  resource: createGuessingResourceMapper(vpc.SecurityGroupRule), // FIXME: create egress rule
+  resource: createGuessingResourceMapper(SecurityGroupRule), // FIXME: create egress rule
   attributes: {
     Arn: () => {
       throw new Error("SecurityGroupRule has no arn");
     },
-    Ref: (rule: vpc.SecurityGroupRule) => rule.id,
+    Ref: (rule: SecurityGroupRule) => rule.id,
   },
 });
 
 registerMapping("AWS::EC2::SecurityGroupIngress", {
-  resource: createGuessingResourceMapper(vpc.SecurityGroupRule), // FIXME: create ingress rule
+  resource: createGuessingResourceMapper(SecurityGroupRule), // FIXME: create ingress rule
   attributes: {
     Arn: () => {
       throw new Error("SecurityGroupRule has no arn");
     },
-    Ref: (rule: vpc.SecurityGroupRule) => rule.id,
+    Ref: (rule: SecurityGroupRule) => rule.id,
   },
 });
 
 registerMapping("AWS::ElasticLoadBalancingV2::TargetGroup", {
-  resource: createGuessingResourceMapper(elb.LbTargetGroup),
+  resource: createGuessingResourceMapper(LbTargetGroup),
   attributes: {
-    Arn: (rule: elb.LbTargetGroup) => rule.arn,
-    Ref: (rule: elb.LbTargetGroup) => rule.id,
+    Arn: (rule: LbTargetGroup) => rule.arn,
+    Ref: (rule: LbTargetGroup) => rule.id,
   },
 });
