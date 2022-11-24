@@ -2,7 +2,7 @@ import { Construct } from "constructs";
 import { App, TerraformStack } from "cdktf";
 import { aws_dynamodb, CfnOutput } from "aws-cdk-lib";
 
-import { AwsTerraformAdapter, AwsProvider, dynamodb } from "@cdktf/aws-cdk";
+import { AwsTerraformAdapter, provider, dynamodbTable } from "@cdktf/aws-cdk";
 import { registerMapping } from "@cdktf/aws-cdk/lib/mapping";
 
 registerMapping("AWS::DynamoDB::Table", {
@@ -14,7 +14,7 @@ registerMapping("AWS::DynamoDB::Table", {
     //   AttributeDefinitions: [ { AttributeName: 'key', AttributeType: 'S' } ],
     //   ProvisionedThroughput: { ReadCapacityUnits: 5, WriteCapacityUnits: 5 },
     // }
-    const mappedProps: dynamodb.DynamodbTableConfig = {
+    const mappedProps: dynamodbTable.DynamodbTableConfig = {
       name: props.TableName,
       attribute: props.AttributeDefinitions.map((att: any) => ({
         name: att.AttributeName,
@@ -31,10 +31,10 @@ registerMapping("AWS::DynamoDB::Table", {
     delete props.AttributeDefinitions;
     delete props.ProvisionedThroughput;
 
-    return new dynamodb.DynamodbTable(scope, id, mappedProps);
+    return new dynamodbTable.DynamodbTable(scope, id, mappedProps);
   },
   attributes: {
-    Arn: (table: dynamodb.DynamodbTable) => table.arn,
+    Arn: (table: dynamodbTable.DynamodbTable) => table.arn,
   },
 });
 
@@ -42,7 +42,7 @@ export class MyStack extends TerraformStack {
   constructor(scope: Construct, name: string) {
     super(scope, name);
 
-    new AwsProvider(this, "aws", { region: "us-west-2" });
+    new provider.AwsProvider(this, "aws", { region: "us-west-2" });
 
     const awsAdapter = new AwsTerraformAdapter(this, "adapter");
 

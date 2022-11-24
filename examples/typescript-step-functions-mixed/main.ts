@@ -9,14 +9,14 @@ import {
 import * as aws_cdk from "aws-cdk-lib";
 import * as path from "path";
 
-import { AwsTerraformAdapter, AwsProvider } from "@cdktf/aws-cdk";
+import { AwsTerraformAdapter, provider } from "@cdktf/aws-cdk";
 import { NodejsFunction } from "./cdktf-plus/nodejs-function";
 
 export class StepFunctionsStack extends TerraformStack {
   constructor(scope: Construct, name: string) {
     super(scope, name);
 
-    new AwsProvider(this, "aws", { region: "us-west-2" });
+    new provider.AwsProvider(this, "aws", { region: "us-west-2" });
 
     const awsAdapter = new AwsTerraformAdapter(this, "adapter");
 

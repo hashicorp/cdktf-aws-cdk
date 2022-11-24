@@ -1,7 +1,8 @@
 // source: https://github.com/cdktf-plus/cdktf-plus/blob/586aabad3ab2fb2a2e93e05ed33f94474ebe9397/packages/%40cdktf-plus/aws/lib/aws-lambda-function/index.ts
 import { Construct, Node } from 'constructs';
-import { IResolveContext, Lazy, Resource, TerraformOutput } from 'cdktf';
-import * as aws from '@cdktf/aws-cdk/lib/aws';
+import { IResolveContext, Lazy, TerraformOutput } from 'cdktf';
+import { LambdaFunction, LambdaFunctionConfig } from '@cdktf/aws-cdk/lib/aws/lambda-function';
+import { CloudwatchLogGroup } from '@cdktf/aws-cdk/lib/aws/cloudwatch-log-group';
 import { AwsServiceRole } from './aws-iam';
 import * as iam from 'iam-floyd';
 
@@ -27,10 +28,10 @@ export interface AwsLambdaFunctionConfig {
   readonly timeout?: number;
 }
 
-export class AwsLambdaFunction extends Resource {
-  public readonly fn: aws.lambdafunction.LambdaFunction;
+export class AwsLambdaFunction extends Construct {
+  public readonly fn: LambdaFunction;
   public readonly serviceRole: AwsServiceRole;
-  public readonly logGroup: aws.cloudwatch.CloudwatchLogGroup;
+  public readonly logGroup: CloudwatchLogGroup;
   public readonly environment: {[key: string]: string};
 
   constructor(scope: Construct, name: string, config: AwsLambdaFunctionConfig) {
@@ -43,7 +44,7 @@ export class AwsLambdaFunction extends Resource {
     const id = Node.of(this).addr
     const fnName = `${name}-${id}`;
 
-    const logGroup = new aws.cloudwatch.CloudwatchLogGroup(this, 'snoop-log-group', {
+    const logGroup = new CloudwatchLogGroup(this, 'snoop-log-group', {
       name: `/aws/lambda/${fnName}`,
       retentionInDays: logRetentionInDays
     });
@@ -61,7 +62,7 @@ export class AwsLambdaFunction extends Resource {
       ]
     })
 
-    const fnOptions: aws.lambdafunction.LambdaFunctionConfig = {
+    const fnOptions: LambdaFunctionConfig = {
       functionName: fnName,
       role: this.serviceRole.role.arn,
       memorySize,
@@ -76,7 +77,7 @@ export class AwsLambdaFunction extends Resource {
       dependsOn: [logGroup]
     }
 
-    this.fn = new aws.lambdafunction.LambdaFunction(this, 'fn', fnOptions)
+    this.fn = new LambdaFunction(this, 'fn', fnOptions)
 
     new TerraformOutput(this, `${fnName}-lambda-arn`, {
       value: this.fn.arn

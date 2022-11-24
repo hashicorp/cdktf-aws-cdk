@@ -13,18 +13,16 @@ import {
   Token,
   Tokenization,
 } from "cdktf";
-import {
-  conditional,
-  propertyAccess,
-  eqOperation,
-  andOperation,
-  orOperation,
-  notOperation,
-} from "cdktf/lib/tfExpression";
+import { conditional, propertyAccess } from "cdktf/lib/tfExpression";
+import { Op } from "cdktf";
 import { CloudFormationResource, CloudFormationTemplate } from "./cfn";
 import { findMapping, Mapping } from "./mapping";
 
-import { datasources, AwsProvider } from "./aws";
+import { AwsProvider } from "./aws/provider";
+import { DataAwsPartition } from "./aws/data-aws-partition";
+import { DataAwsRegion } from "./aws/data-aws-region";
+import { DataAwsCallerIdentity } from "./aws/data-aws-caller-identity";
+import { DataAwsAvailabilityZones } from "./aws/data-aws-availability-zones";
 
 function toTerraformIdentifier(identifier: string) {
   return toSnakeCase(identifier).replace(/-/g, "_");
@@ -52,11 +50,11 @@ export class AwsTerraformAdapter extends Stack {
 }
 
 class TerraformHost extends Construct {
-  private awsPartition?: datasources.DataAwsPartition;
-  private awsRegion?: datasources.DataAwsRegion;
-  private awsCallerIdentity?: datasources.DataAwsCallerIdentity;
+  private awsPartition?: DataAwsPartition;
+  private awsRegion?: DataAwsRegion;
+  private awsCallerIdentity?: DataAwsCallerIdentity;
   private awsAvailabilityZones: {
-    [region: string]: datasources.DataAwsAvailabilityZones;
+    [region: string]: DataAwsAvailabilityZones;
   } = {};
   private regionalAwsProviders: { [region: string]: AwsProvider } = {};
 
@@ -113,7 +111,7 @@ class TerraformHost extends Construct {
 
   private getAvailabilityZones(
     region?: string
-  ): datasources.DataAwsAvailabilityZones {
+  ): DataAwsAvailabilityZones {
     const DEFAULT_REGION_KEY = "default_region";
     if (!region) {
       region = DEFAULT_REGION_KEY;
@@ -121,7 +119,7 @@ class TerraformHost extends Construct {
 
     if (!this.awsAvailabilityZones[region]) {
       this.awsAvailabilityZones[region] =
-        new datasources.DataAwsAvailabilityZones(
+        new DataAwsAvailabilityZones(
           this,
           `aws_azs_${toTerraformIdentifier(region)}`,
           {
@@ -337,20 +335,20 @@ class TerraformHost extends Construct {
       case "AWS::Partition": {
         this.awsPartition =
           this.awsPartition ??
-          new datasources.DataAwsPartition(this, "aws-partition");
+          new DataAwsPartition(this, "aws-partition");
         return this.awsPartition.partition;
       }
 
       case "AWS::Region": {
         this.awsRegion =
-          this.awsRegion ?? new datasources.DataAwsRegion(this, "aws-region");
+          this.awsRegion ?? new DataAwsRegion(this, "aws-region");
         return this.awsRegion.name;
       }
 
       case "AWS::AccountId": {
         this.awsCallerIdentity =
           this.awsCallerIdentity ??
-          new datasources.DataAwsCallerIdentity(this, "aws-caller-identity");
+          new DataAwsCallerIdentity(this, "aws-caller-identity");
         return this.awsCallerIdentity.accountId;
       }
 
@@ -472,7 +470,7 @@ class TerraformHost extends Construct {
 
       case "Fn::Equals": {
         const [left, right] = this.processIntrinsics(params);
-        return eqOperation(left, right);
+        return Op.eq(left, right);
       }
 
       case "Fn::And": {
@@ -481,7 +479,7 @@ class TerraformHost extends Construct {
         );
         // Fn:And supports 2-10 parameters to chain
         return additional.reduce(
-          (current, expression) => andOperation(current, expression),
+          (current, expression) => Op.and(current, expression),
           first
         );
       }
@@ -492,7 +490,7 @@ class TerraformHost extends Construct {
         );
         // Fn:Or supports 2-10 parameters to chain
         return additional.reduce(
-          (current, expression) => orOperation(current, expression),
+          (current, expression) => Op.or(current, expression),
           first
         );
       }
@@ -513,7 +511,7 @@ class TerraformHost extends Construct {
           condition = this.getConditionTerraformLocal(condition);
         }
 
-        return notOperation(condition);
+        return Op.not(condition);
       }
 
       case "Fn::Transform": {

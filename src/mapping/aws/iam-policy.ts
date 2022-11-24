@@ -1,5 +1,8 @@
 import { registerMapping } from "../index";
-import { iam } from "../../aws";
+import { IamPolicy } from "../../aws/iam-policy";
+import { IamRolePolicyAttachment } from "../../aws/iam-role-policy-attachment";
+import { IamUserPolicyAttachment } from "../../aws/iam-user-policy-attachment";
+import { IamGroupPolicyAttachment } from "../../aws/iam-group-policy-attachment";
 import { createGuessingResourceMapper } from "../helper";
 import { Fn } from "cdktf";
 
@@ -11,7 +14,7 @@ registerMapping("AWS::IAM::Policy", {
     const userAttachments: any[] = props.Users || [];
     const groupAttachments: any[] = props.Groups || [];
     
-    const resource = createGuessingResourceMapper(iam.IamPolicy, {
+    const resource = createGuessingResourceMapper(IamPolicy, {
       PolicyDocument: (doc) => ({
         tfAttributeName: "policy",
         value: Fn.jsonencode(doc),
@@ -23,21 +26,21 @@ registerMapping("AWS::IAM::Policy", {
     })(scope, id, props);
 
     roleAttachments.forEach((roleArn, idx) => {
-      new iam.IamRolePolicyAttachment(scope, `${id}_role${idx}`, {
+      new IamRolePolicyAttachment(scope, `${id}_role${idx}`, {
         policyArn: resource!.arn,
         role: roleArn,
       });
     });
 
     userAttachments.forEach((userArn, idx) => {
-      new iam.IamUserPolicyAttachment(scope, `${id}_user${idx}`, {
+      new IamUserPolicyAttachment(scope, `${id}_user${idx}`, {
         policyArn: resource!.arn,
         user: userArn,
       });
     });
 
     groupAttachments.forEach((groupArn, idx) => {
-      new iam.IamGroupPolicyAttachment(scope, `${id}_group${idx}`, {
+      new IamGroupPolicyAttachment(scope, `${id}_group${idx}`, {
         policyArn: resource!.arn,
         group: groupArn,
       });
@@ -46,7 +49,7 @@ registerMapping("AWS::IAM::Policy", {
     return resource;
   },
   attributes: {
-    Arn: (policy: iam.IamPolicy) => policy.arn,
-    Ref: (policy: iam.IamPolicy) => policy.id,
+    Arn: (policy: IamPolicy) => policy.arn,
+    Ref: (policy: IamPolicy) => policy.id,
   },
 });

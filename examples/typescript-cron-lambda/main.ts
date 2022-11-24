@@ -8,13 +8,13 @@ import {
   aws_events_targets,
 } from "aws-cdk-lib";
 
-import { AwsTerraformAdapter, AwsProvider } from "@cdktf/aws-cdk";
+import { AwsTerraformAdapter, provider } from "@cdktf/aws-cdk";
 
 export class CronLambdaStack extends TerraformStack {
   constructor(scope: Construct, name: string) {
     super(scope, name);
 
-    new AwsProvider(this, "aws", { region: "us-west-2" });
+    new provider.AwsProvider(this, "aws", { region: "us-west-2" });
 
     const awsAdapter = new AwsTerraformAdapter(this, "adapter");
 
