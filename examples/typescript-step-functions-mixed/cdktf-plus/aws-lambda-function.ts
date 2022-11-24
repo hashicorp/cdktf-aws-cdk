@@ -1,7 +1,7 @@
 // source: https://github.com/cdktf-plus/cdktf-plus/blob/586aabad3ab2fb2a2e93e05ed33f94474ebe9397/packages/%40cdktf-plus/aws/lib/aws-lambda-function/index.ts
 import { Construct, Node } from 'constructs';
 import { IResolveContext, Lazy, TerraformOutput } from 'cdktf';
-import { LambdaFunction, LambdaFunctionConfig } from '@cdktf/aws-cdk/lib/aws/lambdafunction';
+import { LambdaFunction, LambdaFunctionConfig } from '@cdktf/aws-cdk/lib/aws/lambda-function';
 import { CloudwatchLogGroup } from '@cdktf/aws-cdk/lib/aws/cloudwatch-log-group';
 import { AwsServiceRole } from './aws-iam';
 import * as iam from 'iam-floyd';
