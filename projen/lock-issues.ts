@@ -2,9 +2,7 @@ import { javascript } from "projen";
 import { JobPermission } from "projen/lib/github/workflows-model";
 
 /**
- * Automatically locks issues and PRs after 7 days. Note that 90% of the issues and PRs
- * on these repos are automated builds and notifications, so locking these threads is
- * generally not expected to cause issues.
+ * Automatically locks issues and PRs after 30 days.
  */
 export class LockIssues {
   constructor(project: javascript.NodeProject) {
@@ -24,7 +22,7 @@ export class LockIssues {
       },
       steps: [
         {
-          uses: "dessant/lock-threads@v3.0.0",
+          uses: "dessant/lock-threads@v4.0.0",
           with: {
             "issue-comment":
               `I'm going to lock this issue because it has been closed for at least 30 days.
