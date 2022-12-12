@@ -90,12 +90,12 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       peerDependencyOptions: {
         pinnedDevDependency: false,
       },
+      workflowGitIdentity: {
+        name: "team-tf-cdk",
+        email: "github-team-tf-cdk@hashicorp.com",
+      },    
       depsUpgradeOptions: {
         workflowOptions: {
-          gitIdentity: {
-            name: "team-tf-cdk",
-            email: "github-team-tf-cdk@hashicorp.com",
-          },
           labels: ["dependencies"],
         },
       },
