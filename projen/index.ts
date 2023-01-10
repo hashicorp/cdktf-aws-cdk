@@ -3,6 +3,7 @@ import { cdk } from "projen";
 import { AutoMerge } from "./auto-merge";
 import { CdktfConfig } from "./cdktf-config";
 import { CustomizedLicense } from "./customized-license";
+import { LockIssues } from "./lock-issues";
 import { ProviderUpgrade } from "./provider-upgrade";
 
 export interface CdktfAwsCdkOptions extends Partial<cdk.JsiiProjectOptions> {
@@ -89,12 +90,36 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       peerDependencyOptions: {
         pinnedDevDependency: false,
       },
+      workflowGitIdentity: {
+        name: "team-tf-cdk",
+        email: "github-team-tf-cdk@hashicorp.com",
+      },    
       depsUpgradeOptions: {
         workflowOptions: {
-          gitIdentity: {
-            name: "team-tf-cdk",
-            email: "github-team-tf-cdk@hashicorp.com",
-          },
+          labels: ["dependencies"],
+        },
+      },
+      stale: true,
+      staleOptions: {
+        issues: {
+          staleLabel: "stale",
+          daysBeforeStale: 30,
+          staleMessage:
+            "Hi there! 👋 We haven't heard from you in 30 days and would like to know if the problem has been resolved or if " +
+            "you still need help. If we don't hear from you before then, I'll auto-close this issue in 30 days.",
+          daysBeforeClose: 30,
+          closeMessage:
+            "I'm closing this issue because we haven't heard back in 60 days. ⌛️ If you still need help, feel free to reopen the issue!",
+        },
+        pullRequest: {
+          staleLabel: "stale",
+          daysBeforeStale: 60,
+          staleMessage:
+            "Hi there! 👋 We haven't heard from you in 60 days and would like to know if you're still working on this or need help. " +
+            "If we don't hear from you before then, I'll auto-close this PR in 30 days.",
+          daysBeforeClose: 30,
+          closeMessage:
+            "I'm closing this pull request because we haven't heard back in 90 days. ⌛️ If you're still working on this, feel free to reopen the PR or create a new one!",
         },
       },
       postBuildSteps: [
@@ -182,5 +207,6 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     new ProviderUpgrade(this);
     new AutoMerge(this);
     new CustomizedLicense(this);
+    new LockIssues(this);
   }
 }
