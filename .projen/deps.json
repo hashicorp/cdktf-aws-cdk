@@ -68,7 +68,7 @@
     },
     {
       "name": "npm-check-updates",
-      "version": "^12",
+      "version": "^16",
       "type": "build"
     },
     {
@@ -82,7 +82,6 @@
     },
     {
       "name": "ts-node",
-      "version": "^9",
       "type": "build"
     },
     {
@@ -103,6 +102,16 @@
       "name": "debug",
       "version": "^4.3.2",
       "type": "bundled"
+    },
+    {
+      "name": "@types/babel__traverse",
+      "version": "7.18.2",
+      "type": "override"
+    },
+    {
+      "name": "@types/prettier",
+      "version": "2.6.0",
+      "type": "override"
     },
     {
       "name": "aws-cdk-lib",
