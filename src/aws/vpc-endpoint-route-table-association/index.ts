@@ -50,7 +50,7 @@ export class VpcEndpointRouteTableAssociation extends cdktf.TerraformResource {
       terraformResourceType: 'aws_vpc_endpoint_route_table_association',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

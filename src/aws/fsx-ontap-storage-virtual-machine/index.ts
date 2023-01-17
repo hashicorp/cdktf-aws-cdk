@@ -875,7 +875,7 @@ export class FsxOntapStorageVirtualMachine extends cdktf.TerraformResource {
       terraformResourceType: 'aws_fsx_ontap_storage_virtual_machine',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

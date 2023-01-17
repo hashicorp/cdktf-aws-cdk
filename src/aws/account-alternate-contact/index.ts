@@ -66,7 +66,7 @@ export class AccountAlternateContact extends cdktf.TerraformResource {
       terraformResourceType: 'aws_account_alternate_contact',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

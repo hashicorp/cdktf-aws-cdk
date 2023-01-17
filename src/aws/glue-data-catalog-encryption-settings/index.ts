@@ -320,7 +320,7 @@ export class GlueDataCatalogEncryptionSettings extends cdktf.TerraformResource {
       terraformResourceType: 'aws_glue_data_catalog_encryption_settings',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

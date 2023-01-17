@@ -190,7 +190,7 @@ export class DxHostedPublicVirtualInterface extends cdktf.TerraformResource {
       terraformResourceType: 'aws_dx_hosted_public_virtual_interface',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

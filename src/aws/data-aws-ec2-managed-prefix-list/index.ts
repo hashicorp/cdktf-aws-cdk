@@ -243,7 +243,7 @@ export class DataAwsEc2ManagedPrefixList extends cdktf.TerraformDataSource {
       terraformResourceType: 'aws_ec2_managed_prefix_list',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

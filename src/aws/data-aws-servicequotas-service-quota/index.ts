@@ -54,7 +54,7 @@ export class DataAwsServicequotasServiceQuota extends cdktf.TerraformDataSource 
       terraformResourceType: 'aws_servicequotas_service_quota',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

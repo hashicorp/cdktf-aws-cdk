@@ -58,7 +58,7 @@ export class Ec2TransitGatewayPrefixListReference extends cdktf.TerraformResourc
       terraformResourceType: 'aws_ec2_transit_gateway_prefix_list_reference',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

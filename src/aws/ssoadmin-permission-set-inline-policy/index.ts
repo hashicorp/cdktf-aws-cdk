@@ -54,7 +54,7 @@ export class SsoadminPermissionSetInlinePolicy extends cdktf.TerraformResource {
       terraformResourceType: 'aws_ssoadmin_permission_set_inline_policy',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

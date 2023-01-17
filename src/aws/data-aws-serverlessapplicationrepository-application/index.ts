@@ -50,7 +50,7 @@ export class DataAwsServerlessapplicationrepositoryApplication extends cdktf.Ter
       terraformResourceType: 'aws_serverlessapplicationrepository_application',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

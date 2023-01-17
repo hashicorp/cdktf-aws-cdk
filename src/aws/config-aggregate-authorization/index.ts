@@ -58,7 +58,7 @@ export class ConfigAggregateAuthorization extends cdktf.TerraformResource {
       terraformResourceType: 'aws_config_aggregate_authorization',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

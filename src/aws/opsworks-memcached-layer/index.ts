@@ -847,7 +847,7 @@ export class OpsworksMemcachedLayer extends cdktf.TerraformResource {
       terraformResourceType: 'aws_opsworks_memcached_layer',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

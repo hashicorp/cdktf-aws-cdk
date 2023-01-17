@@ -845,7 +845,7 @@ export class FsxOpenzfsFileSystem extends cdktf.TerraformResource {
       terraformResourceType: 'aws_fsx_openzfs_file_system',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

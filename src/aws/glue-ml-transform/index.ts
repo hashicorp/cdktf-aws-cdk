@@ -573,7 +573,7 @@ export class GlueMlTransform extends cdktf.TerraformResource {
       terraformResourceType: 'aws_glue_ml_transform',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

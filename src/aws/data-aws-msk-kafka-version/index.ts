@@ -50,7 +50,7 @@ export class DataAwsMskKafkaVersion extends cdktf.TerraformDataSource {
       terraformResourceType: 'aws_msk_kafka_version',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

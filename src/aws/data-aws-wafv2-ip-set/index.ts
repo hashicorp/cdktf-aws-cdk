@@ -50,7 +50,7 @@ export class DataAwsWafv2IpSet extends cdktf.TerraformDataSource {
       terraformResourceType: 'aws_wafv2_ip_set',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

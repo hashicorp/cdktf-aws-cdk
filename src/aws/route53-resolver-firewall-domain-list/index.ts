@@ -58,7 +58,7 @@ export class Route53ResolverFirewallDomainList extends cdktf.TerraformResource {
       terraformResourceType: 'aws_route53_resolver_firewall_domain_list',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

@@ -712,7 +712,7 @@ export class DbInstance extends cdktf.TerraformResource {
       terraformResourceType: 'aws_db_instance',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
@@ -824,7 +824,7 @@ export class DbInstance extends cdktf.TerraformResource {
     return this._allowMajorVersionUpgrade;
   }
 
-  // apply_immediately - computed: true, optional: true, required: false
+  // apply_immediately - computed: false, optional: true, required: false
   private _applyImmediately?: boolean | cdktf.IResolvable; 
   public get applyImmediately() {
     return this.getBooleanAttribute('apply_immediately');

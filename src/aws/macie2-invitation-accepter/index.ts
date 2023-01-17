@@ -127,7 +127,7 @@ export class Macie2InvitationAccepter extends cdktf.TerraformResource {
       terraformResourceType: 'aws_macie2_invitation_accepter',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

@@ -396,7 +396,7 @@ export class CognitoIdentityPoolRolesAttachment extends cdktf.TerraformResource 
       terraformResourceType: 'aws_cognito_identity_pool_roles_attachment',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

@@ -182,7 +182,7 @@ export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
       terraformResourceType: 'aws_availability_zones',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

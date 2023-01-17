@@ -170,7 +170,7 @@ export class DataAwsEc2LocalGatewayRouteTables extends cdktf.TerraformDataSource
       terraformResourceType: 'aws_ec2_local_gateway_route_tables',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

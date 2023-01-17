@@ -54,7 +54,7 @@ export class AcmpcaCertificateAuthorityCertificate extends cdktf.TerraformResour
       terraformResourceType: 'aws_acmpca_certificate_authority_certificate',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

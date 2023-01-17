@@ -46,7 +46,7 @@ export class DataAwsRdsCertificate extends cdktf.TerraformDataSource {
       terraformResourceType: 'aws_rds_certificate',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

@@ -597,7 +597,7 @@ export class DataAwsMqBroker extends cdktf.TerraformDataSource {
       terraformResourceType: 'aws_mq_broker',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

@@ -186,7 +186,7 @@ export class ConnectContactFlow extends cdktf.TerraformResource {
       terraformResourceType: 'aws_connect_contact_flow',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

@@ -1632,7 +1632,7 @@ export class AlbListener extends cdktf.TerraformResource {
       terraformResourceType: 'aws_alb_listener',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

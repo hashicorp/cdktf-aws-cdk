@@ -62,7 +62,7 @@ export class CognitoUserGroup extends cdktf.TerraformResource {
       terraformResourceType: 'aws_cognito_user_group',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

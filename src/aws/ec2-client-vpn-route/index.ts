@@ -58,7 +58,7 @@ export class Ec2ClientVpnRoute extends cdktf.TerraformResource {
       terraformResourceType: 'aws_ec2_client_vpn_route',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

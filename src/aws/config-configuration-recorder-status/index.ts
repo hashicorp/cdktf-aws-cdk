@@ -50,7 +50,7 @@ export class ConfigConfigurationRecorderStatus extends cdktf.TerraformResource {
       terraformResourceType: 'aws_config_configuration_recorder_status',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
