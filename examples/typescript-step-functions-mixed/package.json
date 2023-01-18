@@ -31,5 +31,8 @@
   },
   "resolutions": {
     "@types/babel__traverse": "7.18.2"
+  },
+  "overrides": {
+    "@types/babel__traverse": "7.18.2"
   }
 }
