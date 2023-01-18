@@ -26,5 +26,8 @@
     "constructs": "^10.0.5",
     "@cdktf/aws-cdk": "0.2.2",
     "aws-cdk-lib": "2.0.0"
+  },
+  "resolutions": {
+    "@types/babel__traverse": "7.18.2"
   }
 }

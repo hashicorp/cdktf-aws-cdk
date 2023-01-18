@@ -28,5 +28,8 @@
     "iam-floyd": "^0.337.0",
     "aws-cdk-lib": "2.0.0",
     "esbuild-wasm": "^0.14.23"
+  },
+  "resolutions": {
+    "@types/babel__traverse": "7.18.2"
   }
 }
