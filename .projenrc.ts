@@ -8,4 +8,5 @@ const project = new CdktfAwsCdkProject({
   projenrcTs: true,
 });
 
+project.package.addPackageResolutions("@types/babel__traverse@7.18.2");
 project.synth();

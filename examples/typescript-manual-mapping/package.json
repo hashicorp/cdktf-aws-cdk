@@ -24,8 +24,12 @@
   },
   "dependencies": {
     "cdktf": "^0.15.0",
-    "constructs": "^10.0.5",
-    "@cdktf/aws-cdk": "0.2.2",
+    "constructs": "file:../../node_modules/constructs",
+    "@cdktf/aws-cdk": "file:../../",
     "aws-cdk-lib": "2.0.0"
+  },
+  "resolutions": {
+    "@types/prettier": "2.6.0",
+    "@types/babel__traverse": "7.18.2"
   }
 }
