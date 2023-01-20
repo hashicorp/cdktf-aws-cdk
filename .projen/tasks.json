@@ -128,18 +128,18 @@
       "name": "examples:test",
       "steps": [
         {
-          "exec": "yarn test:ci"
+          "exec": "npm run test:ci"
         },
         {
-          "exec": "yarn test:ci",
+          "exec": "npm run test:ci",
           "cwd": "examples/typescript-manual-mapping"
         },
         {
-          "exec": "yarn test:ci",
+          "exec": "npm run test:ci",
           "cwd": "examples/typescript-step-functions"
         },
         {
-          "exec": "yarn test:ci",
+          "exec": "npm run test:ci",
           "cwd": "examples/typescript-step-functions-mixed"
         }
       ],
@@ -149,18 +149,18 @@
       "name": "examples:test:update",
       "steps": [
         {
-          "exec": "yarn test:ci -u"
+          "exec": "npm run test:ci -- -- -u"
         },
         {
-          "exec": "yarn test:ci -u",
+          "exec": "npm run test:ci -- -- -u",
           "cwd": "examples/typescript-manual-mapping"
         },
         {
-          "exec": "yarn test:ci -u",
+          "exec": "npm run test:ci -- -- -u",
           "cwd": "examples/typescript-step-functions"
         },
         {
-          "exec": "yarn test:ci -u",
+          "exec": "npm run test:ci -- -- -u",
           "cwd": "examples/typescript-step-functions-mixed"
         }
       ],

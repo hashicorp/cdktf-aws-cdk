@@ -7,16 +7,14 @@
     "build": "tsc",
     "compile": "tsc --pretty",
     "synth": "cdktf synth",
-    "pretest": "yarn run build",
+    "pretest": "npm run build",
     "test": "jest",
-    "pretest:ci": "yarn install",
-    "test:ci": "yarn test"
+    "pretest:ci": "npm install --legacy-peer-deps",
+    "test:ci": "npm install --no-save \"../../dist/js/aws-cdk@$(node -e \"console.log(require('../../package.json').version)\").jsii.tgz\" && npm test"
   },
   "devDependencies": {
     "@types/jest": "27.0.1",
     "@types/node": "^14.0.26",
-    "@types/prettier": "<2.6.0",
-    "@types/babel__traverse": "7.0.0",
     "cdktf-cli": "^0.15.0",
     "jest": "27.1.0",
     "ts-jest": "^27.0.5",
@@ -24,12 +22,17 @@
   },
   "dependencies": {
     "cdktf": "^0.15.0",
-    "constructs": "file:../../node_modules/constructs",
-    "@cdktf/aws-cdk": "file:../../",
+    "constructs": "^10.0.5",
+    "@cdktf/aws-cdk": "^0.7.0",
     "aws-cdk-lib": "2.0.0"
   },
-  "resolutions": {
+  "overrides": {
     "@types/prettier": "2.6.0",
-    "@types/babel__traverse": "7.18.2"
+    "@types/babel__core": {
+      "@types/babel__traverse": "7.18.2"
+    },
+    "jest-snapshot": {
+      "@types/babel__traverse": "7.18.2"
+    }
   }
 }
