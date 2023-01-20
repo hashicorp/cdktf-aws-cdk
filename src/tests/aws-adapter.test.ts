@@ -16,6 +16,45 @@ describe("AwsTerraformAdapter", () => {
     adapter = new AwsTerraformAdapter(stack, "adapter");
   });
 
+  describe("resolvePseudo", () => {
+    it("should resolve AWS::URLSuffix", () => {
+      new StaticCfnConstruct(adapter, "cfn", {
+        Resources: {
+          subject: {
+            Type: "Test::Resource",
+            Properties: {
+              Value: { Ref: "AWS::URLSuffix" },
+            },
+          },
+          another: {
+            Type: "Test::Resource",
+            Properties: {},
+          },
+        },
+      });
+
+      expect(Testing.synth(stack)).toMatchInlineSnapshot(`
+        "{
+          \\"data\\": {
+            \\"aws_partition\\": {
+              \\"adapter_aws-partition_5B16AD9D\\": {
+              }
+            }
+          },
+          \\"resource\\": {
+            \\"test\\": {
+              \\"adapter_another_C86ABFE2\\": {
+              },
+              \\"adapter_subject_24E89D84\\": {
+                \\"value\\": \\"\${data.aws_partition.adapter_aws-partition_5B16AD9D.dns_suffix}\\"
+              }
+            }
+          }
+        }"
+      `);
+    });
+  });
+
   describe("resolveIntrinsic", () => {
     it("should resolve Fn::GetAtt", () => {
       new StaticCfnConstruct(adapter, "cfn", {

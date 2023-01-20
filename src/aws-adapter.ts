@@ -356,6 +356,13 @@ class TerraformHost extends Construct {
         return undefined;
       }
 
+      case "AWS::URLSuffix": {
+        this.awsPartition =
+          this.awsPartition ??
+          new DataAwsPartition(this, "aws-partition");
+        return this.awsPartition.dnsSuffix;
+      }
+
       default:
         throw new Error(`unable to resolve pseudo reference ${ref}`);
     }
