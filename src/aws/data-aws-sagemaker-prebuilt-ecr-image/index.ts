@@ -58,7 +58,7 @@ export class DataAwsSagemakerPrebuiltEcrImage extends cdktf.TerraformDataSource 
       terraformResourceType: 'aws_sagemaker_prebuilt_ecr_image',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

@@ -161,7 +161,7 @@ export class SagemakerDeviceFleet extends cdktf.TerraformResource {
       terraformResourceType: 'aws_sagemaker_device_fleet',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

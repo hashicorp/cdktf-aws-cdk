@@ -50,7 +50,7 @@ export class ServicecatalogTagOptionResourceAssociation extends cdktf.TerraformR
       terraformResourceType: 'aws_servicecatalog_tag_option_resource_association',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

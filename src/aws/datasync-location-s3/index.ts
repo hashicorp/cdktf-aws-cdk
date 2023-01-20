@@ -134,7 +134,7 @@ export class DatasyncLocationS3 extends cdktf.TerraformResource {
       terraformResourceType: 'aws_datasync_location_s3',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

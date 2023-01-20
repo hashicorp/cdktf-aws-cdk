@@ -261,7 +261,7 @@ export class WafregionalXssMatchSet extends cdktf.TerraformResource {
       terraformResourceType: 'aws_wafregional_xss_match_set',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

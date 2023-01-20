@@ -342,7 +342,7 @@ export class DataAwsConnectQuickConnect extends cdktf.TerraformDataSource {
       terraformResourceType: 'aws_connect_quick_connect',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

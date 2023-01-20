@@ -46,7 +46,7 @@ export class SesDomainDkim extends cdktf.TerraformResource {
       terraformResourceType: 'aws_ses_domain_dkim',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

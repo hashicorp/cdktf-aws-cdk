@@ -54,7 +54,7 @@ export class Route53VpcAssociationAuthorization extends cdktf.TerraformResource 
       terraformResourceType: 'aws_route53_vpc_association_authorization',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

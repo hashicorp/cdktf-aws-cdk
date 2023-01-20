@@ -863,7 +863,7 @@ export class OpsworksJavaAppLayer extends cdktf.TerraformResource {
       terraformResourceType: 'aws_opsworks_java_app_layer',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

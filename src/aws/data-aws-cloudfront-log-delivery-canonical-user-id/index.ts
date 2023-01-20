@@ -46,7 +46,7 @@ export class DataAwsCloudfrontLogDeliveryCanonicalUserId extends cdktf.Terraform
       terraformResourceType: 'aws_cloudfront_log_delivery_canonical_user_id',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

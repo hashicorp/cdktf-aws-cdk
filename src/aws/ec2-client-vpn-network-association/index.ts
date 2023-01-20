@@ -54,7 +54,7 @@ export class Ec2ClientVpnNetworkAssociation extends cdktf.TerraformResource {
       terraformResourceType: 'aws_ec2_client_vpn_network_association',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

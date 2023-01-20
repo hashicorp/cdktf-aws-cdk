@@ -599,7 +599,7 @@ export class LambdaEventSourceMapping extends cdktf.TerraformResource {
       terraformResourceType: 'aws_lambda_event_source_mapping',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

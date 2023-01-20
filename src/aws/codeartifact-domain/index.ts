@@ -58,7 +58,7 @@ export class CodeartifactDomain extends cdktf.TerraformResource {
       terraformResourceType: 'aws_codeartifact_domain',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

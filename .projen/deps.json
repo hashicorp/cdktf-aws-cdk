@@ -27,12 +27,12 @@
     },
     {
       "name": "cdktf-cli",
-      "version": "0.14.0",
+      "version": "0.15.0",
       "type": "build"
     },
     {
       "name": "cdktf",
-      "version": "0.14.0",
+      "version": "0.15.0",
       "type": "build"
     },
     {
@@ -68,7 +68,7 @@
     },
     {
       "name": "npm-check-updates",
-      "version": "^12",
+      "version": "^16",
       "type": "build"
     },
     {
@@ -82,7 +82,6 @@
     },
     {
       "name": "ts-node",
-      "version": "^9",
       "type": "build"
     },
     {
@@ -105,13 +104,23 @@
       "type": "bundled"
     },
     {
+      "name": "@types/babel__traverse",
+      "version": "7.18.2",
+      "type": "override"
+    },
+    {
+      "name": "@types/prettier",
+      "version": "2.6.0",
+      "type": "override"
+    },
+    {
       "name": "aws-cdk-lib",
       "version": "^2.0.0",
       "type": "peer"
     },
     {
       "name": "cdktf",
-      "version": "^0.14.0",
+      "version": "^0.15.0",
       "type": "peer"
     },
     {

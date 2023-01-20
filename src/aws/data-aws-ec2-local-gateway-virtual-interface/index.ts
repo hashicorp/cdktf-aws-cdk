@@ -170,7 +170,7 @@ export class DataAwsEc2LocalGatewayVirtualInterface extends cdktf.TerraformDataS
       terraformResourceType: 'aws_ec2_local_gateway_virtual_interface',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

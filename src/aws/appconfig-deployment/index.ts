@@ -74,7 +74,7 @@ export class AppconfigDeployment extends cdktf.TerraformResource {
       terraformResourceType: 'aws_appconfig_deployment',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

@@ -166,7 +166,7 @@ export class DxHostedTransitVirtualInterfaceAccepter extends cdktf.TerraformReso
       terraformResourceType: 'aws_dx_hosted_transit_virtual_interface_accepter',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

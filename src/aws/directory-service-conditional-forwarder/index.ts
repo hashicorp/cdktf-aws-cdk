@@ -54,7 +54,7 @@ export class DirectoryServiceConditionalForwarder extends cdktf.TerraformResourc
       terraformResourceType: 'aws_directory_service_conditional_forwarder',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

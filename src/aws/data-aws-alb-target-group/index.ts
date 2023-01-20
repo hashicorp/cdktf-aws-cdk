@@ -237,7 +237,7 @@ export class DataAwsAlbTargetGroup extends cdktf.TerraformDataSource {
       terraformResourceType: 'aws_alb_target_group',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

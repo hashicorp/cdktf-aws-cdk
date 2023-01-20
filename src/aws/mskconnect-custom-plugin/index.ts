@@ -318,7 +318,7 @@ export class MskconnectCustomPlugin extends cdktf.TerraformResource {
       terraformResourceType: 'aws_mskconnect_custom_plugin',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

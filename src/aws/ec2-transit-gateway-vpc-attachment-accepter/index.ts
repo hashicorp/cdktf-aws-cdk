@@ -62,7 +62,7 @@ export class Ec2TransitGatewayVpcAttachmentAccepter extends cdktf.TerraformResou
       terraformResourceType: 'aws_ec2_transit_gateway_vpc_attachment_accepter',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

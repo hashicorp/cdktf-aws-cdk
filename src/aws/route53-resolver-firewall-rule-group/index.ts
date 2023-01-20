@@ -54,7 +54,7 @@ export class Route53ResolverFirewallRuleGroup extends cdktf.TerraformResource {
       terraformResourceType: 'aws_route53_resolver_firewall_rule_group',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

@@ -539,7 +539,7 @@ export class CloudfrontOriginRequestPolicy extends cdktf.TerraformResource {
       terraformResourceType: 'aws_cloudfront_origin_request_policy',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

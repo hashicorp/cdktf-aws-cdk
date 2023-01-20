@@ -54,7 +54,7 @@ export class StoragegatewayUploadBuffer extends cdktf.TerraformResource {
       terraformResourceType: 'aws_storagegateway_upload_buffer',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

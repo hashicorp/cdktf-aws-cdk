@@ -133,7 +133,7 @@ export class ApprunnerCustomDomainAssociation extends cdktf.TerraformResource {
       terraformResourceType: 'aws_apprunner_custom_domain_association',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

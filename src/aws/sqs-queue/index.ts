@@ -118,7 +118,7 @@ export class SqsQueue extends cdktf.TerraformResource {
       terraformResourceType: 'aws_sqs_queue',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
@@ -416,7 +416,7 @@ export class SqsQueue extends cdktf.TerraformResource {
     return this._redrivePolicy;
   }
 
-  // sqs_managed_sse_enabled - computed: false, optional: true, required: false
+  // sqs_managed_sse_enabled - computed: true, optional: true, required: false
   private _sqsManagedSseEnabled?: boolean | cdktf.IResolvable; 
   public get sqsManagedSseEnabled() {
     return this.getBooleanAttribute('sqs_managed_sse_enabled');

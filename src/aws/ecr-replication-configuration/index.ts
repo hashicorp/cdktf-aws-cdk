@@ -473,7 +473,7 @@ export class EcrReplicationConfiguration extends cdktf.TerraformResource {
       terraformResourceType: 'aws_ecr_replication_configuration',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

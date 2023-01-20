@@ -448,7 +448,7 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
       terraformResourceType: 'aws_ec2_instance_type',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

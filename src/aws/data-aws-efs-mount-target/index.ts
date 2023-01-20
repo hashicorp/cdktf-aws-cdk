@@ -54,7 +54,7 @@ export class DataAwsEfsMountTarget extends cdktf.TerraformDataSource {
       terraformResourceType: 'aws_efs_mount_target',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

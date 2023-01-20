@@ -50,7 +50,7 @@ export class EcrPullThroughCacheRule extends cdktf.TerraformResource {
       terraformResourceType: 'aws_ecr_pull_through_cache_rule',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

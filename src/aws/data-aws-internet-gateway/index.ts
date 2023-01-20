@@ -243,7 +243,7 @@ export class DataAwsInternetGateway extends cdktf.TerraformDataSource {
       terraformResourceType: 'aws_internet_gateway',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

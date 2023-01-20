@@ -153,29 +153,29 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
 
     const testExamples = this.addTask("examples:test", {
       cwd: "examples/typescript-cron-lambda",
-      exec: "yarn test:ci",
+      exec: "npm run test:ci",
     });
-    testExamples.exec("yarn test:ci", {
+    testExamples.exec("npm run test:ci", {
       cwd: "examples/typescript-manual-mapping",
     });
-    testExamples.exec("yarn test:ci", {
+    testExamples.exec("npm run test:ci", {
       cwd: "examples/typescript-step-functions",
     });
-    testExamples.exec("yarn test:ci", {
+    testExamples.exec("npm run test:ci", {
       cwd: "examples/typescript-step-functions-mixed",
     });
 
     const updateExampleTests = this.addTask("examples:test:update", {
       cwd: "examples/typescript-cron-lambda",
-      exec: "yarn test:ci -u",
+      exec: "npm run test:ci -- -- -u", // requires two level deep passthrough of -u option 😅
     });
-    updateExampleTests.exec("yarn test:ci -u", {
+    updateExampleTests.exec("npm run test:ci -- -- -u", {
       cwd: "examples/typescript-manual-mapping",
     });
-    updateExampleTests.exec("yarn test:ci -u", {
+    updateExampleTests.exec("npm run test:ci -- -- -u", {
       cwd: "examples/typescript-step-functions",
     });
-    updateExampleTests.exec("yarn test:ci -u", {
+    updateExampleTests.exec("npm run test:ci -- -- -u", {
       cwd: "examples/typescript-step-functions-mixed",
     });
 

@@ -50,7 +50,7 @@ export class VpcEndpointServiceAllowedPrincipal extends cdktf.TerraformResource 
       terraformResourceType: 'aws_vpc_endpoint_service_allowed_principal',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

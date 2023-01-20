@@ -46,7 +46,7 @@ export class DataAwsKinesisFirehoseDeliveryStream extends cdktf.TerraformDataSou
       terraformResourceType: 'aws_kinesis_firehose_delivery_stream',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

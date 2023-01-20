@@ -42,7 +42,7 @@ export class DataAwsCanonicalUserId extends cdktf.TerraformDataSource {
       terraformResourceType: 'aws_canonical_user_id',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

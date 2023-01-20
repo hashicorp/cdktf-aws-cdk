@@ -50,7 +50,7 @@ export class EcsAccountSettingDefault extends cdktf.TerraformResource {
       terraformResourceType: 'aws_ecs_account_setting_default',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

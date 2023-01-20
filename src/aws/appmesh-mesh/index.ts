@@ -192,7 +192,7 @@ export class AppmeshMesh extends cdktf.TerraformResource {
       terraformResourceType: 'aws_appmesh_mesh',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

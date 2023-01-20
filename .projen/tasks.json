@@ -128,18 +128,18 @@
       "name": "examples:test",
       "steps": [
         {
-          "exec": "yarn test:ci"
+          "exec": "npm run test:ci"
         },
         {
-          "exec": "yarn test:ci",
+          "exec": "npm run test:ci",
           "cwd": "examples/typescript-manual-mapping"
         },
         {
-          "exec": "yarn test:ci",
+          "exec": "npm run test:ci",
           "cwd": "examples/typescript-step-functions"
         },
         {
-          "exec": "yarn test:ci",
+          "exec": "npm run test:ci",
           "cwd": "examples/typescript-step-functions-mixed"
         }
       ],
@@ -149,18 +149,18 @@
       "name": "examples:test:update",
       "steps": [
         {
-          "exec": "yarn test:ci -u"
+          "exec": "npm run test:ci -- -- -u"
         },
         {
-          "exec": "yarn test:ci -u",
+          "exec": "npm run test:ci -- -- -u",
           "cwd": "examples/typescript-manual-mapping"
         },
         {
-          "exec": "yarn test:ci -u",
+          "exec": "npm run test:ci -- -- -u",
           "cwd": "examples/typescript-step-functions"
         },
         {
-          "exec": "yarn test:ci -u",
+          "exec": "npm run test:ci -- -- -u",
           "cwd": "examples/typescript-step-functions-mixed"
         }
       ],
@@ -171,7 +171,7 @@
       "description": "Creates the distribution package",
       "steps": [
         {
-          "exec": "if [ ! -z ${CI} ]; then mkdir -p dist && rsync -a . dist --exclude .git --exclude node_modules; else npx projen package-all; fi"
+          "exec": "if [ ! -z ${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi"
         }
       ]
     },
@@ -243,16 +243,8 @@
       },
       "steps": [
         {
-          "exec": "jest --passWithNoTests --all --updateSnapshot --coverageProvider=v8"
-        }
-      ]
-    },
-    "test:update": {
-      "name": "test:update",
-      "description": "Update jest snapshots",
-      "steps": [
-        {
-          "exec": "jest --updateSnapshot"
+          "exec": "jest --passWithNoTests --coverageProvider=v8 --updateSnapshot",
+          "receiveArgs": true
         }
       ]
     },

@@ -721,7 +721,7 @@ export class CloudsearchDomain extends cdktf.TerraformResource {
       terraformResourceType: 'aws_cloudsearch_domain',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

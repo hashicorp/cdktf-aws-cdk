@@ -50,7 +50,7 @@ export class DataAwsConnectLambdaFunctionAssociation extends cdktf.TerraformData
       terraformResourceType: 'aws_connect_lambda_function_association',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

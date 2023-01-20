@@ -2825,7 +2825,7 @@ export class KinesisAnalyticsApplication extends cdktf.TerraformResource {
       terraformResourceType: 'aws_kinesis_analytics_application',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,

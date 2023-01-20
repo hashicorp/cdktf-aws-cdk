@@ -50,7 +50,7 @@ export class ShieldProtectionHealthCheckAssociation extends cdktf.TerraformResou
       terraformResourceType: 'aws_shield_protection_health_check_association',
       terraformGeneratorMetadata: {
         providerName: 'aws',
-        providerVersion: '3.75.2',
+        providerVersion: '3.76.1',
         providerVersionConstraint: '~> 3.0'
       },
       provider: config.provider,
