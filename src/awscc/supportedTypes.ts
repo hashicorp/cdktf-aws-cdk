@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // generated - this file is generated and can be updated by running the fetch:types script
 export default new Set([
   "AWS::ACMPCA::Certificate",

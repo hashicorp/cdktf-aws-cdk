@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { AwsTerraformAdapter } from "../aws-adapter";
 import { TerraformResource, TerraformStack, Testing } from "cdktf";
 import { CfnElement } from "aws-cdk-lib";
