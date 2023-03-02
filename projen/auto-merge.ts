@@ -10,7 +10,7 @@ export class AutoMerge {
     if (!workflow) throw new Error('no workflow defined');
 
     workflow.on({
-      pullRequest: {
+      pullRequestTarget: {
         types: [
           'labeled',
           'unlabeled',
