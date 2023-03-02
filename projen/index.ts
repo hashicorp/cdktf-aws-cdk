@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { cdk } from "projen";
+import { JobStep } from "projen/lib/github/workflows-model";
 import { AutoMerge } from "./auto-merge";
 import { CdktfConfig } from "./cdktf-config";
 import { CustomizedLicense } from "./customized-license";
@@ -93,7 +94,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       workflowGitIdentity: {
         name: "team-tf-cdk",
         email: "github-team-tf-cdk@hashicorp.com",
-      },    
+      },
       depsUpgradeOptions: {
         workflowOptions: {
           labels: ["dependencies"],
@@ -142,7 +143,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
         {
           name: "Clean up",
           run: "rm -rf .repo",
-        }
+        },
       ],
     });
 
@@ -196,6 +197,23 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
 
     this.addPackageIgnore("examples");
     this.addPackageIgnore("/.projenrc.ts");
+
+    const setSafeDirectory = {
+      name: "Set git config safe.directory",
+      run: "git config --global --add safe.directory $(pwd)",
+    };
+
+    ((this.buildWorkflow as any).preBuildSteps as JobStep[]).push(
+      setSafeDirectory
+    );
+    (this.release as any).defaultBranch.workflow.jobs.release.steps.splice(
+      1,
+      0,
+      setSafeDirectory
+    );
+    const { upgrade, pr } = (this.upgradeWorkflow as any).workflows[0].jobs;
+    upgrade.steps.splice(1, 0, setSafeDirectory);
+    pr.steps.splice(1, 0, setSafeDirectory);
 
     new CdktfConfig(this, {
       terraformProvider,
