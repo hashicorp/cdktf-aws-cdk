@@ -39,7 +39,7 @@ describe("typescript-cron-lambda", () => {
               \\"depends_on\\": [
                 \\"time_sleep.adapter_lambdaServiceRole494E4CA6_sleep_lambdaServiceRole494E4CA6_73847BDD\\"
               ],
-              \\"desired_state\\": \\"\${jsonencode({Code = {ZipFile = \\\\\\"def main(event, context):\\\\\\\\n    print(\\\\\\\\\\\\\\"I'm running!\\\\\\\\\\\\\\")\\\\\\"}, Role = aws_iam_role.adapter_lambdaServiceRole494E4CA6_7D4D29EC.arn, Handler = \\\\\\"index.main\\\\\\", Runtime = \\\\\\"python3.6\\\\\\", Timeout = 300})}\\",
+              \\"desired_state\\": \\"\${jsonencode({Code = {ZipFile = \\\\\\"# Copyright (c) HashiCorp, Inc.\\\\\\\\n# SPDX-License-Identifier: MPL-2.0\\\\\\\\n\\\\\\\\ndef main(event, context):\\\\\\\\n    print(\\\\\\\\\\\\\\"I'm running!\\\\\\\\\\\\\\")\\\\\\"}, Role = aws_iam_role.adapter_lambdaServiceRole494E4CA6_7D4D29EC.arn, Handler = \\\\\\"index.main\\\\\\", Runtime = \\\\\\"python3.6\\\\\\", Timeout = 300})}\\",
               \\"type_name\\": \\"AWS::Lambda::Function\\"
             }
           },
