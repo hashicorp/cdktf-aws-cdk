@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { IResolvable, TerraformResource } from "cdktf";
 import { Construct } from "constructs";
 export declare type ResourceMapper<T extends TerraformResource> = (scope: Construct, id: string, props: any) => T | null;

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { aws_lambda, Duration } from "aws-cdk-lib";
 import { Testing } from "cdktf";
 import "cdktf/lib/testing/adapters/jest";

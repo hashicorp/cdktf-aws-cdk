@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://www.terraform.io/docs/providers/aws/r/cloud9_environment_ec2
 // generated from terraform resource schema
 

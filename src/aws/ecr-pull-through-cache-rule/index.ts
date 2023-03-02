@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://www.terraform.io/docs/providers/aws/r/ecr_pull_through_cache_rule
 // generated from terraform resource schema
 

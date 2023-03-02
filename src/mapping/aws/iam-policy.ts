@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { registerMapping } from "../index";
 import { IamPolicy } from "../../aws/iam-policy";
 import { IamRolePolicyAttachment } from "../../aws/iam-role-policy-attachment";

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { dependable, IAspect, TerraformResource, TerraformStack } from "cdktf";
 import { resolve } from "cdktf/lib/_tokens";
 import { findTokens } from "cdktf/lib/tokens/private/resolve";

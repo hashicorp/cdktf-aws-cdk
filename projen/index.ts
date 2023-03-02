@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { cdk } from "projen";
 import { JobStep } from "projen/lib/github/workflows-model";

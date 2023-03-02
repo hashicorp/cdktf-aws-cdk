@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { registerMapping } from "../index";
 import { CloudwatchEventRule, CloudwatchEventRuleConfig } from "../../aws/cloudwatch-event-rule";
 import { CloudwatchEventTarget, CloudwatchEventTargetConfig } from "../../aws/cloudwatch-event-target";

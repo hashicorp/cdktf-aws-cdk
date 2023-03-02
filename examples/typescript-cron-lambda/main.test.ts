@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { Testing } from "cdktf";
 import "cdktf/lib/testing/adapters/jest";
 import { CronLambdaStack } from "./main";
