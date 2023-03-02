@@ -3,13 +3,10 @@ import { Vpc } from "../../aws/vpc";
 import { Subnet } from "../../aws/subnet";
 import { Route } from "../../aws/route";
 import { RouteTable } from "../../aws/route-table";
-import { Eip } from "../../aws/eip";
-import { NatGateway } from "../../aws/nat-gateway";
 import { InternetGateway } from "../../aws/internet-gateway";
 import { Lb } from "../../aws/lb";
 import { SecurityGroup } from "../../aws/security-group";
 import { SecurityGroupRule } from "../../aws/security-group-rule";
-import { LbTargetGroup } from "../../aws/lb-target-group";
 import { RouteTableAssociation } from "../../aws/route-table-association";
 import { createGuessingResourceMapper } from "../helper";
 import { Aspects } from "cdktf";
@@ -56,35 +53,6 @@ registerMapping("AWS::EC2::SubnetRouteTableAssociation", {
       throw new Error("RouteTableAssociation resource does not have an arn");
     },
     Ref: (a: RouteTableAssociation) => a.id,
-  },
-});
-
-registerMapping("AWS::EC2::EIP", {
-  resource: createGuessingResourceMapper(Eip),
-  attributes: {
-    Arn: () => {
-      throw new Error("Eip resource does not have an arn");
-    },
-    Ref: (e: Eip) => e.id,
-    AllocationId: (e: Eip) => e.allocationId,
-  },
-});
-
-registerMapping("AWS::EC2::NatGateway", {
-  resource: createGuessingResourceMapper(NatGateway),
-  attributes: {
-    Arn: () => {
-      throw new Error("NatGateway resource does not have an arn");
-    },
-    Ref: (gateway: NatGateway) => gateway.id,
-  },
-});
-
-registerMapping("AWS::EC2::InternetGateway", {
-  resource: createGuessingResourceMapper(InternetGateway),
-  attributes: {
-    Arn: (gateway: InternetGateway) => gateway.arn,
-    Ref: (gateway: InternetGateway) => gateway.id,
   },
 });
 
@@ -159,13 +127,5 @@ registerMapping("AWS::EC2::SecurityGroupIngress", {
       throw new Error("SecurityGroupRule has no arn");
     },
     Ref: (rule: SecurityGroupRule) => rule.id,
-  },
-});
-
-registerMapping("AWS::ElasticLoadBalancingV2::TargetGroup", {
-  resource: createGuessingResourceMapper(LbTargetGroup),
-  attributes: {
-    Arn: (rule: LbTargetGroup) => rule.arn,
-    Ref: (rule: LbTargetGroup) => rule.id,
   },
 });
