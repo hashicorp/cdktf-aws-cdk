@@ -116,13 +116,13 @@ describe("typescript-state-machine", () => {
                 \\"variables\\": {
                 }
               },
-              \\"filename\\": \\"assets/generate-id_lambda-asset_D3DA57A3/093EF965AE66D7E8C636126B6D2F4D9D/archive.zip\\",
+              \\"filename\\": \\"assets/generate-id_lambda-asset_D3DA57A3/042F8F8D7D08F0E94434B01CC11D8886/archive.zip\\",
               \\"function_name\\": \\"generate-id-c8e9be4a2f33ecc14e138a018899daed079e618acb\\",
               \\"handler\\": \\"fn-generate-id.handler\\",
               \\"memory_size\\": 512,
               \\"role\\": \\"\${aws_iam_role.generate-id_server-role_62418FA4.arn}\\",
               \\"runtime\\": \\"nodejs14.x\\",
-              \\"source_code_hash\\": \\"093EF965AE66D7E8C636126B6D2F4D9D\\",
+              \\"source_code_hash\\": \\"042F8F8D7D08F0E94434B01CC11D8886\\",
               \\"timeout\\": 15
             },
             \\"reverse-id_fn_A44557C2\\": {
@@ -133,13 +133,13 @@ describe("typescript-state-machine", () => {
                 \\"variables\\": {
                 }
               },
-              \\"filename\\": \\"assets/reverse-id_lambda-asset_4139ACFF/093EF965AE66D7E8C636126B6D2F4D9D/archive.zip\\",
+              \\"filename\\": \\"assets/reverse-id_lambda-asset_4139ACFF/042F8F8D7D08F0E94434B01CC11D8886/archive.zip\\",
               \\"function_name\\": \\"reverse-id-c80e28e7990db1dae069bd131f26434d1b4d867e38\\",
               \\"handler\\": \\"fn-reverse-id.handler\\",
               \\"memory_size\\": 512,
               \\"role\\": \\"\${aws_iam_role.reverse-id_server-role_3C5E949B.arn}\\",
               \\"runtime\\": \\"nodejs14.x\\",
-              \\"source_code_hash\\": \\"093EF965AE66D7E8C636126B6D2F4D9D\\",
+              \\"source_code_hash\\": \\"042F8F8D7D08F0E94434B01CC11D8886\\",
               \\"timeout\\": 15
             }
           },
