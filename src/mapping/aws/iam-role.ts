@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { registerMapping } from "../index";
 import { IamRole } from "../../aws/iam-role";
 import { createGuessingResourceMapper } from "../helper";

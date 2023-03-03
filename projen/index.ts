@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { cdk } from "projen";
 import { JobStep } from "projen/lib/github/workflows-model";
@@ -214,6 +219,15 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     const { upgrade, pr } = (this.upgradeWorkflow as any).workflows[0].jobs;
     upgrade.steps.splice(1, 0, setSafeDirectory);
     pr.steps.splice(1, 0, setSafeDirectory);
+
+    this.buildWorkflow?.addPostBuildSteps(
+      {
+        name: "Setup Copywrite tool",
+        uses: "hashicorp/setup-copywrite@3ace06ad72e6ec679ea8572457b17dbc3960b8ce", // v1.0.0
+        with: { token: "${{ secrets.GITHUB_TOKEN }}" },
+      },
+      { name: "Add headers using Copywrite tool", run: "copywrite headers" }
+    );
 
     new CdktfConfig(this, {
       terraformProvider,

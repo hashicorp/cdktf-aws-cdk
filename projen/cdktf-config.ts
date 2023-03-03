@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { JsonFile, cdk } from "projen";
 
 const CDKTF_JSON_FILE = "cdktf.json";

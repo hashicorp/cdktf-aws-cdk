@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { registerMapping } from "../index";
 import { Vpc } from "../../aws/vpc";
 import { Subnet } from "../../aws/subnet";

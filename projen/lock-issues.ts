@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { javascript } from "projen";
 import { JobPermission } from "projen/lib/github/workflows-model";
 

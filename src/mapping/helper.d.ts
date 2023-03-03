@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { ResourceMapper } from "../mapping";
 import { TerraformResource } from "cdktf";
 declare type Class<T> = new (...args: any[]) => T;

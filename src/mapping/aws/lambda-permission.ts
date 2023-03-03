@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { createGuessingResourceMapper } from "../helper";
 import { registerMapping } from "../index";
 import { LambdaPermission } from "../../aws/lambda-permission";
