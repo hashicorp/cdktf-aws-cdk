@@ -116,7 +116,13 @@ registerMapping("AWS::EC2::SecurityGroup", {
 });
 
 registerMapping("AWS::EC2::SecurityGroupEgress", {
-  resource: createGuessingResourceMapper(SecurityGroupRule), // FIXME: create egress rule
+  resource: (scope, id, props) => {
+    props.Type = "egress";
+    return createGuessingResourceMapper(SecurityGroupRule, {
+      GroupId: "securityGroupId",
+      IpProtocol: "protocol",
+    })(scope, id, props);
+  },
   attributes: {
     Arn: () => {
       throw new Error("SecurityGroupRule has no arn");
@@ -126,7 +132,13 @@ registerMapping("AWS::EC2::SecurityGroupEgress", {
 });
 
 registerMapping("AWS::EC2::SecurityGroupIngress", {
-  resource: createGuessingResourceMapper(SecurityGroupRule), // FIXME: create ingress rule
+  resource: (scope, id, props) => {
+    props.Type = "ingress";
+    return createGuessingResourceMapper(SecurityGroupRule, {
+      GroupId: "securityGroupId",
+      IpProtocol: "protocol",
+    })(scope, id, props);
+  },
   attributes: {
     Arn: () => {
       throw new Error("SecurityGroupRule has no arn");
