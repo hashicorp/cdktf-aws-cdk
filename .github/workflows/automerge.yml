@@ -25,7 +25,7 @@ jobs:
     permissions: {}
     steps:
       - name: automerge
-        uses: pascalgn/automerge-action@v0.14.2
+        uses: pascalgn/automerge-action@v0.14.2 # TSCCR: no entry for repository "pascalgn/automerge-action"
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           MERGE_RETRIES: "20"
