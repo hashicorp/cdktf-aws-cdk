@@ -208,14 +208,20 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       run: "git config --global --add safe.directory $(pwd)",
     };
 
-    ((this.buildWorkflow as any).preBuildSteps as JobStep[]).push(
-      setSafeDirectory
-    );
-    (this.release as any).defaultBranch.workflow.jobs.release.steps.splice(
-      1,
-      0,
-      setSafeDirectory
-    );
+    const ensureCorrectUser = {
+      name: "Ensure correct user",
+      run: "chown -R root /__w/cdktf-aws-cdk",
+    };
+
+    const buildSteps = (this.buildWorkflow as any).preBuildSteps as JobStep[];
+    const releaseSteps = (this.release as any).defaultBranch.workflow.jobs
+      .release.steps;
+
+    buildSteps.push(setSafeDirectory);
+    releaseSteps.splice(1, 0, setSafeDirectory);
+    buildSteps.push(ensureCorrectUser);
+    releaseSteps.splice(1, 0, ensureCorrectUser);
+
     const { upgrade, pr } = (this.upgradeWorkflow as any).workflows[0].jobs;
     upgrade.steps.splice(1, 0, setSafeDirectory);
     pr.steps.splice(1, 0, setSafeDirectory);

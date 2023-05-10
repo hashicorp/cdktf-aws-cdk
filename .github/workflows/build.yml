@@ -27,6 +27,8 @@ jobs:
         run: yarn install --check-files
       - name: Set git config safe.directory
         run: git config --global --add safe.directory $(pwd)
+      - name: Ensure correct user
+        run: chown -R root /__w/cdktf-aws-cdk
       - name: build
         run: npx projen build
       - name: Prepare Temporary Directory
