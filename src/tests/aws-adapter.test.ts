@@ -306,7 +306,7 @@ describe("AwsTerraformAdapter", () => {
               \\"adapter_another_C86ABFE2\\": {
               },
               \\"adapter_subject_24E89D84\\": {
-                \\"value\\": \\"\${test.adapter_another_C86ABFE2.map[\\\\\\"keyA\\\\\\"][test.adapter_another_C86ABFE2.string]}\\"
+                \\"value\\": \\"\${test.adapter_another_C86ABFE2.map.keyA[test.adapter_another_C86ABFE2.string]}\\"
               }
             }
           }
