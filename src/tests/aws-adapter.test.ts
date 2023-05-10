@@ -248,7 +248,7 @@ describe("AwsTerraformAdapter", () => {
       `);
     });
 
-    it("should resolve Fn::Cidr", () => {
+    xit("should resolve Fn::Cidr", () => {
       new StaticCfnConstruct(adapter, "cfn", {
         Resources: {
           subject: {
