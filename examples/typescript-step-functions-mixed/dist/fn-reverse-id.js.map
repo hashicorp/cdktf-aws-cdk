@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["../fn-reverse-id.ts"],
-  "sourcesContent": ["export const handler = async (state: { value: string }) => ({\n  value: state.value.split(\"\").reverse().join(\"\"),\n});\n"],
-  "mappings": ";;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAO,IAAM,UAAU,OAAO,UAA8B;AAAA,EAC1D,OAAO,MAAM,MAAM,MAAM,EAAE,EAAE,QAAQ,EAAE,KAAK,EAAE;AAChD;",
+  "sourcesContent": ["/**\n * Copyright (c) HashiCorp, Inc.\n * SPDX-License-Identifier: MPL-2.0\n */\n\nexport const handler = async (state: { value: string }) => ({\n  value: state.value.split(\"\").reverse().join(\"\"),\n});\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAKO,IAAM,UAAU,OAAO,UAA8B;AAAA,EAC1D,OAAO,MAAM,MAAM,MAAM,EAAE,EAAE,QAAQ,EAAE,KAAK,EAAE;AAChD;",
   "names": []
 }

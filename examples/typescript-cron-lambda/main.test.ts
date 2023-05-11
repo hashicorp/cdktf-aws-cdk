@@ -39,7 +39,7 @@ describe("typescript-cron-lambda", () => {
               \\"depends_on\\": [
                 \\"time_sleep.adapter_lambdaServiceRole494E4CA6_sleep_lambdaServiceRole494E4CA6_73847BDD\\"
               ],
-              \\"desired_state\\": \\"\${jsonencode({Code = {ZipFile = \\\\\\"# Copyright (c) HashiCorp, Inc.\\\\\\\\n# SPDX-License-Identifier: MPL-2.0\\\\\\\\n\\\\\\\\ndef main(event, context):\\\\\\\\n    print(\\\\\\\\\\\\\\"I'm running!\\\\\\\\\\\\\\")\\\\\\"}, Role = aws_iam_role.adapter_lambdaServiceRole494E4CA6_7D4D29EC.arn, Handler = \\\\\\"index.main\\\\\\", Runtime = \\\\\\"python3.6\\\\\\", Timeout = 300})}\\",
+              \\"desired_state\\": \\"\${jsonencode({\\\\\\"Code\\\\\\" = {\\\\\\"ZipFile\\\\\\" = \\\\\\"# Copyright (c) HashiCorp, Inc.\\\\\\\\n# SPDX-License-Identifier: MPL-2.0\\\\\\\\n\\\\\\\\ndef main(event, context):\\\\\\\\n    print(\\\\\\\\\\\\\\"I'm running!\\\\\\\\\\\\\\")\\\\\\"}, \\\\\\"Role\\\\\\" = aws_iam_role.adapter_lambdaServiceRole494E4CA6_7D4D29EC.arn, \\\\\\"Handler\\\\\\" = \\\\\\"index.main\\\\\\", \\\\\\"Runtime\\\\\\" = \\\\\\"python3.6\\\\\\", \\\\\\"Timeout\\\\\\" = 300})}\\",
               \\"type_name\\": \\"AWS::Lambda::Function\\"
             }
           },
@@ -51,13 +51,13 @@ describe("typescript-cron-lambda", () => {
           },
           \\"aws_cloudwatch_event_target\\": {
             \\"adapter_ruleF2C1DCDC_target0_82E1D1E6\\": {
-              \\"arn\\": \\"\${jsondecode(aws_cloudcontrolapi_resource.adapter_lambda8B5974B5_06304D76.properties)[\\\\\\"Arn\\\\\\"]}\\",
+              \\"arn\\": \\"\${jsondecode(aws_cloudcontrolapi_resource.adapter_lambda8B5974B5_06304D76.properties).Arn}\\",
               \\"rule\\": \\"\${aws_cloudwatch_event_rule.adapter_ruleF2C1DCDC_10BF962A.id}\\"
             }
           },
           \\"aws_iam_role\\": {
             \\"adapter_lambdaServiceRole494E4CA6_7D4D29EC\\": {
-              \\"assume_role_policy\\": \\"\${jsonencode({Statement = [{Action = \\\\\\"sts:AssumeRole\\\\\\", Effect = \\\\\\"Allow\\\\\\", Principal = {Service = \\\\\\"lambda.amazonaws.com\\\\\\"}}], Version = \\\\\\"2012-10-17\\\\\\"})}\\",
+              \\"assume_role_policy\\": \\"\${jsonencode({\\\\\\"Statement\\\\\\" = [{\\\\\\"Action\\\\\\" = \\\\\\"sts:AssumeRole\\\\\\", \\\\\\"Effect\\\\\\" = \\\\\\"Allow\\\\\\", \\\\\\"Principal\\\\\\" = {\\\\\\"Service\\\\\\" = \\\\\\"lambda.amazonaws.com\\\\\\"}}], \\\\\\"Version\\\\\\" = \\\\\\"2012-10-17\\\\\\"})}\\",
               \\"managed_policy_arns\\": [
                 \\"\${join(\\\\\\"\\\\\\", [\\\\\\"arn:\\\\\\", data.aws_partition.adapter_aws-partition_5B16AD9D.partition, \\\\\\":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole\\\\\\"])}\\"
               ]
@@ -66,7 +66,7 @@ describe("typescript-cron-lambda", () => {
           \\"aws_lambda_permission\\": {
             \\"adapter_ruleAllowEventRuleadapterlambdaFD1ADB594D612405_A1E85F36\\": {
               \\"action\\": \\"lambda:InvokeFunction\\",
-              \\"function_name\\": \\"\${jsondecode(aws_cloudcontrolapi_resource.adapter_lambda8B5974B5_06304D76.properties)[\\\\\\"Arn\\\\\\"]}\\",
+              \\"function_name\\": \\"\${jsondecode(aws_cloudcontrolapi_resource.adapter_lambda8B5974B5_06304D76.properties).Arn}\\",
               \\"principal\\": \\"events.amazonaws.com\\",
               \\"source_arn\\": \\"\${aws_cloudwatch_event_rule.adapter_ruleF2C1DCDC_10BF962A.arn}\\"
             }
