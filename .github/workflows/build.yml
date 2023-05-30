@@ -42,9 +42,7 @@ jobs:
       - name: Clean up
         run: rm -rf .repo
       - name: Setup Copywrite tool
-        uses: hashicorp/setup-copywrite@3ace06ad72e6ec679ea8572457b17dbc3960b8ce
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+        uses: hashicorp/setup-copywrite@867a1a2a064a0626db322392806428f7dc59cb3e
       - name: Add headers using Copywrite tool
         run: copywrite headers
       - name: Find mutations
@@ -88,7 +86,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
       - name: Download patch
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a
         with:
           name: .repo.patch
           path: ${{ runner.temp }}
@@ -115,7 +113,7 @@ jobs:
         with:
           node-version: 16.14.0
       - name: Download build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a
         with:
           name: build-artifact
           path: dist
