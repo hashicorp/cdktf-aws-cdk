@@ -44,13 +44,13 @@ describe("lambda function", () => {
               \\"depends_on\\": [
                 \\"time_sleep.adapter_lambdaServiceRole494E4CA6_sleep_lambdaServiceRole494E4CA6_73847BDD\\"
               ],
-              \\"desired_state\\": \\"\${jsonencode({Code = {ZipFile = \\\\\\"def main(event, context):    \\\\\\\\nprint(\\\\\\\\\\\\\\"I'm running!\\\\\\\\\\\\\\")\\\\\\"}, Role = aws_iam_role.adapter_lambdaServiceRole494E4CA6_7D4D29EC.arn, Handler = \\\\\\"index.main\\\\\\", Runtime = \\\\\\"python3.6\\\\\\", Timeout = 300})}\\",
+              \\"desired_state\\": \\"\${jsonencode({\\\\\\"Code\\\\\\" = {\\\\\\"ZipFile\\\\\\" = \\\\\\"def main(event, context):    \\\\\\\\nprint(\\\\\\\\\\\\\\"I'm running!\\\\\\\\\\\\\\")\\\\\\"}, \\\\\\"Role\\\\\\" = aws_iam_role.adapter_lambdaServiceRole494E4CA6_7D4D29EC.arn, \\\\\\"Handler\\\\\\" = \\\\\\"index.main\\\\\\", \\\\\\"Runtime\\\\\\" = \\\\\\"python3.6\\\\\\", \\\\\\"Timeout\\\\\\" = 300})}\\",
               \\"type_name\\": \\"AWS::Lambda::Function\\"
             }
           },
           \\"aws_iam_role\\": {
             \\"adapter_lambdaServiceRole494E4CA6_7D4D29EC\\": {
-              \\"assume_role_policy\\": \\"\${jsonencode({Statement = [{Action = \\\\\\"sts:AssumeRole\\\\\\", Effect = \\\\\\"Allow\\\\\\", Principal = {Service = \\\\\\"lambda.amazonaws.com\\\\\\"}}], Version = \\\\\\"2012-10-17\\\\\\"})}\\",
+              \\"assume_role_policy\\": \\"\${jsonencode({\\\\\\"Statement\\\\\\" = [{\\\\\\"Action\\\\\\" = \\\\\\"sts:AssumeRole\\\\\\", \\\\\\"Effect\\\\\\" = \\\\\\"Allow\\\\\\", \\\\\\"Principal\\\\\\" = {\\\\\\"Service\\\\\\" = \\\\\\"lambda.amazonaws.com\\\\\\"}}], \\\\\\"Version\\\\\\" = \\\\\\"2012-10-17\\\\\\"})}\\",
               \\"managed_policy_arns\\": [
                 \\"\${join(\\\\\\"\\\\\\", [\\\\\\"arn:\\\\\\", data.aws_partition.adapter_aws-partition_5B16AD9D.partition, \\\\\\":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole\\\\\\"])}\\"
               ]

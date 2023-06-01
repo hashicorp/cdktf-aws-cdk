@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["../fn-generate-id.ts"],
-  "sourcesContent": ["const generate = () => Math.random().toString(36).substring(7);\n\nexport const handler = async () => ({ value: generate() });"],
-  "mappings": ";;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,IAAM,WAAW,MAAM,KAAK,OAAO,EAAE,SAAS,EAAE,EAAE,UAAU,CAAC;AAEtD,IAAM,UAAU,YAAa,GAAE,OAAO,SAAS,EAAE;",
+  "sourcesContent": ["/**\n * Copyright (c) HashiCorp, Inc.\n * SPDX-License-Identifier: MPL-2.0\n */\n\nconst generate = () => Math.random().toString(36).substring(7);\n\nexport const handler = async () => ({ value: generate() });"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAKA,IAAM,WAAW,MAAM,KAAK,OAAO,EAAE,SAAS,EAAE,EAAE,UAAU,CAAC;AAEtD,IAAM,UAAU,YAAa,GAAE,OAAO,SAAS,EAAE;",
   "names": []
 }
