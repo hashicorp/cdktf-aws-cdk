@@ -20,7 +20,7 @@ const githubActionPinnedVersions = {
 
 const project = new CdktfAwsCdkProject({
   terraformProvider: "aws@~> 3.0",
-  cdktfVersion: "0.16.1",
+  cdktfVersion: "0.17.0",
   constructsVersion: "^10.0.25",
   minNodeVersion: "16.14.0",
   projenrcTs: true,
