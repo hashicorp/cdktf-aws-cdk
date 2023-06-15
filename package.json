@@ -47,8 +47,8 @@
     "@types/jest": "^27.0.2",
     "@types/node": "^16",
     "aws-cdk-lib": "2.0.0",
-    "cdktf": "0.16.1",
-    "cdktf-cli": "0.16.1",
+    "cdktf": "0.17.0",
+    "cdktf-cli": "0.17.0",
     "constructs": "^10.0.25",
     "jest": "^27",
     "jest-junit": "^15",
@@ -64,7 +64,7 @@
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.0.0",
-    "cdktf": "^0.16.1",
+    "cdktf": "^0.17.0",
     "constructs": "^10.0.25"
   },
   "dependencies": {
