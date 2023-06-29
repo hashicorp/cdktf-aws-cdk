@@ -1,0 +1,63 @@
+name: "🗺 Request Cloud Control Mapping"
+description: "Make a request or suggestion for adding a manual mapping for an AWS resource not yet supported by the Cloud Control API"
+labels: [cloudcontrol, enhancement, help wanted]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Note**
+        We use GitHub issues for tracking bugs and enhancements. For questions, please use [the community forum](https://discuss.hashicorp.com/c/terraform-core/cdk-for-terraform/47) where there are more people ready to help.
+
+  - type: textarea
+    id: resources
+    attributes:
+      label: Resources
+      description: |
+        Which resource(s) are missing from [this list](https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/supported-resources.html) and do we need to add manual mappings for?
+      placeholder: |
+        - `AWS::S3::BucketPolicy`
+        - `AWS::Lambda::Alias`
+        - `AWS::Lambda::Version`
+    validations:
+      required: true
+
+  - type: textarea
+    id: constructs
+    attributes:
+      label: Constructs
+      description: Which AWS CDK Construct(s) were you trying to use when you encountered this limitation?
+      placeholder: |
+        - https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.RestApi.html
+        - https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.SpecRestApi.html
+    validations:
+      required: false
+
+  - type: textarea
+    id: usecase
+    attributes:
+      label: Use Case
+      description: Is there anything else that would be helpful to know about your use case?
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Help Wanted
+      description: Is this something you're able to or interested in helping out with? This is not required but a helpful way to signal to us that you're planning to open a PR with a fix.
+      options:
+        - label: I'm interested in contributing a fix myself
+          required: false
+
+  - type: textarea
+    id: community
+    attributes:
+      label: Community Note
+      description: Please do not remove, edit, or change the following note for our community. Just leave everything in this textbox as-is.
+      value: |
+        - Please vote on this issue by adding a 👍 [reaction](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) to the original issue to help the community and maintainers prioritize this request
+        - Please do not leave "+1" or other comments that do not add relevant new information or questions, they generate extra noise for issue followers and do not help prioritize the request
+        - If you are interested in working on this issue or have submitted a pull request, please leave a comment
+    validations:
+      required: true
