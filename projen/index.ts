@@ -11,6 +11,7 @@ import { CdktfConfig } from "./cdktf-config";
 import { CustomizedLicense } from "./customized-license";
 import { LockIssues } from "./lock-issues";
 import { ProviderUpgrade } from "./provider-upgrade";
+import { UpgradeDependenciesSchedule } from "projen/lib/javascript";
 
 export interface CdktfAwsCdkOptions extends Partial<cdk.JsiiProjectOptions> {
   readonly terraformProvider: string;
@@ -102,7 +103,8 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       },
       depsUpgradeOptions: {
         workflowOptions: {
-          labels: ["dependencies"],
+          labels: ["automerge", "dependencies"],
+          schedule: UpgradeDependenciesSchedule.WEEKLY,
         },
       },
       stale: true,
