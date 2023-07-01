@@ -25,7 +25,7 @@ jobs:
     permissions: {}
     steps:
       - name: automerge
-        uses: pascalgn/automerge-action@22948e0bc22f0aa673800da838595a3e7347e584 # v0.15.6
+        uses: pascalgn/automerge-action@22948e0bc22f0aa673800da838595a3e7347e584
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           MERGE_RETRIES: "20"

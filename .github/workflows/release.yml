@@ -17,7 +17,7 @@ jobs:
       CI: "true"
     steps:
       - name: Checkout
-        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
         with:
           fetch-depth: 0
       - name: Ensure correct user
@@ -29,7 +29,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
       - name: Setup Node.js
-        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
         with:
           node-version: 16.14.0
       - name: Install dependencies
@@ -55,7 +55,7 @@ jobs:
         continue-on-error: true
       - name: Upload artifact
         if: ${{ steps.git_remote.outputs.latest_commit == github.sha }}
-        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3.1.2
+        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce
         with:
           name: build-artifact
           path: dist
@@ -69,11 +69,11 @@ jobs:
       contents: write
     if: needs.release.outputs.latest_commit == github.sha
     steps:
-      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
         with:
           node-version: 16.14.0
       - name: Download build artifacts
-        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3.0.2
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a
         with:
           name: build-artifact
           path: dist
@@ -100,11 +100,11 @@ jobs:
       contents: read
     if: needs.release.outputs.latest_commit == github.sha
     steps:
-      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
         with:
           node-version: 16.14.0
       - name: Download build artifacts
-        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3.0.2
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a
         with:
           name: build-artifact
           path: dist
