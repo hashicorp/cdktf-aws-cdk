@@ -8,6 +8,7 @@ updates:
     labels:
       - "dependencies"
       - "automerge"
+      - "auto-approve"
     open-pull-requests-limit: 5
   - package-ecosystem: "npm"
     directory: "/examples/typescript-manual-mapping"
@@ -16,6 +17,7 @@ updates:
     labels:
       - "dependencies"
       - "automerge"
+      - "auto-approve"
     open-pull-requests-limit: 5
   - package-ecosystem: "npm"
     directory: "/examples/typescript-step-functions"
@@ -24,6 +26,7 @@ updates:
     labels:
       - "dependencies"
       - "automerge"
+      - "auto-approve"
     open-pull-requests-limit: 5
   - package-ecosystem: "npm"
     directory: "/examples/typescript-step-functions-mixed"
@@ -32,4 +35,5 @@ updates:
     labels:
       - "dependencies"
       - "automerge"
+      - "auto-approve"
     open-pull-requests-limit: 5
