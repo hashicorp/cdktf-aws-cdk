@@ -5,8 +5,8 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "!examples/**"
+    paths-ignore:
+      - examples/**
   workflow_dispatch: {}
 jobs:
   release:

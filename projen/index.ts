@@ -252,15 +252,14 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     new CustomizedLicense(this);
     new LockIssues(this);
 
-    (this.release as any).defaultBranch.workflow.on({
-      push: {
-        branches: [
-          "main",
-        ],
-        paths: [ // don't do a release if the change was only to the examples
-          "!examples/**",
-        ],
-      },
+    const releaseWorkflow = this.tryFindObjectFile(".github/workflows/release.yml");
+    releaseWorkflow?.addOverride("on.push", {
+      branches: [
+        "main",
+      ],
+      "paths-ignore": [ // don't do a release if the change was only to the examples
+        "examples/**",
+      ],
     });
   }
 }
