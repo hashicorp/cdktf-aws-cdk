@@ -108,6 +108,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       stale: true,
       staleOptions: {
         issues: {
+          exemptLabels: ["backlog", "help wanted"],
           staleLabel: "stale",
           daysBeforeStale: 30,
           staleMessage:
@@ -118,6 +119,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
             "I'm closing this issue because we haven't heard back in 60 days. ⌛️ If you still need help, feel free to reopen the issue!",
         },
         pullRequest: {
+          exemptLabels: ["backlog", "help wanted"],
           staleLabel: "stale",
           daysBeforeStale: 60,
           staleMessage:

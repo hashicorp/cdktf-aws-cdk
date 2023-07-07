@@ -21,10 +21,10 @@ jobs:
           stale-pr-message: Hi there! 👋 We haven't heard from you in 60 days and would like to know if you're still working on this or need help. If we don't hear from you before then, I'll auto-close this PR in 30 days.
           close-pr-message: I'm closing this pull request because we haven't heard back in 90 days. ⌛️ If you're still working on this, feel free to reopen the PR or create a new one!
           stale-pr-label: stale
-          exempt-pr-labels: backlog
+          exempt-pr-labels: backlog,help wanted
           days-before-issue-stale: 30
           days-before-issue-close: 30
           stale-issue-message: Hi there! 👋 We haven't heard from you in 30 days and would like to know if the problem has been resolved or if you still need help. If we don't hear from you before then, I'll auto-close this issue in 30 days.
           close-issue-message: I'm closing this issue because we haven't heard back in 60 days. ⌛️ If you still need help, feel free to reopen the issue!
           stale-issue-label: stale
-          exempt-issue-labels: backlog
+          exempt-issue-labels: backlog,help wanted
