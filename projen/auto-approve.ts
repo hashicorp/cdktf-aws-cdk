@@ -43,7 +43,7 @@ export class AutoApprove {
             if: "contains(github.event.pull_request.labels.*.name, 'auto-approve')",
             run: "gh pr review ${{ github.event.pull_request.number }} --approve",
             env: {
-              GITHUB_TOKEN: "${{ secrets.GH_TOKEN }}",
+              GH_TOKEN: "${{ secrets.GH_TOKEN }}",
             },
           },
         ],
