@@ -26,11 +26,11 @@ export class AutoApprove {
     });
 
     workflow.addJobs({
-      automerge: {
+      approve: {
         runsOn: ["ubuntu-latest"],
         steps: [
           {
-            name: "approve",
+            name: "Auto-approve PR",
             if: "contains(github.event.pull_request.labels.*.name, 'auto-approve')",
             run: "gh pr review ${{ github.event.pull_request.number }} --approve",
             env: {

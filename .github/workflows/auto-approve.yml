@@ -9,11 +9,11 @@ on:
       - ready_for_review
       - reopened
 jobs:
-  automerge:
+  approve:
     runs-on: ubuntu-latest
     permissions: {}
     steps:
-      - name: approve
+      - name: Auto-approve PR
         if: contains(github.event.pull_request.labels.*.name, 'auto-approve')
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
