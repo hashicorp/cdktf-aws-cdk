@@ -24,7 +24,7 @@
     "@cdktf/aws-cdk": "^0.7.0",
     "aws-cdk-lib": "2.0.0",
     "cdktf": "0.17.1",
-    "constructs": "^10.0.5"
+    "constructs": "^10.2.69"
   },
   "overrides": {
     "@types/prettier": "2.6.0",
