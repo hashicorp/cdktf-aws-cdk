@@ -4,6 +4,7 @@
  */
 
 import { javascript } from "projen";
+import { JobPermission } from "projen/lib/github/workflows-model";
 
 /**
  * Approves PRs with the "auto-approve" label
@@ -30,6 +31,14 @@ export class AutoApprove {
         runsOn: ["ubuntu-latest"],
         steps: [
           {
+            name: "Checkout PR",
+            uses: "actions/checkout@v3",
+            with: {
+              ref: "${{ github.event.pull_request.head.ref }}",
+              repository: "${{ github.event.pull_request.head.repo.full_name }}",
+            }
+          },
+          {
             name: "Auto-approve PR",
             if: "contains(github.event.pull_request.labels.*.name, 'auto-approve')",
             run: "gh pr review ${{ github.event.pull_request.number }} --approve",
@@ -38,7 +47,9 @@ export class AutoApprove {
             },
           },
         ],
-        permissions: {},
+        permissions: {
+          contents: JobPermission.READ,
+        },
       },
     });
   }
