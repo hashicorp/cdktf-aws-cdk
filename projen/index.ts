@@ -6,6 +6,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { cdk } from "projen";
 import { JobStep } from "projen/lib/github/workflows-model";
+import { AutoApprove } from "./auto-approve";
 import { AutoMerge } from "./auto-merge";
 import { CdktfConfig } from "./cdktf-config";
 import { CustomizedLicense } from "./customized-license";
@@ -247,7 +248,19 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     });
     new ProviderUpgrade(this);
     new AutoMerge(this);
+    new AutoApprove(this);
     new CustomizedLicense(this);
     new LockIssues(this);
+
+    (this.release as any).defaultBranch.workflow.on({
+      push: {
+        branches: [
+          "main",
+        ],
+        paths: [ // don't do a release if the change was only to the examples
+          "!examples/**",
+        ],
+      },
+    });
   }
 }
