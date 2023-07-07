@@ -297,10 +297,10 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cdktf/aws-cdk@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@cdktf/aws-cdk/-/aws-cdk-0.7.0.tgz#57812144ae7194d18e5bad6abfa2b484bb6ae795"
-  integrity sha512-gvl92usXltCJOQCFC0pELObXGSwwJ/j8y1vRB9L6109X484RSNSqZIuwlGRnm75iumkxGf0Xq8569OvWZ8K7EA==
+"@cdktf/aws-cdk@^0.8.3":
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/@cdktf/aws-cdk/-/aws-cdk-0.8.3.tgz#dc54f5acd7ebe108dc1a0c983ed05517ed2097cb"
+  integrity sha512-xyu43lDByIX/pz3deKnlmFMCkmgCtnz0od0C8bAk4dPQburBv+P2eRrazV0M7o+B/mSi8sObFTTRnUx5VlKa/g==
   dependencies:
     change-case "^4.1.1"
     codemaker "^1.34.0"
@@ -1695,7 +1695,7 @@ constant-case@^3.0.4:
     tslib "^2.0.3"
     upper-case "^2.0.2"
 
-constructs@^10.0.25, constructs@^10.0.5:
+constructs@^10.0.25, constructs@^10.2.69:
   version "10.2.69"
   resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.2.69.tgz#5bb06693b317140fe310797ffd52c0d6cc595913"
   integrity sha512-0AiM/uQe5Uk6JVe/62oolmSN2MjbFQkOlYrM3fFGZLKuT+g7xlAI10EebFhyCcZwI2JAcWuWCmmCAyCothxjuw==
