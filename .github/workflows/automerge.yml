@@ -4,14 +4,11 @@ name: automerge
 on:
   pull_request_target:
     types:
-      - labeled
-      - unlabeled
-      - synchronize
       - opened
-      - edited
+      - labeled
       - ready_for_review
       - reopened
-      - unlocked
+      - synchronize
   pull_request_review:
     types:
       - submitted
@@ -31,3 +28,4 @@ jobs:
           MERGE_RETRIES: "20"
           MERGE_RETRY_SLEEP: "60000"
           MERGE_METHOD: rebase
+          UPDATE_METHOD: rebase

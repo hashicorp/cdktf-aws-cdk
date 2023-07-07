@@ -6,48 +6,46 @@
 import { javascript } from 'projen';
 
 /**
- * Checks for new versions of the given provider and creates a PR with an upgrade change if there are changes.
+ * Merges PRs with the "automerge" label
  */
 export class AutoMerge {
   constructor(project: javascript.NodeProject) {
-    const workflow = project.github?.addWorkflow('automerge');
+    const workflow = project.github?.addWorkflow("automerge");
 
-    if (!workflow) throw new Error('no workflow defined');
+    if (!workflow) throw new Error("no workflow defined");
 
     workflow.on({
       pullRequestTarget: {
         types: [
-          'labeled',
-          'unlabeled',
-          'synchronize',
-          'opened',
-          'edited',
-          'ready_for_review',
-          'reopened',
-          'unlocked',
+          "opened",
+          "labeled",
+          "ready_for_review",
+          "reopened",
+          "synchronize",
         ],
       },
       pullRequestReview: {
-        types: ['submitted'],
+        types: ["submitted"],
       },
       checkSuite: {
-        types: ['completed'],
+        types: ["completed"],
       },
       status: {},
     });
 
     workflow.addJobs({
       automerge: {
-        runsOn: ['ubuntu-latest'],
+        runsOn: ["ubuntu-latest"],
         steps: [
           {
-            name: 'automerge',
-            uses: 'pascalgn/automerge-action@v0.14.2',
+            name: "automerge",
+            uses: "pascalgn/automerge-action@v0.14.2",
             env: {
-              GITHUB_TOKEN: '${{ secrets.GH_TOKEN }}',
-              MERGE_RETRIES: '20',
-              MERGE_RETRY_SLEEP: '60000',
-              MERGE_METHOD: 'rebase',
+              GITHUB_TOKEN: "${{ secrets.GH_TOKEN }}",
+              MERGE_RETRIES: "20",
+              MERGE_RETRY_SLEEP: "60000",
+              MERGE_METHOD: "rebase",
+              UPDATE_METHOD: "rebase",
             },
           },
         ],
