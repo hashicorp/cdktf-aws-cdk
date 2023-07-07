@@ -104,7 +104,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       },
       depsUpgradeOptions: {
         workflowOptions: {
-          labels: ["automerge", "dependencies"],
+          labels: ["automerge", "dependencies", "auto-approve"],
           schedule: UpgradeDependenciesSchedule.WEEKLY,
         },
       },
