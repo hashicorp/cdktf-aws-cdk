@@ -1,0 +1,35 @@
+version: 2
+updates:
+  # Maintain dependencies for each example folder
+  - package-ecosystem: "npm"
+    directory: "/examples/typescript-cron-lambda"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "automerge"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/examples/typescript-manual-mapping"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "automerge"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/examples/typescript-step-functions"
+    schedule:
+      interval: "monthly"
+    labels:
+      - "dependencies"
+      - "automerge"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/examples/typescript-step-functions-mixed"
+    schedule:
+      interval: "monthly"
+    labels:
+      - "dependencies"
+      - "automerge"
+    open-pull-requests-limit: 5
