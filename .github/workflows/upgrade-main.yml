@@ -4,7 +4,7 @@ name: upgrade-main
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: 0 0 * * *
+    - cron: 0 0 * * 1
 jobs:
   upgrade:
     name: Upgrade
@@ -83,7 +83,7 @@ jobs:
             *Automatically created by projen via the "upgrade-main" workflow*
           branch: github-actions/upgrade-main
           title: "chore(deps): upgrade dependencies"
-          labels: dependencies
+          labels: automerge,dependencies,auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
 

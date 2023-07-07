@@ -1,0 +1,113 @@
+name: "🐛 Bug Report"
+description: "If something isn't working as expected 🤔"
+labels: [bug, new]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Note**
+        We use GitHub issues for tracking bugs and enhancements. For questions, please use [the community forum](https://discuss.hashicorp.com/c/terraform-core/cdk-for-terraform/47) where there are more people ready to help.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: |
+        A clear and concise description of the issue in plain English.
+        Feel free to include screenshots, but do NOT paste your full debug output here; link that in a GitHub Gist further down in this form.
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: CDKTF AWS Adapter Version
+      description: |
+        What version of `@cdktf/aws-cdk` are you using? You can look this up using `npm list`.
+      placeholder: v0.8.3
+    validations:
+      required: true
+
+  - type: input
+    id: aws
+    attributes:
+      label: AWS CDK Version
+      description: |
+        What version of `aws-cdk-lib` are you using? You can look this up using `npm list`.
+      placeholder: v2.80.0
+    validations:
+      required: true
+
+  - type: input
+    id: gist
+    attributes:
+      label: Gist
+      description: |
+        If possible, please provide a link to a [GitHub Gist](https://gist.github.com/) containing your complete debug output or anything else that would be helpful for reproducing your issue.
+      placeholder: |
+        https://gist.github.com/gdb/b6365e79be6052e7531e7ba6ea8caf23
+    validations:
+      required: false
+
+  - type: textarea
+    id: solutions
+    attributes:
+      label: Possible Solutions
+      description: |
+        Do you have any ideas or suggestions for how the issue might be resolved?
+    validations:
+      required: false
+
+  - type: textarea
+    id: workarounds
+    attributes:
+      label: Workarounds
+      description: |
+        Did you discover any workarounds on your own? If so, please list them here.
+    validations:
+      required: false
+
+  - type: textarea
+    id: miscellaneous
+    attributes:
+      label: Anything Else?
+      description: |
+        Is there anything else we should know? For example, is there anything atypical about your setup that could be affecting this issue?
+    validations:
+      required: false
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: |
+        Are there any other GitHub issues (open or closed) or pull requests that should be linked here? Or links to documentation pages?
+        Guide to referencing Github issues: https://help.github.com/articles/basic-writing-and-formatting-syntax/#referencing-issues-and-pull-requests
+      placeholder: |
+        - #123
+        - #456
+        - https://developer.hashicorp.com/terraform/cdktf/concepts/tokens
+        - https://docs.aws.amazon.com/cdk/v2/guide/tokens.html
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Help Wanted
+      description: Is this something you're able to or interested in helping out with? This is not required but a helpful way to signal to us that you're planning to open a PR with a fix.
+      options:
+        - label: I'm interested in contributing a fix myself
+          required: false
+
+  - type: textarea
+    id: community
+    attributes:
+      label: Community Note
+      description: Please do not remove, edit, or change the following note for our community. Just leave everything in this textbox as-is.
+      value: |
+        - Please vote on this issue by adding a 👍 [reaction](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) to the original issue to help the community and maintainers prioritize this request
+        - Please do not leave "+1" or other comments that do not add relevant new information or questions, they generate extra noise for issue followers and do not help prioritize the request
+        - If you are interested in working on this issue or have submitted a pull request, please leave a comment
+    validations:
+      required: true

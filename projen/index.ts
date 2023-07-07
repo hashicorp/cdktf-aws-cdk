@@ -6,11 +6,13 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { cdk } from "projen";
 import { JobStep } from "projen/lib/github/workflows-model";
+import { AutoApprove } from "./auto-approve";
 import { AutoMerge } from "./auto-merge";
 import { CdktfConfig } from "./cdktf-config";
 import { CustomizedLicense } from "./customized-license";
 import { LockIssues } from "./lock-issues";
 import { ProviderUpgrade } from "./provider-upgrade";
+import { UpgradeDependenciesSchedule } from "projen/lib/javascript";
 
 export interface CdktfAwsCdkOptions extends Partial<cdk.JsiiProjectOptions> {
   readonly terraformProvider: string;
@@ -102,12 +104,14 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       },
       depsUpgradeOptions: {
         workflowOptions: {
-          labels: ["dependencies"],
+          labels: ["automerge", "dependencies", "auto-approve"],
+          schedule: UpgradeDependenciesSchedule.WEEKLY,
         },
       },
       stale: true,
       staleOptions: {
         issues: {
+          exemptLabels: ["backlog", "help wanted"],
           staleLabel: "stale",
           daysBeforeStale: 30,
           staleMessage:
@@ -118,6 +122,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
             "I'm closing this issue because we haven't heard back in 60 days. ⌛️ If you still need help, feel free to reopen the issue!",
         },
         pullRequest: {
+          exemptLabels: ["backlog", "help wanted"],
           staleLabel: "stale",
           daysBeforeStale: 60,
           staleMessage:
@@ -243,7 +248,18 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     });
     new ProviderUpgrade(this);
     new AutoMerge(this);
+    new AutoApprove(this);
     new CustomizedLicense(this);
     new LockIssues(this);
+
+    const releaseWorkflow = this.tryFindObjectFile(".github/workflows/release.yml");
+    releaseWorkflow?.addOverride("on.push", {
+      branches: [
+        "main",
+      ],
+      "paths-ignore": [ // don't do a release if the change was only to the examples
+        "examples/**",
+      ],
+    });
   }
 }
