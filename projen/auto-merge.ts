@@ -31,6 +31,7 @@ export class AutoMerge {
         types: ["completed"],
       },
       status: {},
+      schedule: [{ cron: "7 13 * * *" }],
     });
 
     workflow.addJobs({
