@@ -8,11 +8,14 @@ on:
       - labeled
       - ready_for_review
       - reopened
+      - synchronize
 jobs:
   approve:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
       - name: Checkout PR
         uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
@@ -21,6 +24,4 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
       - name: Auto-approve PR
         if: contains(github.event.pull_request.labels.*.name, 'auto-approve')
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: gh pr review ${{ github.event.pull_request.number }} --approve

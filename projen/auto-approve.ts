@@ -22,6 +22,7 @@ export class AutoApprove {
           "labeled",
           "ready_for_review",
           "reopened",
+          "synchronize",
         ],
       },
     });
@@ -42,13 +43,13 @@ export class AutoApprove {
             name: "Auto-approve PR",
             if: "contains(github.event.pull_request.labels.*.name, 'auto-approve')",
             run: "gh pr review ${{ github.event.pull_request.number }} --approve",
-            env: {
-              GH_TOKEN: "${{ secrets.GH_TOKEN }}",
-            },
           },
         ],
         permissions: {
           contents: JobPermission.READ,
+        },
+        env: {
+          GH_TOKEN: "${{ secrets.GH_TOKEN }}",
         },
       },
     });
