@@ -7,12 +7,10 @@ on:
   workflow_dispatch: {}
 jobs:
   upgrade:
+    name: Upgrade Terraform providers
     runs-on: ubuntu-latest
     permissions:
-      pull-requests: write
-      issues: write
-      contents: write
-      statuses: write
+      contents: read
     env:
       CI: "true"
       CHECKPOINT_DISABLE: "1"
@@ -26,8 +24,12 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@284f54f989303d2699d373481a0cfa13ad5a6666
         with:
-          commit-message: "chore: upgrade provider"
+          commit-message: "feat: upgrade providers"
           branch: auto/provider-upgrade
-          title: "chore: upgrade provider"
-          body: This PR upgrades provider to the latest version
+          title: "feat: upgrade providers"
+          body: This PR upgrades the AWS and Time providers to the latest version, which may or may not result in new features.
           labels: automerge
+          token: ${{ secrets.PROJEN_GITHUB_TOKEN }}
+          author: team-tf-cdk <github-team-tf-cdk@hashicorp.com>
+          committer: team-tf-cdk <github-team-tf-cdk@hashicorp.com>
+          signoff: true
