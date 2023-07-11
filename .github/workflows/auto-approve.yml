@@ -8,7 +8,6 @@ on:
       - labeled
       - ready_for_review
       - reopened
-      - synchronize
 jobs:
   approve:
     runs-on: ubuntu-latest

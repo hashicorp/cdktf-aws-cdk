@@ -22,7 +22,6 @@ export class AutoApprove {
           "labeled",
           "ready_for_review",
           "reopened",
-          "synchronize",
         ],
       },
     });

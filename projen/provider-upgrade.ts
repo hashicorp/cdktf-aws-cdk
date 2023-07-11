@@ -22,10 +22,7 @@ export class ProviderUpgrade {
 
     workflow.addJobs({
       upgrade: {
-        env: {
-          CI: "true",
-          CHECKPOINT_DISABLE: "1",
-        },
+        name: "Upgrade Terraform providers",
         runsOn: ["ubuntu-latest"],
         steps: [
           {
@@ -43,19 +40,25 @@ export class ProviderUpgrade {
             name: "Create Pull Request",
             uses: "peter-evans/create-pull-request@v3",
             with: {
-              "commit-message": "chore: upgrade provider",
+              "commit-message": "feat: upgrade providers",
               branch: "auto/provider-upgrade",
-              title: "chore: upgrade provider",
-              body: "This PR upgrades provider to the latest version",
+              title: "feat: upgrade providers",
+              body:
+                "This PR upgrades the AWS and Time providers to the latest version, which may or may not result in new features.",
               labels: "automerge",
+              token: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
+              author: "team-tf-cdk <github-team-tf-cdk@hashicorp.com>",
+              committer: "team-tf-cdk <github-team-tf-cdk@hashicorp.com>",
+              signoff: true,
             },
           },
         ],
+        env: {
+          CI: "true",
+          CHECKPOINT_DISABLE: "1",
+        },
         permissions: {
-          pullRequests: JobPermission.WRITE,
-          issues: JobPermission.WRITE,
-          contents: JobPermission.WRITE,
-          statuses: JobPermission.WRITE,
+          contents: JobPermission.READ,
         },
       },
     });
