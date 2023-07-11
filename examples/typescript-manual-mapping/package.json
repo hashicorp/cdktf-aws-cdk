@@ -23,7 +23,7 @@
   "dependencies": {
     "@cdktf/aws-cdk": "^0.8.8",
     "aws-cdk-lib": "2.87.0",
-    "cdktf": "0.17.0",
+    "cdktf": "0.17.1",
     "constructs": "^10.0.5"
   },
   "overrides": {
