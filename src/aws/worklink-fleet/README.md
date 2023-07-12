@@ -1,3 +1,3 @@
 # `aws_worklink_fleet`
 
-Refer to the Terraform Registory for docs: [`aws_worklink_fleet`](https://www.terraform.io/docs/providers/aws/r/worklink_fleet).
+Refer to the Terraform Registory for docs: [`aws_worklink_fleet`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/worklink_fleet).

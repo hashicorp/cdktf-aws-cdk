@@ -1,9 +1,4 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
-// https://www.terraform.io/docs/providers/time
+// https://registry.terraform.io/providers/hashicorp/time/0.7.2/docs
 // generated from terraform resource schema
 
 import { Construct } from 'constructs';
@@ -15,13 +10,13 @@ export interface TimeProviderConfig {
   /**
   * Alias name
   * 
-  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/time#alias TimeProvider#alias}
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/time/0.7.2/docs#alias TimeProvider#alias}
   */
   readonly alias?: string;
 }
 
 /**
-* Represents a {@link https://www.terraform.io/docs/providers/time time}
+* Represents a {@link https://registry.terraform.io/providers/hashicorp/time/0.7.2/docs time}
 */
 export class TimeProvider extends cdktf.TerraformProvider {
 
@@ -35,7 +30,7 @@ export class TimeProvider extends cdktf.TerraformProvider {
   // ===========
 
   /**
-  * Create a new {@link https://www.terraform.io/docs/providers/time time} Resource
+  * Create a new {@link https://registry.terraform.io/providers/hashicorp/time/0.7.2/docs time} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope

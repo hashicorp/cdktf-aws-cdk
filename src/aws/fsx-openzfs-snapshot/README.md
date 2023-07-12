@@ -1,3 +1,3 @@
 # `aws_fsx_openzfs_snapshot`
 
-Refer to the Terraform Registory for docs: [`aws_fsx_openzfs_snapshot`](https://www.terraform.io/docs/providers/aws/r/fsx_openzfs_snapshot).
+Refer to the Terraform Registory for docs: [`aws_fsx_openzfs_snapshot`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/fsx_openzfs_snapshot).

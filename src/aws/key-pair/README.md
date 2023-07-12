@@ -1,3 +1,3 @@
 # `aws_key_pair`
 
-Refer to the Terraform Registory for docs: [`aws_key_pair`](https://www.terraform.io/docs/providers/aws/r/key_pair).
+Refer to the Terraform Registory for docs: [`aws_key_pair`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/key_pair).

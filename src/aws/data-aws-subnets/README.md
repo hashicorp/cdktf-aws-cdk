@@ -1,3 +1,3 @@
 # `data_aws_subnets`
 
-Refer to the Terraform Registory for docs: [`data_aws_subnets`](https://www.terraform.io/docs/providers/aws/d/subnets).
+Refer to the Terraform Registory for docs: [`data_aws_subnets`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/subnets).

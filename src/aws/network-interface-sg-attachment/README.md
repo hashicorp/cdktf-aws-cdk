@@ -1,3 +1,3 @@
 # `aws_network_interface_sg_attachment`
 
-Refer to the Terraform Registory for docs: [`aws_network_interface_sg_attachment`](https://www.terraform.io/docs/providers/aws/r/network_interface_sg_attachment).
+Refer to the Terraform Registory for docs: [`aws_network_interface_sg_attachment`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/network_interface_sg_attachment).

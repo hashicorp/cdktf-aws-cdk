@@ -1,3 +1,3 @@
 # `aws_cloudformation_type`
 
-Refer to the Terraform Registory for docs: [`aws_cloudformation_type`](https://www.terraform.io/docs/providers/aws/r/cloudformation_type).
+Refer to the Terraform Registory for docs: [`aws_cloudformation_type`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cloudformation_type).

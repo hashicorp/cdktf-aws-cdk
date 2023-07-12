@@ -1,3 +1,3 @@
 # `aws_storagegateway_cached_iscsi_volume`
 
-Refer to the Terraform Registory for docs: [`aws_storagegateway_cached_iscsi_volume`](https://www.terraform.io/docs/providers/aws/r/storagegateway_cached_iscsi_volume).
+Refer to the Terraform Registory for docs: [`aws_storagegateway_cached_iscsi_volume`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/storagegateway_cached_iscsi_volume).

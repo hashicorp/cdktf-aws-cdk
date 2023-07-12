@@ -1,3 +1,3 @@
 # `data_aws_globalaccelerator_accelerator`
 
-Refer to the Terraform Registory for docs: [`data_aws_globalaccelerator_accelerator`](https://www.terraform.io/docs/providers/aws/d/globalaccelerator_accelerator).
+Refer to the Terraform Registory for docs: [`data_aws_globalaccelerator_accelerator`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/globalaccelerator_accelerator).

@@ -1,3 +1,3 @@
 # `aws_macie2_classification_job`
 
-Refer to the Terraform Registory for docs: [`aws_macie2_classification_job`](https://www.terraform.io/docs/providers/aws/r/macie2_classification_job).
+Refer to the Terraform Registory for docs: [`aws_macie2_classification_job`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/macie2_classification_job).
