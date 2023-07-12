@@ -2470,10 +2470,10 @@ human-signals@^2.1.0:
   resolved "https://registry.npmjs.org/human-signals/-/human-signals-2.1.0.tgz"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
 
-iam-floyd@^0.337.0:
-  version "0.337.0"
-  resolved "https://registry.npmjs.org/iam-floyd/-/iam-floyd-0.337.0.tgz"
-  integrity sha512-sjWikJkFtVw9Gx038wwAY3lILWQm0ZUFJCa5LPwjKUl/EL+qkBEn+DPFjivy6JYaSDcDg1IuD0q0YdhZniOeAw==
+iam-floyd@^0.507.0:
+  version "0.507.0"
+  resolved "https://registry.yarnpkg.com/iam-floyd/-/iam-floyd-0.507.0.tgz#7c9a1bb41abe5bb24bb3df8349bc58c910cd061a"
+  integrity sha512-skrLpvpbhINMroBC9l7CH6tr/G7mQCSoxjrl+OUTzivKsnf8w7WRvmmAN+IA6f5TcxqUiUJ49cfv0xHdplvHgw==
   dependencies:
     "@udondan/common-substrings" "^3.0.2"
     regex-parser "^2.2.11"
