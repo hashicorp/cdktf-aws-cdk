@@ -4,7 +4,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/examples/typescript-cron-lambda"
     schedule:
-      interval: "weekly"
+      interval: "daily"
     labels:
       - "dependencies"
       - "automerge"
@@ -13,7 +13,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/examples/typescript-manual-mapping"
     schedule:
-      interval: "weekly"
+      interval: "daily"
     labels:
       - "dependencies"
       - "automerge"
@@ -22,7 +22,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/examples/typescript-step-functions"
     schedule:
-      interval: "monthly"
+      interval: "daily"
     labels:
       - "dependencies"
       - "automerge"
@@ -31,7 +31,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/examples/typescript-step-functions-mixed"
     schedule:
-      interval: "monthly"
+      interval: "daily"
     labels:
       - "dependencies"
       - "automerge"
