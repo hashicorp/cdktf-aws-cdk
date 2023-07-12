@@ -1453,15 +1453,6 @@ cdktf-cli@0.17.1:
     yoga-layout-prebuilt "^1.10.0"
     zod "^1.11.17"
 
-cdktf@0.17.0:
-  version "0.17.0"
-  resolved "https://registry.npmjs.org/cdktf/-/cdktf-0.17.0.tgz"
-  integrity sha512-4R57uBLBqeb8NgfKZdn/az8UE3yXxGHyzH6Xjsz1Oo9kNvSkPibX7YqNLUpuCgdYNVgU2fdaNoHj9h4LXc6iCw==
-  dependencies:
-    archiver "5.3.1"
-    json-stable-stringify "^1.0.2"
-    semver "^7.3.8"
-
 cdktf@0.17.1:
   version "0.17.1"
   resolved "https://registry.npmjs.org/cdktf/-/cdktf-0.17.1.tgz"
@@ -4346,7 +4337,7 @@ semver-intersect@^1.4.0:
   dependencies:
     semver "^5.0.0"
 
-semver@7.x, semver@^7.3.2, semver@^7.3.5, semver@^7.3.8, semver@^7.5.1, semver@^7.5.3, semver@^7.5.4:
+semver@7.x, semver@^7.3.2, semver@^7.3.5, semver@^7.5.1, semver@^7.5.3, semver@^7.5.4:
   version "7.5.4"
   resolved "https://registry.npmjs.org/semver/-/semver-7.5.4.tgz"
   integrity sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==
