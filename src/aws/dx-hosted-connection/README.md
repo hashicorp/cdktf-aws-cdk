@@ -1,3 +1,3 @@
 # `aws_dx_hosted_connection`
 
-Refer to the Terraform Registory for docs: [`aws_dx_hosted_connection`](https://www.terraform.io/docs/providers/aws/r/dx_hosted_connection).
+Refer to the Terraform Registory for docs: [`aws_dx_hosted_connection`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dx_hosted_connection).

@@ -1,3 +1,3 @@
 # `aws_internet_gateway`
 
-Refer to the Terraform Registory for docs: [`aws_internet_gateway`](https://www.terraform.io/docs/providers/aws/r/internet_gateway).
+Refer to the Terraform Registory for docs: [`aws_internet_gateway`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/internet_gateway).

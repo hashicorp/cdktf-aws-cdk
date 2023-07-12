@@ -1,3 +1,3 @@
 # `aws_ami`
 
-Refer to the Terraform Registory for docs: [`aws_ami`](https://www.terraform.io/docs/providers/aws/r/ami).
+Refer to the Terraform Registory for docs: [`aws_ami`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ami).

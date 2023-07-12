@@ -1,3 +1,3 @@
 # `aws_kinesis_stream_consumer`
 
-Refer to the Terraform Registory for docs: [`aws_kinesis_stream_consumer`](https://www.terraform.io/docs/providers/aws/r/kinesis_stream_consumer).
+Refer to the Terraform Registory for docs: [`aws_kinesis_stream_consumer`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/kinesis_stream_consumer).

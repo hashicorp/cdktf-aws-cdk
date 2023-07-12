@@ -1,3 +1,3 @@
 # `aws_route`
 
-Refer to the Terraform Registory for docs: [`aws_route`](https://www.terraform.io/docs/providers/aws/r/route).
+Refer to the Terraform Registory for docs: [`aws_route`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/route).

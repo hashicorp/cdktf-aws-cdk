@@ -1,3 +1,3 @@
 # `data_aws_workspaces_bundle`
 
-Refer to the Terraform Registory for docs: [`data_aws_workspaces_bundle`](https://www.terraform.io/docs/providers/aws/d/workspaces_bundle).
+Refer to the Terraform Registory for docs: [`data_aws_workspaces_bundle`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/workspaces_bundle).

@@ -1,3 +1,3 @@
 # `aws_efs_file_system`
 
-Refer to the Terraform Registory for docs: [`aws_efs_file_system`](https://www.terraform.io/docs/providers/aws/r/efs_file_system).
+Refer to the Terraform Registory for docs: [`aws_efs_file_system`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/efs_file_system).

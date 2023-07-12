@@ -1,3 +1,3 @@
 # `aws_ses_domain_mail_from`
 
-Refer to the Terraform Registory for docs: [`aws_ses_domain_mail_from`](https://www.terraform.io/docs/providers/aws/r/ses_domain_mail_from).
+Refer to the Terraform Registory for docs: [`aws_ses_domain_mail_from`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ses_domain_mail_from).

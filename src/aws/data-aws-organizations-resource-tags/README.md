@@ -1,3 +1,3 @@
 # `data_aws_organizations_resource_tags`
 
-Refer to the Terraform Registory for docs: [`data_aws_organizations_resource_tags`](https://www.terraform.io/docs/providers/aws/d/organizations_resource_tags).
+Refer to the Terraform Registory for docs: [`data_aws_organizations_resource_tags`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/organizations_resource_tags).
