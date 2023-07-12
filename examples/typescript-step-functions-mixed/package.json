@@ -24,7 +24,7 @@
     "@cdktf/aws-cdk": "^0.8.9",
     "aws-cdk-lib": "2.0.0",
     "cdktf": "0.17.0",
-    "constructs": "^10.0.5",
+    "constructs": "^10.2.69",
     "esbuild-wasm": "^0.14.23",
     "iam-floyd": "^0.337.0"
   },
