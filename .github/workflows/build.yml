@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
     outputs:
       self_mutation_happened: ${{ steps.self_mutation.outputs.self_mutation_happened }}
     env:
@@ -70,6 +71,26 @@ jobs:
         with:
           name: build-artifact
           path: dist
+      - name: Check if anything was actually changed by this PR
+        id: check_files
+        env:
+          GH_TOKEN: ${{ secrets.PROJEN_GITHUB_TOKEN }}
+          PR_ID: ${{ github.event.pull_request.number }}
+        run: gh pr diff $PR_ID --name-only | grep . || echo 'no_changes=true' >> $GITHUB_OUTPUT
+      - name: Close the PR if empty
+        env:
+          GH_TOKEN: ${{ secrets.PROJEN_GITHUB_TOKEN }}
+          PR_ID: ${{ github.event.pull_request.number }}
+        if: steps.check_files.outputs.no_changes
+        run: gh pr close $PR_ID -d -c 'Closing this PR because there are no changes after the self-mutation.'
+      - name: Cancel the rest of the run if empty
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_ID: ${{ github.run_id }}
+        if: steps.check_files.outputs.no_changes
+        run: |-
+          gh run cancel $RUN_ID 
+          gh run watch $RUN_ID
     container:
       image: hashicorp/jsii-terraform
   self-mutation:
