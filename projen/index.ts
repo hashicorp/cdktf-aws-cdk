@@ -276,7 +276,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
         GH_TOKEN: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
         PR_ID: "${{ github.event.pull_request.number }}",
       },
-      run: "gh pr diff $PR_ID --name-only | grep . || echo 'no_changes=true' >> $GITHUB_OUTPUT",
+      run: "gh pr diff $PR_ID | grep . || echo 'no_changes=true' >> $GITHUB_OUTPUT",
     } as JobStep, {
       name: "Close the PR if empty",
       env: {
