@@ -284,7 +284,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
         PR_ID: "${{ github.event.pull_request.number }}",
       },
       if: "steps.check_files.outputs.no_changes",
-      run: "gh pr close $PR_ID -d -c 'Closing this PR because there are no changes after the self-mutation.'",
+      run: "gh pr close $PR_ID -d",
     } as JobStep, {
       name: "Cancel the rest of the run if empty",
       env: {
