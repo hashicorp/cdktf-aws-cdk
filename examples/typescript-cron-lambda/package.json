@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@types/jest": "27.0.1",
-    "@types/node": "^14.0.26",
+    "@types/node": "^16",
     "cdktf-cli": "0.17.1",
     "jest": "27.1.0",
     "ts-jest": "^27.0.5",
@@ -25,6 +25,9 @@
     "aws-cdk-lib": "2.0.0",
     "cdktf": "0.17.1",
     "constructs": "^10.2.69"
+  },
+  "engines": {
+    "node": ">= 16.13.0"
   },
   "overrides": {
     "@types/prettier": "2.6.0",

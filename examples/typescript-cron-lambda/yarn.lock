@@ -299,7 +299,7 @@
 
 "@cdktf/aws-cdk@^0.8.11":
   version "0.8.11"
-  resolved "https://registry.yarnpkg.com/@cdktf/aws-cdk/-/aws-cdk-0.8.11.tgz#6a214aa40360e03efa1bc9d36451c1336833468e"
+  resolved "https://registry.npmjs.org/@cdktf/aws-cdk/-/aws-cdk-0.8.11.tgz"
   integrity sha512-XkDEYwnv6/6NgchEJoWT7JskTqwi8kHS6gabsodQ+sDpY6UbMXXfP0wcOlK9FFJV4RqQGKgD9+JchxYqy5kQSQ==
   dependencies:
     change-case "^4.1.1"
@@ -972,10 +972,10 @@
     jest-diff "^27.0.0"
     pretty-format "^27.0.0"
 
-"@types/node@*", "@types/node@^14.0.26":
-  version "14.18.36"
-  resolved "https://registry.npmjs.org/@types/node/-/node-14.18.36.tgz"
-  integrity sha512-FXKWbsJ6a1hIrRxv+FoukuHnGTgEzKYGi7kilfMae96AL9UNkPFNWJEEYWzdRI9ooIkbr4AKldyuSTLql06vLQ==
+"@types/node@*", "@types/node@^16":
+  version "16.18.38"
+  resolved "https://registry.npmjs.org/@types/node/-/node-16.18.38.tgz"
+  integrity sha512-6sfo1qTulpVbkxECP+AVrHV9OoJqhzCsfTNp5NIG+enM4HyM3HvZCO798WShIXBN0+QtDIcutJCjsVYnQP5rIQ==
 
 "@types/node@16.18.23":
   version "16.18.23"
@@ -1697,7 +1697,7 @@ constant-case@^3.0.4:
 
 constructs@^10.0.25, constructs@^10.2.69:
   version "10.2.69"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.2.69.tgz#5bb06693b317140fe310797ffd52c0d6cc595913"
+  resolved "https://registry.npmjs.org/constructs/-/constructs-10.2.69.tgz"
   integrity sha512-0AiM/uQe5Uk6JVe/62oolmSN2MjbFQkOlYrM3fFGZLKuT+g7xlAI10EebFhyCcZwI2JAcWuWCmmCAyCothxjuw==
 
 convert-source-map@^1.4.0, convert-source-map@^1.6.0, convert-source-map@^1.7.0:
@@ -4780,12 +4780,12 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@^4.9.5:
+typescript@^4.9.5, typescript@next:
   version "4.9.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
+  resolved "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz"
   integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
 
-typescript@next, typescript@~3.9.10:
+typescript@~3.9.10:
   version "3.9.10"
   resolved "https://registry.npmjs.org/typescript/-/typescript-3.9.10.tgz"
   integrity sha512-w6fIxVE/H1PkLKcCPsFqKE7Kv7QUwhU8qQY2MueZXWx5cPZdwFupLgKK3vntcK98BtNHZtAF4LA/yl2a7k8R6Q==
