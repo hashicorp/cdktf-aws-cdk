@@ -55,10 +55,6 @@ jobs:
         uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
         with:
           ref: main
-      - name: Ensure correct user
-        run: chown -R root /__w/cdktf-aws-cdk
-      - name: Set git config safe.directory
-        run: git config --global --add safe.directory $(pwd)
       - name: Download patch
         uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a
         with:
