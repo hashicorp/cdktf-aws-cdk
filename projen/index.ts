@@ -221,17 +221,15 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     const buildSteps = (this.buildWorkflow as any).preBuildSteps as JobStep[];
     const releaseSteps = (this.release as any).defaultBranch.workflow.jobs
       .release.steps;
-    const { upgrade, pr } = (this.upgradeWorkflow as any).workflows[0].jobs;
+    const { upgrade } = (this.upgradeWorkflow as any).workflows[0].jobs;
 
     buildSteps.push(setSafeDirectory);
     releaseSteps.splice(1, 0, setSafeDirectory);
     upgrade.steps.splice(1, 0, setSafeDirectory);
-    pr.steps.splice(1, 0, setSafeDirectory);
 
     buildSteps.push(ensureCorrectUser);
     releaseSteps.splice(1, 0, ensureCorrectUser);
     upgrade.steps.splice(1, 0, ensureCorrectUser);
-    pr.steps.splice(1, 0, ensureCorrectUser);
 
     this.buildWorkflow?.addPostBuildSteps(
       {
