@@ -14,6 +14,7 @@ project {
     ".github/ISSUE_TEMPLATE/**",
     ".projen/**",
     "coverage/**",
-    "dist/**"
+    "dist/**",
+    "test-reports/**",
   ]
 }
