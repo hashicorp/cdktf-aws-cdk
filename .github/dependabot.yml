@@ -10,6 +10,20 @@ updates:
       - "automerge"
       - "auto-approve"
     open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: "@types/node"
+    groups:
+      cdktf:
+        patterns:
+          - "cdktf"
+          - "cdktf-cli"
+          - "@cdktf/*"
+      jest:
+        patterns:
+          - "jest"
+          - "ts-jest"
+          - "@types/jest"
+          - "@jest/*"
   - package-ecosystem: "npm"
     directory: "/examples/typescript-manual-mapping"
     schedule:
@@ -19,6 +33,20 @@ updates:
       - "automerge"
       - "auto-approve"
     open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: "@types/node"
+    groups:
+      cdktf:
+        patterns:
+          - "cdktf"
+          - "cdktf-cli"
+          - "@cdktf/*"
+      jest:
+        patterns:
+          - "jest"
+          - "ts-jest"
+          - "@types/jest"
+          - "@jest/*"
   - package-ecosystem: "npm"
     directory: "/examples/typescript-step-functions"
     schedule:
@@ -28,6 +56,20 @@ updates:
       - "automerge"
       - "auto-approve"
     open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: "@types/node"
+    groups:
+      cdktf:
+        patterns:
+          - "cdktf"
+          - "cdktf-cli"
+          - "@cdktf/*"
+      jest:
+        patterns:
+          - "jest"
+          - "ts-jest"
+          - "@types/jest"
+          - "@jest/*"
   - package-ecosystem: "npm"
     directory: "/examples/typescript-step-functions-mixed"
     schedule:
@@ -37,3 +79,17 @@ updates:
       - "automerge"
       - "auto-approve"
     open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: "@types/node"
+    groups:
+      cdktf:
+        patterns:
+          - "cdktf"
+          - "cdktf-cli"
+          - "@cdktf/*"
+      jest:
+        patterns:
+          - "jest"
+          - "ts-jest"
+          - "@types/jest"
+          - "@jest/*"
