@@ -287,7 +287,8 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
         PR_ID: "${{ github.event.pull_request.number }}",
       },
       if: "steps.check_files.outputs.no_changes",
-      run: "gh pr close $PR_ID --delete-branch",
+      run: "git fetch origin main\ngh pr close $PR_ID --delete-branch",
+      // the GH CLI will attempt to switch back to 'main' after the pr close, which hasn't been fetched
     } as JobStep, {
       name: "Cancel the rest of the run if empty",
       env: {
