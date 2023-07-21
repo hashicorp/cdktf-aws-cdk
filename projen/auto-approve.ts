@@ -26,6 +26,8 @@ export class AutoApprove {
       },
     });
 
+    (workflow.concurrency as any) = "${{ github.workflow }}-${{ github.ref }}";
+
     workflow.addJobs({
       approve: {
         runsOn: ["ubuntu-latest"],
