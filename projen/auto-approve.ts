@@ -36,11 +36,19 @@ export class AutoApprove {
             with: {
               ref: "${{ github.event.pull_request.head.ref }}",
               repository: "${{ github.event.pull_request.head.repo.full_name }}",
-            }
+            },
           },
           {
-            name: "Auto-approve PR",
-            if: "contains(github.event.pull_request.labels.*.name, 'auto-approve')",
+            name: "Auto-approve PRs by team-tf-cdk as github-actions[bot]",
+            if: "contains(github.event.pull_request.labels.*.name, 'auto-approve') && (github.event.pull_request.user.login == 'team-tf-cdk')",
+            run: "gh pr review ${{ github.event.pull_request.number }} --approve",
+            env: {
+              GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
+            },
+          },
+          {
+            name: "Auto-approve PRs by other users as team-tf-cdk",
+            if: "contains(github.event.pull_request.labels.*.name, 'auto-approve') && (github.event.pull_request.user.login != 'team-tf-cdk')",
             run: "gh pr review ${{ github.event.pull_request.number }} --approve",
             env: {
               GH_TOKEN: "${{ secrets.GH_TOKEN }}",
@@ -49,6 +57,7 @@ export class AutoApprove {
         ],
         permissions: {
           contents: JobPermission.READ,
+          pullRequests: JobPermission.WRITE,
         },
       },
     });
