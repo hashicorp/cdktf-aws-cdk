@@ -34,6 +34,8 @@ export class AutoMerge {
       schedule: [{ cron: "7 13 * * *" }],
     });
 
+    (workflow.concurrency as any) = "${{ github.workflow }}-${{ github.ref }}";
+
     workflow.addJobs({
       automerge: {
         runsOn: ["ubuntu-latest"],
