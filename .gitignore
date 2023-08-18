@@ -63,3 +63,4 @@ package-lock.json
 !/.github/workflows/auto-approve.yml
 !/LICENSE
 !/.github/workflows/lock.yml
+!/.github/workflows/upgrade-cdktf.yml
