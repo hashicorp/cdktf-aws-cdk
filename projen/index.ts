@@ -6,13 +6,14 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { cdk } from "projen";
 import { JobStep } from "projen/lib/github/workflows-model";
+import { UpgradeDependenciesSchedule } from "projen/lib/javascript";
 import { AutoApprove } from "./auto-approve";
 import { AutoMerge } from "./auto-merge";
 import { CdktfConfig } from "./cdktf-config";
 import { CustomizedLicense } from "./customized-license";
 import { LockIssues } from "./lock-issues";
 import { ProviderUpgrade } from "./provider-upgrade";
-import { UpgradeDependenciesSchedule } from "projen/lib/javascript";
+import { UpgradeCDKTF } from "./upgrade-cdktf";
 
 export interface CdktfAwsCdkOptions extends Partial<cdk.JsiiProjectOptions> {
   readonly terraformProvider: string;
@@ -256,6 +257,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     new AutoApprove(this);
     new CustomizedLicense(this);
     new LockIssues(this);
+    new UpgradeCDKTF(this);
 
     const releaseWorkflow = this.tryFindObjectFile(".github/workflows/release.yml");
     releaseWorkflow?.addOverride("on.push", {
