@@ -38,19 +38,27 @@ export class UpgradeCDKTF {
           {
             name: "Get current CDKTF version",
             id: "current_version",
-            run: `echo "value=$(npm list cdktf --depth=0 --json | jq -r '.dependencies.cdktf.version')" >> $GITHUB_OUTPUT`,
+            run: [
+              `OLD_VERSION=$(npm list cdktf --depth=0 --json | jq -r '.dependencies.cdktf.version')`,
+              `echo "value=$OLD_VERSION" >> $GITHUB_OUTPUT`,
+              `echo 'short=$(cut -d "." -f 2 <<< "$OLD_VERSION")' >> $GITHUB_OUTPUT`,
+            ].join("\n"),
             // NOTE: No, there is no good way to do this in Yarn, until we upgrade to Yarn 2+ (see below)
           },
           {
             name: "Get latest CDKTF version",
             id: "latest_version",
-            run: `echo "value=$(yarn info cdktf --json | jq -r '.data.version')" >> $GITHUB_OUTPUT`,
+            run: [
+              `CDKTF_VERSION=$(yarn info cdktf --json | jq -r '.data.version')`,
+              `echo "value=$CDKTF_VERSION" >> $GITHUB_OUTPUT`,
+              `echo 'short=$(cut -d "." -f 2 <<< "$CDKTF_VERSION")' >> $GITHUB_OUTPUT`,
+            ].join("\n"),
             // IMPORTANT: the above behavior will change in Yarn 2+; `yarn info` will instead give the version of the installed package
             // When we upgrade we'll likely want to switch to `yarn npm info`: https://yarnpkg.com/cli/npm/info
           },
           {
             name: "Close old PR",
-            if: "steps.current_version.outputs.value != steps.latest_version.outputs.value",
+            if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
             run: [
               `PR_NUMBER_TO_CLOSE=$(gh pr list | grep "upgrade-cdktf" | awk '{ print $1 }')`,
               `if [ -z "$PR_NUMBER_TO_CLOSE" ]; then`,
@@ -66,7 +74,7 @@ export class UpgradeCDKTF {
           },
           {
             name: "Run upgrade script",
-            if: "steps.current_version.outputs.value != steps.latest_version.outputs.value",
+            if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
             run: "scripts/update-cdktf.sh $CDKTF_VERSION",
             env: {
               CDKTF_VERSION: "{{ steps.latest_version.outputs.value }}",
@@ -74,12 +82,12 @@ export class UpgradeCDKTF {
           },
           {
             name: "Regenerate bindings",
-            if: "steps.current_version.outputs.value != steps.latest_version.outputs.value",
+            if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
             run: "yarn run fetch && yarn run compile && yarn run docgen",
           },
           {
             name: "Create Pull Request",
-            if: "steps.current_version.outputs.value != steps.latest_version.outputs.value",
+            if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
             uses: "peter-evans/create-pull-request@v3",
             with: {
               "commit-message": "chore!: upgrade to cdktf $CDKTF_VERSION",

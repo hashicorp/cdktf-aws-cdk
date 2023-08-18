@@ -23,12 +23,18 @@ jobs:
         run: yarn install
       - name: Get current CDKTF version
         id: current_version
-        run: echo "value=$(npm list cdktf --depth=0 --json | jq -r '.dependencies.cdktf.version')" >> $GITHUB_OUTPUT
+        run: |-
+          OLD_VERSION=$(npm list cdktf --depth=0 --json | jq -r '.dependencies.cdktf.version')
+          echo "value=$OLD_VERSION" >> $GITHUB_OUTPUT
+          echo 'short=$(cut -d "." -f 2 <<< "$OLD_VERSION")' >> $GITHUB_OUTPUT
       - name: Get latest CDKTF version
         id: latest_version
-        run: echo "value=$(yarn info cdktf --json | jq -r '.data.version')" >> $GITHUB_OUTPUT
+        run: |-
+          CDKTF_VERSION=$(yarn info cdktf --json | jq -r '.data.version')
+          echo "value=$CDKTF_VERSION" >> $GITHUB_OUTPUT
+          echo 'short=$(cut -d "." -f 2 <<< "$CDKTF_VERSION")' >> $GITHUB_OUTPUT
       - name: Close old PR
-        if: steps.current_version.outputs.value != steps.latest_version.outputs.value
+        if: steps.current_version.outputs.short != steps.latest_version.outputs.short
         env:
           GH_TOKEN: "{{ secrets.GITHUB_TOKEN }}"
         run: |-
@@ -40,15 +46,15 @@ jobs:
           fi
         continue-on-error: true
       - name: Run upgrade script
-        if: steps.current_version.outputs.value != steps.latest_version.outputs.value
+        if: steps.current_version.outputs.short != steps.latest_version.outputs.short
         env:
           CDKTF_VERSION: "{{ steps.latest_version.outputs.value }}"
         run: scripts/update-cdktf.sh $CDKTF_VERSION
       - name: Regenerate bindings
-        if: steps.current_version.outputs.value != steps.latest_version.outputs.value
+        if: steps.current_version.outputs.short != steps.latest_version.outputs.short
         run: yarn run fetch && yarn run compile && yarn run docgen
       - name: Create Pull Request
-        if: steps.current_version.outputs.value != steps.latest_version.outputs.value
+        if: steps.current_version.outputs.short != steps.latest_version.outputs.short
         uses: peter-evans/create-pull-request@284f54f989303d2699d373481a0cfa13ad5a6666
         env:
           CDKTF_VERSION: "{{ steps.latest_version.outputs.value }}"
