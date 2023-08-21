@@ -102,7 +102,7 @@ export class UpgradeCDKTF {
               base: "main",
               title: "chore!: upgrade to cdktf ${{ steps.latest_version.outputs.value }}",
               body:
-                "This PR upgrades CDKTF from version `$${{ steps.latest_version.outputs.value }}` to version `${{ steps.latest_version.outputs.value }}`.",
+                "This PR upgrades CDKTF from version `${{ steps.current_version.outputs.value }}` to version `${{ steps.latest_version.outputs.value }}`.",
               labels: "automerge",
               token: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
               author: "team-tf-cdk <github-team-tf-cdk@hashicorp.com>",
