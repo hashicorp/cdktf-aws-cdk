@@ -58,16 +58,15 @@ jobs:
       - name: Create Pull Request
         if: steps.current_version.outputs.short != steps.latest_version.outputs.short
         uses: peter-evans/create-pull-request@284f54f989303d2699d373481a0cfa13ad5a6666
-        env:
-          CDKTF_VERSION: ${{ steps.latest_version.outputs.value }}
-          OLD_VERSION: ${{ steps.current_version.outputs.value }}
         with:
-          commit-message: "chore!: upgrade to cdktf $CDKTF_VERSION"
-          branch: auto/upgrade-cdktf
-          title: "chore!: upgrade to cdktf $CDKTF_VERSION"
-          body: This PR upgrades CDKTF from version `$OLD_VERSION` to version `$CDKTF_VERSION`.
+          commit-message: "chore!: upgrade to cdktf ${{ steps.latest_version.outputs.value }}"
+          branch: format('{0}-{1}', 'auto/upgrade-cdktf', ${{ steps.latest_version.outputs.short }})
+          base: main
+          title: "chore!: upgrade to cdktf ${{ steps.latest_version.outputs.value }}"
+          body: This PR upgrades CDKTF from version `$${{ steps.latest_version.outputs.value }}` to version `${{ steps.latest_version.outputs.value }}`.
           labels: automerge
           token: ${{ secrets.PROJEN_GITHUB_TOKEN }}
           author: team-tf-cdk <github-team-tf-cdk@hashicorp.com>
           committer: team-tf-cdk <github-team-tf-cdk@hashicorp.com>
           signoff: true
+          delete-branch: true
