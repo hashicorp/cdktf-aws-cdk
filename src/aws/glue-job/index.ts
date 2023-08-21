@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_job
 // generated from terraform resource schema
 
@@ -81,19 +76,19 @@ export interface GlueJobConfig extends cdktf.TerraformMetaArguments {
   readonly workerType?: string;
   /**
   * command block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_job#command GlueJob#command}
   */
   readonly command: GlueJobCommand;
   /**
   * execution_property block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_job#execution_property GlueJob#execution_property}
   */
   readonly executionProperty?: GlueJobExecutionProperty;
   /**
   * notification_property block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_job#notification_property GlueJob#notification_property}
   */
   readonly notificationProperty?: GlueJobNotificationProperty;

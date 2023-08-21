@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/eip
 // generated from terraform resource schema
 
@@ -61,7 +56,7 @@ export interface EipConfig extends cdktf.TerraformMetaArguments {
   readonly vpc?: boolean | cdktf.IResolvable;
   /**
   * timeouts block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/eip#timeouts Eip#timeouts}
   */
   readonly timeouts?: EipTimeouts;

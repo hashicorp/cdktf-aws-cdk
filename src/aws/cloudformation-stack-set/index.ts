@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cloudformation_stack_set
 // generated from terraform resource schema
 
@@ -65,13 +60,13 @@ export interface CloudformationStackSetConfig extends cdktf.TerraformMetaArgumen
   readonly templateUrl?: string;
   /**
   * auto_deployment block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cloudformation_stack_set#auto_deployment CloudformationStackSet#auto_deployment}
   */
   readonly autoDeployment?: CloudformationStackSetAutoDeployment;
   /**
   * timeouts block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cloudformation_stack_set#timeouts CloudformationStackSet#timeouts}
   */
   readonly timeouts?: CloudformationStackSetTimeouts;

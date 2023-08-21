@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/launch_configuration
 // generated from terraform resource schema
 
@@ -85,25 +80,25 @@ export interface LaunchConfigurationConfig extends cdktf.TerraformMetaArguments 
   readonly vpcClassicLinkSecurityGroups?: string[];
   /**
   * ebs_block_device block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/launch_configuration#ebs_block_device LaunchConfiguration#ebs_block_device}
   */
   readonly ebsBlockDevice?: LaunchConfigurationEbsBlockDevice[] | cdktf.IResolvable;
   /**
   * ephemeral_block_device block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/launch_configuration#ephemeral_block_device LaunchConfiguration#ephemeral_block_device}
   */
   readonly ephemeralBlockDevice?: LaunchConfigurationEphemeralBlockDevice[] | cdktf.IResolvable;
   /**
   * metadata_options block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/launch_configuration#metadata_options LaunchConfiguration#metadata_options}
   */
   readonly metadataOptions?: LaunchConfigurationMetadataOptions;
   /**
   * root_block_device block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/launch_configuration#root_block_device LaunchConfiguration#root_block_device}
   */
   readonly rootBlockDevice?: LaunchConfigurationRootBlockDevice;

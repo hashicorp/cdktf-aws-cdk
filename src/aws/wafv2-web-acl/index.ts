@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // generated from terraform resource schema
 
 import { Wafv2WebAclCustomResponseBody, 
@@ -50,25 +45,25 @@ export interface Wafv2WebAclConfig extends cdktf.TerraformMetaArguments {
   readonly tagsAll?: { [key: string]: string };
   /**
   * custom_response_body block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafv2_web_acl#custom_response_body Wafv2WebAcl#custom_response_body}
   */
   readonly customResponseBody?: Wafv2WebAclCustomResponseBody[] | cdktf.IResolvable;
   /**
   * default_action block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafv2_web_acl#default_action Wafv2WebAcl#default_action}
   */
   readonly defaultAction: Wafv2WebAclDefaultAction;
   /**
   * rule block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafv2_web_acl#rule Wafv2WebAcl#rule}
   */
   readonly rule?: Wafv2WebAclRule[] | cdktf.IResolvable;
   /**
   * visibility_config block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafv2_web_acl#visibility_config Wafv2WebAcl#visibility_config}
   */
   readonly visibilityConfig: Wafv2WebAclVisibilityConfig;

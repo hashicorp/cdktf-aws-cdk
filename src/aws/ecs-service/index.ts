@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ecs_service
 // generated from terraform resource schema
 
@@ -93,55 +88,55 @@ export interface EcsServiceConfig extends cdktf.TerraformMetaArguments {
   readonly waitForSteadyState?: boolean | cdktf.IResolvable;
   /**
   * capacity_provider_strategy block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ecs_service#capacity_provider_strategy EcsService#capacity_provider_strategy}
   */
   readonly capacityProviderStrategy?: EcsServiceCapacityProviderStrategy[] | cdktf.IResolvable;
   /**
   * deployment_circuit_breaker block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ecs_service#deployment_circuit_breaker EcsService#deployment_circuit_breaker}
   */
   readonly deploymentCircuitBreaker?: EcsServiceDeploymentCircuitBreaker;
   /**
   * deployment_controller block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ecs_service#deployment_controller EcsService#deployment_controller}
   */
   readonly deploymentController?: EcsServiceDeploymentController;
   /**
   * load_balancer block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ecs_service#load_balancer EcsService#load_balancer}
   */
   readonly loadBalancer?: EcsServiceLoadBalancer[] | cdktf.IResolvable;
   /**
   * network_configuration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ecs_service#network_configuration EcsService#network_configuration}
   */
   readonly networkConfiguration?: EcsServiceNetworkConfiguration;
   /**
   * ordered_placement_strategy block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ecs_service#ordered_placement_strategy EcsService#ordered_placement_strategy}
   */
   readonly orderedPlacementStrategy?: EcsServiceOrderedPlacementStrategy[] | cdktf.IResolvable;
   /**
   * placement_constraints block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ecs_service#placement_constraints EcsService#placement_constraints}
   */
   readonly placementConstraints?: EcsServicePlacementConstraints[] | cdktf.IResolvable;
   /**
   * service_registries block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ecs_service#service_registries EcsService#service_registries}
   */
   readonly serviceRegistries?: EcsServiceServiceRegistries;
   /**
   * timeouts block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ecs_service#timeouts EcsService#timeouts}
   */
   readonly timeouts?: EcsServiceTimeouts;

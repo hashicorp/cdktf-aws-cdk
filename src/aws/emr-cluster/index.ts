@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster
 // generated from terraform resource schema
 
@@ -105,49 +100,49 @@ export interface EmrClusterConfig extends cdktf.TerraformMetaArguments {
   readonly visibleToAllUsers?: boolean | cdktf.IResolvable;
   /**
   * auto_termination_policy block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#auto_termination_policy EmrCluster#auto_termination_policy}
   */
   readonly autoTerminationPolicy?: EmrClusterAutoTerminationPolicy;
   /**
   * bootstrap_action block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#bootstrap_action EmrCluster#bootstrap_action}
   */
   readonly bootstrapAction?: EmrClusterBootstrapAction[] | cdktf.IResolvable;
   /**
   * core_instance_fleet block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#core_instance_fleet EmrCluster#core_instance_fleet}
   */
   readonly coreInstanceFleet?: EmrClusterCoreInstanceFleet;
   /**
   * core_instance_group block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#core_instance_group EmrCluster#core_instance_group}
   */
   readonly coreInstanceGroup?: EmrClusterCoreInstanceGroup;
   /**
   * ec2_attributes block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#ec2_attributes EmrCluster#ec2_attributes}
   */
   readonly ec2Attributes?: EmrClusterEc2Attributes;
   /**
   * kerberos_attributes block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#kerberos_attributes EmrCluster#kerberos_attributes}
   */
   readonly kerberosAttributes?: EmrClusterKerberosAttributes;
   /**
   * master_instance_fleet block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#master_instance_fleet EmrCluster#master_instance_fleet}
   */
   readonly masterInstanceFleet?: EmrClusterMasterInstanceFleet;
   /**
   * master_instance_group block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#master_instance_group EmrCluster#master_instance_group}
   */
   readonly masterInstanceGroup?: EmrClusterMasterInstanceGroup;
@@ -1006,13 +1001,13 @@ export interface EmrClusterCoreInstanceFleetInstanceTypeConfigs {
   readonly weightedCapacity?: number;
   /**
   * configurations block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#configurations EmrCluster#configurations}
   */
   readonly configurations?: EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations[] | cdktf.IResolvable;
   /**
   * ebs_config block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#ebs_config EmrCluster#ebs_config}
   */
   readonly ebsConfig?: EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig[] | cdktf.IResolvable;
@@ -1486,13 +1481,13 @@ export class EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecificationLis
 export interface EmrClusterCoreInstanceFleetLaunchSpecifications {
   /**
   * on_demand_specification block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#on_demand_specification EmrCluster#on_demand_specification}
   */
   readonly onDemandSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification[] | cdktf.IResolvable;
   /**
   * spot_specification block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#spot_specification EmrCluster#spot_specification}
   */
   readonly spotSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification[] | cdktf.IResolvable;
@@ -1594,13 +1589,13 @@ export interface EmrClusterCoreInstanceFleet {
   readonly targetSpotCapacity?: number;
   /**
   * instance_type_configs block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#instance_type_configs EmrCluster#instance_type_configs}
   */
   readonly instanceTypeConfigs?: EmrClusterCoreInstanceFleetInstanceTypeConfigs[] | cdktf.IResolvable;
   /**
   * launch_specifications block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#launch_specifications EmrCluster#launch_specifications}
   */
   readonly launchSpecifications?: EmrClusterCoreInstanceFleetLaunchSpecifications;
@@ -1966,7 +1961,7 @@ export interface EmrClusterCoreInstanceGroup {
   readonly name?: string;
   /**
   * ebs_config block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#ebs_config EmrCluster#ebs_config}
   */
   readonly ebsConfig?: EmrClusterCoreInstanceGroupEbsConfig[] | cdktf.IResolvable;
@@ -2907,13 +2902,13 @@ export interface EmrClusterMasterInstanceFleetInstanceTypeConfigs {
   readonly weightedCapacity?: number;
   /**
   * configurations block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#configurations EmrCluster#configurations}
   */
   readonly configurations?: EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations[] | cdktf.IResolvable;
   /**
   * ebs_config block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#ebs_config EmrCluster#ebs_config}
   */
   readonly ebsConfig?: EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig[] | cdktf.IResolvable;
@@ -3387,13 +3382,13 @@ export class EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecificationL
 export interface EmrClusterMasterInstanceFleetLaunchSpecifications {
   /**
   * on_demand_specification block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#on_demand_specification EmrCluster#on_demand_specification}
   */
   readonly onDemandSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification[] | cdktf.IResolvable;
   /**
   * spot_specification block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#spot_specification EmrCluster#spot_specification}
   */
   readonly spotSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification[] | cdktf.IResolvable;
@@ -3495,13 +3490,13 @@ export interface EmrClusterMasterInstanceFleet {
   readonly targetSpotCapacity?: number;
   /**
   * instance_type_configs block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#instance_type_configs EmrCluster#instance_type_configs}
   */
   readonly instanceTypeConfigs?: EmrClusterMasterInstanceFleetInstanceTypeConfigs[] | cdktf.IResolvable;
   /**
   * launch_specifications block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#launch_specifications EmrCluster#launch_specifications}
   */
   readonly launchSpecifications?: EmrClusterMasterInstanceFleetLaunchSpecifications;
@@ -3863,7 +3858,7 @@ export interface EmrClusterMasterInstanceGroup {
   readonly name?: string;
   /**
   * ebs_config block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_cluster#ebs_config EmrCluster#ebs_config}
   */
   readonly ebsConfig?: EmrClusterMasterInstanceGroupEbsConfig[] | cdktf.IResolvable;
