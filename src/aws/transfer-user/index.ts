@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/transfer_user
 // generated from terraform resource schema
 
@@ -53,13 +48,13 @@ export interface TransferUserConfig extends cdktf.TerraformMetaArguments {
   readonly userName: string;
   /**
   * home_directory_mappings block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/transfer_user#home_directory_mappings TransferUser#home_directory_mappings}
   */
   readonly homeDirectoryMappings?: TransferUserHomeDirectoryMappings[] | cdktf.IResolvable;
   /**
   * posix_profile block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/transfer_user#posix_profile TransferUser#posix_profile}
   */
   readonly posixProfile?: TransferUserPosixProfile;

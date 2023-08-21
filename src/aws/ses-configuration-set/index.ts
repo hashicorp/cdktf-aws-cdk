@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ses_configuration_set
 // generated from terraform resource schema
 
@@ -33,7 +28,7 @@ export interface SesConfigurationSetConfig extends cdktf.TerraformMetaArguments 
   readonly sendingEnabled?: boolean | cdktf.IResolvable;
   /**
   * delivery_options block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ses_configuration_set#delivery_options SesConfigurationSet#delivery_options}
   */
   readonly deliveryOptions?: SesConfigurationSetDeliveryOptions;

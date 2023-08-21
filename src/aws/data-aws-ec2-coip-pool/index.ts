@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ec2_coip_pool
 // generated from terraform resource schema
 
@@ -33,7 +28,7 @@ export interface DataAwsEc2CoipPoolConfig extends cdktf.TerraformMetaArguments {
   readonly tags?: { [key: string]: string };
   /**
   * filter block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ec2_coip_pool#filter DataAwsEc2CoipPool#filter}
   */
   readonly filter?: DataAwsEc2CoipPoolFilter[] | cdktf.IResolvable;

@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_ganglia_layer
 // generated from terraform resource schema
 
@@ -117,13 +112,13 @@ export interface OpsworksGangliaLayerConfig extends cdktf.TerraformMetaArguments
   readonly username?: string;
   /**
   * cloudwatch_configuration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_ganglia_layer#cloudwatch_configuration OpsworksGangliaLayer#cloudwatch_configuration}
   */
   readonly cloudwatchConfiguration?: OpsworksGangliaLayerCloudwatchConfiguration;
   /**
   * ebs_volume block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_ganglia_layer#ebs_volume OpsworksGangliaLayer#ebs_volume}
   */
   readonly ebsVolume?: OpsworksGangliaLayerEbsVolume[] | cdktf.IResolvable;
@@ -496,7 +491,7 @@ export interface OpsworksGangliaLayerCloudwatchConfiguration {
   readonly enabled?: boolean | cdktf.IResolvable;
   /**
   * log_streams block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_ganglia_layer#log_streams OpsworksGangliaLayer#log_streams}
   */
   readonly logStreams?: OpsworksGangliaLayerCloudwatchConfigurationLogStreams[] | cdktf.IResolvable;

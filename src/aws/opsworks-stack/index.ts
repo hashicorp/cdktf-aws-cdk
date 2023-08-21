@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_stack
 // generated from terraform resource schema
 
@@ -109,7 +104,7 @@ export interface OpsworksStackConfig extends cdktf.TerraformMetaArguments {
   readonly vpcId?: string;
   /**
   * custom_cookbooks_source block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_stack#custom_cookbooks_source OpsworksStack#custom_cookbooks_source}
   */
   readonly customCookbooksSource?: OpsworksStackCustomCookbooksSource[] | cdktf.IResolvable;

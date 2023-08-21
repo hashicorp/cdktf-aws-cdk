@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/acmpca_certificate_authority
 // generated from terraform resource schema
 
@@ -41,19 +36,19 @@ export interface AcmpcaCertificateAuthorityConfig extends cdktf.TerraformMetaArg
   readonly type?: string;
   /**
   * certificate_authority_configuration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/acmpca_certificate_authority#certificate_authority_configuration AcmpcaCertificateAuthority#certificate_authority_configuration}
   */
   readonly certificateAuthorityConfiguration: AcmpcaCertificateAuthorityCertificateAuthorityConfiguration;
   /**
   * revocation_configuration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/acmpca_certificate_authority#revocation_configuration AcmpcaCertificateAuthority#revocation_configuration}
   */
   readonly revocationConfiguration?: AcmpcaCertificateAuthorityRevocationConfiguration;
   /**
   * timeouts block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/acmpca_certificate_authority#timeouts AcmpcaCertificateAuthority#timeouts}
   */
   readonly timeouts?: AcmpcaCertificateAuthorityTimeouts;
@@ -458,7 +453,7 @@ export interface AcmpcaCertificateAuthorityCertificateAuthorityConfiguration {
   readonly signingAlgorithm: string;
   /**
   * subject block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/acmpca_certificate_authority#subject AcmpcaCertificateAuthority#subject}
   */
   readonly subject: AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubject;
@@ -732,7 +727,7 @@ export class AcmpcaCertificateAuthorityRevocationConfigurationCrlConfigurationOu
 export interface AcmpcaCertificateAuthorityRevocationConfiguration {
   /**
   * crl_configuration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/acmpca_certificate_authority#crl_configuration AcmpcaCertificateAuthority#crl_configuration}
   */
   readonly crlConfiguration?: AcmpcaCertificateAuthorityRevocationConfigurationCrlConfiguration;

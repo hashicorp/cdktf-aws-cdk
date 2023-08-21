@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_access_point
 // generated from terraform resource schema
 
@@ -37,13 +32,13 @@ export interface S3AccessPointConfig extends cdktf.TerraformMetaArguments {
   readonly policy?: string;
   /**
   * public_access_block_configuration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_access_point#public_access_block_configuration S3AccessPoint#public_access_block_configuration}
   */
   readonly publicAccessBlockConfiguration?: S3AccessPointPublicAccessBlockConfiguration;
   /**
   * vpc_configuration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_access_point#vpc_configuration S3AccessPoint#vpc_configuration}
   */
   readonly vpcConfiguration?: S3AccessPointVpcConfiguration;
