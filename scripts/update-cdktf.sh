@@ -10,7 +10,7 @@ CDKTF_VERSION=$1
 
 echo "Updating main level cdktf version $CDKTF_VERSION"
 yarn
-sed -i "" "s/cdktfVersion: \".*\",/cdktfVersion: \"$CDKTF_VERSION\",/" "$PROJECT_ROOT/.projenrc.ts"
+sed -i "s/cdktfVersion: \".*\",/cdktfVersion: \"$CDKTF_VERSION\",/" "$PROJECT_ROOT/.projenrc.ts"
 npx projen
 
 echo "Updating examples"
