@@ -54,7 +54,10 @@ jobs:
         run: scripts/update-cdktf.sh $CDKTF_VERSION
       - name: Regenerate bindings
         if: steps.current_version.outputs.short != steps.latest_version.outputs.short
-        run: yarn run fetch && yarn run compile && yarn run docgen
+        run: yarn run fetch && yarn run compile
+      - name: Update auto-generated docs
+        if: steps.current_version.outputs.short != steps.latest_version.outputs.short
+        run: yarn run docgen
       - name: Create Pull Request
         if: steps.current_version.outputs.short != steps.latest_version.outputs.short
         uses: peter-evans/create-pull-request@284f54f989303d2699d373481a0cfa13ad5a6666

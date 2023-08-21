@@ -85,7 +85,12 @@ export class UpgradeCDKTF {
           {
             name: "Regenerate bindings",
             if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
-            run: "yarn run fetch && yarn run compile && yarn run docgen",
+            run: "yarn run fetch && yarn run compile",
+          },
+          {
+            name: "Update auto-generated docs",
+            if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
+            run: "yarn run docgen",
           },
           {
             name: "Create Pull Request",
