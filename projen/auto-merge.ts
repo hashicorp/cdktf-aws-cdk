@@ -47,7 +47,7 @@ export class AutoMerge {
               GITHUB_TOKEN: "${{ secrets.GH_TOKEN }}",
               MERGE_RETRIES: "20",
               MERGE_RETRY_SLEEP: "60000",
-              MERGE_METHOD: "rebase",
+              MERGE_METHOD: "squash",
               UPDATE_METHOD: "rebase",
             },
           },
