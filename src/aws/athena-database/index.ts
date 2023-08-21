@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/athena_database
 // generated from terraform resource schema
 
@@ -33,7 +28,7 @@ export interface AthenaDatabaseConfig extends cdktf.TerraformMetaArguments {
   readonly name: string;
   /**
   * encryption_configuration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/athena_database#encryption_configuration AthenaDatabase#encryption_configuration}
   */
   readonly encryptionConfiguration?: AthenaDatabaseEncryptionConfiguration;

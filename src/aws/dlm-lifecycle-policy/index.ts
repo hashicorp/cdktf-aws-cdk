@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dlm_lifecycle_policy
 // generated from terraform resource schema
 
@@ -41,7 +36,7 @@ export interface DlmLifecyclePolicyConfig extends cdktf.TerraformMetaArguments {
   readonly tagsAll?: { [key: string]: string };
   /**
   * policy_details block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dlm_lifecycle_policy#policy_details DlmLifecyclePolicy#policy_details}
   */
   readonly policyDetails: DlmLifecyclePolicyPolicyDetails;
@@ -353,13 +348,13 @@ export interface DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule {
   readonly target: string;
   /**
   * deprecate_rule block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dlm_lifecycle_policy#deprecate_rule DlmLifecyclePolicy#deprecate_rule}
   */
   readonly deprecateRule?: DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule;
   /**
   * retain_rule block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dlm_lifecycle_policy#retain_rule DlmLifecyclePolicy#retain_rule}
   */
   readonly retainRule?: DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule;
@@ -641,19 +636,19 @@ export interface DlmLifecyclePolicyPolicyDetailsSchedule {
   readonly tagsToAdd?: { [key: string]: string };
   /**
   * create_rule block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dlm_lifecycle_policy#create_rule DlmLifecyclePolicy#create_rule}
   */
   readonly createRule: DlmLifecyclePolicyPolicyDetailsScheduleCreateRule;
   /**
   * cross_region_copy_rule block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dlm_lifecycle_policy#cross_region_copy_rule DlmLifecyclePolicy#cross_region_copy_rule}
   */
   readonly crossRegionCopyRule?: DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule[] | cdktf.IResolvable;
   /**
   * retain_rule block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dlm_lifecycle_policy#retain_rule DlmLifecyclePolicy#retain_rule}
   */
   readonly retainRule: DlmLifecyclePolicyPolicyDetailsScheduleRetainRule;
@@ -866,7 +861,7 @@ export interface DlmLifecyclePolicyPolicyDetails {
   readonly targetTags: { [key: string]: string };
   /**
   * schedule block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dlm_lifecycle_policy#schedule DlmLifecyclePolicy#schedule}
   */
   readonly schedule: DlmLifecyclePolicyPolicyDetailsSchedule[] | cdktf.IResolvable;
