@@ -156,7 +156,36 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
           run: "rm -rf .repo",
         },
       ],
+      docgen: false,
     });
+
+    // Submodule documentation generation
+    this.gitignore.exclude("API.md"); // ignore the old file, we now generate it in the docs folder
+    this.addDevDeps("jsii-docgen@~9.0.0");
+    this.addDevDeps("jsii-rosetta@~5.1.2");
+
+    const docgen = this.addTask("docgen", {
+      description: "Generate documentation for the project",
+      steps: [
+        {
+          exec: [
+            "rm -rf docs",
+            "rm -f API.md",
+            "mkdir docs",
+            // @TODO in future when supporting multiple languages, add: -l python -l java -l csharp -l go
+            "jsii-docgen --split-by-submodule -l typescript",
+            // There is no nice way to tell jsii-docgen to generate docs into a folder so I went this route
+            "mv $(ls *.md | grep -v README.md) docs",
+            // Some part of the documentation are too long, we need to truncate them to ~10MB
+            "cd docs",
+            "ls ./ | xargs sed -i '150000,$ d' $1",
+          ].join(" && "),
+        },
+      ],
+    });
+    this.postCompileTask.spawn(docgen);
+    this.gitignore.include("/docs/*.md");
+    this.annotateGenerated("/docs/*.md");
 
     [this.compileTask, this.testTask].forEach((task) =>
       task.env("NODE_OPTIONS", "--max-old-space-size=6144")
