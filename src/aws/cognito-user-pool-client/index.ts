@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cognito_user_pool_client
 // generated from terraform resource schema
 
@@ -93,13 +88,13 @@ export interface CognitoUserPoolClientConfig extends cdktf.TerraformMetaArgument
   readonly writeAttributes?: string[];
   /**
   * analytics_configuration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cognito_user_pool_client#analytics_configuration CognitoUserPoolClient#analytics_configuration}
   */
   readonly analyticsConfiguration?: CognitoUserPoolClientAnalyticsConfiguration;
   /**
   * token_validity_units block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cognito_user_pool_client#token_validity_units CognitoUserPoolClient#token_validity_units}
   */
   readonly tokenValidityUnits?: CognitoUserPoolClientTokenValidityUnits;

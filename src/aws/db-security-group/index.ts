@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/db_security_group
 // generated from terraform resource schema
 
@@ -37,7 +32,7 @@ export interface DbSecurityGroupConfig extends cdktf.TerraformMetaArguments {
   readonly tagsAll?: { [key: string]: string };
   /**
   * ingress block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/db_security_group#ingress DbSecurityGroup#ingress}
   */
   readonly ingress: DbSecurityGroupIngress[] | cdktf.IResolvable;

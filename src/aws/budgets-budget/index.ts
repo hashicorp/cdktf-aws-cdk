@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/budgets_budget
 // generated from terraform resource schema
 
@@ -61,19 +56,19 @@ export interface BudgetsBudgetConfig extends cdktf.TerraformMetaArguments {
   readonly timeUnit: string;
   /**
   * cost_filter block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/budgets_budget#cost_filter BudgetsBudget#cost_filter}
   */
   readonly costFilter?: BudgetsBudgetCostFilter[] | cdktf.IResolvable;
   /**
   * cost_types block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/budgets_budget#cost_types BudgetsBudget#cost_types}
   */
   readonly costTypes?: BudgetsBudgetCostTypes;
   /**
   * notification block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/budgets_budget#notification BudgetsBudget#notification}
   */
   readonly notification?: BudgetsBudgetNotification[] | cdktf.IResolvable;

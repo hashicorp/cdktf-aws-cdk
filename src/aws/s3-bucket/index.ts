@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket
 // generated from terraform resource schema
 
@@ -77,55 +72,55 @@ export interface S3BucketConfig extends cdktf.TerraformMetaArguments {
   readonly websiteEndpoint?: string;
   /**
   * cors_rule block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#cors_rule S3Bucket#cors_rule}
   */
   readonly corsRule?: S3BucketCorsRule[] | cdktf.IResolvable;
   /**
   * grant block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#grant S3Bucket#grant}
   */
   readonly grant?: S3BucketGrant[] | cdktf.IResolvable;
   /**
   * lifecycle_rule block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#lifecycle_rule S3Bucket#lifecycle_rule}
   */
   readonly lifecycleRule?: S3BucketLifecycleRule[] | cdktf.IResolvable;
   /**
   * logging block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#logging S3Bucket#logging}
   */
   readonly logging?: S3BucketLogging[] | cdktf.IResolvable;
   /**
   * object_lock_configuration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#object_lock_configuration S3Bucket#object_lock_configuration}
   */
   readonly objectLockConfiguration?: S3BucketObjectLockConfiguration;
   /**
   * replication_configuration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#replication_configuration S3Bucket#replication_configuration}
   */
   readonly replicationConfiguration?: S3BucketReplicationConfiguration;
   /**
   * server_side_encryption_configuration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#server_side_encryption_configuration S3Bucket#server_side_encryption_configuration}
   */
   readonly serverSideEncryptionConfiguration?: S3BucketServerSideEncryptionConfiguration;
   /**
   * versioning block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#versioning S3Bucket#versioning}
   */
   readonly versioning?: S3BucketVersioning;
   /**
   * website block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#website S3Bucket#website}
   */
   readonly website?: S3BucketWebsite;
@@ -983,25 +978,25 @@ export interface S3BucketLifecycleRule {
   readonly tags?: { [key: string]: string };
   /**
   * expiration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#expiration S3Bucket#expiration}
   */
   readonly expiration?: S3BucketLifecycleRuleExpiration;
   /**
   * noncurrent_version_expiration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#noncurrent_version_expiration S3Bucket#noncurrent_version_expiration}
   */
   readonly noncurrentVersionExpiration?: S3BucketLifecycleRuleNoncurrentVersionExpiration;
   /**
   * noncurrent_version_transition block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#noncurrent_version_transition S3Bucket#noncurrent_version_transition}
   */
   readonly noncurrentVersionTransition?: S3BucketLifecycleRuleNoncurrentVersionTransition[] | cdktf.IResolvable;
   /**
   * transition block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#transition S3Bucket#transition}
   */
   readonly transition?: S3BucketLifecycleRuleTransition[] | cdktf.IResolvable;
@@ -1518,7 +1513,7 @@ export class S3BucketObjectLockConfigurationRuleDefaultRetentionOutputReference 
 export interface S3BucketObjectLockConfigurationRule {
   /**
   * default_retention block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#default_retention S3Bucket#default_retention}
   */
   readonly defaultRetention: S3BucketObjectLockConfigurationRuleDefaultRetention;
@@ -1586,7 +1581,7 @@ export interface S3BucketObjectLockConfiguration {
   readonly objectLockEnabled?: string;
   /**
   * rule block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#rule S3Bucket#rule}
   */
   readonly rule?: S3BucketObjectLockConfigurationRule;
@@ -1938,19 +1933,19 @@ export interface S3BucketReplicationConfigurationRulesDestination {
   readonly storageClass?: string;
   /**
   * access_control_translation block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#access_control_translation S3Bucket#access_control_translation}
   */
   readonly accessControlTranslation?: S3BucketReplicationConfigurationRulesDestinationAccessControlTranslation;
   /**
   * metrics block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#metrics S3Bucket#metrics}
   */
   readonly metrics?: S3BucketReplicationConfigurationRulesDestinationMetrics;
   /**
   * replication_time block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#replication_time S3Bucket#replication_time}
   */
   readonly replicationTime?: S3BucketReplicationConfigurationRulesDestinationReplicationTime;
@@ -2306,7 +2301,7 @@ export class S3BucketReplicationConfigurationRulesSourceSelectionCriteriaSseKmsE
 export interface S3BucketReplicationConfigurationRulesSourceSelectionCriteria {
   /**
   * sse_kms_encrypted_objects block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#sse_kms_encrypted_objects S3Bucket#sse_kms_encrypted_objects}
   */
   readonly sseKmsEncryptedObjects?: S3BucketReplicationConfigurationRulesSourceSelectionCriteriaSseKmsEncryptedObjects;
@@ -2396,19 +2391,19 @@ export interface S3BucketReplicationConfigurationRules {
   readonly status: string;
   /**
   * destination block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#destination S3Bucket#destination}
   */
   readonly destination: S3BucketReplicationConfigurationRulesDestination;
   /**
   * filter block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#filter S3Bucket#filter}
   */
   readonly filter?: S3BucketReplicationConfigurationRulesFilter;
   /**
   * source_selection_criteria block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#source_selection_criteria S3Bucket#source_selection_criteria}
   */
   readonly sourceSelectionCriteria?: S3BucketReplicationConfigurationRulesSourceSelectionCriteria;
@@ -2666,7 +2661,7 @@ export interface S3BucketReplicationConfiguration {
   readonly role: string;
   /**
   * rules block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#rules S3Bucket#rules}
   */
   readonly rules: S3BucketReplicationConfigurationRules[] | cdktf.IResolvable;
@@ -2843,7 +2838,7 @@ export interface S3BucketServerSideEncryptionConfigurationRule {
   readonly bucketKeyEnabled?: boolean | cdktf.IResolvable;
   /**
   * apply_server_side_encryption_by_default block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#apply_server_side_encryption_by_default S3Bucket#apply_server_side_encryption_by_default}
   */
   readonly applyServerSideEncryptionByDefault: S3BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault;
@@ -2930,7 +2925,7 @@ export class S3BucketServerSideEncryptionConfigurationRuleOutputReference extend
 export interface S3BucketServerSideEncryptionConfiguration {
   /**
   * rule block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket#rule S3Bucket#rule}
   */
   readonly rule: S3BucketServerSideEncryptionConfigurationRule;

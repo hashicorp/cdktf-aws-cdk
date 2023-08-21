@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/timestreamwrite_table
 // generated from terraform resource schema
 
@@ -37,13 +32,13 @@ export interface TimestreamwriteTableConfig extends cdktf.TerraformMetaArguments
   readonly tagsAll?: { [key: string]: string };
   /**
   * magnetic_store_write_properties block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/timestreamwrite_table#magnetic_store_write_properties TimestreamwriteTable#magnetic_store_write_properties}
   */
   readonly magneticStoreWriteProperties?: TimestreamwriteTableMagneticStoreWriteProperties;
   /**
   * retention_properties block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/timestreamwrite_table#retention_properties TimestreamwriteTable#retention_properties}
   */
   readonly retentionProperties?: TimestreamwriteTableRetentionProperties;
@@ -197,7 +192,7 @@ export class TimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreReject
 export interface TimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation {
   /**
   * s3_configuration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/timestreamwrite_table#s3_configuration TimestreamwriteTable#s3_configuration}
   */
   readonly s3Configuration?: TimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration;
@@ -268,7 +263,7 @@ export interface TimestreamwriteTableMagneticStoreWriteProperties {
   readonly enableMagneticStoreWrites?: boolean | cdktf.IResolvable;
   /**
   * magnetic_store_rejected_data_location block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/timestreamwrite_table#magnetic_store_rejected_data_location TimestreamwriteTable#magnetic_store_rejected_data_location}
   */
   readonly magneticStoreRejectedDataLocation?: TimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation;

@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appsync_resolver
 // generated from terraform resource schema
 
@@ -53,19 +48,19 @@ export interface AppsyncResolverConfig extends cdktf.TerraformMetaArguments {
   readonly type: string;
   /**
   * caching_config block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appsync_resolver#caching_config AppsyncResolver#caching_config}
   */
   readonly cachingConfig?: AppsyncResolverCachingConfig;
   /**
   * pipeline_config block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appsync_resolver#pipeline_config AppsyncResolver#pipeline_config}
   */
   readonly pipelineConfig?: AppsyncResolverPipelineConfig;
   /**
   * sync_config block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appsync_resolver#sync_config AppsyncResolver#sync_config}
   */
   readonly syncConfig?: AppsyncResolverSyncConfig;
@@ -303,7 +298,7 @@ export interface AppsyncResolverSyncConfig {
   readonly conflictHandler?: string;
   /**
   * lambda_conflict_handler_config block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appsync_resolver#lambda_conflict_handler_config AppsyncResolver#lambda_conflict_handler_config}
   */
   readonly lambdaConflictHandlerConfig?: AppsyncResolverSyncConfigLambdaConflictHandlerConfig;

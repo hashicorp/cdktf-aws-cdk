@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/guardduty_detector
 // generated from terraform resource schema
 
@@ -37,7 +32,7 @@ export interface GuarddutyDetectorConfig extends cdktf.TerraformMetaArguments {
   readonly tagsAll?: { [key: string]: string };
   /**
   * datasources block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/guardduty_detector#datasources GuarddutyDetector#datasources}
   */
   readonly datasources?: GuarddutyDetectorDatasources;
@@ -107,7 +102,7 @@ export class GuarddutyDetectorDatasourcesS3LogsOutputReference extends cdktf.Com
 export interface GuarddutyDetectorDatasources {
   /**
   * s3_logs block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/guardduty_detector#s3_logs GuarddutyDetector#s3_logs}
   */
   readonly s3Logs?: GuarddutyDetectorDatasourcesS3Logs;

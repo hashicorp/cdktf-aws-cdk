@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appsync_function
 // generated from terraform resource schema
 
@@ -53,7 +48,7 @@ export interface AppsyncFunctionConfig extends cdktf.TerraformMetaArguments {
   readonly responseMappingTemplate: string;
   /**
   * sync_config block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appsync_function#sync_config AppsyncFunction#sync_config}
   */
   readonly syncConfig?: AppsyncFunctionSyncConfig;
@@ -134,7 +129,7 @@ export interface AppsyncFunctionSyncConfig {
   readonly conflictHandler?: string;
   /**
   * lambda_conflict_handler_config block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appsync_function#lambda_conflict_handler_config AppsyncFunction#lambda_conflict_handler_config}
   */
   readonly lambdaConflictHandlerConfig?: AppsyncFunctionSyncConfigLambdaConflictHandlerConfig;

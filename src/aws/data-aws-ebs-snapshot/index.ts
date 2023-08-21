@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ebs_snapshot
 // generated from terraform resource schema
 
@@ -41,7 +36,7 @@ export interface DataAwsEbsSnapshotConfig extends cdktf.TerraformMetaArguments {
   readonly tags?: { [key: string]: string };
   /**
   * filter block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ebs_snapshot#filter DataAwsEbsSnapshot#filter}
   */
   readonly filter?: DataAwsEbsSnapshotFilter[] | cdktf.IResolvable;
