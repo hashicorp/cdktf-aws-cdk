@@ -38,7 +38,7 @@ jobs:
       - name: Close old PR
         if: steps.current_version.outputs.short != steps.latest_version.outputs.short
         env:
-          GH_TOKEN: "{{ secrets.GITHUB_TOKEN }}"
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |-
           PR_NUMBER_TO_CLOSE=$(gh pr list | grep "upgrade-cdktf" | awk '{ print $1 }')
           if [ -z "$PR_NUMBER_TO_CLOSE" ]; then
@@ -50,7 +50,7 @@ jobs:
       - name: Run upgrade script
         if: steps.current_version.outputs.short != steps.latest_version.outputs.short
         env:
-          CDKTF_VERSION: "{{ steps.latest_version.outputs.value }}"
+          CDKTF_VERSION: ${{ steps.latest_version.outputs.value }}
         run: scripts/update-cdktf.sh $CDKTF_VERSION
       - name: Regenerate bindings
         if: steps.current_version.outputs.short != steps.latest_version.outputs.short
@@ -59,8 +59,8 @@ jobs:
         if: steps.current_version.outputs.short != steps.latest_version.outputs.short
         uses: peter-evans/create-pull-request@284f54f989303d2699d373481a0cfa13ad5a6666
         env:
-          CDKTF_VERSION: "{{ steps.latest_version.outputs.value }}"
-          OLD_VERSION: "{{ steps.current_version.outputs.value }}"
+          CDKTF_VERSION: ${{ steps.latest_version.outputs.value }}
+          OLD_VERSION: ${{ steps.current_version.outputs.value }}
         with:
           commit-message: "chore!: upgrade to cdktf $CDKTF_VERSION"
           branch: auto/upgrade-cdktf

@@ -70,7 +70,7 @@ export class UpgradeCDKTF {
               `fi`,
             ].join("\n"),
             env: {
-              GH_TOKEN: "{{ secrets.GITHUB_TOKEN }}",
+              GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
             },
             continueOnError: true,
           },
@@ -79,7 +79,7 @@ export class UpgradeCDKTF {
             if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
             run: "scripts/update-cdktf.sh $CDKTF_VERSION",
             env: {
-              CDKTF_VERSION: "{{ steps.latest_version.outputs.value }}",
+              CDKTF_VERSION: "${{ steps.latest_version.outputs.value }}",
             },
           },
           {
@@ -104,8 +104,8 @@ export class UpgradeCDKTF {
               signoff: true,
             },
             env: {
-              CDKTF_VERSION: "{{ steps.latest_version.outputs.value }}",
-              OLD_VERSION: "{{ steps.current_version.outputs.value }}",
+              CDKTF_VERSION: "${{ steps.latest_version.outputs.value }}",
+              OLD_VERSION: "${{ steps.current_version.outputs.value }}",
             },
           },
         ],
