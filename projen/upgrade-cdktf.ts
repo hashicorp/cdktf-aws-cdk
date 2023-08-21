@@ -59,22 +59,6 @@ export class UpgradeCDKTF {
             // If/when we upgrade we'll likely want to switch to `yarn npm info`: https://yarnpkg.com/cli/npm/info
           },
           {
-            name: "Close old PR",
-            if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
-            run: [
-              `PR_NUMBER_TO_CLOSE=$(gh pr list | grep "upgrade-cdktf" | awk '{ print $1 }')`,
-              `if [ -z "$PR_NUMBER_TO_CLOSE" ]; then`,
-              `  echo "No PR to close"`,
-              `else`,
-              `  gh pr close -d --comment "Closing this because I'm about to open a newer PR." $PR_NUMBER_TO_CLOSE`,
-              `fi`,
-            ].join("\n"),
-            env: {
-              GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
-            },
-            continueOnError: true,
-          },
-          {
             name: "Run upgrade script",
             if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
             run: "scripts/update-cdktf.sh $CDKTF_VERSION",

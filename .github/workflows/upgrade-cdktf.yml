@@ -35,18 +35,6 @@ jobs:
           CDKTF_VERSION_SHORT=$(cut -d "." -f 2 <<< "$CDKTF_VERSION")
           echo "value=$CDKTF_VERSION" >> $GITHUB_OUTPUT
           echo "short=$CDKTF_VERSION_SHORT" >> $GITHUB_OUTPUT
-      - name: Close old PR
-        if: steps.current_version.outputs.short != steps.latest_version.outputs.short
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |-
-          PR_NUMBER_TO_CLOSE=$(gh pr list | grep "upgrade-cdktf" | awk '{ print $1 }')
-          if [ -z "$PR_NUMBER_TO_CLOSE" ]; then
-            echo "No PR to close"
-          else
-            gh pr close -d --comment "Closing this because I'm about to open a newer PR." $PR_NUMBER_TO_CLOSE
-          fi
-        continue-on-error: true
       - name: Run upgrade script
         if: steps.current_version.outputs.short != steps.latest_version.outputs.short
         env:
