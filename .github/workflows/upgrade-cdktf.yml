@@ -63,7 +63,7 @@ jobs:
         uses: peter-evans/create-pull-request@284f54f989303d2699d373481a0cfa13ad5a6666
         with:
           commit-message: "chore!: upgrade to cdktf ${{ steps.latest_version.outputs.value }}"
-          branch: format('{0}-{1}', 'auto/upgrade-cdktf', ${{ steps.latest_version.outputs.short }})
+          branch: auto/upgrade-cdktf-${{ steps.latest_version.outputs.short }}
           base: main
           title: "chore!: upgrade to cdktf ${{ steps.latest_version.outputs.value }}"
           body: This PR upgrades CDKTF from version `$${{ steps.latest_version.outputs.value }}` to version `${{ steps.latest_version.outputs.value }}`.

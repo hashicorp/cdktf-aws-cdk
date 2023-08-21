@@ -98,7 +98,7 @@ export class UpgradeCDKTF {
             uses: "peter-evans/create-pull-request@v3",
             with: {
               "commit-message": "chore!: upgrade to cdktf ${{ steps.latest_version.outputs.value }}",
-              branch: "format('{0}-{1}', 'auto/upgrade-cdktf', ${{ steps.latest_version.outputs.short }})",
+              branch: "auto/upgrade-cdktf-${{ steps.latest_version.outputs.short }}",
               base: "main",
               title: "chore!: upgrade to cdktf ${{ steps.latest_version.outputs.value }}",
               body:
