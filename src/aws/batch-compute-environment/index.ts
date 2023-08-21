@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/batch_compute_environment
 // generated from terraform resource schema
 
@@ -44,7 +49,7 @@ export interface BatchComputeEnvironmentConfig extends cdktf.TerraformMetaArgume
   readonly type: string;
   /**
   * compute_resources block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/batch_compute_environment#compute_resources BatchComputeEnvironment#compute_resources}
   */
   readonly computeResources?: BatchComputeEnvironmentComputeResources;
@@ -319,13 +324,13 @@ export interface BatchComputeEnvironmentComputeResources {
   readonly type: string;
   /**
   * ec2_configuration block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/batch_compute_environment#ec2_configuration BatchComputeEnvironment#ec2_configuration}
   */
   readonly ec2Configuration?: BatchComputeEnvironmentComputeResourcesEc2Configuration;
   /**
   * launch_template block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/batch_compute_environment#launch_template BatchComputeEnvironment#launch_template}
   */
   readonly launchTemplate?: BatchComputeEnvironmentComputeResourcesLaunchTemplate;

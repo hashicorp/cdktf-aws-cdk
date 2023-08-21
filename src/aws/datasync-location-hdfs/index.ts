@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/datasync_location_hdfs
 // generated from terraform resource schema
 
@@ -64,13 +69,13 @@ export interface DatasyncLocationHdfsConfig extends cdktf.TerraformMetaArguments
   readonly tagsAll?: { [key: string]: string };
   /**
   * name_node block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/datasync_location_hdfs#name_node DatasyncLocationHdfs#name_node}
   */
   readonly nameNode: DatasyncLocationHdfsNameNode[] | cdktf.IResolvable;
   /**
   * qop_configuration block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/datasync_location_hdfs#qop_configuration DatasyncLocationHdfs#qop_configuration}
   */
   readonly qopConfiguration?: DatasyncLocationHdfsQopConfiguration;

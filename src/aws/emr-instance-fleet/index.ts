@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_instance_fleet
 // generated from terraform resource schema
 
@@ -32,13 +37,13 @@ export interface EmrInstanceFleetConfig extends cdktf.TerraformMetaArguments {
   readonly targetSpotCapacity?: number;
   /**
   * instance_type_configs block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_instance_fleet#instance_type_configs EmrInstanceFleet#instance_type_configs}
   */
   readonly instanceTypeConfigs?: EmrInstanceFleetInstanceTypeConfigs[] | cdktf.IResolvable;
   /**
   * launch_specifications block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_instance_fleet#launch_specifications EmrInstanceFleet#launch_specifications}
   */
   readonly launchSpecifications?: EmrInstanceFleetLaunchSpecifications;
@@ -358,13 +363,13 @@ export interface EmrInstanceFleetInstanceTypeConfigs {
   readonly weightedCapacity?: number;
   /**
   * configurations block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_instance_fleet#configurations EmrInstanceFleet#configurations}
   */
   readonly configurations?: EmrInstanceFleetInstanceTypeConfigsConfigurations[] | cdktf.IResolvable;
   /**
   * ebs_config block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_instance_fleet#ebs_config EmrInstanceFleet#ebs_config}
   */
   readonly ebsConfig?: EmrInstanceFleetInstanceTypeConfigsEbsConfig[] | cdktf.IResolvable;
@@ -838,13 +843,13 @@ export class EmrInstanceFleetLaunchSpecificationsSpotSpecificationList extends c
 export interface EmrInstanceFleetLaunchSpecifications {
   /**
   * on_demand_specification block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_instance_fleet#on_demand_specification EmrInstanceFleet#on_demand_specification}
   */
   readonly onDemandSpecification?: EmrInstanceFleetLaunchSpecificationsOnDemandSpecification[] | cdktf.IResolvable;
   /**
   * spot_specification block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_instance_fleet#spot_specification EmrInstanceFleet#spot_specification}
   */
   readonly spotSpecification?: EmrInstanceFleetLaunchSpecificationsSpotSpecification[] | cdktf.IResolvable;

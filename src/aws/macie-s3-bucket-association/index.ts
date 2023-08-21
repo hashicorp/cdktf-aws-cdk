@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/macie_s3_bucket_association
 // generated from terraform resource schema
 
@@ -28,7 +33,7 @@ export interface MacieS3BucketAssociationConfig extends cdktf.TerraformMetaArgum
   readonly prefix?: string;
   /**
   * classification_type block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/macie_s3_bucket_association#classification_type MacieS3BucketAssociation#classification_type}
   */
   readonly classificationType?: MacieS3BucketAssociationClassificationType;

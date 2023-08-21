@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_static_web_layer
 // generated from terraform resource schema
 
@@ -100,13 +105,13 @@ export interface OpsworksStaticWebLayerConfig extends cdktf.TerraformMetaArgumen
   readonly useEbsOptimizedInstances?: boolean | cdktf.IResolvable;
   /**
   * cloudwatch_configuration block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_static_web_layer#cloudwatch_configuration OpsworksStaticWebLayer#cloudwatch_configuration}
   */
   readonly cloudwatchConfiguration?: OpsworksStaticWebLayerCloudwatchConfiguration;
   /**
   * ebs_volume block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_static_web_layer#ebs_volume OpsworksStaticWebLayer#ebs_volume}
   */
   readonly ebsVolume?: OpsworksStaticWebLayerEbsVolume[] | cdktf.IResolvable;
@@ -479,7 +484,7 @@ export interface OpsworksStaticWebLayerCloudwatchConfiguration {
   readonly enabled?: boolean | cdktf.IResolvable;
   /**
   * log_streams block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_static_web_layer#log_streams OpsworksStaticWebLayer#log_streams}
   */
   readonly logStreams?: OpsworksStaticWebLayerCloudwatchConfigurationLogStreams[] | cdktf.IResolvable;

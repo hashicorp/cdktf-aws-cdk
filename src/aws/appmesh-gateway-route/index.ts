@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route
 // generated from terraform resource schema
 
@@ -40,7 +45,7 @@ export interface AppmeshGatewayRouteConfig extends cdktf.TerraformMetaArguments 
   readonly virtualGatewayName: string;
   /**
   * spec block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route#spec AppmeshGatewayRoute#spec}
   */
   readonly spec: AppmeshGatewayRouteSpec;
@@ -110,7 +115,7 @@ export class AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualServiceOutputRef
 export interface AppmeshGatewayRouteSpecGrpcRouteActionTarget {
   /**
   * virtual_service block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route#virtual_service AppmeshGatewayRoute#virtual_service}
   */
   readonly virtualService: AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualService;
@@ -174,7 +179,7 @@ export class AppmeshGatewayRouteSpecGrpcRouteActionTargetOutputReference extends
 export interface AppmeshGatewayRouteSpecGrpcRouteAction {
   /**
   * target block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route#target AppmeshGatewayRoute#target}
   */
   readonly target: AppmeshGatewayRouteSpecGrpcRouteActionTarget;
@@ -300,13 +305,13 @@ export class AppmeshGatewayRouteSpecGrpcRouteMatchOutputReference extends cdktf.
 export interface AppmeshGatewayRouteSpecGrpcRoute {
   /**
   * action block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route#action AppmeshGatewayRoute#action}
   */
   readonly action: AppmeshGatewayRouteSpecGrpcRouteAction;
   /**
   * match block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route#match AppmeshGatewayRoute#match}
   */
   readonly match: AppmeshGatewayRouteSpecGrpcRouteMatch;
@@ -452,7 +457,7 @@ export class AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualServiceOutputRe
 export interface AppmeshGatewayRouteSpecHttp2RouteActionTarget {
   /**
   * virtual_service block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route#virtual_service AppmeshGatewayRoute#virtual_service}
   */
   readonly virtualService: AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualService;
@@ -516,7 +521,7 @@ export class AppmeshGatewayRouteSpecHttp2RouteActionTargetOutputReference extend
 export interface AppmeshGatewayRouteSpecHttp2RouteAction {
   /**
   * target block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route#target AppmeshGatewayRoute#target}
   */
   readonly target: AppmeshGatewayRouteSpecHttp2RouteActionTarget;
@@ -642,13 +647,13 @@ export class AppmeshGatewayRouteSpecHttp2RouteMatchOutputReference extends cdktf
 export interface AppmeshGatewayRouteSpecHttp2Route {
   /**
   * action block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route#action AppmeshGatewayRoute#action}
   */
   readonly action: AppmeshGatewayRouteSpecHttp2RouteAction;
   /**
   * match block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route#match AppmeshGatewayRoute#match}
   */
   readonly match: AppmeshGatewayRouteSpecHttp2RouteMatch;
@@ -794,7 +799,7 @@ export class AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualServiceOutputRef
 export interface AppmeshGatewayRouteSpecHttpRouteActionTarget {
   /**
   * virtual_service block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route#virtual_service AppmeshGatewayRoute#virtual_service}
   */
   readonly virtualService: AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualService;
@@ -858,7 +863,7 @@ export class AppmeshGatewayRouteSpecHttpRouteActionTargetOutputReference extends
 export interface AppmeshGatewayRouteSpecHttpRouteAction {
   /**
   * target block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route#target AppmeshGatewayRoute#target}
   */
   readonly target: AppmeshGatewayRouteSpecHttpRouteActionTarget;
@@ -984,13 +989,13 @@ export class AppmeshGatewayRouteSpecHttpRouteMatchOutputReference extends cdktf.
 export interface AppmeshGatewayRouteSpecHttpRoute {
   /**
   * action block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route#action AppmeshGatewayRoute#action}
   */
   readonly action: AppmeshGatewayRouteSpecHttpRouteAction;
   /**
   * match block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route#match AppmeshGatewayRoute#match}
   */
   readonly match: AppmeshGatewayRouteSpecHttpRouteMatch;
@@ -1074,19 +1079,19 @@ export class AppmeshGatewayRouteSpecHttpRouteOutputReference extends cdktf.Compl
 export interface AppmeshGatewayRouteSpec {
   /**
   * grpc_route block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route#grpc_route AppmeshGatewayRoute#grpc_route}
   */
   readonly grpcRoute?: AppmeshGatewayRouteSpecGrpcRoute;
   /**
   * http2_route block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route#http2_route AppmeshGatewayRoute#http2_route}
   */
   readonly http2Route?: AppmeshGatewayRouteSpecHttp2Route;
   /**
   * http_route block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_gateway_route#http_route AppmeshGatewayRoute#http_route}
   */
   readonly httpRoute?: AppmeshGatewayRouteSpecHttpRoute;

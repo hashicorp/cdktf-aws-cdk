@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/config_config_rule
 // generated from terraform resource schema
 
@@ -40,13 +45,13 @@ export interface ConfigConfigRuleConfig extends cdktf.TerraformMetaArguments {
   readonly tagsAll?: { [key: string]: string };
   /**
   * scope block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/config_config_rule#scope ConfigConfigRule#scope}
   */
   readonly scope?: ConfigConfigRuleScope;
   /**
   * source block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/config_config_rule#source ConfigConfigRule#source}
   */
   readonly source: ConfigConfigRuleSource;
@@ -359,7 +364,7 @@ export interface ConfigConfigRuleSource {
   readonly sourceIdentifier: string;
   /**
   * source_detail block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/config_config_rule#source_detail ConfigConfigRule#source_detail}
   */
   readonly sourceDetail?: ConfigConfigRuleSourceSourceDetail[] | cdktf.IResolvable;

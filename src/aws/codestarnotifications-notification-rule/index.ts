@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/codestarnotifications_notification_rule
 // generated from terraform resource schema
 
@@ -44,7 +49,7 @@ export interface CodestarnotificationsNotificationRuleConfig extends cdktf.Terra
   readonly tagsAll?: { [key: string]: string };
   /**
   * target block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/codestarnotifications_notification_rule#target CodestarnotificationsNotificationRule#target}
   */
   readonly target?: CodestarnotificationsNotificationRuleTarget[] | cdktf.IResolvable;

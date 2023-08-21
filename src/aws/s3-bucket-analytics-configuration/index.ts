@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket_analytics_configuration
 // generated from terraform resource schema
 
@@ -24,13 +29,13 @@ export interface S3BucketAnalyticsConfigurationConfig extends cdktf.TerraformMet
   readonly name: string;
   /**
   * filter block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket_analytics_configuration#filter S3BucketAnalyticsConfiguration#filter}
   */
   readonly filter?: S3BucketAnalyticsConfigurationFilter;
   /**
   * storage_class_analysis block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket_analytics_configuration#storage_class_analysis S3BucketAnalyticsConfiguration#storage_class_analysis}
   */
   readonly storageClassAnalysis?: S3BucketAnalyticsConfigurationStorageClassAnalysis;
@@ -273,7 +278,7 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestina
 export interface S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestination {
   /**
   * s3_bucket_destination block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket_analytics_configuration#s3_bucket_destination S3BucketAnalyticsConfiguration#s3_bucket_destination}
   */
   readonly s3BucketDestination: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination;
@@ -341,7 +346,7 @@ export interface S3BucketAnalyticsConfigurationStorageClassAnalysisDataExport {
   readonly outputSchemaVersion?: string;
   /**
   * destination block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket_analytics_configuration#destination S3BucketAnalyticsConfiguration#destination}
   */
   readonly destination: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportDestination;
@@ -428,7 +433,7 @@ export class S3BucketAnalyticsConfigurationStorageClassAnalysisDataExportOutputR
 export interface S3BucketAnalyticsConfigurationStorageClassAnalysis {
   /**
   * data_export block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket_analytics_configuration#data_export S3BucketAnalyticsConfiguration#data_export}
   */
   readonly dataExport: S3BucketAnalyticsConfigurationStorageClassAnalysisDataExport;

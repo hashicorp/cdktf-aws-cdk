@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/availability_zone
 // generated from terraform resource schema
 
@@ -32,7 +37,7 @@ export interface DataAwsAvailabilityZoneConfig extends cdktf.TerraformMetaArgume
   readonly zoneId?: string;
   /**
   * filter block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/availability_zone#filter DataAwsAvailabilityZone#filter}
   */
   readonly filter?: DataAwsAvailabilityZoneFilter[] | cdktf.IResolvable;

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/apigatewayv2_domain_name
 // generated from terraform resource schema
 
@@ -28,19 +33,19 @@ export interface Apigatewayv2DomainNameConfig extends cdktf.TerraformMetaArgumen
   readonly tagsAll?: { [key: string]: string };
   /**
   * domain_name_configuration block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/apigatewayv2_domain_name#domain_name_configuration Apigatewayv2DomainName#domain_name_configuration}
   */
   readonly domainNameConfiguration: Apigatewayv2DomainNameDomainNameConfiguration;
   /**
   * mutual_tls_authentication block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/apigatewayv2_domain_name#mutual_tls_authentication Apigatewayv2DomainName#mutual_tls_authentication}
   */
   readonly mutualTlsAuthentication?: Apigatewayv2DomainNameMutualTlsAuthentication;
   /**
   * timeouts block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/apigatewayv2_domain_name#timeouts Apigatewayv2DomainName#timeouts}
   */
   readonly timeouts?: Apigatewayv2DomainNameTimeouts;

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_instance_request
 // generated from terraform resource schema
 
@@ -176,61 +181,61 @@ export interface SpotInstanceRequestConfig extends cdktf.TerraformMetaArguments 
   readonly waitForFulfillment?: boolean | cdktf.IResolvable;
   /**
   * capacity_reservation_specification block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_instance_request#capacity_reservation_specification SpotInstanceRequest#capacity_reservation_specification}
   */
   readonly capacityReservationSpecification?: SpotInstanceRequestCapacityReservationSpecification;
   /**
   * credit_specification block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_instance_request#credit_specification SpotInstanceRequest#credit_specification}
   */
   readonly creditSpecification?: SpotInstanceRequestCreditSpecification;
   /**
   * ebs_block_device block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_instance_request#ebs_block_device SpotInstanceRequest#ebs_block_device}
   */
   readonly ebsBlockDevice?: SpotInstanceRequestEbsBlockDevice[] | cdktf.IResolvable;
   /**
   * enclave_options block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_instance_request#enclave_options SpotInstanceRequest#enclave_options}
   */
   readonly enclaveOptions?: SpotInstanceRequestEnclaveOptions;
   /**
   * ephemeral_block_device block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_instance_request#ephemeral_block_device SpotInstanceRequest#ephemeral_block_device}
   */
   readonly ephemeralBlockDevice?: SpotInstanceRequestEphemeralBlockDevice[] | cdktf.IResolvable;
   /**
   * launch_template block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_instance_request#launch_template SpotInstanceRequest#launch_template}
   */
   readonly launchTemplate?: SpotInstanceRequestLaunchTemplate;
   /**
   * metadata_options block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_instance_request#metadata_options SpotInstanceRequest#metadata_options}
   */
   readonly metadataOptions?: SpotInstanceRequestMetadataOptions;
   /**
   * network_interface block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_instance_request#network_interface SpotInstanceRequest#network_interface}
   */
   readonly networkInterface?: SpotInstanceRequestNetworkInterface[] | cdktf.IResolvable;
   /**
   * root_block_device block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_instance_request#root_block_device SpotInstanceRequest#root_block_device}
   */
   readonly rootBlockDevice?: SpotInstanceRequestRootBlockDevice;
   /**
   * timeouts block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_instance_request#timeouts SpotInstanceRequest#timeouts}
   */
   readonly timeouts?: SpotInstanceRequestTimeouts;
@@ -307,7 +312,7 @@ export interface SpotInstanceRequestCapacityReservationSpecification {
   readonly capacityReservationPreference?: string;
   /**
   * capacity_reservation_target block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_instance_request#capacity_reservation_target SpotInstanceRequest#capacity_reservation_target}
   */
   readonly capacityReservationTarget?: SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget;

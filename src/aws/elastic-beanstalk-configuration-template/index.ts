@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/elastic_beanstalk_configuration_template
 // generated from terraform resource schema
 
@@ -36,7 +41,7 @@ export interface ElasticBeanstalkConfigurationTemplateConfig extends cdktf.Terra
   readonly solutionStackName?: string;
   /**
   * setting block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/elastic_beanstalk_configuration_template#setting ElasticBeanstalkConfigurationTemplate#setting}
   */
   readonly setting?: ElasticBeanstalkConfigurationTemplateSetting[] | cdktf.IResolvable;

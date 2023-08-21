@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_crawler
 // generated from terraform resource schema
 
@@ -60,55 +65,55 @@ export interface GlueCrawlerConfig extends cdktf.TerraformMetaArguments {
   readonly tagsAll?: { [key: string]: string };
   /**
   * catalog_target block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_crawler#catalog_target GlueCrawler#catalog_target}
   */
   readonly catalogTarget?: GlueCrawlerCatalogTarget[] | cdktf.IResolvable;
   /**
   * delta_target block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_crawler#delta_target GlueCrawler#delta_target}
   */
   readonly deltaTarget?: GlueCrawlerDeltaTarget[] | cdktf.IResolvable;
   /**
   * dynamodb_target block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_crawler#dynamodb_target GlueCrawler#dynamodb_target}
   */
   readonly dynamodbTarget?: GlueCrawlerDynamodbTarget[] | cdktf.IResolvable;
   /**
   * jdbc_target block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_crawler#jdbc_target GlueCrawler#jdbc_target}
   */
   readonly jdbcTarget?: GlueCrawlerJdbcTarget[] | cdktf.IResolvable;
   /**
   * lineage_configuration block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_crawler#lineage_configuration GlueCrawler#lineage_configuration}
   */
   readonly lineageConfiguration?: GlueCrawlerLineageConfiguration;
   /**
   * mongodb_target block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_crawler#mongodb_target GlueCrawler#mongodb_target}
   */
   readonly mongodbTarget?: GlueCrawlerMongodbTarget[] | cdktf.IResolvable;
   /**
   * recrawl_policy block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_crawler#recrawl_policy GlueCrawler#recrawl_policy}
   */
   readonly recrawlPolicy?: GlueCrawlerRecrawlPolicy;
   /**
   * s3_target block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_crawler#s3_target GlueCrawler#s3_target}
   */
   readonly s3Target?: GlueCrawlerS3Target[] | cdktf.IResolvable;
   /**
   * schema_change_policy block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_crawler#schema_change_policy GlueCrawler#schema_change_policy}
   */
   readonly schemaChangePolicy?: GlueCrawlerSchemaChangePolicy;

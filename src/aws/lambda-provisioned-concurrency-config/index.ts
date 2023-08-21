@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/lambda_provisioned_concurrency_config
 // generated from terraform resource schema
 
@@ -28,7 +33,7 @@ export interface LambdaProvisionedConcurrencyConfigConfig extends cdktf.Terrafor
   readonly qualifier: string;
   /**
   * timeouts block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/lambda_provisioned_concurrency_config#timeouts LambdaProvisionedConcurrencyConfig#timeouts}
   */
   readonly timeouts?: LambdaProvisionedConcurrencyConfigTimeouts;

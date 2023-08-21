@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_memcached_layer
 // generated from terraform resource schema
 
@@ -104,13 +109,13 @@ export interface OpsworksMemcachedLayerConfig extends cdktf.TerraformMetaArgumen
   readonly useEbsOptimizedInstances?: boolean | cdktf.IResolvable;
   /**
   * cloudwatch_configuration block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_memcached_layer#cloudwatch_configuration OpsworksMemcachedLayer#cloudwatch_configuration}
   */
   readonly cloudwatchConfiguration?: OpsworksMemcachedLayerCloudwatchConfiguration;
   /**
   * ebs_volume block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_memcached_layer#ebs_volume OpsworksMemcachedLayer#ebs_volume}
   */
   readonly ebsVolume?: OpsworksMemcachedLayerEbsVolume[] | cdktf.IResolvable;
@@ -483,7 +488,7 @@ export interface OpsworksMemcachedLayerCloudwatchConfiguration {
   readonly enabled?: boolean | cdktf.IResolvable;
   /**
   * log_streams block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_memcached_layer#log_streams OpsworksMemcachedLayer#log_streams}
   */
   readonly logStreams?: OpsworksMemcachedLayerCloudwatchConfigurationLogStreams[] | cdktf.IResolvable;

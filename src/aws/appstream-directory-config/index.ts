@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appstream_directory_config
 // generated from terraform resource schema
 
@@ -24,7 +29,7 @@ export interface AppstreamDirectoryConfigConfig extends cdktf.TerraformMetaArgum
   readonly organizationalUnitDistinguishedNames: string[];
   /**
   * service_account_credentials block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appstream_directory_config#service_account_credentials AppstreamDirectoryConfig#service_account_credentials}
   */
   readonly serviceAccountCredentials: AppstreamDirectoryConfigServiceAccountCredentials;

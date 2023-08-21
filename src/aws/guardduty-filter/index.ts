@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/guardduty_filter
 // generated from terraform resource schema
 
@@ -44,7 +49,7 @@ export interface GuarddutyFilterConfig extends cdktf.TerraformMetaArguments {
   readonly tagsAll?: { [key: string]: string };
   /**
   * finding_criteria block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/guardduty_filter#finding_criteria GuarddutyFilter#finding_criteria}
   */
   readonly findingCriteria: GuarddutyFilterFindingCriteria;
@@ -308,7 +313,7 @@ export class GuarddutyFilterFindingCriteriaCriterionList extends cdktf.ComplexLi
 export interface GuarddutyFilterFindingCriteria {
   /**
   * criterion block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/guardduty_filter#criterion GuarddutyFilter#criterion}
   */
   readonly criterion: GuarddutyFilterFindingCriteriaCriterion[] | cdktf.IResolvable;

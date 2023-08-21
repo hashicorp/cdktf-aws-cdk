@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/efs_access_point
 // generated from terraform resource schema
 
@@ -28,13 +33,13 @@ export interface EfsAccessPointConfig extends cdktf.TerraformMetaArguments {
   readonly tagsAll?: { [key: string]: string };
   /**
   * posix_user block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/efs_access_point#posix_user EfsAccessPoint#posix_user}
   */
   readonly posixUser?: EfsAccessPointPosixUser;
   /**
   * root_directory block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/efs_access_point#root_directory EfsAccessPoint#root_directory}
   */
   readonly rootDirectory?: EfsAccessPointRootDirectory;
@@ -269,7 +274,7 @@ export interface EfsAccessPointRootDirectory {
   readonly path?: string;
   /**
   * creation_info block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/efs_access_point#creation_info EfsAccessPoint#creation_info}
   */
   readonly creationInfo?: EfsAccessPointRootDirectoryCreationInfo;

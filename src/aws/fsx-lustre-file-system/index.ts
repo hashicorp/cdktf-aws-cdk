@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/fsx_lustre_file_system
 // generated from terraform resource schema
 
@@ -100,7 +105,7 @@ export interface FsxLustreFileSystemConfig extends cdktf.TerraformMetaArguments 
   readonly weeklyMaintenanceStartTime?: string;
   /**
   * timeouts block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/fsx_lustre_file_system#timeouts FsxLustreFileSystem#timeouts}
   */
   readonly timeouts?: FsxLustreFileSystemTimeouts;

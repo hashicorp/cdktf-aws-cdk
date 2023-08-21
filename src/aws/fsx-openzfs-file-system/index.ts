@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/fsx_openzfs_file_system
 // generated from terraform resource schema
 
@@ -76,19 +81,19 @@ export interface FsxOpenzfsFileSystemConfig extends cdktf.TerraformMetaArguments
   readonly weeklyMaintenanceStartTime?: string;
   /**
   * disk_iops_configuration block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/fsx_openzfs_file_system#disk_iops_configuration FsxOpenzfsFileSystem#disk_iops_configuration}
   */
   readonly diskIopsConfiguration?: FsxOpenzfsFileSystemDiskIopsConfiguration;
   /**
   * root_volume_configuration block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/fsx_openzfs_file_system#root_volume_configuration FsxOpenzfsFileSystem#root_volume_configuration}
   */
   readonly rootVolumeConfiguration?: FsxOpenzfsFileSystemRootVolumeConfiguration;
   /**
   * timeouts block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/fsx_openzfs_file_system#timeouts FsxOpenzfsFileSystem#timeouts}
   */
   readonly timeouts?: FsxOpenzfsFileSystemTimeouts;
@@ -306,7 +311,7 @@ export class FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsClientConfigur
 export interface FsxOpenzfsFileSystemRootVolumeConfigurationNfsExports {
   /**
   * client_configurations block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/fsx_openzfs_file_system#client_configurations FsxOpenzfsFileSystem#client_configurations}
   */
   readonly clientConfigurations: FsxOpenzfsFileSystemRootVolumeConfigurationNfsExportsClientConfigurations[] | cdktf.IResolvable;
@@ -527,13 +532,13 @@ export interface FsxOpenzfsFileSystemRootVolumeConfiguration {
   readonly readOnly?: boolean | cdktf.IResolvable;
   /**
   * nfs_exports block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/fsx_openzfs_file_system#nfs_exports FsxOpenzfsFileSystem#nfs_exports}
   */
   readonly nfsExports?: FsxOpenzfsFileSystemRootVolumeConfigurationNfsExports;
   /**
   * user_and_group_quotas block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/fsx_openzfs_file_system#user_and_group_quotas FsxOpenzfsFileSystem#user_and_group_quotas}
   */
   readonly userAndGroupQuotas?: FsxOpenzfsFileSystemRootVolumeConfigurationUserAndGroupQuotas[] | cdktf.IResolvable;

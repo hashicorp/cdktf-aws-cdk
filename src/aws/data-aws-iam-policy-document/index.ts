@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/iam_policy_document
 // generated from terraform resource schema
 
@@ -40,7 +45,7 @@ export interface DataAwsIamPolicyDocumentConfig extends cdktf.TerraformMetaArgum
   readonly version?: string;
   /**
   * statement block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/iam_policy_document#statement DataAwsIamPolicyDocument#statement}
   */
   readonly statement?: DataAwsIamPolicyDocumentStatement[] | cdktf.IResolvable;
@@ -450,19 +455,19 @@ export interface DataAwsIamPolicyDocumentStatement {
   readonly sid?: string;
   /**
   * condition block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/iam_policy_document#condition DataAwsIamPolicyDocument#condition}
   */
   readonly condition?: DataAwsIamPolicyDocumentStatementCondition[] | cdktf.IResolvable;
   /**
   * not_principals block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/iam_policy_document#not_principals DataAwsIamPolicyDocument#not_principals}
   */
   readonly notPrincipals?: DataAwsIamPolicyDocumentStatementNotPrincipals[] | cdktf.IResolvable;
   /**
   * principals block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/iam_policy_document#principals DataAwsIamPolicyDocument#principals}
   */
   readonly principals?: DataAwsIamPolicyDocumentStatementPrincipals[] | cdktf.IResolvable;

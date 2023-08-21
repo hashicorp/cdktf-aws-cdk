@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_fleet_request
 // generated from terraform resource schema
 
@@ -96,25 +101,25 @@ export interface SpotFleetRequestConfig extends cdktf.TerraformMetaArguments {
   readonly waitForFulfillment?: boolean | cdktf.IResolvable;
   /**
   * launch_specification block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_fleet_request#launch_specification SpotFleetRequest#launch_specification}
   */
   readonly launchSpecification?: SpotFleetRequestLaunchSpecification[] | cdktf.IResolvable;
   /**
   * launch_template_config block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_fleet_request#launch_template_config SpotFleetRequest#launch_template_config}
   */
   readonly launchTemplateConfig?: SpotFleetRequestLaunchTemplateConfig[] | cdktf.IResolvable;
   /**
   * spot_maintenance_strategies block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_fleet_request#spot_maintenance_strategies SpotFleetRequest#spot_maintenance_strategies}
   */
   readonly spotMaintenanceStrategies?: SpotFleetRequestSpotMaintenanceStrategies;
   /**
   * timeouts block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_fleet_request#timeouts SpotFleetRequest#timeouts}
   */
   readonly timeouts?: SpotFleetRequestTimeouts;
@@ -877,19 +882,19 @@ export interface SpotFleetRequestLaunchSpecification {
   readonly weightedCapacity?: string;
   /**
   * ebs_block_device block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_fleet_request#ebs_block_device SpotFleetRequest#ebs_block_device}
   */
   readonly ebsBlockDevice?: SpotFleetRequestLaunchSpecificationEbsBlockDevice[] | cdktf.IResolvable;
   /**
   * ephemeral_block_device block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_fleet_request#ephemeral_block_device SpotFleetRequest#ephemeral_block_device}
   */
   readonly ephemeralBlockDevice?: SpotFleetRequestLaunchSpecificationEphemeralBlockDevice[] | cdktf.IResolvable;
   /**
   * root_block_device block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_fleet_request#root_block_device SpotFleetRequest#root_block_device}
   */
   readonly rootBlockDevice?: SpotFleetRequestLaunchSpecificationRootBlockDevice[] | cdktf.IResolvable;
@@ -1773,13 +1778,13 @@ export class SpotFleetRequestLaunchTemplateConfigOverridesList extends cdktf.Com
 export interface SpotFleetRequestLaunchTemplateConfig {
   /**
   * launch_template_specification block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_fleet_request#launch_template_specification SpotFleetRequest#launch_template_specification}
   */
   readonly launchTemplateSpecification: SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification;
   /**
   * overrides block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_fleet_request#overrides SpotFleetRequest#overrides}
   */
   readonly overrides?: SpotFleetRequestLaunchTemplateConfigOverrides[] | cdktf.IResolvable;
@@ -1963,7 +1968,7 @@ export class SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceOutputRef
 export interface SpotFleetRequestSpotMaintenanceStrategies {
   /**
   * capacity_rebalance block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/spot_fleet_request#capacity_rebalance SpotFleetRequest#capacity_rebalance}
   */
   readonly capacityRebalance?: SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance;

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sagemaker_endpoint
 // generated from terraform resource schema
 
@@ -32,7 +37,7 @@ export interface SagemakerEndpointConfig extends cdktf.TerraformMetaArguments {
   readonly tagsAll?: { [key: string]: string };
   /**
   * deployment_config block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sagemaker_endpoint#deployment_config SagemakerEndpoint#deployment_config}
   */
   readonly deploymentConfig?: SagemakerEndpointDeploymentConfig;
@@ -134,7 +139,7 @@ export class SagemakerEndpointDeploymentConfigAutoRollbackConfigurationAlarmsLis
 export interface SagemakerEndpointDeploymentConfigAutoRollbackConfiguration {
   /**
   * alarms block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sagemaker_endpoint#alarms SagemakerEndpoint#alarms}
   */
   readonly alarms?: SagemakerEndpointDeploymentConfigAutoRollbackConfigurationAlarms[] | cdktf.IResolvable;
@@ -381,13 +386,13 @@ export interface SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRo
   readonly waitIntervalInSeconds: number;
   /**
   * canary_size block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sagemaker_endpoint#canary_size SagemakerEndpoint#canary_size}
   */
   readonly canarySize?: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySize;
   /**
   * linear_step_size block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sagemaker_endpoint#linear_step_size SagemakerEndpoint#linear_step_size}
   */
   readonly linearStepSize?: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize;
@@ -525,7 +530,7 @@ export interface SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicy {
   readonly terminationWaitInSeconds?: number;
   /**
   * traffic_routing_configuration block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sagemaker_endpoint#traffic_routing_configuration SagemakerEndpoint#traffic_routing_configuration}
   */
   readonly trafficRoutingConfiguration: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration;
@@ -635,13 +640,13 @@ export class SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicyOutputReferen
 export interface SagemakerEndpointDeploymentConfig {
   /**
   * auto_rollback_configuration block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sagemaker_endpoint#auto_rollback_configuration SagemakerEndpoint#auto_rollback_configuration}
   */
   readonly autoRollbackConfiguration?: SagemakerEndpointDeploymentConfigAutoRollbackConfiguration;
   /**
   * blue_green_update_policy block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sagemaker_endpoint#blue_green_update_policy SagemakerEndpoint#blue_green_update_policy}
   */
   readonly blueGreenUpdatePolicy: SagemakerEndpointDeploymentConfigBlueGreenUpdatePolicy;

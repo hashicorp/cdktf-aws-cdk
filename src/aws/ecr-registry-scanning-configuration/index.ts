@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ecr_registry_scanning_configuration
 // generated from terraform resource schema
 
@@ -20,7 +25,7 @@ export interface EcrRegistryScanningConfigurationConfig extends cdktf.TerraformM
   readonly scanType: string;
   /**
   * rule block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ecr_registry_scanning_configuration#rule EcrRegistryScanningConfiguration#rule}
   */
   readonly rule?: EcrRegistryScanningConfigurationRule[] | cdktf.IResolvable;
@@ -150,7 +155,7 @@ export interface EcrRegistryScanningConfigurationRule {
   readonly scanFrequency: string;
   /**
   * repository_filter block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ecr_registry_scanning_configuration#repository_filter EcrRegistryScanningConfiguration#repository_filter}
   */
   readonly repositoryFilter: EcrRegistryScanningConfigurationRuleRepositoryFilter[] | cdktf.IResolvable;

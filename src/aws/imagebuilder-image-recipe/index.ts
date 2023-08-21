@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/imagebuilder_image_recipe
 // generated from terraform resource schema
 
@@ -48,13 +53,13 @@ export interface ImagebuilderImageRecipeConfig extends cdktf.TerraformMetaArgume
   readonly workingDirectory?: string;
   /**
   * block_device_mapping block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/imagebuilder_image_recipe#block_device_mapping ImagebuilderImageRecipe#block_device_mapping}
   */
   readonly blockDeviceMapping?: ImagebuilderImageRecipeBlockDeviceMapping[] | cdktf.IResolvable;
   /**
   * component block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/imagebuilder_image_recipe#component ImagebuilderImageRecipe#component}
   */
   readonly component: ImagebuilderImageRecipeComponent[] | cdktf.IResolvable;
@@ -301,7 +306,7 @@ export interface ImagebuilderImageRecipeBlockDeviceMapping {
   readonly virtualName?: string;
   /**
   * ebs block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/imagebuilder_image_recipe#ebs ImagebuilderImageRecipe#ebs}
   */
   readonly ebs?: ImagebuilderImageRecipeBlockDeviceMappingEbs;

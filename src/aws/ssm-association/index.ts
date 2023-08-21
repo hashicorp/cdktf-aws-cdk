@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_association
 // generated from terraform resource schema
 
@@ -60,13 +65,13 @@ export interface SsmAssociationConfig extends cdktf.TerraformMetaArguments {
   readonly scheduleExpression?: string;
   /**
   * output_location block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_association#output_location SsmAssociation#output_location}
   */
   readonly outputLocation?: SsmAssociationOutputLocation;
   /**
   * targets block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_association#targets SsmAssociation#targets}
   */
   readonly targets?: SsmAssociationTargets[] | cdktf.IResolvable;

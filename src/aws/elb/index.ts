@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/elb
 // generated from terraform resource schema
 
@@ -76,19 +81,19 @@ export interface ElbConfig extends cdktf.TerraformMetaArguments {
   readonly tagsAll?: { [key: string]: string };
   /**
   * access_logs block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/elb#access_logs Elb#access_logs}
   */
   readonly accessLogs?: ElbAccessLogs;
   /**
   * health_check block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/elb#health_check Elb#health_check}
   */
   readonly healthCheck?: ElbHealthCheck;
   /**
   * listener block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/elb#listener Elb#listener}
   */
   readonly listener: ElbListener[] | cdktf.IResolvable;

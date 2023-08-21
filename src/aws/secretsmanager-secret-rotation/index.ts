@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/secretsmanager_secret_rotation
 // generated from terraform resource schema
 
@@ -28,7 +33,7 @@ export interface SecretsmanagerSecretRotationConfig extends cdktf.TerraformMetaA
   readonly tags?: { [key: string]: string };
   /**
   * rotation_rules block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/secretsmanager_secret_rotation#rotation_rules SecretsmanagerSecretRotation#rotation_rules}
   */
   readonly rotationRules: SecretsmanagerSecretRotationRotationRules;

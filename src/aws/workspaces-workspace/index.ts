@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/workspaces_workspace
 // generated from terraform resource schema
 
@@ -48,13 +53,13 @@ export interface WorkspacesWorkspaceConfig extends cdktf.TerraformMetaArguments 
   readonly volumeEncryptionKey?: string;
   /**
   * timeouts block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/workspaces_workspace#timeouts WorkspacesWorkspace#timeouts}
   */
   readonly timeouts?: WorkspacesWorkspaceTimeouts;
   /**
   * workspace_properties block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/workspaces_workspace#workspace_properties WorkspacesWorkspace#workspace_properties}
   */
   readonly workspaceProperties?: WorkspacesWorkspaceWorkspaceProperties;

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/acm_certificate_validation
 // generated from terraform resource schema
 
@@ -24,7 +29,7 @@ export interface AcmCertificateValidationConfig extends cdktf.TerraformMetaArgum
   readonly validationRecordFqdns?: string[];
   /**
   * timeouts block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/acm_certificate_validation#timeouts AcmCertificateValidation#timeouts}
   */
   readonly timeouts?: AcmCertificateValidationTimeouts;

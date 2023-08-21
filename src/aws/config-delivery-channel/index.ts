@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/config_delivery_channel
 // generated from terraform resource schema
 
@@ -36,7 +41,7 @@ export interface ConfigDeliveryChannelConfig extends cdktf.TerraformMetaArgument
   readonly snsTopicArn?: string;
   /**
   * snapshot_delivery_properties block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/config_delivery_channel#snapshot_delivery_properties ConfigDeliveryChannel#snapshot_delivery_properties}
   */
   readonly snapshotDeliveryProperties?: ConfigDeliveryChannelSnapshotDeliveryProperties;

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/datasync_task
 // generated from terraform resource schema
 
@@ -40,25 +45,25 @@ export interface DatasyncTaskConfig extends cdktf.TerraformMetaArguments {
   readonly tagsAll?: { [key: string]: string };
   /**
   * excludes block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/datasync_task#excludes DatasyncTask#excludes}
   */
   readonly excludes?: DatasyncTaskExcludes;
   /**
   * options block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/datasync_task#options DatasyncTask#options}
   */
   readonly options?: DatasyncTaskOptions;
   /**
   * schedule block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/datasync_task#schedule DatasyncTask#schedule}
   */
   readonly schedule?: DatasyncTaskSchedule;
   /**
   * timeouts block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/datasync_task#timeouts DatasyncTask#timeouts}
   */
   readonly timeouts?: DatasyncTaskTimeouts;

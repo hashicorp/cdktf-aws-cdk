@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/docdb_global_cluster
 // generated from terraform resource schema
 
@@ -44,7 +49,7 @@ export interface DocdbGlobalClusterConfig extends cdktf.TerraformMetaArguments {
   readonly storageEncrypted?: boolean | cdktf.IResolvable;
   /**
   * timeouts block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/docdb_global_cluster#timeouts DocdbGlobalCluster#timeouts}
   */
   readonly timeouts?: DocdbGlobalClusterTimeouts;

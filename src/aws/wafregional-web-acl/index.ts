@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafregional_web_acl
 // generated from terraform resource schema
 
@@ -32,19 +37,19 @@ export interface WafregionalWebAclConfig extends cdktf.TerraformMetaArguments {
   readonly tagsAll?: { [key: string]: string };
   /**
   * default_action block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafregional_web_acl#default_action WafregionalWebAcl#default_action}
   */
   readonly defaultAction: WafregionalWebAclDefaultAction;
   /**
   * logging_configuration block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafregional_web_acl#logging_configuration WafregionalWebAcl#logging_configuration}
   */
   readonly loggingConfiguration?: WafregionalWebAclLoggingConfiguration;
   /**
   * rule block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafregional_web_acl#rule WafregionalWebAcl#rule}
   */
   readonly rule?: WafregionalWebAclRule[] | cdktf.IResolvable;
@@ -235,7 +240,7 @@ export class WafregionalWebAclLoggingConfigurationRedactedFieldsFieldToMatchList
 export interface WafregionalWebAclLoggingConfigurationRedactedFields {
   /**
   * field_to_match block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafregional_web_acl#field_to_match WafregionalWebAcl#field_to_match}
   */
   readonly fieldToMatch: WafregionalWebAclLoggingConfigurationRedactedFieldsFieldToMatch[] | cdktf.IResolvable;
@@ -303,7 +308,7 @@ export interface WafregionalWebAclLoggingConfiguration {
   readonly logDestination: string;
   /**
   * redacted_fields block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafregional_web_acl#redacted_fields WafregionalWebAcl#redacted_fields}
   */
   readonly redactedFields?: WafregionalWebAclLoggingConfigurationRedactedFields;
@@ -526,13 +531,13 @@ export interface WafregionalWebAclRule {
   readonly type?: string;
   /**
   * action block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafregional_web_acl#action WafregionalWebAcl#action}
   */
   readonly action?: WafregionalWebAclRuleAction;
   /**
   * override_action block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafregional_web_acl#override_action WafregionalWebAcl#override_action}
   */
   readonly overrideAction?: WafregionalWebAclRuleOverrideAction;

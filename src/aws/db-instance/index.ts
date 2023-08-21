@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/db_instance
 // generated from terraform resource schema
 
@@ -232,19 +237,19 @@ export interface DbInstanceConfig extends cdktf.TerraformMetaArguments {
   readonly vpcSecurityGroupIds?: string[];
   /**
   * restore_to_point_in_time block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/db_instance#restore_to_point_in_time DbInstance#restore_to_point_in_time}
   */
   readonly restoreToPointInTime?: DbInstanceRestoreToPointInTime;
   /**
   * s3_import block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/db_instance#s3_import DbInstance#s3_import}
   */
   readonly s3Import?: DbInstanceS3Import;
   /**
   * timeouts block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/db_instance#timeouts DbInstance#timeouts}
   */
   readonly timeouts?: DbInstanceTimeouts;

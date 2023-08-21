@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sagemaker_app
 // generated from terraform resource schema
 
@@ -40,7 +45,7 @@ export interface SagemakerAppConfig extends cdktf.TerraformMetaArguments {
   readonly userProfileName: string;
   /**
   * resource_spec block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sagemaker_app#resource_spec SagemakerApp#resource_spec}
   */
   readonly resourceSpec?: SagemakerAppResourceSpec;

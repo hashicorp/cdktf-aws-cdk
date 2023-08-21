@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/waf_rate_based_rule
 // generated from terraform resource schema
 
@@ -40,7 +45,7 @@ export interface WafRateBasedRuleConfig extends cdktf.TerraformMetaArguments {
   readonly tagsAll?: { [key: string]: string };
   /**
   * predicates block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/waf_rate_based_rule#predicates WafRateBasedRule#predicates}
   */
   readonly predicates?: WafRateBasedRulePredicates[] | cdktf.IResolvable;

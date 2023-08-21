@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_resource_data_sync
 // generated from terraform resource schema
 
@@ -20,7 +25,7 @@ export interface SsmResourceDataSyncConfig extends cdktf.TerraformMetaArguments 
   readonly name: string;
   /**
   * s3_destination block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_resource_data_sync#s3_destination SsmResourceDataSync#s3_destination}
   */
   readonly s3Destination: SsmResourceDataSyncS3Destination;

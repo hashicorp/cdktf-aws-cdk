@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/autoscaling_group
 // generated from terraform resource schema
 
@@ -128,43 +133,43 @@ export interface AutoscalingGroupConfig extends cdktf.TerraformMetaArguments {
   readonly waitForElbCapacity?: number;
   /**
   * initial_lifecycle_hook block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/autoscaling_group#initial_lifecycle_hook AutoscalingGroup#initial_lifecycle_hook}
   */
   readonly initialLifecycleHook?: AutoscalingGroupInitialLifecycleHook[] | cdktf.IResolvable;
   /**
   * instance_refresh block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/autoscaling_group#instance_refresh AutoscalingGroup#instance_refresh}
   */
   readonly instanceRefresh?: AutoscalingGroupInstanceRefresh;
   /**
   * launch_template block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/autoscaling_group#launch_template AutoscalingGroup#launch_template}
   */
   readonly launchTemplate?: AutoscalingGroupLaunchTemplate;
   /**
   * mixed_instances_policy block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/autoscaling_group#mixed_instances_policy AutoscalingGroup#mixed_instances_policy}
   */
   readonly mixedInstancesPolicy?: AutoscalingGroupMixedInstancesPolicy;
   /**
   * tag block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/autoscaling_group#tag AutoscalingGroup#tag}
   */
   readonly tag?: AutoscalingGroupTag[] | cdktf.IResolvable;
   /**
   * timeouts block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/autoscaling_group#timeouts AutoscalingGroup#timeouts}
   */
   readonly timeouts?: AutoscalingGroupTimeouts;
   /**
   * warm_pool block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/autoscaling_group#warm_pool AutoscalingGroup#warm_pool}
   */
   readonly warmPool?: AutoscalingGroupWarmPool;
@@ -579,7 +584,7 @@ export interface AutoscalingGroupInstanceRefresh {
   readonly triggers?: string[];
   /**
   * preferences block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/autoscaling_group#preferences AutoscalingGroup#preferences}
   */
   readonly preferences?: AutoscalingGroupInstanceRefreshPreferences;
@@ -1257,7 +1262,7 @@ export interface AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride {
   readonly weightedCapacity?: string;
   /**
   * launch_template_specification block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/autoscaling_group#launch_template_specification AutoscalingGroup#launch_template_specification}
   */
   readonly launchTemplateSpecification?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification;
@@ -1402,13 +1407,13 @@ export class AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideList exte
 export interface AutoscalingGroupMixedInstancesPolicyLaunchTemplate {
   /**
   * launch_template_specification block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/autoscaling_group#launch_template_specification AutoscalingGroup#launch_template_specification}
   */
   readonly launchTemplateSpecification: AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification;
   /**
   * override block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/autoscaling_group#override AutoscalingGroup#override}
   */
   readonly override?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride[] | cdktf.IResolvable;
@@ -1495,13 +1500,13 @@ export class AutoscalingGroupMixedInstancesPolicyLaunchTemplateOutputReference e
 export interface AutoscalingGroupMixedInstancesPolicy {
   /**
   * instances_distribution block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/autoscaling_group#instances_distribution AutoscalingGroup#instances_distribution}
   */
   readonly instancesDistribution?: AutoscalingGroupMixedInstancesPolicyInstancesDistribution;
   /**
   * launch_template block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/autoscaling_group#launch_template AutoscalingGroup#launch_template}
   */
   readonly launchTemplate: AutoscalingGroupMixedInstancesPolicyLaunchTemplate;

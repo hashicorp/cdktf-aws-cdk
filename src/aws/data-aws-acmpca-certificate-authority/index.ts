@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/acmpca_certificate_authority
 // generated from terraform resource schema
 
@@ -24,7 +29,7 @@ export interface DataAwsAcmpcaCertificateAuthorityConfig extends cdktf.Terraform
   readonly tags?: { [key: string]: string };
   /**
   * revocation_configuration block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/acmpca_certificate_authority#revocation_configuration DataAwsAcmpcaCertificateAuthority#revocation_configuration}
   */
   readonly revocationConfiguration?: DataAwsAcmpcaCertificateAuthorityRevocationConfiguration[] | cdktf.IResolvable;
@@ -127,7 +132,7 @@ export class DataAwsAcmpcaCertificateAuthorityRevocationConfigurationCrlConfigur
 export interface DataAwsAcmpcaCertificateAuthorityRevocationConfiguration {
   /**
   * crl_configuration block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/acmpca_certificate_authority#crl_configuration DataAwsAcmpcaCertificateAuthority#crl_configuration}
   */
   readonly crlConfiguration?: DataAwsAcmpcaCertificateAuthorityRevocationConfigurationCrlConfiguration[] | cdktf.IResolvable;

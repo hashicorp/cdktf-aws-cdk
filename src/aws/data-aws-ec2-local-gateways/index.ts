@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ec2_local_gateways
 // generated from terraform resource schema
 
@@ -20,7 +25,7 @@ export interface DataAwsEc2LocalGatewaysConfig extends cdktf.TerraformMetaArgume
   readonly tags?: { [key: string]: string };
   /**
   * filter block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ec2_local_gateways#filter DataAwsEc2LocalGateways#filter}
   */
   readonly filter?: DataAwsEc2LocalGatewaysFilter[] | cdktf.IResolvable;

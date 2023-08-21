@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_maintenance_window_task
 // generated from terraform resource schema
 
@@ -52,13 +57,13 @@ export interface SsmMaintenanceWindowTaskConfig extends cdktf.TerraformMetaArgum
   readonly windowId: string;
   /**
   * targets block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_maintenance_window_task#targets SsmMaintenanceWindowTask#targets}
   */
   readonly targets?: SsmMaintenanceWindowTaskTargets[] | cdktf.IResolvable;
   /**
   * task_invocation_parameters block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_maintenance_window_task#task_invocation_parameters SsmMaintenanceWindowTask#task_invocation_parameters}
   */
   readonly taskInvocationParameters?: SsmMaintenanceWindowTaskTaskInvocationParameters;
@@ -306,7 +311,7 @@ export interface SsmMaintenanceWindowTaskTaskInvocationParametersAutomationParam
   readonly documentVersion?: string;
   /**
   * parameter block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_maintenance_window_task#parameter SsmMaintenanceWindowTask#parameter}
   */
   readonly parameter?: SsmMaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter[] | cdktf.IResolvable;
@@ -876,19 +881,19 @@ export interface SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParam
   readonly timeoutSeconds?: number;
   /**
   * cloudwatch_config block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_maintenance_window_task#cloudwatch_config SsmMaintenanceWindowTask#cloudwatch_config}
   */
   readonly cloudwatchConfig?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig;
   /**
   * notification_config block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_maintenance_window_task#notification_config SsmMaintenanceWindowTask#notification_config}
   */
   readonly notificationConfig?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfig;
   /**
   * parameter block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_maintenance_window_task#parameter SsmMaintenanceWindowTask#parameter}
   */
   readonly parameter?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter[] | cdktf.IResolvable;
@@ -1277,25 +1282,25 @@ export class SsmMaintenanceWindowTaskTaskInvocationParametersStepFunctionsParame
 export interface SsmMaintenanceWindowTaskTaskInvocationParameters {
   /**
   * automation_parameters block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_maintenance_window_task#automation_parameters SsmMaintenanceWindowTask#automation_parameters}
   */
   readonly automationParameters?: SsmMaintenanceWindowTaskTaskInvocationParametersAutomationParameters;
   /**
   * lambda_parameters block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_maintenance_window_task#lambda_parameters SsmMaintenanceWindowTask#lambda_parameters}
   */
   readonly lambdaParameters?: SsmMaintenanceWindowTaskTaskInvocationParametersLambdaParameters;
   /**
   * run_command_parameters block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_maintenance_window_task#run_command_parameters SsmMaintenanceWindowTask#run_command_parameters}
   */
   readonly runCommandParameters?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParameters;
   /**
   * step_functions_parameters block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_maintenance_window_task#step_functions_parameters SsmMaintenanceWindowTask#step_functions_parameters}
   */
   readonly stepFunctionsParameters?: SsmMaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters;

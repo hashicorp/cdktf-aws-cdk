@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/route53_record
 // generated from terraform resource schema
 
@@ -52,31 +57,31 @@ export interface Route53RecordConfig extends cdktf.TerraformMetaArguments {
   readonly zoneId: string;
   /**
   * alias block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/route53_record#alias Route53Record#alias}
   */
   readonly alias?: Route53RecordAlias[] | cdktf.IResolvable;
   /**
   * failover_routing_policy block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/route53_record#failover_routing_policy Route53Record#failover_routing_policy}
   */
   readonly failoverRoutingPolicy?: Route53RecordFailoverRoutingPolicy[] | cdktf.IResolvable;
   /**
   * geolocation_routing_policy block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/route53_record#geolocation_routing_policy Route53Record#geolocation_routing_policy}
   */
   readonly geolocationRoutingPolicy?: Route53RecordGeolocationRoutingPolicy[] | cdktf.IResolvable;
   /**
   * latency_routing_policy block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/route53_record#latency_routing_policy Route53Record#latency_routing_policy}
   */
   readonly latencyRoutingPolicy?: Route53RecordLatencyRoutingPolicy[] | cdktf.IResolvable;
   /**
   * weighted_routing_policy block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/route53_record#weighted_routing_policy Route53Record#weighted_routing_policy}
   */
   readonly weightedRoutingPolicy?: Route53RecordWeightedRoutingPolicy[] | cdktf.IResolvable;

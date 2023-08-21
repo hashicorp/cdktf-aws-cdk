@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket_cors_configuration
 // generated from terraform resource schema
 
@@ -24,7 +29,7 @@ export interface S3BucketCorsConfigurationConfig extends cdktf.TerraformMetaArgu
   readonly id?: string;
   /**
   * cors_rule block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket_cors_configuration#cors_rule S3BucketCorsConfiguration#cors_rule}
   */
   readonly corsRule: S3BucketCorsConfigurationCorsRule[] | cdktf.IResolvable;

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/api_gateway_domain_name
 // generated from terraform resource schema
 
@@ -60,13 +65,13 @@ export interface ApiGatewayDomainNameConfig extends cdktf.TerraformMetaArguments
   readonly tagsAll?: { [key: string]: string };
   /**
   * endpoint_configuration block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/api_gateway_domain_name#endpoint_configuration ApiGatewayDomainName#endpoint_configuration}
   */
   readonly endpointConfiguration?: ApiGatewayDomainNameEndpointConfiguration;
   /**
   * mutual_tls_authentication block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/api_gateway_domain_name#mutual_tls_authentication ApiGatewayDomainName#mutual_tls_authentication}
   */
   readonly mutualTlsAuthentication?: ApiGatewayDomainNameMutualTlsAuthentication;

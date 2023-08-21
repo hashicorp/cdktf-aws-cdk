@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/datapipeline_pipeline_definition
 // generated from terraform resource schema
 
@@ -20,7 +25,7 @@ export interface DataAwsDatapipelinePipelineDefinitionConfig extends cdktf.Terra
   readonly pipelineId: string;
   /**
   * parameter_value block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/datapipeline_pipeline_definition#parameter_value DataAwsDatapipelinePipelineDefinition#parameter_value}
   */
   readonly parameterValue?: DataAwsDatapipelinePipelineDefinitionParameterValue[] | cdktf.IResolvable;

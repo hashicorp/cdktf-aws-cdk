@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/api_gateway_integration
 // generated from terraform resource schema
 
@@ -80,7 +85,7 @@ export interface ApiGatewayIntegrationConfig extends cdktf.TerraformMetaArgument
   readonly uri?: string;
   /**
   * tls_config block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/api_gateway_integration#tls_config ApiGatewayIntegration#tls_config}
   */
   readonly tlsConfig?: ApiGatewayIntegrationTlsConfig;

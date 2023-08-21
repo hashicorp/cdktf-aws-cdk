@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ec2_instance_type
 // generated from terraform resource schema
 
@@ -48,25 +53,25 @@ export interface DataAwsEc2InstanceTypeConfig extends cdktf.TerraformMetaArgumen
   readonly totalInstanceStorage?: number;
   /**
   * fpgas block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ec2_instance_type#fpgas DataAwsEc2InstanceType#fpgas}
   */
   readonly fpgas?: DataAwsEc2InstanceTypeFpgas[] | cdktf.IResolvable;
   /**
   * gpus block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ec2_instance_type#gpus DataAwsEc2InstanceType#gpus}
   */
   readonly gpus?: DataAwsEc2InstanceTypeGpus[] | cdktf.IResolvable;
   /**
   * inference_accelerators block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ec2_instance_type#inference_accelerators DataAwsEc2InstanceType#inference_accelerators}
   */
   readonly inferenceAccelerators?: DataAwsEc2InstanceTypeInferenceAccelerators[] | cdktf.IResolvable;
   /**
   * instance_disks block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ec2_instance_type#instance_disks DataAwsEc2InstanceType#instance_disks}
   */
   readonly instanceDisks?: DataAwsEc2InstanceTypeInstanceDisks[] | cdktf.IResolvable;

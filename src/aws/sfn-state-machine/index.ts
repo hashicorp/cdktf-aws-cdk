@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sfn_state_machine
 // generated from terraform resource schema
 
@@ -40,13 +45,13 @@ export interface SfnStateMachineConfig extends cdktf.TerraformMetaArguments {
   readonly type?: string;
   /**
   * logging_configuration block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sfn_state_machine#logging_configuration SfnStateMachine#logging_configuration}
   */
   readonly loggingConfiguration?: SfnStateMachineLoggingConfiguration;
   /**
   * tracing_configuration block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sfn_state_machine#tracing_configuration SfnStateMachine#tracing_configuration}
   */
   readonly tracingConfiguration?: SfnStateMachineTracingConfiguration;

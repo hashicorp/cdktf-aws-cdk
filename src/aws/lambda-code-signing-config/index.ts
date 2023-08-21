@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/lambda_code_signing_config
 // generated from terraform resource schema
 
@@ -20,13 +25,13 @@ export interface LambdaCodeSigningConfigConfig extends cdktf.TerraformMetaArgume
   readonly id?: string;
   /**
   * allowed_publishers block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/lambda_code_signing_config#allowed_publishers LambdaCodeSigningConfig#allowed_publishers}
   */
   readonly allowedPublishers: LambdaCodeSigningConfigAllowedPublishers;
   /**
   * policies block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/lambda_code_signing_config#policies LambdaCodeSigningConfig#policies}
   */
   readonly policies?: LambdaCodeSigningConfigPolicies;

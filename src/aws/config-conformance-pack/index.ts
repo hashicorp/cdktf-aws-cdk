@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/config_conformance_pack
 // generated from terraform resource schema
 
@@ -36,7 +41,7 @@ export interface ConfigConformancePackConfig extends cdktf.TerraformMetaArgument
   readonly templateS3Uri?: string;
   /**
   * input_parameter block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/config_conformance_pack#input_parameter ConfigConformancePack#input_parameter}
   */
   readonly inputParameter?: ConfigConformancePackInputParameter[] | cdktf.IResolvable;

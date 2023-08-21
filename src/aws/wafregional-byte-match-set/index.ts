@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafregional_byte_match_set
 // generated from terraform resource schema
 
@@ -20,7 +25,7 @@ export interface WafregionalByteMatchSetConfig extends cdktf.TerraformMetaArgume
   readonly name: string;
   /**
   * byte_match_tuples block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafregional_byte_match_set#byte_match_tuples WafregionalByteMatchSet#byte_match_tuples}
   */
   readonly byteMatchTuples?: WafregionalByteMatchSetByteMatchTuples[] | cdktf.IResolvable;
@@ -129,7 +134,7 @@ export interface WafregionalByteMatchSetByteMatchTuples {
   readonly textTransformation: string;
   /**
   * field_to_match block
-  *
+  * 
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafregional_byte_match_set#field_to_match WafregionalByteMatchSet#field_to_match}
   */
   readonly fieldToMatch: WafregionalByteMatchSetByteMatchTuplesFieldToMatch;
