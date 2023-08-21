@@ -11,7 +11,7 @@ CDKTF_VERSION=$1
 echo "Updating main level cdktf version $CDKTF_VERSION"
 yarn
 sed -i "s/cdktfVersion: \".*\",/cdktfVersion: \"$CDKTF_VERSION\",/" "$PROJECT_ROOT/.projenrc.ts"
-npx projen default
+CI=0 npx projen
 
 echo "Updating examples"
 # Loop through all examples and update the cdktf version
