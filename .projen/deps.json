@@ -56,6 +56,7 @@
     },
     {
       "name": "jsii-docgen",
+      "version": "~9.0.0",
       "type": "build"
     },
     {
@@ -64,7 +65,7 @@
     },
     {
       "name": "jsii-rosetta",
-      "version": "1.x",
+      "version": "~5.1.2",
       "type": "build"
     },
     {

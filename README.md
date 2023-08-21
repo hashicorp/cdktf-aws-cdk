@@ -22,6 +22,6 @@ npm install @cdktf/aws-cdk
 ```
 
 ## Docs
-Read the [docs on Terraform.io](https://www.terraform.io/docs/cdktf/create-and-deploy/aws-adapter.html).
+Read the [docs on HashiCorp Developer](https://developer.hashicorp.com/terraform/cdktf/create-and-deploy/aws-adapter).
 
-Find auto-generated API docs for this package here: [./API.md](./API.md)
+Find auto-generated API docs for this package [here](./docs/API.md).
