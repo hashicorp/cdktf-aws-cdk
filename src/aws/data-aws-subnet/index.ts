@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/subnet
 // generated from terraform resource schema
 
@@ -53,7 +48,7 @@ export interface DataAwsSubnetConfig extends cdktf.TerraformMetaArguments {
   readonly vpcId?: string;
   /**
   * filter block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/subnet#filter DataAwsSubnet#filter}
   */
   readonly filter?: DataAwsSubnetFilter[] | cdktf.IResolvable;

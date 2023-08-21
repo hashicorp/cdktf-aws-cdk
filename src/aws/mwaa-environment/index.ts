@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/mwaa_environment
 // generated from terraform resource schema
 
@@ -93,13 +88,13 @@ export interface MwaaEnvironmentConfig extends cdktf.TerraformMetaArguments {
   readonly weeklyMaintenanceWindowStart?: string;
   /**
   * logging_configuration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/mwaa_environment#logging_configuration MwaaEnvironment#logging_configuration}
   */
   readonly loggingConfiguration?: MwaaEnvironmentLoggingConfiguration;
   /**
   * network_configuration block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/mwaa_environment#network_configuration MwaaEnvironment#network_configuration}
   */
   readonly networkConfiguration: MwaaEnvironmentNetworkConfiguration;
@@ -736,31 +731,31 @@ export class MwaaEnvironmentLoggingConfigurationWorkerLogsOutputReference extend
 export interface MwaaEnvironmentLoggingConfiguration {
   /**
   * dag_processing_logs block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/mwaa_environment#dag_processing_logs MwaaEnvironment#dag_processing_logs}
   */
   readonly dagProcessingLogs?: MwaaEnvironmentLoggingConfigurationDagProcessingLogs;
   /**
   * scheduler_logs block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/mwaa_environment#scheduler_logs MwaaEnvironment#scheduler_logs}
   */
   readonly schedulerLogs?: MwaaEnvironmentLoggingConfigurationSchedulerLogs;
   /**
   * task_logs block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/mwaa_environment#task_logs MwaaEnvironment#task_logs}
   */
   readonly taskLogs?: MwaaEnvironmentLoggingConfigurationTaskLogs;
   /**
   * webserver_logs block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/mwaa_environment#webserver_logs MwaaEnvironment#webserver_logs}
   */
   readonly webserverLogs?: MwaaEnvironmentLoggingConfigurationWebserverLogs;
   /**
   * worker_logs block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/mwaa_environment#worker_logs MwaaEnvironment#worker_logs}
   */
   readonly workerLogs?: MwaaEnvironmentLoggingConfigurationWorkerLogs;

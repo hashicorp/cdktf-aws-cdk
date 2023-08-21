@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route
 // generated from terraform resource schema
 
@@ -45,7 +40,7 @@ export interface AppmeshRouteConfig extends cdktf.TerraformMetaArguments {
   readonly virtualRouterName: string;
   /**
   * spec block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#spec AppmeshRoute#spec}
   */
   readonly spec: AppmeshRouteSpec;
@@ -171,7 +166,7 @@ export class AppmeshRouteSpecGrpcRouteActionWeightedTargetList extends cdktf.Com
 export interface AppmeshRouteSpecGrpcRouteAction {
   /**
   * weighted_target block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#weighted_target AppmeshRoute#weighted_target}
   */
   readonly weightedTarget: AppmeshRouteSpecGrpcRouteActionWeightedTarget[] | cdktf.IResolvable;
@@ -337,7 +332,7 @@ export interface AppmeshRouteSpecGrpcRouteMatchMetadataMatch {
   readonly suffix?: string;
   /**
   * range block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#range AppmeshRoute#range}
   */
   readonly range?: AppmeshRouteSpecGrpcRouteMatchMetadataMatchRange;
@@ -504,7 +499,7 @@ export interface AppmeshRouteSpecGrpcRouteMatchMetadata {
   readonly name: string;
   /**
   * match block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#match AppmeshRoute#match}
   */
   readonly match?: AppmeshRouteSpecGrpcRouteMatchMetadataMatch;
@@ -658,7 +653,7 @@ export interface AppmeshRouteSpecGrpcRouteMatch {
   readonly serviceName?: string;
   /**
   * metadata block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#metadata AppmeshRoute#metadata}
   */
   readonly metadata?: AppmeshRouteSpecGrpcRouteMatchMetadata[] | cdktf.IResolvable;
@@ -896,7 +891,7 @@ export interface AppmeshRouteSpecGrpcRouteRetryPolicy {
   readonly tcpRetryEvents?: string[];
   /**
   * per_retry_timeout block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#per_retry_timeout AppmeshRoute#per_retry_timeout}
   */
   readonly perRetryTimeout: AppmeshRouteSpecGrpcRouteRetryPolicyPerRetryTimeout;
@@ -1221,13 +1216,13 @@ export class AppmeshRouteSpecGrpcRouteTimeoutPerRequestOutputReference extends c
 export interface AppmeshRouteSpecGrpcRouteTimeout {
   /**
   * idle block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#idle AppmeshRoute#idle}
   */
   readonly idle?: AppmeshRouteSpecGrpcRouteTimeoutIdle;
   /**
   * per_request block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#per_request AppmeshRoute#per_request}
   */
   readonly perRequest?: AppmeshRouteSpecGrpcRouteTimeoutPerRequest;
@@ -1317,25 +1312,25 @@ export class AppmeshRouteSpecGrpcRouteTimeoutOutputReference extends cdktf.Compl
 export interface AppmeshRouteSpecGrpcRoute {
   /**
   * action block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#action AppmeshRoute#action}
   */
   readonly action: AppmeshRouteSpecGrpcRouteAction;
   /**
   * match block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#match AppmeshRoute#match}
   */
   readonly match?: AppmeshRouteSpecGrpcRouteMatch;
   /**
   * retry_policy block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#retry_policy AppmeshRoute#retry_policy}
   */
   readonly retryPolicy?: AppmeshRouteSpecGrpcRouteRetryPolicy;
   /**
   * timeout block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#timeout AppmeshRoute#timeout}
   */
   readonly timeout?: AppmeshRouteSpecGrpcRouteTimeout;
@@ -1586,7 +1581,7 @@ export class AppmeshRouteSpecHttp2RouteActionWeightedTargetList extends cdktf.Co
 export interface AppmeshRouteSpecHttp2RouteAction {
   /**
   * weighted_target block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#weighted_target AppmeshRoute#weighted_target}
   */
   readonly weightedTarget: AppmeshRouteSpecHttp2RouteActionWeightedTarget[] | cdktf.IResolvable;
@@ -1752,7 +1747,7 @@ export interface AppmeshRouteSpecHttp2RouteMatchHeaderMatch {
   readonly suffix?: string;
   /**
   * range block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#range AppmeshRoute#range}
   */
   readonly range?: AppmeshRouteSpecHttp2RouteMatchHeaderMatchRange;
@@ -1919,7 +1914,7 @@ export interface AppmeshRouteSpecHttp2RouteMatchHeader {
   readonly name: string;
   /**
   * match block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#match AppmeshRoute#match}
   */
   readonly match?: AppmeshRouteSpecHttp2RouteMatchHeaderMatch;
@@ -2073,7 +2068,7 @@ export interface AppmeshRouteSpecHttp2RouteMatch {
   readonly scheme?: string;
   /**
   * header block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#header AppmeshRoute#header}
   */
   readonly header?: AppmeshRouteSpecHttp2RouteMatchHeader[] | cdktf.IResolvable;
@@ -2304,7 +2299,7 @@ export interface AppmeshRouteSpecHttp2RouteRetryPolicy {
   readonly tcpRetryEvents?: string[];
   /**
   * per_retry_timeout block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#per_retry_timeout AppmeshRoute#per_retry_timeout}
   */
   readonly perRetryTimeout: AppmeshRouteSpecHttp2RouteRetryPolicyPerRetryTimeout;
@@ -2606,13 +2601,13 @@ export class AppmeshRouteSpecHttp2RouteTimeoutPerRequestOutputReference extends 
 export interface AppmeshRouteSpecHttp2RouteTimeout {
   /**
   * idle block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#idle AppmeshRoute#idle}
   */
   readonly idle?: AppmeshRouteSpecHttp2RouteTimeoutIdle;
   /**
   * per_request block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#per_request AppmeshRoute#per_request}
   */
   readonly perRequest?: AppmeshRouteSpecHttp2RouteTimeoutPerRequest;
@@ -2702,25 +2697,25 @@ export class AppmeshRouteSpecHttp2RouteTimeoutOutputReference extends cdktf.Comp
 export interface AppmeshRouteSpecHttp2Route {
   /**
   * action block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#action AppmeshRoute#action}
   */
   readonly action: AppmeshRouteSpecHttp2RouteAction;
   /**
   * match block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#match AppmeshRoute#match}
   */
   readonly match: AppmeshRouteSpecHttp2RouteMatch;
   /**
   * retry_policy block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#retry_policy AppmeshRoute#retry_policy}
   */
   readonly retryPolicy?: AppmeshRouteSpecHttp2RouteRetryPolicy;
   /**
   * timeout block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#timeout AppmeshRoute#timeout}
   */
   readonly timeout?: AppmeshRouteSpecHttp2RouteTimeout;
@@ -2968,7 +2963,7 @@ export class AppmeshRouteSpecHttpRouteActionWeightedTargetList extends cdktf.Com
 export interface AppmeshRouteSpecHttpRouteAction {
   /**
   * weighted_target block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#weighted_target AppmeshRoute#weighted_target}
   */
   readonly weightedTarget: AppmeshRouteSpecHttpRouteActionWeightedTarget[] | cdktf.IResolvable;
@@ -3134,7 +3129,7 @@ export interface AppmeshRouteSpecHttpRouteMatchHeaderMatch {
   readonly suffix?: string;
   /**
   * range block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#range AppmeshRoute#range}
   */
   readonly range?: AppmeshRouteSpecHttpRouteMatchHeaderMatchRange;
@@ -3301,7 +3296,7 @@ export interface AppmeshRouteSpecHttpRouteMatchHeader {
   readonly name: string;
   /**
   * match block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#match AppmeshRoute#match}
   */
   readonly match?: AppmeshRouteSpecHttpRouteMatchHeaderMatch;
@@ -3455,7 +3450,7 @@ export interface AppmeshRouteSpecHttpRouteMatch {
   readonly scheme?: string;
   /**
   * header block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#header AppmeshRoute#header}
   */
   readonly header?: AppmeshRouteSpecHttpRouteMatchHeader[] | cdktf.IResolvable;
@@ -3686,7 +3681,7 @@ export interface AppmeshRouteSpecHttpRouteRetryPolicy {
   readonly tcpRetryEvents?: string[];
   /**
   * per_retry_timeout block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#per_retry_timeout AppmeshRoute#per_retry_timeout}
   */
   readonly perRetryTimeout: AppmeshRouteSpecHttpRouteRetryPolicyPerRetryTimeout;
@@ -3988,13 +3983,13 @@ export class AppmeshRouteSpecHttpRouteTimeoutPerRequestOutputReference extends c
 export interface AppmeshRouteSpecHttpRouteTimeout {
   /**
   * idle block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#idle AppmeshRoute#idle}
   */
   readonly idle?: AppmeshRouteSpecHttpRouteTimeoutIdle;
   /**
   * per_request block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#per_request AppmeshRoute#per_request}
   */
   readonly perRequest?: AppmeshRouteSpecHttpRouteTimeoutPerRequest;
@@ -4084,25 +4079,25 @@ export class AppmeshRouteSpecHttpRouteTimeoutOutputReference extends cdktf.Compl
 export interface AppmeshRouteSpecHttpRoute {
   /**
   * action block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#action AppmeshRoute#action}
   */
   readonly action: AppmeshRouteSpecHttpRouteAction;
   /**
   * match block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#match AppmeshRoute#match}
   */
   readonly match: AppmeshRouteSpecHttpRouteMatch;
   /**
   * retry_policy block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#retry_policy AppmeshRoute#retry_policy}
   */
   readonly retryPolicy?: AppmeshRouteSpecHttpRouteRetryPolicy;
   /**
   * timeout block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#timeout AppmeshRoute#timeout}
   */
   readonly timeout?: AppmeshRouteSpecHttpRouteTimeout;
@@ -4350,7 +4345,7 @@ export class AppmeshRouteSpecTcpRouteActionWeightedTargetList extends cdktf.Comp
 export interface AppmeshRouteSpecTcpRouteAction {
   /**
   * weighted_target block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#weighted_target AppmeshRoute#weighted_target}
   */
   readonly weightedTarget: AppmeshRouteSpecTcpRouteActionWeightedTarget[] | cdktf.IResolvable;
@@ -4500,7 +4495,7 @@ export class AppmeshRouteSpecTcpRouteTimeoutIdleOutputReference extends cdktf.Co
 export interface AppmeshRouteSpecTcpRouteTimeout {
   /**
   * idle block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#idle AppmeshRoute#idle}
   */
   readonly idle?: AppmeshRouteSpecTcpRouteTimeoutIdle;
@@ -4567,13 +4562,13 @@ export class AppmeshRouteSpecTcpRouteTimeoutOutputReference extends cdktf.Comple
 export interface AppmeshRouteSpecTcpRoute {
   /**
   * action block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#action AppmeshRoute#action}
   */
   readonly action: AppmeshRouteSpecTcpRouteAction;
   /**
   * timeout block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#timeout AppmeshRoute#timeout}
   */
   readonly timeout?: AppmeshRouteSpecTcpRouteTimeout;
@@ -4664,25 +4659,25 @@ export interface AppmeshRouteSpec {
   readonly priority?: number;
   /**
   * grpc_route block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#grpc_route AppmeshRoute#grpc_route}
   */
   readonly grpcRoute?: AppmeshRouteSpecGrpcRoute;
   /**
   * http2_route block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#http2_route AppmeshRoute#http2_route}
   */
   readonly http2Route?: AppmeshRouteSpecHttp2Route;
   /**
   * http_route block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#http_route AppmeshRoute#http_route}
   */
   readonly httpRoute?: AppmeshRouteSpecHttpRoute;
   /**
   * tcp_route block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_route#tcp_route AppmeshRoute#tcp_route}
   */
   readonly tcpRoute?: AppmeshRouteSpecTcpRoute;

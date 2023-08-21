@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/config_configuration_recorder
 // generated from terraform resource schema
 
@@ -29,7 +24,7 @@ export interface ConfigConfigurationRecorderConfig extends cdktf.TerraformMetaAr
   readonly roleArn: string;
   /**
   * recording_group block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/config_configuration_recorder#recording_group ConfigConfigurationRecorder#recording_group}
   */
   readonly recordingGroup?: ConfigConfigurationRecorderRecordingGroup;

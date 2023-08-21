@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/service_discovery_service
 // generated from terraform resource schema
 
@@ -45,19 +40,19 @@ export interface ServiceDiscoveryServiceConfig extends cdktf.TerraformMetaArgume
   readonly tagsAll?: { [key: string]: string };
   /**
   * dns_config block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/service_discovery_service#dns_config ServiceDiscoveryService#dns_config}
   */
   readonly dnsConfig?: ServiceDiscoveryServiceDnsConfig;
   /**
   * health_check_config block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/service_discovery_service#health_check_config ServiceDiscoveryService#health_check_config}
   */
   readonly healthCheckConfig?: ServiceDiscoveryServiceHealthCheckConfig;
   /**
   * health_check_custom_config block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/service_discovery_service#health_check_custom_config ServiceDiscoveryService#health_check_custom_config}
   */
   readonly healthCheckCustomConfig?: ServiceDiscoveryServiceHealthCheckCustomConfig;
@@ -191,7 +186,7 @@ export interface ServiceDiscoveryServiceDnsConfig {
   readonly routingPolicy?: string;
   /**
   * dns_records block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/service_discovery_service#dns_records ServiceDiscoveryService#dns_records}
   */
   readonly dnsRecords: ServiceDiscoveryServiceDnsConfigDnsRecords[] | cdktf.IResolvable;

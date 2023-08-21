@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dms_endpoint
 // generated from terraform resource schema
 
@@ -89,31 +84,31 @@ export interface DmsEndpointConfig extends cdktf.TerraformMetaArguments {
   readonly username?: string;
   /**
   * elasticsearch_settings block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dms_endpoint#elasticsearch_settings DmsEndpoint#elasticsearch_settings}
   */
   readonly elasticsearchSettings?: DmsEndpointElasticsearchSettings;
   /**
   * kafka_settings block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dms_endpoint#kafka_settings DmsEndpoint#kafka_settings}
   */
   readonly kafkaSettings?: DmsEndpointKafkaSettings;
   /**
   * kinesis_settings block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dms_endpoint#kinesis_settings DmsEndpoint#kinesis_settings}
   */
   readonly kinesisSettings?: DmsEndpointKinesisSettings;
   /**
   * mongodb_settings block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dms_endpoint#mongodb_settings DmsEndpoint#mongodb_settings}
   */
   readonly mongodbSettings?: DmsEndpointMongodbSettings;
   /**
   * s3_settings block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dms_endpoint#s3_settings DmsEndpoint#s3_settings}
   */
   readonly s3Settings?: DmsEndpointS3Settings;

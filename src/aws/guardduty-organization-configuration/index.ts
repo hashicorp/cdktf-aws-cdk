@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/guardduty_organization_configuration
 // generated from terraform resource schema
 
@@ -29,7 +24,7 @@ export interface GuarddutyOrganizationConfigurationConfig extends cdktf.Terrafor
   readonly id?: string;
   /**
   * datasources block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/guardduty_organization_configuration#datasources GuarddutyOrganizationConfiguration#datasources}
   */
   readonly datasources?: GuarddutyOrganizationConfigurationDatasources;
@@ -99,7 +94,7 @@ export class GuarddutyOrganizationConfigurationDatasourcesS3LogsOutputReference 
 export interface GuarddutyOrganizationConfigurationDatasources {
   /**
   * s3_logs block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/guardduty_organization_configuration#s3_logs GuarddutyOrganizationConfiguration#s3_logs}
   */
   readonly s3Logs?: GuarddutyOrganizationConfigurationDatasourcesS3Logs;

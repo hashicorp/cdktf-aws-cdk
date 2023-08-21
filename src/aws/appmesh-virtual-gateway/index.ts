@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway
 // generated from terraform resource schema
 
@@ -41,7 +36,7 @@ export interface AppmeshVirtualGatewayConfig extends cdktf.TerraformMetaArgument
   readonly tagsAll?: { [key: string]: string };
   /**
   * spec block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#spec AppmeshVirtualGateway#spec}
   */
   readonly spec: AppmeshVirtualGatewaySpec;
@@ -197,13 +192,13 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateS
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate {
   /**
   * file block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#file AppmeshVirtualGateway#file}
   */
   readonly file?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile;
   /**
   * sds block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#sds AppmeshVirtualGateway#sds}
   */
   readonly sds?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds;
@@ -355,7 +350,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSu
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames {
   /**
   * match block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#match AppmeshVirtualGateway#match}
   */
   readonly match: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch;
@@ -605,19 +600,19 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust {
   /**
   * acm block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#acm AppmeshVirtualGateway#acm}
   */
   readonly acm?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm;
   /**
   * file block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#file AppmeshVirtualGateway#file}
   */
   readonly file?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile;
   /**
   * sds block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#sds AppmeshVirtualGateway#sds}
   */
   readonly sds?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds;
@@ -730,13 +725,13 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation {
   /**
   * subject_alternative_names block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#subject_alternative_names AppmeshVirtualGateway#subject_alternative_names}
   */
   readonly subjectAlternativeNames?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames;
   /**
   * trust block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#trust AppmeshVirtualGateway#trust}
   */
   readonly trust: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust;
@@ -831,13 +826,13 @@ export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTls {
   readonly ports?: number[];
   /**
   * certificate block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#certificate AppmeshVirtualGateway#certificate}
   */
   readonly certificate?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate;
   /**
   * validation block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#validation AppmeshVirtualGateway#validation}
   */
   readonly validation: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation;
@@ -970,7 +965,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsOutputRefere
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicy {
   /**
   * tls block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#tls AppmeshVirtualGateway#tls}
   */
   readonly tls?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTls;
@@ -1037,7 +1032,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyOutputReference
 export interface AppmeshVirtualGatewaySpecBackendDefaults {
   /**
   * client_policy block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#client_policy AppmeshVirtualGateway#client_policy}
   */
   readonly clientPolicy?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicy;
@@ -1317,19 +1312,19 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2OutputReference
 export interface AppmeshVirtualGatewaySpecListenerConnectionPool {
   /**
   * grpc block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#grpc AppmeshVirtualGateway#grpc}
   */
   readonly grpc?: AppmeshVirtualGatewaySpecListenerConnectionPoolGrpc;
   /**
   * http block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#http AppmeshVirtualGateway#http}
   */
   readonly http?: AppmeshVirtualGatewaySpecListenerConnectionPoolHttp;
   /**
   * http2 block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#http2 AppmeshVirtualGateway#http2}
   */
   readonly http2?: AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2;
@@ -1950,19 +1945,19 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateSdsOutputReference e
 export interface AppmeshVirtualGatewaySpecListenerTlsCertificate {
   /**
   * acm block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#acm AppmeshVirtualGateway#acm}
   */
   readonly acm?: AppmeshVirtualGatewaySpecListenerTlsCertificateAcm;
   /**
   * file block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#file AppmeshVirtualGateway#file}
   */
   readonly file?: AppmeshVirtualGatewaySpecListenerTlsCertificateFile;
   /**
   * sds block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#sds AppmeshVirtualGateway#sds}
   */
   readonly sds?: AppmeshVirtualGatewaySpecListenerTlsCertificateSds;
@@ -2137,7 +2132,7 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNam
 export interface AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames {
   /**
   * match block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#match AppmeshVirtualGateway#match}
   */
   readonly match: AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch;
@@ -2325,13 +2320,13 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationTrustSdsOutputReferen
 export interface AppmeshVirtualGatewaySpecListenerTlsValidationTrust {
   /**
   * file block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#file AppmeshVirtualGateway#file}
   */
   readonly file?: AppmeshVirtualGatewaySpecListenerTlsValidationTrustFile;
   /**
   * sds block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#sds AppmeshVirtualGateway#sds}
   */
   readonly sds?: AppmeshVirtualGatewaySpecListenerTlsValidationTrustSds;
@@ -2421,13 +2416,13 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationTrustOutputReference 
 export interface AppmeshVirtualGatewaySpecListenerTlsValidation {
   /**
   * subject_alternative_names block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#subject_alternative_names AppmeshVirtualGateway#subject_alternative_names}
   */
   readonly subjectAlternativeNames?: AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames;
   /**
   * trust block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#trust AppmeshVirtualGateway#trust}
   */
   readonly trust: AppmeshVirtualGatewaySpecListenerTlsValidationTrust;
@@ -2518,13 +2513,13 @@ export interface AppmeshVirtualGatewaySpecListenerTls {
   readonly mode: string;
   /**
   * certificate block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#certificate AppmeshVirtualGateway#certificate}
   */
   readonly certificate: AppmeshVirtualGatewaySpecListenerTlsCertificate;
   /**
   * validation block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#validation AppmeshVirtualGateway#validation}
   */
   readonly validation?: AppmeshVirtualGatewaySpecListenerTlsValidation;
@@ -2631,25 +2626,25 @@ export class AppmeshVirtualGatewaySpecListenerTlsOutputReference extends cdktf.C
 export interface AppmeshVirtualGatewaySpecListener {
   /**
   * connection_pool block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#connection_pool AppmeshVirtualGateway#connection_pool}
   */
   readonly connectionPool?: AppmeshVirtualGatewaySpecListenerConnectionPool;
   /**
   * health_check block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#health_check AppmeshVirtualGateway#health_check}
   */
   readonly healthCheck?: AppmeshVirtualGatewaySpecListenerHealthCheck;
   /**
   * port_mapping block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#port_mapping AppmeshVirtualGateway#port_mapping}
   */
   readonly portMapping: AppmeshVirtualGatewaySpecListenerPortMapping;
   /**
   * tls block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#tls AppmeshVirtualGateway#tls}
   */
   readonly tls?: AppmeshVirtualGatewaySpecListenerTls;
@@ -2844,7 +2839,7 @@ export class AppmeshVirtualGatewaySpecLoggingAccessLogFileOutputReference extend
 export interface AppmeshVirtualGatewaySpecLoggingAccessLog {
   /**
   * file block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#file AppmeshVirtualGateway#file}
   */
   readonly file?: AppmeshVirtualGatewaySpecLoggingAccessLogFile;
@@ -2911,7 +2906,7 @@ export class AppmeshVirtualGatewaySpecLoggingAccessLogOutputReference extends cd
 export interface AppmeshVirtualGatewaySpecLogging {
   /**
   * access_log block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#access_log AppmeshVirtualGateway#access_log}
   */
   readonly accessLog?: AppmeshVirtualGatewaySpecLoggingAccessLog;
@@ -2978,19 +2973,19 @@ export class AppmeshVirtualGatewaySpecLoggingOutputReference extends cdktf.Compl
 export interface AppmeshVirtualGatewaySpec {
   /**
   * backend_defaults block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#backend_defaults AppmeshVirtualGateway#backend_defaults}
   */
   readonly backendDefaults?: AppmeshVirtualGatewaySpecBackendDefaults;
   /**
   * listener block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#listener AppmeshVirtualGateway#listener}
   */
   readonly listener: AppmeshVirtualGatewaySpecListener;
   /**
   * logging block
-  * 
+  *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_gateway#logging AppmeshVirtualGateway#logging}
   */
   readonly logging?: AppmeshVirtualGatewaySpecLogging;
