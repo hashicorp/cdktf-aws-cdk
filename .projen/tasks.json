@@ -302,13 +302,13 @@
           "exec": "yarn upgrade npm-check-updates"
         },
         {
-          "exec": "npm-check-updates --upgrade --target=minor --filter=@aws-sdk/client-cloudformation,@types/debug,@types/jest,@types/node,constructs,jest-junit,jest,jsii-diff,jsii-pacmak,npm-check-updates,projen,standard-version,ts-node,typescript,change-case,codemaker,debug,aws-cdk-lib,cdktf"
+          "exec": "npm-check-updates --upgrade --target=minor --filter=@aws-sdk/client-cloudformation,@types/debug,@types/jest,@types/node,constructs,jest,jest-junit,jsii-diff,jsii-pacmak,jsii,npm-check-updates,projen,standard-version,ts-node,typescript,change-case,codemaker,debug,aws-cdk-lib,cdktf"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @aws-sdk/client-cloudformation @types/debug @types/jest @types/node constructs jest-junit jest jsii-diff jsii-pacmak npm-check-updates projen standard-version ts-node typescript change-case codemaker debug aws-cdk-lib cdktf"
+          "exec": "yarn upgrade @aws-sdk/client-cloudformation @types/debug @types/jest @types/node constructs jest jest-junit jsii-diff jsii-pacmak jsii npm-check-updates projen standard-version ts-node typescript change-case codemaker debug aws-cdk-lib cdktf"
         },
         {
           "exec": "npx projen"
