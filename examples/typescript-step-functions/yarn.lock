@@ -969,7 +969,7 @@
     jest-diff "^27.0.0"
     pretty-format "^27.0.0"
 
-"@types/node@*", "@types/node@^16":
+"@types/node@*":
   version "16.18.38"
   resolved "https://registry.npmjs.org/@types/node/-/node-16.18.38.tgz"
   integrity sha512-6sfo1qTulpVbkxECP+AVrHV9OoJqhzCsfTNp5NIG+enM4HyM3HvZCO798WShIXBN0+QtDIcutJCjsVYnQP5rIQ==
@@ -978,6 +978,11 @@
   version "16.18.23"
   resolved "https://registry.npmjs.org/@types/node/-/node-16.18.23.tgz"
   integrity sha512-XAMpaw1s1+6zM+jn2tmw8MyaRDIJfXxqmIQIS0HfoGYPuf7dUWeiUKopwq13KFX9lEp1+THGtlaaYx39Nxr58g==
+
+"@types/node@^18":
+  version "18.17.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.17.7.tgz#8be4a95467c4f2a94cae65f30ee1cf98760525cb"
+  integrity sha512-WJj/p/cIg6zUsxv1n2leZHpvn8hr9TYuLQxAZxZcK/7+5t5ukmJGelOLGOy3L1MLhAO/sapTJGd1V7kvoIuzUg==
 
 "@types/prettier@^2.1.5":
   version "2.7.3"
