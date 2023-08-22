@@ -61,10 +61,7 @@ export class UpgradeCDKTF {
           {
             name: "Run upgrade script",
             if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
-            run: "scripts/update-cdktf.sh $CDKTF_VERSION",
-            env: {
-              CDKTF_VERSION: "${{ steps.latest_version.outputs.value }}",
-            },
+            run: "scripts/update-cdktf.sh ${{ steps.latest_version.outputs.value }}",
           },
           {
             name: "Regenerate bindings",
@@ -102,7 +99,6 @@ export class UpgradeCDKTF {
         },
         permissions: {
           contents: JobPermission.READ,
-          pullRequests: JobPermission.WRITE,
         },
       },
     });

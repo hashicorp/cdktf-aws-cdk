@@ -2,7 +2,6 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-
 set -ex
 
 PROJECT_ROOT=$(cd "$(dirname "${BASH_SOURCE:-$0}")/.." && pwd)
@@ -22,5 +21,8 @@ for example in $(find "$PROJECT_ROOT/examples" -mindepth 1 -maxdepth 1 -type d);
   yarn add -D cdktf-cli@$CDKTF_VERSION
   yarn add cdktf@$CDKTF_VERSION
 done
+
+echo "Updating README"
+sed -i 's/`cdktf` >= (\d+)\.(\d+)\.(\d+)/`cdktf` >= '"$CDKTF_VERSION"'/' "$PROJECT_ROOT/README.md"
 
 echo "Done"

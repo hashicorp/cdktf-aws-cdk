@@ -14,6 +14,7 @@ import { CustomizedLicense } from "./customized-license";
 import { LockIssues } from "./lock-issues";
 import { ProviderUpgrade } from "./provider-upgrade";
 import { UpgradeCDKTF } from "./upgrade-cdktf";
+import { UpgradeNode } from "./upgrade-node";
 
 export interface CdktfAwsCdkOptions extends Partial<cdk.JsiiProjectOptions> {
   readonly terraformProvider: string;
@@ -287,6 +288,8 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     new CustomizedLicense(this);
     new LockIssues(this);
     new UpgradeCDKTF(this);
+    new UpgradeNode(this);
+    this.addDevDeps("node-fetch@~2"); // @TODO this can be removed once we upgrade to Node 18 and use native fetch
 
     const releaseWorkflow = this.tryFindObjectFile(".github/workflows/release.yml");
     releaseWorkflow?.addOverride("on.push", {
