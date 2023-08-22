@@ -13,11 +13,11 @@
     "test:ci": "npm install --no-save \"../../dist/js/aws-cdk@$(node -e \"console.log(require('../../package.json').version)\").jsii.tgz\" && npm test"
   },
   "devDependencies": {
-    "@types/jest": "27.0.1",
+    "@types/jest": "29.5.3",
     "@types/node": "^16",
     "cdktf-cli": "0.18.0",
-    "jest": "27.1.0",
-    "ts-jest": "^27.0.5",
+    "jest": "29.6.3",
+    "ts-jest": "^29.1.1",
     "typescript": "^4.9.5"
   },
   "dependencies": {
