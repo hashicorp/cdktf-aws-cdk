@@ -1320,7 +1320,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.dataAwsEip.DataAwsEipFilterOutputReference.property.valuesInput">valuesInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsEip.DataAwsEipFilterOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsEip.DataAwsEipFilterOutputReference.property.values">values</a></code> | <code>string[]</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dataAwsEip.DataAwsEipFilterOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dataAwsEip.DataAwsEipFilter">DataAwsEipFilter</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dataAwsEip.DataAwsEipFilterOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dataAwsEip.DataAwsEipFilter">DataAwsEipFilter</a></code> | *No description.* |
 
 ---
 
@@ -1391,10 +1391,10 @@ public readonly values: string[];
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dataAwsEip.DataAwsEipFilterOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DataAwsEipFilter | IResolvable;
+public readonly internalValue: IResolvable | DataAwsEipFilter;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dataAwsEip.DataAwsEipFilter">DataAwsEipFilter</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dataAwsEip.DataAwsEipFilter">DataAwsEipFilter</a>
 
 ---
 

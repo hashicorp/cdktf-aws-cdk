@@ -502,7 +502,7 @@ gameliftFleet.GameliftFleet.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleet.property.runtimeConfigurationInput">runtimeConfigurationInput</a></code> | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetRuntimeConfiguration">GameliftFleetRuntimeConfiguration</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleet.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleet.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleet.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetTimeouts">GameliftFleetTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleet.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetTimeouts">GameliftFleetTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleet.property.buildId">buildId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleet.property.description">description</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleet.property.ec2InstanceType">ec2InstanceType</a></code> | <code>string</code> | *No description.* |
@@ -872,10 +872,10 @@ public readonly tagsInput: {[ key: string ]: string};
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.gameliftFleet.GameliftFleet.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: GameliftFleetTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | GameliftFleetTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetTimeouts">GameliftFleetTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetTimeouts">GameliftFleetTimeouts</a>
 
 ---
 
@@ -1959,7 +1959,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetEc2InboundPermissionOutputReference.property.ipRange">ipRange</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetEc2InboundPermissionOutputReference.property.protocol">protocol</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetEc2InboundPermissionOutputReference.property.toPort">toPort</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetEc2InboundPermissionOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetEc2InboundPermission">GameliftFleetEc2InboundPermission</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetEc2InboundPermissionOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetEc2InboundPermission">GameliftFleetEc2InboundPermission</a></code> | *No description.* |
 
 ---
 
@@ -2070,10 +2070,10 @@ public readonly toPort: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.gameliftFleet.GameliftFleetEc2InboundPermissionOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: GameliftFleetEc2InboundPermission | IResolvable;
+public readonly internalValue: IResolvable | GameliftFleetEc2InboundPermission;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetEc2InboundPermission">GameliftFleetEc2InboundPermission</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetEc2InboundPermission">GameliftFleetEc2InboundPermission</a>
 
 ---
 
@@ -3118,7 +3118,7 @@ public resetParameters(): void
 | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetRuntimeConfigurationServerProcessOutputReference.property.concurrentExecutions">concurrentExecutions</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetRuntimeConfigurationServerProcessOutputReference.property.launchPath">launchPath</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetRuntimeConfigurationServerProcessOutputReference.property.parameters">parameters</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetRuntimeConfigurationServerProcessOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetRuntimeConfigurationServerProcess">GameliftFleetRuntimeConfigurationServerProcess</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetRuntimeConfigurationServerProcessOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetRuntimeConfigurationServerProcess">GameliftFleetRuntimeConfigurationServerProcess</a></code> | *No description.* |
 
 ---
 
@@ -3209,10 +3209,10 @@ public readonly parameters: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.gameliftFleet.GameliftFleetRuntimeConfigurationServerProcessOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: GameliftFleetRuntimeConfigurationServerProcess | IResolvable;
+public readonly internalValue: IResolvable | GameliftFleetRuntimeConfigurationServerProcess;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetRuntimeConfigurationServerProcess">GameliftFleetRuntimeConfigurationServerProcess</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetRuntimeConfigurationServerProcess">GameliftFleetRuntimeConfigurationServerProcess</a>
 
 ---
 
@@ -3445,7 +3445,7 @@ public resetDelete(): void
 | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetTimeoutsOutputReference.property.deleteInput">deleteInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetTimeouts">GameliftFleetTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetTimeouts">GameliftFleetTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -3516,10 +3516,10 @@ public readonly delete: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.gameliftFleet.GameliftFleetTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: GameliftFleetTimeouts | IResolvable;
+public readonly internalValue: IResolvable | GameliftFleetTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetTimeouts">GameliftFleetTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.gameliftFleet.GameliftFleetTimeouts">GameliftFleetTimeouts</a>
 
 ---
 

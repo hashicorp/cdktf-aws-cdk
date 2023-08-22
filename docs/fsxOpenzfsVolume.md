@@ -505,7 +505,7 @@ fsxOpenzfsVolume.FsxOpenzfsVolume.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolume.property.storageCapacityReservationGibInput">storageCapacityReservationGibInput</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolume.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolume.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolume.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeTimeouts">FsxOpenzfsVolumeTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolume.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeTimeouts">FsxOpenzfsVolumeTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolume.property.userAndGroupQuotasInput">userAndGroupQuotasInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeUserAndGroupQuotas">FsxOpenzfsVolumeUserAndGroupQuotas</a>[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolume.property.volumeTypeInput">volumeTypeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolume.property.copyTagsToSnapshots">copyTagsToSnapshots</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
@@ -837,10 +837,10 @@ public readonly tagsInput: {[ key: string ]: string};
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolume.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: FsxOpenzfsVolumeTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | FsxOpenzfsVolumeTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeTimeouts">FsxOpenzfsVolumeTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeTimeouts">FsxOpenzfsVolumeTimeouts</a>
 
 ---
 
@@ -1904,7 +1904,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeNfsExportsClientConfigurationsOutputReference.property.optionsInput">optionsInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeNfsExportsClientConfigurationsOutputReference.property.clients">clients</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeNfsExportsClientConfigurationsOutputReference.property.options">options</a></code> | <code>string[]</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeNfsExportsClientConfigurationsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeNfsExportsClientConfigurations">FsxOpenzfsVolumeNfsExportsClientConfigurations</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeNfsExportsClientConfigurationsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeNfsExportsClientConfigurations">FsxOpenzfsVolumeNfsExportsClientConfigurations</a></code> | *No description.* |
 
 ---
 
@@ -1975,10 +1975,10 @@ public readonly options: string[];
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeNfsExportsClientConfigurationsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: FsxOpenzfsVolumeNfsExportsClientConfigurations | IResolvable;
+public readonly internalValue: IResolvable | FsxOpenzfsVolumeNfsExportsClientConfigurations;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeNfsExportsClientConfigurations">FsxOpenzfsVolumeNfsExportsClientConfigurations</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeNfsExportsClientConfigurations">FsxOpenzfsVolumeNfsExportsClientConfigurations</a>
 
 ---
 
@@ -2797,7 +2797,7 @@ public resetUpdate(): void
 | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeTimeouts">FsxOpenzfsVolumeTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeTimeouts">FsxOpenzfsVolumeTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -2888,10 +2888,10 @@ public readonly update: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: FsxOpenzfsVolumeTimeouts | IResolvable;
+public readonly internalValue: IResolvable | FsxOpenzfsVolumeTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeTimeouts">FsxOpenzfsVolumeTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeTimeouts">FsxOpenzfsVolumeTimeouts</a>
 
 ---
 
@@ -3273,7 +3273,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeUserAndGroupQuotasOutputReference.property.id">id</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeUserAndGroupQuotasOutputReference.property.storageCapacityQuotaGib">storageCapacityQuotaGib</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeUserAndGroupQuotasOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeUserAndGroupQuotasOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeUserAndGroupQuotas">FsxOpenzfsVolumeUserAndGroupQuotas</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeUserAndGroupQuotasOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeUserAndGroupQuotas">FsxOpenzfsVolumeUserAndGroupQuotas</a></code> | *No description.* |
 
 ---
 
@@ -3364,10 +3364,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeUserAndGroupQuotasOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: FsxOpenzfsVolumeUserAndGroupQuotas | IResolvable;
+public readonly internalValue: IResolvable | FsxOpenzfsVolumeUserAndGroupQuotas;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeUserAndGroupQuotas">FsxOpenzfsVolumeUserAndGroupQuotas</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.fsxOpenzfsVolume.FsxOpenzfsVolumeUserAndGroupQuotas">FsxOpenzfsVolumeUserAndGroupQuotas</a>
 
 ---
 

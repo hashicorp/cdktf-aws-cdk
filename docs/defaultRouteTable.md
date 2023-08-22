@@ -424,7 +424,7 @@ defaultRouteTable.DefaultRouteTable.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTable.property.routeInput">routeInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableRoute">DefaultRouteTableRoute</a>[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTable.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTable.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTable.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableTimeouts">DefaultRouteTableTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTable.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableTimeouts">DefaultRouteTableTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTable.property.defaultRouteTableId">defaultRouteTableId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTable.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTable.property.propagatingVgws">propagatingVgws</a></code> | <code>string[]</code> | *No description.* |
@@ -688,10 +688,10 @@ public readonly tagsInput: {[ key: string ]: string};
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTable.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: DefaultRouteTableTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | DefaultRouteTableTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableTimeouts">DefaultRouteTableTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableTimeouts">DefaultRouteTableTimeouts</a>
 
 ---
 
@@ -1630,7 +1630,7 @@ public resetVpcPeeringConnectionId(): void
 | <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableRouteOutputReference.property.transitGatewayId">transitGatewayId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableRouteOutputReference.property.vpcEndpointId">vpcEndpointId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableRouteOutputReference.property.vpcPeeringConnectionId">vpcPeeringConnectionId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableRouteOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableRoute">DefaultRouteTableRoute</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableRouteOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableRoute">DefaultRouteTableRoute</a></code> | *No description.* |
 
 ---
 
@@ -1881,10 +1881,10 @@ public readonly vpcPeeringConnectionId: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableRouteOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DefaultRouteTableRoute | IResolvable;
+public readonly internalValue: IResolvable | DefaultRouteTableRoute;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableRoute">DefaultRouteTableRoute</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableRoute">DefaultRouteTableRoute</a>
 
 ---
 
@@ -2117,7 +2117,7 @@ public resetUpdate(): void
 | <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableTimeoutsOutputReference.property.updateInput">updateInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableTimeouts">DefaultRouteTableTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableTimeouts">DefaultRouteTableTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -2188,10 +2188,10 @@ public readonly update: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DefaultRouteTableTimeouts | IResolvable;
+public readonly internalValue: IResolvable | DefaultRouteTableTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableTimeouts">DefaultRouteTableTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.defaultRouteTable.DefaultRouteTableTimeouts">DefaultRouteTableTimeouts</a>
 
 ---
 

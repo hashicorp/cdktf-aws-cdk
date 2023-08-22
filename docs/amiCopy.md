@@ -488,7 +488,7 @@ amiCopy.AmiCopy.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopy.property.sourceAmiRegionInput">sourceAmiRegionInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopy.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopy.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopy.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyTimeouts">AmiCopyTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopy.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.amiCopy.AmiCopyTimeouts">AmiCopyTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopy.property.description">description</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopy.property.destinationOutpostArn">destinationOutpostArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopy.property.encrypted">encrypted</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
@@ -987,10 +987,10 @@ public readonly tagsInput: {[ key: string ]: string};
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.amiCopy.AmiCopy.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: AmiCopyTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | AmiCopyTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.amiCopy.AmiCopyTimeouts">AmiCopyTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.amiCopy.AmiCopyTimeouts">AmiCopyTimeouts</a>
 
 ---
 
@@ -1845,7 +1845,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEbsBlockDeviceOutputReference.property.throughput">throughput</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEbsBlockDeviceOutputReference.property.volumeSize">volumeSize</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEbsBlockDeviceOutputReference.property.volumeType">volumeType</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEbsBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEbsBlockDevice">AmiCopyEbsBlockDevice</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEbsBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEbsBlockDevice">AmiCopyEbsBlockDevice</a></code> | *No description.* |
 
 ---
 
@@ -1956,10 +1956,10 @@ public readonly volumeType: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.amiCopy.AmiCopyEbsBlockDeviceOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: AmiCopyEbsBlockDevice | IResolvable;
+public readonly internalValue: IResolvable | AmiCopyEbsBlockDevice;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEbsBlockDevice">AmiCopyEbsBlockDevice</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEbsBlockDevice">AmiCopyEbsBlockDevice</a>
 
 ---
 
@@ -2337,7 +2337,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEphemeralBlockDeviceOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEphemeralBlockDeviceOutputReference.property.deviceName">deviceName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEphemeralBlockDeviceOutputReference.property.virtualName">virtualName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEphemeralBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEphemeralBlockDevice">AmiCopyEphemeralBlockDevice</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEphemeralBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEphemeralBlockDevice">AmiCopyEphemeralBlockDevice</a></code> | *No description.* |
 
 ---
 
@@ -2388,10 +2388,10 @@ public readonly virtualName: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.amiCopy.AmiCopyEphemeralBlockDeviceOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: AmiCopyEphemeralBlockDevice | IResolvable;
+public readonly internalValue: IResolvable | AmiCopyEphemeralBlockDevice;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEphemeralBlockDevice">AmiCopyEphemeralBlockDevice</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.amiCopy.AmiCopyEphemeralBlockDevice">AmiCopyEphemeralBlockDevice</a>
 
 ---
 
@@ -2633,7 +2633,7 @@ public resetUpdate(): void
 | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyTimeouts">AmiCopyTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.amiCopy.AmiCopyTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.amiCopy.AmiCopyTimeouts">AmiCopyTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -2724,10 +2724,10 @@ public readonly update: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.amiCopy.AmiCopyTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: AmiCopyTimeouts | IResolvable;
+public readonly internalValue: IResolvable | AmiCopyTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.amiCopy.AmiCopyTimeouts">AmiCopyTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.amiCopy.AmiCopyTimeouts">AmiCopyTimeouts</a>
 
 ---
 

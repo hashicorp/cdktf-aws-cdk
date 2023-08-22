@@ -1298,7 +1298,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.dataAwsEc2Host.DataAwsEc2HostFilterOutputReference.property.valuesInput">valuesInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsEc2Host.DataAwsEc2HostFilterOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsEc2Host.DataAwsEc2HostFilterOutputReference.property.values">values</a></code> | <code>string[]</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dataAwsEc2Host.DataAwsEc2HostFilterOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dataAwsEc2Host.DataAwsEc2HostFilter">DataAwsEc2HostFilter</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dataAwsEc2Host.DataAwsEc2HostFilterOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dataAwsEc2Host.DataAwsEc2HostFilter">DataAwsEc2HostFilter</a></code> | *No description.* |
 
 ---
 
@@ -1369,10 +1369,10 @@ public readonly values: string[];
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dataAwsEc2Host.DataAwsEc2HostFilterOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DataAwsEc2HostFilter | IResolvable;
+public readonly internalValue: IResolvable | DataAwsEc2HostFilter;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dataAwsEc2Host.DataAwsEc2HostFilter">DataAwsEc2HostFilter</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dataAwsEc2Host.DataAwsEc2HostFilter">DataAwsEc2HostFilter</a>
 
 ---
 

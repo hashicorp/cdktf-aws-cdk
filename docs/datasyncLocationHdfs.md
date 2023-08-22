@@ -1738,7 +1738,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.datasyncLocationHdfs.DatasyncLocationHdfsNameNodeOutputReference.property.portInput">portInput</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.datasyncLocationHdfs.DatasyncLocationHdfsNameNodeOutputReference.property.hostname">hostname</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.datasyncLocationHdfs.DatasyncLocationHdfsNameNodeOutputReference.property.port">port</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.datasyncLocationHdfs.DatasyncLocationHdfsNameNodeOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.datasyncLocationHdfs.DatasyncLocationHdfsNameNode">DatasyncLocationHdfsNameNode</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.datasyncLocationHdfs.DatasyncLocationHdfsNameNodeOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.datasyncLocationHdfs.DatasyncLocationHdfsNameNode">DatasyncLocationHdfsNameNode</a></code> | *No description.* |
 
 ---
 
@@ -1809,10 +1809,10 @@ public readonly port: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.datasyncLocationHdfs.DatasyncLocationHdfsNameNodeOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DatasyncLocationHdfsNameNode | IResolvable;
+public readonly internalValue: IResolvable | DatasyncLocationHdfsNameNode;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.datasyncLocationHdfs.DatasyncLocationHdfsNameNode">DatasyncLocationHdfsNameNode</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.datasyncLocationHdfs.DatasyncLocationHdfsNameNode">DatasyncLocationHdfsNameNode</a>
 
 ---
 

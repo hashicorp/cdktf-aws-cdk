@@ -453,7 +453,7 @@ cloudsearchDomain.CloudsearchDomain.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomain.property.multiAzInput">multiAzInput</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomain.property.nameInput">nameInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomain.property.scalingParametersInput">scalingParametersInput</a></code> | <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainScalingParameters">CloudsearchDomainScalingParameters</a></code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomain.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainTimeouts">CloudsearchDomainTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomain.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainTimeouts">CloudsearchDomainTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomain.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomain.property.multiAz">multiAz</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomain.property.name">name</a></code> | <code>string</code> | *No description.* |
@@ -745,10 +745,10 @@ public readonly scalingParametersInput: CloudsearchDomainScalingParameters;
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomain.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: CloudsearchDomainTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | CloudsearchDomainTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainTimeouts">CloudsearchDomainTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainTimeouts">CloudsearchDomainTimeouts</a>
 
 ---
 
@@ -2034,7 +2034,7 @@ public resetSort(): void
 | <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainIndexFieldOutputReference.property.search">search</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainIndexFieldOutputReference.property.sort">sort</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainIndexFieldOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainIndexFieldOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainIndexField">CloudsearchDomainIndexField</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainIndexFieldOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainIndexField">CloudsearchDomainIndexField</a></code> | *No description.* |
 
 ---
 
@@ -2245,10 +2245,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainIndexFieldOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: CloudsearchDomainIndexField | IResolvable;
+public readonly internalValue: IResolvable | CloudsearchDomainIndexField;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainIndexField">CloudsearchDomainIndexField</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainIndexField">CloudsearchDomainIndexField</a>
 
 ---
 
@@ -2826,7 +2826,7 @@ public resetUpdate(): void
 | <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainTimeouts">CloudsearchDomainTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainTimeouts">CloudsearchDomainTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -2917,10 +2917,10 @@ public readonly update: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: CloudsearchDomainTimeouts | IResolvable;
+public readonly internalValue: IResolvable | CloudsearchDomainTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainTimeouts">CloudsearchDomainTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.cloudsearchDomain.CloudsearchDomainTimeouts">CloudsearchDomainTimeouts</a>
 
 ---
 

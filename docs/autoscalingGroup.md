@@ -713,7 +713,7 @@ autoscalingGroup.AutoscalingGroup.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroup.property.tagsInput">tagsInput</a></code> | <code>cdktf.IResolvable \| {[ key: string ]: string}[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroup.property.targetGroupArnsInput">targetGroupArnsInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroup.property.terminationPoliciesInput">terminationPoliciesInput</a></code> | <code>string[]</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroup.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTimeouts">AutoscalingGroupTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroup.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTimeouts">AutoscalingGroupTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroup.property.vpcZoneIdentifierInput">vpcZoneIdentifierInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroup.property.waitForCapacityTimeoutInput">waitForCapacityTimeoutInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroup.property.waitForElbCapacityInput">waitForElbCapacityInput</a></code> | <code>number</code> | *No description.* |
@@ -1285,10 +1285,10 @@ public readonly terminationPoliciesInput: string[];
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroup.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: AutoscalingGroupTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | AutoscalingGroupTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTimeouts">AutoscalingGroupTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTimeouts">AutoscalingGroupTimeouts</a>
 
 ---
 
@@ -3438,7 +3438,7 @@ public resetRoleArn(): void
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupInitialLifecycleHookOutputReference.property.notificationMetadata">notificationMetadata</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupInitialLifecycleHookOutputReference.property.notificationTargetArn">notificationTargetArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupInitialLifecycleHookOutputReference.property.roleArn">roleArn</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupInitialLifecycleHookOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupInitialLifecycleHook">AutoscalingGroupInitialLifecycleHook</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupInitialLifecycleHookOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupInitialLifecycleHook">AutoscalingGroupInitialLifecycleHook</a></code> | *No description.* |
 
 ---
 
@@ -3609,10 +3609,10 @@ public readonly roleArn: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupInitialLifecycleHookOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: AutoscalingGroupInitialLifecycleHook | IResolvable;
+public readonly internalValue: IResolvable | AutoscalingGroupInitialLifecycleHook;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupInitialLifecycleHook">AutoscalingGroupInitialLifecycleHook</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupInitialLifecycleHook">AutoscalingGroupInitialLifecycleHook</a>
 
 ---
 
@@ -6492,7 +6492,7 @@ public resetWeightedCapacity(): void
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideOutputReference.property.weightedCapacityInput">weightedCapacityInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideOutputReference.property.instanceType">instanceType</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideOutputReference.property.weightedCapacity">weightedCapacity</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride">AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride">AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride</a></code> | *No description.* |
 
 ---
 
@@ -6583,10 +6583,10 @@ public readonly weightedCapacity: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride | IResolvable;
+public readonly internalValue: IResolvable | AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride">AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride">AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride</a>
 
 ---
 
@@ -7294,7 +7294,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTagOutputReference.property.key">key</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTagOutputReference.property.propagateAtLaunch">propagateAtLaunch</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTagOutputReference.property.value">value</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTagOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTag">AutoscalingGroupTag</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTagOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTag">AutoscalingGroupTag</a></code> | *No description.* |
 
 ---
 
@@ -7385,10 +7385,10 @@ public readonly value: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTagOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: AutoscalingGroupTag | IResolvable;
+public readonly internalValue: IResolvable | AutoscalingGroupTag;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTag">AutoscalingGroupTag</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTag">AutoscalingGroupTag</a>
 
 ---
 
@@ -7612,7 +7612,7 @@ public resetDelete(): void
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTimeoutsOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTimeoutsOutputReference.property.deleteInput">deleteInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTimeouts">AutoscalingGroupTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTimeouts">AutoscalingGroupTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -7663,10 +7663,10 @@ public readonly delete: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: AutoscalingGroupTimeouts | IResolvable;
+public readonly internalValue: IResolvable | AutoscalingGroupTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTimeouts">AutoscalingGroupTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.autoscalingGroup.AutoscalingGroupTimeouts">AutoscalingGroupTimeouts</a>
 
 ---
 

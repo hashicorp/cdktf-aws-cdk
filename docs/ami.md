@@ -517,7 +517,7 @@ ami.Ami.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.ami.Ami.property.sriovNetSupportInput">sriovNetSupportInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ami.Ami.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ami.Ami.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.ami.Ami.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.ami.AmiTimeouts">AmiTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.ami.Ami.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.ami.AmiTimeouts">AmiTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ami.Ami.property.virtualizationTypeInput">virtualizationTypeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ami.Ami.property.architecture">architecture</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ami.Ami.property.description">description</a></code> | <code>string</code> | *No description.* |
@@ -960,10 +960,10 @@ public readonly tagsInput: {[ key: string ]: string};
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.ami.Ami.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: AmiTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | AmiTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.ami.AmiTimeouts">AmiTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.ami.AmiTimeouts">AmiTimeouts</a>
 
 ---
 
@@ -2096,7 +2096,7 @@ public resetVolumeType(): void
 | <code><a href="#@cdktf/aws-cdk.ami.AmiEbsBlockDeviceOutputReference.property.throughput">throughput</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ami.AmiEbsBlockDeviceOutputReference.property.volumeSize">volumeSize</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ami.AmiEbsBlockDeviceOutputReference.property.volumeType">volumeType</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.ami.AmiEbsBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.ami.AmiEbsBlockDevice">AmiEbsBlockDevice</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.ami.AmiEbsBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.ami.AmiEbsBlockDevice">AmiEbsBlockDevice</a></code> | *No description.* |
 
 ---
 
@@ -2287,10 +2287,10 @@ public readonly volumeType: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.ami.AmiEbsBlockDeviceOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: AmiEbsBlockDevice | IResolvable;
+public readonly internalValue: IResolvable | AmiEbsBlockDevice;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.ami.AmiEbsBlockDevice">AmiEbsBlockDevice</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.ami.AmiEbsBlockDevice">AmiEbsBlockDevice</a>
 
 ---
 
@@ -2670,7 +2670,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.ami.AmiEphemeralBlockDeviceOutputReference.property.virtualNameInput">virtualNameInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ami.AmiEphemeralBlockDeviceOutputReference.property.deviceName">deviceName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ami.AmiEphemeralBlockDeviceOutputReference.property.virtualName">virtualName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.ami.AmiEphemeralBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.ami.AmiEphemeralBlockDevice">AmiEphemeralBlockDevice</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.ami.AmiEphemeralBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.ami.AmiEphemeralBlockDevice">AmiEphemeralBlockDevice</a></code> | *No description.* |
 
 ---
 
@@ -2741,10 +2741,10 @@ public readonly virtualName: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.ami.AmiEphemeralBlockDeviceOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: AmiEphemeralBlockDevice | IResolvable;
+public readonly internalValue: IResolvable | AmiEphemeralBlockDevice;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.ami.AmiEphemeralBlockDevice">AmiEphemeralBlockDevice</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.ami.AmiEphemeralBlockDevice">AmiEphemeralBlockDevice</a>
 
 ---
 
@@ -2986,7 +2986,7 @@ public resetUpdate(): void
 | <code><a href="#@cdktf/aws-cdk.ami.AmiTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ami.AmiTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ami.AmiTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.ami.AmiTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.ami.AmiTimeouts">AmiTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.ami.AmiTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.ami.AmiTimeouts">AmiTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -3077,10 +3077,10 @@ public readonly update: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.ami.AmiTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: AmiTimeouts | IResolvable;
+public readonly internalValue: IResolvable | AmiTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.ami.AmiTimeouts">AmiTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.ami.AmiTimeouts">AmiTimeouts</a>
 
 ---
 

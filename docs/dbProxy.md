@@ -441,7 +441,7 @@ dbProxy.DbProxy.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxy.property.roleArnInput">roleArnInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxy.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxy.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxy.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxyTimeouts">DbProxyTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxy.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dbProxy.DbProxyTimeouts">DbProxyTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxy.property.vpcSecurityGroupIdsInput">vpcSecurityGroupIdsInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxy.property.vpcSubnetIdsInput">vpcSubnetIdsInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxy.property.debugLogging">debugLogging</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
@@ -743,10 +743,10 @@ public readonly tagsInput: {[ key: string ]: string};
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.dbProxy.DbProxy.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: DbProxyTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | DbProxyTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dbProxy.DbProxyTimeouts">DbProxyTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dbProxy.DbProxyTimeouts">DbProxyTimeouts</a>
 
 ---
 
@@ -1704,7 +1704,7 @@ public resetSecretArn(): void
 | <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxyAuthOutputReference.property.description">description</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxyAuthOutputReference.property.iamAuth">iamAuth</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxyAuthOutputReference.property.secretArn">secretArn</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxyAuthOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxyAuth">DbProxyAuth</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxyAuthOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dbProxy.DbProxyAuth">DbProxyAuth</a></code> | *No description.* |
 
 ---
 
@@ -1815,10 +1815,10 @@ public readonly secretArn: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dbProxy.DbProxyAuthOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DbProxyAuth | IResolvable;
+public readonly internalValue: IResolvable | DbProxyAuth;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dbProxy.DbProxyAuth">DbProxyAuth</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dbProxy.DbProxyAuth">DbProxyAuth</a>
 
 ---
 
@@ -2060,7 +2060,7 @@ public resetUpdate(): void
 | <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxyTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxyTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxyTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxyTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxyTimeouts">DbProxyTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dbProxy.DbProxyTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dbProxy.DbProxyTimeouts">DbProxyTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -2151,10 +2151,10 @@ public readonly update: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dbProxy.DbProxyTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DbProxyTimeouts | IResolvable;
+public readonly internalValue: IResolvable | DbProxyTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dbProxy.DbProxyTimeouts">DbProxyTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dbProxy.DbProxyTimeouts">DbProxyTimeouts</a>
 
 ---
 

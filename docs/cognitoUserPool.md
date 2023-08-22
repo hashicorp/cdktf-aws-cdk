@@ -3624,7 +3624,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolAccountRecoverySettingRecoveryMechanismOutputReference.property.priorityInput">priorityInput</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolAccountRecoverySettingRecoveryMechanismOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolAccountRecoverySettingRecoveryMechanismOutputReference.property.priority">priority</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolAccountRecoverySettingRecoveryMechanismOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolAccountRecoverySettingRecoveryMechanism">CognitoUserPoolAccountRecoverySettingRecoveryMechanism</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolAccountRecoverySettingRecoveryMechanismOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolAccountRecoverySettingRecoveryMechanism">CognitoUserPoolAccountRecoverySettingRecoveryMechanism</a></code> | *No description.* |
 
 ---
 
@@ -3695,10 +3695,10 @@ public readonly priority: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolAccountRecoverySettingRecoveryMechanismOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: CognitoUserPoolAccountRecoverySettingRecoveryMechanism | IResolvable;
+public readonly internalValue: IResolvable | CognitoUserPoolAccountRecoverySettingRecoveryMechanism;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolAccountRecoverySettingRecoveryMechanism">CognitoUserPoolAccountRecoverySettingRecoveryMechanism</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolAccountRecoverySettingRecoveryMechanism">CognitoUserPoolAccountRecoverySettingRecoveryMechanism</a>
 
 ---
 
@@ -7474,7 +7474,7 @@ public resetStringAttributeConstraints(): void
 | <code><a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolSchemaOutputReference.property.mutable">mutable</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolSchemaOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolSchemaOutputReference.property.required">required</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolSchemaOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolSchema">CognitoUserPoolSchema</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolSchemaOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolSchema">CognitoUserPoolSchema</a></code> | *No description.* |
 
 ---
 
@@ -7645,10 +7645,10 @@ public readonly required: boolean | IResolvable;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolSchemaOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: CognitoUserPoolSchema | IResolvable;
+public readonly internalValue: IResolvable | CognitoUserPoolSchema;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolSchema">CognitoUserPoolSchema</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.cognitoUserPool.CognitoUserPoolSchema">CognitoUserPoolSchema</a>
 
 ---
 

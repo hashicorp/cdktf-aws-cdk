@@ -634,7 +634,7 @@ dynamodbTable.DynamodbTable.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTable.property.tableClassInput">tableClassInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTable.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTable.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTable.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableTimeouts">DynamodbTableTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTable.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableTimeouts">DynamodbTableTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTable.property.ttlInput">ttlInput</a></code> | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableTtl">DynamodbTableTtl</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTable.property.writeCapacityInput">writeCapacityInput</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTable.property.billingMode">billingMode</a></code> | <code>string</code> | *No description.* |
@@ -1110,10 +1110,10 @@ public readonly tagsInput: {[ key: string ]: string};
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.dynamodbTable.DynamodbTable.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: DynamodbTableTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | DynamodbTableTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableTimeouts">DynamodbTableTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableTimeouts">DynamodbTableTimeouts</a>
 
 ---
 
@@ -2531,7 +2531,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableAttributeOutputReference.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableAttributeOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableAttributeOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableAttributeOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableAttribute">DynamodbTableAttribute</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableAttributeOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableAttribute">DynamodbTableAttribute</a></code> | *No description.* |
 
 ---
 
@@ -2602,10 +2602,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dynamodbTable.DynamodbTableAttributeOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DynamodbTableAttribute | IResolvable;
+public readonly internalValue: IResolvable | DynamodbTableAttribute;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableAttribute">DynamodbTableAttribute</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableAttribute">DynamodbTableAttribute</a>
 
 ---
 
@@ -3023,7 +3023,7 @@ public resetWriteCapacity(): void
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableGlobalSecondaryIndexOutputReference.property.rangeKey">rangeKey</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableGlobalSecondaryIndexOutputReference.property.readCapacity">readCapacity</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableGlobalSecondaryIndexOutputReference.property.writeCapacity">writeCapacity</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableGlobalSecondaryIndexOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableGlobalSecondaryIndex">DynamodbTableGlobalSecondaryIndex</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableGlobalSecondaryIndexOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableGlobalSecondaryIndex">DynamodbTableGlobalSecondaryIndex</a></code> | *No description.* |
 
 ---
 
@@ -3194,10 +3194,10 @@ public readonly writeCapacity: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dynamodbTable.DynamodbTableGlobalSecondaryIndexOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DynamodbTableGlobalSecondaryIndex | IResolvable;
+public readonly internalValue: IResolvable | DynamodbTableGlobalSecondaryIndex;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableGlobalSecondaryIndex">DynamodbTableGlobalSecondaryIndex</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableGlobalSecondaryIndex">DynamodbTableGlobalSecondaryIndex</a>
 
 ---
 
@@ -3588,7 +3588,7 @@ public resetNonKeyAttributes(): void
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableLocalSecondaryIndexOutputReference.property.nonKeyAttributes">nonKeyAttributes</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableLocalSecondaryIndexOutputReference.property.projectionType">projectionType</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableLocalSecondaryIndexOutputReference.property.rangeKey">rangeKey</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableLocalSecondaryIndexOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableLocalSecondaryIndex">DynamodbTableLocalSecondaryIndex</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableLocalSecondaryIndexOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableLocalSecondaryIndex">DynamodbTableLocalSecondaryIndex</a></code> | *No description.* |
 
 ---
 
@@ -3699,10 +3699,10 @@ public readonly rangeKey: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dynamodbTable.DynamodbTableLocalSecondaryIndexOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DynamodbTableLocalSecondaryIndex | IResolvable;
+public readonly internalValue: IResolvable | DynamodbTableLocalSecondaryIndex;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableLocalSecondaryIndex">DynamodbTableLocalSecondaryIndex</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableLocalSecondaryIndex">DynamodbTableLocalSecondaryIndex</a>
 
 ---
 
@@ -4360,7 +4360,7 @@ public resetKmsKeyArn(): void
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableReplicaOutputReference.property.regionNameInput">regionNameInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableReplicaOutputReference.property.kmsKeyArn">kmsKeyArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableReplicaOutputReference.property.regionName">regionName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableReplicaOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableReplica">DynamodbTableReplica</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableReplicaOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableReplica">DynamodbTableReplica</a></code> | *No description.* |
 
 ---
 
@@ -4431,10 +4431,10 @@ public readonly regionName: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dynamodbTable.DynamodbTableReplicaOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DynamodbTableReplica | IResolvable;
+public readonly internalValue: IResolvable | DynamodbTableReplica;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableReplica">DynamodbTableReplica</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableReplica">DynamodbTableReplica</a>
 
 ---
 
@@ -4976,7 +4976,7 @@ public resetUpdate(): void
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableTimeouts">DynamodbTableTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableTimeouts">DynamodbTableTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -5067,10 +5067,10 @@ public readonly update: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dynamodbTable.DynamodbTableTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DynamodbTableTimeouts | IResolvable;
+public readonly internalValue: IResolvable | DynamodbTableTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableTimeouts">DynamodbTableTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dynamodbTable.DynamodbTableTimeouts">DynamodbTableTimeouts</a>
 
 ---
 

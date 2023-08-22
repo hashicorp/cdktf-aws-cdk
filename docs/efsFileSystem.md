@@ -1595,7 +1595,7 @@ public resetTransitionToPrimaryStorageClass(): void
 | <code><a href="#@cdktf/aws-cdk.efsFileSystem.EfsFileSystemLifecyclePolicyOutputReference.property.transitionToPrimaryStorageClassInput">transitionToPrimaryStorageClassInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.efsFileSystem.EfsFileSystemLifecyclePolicyOutputReference.property.transitionToIa">transitionToIa</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.efsFileSystem.EfsFileSystemLifecyclePolicyOutputReference.property.transitionToPrimaryStorageClass">transitionToPrimaryStorageClass</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.efsFileSystem.EfsFileSystemLifecyclePolicyOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.efsFileSystem.EfsFileSystemLifecyclePolicy">EfsFileSystemLifecyclePolicy</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.efsFileSystem.EfsFileSystemLifecyclePolicyOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.efsFileSystem.EfsFileSystemLifecyclePolicy">EfsFileSystemLifecyclePolicy</a></code> | *No description.* |
 
 ---
 
@@ -1666,10 +1666,10 @@ public readonly transitionToPrimaryStorageClass: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.efsFileSystem.EfsFileSystemLifecyclePolicyOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EfsFileSystemLifecyclePolicy | IResolvable;
+public readonly internalValue: IResolvable | EfsFileSystemLifecyclePolicy;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.efsFileSystem.EfsFileSystemLifecyclePolicy">EfsFileSystemLifecyclePolicy</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.efsFileSystem.EfsFileSystemLifecyclePolicy">EfsFileSystemLifecyclePolicy</a>
 
 ---
 

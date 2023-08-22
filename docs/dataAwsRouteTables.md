@@ -1199,7 +1199,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.dataAwsRouteTables.DataAwsRouteTablesFilterOutputReference.property.valuesInput">valuesInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsRouteTables.DataAwsRouteTablesFilterOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsRouteTables.DataAwsRouteTablesFilterOutputReference.property.values">values</a></code> | <code>string[]</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dataAwsRouteTables.DataAwsRouteTablesFilterOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dataAwsRouteTables.DataAwsRouteTablesFilter">DataAwsRouteTablesFilter</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dataAwsRouteTables.DataAwsRouteTablesFilterOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dataAwsRouteTables.DataAwsRouteTablesFilter">DataAwsRouteTablesFilter</a></code> | *No description.* |
 
 ---
 
@@ -1270,10 +1270,10 @@ public readonly values: string[];
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dataAwsRouteTables.DataAwsRouteTablesFilterOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DataAwsRouteTablesFilter | IResolvable;
+public readonly internalValue: IResolvable | DataAwsRouteTablesFilter;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dataAwsRouteTables.DataAwsRouteTablesFilter">DataAwsRouteTablesFilter</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dataAwsRouteTables.DataAwsRouteTablesFilter">DataAwsRouteTablesFilter</a>
 
 ---
 

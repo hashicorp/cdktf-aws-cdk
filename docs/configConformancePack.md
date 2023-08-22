@@ -1340,7 +1340,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.configConformancePack.ConfigConformancePackInputParameterOutputReference.property.parameterValueInput">parameterValueInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.configConformancePack.ConfigConformancePackInputParameterOutputReference.property.parameterName">parameterName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.configConformancePack.ConfigConformancePackInputParameterOutputReference.property.parameterValue">parameterValue</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.configConformancePack.ConfigConformancePackInputParameterOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.configConformancePack.ConfigConformancePackInputParameter">ConfigConformancePackInputParameter</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.configConformancePack.ConfigConformancePackInputParameterOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.configConformancePack.ConfigConformancePackInputParameter">ConfigConformancePackInputParameter</a></code> | *No description.* |
 
 ---
 
@@ -1411,10 +1411,10 @@ public readonly parameterValue: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.configConformancePack.ConfigConformancePackInputParameterOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: ConfigConformancePackInputParameter | IResolvable;
+public readonly internalValue: IResolvable | ConfigConformancePackInputParameter;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.configConformancePack.ConfigConformancePackInputParameter">ConfigConformancePackInputParameter</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.configConformancePack.ConfigConformancePackInputParameter">ConfigConformancePackInputParameter</a>
 
 ---
 

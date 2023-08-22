@@ -1267,7 +1267,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.dataAwsEc2TransitGateway.DataAwsEc2TransitGatewayFilterOutputReference.property.valuesInput">valuesInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsEc2TransitGateway.DataAwsEc2TransitGatewayFilterOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsEc2TransitGateway.DataAwsEc2TransitGatewayFilterOutputReference.property.values">values</a></code> | <code>string[]</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dataAwsEc2TransitGateway.DataAwsEc2TransitGatewayFilterOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dataAwsEc2TransitGateway.DataAwsEc2TransitGatewayFilter">DataAwsEc2TransitGatewayFilter</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dataAwsEc2TransitGateway.DataAwsEc2TransitGatewayFilterOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dataAwsEc2TransitGateway.DataAwsEc2TransitGatewayFilter">DataAwsEc2TransitGatewayFilter</a></code> | *No description.* |
 
 ---
 
@@ -1338,10 +1338,10 @@ public readonly values: string[];
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dataAwsEc2TransitGateway.DataAwsEc2TransitGatewayFilterOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DataAwsEc2TransitGatewayFilter | IResolvable;
+public readonly internalValue: IResolvable | DataAwsEc2TransitGatewayFilter;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dataAwsEc2TransitGateway.DataAwsEc2TransitGatewayFilter">DataAwsEc2TransitGatewayFilter</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dataAwsEc2TransitGateway.DataAwsEc2TransitGatewayFilter">DataAwsEc2TransitGatewayFilter</a>
 
 ---
 

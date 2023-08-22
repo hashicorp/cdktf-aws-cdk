@@ -4308,7 +4308,7 @@ public resetArgs(): void
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterBootstrapActionOutputReference.property.args">args</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterBootstrapActionOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterBootstrapActionOutputReference.property.path">path</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterBootstrapActionOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterBootstrapAction">EmrClusterBootstrapAction</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterBootstrapActionOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterBootstrapAction">EmrClusterBootstrapAction</a></code> | *No description.* |
 
 ---
 
@@ -4399,10 +4399,10 @@ public readonly path: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.emrCluster.EmrClusterBootstrapActionOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EmrClusterBootstrapAction | IResolvable;
+public readonly internalValue: IResolvable | EmrClusterBootstrapAction;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterBootstrapAction">EmrClusterBootstrapAction</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterBootstrapAction">EmrClusterBootstrapAction</a>
 
 ---
 
@@ -4796,7 +4796,7 @@ public resetProperties(): void
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurationsOutputReference.property.propertiesInput">propertiesInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurationsOutputReference.property.classification">classification</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurationsOutputReference.property.properties">properties</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurationsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations">EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurationsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations">EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations</a></code> | *No description.* |
 
 ---
 
@@ -4867,10 +4867,10 @@ public readonly properties: {[ key: string ]: string};
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurationsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations | IResolvable;
+public readonly internalValue: IResolvable | EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations">EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations">EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations</a>
 
 ---
 
@@ -5268,7 +5268,7 @@ public resetVolumesPerInstance(): void
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfigOutputReference.property.size">size</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfigOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfigOutputReference.property.volumesPerInstance">volumesPerInstance</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfigOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig">EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfigOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig">EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig</a></code> | *No description.* |
 
 ---
 
@@ -5379,10 +5379,10 @@ public readonly volumesPerInstance: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfigOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig | IResolvable;
+public readonly internalValue: IResolvable | EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig">EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig">EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig</a>
 
 ---
 
@@ -5831,7 +5831,7 @@ public resetWeightedCapacity(): void
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsOutputReference.property.bidPriceAsPercentageOfOnDemandPrice">bidPriceAsPercentageOfOnDemandPrice</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsOutputReference.property.instanceType">instanceType</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsOutputReference.property.weightedCapacity">weightedCapacity</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigs">EmrClusterCoreInstanceFleetInstanceTypeConfigs</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigs">EmrClusterCoreInstanceFleetInstanceTypeConfigs</a></code> | *No description.* |
 
 ---
 
@@ -5982,10 +5982,10 @@ public readonly weightedCapacity: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EmrClusterCoreInstanceFleetInstanceTypeConfigs | IResolvable;
+public readonly internalValue: IResolvable | EmrClusterCoreInstanceFleetInstanceTypeConfigs;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigs">EmrClusterCoreInstanceFleetInstanceTypeConfigs</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetInstanceTypeConfigs">EmrClusterCoreInstanceFleetInstanceTypeConfigs</a>
 
 ---
 
@@ -6363,7 +6363,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecificationOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecificationOutputReference.property.allocationStrategyInput">allocationStrategyInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecificationOutputReference.property.allocationStrategy">allocationStrategy</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecificationOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification">EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecificationOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification">EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification</a></code> | *No description.* |
 
 ---
 
@@ -6414,10 +6414,10 @@ public readonly allocationStrategy: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecificationOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification | IResolvable;
+public readonly internalValue: IResolvable | EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification">EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification">EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification</a>
 
 ---
 
@@ -7141,7 +7141,7 @@ public resetBlockDurationMinutes(): void
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecificationOutputReference.property.blockDurationMinutes">blockDurationMinutes</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecificationOutputReference.property.timeoutAction">timeoutAction</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecificationOutputReference.property.timeoutDurationMinutes">timeoutDurationMinutes</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecificationOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification">EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecificationOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification">EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification</a></code> | *No description.* |
 
 ---
 
@@ -7252,10 +7252,10 @@ public readonly timeoutDurationMinutes: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecificationOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification | IResolvable;
+public readonly internalValue: IResolvable | EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification">EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification">EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification</a>
 
 ---
 
@@ -8106,7 +8106,7 @@ public resetVolumesPerInstance(): void
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceGroupEbsConfigOutputReference.property.size">size</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceGroupEbsConfigOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceGroupEbsConfigOutputReference.property.volumesPerInstance">volumesPerInstance</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceGroupEbsConfigOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceGroupEbsConfig">EmrClusterCoreInstanceGroupEbsConfig</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceGroupEbsConfigOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceGroupEbsConfig">EmrClusterCoreInstanceGroupEbsConfig</a></code> | *No description.* |
 
 ---
 
@@ -8217,10 +8217,10 @@ public readonly volumesPerInstance: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceGroupEbsConfigOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EmrClusterCoreInstanceGroupEbsConfig | IResolvable;
+public readonly internalValue: IResolvable | EmrClusterCoreInstanceGroupEbsConfig;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceGroupEbsConfig">EmrClusterCoreInstanceGroupEbsConfig</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterCoreInstanceGroupEbsConfig">EmrClusterCoreInstanceGroupEbsConfig</a>
 
 ---
 
@@ -9937,7 +9937,7 @@ public resetProperties(): void
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurationsOutputReference.property.propertiesInput">propertiesInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurationsOutputReference.property.classification">classification</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurationsOutputReference.property.properties">properties</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurationsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations">EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurationsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations">EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations</a></code> | *No description.* |
 
 ---
 
@@ -10008,10 +10008,10 @@ public readonly properties: {[ key: string ]: string};
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurationsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations | IResolvable;
+public readonly internalValue: IResolvable | EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations">EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations">EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations</a>
 
 ---
 
@@ -10409,7 +10409,7 @@ public resetVolumesPerInstance(): void
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfigOutputReference.property.size">size</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfigOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfigOutputReference.property.volumesPerInstance">volumesPerInstance</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfigOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig">EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfigOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig">EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig</a></code> | *No description.* |
 
 ---
 
@@ -10520,10 +10520,10 @@ public readonly volumesPerInstance: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfigOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig | IResolvable;
+public readonly internalValue: IResolvable | EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig">EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig">EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig</a>
 
 ---
 
@@ -10972,7 +10972,7 @@ public resetWeightedCapacity(): void
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsOutputReference.property.bidPriceAsPercentageOfOnDemandPrice">bidPriceAsPercentageOfOnDemandPrice</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsOutputReference.property.instanceType">instanceType</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsOutputReference.property.weightedCapacity">weightedCapacity</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigs">EmrClusterMasterInstanceFleetInstanceTypeConfigs</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigs">EmrClusterMasterInstanceFleetInstanceTypeConfigs</a></code> | *No description.* |
 
 ---
 
@@ -11123,10 +11123,10 @@ public readonly weightedCapacity: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EmrClusterMasterInstanceFleetInstanceTypeConfigs | IResolvable;
+public readonly internalValue: IResolvable | EmrClusterMasterInstanceFleetInstanceTypeConfigs;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigs">EmrClusterMasterInstanceFleetInstanceTypeConfigs</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetInstanceTypeConfigs">EmrClusterMasterInstanceFleetInstanceTypeConfigs</a>
 
 ---
 
@@ -11504,7 +11504,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecificationOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecificationOutputReference.property.allocationStrategyInput">allocationStrategyInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecificationOutputReference.property.allocationStrategy">allocationStrategy</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecificationOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification">EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecificationOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification">EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification</a></code> | *No description.* |
 
 ---
 
@@ -11555,10 +11555,10 @@ public readonly allocationStrategy: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecificationOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification | IResolvable;
+public readonly internalValue: IResolvable | EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification">EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification">EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification</a>
 
 ---
 
@@ -12282,7 +12282,7 @@ public resetBlockDurationMinutes(): void
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecificationOutputReference.property.blockDurationMinutes">blockDurationMinutes</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecificationOutputReference.property.timeoutAction">timeoutAction</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecificationOutputReference.property.timeoutDurationMinutes">timeoutDurationMinutes</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecificationOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification">EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecificationOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification">EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification</a></code> | *No description.* |
 
 ---
 
@@ -12393,10 +12393,10 @@ public readonly timeoutDurationMinutes: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecificationOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification | IResolvable;
+public readonly internalValue: IResolvable | EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification">EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification">EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification</a>
 
 ---
 
@@ -13247,7 +13247,7 @@ public resetVolumesPerInstance(): void
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceGroupEbsConfigOutputReference.property.size">size</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceGroupEbsConfigOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceGroupEbsConfigOutputReference.property.volumesPerInstance">volumesPerInstance</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceGroupEbsConfigOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceGroupEbsConfig">EmrClusterMasterInstanceGroupEbsConfig</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceGroupEbsConfigOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceGroupEbsConfig">EmrClusterMasterInstanceGroupEbsConfig</a></code> | *No description.* |
 
 ---
 
@@ -13358,10 +13358,10 @@ public readonly volumesPerInstance: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceGroupEbsConfigOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EmrClusterMasterInstanceGroupEbsConfig | IResolvable;
+public readonly internalValue: IResolvable | EmrClusterMasterInstanceGroupEbsConfig;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceGroupEbsConfig">EmrClusterMasterInstanceGroupEbsConfig</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterMasterInstanceGroupEbsConfig">EmrClusterMasterInstanceGroupEbsConfig</a>
 
 ---
 
@@ -14184,7 +14184,7 @@ public resetProperties(): void
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStepHadoopJarStepOutputReference.property.jar">jar</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStepHadoopJarStepOutputReference.property.mainClass">mainClass</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStepHadoopJarStepOutputReference.property.properties">properties</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStepHadoopJarStepOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStepHadoopJarStep">EmrClusterStepHadoopJarStep</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStepHadoopJarStepOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStepHadoopJarStep">EmrClusterStepHadoopJarStep</a></code> | *No description.* |
 
 ---
 
@@ -14295,10 +14295,10 @@ public readonly properties: {[ key: string ]: string};
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.emrCluster.EmrClusterStepHadoopJarStepOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EmrClusterStepHadoopJarStep | IResolvable;
+public readonly internalValue: IResolvable | EmrClusterStepHadoopJarStep;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStepHadoopJarStep">EmrClusterStepHadoopJarStep</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStepHadoopJarStep">EmrClusterStepHadoopJarStep</a>
 
 ---
 
@@ -14714,7 +14714,7 @@ public resetName(): void
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStepOutputReference.property.nameInput">nameInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStepOutputReference.property.actionOnFailure">actionOnFailure</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStepOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStepOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStep">EmrClusterStep</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStepOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStep">EmrClusterStep</a></code> | *No description.* |
 
 ---
 
@@ -14805,10 +14805,10 @@ public readonly name: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.emrCluster.EmrClusterStepOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EmrClusterStep | IResolvable;
+public readonly internalValue: IResolvable | EmrClusterStep;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStep">EmrClusterStep</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.emrCluster.EmrClusterStep">EmrClusterStep</a>
 
 ---
 

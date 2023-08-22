@@ -559,7 +559,7 @@ alb.Alb.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.alb.Alb.property.subnetsInput">subnetsInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.alb.Alb.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.alb.Alb.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.alb.Alb.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.alb.AlbTimeouts">AlbTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.alb.Alb.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.alb.AlbTimeouts">AlbTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.alb.Alb.property.customerOwnedIpv4Pool">customerOwnedIpv4Pool</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.alb.Alb.property.desyncMitigationMode">desyncMitigationMode</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.alb.Alb.property.dropInvalidHeaderFields">dropInvalidHeaderFields</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
@@ -1006,10 +1006,10 @@ public readonly tagsInput: {[ key: string ]: string};
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.alb.Alb.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: AlbTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | AlbTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.alb.AlbTimeouts">AlbTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.alb.AlbTimeouts">AlbTimeouts</a>
 
 ---
 
@@ -2502,7 +2502,7 @@ public resetPrivateIpv4Address(): void
 | <code><a href="#@cdktf/aws-cdk.alb.AlbSubnetMappingOutputReference.property.ipv6Address">ipv6Address</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.alb.AlbSubnetMappingOutputReference.property.privateIpv4Address">privateIpv4Address</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.alb.AlbSubnetMappingOutputReference.property.subnetId">subnetId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.alb.AlbSubnetMappingOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.alb.AlbSubnetMapping">AlbSubnetMapping</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.alb.AlbSubnetMappingOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.alb.AlbSubnetMapping">AlbSubnetMapping</a></code> | *No description.* |
 
 ---
 
@@ -2623,10 +2623,10 @@ public readonly subnetId: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.alb.AlbSubnetMappingOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: AlbSubnetMapping | IResolvable;
+public readonly internalValue: IResolvable | AlbSubnetMapping;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.alb.AlbSubnetMapping">AlbSubnetMapping</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.alb.AlbSubnetMapping">AlbSubnetMapping</a>
 
 ---
 
@@ -2868,7 +2868,7 @@ public resetUpdate(): void
 | <code><a href="#@cdktf/aws-cdk.alb.AlbTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.alb.AlbTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.alb.AlbTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.alb.AlbTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.alb.AlbTimeouts">AlbTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.alb.AlbTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.alb.AlbTimeouts">AlbTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -2959,10 +2959,10 @@ public readonly update: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.alb.AlbTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: AlbTimeouts | IResolvable;
+public readonly internalValue: IResolvable | AlbTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.alb.AlbTimeouts">AlbTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.alb.AlbTimeouts">AlbTimeouts</a>
 
 ---
 

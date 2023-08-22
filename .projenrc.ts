@@ -23,6 +23,7 @@ const project = new CdktfAwsCdkProject({
   terraformProvider: "aws@~> 3.0",
   cdktfVersion: "0.18.0",
   constructsVersion: "^10.0.25",
+  jsiiVersion: "^5.1.0",
   minNodeVersion: "16.14.0",
   projenrcTs: true,
 });

@@ -1670,7 +1670,7 @@ public resetWeightFactor(): void
 | <code><a href="#@cdktf/aws-cdk.batchSchedulingPolicy.BatchSchedulingPolicyFairSharePolicyShareDistributionOutputReference.property.weightFactorInput">weightFactorInput</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.batchSchedulingPolicy.BatchSchedulingPolicyFairSharePolicyShareDistributionOutputReference.property.shareIdentifier">shareIdentifier</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.batchSchedulingPolicy.BatchSchedulingPolicyFairSharePolicyShareDistributionOutputReference.property.weightFactor">weightFactor</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.batchSchedulingPolicy.BatchSchedulingPolicyFairSharePolicyShareDistributionOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.batchSchedulingPolicy.BatchSchedulingPolicyFairSharePolicyShareDistribution">BatchSchedulingPolicyFairSharePolicyShareDistribution</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.batchSchedulingPolicy.BatchSchedulingPolicyFairSharePolicyShareDistributionOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.batchSchedulingPolicy.BatchSchedulingPolicyFairSharePolicyShareDistribution">BatchSchedulingPolicyFairSharePolicyShareDistribution</a></code> | *No description.* |
 
 ---
 
@@ -1741,10 +1741,10 @@ public readonly weightFactor: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.batchSchedulingPolicy.BatchSchedulingPolicyFairSharePolicyShareDistributionOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: BatchSchedulingPolicyFairSharePolicyShareDistribution | IResolvable;
+public readonly internalValue: IResolvable | BatchSchedulingPolicyFairSharePolicyShareDistribution;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.batchSchedulingPolicy.BatchSchedulingPolicyFairSharePolicyShareDistribution">BatchSchedulingPolicyFairSharePolicyShareDistribution</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.batchSchedulingPolicy.BatchSchedulingPolicyFairSharePolicyShareDistribution">BatchSchedulingPolicyFairSharePolicyShareDistribution</a>
 
 ---
 

@@ -1565,7 +1565,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.transferUser.TransferUserHomeDirectoryMappingsOutputReference.property.targetInput">targetInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.transferUser.TransferUserHomeDirectoryMappingsOutputReference.property.entry">entry</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.transferUser.TransferUserHomeDirectoryMappingsOutputReference.property.target">target</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.transferUser.TransferUserHomeDirectoryMappingsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.transferUser.TransferUserHomeDirectoryMappings">TransferUserHomeDirectoryMappings</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.transferUser.TransferUserHomeDirectoryMappingsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.transferUser.TransferUserHomeDirectoryMappings">TransferUserHomeDirectoryMappings</a></code> | *No description.* |
 
 ---
 
@@ -1636,10 +1636,10 @@ public readonly target: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.transferUser.TransferUserHomeDirectoryMappingsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: TransferUserHomeDirectoryMappings | IResolvable;
+public readonly internalValue: IResolvable | TransferUserHomeDirectoryMappings;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.transferUser.TransferUserHomeDirectoryMappings">TransferUserHomeDirectoryMappings</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.transferUser.TransferUserHomeDirectoryMappings">TransferUserHomeDirectoryMappings</a>
 
 ---
 

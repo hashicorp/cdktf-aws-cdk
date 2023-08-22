@@ -4365,7 +4365,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupCustomResponseBodyOutputReference.property.content">content</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupCustomResponseBodyOutputReference.property.contentType">contentType</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupCustomResponseBodyOutputReference.property.key">key</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupCustomResponseBodyOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupCustomResponseBody">Wafv2RuleGroupCustomResponseBody</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupCustomResponseBodyOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupCustomResponseBody">Wafv2RuleGroupCustomResponseBody</a></code> | *No description.* |
 
 ---
 
@@ -4456,10 +4456,10 @@ public readonly key: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupCustomResponseBodyOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: Wafv2RuleGroupCustomResponseBody | IResolvable;
+public readonly internalValue: IResolvable | Wafv2RuleGroupCustomResponseBody;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupCustomResponseBody">Wafv2RuleGroupCustomResponseBody</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupCustomResponseBody">Wafv2RuleGroupCustomResponseBody</a>
 
 ---
 
@@ -4839,7 +4839,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionAllowCustomRequestHandlingInsertHeaderOutputReference.property.valueInput">valueInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionAllowCustomRequestHandlingInsertHeaderOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionAllowCustomRequestHandlingInsertHeaderOutputReference.property.value">value</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionAllowCustomRequestHandlingInsertHeaderOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionAllowCustomRequestHandlingInsertHeader">Wafv2RuleGroupRuleActionAllowCustomRequestHandlingInsertHeader</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionAllowCustomRequestHandlingInsertHeaderOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionAllowCustomRequestHandlingInsertHeader">Wafv2RuleGroupRuleActionAllowCustomRequestHandlingInsertHeader</a></code> | *No description.* |
 
 ---
 
@@ -4910,10 +4910,10 @@ public readonly value: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionAllowCustomRequestHandlingInsertHeaderOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: Wafv2RuleGroupRuleActionAllowCustomRequestHandlingInsertHeader | IResolvable;
+public readonly internalValue: IResolvable | Wafv2RuleGroupRuleActionAllowCustomRequestHandlingInsertHeader;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionAllowCustomRequestHandlingInsertHeader">Wafv2RuleGroupRuleActionAllowCustomRequestHandlingInsertHeader</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionAllowCustomRequestHandlingInsertHeader">Wafv2RuleGroupRuleActionAllowCustomRequestHandlingInsertHeader</a>
 
 ---
 
@@ -6210,7 +6210,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionBlockCustomResponseResponseHeaderOutputReference.property.valueInput">valueInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionBlockCustomResponseResponseHeaderOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionBlockCustomResponseResponseHeaderOutputReference.property.value">value</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionBlockCustomResponseResponseHeaderOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionBlockCustomResponseResponseHeader">Wafv2RuleGroupRuleActionBlockCustomResponseResponseHeader</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionBlockCustomResponseResponseHeaderOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionBlockCustomResponseResponseHeader">Wafv2RuleGroupRuleActionBlockCustomResponseResponseHeader</a></code> | *No description.* |
 
 ---
 
@@ -6281,10 +6281,10 @@ public readonly value: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionBlockCustomResponseResponseHeaderOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: Wafv2RuleGroupRuleActionBlockCustomResponseResponseHeader | IResolvable;
+public readonly internalValue: IResolvable | Wafv2RuleGroupRuleActionBlockCustomResponseResponseHeader;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionBlockCustomResponseResponseHeader">Wafv2RuleGroupRuleActionBlockCustomResponseResponseHeader</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionBlockCustomResponseResponseHeader">Wafv2RuleGroupRuleActionBlockCustomResponseResponseHeader</a>
 
 ---
 
@@ -6955,7 +6955,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionCountCustomRequestHandlingInsertHeaderOutputReference.property.valueInput">valueInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionCountCustomRequestHandlingInsertHeaderOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionCountCustomRequestHandlingInsertHeaderOutputReference.property.value">value</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionCountCustomRequestHandlingInsertHeaderOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionCountCustomRequestHandlingInsertHeader">Wafv2RuleGroupRuleActionCountCustomRequestHandlingInsertHeader</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionCountCustomRequestHandlingInsertHeaderOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionCountCustomRequestHandlingInsertHeader">Wafv2RuleGroupRuleActionCountCustomRequestHandlingInsertHeader</a></code> | *No description.* |
 
 ---
 
@@ -7026,10 +7026,10 @@ public readonly value: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionCountCustomRequestHandlingInsertHeaderOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: Wafv2RuleGroupRuleActionCountCustomRequestHandlingInsertHeader | IResolvable;
+public readonly internalValue: IResolvable | Wafv2RuleGroupRuleActionCountCustomRequestHandlingInsertHeader;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionCountCustomRequestHandlingInsertHeader">Wafv2RuleGroupRuleActionCountCustomRequestHandlingInsertHeader</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleActionCountCustomRequestHandlingInsertHeader">Wafv2RuleGroupRuleActionCountCustomRequestHandlingInsertHeader</a>
 
 ---
 
@@ -8426,7 +8426,7 @@ public resetRuleLabel(): void
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleOutputReference.property.visibilityConfigInput">visibilityConfigInput</a></code> | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleVisibilityConfig">Wafv2RuleGroupRuleVisibilityConfig</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleOutputReference.property.priority">priority</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRule">Wafv2RuleGroupRule</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRule">Wafv2RuleGroupRule</a></code> | *No description.* |
 
 ---
 
@@ -8577,10 +8577,10 @@ public readonly priority: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: Wafv2RuleGroupRule | IResolvable;
+public readonly internalValue: IResolvable | Wafv2RuleGroupRule;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRule">Wafv2RuleGroupRule</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRule">Wafv2RuleGroupRule</a>
 
 ---
 
@@ -8958,7 +8958,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleRuleLabelOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleRuleLabelOutputReference.property.nameInput">nameInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleRuleLabelOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleRuleLabelOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleRuleLabel">Wafv2RuleGroupRuleRuleLabel</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleRuleLabelOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleRuleLabel">Wafv2RuleGroupRuleRuleLabel</a></code> | *No description.* |
 
 ---
 
@@ -9009,10 +9009,10 @@ public readonly name: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleRuleLabelOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: Wafv2RuleGroupRuleRuleLabel | IResolvable;
+public readonly internalValue: IResolvable | Wafv2RuleGroupRuleRuleLabel;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleRuleLabel">Wafv2RuleGroupRuleRuleLabel</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleRuleLabel">Wafv2RuleGroupRuleRuleLabel</a>
 
 ---
 
@@ -12376,7 +12376,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementByteMatchStatementTextTransformationOutputReference.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementByteMatchStatementTextTransformationOutputReference.property.priority">priority</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementByteMatchStatementTextTransformationOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementByteMatchStatementTextTransformationOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementByteMatchStatementTextTransformation">Wafv2RuleGroupRuleStatementByteMatchStatementTextTransformation</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementByteMatchStatementTextTransformationOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementByteMatchStatementTextTransformation">Wafv2RuleGroupRuleStatementByteMatchStatementTextTransformation</a></code> | *No description.* |
 
 ---
 
@@ -12447,10 +12447,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementByteMatchStatementTextTransformationOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: Wafv2RuleGroupRuleStatementByteMatchStatementTextTransformation | IResolvable;
+public readonly internalValue: IResolvable | Wafv2RuleGroupRuleStatementByteMatchStatementTextTransformation;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementByteMatchStatementTextTransformation">Wafv2RuleGroupRuleStatementByteMatchStatementTextTransformation</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementByteMatchStatementTextTransformation">Wafv2RuleGroupRuleStatementByteMatchStatementTextTransformation</a>
 
 ---
 
@@ -18314,7 +18314,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformationOutputReference.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformationOutputReference.property.priority">priority</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformationOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformationOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation">Wafv2RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformationOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation">Wafv2RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation</a></code> | *No description.* |
 
 ---
 
@@ -18385,10 +18385,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformationOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: Wafv2RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation | IResolvable;
+public readonly internalValue: IResolvable | Wafv2RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation">Wafv2RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation">Wafv2RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation</a>
 
 ---
 
@@ -21468,7 +21468,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSizeConstraintStatementTextTransformationOutputReference.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSizeConstraintStatementTextTransformationOutputReference.property.priority">priority</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSizeConstraintStatementTextTransformationOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSizeConstraintStatementTextTransformationOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSizeConstraintStatementTextTransformation">Wafv2RuleGroupRuleStatementSizeConstraintStatementTextTransformation</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSizeConstraintStatementTextTransformationOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSizeConstraintStatementTextTransformation">Wafv2RuleGroupRuleStatementSizeConstraintStatementTextTransformation</a></code> | *No description.* |
 
 ---
 
@@ -21539,10 +21539,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSizeConstraintStatementTextTransformationOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: Wafv2RuleGroupRuleStatementSizeConstraintStatementTextTransformation | IResolvable;
+public readonly internalValue: IResolvable | Wafv2RuleGroupRuleStatementSizeConstraintStatementTextTransformation;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSizeConstraintStatementTextTransformation">Wafv2RuleGroupRuleStatementSizeConstraintStatementTextTransformation</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSizeConstraintStatementTextTransformation">Wafv2RuleGroupRuleStatementSizeConstraintStatementTextTransformation</a>
 
 ---
 
@@ -24578,7 +24578,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSqliMatchStatementTextTransformationOutputReference.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSqliMatchStatementTextTransformationOutputReference.property.priority">priority</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSqliMatchStatementTextTransformationOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSqliMatchStatementTextTransformationOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSqliMatchStatementTextTransformation">Wafv2RuleGroupRuleStatementSqliMatchStatementTextTransformation</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSqliMatchStatementTextTransformationOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSqliMatchStatementTextTransformation">Wafv2RuleGroupRuleStatementSqliMatchStatementTextTransformation</a></code> | *No description.* |
 
 ---
 
@@ -24649,10 +24649,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSqliMatchStatementTextTransformationOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: Wafv2RuleGroupRuleStatementSqliMatchStatementTextTransformation | IResolvable;
+public readonly internalValue: IResolvable | Wafv2RuleGroupRuleStatementSqliMatchStatementTextTransformation;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSqliMatchStatementTextTransformation">Wafv2RuleGroupRuleStatementSqliMatchStatementTextTransformation</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementSqliMatchStatementTextTransformation">Wafv2RuleGroupRuleStatementSqliMatchStatementTextTransformation</a>
 
 ---
 
@@ -27688,7 +27688,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementXssMatchStatementTextTransformationOutputReference.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementXssMatchStatementTextTransformationOutputReference.property.priority">priority</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementXssMatchStatementTextTransformationOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementXssMatchStatementTextTransformationOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementXssMatchStatementTextTransformation">Wafv2RuleGroupRuleStatementXssMatchStatementTextTransformation</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementXssMatchStatementTextTransformationOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementXssMatchStatementTextTransformation">Wafv2RuleGroupRuleStatementXssMatchStatementTextTransformation</a></code> | *No description.* |
 
 ---
 
@@ -27759,10 +27759,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementXssMatchStatementTextTransformationOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: Wafv2RuleGroupRuleStatementXssMatchStatementTextTransformation | IResolvable;
+public readonly internalValue: IResolvable | Wafv2RuleGroupRuleStatementXssMatchStatementTextTransformation;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementXssMatchStatementTextTransformation">Wafv2RuleGroupRuleStatementXssMatchStatementTextTransformation</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.wafv2RuleGroup.Wafv2RuleGroupRuleStatementXssMatchStatementTextTransformation">Wafv2RuleGroupRuleStatementXssMatchStatementTextTransformation</a>
 
 ---
 

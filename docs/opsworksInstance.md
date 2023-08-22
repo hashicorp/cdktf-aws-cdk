@@ -754,7 +754,7 @@ opsworksInstance.OpsworksInstance.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstance.property.statusInput">statusInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstance.property.subnetIdInput">subnetIdInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstance.property.tenancyInput">tenancyInput</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstance.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceTimeouts">OpsworksInstanceTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstance.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceTimeouts">OpsworksInstanceTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstance.property.virtualizationTypeInput">virtualizationTypeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstance.property.agentVersion">agentVersion</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstance.property.amiId">amiId</a></code> | <code>string</code> | *No description.* |
@@ -1436,10 +1436,10 @@ public readonly tenancyInput: string;
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.opsworksInstance.OpsworksInstance.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: OpsworksInstanceTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | OpsworksInstanceTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceTimeouts">OpsworksInstanceTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceTimeouts">OpsworksInstanceTimeouts</a>
 
 ---
 
@@ -3279,7 +3279,7 @@ public resetVolumeType(): void
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEbsBlockDeviceOutputReference.property.snapshotId">snapshotId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEbsBlockDeviceOutputReference.property.volumeSize">volumeSize</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEbsBlockDeviceOutputReference.property.volumeType">volumeType</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEbsBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEbsBlockDevice">OpsworksInstanceEbsBlockDevice</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEbsBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEbsBlockDevice">OpsworksInstanceEbsBlockDevice</a></code> | *No description.* |
 
 ---
 
@@ -3430,10 +3430,10 @@ public readonly volumeType: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEbsBlockDeviceOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: OpsworksInstanceEbsBlockDevice | IResolvable;
+public readonly internalValue: IResolvable | OpsworksInstanceEbsBlockDevice;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEbsBlockDevice">OpsworksInstanceEbsBlockDevice</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEbsBlockDevice">OpsworksInstanceEbsBlockDevice</a>
 
 ---
 
@@ -3813,7 +3813,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEphemeralBlockDeviceOutputReference.property.virtualNameInput">virtualNameInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEphemeralBlockDeviceOutputReference.property.deviceName">deviceName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEphemeralBlockDeviceOutputReference.property.virtualName">virtualName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEphemeralBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEphemeralBlockDevice">OpsworksInstanceEphemeralBlockDevice</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEphemeralBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEphemeralBlockDevice">OpsworksInstanceEphemeralBlockDevice</a></code> | *No description.* |
 
 ---
 
@@ -3884,10 +3884,10 @@ public readonly virtualName: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEphemeralBlockDeviceOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: OpsworksInstanceEphemeralBlockDevice | IResolvable;
+public readonly internalValue: IResolvable | OpsworksInstanceEphemeralBlockDevice;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEphemeralBlockDevice">OpsworksInstanceEphemeralBlockDevice</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceEphemeralBlockDevice">OpsworksInstanceEphemeralBlockDevice</a>
 
 ---
 
@@ -4299,7 +4299,7 @@ public resetVolumeType(): void
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceRootBlockDeviceOutputReference.property.iops">iops</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceRootBlockDeviceOutputReference.property.volumeSize">volumeSize</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceRootBlockDeviceOutputReference.property.volumeType">volumeType</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceRootBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceRootBlockDevice">OpsworksInstanceRootBlockDevice</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceRootBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceRootBlockDevice">OpsworksInstanceRootBlockDevice</a></code> | *No description.* |
 
 ---
 
@@ -4410,10 +4410,10 @@ public readonly volumeType: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceRootBlockDeviceOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: OpsworksInstanceRootBlockDevice | IResolvable;
+public readonly internalValue: IResolvable | OpsworksInstanceRootBlockDevice;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceRootBlockDevice">OpsworksInstanceRootBlockDevice</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceRootBlockDevice">OpsworksInstanceRootBlockDevice</a>
 
 ---
 
@@ -4655,7 +4655,7 @@ public resetUpdate(): void
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceTimeouts">OpsworksInstanceTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceTimeouts">OpsworksInstanceTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -4746,10 +4746,10 @@ public readonly update: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: OpsworksInstanceTimeouts | IResolvable;
+public readonly internalValue: IResolvable | OpsworksInstanceTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceTimeouts">OpsworksInstanceTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.opsworksInstance.OpsworksInstanceTimeouts">OpsworksInstanceTimeouts</a>
 
 ---
 

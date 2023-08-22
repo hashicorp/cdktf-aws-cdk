@@ -11065,7 +11065,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.quicksightDataSource.QuicksightDataSourcePermissionOutputReference.property.principalInput">principalInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.quicksightDataSource.QuicksightDataSourcePermissionOutputReference.property.actions">actions</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.quicksightDataSource.QuicksightDataSourcePermissionOutputReference.property.principal">principal</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.quicksightDataSource.QuicksightDataSourcePermissionOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.quicksightDataSource.QuicksightDataSourcePermission">QuicksightDataSourcePermission</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.quicksightDataSource.QuicksightDataSourcePermissionOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.quicksightDataSource.QuicksightDataSourcePermission">QuicksightDataSourcePermission</a></code> | *No description.* |
 
 ---
 
@@ -11136,10 +11136,10 @@ public readonly principal: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.quicksightDataSource.QuicksightDataSourcePermissionOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: QuicksightDataSourcePermission | IResolvable;
+public readonly internalValue: IResolvable | QuicksightDataSourcePermission;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.quicksightDataSource.QuicksightDataSourcePermission">QuicksightDataSourcePermission</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.quicksightDataSource.QuicksightDataSourcePermission">QuicksightDataSourcePermission</a>
 
 ---
 

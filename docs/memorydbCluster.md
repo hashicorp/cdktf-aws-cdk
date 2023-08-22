@@ -555,7 +555,7 @@ memorydbCluster.MemorydbCluster.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbCluster.property.subnetGroupNameInput">subnetGroupNameInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbCluster.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbCluster.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbCluster.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbClusterTimeouts">MemorydbClusterTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbCluster.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbClusterTimeouts">MemorydbClusterTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbCluster.property.tlsEnabledInput">tlsEnabledInput</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbCluster.property.aclName">aclName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbCluster.property.autoMinorVersionUpgrade">autoMinorVersionUpgrade</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
@@ -1020,10 +1020,10 @@ public readonly tagsInput: {[ key: string ]: string};
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.memorydbCluster.MemorydbCluster.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: MemorydbClusterTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | MemorydbClusterTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbClusterTimeouts">MemorydbClusterTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbClusterTimeouts">MemorydbClusterTimeouts</a>
 
 ---
 
@@ -3811,7 +3811,7 @@ public resetUpdate(): void
 | <code><a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbClusterTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbClusterTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbClusterTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbClusterTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbClusterTimeouts">MemorydbClusterTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbClusterTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbClusterTimeouts">MemorydbClusterTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -3902,10 +3902,10 @@ public readonly update: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.memorydbCluster.MemorydbClusterTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: MemorydbClusterTimeouts | IResolvable;
+public readonly internalValue: IResolvable | MemorydbClusterTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbClusterTimeouts">MemorydbClusterTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.memorydbCluster.MemorydbClusterTimeouts">MemorydbClusterTimeouts</a>
 
 ---
 

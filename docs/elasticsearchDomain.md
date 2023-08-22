@@ -660,7 +660,7 @@ elasticsearchDomain.ElasticsearchDomain.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomain.property.snapshotOptionsInput">snapshotOptionsInput</a></code> | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainSnapshotOptions">ElasticsearchDomainSnapshotOptions</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomain.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomain.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomain.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainTimeouts">ElasticsearchDomainTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomain.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainTimeouts">ElasticsearchDomainTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomain.property.vpcOptionsInput">vpcOptionsInput</a></code> | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainVpcOptions">ElasticsearchDomainVpcOptions</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomain.property.accessPolicies">accessPolicies</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomain.property.advancedOptions">advancedOptions</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
@@ -1147,10 +1147,10 @@ public readonly tagsInput: {[ key: string ]: string};
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomain.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: ElasticsearchDomainTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | ElasticsearchDomainTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainTimeouts">ElasticsearchDomainTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainTimeouts">ElasticsearchDomainTimeouts</a>
 
 ---
 
@@ -3889,7 +3889,7 @@ public putDuration(value: ElasticsearchDomainAutoTuneOptionsMaintenanceScheduleD
 | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainAutoTuneOptionsMaintenanceScheduleOutputReference.property.startAtInput">startAtInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainAutoTuneOptionsMaintenanceScheduleOutputReference.property.cronExpressionForRecurrence">cronExpressionForRecurrence</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainAutoTuneOptionsMaintenanceScheduleOutputReference.property.startAt">startAt</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainAutoTuneOptionsMaintenanceScheduleOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainAutoTuneOptionsMaintenanceSchedule">ElasticsearchDomainAutoTuneOptionsMaintenanceSchedule</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainAutoTuneOptionsMaintenanceScheduleOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainAutoTuneOptionsMaintenanceSchedule">ElasticsearchDomainAutoTuneOptionsMaintenanceSchedule</a></code> | *No description.* |
 
 ---
 
@@ -3980,10 +3980,10 @@ public readonly startAt: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainAutoTuneOptionsMaintenanceScheduleOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: ElasticsearchDomainAutoTuneOptionsMaintenanceSchedule | IResolvable;
+public readonly internalValue: IResolvable | ElasticsearchDomainAutoTuneOptionsMaintenanceSchedule;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainAutoTuneOptionsMaintenanceSchedule">ElasticsearchDomainAutoTuneOptionsMaintenanceSchedule</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainAutoTuneOptionsMaintenanceSchedule">ElasticsearchDomainAutoTuneOptionsMaintenanceSchedule</a>
 
 ---
 
@@ -6940,7 +6940,7 @@ public resetEnabled(): void
 | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainLogPublishingOptionsOutputReference.property.cloudwatchLogGroupArn">cloudwatchLogGroupArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainLogPublishingOptionsOutputReference.property.enabled">enabled</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainLogPublishingOptionsOutputReference.property.logType">logType</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainLogPublishingOptionsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainLogPublishingOptions">ElasticsearchDomainLogPublishingOptions</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainLogPublishingOptionsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainLogPublishingOptions">ElasticsearchDomainLogPublishingOptions</a></code> | *No description.* |
 
 ---
 
@@ -7031,10 +7031,10 @@ public readonly logType: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainLogPublishingOptionsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: ElasticsearchDomainLogPublishingOptions | IResolvable;
+public readonly internalValue: IResolvable | ElasticsearchDomainLogPublishingOptions;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainLogPublishingOptions">ElasticsearchDomainLogPublishingOptions</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainLogPublishingOptions">ElasticsearchDomainLogPublishingOptions</a>
 
 ---
 
@@ -7800,7 +7800,7 @@ public resetUpdate(): void
 | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainTimeoutsOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainTimeoutsOutputReference.property.updateInput">updateInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainTimeouts">ElasticsearchDomainTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainTimeouts">ElasticsearchDomainTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -7851,10 +7851,10 @@ public readonly update: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: ElasticsearchDomainTimeouts | IResolvable;
+public readonly internalValue: IResolvable | ElasticsearchDomainTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainTimeouts">ElasticsearchDomainTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.elasticsearchDomain.ElasticsearchDomainTimeouts">ElasticsearchDomainTimeouts</a>
 
 ---
 

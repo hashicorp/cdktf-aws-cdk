@@ -896,7 +896,7 @@ spotInstanceRequest.SpotInstanceRequest.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequest.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequest.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequest.property.tenancyInput">tenancyInput</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequest.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestTimeouts">SpotInstanceRequestTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequest.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestTimeouts">SpotInstanceRequestTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequest.property.userDataBase64Input">userDataBase64Input</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequest.property.userDataInput">userDataInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequest.property.validFromInput">validFromInput</a></code> | <code>string</code> | *No description.* |
@@ -1733,10 +1733,10 @@ public readonly tenancyInput: string;
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequest.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: SpotInstanceRequestTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | SpotInstanceRequestTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestTimeouts">SpotInstanceRequestTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestTimeouts">SpotInstanceRequestTimeouts</a>
 
 ---
 
@@ -5039,7 +5039,7 @@ public resetVolumeType(): void
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEbsBlockDeviceOutputReference.property.throughput">throughput</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEbsBlockDeviceOutputReference.property.volumeSize">volumeSize</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEbsBlockDeviceOutputReference.property.volumeType">volumeType</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEbsBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEbsBlockDevice">SpotInstanceRequestEbsBlockDevice</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEbsBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEbsBlockDevice">SpotInstanceRequestEbsBlockDevice</a></code> | *No description.* |
 
 ---
 
@@ -5280,10 +5280,10 @@ public readonly volumeType: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEbsBlockDeviceOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: SpotInstanceRequestEbsBlockDevice | IResolvable;
+public readonly internalValue: IResolvable | SpotInstanceRequestEbsBlockDevice;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEbsBlockDevice">SpotInstanceRequestEbsBlockDevice</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEbsBlockDevice">SpotInstanceRequestEbsBlockDevice</a>
 
 ---
 
@@ -5957,7 +5957,7 @@ public resetVirtualName(): void
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEphemeralBlockDeviceOutputReference.property.deviceName">deviceName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEphemeralBlockDeviceOutputReference.property.noDevice">noDevice</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEphemeralBlockDeviceOutputReference.property.virtualName">virtualName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEphemeralBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEphemeralBlockDevice">SpotInstanceRequestEphemeralBlockDevice</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEphemeralBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEphemeralBlockDevice">SpotInstanceRequestEphemeralBlockDevice</a></code> | *No description.* |
 
 ---
 
@@ -6048,10 +6048,10 @@ public readonly virtualName: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEphemeralBlockDeviceOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: SpotInstanceRequestEphemeralBlockDevice | IResolvable;
+public readonly internalValue: IResolvable | SpotInstanceRequestEphemeralBlockDevice;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEphemeralBlockDevice">SpotInstanceRequestEphemeralBlockDevice</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestEphemeralBlockDevice">SpotInstanceRequestEphemeralBlockDevice</a>
 
 ---
 
@@ -7141,7 +7141,7 @@ public resetDeleteOnTermination(): void
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestNetworkInterfaceOutputReference.property.deleteOnTermination">deleteOnTermination</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestNetworkInterfaceOutputReference.property.deviceIndex">deviceIndex</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestNetworkInterfaceOutputReference.property.networkInterfaceId">networkInterfaceId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestNetworkInterfaceOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestNetworkInterface">SpotInstanceRequestNetworkInterface</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestNetworkInterfaceOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestNetworkInterface">SpotInstanceRequestNetworkInterface</a></code> | *No description.* |
 
 ---
 
@@ -7232,10 +7232,10 @@ public readonly networkInterfaceId: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestNetworkInterfaceOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: SpotInstanceRequestNetworkInterface | IResolvable;
+public readonly internalValue: IResolvable | SpotInstanceRequestNetworkInterface;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestNetworkInterface">SpotInstanceRequestNetworkInterface</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestNetworkInterface">SpotInstanceRequestNetworkInterface</a>
 
 ---
 
@@ -7971,7 +7971,7 @@ public resetDelete(): void
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestTimeoutsOutputReference.property.deleteInput">deleteInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestTimeouts">SpotInstanceRequestTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestTimeouts">SpotInstanceRequestTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -8042,10 +8042,10 @@ public readonly delete: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: SpotInstanceRequestTimeouts | IResolvable;
+public readonly internalValue: IResolvable | SpotInstanceRequestTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestTimeouts">SpotInstanceRequestTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.spotInstanceRequest.SpotInstanceRequestTimeouts">SpotInstanceRequestTimeouts</a>
 
 ---
 
