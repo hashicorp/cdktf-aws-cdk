@@ -16,7 +16,7 @@ export class ProviderUpgrade {
     if (!workflow) throw new Error("no workflow defined");
 
     workflow.on({
-      schedule: [{ cron: "6 21 * * *" }], // Run once a day
+      schedule: [{ cron: "6 21 * * 0" }], // Run once a week on Sundays
       workflowDispatch: {}, // allow manual triggering
     });
 
@@ -42,6 +42,7 @@ export class ProviderUpgrade {
             with: {
               "commit-message": "feat: upgrade providers",
               branch: "auto/provider-upgrade",
+              base: "main",
               title: "feat: upgrade providers",
               body:
                 "This PR upgrades the AWS and Time providers to the latest version, which may or may not result in new features.",
@@ -50,6 +51,7 @@ export class ProviderUpgrade {
               author: "team-tf-cdk <github-team-tf-cdk@hashicorp.com>",
               committer: "team-tf-cdk <github-team-tf-cdk@hashicorp.com>",
               signoff: true,
+              "delete-branch": true,
             },
           },
         ],
