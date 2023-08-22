@@ -65,3 +65,4 @@ package-lock.json
 !/LICENSE
 !/.github/workflows/lock.yml
 !/.github/workflows/upgrade-cdktf.yml
+!/.github/workflows/upgrade-node.yml

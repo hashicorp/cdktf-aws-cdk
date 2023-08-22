@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: write
     env:
       CI: "true"
       CHECKPOINT_DISABLE: "1"
@@ -37,9 +36,7 @@ jobs:
           echo "short=$CDKTF_VERSION_SHORT" >> $GITHUB_OUTPUT
       - name: Run upgrade script
         if: steps.current_version.outputs.short != steps.latest_version.outputs.short
-        env:
-          CDKTF_VERSION: ${{ steps.latest_version.outputs.value }}
-        run: scripts/update-cdktf.sh $CDKTF_VERSION
+        run: scripts/update-cdktf.sh ${{ steps.latest_version.outputs.value }}
       - name: Regenerate bindings
         if: steps.current_version.outputs.short != steps.latest_version.outputs.short
         run: yarn run fetch && yarn run compile
