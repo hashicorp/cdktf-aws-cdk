@@ -2132,7 +2132,7 @@ public resetUsername(): void
 | <code><a href="#@cdktf/aws-cdk.opsworksStack.OpsworksStackCustomCookbooksSourceOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStack.OpsworksStackCustomCookbooksSourceOutputReference.property.url">url</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStack.OpsworksStackCustomCookbooksSourceOutputReference.property.username">username</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.opsworksStack.OpsworksStackCustomCookbooksSourceOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.opsworksStack.OpsworksStackCustomCookbooksSource">OpsworksStackCustomCookbooksSource</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksStack.OpsworksStackCustomCookbooksSourceOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.opsworksStack.OpsworksStackCustomCookbooksSource">OpsworksStackCustomCookbooksSource</a></code> | *No description.* |
 
 ---
 
@@ -2283,10 +2283,10 @@ public readonly username: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.opsworksStack.OpsworksStackCustomCookbooksSourceOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: OpsworksStackCustomCookbooksSource | IResolvable;
+public readonly internalValue: IResolvable | OpsworksStackCustomCookbooksSource;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.opsworksStack.OpsworksStackCustomCookbooksSource">OpsworksStackCustomCookbooksSource</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.opsworksStack.OpsworksStackCustomCookbooksSource">OpsworksStackCustomCookbooksSource</a>
 
 ---
 

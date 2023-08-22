@@ -1883,7 +1883,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordAliasOutputReference.property.evaluateTargetHealth">evaluateTargetHealth</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordAliasOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordAliasOutputReference.property.zoneId">zoneId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordAliasOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordAlias">Route53RecordAlias</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordAliasOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.route53Record.Route53RecordAlias">Route53RecordAlias</a></code> | *No description.* |
 
 ---
 
@@ -1974,10 +1974,10 @@ public readonly zoneId: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.route53Record.Route53RecordAliasOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: Route53RecordAlias | IResolvable;
+public readonly internalValue: IResolvable | Route53RecordAlias;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.route53Record.Route53RecordAlias">Route53RecordAlias</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.route53Record.Route53RecordAlias">Route53RecordAlias</a>
 
 ---
 
@@ -2355,7 +2355,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordFailoverRoutingPolicyOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordFailoverRoutingPolicyOutputReference.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordFailoverRoutingPolicyOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordFailoverRoutingPolicyOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordFailoverRoutingPolicy">Route53RecordFailoverRoutingPolicy</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordFailoverRoutingPolicyOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.route53Record.Route53RecordFailoverRoutingPolicy">Route53RecordFailoverRoutingPolicy</a></code> | *No description.* |
 
 ---
 
@@ -2406,10 +2406,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.route53Record.Route53RecordFailoverRoutingPolicyOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: Route53RecordFailoverRoutingPolicy | IResolvable;
+public readonly internalValue: IResolvable | Route53RecordFailoverRoutingPolicy;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.route53Record.Route53RecordFailoverRoutingPolicy">Route53RecordFailoverRoutingPolicy</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.route53Record.Route53RecordFailoverRoutingPolicy">Route53RecordFailoverRoutingPolicy</a>
 
 ---
 
@@ -2812,7 +2812,7 @@ public resetSubdivision(): void
 | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordGeolocationRoutingPolicyOutputReference.property.continent">continent</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordGeolocationRoutingPolicyOutputReference.property.country">country</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordGeolocationRoutingPolicyOutputReference.property.subdivision">subdivision</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordGeolocationRoutingPolicyOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordGeolocationRoutingPolicy">Route53RecordGeolocationRoutingPolicy</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordGeolocationRoutingPolicyOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.route53Record.Route53RecordGeolocationRoutingPolicy">Route53RecordGeolocationRoutingPolicy</a></code> | *No description.* |
 
 ---
 
@@ -2903,10 +2903,10 @@ public readonly subdivision: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.route53Record.Route53RecordGeolocationRoutingPolicyOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: Route53RecordGeolocationRoutingPolicy | IResolvable;
+public readonly internalValue: IResolvable | Route53RecordGeolocationRoutingPolicy;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.route53Record.Route53RecordGeolocationRoutingPolicy">Route53RecordGeolocationRoutingPolicy</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.route53Record.Route53RecordGeolocationRoutingPolicy">Route53RecordGeolocationRoutingPolicy</a>
 
 ---
 
@@ -3284,7 +3284,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordLatencyRoutingPolicyOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordLatencyRoutingPolicyOutputReference.property.regionInput">regionInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordLatencyRoutingPolicyOutputReference.property.region">region</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordLatencyRoutingPolicyOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordLatencyRoutingPolicy">Route53RecordLatencyRoutingPolicy</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordLatencyRoutingPolicyOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.route53Record.Route53RecordLatencyRoutingPolicy">Route53RecordLatencyRoutingPolicy</a></code> | *No description.* |
 
 ---
 
@@ -3335,10 +3335,10 @@ public readonly region: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.route53Record.Route53RecordLatencyRoutingPolicyOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: Route53RecordLatencyRoutingPolicy | IResolvable;
+public readonly internalValue: IResolvable | Route53RecordLatencyRoutingPolicy;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.route53Record.Route53RecordLatencyRoutingPolicy">Route53RecordLatencyRoutingPolicy</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.route53Record.Route53RecordLatencyRoutingPolicy">Route53RecordLatencyRoutingPolicy</a>
 
 ---
 
@@ -3716,7 +3716,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordWeightedRoutingPolicyOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordWeightedRoutingPolicyOutputReference.property.weightInput">weightInput</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordWeightedRoutingPolicyOutputReference.property.weight">weight</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordWeightedRoutingPolicyOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordWeightedRoutingPolicy">Route53RecordWeightedRoutingPolicy</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.route53Record.Route53RecordWeightedRoutingPolicyOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.route53Record.Route53RecordWeightedRoutingPolicy">Route53RecordWeightedRoutingPolicy</a></code> | *No description.* |
 
 ---
 
@@ -3767,10 +3767,10 @@ public readonly weight: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.route53Record.Route53RecordWeightedRoutingPolicyOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: Route53RecordWeightedRoutingPolicy | IResolvable;
+public readonly internalValue: IResolvable | Route53RecordWeightedRoutingPolicy;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.route53Record.Route53RecordWeightedRoutingPolicy">Route53RecordWeightedRoutingPolicy</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.route53Record.Route53RecordWeightedRoutingPolicy">Route53RecordWeightedRoutingPolicy</a>
 
 ---
 

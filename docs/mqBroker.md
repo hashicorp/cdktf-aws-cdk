@@ -4625,7 +4625,7 @@ public resetGroups(): void
 | <code><a href="#@cdktf/aws-cdk.mqBroker.MqBrokerUserOutputReference.property.groups">groups</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.mqBroker.MqBrokerUserOutputReference.property.password">password</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.mqBroker.MqBrokerUserOutputReference.property.username">username</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.mqBroker.MqBrokerUserOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.mqBroker.MqBrokerUser">MqBrokerUser</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.mqBroker.MqBrokerUserOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.mqBroker.MqBrokerUser">MqBrokerUser</a></code> | *No description.* |
 
 ---
 
@@ -4736,10 +4736,10 @@ public readonly username: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.mqBroker.MqBrokerUserOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: MqBrokerUser | IResolvable;
+public readonly internalValue: IResolvable | MqBrokerUser;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.mqBroker.MqBrokerUser">MqBrokerUser</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.mqBroker.MqBrokerUser">MqBrokerUser</a>
 
 ---
 

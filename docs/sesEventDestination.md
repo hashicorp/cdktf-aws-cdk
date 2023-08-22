@@ -1486,7 +1486,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.sesEventDestination.SesEventDestinationCloudwatchDestinationOutputReference.property.defaultValue">defaultValue</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.sesEventDestination.SesEventDestinationCloudwatchDestinationOutputReference.property.dimensionName">dimensionName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.sesEventDestination.SesEventDestinationCloudwatchDestinationOutputReference.property.valueSource">valueSource</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.sesEventDestination.SesEventDestinationCloudwatchDestinationOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.sesEventDestination.SesEventDestinationCloudwatchDestination">SesEventDestinationCloudwatchDestination</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.sesEventDestination.SesEventDestinationCloudwatchDestinationOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.sesEventDestination.SesEventDestinationCloudwatchDestination">SesEventDestinationCloudwatchDestination</a></code> | *No description.* |
 
 ---
 
@@ -1577,10 +1577,10 @@ public readonly valueSource: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.sesEventDestination.SesEventDestinationCloudwatchDestinationOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: SesEventDestinationCloudwatchDestination | IResolvable;
+public readonly internalValue: IResolvable | SesEventDestinationCloudwatchDestination;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.sesEventDestination.SesEventDestinationCloudwatchDestination">SesEventDestinationCloudwatchDestination</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.sesEventDestination.SesEventDestinationCloudwatchDestination">SesEventDestinationCloudwatchDestination</a>
 
 ---
 

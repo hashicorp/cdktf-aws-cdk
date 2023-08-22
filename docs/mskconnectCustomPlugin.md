@@ -402,7 +402,7 @@ mskconnectCustomPlugin.MskconnectCustomPlugin.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPlugin.property.idInput">idInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPlugin.property.locationInput">locationInput</a></code> | <code><a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPluginLocation">MskconnectCustomPluginLocation</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPlugin.property.nameInput">nameInput</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPlugin.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPluginTimeouts">MskconnectCustomPluginTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPlugin.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPluginTimeouts">MskconnectCustomPluginTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPlugin.property.contentType">contentType</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPlugin.property.description">description</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPlugin.property.id">id</a></code> | <code>string</code> | *No description.* |
@@ -655,10 +655,10 @@ public readonly nameInput: string;
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPlugin.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: MskconnectCustomPluginTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | MskconnectCustomPluginTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPluginTimeouts">MskconnectCustomPluginTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPluginTimeouts">MskconnectCustomPluginTimeouts</a>
 
 ---
 
@@ -1846,7 +1846,7 @@ public resetCreate(): void
 | <code><a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPluginTimeoutsOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPluginTimeoutsOutputReference.property.createInput">createInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPluginTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPluginTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPluginTimeouts">MskconnectCustomPluginTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPluginTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPluginTimeouts">MskconnectCustomPluginTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -1897,10 +1897,10 @@ public readonly create: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPluginTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: MskconnectCustomPluginTimeouts | IResolvable;
+public readonly internalValue: IResolvable | MskconnectCustomPluginTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPluginTimeouts">MskconnectCustomPluginTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.mskconnectCustomPlugin.MskconnectCustomPluginTimeouts">MskconnectCustomPluginTimeouts</a>
 
 ---
 

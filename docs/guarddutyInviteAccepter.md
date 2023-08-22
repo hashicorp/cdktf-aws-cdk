@@ -376,7 +376,7 @@ guarddutyInviteAccepter.GuarddutyInviteAccepter.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepter.property.detectorIdInput">detectorIdInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepter.property.idInput">idInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepter.property.masterAccountIdInput">masterAccountIdInput</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepter.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepterTimeouts">GuarddutyInviteAccepterTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepter.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepterTimeouts">GuarddutyInviteAccepterTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepter.property.detectorId">detectorId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepter.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepter.property.masterAccountId">masterAccountId</a></code> | <code>string</code> | *No description.* |
@@ -568,10 +568,10 @@ public readonly masterAccountIdInput: string;
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepter.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: GuarddutyInviteAccepterTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | GuarddutyInviteAccepterTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepterTimeouts">GuarddutyInviteAccepterTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepterTimeouts">GuarddutyInviteAccepterTimeouts</a>
 
 ---
 
@@ -1027,7 +1027,7 @@ public resetCreate(): void
 | <code><a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepterTimeoutsOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepterTimeoutsOutputReference.property.createInput">createInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepterTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepterTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepterTimeouts">GuarddutyInviteAccepterTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepterTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepterTimeouts">GuarddutyInviteAccepterTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -1078,10 +1078,10 @@ public readonly create: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepterTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: GuarddutyInviteAccepterTimeouts | IResolvable;
+public readonly internalValue: IResolvable | GuarddutyInviteAccepterTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepterTimeouts">GuarddutyInviteAccepterTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.guarddutyInviteAccepter.GuarddutyInviteAccepterTimeouts">GuarddutyInviteAccepterTimeouts</a>
 
 ---
 

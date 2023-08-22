@@ -2462,7 +2462,7 @@ public resetTimeZone(): void
 | <code><a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerCloudwatchConfigurationLogStreamsOutputReference.property.logGroupName">logGroupName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerCloudwatchConfigurationLogStreamsOutputReference.property.multilineStartPattern">multilineStartPattern</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerCloudwatchConfigurationLogStreamsOutputReference.property.timeZone">timeZone</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerCloudwatchConfigurationLogStreamsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerCloudwatchConfigurationLogStreams">OpsworksNodejsAppLayerCloudwatchConfigurationLogStreams</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerCloudwatchConfigurationLogStreamsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerCloudwatchConfigurationLogStreams">OpsworksNodejsAppLayerCloudwatchConfigurationLogStreams</a></code> | *No description.* |
 
 ---
 
@@ -2713,10 +2713,10 @@ public readonly timeZone: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerCloudwatchConfigurationLogStreamsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: OpsworksNodejsAppLayerCloudwatchConfigurationLogStreams | IResolvable;
+public readonly internalValue: IResolvable | OpsworksNodejsAppLayerCloudwatchConfigurationLogStreams;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerCloudwatchConfigurationLogStreams">OpsworksNodejsAppLayerCloudwatchConfigurationLogStreams</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerCloudwatchConfigurationLogStreams">OpsworksNodejsAppLayerCloudwatchConfigurationLogStreams</a>
 
 ---
 
@@ -3454,7 +3454,7 @@ public resetType(): void
 | <code><a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerEbsVolumeOutputReference.property.raidLevel">raidLevel</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerEbsVolumeOutputReference.property.size">size</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerEbsVolumeOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerEbsVolumeOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerEbsVolume">OpsworksNodejsAppLayerEbsVolume</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerEbsVolumeOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerEbsVolume">OpsworksNodejsAppLayerEbsVolume</a></code> | *No description.* |
 
 ---
 
@@ -3625,10 +3625,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerEbsVolumeOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: OpsworksNodejsAppLayerEbsVolume | IResolvable;
+public readonly internalValue: IResolvable | OpsworksNodejsAppLayerEbsVolume;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerEbsVolume">OpsworksNodejsAppLayerEbsVolume</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.opsworksNodejsAppLayer.OpsworksNodejsAppLayerEbsVolume">OpsworksNodejsAppLayerEbsVolume</a>
 
 ---
 

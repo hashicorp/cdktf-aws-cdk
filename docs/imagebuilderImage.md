@@ -437,7 +437,7 @@ imagebuilderImage.ImagebuilderImage.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImage.property.infrastructureConfigurationArnInput">infrastructureConfigurationArnInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImage.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImage.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImage.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImageTimeouts">ImagebuilderImageTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImage.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImageTimeouts">ImagebuilderImageTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImage.property.distributionConfigurationArn">distributionConfigurationArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImage.property.enhancedImageMetadataEnabled">enhancedImageMetadataEnabled</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImage.property.id">id</a></code> | <code>string</code> | *No description.* |
@@ -763,10 +763,10 @@ public readonly tagsInput: {[ key: string ]: string};
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImage.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: ImagebuilderImageTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | ImagebuilderImageTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImageTimeouts">ImagebuilderImageTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImageTimeouts">ImagebuilderImageTimeouts</a>
 
 ---
 
@@ -2565,7 +2565,7 @@ public resetCreate(): void
 | <code><a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImageTimeoutsOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImageTimeoutsOutputReference.property.createInput">createInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImageTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImageTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImageTimeouts">ImagebuilderImageTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImageTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImageTimeouts">ImagebuilderImageTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -2616,10 +2616,10 @@ public readonly create: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImageTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: ImagebuilderImageTimeouts | IResolvable;
+public readonly internalValue: IResolvable | ImagebuilderImageTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImageTimeouts">ImagebuilderImageTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.imagebuilderImage.ImagebuilderImageTimeouts">ImagebuilderImageTimeouts</a>
 
 ---
 

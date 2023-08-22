@@ -3376,7 +3376,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.budgetsBudgetAction.BudgetsBudgetActionSubscriberOutputReference.property.subscriptionTypeInput">subscriptionTypeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.budgetsBudgetAction.BudgetsBudgetActionSubscriberOutputReference.property.address">address</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.budgetsBudgetAction.BudgetsBudgetActionSubscriberOutputReference.property.subscriptionType">subscriptionType</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.budgetsBudgetAction.BudgetsBudgetActionSubscriberOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.budgetsBudgetAction.BudgetsBudgetActionSubscriber">BudgetsBudgetActionSubscriber</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.budgetsBudgetAction.BudgetsBudgetActionSubscriberOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.budgetsBudgetAction.BudgetsBudgetActionSubscriber">BudgetsBudgetActionSubscriber</a></code> | *No description.* |
 
 ---
 
@@ -3447,10 +3447,10 @@ public readonly subscriptionType: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.budgetsBudgetAction.BudgetsBudgetActionSubscriberOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: BudgetsBudgetActionSubscriber | IResolvable;
+public readonly internalValue: IResolvable | BudgetsBudgetActionSubscriber;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.budgetsBudgetAction.BudgetsBudgetActionSubscriber">BudgetsBudgetActionSubscriber</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.budgetsBudgetAction.BudgetsBudgetActionSubscriber">BudgetsBudgetActionSubscriber</a>
 
 ---
 

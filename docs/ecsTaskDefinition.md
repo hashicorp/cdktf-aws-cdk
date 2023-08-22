@@ -2806,7 +2806,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionInferenceAcceleratorOutputReference.property.deviceTypeInput">deviceTypeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionInferenceAcceleratorOutputReference.property.deviceName">deviceName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionInferenceAcceleratorOutputReference.property.deviceType">deviceType</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionInferenceAcceleratorOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionInferenceAccelerator">EcsTaskDefinitionInferenceAccelerator</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionInferenceAcceleratorOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionInferenceAccelerator">EcsTaskDefinitionInferenceAccelerator</a></code> | *No description.* |
 
 ---
 
@@ -2877,10 +2877,10 @@ public readonly deviceType: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionInferenceAcceleratorOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EcsTaskDefinitionInferenceAccelerator | IResolvable;
+public readonly internalValue: IResolvable | EcsTaskDefinitionInferenceAccelerator;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionInferenceAccelerator">EcsTaskDefinitionInferenceAccelerator</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionInferenceAccelerator">EcsTaskDefinitionInferenceAccelerator</a>
 
 ---
 
@@ -3267,7 +3267,7 @@ public resetExpression(): void
 | <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionPlacementConstraintsOutputReference.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionPlacementConstraintsOutputReference.property.expression">expression</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionPlacementConstraintsOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionPlacementConstraintsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionPlacementConstraints">EcsTaskDefinitionPlacementConstraints</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionPlacementConstraintsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionPlacementConstraints">EcsTaskDefinitionPlacementConstraints</a></code> | *No description.* |
 
 ---
 
@@ -3338,10 +3338,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionPlacementConstraintsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EcsTaskDefinitionPlacementConstraints | IResolvable;
+public readonly internalValue: IResolvable | EcsTaskDefinitionPlacementConstraints;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionPlacementConstraints">EcsTaskDefinitionPlacementConstraints</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionPlacementConstraints">EcsTaskDefinitionPlacementConstraints</a>
 
 ---
 
@@ -6152,7 +6152,7 @@ public resetHostPath(): void
 | <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionVolumeOutputReference.property.nameInput">nameInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionVolumeOutputReference.property.hostPath">hostPath</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionVolumeOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionVolumeOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionVolume">EcsTaskDefinitionVolume</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionVolumeOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionVolume">EcsTaskDefinitionVolume</a></code> | *No description.* |
 
 ---
 
@@ -6283,10 +6283,10 @@ public readonly name: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionVolumeOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EcsTaskDefinitionVolume | IResolvable;
+public readonly internalValue: IResolvable | EcsTaskDefinitionVolume;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionVolume">EcsTaskDefinitionVolume</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.ecsTaskDefinition.EcsTaskDefinitionVolume">EcsTaskDefinitionVolume</a>
 
 ---
 

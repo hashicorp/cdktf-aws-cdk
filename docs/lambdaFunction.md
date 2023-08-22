@@ -674,7 +674,7 @@ lambdaFunction.LambdaFunction.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunction.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunction.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunction.property.timeoutInput">timeoutInput</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunction.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunctionTimeouts">LambdaFunctionTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunction.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunctionTimeouts">LambdaFunctionTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunction.property.tracingConfigInput">tracingConfigInput</a></code> | <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunctionTracingConfig">LambdaFunctionTracingConfig</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunction.property.vpcConfigInput">vpcConfigInput</a></code> | <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunctionVpcConfig">LambdaFunctionVpcConfig</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunction.property.architectures">architectures</a></code> | <code>string[]</code> | *No description.* |
@@ -1268,10 +1268,10 @@ public readonly timeoutInput: number;
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.lambdaFunction.LambdaFunction.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: LambdaFunctionTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | LambdaFunctionTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunctionTimeouts">LambdaFunctionTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunctionTimeouts">LambdaFunctionTimeouts</a>
 
 ---
 
@@ -3707,7 +3707,7 @@ public resetCreate(): void
 | <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunctionTimeoutsOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunctionTimeoutsOutputReference.property.createInput">createInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunctionTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunctionTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunctionTimeouts">LambdaFunctionTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunctionTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunctionTimeouts">LambdaFunctionTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -3758,10 +3758,10 @@ public readonly create: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.lambdaFunction.LambdaFunctionTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: LambdaFunctionTimeouts | IResolvable;
+public readonly internalValue: IResolvable | LambdaFunctionTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunctionTimeouts">LambdaFunctionTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.lambdaFunction.LambdaFunctionTimeouts">LambdaFunctionTimeouts</a>
 
 ---
 

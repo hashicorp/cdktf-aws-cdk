@@ -1644,7 +1644,7 @@ public resetIpv6CidrBlock(): void
 | <code><a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclEgressOutputReference.property.protocol">protocol</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclEgressOutputReference.property.ruleNo">ruleNo</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclEgressOutputReference.property.toPort">toPort</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclEgressOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclEgress">DefaultNetworkAclEgress</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclEgressOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclEgress">DefaultNetworkAclEgress</a></code> | *No description.* |
 
 ---
 
@@ -1855,10 +1855,10 @@ public readonly toPort: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclEgressOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DefaultNetworkAclEgress | IResolvable;
+public readonly internalValue: IResolvable | DefaultNetworkAclEgress;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclEgress">DefaultNetworkAclEgress</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclEgress">DefaultNetworkAclEgress</a>
 
 ---
 
@@ -2280,7 +2280,7 @@ public resetIpv6CidrBlock(): void
 | <code><a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclIngressOutputReference.property.protocol">protocol</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclIngressOutputReference.property.ruleNo">ruleNo</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclIngressOutputReference.property.toPort">toPort</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclIngressOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclIngress">DefaultNetworkAclIngress</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclIngressOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclIngress">DefaultNetworkAclIngress</a></code> | *No description.* |
 
 ---
 
@@ -2491,10 +2491,10 @@ public readonly toPort: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclIngressOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DefaultNetworkAclIngress | IResolvable;
+public readonly internalValue: IResolvable | DefaultNetworkAclIngress;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclIngress">DefaultNetworkAclIngress</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.defaultNetworkAcl.DefaultNetworkAclIngress">DefaultNetworkAclIngress</a>
 
 ---
 

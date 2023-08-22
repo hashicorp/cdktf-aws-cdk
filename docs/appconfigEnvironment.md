@@ -1362,7 +1362,7 @@ public resetAlarmRoleArn(): void
 | <code><a href="#@cdktf/aws-cdk.appconfigEnvironment.AppconfigEnvironmentMonitorOutputReference.property.alarmRoleArnInput">alarmRoleArnInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.appconfigEnvironment.AppconfigEnvironmentMonitorOutputReference.property.alarmArn">alarmArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.appconfigEnvironment.AppconfigEnvironmentMonitorOutputReference.property.alarmRoleArn">alarmRoleArn</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.appconfigEnvironment.AppconfigEnvironmentMonitorOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.appconfigEnvironment.AppconfigEnvironmentMonitor">AppconfigEnvironmentMonitor</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.appconfigEnvironment.AppconfigEnvironmentMonitorOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.appconfigEnvironment.AppconfigEnvironmentMonitor">AppconfigEnvironmentMonitor</a></code> | *No description.* |
 
 ---
 
@@ -1433,10 +1433,10 @@ public readonly alarmRoleArn: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.appconfigEnvironment.AppconfigEnvironmentMonitorOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: AppconfigEnvironmentMonitor | IResolvable;
+public readonly internalValue: IResolvable | AppconfigEnvironmentMonitor;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.appconfigEnvironment.AppconfigEnvironmentMonitor">AppconfigEnvironmentMonitor</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.appconfigEnvironment.AppconfigEnvironmentMonitor">AppconfigEnvironmentMonitor</a>
 
 ---
 

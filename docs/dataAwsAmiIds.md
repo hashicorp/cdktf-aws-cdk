@@ -1276,7 +1276,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.dataAwsAmiIds.DataAwsAmiIdsFilterOutputReference.property.valuesInput">valuesInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsAmiIds.DataAwsAmiIdsFilterOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsAmiIds.DataAwsAmiIdsFilterOutputReference.property.values">values</a></code> | <code>string[]</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dataAwsAmiIds.DataAwsAmiIdsFilterOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dataAwsAmiIds.DataAwsAmiIdsFilter">DataAwsAmiIdsFilter</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dataAwsAmiIds.DataAwsAmiIdsFilterOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dataAwsAmiIds.DataAwsAmiIdsFilter">DataAwsAmiIdsFilter</a></code> | *No description.* |
 
 ---
 
@@ -1347,10 +1347,10 @@ public readonly values: string[];
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dataAwsAmiIds.DataAwsAmiIdsFilterOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DataAwsAmiIdsFilter | IResolvable;
+public readonly internalValue: IResolvable | DataAwsAmiIdsFilter;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dataAwsAmiIds.DataAwsAmiIdsFilter">DataAwsAmiIdsFilter</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dataAwsAmiIds.DataAwsAmiIdsFilter">DataAwsAmiIdsFilter</a>
 
 ---
 

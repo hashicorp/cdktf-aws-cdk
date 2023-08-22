@@ -577,7 +577,7 @@ eksNodeGroup.EksNodeGroup.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroup.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroup.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroup.property.taintInput">taintInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTaint">EksNodeGroupTaint</a>[]</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroup.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTimeouts">EksNodeGroupTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroup.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTimeouts">EksNodeGroupTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroup.property.updateConfigInput">updateConfigInput</a></code> | <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupUpdateConfig">EksNodeGroupUpdateConfig</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroup.property.versionInput">versionInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroup.property.amiType">amiType</a></code> | <code>string</code> | *No description.* |
@@ -1024,10 +1024,10 @@ public readonly taintInput: IResolvable | EksNodeGroupTaint[];
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.eksNodeGroup.EksNodeGroup.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: EksNodeGroupTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | EksNodeGroupTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTimeouts">EksNodeGroupTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTimeouts">EksNodeGroupTimeouts</a>
 
 ---
 
@@ -4129,7 +4129,7 @@ public resetValue(): void
 | <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTaintOutputReference.property.effect">effect</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTaintOutputReference.property.key">key</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTaintOutputReference.property.value">value</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTaintOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTaint">EksNodeGroupTaint</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTaintOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTaint">EksNodeGroupTaint</a></code> | *No description.* |
 
 ---
 
@@ -4220,10 +4220,10 @@ public readonly value: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTaintOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EksNodeGroupTaint | IResolvable;
+public readonly internalValue: IResolvable | EksNodeGroupTaint;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTaint">EksNodeGroupTaint</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTaint">EksNodeGroupTaint</a>
 
 ---
 
@@ -4465,7 +4465,7 @@ public resetUpdate(): void
 | <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTimeouts">EksNodeGroupTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTimeouts">EksNodeGroupTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -4556,10 +4556,10 @@ public readonly update: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EksNodeGroupTimeouts | IResolvable;
+public readonly internalValue: IResolvable | EksNodeGroupTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTimeouts">EksNodeGroupTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.eksNodeGroup.EksNodeGroupTimeouts">EksNodeGroupTimeouts</a>
 
 ---
 

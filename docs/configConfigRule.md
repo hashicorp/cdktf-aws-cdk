@@ -2306,7 +2306,7 @@ public resetMessageType(): void
 | <code><a href="#@cdktf/aws-cdk.configConfigRule.ConfigConfigRuleSourceSourceDetailOutputReference.property.eventSource">eventSource</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.configConfigRule.ConfigConfigRuleSourceSourceDetailOutputReference.property.maximumExecutionFrequency">maximumExecutionFrequency</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.configConfigRule.ConfigConfigRuleSourceSourceDetailOutputReference.property.messageType">messageType</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.configConfigRule.ConfigConfigRuleSourceSourceDetailOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.configConfigRule.ConfigConfigRuleSourceSourceDetail">ConfigConfigRuleSourceSourceDetail</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.configConfigRule.ConfigConfigRuleSourceSourceDetailOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.configConfigRule.ConfigConfigRuleSourceSourceDetail">ConfigConfigRuleSourceSourceDetail</a></code> | *No description.* |
 
 ---
 
@@ -2397,10 +2397,10 @@ public readonly messageType: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.configConfigRule.ConfigConfigRuleSourceSourceDetailOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: ConfigConfigRuleSourceSourceDetail | IResolvable;
+public readonly internalValue: IResolvable | ConfigConfigRuleSourceSourceDetail;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.configConfigRule.ConfigConfigRuleSourceSourceDetail">ConfigConfigRuleSourceSourceDetail</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.configConfigRule.ConfigConfigRuleSourceSourceDetail">ConfigConfigRuleSourceSourceDetail</a>
 
 ---
 

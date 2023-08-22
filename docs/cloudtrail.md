@@ -2142,7 +2142,7 @@ public resetStartsWith(): void
 | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorFieldSelectorOutputReference.property.notEquals">notEquals</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorFieldSelectorOutputReference.property.notStartsWith">notStartsWith</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorFieldSelectorOutputReference.property.startsWith">startsWith</a></code> | <code>string[]</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorFieldSelectorOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorFieldSelector">CloudtrailAdvancedEventSelectorFieldSelector</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorFieldSelectorOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorFieldSelector">CloudtrailAdvancedEventSelectorFieldSelector</a></code> | *No description.* |
 
 ---
 
@@ -2313,10 +2313,10 @@ public readonly startsWith: string[];
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorFieldSelectorOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: CloudtrailAdvancedEventSelectorFieldSelector | IResolvable;
+public readonly internalValue: IResolvable | CloudtrailAdvancedEventSelectorFieldSelector;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorFieldSelector">CloudtrailAdvancedEventSelectorFieldSelector</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorFieldSelector">CloudtrailAdvancedEventSelectorFieldSelector</a>
 
 ---
 
@@ -2716,7 +2716,7 @@ public resetName(): void
 | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorOutputReference.property.fieldSelectorInput">fieldSelectorInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorFieldSelector">CloudtrailAdvancedEventSelectorFieldSelector</a>[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorOutputReference.property.nameInput">nameInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelector">CloudtrailAdvancedEventSelector</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelector">CloudtrailAdvancedEventSelector</a></code> | *No description.* |
 
 ---
 
@@ -2787,10 +2787,10 @@ public readonly name: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelectorOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: CloudtrailAdvancedEventSelector | IResolvable;
+public readonly internalValue: IResolvable | CloudtrailAdvancedEventSelector;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelector">CloudtrailAdvancedEventSelector</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailAdvancedEventSelector">CloudtrailAdvancedEventSelector</a>
 
 ---
 
@@ -3170,7 +3170,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelectorDataResourceOutputReference.property.valuesInput">valuesInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelectorDataResourceOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelectorDataResourceOutputReference.property.values">values</a></code> | <code>string[]</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelectorDataResourceOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelectorDataResource">CloudtrailEventSelectorDataResource</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelectorDataResourceOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelectorDataResource">CloudtrailEventSelectorDataResource</a></code> | *No description.* |
 
 ---
 
@@ -3241,10 +3241,10 @@ public readonly values: string[];
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelectorDataResourceOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: CloudtrailEventSelectorDataResource | IResolvable;
+public readonly internalValue: IResolvable | CloudtrailEventSelectorDataResource;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelectorDataResource">CloudtrailEventSelectorDataResource</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelectorDataResource">CloudtrailEventSelectorDataResource</a>
 
 ---
 
@@ -3669,7 +3669,7 @@ public resetReadWriteType(): void
 | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelectorOutputReference.property.excludeManagementEventSources">excludeManagementEventSources</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelectorOutputReference.property.includeManagementEvents">includeManagementEvents</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelectorOutputReference.property.readWriteType">readWriteType</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelectorOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelector">CloudtrailEventSelector</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelectorOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelector">CloudtrailEventSelector</a></code> | *No description.* |
 
 ---
 
@@ -3780,10 +3780,10 @@ public readonly readWriteType: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelectorOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: CloudtrailEventSelector | IResolvable;
+public readonly internalValue: IResolvable | CloudtrailEventSelector;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelector">CloudtrailEventSelector</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailEventSelector">CloudtrailEventSelector</a>
 
 ---
 
@@ -4161,7 +4161,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailInsightSelectorOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailInsightSelectorOutputReference.property.insightTypeInput">insightTypeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailInsightSelectorOutputReference.property.insightType">insightType</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailInsightSelectorOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailInsightSelector">CloudtrailInsightSelector</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailInsightSelectorOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailInsightSelector">CloudtrailInsightSelector</a></code> | *No description.* |
 
 ---
 
@@ -4212,10 +4212,10 @@ public readonly insightType: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.cloudtrail.CloudtrailInsightSelectorOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: CloudtrailInsightSelector | IResolvable;
+public readonly internalValue: IResolvable | CloudtrailInsightSelector;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailInsightSelector">CloudtrailInsightSelector</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.cloudtrail.CloudtrailInsightSelector">CloudtrailInsightSelector</a>
 
 ---
 

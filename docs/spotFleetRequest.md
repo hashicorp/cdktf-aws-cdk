@@ -585,7 +585,7 @@ spotFleetRequest.SpotFleetRequest.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequest.property.targetCapacityInput">targetCapacityInput</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequest.property.targetGroupArnsInput">targetGroupArnsInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequest.property.terminateInstancesWithExpirationInput">terminateInstancesWithExpirationInput</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequest.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestTimeouts">SpotFleetRequestTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequest.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestTimeouts">SpotFleetRequestTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequest.property.validFromInput">validFromInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequest.property.validUntilInput">validUntilInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequest.property.waitForFulfillmentInput">waitForFulfillmentInput</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
@@ -1028,10 +1028,10 @@ public readonly terminateInstancesWithExpirationInput: boolean | IResolvable;
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequest.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: SpotFleetRequestTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | SpotFleetRequestTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestTimeouts">SpotFleetRequestTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestTimeouts">SpotFleetRequestTimeouts</a>
 
 ---
 
@@ -3046,7 +3046,7 @@ public resetVolumeType(): void
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEbsBlockDeviceOutputReference.property.throughput">throughput</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEbsBlockDeviceOutputReference.property.volumeSize">volumeSize</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEbsBlockDeviceOutputReference.property.volumeType">volumeType</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEbsBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEbsBlockDevice">SpotFleetRequestLaunchSpecificationEbsBlockDevice</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEbsBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEbsBlockDevice">SpotFleetRequestLaunchSpecificationEbsBlockDevice</a></code> | *No description.* |
 
 ---
 
@@ -3257,10 +3257,10 @@ public readonly volumeType: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEbsBlockDeviceOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: SpotFleetRequestLaunchSpecificationEbsBlockDevice | IResolvable;
+public readonly internalValue: IResolvable | SpotFleetRequestLaunchSpecificationEbsBlockDevice;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEbsBlockDevice">SpotFleetRequestLaunchSpecificationEbsBlockDevice</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEbsBlockDevice">SpotFleetRequestLaunchSpecificationEbsBlockDevice</a>
 
 ---
 
@@ -3640,7 +3640,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEphemeralBlockDeviceOutputReference.property.virtualNameInput">virtualNameInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEphemeralBlockDeviceOutputReference.property.deviceName">deviceName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEphemeralBlockDeviceOutputReference.property.virtualName">virtualName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEphemeralBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEphemeralBlockDevice">SpotFleetRequestLaunchSpecificationEphemeralBlockDevice</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEphemeralBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEphemeralBlockDevice">SpotFleetRequestLaunchSpecificationEphemeralBlockDevice</a></code> | *No description.* |
 
 ---
 
@@ -3711,10 +3711,10 @@ public readonly virtualName: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEphemeralBlockDeviceOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: SpotFleetRequestLaunchSpecificationEphemeralBlockDevice | IResolvable;
+public readonly internalValue: IResolvable | SpotFleetRequestLaunchSpecificationEphemeralBlockDevice;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEphemeralBlockDevice">SpotFleetRequestLaunchSpecificationEphemeralBlockDevice</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationEphemeralBlockDevice">SpotFleetRequestLaunchSpecificationEphemeralBlockDevice</a>
 
 ---
 
@@ -4295,7 +4295,7 @@ public resetWeightedCapacity(): void
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationOutputReference.property.userData">userData</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationOutputReference.property.vpcSecurityGroupIds">vpcSecurityGroupIds</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationOutputReference.property.weightedCapacity">weightedCapacity</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecification">SpotFleetRequestLaunchSpecification</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecification">SpotFleetRequestLaunchSpecification</a></code> | *No description.* |
 
 ---
 
@@ -4726,10 +4726,10 @@ public readonly weightedCapacity: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: SpotFleetRequestLaunchSpecification | IResolvable;
+public readonly internalValue: IResolvable | SpotFleetRequestLaunchSpecification;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecification">SpotFleetRequestLaunchSpecification</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecification">SpotFleetRequestLaunchSpecification</a>
 
 ---
 
@@ -5168,7 +5168,7 @@ public resetVolumeType(): void
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationRootBlockDeviceOutputReference.property.throughput">throughput</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationRootBlockDeviceOutputReference.property.volumeSize">volumeSize</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationRootBlockDeviceOutputReference.property.volumeType">volumeType</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationRootBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationRootBlockDevice">SpotFleetRequestLaunchSpecificationRootBlockDevice</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationRootBlockDeviceOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationRootBlockDevice">SpotFleetRequestLaunchSpecificationRootBlockDevice</a></code> | *No description.* |
 
 ---
 
@@ -5339,10 +5339,10 @@ public readonly volumeType: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationRootBlockDeviceOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: SpotFleetRequestLaunchSpecificationRootBlockDevice | IResolvable;
+public readonly internalValue: IResolvable | SpotFleetRequestLaunchSpecificationRootBlockDevice;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationRootBlockDevice">SpotFleetRequestLaunchSpecificationRootBlockDevice</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchSpecificationRootBlockDevice">SpotFleetRequestLaunchSpecificationRootBlockDevice</a>
 
 ---
 
@@ -6091,7 +6091,7 @@ public resetOverrides(): void
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOutputReference.property.overrides">overrides</a></code> | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOverridesList">SpotFleetRequestLaunchTemplateConfigOverridesList</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOutputReference.property.launchTemplateSpecificationInput">launchTemplateSpecificationInput</a></code> | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification">SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOutputReference.property.overridesInput">overridesInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOverrides">SpotFleetRequestLaunchTemplateConfigOverrides</a>[]</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfig">SpotFleetRequestLaunchTemplateConfig</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfig">SpotFleetRequestLaunchTemplateConfig</a></code> | *No description.* |
 
 ---
 
@@ -6162,10 +6162,10 @@ public readonly overridesInput: IResolvable | SpotFleetRequestLaunchTemplateConf
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: SpotFleetRequestLaunchTemplateConfig | IResolvable;
+public readonly internalValue: IResolvable | SpotFleetRequestLaunchTemplateConfig;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfig">SpotFleetRequestLaunchTemplateConfig</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfig">SpotFleetRequestLaunchTemplateConfig</a>
 
 ---
 
@@ -6595,7 +6595,7 @@ public resetWeightedCapacity(): void
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOverridesOutputReference.property.spotPrice">spotPrice</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOverridesOutputReference.property.subnetId">subnetId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOverridesOutputReference.property.weightedCapacity">weightedCapacity</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOverridesOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOverrides">SpotFleetRequestLaunchTemplateConfigOverrides</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOverridesOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOverrides">SpotFleetRequestLaunchTemplateConfigOverrides</a></code> | *No description.* |
 
 ---
 
@@ -6746,10 +6746,10 @@ public readonly weightedCapacity: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOverridesOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: SpotFleetRequestLaunchTemplateConfigOverrides | IResolvable;
+public readonly internalValue: IResolvable | SpotFleetRequestLaunchTemplateConfigOverrides;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOverrides">SpotFleetRequestLaunchTemplateConfigOverrides</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestLaunchTemplateConfigOverrides">SpotFleetRequestLaunchTemplateConfigOverrides</a>
 
 ---
 
@@ -7551,7 +7551,7 @@ public resetDelete(): void
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestTimeoutsOutputReference.property.deleteInput">deleteInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestTimeouts">SpotFleetRequestTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestTimeouts">SpotFleetRequestTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -7622,10 +7622,10 @@ public readonly delete: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: SpotFleetRequestTimeouts | IResolvable;
+public readonly internalValue: IResolvable | SpotFleetRequestTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestTimeouts">SpotFleetRequestTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.spotFleetRequest.SpotFleetRequestTimeouts">SpotFleetRequestTimeouts</a>
 
 ---
 

@@ -2069,7 +2069,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.dataAwsAmi.DataAwsAmiFilterOutputReference.property.valuesInput">valuesInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsAmi.DataAwsAmiFilterOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsAmi.DataAwsAmiFilterOutputReference.property.values">values</a></code> | <code>string[]</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dataAwsAmi.DataAwsAmiFilterOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dataAwsAmi.DataAwsAmiFilter">DataAwsAmiFilter</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dataAwsAmi.DataAwsAmiFilterOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dataAwsAmi.DataAwsAmiFilter">DataAwsAmiFilter</a></code> | *No description.* |
 
 ---
 
@@ -2140,10 +2140,10 @@ public readonly values: string[];
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dataAwsAmi.DataAwsAmiFilterOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DataAwsAmiFilter | IResolvable;
+public readonly internalValue: IResolvable | DataAwsAmiFilter;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dataAwsAmi.DataAwsAmiFilter">DataAwsAmiFilter</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dataAwsAmi.DataAwsAmiFilter">DataAwsAmiFilter</a>
 
 ---
 

@@ -417,7 +417,7 @@ connectHoursOfOperation.ConnectHoursOfOperation.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperation.property.nameInput">nameInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperation.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperation.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperation.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationTimeouts">ConnectHoursOfOperationTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperation.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationTimeouts">ConnectHoursOfOperationTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperation.property.timeZoneInput">timeZoneInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperation.property.description">description</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperation.property.id">id</a></code> | <code>string</code> | *No description.* |
@@ -684,10 +684,10 @@ public readonly tagsInput: {[ key: string ]: string};
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperation.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: ConnectHoursOfOperationTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | ConnectHoursOfOperationTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationTimeouts">ConnectHoursOfOperationTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationTimeouts">ConnectHoursOfOperationTimeouts</a>
 
 ---
 
@@ -1603,7 +1603,7 @@ public putStartTime(value: ConnectHoursOfOperationConfigStartTime): void
 | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationConfigAOutputReference.property.endTimeInput">endTimeInput</a></code> | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationConfigEndTime">ConnectHoursOfOperationConfigEndTime</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationConfigAOutputReference.property.startTimeInput">startTimeInput</a></code> | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationConfigStartTime">ConnectHoursOfOperationConfigStartTime</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationConfigAOutputReference.property.day">day</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationConfigAOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationConfigA">ConnectHoursOfOperationConfigA</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationConfigAOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationConfigA">ConnectHoursOfOperationConfigA</a></code> | *No description.* |
 
 ---
 
@@ -1694,10 +1694,10 @@ public readonly day: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationConfigAOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: ConnectHoursOfOperationConfigA | IResolvable;
+public readonly internalValue: IResolvable | ConnectHoursOfOperationConfigA;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationConfigA">ConnectHoursOfOperationConfigA</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationConfigA">ConnectHoursOfOperationConfigA</a>
 
 ---
 
@@ -2516,7 +2516,7 @@ public resetDelete(): void
 | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationTimeoutsOutputReference.property.deleteInput">deleteInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationTimeouts">ConnectHoursOfOperationTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationTimeouts">ConnectHoursOfOperationTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -2587,10 +2587,10 @@ public readonly delete: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: ConnectHoursOfOperationTimeouts | IResolvable;
+public readonly internalValue: IResolvable | ConnectHoursOfOperationTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationTimeouts">ConnectHoursOfOperationTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.connectHoursOfOperation.ConnectHoursOfOperationTimeouts">ConnectHoursOfOperationTimeouts</a>
 
 ---
 

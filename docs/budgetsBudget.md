@@ -1898,7 +1898,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetCostFilterOutputReference.property.valuesInput">valuesInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetCostFilterOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetCostFilterOutputReference.property.values">values</a></code> | <code>string[]</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetCostFilterOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetCostFilter">BudgetsBudgetCostFilter</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetCostFilterOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetCostFilter">BudgetsBudgetCostFilter</a></code> | *No description.* |
 
 ---
 
@@ -1969,10 +1969,10 @@ public readonly values: string[];
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetCostFilterOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: BudgetsBudgetCostFilter | IResolvable;
+public readonly internalValue: IResolvable | BudgetsBudgetCostFilter;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetCostFilter">BudgetsBudgetCostFilter</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetCostFilter">BudgetsBudgetCostFilter</a>
 
 ---
 
@@ -2942,7 +2942,7 @@ public resetSubscriberSnsTopicArns(): void
 | <code><a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetNotificationOutputReference.property.subscriberSnsTopicArns">subscriberSnsTopicArns</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetNotificationOutputReference.property.threshold">threshold</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetNotificationOutputReference.property.thresholdType">thresholdType</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetNotificationOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetNotification">BudgetsBudgetNotification</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetNotificationOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetNotification">BudgetsBudgetNotification</a></code> | *No description.* |
 
 ---
 
@@ -3093,10 +3093,10 @@ public readonly thresholdType: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetNotificationOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: BudgetsBudgetNotification | IResolvable;
+public readonly internalValue: IResolvable | BudgetsBudgetNotification;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetNotification">BudgetsBudgetNotification</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.budgetsBudget.BudgetsBudgetNotification">BudgetsBudgetNotification</a>
 
 ---
 

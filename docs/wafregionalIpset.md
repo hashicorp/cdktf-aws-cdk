@@ -1172,7 +1172,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.wafregionalIpset.WafregionalIpsetIpSetDescriptorOutputReference.property.valueInput">valueInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafregionalIpset.WafregionalIpsetIpSetDescriptorOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.wafregionalIpset.WafregionalIpsetIpSetDescriptorOutputReference.property.value">value</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.wafregionalIpset.WafregionalIpsetIpSetDescriptorOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.wafregionalIpset.WafregionalIpsetIpSetDescriptor">WafregionalIpsetIpSetDescriptor</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.wafregionalIpset.WafregionalIpsetIpSetDescriptorOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.wafregionalIpset.WafregionalIpsetIpSetDescriptor">WafregionalIpsetIpSetDescriptor</a></code> | *No description.* |
 
 ---
 
@@ -1243,10 +1243,10 @@ public readonly value: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.wafregionalIpset.WafregionalIpsetIpSetDescriptorOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: WafregionalIpsetIpSetDescriptor | IResolvable;
+public readonly internalValue: IResolvable | WafregionalIpsetIpSetDescriptor;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.wafregionalIpset.WafregionalIpsetIpSetDescriptor">WafregionalIpsetIpSetDescriptor</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.wafregionalIpset.WafregionalIpsetIpSetDescriptor">WafregionalIpsetIpSetDescriptor</a>
 
 ---
 

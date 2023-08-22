@@ -433,7 +433,7 @@ connectContactFlow.ConnectContactFlow.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlow.property.nameInput">nameInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlow.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlow.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlow.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlowTimeouts">ConnectContactFlowTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlow.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlowTimeouts">ConnectContactFlowTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlow.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlow.property.content">content</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlow.property.contentHash">contentHash</a></code> | <code>string</code> | *No description.* |
@@ -713,10 +713,10 @@ public readonly tagsInput: {[ key: string ]: string};
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.connectContactFlow.ConnectContactFlow.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: ConnectContactFlowTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | ConnectContactFlowTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlowTimeouts">ConnectContactFlowTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlowTimeouts">ConnectContactFlowTimeouts</a>
 
 ---
 
@@ -1365,7 +1365,7 @@ public resetUpdate(): void
 | <code><a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlowTimeoutsOutputReference.property.updateInput">updateInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlowTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlowTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlowTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlowTimeouts">ConnectContactFlowTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlowTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlowTimeouts">ConnectContactFlowTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -1436,10 +1436,10 @@ public readonly update: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.connectContactFlow.ConnectContactFlowTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: ConnectContactFlowTimeouts | IResolvable;
+public readonly internalValue: IResolvable | ConnectContactFlowTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlowTimeouts">ConnectContactFlowTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.connectContactFlow.ConnectContactFlowTimeouts">ConnectContactFlowTimeouts</a>
 
 ---
 

@@ -1265,7 +1265,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.dataAwsVpcDhcpOptions.DataAwsVpcDhcpOptionsFilterOutputReference.property.valuesInput">valuesInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsVpcDhcpOptions.DataAwsVpcDhcpOptionsFilterOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsVpcDhcpOptions.DataAwsVpcDhcpOptionsFilterOutputReference.property.values">values</a></code> | <code>string[]</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dataAwsVpcDhcpOptions.DataAwsVpcDhcpOptionsFilterOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dataAwsVpcDhcpOptions.DataAwsVpcDhcpOptionsFilter">DataAwsVpcDhcpOptionsFilter</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dataAwsVpcDhcpOptions.DataAwsVpcDhcpOptionsFilterOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dataAwsVpcDhcpOptions.DataAwsVpcDhcpOptionsFilter">DataAwsVpcDhcpOptionsFilter</a></code> | *No description.* |
 
 ---
 
@@ -1336,10 +1336,10 @@ public readonly values: string[];
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dataAwsVpcDhcpOptions.DataAwsVpcDhcpOptionsFilterOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DataAwsVpcDhcpOptionsFilter | IResolvable;
+public readonly internalValue: IResolvable | DataAwsVpcDhcpOptionsFilter;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dataAwsVpcDhcpOptions.DataAwsVpcDhcpOptionsFilter">DataAwsVpcDhcpOptionsFilter</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dataAwsVpcDhcpOptions.DataAwsVpcDhcpOptionsFilter">DataAwsVpcDhcpOptionsFilter</a>
 
 ---
 

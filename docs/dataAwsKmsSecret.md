@@ -1141,7 +1141,7 @@ public resetGrantTokens(): void
 | <code><a href="#@cdktf/aws-cdk.dataAwsKmsSecret.DataAwsKmsSecretSecretOutputReference.property.grantTokens">grantTokens</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsKmsSecret.DataAwsKmsSecretSecretOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsKmsSecret.DataAwsKmsSecretSecretOutputReference.property.payload">payload</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dataAwsKmsSecret.DataAwsKmsSecretSecretOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dataAwsKmsSecret.DataAwsKmsSecretSecret">DataAwsKmsSecretSecret</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dataAwsKmsSecret.DataAwsKmsSecretSecretOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dataAwsKmsSecret.DataAwsKmsSecretSecret">DataAwsKmsSecretSecret</a></code> | *No description.* |
 
 ---
 
@@ -1252,10 +1252,10 @@ public readonly payload: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dataAwsKmsSecret.DataAwsKmsSecretSecretOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DataAwsKmsSecretSecret | IResolvable;
+public readonly internalValue: IResolvable | DataAwsKmsSecretSecret;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dataAwsKmsSecret.DataAwsKmsSecretSecret">DataAwsKmsSecretSecret</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dataAwsKmsSecret.DataAwsKmsSecretSecret">DataAwsKmsSecretSecret</a>
 
 ---
 

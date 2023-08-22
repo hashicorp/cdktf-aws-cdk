@@ -686,7 +686,7 @@ ecsService.EcsService.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsService.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsService.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsService.property.taskDefinitionInput">taskDefinitionInput</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.ecsService.EcsService.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceTimeouts">EcsServiceTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.ecsService.EcsService.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.ecsService.EcsServiceTimeouts">EcsServiceTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsService.property.waitForSteadyStateInput">waitForSteadyStateInput</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsService.property.cluster">cluster</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsService.property.deploymentMaximumPercent">deploymentMaximumPercent</a></code> | <code>number</code> | *No description.* |
@@ -1205,10 +1205,10 @@ public readonly taskDefinitionInput: string;
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.ecsService.EcsService.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: EcsServiceTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | EcsServiceTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.ecsService.EcsServiceTimeouts">EcsServiceTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.ecsService.EcsServiceTimeouts">EcsServiceTimeouts</a>
 
 ---
 
@@ -2743,7 +2743,7 @@ public resetWeight(): void
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceCapacityProviderStrategyOutputReference.property.base">base</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceCapacityProviderStrategyOutputReference.property.capacityProvider">capacityProvider</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceCapacityProviderStrategyOutputReference.property.weight">weight</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceCapacityProviderStrategyOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceCapacityProviderStrategy">EcsServiceCapacityProviderStrategy</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceCapacityProviderStrategyOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.ecsService.EcsServiceCapacityProviderStrategy">EcsServiceCapacityProviderStrategy</a></code> | *No description.* |
 
 ---
 
@@ -2834,10 +2834,10 @@ public readonly weight: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.ecsService.EcsServiceCapacityProviderStrategyOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EcsServiceCapacityProviderStrategy | IResolvable;
+public readonly internalValue: IResolvable | EcsServiceCapacityProviderStrategy;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.ecsService.EcsServiceCapacityProviderStrategy">EcsServiceCapacityProviderStrategy</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.ecsService.EcsServiceCapacityProviderStrategy">EcsServiceCapacityProviderStrategy</a>
 
 ---
 
@@ -3806,7 +3806,7 @@ public resetTargetGroupArn(): void
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceLoadBalancerOutputReference.property.containerPort">containerPort</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceLoadBalancerOutputReference.property.elbName">elbName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceLoadBalancerOutputReference.property.targetGroupArn">targetGroupArn</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceLoadBalancerOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceLoadBalancer">EcsServiceLoadBalancer</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceLoadBalancerOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.ecsService.EcsServiceLoadBalancer">EcsServiceLoadBalancer</a></code> | *No description.* |
 
 ---
 
@@ -3917,10 +3917,10 @@ public readonly targetGroupArn: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.ecsService.EcsServiceLoadBalancerOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EcsServiceLoadBalancer | IResolvable;
+public readonly internalValue: IResolvable | EcsServiceLoadBalancer;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.ecsService.EcsServiceLoadBalancer">EcsServiceLoadBalancer</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.ecsService.EcsServiceLoadBalancer">EcsServiceLoadBalancer</a>
 
 ---
 
@@ -4636,7 +4636,7 @@ public resetField(): void
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceOrderedPlacementStrategyOutputReference.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceOrderedPlacementStrategyOutputReference.property.field">field</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceOrderedPlacementStrategyOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceOrderedPlacementStrategyOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceOrderedPlacementStrategy">EcsServiceOrderedPlacementStrategy</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceOrderedPlacementStrategyOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.ecsService.EcsServiceOrderedPlacementStrategy">EcsServiceOrderedPlacementStrategy</a></code> | *No description.* |
 
 ---
 
@@ -4707,10 +4707,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.ecsService.EcsServiceOrderedPlacementStrategyOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EcsServiceOrderedPlacementStrategy | IResolvable;
+public readonly internalValue: IResolvable | EcsServiceOrderedPlacementStrategy;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.ecsService.EcsServiceOrderedPlacementStrategy">EcsServiceOrderedPlacementStrategy</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.ecsService.EcsServiceOrderedPlacementStrategy">EcsServiceOrderedPlacementStrategy</a>
 
 ---
 
@@ -5097,7 +5097,7 @@ public resetExpression(): void
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServicePlacementConstraintsOutputReference.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServicePlacementConstraintsOutputReference.property.expression">expression</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServicePlacementConstraintsOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.ecsService.EcsServicePlacementConstraintsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServicePlacementConstraints">EcsServicePlacementConstraints</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.ecsService.EcsServicePlacementConstraintsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.ecsService.EcsServicePlacementConstraints">EcsServicePlacementConstraints</a></code> | *No description.* |
 
 ---
 
@@ -5168,10 +5168,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.ecsService.EcsServicePlacementConstraintsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EcsServicePlacementConstraints | IResolvable;
+public readonly internalValue: IResolvable | EcsServicePlacementConstraints;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.ecsService.EcsServicePlacementConstraints">EcsServicePlacementConstraints</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.ecsService.EcsServicePlacementConstraints">EcsServicePlacementConstraints</a>
 
 ---
 
@@ -5753,7 +5753,7 @@ public resetDelete(): void
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceTimeoutsOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceTimeoutsOutputReference.property.deleteInput">deleteInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceTimeouts">EcsServiceTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.ecsService.EcsServiceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.ecsService.EcsServiceTimeouts">EcsServiceTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -5804,10 +5804,10 @@ public readonly delete: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.ecsService.EcsServiceTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: EcsServiceTimeouts | IResolvable;
+public readonly internalValue: IResolvable | EcsServiceTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.ecsService.EcsServiceTimeouts">EcsServiceTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.ecsService.EcsServiceTimeouts">EcsServiceTimeouts</a>
 
 ---
 

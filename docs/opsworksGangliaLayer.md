@@ -2539,7 +2539,7 @@ public resetTimeZone(): void
 | <code><a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerCloudwatchConfigurationLogStreamsOutputReference.property.logGroupName">logGroupName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerCloudwatchConfigurationLogStreamsOutputReference.property.multilineStartPattern">multilineStartPattern</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerCloudwatchConfigurationLogStreamsOutputReference.property.timeZone">timeZone</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerCloudwatchConfigurationLogStreamsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerCloudwatchConfigurationLogStreams">OpsworksGangliaLayerCloudwatchConfigurationLogStreams</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerCloudwatchConfigurationLogStreamsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerCloudwatchConfigurationLogStreams">OpsworksGangliaLayerCloudwatchConfigurationLogStreams</a></code> | *No description.* |
 
 ---
 
@@ -2790,10 +2790,10 @@ public readonly timeZone: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerCloudwatchConfigurationLogStreamsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: OpsworksGangliaLayerCloudwatchConfigurationLogStreams | IResolvable;
+public readonly internalValue: IResolvable | OpsworksGangliaLayerCloudwatchConfigurationLogStreams;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerCloudwatchConfigurationLogStreams">OpsworksGangliaLayerCloudwatchConfigurationLogStreams</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerCloudwatchConfigurationLogStreams">OpsworksGangliaLayerCloudwatchConfigurationLogStreams</a>
 
 ---
 
@@ -3531,7 +3531,7 @@ public resetType(): void
 | <code><a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerEbsVolumeOutputReference.property.raidLevel">raidLevel</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerEbsVolumeOutputReference.property.size">size</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerEbsVolumeOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerEbsVolumeOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerEbsVolume">OpsworksGangliaLayerEbsVolume</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerEbsVolumeOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerEbsVolume">OpsworksGangliaLayerEbsVolume</a></code> | *No description.* |
 
 ---
 
@@ -3702,10 +3702,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerEbsVolumeOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: OpsworksGangliaLayerEbsVolume | IResolvable;
+public readonly internalValue: IResolvable | OpsworksGangliaLayerEbsVolume;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerEbsVolume">OpsworksGangliaLayerEbsVolume</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.opsworksGangliaLayer.OpsworksGangliaLayerEbsVolume">OpsworksGangliaLayerEbsVolume</a>
 
 ---
 

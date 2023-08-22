@@ -439,7 +439,7 @@ dxTransitVirtualInterface.DxTransitVirtualInterface.isTerraformResource(x: any)
 | <code><a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterface.property.sitelinkEnabledInput">sitelinkEnabledInput</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterface.property.tagsAllInput">tagsAllInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterface.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterface.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterfaceTimeouts">DxTransitVirtualInterfaceTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterface.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterfaceTimeouts">DxTransitVirtualInterfaceTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterface.property.vlanInput">vlanInput</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterface.property.addressFamily">addressFamily</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterface.property.amazonAddress">amazonAddress</a></code> | <code>string</code> | *No description.* |
@@ -783,10 +783,10 @@ public readonly tagsInput: {[ key: string ]: string};
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterface.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: DxTransitVirtualInterfaceTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | DxTransitVirtualInterfaceTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterfaceTimeouts">DxTransitVirtualInterfaceTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterfaceTimeouts">DxTransitVirtualInterfaceTimeouts</a>
 
 ---
 
@@ -1549,7 +1549,7 @@ public resetUpdate(): void
 | <code><a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterfaceTimeoutsOutputReference.property.create">create</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterfaceTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterfaceTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterfaceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterfaceTimeouts">DxTransitVirtualInterfaceTimeouts</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterfaceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterfaceTimeouts">DxTransitVirtualInterfaceTimeouts</a></code> | *No description.* |
 
 ---
 
@@ -1640,10 +1640,10 @@ public readonly update: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterfaceTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DxTransitVirtualInterfaceTimeouts | IResolvable;
+public readonly internalValue: IResolvable | DxTransitVirtualInterfaceTimeouts;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterfaceTimeouts">DxTransitVirtualInterfaceTimeouts</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dxTransitVirtualInterface.DxTransitVirtualInterfaceTimeouts">DxTransitVirtualInterfaceTimeouts</a>
 
 ---
 

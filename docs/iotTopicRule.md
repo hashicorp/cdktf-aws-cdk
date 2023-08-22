@@ -4445,7 +4445,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarmOutputReference.property.roleArn">roleArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarmOutputReference.property.stateReason">stateReason</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarmOutputReference.property.stateValue">stateValue</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarmOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarm">IotTopicRuleCloudwatchAlarm</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarmOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarm">IotTopicRuleCloudwatchAlarm</a></code> | *No description.* |
 
 ---
 
@@ -4556,10 +4556,10 @@ public readonly stateValue: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarmOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: IotTopicRuleCloudwatchAlarm | IResolvable;
+public readonly internalValue: IResolvable | IotTopicRuleCloudwatchAlarm;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarm">IotTopicRuleCloudwatchAlarm</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarm">IotTopicRuleCloudwatchAlarm</a>
 
 ---
 
@@ -4954,7 +4954,7 @@ public resetMetricTimestamp(): void
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetricOutputReference.property.metricUnit">metricUnit</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetricOutputReference.property.metricValue">metricValue</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetricOutputReference.property.roleArn">roleArn</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetricOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetric">IotTopicRuleCloudwatchMetric</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetricOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetric">IotTopicRuleCloudwatchMetric</a></code> | *No description.* |
 
 ---
 
@@ -5105,10 +5105,10 @@ public readonly roleArn: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetricOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: IotTopicRuleCloudwatchMetric | IResolvable;
+public readonly internalValue: IResolvable | IotTopicRuleCloudwatchMetric;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetric">IotTopicRuleCloudwatchMetric</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetric">IotTopicRuleCloudwatchMetric</a>
 
 ---
 
@@ -5546,7 +5546,7 @@ public resetRangeKeyValue(): void
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbOutputReference.property.rangeKeyValue">rangeKeyValue</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbOutputReference.property.roleArn">roleArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbOutputReference.property.tableName">tableName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodb">IotTopicRuleDynamodb</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodb">IotTopicRuleDynamodb</a></code> | *No description.* |
 
 ---
 
@@ -5777,10 +5777,10 @@ public readonly tableName: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: IotTopicRuleDynamodb | IResolvable;
+public readonly internalValue: IResolvable | IotTopicRuleDynamodb;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodb">IotTopicRuleDynamodb</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodb">IotTopicRuleDynamodb</a>
 
 ---
 
@@ -6180,7 +6180,7 @@ public resetPutItem(): void
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2OutputReference.property.putItemInput">putItemInput</a></code> | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2PutItem">IotTopicRuleDynamodbv2PutItem</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2OutputReference.property.roleArnInput">roleArnInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2OutputReference.property.roleArn">roleArn</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2OutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2">IotTopicRuleDynamodbv2</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2OutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2">IotTopicRuleDynamodbv2</a></code> | *No description.* |
 
 ---
 
@@ -6251,10 +6251,10 @@ public readonly roleArn: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2OutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: IotTopicRuleDynamodbv2 | IResolvable;
+public readonly internalValue: IResolvable | IotTopicRuleDynamodbv2;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2">IotTopicRuleDynamodbv2</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2">IotTopicRuleDynamodbv2</a>
 
 ---
 
@@ -6911,7 +6911,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearchOutputReference.property.index">index</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearchOutputReference.property.roleArn">roleArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearchOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearchOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearch">IotTopicRuleElasticsearch</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearchOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearch">IotTopicRuleElasticsearch</a></code> | *No description.* |
 
 ---
 
@@ -7042,10 +7042,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearchOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: IotTopicRuleElasticsearch | IResolvable;
+public readonly internalValue: IResolvable | IotTopicRuleElasticsearch;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearch">IotTopicRuleElasticsearch</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearch">IotTopicRuleElasticsearch</a>
 
 ---
 
@@ -13618,7 +13618,7 @@ public resetSeparator(): void
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehoseOutputReference.property.deliveryStreamName">deliveryStreamName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehoseOutputReference.property.roleArn">roleArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehoseOutputReference.property.separator">separator</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehoseOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehose">IotTopicRuleFirehose</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehoseOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehose">IotTopicRuleFirehose</a></code> | *No description.* |
 
 ---
 
@@ -13709,10 +13709,10 @@ public readonly separator: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehoseOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: IotTopicRuleFirehose | IResolvable;
+public readonly internalValue: IResolvable | IotTopicRuleFirehose;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehose">IotTopicRuleFirehose</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehose">IotTopicRuleFirehose</a>
 
 ---
 
@@ -14092,7 +14092,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalyticsOutputReference.property.roleArnInput">roleArnInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalyticsOutputReference.property.channelName">channelName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalyticsOutputReference.property.roleArn">roleArn</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalyticsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalytics">IotTopicRuleIotAnalytics</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalyticsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalytics">IotTopicRuleIotAnalytics</a></code> | *No description.* |
 
 ---
 
@@ -14163,10 +14163,10 @@ public readonly roleArn: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalyticsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: IotTopicRuleIotAnalytics | IResolvable;
+public readonly internalValue: IResolvable | IotTopicRuleIotAnalytics;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalytics">IotTopicRuleIotAnalytics</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalytics">IotTopicRuleIotAnalytics</a>
 
 ---
 
@@ -14555,7 +14555,7 @@ public resetMessageId(): void
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEventsOutputReference.property.inputName">inputName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEventsOutputReference.property.messageId">messageId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEventsOutputReference.property.roleArn">roleArn</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEventsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEvents">IotTopicRuleIotEvents</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEventsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEvents">IotTopicRuleIotEvents</a></code> | *No description.* |
 
 ---
 
@@ -14646,10 +14646,10 @@ public readonly roleArn: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEventsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: IotTopicRuleIotEvents | IResolvable;
+public readonly internalValue: IResolvable | IotTopicRuleIotEvents;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEvents">IotTopicRuleIotEvents</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEvents">IotTopicRuleIotEvents</a>
 
 ---
 
@@ -15038,7 +15038,7 @@ public resetPartitionKey(): void
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesisOutputReference.property.partitionKey">partitionKey</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesisOutputReference.property.roleArn">roleArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesisOutputReference.property.streamName">streamName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesisOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesis">IotTopicRuleKinesis</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesisOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesis">IotTopicRuleKinesis</a></code> | *No description.* |
 
 ---
 
@@ -15129,10 +15129,10 @@ public readonly streamName: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesisOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: IotTopicRuleKinesis | IResolvable;
+public readonly internalValue: IResolvable | IotTopicRuleKinesis;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesis">IotTopicRuleKinesis</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesis">IotTopicRuleKinesis</a>
 
 ---
 
@@ -15510,7 +15510,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambdaOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambdaOutputReference.property.functionArnInput">functionArnInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambdaOutputReference.property.functionArn">functionArn</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambdaOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambda">IotTopicRuleLambda</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambdaOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambda">IotTopicRuleLambda</a></code> | *No description.* |
 
 ---
 
@@ -15561,10 +15561,10 @@ public readonly functionArn: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambdaOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: IotTopicRuleLambda | IResolvable;
+public readonly internalValue: IResolvable | IotTopicRuleLambda;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambda">IotTopicRuleLambda</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambda">IotTopicRuleLambda</a>
 
 ---
 
@@ -15953,7 +15953,7 @@ public resetQos(): void
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublishOutputReference.property.qos">qos</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublishOutputReference.property.roleArn">roleArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublishOutputReference.property.topic">topic</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublishOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublish">IotTopicRuleRepublish</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublishOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublish">IotTopicRuleRepublish</a></code> | *No description.* |
 
 ---
 
@@ -16044,10 +16044,10 @@ public readonly topic: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublishOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: IotTopicRuleRepublish | IResolvable;
+public readonly internalValue: IResolvable | IotTopicRuleRepublish;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublish">IotTopicRuleRepublish</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublish">IotTopicRuleRepublish</a>
 
 ---
 
@@ -16429,7 +16429,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3OutputReference.property.bucketName">bucketName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3OutputReference.property.key">key</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3OutputReference.property.roleArn">roleArn</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3OutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3">IotTopicRuleS3</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3OutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3">IotTopicRuleS3</a></code> | *No description.* |
 
 ---
 
@@ -16520,10 +16520,10 @@ public readonly roleArn: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3OutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: IotTopicRuleS3 | IResolvable;
+public readonly internalValue: IResolvable | IotTopicRuleS3;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3">IotTopicRuleS3</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3">IotTopicRuleS3</a>
 
 ---
 
@@ -16912,7 +16912,7 @@ public resetMessageFormat(): void
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSnsOutputReference.property.messageFormat">messageFormat</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSnsOutputReference.property.roleArn">roleArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSnsOutputReference.property.targetArn">targetArn</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSnsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSns">IotTopicRuleSns</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSnsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSns">IotTopicRuleSns</a></code> | *No description.* |
 
 ---
 
@@ -17003,10 +17003,10 @@ public readonly targetArn: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSnsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: IotTopicRuleSns | IResolvable;
+public readonly internalValue: IResolvable | IotTopicRuleSns;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSns">IotTopicRuleSns</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSns">IotTopicRuleSns</a>
 
 ---
 
@@ -17388,7 +17388,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqsOutputReference.property.queueUrl">queueUrl</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqsOutputReference.property.roleArn">roleArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqsOutputReference.property.useBase64">useBase64</a></code> | <code>boolean \| cdktf.IResolvable</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqs">IotTopicRuleSqs</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqs">IotTopicRuleSqs</a></code> | *No description.* |
 
 ---
 
@@ -17479,10 +17479,10 @@ public readonly useBase64: boolean | IResolvable;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: IotTopicRuleSqs | IResolvable;
+public readonly internalValue: IResolvable | IotTopicRuleSqs;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqs">IotTopicRuleSqs</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqs">IotTopicRuleSqs</a>
 
 ---
 
@@ -17871,7 +17871,7 @@ public resetExecutionNamePrefix(): void
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctionsOutputReference.property.executionNamePrefix">executionNamePrefix</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctionsOutputReference.property.roleArn">roleArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctionsOutputReference.property.stateMachineName">stateMachineName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctionsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctions">IotTopicRuleStepFunctions</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctionsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctions">IotTopicRuleStepFunctions</a></code> | *No description.* |
 
 ---
 
@@ -17962,10 +17962,10 @@ public readonly stateMachineName: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctionsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: IotTopicRuleStepFunctions | IResolvable;
+public readonly internalValue: IResolvable | IotTopicRuleStepFunctions;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctions">IotTopicRuleStepFunctions</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctions">IotTopicRuleStepFunctions</a>
 
 ---
 

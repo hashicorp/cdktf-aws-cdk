@@ -3589,7 +3589,7 @@ public resetMaxAgeSeconds(): void
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketCorsRuleOutputReference.property.allowedOrigins">allowedOrigins</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketCorsRuleOutputReference.property.exposeHeaders">exposeHeaders</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketCorsRuleOutputReference.property.maxAgeSeconds">maxAgeSeconds</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketCorsRuleOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketCorsRule">S3BucketCorsRule</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketCorsRuleOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketCorsRule">S3BucketCorsRule</a></code> | *No description.* |
 
 ---
 
@@ -3720,10 +3720,10 @@ public readonly maxAgeSeconds: number;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.s3Bucket.S3BucketCorsRuleOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: S3BucketCorsRule | IResolvable;
+public readonly internalValue: IResolvable | S3BucketCorsRule;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketCorsRule">S3BucketCorsRule</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketCorsRule">S3BucketCorsRule</a>
 
 ---
 
@@ -4121,7 +4121,7 @@ public resetUri(): void
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketGrantOutputReference.property.permissions">permissions</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketGrantOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketGrantOutputReference.property.uri">uri</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketGrantOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketGrant">S3BucketGrant</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketGrantOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketGrant">S3BucketGrant</a></code> | *No description.* |
 
 ---
 
@@ -4232,10 +4232,10 @@ public readonly uri: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.s3Bucket.S3BucketGrantOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: S3BucketGrant | IResolvable;
+public readonly internalValue: IResolvable | S3BucketGrant;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketGrant">S3BucketGrant</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketGrant">S3BucketGrant</a>
 
 ---
 
@@ -5379,7 +5379,7 @@ public resetDays(): void
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleNoncurrentVersionTransitionOutputReference.property.storageClassInput">storageClassInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleNoncurrentVersionTransitionOutputReference.property.days">days</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleNoncurrentVersionTransitionOutputReference.property.storageClass">storageClass</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleNoncurrentVersionTransitionOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleNoncurrentVersionTransition">S3BucketLifecycleRuleNoncurrentVersionTransition</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleNoncurrentVersionTransitionOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleNoncurrentVersionTransition">S3BucketLifecycleRuleNoncurrentVersionTransition</a></code> | *No description.* |
 
 ---
 
@@ -5450,10 +5450,10 @@ public readonly storageClass: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleNoncurrentVersionTransitionOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: S3BucketLifecycleRuleNoncurrentVersionTransition | IResolvable;
+public readonly internalValue: IResolvable | S3BucketLifecycleRuleNoncurrentVersionTransition;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleNoncurrentVersionTransition">S3BucketLifecycleRuleNoncurrentVersionTransition</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleNoncurrentVersionTransition">S3BucketLifecycleRuleNoncurrentVersionTransition</a>
 
 ---
 
@@ -5812,7 +5812,7 @@ public resetTransition(): void
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleOutputReference.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleOutputReference.property.prefix">prefix</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleOutputReference.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRule">S3BucketLifecycleRule</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRule">S3BucketLifecycleRule</a></code> | *No description.* |
 
 ---
 
@@ -6023,10 +6023,10 @@ public readonly tags: {[ key: string ]: string};
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: S3BucketLifecycleRule | IResolvable;
+public readonly internalValue: IResolvable | S3BucketLifecycleRule;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRule">S3BucketLifecycleRule</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRule">S3BucketLifecycleRule</a>
 
 ---
 
@@ -6422,7 +6422,7 @@ public resetDays(): void
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleTransitionOutputReference.property.date">date</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleTransitionOutputReference.property.days">days</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleTransitionOutputReference.property.storageClass">storageClass</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleTransitionOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleTransition">S3BucketLifecycleRuleTransition</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleTransitionOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleTransition">S3BucketLifecycleRuleTransition</a></code> | *No description.* |
 
 ---
 
@@ -6513,10 +6513,10 @@ public readonly storageClass: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleTransitionOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: S3BucketLifecycleRuleTransition | IResolvable;
+public readonly internalValue: IResolvable | S3BucketLifecycleRuleTransition;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleTransition">S3BucketLifecycleRuleTransition</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLifecycleRuleTransition">S3BucketLifecycleRuleTransition</a>
 
 ---
 
@@ -6903,7 +6903,7 @@ public resetTargetPrefix(): void
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLoggingOutputReference.property.targetPrefixInput">targetPrefixInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLoggingOutputReference.property.targetBucket">targetBucket</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLoggingOutputReference.property.targetPrefix">targetPrefix</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLoggingOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLogging">S3BucketLogging</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLoggingOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLogging">S3BucketLogging</a></code> | *No description.* |
 
 ---
 
@@ -6974,10 +6974,10 @@ public readonly targetPrefix: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.s3Bucket.S3BucketLoggingOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: S3BucketLogging | IResolvable;
+public readonly internalValue: IResolvable | S3BucketLogging;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLogging">S3BucketLogging</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketLogging">S3BucketLogging</a>
 
 ---
 
@@ -10365,7 +10365,7 @@ public resetSourceSelectionCriteria(): void
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketReplicationConfigurationRulesOutputReference.property.prefix">prefix</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketReplicationConfigurationRulesOutputReference.property.priority">priority</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketReplicationConfigurationRulesOutputReference.property.status">status</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketReplicationConfigurationRulesOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketReplicationConfigurationRules">S3BucketReplicationConfigurationRules</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.s3Bucket.S3BucketReplicationConfigurationRulesOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketReplicationConfigurationRules">S3BucketReplicationConfigurationRules</a></code> | *No description.* |
 
 ---
 
@@ -10556,10 +10556,10 @@ public readonly status: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.s3Bucket.S3BucketReplicationConfigurationRulesOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: S3BucketReplicationConfigurationRules | IResolvable;
+public readonly internalValue: IResolvable | S3BucketReplicationConfigurationRules;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketReplicationConfigurationRules">S3BucketReplicationConfigurationRules</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.s3Bucket.S3BucketReplicationConfigurationRules">S3BucketReplicationConfigurationRules</a>
 
 ---
 

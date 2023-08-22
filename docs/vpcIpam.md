@@ -1274,7 +1274,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.vpcIpam.VpcIpamOperatingRegionsOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.vpcIpam.VpcIpamOperatingRegionsOutputReference.property.regionNameInput">regionNameInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.vpcIpam.VpcIpamOperatingRegionsOutputReference.property.regionName">regionName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.vpcIpam.VpcIpamOperatingRegionsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.vpcIpam.VpcIpamOperatingRegions">VpcIpamOperatingRegions</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.vpcIpam.VpcIpamOperatingRegionsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.vpcIpam.VpcIpamOperatingRegions">VpcIpamOperatingRegions</a></code> | *No description.* |
 
 ---
 
@@ -1325,10 +1325,10 @@ public readonly regionName: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.vpcIpam.VpcIpamOperatingRegionsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: VpcIpamOperatingRegions | IResolvable;
+public readonly internalValue: IResolvable | VpcIpamOperatingRegions;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.vpcIpam.VpcIpamOperatingRegions">VpcIpamOperatingRegions</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.vpcIpam.VpcIpamOperatingRegions">VpcIpamOperatingRegions</a>
 
 ---
 

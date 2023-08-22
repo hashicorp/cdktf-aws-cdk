@@ -8278,7 +8278,7 @@ public putVirtualService(value: AppmeshVirtualNodeSpecBackendVirtualService): vo
 | <code><a href="#@cdktf/aws-cdk.appmeshVirtualNode.AppmeshVirtualNodeSpecBackendOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.appmeshVirtualNode.AppmeshVirtualNodeSpecBackendOutputReference.property.virtualService">virtualService</a></code> | <code><a href="#@cdktf/aws-cdk.appmeshVirtualNode.AppmeshVirtualNodeSpecBackendVirtualServiceOutputReference">AppmeshVirtualNodeSpecBackendVirtualServiceOutputReference</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.appmeshVirtualNode.AppmeshVirtualNodeSpecBackendOutputReference.property.virtualServiceInput">virtualServiceInput</a></code> | <code><a href="#@cdktf/aws-cdk.appmeshVirtualNode.AppmeshVirtualNodeSpecBackendVirtualService">AppmeshVirtualNodeSpecBackendVirtualService</a></code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.appmeshVirtualNode.AppmeshVirtualNodeSpecBackendOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.appmeshVirtualNode.AppmeshVirtualNodeSpecBackend">AppmeshVirtualNodeSpecBackend</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.appmeshVirtualNode.AppmeshVirtualNodeSpecBackendOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.appmeshVirtualNode.AppmeshVirtualNodeSpecBackend">AppmeshVirtualNodeSpecBackend</a></code> | *No description.* |
 
 ---
 
@@ -8329,10 +8329,10 @@ public readonly virtualServiceInput: AppmeshVirtualNodeSpecBackendVirtualService
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.appmeshVirtualNode.AppmeshVirtualNodeSpecBackendOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: AppmeshVirtualNodeSpecBackend | IResolvable;
+public readonly internalValue: IResolvable | AppmeshVirtualNodeSpecBackend;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.appmeshVirtualNode.AppmeshVirtualNodeSpecBackend">AppmeshVirtualNodeSpecBackend</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.appmeshVirtualNode.AppmeshVirtualNodeSpecBackend">AppmeshVirtualNodeSpecBackend</a>
 
 ---
 

@@ -2448,7 +2448,7 @@ public resetTimeZone(): void
 | <code><a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerCloudwatchConfigurationLogStreamsOutputReference.property.logGroupName">logGroupName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerCloudwatchConfigurationLogStreamsOutputReference.property.multilineStartPattern">multilineStartPattern</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerCloudwatchConfigurationLogStreamsOutputReference.property.timeZone">timeZone</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerCloudwatchConfigurationLogStreamsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerCloudwatchConfigurationLogStreams">OpsworksCustomLayerCloudwatchConfigurationLogStreams</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerCloudwatchConfigurationLogStreamsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerCloudwatchConfigurationLogStreams">OpsworksCustomLayerCloudwatchConfigurationLogStreams</a></code> | *No description.* |
 
 ---
 
@@ -2699,10 +2699,10 @@ public readonly timeZone: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerCloudwatchConfigurationLogStreamsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: OpsworksCustomLayerCloudwatchConfigurationLogStreams | IResolvable;
+public readonly internalValue: IResolvable | OpsworksCustomLayerCloudwatchConfigurationLogStreams;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerCloudwatchConfigurationLogStreams">OpsworksCustomLayerCloudwatchConfigurationLogStreams</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerCloudwatchConfigurationLogStreams">OpsworksCustomLayerCloudwatchConfigurationLogStreams</a>
 
 ---
 
@@ -3440,7 +3440,7 @@ public resetType(): void
 | <code><a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerEbsVolumeOutputReference.property.raidLevel">raidLevel</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerEbsVolumeOutputReference.property.size">size</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerEbsVolumeOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerEbsVolumeOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerEbsVolume">OpsworksCustomLayerEbsVolume</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerEbsVolumeOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerEbsVolume">OpsworksCustomLayerEbsVolume</a></code> | *No description.* |
 
 ---
 
@@ -3611,10 +3611,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerEbsVolumeOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: OpsworksCustomLayerEbsVolume | IResolvable;
+public readonly internalValue: IResolvable | OpsworksCustomLayerEbsVolume;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerEbsVolume">OpsworksCustomLayerEbsVolume</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.opsworksCustomLayer.OpsworksCustomLayerEbsVolume">OpsworksCustomLayerEbsVolume</a>
 
 ---
 

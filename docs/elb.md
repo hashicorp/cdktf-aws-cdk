@@ -2827,7 +2827,7 @@ public resetSslCertificateId(): void
 | <code><a href="#@cdktf/aws-cdk.elb.ElbListenerOutputReference.property.lbPort">lbPort</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.elb.ElbListenerOutputReference.property.lbProtocol">lbProtocol</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.elb.ElbListenerOutputReference.property.sslCertificateId">sslCertificateId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.elb.ElbListenerOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.elb.ElbListener">ElbListener</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.elb.ElbListenerOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.elb.ElbListener">ElbListener</a></code> | *No description.* |
 
 ---
 
@@ -2958,10 +2958,10 @@ public readonly sslCertificateId: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.elb.ElbListenerOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: ElbListener | IResolvable;
+public readonly internalValue: IResolvable | ElbListener;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.elb.ElbListener">ElbListener</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.elb.ElbListener">ElbListener</a>
 
 ---
 

@@ -4390,7 +4390,7 @@ public resetVirtualName(): void
 | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateBlockDeviceMappingsOutputReference.property.deviceName">deviceName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateBlockDeviceMappingsOutputReference.property.noDevice">noDevice</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateBlockDeviceMappingsOutputReference.property.virtualName">virtualName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateBlockDeviceMappingsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateBlockDeviceMappings">LaunchTemplateBlockDeviceMappings</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateBlockDeviceMappingsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateBlockDeviceMappings">LaunchTemplateBlockDeviceMappings</a></code> | *No description.* |
 
 ---
 
@@ -4501,10 +4501,10 @@ public readonly virtualName: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.launchTemplate.LaunchTemplateBlockDeviceMappingsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: LaunchTemplateBlockDeviceMappings | IResolvable;
+public readonly internalValue: IResolvable | LaunchTemplateBlockDeviceMappings;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateBlockDeviceMappings">LaunchTemplateBlockDeviceMappings</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateBlockDeviceMappings">LaunchTemplateBlockDeviceMappings</a>
 
 ---
 
@@ -6065,7 +6065,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateElasticGpuSpecificationsOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateElasticGpuSpecificationsOutputReference.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateElasticGpuSpecificationsOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateElasticGpuSpecificationsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateElasticGpuSpecifications">LaunchTemplateElasticGpuSpecifications</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateElasticGpuSpecificationsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateElasticGpuSpecifications">LaunchTemplateElasticGpuSpecifications</a></code> | *No description.* |
 
 ---
 
@@ -6116,10 +6116,10 @@ public readonly type: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.launchTemplate.LaunchTemplateElasticGpuSpecificationsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: LaunchTemplateElasticGpuSpecifications | IResolvable;
+public readonly internalValue: IResolvable | LaunchTemplateElasticGpuSpecifications;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateElasticGpuSpecifications">LaunchTemplateElasticGpuSpecifications</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateElasticGpuSpecifications">LaunchTemplateElasticGpuSpecifications</a>
 
 ---
 
@@ -8338,7 +8338,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateLicenseSpecificationOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateLicenseSpecificationOutputReference.property.licenseConfigurationArnInput">licenseConfigurationArnInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateLicenseSpecificationOutputReference.property.licenseConfigurationArn">licenseConfigurationArn</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateLicenseSpecificationOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateLicenseSpecification">LaunchTemplateLicenseSpecification</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateLicenseSpecificationOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateLicenseSpecification">LaunchTemplateLicenseSpecification</a></code> | *No description.* |
 
 ---
 
@@ -8389,10 +8389,10 @@ public readonly licenseConfigurationArn: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.launchTemplate.LaunchTemplateLicenseSpecificationOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: LaunchTemplateLicenseSpecification | IResolvable;
+public readonly internalValue: IResolvable | LaunchTemplateLicenseSpecification;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateLicenseSpecification">LaunchTemplateLicenseSpecification</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateLicenseSpecification">LaunchTemplateLicenseSpecification</a>
 
 ---
 
@@ -9575,7 +9575,7 @@ public resetSubnetId(): void
 | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateNetworkInterfacesOutputReference.property.privateIpAddress">privateIpAddress</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateNetworkInterfacesOutputReference.property.securityGroups">securityGroups</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateNetworkInterfacesOutputReference.property.subnetId">subnetId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateNetworkInterfacesOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateNetworkInterfaces">LaunchTemplateNetworkInterfaces</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateNetworkInterfacesOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateNetworkInterfaces">LaunchTemplateNetworkInterfaces</a></code> | *No description.* |
 
 ---
 
@@ -9906,10 +9906,10 @@ public readonly subnetId: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.launchTemplate.LaunchTemplateNetworkInterfacesOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: LaunchTemplateNetworkInterfaces | IResolvable;
+public readonly internalValue: IResolvable | LaunchTemplateNetworkInterfaces;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateNetworkInterfaces">LaunchTemplateNetworkInterfaces</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateNetworkInterfaces">LaunchTemplateNetworkInterfaces</a>
 
 ---
 
@@ -10784,7 +10784,7 @@ public resetTags(): void
 | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateTagSpecificationsOutputReference.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateTagSpecificationsOutputReference.property.resourceType">resourceType</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateTagSpecificationsOutputReference.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateTagSpecificationsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateTagSpecifications">LaunchTemplateTagSpecifications</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateTagSpecificationsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateTagSpecifications">LaunchTemplateTagSpecifications</a></code> | *No description.* |
 
 ---
 
@@ -10855,10 +10855,10 @@ public readonly tags: {[ key: string ]: string};
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.launchTemplate.LaunchTemplateTagSpecificationsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: LaunchTemplateTagSpecifications | IResolvable;
+public readonly internalValue: IResolvable | LaunchTemplateTagSpecifications;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateTagSpecifications">LaunchTemplateTagSpecifications</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.launchTemplate.LaunchTemplateTagSpecifications">LaunchTemplateTagSpecifications</a>
 
 ---
 

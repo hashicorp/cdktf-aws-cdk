@@ -3548,7 +3548,7 @@ Returns a reversible string representation.
 | <code><a href="#@cdktf/aws-cdk.dataAwsInstance.DataAwsInstanceFilterOutputReference.property.valuesInput">valuesInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsInstance.DataAwsInstanceFilterOutputReference.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsInstance.DataAwsInstanceFilterOutputReference.property.values">values</a></code> | <code>string[]</code> | *No description.* |
-| <code><a href="#@cdktf/aws-cdk.dataAwsInstance.DataAwsInstanceFilterOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@cdktf/aws-cdk.dataAwsInstance.DataAwsInstanceFilter">DataAwsInstanceFilter</a> \| cdktf.IResolvable</code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dataAwsInstance.DataAwsInstanceFilterOutputReference.property.internalValue">internalValue</a></code> | <code>cdktf.IResolvable \| <a href="#@cdktf/aws-cdk.dataAwsInstance.DataAwsInstanceFilter">DataAwsInstanceFilter</a></code> | *No description.* |
 
 ---
 
@@ -3619,10 +3619,10 @@ public readonly values: string[];
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@cdktf/aws-cdk.dataAwsInstance.DataAwsInstanceFilterOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DataAwsInstanceFilter | IResolvable;
+public readonly internalValue: IResolvable | DataAwsInstanceFilter;
 ```
 
-- *Type:* <a href="#@cdktf/aws-cdk.dataAwsInstance.DataAwsInstanceFilter">DataAwsInstanceFilter</a> | cdktf.IResolvable
+- *Type:* cdktf.IResolvable | <a href="#@cdktf/aws-cdk.dataAwsInstance.DataAwsInstanceFilter">DataAwsInstanceFilter</a>
 
 ---
 
