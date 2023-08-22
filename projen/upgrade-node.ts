@@ -96,7 +96,7 @@ export class UpgradeNode {
                   "to `${{ steps.latest_version.outputs.value }}` from `${{ steps.current_version.outputs.value }}`",
                   "because version ${{ steps.current_version.outputs.short }} is less than 30 days away from EOL."
                 ].join(" "),
-              labels: "automerge",
+              labels: "automerge,automated,security",
               token: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
               author: "team-tf-cdk <github-team-tf-cdk@hashicorp.com>",
               committer: "team-tf-cdk <github-team-tf-cdk@hashicorp.com>",

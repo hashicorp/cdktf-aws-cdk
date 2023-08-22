@@ -84,7 +84,7 @@ export class UpgradeCDKTF {
               title: "chore!: upgrade to cdktf ${{ steps.latest_version.outputs.value }}",
               body:
                 "This PR upgrades CDKTF from version `${{ steps.current_version.outputs.value }}` to version `${{ steps.latest_version.outputs.value }}`.",
-              labels: "automerge",
+              labels: "automerge,automated,dependencies",
               token: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
               author: "team-tf-cdk <github-team-tf-cdk@hashicorp.com>",
               committer: "team-tf-cdk <github-team-tf-cdk@hashicorp.com>",

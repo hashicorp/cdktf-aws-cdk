@@ -2,7 +2,7 @@
  * Copyright (c) HashiCorp, Inc.
  * SPDX-License-Identifier: MPL-2.0
  */
-const fetch = require("node-fetch");
+const fetch = require("node-fetch"); // @TODO this can be removed once we upgrade to Node 18 and use native fetch
 
 const today = new Date();
 const oneMonthFromToday = new Date();
