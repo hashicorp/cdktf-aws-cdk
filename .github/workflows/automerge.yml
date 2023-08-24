@@ -9,26 +9,17 @@ on:
       - ready_for_review
       - reopened
       - synchronize
-  pull_request_review:
-    types:
-      - submitted
-  check_suite:
-    types:
-      - completed
-  status: {}
-  schedule:
-    - cron: 7 13 * * *
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   automerge:
     runs-on: ubuntu-latest
-    permissions: {}
+    permissions:
+      contents: read
+    if: contains(github.event.pull_request.labels.*.name, 'automerge') && github.event.pull_request.draft == false
     steps:
-      - name: automerge
-        uses: pascalgn/automerge-action@22948e0bc22f0aa673800da838595a3e7347e584
+      - name: Checkout
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+      - name: Turn on automerge for this PR
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          MERGE_RETRIES: "20"
-          MERGE_RETRY_SLEEP: "60000"
-          MERGE_METHOD: squash
-          UPDATE_METHOD: rebase
+          GH_TOKEN: ${{ secrets.PROJEN_GITHUB_TOKEN }}
+        run: gh pr merge --auto --squash ${{ github.event.pull_request.number }}

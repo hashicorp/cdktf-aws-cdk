@@ -1,5 +1,21 @@
 version: 2
 updates:
+  # Enable Dependabot for security updates only for the main repo. Other updates are handled through Projen.
+  - package-ecosystem: npm
+    versioning-strategy: lockfile-only
+    directory: /
+    schedule:
+      interval: daily
+    ignore:
+      - dependency-name: projen
+    labels:
+      - "dependencies"
+      - "automated"
+      - "automerge"
+      - "auto-approve"
+      - "security"
+    # Disable version updates for npm dependencies, only use Dependabot for security updates
+    open-pull-requests-limit: 0
   # Maintain dependencies for each example folder
   - package-ecosystem: "npm"
     directory: "/examples/typescript-cron-lambda"

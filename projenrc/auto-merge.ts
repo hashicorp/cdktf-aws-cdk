@@ -4,6 +4,7 @@
  */
 
 import { javascript } from 'projen';
+import { JobPermission } from 'projen/lib/github/workflows-model';
 
 /**
  * Merges PRs with the "automerge" label
@@ -24,14 +25,6 @@ export class AutoMerge {
           "synchronize",
         ],
       },
-      pullRequestReview: {
-        types: ["submitted"],
-      },
-      checkSuite: {
-        types: ["completed"],
-      },
-      status: {},
-      schedule: [{ cron: "7 13 * * *" }],
     });
 
     (workflow.concurrency as any) = "${{ github.workflow }}-${{ github.ref }}";
@@ -39,20 +32,23 @@ export class AutoMerge {
     workflow.addJobs({
       automerge: {
         runsOn: ["ubuntu-latest"],
+        if: "contains(github.event.pull_request.labels.*.name, 'automerge') && github.event.pull_request.draft == false",
         steps: [
           {
-            name: "automerge",
-            uses: "pascalgn/automerge-action@v0.14.2",
+            name: "Checkout",
+            uses: "actions/checkout@v3",
+          },
+          {
+            name: "Turn on automerge for this PR",
+            run: "gh pr merge --auto --squash ${{ github.event.pull_request.number }}",
             env: {
-              GITHUB_TOKEN: "${{ secrets.GH_TOKEN }}",
-              MERGE_RETRIES: "20",
-              MERGE_RETRY_SLEEP: "60000",
-              MERGE_METHOD: "squash",
-              UPDATE_METHOD: "rebase",
+              GH_TOKEN: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
             },
           },
         ],
-        permissions: {},
+        permissions: {
+          contents: JobPermission.READ,
+        },
       },
     });
   }

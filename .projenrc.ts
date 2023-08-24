@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-import { CdktfAwsCdkProject } from "./projen";
+import { CdktfAwsCdkProject } from "./projenrc";
 
 const githubActionPinnedVersions = {
   "actions/checkout": "8e5e7e5ab8b370d6c329ec480221332ada57f0ab", // v3.5.2
