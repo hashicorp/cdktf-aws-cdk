@@ -24,7 +24,7 @@ const project = new CdktfAwsCdkProject({
   cdktfVersion: "0.18.0",
   constructsVersion: "^10.0.25",
   jsiiVersion: "^5.1.0",
-  minNodeVersion: "16.14.0",
+  minNodeVersion: "18.12.0",
   projenrcTs: true,
 });
 
