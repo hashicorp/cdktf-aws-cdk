@@ -262,11 +262,6 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     releaseSteps.splice(1, 0, ensureCorrectUser);
     upgrade.steps.splice(1, 0, ensureCorrectUser);
 
-    (this.buildWorkflow as any).workflow.events = {
-      pullRequestTarget: {},
-      workflowDispatch: {},
-    };
-
     this.buildWorkflow?.addPostBuildSteps(
       {
         name: "Setup Copywrite tool",
