@@ -187,6 +187,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     this.postCompileTask.spawn(docgen);
     this.gitignore.include("/docs/*.md");
     this.annotateGenerated("/docs/*.md");
+    this.addPackageIgnore("docs"); // don't package the docs because they are huge
 
     [this.compileTask, this.testTask].forEach((task) =>
       task.env("NODE_OPTIONS", "--max-old-space-size=6144")
@@ -227,6 +228,8 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
 
     this.addGitIgnore("src/**/*.js");
     this.addGitIgnore("src/**/*.d.ts");
+    this.addGitIgnore("src/**/*.d.ts");
+    this.addGitIgnore("**/*.js.map");
 
     // for update-supported-types script
     this.addDevDeps("@aws-sdk/client-cloudformation@^3.36.0");

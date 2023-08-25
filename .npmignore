@@ -21,6 +21,7 @@ dist
 tsconfig.tsbuildinfo
 /lib/tests/
 !.jsii
+docs
 scripts
 examples
 /.projenrc.ts

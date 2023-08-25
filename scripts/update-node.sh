@@ -24,6 +24,6 @@ for example in $(find "$PROJECT_ROOT/examples" -mindepth 1 -maxdepth 1 -type d);
 done
 
 echo "Updating README"
-sed -i 's/`node` >= (\d+)\.(\d+)\.(\d+)/`node` >= '"$NODE_VERSION"'/' "$PROJECT_ROOT/README.md"
+sed -i 's/`node` >= .*/`node` >= '"$NODE_VERSION"'/' "$PROJECT_ROOT/README.md"
 
 echo "Done"
