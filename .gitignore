@@ -55,6 +55,7 @@ API.md
 yalc.lock
 src/**/*.js
 src/**/*.d.ts
+**/*.js.map
 .gen
 .terraform
 package-lock.json
