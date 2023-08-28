@@ -49,6 +49,15 @@ export class UpgradeNode {
             ].join("\n"),
           },
           {
+            name: "Ensure we are using that version of Node.js in our build",
+            uses: "actions/setup-node@v3",
+            with: {
+              "node-version": "${{ steps.current_version.outputs.value }}",
+            },
+            // This step is required for now in order to remove the dependency on node-fetch
+            // In the future, when all GitHub Actions run on Node18+ by default, this can be removed
+          },
+          {
             name: "Get the earliest supported Node.js version whose EOL date is at least a month away",
             uses: "actions/github-script@v6",
             with: {
