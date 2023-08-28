@@ -164,9 +164,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
 
     // Submodule documentation generation
     this.gitignore.exclude("API.md"); // ignore the old file, we now generate it in the docs folder
-    this.addDevDeps("jsii-docgen@~9.0.0");
-    this.addDevDeps("jsii-rosetta@~5.1.2");
-
+    this.addDevDeps("jsii-docgen");
     const docgen = this.addTask("docgen", {
       description: "Generate documentation for the project",
       steps: [
