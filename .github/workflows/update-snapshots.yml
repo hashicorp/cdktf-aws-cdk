@@ -7,6 +7,7 @@ on:
       - opened
       - reopened
       - synchronize
+  workflow_dispatch: {}
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   update:
@@ -22,7 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
         with:
-          ref: $HEAD_REF
+          ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
       - name: Run snapshot update in each example directory
         run: ls -d examples/* | xargs -I {} bash -c "cd '{}' && yarn && yarn test -- --passWithNoTests --updateSnapshot"
