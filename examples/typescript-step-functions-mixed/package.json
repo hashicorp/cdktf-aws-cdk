@@ -8,7 +8,7 @@
     "compile": "tsc --pretty",
     "synth": "cdktf synth",
     "pretest": "npm run build",
-    "test": "jest --passWithNoTests --updateSnapshot",
+    "test": "jest",
     "pretest:ci": "npm install --legacy-peer-deps",
     "test:ci": "npm install --no-save \"../../dist/js/aws-cdk@$(node -e \"console.log(require('../../package.json').version)\").jsii.tgz\" && npm test"
   },

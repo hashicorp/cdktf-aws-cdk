@@ -60,10 +60,11 @@ src/**/*.d.ts
 .terraform
 package-lock.json
 !/cdktf.json
-!/.github/workflows/provider-upgrade.yml
 !/.github/workflows/automerge.yml
 !/.github/workflows/auto-approve.yml
 !/LICENSE
 !/.github/workflows/lock.yml
+!/.github/workflows/provider-upgrade.yml
+!/.github/workflows/update-snapshots.yml
 !/.github/workflows/upgrade-cdktf.yml
 !/.github/workflows/upgrade-node.yml

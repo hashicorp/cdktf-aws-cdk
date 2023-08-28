@@ -13,6 +13,7 @@ import { CdktfConfig } from "./cdktf-config";
 import { CustomizedLicense } from "./customized-license";
 import { LockIssues } from "./lock-issues";
 import { ProviderUpgrade } from "./provider-upgrade";
+import { UpdateSnapshots } from "./update-snapshots";
 import { UpgradeCDKTF } from "./upgrade-cdktf";
 import { UpgradeNode } from "./upgrade-node";
 
@@ -280,11 +281,12 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       cdktfVersion,
       constructsVersion,
     });
-    new ProviderUpgrade(this);
     new AutoMerge(this);
     new AutoApprove(this);
     new CustomizedLicense(this);
     new LockIssues(this);
+    new ProviderUpgrade(this);
+    new UpdateSnapshots(this);
     new UpgradeCDKTF(this);
     new UpgradeNode(this);
     this.addDevDeps("node-fetch@~2"); // @TODO this can be removed once we upgrade to Node 18 and use native fetch
