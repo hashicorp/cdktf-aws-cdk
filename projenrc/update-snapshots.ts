@@ -37,7 +37,7 @@ export class UpdateSnapshots {
             name: "Checkout",
             uses: "actions/checkout@v3",
             with: {
-              ref: "$HEAD_REF",
+              ref: "${{ github.event.pull_request.head.ref }}",
               repository: "${{ github.event.pull_request.head.repo.full_name }}",
             }
           },
