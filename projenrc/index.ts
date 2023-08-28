@@ -159,6 +159,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
         },
       ],
       docgen: false,
+      pullRequestTemplate: false,
     });
 
     // Submodule documentation generation
@@ -296,8 +297,12 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       branches: [
         "main",
       ],
-      "paths-ignore": [ // don't do a release if the change was only to the examples
+      "paths-ignore": [ // don't do a release if the change was only to these files/directories
         "examples/**",
+        ".github/ISSUE_TEMPLATE/**",
+        ".github/CODEOWNERS",
+        ".github/dependabot.yml",
+        ".github/**/*.md",
       ],
     });
 
