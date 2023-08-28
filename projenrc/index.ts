@@ -215,7 +215,6 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     new UpdateSnapshots(this);
     new UpgradeCDKTF(this);
     new UpgradeNode(this);
-    this.addDevDeps("node-fetch@~2"); // @TODO this can be removed once we upgrade to Node 18 and use native fetch
 
     const setSafeDirectory = {
       name: "Set git config safe.directory",
