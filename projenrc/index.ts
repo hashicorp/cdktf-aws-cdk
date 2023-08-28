@@ -289,7 +289,6 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     new UpdateSnapshots(this);
     new UpgradeCDKTF(this);
     new UpgradeNode(this);
-    this.addDevDeps("node-fetch@~2"); // @TODO this can be removed once we upgrade to Node 18 and use native fetch
 
     const releaseWorkflow = this.tryFindObjectFile(".github/workflows/release.yml");
     releaseWorkflow?.addOverride("on.push", {

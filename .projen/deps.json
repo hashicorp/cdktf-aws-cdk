@@ -73,11 +73,6 @@
       "type": "build"
     },
     {
-      "name": "node-fetch",
-      "version": "~2",
-      "type": "build"
-    },
-    {
       "name": "npm-check-updates",
       "version": "^16",
       "type": "build"

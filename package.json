@@ -57,7 +57,6 @@
     "jsii-docgen": "~9.0.0",
     "jsii-pacmak": "^1.87.0",
     "jsii-rosetta": "~5.1.2",
-    "node-fetch": "~2",
     "npm-check-updates": "^16",
     "projen": "^0.72.18",
     "standard-version": "^9",
