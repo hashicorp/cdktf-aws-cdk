@@ -24,6 +24,7 @@ export class UpdateSnapshots {
           "synchronize",
         ],
       },
+      workflowDispatch: {}, // allow manual triggering
     });
 
     (workflow.concurrency as any) = "${{ github.workflow }}-${{ github.ref }}";
