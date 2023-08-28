@@ -1,7 +1,6 @@
 {
   "files": [
     ".gitattributes",
-    ".github/pull_request_template.md",
     ".github/workflows/auto-approve.yml",
     ".github/workflows/automerge.yml",
     ".github/workflows/build.yml",
