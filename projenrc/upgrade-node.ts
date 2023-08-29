@@ -56,7 +56,7 @@ export class UpgradeNode {
                 `const script = require('./scripts/check-node-versions.js')`,
                 `await script({github, context, core})`,
               ].join("\n"),
-            }
+            },
           },
           {
             name: "Run upgrade script",
@@ -87,15 +87,18 @@ export class UpgradeNode {
             if: "env.CURRENT_NODEJS_VERSION_SHORT != env.NEW_NODEJS_VERSION_SHORT",
             uses: "peter-evans/create-pull-request@v3",
             with: {
-              "commit-message": "chore!: increase minimum supported Node.js version to ${{ steps.latest_version.outputs.short }}",
-              branch: "auto/upgrade-node-${{ steps.latest_version.outputs.short }}",
+              "commit-message":
+                "chore!: increase minimum supported Node.js version to ${{ steps.latest_version.outputs.short }}",
+              branch:
+                "auto/upgrade-node-${{ steps.latest_version.outputs.short }}",
               base: "main",
-              title: "chore!: increase minimum supported Node.js version to ${{ steps.latest_version.outputs.short }}",
+              title:
+                "chore!: increase minimum supported Node.js version to ${{ steps.latest_version.outputs.short }}",
               body: [
-                  "This PR increases the minimum supported Node.js version",
-                  "to `${{ steps.latest_version.outputs.value }}` from `${{ steps.current_version.outputs.value }}`",
-                  "because version ${{ steps.current_version.outputs.short }} is less than 30 days away from EOL."
-                ].join(" "),
+                "This PR increases the minimum supported Node.js version",
+                "to `${{ steps.latest_version.outputs.value }}` from `${{ steps.current_version.outputs.value }}`",
+                "because version ${{ steps.current_version.outputs.short }} is less than 30 days away from EOL.",
+              ].join(" "),
               labels: "automerge,automated,security",
               token: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
               author: "team-tf-cdk <github-team-tf-cdk@hashicorp.com>",

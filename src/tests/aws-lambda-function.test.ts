@@ -15,7 +15,7 @@ describe("lambda function", () => {
 
       new aws_lambda.Function(awsAdapter, "lambda", {
         code: new aws_lambda.InlineCode(
-          `def main(event, context):    \nprint("I'm running!")`
+          `def main(event, context):    \nprint("I'm running!")`,
         ),
         handler: "index.main",
         timeout: Duration.seconds(300),

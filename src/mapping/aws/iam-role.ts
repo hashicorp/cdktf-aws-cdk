@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-import { registerMapping } from "../index";
-import { IamRole } from "../../aws/iam-role";
-import { createGuessingResourceMapper } from "../helper";
 import { Aspects, Fn } from "cdktf";
+import { IamRole } from "../../aws/iam-role";
 import { EventualConsistencyWorkaroundAspect } from "../EventualConsistencyWorkaroundAspect";
+import { createGuessingResourceMapper } from "../helper";
+import { registerMapping } from "../index";
 
 registerMapping("AWS::IAM::Role", {
   resource: (scope, id, props) => {

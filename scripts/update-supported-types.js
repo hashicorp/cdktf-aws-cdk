@@ -20,7 +20,7 @@ async function main() {
       ProvisioningType: "FULLY_MUTABLE",
       Type: "RESOURCE",
       Visibility: "PUBLIC",
-    }
+    },
   );
 
   const resources = [];
@@ -29,7 +29,7 @@ async function main() {
   }
 
   console.log(
-    `Found ${resources.length} resources that can be controlled via AWS CloudControl API`
+    `Found ${resources.length} resources that can be controlled via AWS CloudControl API`,
   );
 
   const types = resources

@@ -33,7 +33,7 @@ export class StepFunctionsStack extends TerraformStack {
     
         exports.handler = async () => ({"value": generate()});
       `),
-      }
+      },
     );
 
     const functionReverseID = new aws_lambda.Function(awsAdapter, "ReverseID", {
@@ -52,18 +52,18 @@ export class StepFunctionsStack extends TerraformStack {
       {
         lambdaFunction: functionGenerateID,
         outputPath: "$.Payload",
-      }
+      },
     )
       .next(
         new aws_stepfunctions.Wait(awsAdapter, "Wait 1 Second", {
           time: aws_stepfunctions.WaitTime.duration(Duration.seconds(1)),
-        })
+        }),
       )
       .next(
         new aws_stepfunctions_tasks.LambdaInvoke(awsAdapter, "Reverse ID", {
           lambdaFunction: functionReverseID,
           outputPath: "$.Payload",
-        })
+        }),
       );
 
     new aws_stepfunctions.StateMachine(awsAdapter, "StateMachine", {

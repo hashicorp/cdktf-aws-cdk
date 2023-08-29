@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-import './ec2-vpc';
+import "./ec2-vpc";
 
-import './events-role';
+import "./events-role";
 
-import './iam-policy';
-import './iam-role';
+import "./iam-policy";
+import "./iam-role";
 
-import './lambda-permission';
+import "./lambda-permission";
 
 // TODO: move to own file
 // import { paramCase } from "change-case";

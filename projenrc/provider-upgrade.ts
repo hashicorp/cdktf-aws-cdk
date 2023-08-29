@@ -44,8 +44,7 @@ export class ProviderUpgrade {
               branch: "auto/provider-upgrade",
               base: "main",
               title: "feat: upgrade providers",
-              body:
-                "This PR upgrades the AWS and Time providers to the latest version, which may or may not result in new features.",
+              body: "This PR upgrades the AWS and Time providers to the latest version, which may or may not result in new features.",
               labels: "automerge,automated,dependencies",
               token: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
               author: "team-tf-cdk <github-team-tf-cdk@hashicorp.com>",

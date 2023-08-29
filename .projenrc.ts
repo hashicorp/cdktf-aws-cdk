@@ -28,9 +28,6 @@ const project = new CdktfAwsCdkProject({
   projenrcTs: true,
 });
 
-project.addPeerDeps("aws-cdk-lib@^2.80.0");
-project.addDevDeps("aws-cdk-lib@2.80.0");
-
 project.package.addPackageResolutions("@types/babel__traverse@7.18.2");
 
 // Use pinned versions of github actions

@@ -12,28 +12,35 @@ import supportedAwsccResourceTypes from "../awscc/supportedTypes";
 export type ResourceMapper<T extends TerraformResource> = (
   scope: Construct,
   id: string,
-  props: any
+  props: any,
 ) => T | null;
-type AttributeMapper<T extends TerraformResource> = (resource: T) => string | IResolvable;
-type AnyAttributeMapper<T extends TerraformResource> = (attribute: string, resource: T) => string | IResolvable;
+type AttributeMapper<T extends TerraformResource> = (
+  resource: T,
+) => string | IResolvable;
+type AnyAttributeMapper<T extends TerraformResource> = (
+  attribute: string,
+  resource: T,
+) => string | IResolvable;
 
 export type Mapping<T extends TerraformResource> = {
   resource: ResourceMapper<T>;
-  attributes: {
-    [name: string]: AttributeMapper<T>;
-  } | AnyAttributeMapper<T>;
+  attributes:
+    | {
+        [name: string]: AttributeMapper<T>;
+      }
+    | AnyAttributeMapper<T>;
 };
 
 const mapping: { [type: string]: any } = {};
 
 function createGenericCCApiMapping(
-  resourceType: string
+  resourceType: string,
 ): Mapping<CloudcontrolapiResource> {
   if (!supportedAwsccResourceTypes.has(resourceType)) {
     throw new Error(
       `Unsupported resource Type ${resourceType}. There is no custom mapping registered for ${resourceType} and the AWS CloudControl API does not seem to support it yet. If you think this is an error or you need support for this resource, file an issue at: ${encodeURI(
-        `https://github.com/hashicorp/cdktf-aws-cdk/issues/new?title=Unsupported Resource Type \`${resourceType}\``
-      )} and mention the AWS CDK constructs you want to use`
+        `https://github.com/hashicorp/cdktf-aws-cdk/issues/new?title=Unsupported Resource Type \`${resourceType}\``,
+      )} and mention the AWS CDK constructs you want to use`,
     );
   }
 
@@ -50,7 +57,7 @@ function createGenericCCApiMapping(
     },
     attributes: (attribute, resource) => {
       return propertyAccess(Fn.jsondecode(resource.properties), [attribute]);
-    }
+    },
   };
 }
 
@@ -65,7 +72,7 @@ export function findMapping(resourceType: string): Mapping<TerraformResource> {
 
 export function registerMapping<T extends TerraformResource>(
   resourceType: string,
-  map: Mapping<T>
+  map: Mapping<T>,
 ) {
   mapping[resourceType] = map;
 }

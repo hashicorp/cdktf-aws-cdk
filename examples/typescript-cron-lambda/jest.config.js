@@ -9,10 +9,10 @@
  */
 
 module.exports = {
-  testMatch: ['**/*.test.ts'],
+  testMatch: ["**/*.test.ts"],
   modulePathIgnorePatterns: [".yalc"],
   preset: "ts-jest",
   clearMocks: true,
   coverageProvider: "v8",
   setupFilesAfterEnv: ["./setupJest.js"],
-};  
+};

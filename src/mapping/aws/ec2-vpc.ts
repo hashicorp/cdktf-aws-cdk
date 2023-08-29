@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-import { registerMapping } from "../index";
-import { Vpc } from "../../aws/vpc";
-import { Subnet } from "../../aws/subnet";
-import { Route } from "../../aws/route";
-import { RouteTable } from "../../aws/route-table";
+import { Aspects } from "cdktf";
 import { InternetGateway } from "../../aws/internet-gateway";
 import { Lb } from "../../aws/lb";
+import { Route } from "../../aws/route";
+import { RouteTable } from "../../aws/route-table";
+import { RouteTableAssociation } from "../../aws/route-table-association";
 import { SecurityGroup } from "../../aws/security-group";
 import { SecurityGroupRule } from "../../aws/security-group-rule";
-import { RouteTableAssociation } from "../../aws/route-table-association";
+import { Subnet } from "../../aws/subnet";
+import { Vpc } from "../../aws/vpc";
 import { createGuessingResourceMapper } from "../helper";
-import { Aspects } from "cdktf";
+import { registerMapping } from "../index";
 
 registerMapping("AWS::EC2::VPC", {
   resource: createGuessingResourceMapper(Vpc),
@@ -86,12 +86,12 @@ registerMapping("AWS::EC2::VPCGatewayAttachment", {
     // FIXME: when is this used? resolve to the related InternetGateway or VpnGateway instead
     Arn: () => {
       throw new Error(
-        "AWS::EC2::VPCGatewayAttachment has no represenation in Terraform and therefore cannot be accessed"
+        "AWS::EC2::VPCGatewayAttachment has no represenation in Terraform and therefore cannot be accessed",
       );
     },
     Ref: () => {
       throw new Error(
-        "AWS::EC2::VPCGatewayAttachment has no represenation in Terraform and therefore cannot be accessed"
+        "AWS::EC2::VPCGatewayAttachment has no represenation in Terraform and therefore cannot be accessed",
       );
     },
   },

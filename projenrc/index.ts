@@ -3,12 +3,13 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-/* eslint-disable @typescript-eslint/no-require-imports */
+// import { pascalCase, snakeCase } from "change-case";
 import { cdk } from "projen";
+import { Stability } from "projen/lib/cdk";
 import { JobStep } from "projen/lib/github/workflows-model";
-import { UpgradeDependenciesSchedule } from "projen/lib/javascript";
+import { NpmAccess, UpgradeDependenciesSchedule } from "projen/lib/javascript";
 import { AutoApprove } from "./auto-approve";
-import { AutoMerge } from "./auto-merge";
+import { Automerge } from "./automerge";
 import { CdktfConfig } from "./cdktf-config";
 import { CustomizedLicense } from "./customized-license";
 import { LockIssues } from "./lock-issues";
@@ -23,10 +24,12 @@ export interface CdktfAwsCdkOptions extends Partial<cdk.JsiiProjectOptions> {
   readonly constructsVersion: string;
 }
 
+const name = "@cdktf/aws-cdk";
+const kebabName = name.replace(/^@cdktf\//, "cdktf-");
+// const shortName = name.replace(/^@?cdktf[-\/]/g, "");
+const githubNamespace = "hashicorp";
 const author = "HashiCorp";
 const authorAddress = "https://hashicorp.com";
-const namespace = "cdktf";
-const githubNamespace = "hashicorp";
 
 export class CdktfAwsCdkProject extends cdk.JsiiProject {
   constructor(options: CdktfAwsCdkOptions) {
@@ -42,7 +45,6 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     if (!providerName) {
       throw new Error(`${terraformProvider} doesn't seem to be valid`);
     }
-    // const nugetName = `HashiCorp.${pascalCase(namespace)}.AwsCdk`;
 
     super({
       ...options,
@@ -50,9 +52,14 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       licensed: false, // we do supply our own license file with a custom header
       releaseToNpm: true,
       minNodeVersion,
-      name: `@${namespace}/aws-cdk`,
+      name,
+      repositoryUrl: `https://github.com/${githubNamespace}/${kebabName}.git`,
+      defaultReleaseBranch: "main",
       description: `Adapter for using AWS CDK constructs in Terraform CDK (cdktf) projects`,
       keywords: ["cdktf", "terraform", "cdk", "aws-cdk", "aws"],
+      authorAddress,
+      author,
+      authorOrganization: true,
       sampleCode: false,
       jest: true,
       testdir: "src/tests",
@@ -65,9 +72,6 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
             ".yalc",
             ".+\\.d\\.ts",
           ],
-          // transform: {
-          //   "^.+\\.tsx?$": "ts-jest",
-          // },
           coveragePathIgnorePatterns: [
             "/node_modules/",
             "<rootDir>/examples",
@@ -83,33 +87,34 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
         compilerOptions: {},
         exclude: ["/node_modules/", "<rootDir>/examples", ".yalc"],
       },
-      authorAddress,
-      author,
-      authorOrganization: true,
-      defaultReleaseBranch: "main",
-      repositoryUrl: `https://github.com/${githubNamespace}/cdktf-aws-cdk.git`,
+      prettier: true,
+      eslintOptions: {
+        dirs: ["src"],
+        devdirs: ["src/tests", "scripts"],
+        ignorePatterns: [
+          "src/aws/**",
+          "src/awscc/**",
+          "src/time/**",
+          "**/node_modules/**",
+          "**/dist/**",
+          "*.d.ts",
+        ],
+      },
       mergify: false,
-      eslint: false,
-      // python: {
-      //   distName: `${namespace}-aws-cdk`,
-      //   module: `${namespace}_aws_cdk`,
-      // },
-      // publishToNuget: {
-      //   dotNetNamespace: nugetName,
-      //   packageId: nugetName,
-      // },
+      docgen: false,
+      pullRequestTemplate: false,
       peerDependencyOptions: {
         pinnedDevDependency: false,
-      },
-      workflowGitIdentity: {
-        name: "team-tf-cdk",
-        email: "github-team-tf-cdk@hashicorp.com",
       },
       depsUpgradeOptions: {
         workflowOptions: {
           labels: ["automerge", "automated", "dependencies"],
           schedule: UpgradeDependenciesSchedule.WEEKLY,
         },
+      },
+      workflowGitIdentity: {
+        name: "team-tf-cdk",
+        email: "github-team-tf-cdk@hashicorp.com",
       },
       stale: true,
       staleOptions: {
@@ -158,95 +163,64 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
           run: "rm -rf .repo",
         },
       ],
-      docgen: false,
-      pullRequestTemplate: false,
+      npmAccess: NpmAccess.PUBLIC,
+      stability: Stability.EXPERIMENTAL, // change this to STABLE when we go GA
+      // Uncomment the following when we're ready to start publishing to other package managers
+      // publishToPypi: {
+      //   distName: kebabName,
+      //   module: snakeCase(kebabName),
+      // },
+      // publishToNuget: {
+      //   dotNetNamespace: `HashiCorp.Cdktf.${pascalCase(shortName)}`,
+      //   packageId: `HashiCorp.Cdktf.${pascalCase(shortName)}`,
+      // },
+      // publishToMaven: {
+      //   javaPackage: `com.hashicorp.cdktf.${snakeCase(shortName)}`,
+      //   mavenGroupId: "com.hashicorp",
+      //   mavenArtifactId: kebabName,
+      //   mavenEndpoint: "https://hashicorp.oss.sonatype.org",
+      // },
+      // publishToGo: {
+      //   gitUserEmail: "github-team-tf-cdk@hashicorp.com",
+      //   gitUserName: "CDK for Terraform Team",
+      //   moduleName: `github.com/${githubNamespace}/${kebabName}-go`,
+      //   packageName: kebabName.replace(/-/g, ""),
+      // },
     });
 
-    // Submodule documentation generation
-    this.gitignore.exclude("API.md"); // ignore the old file, we now generate it in the docs folder
-    this.addDevDeps("jsii-docgen");
-    const docgen = this.addTask("docgen", {
-      description: "Generate documentation for the project",
-      steps: [
-        {
-          exec: [
-            "rm -rf docs",
-            "rm -f API.md",
-            "mkdir docs",
-            // @TODO in future when supporting multiple languages, add: -l python -l java -l csharp -l go
-            "jsii-docgen --split-by-submodule -l typescript",
-            // There is no nice way to tell jsii-docgen to generate docs into a folder so I went this route
-            "mv $(ls *.md | grep -v README.md) docs",
-            // Some part of the documentation are too long, we need to truncate them to ~10MB
-            "cd docs",
-            "ls ./ | xargs sed -i '150000,$ d' $1",
-          ].join(" && "),
-        },
-      ],
+    this.eslint?.addOverride({
+      files: ["src/**"],
+      rules: {
+        "@typescript-eslint/no-require-imports": "off",
+      },
     });
-    this.postCompileTask.spawn(docgen);
-    this.gitignore.include("/docs/*.md");
-    this.annotateGenerated("/docs/*.md");
+
     this.addPackageIgnore("docs"); // don't package the docs because they are huge
-
-    [this.compileTask, this.testTask].forEach((task) =>
-      task.env("NODE_OPTIONS", "--max-old-space-size=6144")
-    );
-    this.testTask.env("DEBUG", "jest");
-
-    const testExamples = this.addTask("examples:test", {
-      cwd: "examples/typescript-cron-lambda",
-      exec: "npm run test:ci",
-    });
-    testExamples.exec("npm run test:ci", {
-      cwd: "examples/typescript-manual-mapping",
-    });
-    testExamples.exec("npm run test:ci", {
-      cwd: "examples/typescript-step-functions",
-    });
-    testExamples.exec("npm run test:ci", {
-      cwd: "examples/typescript-step-functions-mixed",
-    });
-
-    const updateExampleTests = this.addTask("examples:test:update", {
-      cwd: "examples/typescript-cron-lambda",
-      exec: "npm run test:ci -- -- -u", // requires two level deep passthrough of -u option 😅
-    });
-    updateExampleTests.exec("npm run test:ci -- -- -u", {
-      cwd: "examples/typescript-manual-mapping",
-    });
-    updateExampleTests.exec("npm run test:ci -- -- -u", {
-      cwd: "examples/typescript-step-functions",
-    });
-    updateExampleTests.exec("npm run test:ci -- -- -u", {
-      cwd: "examples/typescript-step-functions-mixed",
-    });
-
-    // for local developing (e.g. linking local changes to cdktf)
-    this.addGitIgnore(".yalc");
-    this.addGitIgnore("yalc.lock");
-
-    this.addGitIgnore("src/**/*.js");
-    this.addGitIgnore("src/**/*.d.ts");
-    this.addGitIgnore("src/**/*.d.ts");
-    this.addGitIgnore("**/*.js.map");
-
-    // for update-supported-types script
-    this.addDevDeps("@aws-sdk/client-cloudformation@^3.36.0");
-    this.setScript(
-      "fetch:types",
-      `mkdir -p src/awscc && rm -rf ./src/awscc/* && node ./scripts/update-supported-types.js`
-    );
-    this.addPackageIgnore("scripts");
-
     this.addPackageIgnore("examples");
     this.addPackageIgnore("/.projenrc.ts");
+    this.addPackageIgnore("projenrc");
+
+    new CdktfConfig(this, {
+      terraformProvider,
+      providerName,
+      providerVersion,
+      cdktfVersion,
+      constructsVersion,
+    });
+    new Automerge(this);
+    new AutoApprove(this);
+    new CustomizedLicense(this);
+    new LockIssues(this);
+    new ProviderUpgrade(this);
+    new UpdateSnapshots(this);
+    new UpgradeCDKTF(this);
+    new UpgradeNode(this);
+    this.addDevDeps("node-fetch@~2"); // @TODO this can be removed once we upgrade to Node 18 and use native fetch
 
     const setSafeDirectory = {
       name: "Set git config safe.directory",
       run: "git config --global --add safe.directory $(pwd)",
     };
-
     const ensureCorrectUser = {
       name: "Ensure correct user",
       run: "chown -R root /__w/cdktf-aws-cdk",
@@ -270,32 +244,16 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
         name: "Setup Copywrite tool",
         uses: "hashicorp/setup-copywrite@867a1a2a064a0626db322392806428f7dc59cb3e", // v1.1.2
       },
-      { name: "Add headers using Copywrite tool", run: "copywrite headers" }
+      { name: "Add headers using Copywrite tool", run: "copywrite headers" },
     );
 
-    new CdktfConfig(this, {
-      terraformProvider,
-      providerName,
-      providerVersion,
-      cdktfVersion,
-      constructsVersion,
-    });
-    new AutoMerge(this);
-    new AutoApprove(this);
-    new CustomizedLicense(this);
-    new LockIssues(this);
-    new ProviderUpgrade(this);
-    new UpdateSnapshots(this);
-    new UpgradeCDKTF(this);
-    new UpgradeNode(this);
-    this.addDevDeps("node-fetch@~2"); // @TODO this can be removed once we upgrade to Node 18 and use native fetch
-
-    const releaseWorkflow = this.tryFindObjectFile(".github/workflows/release.yml");
+    const releaseWorkflow = this.tryFindObjectFile(
+      ".github/workflows/release.yml",
+    );
     releaseWorkflow?.addOverride("on.push", {
-      branches: [
-        "main",
-      ],
-      "paths-ignore": [ // don't do a release if the change was only to these files/directories
+      branches: ["main"],
+      "paths-ignore": [
+        // don't do a release if the change was only to these files/directories
         "examples/**",
         ".github/ISSUE_TEMPLATE/**",
         ".github/CODEOWNERS",
@@ -310,31 +268,36 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       actions: "write",
       "pull-requests": "write",
     });
-    buildWorkflow?.addToArray("jobs.build.steps", {
-      name: "Check if anything was actually changed by this PR",
-      id: "check_files",
-      env: {
-        GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
-        PR_ID: "${{ github.event.pull_request.number }}",
-      },
-      run: "gh pr diff $PR_ID | grep . || echo 'no_changes=true' >> $GITHUB_OUTPUT",
-    } as JobStep, {
-      name: "Close the PR if empty",
-      env: {
-        GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
-        PR_ID: "${{ github.event.pull_request.number }}",
-      },
-      if: "steps.check_files.outputs.no_changes",
-      run: "git fetch origin main\ngh pr close $PR_ID --delete-branch",
-      // the GH CLI will attempt to switch back to 'main' after the pr close, which hasn't been fetched
-    } as JobStep, {
-      name: "Cancel the rest of the run if empty",
-      env: {
-        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
-        RUN_ID: "${{ github.run_id }}",
-      },
-      if: "steps.check_files.outputs.no_changes",
-      run: "gh run cancel $RUN_ID \ngh run watch $RUN_ID",
-    } as JobStep);
+    buildWorkflow?.addToArray(
+      "jobs.build.steps",
+      {
+        name: "Check if anything was actually changed by this PR",
+        id: "check_files",
+        env: {
+          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
+          PR_ID: "${{ github.event.pull_request.number }}",
+        },
+        run: "gh pr diff $PR_ID | grep . || echo 'no_changes=true' >> $GITHUB_OUTPUT",
+      } as JobStep,
+      {
+        name: "Close the PR if empty",
+        env: {
+          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
+          PR_ID: "${{ github.event.pull_request.number }}",
+        },
+        if: "steps.check_files.outputs.no_changes",
+        run: "git fetch origin main\ngh pr close $PR_ID --delete-branch",
+        // the GH CLI will attempt to switch back to 'main' after the pr close, which hasn't been fetched
+      } as JobStep,
+      {
+        name: "Cancel the rest of the run if empty",
+        env: {
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
+          RUN_ID: "${{ github.run_id }}",
+        },
+        if: "steps.check_files.outputs.no_changes",
+        run: "gh run cancel $RUN_ID \ngh run watch $RUN_ID",
+      } as JobStep,
+    );
   }
 }

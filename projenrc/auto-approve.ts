@@ -17,18 +17,14 @@ export class AutoApprove {
 
     workflow.on({
       pullRequestTarget: {
-        types: [
-          "opened",
-          "labeled",
-          "ready_for_review",
-          "reopened",
-        ],
+        types: ["opened", "labeled", "ready_for_review", "reopened"],
       },
     });
 
     (workflow.concurrency as any) = "${{ github.workflow }}-${{ github.ref }}";
 
-    const commentText = "\"Since I authored this PR, I can't approve it myself, sorry! Someone else will need to approve it.\"";
+    const commentText =
+      '"Since I authored this PR, I can\'t approve it myself, sorry! Someone else will need to approve it."';
 
     workflow.addJobs({
       approve: {
@@ -43,7 +39,8 @@ export class AutoApprove {
             uses: "actions/checkout@v3",
             with: {
               ref: "${{ github.event.pull_request.head.ref }}",
-              repository: "${{ github.event.pull_request.head.repo.full_name }}",
+              repository:
+                "${{ github.event.pull_request.head.repo.full_name }}",
             },
           },
           {
@@ -57,8 +54,10 @@ export class AutoApprove {
           {
             name: "Post a note explaining we can't auto-approve PRs by team-tf-cdk",
             if: "github.event.pull_request.user.login == 'team-tf-cdk'",
-            run: "gh pr comment $PR_ID --body " + commentText +
-              "\ngh pr edit $PR_ID --remove-label \"auto-approve\"",
+            run:
+              "gh pr comment $PR_ID --body " +
+              commentText +
+              '\ngh pr edit $PR_ID --remove-label "auto-approve"',
             env: {
               GH_TOKEN: "${{ secrets.GH_TOKEN }}",
             },

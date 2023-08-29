@@ -25,7 +25,7 @@ export class CronLambdaStack extends TerraformStack {
 
     const lambdaFn = new aws_lambda.Function(awsAdapter, "lambda", {
       code: new aws_lambda.InlineCode(
-        fs.readFileSync("lambda-handler.py", { encoding: "utf-8" })
+        fs.readFileSync("lambda-handler.py", { encoding: "utf-8" }),
       ),
       handler: "index.main",
       timeout: Duration.seconds(300),

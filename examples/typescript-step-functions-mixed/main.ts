@@ -42,15 +42,15 @@ export class StepFunctionsStack extends TerraformStack {
           "generate-id",
           aws_cdk.Lazy.string({
             produce: () => functionGenerateID.fn.arn,
-          })
+          }),
         ),
         outputPath: "$.Payload",
-      }
+      },
     )
       .next(
         new aws_stepfunctions.Wait(awsAdapter, "Wait 1 Second", {
           time: aws_stepfunctions.WaitTime.duration(Duration.seconds(1)),
-        })
+        }),
       )
       .next(
         new aws_stepfunctions_tasks.LambdaInvoke(awsAdapter, "Reverse ID", {
@@ -59,10 +59,10 @@ export class StepFunctionsStack extends TerraformStack {
             "reverse-id",
             aws_cdk.Lazy.string({
               produce: () => functionReverseID.fn.arn,
-            })
+            }),
           ),
           outputPath: "$.Payload",
-        })
+        }),
       );
 
     new aws_stepfunctions.StateMachine(awsAdapter, "StateMachine", {

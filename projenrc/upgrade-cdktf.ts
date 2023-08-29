@@ -78,12 +78,14 @@ export class UpgradeCDKTF {
             if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
             uses: "peter-evans/create-pull-request@v3",
             with: {
-              "commit-message": "chore!: upgrade to cdktf ${{ steps.latest_version.outputs.value }}",
-              branch: "auto/upgrade-cdktf-${{ steps.latest_version.outputs.short }}",
+              "commit-message":
+                "chore!: upgrade to cdktf ${{ steps.latest_version.outputs.value }}",
+              branch:
+                "auto/upgrade-cdktf-${{ steps.latest_version.outputs.short }}",
               base: "main",
-              title: "chore!: upgrade to cdktf ${{ steps.latest_version.outputs.value }}",
-              body:
-                "This PR upgrades CDKTF from version `${{ steps.current_version.outputs.value }}` to version `${{ steps.latest_version.outputs.value }}`.",
+              title:
+                "chore!: upgrade to cdktf ${{ steps.latest_version.outputs.value }}",
+              body: "This PR upgrades CDKTF from version `${{ steps.current_version.outputs.value }}` to version `${{ steps.latest_version.outputs.value }}`.",
               labels: "automerge,automated,dependencies",
               token: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
               author: "team-tf-cdk <github-team-tf-cdk@hashicorp.com>",

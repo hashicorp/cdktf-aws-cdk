@@ -1,5 +1,6 @@
 {
   "files": [
+    ".eslintrc.json",
     ".gitattributes",
     ".github/workflows/auto-approve.yml",
     ".github/workflows/automerge.yml",
@@ -15,6 +16,8 @@
     ".github/workflows/upgrade-node.yml",
     ".gitignore",
     ".npmrc",
+    ".prettierignore",
+    ".prettierrc.json",
     ".projen/deps.json",
     ".projen/files.json",
     ".projen/jest-snapshot-resolver.js",

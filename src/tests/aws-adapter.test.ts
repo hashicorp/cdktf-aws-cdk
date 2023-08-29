@@ -3,14 +3,13 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-import { AwsTerraformAdapter } from "../aws-adapter";
-import { TerraformResource, TerraformStack, Testing } from "cdktf";
 import { CfnElement } from "aws-cdk-lib";
-import { CloudFormationTemplate } from "../cfn";
+import { TerraformResource, TerraformStack, Testing } from "cdktf";
+import { camelCase, snakeCase } from "change-case";
 import { Construct } from "constructs";
+import { AwsTerraformAdapter } from "../aws-adapter";
+import { CloudFormationTemplate } from "../cfn";
 import { registerMapping } from "../mapping";
-import { camelCase } from "camel-case";
-import { snakeCase } from "snake-case";
 
 describe("AwsTerraformAdapter", () => {
   let adapter: AwsTerraformAdapter;
@@ -440,7 +439,7 @@ class TestResource extends TerraformResource {
   constructor(
     scope: Construct,
     id: string,
-    private config: { [i: string]: any }
+    private config: { [i: string]: any },
   ) {
     super(scope, id, { terraformResourceType: "test" });
   }
@@ -458,7 +457,7 @@ class StaticCfnConstruct extends CfnElement {
   constructor(
     scope: Construct,
     id: string,
-    private cfn: CloudFormationTemplate
+    private cfn: CloudFormationTemplate,
   ) {
     super(scope, id);
   }

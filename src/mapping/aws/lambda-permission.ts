@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
+import { LambdaPermission } from "../../aws/lambda-permission";
 import { createGuessingResourceMapper } from "../helper";
 import { registerMapping } from "../index";
-import { LambdaPermission } from "../../aws/lambda-permission";
 
 registerMapping("AWS::Lambda::Permission", {
   resource: createGuessingResourceMapper(LambdaPermission),

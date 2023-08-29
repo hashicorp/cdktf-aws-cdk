@@ -116,13 +116,13 @@ describe("typescript-state-machine", () => {
                 "variables": {
                 }
               },
-              "filename": "assets/generate-id_lambda-asset_D3DA57A3/5DDA1FC3A2F41CBD5BC9B447DC166A3B/archive.zip",
+              "filename": "assets/generate-id_lambda-asset_D3DA57A3/3C9CD6FEC8214FEBE95E42B34C6FC9E1/archive.zip",
               "function_name": "generate-id-c8e9be4a2f33ecc14e138a018899daed079e618acb",
               "handler": "fn-generate-id.handler",
               "memory_size": 512,
               "role": "\${aws_iam_role.generate-id_server-role_62418FA4.arn}",
               "runtime": "nodejs14.x",
-              "source_code_hash": "5DDA1FC3A2F41CBD5BC9B447DC166A3B",
+              "source_code_hash": "3C9CD6FEC8214FEBE95E42B34C6FC9E1",
               "timeout": 15
             },
             "reverse-id_fn_A44557C2": {
@@ -133,13 +133,13 @@ describe("typescript-state-machine", () => {
                 "variables": {
                 }
               },
-              "filename": "assets/reverse-id_lambda-asset_4139ACFF/5DDA1FC3A2F41CBD5BC9B447DC166A3B/archive.zip",
+              "filename": "assets/reverse-id_lambda-asset_4139ACFF/3C9CD6FEC8214FEBE95E42B34C6FC9E1/archive.zip",
               "function_name": "reverse-id-c80e28e7990db1dae069bd131f26434d1b4d867e38",
               "handler": "fn-reverse-id.handler",
               "memory_size": 512,
               "role": "\${aws_iam_role.reverse-id_server-role_3C5E949B.arn}",
               "runtime": "nodejs14.x",
-              "source_code_hash": "5DDA1FC3A2F41CBD5BC9B447DC166A3B",
+              "source_code_hash": "3C9CD6FEC8214FEBE95E42B34C6FC9E1",
               "timeout": 15
             }
           },

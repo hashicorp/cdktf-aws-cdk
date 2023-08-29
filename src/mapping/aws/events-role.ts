@@ -3,9 +3,15 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
+import {
+  CloudwatchEventRule,
+  CloudwatchEventRuleConfig,
+} from "../../aws/cloudwatch-event-rule";
+import {
+  CloudwatchEventTarget,
+  CloudwatchEventTargetConfig,
+} from "../../aws/cloudwatch-event-target";
 import { registerMapping } from "../index";
-import { CloudwatchEventRule, CloudwatchEventRuleConfig } from "../../aws/cloudwatch-event-rule";
-import { CloudwatchEventTarget, CloudwatchEventTargetConfig } from "../../aws/cloudwatch-event-target";
 
 // TODO: types for CloudFormation Resources? would be really nice.
 
@@ -33,11 +39,7 @@ registerMapping("AWS::Events::Rule", {
     delete props.RoleArn;
     delete props.ScheduleExpression; // TODO: use some utility for this simple naming mapping (needs to have the mapping in guessing resource mapper made reusable somehow)
 
-    const rule = new CloudwatchEventRule(
-      scope,
-      id,
-      ruleProps
-    );
+    const rule = new CloudwatchEventRule(scope, id, ruleProps);
 
     (props.Targets || []).map((target: any, idx: number) => {
       const targetProps: CloudwatchEventTargetConfig = {
@@ -64,7 +66,7 @@ registerMapping("AWS::Events::Rule", {
       return new CloudwatchEventTarget(
         scope,
         `${id}_target${idx}`,
-        targetProps
+        targetProps,
       );
     });
 
