@@ -246,6 +246,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       },
       { name: "Add headers using Copywrite tool", run: "copywrite headers" },
     );
+    this.addPackageIgnore(".copywrite.hcl");
 
     const releaseWorkflow = this.tryFindObjectFile(
       ".github/workflows/release.yml",

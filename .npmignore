@@ -30,3 +30,4 @@ scripts
 .gen
 .terraform
 cdktf.json
+.copywrite.hcl
