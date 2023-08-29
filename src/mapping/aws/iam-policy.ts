@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-import { registerMapping } from "../index";
+import { Fn } from "cdktf";
+import { IamGroupPolicyAttachment } from "../../aws/iam-group-policy-attachment";
 import { IamPolicy } from "../../aws/iam-policy";
 import { IamRolePolicyAttachment } from "../../aws/iam-role-policy-attachment";
 import { IamUserPolicyAttachment } from "../../aws/iam-user-policy-attachment";
-import { IamGroupPolicyAttachment } from "../../aws/iam-group-policy-attachment";
 import { createGuessingResourceMapper } from "../helper";
-import { Fn } from "cdktf";
+import { registerMapping } from "../index";
 
 registerMapping("AWS::IAM::Policy", {
   resource: (scope, id, props) => {
@@ -18,7 +18,7 @@ registerMapping("AWS::IAM::Policy", {
     const roleAttachments: any[] = props.Roles || [];
     const userAttachments: any[] = props.Users || [];
     const groupAttachments: any[] = props.Groups || [];
-    
+
     const resource = createGuessingResourceMapper(IamPolicy, {
       PolicyDocument: (doc) => ({
         tfAttributeName: "policy",

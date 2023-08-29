@@ -56,7 +56,7 @@ export class MyStack extends TerraformStack {
       partitionKey: { name: "key", type: aws_dynamodb.AttributeType.STRING },
     });
 
-    new CfnOutput(awsAdapter, 'arn', { value: table.tableArn });
+    new CfnOutput(awsAdapter, "arn", { value: table.tableArn });
   }
 }
 

@@ -7,9 +7,9 @@ import { dependable, IAspect, TerraformResource, TerraformStack } from "cdktf";
 import { resolve } from "cdktf/lib/_tokens";
 import { findTokens } from "cdktf/lib/tokens/private/resolve";
 import { IConstruct } from "constructs";
+import { CloudcontrolapiResource } from "../aws/cloudcontrolapi-resource";
 import { TimeProvider } from "../time/provider";
 import { Sleep } from "../time/sleep";
-import { CloudcontrolapiResource } from "../aws/cloudcontrolapi-resource";
 
 interface EventualConsistencyWorkaroundAspectOptions {
   createDurationSeconds: number;
@@ -34,6 +34,25 @@ interface EventualConsistencyWorkaroundAspectOptions {
 export class EventualConsistencyWorkaroundAspect implements IAspect {
   private static stackTimeProviders = new Map<string, TimeProvider>();
 
+  // The CDK for Terraform currently requires providers to be configured even if they don't have
+  // any config. As we cannot know whether the stack already contains a time provider, we create
+  // an aliased one for usage within this Aspect
+  private static getTimeProvider(stack: TerraformStack): TimeProvider {
+    if (
+      !EventualConsistencyWorkaroundAspect.stackTimeProviders.has(stack.node.id)
+    ) {
+      EventualConsistencyWorkaroundAspect.stackTimeProviders.set(
+        stack.node.id,
+        new TimeProvider(stack, "eventual_consistency_workaround_aspect", {
+          alias: `awsadapter_eventual_consistency_workaround_aspect_${stack.node.id}`,
+        }),
+      );
+    }
+    return EventualConsistencyWorkaroundAspect.stackTimeProviders.get(
+      stack.node.id,
+    )!;
+  }
+
   private sleepResource?: Sleep;
 
   constructor(
@@ -41,7 +60,7 @@ export class EventualConsistencyWorkaroundAspect implements IAspect {
     private options: EventualConsistencyWorkaroundAspectOptions = {
       createDurationSeconds: 20,
       destroyDurationSeconds: 0,
-    }
+    },
   ) {}
 
   visit(node: IConstruct) {
@@ -71,28 +90,12 @@ export class EventualConsistencyWorkaroundAspect implements IAspect {
           destroyDuration: `${this.options.destroyDurationSeconds}s`,
           dependsOn: [this.eventualConsistentTarget],
           provider: EventualConsistencyWorkaroundAspect.getTimeProvider(
-            TerraformStack.of(this.eventualConsistentTarget)
+            TerraformStack.of(this.eventualConsistentTarget),
           ),
-        }
+        },
       );
     }
     return this.sleepResource;
-  }
-
-  // The CDK for Terraform currently requires providers to be configured even if they don't have
-  // any config. As we cannot know whether the stack already contains a time provider, we create
-  // an aliased one for usage within this Aspect
-  private static getTimeProvider(stack: TerraformStack): TimeProvider {
-    if (!EventualConsistencyWorkaroundAspect.stackTimeProviders.has(stack.node.id)) {
-      EventualConsistencyWorkaroundAspect.stackTimeProviders.set(stack.node.id, new TimeProvider(
-        stack,
-        "eventual_consistency_workaround_aspect",
-        {
-          alias: `awsadapter_eventual_consistency_workaround_aspect_${stack.node.id}`,
-        }
-      ));
-    }
-    return EventualConsistencyWorkaroundAspect.stackTimeProviders.get(stack.node.id)!;
   }
 }
 
@@ -101,10 +104,10 @@ export class EventualConsistencyWorkaroundAspect implements IAspect {
  */
 function dependsOn(
   source: TerraformResource,
-  target: TerraformResource
+  target: TerraformResource,
 ): boolean {
   const tokens = findTokens(TerraformStack.of(source), () =>
-    source.toTerraform()
+    source.toTerraform(),
   );
 
   // Checks if there's at least one token that resolves to an Terraform reference

@@ -5,29 +5,29 @@
 
 // originally from https://github.com/skorfmann/cfn2tf/blob/6ff9f366462b270229b7415f68c13a7bea28c144/aws-adapter.ts
 
-import { Construct } from "constructs";
-import { toSnakeCase } from "codemaker";
 import { Stack, CfnElement, IResolvable } from "aws-cdk-lib";
 import {
   TerraformResource,
   Lazy,
   Aspects,
   Fn,
+  Op,
   TerraformLocal,
   TerraformOutput,
   Token,
   Tokenization,
 } from "cdktf";
 import { conditional, propertyAccess } from "cdktf/lib/tfExpression";
-import { Op } from "cdktf";
-import { CloudFormationResource, CloudFormationTemplate } from "./cfn";
-import { findMapping, Mapping } from "./mapping";
+import { toSnakeCase } from "codemaker";
+import { Construct } from "constructs";
 
-import { AwsProvider } from "./aws/provider";
+import { DataAwsAvailabilityZones } from "./aws/data-aws-availability-zones";
+import { DataAwsCallerIdentity } from "./aws/data-aws-caller-identity";
 import { DataAwsPartition } from "./aws/data-aws-partition";
 import { DataAwsRegion } from "./aws/data-aws-region";
-import { DataAwsCallerIdentity } from "./aws/data-aws-caller-identity";
-import { DataAwsAvailabilityZones } from "./aws/data-aws-availability-zones";
+import { AwsProvider } from "./aws/provider";
+import { CloudFormationResource, CloudFormationTemplate } from "./cfn";
+import { findMapping, Mapping } from "./mapping";
 
 function toTerraformIdentifier(identifier: string) {
   return toSnakeCase(identifier).replace(/-/g, "_");
@@ -74,7 +74,7 @@ class TerraformHost extends Construct {
   constructor(
     scope: Construct,
     id: string,
-    private readonly host: AwsTerraformAdapter
+    private readonly host: AwsTerraformAdapter,
   ) {
     super(scope, id);
   }
@@ -83,13 +83,13 @@ class TerraformHost extends Construct {
     for (const r of this.host.node.findAll()) {
       if (r instanceof CfnElement) {
         const cfn = this.host.resolve(
-          (r as any)._toCloudFormation()
+          (r as any)._toCloudFormation(),
         ) as CloudFormationTemplate;
         for (const [logical, value] of Object.entries(cfn.Resources || {})) {
           this.newTerraformResource(this, logical, value);
         }
         for (const [conditionId, condition] of Object.entries(
-          cfn.Conditions || {}
+          cfn.Conditions || {},
         )) {
           this.newTerraformLocalFromCondition(this, conditionId, condition);
         }
@@ -108,32 +108,29 @@ class TerraformHost extends Construct {
         {
           region,
           alias: toTerraformIdentifier(region),
-        }
+        },
       );
     }
     return this.regionalAwsProviders[region];
   }
 
-  private getAvailabilityZones(
-    region?: string
-  ): DataAwsAvailabilityZones {
+  private getAvailabilityZones(region?: string): DataAwsAvailabilityZones {
     const DEFAULT_REGION_KEY = "default_region";
     if (!region) {
       region = DEFAULT_REGION_KEY;
     }
 
     if (!this.awsAvailabilityZones[region]) {
-      this.awsAvailabilityZones[region] =
-        new DataAwsAvailabilityZones(
-          this,
-          `aws_azs_${toTerraformIdentifier(region)}`,
-          {
-            provider:
-              region === DEFAULT_REGION_KEY
-                ? undefined
-                : this.getRegionalAwsProvider(region),
-          }
-        );
+      this.awsAvailabilityZones[region] = new DataAwsAvailabilityZones(
+        this,
+        `aws_azs_${toTerraformIdentifier(region)}`,
+        {
+          provider:
+            region === DEFAULT_REGION_KEY
+              ? undefined
+              : this.getRegionalAwsProvider(region),
+        },
+      );
     }
     return this.awsAvailabilityZones[region];
   }
@@ -141,7 +138,7 @@ class TerraformHost extends Construct {
   private newTerraformResource(
     scope: Construct,
     logicalId: string,
-    resource: CloudFormationResource
+    resource: CloudFormationResource,
   ): TerraformResource | null {
     // TODO: add debug log console.log(JSON.stringify(resource, null, 2));
     const m = findMapping(resource.Type);
@@ -162,12 +159,12 @@ class TerraformHost extends Construct {
     if (conditionId) {
       if (!res) {
         throw new Error(
-          `Condition has been found on resource that has no representation in Terraform: ${resource.Type}. Mapper function returned null`
+          `Condition has been found on resource that has no representation in Terraform: ${resource.Type}. Mapper function returned null`,
         );
       }
 
       res.count = Token.asNumber(
-        conditional(this.getConditionTerraformLocal(conditionId), 1, 0)
+        conditional(this.getConditionTerraformLocal(conditionId), 1, 0),
       );
     }
 
@@ -177,8 +174,8 @@ class TerraformHost extends Construct {
         `cannot map some properties of ${resource.Type}: ${JSON.stringify(
           props,
           undefined,
-          2
-        )}`
+          2,
+        )}`,
       );
     }
 
@@ -195,12 +192,12 @@ class TerraformHost extends Construct {
   private newTerraformLocalFromCondition(
     scope: Construct,
     conditionId: string,
-    condition: any
+    condition: any,
   ) {
     const local = new TerraformLocal(
       scope,
       getConditionConstructId(conditionId),
-      this.processIntrinsics(condition)
+      this.processIntrinsics(condition),
     );
 
     return local;
@@ -210,11 +207,11 @@ class TerraformHost extends Construct {
     return Lazy.anyValue({
       produce: () => {
         const local = this.node.tryFindChild(
-          getConditionConstructId(conditionId)
+          getConditionConstructId(conditionId),
         ) as TerraformLocal;
         if (!local)
           throw new Error(
-            `Could not find TerraformLocal for condition with id=${conditionId}`
+            `Could not find TerraformLocal for condition with id=${conditionId}`,
           );
         return local.expression;
       },
@@ -301,7 +298,7 @@ class TerraformHost extends Construct {
       return this.resolveIntrinsic(intrinsic, obj[intrinsic]);
     } else if (intrinsic?.startsWith("Fn:") && !intrinsic?.startsWith("Fn::")) {
       console.warn(
-        'Found possible intrinsic function starting with "Fn:" instead of "Fn::". Typo?'
+        'Found possible intrinsic function starting with "Fn:" instead of "Fn::". Typo?',
       );
     }
 
@@ -317,7 +314,7 @@ class TerraformHost extends Construct {
     const child = this.node.tryFindChild(logicalId) as TerraformResource;
     if (!child) {
       throw new Error(
-        `unable to resolve a "Ref" to a resource with the logical ID ${logicalId}`
+        `unable to resolve a "Ref" to a resource with the logical ID ${logicalId}`,
       );
     }
 
@@ -328,7 +325,7 @@ class TerraformHost extends Construct {
         : mapping.mapping.attributes[attribute];
     if (!att) {
       throw new Error(
-        `no "${attribute}" attribute mapping for resource of type ${mapping.resourceType}`
+        `no "${attribute}" attribute mapping for resource of type ${mapping.resourceType}`,
       );
     }
 
@@ -339,8 +336,7 @@ class TerraformHost extends Construct {
     switch (ref) {
       case "AWS::Partition": {
         this.awsPartition =
-          this.awsPartition ??
-          new DataAwsPartition(this, "aws-partition");
+          this.awsPartition ?? new DataAwsPartition(this, "aws-partition");
         return this.awsPartition.partition;
       }
 
@@ -363,8 +359,7 @@ class TerraformHost extends Construct {
 
       case "AWS::URLSuffix": {
         this.awsPartition =
-          this.awsPartition ??
-          new DataAwsPartition(this, "aws-partition");
+          this.awsPartition ?? new DataAwsPartition(this, "aws-partition");
         return this.awsPartition.dnsSuffix;
       }
 
@@ -393,7 +388,7 @@ class TerraformHost extends Construct {
         const [delim, strings] = params;
         return Fn.join(
           this.processIntrinsics(delim),
-          this.processIntrinsics(strings)
+          this.processIntrinsics(strings),
         );
       }
 
@@ -441,7 +436,7 @@ class TerraformHost extends Construct {
         const [separator, string] = params;
         return Fn.split(
           this.processIntrinsics(separator),
-          this.processIntrinsics(string)
+          this.processIntrinsics(string),
         );
       }
 
@@ -455,8 +450,8 @@ class TerraformHost extends Construct {
           if (typeof rawVarName !== "string")
             throw new Error(
               `Only strings are supported as VarName in Sub function. Encountered ${JSON.stringify(
-                rawVarName
-              )} instead.`
+                rawVarName,
+              )} instead.`,
             );
           const varName = rawVarName; // we use this as object key
           const varValue = this.processIntrinsics(rawVarValue);
@@ -464,7 +459,7 @@ class TerraformHost extends Construct {
           resultString = Fn.replace(
             Token.asString(resultString),
             Fn.rawString("${" + varName + "}"),
-            varValue
+            varValue,
           );
         });
 
@@ -473,7 +468,7 @@ class TerraformHost extends Construct {
         resultString = Fn.replace(
           resultString,
           Fn.rawString("/\\\\$\\\\{!(\\\\w+)\\\\}/"),
-          Fn.rawString("${$1}")
+          Fn.rawString("${$1}"),
         );
         // in HCL: replace(local.template, "/\\$\\{!(\\w+)\\}/", "$${$1}")
 
@@ -487,23 +482,23 @@ class TerraformHost extends Construct {
 
       case "Fn::And": {
         const [first, ...additional]: [any, any[]] = this.processConditions(
-          this.processIntrinsics(params)
+          this.processIntrinsics(params),
         );
         // Fn:And supports 2-10 parameters to chain
         return additional.reduce(
           (current, expression) => Op.and(current, expression),
-          first
+          first,
         );
       }
 
       case "Fn::Or": {
         const [first, ...additional]: [any, any[]] = this.processConditions(
-          this.processIntrinsics(params)
+          this.processIntrinsics(params),
         );
         // Fn:Or supports 2-10 parameters to chain
         return additional.reduce(
           (current, expression) => Op.or(current, expression),
-          first
+          first,
         );
       }
 
@@ -513,7 +508,7 @@ class TerraformHost extends Construct {
         return conditional(
           this.getConditionTerraformLocal(conditionId),
           trueExpression,
-          falseExpression
+          falseExpression,
         );
       }
 
@@ -529,7 +524,7 @@ class TerraformHost extends Construct {
       case "Fn::Transform": {
         // https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html
         throw new Error(
-          "Fn::Transform is not supported – Cfn Template Macros are not supported yet"
+          "Fn::Transform is not supported – Cfn Template Macros are not supported yet",
         );
       }
 
@@ -543,8 +538,8 @@ class TerraformHost extends Construct {
       default:
         throw new Error(
           `unsupported intrinsic function ${fn} (params: ${JSON.stringify(
-            params
-          )})`
+            params,
+          )})`,
         );
     }
   }

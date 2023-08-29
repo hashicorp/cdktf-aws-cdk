@@ -18,11 +18,7 @@ export class UpdateSnapshots {
 
     workflow.on({
       pullRequestTarget: {
-        types: [
-          "opened",
-          "reopened",
-          "synchronize",
-        ],
+        types: ["opened", "reopened", "synchronize"],
       },
       workflowDispatch: {}, // allow manual triggering
     });
@@ -39,8 +35,9 @@ export class UpdateSnapshots {
             uses: "actions/checkout@v3",
             with: {
               ref: "${{ github.event.pull_request.head.ref }}",
-              repository: "${{ github.event.pull_request.head.repo.full_name }}",
-            }
+              repository:
+                "${{ github.event.pull_request.head.repo.full_name }}",
+            },
           },
           {
             name: "Run snapshot update in each example directory",

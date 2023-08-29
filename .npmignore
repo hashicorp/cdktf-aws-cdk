@@ -20,11 +20,13 @@ dist
 /.projenrc.js
 tsconfig.tsbuildinfo
 /lib/tests/
+/.eslintrc.json
 !.jsii
 docs
-scripts
 examples
 /.projenrc.ts
+projenrc
+scripts
 .gen
 .terraform
 cdktf.json
