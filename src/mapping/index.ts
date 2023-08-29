@@ -39,7 +39,7 @@ function createGenericCCApiMapping(
   if (!supportedAwsccResourceTypes.has(resourceType)) {
     throw new Error(
       `Unsupported resource Type ${resourceType}. There is no custom mapping registered for ${resourceType} and the AWS CloudControl API does not seem to support it yet. If you think this is an error or you need support for this resource, file an issue at: ${encodeURI(
-        `https://github.com/hashicorp/cdktf-aws-cdk/issues/new?title=Unsupported Resource Type \`${resourceType}\``,
+        `https://github.com/hashicorp/cdktf-aws-cdk/issues/new?labels=cloudcontrol%2Cenhancement%2Chelp+wanted&template=cloudcontrol-mapping.yml&title=Unsupported Resource Type \`${resourceType}\``,
       )} and mention the AWS CDK constructs you want to use`,
     );
   }
