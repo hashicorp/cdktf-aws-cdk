@@ -23,7 +23,7 @@ export class CdktfConfig {
     const constructsVersion = options.constructsVersion;
 
     project.addPeerDeps(`cdktf@^${cdktfVersion}`);
-    project.addPeerDeps(`constructs@${constructsVersion}`);
+    project.addPeerDeps(`constructs@^${constructsVersion}`);
     project.addPeerDeps(`aws-cdk-lib@^2.80.0`);
 
     project.addDevDeps(`cdktf@${cdktfVersion}`);

@@ -47,7 +47,7 @@
     },
     {
       "name": "constructs",
-      "version": "^10.0.25",
+      "version": "10.0.25",
       "type": "build"
     },
     {

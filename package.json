@@ -52,7 +52,7 @@
     "aws-cdk-lib": "2.80.0",
     "cdktf": "0.18.0",
     "cdktf-cli": "0.18.0",
-    "constructs": "^10.0.25",
+    "constructs": "10.0.25",
     "eslint": "^8",
     "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-node": "^0.3.9",
