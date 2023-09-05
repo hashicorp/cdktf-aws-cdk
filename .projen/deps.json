@@ -135,6 +135,7 @@
     },
     {
       "name": "typescript",
+      "version": "^4.9.5",
       "type": "build"
     },
     {
