@@ -36,7 +36,8 @@ export class CdktfConfig {
     project.addBundledDeps(`debug@^4.3.2`);
 
     project.addDevDeps("@types/debug@^4.1.7");
-    project.addDevDeps("@types/jest@^27.0.2");
+    // @see https://stackoverflow.com/a/72680434 for why this is necessary
+    project.addDevDeps("ts-node@^10.9.1");
 
     // for update-supported-types script
     project.addDevDeps("@aws-sdk/client-cloudformation@^3.36.0");

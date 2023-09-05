@@ -12,7 +12,6 @@
     },
     {
       "name": "@types/jest",
-      "version": "^27.0.2",
       "type": "build"
     },
     {
@@ -131,6 +130,7 @@
     },
     {
       "name": "ts-node",
+      "version": "^10.9.1",
       "type": "build"
     },
     {
