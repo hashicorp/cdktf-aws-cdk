@@ -26,7 +26,6 @@ const project = new CdktfAwsCdkProject({
   jsiiVersion: "^5.1.0",
   minNodeVersion: "18.12.0",
   projenrcTs: true,
-  typescriptVersion: "^4.9.5",
 });
 
 project.package.addPackageResolutions("@types/babel__traverse@7.18.2");
