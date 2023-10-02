@@ -6,17 +6,16 @@
 import { CdktfAwsCdkProject } from "./projenrc";
 
 const githubActionPinnedVersions = {
-  "actions/checkout": "8e5e7e5ab8b370d6c329ec480221332ada57f0ab", // v3.5.2
+  "actions/checkout": "8ade135a41bc03ea155e62e844d188df1ea18608", // v4.1.0
   "actions/download-artifact": "9bc31d5ccc31df68ecc42ccf4149144866c47d8a", // v3.0.2
   "actions/github-script": "d7906e4ad0b1822421a7e6a35d5ca353c962f410", // v6.4.1
-  "actions/setup-node": "64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c", // v3.6.0
+  "actions/setup-node": "5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d", // v3.8.1
   "actions/stale": "1160a2240286f5da8ec72b1c0816ce2481aabf84", // v8.0.0
-  "actions/upload-artifact": "0b7f8abb1508181956e8e162db84b466c27e18ce", // v3.1.2
+  "actions/upload-artifact": "a8a3f3ad30e3422c9c7b888a15615d19a852ae32", // v3.1.3
   "amannn/action-semantic-pull-request":
-    "c3cd5d1ea3580753008872425915e343e351ab54", // v5.2.0
-  "dessant/lock-threads": "c1b35aecc5cdb1a34539d14196df55838bb2f836", // v4.0.0
-  "pascalgn/automerge-action": "22948e0bc22f0aa673800da838595a3e7347e584", // v0.15.6
-  "peter-evans/create-pull-request": "284f54f989303d2699d373481a0cfa13ad5a6666", // v5.0.1
+    "47b15d52c5c30e94a17ec87eb8dd51ff5221fed9", // v5.3.0
+  "dessant/lock-threads": "be8aa5be94131386884a6da4189effda9b14aa21", // v4.0.1
+  "peter-evans/create-pull-request": "153407881ec5c347639a548ade7d8ad1d6740e38", // v5.0.2
 };
 
 const project = new CdktfAwsCdkProject({

@@ -16,13 +16,13 @@ jobs:
       CHECKPOINT_DISABLE: "1"
     steps:
       - name: Checkout
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
       - run: yarn install
       - run: yarn fetch
       - run: yarn compile
       - run: yarn docgen
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@284f54f989303d2699d373481a0cfa13ad5a6666
+        uses: peter-evans/create-pull-request@153407881ec5c347639a548ade7d8ad1d6740e38
         with:
           commit-message: "feat: upgrade providers"
           branch: auto/provider-upgrade
