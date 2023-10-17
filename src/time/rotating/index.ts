@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/time/0.7.2/docs/resources/rotating
 // generated from terraform resource schema
 
@@ -62,6 +57,20 @@ export class Rotating extends cdktf.TerraformResource {
   // STATIC PROPERTIES
   // =================
   public static readonly tfResourceType = "time_rotating";
+
+  // ==============
+  // STATIC Methods
+  // ==============
+  /**
+  * Generates CDKTF code for importing a Rotating resource upon running "cdktf plan <stack-name>"
+  * @param scope The scope in which to define this construct
+  * @param importToId The construct id used in the generated config for the Rotating to import
+  * @param importFromId The id of the existing Rotating that should be imported. Refer to the {@link https://registry.terraform.io/providers/hashicorp/time/0.7.2/docs/resources/rotating#import import section} in the documentation of this resource for the id to use
+  * @param provider? Optional instance of the provider where the Rotating to import is found
+  */
+  public static generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: cdktf.TerraformProvider) {
+        return new cdktf.ImportableResource(scope, importToId, { terraformResourceType: "time_rotating", importId: importFromId, provider });
+      }
 
   // ===========
   // INITIALIZER

@@ -271,6 +271,7 @@ public resetId(): void
 | <code><a href="#@cdktf/aws-cdk.dataAwsPartition.DataAwsPartition.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@cdktf/aws-cdk.dataAwsPartition.DataAwsPartition.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsPartition.DataAwsPartition.isTerraformDataSource">isTerraformDataSource</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dataAwsPartition.DataAwsPartition.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a DataAwsPartition resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -317,6 +318,50 @@ dataAwsPartition.DataAwsPartition.isTerraformDataSource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@cdktf/aws-cdk.dataAwsPartition.DataAwsPartition.isTerraformDataSource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@cdktf/aws-cdk.dataAwsPartition.DataAwsPartition.generateConfigForImport"></a>
+
+```typescript
+import { dataAwsPartition } from '@cdktf/aws-cdk'
+
+dataAwsPartition.DataAwsPartition.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a DataAwsPartition resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@cdktf/aws-cdk.dataAwsPartition.DataAwsPartition.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@cdktf/aws-cdk.dataAwsPartition.DataAwsPartition.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the DataAwsPartition to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@cdktf/aws-cdk.dataAwsPartition.DataAwsPartition.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing DataAwsPartition that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/partition#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@cdktf/aws-cdk.dataAwsPartition.DataAwsPartition.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the DataAwsPartition to import is found.
 
 ---
 

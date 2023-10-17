@@ -60,6 +60,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.route.Route.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
 | <code><a href="#@cdktf/aws-cdk.route.Route.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route.Route.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
+| <code><a href="#@cdktf/aws-cdk.route.Route.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
 | <code><a href="#@cdktf/aws-cdk.route.Route.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route.Route.getBooleanAttribute">getBooleanAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route.Route.getBooleanMapAttribute">getBooleanMapAttribute</a></code> | *No description.* |
@@ -69,7 +70,9 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.route.Route.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route.Route.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route.Route.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.route.Route.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route.Route.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.route.Route.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
 | <code><a href="#@cdktf/aws-cdk.route.Route.putTimeouts">putTimeouts</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route.Route.resetCarrierGatewayId">resetCarrierGatewayId</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route.Route.resetDestinationCidrBlock">resetDestinationCidrBlock</a></code> | *No description.* |
@@ -152,6 +155,22 @@ public toTerraform(): any
 ```
 
 Adds this resource to the terraform JSON output.
+
+##### `addMoveTarget` <a name="addMoveTarget" id="@cdktf/aws-cdk.route.Route.addMoveTarget"></a>
+
+```typescript
+public addMoveTarget(moveTarget: string): void
+```
+
+Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@cdktf/aws-cdk.route.Route.addMoveTarget.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The string move target that will correspond to this resource.
+
+---
 
 ##### `getAnyMapAttribute` <a name="getAnyMapAttribute" id="@cdktf/aws-cdk.route.Route.getAnyMapAttribute"></a>
 
@@ -261,6 +280,24 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `importFrom` <a name="importFrom" id="@cdktf/aws-cdk.route.Route.importFrom"></a>
+
+```typescript
+public importFrom(id: string, provider?: TerraformProvider): void
+```
+
+###### `id`<sup>Required</sup> <a name="id" id="@cdktf/aws-cdk.route.Route.importFrom.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@cdktf/aws-cdk.route.Route.importFrom.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
 ##### `interpolationForAttribute` <a name="interpolationForAttribute" id="@cdktf/aws-cdk.route.Route.interpolationForAttribute"></a>
 
 ```typescript
@@ -270,6 +307,30 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 ###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="@cdktf/aws-cdk.route.Route.interpolationForAttribute.parameter.terraformAttribute"></a>
 
 - *Type:* string
+
+---
+
+##### `moveTo` <a name="moveTo" id="@cdktf/aws-cdk.route.Route.moveTo"></a>
+
+```typescript
+public moveTo(moveTarget: string, index?: string | number): void
+```
+
+Moves this resource to the target resource given by moveTarget.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@cdktf/aws-cdk.route.Route.moveTo.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The previously set user defined string set by .addMoveTarget() corresponding to the resource to move to.
+
+---
+
+###### `index`<sup>Optional</sup> <a name="index" id="@cdktf/aws-cdk.route.Route.moveTo.parameter.index"></a>
+
+- *Type:* string | number
+
+Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
 
 ---
 
@@ -382,6 +443,7 @@ public resetVpcPeeringConnectionId(): void
 | <code><a href="#@cdktf/aws-cdk.route.Route.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@cdktf/aws-cdk.route.Route.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.route.Route.isTerraformResource">isTerraformResource</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.route.Route.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a Route resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -428,6 +490,50 @@ route.Route.isTerraformResource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@cdktf/aws-cdk.route.Route.isTerraformResource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@cdktf/aws-cdk.route.Route.generateConfigForImport"></a>
+
+```typescript
+import { route } from '@cdktf/aws-cdk'
+
+route.Route.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a Route resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@cdktf/aws-cdk.route.Route.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@cdktf/aws-cdk.route.Route.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the Route to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@cdktf/aws-cdk.route.Route.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing Route that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/route#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@cdktf/aws-cdk.route.Route.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the Route to import is found.
 
 ---
 

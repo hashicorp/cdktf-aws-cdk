@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs
 // generated from terraform resource schema
 
@@ -14,7 +9,7 @@ import * as cdktf from 'cdktf';
 export interface AwsProviderConfig {
   /**
   * The access key for API operations. You can retrieve this
-from the 'Security & Credentials' section of the AWS console.
+  * from the 'Security & Credentials' section of the AWS console.
   *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs#access_key AwsProvider#access_key}
   */
@@ -41,45 +36,45 @@ from the 'Security & Credentials' section of the AWS console.
   readonly insecure?: boolean | cdktf.IResolvable;
   /**
   * The maximum number of times an AWS API request is
-being executed. If the API request still fails, an error is
-thrown.
+  * being executed. If the API request still fails, an error is
+  * thrown.
   *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs#max_retries AwsProvider#max_retries}
   */
   readonly maxRetries?: number;
   /**
   * The profile for API operations. If not set, the default profile
-created with `aws configure` will be used.
+  * created with `aws configure` will be used.
   *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs#profile AwsProvider#profile}
   */
   readonly profile?: string;
   /**
   * The region where AWS operations will take place. Examples
-are us-east-1, us-west-2, etc.
+  * are us-east-1, us-west-2, etc.
   *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs#region AwsProvider#region}
   */
   readonly region: string;
   /**
   * Set this to true to force the request to use path-style addressing,
-i.e., http://s3.amazonaws.com/BUCKET/KEY. By default, the S3 client will
-use virtual hosted bucket addressing when possible
-(http://BUCKET.s3.amazonaws.com/KEY). Specific to the Amazon S3 service.
+  * i.e., http://s3.amazonaws.com/BUCKET/KEY. By default, the S3 client will
+  * use virtual hosted bucket addressing when possible
+  * (http://BUCKET.s3.amazonaws.com/KEY). Specific to the Amazon S3 service.
   *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs#s3_force_path_style AwsProvider#s3_force_path_style}
   */
   readonly s3ForcePathStyle?: boolean | cdktf.IResolvable;
   /**
   * The secret key for API operations. You can retrieve this
-from the 'Security & Credentials' section of the AWS console.
+  * from the 'Security & Credentials' section of the AWS console.
   *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs#secret_key AwsProvider#secret_key}
   */
   readonly secretKey?: string;
   /**
   * The path to the shared credentials file. If not set
-this defaults to ~/.aws/credentials.
+  * this defaults to ~/.aws/credentials.
   *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs#shared_credentials_file AwsProvider#shared_credentials_file}
   */
@@ -114,7 +109,7 @@ this defaults to ~/.aws/credentials.
   readonly skipRequestingAccountId?: boolean | cdktf.IResolvable;
   /**
   * session token. A session token is only required if you are
-using temporary security credentials.
+  * using temporary security credentials.
   *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs#token AwsProvider#token}
   */
@@ -2392,6 +2387,20 @@ export class AwsProvider extends cdktf.TerraformProvider {
   // STATIC PROPERTIES
   // =================
   public static readonly tfResourceType = "aws";
+
+  // ==============
+  // STATIC Methods
+  // ==============
+  /**
+  * Generates CDKTF code for importing a AwsProvider resource upon running "cdktf plan <stack-name>"
+  * @param scope The scope in which to define this construct
+  * @param importToId The construct id used in the generated config for the AwsProvider to import
+  * @param importFromId The id of the existing AwsProvider that should be imported. Refer to the {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs#import import section} in the documentation of this resource for the id to use
+  * @param provider? Optional instance of the provider where the AwsProvider to import is found
+  */
+  public static generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: cdktf.TerraformProvider) {
+        return new cdktf.ImportableResource(scope, importToId, { terraformResourceType: "aws", importId: importFromId, provider });
+      }
 
   // ===========
   // INITIALIZER

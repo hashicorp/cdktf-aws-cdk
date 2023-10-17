@@ -292,6 +292,7 @@ public resetTags(): void
 | <code><a href="#@cdktf/aws-cdk.dataAwsConnectHoursOfOperation.DataAwsConnectHoursOfOperation.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@cdktf/aws-cdk.dataAwsConnectHoursOfOperation.DataAwsConnectHoursOfOperation.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsConnectHoursOfOperation.DataAwsConnectHoursOfOperation.isTerraformDataSource">isTerraformDataSource</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dataAwsConnectHoursOfOperation.DataAwsConnectHoursOfOperation.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a DataAwsConnectHoursOfOperation resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -338,6 +339,50 @@ dataAwsConnectHoursOfOperation.DataAwsConnectHoursOfOperation.isTerraformDataSou
 ###### `x`<sup>Required</sup> <a name="x" id="@cdktf/aws-cdk.dataAwsConnectHoursOfOperation.DataAwsConnectHoursOfOperation.isTerraformDataSource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@cdktf/aws-cdk.dataAwsConnectHoursOfOperation.DataAwsConnectHoursOfOperation.generateConfigForImport"></a>
+
+```typescript
+import { dataAwsConnectHoursOfOperation } from '@cdktf/aws-cdk'
+
+dataAwsConnectHoursOfOperation.DataAwsConnectHoursOfOperation.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a DataAwsConnectHoursOfOperation resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@cdktf/aws-cdk.dataAwsConnectHoursOfOperation.DataAwsConnectHoursOfOperation.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@cdktf/aws-cdk.dataAwsConnectHoursOfOperation.DataAwsConnectHoursOfOperation.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the DataAwsConnectHoursOfOperation to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@cdktf/aws-cdk.dataAwsConnectHoursOfOperation.DataAwsConnectHoursOfOperation.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing DataAwsConnectHoursOfOperation that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/connect_hours_of_operation#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@cdktf/aws-cdk.dataAwsConnectHoursOfOperation.DataAwsConnectHoursOfOperation.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the DataAwsConnectHoursOfOperation to import is found.
 
 ---
 
