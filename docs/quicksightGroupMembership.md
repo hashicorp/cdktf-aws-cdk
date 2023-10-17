@@ -60,6 +60,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
 | <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
+| <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
 | <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.getBooleanAttribute">getBooleanAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.getBooleanMapAttribute">getBooleanMapAttribute</a></code> | *No description.* |
@@ -69,7 +70,9 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
 | <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.resetAwsAccountId">resetAwsAccountId</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.resetId">resetId</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.resetNamespace">resetNamespace</a></code> | *No description.* |
@@ -139,6 +142,22 @@ public toTerraform(): any
 ```
 
 Adds this resource to the terraform JSON output.
+
+##### `addMoveTarget` <a name="addMoveTarget" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.addMoveTarget"></a>
+
+```typescript
+public addMoveTarget(moveTarget: string): void
+```
+
+Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.addMoveTarget.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The string move target that will correspond to this resource.
+
+---
 
 ##### `getAnyMapAttribute` <a name="getAnyMapAttribute" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.getAnyMapAttribute"></a>
 
@@ -248,6 +267,24 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `importFrom` <a name="importFrom" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.importFrom"></a>
+
+```typescript
+public importFrom(id: string, provider?: TerraformProvider): void
+```
+
+###### `id`<sup>Required</sup> <a name="id" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.importFrom.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.importFrom.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
 ##### `interpolationForAttribute` <a name="interpolationForAttribute" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.interpolationForAttribute"></a>
 
 ```typescript
@@ -257,6 +294,30 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 ###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.interpolationForAttribute.parameter.terraformAttribute"></a>
 
 - *Type:* string
+
+---
+
+##### `moveTo` <a name="moveTo" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.moveTo"></a>
+
+```typescript
+public moveTo(moveTarget: string, index?: string | number): void
+```
+
+Moves this resource to the target resource given by moveTarget.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.moveTo.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The previously set user defined string set by .addMoveTarget() corresponding to the resource to move to.
+
+---
+
+###### `index`<sup>Optional</sup> <a name="index" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.moveTo.parameter.index"></a>
+
+- *Type:* string | number
+
+Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
 
 ---
 
@@ -285,6 +346,7 @@ public resetNamespace(): void
 | <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.isTerraformResource">isTerraformResource</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a QuicksightGroupMembership resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -331,6 +393,50 @@ quicksightGroupMembership.QuicksightGroupMembership.isTerraformResource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.isTerraformResource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.generateConfigForImport"></a>
+
+```typescript
+import { quicksightGroupMembership } from '@cdktf/aws-cdk'
+
+quicksightGroupMembership.QuicksightGroupMembership.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a QuicksightGroupMembership resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the QuicksightGroupMembership to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing QuicksightGroupMembership that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/quicksight_group_membership#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@cdktf/aws-cdk.quicksightGroupMembership.QuicksightGroupMembership.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the QuicksightGroupMembership to import is found.
 
 ---
 

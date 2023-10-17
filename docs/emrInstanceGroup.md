@@ -60,6 +60,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
 | <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
+| <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
 | <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.getBooleanAttribute">getBooleanAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.getBooleanMapAttribute">getBooleanMapAttribute</a></code> | *No description.* |
@@ -69,7 +70,9 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
 | <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.putEbsConfig">putEbsConfig</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.resetAutoscalingPolicy">resetAutoscalingPolicy</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.resetBidPrice">resetBidPrice</a></code> | *No description.* |
@@ -145,6 +148,22 @@ public toTerraform(): any
 ```
 
 Adds this resource to the terraform JSON output.
+
+##### `addMoveTarget` <a name="addMoveTarget" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.addMoveTarget"></a>
+
+```typescript
+public addMoveTarget(moveTarget: string): void
+```
+
+Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.addMoveTarget.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The string move target that will correspond to this resource.
+
+---
 
 ##### `getAnyMapAttribute` <a name="getAnyMapAttribute" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.getAnyMapAttribute"></a>
 
@@ -254,6 +273,24 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `importFrom` <a name="importFrom" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.importFrom"></a>
+
+```typescript
+public importFrom(id: string, provider?: TerraformProvider): void
+```
+
+###### `id`<sup>Required</sup> <a name="id" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.importFrom.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.importFrom.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
 ##### `interpolationForAttribute` <a name="interpolationForAttribute" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.interpolationForAttribute"></a>
 
 ```typescript
@@ -263,6 +300,30 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 ###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.interpolationForAttribute.parameter.terraformAttribute"></a>
 
 - *Type:* string
+
+---
+
+##### `moveTo` <a name="moveTo" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.moveTo"></a>
+
+```typescript
+public moveTo(moveTarget: string, index?: string | number): void
+```
+
+Moves this resource to the target resource given by moveTarget.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.moveTo.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The previously set user defined string set by .addMoveTarget() corresponding to the resource to move to.
+
+---
+
+###### `index`<sup>Optional</sup> <a name="index" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.moveTo.parameter.index"></a>
+
+- *Type:* string | number
+
+Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
 
 ---
 
@@ -333,6 +394,7 @@ public resetName(): void
 | <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.isTerraformResource">isTerraformResource</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a EmrInstanceGroup resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -379,6 +441,50 @@ emrInstanceGroup.EmrInstanceGroup.isTerraformResource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.isTerraformResource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.generateConfigForImport"></a>
+
+```typescript
+import { emrInstanceGroup } from '@cdktf/aws-cdk'
+
+emrInstanceGroup.EmrInstanceGroup.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a EmrInstanceGroup resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the EmrInstanceGroup to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing EmrInstanceGroup that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/emr_instance_group#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@cdktf/aws-cdk.emrInstanceGroup.EmrInstanceGroup.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the EmrInstanceGroup to import is found.
 
 ---
 

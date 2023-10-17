@@ -271,6 +271,7 @@ public resetId(): void
 | <code><a href="#@cdktf/aws-cdk.dataAwsKmsAlias.DataAwsKmsAlias.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@cdktf/aws-cdk.dataAwsKmsAlias.DataAwsKmsAlias.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsKmsAlias.DataAwsKmsAlias.isTerraformDataSource">isTerraformDataSource</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dataAwsKmsAlias.DataAwsKmsAlias.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a DataAwsKmsAlias resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -317,6 +318,50 @@ dataAwsKmsAlias.DataAwsKmsAlias.isTerraformDataSource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@cdktf/aws-cdk.dataAwsKmsAlias.DataAwsKmsAlias.isTerraformDataSource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@cdktf/aws-cdk.dataAwsKmsAlias.DataAwsKmsAlias.generateConfigForImport"></a>
+
+```typescript
+import { dataAwsKmsAlias } from '@cdktf/aws-cdk'
+
+dataAwsKmsAlias.DataAwsKmsAlias.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a DataAwsKmsAlias resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@cdktf/aws-cdk.dataAwsKmsAlias.DataAwsKmsAlias.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@cdktf/aws-cdk.dataAwsKmsAlias.DataAwsKmsAlias.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the DataAwsKmsAlias to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@cdktf/aws-cdk.dataAwsKmsAlias.DataAwsKmsAlias.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing DataAwsKmsAlias that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/kms_alias#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@cdktf/aws-cdk.dataAwsKmsAlias.DataAwsKmsAlias.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the DataAwsKmsAlias to import is found.
 
 ---
 

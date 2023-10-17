@@ -347,6 +347,7 @@ public resetVpcId(): void
 | <code><a href="#@cdktf/aws-cdk.dataAwsSubnet.DataAwsSubnet.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@cdktf/aws-cdk.dataAwsSubnet.DataAwsSubnet.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsSubnet.DataAwsSubnet.isTerraformDataSource">isTerraformDataSource</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dataAwsSubnet.DataAwsSubnet.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a DataAwsSubnet resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -393,6 +394,50 @@ dataAwsSubnet.DataAwsSubnet.isTerraformDataSource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@cdktf/aws-cdk.dataAwsSubnet.DataAwsSubnet.isTerraformDataSource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@cdktf/aws-cdk.dataAwsSubnet.DataAwsSubnet.generateConfigForImport"></a>
+
+```typescript
+import { dataAwsSubnet } from '@cdktf/aws-cdk'
+
+dataAwsSubnet.DataAwsSubnet.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a DataAwsSubnet resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@cdktf/aws-cdk.dataAwsSubnet.DataAwsSubnet.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@cdktf/aws-cdk.dataAwsSubnet.DataAwsSubnet.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the DataAwsSubnet to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@cdktf/aws-cdk.dataAwsSubnet.DataAwsSubnet.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing DataAwsSubnet that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/subnet#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@cdktf/aws-cdk.dataAwsSubnet.DataAwsSubnet.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the DataAwsSubnet to import is found.
 
 ---
 

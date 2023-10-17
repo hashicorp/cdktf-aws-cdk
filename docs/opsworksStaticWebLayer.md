@@ -60,6 +60,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
+| <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.getBooleanAttribute">getBooleanAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.getBooleanMapAttribute">getBooleanMapAttribute</a></code> | *No description.* |
@@ -69,7 +70,9 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.putCloudwatchConfiguration">putCloudwatchConfiguration</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.putEbsVolume">putEbsVolume</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.resetAutoAssignElasticIps">resetAutoAssignElasticIps</a></code> | *No description.* |
@@ -161,6 +164,22 @@ public toTerraform(): any
 ```
 
 Adds this resource to the terraform JSON output.
+
+##### `addMoveTarget` <a name="addMoveTarget" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.addMoveTarget"></a>
+
+```typescript
+public addMoveTarget(moveTarget: string): void
+```
+
+Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.addMoveTarget.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The string move target that will correspond to this resource.
+
+---
 
 ##### `getAnyMapAttribute` <a name="getAnyMapAttribute" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.getAnyMapAttribute"></a>
 
@@ -270,6 +289,24 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `importFrom` <a name="importFrom" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.importFrom"></a>
+
+```typescript
+public importFrom(id: string, provider?: TerraformProvider): void
+```
+
+###### `id`<sup>Required</sup> <a name="id" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.importFrom.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.importFrom.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
 ##### `interpolationForAttribute` <a name="interpolationForAttribute" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.interpolationForAttribute"></a>
 
 ```typescript
@@ -279,6 +316,30 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 ###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.interpolationForAttribute.parameter.terraformAttribute"></a>
 
 - *Type:* string
+
+---
+
+##### `moveTo` <a name="moveTo" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.moveTo"></a>
+
+```typescript
+public moveTo(moveTarget: string, index?: string | number): void
+```
+
+Moves this resource to the target resource given by moveTarget.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.moveTo.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The previously set user defined string set by .addMoveTarget() corresponding to the resource to move to.
+
+---
+
+###### `index`<sup>Optional</sup> <a name="index" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.moveTo.parameter.index"></a>
+
+- *Type:* string | number
+
+Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
 
 ---
 
@@ -451,6 +512,7 @@ public resetUseEbsOptimizedInstances(): void
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.isTerraformResource">isTerraformResource</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a OpsworksStaticWebLayer resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -497,6 +559,50 @@ opsworksStaticWebLayer.OpsworksStaticWebLayer.isTerraformResource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.isTerraformResource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.generateConfigForImport"></a>
+
+```typescript
+import { opsworksStaticWebLayer } from '@cdktf/aws-cdk'
+
+opsworksStaticWebLayer.OpsworksStaticWebLayer.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a OpsworksStaticWebLayer resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the OpsworksStaticWebLayer to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing OpsworksStaticWebLayer that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_static_web_layer#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the OpsworksStaticWebLayer to import is found.
 
 ---
 

@@ -1037,6 +1037,20 @@ export class SagemakerEndpointConfiguration extends cdktf.TerraformResource {
   // =================
   public static readonly tfResourceType = "aws_sagemaker_endpoint_configuration";
 
+  // ==============
+  // STATIC Methods
+  // ==============
+  /**
+  * Generates CDKTF code for importing a SagemakerEndpointConfiguration resource upon running "cdktf plan <stack-name>"
+  * @param scope The scope in which to define this construct
+  * @param importToId The construct id used in the generated config for the SagemakerEndpointConfiguration to import
+  * @param importFromId The id of the existing SagemakerEndpointConfiguration that should be imported. Refer to the {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sagemaker_endpoint_configuration#import import section} in the documentation of this resource for the id to use
+  * @param provider? Optional instance of the provider where the SagemakerEndpointConfiguration to import is found
+  */
+  public static generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: cdktf.TerraformProvider) {
+        return new cdktf.ImportableResource(scope, importToId, { terraformResourceType: "aws_sagemaker_endpoint_configuration", importId: importFromId, provider });
+      }
+
   // ===========
   // INITIALIZER
   // ===========

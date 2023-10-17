@@ -433,18 +433,19 @@
     codemaker "^1.34.0"
     debug "^4.3.2"
 
-"@cdktf/cli-core@0.18.0":
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/@cdktf/cli-core/-/cli-core-0.18.0.tgz#e746441a95ada9f4788ffac33f3bcdc7668dacd1"
-  integrity sha512-LmT9XZ5T3ywlcLGTknNXqXfE2x7lJqTSdS4FuYdtv+Axrc8FxkIMmEQhefr10plto+P8vxdSGw5yHwMdnDv8tA==
+"@cdktf/cli-core@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@cdktf/cli-core/-/cli-core-0.19.0.tgz#ed2bccb413332f8cfb685662d60bcbb17c4d5fdb"
+  integrity sha512-iSkhxuSHEPkPCPwvcM81ytniS3v/3YT+zY/MzeKWVkaMj1hZDF3e2C5gnjOdrb0ZCFIH1+znF+aJK9LiqBoV+Q==
   dependencies:
-    "@cdktf/commons" "0.18.0"
-    "@cdktf/hcl2cdk" "0.18.0"
-    "@cdktf/hcl2json" "0.18.0"
-    "@cdktf/node-pty-prebuilt-multiarch" "0.10.1-pre.10"
-    "@sentry/node" "^6.19.7"
+    "@cdktf/commons" "0.19.0"
+    "@cdktf/hcl2cdk" "0.19.0"
+    "@cdktf/hcl2json" "0.19.0"
+    "@cdktf/node-pty-prebuilt-multiarch" "0.10.1-pre.11"
+    "@cdktf/provider-schema" "0.19.0"
+    "@sentry/node" "^7.64.0"
     archiver "^5.3.1"
-    cdktf "0.18.0"
+    cdktf "0.19.0"
     chalk "^4.1.2"
     chokidar "^3.5.3"
     cli-spinners "2.7.0"
@@ -486,34 +487,35 @@
     yoga-layout-prebuilt "^1.10.0"
     zod "^1.11.17"
 
-"@cdktf/commons@0.18.0":
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/@cdktf/commons/-/commons-0.18.0.tgz#88dfa33777693ee4d65707c44d5a68ede1d2566e"
-  integrity sha512-Ndw+yiAQV0K2gOtpyOHrtlw3GByvrBJKb78qraKD5GmGn9Dw40NAtnnQH+E31U7Hi1iwtSoHY/S3qCK1OozH8w==
+"@cdktf/commons@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@cdktf/commons/-/commons-0.19.0.tgz#e0bc7e428b4689550ac9c652e366116114d09875"
+  integrity sha512-zhqGhx7PWa1lCa1B7RUH1qoln2emrGbGJ3kjRKMOxJxbTKdQBwFUbsaEOiOAVBm0ukTt2DX+VWQc8YPpMgSbgA==
   dependencies:
-    "@npmcli/ci-detect" "^1.4.0"
-    "@sentry/node" "^6.19.7"
-    cdktf "0.18.0"
+    "@sentry/node" "^7.64.0"
+    cdktf "0.19.0"
+    ci-info "^3.8.0"
     codemaker "^1.87.0"
     constructs "^10.0.25"
     cross-spawn "^7.0.3"
     follow-redirects "^1.15.2"
-    fs-extra "^8.1.0"
+    fs-extra "^11.1.1"
     is-valid-domain "^0.1.6"
-    log4js "^6.7.0"
-    uuid "^8.3.2"
+    log4js "^6.9.1"
+    uuid "^9.0.1"
 
-"@cdktf/hcl2cdk@0.18.0":
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/@cdktf/hcl2cdk/-/hcl2cdk-0.18.0.tgz#ca2befbcb0f05a4a9fb8193aa662bdde6003bfbd"
-  integrity sha512-yL2Og55Ga0QT8yR8t6Dbp2CqzAj3TGspMbptcS468BSFq3OxWtOn4d7EzqvNnKBIVJn1fFUSzv8ooZ4feUhH5w==
+"@cdktf/hcl2cdk@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@cdktf/hcl2cdk/-/hcl2cdk-0.19.0.tgz#1077eb093f56424c60315dda350648f1f608fb0d"
+  integrity sha512-43XWR/ZLZVc8amOC6GmyGFkK9doiP9DKMjEDpYEnXCl1UhdFGHHipcSK6fnc30RCIq3KFF9FTuztvUyruToRyA==
   dependencies:
     "@babel/generator" "^7.21.4"
     "@babel/template" "^7.20.7"
     "@babel/types" "^7.21.4"
-    "@cdktf/commons" "0.18.0"
-    "@cdktf/hcl2json" "0.18.0"
-    "@cdktf/provider-generator" "0.18.0"
+    "@cdktf/commons" "0.19.0"
+    "@cdktf/hcl2json" "0.19.0"
+    "@cdktf/provider-generator" "0.19.0"
+    "@cdktf/provider-schema" "0.19.0"
     camelcase "^6.3.0"
     deep-equal "^2.2.0"
     glob "^10.3.3"
@@ -524,33 +526,42 @@
     reserved-words "^0.1.2"
     zod "^3.21.4"
 
-"@cdktf/hcl2json@0.18.0":
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/@cdktf/hcl2json/-/hcl2json-0.18.0.tgz#ad8a296d3b86b4aa0f4e12e27fe1625a46180fa9"
-  integrity sha512-wnnGTdXExmG+HCLsAsce3fOTDBpj8MpadMzKU7hxj+/xdGvACnU0JB7wcK0FRIKlbJFmxgwYzFmVrgd7z3Be/g==
+"@cdktf/hcl2json@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@cdktf/hcl2json/-/hcl2json-0.19.0.tgz#39fb184421b44b35cb69207dd17c7713ac246563"
+  integrity sha512-wo68qo74dTxcZWJkwlhTV+YoVopUUUTpRC8W73HWkaL/lw6GDozh4GHwphagIHYJy07Ecxdx/WTp0sGDBaFBuQ==
   dependencies:
     fs-extra "^11.1.1"
 
-"@cdktf/node-pty-prebuilt-multiarch@0.10.1-pre.10":
-  version "0.10.1-pre.10"
-  resolved "https://registry.npmjs.org/@cdktf/node-pty-prebuilt-multiarch/-/node-pty-prebuilt-multiarch-0.10.1-pre.10.tgz"
-  integrity sha512-5ysQrHJvqYLYg407KvaDNu+xx68ZGaqeF0SohXe5e4yNqJhPFPUQ536rkReQcPc2yZiF5PDmmvf5T9MOacHpSQ==
+"@cdktf/node-pty-prebuilt-multiarch@0.10.1-pre.11":
+  version "0.10.1-pre.11"
+  resolved "https://registry.yarnpkg.com/@cdktf/node-pty-prebuilt-multiarch/-/node-pty-prebuilt-multiarch-0.10.1-pre.11.tgz#07ab168845047e5879e737ac5ab0919a49ba89a8"
+  integrity sha512-qvga/nzEtdCJMu/6jJfDqpzbRejvXtNhWFnbubfuYyN5nMNORNXX+POT4j+mQSDQar5bIQ1a812szw/zr47cfw==
   dependencies:
     nan "^2.14.2"
     prebuild-install "^7.1.1"
 
-"@cdktf/provider-generator@0.18.0":
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/@cdktf/provider-generator/-/provider-generator-0.18.0.tgz#250f24ae488b5f620224e12f3e3e027cdc0cdb32"
-  integrity sha512-w3MqL9OY41HlC6hAtVQ9AQQFZRekzRhOEXmw7VLBQBf0HHvdNB/sgeyvK1Pbs/SpkzgKWTMP7RWbu0sFtC7KTQ==
+"@cdktf/provider-generator@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@cdktf/provider-generator/-/provider-generator-0.19.0.tgz#348e8e2744e61a7a40340f634b7bb9e12a7fafc3"
+  integrity sha512-+1qKfvSA4YH+i6PBbuDwj8xP5NNCsyeF5KR6S/2NqBxz/4w4xptB+h/IehiVGSHtwI2/XmL4bF3gLpNB9Q2dGg==
   dependencies:
-    "@cdktf/commons" "0.18.0"
-    "@cdktf/hcl2json" "0.18.0"
-    "@types/node" "16.18.23"
+    "@cdktf/commons" "0.19.0"
+    "@cdktf/hcl2json" "0.19.0"
+    "@cdktf/provider-schema" "0.19.0"
+    "@types/node" "18.11.19"
     codemaker "^1.87.0"
     deepmerge "^4.2.2"
     fs-extra "^8.1.0"
     jsii-srcmak "^0.1.951"
+
+"@cdktf/provider-schema@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@cdktf/provider-schema/-/provider-schema-0.19.0.tgz#3377e69ae7150056eb59f2b542e5fa5b83493f51"
+  integrity sha512-tfl6EqzBGL+qRBc+lgtb4qZvj8J4R+htF+N6BmrFnz9NiplRJmy1xzRMZ1fsrboeH0QExlyFYdIaZ97Q3CtD7A==
+  dependencies:
+    "@cdktf/commons" "0.19.0"
+    fs-extra "^11.1.1"
 
 "@inquirer/checkbox@^1.3.3":
   version "1.3.3"
@@ -973,71 +984,56 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@npmcli/ci-detect@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.npmjs.org/@npmcli/ci-detect/-/ci-detect-1.4.0.tgz"
-  integrity sha512-3BGrt6FLjqM6br5AhWRKTr3u5GIVkjRYeAFrMp3HjnfICrg4xOrVRwFavKT6tsp++bq5dluL5t8ME/Nha/6c1Q==
-
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
   resolved "https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
-"@sentry/core@6.19.7":
-  version "6.19.7"
-  resolved "https://registry.npmjs.org/@sentry/core/-/core-6.19.7.tgz"
-  integrity sha512-tOfZ/umqB2AcHPGbIrsFLcvApdTm9ggpi/kQZFkej7kMphjT+SGBiQfYtjyg9jcRW+ilAR4JXC9BGKsdEQ+8Vw==
+"@sentry-internal/tracing@7.74.0":
+  version "7.74.0"
+  resolved "https://registry.yarnpkg.com/@sentry-internal/tracing/-/tracing-7.74.0.tgz#11b0762d0b18b01cc18dfb1e40bbaa41c6f97452"
+  integrity sha512-JK6IRGgdtZjswGfaGIHNWIThffhOHzVIIaGmglui+VFIzOsOqePjoxaDV0MEvzafxXZD7eWqGE5RGuZ0n6HFVg==
   dependencies:
-    "@sentry/hub" "6.19.7"
-    "@sentry/minimal" "6.19.7"
-    "@sentry/types" "6.19.7"
-    "@sentry/utils" "6.19.7"
-    tslib "^1.9.3"
+    "@sentry/core" "7.74.0"
+    "@sentry/types" "7.74.0"
+    "@sentry/utils" "7.74.0"
+    tslib "^2.4.1 || ^1.9.3"
 
-"@sentry/hub@6.19.7":
-  version "6.19.7"
-  resolved "https://registry.npmjs.org/@sentry/hub/-/hub-6.19.7.tgz"
-  integrity sha512-y3OtbYFAqKHCWezF0EGGr5lcyI2KbaXW2Ik7Xp8Mu9TxbSTuwTe4rTntwg8ngPjUQU3SUHzgjqVB8qjiGqFXCA==
+"@sentry/core@7.74.0":
+  version "7.74.0"
+  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-7.74.0.tgz#2cfcb5133a4a3f82fbac09d3573ea9f508fb7c67"
+  integrity sha512-83NRuqn7nDZkSVBN5yJQqcpXDG4yMYiB7TkYUKrGTzBpRy6KUOrkCdybuKk0oraTIGiGSe5WEwCFySiNgR9FzA==
   dependencies:
-    "@sentry/types" "6.19.7"
-    "@sentry/utils" "6.19.7"
-    tslib "^1.9.3"
+    "@sentry/types" "7.74.0"
+    "@sentry/utils" "7.74.0"
+    tslib "^2.4.1 || ^1.9.3"
 
-"@sentry/minimal@6.19.7":
-  version "6.19.7"
-  resolved "https://registry.npmjs.org/@sentry/minimal/-/minimal-6.19.7.tgz"
-  integrity sha512-wcYmSJOdvk6VAPx8IcmZgN08XTXRwRtB1aOLZm+MVHjIZIhHoBGZJYTVQS/BWjldsamj2cX3YGbGXNunaCfYJQ==
+"@sentry/node@^7.64.0":
+  version "7.74.0"
+  resolved "https://registry.yarnpkg.com/@sentry/node/-/node-7.74.0.tgz#c6b6704a3a238155f047972fd4c6944004347aba"
+  integrity sha512-uBmW2/z0cz/WFIG74ZF7lSipO0XNzMf9yrdqnZXnGDYsUZE4I4QiqDN0hNi6fkTgf9MYRC8uFem2OkAvyPJ74Q==
   dependencies:
-    "@sentry/hub" "6.19.7"
-    "@sentry/types" "6.19.7"
-    tslib "^1.9.3"
-
-"@sentry/node@^6.19.7":
-  version "6.19.7"
-  resolved "https://registry.npmjs.org/@sentry/node/-/node-6.19.7.tgz"
-  integrity sha512-gtmRC4dAXKODMpHXKfrkfvyBL3cI8y64vEi3fDD046uqYcrWdgoQsffuBbxMAizc6Ez1ia+f0Flue6p15Qaltg==
-  dependencies:
-    "@sentry/core" "6.19.7"
-    "@sentry/hub" "6.19.7"
-    "@sentry/types" "6.19.7"
-    "@sentry/utils" "6.19.7"
-    cookie "^0.4.1"
+    "@sentry-internal/tracing" "7.74.0"
+    "@sentry/core" "7.74.0"
+    "@sentry/types" "7.74.0"
+    "@sentry/utils" "7.74.0"
+    cookie "^0.5.0"
     https-proxy-agent "^5.0.0"
     lru_map "^0.3.3"
-    tslib "^1.9.3"
+    tslib "^2.4.1 || ^1.9.3"
 
-"@sentry/types@6.19.7":
-  version "6.19.7"
-  resolved "https://registry.npmjs.org/@sentry/types/-/types-6.19.7.tgz"
-  integrity sha512-jH84pDYE+hHIbVnab3Hr+ZXr1v8QABfhx39KknxqKWr2l0oEItzepV0URvbEhB446lk/S/59230dlUUIBGsXbg==
+"@sentry/types@7.74.0":
+  version "7.74.0"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-7.74.0.tgz#810a62cd28db21c5f15f131da6525d7ddf7a29db"
+  integrity sha512-rI5eIRbUycWjn6s6o3yAjjWtIvYSxZDdnKv5je2EZINfLKcMPj1dkl6wQd2F4y7gLfD/N6Y0wZYIXC3DUdJQQg==
 
-"@sentry/utils@6.19.7":
-  version "6.19.7"
-  resolved "https://registry.npmjs.org/@sentry/utils/-/utils-6.19.7.tgz"
-  integrity sha512-z95ECmE3i9pbWoXQrD/7PgkBAzJYR+iXtPuTkpBjDKs86O3mT+PXOT3BAn79w2wkn7/i3vOGD2xVr1uiMl26dA==
+"@sentry/utils@7.74.0":
+  version "7.74.0"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-7.74.0.tgz#e0a16d345b2af6f8b09d157c8c8a3145d7a2070a"
+  integrity sha512-k3np8nuTPtx5KDODPtULfFln4UXdE56MZCcF19Jv6Ljxf+YN/Ady1+0Oi3e0XoSvFpWNyWnglauT7M65qCE6kg==
   dependencies:
-    "@sentry/types" "6.19.7"
-    tslib "^1.9.3"
+    "@sentry/types" "7.74.0"
+    tslib "^2.4.1 || ^1.9.3"
 
 "@sinclair/typebox@^0.27.8":
   version "0.27.8"
@@ -1130,10 +1126,10 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-16.18.38.tgz"
   integrity sha512-6sfo1qTulpVbkxECP+AVrHV9OoJqhzCsfTNp5NIG+enM4HyM3HvZCO798WShIXBN0+QtDIcutJCjsVYnQP5rIQ==
 
-"@types/node@16.18.23":
-  version "16.18.23"
-  resolved "https://registry.npmjs.org/@types/node/-/node-16.18.23.tgz"
-  integrity sha512-XAMpaw1s1+6zM+jn2tmw8MyaRDIJfXxqmIQIS0HfoGYPuf7dUWeiUKopwq13KFX9lEp1+THGtlaaYx39Nxr58g==
+"@types/node@18.11.19":
+  version "18.11.19"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.19.tgz#35e26df9ec441ab99d73e99e9aca82935eea216d"
+  integrity sha512-YUgMWAQBWLObABqrvx8qKO1enAvBUdjZOAWQ5grBAkp5LQv45jBvYKZ3oFS9iKRCQyFjqw6iuEa1vmFqtxYLZw==
 
 "@types/node@^18":
   version "18.17.9"
@@ -1536,18 +1532,19 @@ case@1.6.3, case@^1.6.3:
   resolved "https://registry.npmjs.org/case/-/case-1.6.3.tgz"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdktf-cli@0.18.0:
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/cdktf-cli/-/cdktf-cli-0.18.0.tgz#cb77240ee522cfca28d9a4e83b6820506deb0c69"
-  integrity sha512-MDXJScjMuBzhNYbRgJCWldL7AJ4T7InWPUGz6LKsX+vfCZqzMwoMXGswA40Uvxd4KGX/PhRRsw6s2jQ4dTatYw==
+cdktf-cli@0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/cdktf-cli/-/cdktf-cli-0.19.0.tgz#d0278749beed81a8b450c4b1c41de6046967187e"
+  integrity sha512-WGLs0IOgig8WDO2E6RYWtG5lCDL+ICX+plFipWT8JhuJpemxBhk8pO8uhDSWvBF85ZpVecQv+szfQVmXq8mdUg==
   dependencies:
-    "@cdktf/cli-core" "0.18.0"
-    "@cdktf/commons" "0.18.0"
-    "@cdktf/hcl2cdk" "0.18.0"
-    "@cdktf/hcl2json" "0.18.0"
+    "@cdktf/cli-core" "0.19.0"
+    "@cdktf/commons" "0.19.0"
+    "@cdktf/hcl2cdk" "0.19.0"
+    "@cdktf/hcl2json" "0.19.0"
     "@inquirer/prompts" "^2.3.0"
-    "@sentry/node" "^6.19.7"
-    cdktf "0.18.0"
+    "@sentry/node" "^7.64.0"
+    cdktf "0.19.0"
+    ci-info "^3.8.0"
     codemaker "^1.87.0"
     constructs "^10.0.25"
     cross-spawn "^7.0.3"
@@ -1566,10 +1563,10 @@ cdktf-cli@0.18.0:
     yoga-layout-prebuilt "^1.10.0"
     zod "^1.11.17"
 
-cdktf@0.18.0:
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/cdktf/-/cdktf-0.18.0.tgz#b79eb924afff7af38877bb4ffdfe3bdf954131b0"
-  integrity sha512-iTWy2g0mCE2YW2hPxdWEzMwCVgyzDyheHWJTS4OcLZsR+lXETFX0lonoc5XGnX8CHBL4AbFY+EEqCUs5v7A4bQ==
+cdktf@0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/cdktf/-/cdktf-0.19.0.tgz#097a3241b95e77eeab8ae1f7a714bf45dc6ca55b"
+  integrity sha512-5tcNhvrvsE9WawC5cPwV7B9ATQ5lWNjyCJN7EnMofxTtkBEdnnGx0esC+vpNO4Fs0LhmV37qCUlm+K6anZaPYw==
   dependencies:
     archiver "5.3.1"
     json-stable-stringify "^1.0.2"
@@ -1649,6 +1646,11 @@ ci-info@^3.2.0:
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-3.8.0.tgz#81408265a5380c929f0bc665d62256628ce9ef91"
   integrity sha512-eXTggHWSooYhq49F2opQhuHWgzucfF2YgODK4e1566GQs5BIfP30B0oenwBJHfWxAs2fyPB1s7Mg949zLf61Yw==
+
+ci-info@^3.8.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-3.9.0.tgz#4279a62028a7b1f262f3473fc9605f5e218c59b4"
+  integrity sha512-NIxF55hv4nSqQswkAeiOi1r83xy8JldOFDTWiug55KBu9Jnblncd2U6ViHmYgHf01TPZS77NJBhBMKdWj9HQMQ==
 
 cjs-module-lexer@^1.0.0:
   version "1.2.3"
@@ -1826,10 +1828,10 @@ convert-to-spaces@^1.0.1:
   resolved "https://registry.npmjs.org/convert-to-spaces/-/convert-to-spaces-1.0.2.tgz"
   integrity sha512-cj09EBuObp9gZNQCzc7hByQyrs6jVGE+o9kSJmeUoj+GiPiJvi5LYqEH/Hmme4+MTLHM+Ejtq+FChpjjEnsPdQ==
 
-cookie@^0.4.1:
-  version "0.4.2"
-  resolved "https://registry.npmjs.org/cookie/-/cookie-0.4.2.tgz"
-  integrity sha512-aSWTXFzaKWkvHO1Ny/s+ePFpvKsPnjc551iI41v3ny/ow6tBG5Vd+FuqGNhh1LxOmVzOlGUriIlOaokOvhaStA==
+cookie@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.5.0.tgz#d1f5d71adec6558c58f389987c366aa47e994f8b"
+  integrity sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==
 
 core-util-is@~1.0.0:
   version "1.0.3"
@@ -4610,15 +4612,15 @@ ts-jest@^29.1.1:
     semver "^7.5.3"
     yargs-parser "^21.0.1"
 
-tslib@^1.9.3:
-  version "1.14.1"
-  resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
-  integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
-
 tslib@^2.0.3:
   version "2.6.0"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.0.tgz"
   integrity sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==
+
+"tslib@^2.4.1 || ^1.9.3":
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.2.tgz#703ac29425e7b37cd6fd456e92404d46d1f3e4ae"
+  integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
 
 tunnel-agent@^0.6.0:
   version "0.6.0"
@@ -4710,6 +4712,11 @@ uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.npmjs.org/uuid/-/uuid-8.3.2.tgz"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+
+uuid@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.1.tgz#e188d4c8853cc722220392c424cd637f32293f30"
+  integrity sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==
 
 v8-to-istanbul@^9.0.1:
   version "9.1.0"

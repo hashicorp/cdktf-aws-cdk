@@ -278,6 +278,7 @@ public resetTags(): void
 | <code><a href="#@cdktf/aws-cdk.dataAwsCodestarconnectionsConnection.DataAwsCodestarconnectionsConnection.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@cdktf/aws-cdk.dataAwsCodestarconnectionsConnection.DataAwsCodestarconnectionsConnection.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsCodestarconnectionsConnection.DataAwsCodestarconnectionsConnection.isTerraformDataSource">isTerraformDataSource</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dataAwsCodestarconnectionsConnection.DataAwsCodestarconnectionsConnection.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a DataAwsCodestarconnectionsConnection resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -324,6 +325,50 @@ dataAwsCodestarconnectionsConnection.DataAwsCodestarconnectionsConnection.isTerr
 ###### `x`<sup>Required</sup> <a name="x" id="@cdktf/aws-cdk.dataAwsCodestarconnectionsConnection.DataAwsCodestarconnectionsConnection.isTerraformDataSource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@cdktf/aws-cdk.dataAwsCodestarconnectionsConnection.DataAwsCodestarconnectionsConnection.generateConfigForImport"></a>
+
+```typescript
+import { dataAwsCodestarconnectionsConnection } from '@cdktf/aws-cdk'
+
+dataAwsCodestarconnectionsConnection.DataAwsCodestarconnectionsConnection.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a DataAwsCodestarconnectionsConnection resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@cdktf/aws-cdk.dataAwsCodestarconnectionsConnection.DataAwsCodestarconnectionsConnection.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@cdktf/aws-cdk.dataAwsCodestarconnectionsConnection.DataAwsCodestarconnectionsConnection.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the DataAwsCodestarconnectionsConnection to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@cdktf/aws-cdk.dataAwsCodestarconnectionsConnection.DataAwsCodestarconnectionsConnection.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing DataAwsCodestarconnectionsConnection that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/codestarconnections_connection#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@cdktf/aws-cdk.dataAwsCodestarconnectionsConnection.DataAwsCodestarconnectionsConnection.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the DataAwsCodestarconnectionsConnection to import is found.
 
 ---
 

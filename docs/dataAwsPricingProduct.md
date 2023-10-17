@@ -284,6 +284,7 @@ public resetId(): void
 | <code><a href="#@cdktf/aws-cdk.dataAwsPricingProduct.DataAwsPricingProduct.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@cdktf/aws-cdk.dataAwsPricingProduct.DataAwsPricingProduct.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.dataAwsPricingProduct.DataAwsPricingProduct.isTerraformDataSource">isTerraformDataSource</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.dataAwsPricingProduct.DataAwsPricingProduct.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a DataAwsPricingProduct resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -330,6 +331,50 @@ dataAwsPricingProduct.DataAwsPricingProduct.isTerraformDataSource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@cdktf/aws-cdk.dataAwsPricingProduct.DataAwsPricingProduct.isTerraformDataSource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@cdktf/aws-cdk.dataAwsPricingProduct.DataAwsPricingProduct.generateConfigForImport"></a>
+
+```typescript
+import { dataAwsPricingProduct } from '@cdktf/aws-cdk'
+
+dataAwsPricingProduct.DataAwsPricingProduct.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a DataAwsPricingProduct resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@cdktf/aws-cdk.dataAwsPricingProduct.DataAwsPricingProduct.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@cdktf/aws-cdk.dataAwsPricingProduct.DataAwsPricingProduct.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the DataAwsPricingProduct to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@cdktf/aws-cdk.dataAwsPricingProduct.DataAwsPricingProduct.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing DataAwsPricingProduct that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/pricing_product#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@cdktf/aws-cdk.dataAwsPricingProduct.DataAwsPricingProduct.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the DataAwsPricingProduct to import is found.
 
 ---
 

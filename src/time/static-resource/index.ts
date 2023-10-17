@@ -39,6 +39,20 @@ export class StaticResource extends cdktf.TerraformResource {
   // =================
   public static readonly tfResourceType = "time_static";
 
+  // ==============
+  // STATIC Methods
+  // ==============
+  /**
+  * Generates CDKTF code for importing a StaticResource resource upon running "cdktf plan <stack-name>"
+  * @param scope The scope in which to define this construct
+  * @param importToId The construct id used in the generated config for the StaticResource to import
+  * @param importFromId The id of the existing StaticResource that should be imported. Refer to the {@link https://registry.terraform.io/providers/hashicorp/time/0.7.2/docs/resources/static#import import section} in the documentation of this resource for the id to use
+  * @param provider? Optional instance of the provider where the StaticResource to import is found
+  */
+  public static generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: cdktf.TerraformProvider) {
+        return new cdktf.ImportableResource(scope, importToId, { terraformResourceType: "time_static", importId: importFromId, provider });
+      }
+
   // ===========
   // INITIALIZER
   // ===========
