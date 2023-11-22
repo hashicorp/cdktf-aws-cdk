@@ -23,6 +23,6 @@ for example in $(find "$PROJECT_ROOT/examples" -mindepth 1 -maxdepth 1 -type d);
 done
 
 echo "Updating README"
-sed -i 's/`cdktf` >= (\d+)\.(\d+)\.(\d+)/`cdktf` >= '"$CDKTF_VERSION"'/' "$PROJECT_ROOT/README.md"
+sed -i 's/`cdktf` >= .*/`cdktf` >= '"$CDKTF_VERSION"'/' "$PROJECT_ROOT/README.md"
 
 echo "Done"
