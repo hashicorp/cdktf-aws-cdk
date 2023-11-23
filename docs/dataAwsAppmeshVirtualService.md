@@ -1,7 +1,3 @@
-# `data_aws_appmesh_virtual_service`
-
-Refer to the Terraform Registory for docs: [`data_aws_appmesh_virtual_service`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/appmesh_virtual_service).
-
 # `dataAwsAppmeshVirtualService` Submodule <a name="`dataAwsAppmeshVirtualService` Submodule" id="@cdktf/aws-cdk.dataAwsAppmeshVirtualService"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

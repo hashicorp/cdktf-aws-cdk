@@ -1,7 +1,3 @@
-# `aws_fsx_data_repository_association`
-
-Refer to the Terraform Registory for docs: [`aws_fsx_data_repository_association`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/fsx_data_repository_association).
-
 # `fsxDataRepositoryAssociation` Submodule <a name="`fsxDataRepositoryAssociation` Submodule" id="@cdktf/aws-cdk.fsxDataRepositoryAssociation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

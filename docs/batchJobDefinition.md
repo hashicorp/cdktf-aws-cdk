@@ -1,7 +1,3 @@
-# `aws_batch_job_definition`
-
-Refer to the Terraform Registory for docs: [`aws_batch_job_definition`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/batch_job_definition).
-
 # `batchJobDefinition` Submodule <a name="`batchJobDefinition` Submodule" id="@cdktf/aws-cdk.batchJobDefinition"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_sagemaker_app`
-
-Refer to the Terraform Registory for docs: [`aws_sagemaker_app`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sagemaker_app).
-
 # `sagemakerApp` Submodule <a name="`sagemakerApp` Submodule" id="@cdktf/aws-cdk.sagemakerApp"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

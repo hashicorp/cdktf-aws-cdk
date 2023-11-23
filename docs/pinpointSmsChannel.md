@@ -1,7 +1,3 @@
-# `aws_pinpoint_sms_channel`
-
-Refer to the Terraform Registory for docs: [`aws_pinpoint_sms_channel`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/pinpoint_sms_channel).
-
 # `pinpointSmsChannel` Submodule <a name="`pinpointSmsChannel` Submodule" id="@cdktf/aws-cdk.pinpointSmsChannel"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

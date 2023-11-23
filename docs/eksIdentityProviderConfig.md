@@ -1,7 +1,3 @@
-# `aws_eks_identity_provider_config`
-
-Refer to the Terraform Registory for docs: [`aws_eks_identity_provider_config`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/eks_identity_provider_config).
-
 # `eksIdentityProviderConfig` Submodule <a name="`eksIdentityProviderConfig` Submodule" id="@cdktf/aws-cdk.eksIdentityProviderConfig"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

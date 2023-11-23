@@ -1,7 +1,3 @@
-# `aws_cloudhsm_v2_hsm`
-
-Refer to the Terraform Registory for docs: [`aws_cloudhsm_v2_hsm`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cloudhsm_v2_hsm).
-
 # `cloudhsmV2Hsm` Submodule <a name="`cloudhsmV2Hsm` Submodule" id="@cdktf/aws-cdk.cloudhsmV2Hsm"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

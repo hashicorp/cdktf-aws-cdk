@@ -1,7 +1,3 @@
-# `data_aws_kinesis_stream_consumer`
-
-Refer to the Terraform Registory for docs: [`data_aws_kinesis_stream_consumer`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/kinesis_stream_consumer).
-
 # `dataAwsKinesisStreamConsumer` Submodule <a name="`dataAwsKinesisStreamConsumer` Submodule" id="@cdktf/aws-cdk.dataAwsKinesisStreamConsumer"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

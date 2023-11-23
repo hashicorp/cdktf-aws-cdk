@@ -1,7 +1,3 @@
-# `aws_glue_registry`
-
-Refer to the Terraform Registory for docs: [`aws_glue_registry`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_registry).
-
 # `glueRegistry` Submodule <a name="`glueRegistry` Submodule" id="@cdktf/aws-cdk.glueRegistry"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

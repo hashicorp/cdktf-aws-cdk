@@ -1,7 +1,3 @@
-# `data_aws_alb`
-
-Refer to the Terraform Registory for docs: [`data_aws_alb`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/alb).
-
 # `dataAwsAlb` Submodule <a name="`dataAwsAlb` Submodule" id="@cdktf/aws-cdk.dataAwsAlb"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

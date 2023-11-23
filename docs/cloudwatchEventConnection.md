@@ -1,7 +1,3 @@
-# `aws_cloudwatch_event_connection`
-
-Refer to the Terraform Registory for docs: [`aws_cloudwatch_event_connection`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cloudwatch_event_connection).
-
 # `cloudwatchEventConnection` Submodule <a name="`cloudwatchEventConnection` Submodule" id="@cdktf/aws-cdk.cloudwatchEventConnection"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

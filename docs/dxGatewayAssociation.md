@@ -1,7 +1,3 @@
-# `aws_dx_gateway_association`
-
-Refer to the Terraform Registory for docs: [`aws_dx_gateway_association`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dx_gateway_association).
-
 # `dxGatewayAssociation` Submodule <a name="`dxGatewayAssociation` Submodule" id="@cdktf/aws-cdk.dxGatewayAssociation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `data_aws_servicecatalog_launch_paths`
-
-Refer to the Terraform Registory for docs: [`data_aws_servicecatalog_launch_paths`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/servicecatalog_launch_paths).
-
 # `dataAwsServicecatalogLaunchPaths` Submodule <a name="`dataAwsServicecatalogLaunchPaths` Submodule" id="@cdktf/aws-cdk.dataAwsServicecatalogLaunchPaths"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

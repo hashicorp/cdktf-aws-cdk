@@ -1,7 +1,3 @@
-# `aws_elasticsearch_domain_saml_options`
-
-Refer to the Terraform Registory for docs: [`aws_elasticsearch_domain_saml_options`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/elasticsearch_domain_saml_options).
-
 # `elasticsearchDomainSamlOptions` Submodule <a name="`elasticsearchDomainSamlOptions` Submodule" id="@cdktf/aws-cdk.elasticsearchDomainSamlOptions"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

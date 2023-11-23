@@ -1,7 +1,3 @@
-# `aws_vpc_peering_connection_accepter`
-
-Refer to the Terraform Registory for docs: [`aws_vpc_peering_connection_accepter`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/vpc_peering_connection_accepter).
-
 # `vpcPeeringConnectionAccepter` Submodule <a name="`vpcPeeringConnectionAccepter` Submodule" id="@cdktf/aws-cdk.vpcPeeringConnectionAccepter"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_codebuild_report_group`
-
-Refer to the Terraform Registory for docs: [`aws_codebuild_report_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/codebuild_report_group).
-
 # `codebuildReportGroup` Submodule <a name="`codebuildReportGroup` Submodule" id="@cdktf/aws-cdk.codebuildReportGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `data_aws_elasticache_user`
-
-Refer to the Terraform Registory for docs: [`data_aws_elasticache_user`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/elasticache_user).
-
 # `dataAwsElasticacheUser` Submodule <a name="`dataAwsElasticacheUser` Submodule" id="@cdktf/aws-cdk.dataAwsElasticacheUser"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

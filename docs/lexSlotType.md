@@ -1,7 +1,3 @@
-# `aws_lex_slot_type`
-
-Refer to the Terraform Registory for docs: [`aws_lex_slot_type`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/lex_slot_type).
-
 # `lexSlotType` Submodule <a name="`lexSlotType` Submodule" id="@cdktf/aws-cdk.lexSlotType"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_secretsmanager_secret_policy`
-
-Refer to the Terraform Registory for docs: [`aws_secretsmanager_secret_policy`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/secretsmanager_secret_policy).
-
 # `secretsmanagerSecretPolicy` Submodule <a name="`secretsmanagerSecretPolicy` Submodule" id="@cdktf/aws-cdk.secretsmanagerSecretPolicy"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

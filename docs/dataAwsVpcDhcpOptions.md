@@ -1,7 +1,3 @@
-# `data_aws_vpc_dhcp_options`
-
-Refer to the Terraform Registory for docs: [`data_aws_vpc_dhcp_options`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/vpc_dhcp_options).
-
 # `dataAwsVpcDhcpOptions` Submodule <a name="`dataAwsVpcDhcpOptions` Submodule" id="@cdktf/aws-cdk.dataAwsVpcDhcpOptions"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `data_aws_lambda_alias`
-
-Refer to the Terraform Registory for docs: [`data_aws_lambda_alias`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/lambda_alias).
-
 # `dataAwsLambdaAlias` Submodule <a name="`dataAwsLambdaAlias` Submodule" id="@cdktf/aws-cdk.dataAwsLambdaAlias"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

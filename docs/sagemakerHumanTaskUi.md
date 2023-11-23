@@ -1,7 +1,3 @@
-# `aws_sagemaker_human_task_ui`
-
-Refer to the Terraform Registory for docs: [`aws_sagemaker_human_task_ui`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sagemaker_human_task_ui).
-
 # `sagemakerHumanTaskUi` Submodule <a name="`sagemakerHumanTaskUi` Submodule" id="@cdktf/aws-cdk.sagemakerHumanTaskUi"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

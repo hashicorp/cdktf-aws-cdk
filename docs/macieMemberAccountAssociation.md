@@ -1,7 +1,3 @@
-# `aws_macie_member_account_association`
-
-Refer to the Terraform Registory for docs: [`aws_macie_member_account_association`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/macie_member_account_association).
-
 # `macieMemberAccountAssociation` Submodule <a name="`macieMemberAccountAssociation` Submodule" id="@cdktf/aws-cdk.macieMemberAccountAssociation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

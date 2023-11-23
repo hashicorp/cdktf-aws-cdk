@@ -1,7 +1,3 @@
-# `data_aws_pricing_product`
-
-Refer to the Terraform Registory for docs: [`data_aws_pricing_product`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/pricing_product).
-
 # `dataAwsPricingProduct` Submodule <a name="`dataAwsPricingProduct` Submodule" id="@cdktf/aws-cdk.dataAwsPricingProduct"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

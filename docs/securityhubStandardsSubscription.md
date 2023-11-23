@@ -1,7 +1,3 @@
-# `aws_securityhub_standards_subscription`
-
-Refer to the Terraform Registory for docs: [`aws_securityhub_standards_subscription`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/securityhub_standards_subscription).
-
 # `securityhubStandardsSubscription` Submodule <a name="`securityhubStandardsSubscription` Submodule" id="@cdktf/aws-cdk.securityhubStandardsSubscription"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

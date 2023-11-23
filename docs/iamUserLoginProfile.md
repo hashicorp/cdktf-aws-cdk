@@ -1,7 +1,3 @@
-# `aws_iam_user_login_profile`
-
-Refer to the Terraform Registory for docs: [`aws_iam_user_login_profile`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/iam_user_login_profile).
-
 # `iamUserLoginProfile` Submodule <a name="`iamUserLoginProfile` Submodule" id="@cdktf/aws-cdk.iamUserLoginProfile"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

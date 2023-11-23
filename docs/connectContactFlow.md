@@ -1,7 +1,3 @@
-# `aws_connect_contact_flow`
-
-Refer to the Terraform Registory for docs: [`aws_connect_contact_flow`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/connect_contact_flow).
-
 # `connectContactFlow` Submodule <a name="`connectContactFlow` Submodule" id="@cdktf/aws-cdk.connectContactFlow"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

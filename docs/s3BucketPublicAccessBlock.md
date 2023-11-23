@@ -1,7 +1,3 @@
-# `aws_s3_bucket_public_access_block`
-
-Refer to the Terraform Registory for docs: [`aws_s3_bucket_public_access_block`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket_public_access_block).
-
 # `s3BucketPublicAccessBlock` Submodule <a name="`s3BucketPublicAccessBlock` Submodule" id="@cdktf/aws-cdk.s3BucketPublicAccessBlock"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

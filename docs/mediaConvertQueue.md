@@ -1,7 +1,3 @@
-# `aws_media_convert_queue`
-
-Refer to the Terraform Registory for docs: [`aws_media_convert_queue`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/media_convert_queue).
-
 # `mediaConvertQueue` Submodule <a name="`mediaConvertQueue` Submodule" id="@cdktf/aws-cdk.mediaConvertQueue"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

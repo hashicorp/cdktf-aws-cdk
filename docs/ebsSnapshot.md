@@ -1,7 +1,3 @@
-# `aws_ebs_snapshot`
-
-Refer to the Terraform Registory for docs: [`aws_ebs_snapshot`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ebs_snapshot).
-
 # `ebsSnapshot` Submodule <a name="`ebsSnapshot` Submodule" id="@cdktf/aws-cdk.ebsSnapshot"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

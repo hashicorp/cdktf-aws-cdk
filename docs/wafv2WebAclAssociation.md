@@ -1,7 +1,3 @@
-# `aws_wafv2_web_acl_association`
-
-Refer to the Terraform Registory for docs: [`aws_wafv2_web_acl_association`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafv2_web_acl_association).
-
 # `wafv2WebAclAssociation` Submodule <a name="`wafv2WebAclAssociation` Submodule" id="@cdktf/aws-cdk.wafv2WebAclAssociation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `data_aws_cloudfront_distribution`
-
-Refer to the Terraform Registory for docs: [`data_aws_cloudfront_distribution`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/cloudfront_distribution).
-
 # `dataAwsCloudfrontDistribution` Submodule <a name="`dataAwsCloudfrontDistribution` Submodule" id="@cdktf/aws-cdk.dataAwsCloudfrontDistribution"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

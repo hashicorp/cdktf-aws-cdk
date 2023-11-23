@@ -1,7 +1,3 @@
-# `aws_s3_bucket_analytics_configuration`
-
-Refer to the Terraform Registory for docs: [`aws_s3_bucket_analytics_configuration`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket_analytics_configuration).
-
 # `s3BucketAnalyticsConfiguration` Submodule <a name="`s3BucketAnalyticsConfiguration` Submodule" id="@cdktf/aws-cdk.s3BucketAnalyticsConfiguration"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_cloudwatch_event_api_destination`
-
-Refer to the Terraform Registory for docs: [`aws_cloudwatch_event_api_destination`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cloudwatch_event_api_destination).
-
 # `cloudwatchEventApiDestination` Submodule <a name="`cloudwatchEventApiDestination` Submodule" id="@cdktf/aws-cdk.cloudwatchEventApiDestination"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_glue_classifier`
-
-Refer to the Terraform Registory for docs: [`aws_glue_classifier`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_classifier).
-
 # `glueClassifier` Submodule <a name="`glueClassifier` Submodule" id="@cdktf/aws-cdk.glueClassifier"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

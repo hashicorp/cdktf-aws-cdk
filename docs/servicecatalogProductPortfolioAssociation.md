@@ -1,7 +1,3 @@
-# `aws_servicecatalog_product_portfolio_association`
-
-Refer to the Terraform Registory for docs: [`aws_servicecatalog_product_portfolio_association`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/servicecatalog_product_portfolio_association).
-
 # `servicecatalogProductPortfolioAssociation` Submodule <a name="`servicecatalogProductPortfolioAssociation` Submodule" id="@cdktf/aws-cdk.servicecatalogProductPortfolioAssociation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

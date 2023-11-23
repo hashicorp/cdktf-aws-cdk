@@ -1,7 +1,3 @@
-# `data_aws_ebs_default_kms_key`
-
-Refer to the Terraform Registory for docs: [`data_aws_ebs_default_kms_key`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ebs_default_kms_key).
-
 # `dataAwsEbsDefaultKmsKey` Submodule <a name="`dataAwsEbsDefaultKmsKey` Submodule" id="@cdktf/aws-cdk.dataAwsEbsDefaultKmsKey"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_dynamodb_tag`
-
-Refer to the Terraform Registory for docs: [`aws_dynamodb_tag`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dynamodb_tag).
-
 # `dynamodbTag` Submodule <a name="`dynamodbTag` Submodule" id="@cdktf/aws-cdk.dynamodbTag"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_globalaccelerator_endpoint_group`
-
-Refer to the Terraform Registory for docs: [`aws_globalaccelerator_endpoint_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/globalaccelerator_endpoint_group).
-
 # `globalacceleratorEndpointGroup` Submodule <a name="`globalacceleratorEndpointGroup` Submodule" id="@cdktf/aws-cdk.globalacceleratorEndpointGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

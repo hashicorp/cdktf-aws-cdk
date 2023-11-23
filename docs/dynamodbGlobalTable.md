@@ -1,7 +1,3 @@
-# `aws_dynamodb_global_table`
-
-Refer to the Terraform Registory for docs: [`aws_dynamodb_global_table`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dynamodb_global_table).
-
 # `dynamodbGlobalTable` Submodule <a name="`dynamodbGlobalTable` Submodule" id="@cdktf/aws-cdk.dynamodbGlobalTable"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_appautoscaling_policy`
-
-Refer to the Terraform Registory for docs: [`aws_appautoscaling_policy`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appautoscaling_policy).
-
 # `appautoscalingPolicy` Submodule <a name="`appautoscalingPolicy` Submodule" id="@cdktf/aws-cdk.appautoscalingPolicy"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

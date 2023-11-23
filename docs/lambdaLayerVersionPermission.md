@@ -1,7 +1,3 @@
-# `aws_lambda_layer_version_permission`
-
-Refer to the Terraform Registory for docs: [`aws_lambda_layer_version_permission`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/lambda_layer_version_permission).
-
 # `lambdaLayerVersionPermission` Submodule <a name="`lambdaLayerVersionPermission` Submodule" id="@cdktf/aws-cdk.lambdaLayerVersionPermission"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

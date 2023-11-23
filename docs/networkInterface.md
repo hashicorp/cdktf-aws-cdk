@@ -1,7 +1,3 @@
-# `aws_network_interface`
-
-Refer to the Terraform Registory for docs: [`aws_network_interface`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/network_interface).
-
 # `networkInterface` Submodule <a name="`networkInterface` Submodule" id="@cdktf/aws-cdk.networkInterface"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `data_aws_iam_group`
-
-Refer to the Terraform Registory for docs: [`data_aws_iam_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/iam_group).
-
 # `dataAwsIamGroup` Submodule <a name="`dataAwsIamGroup` Submodule" id="@cdktf/aws-cdk.dataAwsIamGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

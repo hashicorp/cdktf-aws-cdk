@@ -1,7 +1,3 @@
-# `aws_efs_file_system_policy`
-
-Refer to the Terraform Registory for docs: [`aws_efs_file_system_policy`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/efs_file_system_policy).
-
 # `efsFileSystemPolicy` Submodule <a name="`efsFileSystemPolicy` Submodule" id="@cdktf/aws-cdk.efsFileSystemPolicy"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

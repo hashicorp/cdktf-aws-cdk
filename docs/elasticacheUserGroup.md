@@ -1,7 +1,3 @@
-# `aws_elasticache_user_group`
-
-Refer to the Terraform Registory for docs: [`aws_elasticache_user_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/elasticache_user_group).
-
 # `elasticacheUserGroup` Submodule <a name="`elasticacheUserGroup` Submodule" id="@cdktf/aws-cdk.elasticacheUserGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

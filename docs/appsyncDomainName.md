@@ -1,7 +1,3 @@
-# `aws_appsync_domain_name`
-
-Refer to the Terraform Registory for docs: [`aws_appsync_domain_name`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appsync_domain_name).
-
 # `appsyncDomainName` Submodule <a name="`appsyncDomainName` Submodule" id="@cdktf/aws-cdk.appsyncDomainName"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

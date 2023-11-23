@@ -1,7 +1,3 @@
-# `aws_route53recoverycontrolconfig_cluster`
-
-Refer to the Terraform Registory for docs: [`aws_route53recoverycontrolconfig_cluster`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/route53recoverycontrolconfig_cluster).
-
 # `route53RecoverycontrolconfigCluster` Submodule <a name="`route53RecoverycontrolconfigCluster` Submodule" id="@cdktf/aws-cdk.route53RecoverycontrolconfigCluster"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

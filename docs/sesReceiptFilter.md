@@ -1,7 +1,3 @@
-# `aws_ses_receipt_filter`
-
-Refer to the Terraform Registory for docs: [`aws_ses_receipt_filter`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ses_receipt_filter).
-
 # `sesReceiptFilter` Submodule <a name="`sesReceiptFilter` Submodule" id="@cdktf/aws-cdk.sesReceiptFilter"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

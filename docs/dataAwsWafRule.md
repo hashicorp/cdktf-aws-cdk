@@ -1,7 +1,3 @@
-# `data_aws_waf_rule`
-
-Refer to the Terraform Registory for docs: [`data_aws_waf_rule`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/waf_rule).
-
 # `dataAwsWafRule` Submodule <a name="`dataAwsWafRule` Submodule" id="@cdktf/aws-cdk.dataAwsWafRule"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

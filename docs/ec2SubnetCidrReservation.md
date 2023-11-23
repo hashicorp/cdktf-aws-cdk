@@ -1,7 +1,3 @@
-# `aws_ec2_subnet_cidr_reservation`
-
-Refer to the Terraform Registory for docs: [`aws_ec2_subnet_cidr_reservation`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ec2_subnet_cidr_reservation).
-
 # `ec2SubnetCidrReservation` Submodule <a name="`ec2SubnetCidrReservation` Submodule" id="@cdktf/aws-cdk.ec2SubnetCidrReservation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

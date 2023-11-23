@@ -1,7 +1,3 @@
-# `aws_fsx_openzfs_file_system`
-
-Refer to the Terraform Registory for docs: [`aws_fsx_openzfs_file_system`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/fsx_openzfs_file_system).
-
 # `fsxOpenzfsFileSystem` Submodule <a name="`fsxOpenzfsFileSystem` Submodule" id="@cdktf/aws-cdk.fsxOpenzfsFileSystem"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

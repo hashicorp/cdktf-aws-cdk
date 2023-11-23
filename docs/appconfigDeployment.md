@@ -1,7 +1,3 @@
-# `aws_appconfig_deployment`
-
-Refer to the Terraform Registory for docs: [`aws_appconfig_deployment`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appconfig_deployment).
-
 # `appconfigDeployment` Submodule <a name="`appconfigDeployment` Submodule" id="@cdktf/aws-cdk.appconfigDeployment"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

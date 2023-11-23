@@ -1,7 +1,3 @@
-# `data_aws_imagebuilder_image`
-
-Refer to the Terraform Registory for docs: [`data_aws_imagebuilder_image`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/imagebuilder_image).
-
 # `dataAwsImagebuilderImage` Submodule <a name="`dataAwsImagebuilderImage` Submodule" id="@cdktf/aws-cdk.dataAwsImagebuilderImage"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

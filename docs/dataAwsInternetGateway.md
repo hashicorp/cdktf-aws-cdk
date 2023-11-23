@@ -1,7 +1,3 @@
-# `data_aws_internet_gateway`
-
-Refer to the Terraform Registory for docs: [`data_aws_internet_gateway`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/internet_gateway).
-
 # `dataAwsInternetGateway` Submodule <a name="`dataAwsInternetGateway` Submodule" id="@cdktf/aws-cdk.dataAwsInternetGateway"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

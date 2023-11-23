@@ -1,7 +1,3 @@
-# `aws_s3control_object_lambda_access_point`
-
-Refer to the Terraform Registory for docs: [`aws_s3control_object_lambda_access_point`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3control_object_lambda_access_point).
-
 # `s3ControlObjectLambdaAccessPoint` Submodule <a name="`s3ControlObjectLambdaAccessPoint` Submodule" id="@cdktf/aws-cdk.s3ControlObjectLambdaAccessPoint"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

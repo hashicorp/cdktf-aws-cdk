@@ -1,7 +1,3 @@
-# `aws_accessanalyzer_analyzer`
-
-Refer to the Terraform Registory for docs: [`aws_accessanalyzer_analyzer`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/accessanalyzer_analyzer).
-
 # `accessanalyzerAnalyzer` Submodule <a name="`accessanalyzerAnalyzer` Submodule" id="@cdktf/aws-cdk.accessanalyzerAnalyzer"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

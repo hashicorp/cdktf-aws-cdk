@@ -1,7 +1,3 @@
-# `data_aws_iam_users`
-
-Refer to the Terraform Registory for docs: [`data_aws_iam_users`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/iam_users).
-
 # `dataAwsIamUsers` Submodule <a name="`dataAwsIamUsers` Submodule" id="@cdktf/aws-cdk.dataAwsIamUsers"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

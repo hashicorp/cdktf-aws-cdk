@@ -1,7 +1,3 @@
-# `aws_waf_byte_match_set`
-
-Refer to the Terraform Registory for docs: [`aws_waf_byte_match_set`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/waf_byte_match_set).
-
 # `wafByteMatchSet` Submodule <a name="`wafByteMatchSet` Submodule" id="@cdktf/aws-cdk.wafByteMatchSet"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `data_aws_inspector_rules_packages`
-
-Refer to the Terraform Registory for docs: [`data_aws_inspector_rules_packages`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/inspector_rules_packages).
-
 # `dataAwsInspectorRulesPackages` Submodule <a name="`dataAwsInspectorRulesPackages` Submodule" id="@cdktf/aws-cdk.dataAwsInspectorRulesPackages"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

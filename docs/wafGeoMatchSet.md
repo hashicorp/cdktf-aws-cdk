@@ -1,7 +1,3 @@
-# `aws_waf_geo_match_set`
-
-Refer to the Terraform Registory for docs: [`aws_waf_geo_match_set`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/waf_geo_match_set).
-
 # `wafGeoMatchSet` Submodule <a name="`wafGeoMatchSet` Submodule" id="@cdktf/aws-cdk.wafGeoMatchSet"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_neptune_cluster_snapshot`
-
-Refer to the Terraform Registory for docs: [`aws_neptune_cluster_snapshot`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/neptune_cluster_snapshot).
-
 # `neptuneClusterSnapshot` Submodule <a name="`neptuneClusterSnapshot` Submodule" id="@cdktf/aws-cdk.neptuneClusterSnapshot"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

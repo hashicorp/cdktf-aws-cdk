@@ -1,7 +1,3 @@
-# `data_aws_route53_resolver_rule`
-
-Refer to the Terraform Registory for docs: [`data_aws_route53_resolver_rule`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/route53_resolver_rule).
-
 # `dataAwsRoute53ResolverRule` Submodule <a name="`dataAwsRoute53ResolverRule` Submodule" id="@cdktf/aws-cdk.dataAwsRoute53ResolverRule"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

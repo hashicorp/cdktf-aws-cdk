@@ -1,7 +1,3 @@
-# `aws_workspaces_workspace`
-
-Refer to the Terraform Registory for docs: [`aws_workspaces_workspace`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/workspaces_workspace).
-
 # `workspacesWorkspace` Submodule <a name="`workspacesWorkspace` Submodule" id="@cdktf/aws-cdk.workspacesWorkspace"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

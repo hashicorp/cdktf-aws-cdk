@@ -1,7 +1,3 @@
-# `aws_service_discovery_http_namespace`
-
-Refer to the Terraform Registory for docs: [`aws_service_discovery_http_namespace`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/service_discovery_http_namespace).
-
 # `serviceDiscoveryHttpNamespace` Submodule <a name="`serviceDiscoveryHttpNamespace` Submodule" id="@cdktf/aws-cdk.serviceDiscoveryHttpNamespace"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

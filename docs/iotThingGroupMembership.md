@@ -1,7 +1,3 @@
-# `aws_iot_thing_group_membership`
-
-Refer to the Terraform Registory for docs: [`aws_iot_thing_group_membership`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/iot_thing_group_membership).
-
 # `iotThingGroupMembership` Submodule <a name="`iotThingGroupMembership` Submodule" id="@cdktf/aws-cdk.iotThingGroupMembership"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

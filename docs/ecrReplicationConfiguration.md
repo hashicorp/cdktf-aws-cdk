@@ -1,7 +1,3 @@
-# `aws_ecr_replication_configuration`
-
-Refer to the Terraform Registory for docs: [`aws_ecr_replication_configuration`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ecr_replication_configuration).
-
 # `ecrReplicationConfiguration` Submodule <a name="`ecrReplicationConfiguration` Submodule" id="@cdktf/aws-cdk.ecrReplicationConfiguration"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `data_aws_organizations_delegated_administrators`
-
-Refer to the Terraform Registory for docs: [`data_aws_organizations_delegated_administrators`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/organizations_delegated_administrators).
-
 # `dataAwsOrganizationsDelegatedAdministrators` Submodule <a name="`dataAwsOrganizationsDelegatedAdministrators` Submodule" id="@cdktf/aws-cdk.dataAwsOrganizationsDelegatedAdministrators"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_neptune_subnet_group`
-
-Refer to the Terraform Registory for docs: [`aws_neptune_subnet_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/neptune_subnet_group).
-
 # `neptuneSubnetGroup` Submodule <a name="`neptuneSubnetGroup` Submodule" id="@cdktf/aws-cdk.neptuneSubnetGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

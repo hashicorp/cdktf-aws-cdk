@@ -1,7 +1,3 @@
-# `data_aws_directory_service_directory`
-
-Refer to the Terraform Registory for docs: [`data_aws_directory_service_directory`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/directory_service_directory).
-
 # `dataAwsDirectoryServiceDirectory` Submodule <a name="`dataAwsDirectoryServiceDirectory` Submodule" id="@cdktf/aws-cdk.dataAwsDirectoryServiceDirectory"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

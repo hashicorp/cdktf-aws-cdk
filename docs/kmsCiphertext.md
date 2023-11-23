@@ -1,7 +1,3 @@
-# `aws_kms_ciphertext`
-
-Refer to the Terraform Registory for docs: [`aws_kms_ciphertext`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/kms_ciphertext).
-
 # `kmsCiphertext` Submodule <a name="`kmsCiphertext` Submodule" id="@cdktf/aws-cdk.kmsCiphertext"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

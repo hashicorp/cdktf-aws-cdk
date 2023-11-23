@@ -1,7 +1,3 @@
-# `data_aws_connect_lambda_function_association`
-
-Refer to the Terraform Registory for docs: [`data_aws_connect_lambda_function_association`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/connect_lambda_function_association).
-
 # `dataAwsConnectLambdaFunctionAssociation` Submodule <a name="`dataAwsConnectLambdaFunctionAssociation` Submodule" id="@cdktf/aws-cdk.dataAwsConnectLambdaFunctionAssociation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_redshift_event_subscription`
-
-Refer to the Terraform Registory for docs: [`aws_redshift_event_subscription`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/redshift_event_subscription).
-
 # `redshiftEventSubscription` Submodule <a name="`redshiftEventSubscription` Submodule" id="@cdktf/aws-cdk.redshiftEventSubscription"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

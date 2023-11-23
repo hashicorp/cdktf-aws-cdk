@@ -1,7 +1,3 @@
-# `data_aws_arn`
-
-Refer to the Terraform Registory for docs: [`data_aws_arn`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/arn).
-
 # `dataAwsArn` Submodule <a name="`dataAwsArn` Submodule" id="@cdktf/aws-cdk.dataAwsArn"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_sns_topic_subscription`
-
-Refer to the Terraform Registory for docs: [`aws_sns_topic_subscription`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sns_topic_subscription).
-
 # `snsTopicSubscription` Submodule <a name="`snsTopicSubscription` Submodule" id="@cdktf/aws-cdk.snsTopicSubscription"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

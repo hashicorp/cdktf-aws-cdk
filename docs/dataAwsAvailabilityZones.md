@@ -1,7 +1,3 @@
-# `data_aws_availability_zones`
-
-Refer to the Terraform Registory for docs: [`data_aws_availability_zones`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/availability_zones).
-
 # `dataAwsAvailabilityZones` Submodule <a name="`dataAwsAvailabilityZones` Submodule" id="@cdktf/aws-cdk.dataAwsAvailabilityZones"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

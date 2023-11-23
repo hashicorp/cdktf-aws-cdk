@@ -1,7 +1,3 @@
-# `aws_sagemaker_code_repository`
-
-Refer to the Terraform Registory for docs: [`aws_sagemaker_code_repository`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sagemaker_code_repository).
-
 # `sagemakerCodeRepository` Submodule <a name="`sagemakerCodeRepository` Submodule" id="@cdktf/aws-cdk.sagemakerCodeRepository"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

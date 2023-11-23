@@ -1,7 +1,3 @@
-# `aws_wafregional_web_acl_association`
-
-Refer to the Terraform Registory for docs: [`aws_wafregional_web_acl_association`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafregional_web_acl_association).
-
 # `wafregionalWebAclAssociation` Submodule <a name="`wafregionalWebAclAssociation` Submodule" id="@cdktf/aws-cdk.wafregionalWebAclAssociation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

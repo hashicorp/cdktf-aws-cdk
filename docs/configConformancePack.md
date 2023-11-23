@@ -1,7 +1,3 @@
-# `aws_config_conformance_pack`
-
-Refer to the Terraform Registory for docs: [`aws_config_conformance_pack`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/config_conformance_pack).
-
 # `configConformancePack` Submodule <a name="`configConformancePack` Submodule" id="@cdktf/aws-cdk.configConformancePack"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_iam_saml_provider`
-
-Refer to the Terraform Registory for docs: [`aws_iam_saml_provider`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/iam_saml_provider).
-
 # `iamSamlProvider` Submodule <a name="`iamSamlProvider` Submodule" id="@cdktf/aws-cdk.iamSamlProvider"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

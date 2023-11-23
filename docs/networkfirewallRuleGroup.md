@@ -1,7 +1,3 @@
-# `aws_networkfirewall_rule_group`
-
-Refer to the Terraform Registory for docs: [`aws_networkfirewall_rule_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/networkfirewall_rule_group).
-
 # `networkfirewallRuleGroup` Submodule <a name="`networkfirewallRuleGroup` Submodule" id="@cdktf/aws-cdk.networkfirewallRuleGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

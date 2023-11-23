@@ -1,7 +1,3 @@
-# `aws_autoscalingplans_scaling_plan`
-
-Refer to the Terraform Registory for docs: [`aws_autoscalingplans_scaling_plan`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/autoscalingplans_scaling_plan).
-
 # `autoscalingplansScalingPlan` Submodule <a name="`autoscalingplansScalingPlan` Submodule" id="@cdktf/aws-cdk.autoscalingplansScalingPlan"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

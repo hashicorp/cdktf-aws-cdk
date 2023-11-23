@@ -1,7 +1,3 @@
-# `aws_gamelift_alias`
-
-Refer to the Terraform Registory for docs: [`aws_gamelift_alias`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/gamelift_alias).
-
 # `gameliftAlias` Submodule <a name="`gameliftAlias` Submodule" id="@cdktf/aws-cdk.gameliftAlias"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

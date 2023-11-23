@@ -1,7 +1,3 @@
-# `aws_apprunner_custom_domain_association`
-
-Refer to the Terraform Registory for docs: [`aws_apprunner_custom_domain_association`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/apprunner_custom_domain_association).
-
 # `apprunnerCustomDomainAssociation` Submodule <a name="`apprunnerCustomDomainAssociation` Submodule" id="@cdktf/aws-cdk.apprunnerCustomDomainAssociation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

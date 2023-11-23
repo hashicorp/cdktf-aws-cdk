@@ -1,7 +1,3 @@
-# `data_aws_elasticache_cluster`
-
-Refer to the Terraform Registory for docs: [`data_aws_elasticache_cluster`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/elasticache_cluster).
-
 # `dataAwsElasticacheCluster` Submodule <a name="`dataAwsElasticacheCluster` Submodule" id="@cdktf/aws-cdk.dataAwsElasticacheCluster"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

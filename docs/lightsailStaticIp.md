@@ -1,7 +1,3 @@
-# `aws_lightsail_static_ip`
-
-Refer to the Terraform Registory for docs: [`aws_lightsail_static_ip`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/lightsail_static_ip).
-
 # `lightsailStaticIp` Submodule <a name="`lightsailStaticIp` Submodule" id="@cdktf/aws-cdk.lightsailStaticIp"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

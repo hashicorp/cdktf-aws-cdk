@@ -1,7 +1,3 @@
-# `aws_xray_sampling_rule`
-
-Refer to the Terraform Registory for docs: [`aws_xray_sampling_rule`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/xray_sampling_rule).
-
 # `xraySamplingRule` Submodule <a name="`xraySamplingRule` Submodule" id="@cdktf/aws-cdk.xraySamplingRule"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

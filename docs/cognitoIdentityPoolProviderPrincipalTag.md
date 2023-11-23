@@ -1,7 +1,3 @@
-# `aws_cognito_identity_pool_provider_principal_tag`
-
-Refer to the Terraform Registory for docs: [`aws_cognito_identity_pool_provider_principal_tag`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cognito_identity_pool_provider_principal_tag).
-
 # `cognitoIdentityPoolProviderPrincipalTag` Submodule <a name="`cognitoIdentityPoolProviderPrincipalTag` Submodule" id="@cdktf/aws-cdk.cognitoIdentityPoolProviderPrincipalTag"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

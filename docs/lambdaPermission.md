@@ -1,7 +1,3 @@
-# `aws_lambda_permission`
-
-Refer to the Terraform Registory for docs: [`aws_lambda_permission`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/lambda_permission).
-
 # `lambdaPermission` Submodule <a name="`lambdaPermission` Submodule" id="@cdktf/aws-cdk.lambdaPermission"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

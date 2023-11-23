@@ -1,7 +1,3 @@
-# `aws_config_organization_custom_rule`
-
-Refer to the Terraform Registory for docs: [`aws_config_organization_custom_rule`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/config_organization_custom_rule).
-
 # `configOrganizationCustomRule` Submodule <a name="`configOrganizationCustomRule` Submodule" id="@cdktf/aws-cdk.configOrganizationCustomRule"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

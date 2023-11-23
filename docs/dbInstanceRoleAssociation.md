@@ -1,7 +1,3 @@
-# `aws_db_instance_role_association`
-
-Refer to the Terraform Registory for docs: [`aws_db_instance_role_association`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/db_instance_role_association).
-
 # `dbInstanceRoleAssociation` Submodule <a name="`dbInstanceRoleAssociation` Submodule" id="@cdktf/aws-cdk.dbInstanceRoleAssociation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

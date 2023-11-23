@@ -1,7 +1,3 @@
-# `aws_iam_server_certificate`
-
-Refer to the Terraform Registory for docs: [`aws_iam_server_certificate`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/iam_server_certificate).
-
 # `iamServerCertificate` Submodule <a name="`iamServerCertificate` Submodule" id="@cdktf/aws-cdk.iamServerCertificate"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_inspector_assessment_template`
-
-Refer to the Terraform Registory for docs: [`aws_inspector_assessment_template`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/inspector_assessment_template).
-
 # `inspectorAssessmentTemplate` Submodule <a name="`inspectorAssessmentTemplate` Submodule" id="@cdktf/aws-cdk.inspectorAssessmentTemplate"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

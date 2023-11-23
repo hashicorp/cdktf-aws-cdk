@@ -1,7 +1,3 @@
-# `data_aws_cognito_user_pools`
-
-Refer to the Terraform Registory for docs: [`data_aws_cognito_user_pools`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/cognito_user_pools).
-
 # `dataAwsCognitoUserPools` Submodule <a name="`dataAwsCognitoUserPools` Submodule" id="@cdktf/aws-cdk.dataAwsCognitoUserPools"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

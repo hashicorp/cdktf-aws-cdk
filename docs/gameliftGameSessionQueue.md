@@ -1,7 +1,3 @@
-# `aws_gamelift_game_session_queue`
-
-Refer to the Terraform Registory for docs: [`aws_gamelift_game_session_queue`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/gamelift_game_session_queue).
-
 # `gameliftGameSessionQueue` Submodule <a name="`gameliftGameSessionQueue` Submodule" id="@cdktf/aws-cdk.gameliftGameSessionQueue"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

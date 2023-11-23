@@ -1,7 +1,3 @@
-# `aws_s3_bucket_notification`
-
-Refer to the Terraform Registory for docs: [`aws_s3_bucket_notification`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket_notification).
-
 # `s3BucketNotification` Submodule <a name="`s3BucketNotification` Submodule" id="@cdktf/aws-cdk.s3BucketNotification"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

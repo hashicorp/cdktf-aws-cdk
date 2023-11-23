@@ -1,7 +1,3 @@
-# `aws_ssm_maintenance_window_task`
-
-Refer to the Terraform Registory for docs: [`aws_ssm_maintenance_window_task`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_maintenance_window_task).
-
 # `ssmMaintenanceWindowTask` Submodule <a name="`ssmMaintenanceWindowTask` Submodule" id="@cdktf/aws-cdk.ssmMaintenanceWindowTask"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `data_aws_ecr_image`
-
-Refer to the Terraform Registory for docs: [`data_aws_ecr_image`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ecr_image).
-
 # `dataAwsEcrImage` Submodule <a name="`dataAwsEcrImage` Submodule" id="@cdktf/aws-cdk.dataAwsEcrImage"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_glue_workflow`
-
-Refer to the Terraform Registory for docs: [`aws_glue_workflow`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_workflow).
-
 # `glueWorkflow` Submodule <a name="`glueWorkflow` Submodule" id="@cdktf/aws-cdk.glueWorkflow"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

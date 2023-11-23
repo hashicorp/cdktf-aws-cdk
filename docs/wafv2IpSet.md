@@ -1,7 +1,3 @@
-# `aws_wafv2_ip_set`
-
-Refer to the Terraform Registory for docs: [`aws_wafv2_ip_set`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafv2_ip_set).
-
 # `wafv2IpSet` Submodule <a name="`wafv2IpSet` Submodule" id="@cdktf/aws-cdk.wafv2IpSet"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

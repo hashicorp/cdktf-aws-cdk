@@ -1,7 +1,3 @@
-# `data_aws_sfn_state_machine`
-
-Refer to the Terraform Registory for docs: [`data_aws_sfn_state_machine`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/sfn_state_machine).
-
 # `dataAwsSfnStateMachine` Submodule <a name="`dataAwsSfnStateMachine` Submodule" id="@cdktf/aws-cdk.dataAwsSfnStateMachine"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

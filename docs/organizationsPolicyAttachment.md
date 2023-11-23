@@ -1,7 +1,3 @@
-# `aws_organizations_policy_attachment`
-
-Refer to the Terraform Registory for docs: [`aws_organizations_policy_attachment`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/organizations_policy_attachment).
-
 # `organizationsPolicyAttachment` Submodule <a name="`organizationsPolicyAttachment` Submodule" id="@cdktf/aws-cdk.organizationsPolicyAttachment"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

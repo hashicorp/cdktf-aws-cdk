@@ -1,7 +1,3 @@
-# `aws_servicecatalog_constraint`
-
-Refer to the Terraform Registory for docs: [`aws_servicecatalog_constraint`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/servicecatalog_constraint).
-
 # `servicecatalogConstraint` Submodule <a name="`servicecatalogConstraint` Submodule" id="@cdktf/aws-cdk.servicecatalogConstraint"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

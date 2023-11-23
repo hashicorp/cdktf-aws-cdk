@@ -1,7 +1,3 @@
-# `aws_docdb_subnet_group`
-
-Refer to the Terraform Registory for docs: [`aws_docdb_subnet_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/docdb_subnet_group).
-
 # `docdbSubnetGroup` Submodule <a name="`docdbSubnetGroup` Submodule" id="@cdktf/aws-cdk.docdbSubnetGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

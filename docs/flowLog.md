@@ -1,7 +1,3 @@
-# `aws_flow_log`
-
-Refer to the Terraform Registory for docs: [`aws_flow_log`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/flow_log).
-
 # `flowLog` Submodule <a name="`flowLog` Submodule" id="@cdktf/aws-cdk.flowLog"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

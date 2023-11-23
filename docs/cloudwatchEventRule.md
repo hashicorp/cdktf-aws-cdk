@@ -1,7 +1,3 @@
-# `aws_cloudwatch_event_rule`
-
-Refer to the Terraform Registory for docs: [`aws_cloudwatch_event_rule`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cloudwatch_event_rule).
-
 # `cloudwatchEventRule` Submodule <a name="`cloudwatchEventRule` Submodule" id="@cdktf/aws-cdk.cloudwatchEventRule"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

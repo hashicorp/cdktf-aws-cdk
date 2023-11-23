@@ -1,7 +1,3 @@
-# `aws_elasticsearch_domain`
-
-Refer to the Terraform Registory for docs: [`aws_elasticsearch_domain`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/elasticsearch_domain).
-
 # `elasticsearchDomain` Submodule <a name="`elasticsearchDomain` Submodule" id="@cdktf/aws-cdk.elasticsearchDomain"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

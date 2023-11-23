@@ -1,7 +1,3 @@
-# `data_aws_storagegateway_local_disk`
-
-Refer to the Terraform Registory for docs: [`data_aws_storagegateway_local_disk`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/storagegateway_local_disk).
-
 # `dataAwsStoragegatewayLocalDisk` Submodule <a name="`dataAwsStoragegatewayLocalDisk` Submodule" id="@cdktf/aws-cdk.dataAwsStoragegatewayLocalDisk"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

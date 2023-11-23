@@ -1,7 +1,3 @@
-# `aws_macie2_custom_data_identifier`
-
-Refer to the Terraform Registory for docs: [`aws_macie2_custom_data_identifier`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/macie2_custom_data_identifier).
-
 # `macie2CustomDataIdentifier` Submodule <a name="`macie2CustomDataIdentifier` Submodule" id="@cdktf/aws-cdk.macie2CustomDataIdentifier"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

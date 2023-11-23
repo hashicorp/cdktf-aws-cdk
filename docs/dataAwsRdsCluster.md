@@ -1,7 +1,3 @@
-# `data_aws_rds_cluster`
-
-Refer to the Terraform Registory for docs: [`data_aws_rds_cluster`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/rds_cluster).
-
 # `dataAwsRdsCluster` Submodule <a name="`dataAwsRdsCluster` Submodule" id="@cdktf/aws-cdk.dataAwsRdsCluster"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

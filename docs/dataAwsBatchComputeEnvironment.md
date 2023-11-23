@@ -1,7 +1,3 @@
-# `data_aws_batch_compute_environment`
-
-Refer to the Terraform Registory for docs: [`data_aws_batch_compute_environment`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/batch_compute_environment).
-
 # `dataAwsBatchComputeEnvironment` Submodule <a name="`dataAwsBatchComputeEnvironment` Submodule" id="@cdktf/aws-cdk.dataAwsBatchComputeEnvironment"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

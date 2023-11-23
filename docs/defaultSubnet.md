@@ -1,7 +1,3 @@
-# `aws_default_subnet`
-
-Refer to the Terraform Registory for docs: [`aws_default_subnet`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/default_subnet).
-
 # `defaultSubnet` Submodule <a name="`defaultSubnet` Submodule" id="@cdktf/aws-cdk.defaultSubnet"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_redshift_cluster`
-
-Refer to the Terraform Registory for docs: [`aws_redshift_cluster`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/redshift_cluster).
-
 # `redshiftCluster` Submodule <a name="`redshiftCluster` Submodule" id="@cdktf/aws-cdk.redshiftCluster"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

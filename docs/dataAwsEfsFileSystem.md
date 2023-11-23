@@ -1,7 +1,3 @@
-# `data_aws_efs_file_system`
-
-Refer to the Terraform Registory for docs: [`data_aws_efs_file_system`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/efs_file_system).
-
 # `dataAwsEfsFileSystem` Submodule <a name="`dataAwsEfsFileSystem` Submodule" id="@cdktf/aws-cdk.dataAwsEfsFileSystem"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

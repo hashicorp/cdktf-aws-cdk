@@ -1,7 +1,3 @@
-# `aws_default_vpc_dhcp_options`
-
-Refer to the Terraform Registory for docs: [`aws_default_vpc_dhcp_options`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/default_vpc_dhcp_options).
-
 # `defaultVpcDhcpOptions` Submodule <a name="`defaultVpcDhcpOptions` Submodule" id="@cdktf/aws-cdk.defaultVpcDhcpOptions"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

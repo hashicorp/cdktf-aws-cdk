@@ -1,7 +1,3 @@
-# `aws_appstream_image_builder`
-
-Refer to the Terraform Registory for docs: [`aws_appstream_image_builder`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appstream_image_builder).
-
 # `appstreamImageBuilder` Submodule <a name="`appstreamImageBuilder` Submodule" id="@cdktf/aws-cdk.appstreamImageBuilder"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

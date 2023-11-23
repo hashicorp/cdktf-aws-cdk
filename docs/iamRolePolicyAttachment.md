@@ -1,7 +1,3 @@
-# `aws_iam_role_policy_attachment`
-
-Refer to the Terraform Registory for docs: [`aws_iam_role_policy_attachment`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/iam_role_policy_attachment).
-
 # `iamRolePolicyAttachment` Submodule <a name="`iamRolePolicyAttachment` Submodule" id="@cdktf/aws-cdk.iamRolePolicyAttachment"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

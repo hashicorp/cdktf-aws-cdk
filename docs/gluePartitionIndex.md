@@ -1,7 +1,3 @@
-# `aws_glue_partition_index`
-
-Refer to the Terraform Registory for docs: [`aws_glue_partition_index`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_partition_index).
-
 # `gluePartitionIndex` Submodule <a name="`gluePartitionIndex` Submodule" id="@cdktf/aws-cdk.gluePartitionIndex"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

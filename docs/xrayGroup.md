@@ -1,7 +1,3 @@
-# `aws_xray_group`
-
-Refer to the Terraform Registory for docs: [`aws_xray_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/xray_group).
-
 # `xrayGroup` Submodule <a name="`xrayGroup` Submodule" id="@cdktf/aws-cdk.xrayGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

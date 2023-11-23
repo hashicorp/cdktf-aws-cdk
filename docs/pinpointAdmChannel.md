@@ -1,7 +1,3 @@
-# `aws_pinpoint_adm_channel`
-
-Refer to the Terraform Registory for docs: [`aws_pinpoint_adm_channel`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/pinpoint_adm_channel).
-
 # `pinpointAdmChannel` Submodule <a name="`pinpointAdmChannel` Submodule" id="@cdktf/aws-cdk.pinpointAdmChannel"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

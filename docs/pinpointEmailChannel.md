@@ -1,7 +1,3 @@
-# `aws_pinpoint_email_channel`
-
-Refer to the Terraform Registory for docs: [`aws_pinpoint_email_channel`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/pinpoint_email_channel).
-
 # `pinpointEmailChannel` Submodule <a name="`pinpointEmailChannel` Submodule" id="@cdktf/aws-cdk.pinpointEmailChannel"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

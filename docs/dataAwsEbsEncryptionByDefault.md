@@ -1,7 +1,3 @@
-# `data_aws_ebs_encryption_by_default`
-
-Refer to the Terraform Registory for docs: [`data_aws_ebs_encryption_by_default`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ebs_encryption_by_default).
-
 # `dataAwsEbsEncryptionByDefault` Submodule <a name="`dataAwsEbsEncryptionByDefault` Submodule" id="@cdktf/aws-cdk.dataAwsEbsEncryptionByDefault"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

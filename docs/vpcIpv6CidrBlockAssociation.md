@@ -1,7 +1,3 @@
-# `aws_vpc_ipv6_cidr_block_association`
-
-Refer to the Terraform Registory for docs: [`aws_vpc_ipv6_cidr_block_association`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/vpc_ipv6_cidr_block_association).
-
 # `vpcIpv6CidrBlockAssociation` Submodule <a name="`vpcIpv6CidrBlockAssociation` Submodule" id="@cdktf/aws-cdk.vpcIpv6CidrBlockAssociation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

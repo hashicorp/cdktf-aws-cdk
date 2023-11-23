@@ -1,7 +1,3 @@
-# `data_aws_kms_alias`
-
-Refer to the Terraform Registory for docs: [`data_aws_kms_alias`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/kms_alias).
-
 # `dataAwsKmsAlias` Submodule <a name="`dataAwsKmsAlias` Submodule" id="@cdktf/aws-cdk.dataAwsKmsAlias"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

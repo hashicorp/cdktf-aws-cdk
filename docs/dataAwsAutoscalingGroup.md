@@ -1,7 +1,3 @@
-# `data_aws_autoscaling_group`
-
-Refer to the Terraform Registory for docs: [`data_aws_autoscaling_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/autoscaling_group).
-
 # `dataAwsAutoscalingGroup` Submodule <a name="`dataAwsAutoscalingGroup` Submodule" id="@cdktf/aws-cdk.dataAwsAutoscalingGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

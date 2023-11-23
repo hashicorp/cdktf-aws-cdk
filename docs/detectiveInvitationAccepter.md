@@ -1,7 +1,3 @@
-# `aws_detective_invitation_accepter`
-
-Refer to the Terraform Registory for docs: [`aws_detective_invitation_accepter`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/detective_invitation_accepter).
-
 # `detectiveInvitationAccepter` Submodule <a name="`detectiveInvitationAccepter` Submodule" id="@cdktf/aws-cdk.detectiveInvitationAccepter"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `data_aws_route_tables`
-
-Refer to the Terraform Registory for docs: [`data_aws_route_tables`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/route_tables).
-
 # `dataAwsRouteTables` Submodule <a name="`dataAwsRouteTables` Submodule" id="@cdktf/aws-cdk.dataAwsRouteTables"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
