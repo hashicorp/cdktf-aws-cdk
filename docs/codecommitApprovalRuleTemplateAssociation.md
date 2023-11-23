@@ -1,7 +1,3 @@
-# `aws_codecommit_approval_rule_template_association`
-
-Refer to the Terraform Registory for docs: [`aws_codecommit_approval_rule_template_association`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/codecommit_approval_rule_template_association).
-
 # `codecommitApprovalRuleTemplateAssociation` Submodule <a name="`codecommitApprovalRuleTemplateAssociation` Submodule" id="@cdktf/aws-cdk.codecommitApprovalRuleTemplateAssociation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

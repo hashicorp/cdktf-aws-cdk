@@ -1,7 +1,3 @@
-# `data_aws_db_event_categories`
-
-Refer to the Terraform Registory for docs: [`data_aws_db_event_categories`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/db_event_categories).
-
 # `dataAwsDbEventCategories` Submodule <a name="`dataAwsDbEventCategories` Submodule" id="@cdktf/aws-cdk.dataAwsDbEventCategories"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

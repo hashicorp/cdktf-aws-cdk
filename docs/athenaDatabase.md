@@ -1,7 +1,3 @@
-# `aws_athena_database`
-
-Refer to the Terraform Registory for docs: [`aws_athena_database`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/athena_database).
-
 # `athenaDatabase` Submodule <a name="`athenaDatabase` Submodule" id="@cdktf/aws-cdk.athenaDatabase"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

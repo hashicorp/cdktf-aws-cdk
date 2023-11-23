@@ -1,7 +1,3 @@
-# `aws_cloudfront_realtime_log_config`
-
-Refer to the Terraform Registory for docs: [`aws_cloudfront_realtime_log_config`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cloudfront_realtime_log_config).
-
 # `cloudfrontRealtimeLogConfig` Submodule <a name="`cloudfrontRealtimeLogConfig` Submodule" id="@cdktf/aws-cdk.cloudfrontRealtimeLogConfig"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

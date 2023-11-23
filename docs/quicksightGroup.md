@@ -1,7 +1,3 @@
-# `aws_quicksight_group`
-
-Refer to the Terraform Registory for docs: [`aws_quicksight_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/quicksight_group).
-
 # `quicksightGroup` Submodule <a name="`quicksightGroup` Submodule" id="@cdktf/aws-cdk.quicksightGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

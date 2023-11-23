@@ -1,7 +1,3 @@
-# `data_aws_ip_ranges`
-
-Refer to the Terraform Registory for docs: [`data_aws_ip_ranges`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ip_ranges).
-
 # `dataAwsIpRanges` Submodule <a name="`dataAwsIpRanges` Submodule" id="@cdktf/aws-cdk.dataAwsIpRanges"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

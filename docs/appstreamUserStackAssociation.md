@@ -1,7 +1,3 @@
-# `aws_appstream_user_stack_association`
-
-Refer to the Terraform Registory for docs: [`aws_appstream_user_stack_association`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appstream_user_stack_association).
-
 # `appstreamUserStackAssociation` Submodule <a name="`appstreamUserStackAssociation` Submodule" id="@cdktf/aws-cdk.appstreamUserStackAssociation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

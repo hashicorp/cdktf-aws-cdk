@@ -1,7 +1,3 @@
-# `aws_ses_domain_identity_verification`
-
-Refer to the Terraform Registory for docs: [`aws_ses_domain_identity_verification`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ses_domain_identity_verification).
-
 # `sesDomainIdentityVerification` Submodule <a name="`sesDomainIdentityVerification` Submodule" id="@cdktf/aws-cdk.sesDomainIdentityVerification"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

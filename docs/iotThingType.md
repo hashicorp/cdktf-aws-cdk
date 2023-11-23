@@ -1,7 +1,3 @@
-# `aws_iot_thing_type`
-
-Refer to the Terraform Registory for docs: [`aws_iot_thing_type`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/iot_thing_type).
-
 # `iotThingType` Submodule <a name="`iotThingType` Submodule" id="@cdktf/aws-cdk.iotThingType"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

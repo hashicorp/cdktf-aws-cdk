@@ -1,7 +1,3 @@
-# `aws_guardduty_publishing_destination`
-
-Refer to the Terraform Registory for docs: [`aws_guardduty_publishing_destination`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/guardduty_publishing_destination).
-
 # `guarddutyPublishingDestination` Submodule <a name="`guarddutyPublishingDestination` Submodule" id="@cdktf/aws-cdk.guarddutyPublishingDestination"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

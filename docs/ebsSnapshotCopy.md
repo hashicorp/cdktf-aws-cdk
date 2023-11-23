@@ -1,7 +1,3 @@
-# `aws_ebs_snapshot_copy`
-
-Refer to the Terraform Registory for docs: [`aws_ebs_snapshot_copy`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ebs_snapshot_copy).
-
 # `ebsSnapshotCopy` Submodule <a name="`ebsSnapshotCopy` Submodule" id="@cdktf/aws-cdk.ebsSnapshotCopy"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `data_aws_cur_report_definition`
-
-Refer to the Terraform Registory for docs: [`data_aws_cur_report_definition`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/cur_report_definition).
-
 # `dataAwsCurReportDefinition` Submodule <a name="`dataAwsCurReportDefinition` Submodule" id="@cdktf/aws-cdk.dataAwsCurReportDefinition"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

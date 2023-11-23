@@ -1,7 +1,3 @@
-# `aws_backup_vault`
-
-Refer to the Terraform Registory for docs: [`aws_backup_vault`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/backup_vault).
-
 # `backupVault` Submodule <a name="`backupVault` Submodule" id="@cdktf/aws-cdk.backupVault"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

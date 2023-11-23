@@ -1,7 +1,3 @@
-# `aws_lightsail_instance_public_ports`
-
-Refer to the Terraform Registory for docs: [`aws_lightsail_instance_public_ports`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/lightsail_instance_public_ports).
-
 # `lightsailInstancePublicPorts` Submodule <a name="`lightsailInstancePublicPorts` Submodule" id="@cdktf/aws-cdk.lightsailInstancePublicPorts"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

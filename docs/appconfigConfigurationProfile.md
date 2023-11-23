@@ -1,7 +1,3 @@
-# `aws_appconfig_configuration_profile`
-
-Refer to the Terraform Registory for docs: [`aws_appconfig_configuration_profile`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appconfig_configuration_profile).
-
 # `appconfigConfigurationProfile` Submodule <a name="`appconfigConfigurationProfile` Submodule" id="@cdktf/aws-cdk.appconfigConfigurationProfile"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

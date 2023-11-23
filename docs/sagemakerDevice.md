@@ -1,7 +1,3 @@
-# `aws_sagemaker_device`
-
-Refer to the Terraform Registory for docs: [`aws_sagemaker_device`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sagemaker_device).
-
 # `sagemakerDevice` Submodule <a name="`sagemakerDevice` Submodule" id="@cdktf/aws-cdk.sagemakerDevice"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

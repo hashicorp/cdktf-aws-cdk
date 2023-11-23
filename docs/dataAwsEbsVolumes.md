@@ -1,7 +1,3 @@
-# `data_aws_ebs_volumes`
-
-Refer to the Terraform Registory for docs: [`data_aws_ebs_volumes`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ebs_volumes).
-
 # `dataAwsEbsVolumes` Submodule <a name="`dataAwsEbsVolumes` Submodule" id="@cdktf/aws-cdk.dataAwsEbsVolumes"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

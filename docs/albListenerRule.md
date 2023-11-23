@@ -1,7 +1,3 @@
-# `aws_alb_listener_rule`
-
-Refer to the Terraform Registory for docs: [`aws_alb_listener_rule`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/alb_listener_rule).
-
 # `albListenerRule` Submodule <a name="`albListenerRule` Submodule" id="@cdktf/aws-cdk.albListenerRule"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

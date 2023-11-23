@@ -1,7 +1,3 @@
-# `aws_securityhub_finding_aggregator`
-
-Refer to the Terraform Registory for docs: [`aws_securityhub_finding_aggregator`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/securityhub_finding_aggregator).
-
 # `securityhubFindingAggregator` Submodule <a name="`securityhubFindingAggregator` Submodule" id="@cdktf/aws-cdk.securityhubFindingAggregator"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

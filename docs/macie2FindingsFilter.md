@@ -1,7 +1,3 @@
-# `aws_macie2_findings_filter`
-
-Refer to the Terraform Registory for docs: [`aws_macie2_findings_filter`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/macie2_findings_filter).
-
 # `macie2FindingsFilter` Submodule <a name="`macie2FindingsFilter` Submodule" id="@cdktf/aws-cdk.macie2FindingsFilter"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

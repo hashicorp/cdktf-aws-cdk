@@ -1,7 +1,3 @@
-# `aws_media_store_container`
-
-Refer to the Terraform Registory for docs: [`aws_media_store_container`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/media_store_container).
-
 # `mediaStoreContainer` Submodule <a name="`mediaStoreContainer` Submodule" id="@cdktf/aws-cdk.mediaStoreContainer"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

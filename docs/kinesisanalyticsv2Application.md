@@ -1,7 +1,3 @@
-# `aws_kinesisanalyticsv2_application`
-
-Refer to the Terraform Registory for docs: [`aws_kinesisanalyticsv2_application`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/kinesisanalyticsv2_application).
-
 # `kinesisanalyticsv2Application` Submodule <a name="`kinesisanalyticsv2Application` Submodule" id="@cdktf/aws-cdk.kinesisanalyticsv2Application"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

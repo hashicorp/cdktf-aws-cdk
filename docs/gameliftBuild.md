@@ -1,7 +1,3 @@
-# `aws_gamelift_build`
-
-Refer to the Terraform Registory for docs: [`aws_gamelift_build`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/gamelift_build).
-
 # `gameliftBuild` Submodule <a name="`gameliftBuild` Submodule" id="@cdktf/aws-cdk.gameliftBuild"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_chime_voice_connector_termination_credentials`
-
-Refer to the Terraform Registory for docs: [`aws_chime_voice_connector_termination_credentials`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/chime_voice_connector_termination_credentials).
-
 # `chimeVoiceConnectorTerminationCredentials` Submodule <a name="`chimeVoiceConnectorTerminationCredentials` Submodule" id="@cdktf/aws-cdk.chimeVoiceConnectorTerminationCredentials"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

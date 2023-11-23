@@ -1,7 +1,3 @@
-# `aws_db_security_group`
-
-Refer to the Terraform Registory for docs: [`aws_db_security_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/db_security_group).
-
 # `dbSecurityGroup` Submodule <a name="`dbSecurityGroup` Submodule" id="@cdktf/aws-cdk.dbSecurityGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

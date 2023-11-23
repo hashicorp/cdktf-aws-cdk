@@ -1,7 +1,3 @@
-# `aws_ses_identity_notification_topic`
-
-Refer to the Terraform Registory for docs: [`aws_ses_identity_notification_topic`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ses_identity_notification_topic).
-
 # `sesIdentityNotificationTopic` Submodule <a name="`sesIdentityNotificationTopic` Submodule" id="@cdktf/aws-cdk.sesIdentityNotificationTopic"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

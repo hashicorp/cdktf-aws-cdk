@@ -1,7 +1,3 @@
-# `aws_opsworks_static_web_layer`
-
-Refer to the Terraform Registory for docs: [`aws_opsworks_static_web_layer`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_static_web_layer).
-
 # `opsworksStaticWebLayer` Submodule <a name="`opsworksStaticWebLayer` Submodule" id="@cdktf/aws-cdk.opsworksStaticWebLayer"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

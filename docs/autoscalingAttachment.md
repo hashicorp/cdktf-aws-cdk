@@ -1,7 +1,3 @@
-# `aws_autoscaling_attachment`
-
-Refer to the Terraform Registory for docs: [`aws_autoscaling_attachment`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/autoscaling_attachment).
-
 # `autoscalingAttachment` Submodule <a name="`autoscalingAttachment` Submodule" id="@cdktf/aws-cdk.autoscalingAttachment"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

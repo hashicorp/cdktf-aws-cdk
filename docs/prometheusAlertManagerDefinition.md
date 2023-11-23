@@ -1,7 +1,3 @@
-# `aws_prometheus_alert_manager_definition`
-
-Refer to the Terraform Registory for docs: [`aws_prometheus_alert_manager_definition`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/prometheus_alert_manager_definition).
-
 # `prometheusAlertManagerDefinition` Submodule <a name="`prometheusAlertManagerDefinition` Submodule" id="@cdktf/aws-cdk.prometheusAlertManagerDefinition"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `data_aws_elastic_beanstalk_application`
-
-Refer to the Terraform Registory for docs: [`data_aws_elastic_beanstalk_application`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/elastic_beanstalk_application).
-
 # `dataAwsElasticBeanstalkApplication` Submodule <a name="`dataAwsElasticBeanstalkApplication` Submodule" id="@cdktf/aws-cdk.dataAwsElasticBeanstalkApplication"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

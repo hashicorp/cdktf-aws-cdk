@@ -1,7 +1,3 @@
-# `aws_glue_trigger`
-
-Refer to the Terraform Registory for docs: [`aws_glue_trigger`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_trigger).
-
 # `glueTrigger` Submodule <a name="`glueTrigger` Submodule" id="@cdktf/aws-cdk.glueTrigger"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

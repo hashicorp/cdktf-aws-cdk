@@ -1,7 +1,3 @@
-# `aws_ec2_client_vpn_authorization_rule`
-
-Refer to the Terraform Registory for docs: [`aws_ec2_client_vpn_authorization_rule`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ec2_client_vpn_authorization_rule).
-
 # `ec2ClientVpnAuthorizationRule` Submodule <a name="`ec2ClientVpnAuthorizationRule` Submodule" id="@cdktf/aws-cdk.ec2ClientVpnAuthorizationRule"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

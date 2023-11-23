@@ -1,7 +1,3 @@
-# `aws_ssm_patch_group`
-
-Refer to the Terraform Registory for docs: [`aws_ssm_patch_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ssm_patch_group).
-
 # `ssmPatchGroup` Submodule <a name="`ssmPatchGroup` Submodule" id="@cdktf/aws-cdk.ssmPatchGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

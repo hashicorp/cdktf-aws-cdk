@@ -1,7 +1,3 @@
-# `aws_service_discovery_public_dns_namespace`
-
-Refer to the Terraform Registory for docs: [`aws_service_discovery_public_dns_namespace`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/service_discovery_public_dns_namespace).
-
 # `serviceDiscoveryPublicDnsNamespace` Submodule <a name="`serviceDiscoveryPublicDnsNamespace` Submodule" id="@cdktf/aws-cdk.serviceDiscoveryPublicDnsNamespace"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

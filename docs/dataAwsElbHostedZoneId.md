@@ -1,7 +1,3 @@
-# `data_aws_elb_hosted_zone_id`
-
-Refer to the Terraform Registory for docs: [`data_aws_elb_hosted_zone_id`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/elb_hosted_zone_id).
-
 # `dataAwsElbHostedZoneId` Submodule <a name="`dataAwsElbHostedZoneId` Submodule" id="@cdktf/aws-cdk.dataAwsElbHostedZoneId"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

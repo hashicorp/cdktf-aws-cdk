@@ -1,7 +1,3 @@
-# `data_aws_organizations_delegated_services`
-
-Refer to the Terraform Registory for docs: [`data_aws_organizations_delegated_services`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/organizations_delegated_services).
-
 # `dataAwsOrganizationsDelegatedServices` Submodule <a name="`dataAwsOrganizationsDelegatedServices` Submodule" id="@cdktf/aws-cdk.dataAwsOrganizationsDelegatedServices"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

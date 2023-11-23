@@ -1,7 +1,3 @@
-# `aws_elastic_beanstalk_application_version`
-
-Refer to the Terraform Registory for docs: [`aws_elastic_beanstalk_application_version`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/elastic_beanstalk_application_version).
-
 # `elasticBeanstalkApplicationVersion` Submodule <a name="`elasticBeanstalkApplicationVersion` Submodule" id="@cdktf/aws-cdk.elasticBeanstalkApplicationVersion"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

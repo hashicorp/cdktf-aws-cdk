@@ -1,7 +1,3 @@
-# `data_aws_glue_script`
-
-Refer to the Terraform Registory for docs: [`data_aws_glue_script`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/glue_script).
-
 # `dataAwsGlueScript` Submodule <a name="`dataAwsGlueScript` Submodule" id="@cdktf/aws-cdk.dataAwsGlueScript"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

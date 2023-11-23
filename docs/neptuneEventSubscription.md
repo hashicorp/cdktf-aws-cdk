@@ -1,7 +1,3 @@
-# `aws_neptune_event_subscription`
-
-Refer to the Terraform Registory for docs: [`aws_neptune_event_subscription`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/neptune_event_subscription).
-
 # `neptuneEventSubscription` Submodule <a name="`neptuneEventSubscription` Submodule" id="@cdktf/aws-cdk.neptuneEventSubscription"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

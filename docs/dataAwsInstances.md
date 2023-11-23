@@ -1,7 +1,3 @@
-# `data_aws_instances`
-
-Refer to the Terraform Registory for docs: [`data_aws_instances`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/instances).
-
 # `dataAwsInstances` Submodule <a name="`dataAwsInstances` Submodule" id="@cdktf/aws-cdk.dataAwsInstances"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

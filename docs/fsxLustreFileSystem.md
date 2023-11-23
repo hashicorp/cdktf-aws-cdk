@@ -1,7 +1,3 @@
-# `aws_fsx_lustre_file_system`
-
-Refer to the Terraform Registory for docs: [`aws_fsx_lustre_file_system`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/fsx_lustre_file_system).
-
 # `fsxLustreFileSystem` Submodule <a name="`fsxLustreFileSystem` Submodule" id="@cdktf/aws-cdk.fsxLustreFileSystem"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

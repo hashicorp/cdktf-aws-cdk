@@ -1,7 +1,3 @@
-# `aws_serverlessapplicationrepository_cloudformation_stack`
-
-Refer to the Terraform Registory for docs: [`aws_serverlessapplicationrepository_cloudformation_stack`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/serverlessapplicationrepository_cloudformation_stack).
-
 # `serverlessapplicationrepositoryCloudformationStack` Submodule <a name="`serverlessapplicationrepositoryCloudformationStack` Submodule" id="@cdktf/aws-cdk.serverlessapplicationrepositoryCloudformationStack"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

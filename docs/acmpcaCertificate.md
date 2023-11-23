@@ -1,7 +1,3 @@
-# `aws_acmpca_certificate`
-
-Refer to the Terraform Registory for docs: [`aws_acmpca_certificate`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/acmpca_certificate).
-
 # `acmpcaCertificate` Submodule <a name="`acmpcaCertificate` Submodule" id="@cdktf/aws-cdk.acmpcaCertificate"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

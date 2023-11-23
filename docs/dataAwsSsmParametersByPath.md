@@ -1,7 +1,3 @@
-# `data_aws_ssm_parameters_by_path`
-
-Refer to the Terraform Registory for docs: [`data_aws_ssm_parameters_by_path`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ssm_parameters_by_path).
-
 # `dataAwsSsmParametersByPath` Submodule <a name="`dataAwsSsmParametersByPath` Submodule" id="@cdktf/aws-cdk.dataAwsSsmParametersByPath"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_opsworks_rds_db_instance`
-
-Refer to the Terraform Registory for docs: [`aws_opsworks_rds_db_instance`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_rds_db_instance).
-
 # `opsworksRdsDbInstance` Submodule <a name="`opsworksRdsDbInstance` Submodule" id="@cdktf/aws-cdk.opsworksRdsDbInstance"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

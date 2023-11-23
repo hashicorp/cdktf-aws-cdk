@@ -1,7 +1,3 @@
-# `aws_cloudformation_stack`
-
-Refer to the Terraform Registory for docs: [`aws_cloudformation_stack`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cloudformation_stack).
-
 # `cloudformationStack` Submodule <a name="`cloudformationStack` Submodule" id="@cdktf/aws-cdk.cloudformationStack"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

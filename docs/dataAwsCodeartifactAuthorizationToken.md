@@ -1,7 +1,3 @@
-# `data_aws_codeartifact_authorization_token`
-
-Refer to the Terraform Registory for docs: [`data_aws_codeartifact_authorization_token`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/codeartifact_authorization_token).
-
 # `dataAwsCodeartifactAuthorizationToken` Submodule <a name="`dataAwsCodeartifactAuthorizationToken` Submodule" id="@cdktf/aws-cdk.dataAwsCodeartifactAuthorizationToken"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

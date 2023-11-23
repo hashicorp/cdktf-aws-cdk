@@ -1,7 +1,3 @@
-# `aws_networkfirewall_resource_policy`
-
-Refer to the Terraform Registory for docs: [`aws_networkfirewall_resource_policy`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/networkfirewall_resource_policy).
-
 # `networkfirewallResourcePolicy` Submodule <a name="`networkfirewallResourcePolicy` Submodule" id="@cdktf/aws-cdk.networkfirewallResourcePolicy"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

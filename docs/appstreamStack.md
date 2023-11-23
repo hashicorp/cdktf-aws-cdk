@@ -1,7 +1,3 @@
-# `aws_appstream_stack`
-
-Refer to the Terraform Registory for docs: [`aws_appstream_stack`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appstream_stack).
-
 # `appstreamStack` Submodule <a name="`appstreamStack` Submodule" id="@cdktf/aws-cdk.appstreamStack"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

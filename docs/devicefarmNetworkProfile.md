@@ -1,7 +1,3 @@
-# `aws_devicefarm_network_profile`
-
-Refer to the Terraform Registory for docs: [`aws_devicefarm_network_profile`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/devicefarm_network_profile).
-
 # `devicefarmNetworkProfile` Submodule <a name="`devicefarmNetworkProfile` Submodule" id="@cdktf/aws-cdk.devicefarmNetworkProfile"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

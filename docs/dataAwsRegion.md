@@ -1,7 +1,3 @@
-# `data_aws_region`
-
-Refer to the Terraform Registory for docs: [`data_aws_region`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/region).
-
 # `dataAwsRegion` Submodule <a name="`dataAwsRegion` Submodule" id="@cdktf/aws-cdk.dataAwsRegion"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

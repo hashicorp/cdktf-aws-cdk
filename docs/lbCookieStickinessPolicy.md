@@ -1,7 +1,3 @@
-# `aws_lb_cookie_stickiness_policy`
-
-Refer to the Terraform Registory for docs: [`aws_lb_cookie_stickiness_policy`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/lb_cookie_stickiness_policy).
-
 # `lbCookieStickinessPolicy` Submodule <a name="`lbCookieStickinessPolicy` Submodule" id="@cdktf/aws-cdk.lbCookieStickinessPolicy"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

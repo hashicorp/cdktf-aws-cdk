@@ -1,7 +1,3 @@
-# `aws_opsworks_php_app_layer`
-
-Refer to the Terraform Registory for docs: [`aws_opsworks_php_app_layer`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_php_app_layer).
-
 # `opsworksPhpAppLayer` Submodule <a name="`opsworksPhpAppLayer` Submodule" id="@cdktf/aws-cdk.opsworksPhpAppLayer"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `data_aws_dx_location`
-
-Refer to the Terraform Registory for docs: [`data_aws_dx_location`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/dx_location).
-
 # `dataAwsDxLocation` Submodule <a name="`dataAwsDxLocation` Submodule" id="@cdktf/aws-cdk.dataAwsDxLocation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

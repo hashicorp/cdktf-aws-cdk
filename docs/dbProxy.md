@@ -1,7 +1,3 @@
-# `aws_db_proxy`
-
-Refer to the Terraform Registory for docs: [`aws_db_proxy`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/db_proxy).
-
 # `dbProxy` Submodule <a name="`dbProxy` Submodule" id="@cdktf/aws-cdk.dbProxy"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

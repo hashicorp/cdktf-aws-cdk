@@ -1,7 +1,3 @@
-# `aws_elasticsearch_domain_policy`
-
-Refer to the Terraform Registory for docs: [`aws_elasticsearch_domain_policy`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/elasticsearch_domain_policy).
-
 # `elasticsearchDomainPolicy` Submodule <a name="`elasticsearchDomainPolicy` Submodule" id="@cdktf/aws-cdk.elasticsearchDomainPolicy"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

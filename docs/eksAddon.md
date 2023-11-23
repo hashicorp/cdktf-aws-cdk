@@ -1,7 +1,3 @@
-# `aws_eks_addon`
-
-Refer to the Terraform Registory for docs: [`aws_eks_addon`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/eks_addon).
-
 # `eksAddon` Submodule <a name="`eksAddon` Submodule" id="@cdktf/aws-cdk.eksAddon"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

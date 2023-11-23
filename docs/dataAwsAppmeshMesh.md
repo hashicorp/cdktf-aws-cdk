@@ -1,7 +1,3 @@
-# `data_aws_appmesh_mesh`
-
-Refer to the Terraform Registory for docs: [`data_aws_appmesh_mesh`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/appmesh_mesh).
-
 # `dataAwsAppmeshMesh` Submodule <a name="`dataAwsAppmeshMesh` Submodule" id="@cdktf/aws-cdk.dataAwsAppmeshMesh"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

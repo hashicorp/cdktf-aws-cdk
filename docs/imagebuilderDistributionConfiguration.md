@@ -1,7 +1,3 @@
-# `aws_imagebuilder_distribution_configuration`
-
-Refer to the Terraform Registory for docs: [`aws_imagebuilder_distribution_configuration`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/imagebuilder_distribution_configuration).
-
 # `imagebuilderDistributionConfiguration` Submodule <a name="`imagebuilderDistributionConfiguration` Submodule" id="@cdktf/aws-cdk.imagebuilderDistributionConfiguration"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

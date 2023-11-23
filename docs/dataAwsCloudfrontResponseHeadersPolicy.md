@@ -1,7 +1,3 @@
-# `data_aws_cloudfront_response_headers_policy`
-
-Refer to the Terraform Registory for docs: [`data_aws_cloudfront_response_headers_policy`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/cloudfront_response_headers_policy).
-
 # `dataAwsCloudfrontResponseHeadersPolicy` Submodule <a name="`dataAwsCloudfrontResponseHeadersPolicy` Submodule" id="@cdktf/aws-cdk.dataAwsCloudfrontResponseHeadersPolicy"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

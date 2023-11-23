@@ -1,7 +1,3 @@
-# `aws_alb_target_group`
-
-Refer to the Terraform Registory for docs: [`aws_alb_target_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/alb_target_group).
-
 # `albTargetGroup` Submodule <a name="`albTargetGroup` Submodule" id="@cdktf/aws-cdk.albTargetGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

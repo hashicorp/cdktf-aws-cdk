@@ -1,7 +1,3 @@
-# `data_aws_ec2_host`
-
-Refer to the Terraform Registory for docs: [`data_aws_ec2_host`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ec2_host).
-
 # `dataAwsEc2Host` Submodule <a name="`dataAwsEc2Host` Submodule" id="@cdktf/aws-cdk.dataAwsEc2Host"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_ec2_capacity_reservation`
-
-Refer to the Terraform Registory for docs: [`aws_ec2_capacity_reservation`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ec2_capacity_reservation).
-
 # `ec2CapacityReservation` Submodule <a name="`ec2CapacityReservation` Submodule" id="@cdktf/aws-cdk.ec2CapacityReservation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

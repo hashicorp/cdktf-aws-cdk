@@ -1,7 +1,3 @@
-# `aws_opsworks_haproxy_layer`
-
-Refer to the Terraform Registory for docs: [`aws_opsworks_haproxy_layer`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_haproxy_layer).
-
 # `opsworksHaproxyLayer` Submodule <a name="`opsworksHaproxyLayer` Submodule" id="@cdktf/aws-cdk.opsworksHaproxyLayer"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

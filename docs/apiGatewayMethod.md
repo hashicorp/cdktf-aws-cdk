@@ -1,7 +1,3 @@
-# `aws_api_gateway_method`
-
-Refer to the Terraform Registory for docs: [`aws_api_gateway_method`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/api_gateway_method).
-
 # `apiGatewayMethod` Submodule <a name="`apiGatewayMethod` Submodule" id="@cdktf/aws-cdk.apiGatewayMethod"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

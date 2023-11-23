@@ -1,7 +1,3 @@
-# `aws_prometheus_rule_group_namespace`
-
-Refer to the Terraform Registory for docs: [`aws_prometheus_rule_group_namespace`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/prometheus_rule_group_namespace).
-
 # `prometheusRuleGroupNamespace` Submodule <a name="`prometheusRuleGroupNamespace` Submodule" id="@cdktf/aws-cdk.prometheusRuleGroupNamespace"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

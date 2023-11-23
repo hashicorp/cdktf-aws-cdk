@@ -1,7 +1,3 @@
-# `data_aws_kinesis_firehose_delivery_stream`
-
-Refer to the Terraform Registory for docs: [`data_aws_kinesis_firehose_delivery_stream`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/kinesis_firehose_delivery_stream).
-
 # `dataAwsKinesisFirehoseDeliveryStream` Submodule <a name="`dataAwsKinesisFirehoseDeliveryStream` Submodule" id="@cdktf/aws-cdk.dataAwsKinesisFirehoseDeliveryStream"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

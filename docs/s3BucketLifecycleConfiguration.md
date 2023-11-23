@@ -1,7 +1,3 @@
-# `aws_s3_bucket_lifecycle_configuration`
-
-Refer to the Terraform Registory for docs: [`aws_s3_bucket_lifecycle_configuration`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket_lifecycle_configuration).
-
 # `s3BucketLifecycleConfiguration` Submodule <a name="`s3BucketLifecycleConfiguration` Submodule" id="@cdktf/aws-cdk.s3BucketLifecycleConfiguration"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

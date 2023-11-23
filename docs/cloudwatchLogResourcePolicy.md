@@ -1,7 +1,3 @@
-# `aws_cloudwatch_log_resource_policy`
-
-Refer to the Terraform Registory for docs: [`aws_cloudwatch_log_resource_policy`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cloudwatch_log_resource_policy).
-
 # `cloudwatchLogResourcePolicy` Submodule <a name="`cloudwatchLogResourcePolicy` Submodule" id="@cdktf/aws-cdk.cloudwatchLogResourcePolicy"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

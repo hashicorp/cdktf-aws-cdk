@@ -1,7 +1,3 @@
-# `aws_servicecatalog_provisioned_product`
-
-Refer to the Terraform Registory for docs: [`aws_servicecatalog_provisioned_product`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/servicecatalog_provisioned_product).
-
 # `servicecatalogProvisionedProduct` Submodule <a name="`servicecatalogProvisionedProduct` Submodule" id="@cdktf/aws-cdk.servicecatalogProvisionedProduct"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

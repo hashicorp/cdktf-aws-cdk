@@ -1,7 +1,3 @@
-# `data_aws_qldb_ledger`
-
-Refer to the Terraform Registory for docs: [`data_aws_qldb_ledger`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/qldb_ledger).
-
 # `dataAwsQldbLedger` Submodule <a name="`dataAwsQldbLedger` Submodule" id="@cdktf/aws-cdk.dataAwsQldbLedger"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

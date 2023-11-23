@@ -1,7 +1,3 @@
-# `aws_ses_domain_mail_from`
-
-Refer to the Terraform Registory for docs: [`aws_ses_domain_mail_from`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ses_domain_mail_from).
-
 # `sesDomainMailFrom` Submodule <a name="`sesDomainMailFrom` Submodule" id="@cdktf/aws-cdk.sesDomainMailFrom"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

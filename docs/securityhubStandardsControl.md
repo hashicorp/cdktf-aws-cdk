@@ -1,7 +1,3 @@
-# `aws_securityhub_standards_control`
-
-Refer to the Terraform Registory for docs: [`aws_securityhub_standards_control`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/securityhub_standards_control).
-
 # `securityhubStandardsControl` Submodule <a name="`securityhubStandardsControl` Submodule" id="@cdktf/aws-cdk.securityhubStandardsControl"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

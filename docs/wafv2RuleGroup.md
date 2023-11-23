@@ -1,7 +1,3 @@
-# `aws_wafv2_rule_group`
-
-Refer to the Terraform Registory for docs: [`aws_wafv2_rule_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/wafv2_rule_group).
-
 # `wafv2RuleGroup` Submodule <a name="`wafv2RuleGroup` Submodule" id="@cdktf/aws-cdk.wafv2RuleGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

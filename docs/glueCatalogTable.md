@@ -1,7 +1,3 @@
-# `aws_glue_catalog_table`
-
-Refer to the Terraform Registory for docs: [`aws_glue_catalog_table`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_catalog_table).
-
 # `glueCatalogTable` Submodule <a name="`glueCatalogTable` Submodule" id="@cdktf/aws-cdk.glueCatalogTable"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

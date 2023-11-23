@@ -1,7 +1,3 @@
-# `aws_servicecatalog_tag_option`
-
-Refer to the Terraform Registory for docs: [`aws_servicecatalog_tag_option`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/servicecatalog_tag_option).
-
 # `servicecatalogTagOption` Submodule <a name="`servicecatalogTagOption` Submodule" id="@cdktf/aws-cdk.servicecatalogTagOption"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

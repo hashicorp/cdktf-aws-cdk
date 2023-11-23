@@ -1,7 +1,3 @@
-# `aws_iot_authorizer`
-
-Refer to the Terraform Registory for docs: [`aws_iot_authorizer`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/iot_authorizer).
-
 # `iotAuthorizer` Submodule <a name="`iotAuthorizer` Submodule" id="@cdktf/aws-cdk.iotAuthorizer"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

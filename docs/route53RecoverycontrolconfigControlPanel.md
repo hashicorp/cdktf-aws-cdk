@@ -1,7 +1,3 @@
-# `aws_route53recoverycontrolconfig_control_panel`
-
-Refer to the Terraform Registory for docs: [`aws_route53recoverycontrolconfig_control_panel`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/route53recoverycontrolconfig_control_panel).
-
 # `route53RecoverycontrolconfigControlPanel` Submodule <a name="`route53RecoverycontrolconfigControlPanel` Submodule" id="@cdktf/aws-cdk.route53RecoverycontrolconfigControlPanel"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

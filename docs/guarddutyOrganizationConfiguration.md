@@ -1,7 +1,3 @@
-# `aws_guardduty_organization_configuration`
-
-Refer to the Terraform Registory for docs: [`aws_guardduty_organization_configuration`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/guardduty_organization_configuration).
-
 # `guarddutyOrganizationConfiguration` Submodule <a name="`guarddutyOrganizationConfiguration` Submodule" id="@cdktf/aws-cdk.guarddutyOrganizationConfiguration"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

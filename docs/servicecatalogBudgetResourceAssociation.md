@@ -1,7 +1,3 @@
-# `aws_servicecatalog_budget_resource_association`
-
-Refer to the Terraform Registory for docs: [`aws_servicecatalog_budget_resource_association`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/servicecatalog_budget_resource_association).
-
 # `servicecatalogBudgetResourceAssociation` Submodule <a name="`servicecatalogBudgetResourceAssociation` Submodule" id="@cdktf/aws-cdk.servicecatalogBudgetResourceAssociation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_route53_resolver_dnssec_config`
-
-Refer to the Terraform Registory for docs: [`aws_route53_resolver_dnssec_config`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/route53_resolver_dnssec_config).
-
 # `route53ResolverDnssecConfig` Submodule <a name="`route53ResolverDnssecConfig` Submodule" id="@cdktf/aws-cdk.route53ResolverDnssecConfig"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

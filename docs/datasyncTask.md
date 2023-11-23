@@ -1,7 +1,3 @@
-# `aws_datasync_task`
-
-Refer to the Terraform Registory for docs: [`aws_datasync_task`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/datasync_task).
-
 # `datasyncTask` Submodule <a name="`datasyncTask` Submodule" id="@cdktf/aws-cdk.datasyncTask"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_route_table_association`
-
-Refer to the Terraform Registory for docs: [`aws_route_table_association`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/route_table_association).
-
 # `routeTableAssociation` Submodule <a name="`routeTableAssociation` Submodule" id="@cdktf/aws-cdk.routeTableAssociation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

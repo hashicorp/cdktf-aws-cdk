@@ -1,7 +1,3 @@
-# `data_aws_sagemaker_prebuilt_ecr_image`
-
-Refer to the Terraform Registory for docs: [`data_aws_sagemaker_prebuilt_ecr_image`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/sagemaker_prebuilt_ecr_image).
-
 # `dataAwsSagemakerPrebuiltEcrImage` Submodule <a name="`dataAwsSagemakerPrebuiltEcrImage` Submodule" id="@cdktf/aws-cdk.dataAwsSagemakerPrebuiltEcrImage"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_s3_bucket_acl`
-
-Refer to the Terraform Registory for docs: [`aws_s3_bucket_acl`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket_acl).
-
 # `s3BucketAcl` Submodule <a name="`s3BucketAcl` Submodule" id="@cdktf/aws-cdk.s3BucketAcl"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

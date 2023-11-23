@@ -1,7 +1,3 @@
-# `aws_instance`
-
-Refer to the Terraform Registory for docs: [`aws_instance`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/instance).
-
 # `instance` Submodule <a name="`instance` Submodule" id="@cdktf/aws-cdk.instance"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

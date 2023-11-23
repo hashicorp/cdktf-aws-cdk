@@ -1,7 +1,3 @@
-# `aws_glacier_vault_lock`
-
-Refer to the Terraform Registory for docs: [`aws_glacier_vault_lock`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glacier_vault_lock).
-
 # `glacierVaultLock` Submodule <a name="`glacierVaultLock` Submodule" id="@cdktf/aws-cdk.glacierVaultLock"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

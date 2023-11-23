@@ -1,7 +1,3 @@
-# `data_aws_neptune_orderable_db_instance`
-
-Refer to the Terraform Registory for docs: [`data_aws_neptune_orderable_db_instance`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/neptune_orderable_db_instance).
-
 # `dataAwsNeptuneOrderableDbInstance` Submodule <a name="`dataAwsNeptuneOrderableDbInstance` Submodule" id="@cdktf/aws-cdk.dataAwsNeptuneOrderableDbInstance"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

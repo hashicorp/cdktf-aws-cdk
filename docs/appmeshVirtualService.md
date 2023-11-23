@@ -1,7 +1,3 @@
-# `aws_appmesh_virtual_service`
-
-Refer to the Terraform Registory for docs: [`aws_appmesh_virtual_service`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appmesh_virtual_service).
-
 # `appmeshVirtualService` Submodule <a name="`appmeshVirtualService` Submodule" id="@cdktf/aws-cdk.appmeshVirtualService"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

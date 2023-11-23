@@ -1,7 +1,3 @@
-# `aws_route`
-
-Refer to the Terraform Registory for docs: [`aws_route`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/route).
-
 # `route` Submodule <a name="`route` Submodule" id="@cdktf/aws-cdk.route"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

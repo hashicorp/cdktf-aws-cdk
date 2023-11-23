@@ -1,7 +1,3 @@
-# `data_aws_vpc_peering_connections`
-
-Refer to the Terraform Registory for docs: [`data_aws_vpc_peering_connections`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/vpc_peering_connections).
-
 # `dataAwsVpcPeeringConnections` Submodule <a name="`dataAwsVpcPeeringConnections` Submodule" id="@cdktf/aws-cdk.dataAwsVpcPeeringConnections"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

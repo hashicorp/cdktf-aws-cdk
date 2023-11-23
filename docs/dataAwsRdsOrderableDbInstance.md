@@ -1,7 +1,3 @@
-# `data_aws_rds_orderable_db_instance`
-
-Refer to the Terraform Registory for docs: [`data_aws_rds_orderable_db_instance`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/rds_orderable_db_instance).
-
 # `dataAwsRdsOrderableDbInstance` Submodule <a name="`dataAwsRdsOrderableDbInstance` Submodule" id="@cdktf/aws-cdk.dataAwsRdsOrderableDbInstance"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

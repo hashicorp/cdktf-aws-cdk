@@ -1,7 +1,3 @@
-# `aws_ec2_client_vpn_endpoint`
-
-Refer to the Terraform Registory for docs: [`aws_ec2_client_vpn_endpoint`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ec2_client_vpn_endpoint).
-
 # `ec2ClientVpnEndpoint` Submodule <a name="`ec2ClientVpnEndpoint` Submodule" id="@cdktf/aws-cdk.ec2ClientVpnEndpoint"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `data_aws_vpc_endpoint_service`
-
-Refer to the Terraform Registory for docs: [`data_aws_vpc_endpoint_service`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/vpc_endpoint_service).
-
 # `dataAwsVpcEndpointService` Submodule <a name="`dataAwsVpcEndpointService` Submodule" id="@cdktf/aws-cdk.dataAwsVpcEndpointService"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

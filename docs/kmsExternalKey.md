@@ -1,7 +1,3 @@
-# `aws_kms_external_key`
-
-Refer to the Terraform Registory for docs: [`aws_kms_external_key`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/kms_external_key).
-
 # `kmsExternalKey` Submodule <a name="`kmsExternalKey` Submodule" id="@cdktf/aws-cdk.kmsExternalKey"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

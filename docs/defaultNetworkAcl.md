@@ -1,7 +1,3 @@
-# `aws_default_network_acl`
-
-Refer to the Terraform Registory for docs: [`aws_default_network_acl`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/default_network_acl).
-
 # `defaultNetworkAcl` Submodule <a name="`defaultNetworkAcl` Submodule" id="@cdktf/aws-cdk.defaultNetworkAcl"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

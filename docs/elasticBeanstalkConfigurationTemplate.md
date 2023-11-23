@@ -1,7 +1,3 @@
-# `aws_elastic_beanstalk_configuration_template`
-
-Refer to the Terraform Registory for docs: [`aws_elastic_beanstalk_configuration_template`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/elastic_beanstalk_configuration_template).
-
 # `elasticBeanstalkConfigurationTemplate` Submodule <a name="`elasticBeanstalkConfigurationTemplate` Submodule" id="@cdktf/aws-cdk.elasticBeanstalkConfigurationTemplate"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

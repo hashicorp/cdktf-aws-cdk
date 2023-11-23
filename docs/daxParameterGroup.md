@@ -1,7 +1,3 @@
-# `aws_dax_parameter_group`
-
-Refer to the Terraform Registory for docs: [`aws_dax_parameter_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/dax_parameter_group).
-
 # `daxParameterGroup` Submodule <a name="`daxParameterGroup` Submodule" id="@cdktf/aws-cdk.daxParameterGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

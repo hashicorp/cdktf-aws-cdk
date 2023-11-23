@@ -1,7 +1,3 @@
-# `aws_lb_target_group`
-
-Refer to the Terraform Registory for docs: [`aws_lb_target_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/lb_target_group).
-
 # `lbTargetGroup` Submodule <a name="`lbTargetGroup` Submodule" id="@cdktf/aws-cdk.lbTargetGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

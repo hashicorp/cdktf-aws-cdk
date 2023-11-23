@@ -1,7 +1,3 @@
-# `aws_memorydb_parameter_group`
-
-Refer to the Terraform Registory for docs: [`aws_memorydb_parameter_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/memorydb_parameter_group).
-
 # `memorydbParameterGroup` Submodule <a name="`memorydbParameterGroup` Submodule" id="@cdktf/aws-cdk.memorydbParameterGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_appconfig_hosted_configuration_version`
-
-Refer to the Terraform Registory for docs: [`aws_appconfig_hosted_configuration_version`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/appconfig_hosted_configuration_version).
-
 # `appconfigHostedConfigurationVersion` Submodule <a name="`appconfigHostedConfigurationVersion` Submodule" id="@cdktf/aws-cdk.appconfigHostedConfigurationVersion"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

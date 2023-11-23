@@ -1,7 +1,3 @@
-# `data_aws_servicecatalog_product`
-
-Refer to the Terraform Registory for docs: [`data_aws_servicecatalog_product`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/servicecatalog_product).
-
 # `dataAwsServicecatalogProduct` Submodule <a name="`dataAwsServicecatalogProduct` Submodule" id="@cdktf/aws-cdk.dataAwsServicecatalogProduct"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

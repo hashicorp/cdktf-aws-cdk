@@ -1,7 +1,3 @@
-# `aws_docdb_cluster_snapshot`
-
-Refer to the Terraform Registory for docs: [`aws_docdb_cluster_snapshot`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/docdb_cluster_snapshot).
-
 # `docdbClusterSnapshot` Submodule <a name="`docdbClusterSnapshot` Submodule" id="@cdktf/aws-cdk.docdbClusterSnapshot"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

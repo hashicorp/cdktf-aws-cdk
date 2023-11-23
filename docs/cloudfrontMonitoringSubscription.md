@@ -1,7 +1,3 @@
-# `aws_cloudfront_monitoring_subscription`
-
-Refer to the Terraform Registory for docs: [`aws_cloudfront_monitoring_subscription`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cloudfront_monitoring_subscription).
-
 # `cloudfrontMonitoringSubscription` Submodule <a name="`cloudfrontMonitoringSubscription` Submodule" id="@cdktf/aws-cdk.cloudfrontMonitoringSubscription"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

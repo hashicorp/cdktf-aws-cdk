@@ -1,7 +1,3 @@
-# `aws_servicecatalog_portfolio_share`
-
-Refer to the Terraform Registory for docs: [`aws_servicecatalog_portfolio_share`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/servicecatalog_portfolio_share).
-
 # `servicecatalogPortfolioShare` Submodule <a name="`servicecatalogPortfolioShare` Submodule" id="@cdktf/aws-cdk.servicecatalogPortfolioShare"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

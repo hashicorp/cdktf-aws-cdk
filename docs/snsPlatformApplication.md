@@ -1,7 +1,3 @@
-# `aws_sns_platform_application`
-
-Refer to the Terraform Registory for docs: [`aws_sns_platform_application`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/sns_platform_application).
-
 # `snsPlatformApplication` Submodule <a name="`snsPlatformApplication` Submodule" id="@cdktf/aws-cdk.snsPlatformApplication"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

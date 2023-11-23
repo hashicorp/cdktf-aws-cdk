@@ -1,7 +1,3 @@
-# `data_aws_cloudfront_cache_policy`
-
-Refer to the Terraform Registory for docs: [`data_aws_cloudfront_cache_policy`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/cloudfront_cache_policy).
-
 # `dataAwsCloudfrontCachePolicy` Submodule <a name="`dataAwsCloudfrontCachePolicy` Submodule" id="@cdktf/aws-cdk.dataAwsCloudfrontCachePolicy"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

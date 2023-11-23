@@ -1,7 +1,3 @@
-# `aws_eks_cluster`
-
-Refer to the Terraform Registory for docs: [`aws_eks_cluster`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/eks_cluster).
-
 # `eksCluster` Submodule <a name="`eksCluster` Submodule" id="@cdktf/aws-cdk.eksCluster"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

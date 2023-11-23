@@ -1,7 +1,3 @@
-# `aws_config_aggregate_authorization`
-
-Refer to the Terraform Registory for docs: [`aws_config_aggregate_authorization`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/config_aggregate_authorization).
-
 # `configAggregateAuthorization` Submodule <a name="`configAggregateAuthorization` Submodule" id="@cdktf/aws-cdk.configAggregateAuthorization"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

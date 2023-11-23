@@ -1,7 +1,3 @@
-# `aws_ec2_availability_zone_group`
-
-Refer to the Terraform Registory for docs: [`aws_ec2_availability_zone_group`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ec2_availability_zone_group).
-
 # `ec2AvailabilityZoneGroup` Submodule <a name="`ec2AvailabilityZoneGroup` Submodule" id="@cdktf/aws-cdk.ec2AvailabilityZoneGroup"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

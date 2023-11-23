@@ -1,7 +1,3 @@
-# `aws_opsworks_application`
-
-Refer to the Terraform Registory for docs: [`aws_opsworks_application`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/opsworks_application).
-
 # `opsworksApplication` Submodule <a name="`opsworksApplication` Submodule" id="@cdktf/aws-cdk.opsworksApplication"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

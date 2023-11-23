@@ -1,7 +1,3 @@
-# `aws_cloudwatch_event_bus_policy`
-
-Refer to the Terraform Registory for docs: [`aws_cloudwatch_event_bus_policy`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cloudwatch_event_bus_policy).
-
 # `cloudwatchEventBusPolicy` Submodule <a name="`cloudwatchEventBusPolicy` Submodule" id="@cdktf/aws-cdk.cloudwatchEventBusPolicy"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

@@ -1,7 +1,3 @@
-# `aws_s3_bucket_versioning`
-
-Refer to the Terraform Registory for docs: [`aws_s3_bucket_versioning`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket_versioning).
-
 # `s3BucketVersioning` Submodule <a name="`s3BucketVersioning` Submodule" id="@cdktf/aws-cdk.s3BucketVersioning"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

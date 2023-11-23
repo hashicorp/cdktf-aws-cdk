@@ -1,7 +1,3 @@
-# `aws_codedeploy_deployment_config`
-
-Refer to the Terraform Registory for docs: [`aws_codedeploy_deployment_config`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/codedeploy_deployment_config).
-
 # `codedeployDeploymentConfig` Submodule <a name="`codedeployDeploymentConfig` Submodule" id="@cdktf/aws-cdk.codedeployDeploymentConfig"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

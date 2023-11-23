@@ -1,7 +1,3 @@
-# `aws_codepipeline`
-
-Refer to the Terraform Registory for docs: [`aws_codepipeline`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/codepipeline).
-
 # `codepipeline` Submodule <a name="`codepipeline` Submodule" id="@cdktf/aws-cdk.codepipeline"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

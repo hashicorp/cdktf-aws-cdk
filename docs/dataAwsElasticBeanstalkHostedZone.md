@@ -1,7 +1,3 @@
-# `data_aws_elastic_beanstalk_hosted_zone`
-
-Refer to the Terraform Registory for docs: [`data_aws_elastic_beanstalk_hosted_zone`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/elastic_beanstalk_hosted_zone).
-
 # `dataAwsElasticBeanstalkHostedZone` Submodule <a name="`dataAwsElasticBeanstalkHostedZone` Submodule" id="@cdktf/aws-cdk.dataAwsElasticBeanstalkHostedZone"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

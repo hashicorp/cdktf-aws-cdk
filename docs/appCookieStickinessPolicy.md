@@ -1,7 +1,3 @@
-# `aws_app_cookie_stickiness_policy`
-
-Refer to the Terraform Registory for docs: [`aws_app_cookie_stickiness_policy`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/app_cookie_stickiness_policy).
-
 # `appCookieStickinessPolicy` Submodule <a name="`appCookieStickinessPolicy` Submodule" id="@cdktf/aws-cdk.appCookieStickinessPolicy"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

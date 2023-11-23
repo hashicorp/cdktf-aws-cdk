@@ -1,7 +1,3 @@
-# `aws_media_store_container_policy`
-
-Refer to the Terraform Registory for docs: [`aws_media_store_container_policy`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/media_store_container_policy).
-
 # `mediaStoreContainerPolicy` Submodule <a name="`mediaStoreContainerPolicy` Submodule" id="@cdktf/aws-cdk.mediaStoreContainerPolicy"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

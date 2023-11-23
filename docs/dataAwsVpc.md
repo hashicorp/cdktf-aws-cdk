@@ -1,7 +1,3 @@
-# `data_aws_vpc`
-
-Refer to the Terraform Registory for docs: [`data_aws_vpc`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/vpc).
-
 # `dataAwsVpc` Submodule <a name="`dataAwsVpc` Submodule" id="@cdktf/aws-cdk.dataAwsVpc"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

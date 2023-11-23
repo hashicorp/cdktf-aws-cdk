@@ -1,7 +1,3 @@
-# `aws_connect_security_profile`
-
-Refer to the Terraform Registory for docs: [`aws_connect_security_profile`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/connect_security_profile).
-
 # `connectSecurityProfile` Submodule <a name="`connectSecurityProfile` Submodule" id="@cdktf/aws-cdk.connectSecurityProfile"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

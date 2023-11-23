@@ -1,7 +1,3 @@
-# `aws_cognito_identity_pool_roles_attachment`
-
-Refer to the Terraform Registory for docs: [`aws_cognito_identity_pool_roles_attachment`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cognito_identity_pool_roles_attachment).
-
 # `cognitoIdentityPoolRolesAttachment` Submodule <a name="`cognitoIdentityPoolRolesAttachment` Submodule" id="@cdktf/aws-cdk.cognitoIdentityPoolRolesAttachment"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

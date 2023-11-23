@@ -1,7 +1,3 @@
-# `data_aws_acm_certificate`
-
-Refer to the Terraform Registory for docs: [`data_aws_acm_certificate`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/acm_certificate).
-
 # `dataAwsAcmCertificate` Submodule <a name="`dataAwsAcmCertificate` Submodule" id="@cdktf/aws-cdk.dataAwsAcmCertificate"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>

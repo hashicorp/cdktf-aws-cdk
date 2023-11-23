@@ -1,7 +1,3 @@
-# `aws_ec2_local_gateway_route_table_vpc_association`
-
-Refer to the Terraform Registory for docs: [`aws_ec2_local_gateway_route_table_vpc_association`](https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ec2_local_gateway_route_table_vpc_association).
-
 # `ec2LocalGatewayRouteTableVpcAssociation` Submodule <a name="`ec2LocalGatewayRouteTableVpcAssociation` Submodule" id="@cdktf/aws-cdk.ec2LocalGatewayRouteTableVpcAssociation"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
