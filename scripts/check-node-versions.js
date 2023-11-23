@@ -2,11 +2,6 @@
  * Copyright (c) HashiCorp, Inc.
  * SPDX-License-Identifier: MPL-2.0
  */
-// This script is designed to be run by an actions/github-script runner which uses Node 20 by default.
-// Node 20 comes with fetch installed. If you're trying to run this script locally using Node 18, it will fail.
-// In that case, `yarn add -D node-fetch@~2` and uncomment the following line:
-// const fetch = require("node-fetch");
-
 const today = new Date();
 const oneMonthFromToday = new Date();
 oneMonthFromToday.setDate(today.getDate() + 30);
