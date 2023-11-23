@@ -17,7 +17,11 @@ jobs:
       CHECKPOINT_DISABLE: "1"
     steps:
       - name: Checkout
-        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - name: Setup Node.js
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65
+        with:
+          node-version: 18.12.0
       - name: Install
         run: yarn install
       - name: Get current Node.js version
@@ -31,7 +35,7 @@ jobs:
           echo "value=$CURRENT_VERSION" >> $GITHUB_OUTPUT
           echo "short=$CURRENT_VERSION_SHORT" >> $GITHUB_OUTPUT
       - name: Get the earliest supported Node.js version whose EOL date is at least a month away
-        uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
         with:
           script: |-
             const script = require('./scripts/check-node-versions.js')
