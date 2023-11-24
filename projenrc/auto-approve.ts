@@ -23,6 +23,7 @@ export class AutoApprove {
 
     (workflow.concurrency as any) = "${{ github.workflow }}-${{ github.ref }}";
 
+    const maintainerStatuses = `fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]')`;
     const commentText =
       '"Since I authored this PR, I can\'t approve it myself, sorry! Someone else will need to approve it."';
 
@@ -45,10 +46,10 @@ export class AutoApprove {
           },
           {
             name: "Auto-approve PRs by other users as team-tf-cdk",
-            if: "github.event.pull_request.user.login != 'team-tf-cdk'",
+            if: `github.event.pull_request.user.login != 'team-tf-cdk' && (contains(${maintainerStatuses}, github.event.pull_request.author_association) || github.actor == 'dependabot[bot]')`,
             run: "gh pr review $PR_ID --approve",
             env: {
-              GH_TOKEN: "${{ secrets.GH_TOKEN }}",
+              GH_TOKEN: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
             },
           },
           {
@@ -59,7 +60,7 @@ export class AutoApprove {
               commentText +
               '\ngh pr edit $PR_ID --remove-label "auto-approve"',
             env: {
-              GH_TOKEN: "${{ secrets.GH_TOKEN }}",
+              GH_TOKEN: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
             },
           },
         ],

@@ -40,6 +40,20 @@ export class UpdateSnapshots {
             },
           },
           {
+            name: "Set git identity",
+            run: [
+              `git config user.name "team-tf-cdk"`,
+              `git config user.email "github-team-tf-cdk@hashicorp.com"`,
+            ].join("\n"),
+          },
+          {
+            name: "Setup Node.js",
+            uses: "actions/setup-node@v4",
+            with: {
+              "node-version": project.minNodeVersion,
+            },
+          },
+          {
             name: "Run snapshot update in each example directory",
             run: `ls -d examples/* | xargs -I {} bash -c "cd '{}' && yarn && yarn test -- --passWithNoTests --updateSnapshot"`,
             continueOnError: true,
