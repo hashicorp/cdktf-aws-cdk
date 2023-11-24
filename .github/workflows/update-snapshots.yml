@@ -25,6 +25,10 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Setup Node.js
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65
+        with:
+          node-version: 18.12.0
       - name: Run snapshot update in each example directory
         run: ls -d examples/* | xargs -I {} bash -c "cd '{}' && yarn && yarn test -- --passWithNoTests --updateSnapshot"
         continue-on-error: true

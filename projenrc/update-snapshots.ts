@@ -40,6 +40,13 @@ export class UpdateSnapshots {
             },
           },
           {
+            name: "Setup Node.js",
+            uses: "actions/setup-node@v4",
+            with: {
+              "node-version": project.minNodeVersion,
+            },
+          },
+          {
             name: "Run snapshot update in each example directory",
             run: `ls -d examples/* | xargs -I {} bash -c "cd '{}' && yarn && yarn test -- --passWithNoTests --updateSnapshot"`,
             continueOnError: true,
