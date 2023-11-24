@@ -49,20 +49,19 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     super({
       ...options,
       workflowContainerImage,
-      licensed: false, // we do supply our own license file with a custom header
-      releaseToNpm: true,
       minNodeVersion,
       name,
-      repositoryUrl: `https://github.com/${githubNamespace}/${kebabName}.git`,
-      defaultReleaseBranch: "main",
-      description: `Adapter for using AWS CDK constructs in Terraform CDK (cdktf) projects`,
-      keywords: ["cdktf", "terraform", "cdk", "aws-cdk", "aws"],
       authorAddress,
       author,
       authorOrganization: true,
+      repositoryUrl: `https://github.com/${githubNamespace}/${kebabName}.git`,
+      description: `Adapter for using AWS CDK constructs in Terraform CDK (cdktf) projects`,
+      keywords: ["cdktf", "terraform", "cdk", "aws-cdk", "aws"],
+      licensed: false, // we do supply our own license file with a custom header
+      releaseToNpm: true,
+      defaultReleaseBranch: "main",
       sampleCode: false,
       jest: true,
-      testdir: "src/tests",
       jestOptions: {
         jestConfig: {
           setupFilesAfterEnv: ["./setupJest.js"],
@@ -83,6 +82,8 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
           ],
         },
       },
+      testdir: "src/tests",
+      typescriptVersion: options.jsiiVersion,
       tsconfigDev: {
         compilerOptions: {},
         exclude: ["/node_modules/", "<rootDir>/examples", ".yalc"],
@@ -101,7 +102,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
         ],
       },
       mergify: false,
-      docgen: false,
+      docgen: false, // custom docgen setup is defined in cdktf-config.ts
       pullRequestTemplate: false,
       peerDependencyOptions: {
         pinnedDevDependency: false,
