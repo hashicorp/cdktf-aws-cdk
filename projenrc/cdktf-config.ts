@@ -17,10 +17,8 @@ interface CdktfConfigOptions {
 
 export class CdktfConfig {
   constructor(project: cdk.JsiiProject, options: CdktfConfigOptions) {
-    const { terraformProvider, providerName } = options;
-
-    const cdktfVersion = options.cdktfVersion;
-    const constructsVersion = options.constructsVersion;
+    const { terraformProvider, providerName, cdktfVersion, constructsVersion } =
+      options;
 
     project.addPeerDeps(`cdktf@^${cdktfVersion}`);
     project.addPeerDeps(`constructs@^${constructsVersion}`);
