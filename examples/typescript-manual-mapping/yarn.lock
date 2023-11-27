@@ -1370,10 +1370,10 @@ available-typed-arrays@^1.0.5:
   resolved "https://registry.npmjs.org/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz"
   integrity sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==
 
-aws-cdk-lib@2.110.0:
-  version "2.110.0"
-  resolved "https://registry.yarnpkg.com/aws-cdk-lib/-/aws-cdk-lib-2.110.0.tgz#5af2a933a834b9efe3b99abf2c28adbd93f89547"
-  integrity sha512-4IxjdtaoGjQPqtFyYXG6kOs9t/UTAh06tlGyCPpvhTZNoKNFUkku3H6MArlazpiKtm+dThdF+p5lQLB/kIu/qw==
+aws-cdk-lib@2.110.1:
+  version "2.110.1"
+  resolved "https://registry.yarnpkg.com/aws-cdk-lib/-/aws-cdk-lib-2.110.1.tgz#3bbe61ec03b73da390ae5718060385c26333749d"
+  integrity sha512-Z+42Jc/KSKFdBOpEv4LK9tz6kQUdVvUBquIYhLajam3aGblkonM0/FgexvAqy8iGwUaVEIpVyBTZUP2/VUMalg==
   dependencies:
     "@aws-cdk/asset-awscli-v1" "^2.2.201"
     "@aws-cdk/asset-kubectl-v20" "^2.1.2"
