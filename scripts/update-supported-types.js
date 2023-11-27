@@ -9,7 +9,7 @@ const {
   paginateListTypes,
   CloudFormationClient,
 } = require("@aws-sdk/client-cloudformation");
-const client = new CloudFormationClient();
+const client = new CloudFormationClient({ region: "us-east-1" });
 
 const OUTPUT_FILE = path.join(__dirname, "..", "src/awscc/supportedTypes.ts");
 
