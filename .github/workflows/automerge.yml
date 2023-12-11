@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-    if: contains(github.event.pull_request.labels.*.name, 'automerge') && github.event.pull_request.draft == false
+    if: contains(github.event.pull_request.labels.*.name, 'automerge') && !contains(github.event.pull_request.labels.*.name, 'do-not-merge') && github.event.pull_request.draft == false
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
