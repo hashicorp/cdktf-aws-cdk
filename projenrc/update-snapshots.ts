@@ -20,10 +20,10 @@ export class UpdateSnapshots {
       pullRequestTarget: {
         types: ["opened", "reopened", "synchronize"],
       },
-      workflowDispatch: {}, // allow manual triggering
     });
 
-    (workflow.concurrency as any) = "${{ github.workflow }}-${{ github.ref }}";
+    (workflow.concurrency as any) =
+      "${{ github.workflow }}-${{ github.head_ref }}";
 
     workflow.addJobs({
       update: {
