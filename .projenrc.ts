@@ -14,7 +14,7 @@ const githubActionPinnedVersions = {
   "actions/upload-artifact": "a8a3f3ad30e3422c9c7b888a15615d19a852ae32", // v3.1.3
   "amannn/action-semantic-pull-request":
     "e9fabac35e210fea40ca5b14c0da95a099eff26f", // v5.4.0
-  "dessant/lock-threads": "d42e5f49803f3c4e14ffee0378e31481265dda22", // v5.0.0
+  "dessant/lock-threads": "1bf7ec25051fe7c00bdd17e6a7cf3d7bfb7dc771", // v5.0.1
   "peter-evans/create-pull-request": "153407881ec5c347639a548ade7d8ad1d6740e38", // v5.0.2
 };
 
