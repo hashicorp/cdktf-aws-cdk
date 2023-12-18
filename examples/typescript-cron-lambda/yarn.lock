@@ -530,10 +530,10 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cdktf/aws-cdk@^0.12.8":
-  version "0.12.8"
-  resolved "https://registry.yarnpkg.com/@cdktf/aws-cdk/-/aws-cdk-0.12.8.tgz#1d2a6cd68c225dc503bf8d29796319fcf4ce3f82"
-  integrity sha512-vUKNecOt9ZS6/ojdP9v5bhS/gOqxVF44UK96yK137CJIp0ygLPWD0gu+z8kMYspVaAkOPuI8/zallWWTBetebQ==
+"@cdktf/aws-cdk@^0.12.10":
+  version "0.12.10"
+  resolved "https://registry.yarnpkg.com/@cdktf/aws-cdk/-/aws-cdk-0.12.10.tgz#e55ebef9c7abd0389576c656e7d0d864e0514d22"
+  integrity sha512-DhweYY2vLgnfyc0Y0uo7cyZldBpfMBVkl7G+frFY1HuDYrF0FPZlY6NpNYnsZQOt4ZcYVv2c/vGM3yl0gFrd6w==
   dependencies:
     change-case "^4.1.1"
     codemaker "^1.34.0"
