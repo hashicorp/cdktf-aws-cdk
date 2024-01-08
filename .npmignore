@@ -6,6 +6,8 @@ junit.xml
 permissions-backup.acl
 /dist/changelog.md
 /dist/version.txt
+/.prettierignore
+/.prettierrc.json
 /src/tests/
 /tsconfig.dev.json
 /src/
@@ -24,10 +26,11 @@ tsconfig.tsbuildinfo
 !.jsii
 docs
 examples
-/.projenrc.ts
 projenrc
 scripts
 .gen
 .terraform
 cdktf.json
 .copywrite.hcl
+/.gitattributes
+/.projenrc.ts
