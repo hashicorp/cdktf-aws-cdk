@@ -30,7 +30,6 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
-!/.projenrc.js
 /test-reports/
 junit.xml
 /coverage/
@@ -69,3 +68,4 @@ API.md
 !/.github/workflows/update-snapshots.yml
 !/.github/workflows/upgrade-cdktf.yml
 !/.github/workflows/upgrade-node.yml
+!/.projenrc.ts
