@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/transfer_user
 // generated from terraform resource schema
 
@@ -84,6 +79,31 @@ export function transferUserHomeDirectoryMappingsToTerraform(struct?: TransferUs
     entry: cdktf.stringToTerraform(struct!.entry),
     target: cdktf.stringToTerraform(struct!.target),
   }
+}
+
+
+export function transferUserHomeDirectoryMappingsToHclTerraform(struct?: TransferUserHomeDirectoryMappings | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    entry: {
+      value: cdktf.stringToHclTerraform(struct!.entry),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    target: {
+      value: cdktf.stringToHclTerraform(struct!.target),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class TransferUserHomeDirectoryMappingsOutputReference extends cdktf.ComplexObject {
@@ -207,6 +227,37 @@ export function transferUserPosixProfileToTerraform(struct?: TransferUserPosixPr
     secondary_gids: cdktf.listMapper(cdktf.numberToTerraform, false)(struct!.secondaryGids),
     uid: cdktf.numberToTerraform(struct!.uid),
   }
+}
+
+
+export function transferUserPosixProfileToHclTerraform(struct?: TransferUserPosixProfileOutputReference | TransferUserPosixProfile): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    gid: {
+      value: cdktf.numberToHclTerraform(struct!.gid),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    secondary_gids: {
+      value: cdktf.listMapperHcl(cdktf.numberToHclTerraform, false)(struct!.secondaryGids),
+      isBlock: false,
+      type: "set",
+      storageClassType: "numberList",
+    },
+    uid: {
+      value: cdktf.numberToHclTerraform(struct!.uid),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class TransferUserPosixProfileOutputReference extends cdktf.ComplexObject {
@@ -554,5 +605,79 @@ export class TransferUser extends cdktf.TerraformResource {
       home_directory_mappings: cdktf.listMapper(transferUserHomeDirectoryMappingsToTerraform, true)(this._homeDirectoryMappings.internalValue),
       posix_profile: transferUserPosixProfileToTerraform(this._posixProfile.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      home_directory: {
+        value: cdktf.stringToHclTerraform(this._homeDirectory),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      home_directory_type: {
+        value: cdktf.stringToHclTerraform(this._homeDirectoryType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      policy: {
+        value: cdktf.stringToHclTerraform(this._policy),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      role: {
+        value: cdktf.stringToHclTerraform(this._role),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      server_id: {
+        value: cdktf.stringToHclTerraform(this._serverId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      user_name: {
+        value: cdktf.stringToHclTerraform(this._userName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      home_directory_mappings: {
+        value: cdktf.listMapperHcl(transferUserHomeDirectoryMappingsToHclTerraform, true)(this._homeDirectoryMappings.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "TransferUserHomeDirectoryMappingsList",
+      },
+      posix_profile: {
+        value: transferUserPosixProfileToHclTerraform(this._posixProfile.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "TransferUserPosixProfileList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

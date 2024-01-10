@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/glue_trigger
 // generated from terraform resource schema
 
@@ -89,6 +84,25 @@ export function glueTriggerActionsNotificationPropertyToTerraform(struct?: GlueT
   return {
     notify_delay_after: cdktf.numberToTerraform(struct!.notifyDelayAfter),
   }
+}
+
+
+export function glueTriggerActionsNotificationPropertyToHclTerraform(struct?: GlueTriggerActionsNotificationPropertyOutputReference | GlueTriggerActionsNotificationProperty): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    notify_delay_after: {
+      value: cdktf.numberToHclTerraform(struct!.notifyDelayAfter),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class GlueTriggerActionsNotificationPropertyOutputReference extends cdktf.ComplexObject {
@@ -181,6 +195,55 @@ export function glueTriggerActionsToTerraform(struct?: GlueTriggerActions | cdkt
     timeout: cdktf.numberToTerraform(struct!.timeout),
     notification_property: glueTriggerActionsNotificationPropertyToTerraform(struct!.notificationProperty),
   }
+}
+
+
+export function glueTriggerActionsToHclTerraform(struct?: GlueTriggerActions | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    arguments: {
+      value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(struct!.arguments),
+      isBlock: false,
+      type: "map",
+      storageClassType: "stringMap",
+    },
+    crawler_name: {
+      value: cdktf.stringToHclTerraform(struct!.crawlerName),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    job_name: {
+      value: cdktf.stringToHclTerraform(struct!.jobName),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    security_configuration: {
+      value: cdktf.stringToHclTerraform(struct!.securityConfiguration),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    timeout: {
+      value: cdktf.numberToHclTerraform(struct!.timeout),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    notification_property: {
+      value: glueTriggerActionsNotificationPropertyToHclTerraform(struct!.notificationProperty),
+      isBlock: true,
+      type: "list",
+      storageClassType: "GlueTriggerActionsNotificationPropertyList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class GlueTriggerActionsOutputReference extends cdktf.ComplexObject {
@@ -410,6 +473,49 @@ export function glueTriggerPredicateConditionsToTerraform(struct?: GlueTriggerPr
   }
 }
 
+
+export function glueTriggerPredicateConditionsToHclTerraform(struct?: GlueTriggerPredicateConditions | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    crawl_state: {
+      value: cdktf.stringToHclTerraform(struct!.crawlState),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    crawler_name: {
+      value: cdktf.stringToHclTerraform(struct!.crawlerName),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    job_name: {
+      value: cdktf.stringToHclTerraform(struct!.jobName),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    logical_operator: {
+      value: cdktf.stringToHclTerraform(struct!.logicalOperator),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    state: {
+      value: cdktf.stringToHclTerraform(struct!.state),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class GlueTriggerPredicateConditionsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
   private resolvableValue?: cdktf.IResolvable;
@@ -602,6 +708,31 @@ export function glueTriggerPredicateToTerraform(struct?: GlueTriggerPredicateOut
   }
 }
 
+
+export function glueTriggerPredicateToHclTerraform(struct?: GlueTriggerPredicateOutputReference | GlueTriggerPredicate): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    logical: {
+      value: cdktf.stringToHclTerraform(struct!.logical),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    conditions: {
+      value: cdktf.listMapperHcl(glueTriggerPredicateConditionsToHclTerraform, true)(struct!.conditions),
+      isBlock: true,
+      type: "list",
+      storageClassType: "GlueTriggerPredicateConditionsList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class GlueTriggerPredicateOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -689,6 +820,31 @@ export function glueTriggerTimeoutsToTerraform(struct?: GlueTriggerTimeouts | cd
     create: cdktf.stringToTerraform(struct!.create),
     delete: cdktf.stringToTerraform(struct!.delete),
   }
+}
+
+
+export function glueTriggerTimeoutsToHclTerraform(struct?: GlueTriggerTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    create: {
+      value: cdktf.stringToHclTerraform(struct!.create),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    delete: {
+      value: cdktf.stringToHclTerraform(struct!.delete),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class GlueTriggerTimeoutsOutputReference extends cdktf.ComplexObject {
@@ -1071,5 +1227,91 @@ export class GlueTrigger extends cdktf.TerraformResource {
       predicate: glueTriggerPredicateToTerraform(this._predicate.internalValue),
       timeouts: glueTriggerTimeoutsToTerraform(this._timeouts.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      description: {
+        value: cdktf.stringToHclTerraform(this._description),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      enabled: {
+        value: cdktf.booleanToHclTerraform(this._enabled),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      schedule: {
+        value: cdktf.stringToHclTerraform(this._schedule),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      start_on_creation: {
+        value: cdktf.booleanToHclTerraform(this._startOnCreation),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      type: {
+        value: cdktf.stringToHclTerraform(this._type),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      workflow_name: {
+        value: cdktf.stringToHclTerraform(this._workflowName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      actions: {
+        value: cdktf.listMapperHcl(glueTriggerActionsToHclTerraform, true)(this._actions.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "GlueTriggerActionsList",
+      },
+      predicate: {
+        value: glueTriggerPredicateToHclTerraform(this._predicate.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "GlueTriggerPredicateList",
+      },
+      timeouts: {
+        value: glueTriggerTimeoutsToHclTerraform(this._timeouts.internalValue),
+        isBlock: true,
+        type: "struct",
+        storageClassType: "GlueTriggerTimeouts",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

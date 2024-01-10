@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/vpc_peering_connection
 // generated from terraform resource schema
 
@@ -78,6 +73,17 @@ export function dataAwsVpcPeeringConnectionCidrBlockSetToTerraform(struct?: Data
   }
 }
 
+
+export function dataAwsVpcPeeringConnectionCidrBlockSetToHclTerraform(struct?: DataAwsVpcPeeringConnectionCidrBlockSet): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
+}
+
 export class DataAwsVpcPeeringConnectionCidrBlockSetOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -140,6 +146,17 @@ export function dataAwsVpcPeeringConnectionPeerCidrBlockSetToTerraform(struct?: 
   }
   return {
   }
+}
+
+
+export function dataAwsVpcPeeringConnectionPeerCidrBlockSetToHclTerraform(struct?: DataAwsVpcPeeringConnectionPeerCidrBlockSet): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
 }
 
 export class DataAwsVpcPeeringConnectionPeerCidrBlockSetOutputReference extends cdktf.ComplexObject {
@@ -214,6 +231,31 @@ export function dataAwsVpcPeeringConnectionFilterToTerraform(struct?: DataAwsVpc
     name: cdktf.stringToTerraform(struct!.name),
     values: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.values),
   }
+}
+
+
+export function dataAwsVpcPeeringConnectionFilterToHclTerraform(struct?: DataAwsVpcPeeringConnectionFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    name: {
+      value: cdktf.stringToHclTerraform(struct!.name),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    values: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.values),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class DataAwsVpcPeeringConnectionFilterOutputReference extends cdktf.ComplexObject {
@@ -617,5 +659,85 @@ export class DataAwsVpcPeeringConnection extends cdktf.TerraformDataSource {
       vpc_id: cdktf.stringToTerraform(this._vpcId),
       filter: cdktf.listMapper(dataAwsVpcPeeringConnectionFilterToTerraform, true)(this._filter.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      cidr_block: {
+        value: cdktf.stringToHclTerraform(this._cidrBlock),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      owner_id: {
+        value: cdktf.stringToHclTerraform(this._ownerId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      peer_cidr_block: {
+        value: cdktf.stringToHclTerraform(this._peerCidrBlock),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      peer_owner_id: {
+        value: cdktf.stringToHclTerraform(this._peerOwnerId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      peer_region: {
+        value: cdktf.stringToHclTerraform(this._peerRegion),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      peer_vpc_id: {
+        value: cdktf.stringToHclTerraform(this._peerVpcId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      region: {
+        value: cdktf.stringToHclTerraform(this._region),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      status: {
+        value: cdktf.stringToHclTerraform(this._status),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      vpc_id: {
+        value: cdktf.stringToHclTerraform(this._vpcId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      filter: {
+        value: cdktf.listMapperHcl(dataAwsVpcPeeringConnectionFilterToHclTerraform, true)(this._filter.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "DataAwsVpcPeeringConnectionFilterList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

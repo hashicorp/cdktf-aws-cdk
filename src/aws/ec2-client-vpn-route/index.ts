@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ec2_client_vpn_route
 // generated from terraform resource schema
 
@@ -192,5 +187,43 @@ export class Ec2ClientVpnRoute extends cdktf.TerraformResource {
       id: cdktf.stringToTerraform(this._id),
       target_vpc_subnet_id: cdktf.stringToTerraform(this._targetVpcSubnetId),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      client_vpn_endpoint_id: {
+        value: cdktf.stringToHclTerraform(this._clientVpnEndpointId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      description: {
+        value: cdktf.stringToHclTerraform(this._description),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      destination_cidr_block: {
+        value: cdktf.stringToHclTerraform(this._destinationCidrBlock),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      target_vpc_subnet_id: {
+        value: cdktf.stringToHclTerraform(this._targetVpcSubnetId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

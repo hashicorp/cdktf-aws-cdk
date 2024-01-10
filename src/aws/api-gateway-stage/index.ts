@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/api_gateway_stage
 // generated from terraform resource schema
 
@@ -94,6 +89,31 @@ export function apiGatewayStageAccessLogSettingsToTerraform(struct?: ApiGatewayS
     destination_arn: cdktf.stringToTerraform(struct!.destinationArn),
     format: cdktf.stringToTerraform(struct!.format),
   }
+}
+
+
+export function apiGatewayStageAccessLogSettingsToHclTerraform(struct?: ApiGatewayStageAccessLogSettingsOutputReference | ApiGatewayStageAccessLogSettings): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    destination_arn: {
+      value: cdktf.stringToHclTerraform(struct!.destinationArn),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    format: {
+      value: cdktf.stringToHclTerraform(struct!.format),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class ApiGatewayStageAccessLogSettingsOutputReference extends cdktf.ComplexObject {
@@ -488,5 +508,97 @@ export class ApiGatewayStage extends cdktf.TerraformResource {
       xray_tracing_enabled: cdktf.booleanToTerraform(this._xrayTracingEnabled),
       access_log_settings: apiGatewayStageAccessLogSettingsToTerraform(this._accessLogSettings.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      cache_cluster_enabled: {
+        value: cdktf.booleanToHclTerraform(this._cacheClusterEnabled),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      cache_cluster_size: {
+        value: cdktf.stringToHclTerraform(this._cacheClusterSize),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      client_certificate_id: {
+        value: cdktf.stringToHclTerraform(this._clientCertificateId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      deployment_id: {
+        value: cdktf.stringToHclTerraform(this._deploymentId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      description: {
+        value: cdktf.stringToHclTerraform(this._description),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      documentation_version: {
+        value: cdktf.stringToHclTerraform(this._documentationVersion),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      rest_api_id: {
+        value: cdktf.stringToHclTerraform(this._restApiId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      stage_name: {
+        value: cdktf.stringToHclTerraform(this._stageName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      variables: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._variables),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      xray_tracing_enabled: {
+        value: cdktf.booleanToHclTerraform(this._xrayTracingEnabled),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      access_log_settings: {
+        value: apiGatewayStageAccessLogSettingsToHclTerraform(this._accessLogSettings.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "ApiGatewayStageAccessLogSettingsList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

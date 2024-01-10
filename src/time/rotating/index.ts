@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/time/0.7.2/docs/resources/rotating
 // generated from terraform resource schema
 
@@ -314,5 +309,67 @@ export class Rotating extends cdktf.TerraformResource {
       rotation_years: cdktf.numberToTerraform(this._rotationYears),
       triggers: cdktf.hashMapper(cdktf.stringToTerraform)(this._triggers),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      rfc3339: {
+        value: cdktf.stringToHclTerraform(this._rfc3339),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      rotation_days: {
+        value: cdktf.numberToHclTerraform(this._rotationDays),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      rotation_hours: {
+        value: cdktf.numberToHclTerraform(this._rotationHours),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      rotation_minutes: {
+        value: cdktf.numberToHclTerraform(this._rotationMinutes),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      rotation_months: {
+        value: cdktf.numberToHclTerraform(this._rotationMonths),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      rotation_rfc3339: {
+        value: cdktf.stringToHclTerraform(this._rotationRfc3339),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      rotation_years: {
+        value: cdktf.numberToHclTerraform(this._rotationYears),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      triggers: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._triggers),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

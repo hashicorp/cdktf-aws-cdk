@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3_bucket_logging
 // generated from terraform resource schema
 
@@ -75,6 +70,43 @@ export function s3BucketLoggingTargetGrantGranteeToTerraform(struct?: S3BucketLo
     type: cdktf.stringToTerraform(struct!.type),
     uri: cdktf.stringToTerraform(struct!.uri),
   }
+}
+
+
+export function s3BucketLoggingTargetGrantGranteeToHclTerraform(struct?: S3BucketLoggingTargetGrantGranteeOutputReference | S3BucketLoggingTargetGrantGrantee): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    email_address: {
+      value: cdktf.stringToHclTerraform(struct!.emailAddress),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    id: {
+      value: cdktf.stringToHclTerraform(struct!.id),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    type: {
+      value: cdktf.stringToHclTerraform(struct!.type),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    uri: {
+      value: cdktf.stringToHclTerraform(struct!.uri),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class S3BucketLoggingTargetGrantGranteeOutputReference extends cdktf.ComplexObject {
@@ -215,6 +247,31 @@ export function s3BucketLoggingTargetGrantToTerraform(struct?: S3BucketLoggingTa
     permission: cdktf.stringToTerraform(struct!.permission),
     grantee: s3BucketLoggingTargetGrantGranteeToTerraform(struct!.grantee),
   }
+}
+
+
+export function s3BucketLoggingTargetGrantToHclTerraform(struct?: S3BucketLoggingTargetGrant | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    permission: {
+      value: cdktf.stringToHclTerraform(struct!.permission),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    grantee: {
+      value: s3BucketLoggingTargetGrantGranteeToHclTerraform(struct!.grantee),
+      isBlock: true,
+      type: "list",
+      storageClassType: "S3BucketLoggingTargetGrantGranteeList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class S3BucketLoggingTargetGrantOutputReference extends cdktf.ComplexObject {
@@ -477,5 +534,49 @@ export class S3BucketLoggingA extends cdktf.TerraformResource {
       target_prefix: cdktf.stringToTerraform(this._targetPrefix),
       target_grant: cdktf.listMapper(s3BucketLoggingTargetGrantToTerraform, true)(this._targetGrant.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      bucket: {
+        value: cdktf.stringToHclTerraform(this._bucket),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      expected_bucket_owner: {
+        value: cdktf.stringToHclTerraform(this._expectedBucketOwner),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      target_bucket: {
+        value: cdktf.stringToHclTerraform(this._targetBucket),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      target_prefix: {
+        value: cdktf.stringToHclTerraform(this._targetPrefix),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      target_grant: {
+        value: cdktf.listMapperHcl(s3BucketLoggingTargetGrantToHclTerraform, true)(this._targetGrant.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "S3BucketLoggingTargetGrantList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

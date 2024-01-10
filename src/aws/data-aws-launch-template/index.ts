@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/launch_template
 // generated from terraform resource schema
 
@@ -44,6 +39,17 @@ export function dataAwsLaunchTemplateBlockDeviceMappingsEbsToTerraform(struct?: 
   }
   return {
   }
+}
+
+
+export function dataAwsLaunchTemplateBlockDeviceMappingsEbsToHclTerraform(struct?: DataAwsLaunchTemplateBlockDeviceMappingsEbs): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
 }
 
 export class DataAwsLaunchTemplateBlockDeviceMappingsEbsOutputReference extends cdktf.ComplexObject {
@@ -145,6 +151,17 @@ export function dataAwsLaunchTemplateBlockDeviceMappingsToTerraform(struct?: Dat
   }
 }
 
+
+export function dataAwsLaunchTemplateBlockDeviceMappingsToHclTerraform(struct?: DataAwsLaunchTemplateBlockDeviceMappings): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
+}
+
 export class DataAwsLaunchTemplateBlockDeviceMappingsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -225,6 +242,17 @@ export function dataAwsLaunchTemplateCreditSpecificationToTerraform(struct?: Dat
   }
 }
 
+
+export function dataAwsLaunchTemplateCreditSpecificationToHclTerraform(struct?: DataAwsLaunchTemplateCreditSpecification): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
+}
+
 export class DataAwsLaunchTemplateCreditSpecificationOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -287,6 +315,17 @@ export function dataAwsLaunchTemplateElasticGpuSpecificationsToTerraform(struct?
   }
   return {
   }
+}
+
+
+export function dataAwsLaunchTemplateElasticGpuSpecificationsToHclTerraform(struct?: DataAwsLaunchTemplateElasticGpuSpecifications): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
 }
 
 export class DataAwsLaunchTemplateElasticGpuSpecificationsOutputReference extends cdktf.ComplexObject {
@@ -353,6 +392,17 @@ export function dataAwsLaunchTemplateEnclaveOptionsToTerraform(struct?: DataAwsL
   }
 }
 
+
+export function dataAwsLaunchTemplateEnclaveOptionsToHclTerraform(struct?: DataAwsLaunchTemplateEnclaveOptions): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
+}
+
 export class DataAwsLaunchTemplateEnclaveOptionsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -417,6 +467,17 @@ export function dataAwsLaunchTemplateHibernationOptionsToTerraform(struct?: Data
   }
 }
 
+
+export function dataAwsLaunchTemplateHibernationOptionsToHclTerraform(struct?: DataAwsLaunchTemplateHibernationOptions): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
+}
+
 export class DataAwsLaunchTemplateHibernationOptionsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -479,6 +540,17 @@ export function dataAwsLaunchTemplateIamInstanceProfileToTerraform(struct?: Data
   }
   return {
   }
+}
+
+
+export function dataAwsLaunchTemplateIamInstanceProfileToHclTerraform(struct?: DataAwsLaunchTemplateIamInstanceProfile): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
 }
 
 export class DataAwsLaunchTemplateIamInstanceProfileOutputReference extends cdktf.ComplexObject {
@@ -548,6 +620,17 @@ export function dataAwsLaunchTemplateInstanceMarketOptionsSpotOptionsToTerraform
   }
   return {
   }
+}
+
+
+export function dataAwsLaunchTemplateInstanceMarketOptionsSpotOptionsToHclTerraform(struct?: DataAwsLaunchTemplateInstanceMarketOptionsSpotOptions): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
 }
 
 export class DataAwsLaunchTemplateInstanceMarketOptionsSpotOptionsOutputReference extends cdktf.ComplexObject {
@@ -634,6 +717,17 @@ export function dataAwsLaunchTemplateInstanceMarketOptionsToTerraform(struct?: D
   }
 }
 
+
+export function dataAwsLaunchTemplateInstanceMarketOptionsToHclTerraform(struct?: DataAwsLaunchTemplateInstanceMarketOptions): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
+}
+
 export class DataAwsLaunchTemplateInstanceMarketOptionsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -702,6 +796,17 @@ export function dataAwsLaunchTemplateMetadataOptionsToTerraform(struct?: DataAws
   }
   return {
   }
+}
+
+
+export function dataAwsLaunchTemplateMetadataOptionsToHclTerraform(struct?: DataAwsLaunchTemplateMetadataOptions): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
 }
 
 export class DataAwsLaunchTemplateMetadataOptionsOutputReference extends cdktf.ComplexObject {
@@ -788,6 +893,17 @@ export function dataAwsLaunchTemplateMonitoringToTerraform(struct?: DataAwsLaunc
   }
 }
 
+
+export function dataAwsLaunchTemplateMonitoringToHclTerraform(struct?: DataAwsLaunchTemplateMonitoring): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
+}
+
 export class DataAwsLaunchTemplateMonitoringOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -850,6 +966,17 @@ export function dataAwsLaunchTemplateNetworkInterfacesToTerraform(struct?: DataA
   }
   return {
   }
+}
+
+
+export function dataAwsLaunchTemplateNetworkInterfacesToHclTerraform(struct?: DataAwsLaunchTemplateNetworkInterfaces): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
 }
 
 export class DataAwsLaunchTemplateNetworkInterfacesOutputReference extends cdktf.ComplexObject {
@@ -986,6 +1113,17 @@ export function dataAwsLaunchTemplatePlacementToTerraform(struct?: DataAwsLaunch
   }
 }
 
+
+export function dataAwsLaunchTemplatePlacementToHclTerraform(struct?: DataAwsLaunchTemplatePlacement): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
+}
+
 export class DataAwsLaunchTemplatePlacementOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -1085,6 +1223,17 @@ export function dataAwsLaunchTemplateTagSpecificationsToTerraform(struct?: DataA
   }
 }
 
+
+export function dataAwsLaunchTemplateTagSpecificationsToHclTerraform(struct?: DataAwsLaunchTemplateTagSpecifications): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
+}
+
 export class DataAwsLaunchTemplateTagSpecificationsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -1163,6 +1312,31 @@ export function dataAwsLaunchTemplateFilterToTerraform(struct?: DataAwsLaunchTem
     name: cdktf.stringToTerraform(struct!.name),
     values: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.values),
   }
+}
+
+
+export function dataAwsLaunchTemplateFilterToHclTerraform(struct?: DataAwsLaunchTemplateFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    name: {
+      value: cdktf.stringToHclTerraform(struct!.name),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    values: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.values),
+      isBlock: false,
+      type: "list",
+      storageClassType: "stringList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class DataAwsLaunchTemplateFilterOutputReference extends cdktf.ComplexObject {
@@ -1545,5 +1719,37 @@ export class DataAwsLaunchTemplate extends cdktf.TerraformDataSource {
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       filter: cdktf.listMapper(dataAwsLaunchTemplateFilterToTerraform, true)(this._filter.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      filter: {
+        value: cdktf.listMapperHcl(dataAwsLaunchTemplateFilterToHclTerraform, true)(this._filter.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "DataAwsLaunchTemplateFilterList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

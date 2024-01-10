@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/identitystore_group
 // generated from terraform resource schema
 
@@ -54,6 +49,31 @@ export function dataAwsIdentitystoreGroupFilterToTerraform(struct?: DataAwsIdent
     attribute_path: cdktf.stringToTerraform(struct!.attributePath),
     attribute_value: cdktf.stringToTerraform(struct!.attributeValue),
   }
+}
+
+
+export function dataAwsIdentitystoreGroupFilterToHclTerraform(struct?: DataAwsIdentitystoreGroupFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    attribute_path: {
+      value: cdktf.stringToHclTerraform(struct!.attributePath),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    attribute_value: {
+      value: cdktf.stringToHclTerraform(struct!.attributeValue),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class DataAwsIdentitystoreGroupFilterOutputReference extends cdktf.ComplexObject {
@@ -288,5 +308,37 @@ export class DataAwsIdentitystoreGroup extends cdktf.TerraformDataSource {
       identity_store_id: cdktf.stringToTerraform(this._identityStoreId),
       filter: cdktf.listMapper(dataAwsIdentitystoreGroupFilterToTerraform, true)(this._filter.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      group_id: {
+        value: cdktf.stringToHclTerraform(this._groupId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      identity_store_id: {
+        value: cdktf.stringToHclTerraform(this._identityStoreId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      filter: {
+        value: cdktf.listMapperHcl(dataAwsIdentitystoreGroupFilterToHclTerraform, true)(this._filter.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "DataAwsIdentitystoreGroupFilterList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/imagebuilder_image
 // generated from terraform resource schema
 
@@ -66,6 +61,17 @@ export function imagebuilderImageOutputResourcesAmisToTerraform(struct?: Imagebu
   }
   return {
   }
+}
+
+
+export function imagebuilderImageOutputResourcesAmisToHclTerraform(struct?: ImagebuilderImageOutputResourcesAmis): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
 }
 
 export class ImagebuilderImageOutputResourcesAmisOutputReference extends cdktf.ComplexObject {
@@ -152,6 +158,17 @@ export function imagebuilderImageOutputResourcesToTerraform(struct?: Imagebuilde
   }
 }
 
+
+export function imagebuilderImageOutputResourcesToHclTerraform(struct?: ImagebuilderImageOutputResources): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
+}
+
 export class ImagebuilderImageOutputResourcesOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -225,6 +242,31 @@ export function imagebuilderImageImageTestsConfigurationToTerraform(struct?: Ima
     image_tests_enabled: cdktf.booleanToTerraform(struct!.imageTestsEnabled),
     timeout_minutes: cdktf.numberToTerraform(struct!.timeoutMinutes),
   }
+}
+
+
+export function imagebuilderImageImageTestsConfigurationToHclTerraform(struct?: ImagebuilderImageImageTestsConfigurationOutputReference | ImagebuilderImageImageTestsConfiguration): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    image_tests_enabled: {
+      value: cdktf.booleanToHclTerraform(struct!.imageTestsEnabled),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    timeout_minutes: {
+      value: cdktf.numberToHclTerraform(struct!.timeoutMinutes),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class ImagebuilderImageImageTestsConfigurationOutputReference extends cdktf.ComplexObject {
@@ -312,6 +354,25 @@ export function imagebuilderImageTimeoutsToTerraform(struct?: ImagebuilderImageT
   return {
     create: cdktf.stringToTerraform(struct!.create),
   }
+}
+
+
+export function imagebuilderImageTimeoutsToHclTerraform(struct?: ImagebuilderImageTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    create: {
+      value: cdktf.stringToHclTerraform(struct!.create),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class ImagebuilderImageTimeoutsOutputReference extends cdktf.ComplexObject {
@@ -629,5 +690,67 @@ export class ImagebuilderImage extends cdktf.TerraformResource {
       image_tests_configuration: imagebuilderImageImageTestsConfigurationToTerraform(this._imageTestsConfiguration.internalValue),
       timeouts: imagebuilderImageTimeoutsToTerraform(this._timeouts.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      distribution_configuration_arn: {
+        value: cdktf.stringToHclTerraform(this._distributionConfigurationArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      enhanced_image_metadata_enabled: {
+        value: cdktf.booleanToHclTerraform(this._enhancedImageMetadataEnabled),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      image_recipe_arn: {
+        value: cdktf.stringToHclTerraform(this._imageRecipeArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      infrastructure_configuration_arn: {
+        value: cdktf.stringToHclTerraform(this._infrastructureConfigurationArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      image_tests_configuration: {
+        value: imagebuilderImageImageTestsConfigurationToHclTerraform(this._imageTestsConfiguration.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "ImagebuilderImageImageTestsConfigurationList",
+      },
+      timeouts: {
+        value: imagebuilderImageTimeoutsToHclTerraform(this._timeouts.internalValue),
+        isBlock: true,
+        type: "struct",
+        storageClassType: "ImagebuilderImageTimeouts",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

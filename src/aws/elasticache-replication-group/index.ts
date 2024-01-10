@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/elasticache_replication_group
 // generated from terraform resource schema
 
@@ -182,6 +177,31 @@ export function elasticacheReplicationGroupClusterModeToTerraform(struct?: Elast
   }
 }
 
+
+export function elasticacheReplicationGroupClusterModeToHclTerraform(struct?: ElasticacheReplicationGroupClusterModeOutputReference | ElasticacheReplicationGroupClusterMode): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    num_node_groups: {
+      value: cdktf.numberToHclTerraform(struct!.numNodeGroups),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    replicas_per_node_group: {
+      value: cdktf.numberToHclTerraform(struct!.replicasPerNodeGroup),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class ElasticacheReplicationGroupClusterModeOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -274,6 +294,37 @@ export function elasticacheReplicationGroupTimeoutsToTerraform(struct?: Elastica
     delete: cdktf.stringToTerraform(struct!.delete),
     update: cdktf.stringToTerraform(struct!.update),
   }
+}
+
+
+export function elasticacheReplicationGroupTimeoutsToHclTerraform(struct?: ElasticacheReplicationGroupTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    create: {
+      value: cdktf.stringToHclTerraform(struct!.create),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    delete: {
+      value: cdktf.stringToHclTerraform(struct!.delete),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    update: {
+      value: cdktf.stringToHclTerraform(struct!.update),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class ElasticacheReplicationGroupTimeoutsOutputReference extends cdktf.ComplexObject {
@@ -1102,5 +1153,223 @@ export class ElasticacheReplicationGroup extends cdktf.TerraformResource {
       cluster_mode: elasticacheReplicationGroupClusterModeToTerraform(this._clusterMode.internalValue),
       timeouts: elasticacheReplicationGroupTimeoutsToTerraform(this._timeouts.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      apply_immediately: {
+        value: cdktf.booleanToHclTerraform(this._applyImmediately),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      at_rest_encryption_enabled: {
+        value: cdktf.booleanToHclTerraform(this._atRestEncryptionEnabled),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      auth_token: {
+        value: cdktf.stringToHclTerraform(this._authToken),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      auto_minor_version_upgrade: {
+        value: cdktf.booleanToHclTerraform(this._autoMinorVersionUpgrade),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      automatic_failover_enabled: {
+        value: cdktf.booleanToHclTerraform(this._automaticFailoverEnabled),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      availability_zones: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._availabilityZones),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      data_tiering_enabled: {
+        value: cdktf.booleanToHclTerraform(this._dataTieringEnabled),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      engine: {
+        value: cdktf.stringToHclTerraform(this._engine),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      engine_version: {
+        value: cdktf.stringToHclTerraform(this._engineVersion),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      final_snapshot_identifier: {
+        value: cdktf.stringToHclTerraform(this._finalSnapshotIdentifier),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      global_replication_group_id: {
+        value: cdktf.stringToHclTerraform(this._globalReplicationGroupId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      kms_key_id: {
+        value: cdktf.stringToHclTerraform(this._kmsKeyId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      maintenance_window: {
+        value: cdktf.stringToHclTerraform(this._maintenanceWindow),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      multi_az_enabled: {
+        value: cdktf.booleanToHclTerraform(this._multiAzEnabled),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      node_type: {
+        value: cdktf.stringToHclTerraform(this._nodeType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      notification_topic_arn: {
+        value: cdktf.stringToHclTerraform(this._notificationTopicArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      number_cache_clusters: {
+        value: cdktf.numberToHclTerraform(this._numberCacheClusters),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      parameter_group_name: {
+        value: cdktf.stringToHclTerraform(this._parameterGroupName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      port: {
+        value: cdktf.numberToHclTerraform(this._port),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      replication_group_description: {
+        value: cdktf.stringToHclTerraform(this._replicationGroupDescription),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      replication_group_id: {
+        value: cdktf.stringToHclTerraform(this._replicationGroupId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      security_group_ids: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._securityGroupIds),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      security_group_names: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._securityGroupNames),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      snapshot_arns: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._snapshotArns),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      snapshot_name: {
+        value: cdktf.stringToHclTerraform(this._snapshotName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      snapshot_retention_limit: {
+        value: cdktf.numberToHclTerraform(this._snapshotRetentionLimit),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      snapshot_window: {
+        value: cdktf.stringToHclTerraform(this._snapshotWindow),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      subnet_group_name: {
+        value: cdktf.stringToHclTerraform(this._subnetGroupName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      transit_encryption_enabled: {
+        value: cdktf.booleanToHclTerraform(this._transitEncryptionEnabled),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      user_group_ids: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._userGroupIds),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      cluster_mode: {
+        value: elasticacheReplicationGroupClusterModeToHclTerraform(this._clusterMode.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "ElasticacheReplicationGroupClusterModeList",
+      },
+      timeouts: {
+        value: elasticacheReplicationGroupTimeoutsToHclTerraform(this._timeouts.internalValue),
+        isBlock: true,
+        type: "struct",
+        storageClassType: "ElasticacheReplicationGroupTimeouts",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

@@ -54,6 +54,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
@@ -66,9 +67,12 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.hasResourceMove">hasResourceMove</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.moveFromId">moveFromId</a></code> | Move the resource corresponding to "id" to this resource. |
 | <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
+| <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.moveToId">moveToId</a></code> | Moves this resource to the resource corresponding to "id". |
 | <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.resetId">resetId</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.resetTags">resetTags</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.resetTagsAll">resetTagsAll</a></code> | *No description.* |
@@ -124,6 +128,12 @@ public resetOverrideLogicalId(): void
 ```
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
 
 ##### `toMetadata` <a name="toMetadata" id="@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.toMetadata"></a>
 
@@ -263,6 +273,12 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `hasResourceMove` <a name="hasResourceMove" id="@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.hasResourceMove"></a>
+
+```typescript
+public hasResourceMove(): TerraformResourceMoveByTarget | TerraformResourceMoveById
+```
+
 ##### `importFrom` <a name="importFrom" id="@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.importFrom"></a>
 
 ```typescript
@@ -293,6 +309,24 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 
 ---
 
+##### `moveFromId` <a name="moveFromId" id="@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.moveFromId"></a>
+
+```typescript
+public moveFromId(id: string): void
+```
+
+Move the resource corresponding to "id" to this resource.
+
+Note that the resource being moved from must be marked as moved using it's instance function.
+
+###### `id`<sup>Required</sup> <a name="id" id="@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.moveFromId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource being moved from, e.g. "aws_s3_bucket.example".
+
+---
+
 ##### `moveTo` <a name="moveTo" id="@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.moveTo"></a>
 
 ```typescript
@@ -314,6 +348,22 @@ The previously set user defined string set by .addMoveTarget() corresponding to 
 - *Type:* string | number
 
 Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
+
+---
+
+##### `moveToId` <a name="moveToId" id="@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.moveToId"></a>
+
+```typescript
+public moveToId(id: string): void
+```
+
+Moves this resource to the resource corresponding to "id".
+
+###### `id`<sup>Required</sup> <a name="id" id="@cdktf/aws-cdk.egressOnlyInternetGateway.EgressOnlyInternetGateway.moveToId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource to move to, e.g. "aws_s3_bucket.example".
 
 ---
 

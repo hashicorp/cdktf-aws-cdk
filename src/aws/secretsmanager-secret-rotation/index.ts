@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/secretsmanager_secret_rotation
 // generated from terraform resource schema
 
@@ -53,6 +48,25 @@ export function secretsmanagerSecretRotationRotationRulesToTerraform(struct?: Se
   return {
     automatically_after_days: cdktf.numberToTerraform(struct!.automaticallyAfterDays),
   }
+}
+
+
+export function secretsmanagerSecretRotationRotationRulesToHclTerraform(struct?: SecretsmanagerSecretRotationRotationRulesOutputReference | SecretsmanagerSecretRotationRotationRules): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    automatically_after_days: {
+      value: cdktf.numberToHclTerraform(struct!.automaticallyAfterDays),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class SecretsmanagerSecretRotationRotationRulesOutputReference extends cdktf.ComplexObject {
@@ -251,5 +265,43 @@ export class SecretsmanagerSecretRotation extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._tags),
       rotation_rules: secretsmanagerSecretRotationRotationRulesToTerraform(this._rotationRules.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      rotation_lambda_arn: {
+        value: cdktf.stringToHclTerraform(this._rotationLambdaArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      secret_id: {
+        value: cdktf.stringToHclTerraform(this._secretId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      rotation_rules: {
+        value: secretsmanagerSecretRotationRotationRulesToHclTerraform(this._rotationRules.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "SecretsmanagerSecretRotationRotationRulesList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/macie_member_account_association
 // generated from terraform resource schema
 
@@ -122,5 +117,25 @@ export class MacieMemberAccountAssociation extends cdktf.TerraformResource {
       id: cdktf.stringToTerraform(this._id),
       member_account_id: cdktf.stringToTerraform(this._memberAccountId),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      member_account_id: {
+        value: cdktf.stringToHclTerraform(this._memberAccountId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

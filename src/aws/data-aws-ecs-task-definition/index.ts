@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/ecs_task_definition
 // generated from terraform resource schema
 
@@ -152,5 +147,25 @@ export class DataAwsEcsTaskDefinition extends cdktf.TerraformDataSource {
       id: cdktf.stringToTerraform(this._id),
       task_definition: cdktf.stringToTerraform(this._taskDefinition),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      task_definition: {
+        value: cdktf.stringToHclTerraform(this._taskDefinition),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

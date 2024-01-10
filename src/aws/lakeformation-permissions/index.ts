@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/lakeformation_permissions
 // generated from terraform resource schema
 
@@ -84,6 +79,31 @@ export function lakeformationPermissionsDataLocationToTerraform(struct?: Lakefor
     arn: cdktf.stringToTerraform(struct!.arn),
     catalog_id: cdktf.stringToTerraform(struct!.catalogId),
   }
+}
+
+
+export function lakeformationPermissionsDataLocationToHclTerraform(struct?: LakeformationPermissionsDataLocationOutputReference | LakeformationPermissionsDataLocation): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    arn: {
+      value: cdktf.stringToHclTerraform(struct!.arn),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    catalog_id: {
+      value: cdktf.stringToHclTerraform(struct!.catalogId),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class LakeformationPermissionsDataLocationOutputReference extends cdktf.ComplexObject {
@@ -173,6 +193,31 @@ export function lakeformationPermissionsDatabaseToTerraform(struct?: Lakeformati
     catalog_id: cdktf.stringToTerraform(struct!.catalogId),
     name: cdktf.stringToTerraform(struct!.name),
   }
+}
+
+
+export function lakeformationPermissionsDatabaseToHclTerraform(struct?: LakeformationPermissionsDatabaseOutputReference | LakeformationPermissionsDatabase): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    catalog_id: {
+      value: cdktf.stringToHclTerraform(struct!.catalogId),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    name: {
+      value: cdktf.stringToHclTerraform(struct!.name),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class LakeformationPermissionsDatabaseOutputReference extends cdktf.ComplexObject {
@@ -272,6 +317,43 @@ export function lakeformationPermissionsTableToTerraform(struct?: LakeformationP
     name: cdktf.stringToTerraform(struct!.name),
     wildcard: cdktf.booleanToTerraform(struct!.wildcard),
   }
+}
+
+
+export function lakeformationPermissionsTableToHclTerraform(struct?: LakeformationPermissionsTableOutputReference | LakeformationPermissionsTable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    catalog_id: {
+      value: cdktf.stringToHclTerraform(struct!.catalogId),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    database_name: {
+      value: cdktf.stringToHclTerraform(struct!.databaseName),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    name: {
+      value: cdktf.stringToHclTerraform(struct!.name),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    wildcard: {
+      value: cdktf.booleanToHclTerraform(struct!.wildcard),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class LakeformationPermissionsTableOutputReference extends cdktf.ComplexObject {
@@ -425,6 +507,55 @@ export function lakeformationPermissionsTableWithColumnsToTerraform(struct?: Lak
     name: cdktf.stringToTerraform(struct!.name),
     wildcard: cdktf.booleanToTerraform(struct!.wildcard),
   }
+}
+
+
+export function lakeformationPermissionsTableWithColumnsToHclTerraform(struct?: LakeformationPermissionsTableWithColumnsOutputReference | LakeformationPermissionsTableWithColumns): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    catalog_id: {
+      value: cdktf.stringToHclTerraform(struct!.catalogId),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    column_names: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.columnNames),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+    database_name: {
+      value: cdktf.stringToHclTerraform(struct!.databaseName),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    excluded_column_names: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.excludedColumnNames),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+    name: {
+      value: cdktf.stringToHclTerraform(struct!.name),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    wildcard: {
+      value: cdktf.booleanToHclTerraform(struct!.wildcard),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class LakeformationPermissionsTableWithColumnsOutputReference extends cdktf.ComplexObject {
@@ -818,5 +949,73 @@ export class LakeformationPermissions extends cdktf.TerraformResource {
       table: lakeformationPermissionsTableToTerraform(this._table.internalValue),
       table_with_columns: lakeformationPermissionsTableWithColumnsToTerraform(this._tableWithColumns.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      catalog_id: {
+        value: cdktf.stringToHclTerraform(this._catalogId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      catalog_resource: {
+        value: cdktf.booleanToHclTerraform(this._catalogResource),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      permissions: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._permissions),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      permissions_with_grant_option: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._permissionsWithGrantOption),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      principal: {
+        value: cdktf.stringToHclTerraform(this._principal),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      data_location: {
+        value: lakeformationPermissionsDataLocationToHclTerraform(this._dataLocation.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "LakeformationPermissionsDataLocationList",
+      },
+      database: {
+        value: lakeformationPermissionsDatabaseToHclTerraform(this._database.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "LakeformationPermissionsDatabaseList",
+      },
+      table: {
+        value: lakeformationPermissionsTableToHclTerraform(this._table.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "LakeformationPermissionsTableList",
+      },
+      table_with_columns: {
+        value: lakeformationPermissionsTableWithColumnsToHclTerraform(this._tableWithColumns.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "LakeformationPermissionsTableWithColumnsList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

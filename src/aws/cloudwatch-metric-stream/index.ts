@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/cloudwatch_metric_stream
 // generated from terraform resource schema
 
@@ -81,6 +76,25 @@ export function cloudwatchMetricStreamExcludeFilterToTerraform(struct?: Cloudwat
   return {
     namespace: cdktf.stringToTerraform(struct!.namespace),
   }
+}
+
+
+export function cloudwatchMetricStreamExcludeFilterToHclTerraform(struct?: CloudwatchMetricStreamExcludeFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    namespace: {
+      value: cdktf.stringToHclTerraform(struct!.namespace),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class CloudwatchMetricStreamExcludeFilterOutputReference extends cdktf.ComplexObject {
@@ -175,6 +189,25 @@ export function cloudwatchMetricStreamIncludeFilterToTerraform(struct?: Cloudwat
   return {
     namespace: cdktf.stringToTerraform(struct!.namespace),
   }
+}
+
+
+export function cloudwatchMetricStreamIncludeFilterToHclTerraform(struct?: CloudwatchMetricStreamIncludeFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    namespace: {
+      value: cdktf.stringToHclTerraform(struct!.namespace),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class CloudwatchMetricStreamIncludeFilterOutputReference extends cdktf.ComplexObject {
@@ -274,6 +307,31 @@ export function cloudwatchMetricStreamTimeoutsToTerraform(struct?: CloudwatchMet
     create: cdktf.stringToTerraform(struct!.create),
     delete: cdktf.stringToTerraform(struct!.delete),
   }
+}
+
+
+export function cloudwatchMetricStreamTimeoutsToHclTerraform(struct?: CloudwatchMetricStreamTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    create: {
+      value: cdktf.stringToHclTerraform(struct!.create),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    delete: {
+      value: cdktf.stringToHclTerraform(struct!.delete),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class CloudwatchMetricStreamTimeoutsOutputReference extends cdktf.ComplexObject {
@@ -630,5 +688,79 @@ export class CloudwatchMetricStream extends cdktf.TerraformResource {
       include_filter: cdktf.listMapper(cloudwatchMetricStreamIncludeFilterToTerraform, true)(this._includeFilter.internalValue),
       timeouts: cloudwatchMetricStreamTimeoutsToTerraform(this._timeouts.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      firehose_arn: {
+        value: cdktf.stringToHclTerraform(this._firehoseArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name_prefix: {
+        value: cdktf.stringToHclTerraform(this._namePrefix),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      output_format: {
+        value: cdktf.stringToHclTerraform(this._outputFormat),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      role_arn: {
+        value: cdktf.stringToHclTerraform(this._roleArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      exclude_filter: {
+        value: cdktf.listMapperHcl(cloudwatchMetricStreamExcludeFilterToHclTerraform, true)(this._excludeFilter.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "CloudwatchMetricStreamExcludeFilterList",
+      },
+      include_filter: {
+        value: cdktf.listMapperHcl(cloudwatchMetricStreamIncludeFilterToHclTerraform, true)(this._includeFilter.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "CloudwatchMetricStreamIncludeFilterList",
+      },
+      timeouts: {
+        value: cloudwatchMetricStreamTimeoutsToHclTerraform(this._timeouts.internalValue),
+        isBlock: true,
+        type: "struct",
+        storageClassType: "CloudwatchMetricStreamTimeouts",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

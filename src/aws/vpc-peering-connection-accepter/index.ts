@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/vpc_peering_connection_accepter
 // generated from terraform resource schema
 
@@ -73,6 +68,37 @@ export function vpcPeeringConnectionAccepterAccepterToTerraform(struct?: VpcPeer
     allow_remote_vpc_dns_resolution: cdktf.booleanToTerraform(struct!.allowRemoteVpcDnsResolution),
     allow_vpc_to_remote_classic_link: cdktf.booleanToTerraform(struct!.allowVpcToRemoteClassicLink),
   }
+}
+
+
+export function vpcPeeringConnectionAccepterAccepterToHclTerraform(struct?: VpcPeeringConnectionAccepterAccepterOutputReference | VpcPeeringConnectionAccepterAccepter): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    allow_classic_link_to_remote_vpc: {
+      value: cdktf.booleanToHclTerraform(struct!.allowClassicLinkToRemoteVpc),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    allow_remote_vpc_dns_resolution: {
+      value: cdktf.booleanToHclTerraform(struct!.allowRemoteVpcDnsResolution),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    allow_vpc_to_remote_classic_link: {
+      value: cdktf.booleanToHclTerraform(struct!.allowVpcToRemoteClassicLink),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class VpcPeeringConnectionAccepterAccepterOutputReference extends cdktf.ComplexObject {
@@ -192,6 +218,37 @@ export function vpcPeeringConnectionAccepterRequesterToTerraform(struct?: VpcPee
     allow_remote_vpc_dns_resolution: cdktf.booleanToTerraform(struct!.allowRemoteVpcDnsResolution),
     allow_vpc_to_remote_classic_link: cdktf.booleanToTerraform(struct!.allowVpcToRemoteClassicLink),
   }
+}
+
+
+export function vpcPeeringConnectionAccepterRequesterToHclTerraform(struct?: VpcPeeringConnectionAccepterRequesterOutputReference | VpcPeeringConnectionAccepterRequester): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    allow_classic_link_to_remote_vpc: {
+      value: cdktf.booleanToHclTerraform(struct!.allowClassicLinkToRemoteVpc),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    allow_remote_vpc_dns_resolution: {
+      value: cdktf.booleanToHclTerraform(struct!.allowRemoteVpcDnsResolution),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    allow_vpc_to_remote_classic_link: {
+      value: cdktf.booleanToHclTerraform(struct!.allowVpcToRemoteClassicLink),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class VpcPeeringConnectionAccepterRequesterOutputReference extends cdktf.ComplexObject {
@@ -499,5 +556,55 @@ export class VpcPeeringConnectionAccepterA extends cdktf.TerraformResource {
       accepter: vpcPeeringConnectionAccepterAccepterToTerraform(this._accepter.internalValue),
       requester: vpcPeeringConnectionAccepterRequesterToTerraform(this._requester.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      auto_accept: {
+        value: cdktf.booleanToHclTerraform(this._autoAccept),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      vpc_peering_connection_id: {
+        value: cdktf.stringToHclTerraform(this._vpcPeeringConnectionId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      accepter: {
+        value: vpcPeeringConnectionAccepterAccepterToHclTerraform(this._accepter.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "VpcPeeringConnectionAccepterAccepterList",
+      },
+      requester: {
+        value: vpcPeeringConnectionAccepterRequesterToHclTerraform(this._requester.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "VpcPeeringConnectionAccepterRequesterList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

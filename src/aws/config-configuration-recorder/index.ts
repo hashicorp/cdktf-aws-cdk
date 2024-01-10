@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/config_configuration_recorder
 // generated from terraform resource schema
 
@@ -59,6 +54,37 @@ export function configConfigurationRecorderRecordingGroupToTerraform(struct?: Co
     include_global_resource_types: cdktf.booleanToTerraform(struct!.includeGlobalResourceTypes),
     resource_types: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.resourceTypes),
   }
+}
+
+
+export function configConfigurationRecorderRecordingGroupToHclTerraform(struct?: ConfigConfigurationRecorderRecordingGroupOutputReference | ConfigConfigurationRecorderRecordingGroup): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    all_supported: {
+      value: cdktf.booleanToHclTerraform(struct!.allSupported),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    include_global_resource_types: {
+      value: cdktf.booleanToHclTerraform(struct!.includeGlobalResourceTypes),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    resource_types: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.resourceTypes),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class ConfigConfigurationRecorderRecordingGroupOutputReference extends cdktf.ComplexObject {
@@ -287,5 +313,37 @@ export class ConfigConfigurationRecorder extends cdktf.TerraformResource {
       role_arn: cdktf.stringToTerraform(this._roleArn),
       recording_group: configConfigurationRecorderRecordingGroupToTerraform(this._recordingGroup.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      role_arn: {
+        value: cdktf.stringToHclTerraform(this._roleArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      recording_group: {
+        value: configConfigurationRecorderRecordingGroupToHclTerraform(this._recordingGroup.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "ConfigConfigurationRecorderRecordingGroupList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

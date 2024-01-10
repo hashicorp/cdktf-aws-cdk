@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/macie2_classification_job
 // generated from terraform resource schema
 
@@ -82,6 +77,17 @@ export function macie2ClassificationJobUserPausedDetailsToTerraform(struct?: Mac
   }
   return {
   }
+}
+
+
+export function macie2ClassificationJobUserPausedDetailsToHclTerraform(struct?: Macie2ClassificationJobUserPausedDetails): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
 }
 
 export class Macie2ClassificationJobUserPausedDetailsOutputReference extends cdktf.ComplexObject {
@@ -166,6 +172,31 @@ export function macie2ClassificationJobS3JobDefinitionBucketDefinitionsToTerrafo
     account_id: cdktf.stringToTerraform(struct!.accountId),
     buckets: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.buckets),
   }
+}
+
+
+export function macie2ClassificationJobS3JobDefinitionBucketDefinitionsToHclTerraform(struct?: Macie2ClassificationJobS3JobDefinitionBucketDefinitions | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    account_id: {
+      value: cdktf.stringToHclTerraform(struct!.accountId),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    buckets: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.buckets),
+      isBlock: false,
+      type: "list",
+      storageClassType: "stringList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class Macie2ClassificationJobS3JobDefinitionBucketDefinitionsOutputReference extends cdktf.ComplexObject {
@@ -291,6 +322,37 @@ export function macie2ClassificationJobS3JobDefinitionScopingExcludesAndSimpleSc
   }
 }
 
+
+export function macie2ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTermToHclTerraform(struct?: Macie2ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTermOutputReference | Macie2ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    comparator: {
+      value: cdktf.stringToHclTerraform(struct!.comparator),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    key: {
+      value: cdktf.stringToHclTerraform(struct!.key),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    values: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.values),
+      isBlock: false,
+      type: "list",
+      storageClassType: "stringList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class Macie2ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTermOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -403,6 +465,31 @@ export function macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScope
     key: cdktf.stringToTerraform(struct!.key),
     value: cdktf.stringToTerraform(struct!.value),
   }
+}
+
+
+export function macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValuesToHclTerraform(struct?: Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValues | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    key: {
+      value: cdktf.stringToHclTerraform(struct!.key),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    value: {
+      value: cdktf.stringToHclTerraform(struct!.value),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValuesOutputReference extends cdktf.ComplexObject {
@@ -539,6 +626,43 @@ export function macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScope
     target: cdktf.stringToTerraform(struct!.target),
     tag_values: cdktf.listMapper(macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValuesToTerraform, true)(struct!.tagValues),
   }
+}
+
+
+export function macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermToHclTerraform(struct?: Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermOutputReference | Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTerm): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    comparator: {
+      value: cdktf.stringToHclTerraform(struct!.comparator),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    key: {
+      value: cdktf.stringToHclTerraform(struct!.key),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    target: {
+      value: cdktf.stringToHclTerraform(struct!.target),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    tag_values: {
+      value: cdktf.listMapperHcl(macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValuesToHclTerraform, true)(struct!.tagValues),
+      isBlock: true,
+      type: "list",
+      storageClassType: "Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValuesList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermOutputReference extends cdktf.ComplexObject {
@@ -681,6 +805,31 @@ export function macie2ClassificationJobS3JobDefinitionScopingExcludesAndToTerraf
   }
 }
 
+
+export function macie2ClassificationJobS3JobDefinitionScopingExcludesAndToHclTerraform(struct?: Macie2ClassificationJobS3JobDefinitionScopingExcludesAnd | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    simple_scope_term: {
+      value: macie2ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTermToHclTerraform(struct!.simpleScopeTerm),
+      isBlock: true,
+      type: "list",
+      storageClassType: "Macie2ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTermList",
+    },
+    tag_scope_term: {
+      value: macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermToHclTerraform(struct!.tagScopeTerm),
+      isBlock: true,
+      type: "list",
+      storageClassType: "Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class Macie2ClassificationJobS3JobDefinitionScopingExcludesAndOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
   private resolvableValue?: cdktf.IResolvable;
@@ -802,6 +951,25 @@ export function macie2ClassificationJobS3JobDefinitionScopingExcludesToTerraform
   }
 }
 
+
+export function macie2ClassificationJobS3JobDefinitionScopingExcludesToHclTerraform(struct?: Macie2ClassificationJobS3JobDefinitionScopingExcludesOutputReference | Macie2ClassificationJobS3JobDefinitionScopingExcludes): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    and: {
+      value: cdktf.listMapperHcl(macie2ClassificationJobS3JobDefinitionScopingExcludesAndToHclTerraform, true)(struct!.and),
+      isBlock: true,
+      type: "list",
+      storageClassType: "Macie2ClassificationJobS3JobDefinitionScopingExcludesAndList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class Macie2ClassificationJobS3JobDefinitionScopingExcludesOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -875,6 +1043,37 @@ export function macie2ClassificationJobS3JobDefinitionScopingIncludesAndSimpleSc
     key: cdktf.stringToTerraform(struct!.key),
     values: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.values),
   }
+}
+
+
+export function macie2ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTermToHclTerraform(struct?: Macie2ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTermOutputReference | Macie2ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTerm): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    comparator: {
+      value: cdktf.stringToHclTerraform(struct!.comparator),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    key: {
+      value: cdktf.stringToHclTerraform(struct!.key),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    values: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.values),
+      isBlock: false,
+      type: "list",
+      storageClassType: "stringList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class Macie2ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTermOutputReference extends cdktf.ComplexObject {
@@ -989,6 +1188,31 @@ export function macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScope
     key: cdktf.stringToTerraform(struct!.key),
     value: cdktf.stringToTerraform(struct!.value),
   }
+}
+
+
+export function macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValuesToHclTerraform(struct?: Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValues | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    key: {
+      value: cdktf.stringToHclTerraform(struct!.key),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    value: {
+      value: cdktf.stringToHclTerraform(struct!.value),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValuesOutputReference extends cdktf.ComplexObject {
@@ -1125,6 +1349,43 @@ export function macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScope
     target: cdktf.stringToTerraform(struct!.target),
     tag_values: cdktf.listMapper(macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValuesToTerraform, true)(struct!.tagValues),
   }
+}
+
+
+export function macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermToHclTerraform(struct?: Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermOutputReference | Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    comparator: {
+      value: cdktf.stringToHclTerraform(struct!.comparator),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    key: {
+      value: cdktf.stringToHclTerraform(struct!.key),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    target: {
+      value: cdktf.stringToHclTerraform(struct!.target),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    tag_values: {
+      value: cdktf.listMapperHcl(macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValuesToHclTerraform, true)(struct!.tagValues),
+      isBlock: true,
+      type: "list",
+      storageClassType: "Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValuesList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermOutputReference extends cdktf.ComplexObject {
@@ -1267,6 +1528,31 @@ export function macie2ClassificationJobS3JobDefinitionScopingIncludesAndToTerraf
   }
 }
 
+
+export function macie2ClassificationJobS3JobDefinitionScopingIncludesAndToHclTerraform(struct?: Macie2ClassificationJobS3JobDefinitionScopingIncludesAnd | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    simple_scope_term: {
+      value: macie2ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTermToHclTerraform(struct!.simpleScopeTerm),
+      isBlock: true,
+      type: "list",
+      storageClassType: "Macie2ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTermList",
+    },
+    tag_scope_term: {
+      value: macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermToHclTerraform(struct!.tagScopeTerm),
+      isBlock: true,
+      type: "list",
+      storageClassType: "Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class Macie2ClassificationJobS3JobDefinitionScopingIncludesAndOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
   private resolvableValue?: cdktf.IResolvable;
@@ -1388,6 +1674,25 @@ export function macie2ClassificationJobS3JobDefinitionScopingIncludesToTerraform
   }
 }
 
+
+export function macie2ClassificationJobS3JobDefinitionScopingIncludesToHclTerraform(struct?: Macie2ClassificationJobS3JobDefinitionScopingIncludesOutputReference | Macie2ClassificationJobS3JobDefinitionScopingIncludes): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    and: {
+      value: cdktf.listMapperHcl(macie2ClassificationJobS3JobDefinitionScopingIncludesAndToHclTerraform, true)(struct!.and),
+      isBlock: true,
+      type: "list",
+      storageClassType: "Macie2ClassificationJobS3JobDefinitionScopingIncludesAndList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class Macie2ClassificationJobS3JobDefinitionScopingIncludesOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -1460,6 +1765,31 @@ export function macie2ClassificationJobS3JobDefinitionScopingToTerraform(struct?
     excludes: macie2ClassificationJobS3JobDefinitionScopingExcludesToTerraform(struct!.excludes),
     includes: macie2ClassificationJobS3JobDefinitionScopingIncludesToTerraform(struct!.includes),
   }
+}
+
+
+export function macie2ClassificationJobS3JobDefinitionScopingToHclTerraform(struct?: Macie2ClassificationJobS3JobDefinitionScopingOutputReference | Macie2ClassificationJobS3JobDefinitionScoping): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    excludes: {
+      value: macie2ClassificationJobS3JobDefinitionScopingExcludesToHclTerraform(struct!.excludes),
+      isBlock: true,
+      type: "list",
+      storageClassType: "Macie2ClassificationJobS3JobDefinitionScopingExcludesList",
+    },
+    includes: {
+      value: macie2ClassificationJobS3JobDefinitionScopingIncludesToHclTerraform(struct!.includes),
+      isBlock: true,
+      type: "list",
+      storageClassType: "Macie2ClassificationJobS3JobDefinitionScopingIncludesList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class Macie2ClassificationJobS3JobDefinitionScopingOutputReference extends cdktf.ComplexObject {
@@ -1558,6 +1888,31 @@ export function macie2ClassificationJobS3JobDefinitionToTerraform(struct?: Macie
   }
 }
 
+
+export function macie2ClassificationJobS3JobDefinitionToHclTerraform(struct?: Macie2ClassificationJobS3JobDefinitionOutputReference | Macie2ClassificationJobS3JobDefinition): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    bucket_definitions: {
+      value: cdktf.listMapperHcl(macie2ClassificationJobS3JobDefinitionBucketDefinitionsToHclTerraform, true)(struct!.bucketDefinitions),
+      isBlock: true,
+      type: "list",
+      storageClassType: "Macie2ClassificationJobS3JobDefinitionBucketDefinitionsList",
+    },
+    scoping: {
+      value: macie2ClassificationJobS3JobDefinitionScopingToHclTerraform(struct!.scoping),
+      isBlock: true,
+      type: "list",
+      storageClassType: "Macie2ClassificationJobS3JobDefinitionScopingList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class Macie2ClassificationJobS3JobDefinitionOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -1653,6 +2008,37 @@ export function macie2ClassificationJobScheduleFrequencyToTerraform(struct?: Mac
     monthly_schedule: cdktf.numberToTerraform(struct!.monthlySchedule),
     weekly_schedule: cdktf.stringToTerraform(struct!.weeklySchedule),
   }
+}
+
+
+export function macie2ClassificationJobScheduleFrequencyToHclTerraform(struct?: Macie2ClassificationJobScheduleFrequencyOutputReference | Macie2ClassificationJobScheduleFrequency): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    daily_schedule: {
+      value: cdktf.booleanToHclTerraform(struct!.dailySchedule),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    monthly_schedule: {
+      value: cdktf.numberToHclTerraform(struct!.monthlySchedule),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    weekly_schedule: {
+      value: cdktf.stringToHclTerraform(struct!.weeklySchedule),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class Macie2ClassificationJobScheduleFrequencyOutputReference extends cdktf.ComplexObject {
@@ -2061,5 +2447,91 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
       s3_job_definition: macie2ClassificationJobS3JobDefinitionToTerraform(this._s3JobDefinition.internalValue),
       schedule_frequency: macie2ClassificationJobScheduleFrequencyToTerraform(this._scheduleFrequency.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      custom_data_identifier_ids: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._customDataIdentifierIds),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      description: {
+        value: cdktf.stringToHclTerraform(this._description),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      initial_run: {
+        value: cdktf.booleanToHclTerraform(this._initialRun),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      job_status: {
+        value: cdktf.stringToHclTerraform(this._jobStatus),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      job_type: {
+        value: cdktf.stringToHclTerraform(this._jobType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name_prefix: {
+        value: cdktf.stringToHclTerraform(this._namePrefix),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      sampling_percentage: {
+        value: cdktf.numberToHclTerraform(this._samplingPercentage),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      s3_job_definition: {
+        value: macie2ClassificationJobS3JobDefinitionToHclTerraform(this._s3JobDefinition.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "Macie2ClassificationJobS3JobDefinitionList",
+      },
+      schedule_frequency: {
+        value: macie2ClassificationJobScheduleFrequencyToHclTerraform(this._scheduleFrequency.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "Macie2ClassificationJobScheduleFrequencyList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

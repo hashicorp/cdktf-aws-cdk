@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/macie_s3_bucket_association
 // generated from terraform resource schema
 
@@ -58,6 +53,31 @@ export function macieS3BucketAssociationClassificationTypeToTerraform(struct?: M
     continuous: cdktf.stringToTerraform(struct!.continuous),
     one_time: cdktf.stringToTerraform(struct!.oneTime),
   }
+}
+
+
+export function macieS3BucketAssociationClassificationTypeToHclTerraform(struct?: MacieS3BucketAssociationClassificationTypeOutputReference | MacieS3BucketAssociationClassificationType): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    continuous: {
+      value: cdktf.stringToHclTerraform(struct!.continuous),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    one_time: {
+      value: cdktf.stringToHclTerraform(struct!.oneTime),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class MacieS3BucketAssociationClassificationTypeOutputReference extends cdktf.ComplexObject {
@@ -282,5 +302,43 @@ export class MacieS3BucketAssociation extends cdktf.TerraformResource {
       prefix: cdktf.stringToTerraform(this._prefix),
       classification_type: macieS3BucketAssociationClassificationTypeToTerraform(this._classificationType.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      bucket_name: {
+        value: cdktf.stringToHclTerraform(this._bucketName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      member_account_id: {
+        value: cdktf.stringToHclTerraform(this._memberAccountId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      prefix: {
+        value: cdktf.stringToHclTerraform(this._prefix),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      classification_type: {
+        value: macieS3BucketAssociationClassificationTypeToHclTerraform(this._classificationType.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "MacieS3BucketAssociationClassificationTypeList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

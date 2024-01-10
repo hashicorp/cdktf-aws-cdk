@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/data-sources/servicequotas_service_quota
 // generated from terraform resource schema
 
@@ -196,5 +191,37 @@ export class DataAwsServicequotasServiceQuota extends cdktf.TerraformDataSource 
       quota_name: cdktf.stringToTerraform(this._quotaName),
       service_code: cdktf.stringToTerraform(this._serviceCode),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      quota_code: {
+        value: cdktf.stringToHclTerraform(this._quotaCode),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      quota_name: {
+        value: cdktf.stringToHclTerraform(this._quotaName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      service_code: {
+        value: cdktf.stringToHclTerraform(this._serviceCode),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

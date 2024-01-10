@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/timestreamwrite_table
 // generated from terraform resource schema
 
@@ -78,6 +73,43 @@ export function timestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRej
     kms_key_id: cdktf.stringToTerraform(struct!.kmsKeyId),
     object_key_prefix: cdktf.stringToTerraform(struct!.objectKeyPrefix),
   }
+}
+
+
+export function timestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3ConfigurationToHclTerraform(struct?: TimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3ConfigurationOutputReference | TimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    bucket_name: {
+      value: cdktf.stringToHclTerraform(struct!.bucketName),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    encryption_option: {
+      value: cdktf.stringToHclTerraform(struct!.encryptionOption),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    kms_key_id: {
+      value: cdktf.stringToHclTerraform(struct!.kmsKeyId),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    object_key_prefix: {
+      value: cdktf.stringToHclTerraform(struct!.objectKeyPrefix),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class TimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3ConfigurationOutputReference extends cdktf.ComplexObject {
@@ -213,6 +245,25 @@ export function timestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRej
   }
 }
 
+
+export function timestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationToHclTerraform(struct?: TimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationOutputReference | TimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    s3_configuration: {
+      value: timestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3ConfigurationToHclTerraform(struct!.s3Configuration),
+      isBlock: true,
+      type: "list",
+      storageClassType: "TimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3ConfigurationList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class TimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -283,6 +334,31 @@ export function timestreamwriteTableMagneticStoreWritePropertiesToTerraform(stru
     enable_magnetic_store_writes: cdktf.booleanToTerraform(struct!.enableMagneticStoreWrites),
     magnetic_store_rejected_data_location: timestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationToTerraform(struct!.magneticStoreRejectedDataLocation),
   }
+}
+
+
+export function timestreamwriteTableMagneticStoreWritePropertiesToHclTerraform(struct?: TimestreamwriteTableMagneticStoreWritePropertiesOutputReference | TimestreamwriteTableMagneticStoreWriteProperties): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    enable_magnetic_store_writes: {
+      value: cdktf.booleanToHclTerraform(struct!.enableMagneticStoreWrites),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    magnetic_store_rejected_data_location: {
+      value: timestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationToHclTerraform(struct!.magneticStoreRejectedDataLocation),
+      isBlock: true,
+      type: "list",
+      storageClassType: "TimestreamwriteTableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class TimestreamwriteTableMagneticStoreWritePropertiesOutputReference extends cdktf.ComplexObject {
@@ -375,6 +451,31 @@ export function timestreamwriteTableRetentionPropertiesToTerraform(struct?: Time
     magnetic_store_retention_period_in_days: cdktf.numberToTerraform(struct!.magneticStoreRetentionPeriodInDays),
     memory_store_retention_period_in_hours: cdktf.numberToTerraform(struct!.memoryStoreRetentionPeriodInHours),
   }
+}
+
+
+export function timestreamwriteTableRetentionPropertiesToHclTerraform(struct?: TimestreamwriteTableRetentionPropertiesOutputReference | TimestreamwriteTableRetentionProperties): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    magnetic_store_retention_period_in_days: {
+      value: cdktf.numberToHclTerraform(struct!.magneticStoreRetentionPeriodInDays),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    memory_store_retention_period_in_hours: {
+      value: cdktf.numberToHclTerraform(struct!.memoryStoreRetentionPeriodInHours),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class TimestreamwriteTableRetentionPropertiesOutputReference extends cdktf.ComplexObject {
@@ -631,5 +732,55 @@ export class TimestreamwriteTable extends cdktf.TerraformResource {
       magnetic_store_write_properties: timestreamwriteTableMagneticStoreWritePropertiesToTerraform(this._magneticStoreWriteProperties.internalValue),
       retention_properties: timestreamwriteTableRetentionPropertiesToTerraform(this._retentionProperties.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      database_name: {
+        value: cdktf.stringToHclTerraform(this._databaseName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      table_name: {
+        value: cdktf.stringToHclTerraform(this._tableName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      magnetic_store_write_properties: {
+        value: timestreamwriteTableMagneticStoreWritePropertiesToHclTerraform(this._magneticStoreWriteProperties.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "TimestreamwriteTableMagneticStoreWritePropertiesList",
+      },
+      retention_properties: {
+        value: timestreamwriteTableRetentionPropertiesToHclTerraform(this._retentionProperties.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "TimestreamwriteTableRetentionPropertiesList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

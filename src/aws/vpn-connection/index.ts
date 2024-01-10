@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/vpn_connection
 // generated from terraform resource schema
 
@@ -228,6 +223,17 @@ export function vpnConnectionRoutesToTerraform(struct?: VpnConnectionRoutes): an
   }
 }
 
+
+export function vpnConnectionRoutesToHclTerraform(struct?: VpnConnectionRoutes): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
+}
+
 export class VpnConnectionRoutesOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -300,6 +306,17 @@ export function vpnConnectionVgwTelemetryToTerraform(struct?: VpnConnectionVgwTe
   }
   return {
   }
+}
+
+
+export function vpnConnectionVgwTelemetryToHclTerraform(struct?: VpnConnectionVgwTelemetry): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
 }
 
 export class VpnConnectionVgwTelemetryOutputReference extends cdktf.ComplexObject {
@@ -1415,5 +1432,313 @@ export class VpnConnection extends cdktf.TerraformResource {
       type: cdktf.stringToTerraform(this._type),
       vpn_gateway_id: cdktf.stringToTerraform(this._vpnGatewayId),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      customer_gateway_id: {
+        value: cdktf.stringToHclTerraform(this._customerGatewayId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      enable_acceleration: {
+        value: cdktf.booleanToHclTerraform(this._enableAcceleration),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      local_ipv4_network_cidr: {
+        value: cdktf.stringToHclTerraform(this._localIpv4NetworkCidr),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      local_ipv6_network_cidr: {
+        value: cdktf.stringToHclTerraform(this._localIpv6NetworkCidr),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      remote_ipv4_network_cidr: {
+        value: cdktf.stringToHclTerraform(this._remoteIpv4NetworkCidr),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      remote_ipv6_network_cidr: {
+        value: cdktf.stringToHclTerraform(this._remoteIpv6NetworkCidr),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      static_routes_only: {
+        value: cdktf.booleanToHclTerraform(this._staticRoutesOnly),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      transit_gateway_id: {
+        value: cdktf.stringToHclTerraform(this._transitGatewayId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tunnel1_dpd_timeout_action: {
+        value: cdktf.stringToHclTerraform(this._tunnel1DpdTimeoutAction),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tunnel1_dpd_timeout_seconds: {
+        value: cdktf.numberToHclTerraform(this._tunnel1DpdTimeoutSeconds),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      tunnel1_ike_versions: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._tunnel1IkeVersions),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      tunnel1_inside_cidr: {
+        value: cdktf.stringToHclTerraform(this._tunnel1InsideCidr),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tunnel1_inside_ipv6_cidr: {
+        value: cdktf.stringToHclTerraform(this._tunnel1InsideIpv6Cidr),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tunnel1_phase1_dh_group_numbers: {
+        value: cdktf.listMapperHcl(cdktf.numberToHclTerraform, false)(this._tunnel1Phase1DhGroupNumbers),
+        isBlock: false,
+        type: "set",
+        storageClassType: "numberList",
+      },
+      tunnel1_phase1_encryption_algorithms: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._tunnel1Phase1EncryptionAlgorithms),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      tunnel1_phase1_integrity_algorithms: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._tunnel1Phase1IntegrityAlgorithms),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      tunnel1_phase1_lifetime_seconds: {
+        value: cdktf.numberToHclTerraform(this._tunnel1Phase1LifetimeSeconds),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      tunnel1_phase2_dh_group_numbers: {
+        value: cdktf.listMapperHcl(cdktf.numberToHclTerraform, false)(this._tunnel1Phase2DhGroupNumbers),
+        isBlock: false,
+        type: "set",
+        storageClassType: "numberList",
+      },
+      tunnel1_phase2_encryption_algorithms: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._tunnel1Phase2EncryptionAlgorithms),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      tunnel1_phase2_integrity_algorithms: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._tunnel1Phase2IntegrityAlgorithms),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      tunnel1_phase2_lifetime_seconds: {
+        value: cdktf.numberToHclTerraform(this._tunnel1Phase2LifetimeSeconds),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      tunnel1_preshared_key: {
+        value: cdktf.stringToHclTerraform(this._tunnel1PresharedKey),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tunnel1_rekey_fuzz_percentage: {
+        value: cdktf.numberToHclTerraform(this._tunnel1RekeyFuzzPercentage),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      tunnel1_rekey_margin_time_seconds: {
+        value: cdktf.numberToHclTerraform(this._tunnel1RekeyMarginTimeSeconds),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      tunnel1_replay_window_size: {
+        value: cdktf.numberToHclTerraform(this._tunnel1ReplayWindowSize),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      tunnel1_startup_action: {
+        value: cdktf.stringToHclTerraform(this._tunnel1StartupAction),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tunnel2_dpd_timeout_action: {
+        value: cdktf.stringToHclTerraform(this._tunnel2DpdTimeoutAction),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tunnel2_dpd_timeout_seconds: {
+        value: cdktf.numberToHclTerraform(this._tunnel2DpdTimeoutSeconds),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      tunnel2_ike_versions: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._tunnel2IkeVersions),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      tunnel2_inside_cidr: {
+        value: cdktf.stringToHclTerraform(this._tunnel2InsideCidr),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tunnel2_inside_ipv6_cidr: {
+        value: cdktf.stringToHclTerraform(this._tunnel2InsideIpv6Cidr),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tunnel2_phase1_dh_group_numbers: {
+        value: cdktf.listMapperHcl(cdktf.numberToHclTerraform, false)(this._tunnel2Phase1DhGroupNumbers),
+        isBlock: false,
+        type: "set",
+        storageClassType: "numberList",
+      },
+      tunnel2_phase1_encryption_algorithms: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._tunnel2Phase1EncryptionAlgorithms),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      tunnel2_phase1_integrity_algorithms: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._tunnel2Phase1IntegrityAlgorithms),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      tunnel2_phase1_lifetime_seconds: {
+        value: cdktf.numberToHclTerraform(this._tunnel2Phase1LifetimeSeconds),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      tunnel2_phase2_dh_group_numbers: {
+        value: cdktf.listMapperHcl(cdktf.numberToHclTerraform, false)(this._tunnel2Phase2DhGroupNumbers),
+        isBlock: false,
+        type: "set",
+        storageClassType: "numberList",
+      },
+      tunnel2_phase2_encryption_algorithms: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._tunnel2Phase2EncryptionAlgorithms),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      tunnel2_phase2_integrity_algorithms: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._tunnel2Phase2IntegrityAlgorithms),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      tunnel2_phase2_lifetime_seconds: {
+        value: cdktf.numberToHclTerraform(this._tunnel2Phase2LifetimeSeconds),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      tunnel2_preshared_key: {
+        value: cdktf.stringToHclTerraform(this._tunnel2PresharedKey),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tunnel2_rekey_fuzz_percentage: {
+        value: cdktf.numberToHclTerraform(this._tunnel2RekeyFuzzPercentage),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      tunnel2_rekey_margin_time_seconds: {
+        value: cdktf.numberToHclTerraform(this._tunnel2RekeyMarginTimeSeconds),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      tunnel2_replay_window_size: {
+        value: cdktf.numberToHclTerraform(this._tunnel2ReplayWindowSize),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      tunnel2_startup_action: {
+        value: cdktf.stringToHclTerraform(this._tunnel2StartupAction),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tunnel_inside_ip_version: {
+        value: cdktf.stringToHclTerraform(this._tunnelInsideIpVersion),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      type: {
+        value: cdktf.stringToHclTerraform(this._type),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      vpn_gateway_id: {
+        value: cdktf.stringToHclTerraform(this._vpnGatewayId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

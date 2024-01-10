@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/s3outposts_endpoint
 // generated from terraform resource schema
 
@@ -42,6 +37,17 @@ export function s3OutpostsEndpointNetworkInterfacesToTerraform(struct?: S3Outpos
   }
   return {
   }
+}
+
+
+export function s3OutpostsEndpointNetworkInterfacesToHclTerraform(struct?: S3OutpostsEndpointNetworkInterfaces): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
 }
 
 export class S3OutpostsEndpointNetworkInterfacesOutputReference extends cdktf.ComplexObject {
@@ -245,5 +251,37 @@ export class S3OutpostsEndpoint extends cdktf.TerraformResource {
       security_group_id: cdktf.stringToTerraform(this._securityGroupId),
       subnet_id: cdktf.stringToTerraform(this._subnetId),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      outpost_id: {
+        value: cdktf.stringToHclTerraform(this._outpostId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      security_group_id: {
+        value: cdktf.stringToHclTerraform(this._securityGroupId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      subnet_id: {
+        value: cdktf.stringToHclTerraform(this._subnetId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

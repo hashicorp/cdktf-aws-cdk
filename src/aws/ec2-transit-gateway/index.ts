@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // https://registry.terraform.io/providers/hashicorp/aws/3.76.1/docs/resources/ec2_transit_gateway
 // generated from terraform resource schema
 
@@ -321,5 +316,73 @@ export class Ec2TransitGateway extends cdktf.TerraformResource {
       tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       vpn_ecmp_support: cdktf.stringToTerraform(this._vpnEcmpSupport),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      amazon_side_asn: {
+        value: cdktf.numberToHclTerraform(this._amazonSideAsn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      auto_accept_shared_attachments: {
+        value: cdktf.stringToHclTerraform(this._autoAcceptSharedAttachments),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      default_route_table_association: {
+        value: cdktf.stringToHclTerraform(this._defaultRouteTableAssociation),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      default_route_table_propagation: {
+        value: cdktf.stringToHclTerraform(this._defaultRouteTablePropagation),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      description: {
+        value: cdktf.stringToHclTerraform(this._description),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      dns_support: {
+        value: cdktf.stringToHclTerraform(this._dnsSupport),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      vpn_ecmp_support: {
+        value: cdktf.stringToHclTerraform(this._vpnEcmpSupport),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

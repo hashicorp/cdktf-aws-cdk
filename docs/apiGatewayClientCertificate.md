@@ -54,6 +54,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
@@ -66,9 +67,12 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.hasResourceMove">hasResourceMove</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.moveFromId">moveFromId</a></code> | Move the resource corresponding to "id" to this resource. |
 | <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
+| <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.moveToId">moveToId</a></code> | Moves this resource to the resource corresponding to "id". |
 | <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.resetDescription">resetDescription</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.resetId">resetId</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.resetTags">resetTags</a></code> | *No description.* |
@@ -125,6 +129,12 @@ public resetOverrideLogicalId(): void
 ```
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
 
 ##### `toMetadata` <a name="toMetadata" id="@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.toMetadata"></a>
 
@@ -264,6 +274,12 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `hasResourceMove` <a name="hasResourceMove" id="@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.hasResourceMove"></a>
+
+```typescript
+public hasResourceMove(): TerraformResourceMoveByTarget | TerraformResourceMoveById
+```
+
 ##### `importFrom` <a name="importFrom" id="@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.importFrom"></a>
 
 ```typescript
@@ -294,6 +310,24 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 
 ---
 
+##### `moveFromId` <a name="moveFromId" id="@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.moveFromId"></a>
+
+```typescript
+public moveFromId(id: string): void
+```
+
+Move the resource corresponding to "id" to this resource.
+
+Note that the resource being moved from must be marked as moved using it's instance function.
+
+###### `id`<sup>Required</sup> <a name="id" id="@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.moveFromId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource being moved from, e.g. "aws_s3_bucket.example".
+
+---
+
 ##### `moveTo` <a name="moveTo" id="@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.moveTo"></a>
 
 ```typescript
@@ -315,6 +349,22 @@ The previously set user defined string set by .addMoveTarget() corresponding to 
 - *Type:* string | number
 
 Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
+
+---
+
+##### `moveToId` <a name="moveToId" id="@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.moveToId"></a>
+
+```typescript
+public moveToId(id: string): void
+```
+
+Moves this resource to the resource corresponding to "id".
+
+###### `id`<sup>Required</sup> <a name="id" id="@cdktf/aws-cdk.apiGatewayClientCertificate.ApiGatewayClientCertificate.moveToId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource to move to, e.g. "aws_s3_bucket.example".
 
 ---
 
