@@ -55,6 +55,25 @@ export function sesConfigurationSetDeliveryOptionsToTerraform(struct?: SesConfig
   }
 }
 
+
+export function sesConfigurationSetDeliveryOptionsToHclTerraform(struct?: SesConfigurationSetDeliveryOptionsOutputReference | SesConfigurationSetDeliveryOptions): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    tls_policy: {
+      value: cdktf.stringToHclTerraform(struct!.tlsPolicy),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class SesConfigurationSetDeliveryOptionsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -265,5 +284,43 @@ export class SesConfigurationSet extends cdktf.TerraformResource {
       sending_enabled: cdktf.booleanToTerraform(this._sendingEnabled),
       delivery_options: sesConfigurationSetDeliveryOptionsToTerraform(this._deliveryOptions.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      reputation_metrics_enabled: {
+        value: cdktf.booleanToHclTerraform(this._reputationMetricsEnabled),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      sending_enabled: {
+        value: cdktf.booleanToHclTerraform(this._sendingEnabled),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      delivery_options: {
+        value: sesConfigurationSetDeliveryOptionsToHclTerraform(this._deliveryOptions.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "SesConfigurationSetDeliveryOptionsList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

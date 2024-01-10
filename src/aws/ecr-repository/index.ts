@@ -76,6 +76,31 @@ export function ecrRepositoryEncryptionConfigurationToTerraform(struct?: EcrRepo
   }
 }
 
+
+export function ecrRepositoryEncryptionConfigurationToHclTerraform(struct?: EcrRepositoryEncryptionConfiguration | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    encryption_type: {
+      value: cdktf.stringToHclTerraform(struct!.encryptionType),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    kms_key: {
+      value: cdktf.stringToHclTerraform(struct!.kmsKey),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class EcrRepositoryEncryptionConfigurationOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
   private resolvableValue?: cdktf.IResolvable;
@@ -195,6 +220,25 @@ export function ecrRepositoryImageScanningConfigurationToTerraform(struct?: EcrR
   }
 }
 
+
+export function ecrRepositoryImageScanningConfigurationToHclTerraform(struct?: EcrRepositoryImageScanningConfigurationOutputReference | EcrRepositoryImageScanningConfiguration): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    scan_on_push: {
+      value: cdktf.booleanToHclTerraform(struct!.scanOnPush),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class EcrRepositoryImageScanningConfigurationOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -255,6 +299,25 @@ export function ecrRepositoryTimeoutsToTerraform(struct?: EcrRepositoryTimeouts 
   return {
     delete: cdktf.stringToTerraform(struct!.delete),
   }
+}
+
+
+export function ecrRepositoryTimeoutsToHclTerraform(struct?: EcrRepositoryTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    delete: {
+      value: cdktf.stringToHclTerraform(struct!.delete),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class EcrRepositoryTimeoutsOutputReference extends cdktf.ComplexObject {
@@ -536,5 +599,61 @@ export class EcrRepository extends cdktf.TerraformResource {
       image_scanning_configuration: ecrRepositoryImageScanningConfigurationToTerraform(this._imageScanningConfiguration.internalValue),
       timeouts: ecrRepositoryTimeoutsToTerraform(this._timeouts.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      image_tag_mutability: {
+        value: cdktf.stringToHclTerraform(this._imageTagMutability),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      encryption_configuration: {
+        value: cdktf.listMapperHcl(ecrRepositoryEncryptionConfigurationToHclTerraform, true)(this._encryptionConfiguration.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "EcrRepositoryEncryptionConfigurationList",
+      },
+      image_scanning_configuration: {
+        value: ecrRepositoryImageScanningConfigurationToHclTerraform(this._imageScanningConfiguration.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "EcrRepositoryImageScanningConfigurationList",
+      },
+      timeouts: {
+        value: ecrRepositoryTimeoutsToHclTerraform(this._timeouts.internalValue),
+        isBlock: true,
+        type: "struct",
+        storageClassType: "EcrRepositoryTimeouts",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

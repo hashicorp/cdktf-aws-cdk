@@ -161,4 +161,36 @@ export class SsoadminPermissionSetInlinePolicy extends cdktf.TerraformResource {
       permission_set_arn: cdktf.stringToTerraform(this._permissionSetArn),
     };
   }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      inline_policy: {
+        value: cdktf.stringToHclTerraform(this._inlinePolicy),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      instance_arn: {
+        value: cdktf.stringToHclTerraform(this._instanceArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      permission_set_arn: {
+        value: cdktf.stringToHclTerraform(this._permissionSetArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
+  }
 }

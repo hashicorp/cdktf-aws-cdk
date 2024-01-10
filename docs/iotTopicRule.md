@@ -54,6 +54,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
@@ -66,9 +67,12 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.hasResourceMove">hasResourceMove</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.moveFromId">moveFromId</a></code> | Move the resource corresponding to "id" to this resource. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.moveToId">moveToId</a></code> | Moves this resource to the resource corresponding to "id". |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.putCloudwatchAlarm">putCloudwatchAlarm</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.putCloudwatchMetric">putCloudwatchMetric</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRule.putDynamodb">putDynamodb</a></code> | *No description.* |
@@ -157,6 +161,12 @@ public resetOverrideLogicalId(): void
 ```
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRule.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
 
 ##### `toMetadata` <a name="toMetadata" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRule.toMetadata"></a>
 
@@ -296,6 +306,12 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `hasResourceMove` <a name="hasResourceMove" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRule.hasResourceMove"></a>
+
+```typescript
+public hasResourceMove(): TerraformResourceMoveByTarget | TerraformResourceMoveById
+```
+
 ##### `importFrom` <a name="importFrom" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRule.importFrom"></a>
 
 ```typescript
@@ -326,6 +342,24 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 
 ---
 
+##### `moveFromId` <a name="moveFromId" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRule.moveFromId"></a>
+
+```typescript
+public moveFromId(id: string): void
+```
+
+Move the resource corresponding to "id" to this resource.
+
+Note that the resource being moved from must be marked as moved using it's instance function.
+
+###### `id`<sup>Required</sup> <a name="id" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRule.moveFromId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource being moved from, e.g. "aws_s3_bucket.example".
+
+---
+
 ##### `moveTo` <a name="moveTo" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRule.moveTo"></a>
 
 ```typescript
@@ -347,6 +381,22 @@ The previously set user defined string set by .addMoveTarget() corresponding to 
 - *Type:* string | number
 
 Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
+
+---
+
+##### `moveToId` <a name="moveToId" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRule.moveToId"></a>
+
+```typescript
+public moveToId(id: string): void
+```
+
+Moves this resource to the resource corresponding to "id".
+
+###### `id`<sup>Required</sup> <a name="id" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRule.moveToId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource to move to, e.g. "aws_s3_bucket.example".
 
 ---
 
@@ -4200,10 +4250,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarmList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarmList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarmList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarmList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarmList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarmList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchAlarmList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 
@@ -4698,10 +4765,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetricList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetricList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetricList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetricList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetricList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetricList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleCloudwatchMetricList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 
@@ -5247,10 +5331,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 
@@ -5919,10 +6020,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2List.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2List.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2List.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2List.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2List.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2List.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleDynamodbv2List.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 
@@ -6664,10 +6782,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearchList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearchList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearchList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearchList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearchList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearchList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleElasticsearchList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 
@@ -13368,10 +13503,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehoseList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehoseList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehoseList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehoseList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehoseList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehoseList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleFirehoseList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 
@@ -13851,10 +14003,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalyticsList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalyticsList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalyticsList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalyticsList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalyticsList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalyticsList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotAnalyticsList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 
@@ -14305,10 +14474,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEventsList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEventsList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEventsList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEventsList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEventsList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEventsList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleIotEventsList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 
@@ -14788,10 +14974,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesisList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesisList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesisList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesisList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesisList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesisList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleKinesisList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 
@@ -15271,10 +15474,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambdaList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambdaList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambdaList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambdaList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambdaList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambdaList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleLambdaList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 
@@ -15703,10 +15923,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublishList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublishList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublishList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublishList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublishList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublishList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleRepublishList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 
@@ -16186,10 +16423,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3List.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3List.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3List.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3List.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3List.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3List.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleS3List.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 
@@ -16662,10 +16916,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSnsList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSnsList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSnsList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSnsList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSnsList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSnsList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSnsList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 
@@ -17145,10 +17416,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqsList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqsList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqsList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqsList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqsList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqsList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleSqsList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 
@@ -17621,10 +17909,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctionsList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctionsList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctionsList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctionsList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctionsList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctionsList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.iotTopicRule.IotTopicRuleStepFunctionsList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 

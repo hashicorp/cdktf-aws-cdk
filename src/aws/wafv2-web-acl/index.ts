@@ -7,15 +7,19 @@
 
 import { Wafv2WebAclCustomResponseBody, 
 wafv2WebAclCustomResponseBodyToTerraform, 
+wafv2WebAclCustomResponseBodyToHclTerraform, 
 Wafv2WebAclCustomResponseBodyList, 
 Wafv2WebAclDefaultAction, 
 wafv2WebAclDefaultActionToTerraform, 
+wafv2WebAclDefaultActionToHclTerraform, 
 Wafv2WebAclDefaultActionOutputReference, 
 Wafv2WebAclRule, 
 wafv2WebAclRuleToTerraform, 
+wafv2WebAclRuleToHclTerraform, 
 Wafv2WebAclRuleList, 
 Wafv2WebAclVisibilityConfig, 
 wafv2WebAclVisibilityConfigToTerraform, 
+wafv2WebAclVisibilityConfigToHclTerraform, 
 Wafv2WebAclVisibilityConfigOutputReference} from './index-structs'
 export * from './index-structs'
 import { Construct } from 'constructs';
@@ -321,5 +325,73 @@ export class Wafv2WebAcl extends cdktf.TerraformResource {
       rule: cdktf.listMapper(wafv2WebAclRuleToTerraform, true)(this._rule.internalValue),
       visibility_config: wafv2WebAclVisibilityConfigToTerraform(this._visibilityConfig.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      description: {
+        value: cdktf.stringToHclTerraform(this._description),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      scope: {
+        value: cdktf.stringToHclTerraform(this._scope),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      custom_response_body: {
+        value: cdktf.listMapperHcl(wafv2WebAclCustomResponseBodyToHclTerraform, true)(this._customResponseBody.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "Wafv2WebAclCustomResponseBodyList",
+      },
+      default_action: {
+        value: wafv2WebAclDefaultActionToHclTerraform(this._defaultAction.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "Wafv2WebAclDefaultActionList",
+      },
+      rule: {
+        value: cdktf.listMapperHcl(wafv2WebAclRuleToHclTerraform, true)(this._rule.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "Wafv2WebAclRuleList",
+      },
+      visibility_config: {
+        value: wafv2WebAclVisibilityConfigToHclTerraform(this._visibilityConfig.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "Wafv2WebAclVisibilityConfigList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

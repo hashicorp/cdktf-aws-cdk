@@ -227,4 +227,54 @@ export class VolumeAttachment extends cdktf.TerraformResource {
       volume_id: cdktf.stringToTerraform(this._volumeId),
     };
   }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      device_name: {
+        value: cdktf.stringToHclTerraform(this._deviceName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      force_detach: {
+        value: cdktf.booleanToHclTerraform(this._forceDetach),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      instance_id: {
+        value: cdktf.stringToHclTerraform(this._instanceId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      skip_destroy: {
+        value: cdktf.booleanToHclTerraform(this._skipDestroy),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      stop_instance_before_detaching: {
+        value: cdktf.booleanToHclTerraform(this._stopInstanceBeforeDetaching),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      volume_id: {
+        value: cdktf.stringToHclTerraform(this._volumeId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
+  }
 }

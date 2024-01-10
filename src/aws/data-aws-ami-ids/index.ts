@@ -64,6 +64,31 @@ export function dataAwsAmiIdsFilterToTerraform(struct?: DataAwsAmiIdsFilter | cd
   }
 }
 
+
+export function dataAwsAmiIdsFilterToHclTerraform(struct?: DataAwsAmiIdsFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    name: {
+      value: cdktf.stringToHclTerraform(struct!.name),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    values: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.values),
+      isBlock: false,
+      type: "list",
+      storageClassType: "stringList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class DataAwsAmiIdsFilterOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
   private resolvableValue?: cdktf.IResolvable;
@@ -335,5 +360,49 @@ export class DataAwsAmiIds extends cdktf.TerraformDataSource {
       sort_ascending: cdktf.booleanToTerraform(this._sortAscending),
       filter: cdktf.listMapper(dataAwsAmiIdsFilterToTerraform, true)(this._filter.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      executable_users: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._executableUsers),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name_regex: {
+        value: cdktf.stringToHclTerraform(this._nameRegex),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      owners: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._owners),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      sort_ascending: {
+        value: cdktf.booleanToHclTerraform(this._sortAscending),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      filter: {
+        value: cdktf.listMapperHcl(dataAwsAmiIdsFilterToHclTerraform, true)(this._filter.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "DataAwsAmiIdsFilterList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

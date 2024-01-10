@@ -353,4 +353,78 @@ export class EbsSnapshotCopy extends cdktf.TerraformResource {
       temporary_restore_days: cdktf.numberToTerraform(this._temporaryRestoreDays),
     };
   }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      description: {
+        value: cdktf.stringToHclTerraform(this._description),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      encrypted: {
+        value: cdktf.booleanToHclTerraform(this._encrypted),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      kms_key_id: {
+        value: cdktf.stringToHclTerraform(this._kmsKeyId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      permanent_restore: {
+        value: cdktf.booleanToHclTerraform(this._permanentRestore),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      source_region: {
+        value: cdktf.stringToHclTerraform(this._sourceRegion),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      source_snapshot_id: {
+        value: cdktf.stringToHclTerraform(this._sourceSnapshotId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      storage_tier: {
+        value: cdktf.stringToHclTerraform(this._storageTier),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      temporary_restore_days: {
+        value: cdktf.numberToHclTerraform(this._temporaryRestoreDays),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
+  }
 }

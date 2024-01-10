@@ -90,6 +90,31 @@ export function imagebuilderImagePipelineImageTestsConfigurationToTerraform(stru
   }
 }
 
+
+export function imagebuilderImagePipelineImageTestsConfigurationToHclTerraform(struct?: ImagebuilderImagePipelineImageTestsConfigurationOutputReference | ImagebuilderImagePipelineImageTestsConfiguration): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    image_tests_enabled: {
+      value: cdktf.booleanToHclTerraform(struct!.imageTestsEnabled),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    timeout_minutes: {
+      value: cdktf.numberToHclTerraform(struct!.timeoutMinutes),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class ImagebuilderImagePipelineImageTestsConfigurationOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -180,6 +205,31 @@ export function imagebuilderImagePipelineScheduleToTerraform(struct?: Imagebuild
     pipeline_execution_start_condition: cdktf.stringToTerraform(struct!.pipelineExecutionStartCondition),
     schedule_expression: cdktf.stringToTerraform(struct!.scheduleExpression),
   }
+}
+
+
+export function imagebuilderImagePipelineScheduleToHclTerraform(struct?: ImagebuilderImagePipelineScheduleOutputReference | ImagebuilderImagePipelineSchedule): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    pipeline_execution_start_condition: {
+      value: cdktf.stringToHclTerraform(struct!.pipelineExecutionStartCondition),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    schedule_expression: {
+      value: cdktf.stringToHclTerraform(struct!.scheduleExpression),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class ImagebuilderImagePipelineScheduleOutputReference extends cdktf.ComplexObject {
@@ -551,5 +601,85 @@ export class ImagebuilderImagePipeline extends cdktf.TerraformResource {
       image_tests_configuration: imagebuilderImagePipelineImageTestsConfigurationToTerraform(this._imageTestsConfiguration.internalValue),
       schedule: imagebuilderImagePipelineScheduleToTerraform(this._schedule.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      description: {
+        value: cdktf.stringToHclTerraform(this._description),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      distribution_configuration_arn: {
+        value: cdktf.stringToHclTerraform(this._distributionConfigurationArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      enhanced_image_metadata_enabled: {
+        value: cdktf.booleanToHclTerraform(this._enhancedImageMetadataEnabled),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      image_recipe_arn: {
+        value: cdktf.stringToHclTerraform(this._imageRecipeArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      infrastructure_configuration_arn: {
+        value: cdktf.stringToHclTerraform(this._infrastructureConfigurationArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      status: {
+        value: cdktf.stringToHclTerraform(this._status),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      image_tests_configuration: {
+        value: imagebuilderImagePipelineImageTestsConfigurationToHclTerraform(this._imageTestsConfiguration.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "ImagebuilderImagePipelineImageTestsConfigurationList",
+      },
+      schedule: {
+        value: imagebuilderImagePipelineScheduleToHclTerraform(this._schedule.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "ImagebuilderImagePipelineScheduleList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

@@ -221,4 +221,54 @@ export class AppautoscalingTarget extends cdktf.TerraformResource {
       service_namespace: cdktf.stringToTerraform(this._serviceNamespace),
     };
   }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      max_capacity: {
+        value: cdktf.numberToHclTerraform(this._maxCapacity),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      min_capacity: {
+        value: cdktf.numberToHclTerraform(this._minCapacity),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      resource_id: {
+        value: cdktf.stringToHclTerraform(this._resourceId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      role_arn: {
+        value: cdktf.stringToHclTerraform(this._roleArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      scalable_dimension: {
+        value: cdktf.stringToHclTerraform(this._scalableDimension),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      service_namespace: {
+        value: cdktf.stringToHclTerraform(this._serviceNamespace),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
+  }
 }

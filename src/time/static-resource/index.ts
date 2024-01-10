@@ -183,4 +183,30 @@ export class StaticResource extends cdktf.TerraformResource {
       triggers: cdktf.hashMapper(cdktf.stringToTerraform)(this._triggers),
     };
   }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      rfc3339: {
+        value: cdktf.stringToHclTerraform(this._rfc3339),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      triggers: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._triggers),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
+  }
 }

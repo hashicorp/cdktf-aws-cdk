@@ -191,6 +191,85 @@ export function opsworksMysqlLayerCloudwatchConfigurationLogStreamsToTerraform(s
   }
 }
 
+
+export function opsworksMysqlLayerCloudwatchConfigurationLogStreamsToHclTerraform(struct?: OpsworksMysqlLayerCloudwatchConfigurationLogStreams | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    batch_count: {
+      value: cdktf.numberToHclTerraform(struct!.batchCount),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    batch_size: {
+      value: cdktf.numberToHclTerraform(struct!.batchSize),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    buffer_duration: {
+      value: cdktf.numberToHclTerraform(struct!.bufferDuration),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    datetime_format: {
+      value: cdktf.stringToHclTerraform(struct!.datetimeFormat),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    encoding: {
+      value: cdktf.stringToHclTerraform(struct!.encoding),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    file: {
+      value: cdktf.stringToHclTerraform(struct!.file),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    file_fingerprint_lines: {
+      value: cdktf.stringToHclTerraform(struct!.fileFingerprintLines),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    initial_position: {
+      value: cdktf.stringToHclTerraform(struct!.initialPosition),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    log_group_name: {
+      value: cdktf.stringToHclTerraform(struct!.logGroupName),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    multiline_start_pattern: {
+      value: cdktf.stringToHclTerraform(struct!.multilineStartPattern),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    time_zone: {
+      value: cdktf.stringToHclTerraform(struct!.timeZone),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class OpsworksMysqlLayerCloudwatchConfigurationLogStreamsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
   private resolvableValue?: cdktf.IResolvable;
@@ -509,6 +588,31 @@ export function opsworksMysqlLayerCloudwatchConfigurationToTerraform(struct?: Op
   }
 }
 
+
+export function opsworksMysqlLayerCloudwatchConfigurationToHclTerraform(struct?: OpsworksMysqlLayerCloudwatchConfigurationOutputReference | OpsworksMysqlLayerCloudwatchConfiguration): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    enabled: {
+      value: cdktf.booleanToHclTerraform(struct!.enabled),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    log_streams: {
+      value: cdktf.listMapperHcl(opsworksMysqlLayerCloudwatchConfigurationLogStreamsToHclTerraform, true)(struct!.logStreams),
+      isBlock: true,
+      type: "list",
+      storageClassType: "OpsworksMysqlLayerCloudwatchConfigurationLogStreamsList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class OpsworksMysqlLayerCloudwatchConfigurationOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -624,6 +728,61 @@ export function opsworksMysqlLayerEbsVolumeToTerraform(struct?: OpsworksMysqlLay
     size: cdktf.numberToTerraform(struct!.size),
     type: cdktf.stringToTerraform(struct!.type),
   }
+}
+
+
+export function opsworksMysqlLayerEbsVolumeToHclTerraform(struct?: OpsworksMysqlLayerEbsVolume | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    encrypted: {
+      value: cdktf.booleanToHclTerraform(struct!.encrypted),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    iops: {
+      value: cdktf.numberToHclTerraform(struct!.iops),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    mount_point: {
+      value: cdktf.stringToHclTerraform(struct!.mountPoint),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    number_of_disks: {
+      value: cdktf.numberToHclTerraform(struct!.numberOfDisks),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    raid_level: {
+      value: cdktf.stringToHclTerraform(struct!.raidLevel),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    size: {
+      value: cdktf.numberToHclTerraform(struct!.size),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    type: {
+      value: cdktf.stringToHclTerraform(struct!.type),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class OpsworksMysqlLayerEbsVolumeOutputReference extends cdktf.ComplexObject {
@@ -1364,5 +1523,169 @@ export class OpsworksMysqlLayer extends cdktf.TerraformResource {
       cloudwatch_configuration: opsworksMysqlLayerCloudwatchConfigurationToTerraform(this._cloudwatchConfiguration.internalValue),
       ebs_volume: cdktf.listMapper(opsworksMysqlLayerEbsVolumeToTerraform, true)(this._ebsVolume.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      auto_assign_elastic_ips: {
+        value: cdktf.booleanToHclTerraform(this._autoAssignElasticIps),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      auto_assign_public_ips: {
+        value: cdktf.booleanToHclTerraform(this._autoAssignPublicIps),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      auto_healing: {
+        value: cdktf.booleanToHclTerraform(this._autoHealing),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      custom_configure_recipes: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._customConfigureRecipes),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      custom_deploy_recipes: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._customDeployRecipes),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      custom_instance_profile_arn: {
+        value: cdktf.stringToHclTerraform(this._customInstanceProfileArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      custom_json: {
+        value: cdktf.stringToHclTerraform(this._customJson),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      custom_security_group_ids: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._customSecurityGroupIds),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      custom_setup_recipes: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._customSetupRecipes),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      custom_shutdown_recipes: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._customShutdownRecipes),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      custom_undeploy_recipes: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._customUndeployRecipes),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      drain_elb_on_shutdown: {
+        value: cdktf.booleanToHclTerraform(this._drainElbOnShutdown),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      elastic_load_balancer: {
+        value: cdktf.stringToHclTerraform(this._elasticLoadBalancer),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      install_updates_on_boot: {
+        value: cdktf.booleanToHclTerraform(this._installUpdatesOnBoot),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      instance_shutdown_timeout: {
+        value: cdktf.numberToHclTerraform(this._instanceShutdownTimeout),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      root_password: {
+        value: cdktf.stringToHclTerraform(this._rootPassword),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      root_password_on_all_instances: {
+        value: cdktf.booleanToHclTerraform(this._rootPasswordOnAllInstances),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      stack_id: {
+        value: cdktf.stringToHclTerraform(this._stackId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      system_packages: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._systemPackages),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      use_ebs_optimized_instances: {
+        value: cdktf.booleanToHclTerraform(this._useEbsOptimizedInstances),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      cloudwatch_configuration: {
+        value: opsworksMysqlLayerCloudwatchConfigurationToHclTerraform(this._cloudwatchConfiguration.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "OpsworksMysqlLayerCloudwatchConfigurationList",
+      },
+      ebs_volume: {
+        value: cdktf.listMapperHcl(opsworksMysqlLayerEbsVolumeToHclTerraform, true)(this._ebsVolume.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "OpsworksMysqlLayerEbsVolumeList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

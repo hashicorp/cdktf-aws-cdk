@@ -186,4 +186,42 @@ export class ServicecatalogProductPortfolioAssociation extends cdktf.TerraformRe
       source_portfolio_id: cdktf.stringToTerraform(this._sourcePortfolioId),
     };
   }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      accept_language: {
+        value: cdktf.stringToHclTerraform(this._acceptLanguage),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      portfolio_id: {
+        value: cdktf.stringToHclTerraform(this._portfolioId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      product_id: {
+        value: cdktf.stringToHclTerraform(this._productId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      source_portfolio_id: {
+        value: cdktf.stringToHclTerraform(this._sourcePortfolioId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
+  }
 }

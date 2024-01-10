@@ -75,6 +75,25 @@ export function appsyncFunctionSyncConfigLambdaConflictHandlerConfigToTerraform(
   }
 }
 
+
+export function appsyncFunctionSyncConfigLambdaConflictHandlerConfigToHclTerraform(struct?: AppsyncFunctionSyncConfigLambdaConflictHandlerConfigOutputReference | AppsyncFunctionSyncConfigLambdaConflictHandlerConfig): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    lambda_conflict_handler_arn: {
+      value: cdktf.stringToHclTerraform(struct!.lambdaConflictHandlerArn),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class AppsyncFunctionSyncConfigLambdaConflictHandlerConfigOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -150,6 +169,37 @@ export function appsyncFunctionSyncConfigToTerraform(struct?: AppsyncFunctionSyn
     conflict_handler: cdktf.stringToTerraform(struct!.conflictHandler),
     lambda_conflict_handler_config: appsyncFunctionSyncConfigLambdaConflictHandlerConfigToTerraform(struct!.lambdaConflictHandlerConfig),
   }
+}
+
+
+export function appsyncFunctionSyncConfigToHclTerraform(struct?: AppsyncFunctionSyncConfigOutputReference | AppsyncFunctionSyncConfig): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    conflict_detection: {
+      value: cdktf.stringToHclTerraform(struct!.conflictDetection),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    conflict_handler: {
+      value: cdktf.stringToHclTerraform(struct!.conflictHandler),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    lambda_conflict_handler_config: {
+      value: appsyncFunctionSyncConfigLambdaConflictHandlerConfigToHclTerraform(struct!.lambdaConflictHandlerConfig),
+      isBlock: true,
+      type: "list",
+      storageClassType: "AppsyncFunctionSyncConfigLambdaConflictHandlerConfigList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class AppsyncFunctionSyncConfigOutputReference extends cdktf.ComplexObject {
@@ -484,5 +534,73 @@ export class AppsyncFunction extends cdktf.TerraformResource {
       response_mapping_template: cdktf.stringToTerraform(this._responseMappingTemplate),
       sync_config: appsyncFunctionSyncConfigToTerraform(this._syncConfig.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      api_id: {
+        value: cdktf.stringToHclTerraform(this._apiId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      data_source: {
+        value: cdktf.stringToHclTerraform(this._dataSource),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      description: {
+        value: cdktf.stringToHclTerraform(this._description),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      function_version: {
+        value: cdktf.stringToHclTerraform(this._functionVersion),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      max_batch_size: {
+        value: cdktf.numberToHclTerraform(this._maxBatchSize),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      request_mapping_template: {
+        value: cdktf.stringToHclTerraform(this._requestMappingTemplate),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      response_mapping_template: {
+        value: cdktf.stringToHclTerraform(this._responseMappingTemplate),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      sync_config: {
+        value: appsyncFunctionSyncConfigToHclTerraform(this._syncConfig.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "AppsyncFunctionSyncConfigList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

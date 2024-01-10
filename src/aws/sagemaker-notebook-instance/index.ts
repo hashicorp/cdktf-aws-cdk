@@ -440,4 +440,108 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
       volume_size: cdktf.numberToTerraform(this._volumeSize),
     };
   }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      additional_code_repositories: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._additionalCodeRepositories),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      default_code_repository: {
+        value: cdktf.stringToHclTerraform(this._defaultCodeRepository),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      direct_internet_access: {
+        value: cdktf.stringToHclTerraform(this._directInternetAccess),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      instance_type: {
+        value: cdktf.stringToHclTerraform(this._instanceType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      kms_key_id: {
+        value: cdktf.stringToHclTerraform(this._kmsKeyId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      lifecycle_config_name: {
+        value: cdktf.stringToHclTerraform(this._lifecycleConfigName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      platform_identifier: {
+        value: cdktf.stringToHclTerraform(this._platformIdentifier),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      role_arn: {
+        value: cdktf.stringToHclTerraform(this._roleArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      root_access: {
+        value: cdktf.stringToHclTerraform(this._rootAccess),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      security_groups: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._securityGroups),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      subnet_id: {
+        value: cdktf.stringToHclTerraform(this._subnetId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      volume_size: {
+        value: cdktf.numberToHclTerraform(this._volumeSize),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
+  }
 }

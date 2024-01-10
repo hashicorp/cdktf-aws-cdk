@@ -191,4 +191,42 @@ export class LambdaInvocation extends cdktf.TerraformResource {
       triggers: cdktf.hashMapper(cdktf.stringToTerraform)(this._triggers),
     };
   }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      function_name: {
+        value: cdktf.stringToHclTerraform(this._functionName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      input: {
+        value: cdktf.stringToHclTerraform(this._input),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      qualifier: {
+        value: cdktf.stringToHclTerraform(this._qualifier),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      triggers: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._triggers),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
+  }
 }

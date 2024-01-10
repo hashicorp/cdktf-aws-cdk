@@ -123,6 +123,49 @@ export function transferServerEndpointDetailsToTerraform(struct?: TransferServer
   }
 }
 
+
+export function transferServerEndpointDetailsToHclTerraform(struct?: TransferServerEndpointDetailsOutputReference | TransferServerEndpointDetails): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    address_allocation_ids: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.addressAllocationIds),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+    security_group_ids: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.securityGroupIds),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+    subnet_ids: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.subnetIds),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+    vpc_endpoint_id: {
+      value: cdktf.stringToHclTerraform(struct!.vpcEndpointId),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    vpc_id: {
+      value: cdktf.stringToHclTerraform(struct!.vpcId),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class TransferServerEndpointDetailsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -645,5 +688,115 @@ export class TransferServer extends cdktf.TerraformResource {
       url: cdktf.stringToTerraform(this._url),
       endpoint_details: transferServerEndpointDetailsToTerraform(this._endpointDetails.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      certificate: {
+        value: cdktf.stringToHclTerraform(this._certificate),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      directory_id: {
+        value: cdktf.stringToHclTerraform(this._directoryId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      domain: {
+        value: cdktf.stringToHclTerraform(this._domain),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      endpoint_type: {
+        value: cdktf.stringToHclTerraform(this._endpointType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      force_destroy: {
+        value: cdktf.booleanToHclTerraform(this._forceDestroy),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      function: {
+        value: cdktf.stringToHclTerraform(this._function),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      host_key: {
+        value: cdktf.stringToHclTerraform(this._hostKey),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      identity_provider_type: {
+        value: cdktf.stringToHclTerraform(this._identityProviderType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      invocation_role: {
+        value: cdktf.stringToHclTerraform(this._invocationRole),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      logging_role: {
+        value: cdktf.stringToHclTerraform(this._loggingRole),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      protocols: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._protocols),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      security_policy_name: {
+        value: cdktf.stringToHclTerraform(this._securityPolicyName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      url: {
+        value: cdktf.stringToHclTerraform(this._url),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      endpoint_details: {
+        value: transferServerEndpointDetailsToHclTerraform(this._endpointDetails.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "TransferServerEndpointDetailsList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

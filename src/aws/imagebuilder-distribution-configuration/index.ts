@@ -64,6 +64,31 @@ export function imagebuilderDistributionConfigurationDistributionAmiDistribution
   }
 }
 
+
+export function imagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionToHclTerraform(struct?: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionOutputReference | ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    user_groups: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.userGroups),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+    user_ids: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.userIds),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -176,6 +201,55 @@ export function imagebuilderDistributionConfigurationDistributionAmiDistribution
     target_account_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.targetAccountIds),
     launch_permission: imagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionToTerraform(struct!.launchPermission),
   }
+}
+
+
+export function imagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationToHclTerraform(struct?: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationOutputReference | ImagebuilderDistributionConfigurationDistributionAmiDistributionConfiguration): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    ami_tags: {
+      value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(struct!.amiTags),
+      isBlock: false,
+      type: "map",
+      storageClassType: "stringMap",
+    },
+    description: {
+      value: cdktf.stringToHclTerraform(struct!.description),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    kms_key_id: {
+      value: cdktf.stringToHclTerraform(struct!.kmsKeyId),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    name: {
+      value: cdktf.stringToHclTerraform(struct!.name),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    target_account_ids: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.targetAccountIds),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+    launch_permission: {
+      value: imagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionToHclTerraform(struct!.launchPermission),
+      isBlock: true,
+      type: "list",
+      storageClassType: "ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationOutputReference extends cdktf.ComplexObject {
@@ -358,6 +432,31 @@ export function imagebuilderDistributionConfigurationDistributionContainerDistri
   }
 }
 
+
+export function imagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepositoryToHclTerraform(struct?: ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepositoryOutputReference | ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    repository_name: {
+      value: cdktf.stringToHclTerraform(struct!.repositoryName),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    service: {
+      value: cdktf.stringToHclTerraform(struct!.service),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepositoryOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -449,6 +548,37 @@ export function imagebuilderDistributionConfigurationDistributionContainerDistri
     description: cdktf.stringToTerraform(struct!.description),
     target_repository: imagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepositoryToTerraform(struct!.targetRepository),
   }
+}
+
+
+export function imagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationToHclTerraform(struct?: ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationOutputReference | ImagebuilderDistributionConfigurationDistributionContainerDistributionConfiguration): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    container_tags: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.containerTags),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+    description: {
+      value: cdktf.stringToHclTerraform(struct!.description),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    target_repository: {
+      value: imagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepositoryToHclTerraform(struct!.targetRepository),
+      isBlock: true,
+      type: "list",
+      storageClassType: "ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepositoryList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationOutputReference extends cdktf.ComplexObject {
@@ -574,6 +704,43 @@ export function imagebuilderDistributionConfigurationDistributionToTerraform(str
     ami_distribution_configuration: imagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationToTerraform(struct!.amiDistributionConfiguration),
     container_distribution_configuration: imagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationToTerraform(struct!.containerDistributionConfiguration),
   }
+}
+
+
+export function imagebuilderDistributionConfigurationDistributionToHclTerraform(struct?: ImagebuilderDistributionConfigurationDistribution | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    license_configuration_arns: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.licenseConfigurationArns),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+    region: {
+      value: cdktf.stringToHclTerraform(struct!.region),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    ami_distribution_configuration: {
+      value: imagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationToHclTerraform(struct!.amiDistributionConfiguration),
+      isBlock: true,
+      type: "list",
+      storageClassType: "ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationList",
+    },
+    container_distribution_configuration: {
+      value: imagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationToHclTerraform(struct!.containerDistributionConfiguration),
+      isBlock: true,
+      type: "list",
+      storageClassType: "ImagebuilderDistributionConfigurationDistributionContainerDistributionConfigurationList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class ImagebuilderDistributionConfigurationDistributionOutputReference extends cdktf.ComplexObject {
@@ -901,5 +1068,49 @@ export class ImagebuilderDistributionConfiguration extends cdktf.TerraformResour
       tags_all: cdktf.hashMapper(cdktf.stringToTerraform)(this._tagsAll),
       distribution: cdktf.listMapper(imagebuilderDistributionConfigurationDistributionToTerraform, true)(this._distribution.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      description: {
+        value: cdktf.stringToHclTerraform(this._description),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      distribution: {
+        value: cdktf.listMapperHcl(imagebuilderDistributionConfigurationDistributionToHclTerraform, true)(this._distribution.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "ImagebuilderDistributionConfigurationDistributionList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

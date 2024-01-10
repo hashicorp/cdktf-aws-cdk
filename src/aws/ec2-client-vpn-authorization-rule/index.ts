@@ -208,4 +208,48 @@ export class Ec2ClientVpnAuthorizationRule extends cdktf.TerraformResource {
       target_network_cidr: cdktf.stringToTerraform(this._targetNetworkCidr),
     };
   }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      access_group_id: {
+        value: cdktf.stringToHclTerraform(this._accessGroupId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      authorize_all_groups: {
+        value: cdktf.booleanToHclTerraform(this._authorizeAllGroups),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      client_vpn_endpoint_id: {
+        value: cdktf.stringToHclTerraform(this._clientVpnEndpointId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      description: {
+        value: cdktf.stringToHclTerraform(this._description),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      target_network_cidr: {
+        value: cdktf.stringToHclTerraform(this._targetNetworkCidr),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
+  }
 }

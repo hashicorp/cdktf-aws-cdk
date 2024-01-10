@@ -333,4 +333,84 @@ export class SecurityGroupRule extends cdktf.TerraformResource {
       type: cdktf.stringToTerraform(this._type),
     };
   }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      cidr_blocks: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._cidrBlocks),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      description: {
+        value: cdktf.stringToHclTerraform(this._description),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      from_port: {
+        value: cdktf.numberToHclTerraform(this._fromPort),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      ipv6_cidr_blocks: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._ipv6CidrBlocks),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      prefix_list_ids: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._prefixListIds),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      protocol: {
+        value: cdktf.stringToHclTerraform(this._protocol),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      security_group_id: {
+        value: cdktf.stringToHclTerraform(this._securityGroupId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      self: {
+        value: cdktf.booleanToHclTerraform(this._self),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      source_security_group_id: {
+        value: cdktf.stringToHclTerraform(this._sourceSecurityGroupId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      to_port: {
+        value: cdktf.numberToHclTerraform(this._toPort),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      type: {
+        value: cdktf.stringToHclTerraform(this._type),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
+  }
 }

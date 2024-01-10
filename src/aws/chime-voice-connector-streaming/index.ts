@@ -186,4 +186,42 @@ export class ChimeVoiceConnectorStreaming extends cdktf.TerraformResource {
       voice_connector_id: cdktf.stringToTerraform(this._voiceConnectorId),
     };
   }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      data_retention: {
+        value: cdktf.numberToHclTerraform(this._dataRetention),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      disabled: {
+        value: cdktf.booleanToHclTerraform(this._disabled),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      streaming_notification_targets: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._streamingNotificationTargets),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      voice_connector_id: {
+        value: cdktf.stringToHclTerraform(this._voiceConnectorId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
+  }
 }

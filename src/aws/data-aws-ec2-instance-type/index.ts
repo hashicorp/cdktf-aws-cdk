@@ -88,6 +88,17 @@ export function dataAwsEc2InstanceTypeFpgasToTerraform(struct?: DataAwsEc2Instan
   }
 }
 
+
+export function dataAwsEc2InstanceTypeFpgasToHclTerraform(struct?: DataAwsEc2InstanceTypeFpgas | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
+}
+
 export class DataAwsEc2InstanceTypeFpgasOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
   private resolvableValue?: cdktf.IResolvable;
@@ -176,6 +187,17 @@ export function dataAwsEc2InstanceTypeGpusToTerraform(struct?: DataAwsEc2Instanc
   }
   return {
   }
+}
+
+
+export function dataAwsEc2InstanceTypeGpusToHclTerraform(struct?: DataAwsEc2InstanceTypeGpus | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
 }
 
 export class DataAwsEc2InstanceTypeGpusOutputReference extends cdktf.ComplexObject {
@@ -268,6 +290,17 @@ export function dataAwsEc2InstanceTypeInferenceAcceleratorsToTerraform(struct?: 
   }
 }
 
+
+export function dataAwsEc2InstanceTypeInferenceAcceleratorsToHclTerraform(struct?: DataAwsEc2InstanceTypeInferenceAccelerators | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
+}
+
 export class DataAwsEc2InstanceTypeInferenceAcceleratorsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
   private resolvableValue?: cdktf.IResolvable;
@@ -351,6 +384,17 @@ export function dataAwsEc2InstanceTypeInstanceDisksToTerraform(struct?: DataAwsE
   }
   return {
   }
+}
+
+
+export function dataAwsEc2InstanceTypeInstanceDisksToHclTerraform(struct?: DataAwsEc2InstanceTypeInstanceDisks | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+  };
+  return attrs;
 }
 
 export class DataAwsEc2InstanceTypeInstanceDisksOutputReference extends cdktf.ComplexObject {
@@ -892,5 +936,91 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
       inference_accelerators: cdktf.listMapper(dataAwsEc2InstanceTypeInferenceAcceleratorsToTerraform, true)(this._inferenceAccelerators.internalValue),
       instance_disks: cdktf.listMapper(dataAwsEc2InstanceTypeInstanceDisksToTerraform, true)(this._instanceDisks.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      default_cores: {
+        value: cdktf.numberToHclTerraform(this._defaultCores),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      default_threads_per_core: {
+        value: cdktf.numberToHclTerraform(this._defaultThreadsPerCore),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      hypervisor: {
+        value: cdktf.stringToHclTerraform(this._hypervisor),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      instance_type: {
+        value: cdktf.stringToHclTerraform(this._instanceType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      maximum_ipv6_addresses_per_interface: {
+        value: cdktf.numberToHclTerraform(this._maximumIpv6AddressesPerInterface),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      total_fpga_memory: {
+        value: cdktf.numberToHclTerraform(this._totalFpgaMemory),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      total_gpu_memory: {
+        value: cdktf.numberToHclTerraform(this._totalGpuMemory),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      total_instance_storage: {
+        value: cdktf.numberToHclTerraform(this._totalInstanceStorage),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      fpgas: {
+        value: cdktf.listMapperHcl(dataAwsEc2InstanceTypeFpgasToHclTerraform, true)(this._fpgas.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "DataAwsEc2InstanceTypeFpgasList",
+      },
+      gpus: {
+        value: cdktf.listMapperHcl(dataAwsEc2InstanceTypeGpusToHclTerraform, true)(this._gpus.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "DataAwsEc2InstanceTypeGpusList",
+      },
+      inference_accelerators: {
+        value: cdktf.listMapperHcl(dataAwsEc2InstanceTypeInferenceAcceleratorsToHclTerraform, true)(this._inferenceAccelerators.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "DataAwsEc2InstanceTypeInferenceAcceleratorsList",
+      },
+      instance_disks: {
+        value: cdktf.listMapperHcl(dataAwsEc2InstanceTypeInstanceDisksToHclTerraform, true)(this._instanceDisks.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "DataAwsEc2InstanceTypeInstanceDisksList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

@@ -54,6 +54,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
@@ -66,9 +67,12 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.hasResourceMove">hasResourceMove</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.moveFromId">moveFromId</a></code> | Move the resource corresponding to "id" to this resource. |
 | <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
+| <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.moveToId">moveToId</a></code> | Moves this resource to the resource corresponding to "id". |
 | <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.putExportConfig">putExportConfig</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.resetDeleteReports">resetDeleteReports</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.resetId">resetId</a></code> | *No description.* |
@@ -126,6 +130,12 @@ public resetOverrideLogicalId(): void
 ```
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
 
 ##### `toMetadata` <a name="toMetadata" id="@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.toMetadata"></a>
 
@@ -265,6 +275,12 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `hasResourceMove` <a name="hasResourceMove" id="@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.hasResourceMove"></a>
+
+```typescript
+public hasResourceMove(): TerraformResourceMoveByTarget | TerraformResourceMoveById
+```
+
 ##### `importFrom` <a name="importFrom" id="@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.importFrom"></a>
 
 ```typescript
@@ -295,6 +311,24 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 
 ---
 
+##### `moveFromId` <a name="moveFromId" id="@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.moveFromId"></a>
+
+```typescript
+public moveFromId(id: string): void
+```
+
+Move the resource corresponding to "id" to this resource.
+
+Note that the resource being moved from must be marked as moved using it's instance function.
+
+###### `id`<sup>Required</sup> <a name="id" id="@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.moveFromId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource being moved from, e.g. "aws_s3_bucket.example".
+
+---
+
 ##### `moveTo` <a name="moveTo" id="@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.moveTo"></a>
 
 ```typescript
@@ -316,6 +350,22 @@ The previously set user defined string set by .addMoveTarget() corresponding to 
 - *Type:* string | number
 
 Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
+
+---
+
+##### `moveToId` <a name="moveToId" id="@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.moveToId"></a>
+
+```typescript
+public moveToId(id: string): void
+```
+
+Moves this resource to the resource corresponding to "id".
+
+###### `id`<sup>Required</sup> <a name="id" id="@cdktf/aws-cdk.codebuildReportGroup.CodebuildReportGroup.moveToId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource to move to, e.g. "aws_s3_bucket.example".
 
 ---
 

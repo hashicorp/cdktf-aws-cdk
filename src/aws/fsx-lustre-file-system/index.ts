@@ -137,6 +137,37 @@ export function fsxLustreFileSystemTimeoutsToTerraform(struct?: FsxLustreFileSys
   }
 }
 
+
+export function fsxLustreFileSystemTimeoutsToHclTerraform(struct?: FsxLustreFileSystemTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    create: {
+      value: cdktf.stringToHclTerraform(struct!.create),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    delete: {
+      value: cdktf.stringToHclTerraform(struct!.delete),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    update: {
+      value: cdktf.stringToHclTerraform(struct!.update),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class FsxLustreFileSystemTimeoutsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
   private resolvableValue?: cdktf.IResolvable;
@@ -745,5 +776,151 @@ export class FsxLustreFileSystem extends cdktf.TerraformResource {
       weekly_maintenance_start_time: cdktf.stringToTerraform(this._weeklyMaintenanceStartTime),
       timeouts: fsxLustreFileSystemTimeoutsToTerraform(this._timeouts.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      auto_import_policy: {
+        value: cdktf.stringToHclTerraform(this._autoImportPolicy),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      automatic_backup_retention_days: {
+        value: cdktf.numberToHclTerraform(this._automaticBackupRetentionDays),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      backup_id: {
+        value: cdktf.stringToHclTerraform(this._backupId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      copy_tags_to_backups: {
+        value: cdktf.booleanToHclTerraform(this._copyTagsToBackups),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      daily_automatic_backup_start_time: {
+        value: cdktf.stringToHclTerraform(this._dailyAutomaticBackupStartTime),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      data_compression_type: {
+        value: cdktf.stringToHclTerraform(this._dataCompressionType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      deployment_type: {
+        value: cdktf.stringToHclTerraform(this._deploymentType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      drive_cache_type: {
+        value: cdktf.stringToHclTerraform(this._driveCacheType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      export_path: {
+        value: cdktf.stringToHclTerraform(this._exportPath),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      file_system_type_version: {
+        value: cdktf.stringToHclTerraform(this._fileSystemTypeVersion),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      import_path: {
+        value: cdktf.stringToHclTerraform(this._importPath),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      imported_file_chunk_size: {
+        value: cdktf.numberToHclTerraform(this._importedFileChunkSize),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      kms_key_id: {
+        value: cdktf.stringToHclTerraform(this._kmsKeyId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      per_unit_storage_throughput: {
+        value: cdktf.numberToHclTerraform(this._perUnitStorageThroughput),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      security_group_ids: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._securityGroupIds),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      storage_capacity: {
+        value: cdktf.numberToHclTerraform(this._storageCapacity),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      storage_type: {
+        value: cdktf.stringToHclTerraform(this._storageType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      subnet_ids: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._subnetIds),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      weekly_maintenance_start_time: {
+        value: cdktf.stringToHclTerraform(this._weeklyMaintenanceStartTime),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      timeouts: {
+        value: fsxLustreFileSystemTimeoutsToHclTerraform(this._timeouts.internalValue),
+        isBlock: true,
+        type: "struct",
+        storageClassType: "FsxLustreFileSystemTimeouts",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

@@ -69,6 +69,25 @@ export function cloudformationStackSetInstanceDeploymentTargetsToTerraform(struc
   }
 }
 
+
+export function cloudformationStackSetInstanceDeploymentTargetsToHclTerraform(struct?: CloudformationStackSetInstanceDeploymentTargetsOutputReference | CloudformationStackSetInstanceDeploymentTargets): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    organizational_unit_ids: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.organizationalUnitIds),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class CloudformationStackSetInstanceDeploymentTargetsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -142,6 +161,37 @@ export function cloudformationStackSetInstanceTimeoutsToTerraform(struct?: Cloud
     delete: cdktf.stringToTerraform(struct!.delete),
     update: cdktf.stringToTerraform(struct!.update),
   }
+}
+
+
+export function cloudformationStackSetInstanceTimeoutsToHclTerraform(struct?: CloudformationStackSetInstanceTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    create: {
+      value: cdktf.stringToHclTerraform(struct!.create),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    delete: {
+      value: cdktf.stringToHclTerraform(struct!.delete),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    update: {
+      value: cdktf.stringToHclTerraform(struct!.update),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class CloudformationStackSetInstanceTimeoutsOutputReference extends cdktf.ComplexObject {
@@ -462,5 +512,61 @@ export class CloudformationStackSetInstance extends cdktf.TerraformResource {
       deployment_targets: cloudformationStackSetInstanceDeploymentTargetsToTerraform(this._deploymentTargets.internalValue),
       timeouts: cloudformationStackSetInstanceTimeoutsToTerraform(this._timeouts.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      account_id: {
+        value: cdktf.stringToHclTerraform(this._accountId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      parameter_overrides: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._parameterOverrides),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      region: {
+        value: cdktf.stringToHclTerraform(this._region),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      retain_stack: {
+        value: cdktf.booleanToHclTerraform(this._retainStack),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      stack_set_name: {
+        value: cdktf.stringToHclTerraform(this._stackSetName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      deployment_targets: {
+        value: cloudformationStackSetInstanceDeploymentTargetsToHclTerraform(this._deploymentTargets.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "CloudformationStackSetInstanceDeploymentTargetsList",
+      },
+      timeouts: {
+        value: cloudformationStackSetInstanceTimeoutsToHclTerraform(this._timeouts.internalValue),
+        isBlock: true,
+        type: "struct",
+        storageClassType: "CloudformationStackSetInstanceTimeouts",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

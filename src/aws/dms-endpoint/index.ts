@@ -150,6 +150,43 @@ export function dmsEndpointElasticsearchSettingsToTerraform(struct?: DmsEndpoint
   }
 }
 
+
+export function dmsEndpointElasticsearchSettingsToHclTerraform(struct?: DmsEndpointElasticsearchSettingsOutputReference | DmsEndpointElasticsearchSettings): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    endpoint_uri: {
+      value: cdktf.stringToHclTerraform(struct!.endpointUri),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    error_retry_duration: {
+      value: cdktf.numberToHclTerraform(struct!.errorRetryDuration),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    full_load_error_percentage: {
+      value: cdktf.numberToHclTerraform(struct!.fullLoadErrorPercentage),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    service_access_role_arn: {
+      value: cdktf.stringToHclTerraform(struct!.serviceAccessRoleArn),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class DmsEndpointElasticsearchSettingsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -358,6 +395,127 @@ export function dmsEndpointKafkaSettingsToTerraform(struct?: DmsEndpointKafkaSet
     ssl_client_key_password: cdktf.stringToTerraform(struct!.sslClientKeyPassword),
     topic: cdktf.stringToTerraform(struct!.topic),
   }
+}
+
+
+export function dmsEndpointKafkaSettingsToHclTerraform(struct?: DmsEndpointKafkaSettingsOutputReference | DmsEndpointKafkaSettings): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    broker: {
+      value: cdktf.stringToHclTerraform(struct!.broker),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    include_control_details: {
+      value: cdktf.booleanToHclTerraform(struct!.includeControlDetails),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    include_null_and_empty: {
+      value: cdktf.booleanToHclTerraform(struct!.includeNullAndEmpty),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    include_partition_value: {
+      value: cdktf.booleanToHclTerraform(struct!.includePartitionValue),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    include_table_alter_operations: {
+      value: cdktf.booleanToHclTerraform(struct!.includeTableAlterOperations),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    include_transaction_details: {
+      value: cdktf.booleanToHclTerraform(struct!.includeTransactionDetails),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    message_format: {
+      value: cdktf.stringToHclTerraform(struct!.messageFormat),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    message_max_bytes: {
+      value: cdktf.numberToHclTerraform(struct!.messageMaxBytes),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    no_hex_prefix: {
+      value: cdktf.booleanToHclTerraform(struct!.noHexPrefix),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    partition_include_schema_table: {
+      value: cdktf.booleanToHclTerraform(struct!.partitionIncludeSchemaTable),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    sasl_password: {
+      value: cdktf.stringToHclTerraform(struct!.saslPassword),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    sasl_username: {
+      value: cdktf.stringToHclTerraform(struct!.saslUsername),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    security_protocol: {
+      value: cdktf.stringToHclTerraform(struct!.securityProtocol),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    ssl_ca_certificate_arn: {
+      value: cdktf.stringToHclTerraform(struct!.sslCaCertificateArn),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    ssl_client_certificate_arn: {
+      value: cdktf.stringToHclTerraform(struct!.sslClientCertificateArn),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    ssl_client_key_arn: {
+      value: cdktf.stringToHclTerraform(struct!.sslClientKeyArn),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    ssl_client_key_password: {
+      value: cdktf.stringToHclTerraform(struct!.sslClientKeyPassword),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    topic: {
+      value: cdktf.stringToHclTerraform(struct!.topic),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject {
@@ -836,6 +994,73 @@ export function dmsEndpointKinesisSettingsToTerraform(struct?: DmsEndpointKinesi
   }
 }
 
+
+export function dmsEndpointKinesisSettingsToHclTerraform(struct?: DmsEndpointKinesisSettingsOutputReference | DmsEndpointKinesisSettings): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    include_control_details: {
+      value: cdktf.booleanToHclTerraform(struct!.includeControlDetails),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    include_null_and_empty: {
+      value: cdktf.booleanToHclTerraform(struct!.includeNullAndEmpty),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    include_partition_value: {
+      value: cdktf.booleanToHclTerraform(struct!.includePartitionValue),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    include_table_alter_operations: {
+      value: cdktf.booleanToHclTerraform(struct!.includeTableAlterOperations),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    include_transaction_details: {
+      value: cdktf.booleanToHclTerraform(struct!.includeTransactionDetails),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    message_format: {
+      value: cdktf.stringToHclTerraform(struct!.messageFormat),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    partition_include_schema_table: {
+      value: cdktf.booleanToHclTerraform(struct!.partitionIncludeSchemaTable),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    service_access_role_arn: {
+      value: cdktf.stringToHclTerraform(struct!.serviceAccessRoleArn),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    stream_arn: {
+      value: cdktf.stringToHclTerraform(struct!.streamArn),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class DmsEndpointKinesisSettingsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -1102,6 +1327,55 @@ export function dmsEndpointMongodbSettingsToTerraform(struct?: DmsEndpointMongod
   }
 }
 
+
+export function dmsEndpointMongodbSettingsToHclTerraform(struct?: DmsEndpointMongodbSettingsOutputReference | DmsEndpointMongodbSettings): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    auth_mechanism: {
+      value: cdktf.stringToHclTerraform(struct!.authMechanism),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    auth_source: {
+      value: cdktf.stringToHclTerraform(struct!.authSource),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    auth_type: {
+      value: cdktf.stringToHclTerraform(struct!.authType),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    docs_to_investigate: {
+      value: cdktf.stringToHclTerraform(struct!.docsToInvestigate),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    extract_doc_id: {
+      value: cdktf.stringToHclTerraform(struct!.extractDocId),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    nesting_level: {
+      value: cdktf.stringToHclTerraform(struct!.nestingLevel),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class DmsEndpointMongodbSettingsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -1335,6 +1609,97 @@ export function dmsEndpointS3SettingsToTerraform(struct?: DmsEndpointS3SettingsO
     server_side_encryption_kms_key_id: cdktf.stringToTerraform(struct!.serverSideEncryptionKmsKeyId),
     service_access_role_arn: cdktf.stringToTerraform(struct!.serviceAccessRoleArn),
   }
+}
+
+
+export function dmsEndpointS3SettingsToHclTerraform(struct?: DmsEndpointS3SettingsOutputReference | DmsEndpointS3Settings): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    bucket_folder: {
+      value: cdktf.stringToHclTerraform(struct!.bucketFolder),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    bucket_name: {
+      value: cdktf.stringToHclTerraform(struct!.bucketName),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    compression_type: {
+      value: cdktf.stringToHclTerraform(struct!.compressionType),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    csv_delimiter: {
+      value: cdktf.stringToHclTerraform(struct!.csvDelimiter),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    csv_row_delimiter: {
+      value: cdktf.stringToHclTerraform(struct!.csvRowDelimiter),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    data_format: {
+      value: cdktf.stringToHclTerraform(struct!.dataFormat),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    date_partition_enabled: {
+      value: cdktf.booleanToHclTerraform(struct!.datePartitionEnabled),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    encryption_mode: {
+      value: cdktf.stringToHclTerraform(struct!.encryptionMode),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    external_table_definition: {
+      value: cdktf.stringToHclTerraform(struct!.externalTableDefinition),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    parquet_timestamp_in_millisecond: {
+      value: cdktf.booleanToHclTerraform(struct!.parquetTimestampInMillisecond),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    parquet_version: {
+      value: cdktf.stringToHclTerraform(struct!.parquetVersion),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    server_side_encryption_kms_key_id: {
+      value: cdktf.stringToHclTerraform(struct!.serverSideEncryptionKmsKeyId),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    service_access_role_arn: {
+      value: cdktf.stringToHclTerraform(struct!.serviceAccessRoleArn),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class DmsEndpointS3SettingsOutputReference extends cdktf.ComplexObject {
@@ -2124,5 +2489,151 @@ export class DmsEndpoint extends cdktf.TerraformResource {
       mongodb_settings: dmsEndpointMongodbSettingsToTerraform(this._mongodbSettings.internalValue),
       s3_settings: dmsEndpointS3SettingsToTerraform(this._s3Settings.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      certificate_arn: {
+        value: cdktf.stringToHclTerraform(this._certificateArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      database_name: {
+        value: cdktf.stringToHclTerraform(this._databaseName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      endpoint_id: {
+        value: cdktf.stringToHclTerraform(this._endpointId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      endpoint_type: {
+        value: cdktf.stringToHclTerraform(this._endpointType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      engine_name: {
+        value: cdktf.stringToHclTerraform(this._engineName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      extra_connection_attributes: {
+        value: cdktf.stringToHclTerraform(this._extraConnectionAttributes),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      kms_key_arn: {
+        value: cdktf.stringToHclTerraform(this._kmsKeyArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      password: {
+        value: cdktf.stringToHclTerraform(this._password),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      port: {
+        value: cdktf.numberToHclTerraform(this._port),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      secrets_manager_access_role_arn: {
+        value: cdktf.stringToHclTerraform(this._secretsManagerAccessRoleArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      secrets_manager_arn: {
+        value: cdktf.stringToHclTerraform(this._secretsManagerArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      server_name: {
+        value: cdktf.stringToHclTerraform(this._serverName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      service_access_role: {
+        value: cdktf.stringToHclTerraform(this._serviceAccessRole),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      ssl_mode: {
+        value: cdktf.stringToHclTerraform(this._sslMode),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      username: {
+        value: cdktf.stringToHclTerraform(this._username),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      elasticsearch_settings: {
+        value: dmsEndpointElasticsearchSettingsToHclTerraform(this._elasticsearchSettings.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "DmsEndpointElasticsearchSettingsList",
+      },
+      kafka_settings: {
+        value: dmsEndpointKafkaSettingsToHclTerraform(this._kafkaSettings.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "DmsEndpointKafkaSettingsList",
+      },
+      kinesis_settings: {
+        value: dmsEndpointKinesisSettingsToHclTerraform(this._kinesisSettings.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "DmsEndpointKinesisSettingsList",
+      },
+      mongodb_settings: {
+        value: dmsEndpointMongodbSettingsToHclTerraform(this._mongodbSettings.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "DmsEndpointMongodbSettingsList",
+      },
+      s3_settings: {
+        value: dmsEndpointS3SettingsToHclTerraform(this._s3Settings.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "DmsEndpointS3SettingsList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

@@ -64,6 +64,31 @@ export function dataAwsAvailabilityZonesFilterToTerraform(struct?: DataAwsAvaila
   }
 }
 
+
+export function dataAwsAvailabilityZonesFilterToHclTerraform(struct?: DataAwsAvailabilityZonesFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    name: {
+      value: cdktf.stringToHclTerraform(struct!.name),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    values: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.values),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class DataAwsAvailabilityZonesFilterOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
   private resolvableValue?: cdktf.IResolvable;
@@ -348,5 +373,49 @@ export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
       state: cdktf.stringToTerraform(this._state),
       filter: cdktf.listMapper(dataAwsAvailabilityZonesFilterToTerraform, true)(this._filter.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      all_availability_zones: {
+        value: cdktf.booleanToHclTerraform(this._allAvailabilityZones),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      exclude_names: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._excludeNames),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      exclude_zone_ids: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._excludeZoneIds),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      state: {
+        value: cdktf.stringToHclTerraform(this._state),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      filter: {
+        value: cdktf.listMapperHcl(dataAwsAvailabilityZonesFilterToHclTerraform, true)(this._filter.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "DataAwsAvailabilityZonesFilterList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

@@ -70,6 +70,43 @@ export function codestarconnectionsHostVpcConfigurationToTerraform(struct?: Code
   }
 }
 
+
+export function codestarconnectionsHostVpcConfigurationToHclTerraform(struct?: CodestarconnectionsHostVpcConfigurationOutputReference | CodestarconnectionsHostVpcConfiguration): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    security_group_ids: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.securityGroupIds),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+    subnet_ids: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.subnetIds),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+    tls_certificate: {
+      value: cdktf.stringToHclTerraform(struct!.tlsCertificate),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    vpc_id: {
+      value: cdktf.stringToHclTerraform(struct!.vpcId),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class CodestarconnectionsHostVpcConfigurationOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -331,5 +368,43 @@ export class CodestarconnectionsHost extends cdktf.TerraformResource {
       provider_type: cdktf.stringToTerraform(this._providerType),
       vpc_configuration: codestarconnectionsHostVpcConfigurationToTerraform(this._vpcConfiguration.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      provider_endpoint: {
+        value: cdktf.stringToHclTerraform(this._providerEndpoint),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      provider_type: {
+        value: cdktf.stringToHclTerraform(this._providerType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      vpc_configuration: {
+        value: codestarconnectionsHostVpcConfigurationToHclTerraform(this._vpcConfiguration.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "CodestarconnectionsHostVpcConfigurationList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

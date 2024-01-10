@@ -146,6 +146,31 @@ export function dynamodbTableAttributeToTerraform(struct?: DynamodbTableAttribut
   }
 }
 
+
+export function dynamodbTableAttributeToHclTerraform(struct?: DynamodbTableAttribute | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    name: {
+      value: cdktf.stringToHclTerraform(struct!.name),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    type: {
+      value: cdktf.stringToHclTerraform(struct!.type),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class DynamodbTableAttributeOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
   private resolvableValue?: cdktf.IResolvable;
@@ -287,6 +312,61 @@ export function dynamodbTableGlobalSecondaryIndexToTerraform(struct?: DynamodbTa
     read_capacity: cdktf.numberToTerraform(struct!.readCapacity),
     write_capacity: cdktf.numberToTerraform(struct!.writeCapacity),
   }
+}
+
+
+export function dynamodbTableGlobalSecondaryIndexToHclTerraform(struct?: DynamodbTableGlobalSecondaryIndex | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    hash_key: {
+      value: cdktf.stringToHclTerraform(struct!.hashKey),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    name: {
+      value: cdktf.stringToHclTerraform(struct!.name),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    non_key_attributes: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.nonKeyAttributes),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+    projection_type: {
+      value: cdktf.stringToHclTerraform(struct!.projectionType),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    range_key: {
+      value: cdktf.stringToHclTerraform(struct!.rangeKey),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    read_capacity: {
+      value: cdktf.numberToHclTerraform(struct!.readCapacity),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    write_capacity: {
+      value: cdktf.numberToHclTerraform(struct!.writeCapacity),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class DynamodbTableGlobalSecondaryIndexOutputReference extends cdktf.ComplexObject {
@@ -524,6 +604,43 @@ export function dynamodbTableLocalSecondaryIndexToTerraform(struct?: DynamodbTab
   }
 }
 
+
+export function dynamodbTableLocalSecondaryIndexToHclTerraform(struct?: DynamodbTableLocalSecondaryIndex | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    name: {
+      value: cdktf.stringToHclTerraform(struct!.name),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    non_key_attributes: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.nonKeyAttributes),
+      isBlock: false,
+      type: "list",
+      storageClassType: "stringList",
+    },
+    projection_type: {
+      value: cdktf.stringToHclTerraform(struct!.projectionType),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    range_key: {
+      value: cdktf.stringToHclTerraform(struct!.rangeKey),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class DynamodbTableLocalSecondaryIndexOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
   private resolvableValue?: cdktf.IResolvable;
@@ -678,6 +795,25 @@ export function dynamodbTablePointInTimeRecoveryToTerraform(struct?: DynamodbTab
   }
 }
 
+
+export function dynamodbTablePointInTimeRecoveryToHclTerraform(struct?: DynamodbTablePointInTimeRecoveryOutputReference | DynamodbTablePointInTimeRecovery): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    enabled: {
+      value: cdktf.booleanToHclTerraform(struct!.enabled),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class DynamodbTablePointInTimeRecoveryOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -743,6 +879,31 @@ export function dynamodbTableReplicaToTerraform(struct?: DynamodbTableReplica | 
     kms_key_arn: cdktf.stringToTerraform(struct!.kmsKeyArn),
     region_name: cdktf.stringToTerraform(struct!.regionName),
   }
+}
+
+
+export function dynamodbTableReplicaToHclTerraform(struct?: DynamodbTableReplica | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    kms_key_arn: {
+      value: cdktf.stringToHclTerraform(struct!.kmsKeyArn),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    region_name: {
+      value: cdktf.stringToHclTerraform(struct!.regionName),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class DynamodbTableReplicaOutputReference extends cdktf.ComplexObject {
@@ -866,6 +1027,31 @@ export function dynamodbTableServerSideEncryptionToTerraform(struct?: DynamodbTa
   }
 }
 
+
+export function dynamodbTableServerSideEncryptionToHclTerraform(struct?: DynamodbTableServerSideEncryptionOutputReference | DynamodbTableServerSideEncryption): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    enabled: {
+      value: cdktf.booleanToHclTerraform(struct!.enabled),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    kms_key_arn: {
+      value: cdktf.stringToHclTerraform(struct!.kmsKeyArn),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class DynamodbTableServerSideEncryptionOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -958,6 +1144,37 @@ export function dynamodbTableTimeoutsToTerraform(struct?: DynamodbTableTimeouts 
     delete: cdktf.stringToTerraform(struct!.delete),
     update: cdktf.stringToTerraform(struct!.update),
   }
+}
+
+
+export function dynamodbTableTimeoutsToHclTerraform(struct?: DynamodbTableTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    create: {
+      value: cdktf.stringToHclTerraform(struct!.create),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    delete: {
+      value: cdktf.stringToHclTerraform(struct!.delete),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    update: {
+      value: cdktf.stringToHclTerraform(struct!.update),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class DynamodbTableTimeoutsOutputReference extends cdktf.ComplexObject {
@@ -1082,6 +1299,31 @@ export function dynamodbTableTtlToTerraform(struct?: DynamodbTableTtlOutputRefer
     attribute_name: cdktf.stringToTerraform(struct!.attributeName),
     enabled: cdktf.booleanToTerraform(struct!.enabled),
   }
+}
+
+
+export function dynamodbTableTtlToHclTerraform(struct?: DynamodbTableTtlOutputReference | DynamodbTableTtl): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    attribute_name: {
+      value: cdktf.stringToHclTerraform(struct!.attributeName),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    enabled: {
+      value: cdktf.booleanToHclTerraform(struct!.enabled),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class DynamodbTableTtlOutputReference extends cdktf.ComplexObject {
@@ -1642,5 +1884,151 @@ export class DynamodbTable extends cdktf.TerraformResource {
       timeouts: dynamodbTableTimeoutsToTerraform(this._timeouts.internalValue),
       ttl: dynamodbTableTtlToTerraform(this._ttl.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      billing_mode: {
+        value: cdktf.stringToHclTerraform(this._billingMode),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      hash_key: {
+        value: cdktf.stringToHclTerraform(this._hashKey),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      range_key: {
+        value: cdktf.stringToHclTerraform(this._rangeKey),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      read_capacity: {
+        value: cdktf.numberToHclTerraform(this._readCapacity),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      restore_date_time: {
+        value: cdktf.stringToHclTerraform(this._restoreDateTime),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      restore_source_name: {
+        value: cdktf.stringToHclTerraform(this._restoreSourceName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      restore_to_latest_time: {
+        value: cdktf.booleanToHclTerraform(this._restoreToLatestTime),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      stream_enabled: {
+        value: cdktf.booleanToHclTerraform(this._streamEnabled),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      stream_view_type: {
+        value: cdktf.stringToHclTerraform(this._streamViewType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      table_class: {
+        value: cdktf.stringToHclTerraform(this._tableClass),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      write_capacity: {
+        value: cdktf.numberToHclTerraform(this._writeCapacity),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      attribute: {
+        value: cdktf.listMapperHcl(dynamodbTableAttributeToHclTerraform, true)(this._attribute.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "DynamodbTableAttributeList",
+      },
+      global_secondary_index: {
+        value: cdktf.listMapperHcl(dynamodbTableGlobalSecondaryIndexToHclTerraform, true)(this._globalSecondaryIndex.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "DynamodbTableGlobalSecondaryIndexList",
+      },
+      local_secondary_index: {
+        value: cdktf.listMapperHcl(dynamodbTableLocalSecondaryIndexToHclTerraform, true)(this._localSecondaryIndex.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "DynamodbTableLocalSecondaryIndexList",
+      },
+      point_in_time_recovery: {
+        value: dynamodbTablePointInTimeRecoveryToHclTerraform(this._pointInTimeRecovery.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "DynamodbTablePointInTimeRecoveryList",
+      },
+      replica: {
+        value: cdktf.listMapperHcl(dynamodbTableReplicaToHclTerraform, true)(this._replica.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "DynamodbTableReplicaList",
+      },
+      server_side_encryption: {
+        value: dynamodbTableServerSideEncryptionToHclTerraform(this._serverSideEncryption.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "DynamodbTableServerSideEncryptionList",
+      },
+      timeouts: {
+        value: dynamodbTableTimeoutsToHclTerraform(this._timeouts.internalValue),
+        isBlock: true,
+        type: "struct",
+        storageClassType: "DynamodbTableTimeouts",
+      },
+      ttl: {
+        value: dynamodbTableTtlToHclTerraform(this._ttl.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "DynamodbTableTtlList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

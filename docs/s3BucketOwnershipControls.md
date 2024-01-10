@@ -54,6 +54,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
@@ -66,9 +67,12 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.hasResourceMove">hasResourceMove</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.moveFromId">moveFromId</a></code> | Move the resource corresponding to "id" to this resource. |
 | <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
+| <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.moveToId">moveToId</a></code> | Moves this resource to the resource corresponding to "id". |
 | <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.putRule">putRule</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.resetId">resetId</a></code> | *No description.* |
 
@@ -123,6 +127,12 @@ public resetOverrideLogicalId(): void
 ```
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
 
 ##### `toMetadata` <a name="toMetadata" id="@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.toMetadata"></a>
 
@@ -262,6 +272,12 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `hasResourceMove` <a name="hasResourceMove" id="@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.hasResourceMove"></a>
+
+```typescript
+public hasResourceMove(): TerraformResourceMoveByTarget | TerraformResourceMoveById
+```
+
 ##### `importFrom` <a name="importFrom" id="@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.importFrom"></a>
 
 ```typescript
@@ -292,6 +308,24 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 
 ---
 
+##### `moveFromId` <a name="moveFromId" id="@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.moveFromId"></a>
+
+```typescript
+public moveFromId(id: string): void
+```
+
+Move the resource corresponding to "id" to this resource.
+
+Note that the resource being moved from must be marked as moved using it's instance function.
+
+###### `id`<sup>Required</sup> <a name="id" id="@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.moveFromId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource being moved from, e.g. "aws_s3_bucket.example".
+
+---
+
 ##### `moveTo` <a name="moveTo" id="@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.moveTo"></a>
 
 ```typescript
@@ -313,6 +347,22 @@ The previously set user defined string set by .addMoveTarget() corresponding to 
 - *Type:* string | number
 
 Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
+
+---
+
+##### `moveToId` <a name="moveToId" id="@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.moveToId"></a>
+
+```typescript
+public moveToId(id: string): void
+```
+
+Moves this resource to the resource corresponding to "id".
+
+###### `id`<sup>Required</sup> <a name="id" id="@cdktf/aws-cdk.s3BucketOwnershipControls.S3BucketOwnershipControls.moveToId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource to move to, e.g. "aws_s3_bucket.example".
 
 ---
 

@@ -54,6 +54,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
@@ -66,9 +67,12 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.hasResourceMove">hasResourceMove</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.moveFromId">moveFromId</a></code> | Move the resource corresponding to "id" to this resource. |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
+| <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.moveToId">moveToId</a></code> | Moves this resource to the resource corresponding to "id". |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.putCloudwatchConfiguration">putCloudwatchConfiguration</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.putEbsVolume">putEbsVolume</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.resetAutoAssignElasticIps">resetAutoAssignElasticIps</a></code> | *No description.* |
@@ -146,6 +150,12 @@ public resetOverrideLogicalId(): void
 ```
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
 
 ##### `toMetadata` <a name="toMetadata" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.toMetadata"></a>
 
@@ -285,6 +295,12 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `hasResourceMove` <a name="hasResourceMove" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.hasResourceMove"></a>
+
+```typescript
+public hasResourceMove(): TerraformResourceMoveByTarget | TerraformResourceMoveById
+```
+
 ##### `importFrom` <a name="importFrom" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.importFrom"></a>
 
 ```typescript
@@ -315,6 +331,24 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 
 ---
 
+##### `moveFromId` <a name="moveFromId" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.moveFromId"></a>
+
+```typescript
+public moveFromId(id: string): void
+```
+
+Move the resource corresponding to "id" to this resource.
+
+Note that the resource being moved from must be marked as moved using it's instance function.
+
+###### `id`<sup>Required</sup> <a name="id" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.moveFromId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource being moved from, e.g. "aws_s3_bucket.example".
+
+---
+
 ##### `moveTo` <a name="moveTo" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.moveTo"></a>
 
 ```typescript
@@ -336,6 +370,22 @@ The previously set user defined string set by .addMoveTarget() corresponding to 
 - *Type:* string | number
 
 Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
+
+---
+
+##### `moveToId` <a name="moveToId" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.moveToId"></a>
+
+```typescript
+public moveToId(id: string): void
+```
+
+Moves this resource to the resource corresponding to "id".
+
+###### `id`<sup>Required</sup> <a name="id" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayer.moveToId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource to move to, e.g. "aws_s3_bucket.example".
 
 ---
 
@@ -2098,10 +2148,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayerCloudwatchConfigurationLogStreamsList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayerCloudwatchConfigurationLogStreamsList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayerCloudwatchConfigurationLogStreamsList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayerCloudwatchConfigurationLogStreamsList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayerCloudwatchConfigurationLogStreamsList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayerCloudwatchConfigurationLogStreamsList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayerCloudwatchConfigurationLogStreamsList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 
@@ -3133,10 +3200,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayerEbsVolumeList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayerEbsVolumeList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayerEbsVolumeList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayerEbsVolumeList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayerEbsVolumeList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayerEbsVolumeList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@cdktf/aws-cdk.opsworksStaticWebLayer.OpsworksStaticWebLayerEbsVolumeList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 

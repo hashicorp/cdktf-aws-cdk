@@ -232,4 +232,54 @@ export class ServicecatalogPortfolioShare extends cdktf.TerraformResource {
       wait_for_acceptance: cdktf.booleanToTerraform(this._waitForAcceptance),
     };
   }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      accept_language: {
+        value: cdktf.stringToHclTerraform(this._acceptLanguage),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      portfolio_id: {
+        value: cdktf.stringToHclTerraform(this._portfolioId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      principal_id: {
+        value: cdktf.stringToHclTerraform(this._principalId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      share_tag_options: {
+        value: cdktf.booleanToHclTerraform(this._shareTagOptions),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      type: {
+        value: cdktf.stringToHclTerraform(this._type),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      wait_for_acceptance: {
+        value: cdktf.booleanToHclTerraform(this._waitForAcceptance),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
+  }
 }

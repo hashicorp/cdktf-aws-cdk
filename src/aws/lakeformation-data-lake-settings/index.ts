@@ -66,6 +66,31 @@ export function lakeformationDataLakeSettingsCreateDatabaseDefaultPermissionsToT
   }
 }
 
+
+export function lakeformationDataLakeSettingsCreateDatabaseDefaultPermissionsToHclTerraform(struct?: LakeformationDataLakeSettingsCreateDatabaseDefaultPermissions | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    permissions: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.permissions),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+    principal: {
+      value: cdktf.stringToHclTerraform(struct!.principal),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class LakeformationDataLakeSettingsCreateDatabaseDefaultPermissionsOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
   private resolvableValue?: cdktf.IResolvable;
@@ -188,6 +213,31 @@ export function lakeformationDataLakeSettingsCreateTableDefaultPermissionsToTerr
     permissions: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.permissions),
     principal: cdktf.stringToTerraform(struct!.principal),
   }
+}
+
+
+export function lakeformationDataLakeSettingsCreateTableDefaultPermissionsToHclTerraform(struct?: LakeformationDataLakeSettingsCreateTableDefaultPermissions | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    permissions: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.permissions),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+    principal: {
+      value: cdktf.stringToHclTerraform(struct!.principal),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class LakeformationDataLakeSettingsCreateTableDefaultPermissionsOutputReference extends cdktf.ComplexObject {
@@ -465,5 +515,49 @@ export class LakeformationDataLakeSettings extends cdktf.TerraformResource {
       create_database_default_permissions: cdktf.listMapper(lakeformationDataLakeSettingsCreateDatabaseDefaultPermissionsToTerraform, true)(this._createDatabaseDefaultPermissions.internalValue),
       create_table_default_permissions: cdktf.listMapper(lakeformationDataLakeSettingsCreateTableDefaultPermissionsToTerraform, true)(this._createTableDefaultPermissions.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      admins: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._admins),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      catalog_id: {
+        value: cdktf.stringToHclTerraform(this._catalogId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      trusted_resource_owners: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._trustedResourceOwners),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      create_database_default_permissions: {
+        value: cdktf.listMapperHcl(lakeformationDataLakeSettingsCreateDatabaseDefaultPermissionsToHclTerraform, true)(this._createDatabaseDefaultPermissions.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "LakeformationDataLakeSettingsCreateDatabaseDefaultPermissionsList",
+      },
+      create_table_default_permissions: {
+        value: cdktf.listMapperHcl(lakeformationDataLakeSettingsCreateTableDefaultPermissionsToHclTerraform, true)(this._createTableDefaultPermissions.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "LakeformationDataLakeSettingsCreateTableDefaultPermissionsList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

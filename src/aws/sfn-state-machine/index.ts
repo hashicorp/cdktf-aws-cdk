@@ -83,6 +83,37 @@ export function sfnStateMachineLoggingConfigurationToTerraform(struct?: SfnState
   }
 }
 
+
+export function sfnStateMachineLoggingConfigurationToHclTerraform(struct?: SfnStateMachineLoggingConfigurationOutputReference | SfnStateMachineLoggingConfiguration): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    include_execution_data: {
+      value: cdktf.booleanToHclTerraform(struct!.includeExecutionData),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+    level: {
+      value: cdktf.stringToHclTerraform(struct!.level),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    log_destination: {
+      value: cdktf.stringToHclTerraform(struct!.logDestination),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class SfnStateMachineLoggingConfigurationOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -190,6 +221,25 @@ export function sfnStateMachineTracingConfigurationToTerraform(struct?: SfnState
   return {
     enabled: cdktf.booleanToTerraform(struct!.enabled),
   }
+}
+
+
+export function sfnStateMachineTracingConfigurationToHclTerraform(struct?: SfnStateMachineTracingConfigurationOutputReference | SfnStateMachineTracingConfiguration): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    enabled: {
+      value: cdktf.booleanToHclTerraform(struct!.enabled),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "boolean",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class SfnStateMachineTracingConfigurationOutputReference extends cdktf.ComplexObject {
@@ -473,5 +523,67 @@ export class SfnStateMachine extends cdktf.TerraformResource {
       logging_configuration: sfnStateMachineLoggingConfigurationToTerraform(this._loggingConfiguration.internalValue),
       tracing_configuration: sfnStateMachineTracingConfigurationToTerraform(this._tracingConfiguration.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      definition: {
+        value: cdktf.stringToHclTerraform(this._definition),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      role_arn: {
+        value: cdktf.stringToHclTerraform(this._roleArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      type: {
+        value: cdktf.stringToHclTerraform(this._type),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      logging_configuration: {
+        value: sfnStateMachineLoggingConfigurationToHclTerraform(this._loggingConfiguration.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "SfnStateMachineLoggingConfigurationList",
+      },
+      tracing_configuration: {
+        value: sfnStateMachineTracingConfigurationToHclTerraform(this._tracingConfiguration.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "SfnStateMachineTracingConfigurationList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

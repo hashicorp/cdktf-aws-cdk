@@ -167,4 +167,36 @@ export class AutoscalingAttachment extends cdktf.TerraformResource {
       id: cdktf.stringToTerraform(this._id),
     };
   }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      alb_target_group_arn: {
+        value: cdktf.stringToHclTerraform(this._albTargetGroupArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      autoscaling_group_name: {
+        value: cdktf.stringToHclTerraform(this._autoscalingGroupName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      elb: {
+        value: cdktf.stringToHclTerraform(this._elb),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
+  }
 }

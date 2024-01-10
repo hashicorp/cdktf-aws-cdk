@@ -56,6 +56,31 @@ export function dataAwsIdentitystoreUserFilterToTerraform(struct?: DataAwsIdenti
   }
 }
 
+
+export function dataAwsIdentitystoreUserFilterToHclTerraform(struct?: DataAwsIdentitystoreUserFilter | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    attribute_path: {
+      value: cdktf.stringToHclTerraform(struct!.attributePath),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    attribute_value: {
+      value: cdktf.stringToHclTerraform(struct!.attributeValue),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class DataAwsIdentitystoreUserFilterOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
   private resolvableValue?: cdktf.IResolvable;
@@ -288,5 +313,37 @@ export class DataAwsIdentitystoreUser extends cdktf.TerraformDataSource {
       user_id: cdktf.stringToTerraform(this._userId),
       filter: cdktf.listMapper(dataAwsIdentitystoreUserFilterToTerraform, true)(this._filter.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      identity_store_id: {
+        value: cdktf.stringToHclTerraform(this._identityStoreId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      user_id: {
+        value: cdktf.stringToHclTerraform(this._userId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      filter: {
+        value: cdktf.listMapperHcl(dataAwsIdentitystoreUserFilterToHclTerraform, true)(this._filter.internalValue),
+        isBlock: true,
+        type: "set",
+        storageClassType: "DataAwsIdentitystoreUserFilterList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

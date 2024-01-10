@@ -321,4 +321,54 @@ export class DataAwsDbSnapshot extends cdktf.TerraformDataSource {
       snapshot_type: cdktf.stringToTerraform(this._snapshotType),
     };
   }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      db_instance_identifier: {
+        value: cdktf.stringToHclTerraform(this._dbInstanceIdentifier),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      db_snapshot_identifier: {
+        value: cdktf.stringToHclTerraform(this._dbSnapshotIdentifier),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      include_public: {
+        value: cdktf.booleanToHclTerraform(this._includePublic),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      include_shared: {
+        value: cdktf.booleanToHclTerraform(this._includeShared),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      most_recent: {
+        value: cdktf.booleanToHclTerraform(this._mostRecent),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      snapshot_type: {
+        value: cdktf.stringToHclTerraform(this._snapshotType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
+  }
 }

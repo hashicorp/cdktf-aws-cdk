@@ -90,6 +90,31 @@ export function fsxOntapVolumeTieringPolicyToTerraform(struct?: FsxOntapVolumeTi
   }
 }
 
+
+export function fsxOntapVolumeTieringPolicyToHclTerraform(struct?: FsxOntapVolumeTieringPolicyOutputReference | FsxOntapVolumeTieringPolicy): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    cooling_period: {
+      value: cdktf.numberToHclTerraform(struct!.coolingPeriod),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    name: {
+      value: cdktf.stringToHclTerraform(struct!.name),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class FsxOntapVolumeTieringPolicyOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -185,6 +210,37 @@ export function fsxOntapVolumeTimeoutsToTerraform(struct?: FsxOntapVolumeTimeout
     delete: cdktf.stringToTerraform(struct!.delete),
     update: cdktf.stringToTerraform(struct!.update),
   }
+}
+
+
+export function fsxOntapVolumeTimeoutsToHclTerraform(struct?: FsxOntapVolumeTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    create: {
+      value: cdktf.stringToHclTerraform(struct!.create),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    delete: {
+      value: cdktf.stringToHclTerraform(struct!.delete),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    update: {
+      value: cdktf.stringToHclTerraform(struct!.update),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class FsxOntapVolumeTimeoutsOutputReference extends cdktf.ComplexObject {
@@ -580,5 +636,85 @@ export class FsxOntapVolume extends cdktf.TerraformResource {
       tiering_policy: fsxOntapVolumeTieringPolicyToTerraform(this._tieringPolicy.internalValue),
       timeouts: fsxOntapVolumeTimeoutsToTerraform(this._timeouts.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      junction_path: {
+        value: cdktf.stringToHclTerraform(this._junctionPath),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      security_style: {
+        value: cdktf.stringToHclTerraform(this._securityStyle),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      size_in_megabytes: {
+        value: cdktf.numberToHclTerraform(this._sizeInMegabytes),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      storage_efficiency_enabled: {
+        value: cdktf.booleanToHclTerraform(this._storageEfficiencyEnabled),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      storage_virtual_machine_id: {
+        value: cdktf.stringToHclTerraform(this._storageVirtualMachineId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      volume_type: {
+        value: cdktf.stringToHclTerraform(this._volumeType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tiering_policy: {
+        value: fsxOntapVolumeTieringPolicyToHclTerraform(this._tieringPolicy.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "FsxOntapVolumeTieringPolicyList",
+      },
+      timeouts: {
+        value: fsxOntapVolumeTimeoutsToHclTerraform(this._timeouts.internalValue),
+        isBlock: true,
+        type: "struct",
+        storageClassType: "FsxOntapVolumeTimeouts",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

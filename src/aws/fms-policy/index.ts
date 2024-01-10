@@ -88,6 +88,31 @@ export function fmsPolicyExcludeMapToTerraform(struct?: FmsPolicyExcludeMapOutpu
   }
 }
 
+
+export function fmsPolicyExcludeMapToHclTerraform(struct?: FmsPolicyExcludeMapOutputReference | FmsPolicyExcludeMap): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    account: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.account),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+    orgunit: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.orgunit),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class FmsPolicyExcludeMapOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -180,6 +205,31 @@ export function fmsPolicyIncludeMapToTerraform(struct?: FmsPolicyIncludeMapOutpu
   }
 }
 
+
+export function fmsPolicyIncludeMapToHclTerraform(struct?: FmsPolicyIncludeMapOutputReference | FmsPolicyIncludeMap): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    account: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.account),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+    orgunit: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.orgunit),
+      isBlock: false,
+      type: "set",
+      storageClassType: "stringList",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class FmsPolicyIncludeMapOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -270,6 +320,31 @@ export function fmsPolicySecurityServicePolicyDataToTerraform(struct?: FmsPolicy
     managed_service_data: cdktf.stringToTerraform(struct!.managedServiceData),
     type: cdktf.stringToTerraform(struct!.type),
   }
+}
+
+
+export function fmsPolicySecurityServicePolicyDataToHclTerraform(struct?: FmsPolicySecurityServicePolicyDataOutputReference | FmsPolicySecurityServicePolicyData): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    managed_service_data: {
+      value: cdktf.stringToHclTerraform(struct!.managedServiceData),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    type: {
+      value: cdktf.stringToHclTerraform(struct!.type),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class FmsPolicySecurityServicePolicyDataOutputReference extends cdktf.ComplexObject {
@@ -603,5 +678,79 @@ export class FmsPolicy extends cdktf.TerraformResource {
       include_map: fmsPolicyIncludeMapToTerraform(this._includeMap.internalValue),
       security_service_policy_data: fmsPolicySecurityServicePolicyDataToTerraform(this._securityServicePolicyData.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      delete_all_policy_resources: {
+        value: cdktf.booleanToHclTerraform(this._deleteAllPolicyResources),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      exclude_resource_tags: {
+        value: cdktf.booleanToHclTerraform(this._excludeResourceTags),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      remediation_enabled: {
+        value: cdktf.booleanToHclTerraform(this._remediationEnabled),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      resource_tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._resourceTags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      resource_type: {
+        value: cdktf.stringToHclTerraform(this._resourceType),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      resource_type_list: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._resourceTypeList),
+        isBlock: false,
+        type: "set",
+        storageClassType: "stringList",
+      },
+      exclude_map: {
+        value: fmsPolicyExcludeMapToHclTerraform(this._excludeMap.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "FmsPolicyExcludeMapList",
+      },
+      include_map: {
+        value: fmsPolicyIncludeMapToHclTerraform(this._includeMap.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "FmsPolicyIncludeMapList",
+      },
+      security_service_policy_data: {
+        value: fmsPolicySecurityServicePolicyDataToHclTerraform(this._securityServicePolicyData.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "FmsPolicySecurityServicePolicyDataList",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

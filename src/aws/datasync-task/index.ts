@@ -90,6 +90,31 @@ export function datasyncTaskExcludesToTerraform(struct?: DatasyncTaskExcludesOut
   }
 }
 
+
+export function datasyncTaskExcludesToHclTerraform(struct?: DatasyncTaskExcludesOutputReference | DatasyncTaskExcludes): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    filter_type: {
+      value: cdktf.stringToHclTerraform(struct!.filterType),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    value: {
+      value: cdktf.stringToHclTerraform(struct!.value),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class DatasyncTaskExcludesOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -235,6 +260,97 @@ export function datasyncTaskOptionsToTerraform(struct?: DatasyncTaskOptionsOutpu
     uid: cdktf.stringToTerraform(struct!.uid),
     verify_mode: cdktf.stringToTerraform(struct!.verifyMode),
   }
+}
+
+
+export function datasyncTaskOptionsToHclTerraform(struct?: DatasyncTaskOptionsOutputReference | DatasyncTaskOptions): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    atime: {
+      value: cdktf.stringToHclTerraform(struct!.atime),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    bytes_per_second: {
+      value: cdktf.numberToHclTerraform(struct!.bytesPerSecond),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    gid: {
+      value: cdktf.stringToHclTerraform(struct!.gid),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    log_level: {
+      value: cdktf.stringToHclTerraform(struct!.logLevel),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    mtime: {
+      value: cdktf.stringToHclTerraform(struct!.mtime),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    overwrite_mode: {
+      value: cdktf.stringToHclTerraform(struct!.overwriteMode),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    posix_permissions: {
+      value: cdktf.stringToHclTerraform(struct!.posixPermissions),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    preserve_deleted_files: {
+      value: cdktf.stringToHclTerraform(struct!.preserveDeletedFiles),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    preserve_devices: {
+      value: cdktf.stringToHclTerraform(struct!.preserveDevices),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    task_queueing: {
+      value: cdktf.stringToHclTerraform(struct!.taskQueueing),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    transfer_mode: {
+      value: cdktf.stringToHclTerraform(struct!.transferMode),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    uid: {
+      value: cdktf.stringToHclTerraform(struct!.uid),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    verify_mode: {
+      value: cdktf.stringToHclTerraform(struct!.verifyMode),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class DatasyncTaskOptionsOutputReference extends cdktf.ComplexObject {
@@ -566,6 +682,25 @@ export function datasyncTaskScheduleToTerraform(struct?: DatasyncTaskScheduleOut
   }
 }
 
+
+export function datasyncTaskScheduleToHclTerraform(struct?: DatasyncTaskScheduleOutputReference | DatasyncTaskSchedule): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    schedule_expression: {
+      value: cdktf.stringToHclTerraform(struct!.scheduleExpression),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
 export class DatasyncTaskScheduleOutputReference extends cdktf.ComplexObject {
   private isEmptyObject = false;
 
@@ -626,6 +761,25 @@ export function datasyncTaskTimeoutsToTerraform(struct?: DatasyncTaskTimeouts | 
   return {
     create: cdktf.stringToTerraform(struct!.create),
   }
+}
+
+
+export function datasyncTaskTimeoutsToHclTerraform(struct?: DatasyncTaskTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    create: {
+      value: cdktf.stringToHclTerraform(struct!.create),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class DatasyncTaskTimeoutsOutputReference extends cdktf.ComplexObject {
@@ -948,5 +1102,79 @@ export class DatasyncTask extends cdktf.TerraformResource {
       schedule: datasyncTaskScheduleToTerraform(this._schedule.internalValue),
       timeouts: datasyncTaskTimeoutsToTerraform(this._timeouts.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      cloudwatch_log_group_arn: {
+        value: cdktf.stringToHclTerraform(this._cloudwatchLogGroupArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      destination_location_arn: {
+        value: cdktf.stringToHclTerraform(this._destinationLocationArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      source_location_arn: {
+        value: cdktf.stringToHclTerraform(this._sourceLocationArn),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      tags_all: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._tagsAll),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      excludes: {
+        value: datasyncTaskExcludesToHclTerraform(this._excludes.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "DatasyncTaskExcludesList",
+      },
+      options: {
+        value: datasyncTaskOptionsToHclTerraform(this._options.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "DatasyncTaskOptionsList",
+      },
+      schedule: {
+        value: datasyncTaskScheduleToHclTerraform(this._schedule.internalValue),
+        isBlock: true,
+        type: "list",
+        storageClassType: "DatasyncTaskScheduleList",
+      },
+      timeouts: {
+        value: datasyncTaskTimeoutsToHclTerraform(this._timeouts.internalValue),
+        isBlock: true,
+        type: "struct",
+        storageClassType: "DatasyncTaskTimeouts",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

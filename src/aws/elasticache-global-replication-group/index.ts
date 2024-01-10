@@ -214,4 +214,36 @@ export class ElasticacheGlobalReplicationGroup extends cdktf.TerraformResource {
       primary_replication_group_id: cdktf.stringToTerraform(this._primaryReplicationGroupId),
     };
   }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      global_replication_group_description: {
+        value: cdktf.stringToHclTerraform(this._globalReplicationGroupDescription),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      global_replication_group_id_suffix: {
+        value: cdktf.stringToHclTerraform(this._globalReplicationGroupIdSuffix),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      id: {
+        value: cdktf.stringToHclTerraform(this._id),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      primary_replication_group_id: {
+        value: cdktf.stringToHclTerraform(this._primaryReplicationGroupId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
+  }
 }
