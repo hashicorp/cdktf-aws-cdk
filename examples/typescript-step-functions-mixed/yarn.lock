@@ -2292,10 +2292,10 @@ es-get-iterator@^1.1.2:
     isarray "^2.0.5"
     stop-iteration-iterator "^1.0.0"
 
-esbuild-wasm@^0.19.11:
-  version "0.19.11"
-  resolved "https://registry.yarnpkg.com/esbuild-wasm/-/esbuild-wasm-0.19.11.tgz#4ed96cdd1a289bc08432a25fd38b7331d3eac98d"
-  integrity sha512-MIhnpc1TxERUHomteO/ZZHp+kUawGEc03D/8vMHGzffLvbFLeDe6mwxqEZwlqBNY7SLWbyp6bBQAcCen8+wpjQ==
+esbuild-wasm@^0.20.0:
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/esbuild-wasm/-/esbuild-wasm-0.20.0.tgz#79b46ee616d4ca7d207ccd2a80c41de62a9ebfd2"
+  integrity sha512-Lc9KeQCg1Zf8kCtfDXgy29rx0x8dOuhDWbkP76Wc64q7ctOOc1Zv1C39AxiE+y4N6ONyXtJk4HKpM7jlU7/jSA==
 
 escalade@^3.1.1:
   version "3.1.1"
