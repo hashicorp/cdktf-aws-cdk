@@ -26,7 +26,7 @@
     "cdktf": "0.20.3",
     "constructs": "^10.3.0",
     "esbuild-wasm": "^0.20.0",
-    "iam-floyd": "^0.507.0"
+    "iam-floyd": "^0.601.0"
   },
   "engines": {
     "node": ">= 18.12.0"
