@@ -74,6 +74,7 @@ jobs:
         with:
           name: build-artifact
           path: dist
+          overwrite: true
     container:
       image: hashicorp/jsii-terraform
   release_github:

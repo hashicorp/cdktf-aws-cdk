@@ -58,6 +58,7 @@ jobs:
         with:
           name: .repo.patch
           path: .repo.patch
+          overwrite: true
       - name: Fail build on mutation
         if: steps.self_mutation.outputs.self_mutation_happened
         run: |-
@@ -72,6 +73,7 @@ jobs:
         with:
           name: build-artifact
           path: dist
+          overwrite: true
       - name: Check if anything was actually changed by this PR
         id: check_files
         env:
