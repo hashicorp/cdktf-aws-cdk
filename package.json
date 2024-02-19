@@ -62,11 +62,11 @@
     "jest-junit": "^15",
     "jsii": "~5.2.0",
     "jsii-diff": "^1.94.0",
-    "jsii-docgen": "^10.3.16",
+    "jsii-docgen": "^10.3.17",
     "jsii-pacmak": "^1.94.0",
     "jsii-rosetta": "~5.2.0",
     "prettier": "^3.2.5",
-    "projen": "^0.79.17",
+    "projen": "^0.79.24",
     "standard-version": "^9",
     "ts-node": "^10.9.1",
     "typescript": "~5.2.0"
