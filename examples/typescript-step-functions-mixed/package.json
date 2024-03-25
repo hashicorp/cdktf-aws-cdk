@@ -15,15 +15,15 @@
   "devDependencies": {
     "@types/jest": "29.5.12",
     "@types/node": "^18",
-    "cdktf-cli": "0.20.4",
+    "cdktf-cli": "0.20.5",
     "jest": "29.7.0",
     "ts-jest": "^29.1.2",
     "typescript": "^5.4.2"
   },
   "dependencies": {
-    "@cdktf/aws-cdk": "^0.13.9",
+    "@cdktf/aws-cdk": "^0.13.10",
     "aws-cdk-lib": "2.93.0",
-    "cdktf": "0.20.4",
+    "cdktf": "0.20.5",
     "constructs": "^10.3.0",
     "esbuild-wasm": "^0.20.2",
     "iam-floyd": "^0.507.0"
