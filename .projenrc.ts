@@ -15,7 +15,7 @@ const githubActionPinnedVersions = {
   "amannn/action-semantic-pull-request":
     "e9fabac35e210fea40ca5b14c0da95a099eff26f", // v5.4.0
   "dessant/lock-threads": "1bf7ec25051fe7c00bdd17e6a7cf3d7bfb7dc771", // v5.0.1
-  "peter-evans/create-pull-request": "a4f52f8033a6168103c2538976c07b467e8163bc", // v6.0.1
+  "peter-evans/create-pull-request": "70a41aba780001da0a30141984ae2a0c95d8704e", // v6.0.2
 };
 
 const project = new CdktfAwsCdkProject({

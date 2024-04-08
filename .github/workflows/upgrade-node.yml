@@ -57,7 +57,7 @@ jobs:
           echo "short=$NEW_NODEJS_VERSION_SHORT" >> $GITHUB_OUTPUT
       - name: Create Pull Request
         if: env.CURRENT_NODEJS_VERSION_SHORT != env.NEW_NODEJS_VERSION_SHORT
-        uses: peter-evans/create-pull-request@a4f52f8033a6168103c2538976c07b467e8163bc
+        uses: peter-evans/create-pull-request@70a41aba780001da0a30141984ae2a0c95d8704e
         with:
           commit-message: "chore!: increase minimum supported Node.js version to ${{ steps.latest_version.outputs.short }}"
           branch: auto/upgrade-node-${{ steps.latest_version.outputs.short }}
