@@ -17,6 +17,7 @@ import { ProviderUpgrade } from "./provider-upgrade";
 import { UpdateSnapshots } from "./update-snapshots";
 import { UpgradeCDKTF } from "./upgrade-cdktf";
 import { UpgradeNode } from "./upgrade-node";
+import { generateRandomCron, Schedule } from "./util/random-cron";
 
 export interface CdktfAwsCdkOptions extends Partial<cdk.JsiiProjectOptions> {
   readonly terraformProvider: string;
@@ -117,7 +118,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
         name: "team-tf-cdk",
         email: "github-team-tf-cdk@hashicorp.com",
       },
-      stale: true,
+      stale: false, // disabling for now but keeping the options below so we can turn it back on if desired
       staleOptions: {
         issues: {
           exemptLabels: ["backlog", "help wanted"],
@@ -247,6 +248,26 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       { name: "Add headers using Copywrite tool", run: "copywrite headers" },
     );
     this.addPackageIgnore(".copywrite.hcl");
+
+    const staleWorkflow = this.tryFindObjectFile(".github/workflows/stale.yml");
+    staleWorkflow?.addOverride("on.schedule", [
+      {
+        cron: generateRandomCron({ project: this, maxHour: 4, hourOffset: 1 }),
+      },
+    ]);
+
+    const upgradeWorkflow = this.tryFindObjectFile(
+      ".github/workflows/upgrade-main.yml",
+    );
+    upgradeWorkflow?.addOverride("on.schedule", [
+      {
+        cron: generateRandomCron({
+          project: this,
+          maxHour: 2,
+          schedule: Schedule.Weekly,
+        }),
+      },
+    ]);
 
     const releaseWorkflow = this.tryFindObjectFile(
       ".github/workflows/release.yml",

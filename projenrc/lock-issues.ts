@@ -5,6 +5,7 @@
 
 import { javascript } from "projen";
 import { JobPermission } from "projen/lib/github/workflows-model";
+import { generateRandomCron } from "./util/random-cron";
 
 /**
  * Automatically locks issues and PRs after 30 days.
@@ -16,7 +17,8 @@ export class LockIssues {
     if (!workflow) throw new Error("no workflow defined");
 
     workflow.on({
-      schedule: [{ cron: "20 2 * * *" }],
+      // run daily sometime between midnight and 6am UTC
+      schedule: [{ cron: generateRandomCron({ project, maxHour: 6 }) }],
     });
 
     workflow.addJob("lock", {

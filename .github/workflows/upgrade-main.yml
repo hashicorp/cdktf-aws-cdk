@@ -4,7 +4,7 @@ name: upgrade-main
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: 0 0 * * 1
+    - cron: 34 1 * * 1
 jobs:
   upgrade:
     name: Upgrade
@@ -70,7 +70,7 @@ jobs:
           git config user.email "github-team-tf-cdk@hashicorp.com"
       - name: Create Pull Request
         id: create-pr
-        uses: peter-evans/create-pull-request@a4f52f8033a6168103c2538976c07b467e8163bc
+        uses: peter-evans/create-pull-request@70a41aba780001da0a30141984ae2a0c95d8704e
         with:
           token: ${{ secrets.PROJEN_GITHUB_TOKEN }}
           commit-message: |-
