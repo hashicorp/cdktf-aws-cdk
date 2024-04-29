@@ -34,3 +34,4 @@ cdktf.json
 .copywrite.hcl
 /.gitattributes
 /.projenrc.ts
+/projenrc
