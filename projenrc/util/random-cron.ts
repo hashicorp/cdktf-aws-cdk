@@ -21,7 +21,8 @@ export interface RandomCronOptions {
 }
 
 export function generateRandomCron(options: RandomCronOptions) {
-  const maxHour = options.maxHour ? Math.round(options.maxHour) : 24;
+  const maxHour =
+    typeof options.maxHour !== "undefined" ? Math.round(options.maxHour) : 24;
   const hourOffset = options.hourOffset ? Math.round(options.hourOffset) : 0;
   const schedule = options.schedule || Schedule.Daily; // default to daily
 
