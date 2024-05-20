@@ -2523,10 +2523,10 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild-wasm@^0.21.2:
-  version "0.21.2"
-  resolved "https://registry.yarnpkg.com/esbuild-wasm/-/esbuild-wasm-0.21.2.tgz#b3a5b0ab3f99da0ad2b54cb381aa5ba2549a066f"
-  integrity sha512-ybee1TGUP+Va98c9xIhPD1UY+sEF2mmaNLzB5l6jvHzZqSYTAQ+3emT4jdXgf/DircV6j8pELTMpxtN+UyZ33Q==
+esbuild-wasm@^0.21.3:
+  version "0.21.3"
+  resolved "https://registry.yarnpkg.com/esbuild-wasm/-/esbuild-wasm-0.21.3.tgz#d883e270cf6b3b17f9379ef736a0f8da790833fa"
+  integrity sha512-DMOV+eeVra0yVq3XIojfczdEQsz+RiFnpEj7lqs8Gux9mlTpN7yIbw0a4KzLspn0Uhw6UVEH3nUAidSqc/rcQg==
 
 escalade@^3.1.1:
   version "3.1.1"
