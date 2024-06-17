@@ -25,9 +25,6 @@ export class AutoApprove {
       "${{ github.workflow }}-${{ github.head_ref }}";
 
     const maintainerStatuses = `fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]')`;
-    const commentText =
-      '"Since I authored this PR, I can\'t approve it myself, sorry! Someone else will need to approve it."';
-
     workflow.addJobs({
       approve: {
         runsOn: ["ubuntu-latest"],
@@ -54,19 +51,17 @@ export class AutoApprove {
             },
           },
           {
-            name: "Post a note explaining we can't auto-approve PRs by team-tf-cdk",
+            name: "Auto-approve PRs by team-tf-cdk as github-actions[bot]",
             if: "github.event.pull_request.user.login == 'team-tf-cdk'",
-            run:
-              "gh pr comment $PR_ID --body " +
-              commentText +
-              '\ngh pr edit $PR_ID --remove-label "auto-approve"',
+            run: "gh pr review ${{ github.event.pull_request.number }} --approve",
             env: {
-              GH_TOKEN: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
+              GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
             },
           },
         ],
         permissions: {
           contents: JobPermission.READ,
+          pullRequests: JobPermission.WRITE,
         },
       },
     });

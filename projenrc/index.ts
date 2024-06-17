@@ -110,7 +110,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
       },
       depsUpgradeOptions: {
         workflowOptions: {
-          labels: ["automerge", "automated", "dependencies"],
+          labels: ["automerge", "auto-approve", "dependencies"],
           schedule: UpgradeDependenciesSchedule.WEEKLY,
         },
       },
@@ -243,7 +243,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     this.buildWorkflow?.addPostBuildSteps(
       {
         name: "Setup Copywrite tool",
-        uses: "hashicorp/setup-copywrite@867a1a2a064a0626db322392806428f7dc59cb3e", // v1.1.2
+        uses: "hashicorp/setup-copywrite@32638da2d4e81d56a0764aa1547882fc4d209636", // v1.1.3
       },
       { name: "Add headers using Copywrite tool", run: "copywrite headers" },
     );
