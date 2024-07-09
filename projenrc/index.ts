@@ -14,7 +14,6 @@ import { CdktfConfig } from "./cdktf-config";
 import { CustomizedLicense } from "./customized-license";
 import { LockIssues } from "./lock-issues";
 import { ProviderUpgrade } from "./provider-upgrade";
-import { UpdateSnapshots } from "./update-snapshots";
 import { UpgradeCDKTF } from "./upgrade-cdktf";
 import { UpgradeNode } from "./upgrade-node";
 import { generateRandomCron, Schedule } from "./util/random-cron";
@@ -214,7 +213,6 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     new CustomizedLicense(this);
     new LockIssues(this);
     new ProviderUpgrade(this);
-    new UpdateSnapshots(this);
     new UpgradeCDKTF(this);
     new UpgradeNode(this);
 
