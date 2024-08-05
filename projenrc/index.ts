@@ -160,6 +160,16 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
           run: "cd .repo && yarn examples:test",
         },
         {
+          name: "Comment on failure",
+          if: "${{ failure() && github.event.pull_request }}",
+          env: {
+            PR_ID: "${{ github.event.pull_request.number }}",
+            GIT_BRANCH: "${{ github.event.pull_request.head.ref }}",
+            GH_TOKEN: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
+          },
+          run: `gh pr comment $PR_ID --body "This test failure could mean that the snapshots need to be regenerated. Run \\\`git checkout $GIT_BRANCH\\\` followed by \\\`yarn test -- --passWithNoTests --updateSnapshot\\\` in the directory of the test that failed, and commit & push the results."`,
+        },
+        {
           name: "Clean up",
           run: "rm -rf .repo",
         },
