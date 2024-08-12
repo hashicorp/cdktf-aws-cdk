@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: 42 */6 * * *
   workflow_dispatch: {}
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+concurrency: {}
 jobs:
   upgrade:
     name: Upgrade CDKTF
