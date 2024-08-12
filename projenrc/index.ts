@@ -251,7 +251,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     this.buildWorkflow?.addPostBuildSteps(
       {
         name: "Setup Copywrite tool",
-        uses: "hashicorp/setup-copywrite@32638da2d4e81d56a0764aa1547882fc4d209636", // v1.1.3
+        uses: "hashicorp/setup-copywrite",
       },
       { name: "Add headers using Copywrite tool", run: "copywrite headers" },
     );
