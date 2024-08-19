@@ -25,7 +25,7 @@
     "aws-cdk-lib": "2.93.0",
     "cdktf": "0.20.8",
     "constructs": "^10.3.0",
-    "esbuild-wasm": "^0.23.0",
+    "esbuild-wasm": "^0.23.1",
     "iam-floyd": "^0.507.0"
   },
   "engines": {
