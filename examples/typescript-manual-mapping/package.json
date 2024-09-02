@@ -21,7 +21,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@cdktf/aws-cdk": "^0.13.25",
+    "@cdktf/aws-cdk": "^0.13.27",
     "aws-cdk-lib": "2.154.1",
     "cdktf": "0.20.8",
     "constructs": "^10.3.0"
