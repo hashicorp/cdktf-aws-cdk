@@ -162,5 +162,32 @@ export class CdktfConfig {
     updateExampleTests.exec("npm run test:ci -- -- -u", {
       cwd: "examples/typescript-step-functions-mixed",
     });
+
+    // @TODO We need to resolve whether the examples should use Yarn or NPM
+    const updateExamples = project.addTask("examples:update", {
+      cwd: "examples/typescript-cron-lambda",
+      exec: "yarn install --check-files --ignore-engines && yarn upgrade --ignore-engines",
+    });
+    updateExamples.exec(
+      "yarn install --check-files --ignore-engines && yarn upgrade --ignore-engines",
+      {
+        cwd: "examples/typescript-manual-mapping",
+      },
+    );
+    updateExamples.exec(
+      "yarn install --check-files --ignore-engines && yarn upgrade --ignore-engines",
+      {
+        cwd: "examples/typescript-step-functions",
+      },
+    );
+    updateExamples.exec(
+      "yarn install --check-files --ignore-engines && yarn upgrade --ignore-engines",
+      {
+        cwd: "examples/typescript-step-functions-mixed",
+      },
+    );
+
+    // Consider turning on the below if Dependabot is not working for us anymore
+    // project.upgradeWorkflow?.postUpgradeTask.spawn(updateExamples);
   }
 }

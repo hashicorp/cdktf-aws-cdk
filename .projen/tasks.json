@@ -177,6 +177,27 @@
       ],
       "cwd": "examples/typescript-cron-lambda"
     },
+    "examples:update": {
+      "name": "examples:update",
+      "steps": [
+        {
+          "exec": "yarn install --check-files --ignore-engines && yarn upgrade --ignore-engines"
+        },
+        {
+          "exec": "yarn install --check-files --ignore-engines && yarn upgrade --ignore-engines",
+          "cwd": "examples/typescript-manual-mapping"
+        },
+        {
+          "exec": "yarn install --check-files --ignore-engines && yarn upgrade --ignore-engines",
+          "cwd": "examples/typescript-step-functions"
+        },
+        {
+          "exec": "yarn install --check-files --ignore-engines && yarn upgrade --ignore-engines",
+          "cwd": "examples/typescript-step-functions-mixed"
+        }
+      ],
+      "cwd": "examples/typescript-cron-lambda"
+    },
     "install": {
       "name": "install",
       "description": "Install project dependencies and update lockfile (non-frozen)",

@@ -17,6 +17,7 @@
     "eslint": "npx projen eslint",
     "examples:test": "npx projen examples:test",
     "examples:test:update": "npx projen examples:test:update",
+    "examples:update": "npx projen examples:update",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
     "package:js": "npx projen package:js",
@@ -67,7 +68,7 @@
     "jsii-pacmak": "^1.103.1",
     "jsii-rosetta": "~5.4.0",
     "prettier": "^3.3.3",
-    "projen": "^0.87.2",
+    "projen": "^0.87.3",
     "ts-node": "^10.9.1",
     "typescript": "~5.4.0"
   },
