@@ -140,7 +140,8 @@ jobs:
   package-js:
     needs: build
     runs-on: ubuntu-latest
-    permissions: {}
+    permissions:
+      contents: read
     if: ${{ !needs.build.outputs.self_mutation_happened }}
     steps:
       - uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b
