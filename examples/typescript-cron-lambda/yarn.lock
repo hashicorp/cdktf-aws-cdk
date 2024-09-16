@@ -318,7 +318,7 @@
   "version" "0.2.3"
 
 "@cdktf/aws-cdk@file:../../dist/js/aws-cdk@0.0.0.jsii.tgz":
-  "integrity" "sha512-nvYyuL6W0dTyHEMhHNIqMkYYy0NWYKsfUi26QV8P09afVtV0Ni6uQGk/YdJCvt9YvvQZLaj0YTpGNMoNQJzK4A=="
+  "integrity" "sha512-3vhcHunN0h15Bo6wplzTiEF5cmScGvBm9qCugJMUmjoO3eU9HsCYzbAI6ilqOnSR5wF355sY2M+xIX5r6Dq7EQ=="
   "resolved" "file:../../dist/js/aws-cdk@0.0.0.jsii.tgz"
   "version" "0.0.0"
   dependencies:
