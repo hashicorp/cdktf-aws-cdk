@@ -142,38 +142,6 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
             "I'm closing this pull request because we haven't heard back in 90 days. ⌛️ If you're still working on this, feel free to reopen the PR or create a new one!",
         },
       },
-      postBuildSteps: [
-        {
-          name: "Prepare Temporary Directory",
-          run: "cp -r dist .repo",
-        },
-        {
-          name: "Install Dependencies",
-          run: "cd .repo && yarn install --check-files --frozen-lockfile",
-        },
-        {
-          name: "Create js artifact",
-          run: "cd .repo && npx projen package:js",
-        },
-        {
-          name: "Run integration tests",
-          run: "cd .repo && yarn examples:test",
-        },
-        {
-          name: "Comment on failure",
-          if: "${{ failure() && github.event.pull_request }}",
-          env: {
-            PR_ID: "${{ github.event.pull_request.number }}",
-            GIT_BRANCH: "${{ github.event.pull_request.head.ref }}",
-            GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
-          },
-          run: `gh pr comment $PR_ID --body "This test failure could mean that the snapshots need to be regenerated. Run \\\`git checkout $GIT_BRANCH\\\` followed by \\\`yarn test -- --passWithNoTests --updateSnapshot\\\` in the directory of the test that failed, and commit & push the results."`,
-        },
-        {
-          name: "Clean up",
-          run: "rm -rf .repo",
-        },
-      ],
       npmAccess: NpmAccess.PUBLIC,
       stability: Stability.EXPERIMENTAL, // change this to STABLE when we go GA
       // Uncomment the following when we're ready to start publishing to other package managers
@@ -249,6 +217,39 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     upgrade.steps.splice(1, 0, ensureCorrectUser);
 
     this.buildWorkflow?.addPostBuildSteps(
+      // run integration tests
+      // @TODO are all the below steps truly necessary? this makes the build job very slow
+      {
+        name: "Prepare Temporary Directory",
+        run: "cp -r dist .repo",
+      },
+      {
+        name: "Install Dependencies",
+        run: "cd .repo && yarn install --check-files --frozen-lockfile",
+      },
+      {
+        name: "Create js artifact",
+        run: "cd .repo && npx projen package:js",
+      },
+      {
+        name: "Run integration tests",
+        run: "cd .repo && yarn examples:test",
+      },
+      {
+        name: "Comment on failure",
+        if: "${{ failure() && github.event.pull_request }}",
+        env: {
+          PR_ID: "${{ github.event.pull_request.number }}",
+          GIT_BRANCH: "${{ github.event.pull_request.head.ref }}",
+          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
+        },
+        run: `gh pr comment $PR_ID --body "This test failure could mean that the snapshots need to be regenerated. Run \\\`git checkout $GIT_BRANCH\\\` followed by \\\`yarn test -- --passWithNoTests --updateSnapshot\\\` in the directory of the test that failed, and commit & push the results."`,
+      },
+      {
+        name: "Clean up",
+        run: "rm -rf .repo",
+      },
+      // add copyright headers in any places that are missing
       {
         name: "Setup Copywrite tool",
         uses: "hashicorp/setup-copywrite",
