@@ -20,15 +20,15 @@
   "resolved" "https://registry.npmjs.org/@aws-cdk/asset-kubectl-v20/-/asset-kubectl-v20-2.1.2.tgz"
   "version" "2.1.2"
 
-"@aws-cdk/asset-node-proxy-agent-v6@^2.0.3":
-  "integrity" "sha512-twhuEG+JPOYCYPx/xy5uH2+VUsIEhPTzDY0F1KuB+ocjWWB/KEDiOVL19nHvbPCB6fhWnkykXEMJ4HHcKvjtvg=="
-  "resolved" "https://registry.npmjs.org/@aws-cdk/asset-node-proxy-agent-v6/-/asset-node-proxy-agent-v6-2.0.3.tgz"
-  "version" "2.0.3"
+"@aws-cdk/asset-node-proxy-agent-v6@^2.1.0":
+  "integrity" "sha512-7bY3J8GCVxLupn/kNmpPc5VJz8grx+4RKfnnJiO1LG+uxkZfANZG3RMHhE+qQxxwkyQ9/MfPtTpf748UhR425A=="
+  "resolved" "https://registry.npmjs.org/@aws-cdk/asset-node-proxy-agent-v6/-/asset-node-proxy-agent-v6-2.1.0.tgz"
+  "version" "2.1.0"
 
-"@aws-cdk/cloud-assembly-schema@^36.0.5":
-  "integrity" "sha512-qZeSDHZCWSigPN9kXAYVHaYMECVNYWpv7I9W9ZDXux0kCmR/JUnj6bmWNG0b8boTn9bxMr4O4cdOKIhDmK6iag=="
-  "resolved" "https://registry.npmjs.org/@aws-cdk/cloud-assembly-schema/-/cloud-assembly-schema-36.0.17.tgz"
-  "version" "36.0.17"
+"@aws-cdk/cloud-assembly-schema@^36.0.24":
+  "integrity" "sha512-AK86v4IMV4zcWfp392e3wlaVJPT72/dk39Lo2SDDFxQR+sikMOyY2IGrULyhK1TwQmPiyxM7QB/0MkTbMDAPrw=="
+  "resolved" "https://registry.npmjs.org/@aws-cdk/cloud-assembly-schema/-/cloud-assembly-schema-36.0.25.tgz"
+  "version" "36.0.25"
   dependencies:
     "jsonschema" "^1.4.1"
     "semver" "^7.6.3"
@@ -1135,12 +1135,13 @@
     "debug" "4"
 
 "ajv@^8.0.1":
-  "version" "8.16.0"
+  "resolved" "https://registry.npmjs.org/ajv/-/ajv-8.17.1.tgz"
+  "version" "8.17.1"
   dependencies:
     "fast-deep-equal" "^3.1.3"
+    "fast-uri" "^3.0.1"
     "json-schema-traverse" "^1.0.0"
     "require-from-string" "^2.0.2"
-    "uri-js" "^4.4.1"
 
 "ajv@^8.13.0":
   "integrity" "sha512-F0twR8U1ZU67JIEtekUcLkXkoO5mMMmgGD8sK/xUFzJ805jxHQl92hImFAqqXMyMYjSPOyUPAwHYhB72g5sTXw=="
@@ -1309,24 +1310,24 @@
   dependencies:
     "possible-typed-array-names" "^1.0.0"
 
-"aws-cdk-lib@^2.80.0", "aws-cdk-lib@2.155.0":
-  "integrity" "sha512-QGzDhLldBXsyOUmhgtZ98PiOUS2g1Mb5MO08FiOvQn3+KSyJjQdq0GoyxtDpCNGLaWmIfcyrtB9aDhod38fl9g=="
-  "resolved" "https://registry.npmjs.org/aws-cdk-lib/-/aws-cdk-lib-2.155.0.tgz"
-  "version" "2.155.0"
+"aws-cdk-lib@^2.80.0", "aws-cdk-lib@2.158.0":
+  "integrity" "sha512-Pl9CCLM+XRTy6nyyRJM1INEMtwIlZOib0FWyq9i9E388vurw7sNVJ6tAsfLpGIOLHsFQCbF4f6OZ0KSVxmMaiA=="
+  "resolved" "https://registry.npmjs.org/aws-cdk-lib/-/aws-cdk-lib-2.158.0.tgz"
+  "version" "2.158.0"
   dependencies:
     "@aws-cdk/asset-awscli-v1" "^2.2.202"
     "@aws-cdk/asset-kubectl-v20" "^2.1.2"
-    "@aws-cdk/asset-node-proxy-agent-v6" "^2.0.3"
-    "@aws-cdk/cloud-assembly-schema" "^36.0.5"
+    "@aws-cdk/asset-node-proxy-agent-v6" "^2.1.0"
+    "@aws-cdk/cloud-assembly-schema" "^36.0.24"
     "@balena/dockerignore" "^1.0.2"
     "case" "1.6.3"
     "fs-extra" "^11.2.0"
-    "ignore" "^5.3.1"
+    "ignore" "^5.3.2"
     "jsonschema" "^1.4.1"
     "mime-types" "^2.1.35"
     "minimatch" "^3.1.2"
     "punycode" "^2.3.1"
-    "semver" "^7.6.2"
+    "semver" "^7.6.3"
     "table" "^6.8.2"
     "yaml" "1.10.2"
 
@@ -1916,6 +1917,7 @@
     "ms" "2.1.2"
 
 "debug@^4.3.2":
+  "resolved" "https://registry.npmjs.org/debug/-/debug-4.3.7.tgz"
   "version" "4.3.7"
   dependencies:
     "ms" "^2.1.3"
@@ -2303,6 +2305,10 @@
   "integrity" "sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw=="
   "resolved" "https://registry.npmjs.org/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz"
   "version" "2.1.0"
+
+"fast-uri@^3.0.1":
+  "resolved" "https://registry.npmjs.org/fast-uri/-/fast-uri-3.0.1.tgz"
+  "version" "3.0.1"
 
 "fastq@^1.6.0":
   "integrity" "sha512-wBrocU2LCXXa+lWBt8RoIRD89Fi8OdABODa/kEnyeyjS5aZO5/GNvI5sEINADqP/h8M29UHTHUb53sUu5Ihqdw=="
@@ -2694,9 +2700,9 @@
   "resolved" "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz"
   "version" "1.2.1"
 
-"ignore@^5.3.1":
-  "resolved" "https://registry.npmjs.org/ignore/-/ignore-5.3.1.tgz"
-  "version" "5.3.1"
+"ignore@^5.3.2":
+  "resolved" "https://registry.npmjs.org/ignore/-/ignore-5.3.2.tgz"
+  "version" "5.3.2"
 
 "immediate@~3.0.5":
   "integrity" "sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ=="
@@ -3833,6 +3839,7 @@
   "version" "0.5.3"
 
 "ms@^2.1.3":
+  "resolved" "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz"
   "version" "2.1.3"
 
 "ms@2.1.2":
@@ -4196,8 +4203,12 @@
     "end-of-stream" "^1.1.0"
     "once" "^1.3.1"
 
-"punycode@^2.1.0", "punycode@^2.1.1", "punycode@^2.3.1":
+"punycode@^2.1.0", "punycode@^2.1.1":
   "integrity" "sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg=="
+  "resolved" "https://registry.npmjs.org/punycode/-/punycode-2.3.1.tgz"
+  "version" "2.3.1"
+
+"punycode@^2.3.1":
   "resolved" "https://registry.npmjs.org/punycode/-/punycode-2.3.1.tgz"
   "version" "2.3.1"
 
@@ -4464,9 +4475,6 @@
 "semver@^7.3.2", "semver@^7.3.5", "semver@^7.5.3", "semver@^7.5.4", "semver@^7.6.0", "semver@7.6.2":
   "integrity" "sha512-FNAIBWCx9qcRhoHcgcJ0gvU7SN1lYU2ZXuSfl04bSC5OpvDHFyJCjdNHomPXxjQlCBU67YW64PzY7/VIEH7F2w=="
   "resolved" "https://registry.npmjs.org/semver/-/semver-7.6.2.tgz"
-  "version" "7.6.2"
-
-"semver@^7.6.2":
   "version" "7.6.2"
 
 "semver@^7.6.3":
