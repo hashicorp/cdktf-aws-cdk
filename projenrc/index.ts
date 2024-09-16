@@ -165,7 +165,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
           env: {
             PR_ID: "${{ github.event.pull_request.number }}",
             GIT_BRANCH: "${{ github.event.pull_request.head.ref }}",
-            GH_TOKEN: "${{ secrets.PROJEN_GITHUB_TOKEN }}",
+            GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
           },
           run: `gh pr comment $PR_ID --body "This test failure could mean that the snapshots need to be regenerated. Run \\\`git checkout $GIT_BRANCH\\\` followed by \\\`yarn test -- --passWithNoTests --updateSnapshot\\\` in the directory of the test that failed, and commit & push the results."`,
         },
@@ -329,5 +329,6 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
         run: "gh run cancel $RUN_ID \ngh run watch $RUN_ID",
       } as JobStep,
     );
+    buildWorkflow?.addDeletionOverride("jobs.self-mutation.steps.0.with.token");
   }
 }

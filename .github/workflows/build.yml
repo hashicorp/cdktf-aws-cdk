@@ -46,7 +46,7 @@ jobs:
         env:
           PR_ID: ${{ github.event.pull_request.number }}
           GIT_BRANCH: ${{ github.event.pull_request.head.ref }}
-          GH_TOKEN: ${{ secrets.PROJEN_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh pr comment $PR_ID --body "This test failure could mean that the snapshots need to be regenerated. Run \`git checkout $GIT_BRANCH\` followed by \`yarn test -- --passWithNoTests --updateSnapshot\` in the directory of the test that failed, and commit & push the results."
       - name: Clean up
         run: rm -rf .repo
@@ -116,7 +116,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
         with:
-          token: ${{ secrets.PROJEN_GITHUB_TOKEN }}
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
       - name: Download patch
