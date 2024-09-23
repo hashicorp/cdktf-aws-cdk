@@ -2168,10 +2168,10 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild-wasm@^0.23.1:
-  version "0.23.1"
-  resolved "https://registry.npmjs.org/esbuild-wasm/-/esbuild-wasm-0.23.1.tgz"
-  integrity sha512-L3vn7ctvBrtScRfoB0zG1eOCiV4xYvpLYWfe6PDZuV+iDFDm4Mt3xeLIDllG8cDHQ8clUouK3XekulE+cxgkgw==
+esbuild-wasm@^0.24.0:
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/esbuild-wasm/-/esbuild-wasm-0.24.0.tgz#99f44feb1dfccd25dbe7de1a26326ea1c7aca0d8"
+  integrity sha512-xhNn5tL1AhkPg4ft59yXT6FkwKXiPSYyz1IeinJHUJpjvOHOIPvdmFQc0pGdjxlKSbzZc2mNmtVOWAR1EF/JAg==
 
 escalade@^3.1.1:
   version "3.1.1"
