@@ -15,7 +15,7 @@
   "devDependencies": {
     "@types/jest": "29.5.13",
     "@types/node": "^18",
-    "cdktf-cli": "0.20.8",
+    "cdktf-cli": "0.20.9",
     "jest": "29.7.0",
     "ts-jest": "^29.2.5",
     "typescript": "^5.5.4"
@@ -23,7 +23,7 @@
   "dependencies": {
     "@cdktf/aws-cdk": "^0.13.29",
     "aws-cdk-lib": "2.158.0",
-    "cdktf": "0.20.8",
+    "cdktf": "0.20.9",
     "constructs": "^10.3.0"
   },
   "engines": {
