@@ -19,8 +19,8 @@ for example in $(find "$PROJECT_ROOT/examples" -mindepth 1 -maxdepth 1 -type d);
   echo "Updating example $example"
   cd "$example"
   npm pkg set engines.node=">= $NODE_VERSION"
-  yarn
-  yarn add -D @types/node@^$NODE_VERSION_SHORT
+  npm install
+  npm install -D @types/node@^$NODE_VERSION_SHORT
 done
 
 echo "Updating README"
