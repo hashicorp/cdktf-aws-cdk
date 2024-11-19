@@ -17,9 +17,9 @@ echo "Updating examples"
 for example in $(find "$PROJECT_ROOT/examples" -mindepth 1 -maxdepth 1 -type d); do
   echo "Updating example $example"
   cd "$example"
-  yarn
-  yarn add -D cdktf-cli@$CDKTF_VERSION
-  yarn add cdktf@$CDKTF_VERSION
+  npm install
+  npm install -D cdktf-cli@$CDKTF_VERSION
+  npm install cdktf@$CDKTF_VERSION
 done
 
 echo "Updating README"
