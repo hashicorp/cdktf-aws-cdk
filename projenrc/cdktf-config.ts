@@ -37,7 +37,7 @@ export class CdktfConfig {
     // @see https://stackoverflow.com/a/72680434 for why this is necessary
     project.addDevDeps("ts-node@^10.9.1");
 
-    // eslint v9+ and @typescript-eslint v7+ require Node.js 18.18, so we are stuck on v6
+    // eslint v9+ and @typescript-eslint v7+ require Node.js 18.18, so we are stuck on v8 and v6 respectively
     // The below lines can probably be removed once Node 18 goes EOL and we upgrade minNodeVersion to 20
     project.addDevDeps("eslint@^8");
     project.addDevDeps("@typescript-eslint/eslint-plugin@^6");
