@@ -15,6 +15,7 @@ import { CustomizedLicense } from "./customized-license";
 import { LockIssues } from "./lock-issues";
 import { ProviderUpgrade } from "./provider-upgrade";
 import { UpgradeCDKTF } from "./upgrade-cdktf";
+import { UpgradeJSIIAndTypeScript } from "./upgrade-jsii-typescript";
 import { UpgradeNode } from "./upgrade-node";
 import { generateRandomCron, Schedule } from "./util/random-cron";
 
@@ -192,6 +193,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     new LockIssues(this);
     new ProviderUpgrade(this);
     new UpgradeCDKTF(this);
+    new UpgradeJSIIAndTypeScript(this, options.jsiiVersion!);
     new UpgradeNode(this);
 
     const setSafeDirectory = {

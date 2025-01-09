@@ -65,5 +65,6 @@ API.md
 !/.github/workflows/lock.yml
 !/.github/workflows/provider-upgrade.yml
 !/.github/workflows/upgrade-cdktf.yml
+!/.github/workflows/upgrade-jsii-typescript.yml
 !/.github/workflows/upgrade-node.yml
 !/.projenrc.ts
