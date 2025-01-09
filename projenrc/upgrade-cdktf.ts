@@ -61,8 +61,11 @@ export class UpgradeCDKTF {
             run: [
               `CDKTF_VERSION=$(yarn info cdktf --json | jq -r '.data.version')`,
               `CDKTF_VERSION_SHORT=$(cut -d "." -f 2 <<< "$CDKTF_VERSION")`,
+              `CONSTRUCTS_VERSION=$(yarn info cdktf --json | jq -r '.data.peerDependencies.constructs')`,
+              `CONSTRUCTS_VERSION_EXACT=$(cut -d "^" -f 2 <<< "$CONSTRUCTS_VERSION")`, // strip the caret off the beginning
               `echo "value=$CDKTF_VERSION" >> $GITHUB_OUTPUT`,
               `echo "short=$CDKTF_VERSION_SHORT" >> $GITHUB_OUTPUT`,
+              `echo "constructs=$CONSTRUCTS_VERSION_EXACT" >> $GITHUB_OUTPUT`,
             ].join("\n"),
             // IMPORTANT: the above behavior changed in Yarn 2+; `yarn info` instead gives the version of the installed package
             // If/when we upgrade we'll likely want to switch to `yarn npm info`: https://yarnpkg.com/cli/npm/info
@@ -70,7 +73,7 @@ export class UpgradeCDKTF {
           {
             name: "Run upgrade script",
             if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
-            run: "scripts/update-cdktf.sh ${{ steps.latest_version.outputs.value }}",
+            run: "scripts/update-cdktf.sh ${{ steps.latest_version.outputs.value }} ${{ steps.latest_version.outputs.constructs }}",
           },
           {
             name: "Regenerate bindings",
