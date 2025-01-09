@@ -14,7 +14,7 @@ fi
 
 echo "Updating JSII & TypeScript version to $NEW_VERSION"
 yarn
-sed -i "s/typescriptVersion = \".*\";/typescriptVersion = \"~$NEW_VERSION\";/" "$PROJECT_ROOT/.projenrc.ts"
+sed -i "s/jsiiVersion: \".*\",/jsiiVersion: \"~$NEW_VERSION\",/" "$PROJECT_ROOT/.projenrc.ts"
 CI=0 npx projen
 
 echo "Done"
