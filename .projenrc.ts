@@ -22,7 +22,7 @@ const githubActionPinnedVersions = {
 const project = new CdktfAwsCdkProject({
   terraformProvider: "aws@~> 3.0",
   cdktfVersion: "0.20.0",
-  constructsVersion: "10.3.0",
+  constructsVersion: "10.0.25",
   jsiiVersion: "~5.5.0", // JSII and TS should always use the same major/minor version range
   minNodeVersion: "18.12.0",
   projenrcTs: true,
