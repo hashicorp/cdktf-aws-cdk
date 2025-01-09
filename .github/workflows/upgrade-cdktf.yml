@@ -37,11 +37,14 @@ jobs:
         run: |-
           CDKTF_VERSION=$(yarn info cdktf --json | jq -r '.data.version')
           CDKTF_VERSION_SHORT=$(cut -d "." -f 2 <<< "$CDKTF_VERSION")
+          CONSTRUCTS_VERSION=$(yarn info cdktf --json | jq -r '.data.peerDependencies.constructs')
+          CONSTRUCTS_VERSION_EXACT=$(cut -d "^" -f 2 <<< "$CONSTRUCTS_VERSION")
           echo "value=$CDKTF_VERSION" >> $GITHUB_OUTPUT
           echo "short=$CDKTF_VERSION_SHORT" >> $GITHUB_OUTPUT
+          echo "constructs=$CONSTRUCTS_VERSION_EXACT" >> $GITHUB_OUTPUT
       - name: Run upgrade script
         if: steps.current_version.outputs.short != steps.latest_version.outputs.short
-        run: scripts/update-cdktf.sh ${{ steps.latest_version.outputs.value }}
+        run: scripts/update-cdktf.sh ${{ steps.latest_version.outputs.value }} ${{ steps.latest_version.outputs.constructs }}
       - name: Regenerate bindings
         if: steps.current_version.outputs.short != steps.latest_version.outputs.short
         run: yarn run fetch && yarn run compile
