@@ -54,36 +54,36 @@ export class CdktfConfig {
     project.addDevDeps("@aws-sdk/client-cloudformation@^3.36.0");
     project.setScript(
       "fetch:types",
-      `mkdir -p src/awscc && rm -rf ./src/awscc/* && node ./scripts/update-supported-types.js`,
+      `mkdir -p src/awscc && rm -rf ./src/awscc/* && node ./scripts/update-supported-types.js`
     );
     project.addPackageIgnore("scripts");
 
     project.setScript(
       "fetch",
       `mkdir -p src/aws && rm -rf ./src/aws/* && cdktf get && cp -R .gen/providers/${providerName}/* ./src/aws/` +
-        ` && mkdir -p src/time && rm -rf ./src/time/* && cp -R .gen/providers/time/* ./src/time/`,
+        ` && mkdir -p src/time && rm -rf ./src/time/* && cp -R .gen/providers/time/* ./src/time/`
     );
     project.setScript(
       "commit",
-      'git add -A && git commit -am "Update provider" || echo "No changes to commit"',
+      'git add -A && git commit -am "Update provider" || echo "No changes to commit"'
     );
     // eslint-disable-next-line quotes
     project.setScript(
       "should-release",
-      `! git diff --exit-code v$(cat version.json | jq -r '.version') ./src ./package.json`,
+      `! git diff --exit-code v$(cat version.json | jq -r '.version') ./src ./package.json`
     );
     project.setScript(
       "prebump",
-      "yarn fetch && yarn compile && yarn run commit && yarn run should-release",
+      "yarn fetch && yarn compile && yarn run commit && yarn run should-release"
     );
     project.setScript(
       "compile",
-      'NODE_OPTIONS="--max-old-space-size=7516" jsii --silence-warnings=reserved-word',
+      'NODE_OPTIONS="--max-old-space-size=7516" jsii --silence-warnings=reserved-word'
     );
 
     project.setScript(
       "build-provider",
-      "yarn fetch && yarn compile && yarn docgen",
+      "yarn fetch && yarn compile && yarn docgen"
     );
     project.setScript("test", "jest");
 
@@ -139,7 +139,7 @@ export class CdktfConfig {
     project.annotateGenerated("/docs/*.md");
 
     [project.compileTask, project.testTask].forEach((task) =>
-      task.env("NODE_OPTIONS", "--max-old-space-size=6144"),
+      task.env("NODE_OPTIONS", "--max-old-space-size=6144")
     );
     project.testTask.env("DEBUG", "jest");
 
@@ -180,19 +180,19 @@ export class CdktfConfig {
       "yarn install --check-files --ignore-engines && yarn upgrade --ignore-engines",
       {
         cwd: "examples/typescript-manual-mapping",
-      },
+      }
     );
     updateExamples.exec(
       "yarn install --check-files --ignore-engines && yarn upgrade --ignore-engines",
       {
         cwd: "examples/typescript-step-functions",
-      },
+      }
     );
     updateExamples.exec(
       "yarn install --check-files --ignore-engines && yarn upgrade --ignore-engines",
       {
         cwd: "examples/typescript-step-functions-mixed",
-      },
+      }
     );
 
     // Consider turning on the below if Dependabot is not working for us anymore

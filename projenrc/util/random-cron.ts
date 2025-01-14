@@ -36,8 +36,8 @@ export function generateRandomCron(options: RandomCronOptions) {
     schedule === Schedule.Weekly
       ? "1"
       : schedule === Schedule.Weekdays
-        ? "1-5"
-        : "*";
+      ? "1-5"
+      : "*";
 
   return `${minute} ${(hour + hourOffset) % 24} ${dayOfMonth} * ${dayOfWeek}`;
 }

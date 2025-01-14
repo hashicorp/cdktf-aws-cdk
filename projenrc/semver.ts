@@ -40,7 +40,7 @@ export class Semver {
   private constructor(version: string, mode?: string) {
     if (mode && !ALLOWED_MODES.includes(mode)) {
       throw new Error(
-        `mode "${mode}" not allowed. allowed modes: ${ALLOWED_MODES.join(",")}`,
+        `mode "${mode}" not allowed. allowed modes: ${ALLOWED_MODES.join(",")}`
       );
     }
 

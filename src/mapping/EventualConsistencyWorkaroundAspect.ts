@@ -45,11 +45,11 @@ export class EventualConsistencyWorkaroundAspect implements IAspect {
         stack.node.id,
         new TimeProvider(stack, "eventual_consistency_workaround_aspect", {
           alias: `awsadapter_eventual_consistency_workaround_aspect_${stack.node.id}`,
-        }),
+        })
       );
     }
     return EventualConsistencyWorkaroundAspect.stackTimeProviders.get(
-      stack.node.id,
+      stack.node.id
     )!;
   }
 
@@ -60,7 +60,7 @@ export class EventualConsistencyWorkaroundAspect implements IAspect {
     private options: EventualConsistencyWorkaroundAspectOptions = {
       createDurationSeconds: 20,
       destroyDurationSeconds: 0,
-    },
+    }
   ) {}
 
   visit(node: IConstruct) {
@@ -90,9 +90,9 @@ export class EventualConsistencyWorkaroundAspect implements IAspect {
           destroyDuration: `${this.options.destroyDurationSeconds}s`,
           dependsOn: [this.eventualConsistentTarget],
           provider: EventualConsistencyWorkaroundAspect.getTimeProvider(
-            TerraformStack.of(this.eventualConsistentTarget),
+            TerraformStack.of(this.eventualConsistentTarget)
           ),
-        },
+        }
       );
     }
     return this.sleepResource;
@@ -104,10 +104,10 @@ export class EventualConsistencyWorkaroundAspect implements IAspect {
  */
 function dependsOn(
   source: TerraformResource,
-  target: TerraformResource,
+  target: TerraformResource
 ): boolean {
   const tokens = findTokens(TerraformStack.of(source), () =>
-    source.toTerraform(),
+    source.toTerraform()
   );
 
   // Checks if there's at least one token that resolves to an Terraform reference
