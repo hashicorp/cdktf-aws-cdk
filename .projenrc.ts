@@ -28,8 +28,6 @@ const project = new CdktfAwsCdkProject({
   projenrcTs: true,
 });
 
-project.package.addPackageResolutions("@types/babel__traverse@7.18.2");
-
 // Use pinned versions of github actions
 Object.entries(githubActionPinnedVersions).forEach(([name, sha]) => {
   project.github?.actions.set(name, `${name}@${sha}`);

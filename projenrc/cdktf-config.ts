@@ -47,6 +47,9 @@ export class CdktfConfig {
     project.addDevDeps("@typescript-eslint/eslint-plugin@^6");
     project.addDevDeps("@typescript-eslint/parser@^6");
 
+    // This is a temporary workaround to allow upgrade-main to succeed until we upgrade to Node 20
+    project.package.addPackageResolutions(`cssstyle@4.1.0`);
+
     // for update-supported-types script
     project.addDevDeps("@aws-sdk/client-cloudformation@^3.36.0");
     project.setScript(
