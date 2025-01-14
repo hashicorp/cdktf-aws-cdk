@@ -87,8 +87,8 @@ async function getDesiredVersion() {
 
 module.exports = async ({ github, context, core }) => {
   const version = await getDesiredVersion();
-  const short = version.match(versionRegex)[1];
+  const majorVersion = version.match(versionRegex)[1];
 
-  core.exportVariable("NEW_NODEJS_VERSION", version.slice(1)); // strip the 'v' from the start of the string
-  core.exportVariable("NEW_NODEJS_VERSION_SHORT", short);
+  core.exportVariable('NEW_NODEJS_VERSION', version.slice(1)); // strip the 'v' from the start of the string
+  core.exportVariable('NEW_NODEJS_VERSION_MAJOR', majorVersion);
 };
