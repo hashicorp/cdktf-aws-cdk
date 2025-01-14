@@ -23,8 +23,8 @@ registerMapping("AWS::Events::Rule", {
         props.State === "ENABLED"
           ? true
           : props.State === "DISABLED"
-            ? false
-            : undefined, // TODO: this might be a common case for the automapper to check for / or common pattern to build a utility for
+          ? false
+          : undefined, // TODO: this might be a common case for the automapper to check for / or common pattern to build a utility for
       description: props.Description,
       eventBusName: props.EventBusName,
       eventPattern: props.EventPattern,
@@ -66,7 +66,7 @@ registerMapping("AWS::Events::Rule", {
       return new CloudwatchEventTarget(
         scope,
         `${id}_target${idx}`,
-        targetProps,
+        targetProps
       );
     });
 

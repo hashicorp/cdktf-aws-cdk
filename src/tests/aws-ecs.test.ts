@@ -39,7 +39,7 @@ describe.skip("ecs cluster", () => {
           },
           memoryLimitMiB: 512, // Default is 512
           publicLoadBalancer: true, // Default is false
-        },
+        }
       );
     });
 

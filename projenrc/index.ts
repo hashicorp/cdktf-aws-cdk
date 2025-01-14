@@ -256,7 +256,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
         name: "Setup Copywrite tool",
         uses: "hashicorp/setup-copywrite",
       },
-      { name: "Add headers using Copywrite tool", run: "copywrite headers" },
+      { name: "Add headers using Copywrite tool", run: "copywrite headers" }
     );
     this.addPackageIgnore(".copywrite.hcl");
 
@@ -268,7 +268,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     ]);
 
     const upgradeWorkflow = this.tryFindObjectFile(
-      ".github/workflows/upgrade-main.yml",
+      ".github/workflows/upgrade-main.yml"
     );
     upgradeWorkflow?.addOverride("on.schedule", [
       {
@@ -281,7 +281,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     ]);
 
     const releaseWorkflow = this.tryFindObjectFile(
-      ".github/workflows/release.yml",
+      ".github/workflows/release.yml"
     );
     releaseWorkflow?.addOverride("on.push", {
       branches: ["main"],
@@ -330,7 +330,7 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
         },
         if: "steps.check_files.outputs.no_changes",
         run: "gh run cancel $RUN_ID \ngh run watch $RUN_ID",
-      } as JobStep,
+      } as JobStep
     );
     buildWorkflow?.addDeletionOverride("jobs.self-mutation.steps.0.with.token");
   }

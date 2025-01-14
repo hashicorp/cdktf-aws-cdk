@@ -85,7 +85,7 @@
     },
     {
       "name": "jest-junit",
-      "version": "^15",
+      "version": "^16",
       "type": "build"
     },
     {
@@ -148,8 +148,8 @@
       "type": "bundled"
     },
     {
-      "name": "@types/babel__traverse",
-      "version": "7.18.2",
+      "name": "cssstyle",
+      "version": "4.1.0",
       "type": "override"
     },
     {

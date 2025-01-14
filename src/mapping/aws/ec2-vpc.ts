@@ -86,12 +86,12 @@ registerMapping("AWS::EC2::VPCGatewayAttachment", {
     // FIXME: when is this used? resolve to the related InternetGateway or VpnGateway instead
     Arn: () => {
       throw new Error(
-        "AWS::EC2::VPCGatewayAttachment has no represenation in Terraform and therefore cannot be accessed",
+        "AWS::EC2::VPCGatewayAttachment has no represenation in Terraform and therefore cannot be accessed"
       );
     },
     Ref: () => {
       throw new Error(
-        "AWS::EC2::VPCGatewayAttachment has no represenation in Terraform and therefore cannot be accessed",
+        "AWS::EC2::VPCGatewayAttachment has no represenation in Terraform and therefore cannot be accessed"
       );
     },
   },

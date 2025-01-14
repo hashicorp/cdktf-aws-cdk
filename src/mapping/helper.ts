@@ -23,11 +23,11 @@ const autoMapObjectPropertyKeys = (obj: object): object =>
     Object.entries(obj).map(([cfnKey, nestedValue]) => {
       const res = createAutoPropertyMapping(cfnKey)(nestedValue);
       return [res.tfAttributeName, res.value];
-    }),
+    })
   );
 
 function createNamePropertyMapping(
-  tfAttributeName: string,
+  tfAttributeName: string
 ): PropertyMappingFunc {
   return (value) => {
     if (isObject(value)) {
@@ -41,7 +41,7 @@ function createNamePropertyMapping(
 }
 
 function createAutoPropertyMapping(
-  cfnPropertyName: string,
+  cfnPropertyName: string
 ): PropertyMappingFunc {
   // convert name to CDKTF TypeScript name
   const tfAttributeName = camelCase(cfnPropertyName);
@@ -66,12 +66,12 @@ type PropertyMappings = { [cfnProperty: string]: PropertyMapping };
 
 export function createGuessingResourceMapper<T extends TerraformResource>(
   Resource: Class<T>,
-  propMappings: PropertyMappings = {},
+  propMappings: PropertyMappings = {}
 ): ResourceMapper<T> {
   const mapper: ResourceMapper<T> = (
     scope: Construct,
     id: string,
-    props: any,
+    props: any
   ) => {
     const mappedProps: { [tfAttributeName: string]: any } = {};
 
@@ -95,10 +95,10 @@ export function createGuessingResourceMapper<T extends TerraformResource>(
           break;
         case "string":
           mapping = createNamePropertyMapping(
-            propMappings[cfnPropertyName] as string,
+            propMappings[cfnPropertyName] as string
           );
           trace(
-            `using a custom name for ${cfnPropertyName} (${propMappings[cfnPropertyName]})`,
+            `using a custom name for ${cfnPropertyName} (${propMappings[cfnPropertyName]})`
           );
           break;
         default:
@@ -110,7 +110,7 @@ export function createGuessingResourceMapper<T extends TerraformResource>(
       const { tfAttributeName, value } = mapping(cfnValue);
       if (Object.keys(mappedProps).includes(tfAttributeName)) {
         throw new Error(
-          `Conflict! ${cfnPropertyName} has been mapped to ${tfAttributeName} but there has already been a value set for that key.`,
+          `Conflict! ${cfnPropertyName} has been mapped to ${tfAttributeName} but there has already been a value set for that key.`
         );
       }
 
@@ -125,8 +125,8 @@ export function createGuessingResourceMapper<T extends TerraformResource>(
       `mapped props for Resource ${Resource.name}: ${JSON.stringify(
         mappedProps,
         null,
-        2,
-      )}`,
+        2
+      )}`
     );
 
     return new Resource(scope, id, mappedProps);

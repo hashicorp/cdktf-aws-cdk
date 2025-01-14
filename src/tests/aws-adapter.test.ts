@@ -39,18 +39,18 @@ describe("AwsTerraformAdapter", () => {
 
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
         "{
-          \\"data\\": {
-            \\"aws_partition\\": {
-              \\"adapter_aws-partition_5B16AD9D\\": {
+          "data": {
+            "aws_partition": {
+              "adapter_aws-partition_5B16AD9D": {
               }
             }
           },
-          \\"resource\\": {
-            \\"test\\": {
-              \\"adapter_another_C86ABFE2\\": {
+          "resource": {
+            "test": {
+              "adapter_another_C86ABFE2": {
               },
-              \\"adapter_subject_24E89D84\\": {
-                \\"value\\": \\"\${data.aws_partition.adapter_aws-partition_5B16AD9D.dns_suffix}\\"
+              "adapter_subject_24E89D84": {
+                "value": "\${data.aws_partition.adapter_aws-partition_5B16AD9D.dns_suffix}"
               }
             }
           }
@@ -78,12 +78,12 @@ describe("AwsTerraformAdapter", () => {
 
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
         "{
-          \\"resource\\": {
-            \\"test\\": {
-              \\"adapter_another_C86ABFE2\\": {
+          "resource": {
+            "test": {
+              "adapter_another_C86ABFE2": {
               },
-              \\"adapter_subject_24E89D84\\": {
-                \\"value\\": \\"\${test.adapter_another_C86ABFE2.list}\\"
+              "adapter_subject_24E89D84": {
+                "value": "\${test.adapter_another_C86ABFE2.list}"
               }
             }
           }
@@ -114,12 +114,12 @@ describe("AwsTerraformAdapter", () => {
 
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
         "{
-          \\"resource\\": {
-            \\"test\\": {
-              \\"adapter_another_C86ABFE2\\": {
+          "resource": {
+            "test": {
+              "adapter_another_C86ABFE2": {
               },
-              \\"adapter_subject_24E89D84\\": {
-                \\"value\\": \\"\${join(\\\\\\",\\\\\\", [\\\\\\"one\\\\\\", \\\\\\"two\\\\\\", test.adapter_another_C86ABFE2.string])}\\"
+              "adapter_subject_24E89D84": {
+                "value": "\${join(\\",\\", [\\"one\\", \\"two\\", test.adapter_another_C86ABFE2.string])}"
               }
             }
           }
@@ -147,12 +147,12 @@ describe("AwsTerraformAdapter", () => {
 
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
         "{
-          \\"resource\\": {
-            \\"test\\": {
-              \\"adapter_another_C86ABFE2\\": {
+          "resource": {
+            "test": {
+              "adapter_another_C86ABFE2": {
               },
-              \\"adapter_subject_24E89D84\\": {
-                \\"value\\": \\"\${element(test.adapter_another_C86ABFE2.list, 1)}\\"
+              "adapter_subject_24E89D84": {
+                "value": "\${element(test.adapter_another_C86ABFE2.list, 1)}"
               }
             }
           }
@@ -178,36 +178,36 @@ describe("AwsTerraformAdapter", () => {
       });
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
         "{
-          \\"data\\": {
-            \\"aws_availability_zones\\": {
-              \\"adapter_aws_azs_default_region_9CD033CD\\": {
+          "data": {
+            "aws_availability_zones": {
+              "adapter_aws_azs_default_region_9CD033CD": {
               },
-              \\"adapter_aws_azs_eu_central_1_B40FEB09\\": {
-                \\"provider\\": \\"aws.eu_central_1\\"
+              "adapter_aws_azs_eu_central_1_B40FEB09": {
+                "provider": "aws.eu_central_1"
               }
             }
           },
-          \\"provider\\": {
-            \\"aws\\": [
+          "provider": {
+            "aws": [
               {
-                \\"alias\\": \\"eu_central_1\\",
-                \\"region\\": \\"eu-central-1\\"
+                "alias": "eu_central_1",
+                "region": "eu-central-1"
               }
             ]
           },
-          \\"resource\\": {
-            \\"test\\": {
-              \\"adapter_subject_24E89D84\\": {
-                \\"value\\": \\"\${data.aws_availability_zones.adapter_aws_azs_default_region_9CD033CD.names}\\",
-                \\"value2\\": \\"\${data.aws_availability_zones.adapter_aws_azs_eu_central_1_B40FEB09.names}\\"
+          "resource": {
+            "test": {
+              "adapter_subject_24E89D84": {
+                "value": "\${data.aws_availability_zones.adapter_aws_azs_default_region_9CD033CD.names}",
+                "value2": "\${data.aws_availability_zones.adapter_aws_azs_eu_central_1_B40FEB09.names}"
               }
             }
           },
-          \\"terraform\\": {
-            \\"required_providers\\": {
-              \\"aws\\": {
-                \\"source\\": \\"aws\\",
-                \\"version\\": \\"3.76.1\\"
+          "terraform": {
+            "required_providers": {
+              "aws": {
+                "source": "aws",
+                "version": "3.76.1"
               }
             }
           }
@@ -234,12 +234,12 @@ describe("AwsTerraformAdapter", () => {
       });
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
         "{
-          \\"resource\\": {
-            \\"test\\": {
-              \\"adapter_another_C86ABFE2\\": {
+          "resource": {
+            "test": {
+              "adapter_another_C86ABFE2": {
               },
-              \\"adapter_subject_24E89D84\\": {
-                \\"value\\": \\"\${base64encode(test.adapter_another_C86ABFE2.string)}\\"
+              "adapter_subject_24E89D84": {
+                "value": "\${base64encode(test.adapter_another_C86ABFE2.string)}"
               }
             }
           }
@@ -300,12 +300,12 @@ describe("AwsTerraformAdapter", () => {
       });
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
         "{
-          \\"resource\\": {
-            \\"test\\": {
-              \\"adapter_another_C86ABFE2\\": {
+          "resource": {
+            "test": {
+              "adapter_another_C86ABFE2": {
               },
-              \\"adapter_subject_24E89D84\\": {
-                \\"value\\": \\"\${test.adapter_another_C86ABFE2.map.keyA[test.adapter_another_C86ABFE2.string]}\\"
+              "adapter_subject_24E89D84": {
+                "value": "\${test.adapter_another_C86ABFE2.map.keyA[test.adapter_another_C86ABFE2.string]}"
               }
             }
           }
@@ -335,12 +335,12 @@ describe("AwsTerraformAdapter", () => {
       });
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
         "{
-          \\"resource\\": {
-            \\"test\\": {
-              \\"adapter_another_C86ABFE2\\": {
+          "resource": {
+            "test": {
+              "adapter_another_C86ABFE2": {
               },
-              \\"adapter_subject_24E89D84\\": {
-                \\"value\\": \\"\${replace(replace(\\\\\\"this is the $\${TEMPLATE} string. This will not be $\${!REPLACED} but end up without the exclamation mark\\\\\\", \\\\\\"$\${TEMPLATE}\\\\\\", test.adapter_another_C86ABFE2.string), \\\\\\"/\\\\\\\\\\\\\\\\$\\\\\\\\\\\\\\\\{!(\\\\\\\\\\\\\\\\w+)\\\\\\\\\\\\\\\\}/\\\\\\", \\\\\\"$\${$1}\\\\\\")}\\"
+              "adapter_subject_24E89D84": {
+                "value": "\${replace(replace(\\"this is the $\${TEMPLATE} string. This will not be $\${!REPLACED} but end up without the exclamation mark\\", \\"$\${TEMPLATE}\\", test.adapter_another_C86ABFE2.string), \\"/\\\\\\\\$\\\\\\\\{!(\\\\\\\\w+)\\\\\\\\}/\\", \\"$\${$1}\\")}"
               }
             }
           }
@@ -367,12 +367,12 @@ describe("AwsTerraformAdapter", () => {
       });
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
         "{
-          \\"resource\\": {
-            \\"test\\": {
-              \\"adapter_another_C86ABFE2\\": {
+          "resource": {
+            "test": {
+              "adapter_another_C86ABFE2": {
               },
-              \\"adapter_subject_24E89D84\\": {
-                \\"value\\": \\"\${split(\\\\\\",\\\\\\", test.adapter_another_C86ABFE2.string)}\\"
+              "adapter_subject_24E89D84": {
+                "value": "\${split(\\",\\", test.adapter_another_C86ABFE2.string)}"
               }
             }
           }
@@ -397,12 +397,12 @@ describe("AwsTerraformAdapter", () => {
       // TODO: check why "false" ends up as undefined
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
         "{
-          \\"locals\\": {
-            \\"adapter_condition_And_696B6B21\\": \\"\${((local.adapter_condition_IsProd_8FB293B1 && true) && true)}\\",
-            \\"adapter_condition_If_4412FEF9\\": \\"\${local.adapter_condition_IsProd_8FB293B1 ? 1 : 0}\\",
-            \\"adapter_condition_IsDev_FDA8D7BD\\": \\"\${!local.adapter_condition_IsProd_8FB293B1}\\",
-            \\"adapter_condition_IsProd_8FB293B1\\": \\"\${(\\\\\\"A\\\\\\" == \\\\\\"A\\\\\\")}\\",
-            \\"adapter_condition_Or_83D17798\\": \\"\${((local.adapter_condition_IsProd_8FB293B1 || true) || true)}\\"
+          "locals": {
+            "adapter_condition_And_696B6B21": "\${((local.adapter_condition_IsProd_8FB293B1 && true) && true)}",
+            "adapter_condition_If_4412FEF9": "\${local.adapter_condition_IsProd_8FB293B1 ? 1 : 0}",
+            "adapter_condition_IsDev_FDA8D7BD": "\${!local.adapter_condition_IsProd_8FB293B1}",
+            "adapter_condition_IsProd_8FB293B1": "\${(\\"A\\" == \\"A\\")}",
+            "adapter_condition_Or_83D17798": "\${((local.adapter_condition_IsProd_8FB293B1 || true) || true)}"
           }
         }"
       `);
@@ -439,7 +439,7 @@ class TestResource extends TerraformResource {
   constructor(
     scope: Construct,
     id: string,
-    private config: { [i: string]: any },
+    private config: { [i: string]: any }
   ) {
     super(scope, id, { terraformResourceType: "test" });
   }
@@ -457,7 +457,7 @@ class StaticCfnConstruct extends CfnElement {
   constructor(
     scope: Construct,
     id: string,
-    private cfn: CloudFormationTemplate,
+    private cfn: CloudFormationTemplate
   ) {
     super(scope, id);
   }
