@@ -20,10 +20,6 @@
       "type": "build"
     },
     {
-      "name": "@types/semver",
-      "type": "build"
-    },
-    {
       "name": "@typescript-eslint/eslint-plugin",
       "version": "^6",
       "type": "build"
@@ -116,10 +112,6 @@
     },
     {
       "name": "projen",
-      "type": "build"
-    },
-    {
-      "name": "semver",
       "type": "build"
     },
     {

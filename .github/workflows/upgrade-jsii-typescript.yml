@@ -2,48 +2,102 @@
 
 name: upgrade-jsii-typescript
 on:
+  schedule:
+    - cron: 07 13 * * *
   workflow_dispatch:
     inputs:
-      new_version:
+      version:
         description: New JSII/TypeScript version (e.g. "5.5.0"), without carets or tildes
-        required: true
-        default: 5.6.0
+        required: false
         type: string
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
+  version:
+    name: Determine version to upgrade to
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      current: ${{ steps.current_version.outputs.value }}
+      latest: ${{ steps.latest_version.outputs.value }}
+      short: ${{ steps.latest_version.outputs.short }}
+      should_upgrade: ${{ steps.latest_version.outputs.is_newer }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Setup Node.js
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af
+        with:
+          node-version: 18.12.0
+      - name: Install
+        run: yarn install
+      - name: Get current JSII version
+        run: |-
+          CURRENT_VERSION=$(npm list jsii --depth=0 --json | jq -r '.dependencies.jsii.version')
+          CURRENT_VERSION_SHORT=$(cut -d "." -f 1,2 <<< "$CURRENT_VERSION")
+          CURRENT_VERSION_MAJOR=$(cut -d "." -f 1 <<< "$CURRENT_VERSION")
+          CURRENT_VERSION_MINOR=$(cut -d "." -f 2 <<< "$CURRENT_VERSION")
+          echo "CURRENT_JSII_VERSION=$CURRENT_VERSION" >> $GITHUB_ENV
+          echo "CURRENT_JSII_VERSION_SHORT=$CURRENT_VERSION_SHORT" >> $GITHUB_ENV
+          echo "CURRENT_JSII_VERSION_MAJOR=$CURRENT_VERSION_MAJOR" >> $GITHUB_ENV
+          echo "CURRENT_JSII_VERSION_MINOR=$CURRENT_VERSION_MINOR" >> $GITHUB_ENV
+          echo "value=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+      - name: Get the earliest supported JSII version whose EOS date is at least a month away
+        if: ${{ ! inputs.version }}
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
+        with:
+          script: |-
+            const script = require('./scripts/check-jsii-versions.js')
+            await script({github, context, core})
+      - name: Save the manually-input version to environment variables for comparison
+        if: ${{ inputs.version }}
+        env:
+          NEW_VERSION: ${{ inputs.version }}
+        run: |-
+          NEW_VERSION_SHORT=$(cut -d "." -f 1,2 <<< "$NEW_VERSION")
+          NEW_VERSION_MAJOR=$(cut -d "." -f 1 <<< "$NEW_VERSION")
+          NEW_VERSION_MINOR=$(cut -d "." -f 2 <<< "$NEW_VERSION")
+          echo "NEW_JSII_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+          echo "NEW_JSII_VERSION_SHORT=$NEW_VERSION_SHORT" >> $GITHUB_ENV
+          echo "NEW_JSII_VERSION_MAJOR=$NEW_VERSION_MAJOR" >> $GITHUB_ENV
+          echo "NEW_JSII_VERSION_MINOR=$NEW_VERSION_MINOR" >> $GITHUB_ENV
+      - name: Output env variables for use in the next job
+        id: latest_version
+        run: |-
+          echo "value=$NEW_JSII_VERSION" >> $GITHUB_OUTPUT
+          echo "short=$NEW_JSII_VERSION_SHORT" >> $GITHUB_OUTPUT
+          [[ "$NEW_JSII_VERSION_MAJOR" > "$CURRENT_JSII_VERSION_MAJOR" || ("$NEW_JSII_VERSION_MAJOR" == "$CURRENT_JSII_VERSION_MAJOR" && "$NEW_JSII_VERSION_MINOR" > "$CURRENT_JSII_VERSION_MINOR") ]] && IS_NEWER=true
+          echo "is_newer=$IS_NEWER" >> $GITHUB_OUTPUT
   upgrade:
     name: Upgrade JSII & TypeScript
+    needs: version
     runs-on: ubuntu-latest
     permissions:
       contents: read
     env:
       CI: "true"
       CHECKPOINT_DISABLE: "1"
-      NEW_VERSION: ${{ inputs.new_version }}
+    if: always() && needs.version.outputs.should_upgrade
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - name: Setup Node.js
         uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af
+        with:
+          node-version: 18.12.0
       - name: Install
         run: yarn install
       - name: Run upgrade script
-        run: scripts/update-jsii-typescript.sh $NEW_VERSION
-      - name: Get values for pull request
-        id: latest_version
-        run: |-
-          NEW_VERSION_SHORT=$(cut -d "." -f 1,2 <<< "$NEW_VERSION")
-          echo "value=$NEW_VERSION" >> $GITHUB_OUTPUT
-          echo "short=$NEW_VERSION_SHORT" >> $GITHUB_OUTPUT
+        run: scripts/update-jsii-typescript.sh ${{ needs.version.outputs.latest }}
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@67ccf781d68cd99b580ae25a5c18a1cc84ffff1f
         with:
-          commit-message: "chore: upgrade jsii & typescript to v${{ steps.latest_version.outputs.short }}"
-          branch: auto/upgrade-jsii-ts-${{ steps.latest_version.outputs.short }}
           base: main
-          title: "chore: upgrade jsii & typescript to v${{ steps.latest_version.outputs.short }}"
-          body: "This PR increases the version of JSII and TypeScript to `~${{ steps.latest_version.outputs.value }}`,  presumably because the previous version is close to EOL or no longer supported. Support timeline:  https://github.com/aws/jsii-compiler/blob/main/README.md#gear-maintenance--support"
+          branch: auto/upgrade-jsii-ts-${{ needs.version.outputs.short }}
+          commit-message: "chore(deps): upgrade jsii & typescript to v${{ needs.version.outputs.short }}"
+          title: "chore(deps): upgrade jsii & typescript to v${{ needs.version.outputs.short }}"
+          body: "This PR increases the version of JSII and TypeScript to `~${{ needs.version.outputs.latest }}`  because the previous version is close to EOL or no longer supported. Support timeline:  https://github.com/aws/jsii-compiler/blob/main/README.md#gear-maintenance--support"
           labels: auto-approve,automerge,automated
           token: ${{ secrets.PROJEN_GITHUB_TOKEN }}
           author: team-tf-cdk <github-team-tf-cdk@hashicorp.com>
