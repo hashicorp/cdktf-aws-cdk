@@ -46,6 +46,11 @@ export class CdktfConfig {
     // This is a temporary workaround to allow upgrade-main to succeed until we upgrade to Node 20
     project.package.addPackageResolutions(`cssstyle@4.1.0`);
 
+    // The following can be removed when upgrading to CDKTF 0.21
+    project.package.addPackageResolutions(`cookie@0.7.0`);
+    project.package.addPackageResolutions(`cross-spawn@7.0.6`);
+    project.package.addPackageResolutions(`follow-redirects@1.15.6`);
+
     // for update-supported-types script
     project.addDevDeps("@aws-sdk/client-cloudformation@^3.36.0");
     project.setScript(

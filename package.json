@@ -88,7 +88,10 @@
     "debug"
   ],
   "resolutions": {
-    "cssstyle": "4.1.0"
+    "cookie": "0.7.0",
+    "cross-spawn": "7.0.6",
+    "cssstyle": "4.1.0",
+    "follow-redirects": "1.15.6"
   },
   "keywords": [
     "aws",
