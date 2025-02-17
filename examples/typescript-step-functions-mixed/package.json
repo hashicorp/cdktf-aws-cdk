@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@cdktf/aws-cdk": "^0.13.30",
-    "aws-cdk-lib": "2.93.0",
+    "aws-cdk-lib": "2.178.2",
     "cdktf": "0.20.11",
     "constructs": "10.4.2",
     "esbuild-wasm": "^0.25.0",
