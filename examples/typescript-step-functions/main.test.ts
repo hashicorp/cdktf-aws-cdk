@@ -19,10 +19,6 @@ describe("typescript-state-machine", () => {
           "aws_partition": {
             "adapter_aws-partition_5B16AD9D": {
             }
-          },
-          "aws_region": {
-            "adapter_aws-region_F8878EF0": {
-            }
           }
         },
         "provider": {
@@ -80,7 +76,7 @@ describe("typescript-state-machine", () => {
               ]
             },
             "adapter_StateMachineRoleB840431D_34E24F0D": {
-              "assume_role_policy": "\${jsonencode({\\"Statement\\" = [{\\"Action\\" = \\"sts:AssumeRole\\", \\"Effect\\" = \\"Allow\\", \\"Principal\\" = {\\"Service\\" = \\"ServiceprincipalMap\\"[data.aws_region.adapter_aws-region_F8878EF0.name].states}}], \\"Version\\" = \\"2012-10-17\\"})}"
+              "assume_role_policy": "\${jsonencode({\\"Statement\\" = [{\\"Action\\" = \\"sts:AssumeRole\\", \\"Effect\\" = \\"Allow\\", \\"Principal\\" = {\\"Service\\" = \\"states.amazonaws.com\\"}}], \\"Version\\" = \\"2012-10-17\\"})}"
             }
           },
           "aws_iam_role_policy_attachment": {
