@@ -42,7 +42,13 @@ Dependabot is also [configured](https://github.com/hashicorp/cdktf-aws-cdk/blob/
 
 One other form of maintenance required by this project is to periodically update the list of resources supported by the AWS CloudControl API, which are stored inside the codebase [here](https://github.com/hashicorp/cdktf-aws-cdk/blob/main/src/awscc/supportedTypes.ts). This is essentially a machine-readable version of [this list](https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/supported-resources.html).
 
-There is a script to update these types [here](https://github.com/hashicorp/cdktf-aws-cdk/blob/main/scripts/update-supported-types.js) which can be triggered by running `yarn fetch:types`. _(@TODO: Add more detailed instructions for how to run it / how to generate the right type of token needed for this script.)_ Note that the reason why we don't have an automated workflow powering this is because company policy only allows us to generate short-lived AWS access tokens, which has unfortunately necessitated this remaining a manual process that we all-too-often forget to do. (A really clever person could probably come up with a solution to this problem, though!)
+There is a script to update these types [here](https://github.com/hashicorp/cdktf-aws-cdk/blob/main/scripts/update-supported-types.js) which can be triggered by running `yarn fetch:types`.
+
+> [!INFO]
+> In order to run the above script, you need to have valid AWS credentials that [can be accessed](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-credentials-node.html) by the AWS JS SDK.
+> The script requires the ability to read from the [CloudFormation list-types API](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListTypes.html), so the credentials should have permission to list types on CloudFormation.
+
+Note that the reason why we don't have an automated workflow powering this is because company policy only allows us to generate short-lived AWS access tokens, which has unfortunately necessitated this remaining a manual process that we all-too-often forget to do. (A really clever person could probably come up with a solution to this problem, though!)
 
 
 ## Releasing
