@@ -57,7 +57,7 @@
     "constructs": "10.0.25",
     "eslint": "^8",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-typescript": "^3.9.1",
+    "eslint-import-resolver-typescript": "^3.10.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^4.2.1",
     "jest": "^29",
