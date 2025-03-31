@@ -31,13 +31,20 @@ export class UpgradeCDKTF {
         steps: [
           {
             name: "Checkout",
-            uses: "actions/checkout@v3",
+            uses: "actions/checkout",
           },
           {
             name: "Setup Node.js",
-            uses: "actions/setup-node@v4",
+            uses: "actions/setup-node",
             with: {
               "node-version": project.minNodeVersion,
+            },
+          },
+          {
+            name: "Setup Terraform",
+            uses: "hashicorp/setup-terraform",
+            with: {
+              terraform_wrapper: false,
             },
           },
           {
@@ -88,7 +95,7 @@ export class UpgradeCDKTF {
           {
             name: "Create Pull Request",
             if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
-            uses: "peter-evans/create-pull-request@v3",
+            uses: "peter-evans/create-pull-request",
             with: {
               "commit-message":
                 "chore!: upgrade to cdktf ${{ steps.latest_version.outputs.value }}",

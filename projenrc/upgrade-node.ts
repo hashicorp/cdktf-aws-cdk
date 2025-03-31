@@ -146,6 +146,13 @@ export class UpgradeNode {
             },
           },
           {
+            name: "Setup Terraform",
+            uses: "hashicorp/setup-terraform",
+            with: {
+              terraform_wrapper: false,
+            },
+          },
+          {
             name: "Install",
             run: "yarn install",
           },

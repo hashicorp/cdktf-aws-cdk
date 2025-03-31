@@ -27,13 +27,20 @@ export class ProviderUpgrade {
         steps: [
           {
             name: "Checkout",
-            uses: "actions/checkout@v2",
+            uses: "actions/checkout",
           },
           {
             name: "Setup Node.js",
-            uses: "actions/setup-node@v4",
+            uses: "actions/setup-node",
             with: {
               "node-version": project.minNodeVersion,
+            },
+          },
+          {
+            name: "Setup Terraform",
+            uses: "hashicorp/setup-terraform",
+            with: {
+              terraform_wrapper: false,
             },
           },
           { run: "yarn install" },
@@ -45,7 +52,7 @@ export class ProviderUpgrade {
           // submit a PR
           {
             name: "Create Pull Request",
-            uses: "peter-evans/create-pull-request@v3",
+            uses: "peter-evans/create-pull-request",
             with: {
               "commit-message": "feat: upgrade providers",
               branch: "auto/provider-upgrade",
