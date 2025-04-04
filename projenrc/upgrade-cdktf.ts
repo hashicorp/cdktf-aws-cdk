@@ -41,13 +41,6 @@ export class UpgradeCDKTF {
             },
           },
           {
-            name: "Setup Terraform",
-            uses: "hashicorp/setup-terraform",
-            with: {
-              terraform_wrapper: false,
-            },
-          },
-          {
             name: "Install",
             run: "yarn install",
           },
@@ -81,16 +74,6 @@ export class UpgradeCDKTF {
             name: "Run upgrade script",
             if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
             run: "scripts/update-cdktf.sh ${{ steps.latest_version.outputs.value }} ${{ steps.latest_version.outputs.constructs }}",
-          },
-          {
-            name: "Regenerate bindings",
-            if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
-            run: "yarn run fetch && yarn run compile",
-          },
-          {
-            name: "Update auto-generated docs",
-            if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
-            run: "yarn run docgen",
           },
           {
             name: "Create Pull Request",

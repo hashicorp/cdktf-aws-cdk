@@ -3,7 +3,7 @@
 name: upgrade-node
 on:
   schedule:
-    - cron: 28 5 * * *
+    - cron: 34 10 * * *
   workflow_dispatch:
     inputs:
       version:
@@ -84,18 +84,10 @@ jobs:
         uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e
         with:
           node-version: ${{ needs.version.outputs.latest }}
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd
-        with:
-          terraform_wrapper: false
       - name: Install
         run: yarn install
       - name: Run upgrade script
         run: scripts/update-node.sh ${{ needs.version.outputs.latest }}
-      - name: Regenerate bindings
-        run: yarn run fetch && yarn run compile
-      - name: Update auto-generated docs
-        run: yarn run docgen
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e
         with:
