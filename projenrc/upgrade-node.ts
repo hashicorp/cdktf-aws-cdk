@@ -5,6 +5,7 @@
 
 import { javascript } from "projen";
 import { JobPermission } from "projen/lib/github/workflows-model";
+import { generateRandomCron } from "./util/random-cron";
 
 /**
  * Auto-updates Node to the next LTS version a month before the previous one goes EOL
@@ -17,7 +18,8 @@ export class UpgradeNode {
     if (!workflow) throw new Error("no workflow defined");
 
     workflow.on({
-      schedule: [{ cron: "28 5 * * *" }], // Runs once a day
+      // run daily sometime between 5 and 11am UTC
+      schedule: [{ cron: generateRandomCron({ project, maxHour: 6, hourOffset: 5 }) }],
       workflowDispatch: {
         inputs: {
           version: {
@@ -71,7 +73,7 @@ export class UpgradeNode {
           {
             name: "Get the earliest supported Node.js version whose EOL date is at least a month away",
             if: "${{ ! inputs.version }}",
-            uses: "actions/github-script@v6",
+            uses: "actions/github-script",
             with: {
               script: [
                 `const script = require('./scripts/check-node-versions.js')`,
@@ -146,27 +148,12 @@ export class UpgradeNode {
             },
           },
           {
-            name: "Setup Terraform",
-            uses: "hashicorp/setup-terraform",
-            with: {
-              terraform_wrapper: false,
-            },
-          },
-          {
             name: "Install",
             run: "yarn install",
           },
           {
             name: "Run upgrade script",
             run: "scripts/update-node.sh ${{ needs.version.outputs.latest }}",
-          },
-          {
-            name: "Regenerate bindings",
-            run: "yarn run fetch && yarn run compile",
-          },
-          {
-            name: "Update auto-generated docs",
-            run: "yarn run docgen",
           },
           {
             name: "Create Pull Request",

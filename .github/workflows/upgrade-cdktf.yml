@@ -23,10 +23,6 @@ jobs:
         uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e
         with:
           node-version: 18.12.0
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd
-        with:
-          terraform_wrapper: false
       - name: Install
         run: yarn install
       - name: Get current CDKTF version
@@ -49,12 +45,6 @@ jobs:
       - name: Run upgrade script
         if: steps.current_version.outputs.short != steps.latest_version.outputs.short
         run: scripts/update-cdktf.sh ${{ steps.latest_version.outputs.value }} ${{ steps.latest_version.outputs.constructs }}
-      - name: Regenerate bindings
-        if: steps.current_version.outputs.short != steps.latest_version.outputs.short
-        run: yarn run fetch && yarn run compile
-      - name: Update auto-generated docs
-        if: steps.current_version.outputs.short != steps.latest_version.outputs.short
-        run: yarn run docgen
       - name: Create Pull Request
         if: steps.current_version.outputs.short != steps.latest_version.outputs.short
         uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e

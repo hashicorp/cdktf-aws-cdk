@@ -5,6 +5,7 @@
 
 import { javascript } from "projen";
 import { JobPermission } from "projen/lib/github/workflows-model";
+import { generateRandomCron } from "./util/random-cron";
 
 /**
  * Helper script for upgrading JSII and TypeScript in the right way.
@@ -19,7 +20,8 @@ export class UpgradeJSIIAndTypeScript {
 
     const plainVersion = typescriptVersion.replace("~", "");
     workflow.on({
-      schedule: [{ cron: "07 13 * * *" }], // Runs once a day
+      // run daily sometime between 8am and 4pm UTC
+      schedule: [{ cron: generateRandomCron({ project, maxHour: 6, hourOffset: 8 }) }],
       workflowDispatch: {
         inputs: {
           version: {
@@ -57,6 +59,7 @@ export class UpgradeJSIIAndTypeScript {
           },
           {
             name: "Get current JSII version",
+            id: "current_version",
             run: [
               `CURRENT_VERSION=$(npm list jsii --depth=0 --json | jq -r '.dependencies.jsii.version')`,
               `CURRENT_VERSION_SHORT=$(cut -d "." -f 1,2 <<< "$CURRENT_VERSION")`,
