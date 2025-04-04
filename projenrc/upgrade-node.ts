@@ -19,7 +19,9 @@ export class UpgradeNode {
 
     workflow.on({
       // run daily sometime between 5 and 11am UTC
-      schedule: [{ cron: generateRandomCron({ project, maxHour: 6, hourOffset: 5 }) }],
+      schedule: [
+        { cron: generateRandomCron({ project, maxHour: 6, hourOffset: 5 }) },
+      ],
       workflowDispatch: {
         inputs: {
           version: {

@@ -21,7 +21,9 @@ export class UpgradeJSIIAndTypeScript {
     const plainVersion = typescriptVersion.replace("~", "");
     workflow.on({
       // run daily sometime between 8am and 4pm UTC
-      schedule: [{ cron: generateRandomCron({ project, maxHour: 6, hourOffset: 8 }) }],
+      schedule: [
+        { cron: generateRandomCron({ project, maxHour: 6, hourOffset: 8 }) },
+      ],
       workflowDispatch: {
         inputs: {
           version: {
