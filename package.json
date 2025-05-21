@@ -47,7 +47,7 @@
     "@aws-sdk/client-cloudformation": "^3.36.0",
     "@types/debug": "^4.1.7",
     "@types/jest": "^29",
-    "@types/node": "^18",
+    "@types/node": "^20",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
     "aws-cdk-lib": "2.80.0",
@@ -101,7 +101,7 @@
     "terraform"
   ],
   "engines": {
-    "node": ">= 18.12.0"
+    "node": ">= 20.9.0"
   },
   "main": "lib/index.js",
   "license": "MPL-2.0",
