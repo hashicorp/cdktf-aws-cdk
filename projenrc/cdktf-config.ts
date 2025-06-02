@@ -37,15 +37,6 @@ export class CdktfConfig {
     // @see https://stackoverflow.com/a/72680434 for why this is necessary
     project.addDevDeps("ts-node@^10.9.1");
 
-    // eslint v9+ and @typescript-eslint v7+ require Node.js 18.18, so we are stuck on v8 and v6 respectively
-    // The below lines can probably be removed once Node 18 goes EOL and we upgrade minNodeVersion to 20
-    project.addDevDeps("eslint@^8");
-    project.addDevDeps("@typescript-eslint/eslint-plugin@^6");
-    project.addDevDeps("@typescript-eslint/parser@^6");
-
-    // This is a temporary workaround to allow upgrade-main to succeed until we upgrade to Node 20
-    project.package.addPackageResolutions(`cssstyle@4.1.0`);
-
     // The following can be removed when upgrading to CDKTF 0.21
     project.package.addPackageResolutions(`cookie@0.7.0`);
     project.package.addPackageResolutions(`cross-spawn@7.0.6`);
