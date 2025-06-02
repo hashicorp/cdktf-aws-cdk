@@ -25,7 +25,7 @@ const project = new CdktfAwsCdkProject({
   cdktfVersion: "0.20.0",
   constructsVersion: "10.0.25",
   jsiiVersion: "~5.7.0", // JSII and TS should always use the same major/minor version range
-  minNodeVersion: "18.12.0",
+  minNodeVersion: "20.9.0",
   projenrcTs: true,
 });
 
