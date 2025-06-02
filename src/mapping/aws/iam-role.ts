@@ -19,8 +19,9 @@ registerMapping("AWS::IAM::Role", {
     })(scope, id, props);
 
     // add Aspect for working around eventual consistency issues
-    if (resource)
+    if (resource) {
       Aspects.of(scope).add(new EventualConsistencyWorkaroundAspect(resource));
+    }
 
     return resource;
   },
