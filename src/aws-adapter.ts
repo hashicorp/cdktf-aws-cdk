@@ -209,10 +209,11 @@ class TerraformHost extends Construct {
         const local = this.node.tryFindChild(
           getConditionConstructId(conditionId)
         ) as TerraformLocal;
-        if (!local)
+        if (!local) {
           throw new Error(
             `Could not find TerraformLocal for condition with id=${conditionId}`
           );
+        }
         return local.expression;
       },
     });
@@ -447,12 +448,13 @@ class TerraformHost extends Construct {
 
         // replacementMap is an object
         Object.entries(replacementMap).map(([rawVarName, rawVarValue]) => {
-          if (typeof rawVarName !== "string")
+          if (typeof rawVarName !== "string") {
             throw new Error(
               `Only strings are supported as VarName in Sub function. Encountered ${JSON.stringify(
                 rawVarName
               )} instead.`
             );
+          }
           const varName = rawVarName; // we use this as object key
           const varValue = this.processIntrinsics(rawVarValue);
 
