@@ -51,10 +51,10 @@
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
     "aws-cdk-lib": "2.80.0",
-    "cdktf": "0.20.0",
-    "cdktf-cli": "0.20.0",
+    "cdktf": "0.21.0",
+    "cdktf-cli": "0.21.0",
     "commit-and-tag-version": "^12",
-    "constructs": "10.0.25",
+    "constructs": "10.4.2",
     "eslint": "^9",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.10.1",
@@ -74,8 +74,8 @@
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.80.0",
-    "cdktf": "^0.20.0",
-    "constructs": "^10.0.25"
+    "cdktf": "^0.21.0",
+    "constructs": "^10.4.2"
   },
   "dependencies": {
     "change-case": "^4.1.1",
