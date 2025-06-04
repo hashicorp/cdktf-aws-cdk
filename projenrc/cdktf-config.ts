@@ -37,10 +37,8 @@ export class CdktfConfig {
     // @see https://stackoverflow.com/a/72680434 for why this is necessary
     project.addDevDeps("ts-node@^10.9.1");
 
-    // The following can be removed when upgrading to CDKTF 0.21
-    project.package.addPackageResolutions(`cookie@0.7.0`);
-    project.package.addPackageResolutions(`cross-spawn@7.0.6`);
-    project.package.addPackageResolutions(`follow-redirects@1.15.6`);
+    // Make the cross-spawn security vulnerability go away
+    project.package.addPackageResolutions(`shelljs@0.10.0`);
 
     // for update-supported-types script
     project.addDevDeps("@aws-sdk/client-cloudformation@^3.36.0");

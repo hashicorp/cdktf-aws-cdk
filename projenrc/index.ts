@@ -296,42 +296,6 @@ export class CdktfAwsCdkProject extends cdk.JsiiProject {
     });
 
     const buildWorkflow = this.tryFindObjectFile(".github/workflows/build.yml");
-    buildWorkflow?.addOverride("jobs.build.permissions", {
-      contents: "write",
-      actions: "write",
-      "pull-requests": "write",
-    });
-    buildWorkflow?.addToArray(
-      "jobs.build.steps",
-      {
-        name: "Check if anything was actually changed by this PR",
-        id: "check_files",
-        env: {
-          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
-          PR_ID: "${{ github.event.pull_request.number }}",
-        },
-        run: "gh pr diff $PR_ID | grep . || echo 'no_changes=true' >> $GITHUB_OUTPUT",
-      } as JobStep,
-      {
-        name: "Close the PR if empty",
-        env: {
-          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
-          PR_ID: "${{ github.event.pull_request.number }}",
-        },
-        if: "steps.check_files.outputs.no_changes",
-        run: "git fetch origin main\ngh pr close $PR_ID --delete-branch",
-        // the GH CLI will attempt to switch back to 'main' after the pr close, which hasn't been fetched
-      } as JobStep,
-      {
-        name: "Cancel the rest of the run if empty",
-        env: {
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}",
-          RUN_ID: "${{ github.run_id }}",
-        },
-        if: "steps.check_files.outputs.no_changes",
-        run: "gh run cancel $RUN_ID \ngh run watch $RUN_ID",
-      } as JobStep
-    );
     buildWorkflow?.addDeletionOverride("jobs.self-mutation.steps.0.with.token");
   }
 }
