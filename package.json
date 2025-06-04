@@ -50,7 +50,7 @@
     "@types/node": "^20",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
-    "aws-cdk-lib": "2.80.0",
+    "aws-cdk-lib": "2.189.0",
     "cdktf": "0.21.0",
     "cdktf-cli": "0.21.0",
     "commit-and-tag-version": "^12",
@@ -73,7 +73,7 @@
     "typescript": "~5.7.0"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.80.0",
+    "aws-cdk-lib": "^2.189.0",
     "cdktf": "^0.21.0",
     "constructs": "^10.4.2"
   },
