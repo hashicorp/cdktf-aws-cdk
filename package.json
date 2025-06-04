@@ -88,7 +88,7 @@
     "debug"
   ],
   "resolutions": {
-    "cross-spawn": "7.0.6"
+    "shelljs": "0.10.0"
   },
   "keywords": [
     "aws",

@@ -140,8 +140,8 @@
       "type": "bundled"
     },
     {
-      "name": "cross-spawn",
-      "version": "7.0.6",
+      "name": "shelljs",
+      "version": "0.10.0",
       "type": "override"
     },
     {
