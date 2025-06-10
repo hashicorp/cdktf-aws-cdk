@@ -26,8 +26,8 @@ Dependabot is also [configured](https://github.com/hashicorp/cdktf-aws-cdk/blob/
 
 ### Not Automated
 
-- **GitHub Actions version pinning**: Because this project leverages Projen, HashiCorp Security's [tsccr-helper](https://github.com/hashicorp/security-tsccr?tab=readme-ov-file#tsccr-helper-cli) CLI and other tooling cannot be used to manage/upgrade GitHub Actions versions. Instead, we have consolidated all of the versions into a single [object](https://github.com/hashicorp/cdktf-aws-cdk/blob/31f9be8c91984be2193db05dc4599b0d5e223fce/.projenrc.ts#L8-L20) in code that must be manually updated. Historically, one of the maintainers has followed these manual steps on a roughly monthly basis:
-  1. Look up the latest supported versions [here](https://github.com/hashicorp/security-tsccr/tree/main/components/github_actions)
+- **GitHub Actions version pinning**: Because this project leverages Projen but we have to conform to an internal requirement to use pinned version hashes as a security best practice, Dependabot and other tooling cannot be used to manage/upgrade GitHub Actions versions. Instead, we have consolidated all of the versions into a single [object](https://github.com/hashicorp/cdktf-aws-cdk/blob/31f9be8c91984be2193db05dc4599b0d5e223fce/.projenrc.ts#L8-L20) in code that must be manually updated. Historically, one of the maintainers has followed these manual steps on a roughly monthly basis:
+  1. Look up the latest supported versions
   2. Update the [object](https://github.com/hashicorp/cdktf-aws-cdk/blob/31f9be8c91984be2193db05dc4599b0d5e223fce/.projenrc.ts#L8-L20)
   3. Run `npx projen`
   4. Create a new PR with the title `chore(deps): update pinned versions of GitHub Actions`
