@@ -7,9 +7,9 @@ import { CdktfAwsCdkProject } from "./projenrc";
 
 const githubActionPinnedVersions = {
   "actions/checkout": "11bd71901bbe5b1630ceea73d27597364c9af683", // v4.2.2
-  "actions/download-artifact": "95815c38cf2ff2164869cbab79da8d1f422bc89e", // v4.2.1
+  "actions/download-artifact": "d3f86a106a0bac45b974a628896c90dbdf5c8093", // v4.3.0
   "actions/github-script": "60a0d83039c74a4aee543508d2ffcb1c3799cdea", // v7.0.1
-  "actions/setup-node": "cdca7365b2dadb8aad0a33bc7601856ffabcc48e", // v4.3.0
+  "actions/setup-node": "49933ea5288caeca8642d1e84afbd3f7d6820020", // v4.4.0
   "actions/stale": "5bef64f19d7facfb25b37b414482c7164d639639", // v9.1.0
   "actions/upload-artifact": "ea165f8d65b6e75b540449e92b4886f43607fa02", // v4.6.2
   "amannn/action-semantic-pull-request":
