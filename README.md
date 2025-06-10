@@ -14,7 +14,7 @@ The `AwsTerraformAdapter` currently only supports TypeScript projects:
 
 - `node` >= 20.9.0
 - `cdktf` >= 0.21.0
-- `aws-cdk-lib` >= 2.80.0
+- `aws-cdk-lib` >= 2.189.0
 - `constructs` >= 10.4.2
 
 ```

@@ -44,7 +44,7 @@ describe("lambda function", () => {
               "depends_on": [
                 "time_sleep.adapter_lambdaServiceRole494E4CA6_sleep_lambdaServiceRole494E4CA6_73847BDD"
               ],
-              "desired_state": "\${jsonencode({\\"Code\\" = {\\"ZipFile\\" = \\"def main(event, context):    \\\\nprint(\\\\\\"I'm running!\\\\\\")\\"}, \\"Role\\" = aws_iam_role.adapter_lambdaServiceRole494E4CA6_7D4D29EC.arn, \\"Handler\\" = \\"index.main\\", \\"Runtime\\" = \\"python3.6\\", \\"Timeout\\" = 300})}",
+              "desired_state": "\${jsonencode({\\"Code\\" = {\\"ZipFile\\" = \\"def main(event, context):    \\\\nprint(\\\\\\"I'm running!\\\\\\")\\"}, \\"Handler\\" = \\"index.main\\", \\"Role\\" = aws_iam_role.adapter_lambdaServiceRole494E4CA6_7D4D29EC.arn, \\"Runtime\\" = \\"python3.6\\", \\"Timeout\\" = 300})}",
               "type_name": "AWS::Lambda::Function"
             }
           },
