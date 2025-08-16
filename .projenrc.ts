@@ -24,7 +24,7 @@ const project = new CdktfAwsCdkProject({
   terraformProvider: "aws@~> 3.0",
   cdktfVersion: "0.21.0",
   constructsVersion: "10.4.2",
-  jsiiVersion: "~5.7.0", // JSII and TS should always use the same major/minor version range
+  jsiiVersion: "~5.8.0", // JSII and TS should always use the same major/minor version range
   minNodeVersion: "20.9.0",
   projenrcTs: true,
 });
